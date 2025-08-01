@@ -24,17 +24,21 @@ def check_str(code: str, task):
     del sys.modules["tmp.tmp"]
     return res
 
+score = 0
+accepted = 0
+
 LONG = "A" * 0x1000
 if __name__ == "__main__":
   for i in range(1, 401):
     task = get_task(i)
     shortest = LONG
     for base_path in get_code_paths("base_*", i):
-      if check(base_path, task)[0] != 1.0:
+      if check(base_path, task).correct != 1.0:
+        print(check(base_path, task))
         continue
       
       code = strip(open(base_path).read())
-      if check_str(code, task)[0] != 1.0:
+      if check_str(code, task).correct != 1.0:
         print(f"{base_path}: strip failed")
         continue
 
@@ -43,14 +47,18 @@ if __name__ == "__main__":
 
       for code, cmp in a:
         res = check_str(code, task)
-        if res[0] != 1.0:
+        if res.correct != 1.0:
           print(f"[!] failed: {res}")
       
       compressed = a[0][0]
       if len(compressed) < len(shortest):
         shortest = compressed
+      print(shortest)
 
     if shortest == LONG:
       print(f"[!] failed: vis/task{i:03}.png")
       continue
+    score += 2500 - len(shortest)
+    score += 1
     open(f"dist/task{i:03}.py", "w").write(shortest)
+  print(f"accepted: {accepted} / 400, {score=}")
