@@ -1,0 +1,47 @@
+Here’s a small Python solution.  It
+
+1. Finds the two “floating” shapes (all colors ≠ 0 or 5), records each shape’s relative footprint and erases it.
+2. Finds each rectangular 5‐block, locates its interior hole, matches that hole‐footprint to one of the saved shapes, and fills the hole with the corresponding color.
+3. Returns the modified grid.
+
+```python
+def p(g):
+    m,n=len(g),len(g[0])
+    # 1) extract the 2 shapes (colors≠0,5), record their relative masks, clear them
+    D={}
+    cs={c for row in g for c in row if c not in (0,5)}
+    for c in cs:
+        L=[(i,j) for i,row in enumerate(g) for j,v in enumerate(row) if v==c]
+        mi=min(i for i,_ in L); mj=min(j for _,j in L)
+        mask=tuple(sorted((i-mi,j-mj) for i,j in L))
+        D[mask]=c
+        for i,j in L: g[i][j]=0
+    # 2) find each 5‐rectangle, locate its hole, match & fill
+    for i in range(m):
+        for j in range(n):
+            if g[i][j]==5 and (i==0 or g[i-1][j]!=5) and (j==0 or g[i][j-1]!=5):
+                # measure width
+                w=1
+                while j+w<n and g[i][j+w]==5: w+=1
+                # measure height
+                h=1
+                while i+h<m and all(g[i+h][j+dx]==5 for dx in range(w)): h+=1
+                # collect relative coords of the hole
+                hole=tuple(sorted((x-i,y-j)
+                                  for x in range(i,i+h)
+                                  for y in range(j,j+w)
+                                  if g[x][y]!=5))
+                if hole in D:
+                    c=D[hole]
+                    for x in range(i,i+h):
+                        for y in range(j,j+w):
+                            if g[x][y]!=5:
+                                g[x][y]=c
+    return g
+```
+
+Explanation of the key steps:
+
+- **Shape extraction**: We scan for colors other than 0 and 5.  Each such color forms one connected shape; we record its set of coordinates relative to its top‐left corner, then erase it (set those cells to 0).
+- **Rectangle detection**: We look for “new” 5’s whose top or left neighbors are not 5; that marks the top‐left corner of a 5‐rectangle.  We walk right to get its width and down to get its height.
+- **Hole filling**: Within that rectangle’s bounding box, every non‐5 cell is part of the hole.  We record those hole‐coords relative to the rectangle’s top‐left, look up which saved shape mask matches, and fill the hole with that shape’s color.

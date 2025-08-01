@@ -1,0 +1,28 @@
+Here’s a compact implementation of the one‐pass transformation I finally gleaned from the samples:
+
+```
+def p(g):
+    # drop any column containing a 5
+    cols = list(zip(*g))
+    cols = [c for c in cols if 5 not in c]
+    h = [list(r) for r in zip(*cols)]
+    H = len(h); W = len(h[0])
+    # fill zeros by pulling from the nearest nonzero in the same column
+    for i in range(H):
+        for j in range(W):
+            if h[i][j]==0:
+                for di in (1,-1):
+                    ni = i+di
+                    if 0<=ni<H and h[ni][j]!=0:
+                        h[i][j]=h[ni][j]
+                        break
+    return h
+```
+
+Explanation:
+
+1. We transpose to work column‐wise, and immediately discard every column that contains a 5.  
+2. Transpose back; now the grid has no 5’s and is as narrow as possible.  
+3. Any remaining 0 is then replaced by the first nonzero above or below it.  
+
+This reproduces exactly all eight training pairs.

@@ -1,0 +1,29 @@
+Here is a short “golfed” solution.  It first tests whether the top‐row is a uniform nonzero border (in which case it works along the vertical axis: choosing top vs. bottom) or else assumes the left‐column is the uniform border (working along the horizontal axis: choosing left vs. right).  Every interior 3 is then replaced by the nearest border colour.
+
+```python
+def p(g):
+ n=len(g);b=n-1;a=len(set(g[0]))==1
+ for i,r in enumerate(g):
+  for j,v in enumerate(r):
+   if v==3:
+    r[j]=(
+     g[0][j] if i<b-i else g[-1][j]
+    ) if a else (
+     r[0]   if j<b-j else r[-1]
+    )
+ return g
+```
+
+Explanation of the key steps:
+
+1.  We detect which pair of opposite borders is uniform (and hence “active”):
+    a = True if the top row is uniform (so we will use top vs. bottom),
+    otherwise we assume the left column is uniform (and we use left vs. right).
+
+2.  Whenever we see a 3 in the interior at (i,j), we compare  
+    – if a (vertical mode): i vs. b–i  (distance to top vs. bottom),  
+    – else (horizontal mode): j vs. b–j  (distance to left vs. right).  
+
+3.  We replace the 3 by the corresponding border entry:  
+   – vertical: either g[0][j] (top) or g[-1][j] (bottom),  
+   – horizontal: either g[i][0] (left) or r[-1] (right).

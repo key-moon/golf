@@ -1,1 +1,0 @@
-def p(g):u,v=zip(*((i,j)for i,r in enumerate(g)for j,w in enumerate(r)if w));a,b,c,d=min(u),max(u),min(v),max(v);return[g[i][c:d+1]*2 for i in range(a,b+1)]

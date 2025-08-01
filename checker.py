@@ -68,9 +68,10 @@ def check(path: str, task: dict):
       errors.add("\n".join(tb))
       wrong += 1
 
+  correct = right / len(tests)
   if errors:
-    return CheckRes(outputs, right / len(tests), "\n\n".join(errors))
-  return CheckRes(outputs, right / len(tests), "ok")
+    return CheckRes(outputs, correct, "\n\n".join(errors))
+  return CheckRes(outputs, correct, "ok" if right == len(tests) else f"{correct=}")
 
 def visualize_outputs(outputs, path):
     num_visualize = min(len(outputs), 10)

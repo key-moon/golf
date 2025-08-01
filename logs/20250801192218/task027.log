@@ -1,0 +1,26 @@
+Here is a very short “concave‐corner” fill.  It repeatedly looks for 0’s which sit at an inward (concave) corner of three 1’s and turns them to 2, until nothing more changes:
+
+```python
+def p(a):
+    h,w=len(a),len(a[0])
+    while 1:
+        f=0
+        for y in range(h):
+            for x in range(w):
+                if a[y][x]==0:
+                    # four possible inward‐corner orientations
+                    if y and x and a[y-1][x]==1 and a[y][x-1]==1 and a[y-1][x-1]==1: a[y][x]=2;f=1
+                    elif y and x<w-1 and a[y-1][x]==1 and a[y][x+1]==1 and a[y-1][x+1]==1: a[y][x]=2;f=1
+                    elif y<h-1 and x and a[y+1][x]==1 and a[y][x-1]==1 and a[y+1][x-1]==1: a[y][x]=2;f=1
+                    elif y<h-1 and x<w-1 and a[y+1][x]==1 and a[y][x+1]==1 and a[y+1][x+1]==1: a[y][x]=2;f=1
+        if not f: break
+    return a
+```
+
+Explanation of the key idea:
+
+1.  Look at every 2×2 block: if three of its cells are 1 and the fourth is 0 *at the concave side* of that 1‐corner,  
+2.  paint that 0 into a 2.  
+3.  Repeat until no more such “inward” corners remain.  
+
+This reproduces all your training examples.

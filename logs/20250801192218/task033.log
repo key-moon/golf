@@ -1,0 +1,21 @@
+Here’s a very short Python solution.  It assumes the grid is always 17×17 with 5×5 blocks separated by a single‐cell “separator” line at rows/cols 5 and 11.
+
+```python
+def p(g):
+    s = g[0][5]
+    m = [(i,j) for i in range(5) for j in range(5) if g[i][j]]
+    for a in range(3):
+        for b in range(3):
+            if a!=b:
+                for i,j in m:
+                    g[a*6+i][b*6+j] = s
+    return g
+```
+
+Explanation:
+
+1. `s = g[0][5]` picks up the separator colour (all cells in column 5 are that colour).
+2. We build a mask `m` of all non‐zero positions in the top‐left 5×5 block.
+3. We iterate over all 3×3 block positions `(a,b)` (blocks start at rows/cols `0,6,12`).
+4. Whenever `a!=b` (off the main diagonal) we paint exactly those mask positions in the block with the separator colour.
+5. Blocks on the diagonal (`a==b`) are left untouched.

@@ -1,0 +1,36 @@
+Here’s a concise `def p(g): … return g` which implements the rule shown in your examples.  It finds the minimal bounding‐rectangle of all the “8”s, then for each non‐zero/non‐8 cell (“guard”) it copies its colour into the corresponding edge cell of that rectangle:
+
+```python
+def p(g):
+    # find all rows/cols occupied by 8
+    ys=[i for i,r in enumerate(g) for v in r if v==8]
+    xs=[j for r in g for j,v in enumerate(r) if v==8]
+    y0,y1=min(ys),max(ys); x0,x1=min(xs),max(xs)
+    # for each guard cell, map it onto the rectangle edge
+    for y,row in enumerate(g):
+        for x,v in enumerate(row):
+            if v%8:  # non-zero and not 8
+                if x<x0: g[y][x0]=v
+                elif x>x1: g[y][x1]=v
+                elif y<y0: g[y0][x]=v
+                elif y>y1: g[y1][x]=v
+    return g
+```
+
+Explanation of the key steps:
+
+1. **Locate the 8‐block**  
+   We collect all row‐indices `ys` and column‐indices `xs` where the cell == 8.  
+   The rectangle corners are `(y0,x0) … (y1,x1)` where  
+     y0=min(ys), y1=max(ys), x0=min(xs), x1=max(xs).
+
+2. **Find “guard” cells**  
+   Any cell with `v%8!=0` is a non‐zero, non‐8 cell (i.e. not empty and not part of the 8‐block).
+
+3. **Project guards onto the 8‐block border**  
+   - If a guard lies to the left (x<x0), we copy it into the block’s left edge at `(y,x0)`.  
+   - If to the right  (x>x1), into `(y,x1)`.  
+   - If above       (y<y0), into `(y0,x)`.  
+   - If below       (y>y1), into `(y1,x)`.  
+
+This reproduces exactly the transformations in all your examples.

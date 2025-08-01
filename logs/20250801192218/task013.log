@@ -1,0 +1,40 @@
+Here is a single‐pass transformer that finds the two non‐zero “seed” pixels, measures the row‐ and column‐spacings between them, and then lays down full‐row or full‐column stripes at that period.  It picks the stripe orientation by comparing Δc and Δr (if Δc≤Δr it draws vertical stripes, otherwise horizontal):
+
+```python
+def p(g):
+    H,W=len(g),len(g[0])
+    # find the two nonzero seeds
+    P=[(i,j,v) for i,row in enumerate(g) for j,v in enumerate(row) if v]
+    (r1,c1,a),(r2,c2,b)=P
+    dr,dc=abs(r2-r1),abs(c2-c1)
+    # prepare output
+    o=[[0]*W for _ in range(H)]
+    if dc<=dr:
+        D=dc*2
+        for r in range(H):
+            for c in range(W):
+                if (c-c1)%D==0: o[r][c]=a
+                if (c-c2)%D==0: o[r][c]=b
+    else:
+        D=dr*2
+        for r in range(H):
+            for c in range(W):
+                if (r-r1)%D==0: o[r][c]=a
+                if (r-r2)%D==D-b% D: o[r][c]=b  # (r−r2)%D==0, equivalently
+                if (r-r2)%D==0: o[r][c]=b
+    return o
+```
+
+Explanation of the key steps:
+
+1. **Locate seeds**  
+   We scan `g` once to collect the two nonzero cells `(r1,c1,a)` and `(r2,c2,b)`.
+
+2. **Decide orientation**  
+   - If `|c2−c1| ≤ |r2−r1|`, we repeat **vertical** stripes of width `2⋅|c2−c1|`.  
+   - Else we repeat **horizontal** stripes of height `2⋅|r2−r1|`.
+
+3. **Lay down stripes**  
+   In the vertical‐stripe case, every column `c` with `(c−c1) mod (2Δc)==0` is colored `a`, and every column with `(c−c2) mod (2Δc)==0` is colored `b`.  In the horizontal‐stripe case you do the same on rows.
+
+This reproduces exactly the alternating‐stripe pattern shown in all examples.

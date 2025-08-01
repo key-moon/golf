@@ -1,7 +1,7 @@
 def p(g):
-  A=[0]
-  for D in g[::-1]:
-    if C:=sum(A):
-      B=max(A);D.insert(0,D.pop([-1,A.index(B)][C//B!=2]))
-    A=D
+  C=[0]
+  for A in g[::-1]:
+    if B:=sum(C):
+      A.insert(0,A.pop([-1,C.index(D:=max(C))][B//D!=2]))
+    C=A
   return g
