@@ -12,7 +12,7 @@ from checker import check
 from utils import get_code_paths, get_task
 
 def strip(code: str):
-  lines = [l for l in code.strip().splitlines() if not l.startswith("#")]
+  lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#")]
   if len(lines) == 1: return code
   res = ""
   basic_indent = len(lines[1]) - len(lines[1].lstrip(' '))
@@ -30,11 +30,11 @@ def vanilla(code: str):
 def compress_zlib_b85(code: str):
   compressed_code = base64.b85encode(zlib.compress(code.encode(), level=9))
   return f"import zlib;import base64;exec(zlib.decompress(base64.b85decode({compressed_code!r})))"
-def compress_zlib_repr_bytes(code: str):
-  compressed_code = zlib.compress(code.encode(), level=9)
-  return f"import zlib;exec(zlib.decompress({compressed_code!r}))"
+# def compress_zlib_repr_bytes(code: str):
+#   compressed_code = zlib.compress(code.encode(), level=9)
+#   return f"import zlib;exec(zlib.decompress({compressed_code!r}))"
 
-compressors = [vanilla, compress_zlib_b85, compress_zlib_repr_bytes]
+compressors = [vanilla, compress_zlib_b85]
 
 def check_str(code: str, task):
     tmp_path = "tmp/tmp.py"
@@ -69,5 +69,6 @@ for i in range(1, 401):
       shortest = compressed
 
   if shortest == LONG:
+    print(f"[!] failed: vis/task{i:03}.png")
     continue
   open(f"dist/task{i:03}.py", "w").write(shortest)
