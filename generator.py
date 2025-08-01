@@ -136,4 +136,4 @@ if __name__ == "__main__":
       checker = stat["compressor"] if stat["success"] else "-"
       length = str(stat["length"]) if stat["success"] else "-"
       message = stat["message"] if not stat["success"] else "-"
-      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {checker} | [{length}](dist/task{task}.py) | [prompt](prompt/task{task}.txt) / [vis-many](vis_many/task{task}.txt) | {message} |\n")
+      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {checker} | [{length}](dist/task{task}.py) | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")

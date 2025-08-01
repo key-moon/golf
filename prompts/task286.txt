@@ -337,4 +337,4 @@ Output:
 3 1 3 1 3 1 3 1 3 1 3 8 3 8 3 1 3 8 3 8 0 8 3 8 3
 
 
-Write Python code that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.
+Write the **short** Python code in code golf manners that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.

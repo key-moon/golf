@@ -33,7 +33,7 @@ def generate_prompt(task):
         inp_s = "\n".join([" ".join(map(str, row)) for row in inp])
         out_s = "\n".join([" ".join(map(str, row)) for row in out])
         prompt += f"\n\nExample 1:\n\nInput:\n{inp_s}\nOutput:\n{out_s}"
-    prompt += "\n\n\nWrite Python code that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.\n"
+    prompt += "\n\n\nWrite the **short** Python code in code golf manners that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.\n"
     return prompt
 
 api_key = os.getenv("OPENAI_API_KEY")
@@ -52,7 +52,7 @@ def process_task(i):
         task = get_task(i)
         print(f"[+] generating {i}...")
         prompt = generate_prompt(task)
-        open(f"prompts/task{i:03}.txt", "w").write(prompt)
+        open(f"prompts/task{i:03}.txt", "w").write(prompts)
 
         if os.path.exists(f"dist/task{i:03}.py"):
             print(f"[-] skip {i}")
