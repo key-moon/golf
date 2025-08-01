@@ -6,6 +6,7 @@ import sys
 import traceback
 from typing import Optional, Tuple
 import matplotlib.pyplot as plt
+import inspect
 
 import numpy as np
 
@@ -45,25 +46,28 @@ def check(path: str, task: dict):
 
   errors = set()
   outputs = []
-  for example in tests:
+  for case, example in enumerate(tests):
     example_copy = copy.deepcopy(example)
     try:
       signal.setitimer(signal.ITIMER_REAL, 0.5)
       # signal.alarm(1)
-      output = program(example_copy["input"])
+      if "case" in inspect.signature(program).parameters:
+       output = program(example_copy["input"], case=case)
+      else:
+       output = program(example_copy["input"])
       signal.alarm(0)
       if output == example_copy["output"]:
         right += 1
       else:
-        outputs.append((example, output))
+        outputs.append((example, case, output))
         wrong += 1
     except TimeoutException as e:
-      outputs.append((example, None))
+      outputs.append((example, case, None))
       errors.add("timeout")
       break
     except Exception as e:
       signal.alarm(0)
-      outputs.append((example, None))
+      outputs.append((example, case, None))
       tb = traceback.format_exception(type(e), e, e.__traceback__.tb_next)
       errors.add("\n".join(tb))
       wrong += 1
@@ -76,13 +80,13 @@ def check(path: str, task: dict):
 def visualize_outputs(outputs, path):
     num_visualize = min(len(outputs), 10)
     fig, axes = plt.subplots(num_visualize, 3, figsize=(5 * 3, 5 * num_visualize))
-    for idx, (task, output) in enumerate(outputs):
+    for idx, (task, case, output) in enumerate(outputs):
       if num_visualize <= idx: break
       mat_inp = np.array(task['input']) 
       shape_i = mat_inp.shape
       mat_out = np.array(task['output'])
       shape_o = mat_out.shape
-      axes[idx, 0].set_title(f"{shape_i}")
+      axes[idx, 0].set_title(f"{case} / {shape_i}")
       axes[idx, 0].imshow(mat_inp, cmap=cmap, norm=norm)
       axes[idx, 1].set_title(f"{shape_o}")
       axes[idx, 1].imshow(mat_out, cmap=cmap, norm=norm)
