@@ -10,6 +10,7 @@ from time import sleep
 import traceback
 import multiprocessing
 
+from strip import strip
 from utils import get_code_paths, get_task, parse_range_str
 
 class TimeoutException(Exception): pass
@@ -71,7 +72,7 @@ if __name__ == "__main__":
       correct, msg = check(code_path, task)
       if correct == 1.:
         with open(code_path, "r") as f:
-          code = f.read()
+          code = strip(f.read().strip())
         print(f"✅ {code_path} {len(code)=}")
       else:
         print(f"❌ {code_path}")
