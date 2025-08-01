@@ -1,0 +1,25 @@
+**Short answer first**
+
+```python
+def p(g):
+ import numpy as n
+ val_a=n.array(g)
+ val_b=val_a==0
+ val_c=n.pad(val_b,1)
+ val_s=list({(0,i)for i in range(val_c.shape[1])}|{(val_c.shape[0]-1,i)for i in range(val_c.shape[1])}|{(i,0)for i in range(val_c.shape[0])}|{(i,val_c.shape[1]-1)for i in range(val_c.shape[0])})
+ while val_s:
+  y,x=val_s.pop()
+  if val_c[y,x]:
+   val_c[y,x]=0
+   val_s+=((y+1,x),(y-1,x),(y,x+1),(y,x-1))
+ val_a[(val_c[1:-1]&val_b)]=3
+ return val_a.tolist()
+```
+
+**What it does**
+1. Treats the grid as a NumPy array.  
+2. `val_b` marks all zeros.  
+3. `val_c` pads that mask with a 1-cell frame, making the outer frame part of the scan.  
+4. Flood-fills from the padded frame, deleting every zero region that touches the border.  
+5. Any remaining zero cell (holes) becomes `3`.  
+The routine therefore colours every 0-region that is **completely enclosed** by non-zero values with 3, matching all the provided examples.

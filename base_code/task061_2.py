@@ -1,0 +1,15 @@
+def p(val_g):
+ import math
+ for val_r in val_g:
+  val_d={};val_k=0
+  for val_i,val_v in enumerate(val_r):
+   if val_v:
+    if val_v in val_d:val_k=math.gcd(val_k,val_i-val_d[val_v])
+    val_d[val_v]=val_i
+  if not val_k:val_k=len(val_d)
+  val_a=[0]*val_k
+  for val_i,val_v in enumerate(val_r):
+   if val_v:val_a[val_i%val_k]=val_v
+  for val_i,val_v in enumerate(val_r):
+   if not val_v:val_r[val_i]=val_a[val_i%val_k]
+ return val_g

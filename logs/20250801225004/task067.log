@@ -1,0 +1,3 @@
+```python
+def p(g):val_n=len(g);g[:]=[val_r[:val_n]for val_r in g];return g
+```

@@ -13,12 +13,17 @@
 #       val_line.insert(0,0)
 #     val_prev=val_line
 #   return g
+# 125
+# def p(g):
+#   val_prev=[0]
+#   for val_line in g[::-1]:
+#     if val_sum:=sum(val_prev):val_line.insert(0,val_line.pop([-1,val_prev.index(val_cell:=max(val_prev))][val_sum//val_cell!=2]))
+#     val_prev=val_line
+#   return g
+# 絶対に今の値は必要→maxは必須
 def p(g):
   val_prev=[0]
   for val_line in g[::-1]:
-    if val_sum:=sum(val_prev):
-      val_line.insert(0,val_line.pop([-1,val_prev.index(val_cell:=max(val_prev))][val_sum//val_cell!=2]))
-      # val_line[:[val_prev.index(val_cell:=max(val_prev)),]]
-      # val_line.insert(0,val_line.pop([-1,val_prev.index(val_cell:=max(val_prev))][val_sum//val_cell!=2]))
+    if val_sum:=sum(val_prev):val_line.insert(0,val_line.pop([-1,val_prev.index(val_cell:=max(val_prev))][val_sum//val_cell!=2]))
     val_prev=val_line
   return g

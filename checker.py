@@ -92,10 +92,13 @@ def visualize_outputs(outputs, path):
       axes[idx, 1].imshow(mat_out, cmap=cmap, norm=norm)
       axes[idx, 1].axis('off')
       if output is not None:
-        mat_out_pred = np.array(output)
-        shape_p = mat_out_pred.shape
-        axes[idx, 2].set_title(f"{shape_p}")
-        axes[idx, 2].imshow(mat_out_pred, cmap=cmap, norm=norm)
+        try:
+          mat_out_pred = np.array(output)
+          shape_p = mat_out_pred.shape
+          axes[idx, 2].set_title(f"{shape_p}")
+          axes[idx, 2].imshow(mat_out_pred, cmap=cmap, norm=norm)
+        except:
+          print(f"weird shape: {output}")
       else:
         axes[idx, 2].set_title("FAILED")
         axes[idx, 2].axis('off')
