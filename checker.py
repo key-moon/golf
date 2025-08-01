@@ -36,26 +36,24 @@ def check(path: str, task: dict):
   wrong, right = 0, 0
 
   errors = set()
-  with multiprocessing.Pool(1) as pool:
-    for example in tests:
-      example_copy = copy.deepcopy(example)
-      try:
-        signal.setitimer(signal.ITIMER_REAL, 0.2)
-        # signal.alarm(1)
-        output = program(example_copy["input"])
-        signal.alarm(0)
-        if output == example_copy["output"]:
-          right += 1
-        else:
-          wrong += 1
-      except TimeoutException as e:
-        errors.add("timeout")
-        break
-      except Exception as e:
-        print(e)
-        tb = traceback.format_exception(type(e), e, e.__traceback__)
-        errors.add(tb[0])
+  for example in tests:
+    example_copy = copy.deepcopy(example)
+    try:
+      signal.setitimer(signal.ITIMER_REAL, 0.2)
+      # signal.alarm(1)
+      output = program(example_copy["input"])
+      signal.alarm(0)
+      if output == example_copy["output"]:
+        right += 1
+      else:
         wrong += 1
+    except TimeoutException as e:
+      errors.add("timeout")
+      break
+    except Exception as e:
+      tb = traceback.format_exception(type(e), e, e.__traceback__)
+      errors.add(tb[0])
+      wrong += 1
 
   if errors:
     return right / len(tests), "\n\n".join(errors)
