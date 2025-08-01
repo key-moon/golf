@@ -74,9 +74,10 @@ def check(path: str, task: dict):
   return CheckRes(outputs, right / len(tests), "ok")
 
 def visualize_outputs(outputs, path):
-    num_visualize = len(outputs)
+    num_visualize = min(len(outputs), 10)
     fig, axes = plt.subplots(num_visualize, 3, figsize=(5 * 3, 5 * num_visualize))
     for idx, (task, output) in enumerate(outputs):
+      if num_visualize <= idx: break
       mat_inp = np.array(task['input']) 
       shape_i = mat_inp.shape
       mat_out = np.array(task['output'])
