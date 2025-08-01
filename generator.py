@@ -47,7 +47,7 @@ LONG = "A" * 0x1000
 for i in range(1, 401):
   task = get_task(i)
   shortest = LONG
-  for base_path in get_code_paths("base_code", i):
+  for base_path in get_code_paths("base_*", i):
     if check(base_path, task)[0] != 1.0:
       continue
     
