@@ -52,7 +52,7 @@ def check(path: str, task: dict):
       if output == example_copy["output"]:
         right += 1
       else:
-        outputs.append(output)
+        outputs.append((example, output))
         wrong += 1
     except TimeoutException as e:
       outputs.append(None)
@@ -69,13 +69,10 @@ def check(path: str, task: dict):
     return outputs, right / len(tests), "\n\n".join(errors)
   return outputs, right / len(tests), "ok"
 
-def visualize_outputs(task, outputs, num_visualize, path):
-    tasks  = []
-    tasks += [(f"train_{i}", t) for i, t in enumerate(task['train'])]
-    tasks += [(f"test_{i}", t) for i, t in enumerate(task['test'])]
-    tasks += [(f"arcgen_{i}", t) for i, t in enumerate(task['arc-gen'])]
+def visualize_outputs(outputs, path):
+    num_visualize = len(outputs)
     fig, axes = plt.subplots(num_visualize, 3, figsize=(5 * 3, 5 * num_visualize))
-    for idx, (name, task) in enumerate(tasks[:num_visualize]):
+    for idx, (task, output) in enumerate(outputs):
       mat_inp = np.array(task['input']) 
       shape_i = mat_inp.shape
       mat_out = np.array(task['output'])
@@ -85,8 +82,8 @@ def visualize_outputs(task, outputs, num_visualize, path):
       axes[idx, 1].set_title(f"{shape_o}")
       axes[idx, 1].imshow(mat_out, cmap=cmap, norm=norm)
       axes[idx, 1].axis('off')
-      if outputs[idx] is not None:
-        mat_out_pred = np.array(outputs[idx])
+      if output is not None:
+        mat_out_pred = np.array(output)
         shape_p = mat_out_pred.shape
         axes[idx, 2].set_title(f"{shape_p}")
         axes[idx, 2].imshow(mat_out_pred, cmap=cmap, norm=norm)
@@ -107,7 +104,7 @@ if __name__ == "__main__":
       if not os.path.exists(code_path): continue
       outputs, correct, msg = check(code_path, task)
       if len(outputs) > 0:
-        visualize_outputs(task, outputs, min(5, len(outputs)), f"vis_output/task{i:03}.png")
+        visualize_outputs(outputs[:5], f"vis_output/task{i:03}.png")
       if correct == 1.:
         with open(code_path, "r") as f:
           code = strip(f.read().strip())
