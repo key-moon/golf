@@ -1,3 +1,6 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚ]ŒK
-€0D÷"KÅÖÏFğ$¥Á¶´H”¢÷7tÉ0y™Ù:Ør_°Üš @ Hy›/–øT©ûúñGèÚ|!Qpàu0:±lÌ8ê{3Ñ,i©~ù÷UÄT%|<óây½ùå¥Gaƒ-vWO²û‘ü	Ún9}"""))))
+def p(g):
+ for i in range(len(g)-1):
+  for j in range(len(g[0])-1):
+   if g[i][j:j+2]==[5,5]and g[i+1][j:j+2]==[5,5]:
+    g[i-1][j-1],g[i-1][j+2],g[i+2][j-1],g[i+2][j+2]=1,2,3,4
+ return g

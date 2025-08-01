@@ -1,5 +1,3 @@
 def p(g):
- for i,r in enumerate(g):
-  if 5 in r:
-   c=r.index(5);break
- return[x[c-1:c+2]for x in g[i+1:i+4]]
+ i,j=next((i,r.index(5))for i,r in enumerate(g)if 5 in r)
+ return[r[j-1:j+2]for r in g[i+1:i+4]]

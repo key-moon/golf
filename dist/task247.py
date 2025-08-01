@@ -1,2 +1,9 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"xÚUNÁƒ »ï+8ÂFŒ^gøÂáÃ ¢‚Ù\\öïtYöNMÛ×¶î¸'×J·±×»\0={ä‘™P¿_n *³0E^ÀüùŒFêŸ)¹Õ¡-ã°¢¼¦ƒ ¼Ö´W‚7‚93áÓ”Çœ|à5s÷š›·j•c„ÒZÆUY¥è¡™\0.IiD~bÌ‰’c«eö[x²Qº['ÓÆ£j/ò¢Ÿ¸g÷M™"))))
+def p(g):
+ z={}
+ for r in g:
+  for j,c in enumerate(r):
+   if c:
+    z.setdefault(c,[0,j])[0]+=1;z[c][1]=min(z[c][1],j)
+ m=max(v[0]for v in z.values());k=[c for c,v in z.items()if v[0]==m]
+ k.sort(key=lambda c:z[c][1])
+ return[k]*m

@@ -1,3 +1,6 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚUNÑ
-Ã |ßWø¨[^Ê^J‹Ğş‚8p«Š‚®„¶Œ}ı¢ë\r„„»Ë]&ëØÌ½èNŒj€Q¾ÃÌÏŠˆÂ=‘ ÎÌæ5Y4‹%m#lGEpl“²Õ¢7p—)d>HæE£ÀT‘ñ‹Œ¢ÆUÿbƒ&{ËéìÒìŸüèø§Éã@—¢L¯‚VQßÚnßäµJĞ.+fæ?„À@Î"""))))
+def p(g):
+ I,J=zip(*[(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==8]);a,b=min(I),max(I);c,d=min(J),max(J)
+ for i in range(a,b+1):
+  for j in range(c,d+1):
+   if g[i][j]^8:g[i][j]=3
+ return g

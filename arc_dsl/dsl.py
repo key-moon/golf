@@ -164,15 +164,13 @@ def decrement(x):
 def crement(x):
     if isinstance(x, int):
         return 0 if x == 0 else (x + 1 if x > 0 else x - 1)
-    return (       0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),        0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1)
-    )
+    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
 
 
 def sign(x):
     if isinstance(x, int):
         return 0 if x == 0 else (1 if x > 0 else -1)
-    return (       0 if x[0] == 0 else (1 if x[0] > 0 else -1),        0 if x[1] == 0 else (1 if x[1] > 0 else -1)
-    )
+    return (0 if x[0] == 0 else (1 if x[0] > 0 else -1),        0 if x[1] == 0 else (1 if x[1] > 0 else -1))
 
 
 def positive(x):
@@ -455,9 +453,7 @@ def objects(grid, univalued, diagonal, without_bg):
 
 
 def partition(grid):
-    return frozenset(       frozenset(           (v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value
-        ) for value in palette(grid)
-    )
+    return frozenset(frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value) for value in palette(grid))
 
 
 def fgpartition(grid):

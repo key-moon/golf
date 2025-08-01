@@ -11,6 +11,8 @@ def extract_functions(file_path):
 dsl_funcs = extract_functions("arc_dsl/dsl.py")
 solver_funcs = extract_functions("arc_dsl/solvers.py")
 
+dep_re = rf"(?<!\.)({'|'.join(name for _, name in dsl_funcs)})"
+
 def resolve_dependencies(impl: str):
   dependencies = set()
   queue = [impl]
@@ -18,8 +20,9 @@ def resolve_dependencies(impl: str):
 
   while queue:
       current_impl = queue.pop()
-      for func_impl, name in dsl_funcs:
-          if name in current_impl and name not in dependencies:
+      matches = re.findall(dep_re, current_impl)
+      for func_impl, name in dsl_funcs:          
+          if name in matches and name not in dependencies:
               dependencies.add(name)
               queue.append(func_impl)
               impls.append(func_impl)
@@ -33,11 +36,13 @@ for i in range(1,401):
   arc = task2arc[task]
   solver = [impl for impl, name in solver_funcs if arc in name][0]
   solver = solver.replace(f"solve_{arc}", "p")
+  solver=solver.replace(":", ":\n    I=tuple(map(tuple,I))")
+  solver=solver.replace("return O", "return [*map(list,O)]")
 
   deps, impls = resolve_dependencies(solver)
   impl = "\n".join(impls[::-1])
-  # for dep in deps:
-  #   impl = impl.replace(dep, f"val_func_{dep}")
+  for dep in deps:
+    re.sub(rf"(?<!\.){dep}", "", impl.replace(dep, f"val_func_{dep}"))
   for name, val in reversed(consts.items()):
     impl = impl.replace(name, repr(val))
   open(f"base_arcdsl/{task}.py", "w").write(impl)

@@ -1,2 +1,10 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚKIMS(ĞH×´âR\0WÛjc+3+#+ÃZ°XZ~‘‚³›BfBj^injQbI*\\L‹;ª7$ ™¦\0VáŠ*Óï”ÓĞ5Ô1Ğ1ÔÄTSåDPÔ*GjÜJ@ =ÚYÛ16ÚEÛ)ÖÖ5Ú=¬¸(µ¤´(O!\0(h;v'))))
+def p(g):
+ E={3:6,8:4,2:1}
+ for C,F in enumerate(g):
+  for D,G in enumerate(F):
+   if G in E:
+    for A in(-1,0,1):
+     for B in(-1,0,1):
+      if A or B:
+       g[C+A][D+B]=E[G]
+ return g

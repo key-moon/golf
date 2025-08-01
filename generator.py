@@ -131,7 +131,7 @@ if __name__ == "__main__":
     readme.write("|------|---------|------|------------|--------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
-      success = "✅" if stat["success"] else "❌"
+      success = ("✅" if "arcdsl" not in stat["base_path"] else "⚠") if stat["success"] else "❌"
       base = stat["base_path"] if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 

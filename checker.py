@@ -112,6 +112,7 @@ if __name__ == "__main__":
   r = parse_range_str(range_str)
   do_vis = len(r) < 10
 
+  success = 0
   print(f"{dirname=}")
   for i in r:
     task = get_task(i)
@@ -122,10 +123,12 @@ if __name__ == "__main__":
         with open(code_path, "r") as f:
           code = strip(f.read().strip())
         print(f"✅ {code_path} {len(code)=}")
+        success += 1
       else:
         print(f"❌ {code_path}")
-        print(f"{res.correct=}" if res.message == "ok" else res.message)
+        # print(f"{res.correct=}" if res.message == "ok" else res.message)
       if len(res.outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"
         visualize_outputs(res.outputs, vis_path)
         print(f"{vis_path=}")
+  print(f"success: {success}/{len(r)}")

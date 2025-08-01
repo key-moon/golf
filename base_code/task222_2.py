@@ -7,9 +7,7 @@ def p(g):
                 for val_i2 in range(val_i,val_h):
                     for val_j2 in range(val_j,val_w):
                         val_a=(val_i2-val_i+1)*(val_j2-val_j+1)
-                        if val_a>val_b and all(g[x][y]==val_c
-                               for x in range(val_i,val_i2+1)
-                               for y in range(val_j,val_j2+1)):
+                        if val_a>val_b and all(g[x][y]==val_c for x in range(val_i,val_i2+1) for y in range(val_j,val_j2+1)):
                             val_b=val_a
                             val_ti,val_tj,val_bi,val_bj,val_cl=val_i,val_j,val_i2,val_j2,val_c
     res=[[0]*val_w for _ in range(val_h)]

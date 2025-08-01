@@ -18,7 +18,8 @@ def strip(code: str):
   lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
   if len(lines) == 1: return lines[0]
   res = ""
-  basic_indent = min([1] + [len(l) - len(l.lstrip(' ')) for l in lines if l.startswith(" ")])
+  basic_indent = min([100]+[len(l) - len(l.lstrip(' ')) for l in lines if l.startswith(" ")])
+  if basic_indent == 100: basic_indent = 1
   prev_indent = 0
   for l in lines:
     stripped = l.strip()
