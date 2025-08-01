@@ -1,0 +1,1 @@
+def p(g):return[[6*(x==4|y==3)for x,y in zip(r,r[3:])]for r in g]

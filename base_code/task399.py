@@ -1,0 +1,7 @@
+def p(g):
+    o = [[0]*3 for _ in [0]*3]
+    for y in range(len(g)-1):
+        for x in range(len(g[0])-1):
+            if g[y][x]==2==g[y+1][x]==g[y][x+1]==g[y+1][x+1]:
+                o[y//2][x//2] = 1
+    return o

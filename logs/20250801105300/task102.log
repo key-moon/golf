@@ -1,0 +1,16 @@
+```python
+def p(g):
+ h,w=len(g),len(g[0]);s=[(i,j)for i in range(h)for j in range(w)if g[i][j]<1 and i*j*(h-1-i)*(w-1-j)==0]
+ while s:
+  i,j=s.pop()
+  if g[i][j]<1:
+   g[i][j]=1
+   for d in(1,-1):
+    if 0<=i+d<h and g[i+d][j]<1:s.append((i+d,j))
+    if 0<=j+d<w and g[i][j+d]<1:s.append((i,j+d))
+ for i in range(h):
+  for j in range(w):
+   if g[i][j]<1:g[i][j]=2
+   elif g[i][j]==1:g[i][j]=0
+ return g
+```

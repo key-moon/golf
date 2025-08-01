@@ -1,0 +1,23 @@
+```python
+def p(g):
+ h,w=len(g),len(g[0])
+ S=[(i,j)for i in range(h)for j in range(w)if 0<g[i][j]!=8]
+ a=min(i for i,j in S);b=min(j for i,j in S)
+ D={(i-a,j-b):g[i][j]for i,j in S}
+ L=[]
+ for i in range(h):
+  for j in range(w):
+   if g[i][j]==8:
+    Q=[(i,j)];g[i][j]=0
+    for k in range(len(Q)):
+     x,y=Q[k]
+     for dx,dy in((1,0),(-1,0),(0,1),(0,-1)):
+      nx,ny=x+dx,y+dy
+      if 0<=nx<h and 0<=ny<w and g[nx][ny]==8:
+       g[nx][ny]=0;Q.append((nx,ny))
+    L.append((min(x for x,y in Q),min(y for x,y in Q)))
+ for i,j in S:g[i][j]=0
+ for a,b in L:
+  for (di,dj),v in D.items():g[a+di][b+dj]=v
+ return g
+```

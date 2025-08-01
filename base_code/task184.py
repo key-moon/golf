@@ -1,0 +1,17 @@
+def p(g):
+ d={}
+ h,w=len(g),len(g[0])
+ for i in range(h):
+  for j in range(w):
+   v=g[i][j]
+   if v:
+    r=i;c=j;g[i][j]=0;s=[(i,j)]
+    while s:
+     x,y=s.pop()
+     if x<r:r=x
+     if y<c:c=y
+     for nx,ny in((x+1,y),(x-1,y),(x,y+1),(x,y-1)):
+      if 0<=nx<h and 0<=ny<w and g[nx][ny]==v:
+       g[nx][ny]=0;s.append((nx,ny))
+    d.setdefault(r,[]).append((c,v))
+ return [[v for _,v in sorted(d[r])] for r in sorted(d)]

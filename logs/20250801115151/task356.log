@@ -1,0 +1,13 @@
+```python
+def p(g):
+ for r in g:
+  if 8 in r:
+   a=r.index(8);b=len(r)-1-r[::-1].index(8)
+   for k in range(a,b+1):r[k]=8
+ n=range(len(g))
+ for j in n:
+  c=[i for i in n if g[i][j]==8]
+  if c:
+   for i in range(c[0],c[-1]+1):g[i][j]=8
+ return g
+```

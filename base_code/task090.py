@@ -1,0 +1,13 @@
+def p(g):
+ a=[i for i,r in enumerate(g)if max(r)<2]
+ for k in range(len(a),1,-1):
+  m=o=d=0
+  for j in range(len(g[0])):
+   if all(g[i][j]==0 for i in a[:k]):
+    d+=1
+    if d>m:m,o=d,j-d+1
+   else: d=0
+  if m>1:a=a[:k];break
+ for i in a:
+  for j in range(o,o+m):g[i][j]=6
+ return g

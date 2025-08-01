@@ -1,0 +1,12 @@
+```python
+def p(g):
+ t=sum(g,[])
+ m=[x for x in set(t)if t.count(x)==1][0]
+ b=[(i,j,v)for i,r in enumerate(g)for j,v in enumerate(r)if v and v!=m]
+ R=(min(i for i,j,_ in b)+max(i for i,j,_ in b))//2
+ C=(min(j for i,j,_ in b)+max(j for i,j,_ in b))//2
+ mr,mc=next((i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==m)
+ dr,dc=mr-R,mc-C
+ for i,j,v in b:g[i+dr][j+dc]=v
+ return g
+```

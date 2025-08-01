@@ -1,0 +1,5 @@
+def p(g):
+ for u,d in zip(g,g[1:]):
+  for i,x in enumerate(d):
+   if not x and u[i]:d[i]=4
+ return g

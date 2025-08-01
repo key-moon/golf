@@ -1,0 +1,3 @@
+def p(g):
+ n=len(g);s=[*range(n),*range(n-2,-1,-1)];g[:]=[g[i]for i in s+s[1:]]
+ return g

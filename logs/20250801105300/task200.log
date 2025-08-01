@@ -1,0 +1,8 @@
+```python
+def p(g):
+ c=next(i for i,x in enumerate(g[9]) if x);v=g[9][c]
+ for i,r in enumerate(g):
+  for j in range(10):
+   t=j-c;r[j]=((i<1 and t&3==1 or i==9 and t&3==3)and 5)or v*((t&1)^1)
+ return g
+```

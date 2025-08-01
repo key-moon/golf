@@ -1,0 +1,22 @@
+```python
+def p(g):
+ n,m=len(g),len(g[0]);v=[[0]*m for _ in g]
+ for i in range(n):
+  for j in range(m):
+   if g[i][j]==0 and not v[i][j]:
+    S=[(i,j)];v[i][j]=1
+    for k in range(len(S)):
+     x,y=S[k]
+     for dx,dy in((1,0),(-1,0),(0,1),(0,-1)):
+      u,vv=x+dx,y+dy
+      if 0<=u<n and 0<=vv<m and g[u][vv]==0 and not v[u][vv]:
+       v[u][vv]=1;S.append((u,vv))
+    mi=min(x for x,y in S);R=max(x for x,y in S)
+    mj=min(y for x,y in S);C=max(y for x,y in S)
+    d=R-mi
+    if d==C-mj and len(S)==(d+1)**2 and mi and mj and R<n-1 and C<m-1 \
+    and all(g[x][mj-1]==5 for x in range(mi,R+1)) and all(g[x][C+1]==5 for x in range(mi,R+1)) \
+    and all(g[mi-1][y]==5 for y in range(mj,C+1)) and all(g[R+1][y]==5 for y in range(mj,C+1)):
+     for x,y in S:g[x][y]=2
+ return g
+```

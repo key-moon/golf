@@ -1,0 +1,45 @@
+```python
+def p(g):
+    h,w=len(g),len(g[0])
+    P={}
+    for i in range(h):
+        for j in range(w):
+            v=g[i][j]
+            if v:
+                P.setdefault(v,[]).append((i,j))
+    for k,pts in P.items():
+        rs=[i for i,j in pts]; cs=[j for i,j in pts]
+        r0,r1=min(rs),max(rs); c0,c1=min(cs),max(cs)
+        if len(pts)==(r1-r0+1)*(c1-c0+1): continue
+        # row with most cells
+        rc={}
+        for i,j in pts: rc[i]=rc.get(i,0)+1
+        hr=max(rc,key=rc.get); hc=rc[hr]
+        # col with most cells
+        cc={}
+        for i,j in pts: cc[j]=cc.get(j,0)+1
+        vc=max(cc,key=cc.get); vc_len=cc[vc]
+        # rows of vertical arm
+        vs=sorted(i for i,j in pts if j==vc)
+        vr0,vr1=vs[0],vs[-1]
+        # cols of horizontal arm
+        hs=sorted(j for i,j in pts if i==hr)
+        hr0,hr1=hs[0],hs[-1]
+        # clear
+        for i,j in pts: g[i][j]=0
+        if vr0<=hr<=vr1:
+            # plus: draw square of side vc_len to side with more width
+            left=sum(1 for x in hs if x<vc)
+            right=hc-left-1
+            if left>right: sc=vc-left
+            else:    sc=vc+1
+            for di in range(vc_len):
+                for dj in range(vc_len):
+                    g[r0+di][sc+dj]=k
+        else:
+            # L-shape: draw w=hc, h=hc-1 at (vr0,hr0)
+            for di in range(hc-1):
+                for dj in range(hc):
+                    g[vr0+di][hr0+dj]=k
+    return g
+```

@@ -1,0 +1,20 @@
+def p(g):
+ try:
+  k=next(i for i,r in enumerate(g) if r.count(2)==len(r)); o='r'
+ except:
+  k=next(j for j in range(len(g[0])) if all(r[j]==2 for r in g)); o='c'
+ p=[(i,j) for i,r in enumerate(g) for j,v in enumerate(r) if v==3]
+ u=min(i for i,j in p); U=max(i for i,j in p)
+ v=min(j for i,j in p); V=max(j for i,j in p)
+ a=U-u+1; b=V-v+1
+ if o=='c':
+  if V<k: dx=k-b-v; e=k-b-1
+  else:    dx=k+1-v; e=k+1+b
+  for i,j in p:
+   g[i][j]=0; g[i][j+dx]=3; g[i][e]=8
+ else:
+  if U<k: dy=k-a-u; e=k-a-1
+  else:    dy=k+1-u; e=k+1+a
+  for i,j in p:
+   g[i][j]=0; g[i+dy][j]=3; g[e][j]=8
+ return g

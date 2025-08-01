@@ -1,0 +1,18 @@
+```python
+def p(g):
+    h,w=len(g),len(g[0]);V=set();C=[]
+    for y in range(h):
+        for x in range(w):
+            if g[y][x] and (y,x) not in V:
+                r=[(y,x)];V.add((y,x))
+                for q in r:
+                    for dy,dx in((1,0),(-1,0),(0,1),(0,-1)):
+                        ny,nx=q[0]+dy,q[1]+dx
+                        if 0<=ny<h and 0<=nx<w and g[ny][nx] and (ny,nx) not in V:
+                            V.add((ny,nx));r.append((ny,nx))
+                C.append(r)
+    e=max(C,key=lambda r:(len(r),max(r)[0]))
+    Y,X=zip(*e)
+    return [[g[i][j] for j in range(min(X),max(X)+1)]
+            for i in range(min(Y),max(Y)+1)]
+```

@@ -1,0 +1,8 @@
+def p(g):
+    l=[(i,j,g[i][j]) for i in range(10) for j in range(10) if g[i][j]]
+    cy=(min(a for a,b,c in l)+max(a for a,b,c in l))//2
+    cx=(min(b for a,b,c in l)+max(b for a,b,c in l))//2
+    for a,b,c in l:
+        A=2*cy-a; B=2*cx-b
+        g[a][B]=g[A][b]=g[A][B]=c
+    return g

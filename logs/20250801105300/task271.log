@@ -1,0 +1,8 @@
+```python
+def p(g):
+ for i in range(7):
+  for j in range(7):
+   t = sum(g[i+k][j:j+3] for k in range(3), [])
+   if 0 not in t and len(set(t))==2 and all(t.count(v)>1 for v in set(t)):
+    return [t[x:x+3] for x in (0,3,6)]
+```

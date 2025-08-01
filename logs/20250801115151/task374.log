@@ -1,0 +1,18 @@
+```python
+def p(g):
+ c=[];d=(1,0,-1,0,1)
+ for i in range(10):
+  for j in range(10):
+   if g[i][j]==5:
+    s=[(i,j)];g[i][j]=0;o=[]
+    while s:
+     x,y=s.pop();o.append((x,y))
+     for k in range(4):
+      X=x+d[k];Y=y+d[k+1]
+      if 0<=X<10 and 0<=Y<10 and g[X][Y]==5:
+       g[X][Y]=0;s.append((X,Y))
+    c.append(o)
+ for o,v in zip(sorted(c,key=len,reverse=True),(1,4,2)):
+  for x,y in o:g[x][y]=v
+ return g
+```

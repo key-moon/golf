@@ -1,0 +1,1 @@
+def p(g):c=max(map(max,g));return[[c if(0<i<5and0<j<5)or(i>4and j>4)else 0 for j in range(9)]for i in range(9)]

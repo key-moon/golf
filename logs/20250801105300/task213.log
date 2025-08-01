@@ -1,0 +1,31 @@
+```python
+def p(g):
+   # group coords by color
+    d={}
+    for i,r in enumerate(g):
+        for j,v in enumerate(r):
+            if v: d.setdefault(v,[]).append((i,j))
+    # find the "square" block (both dims>1)
+    for s,ps in d.items():
+        Y={i for i,_ in ps}; X={j for _,j in ps}
+        if len(Y)>1 and len(X)>1:
+            y0,y1,minX,maxX=min(Y),max(Y)+1,min(X),max(X)+1
+            break
+    # collect 1D stripes (one dim==1 xor the other)
+    L=[]
+    for v,ps in d.items():
+        if v==s: continue
+        Y={i for i,_ in ps}; X={j for _,j in ps}
+        if (len(Y)==1)^(len(X)==1):
+            L.append((v,Y,X))
+    H=y1-y0; W=maxX-minX
+    # horizontal stripes => rows
+    v0,Y0,X0=L[0]
+    if len(Y0)==1:
+        L.sort(key=lambda t:next(iter(t[1])))
+        return [[v]*W for v,_,_ in L]
+    # vertical stripes => columns (repeat each row)
+    L.sort(key=lambda t:next(iter(t[2])))
+    C=[v for v,_,_ in L]
+    return [C]*H
+```

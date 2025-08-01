@@ -1,0 +1,1 @@
+def p(g):m,n=len(g),len(g[0]);return[[3 if not g[i][j]and any(g[i][k]==2for k in range(j))and any(g[i][k]==2for k in range(j+1,n))and any(g[k][j]==2for k in range(i))and any(g[k][j]==2for k in range(i+1,m))else 0 for j in range(n)]for i in range(m)]

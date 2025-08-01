@@ -1,0 +1,9 @@
+```python
+def p(g):
+ L=[(i,j)for i,r in enumerate(g)for j,x in enumerate(r)if x==5]
+ P=max(L,key=lambda a:max((a[0]-b[0])**2+(a[1]-b[1])**2 for b in L))
+ Q=max(L,key=lambda b:(P[0]-b[0])**2+(P[1]-b[1])**2)
+ for i,j in L:
+  g[i][j]=8 if (Q[0]-P[0])*(j-P[1])-(Q[1]-P[1])*(i-P[0])<=0 else 2
+ return g
+```

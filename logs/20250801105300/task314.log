@@ -1,0 +1,15 @@
+```python
+def p(g):
+    r=range(8)
+    for i in r:
+        for j in r:
+            for k in r[j+1:]:
+                if g[i][j]==g[i][k]!=0 and not(j+k)&1:
+                    g[i][(j+k)>>1]=g[i][j]
+    for i in r:
+        for j in r:
+            for k in r[i+1:]:
+                if g[i][j]==g[k][j]!=0 and not(i+k)&1:
+                    g[(i+k)>>1][j]=g[i][j]
+    return g
+```

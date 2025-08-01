@@ -1,0 +1,12 @@
+```python
+def p(g):
+    for y,r in enumerate(g):
+        t=[x for x,v in enumerate(r)if v==1]
+        if t:
+            for x in range(t[0]+1,t[-1]): r[x]=8
+    for x in range(len(g[0])):
+        t=[y for y in range(len(g))if g[y][x]==1]
+        if t:
+            for y in range(t[0]+1,t[-1]): g[y][x]=8
+    return g
+```

@@ -1,0 +1,12 @@
+```python
+def p(g):
+    t0,t1=g[0],g[-1];w=len(t0)
+    for r in range(1,len(g)-1):
+        for c in range(1,w-1):
+            x=g[r][c]
+            if x==t0[c]:g[1][c]=x
+            if x==t1[c]:g[-2][c]=x
+            if x==g[r][0]:g[r][1]=x
+            if x==g[r][-1]:g[r][-2]=x
+    return g
+```

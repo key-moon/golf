@@ -1,0 +1,12 @@
+def p(g):
+    n=len(g)
+    for x in range(n):
+        for y in range(n):
+            if not g[x][y]:
+                i,j=x,y
+                for _ in range(3):
+                    i,j=j,n-1-i
+                    if g[i][j]:
+                        g[x][y]=g[i][j]
+                        break
+    return g

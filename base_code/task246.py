@@ -1,0 +1,11 @@
+def p(g):
+ for i,r in enumerate(g):
+  if 2 in r:a,b=r.index(2),i
+  if 3 in r:c,d=r.index(3),i
+ if a>c:a,c=c,a
+ if b>d:b,d=d,b
+ for j in range(a,c+1):
+  if g[b][j]<1:g[b][j]=8
+ for i in range(b,d+1):
+  if g[i][c]<1:g[i][c]=8
+ return g

@@ -1,0 +1,41 @@
+def p(g):
+    h,w=len(g),len(g[0])
+    # find axis‐aligned mapping (ends→center)
+    m={}
+    for dx,dy in ((0,1),(1,1)):
+        for i in range(h):
+            for j in range(w):
+                x1,y1=i-dx,j-dy; x2,y2=i+dx,j+dy
+                if 0<=x1<h and 0<=y1<w and 0<=x2<h and 0<=y2<w:
+                    a=g[x1][y1]; b=g[i][j]; c=g[x2][y2]
+                    if a and a==c and b and b!=a:
+                        m[(dx,dy)]=(a,b)
+                        break
+            if (dx,dy)in m: break
+    # apply axis mapping to both horiz & vert
+    if (0,1)in m:
+        a,b=m[(0,1)]
+        dirs=[(0,1),(0,-1),(1,0),(-1,0)]
+        for i in range(h):
+            for j in range(w):
+                for dx,dy in dirs:
+                    x1,y1=i-dx,j-dy; x2,y2=i+dx,j+dy
+                    if 0<=x1<h and 0<=y1<w and 0<=x2<h and 0<=y2<w:
+                        if g[i][j]==b and not g[x1][y1] and not g[x2][y2]:
+                            g[x1][y1]=g[x2][y2]=a
+                        if not g[i][j] and g[x1][y1]==a and g[x2][y2]==a:
+                            g[i][j]=b
+    # apply diagonal mapping to both \ and /
+    if (1,1)in m:
+        a,b=m[(1,1)]
+        dirs=[(1,1),(1,-1),(-1,1),(-1,-1)]
+        for i in range(h):
+            for j in range(w):
+                for dx,dy in dirs:
+                    x1,y1=i-dx,j-dy; x2,y2=i+dx,j+dy
+                    if 0<=x1<h and 0<=y1<w and 0<=x2<h and 0<=y2<w:
+                        if g[i][j]==b and not g[x1][y1] and not g[x2][y2]:
+                            g[x1][y1]=g[x2][y2]=a
+                        if not g[i][j] and g[x1][y1]==a and g[x2][y2]==a:
+                            g[i][j]=b
+    return g

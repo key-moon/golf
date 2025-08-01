@@ -1,0 +1,8 @@
+```python
+def p(g):
+ a=next(i for i,r in enumerate(g) if 5 in r)
+ c=next(j for j,v in enumerate(g[a]) if v==5)
+ m=[r[c:c+9]for r in g[a:a+9]]
+ b=[[m[3*i][3*j]//5 for j in range(3)]for i in range(3)]
+ return [[5*b[i//3][j//3]*b[i%3][j%3] for j in range(9)] for i in range(9)]
+```

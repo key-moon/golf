@@ -1,0 +1,8 @@
+def p(g):
+    for v in{*sum(g,[])}-{0}:
+        a,b=min(i for i,r in enumerate(g)for x in r if x==v),max(i for i,r in enumerate(g)for x in r if x==v)
+        c,d=min(j for r in g for j,x in enumerate(r) if x==v),max(j for r in g for j,x in enumerate(r) if x==v)
+        for i in range(a+1,b):
+            for j in range(c+1,d):
+                g[i][j]=8
+    return g

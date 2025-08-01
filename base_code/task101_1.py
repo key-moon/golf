@@ -1,0 +1,52 @@
+def p(g):
+    h,w=len(g),len(g[0])
+    vis=[[0]*w for _ in g]
+    d=[(1,0),(-1,0),(0,1),(0,-1)]
+    def f(i,j,c):
+        vis[i][j]=1; c.append((i,j))
+        for di,dj in d:
+            ii, jj = i+di, j+dj
+            if 0<=ii<h and 0<=jj<w and not vis[ii][jj] and g[ii][jj]:
+                f(ii,jj,c)
+    # find the prototype shape
+    P=[]
+    for y in range(h):
+        for x in range(w):
+            if g[y][x] and not vis[y][x]:
+                C=[]; f(y,x,C)
+                if sum(g[i][j]==2 for i,j in C)>1:
+                    ys=[i for i,_ in C]; xs=[j for _,j in C]
+                    y0,y1,y2,y3=min(ys),min(xs),max(ys),max(xs)
+                    P=[row[x0:x0+X] for row in g[y0:y0+Y]]
+                    for i,j in C: g[i][j]=0
+                    goto_proto=1
+                    break
+        if P: break
+    # fill other 2-clusters
+    vis=[[0]*w for _ in g]
+    for y in range(h):
+        for x in range(w):
+            if g[y][x]==2 and not vis[y][x]:
+                C=[]; f(y,x,C)
+                T=[(i,j) for i,j in C if g[i][j]==2]
+                if len(T)<2: continue
+                ys=[i for i,_ in T]; xs=[j for _,j in T]
+                if len(set(ys))==1:
+                    y0=ys[0]; x0,x1=min(xs),max(xs)
+                    k=(x1-x0)//(len(P[0])-1)
+                    for i in range(len(P)):
+                        for j in range(len(P[0])):
+                            if P[i][j]==1:
+                                for dy in range(k):
+                                    for dx in range(k):
+                                        g[y0+i*k+dy][x0+j*k+dx]=1
+                else:
+                    x0=xs[0]; y0,y1=min(ys),max(ys)
+                    k=(y1-y0)//(len(P)-1)
+                    for i in range(len(P)):
+                        for j in range(len(P[0])):
+                            if P[i][j]==1:
+                                for dy in range(k):
+                                    for dx in range(k):
+                                        g[y0+i*k+dy][x0+j*k+dx]=1
+    return g

@@ -1,0 +1,4 @@
+```python
+def p(g):
+    return g
+```

@@ -1,0 +1,3 @@
+def p(g):
+ n=len(g)
+ return[[g[min(i,n-1-i)][min(j,n-1-j)]for j in range(n)]for i in range(n)]

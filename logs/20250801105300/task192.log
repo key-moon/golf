@@ -1,0 +1,19 @@
+```python
+def p(g):
+ f=sum(g,[])
+ H=set(f)-{0}
+ h=min(H,key=f.count);m=(H-{h}).pop()
+ r,c=len(g),len(g[0])
+ S=[(i,j)for i in range(r)for j in range(c)if g[i][j]==h and(i<1 or i>r-2 or j<1 or j>c-2)]
+ while S:
+  i,j=S.pop()
+  if g[i][j]==h:
+   g[i][j]=0
+   for u,v in (1,0),(-1,0),(0,1),(0,-1):
+    i2,j2=i+u,j+v
+    if 0<=i2<r and 0<=j2<c and g[i2][j2]==h:S.append((i2,j2))
+ for R in g:
+  for j in range(len(R)):
+   if R[j]==h:R[j]=m
+ return g
+```

@@ -1,0 +1,6 @@
+```python
+def p(g):
+    l = sum(g, [])
+    c = max({*l} - {0}, key=l.count)
+    return [[c]*2]*2
+```

@@ -1,0 +1,74 @@
+```python
+from collections import deque
+
+def p(g):
+    h,len0=len(g),len(g[0])
+    # find object color c
+    for R in g:
+        for v in R:
+            if v:
+                c=v
+                break
+        else:
+            continue
+        break
+    # find endpoints on border
+    E=[]
+    for i in range(h):
+        for j in range(len0):
+            if g[i][j]==c and (i in (0,h-1) or j in (0,len0-1)):
+                E.append((i,j))
+    e1,e2=E
+    # BFS on object cells to get the path S from e1 to e2
+    dq=deque([e1])
+    prev={e1:None}
+    while dq:
+        x,y=dq.popleft()
+        if (x,y)==e2:
+            break
+        for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):
+            X,Y=x+dx,y+dy
+            if 0<=X<h and 0<=Y<len0 and (X,Y) not in prev and g[X][Y]==c:
+                prev[(X,Y)]=(x,y)
+                dq.append((X,Y))
+    S=set()
+    p=e2
+    while p:
+        S.add(p)
+        p=prev[p]
+    # build perimeter in order
+    B=[(0,j) for j in range(len0)]\
+      +[(i,len0-1) for i in range(1,h)]\
+      +[(h-1,j) for j in range(len0-2,-1,-1)]\
+      +[(i,0) for i in range(h-2,0,-1)]
+    i1,i2=B.index(e1),B.index(e2)
+    P1=B[i1:i2+1] if i1<=i2 else B[i1:]+B[:i2+1]
+    P2=B[i2:i1+1] if i2<=i1 else B[i2:]+B[:i1+1]
+    P=set(P1 if len(P1)<len(P2) else P2)
+    # flood fill all cells reachable from any border cell not in S∪P
+    block=S|P
+    mark=[[0]*len0 for _ in g]
+    dq=deque()
+    for i in range(h):
+        for j in (0,len0-1):
+            if (i,j) not in block:
+                mark[i][j]=1
+                dq.append((i,j))
+    for j in range(len0):
+        for i in (0,h-1):
+            if (i,j) not in block and not mark[i][j]:
+                mark[i][j]=1
+                dq.append((i,j))
+    while dq:
+        x,y=dq.popleft()
+        for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):
+            X,Y=x+dx,y+dy
+            if 0<=X<h and 0<=Y<len0 and not mark[X][Y] and (X,Y) not in block:
+                mark[X][Y]=1
+                dq.append((X,Y))
+    # build output: outside region =>5, else c
+    for i in range(h):
+        for j in range(len0):
+            g[i][j]=5 if mark[i][j] else c
+    return g
+```

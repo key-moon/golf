@@ -1,0 +1,14 @@
+def p(g):
+    o=[[0]*len(g)for _ in g]
+    A,B=[(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==2],[(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==5]
+    U=min(i for i,j in A);D=max(i for i,j in A);L=min(j for i,j in A);R=max(j for i,j in A)
+    if max(j for i,j in B)-min(j for i,j in B)>=max(i for i,j in B)-min(i for i,j in B):
+        for i,j in B:
+            c=j-L;c2=R-j
+            o[i][L-c if c<=c2 else R+c2]=5
+    else:
+        for i,j in B:
+            c=i-U;c2=D-i
+            o[U-c if c<=c2 else D+c2][j]=5
+    for i,j in A:o[i][j]=2
+    return o

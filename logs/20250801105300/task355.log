@@ -1,0 +1,11 @@
+```python
+def p(g):
+ r=next(i for i,v in enumerate(g)if v[0]!=g[0][0])
+ c=next(j for j,x in enumerate(g[0])if x!=g[0][0])
+ d=[g[0][0],g[0][c],g[r][0],g[r][c]]
+ a=[0,0,0,0]
+ for i,row in enumerate(g):
+  for j,v in enumerate(row):
+   k=(i>=r)<<1|(j>=c);a[k]+=v!=d[k]
+ return [[d[a.index(max(a))]]]
+```

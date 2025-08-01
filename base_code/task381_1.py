@@ -1,0 +1,7 @@
+def p(g):
+ for r in g:
+  if 2in r:
+   a=r.index(2);b=len(r)-1-r[::-1].index(2)
+   for i in range(a+1,b):
+    if not r[i]:r[i]=9
+ return g

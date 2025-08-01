@@ -1,0 +1,10 @@
+def p(g):
+    for r in g:
+        a=[i for i,x in enumerate(r)if x]
+        for i,j in zip(a,a[1:]):
+            for k in range(i+1,j):r[k]=2
+    for c,r in enumerate(zip(*g)):
+        a=[i for i,x in enumerate(r)if x]
+        for i,j in zip(a,a[1:]):
+            for k in range(i+1,j):g[k][c]=2
+    return g

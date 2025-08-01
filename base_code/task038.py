@@ -1,0 +1,1 @@
+def p(g):r=sum(g[i][j]+g[i][j+1]+g[i+1][j]+g[i+1][j+1]==4 for i in range(8)for j in range(8));return[[1]*r+[0]*(5-r)]

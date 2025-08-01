@@ -1,0 +1,10 @@
+def p(g):
+    return [[
+        (2 if not (z := [(y, x)
+                         for y, r in enumerate(g)
+                         for x, v in enumerate(r[j:j+4])
+                         if v == 0])
+         else 3 if max(x for _, x in z) - min(x for _, x in z) > 1
+         else 8 if min(y for y, _ in z) < 2
+         else 4)
+    ] * 3 for j in (0, 5, 10)]

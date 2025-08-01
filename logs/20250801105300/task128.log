@@ -1,0 +1,32 @@
+```python
+def p(g):
+    n=len(g)
+    # find blocks
+    by={}
+    for i,row in enumerate(g):
+        for j,v in enumerate(row):
+            if v:
+                by.setdefault(v,[]).append((i,j))
+    bs=[]
+    for c,pts in by.items():
+        rs=[i for i,_ in pts]; cs=[j for _,j in pts]
+        bs.append((c,min(rs),max(rs),min(cs),max(cs)))
+    # sort blocks by color (1,2,4)
+    bs.sort(key=lambda b:b[0])
+    # compute new top‐rows by "rotating" their y‐order
+    H=sum(b[2]-b[1]+1 for b in bs)
+    acc=0; ny={}
+    for c,y1,y2,x1,x2 in reversed(bs):
+        ny[c]=n-H+acc
+        acc+=y2-y1+1
+    # build output
+    o=[[0]*n for _ in range(n)]
+    for c,y1,y2,x1,x2 in bs:
+        h=y2-y1+1; w=x2-x1+1
+        ty=ny[c]
+        for di in range(h):
+            for dj in range(w):
+                if g[y1+di][x1+dj]==c:
+                    o[ty+di][x1+dj]=c
+    return o
+```

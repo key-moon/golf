@@ -1,0 +1,36 @@
+def p(g):
+    h,w=len(g),len(g[0])
+    # find first row with any 8's → initial stripe positions
+    for r in range(h):
+        if any(v==8 for v in g[r]):
+            s=[j for j,v in enumerate(g[r]) if v==8]
+            r0=r
+            break
+    # find shift‐direction: by example, rows with 2's shift stripes
+    # right if those 2's lie in left half, left otherwise
+    # here assume all rows of 2's in same half
+    ps=[j for i in range(h) for j,v in enumerate(g[i]) if v==2]
+    d=1 if ps and sum(ps)/len(ps)<w/2 else -1
+    out=[[0]*w for _ in range(h)]
+    # copy 2's from input
+    for i in range(h):
+        for j,v in enumerate(g[i]):
+            if v==2: out[i][j]=2
+    cur=s[:]  # current stripe columns
+    # fill downward from r0 to h
+    for i in range(r0,h):
+        # on a row with any 2, shift
+        if any(v==2 for v in g[i]):
+            cur=[j+d for j in cur]
+        for j in cur:
+            if 0<=j<w and out[i][j]==0:
+                out[i][j]=8
+    # reset stripes and fill upward from r0-1 to 0
+    cur=s[:]
+    for i in range(r0-1,-1,-1):
+        if any(v==2 for v in g[i]):
+            cur=[j+d for j in cur]
+        for j in cur:
+            if 0<=j<w and out[i][j]==0:
+                out[i][j]=8
+    return out

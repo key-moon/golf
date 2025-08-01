@@ -1,0 +1,16 @@
+```python
+def p(g):
+ h,w=len(g),len(g[0])
+ b=[(i,j)for i in range(h)for j in range(w)if g[i][j]==2]
+ a=[(i,j)for i in range(h)for j in range(w)if g[i][j]==3]
+ k=0 if all(i==b[0][0]for i,j in b)else 1
+ p0=min(x[k]for x in b);p1=max(x[k]for x in b)
+ q0=min(x[k]for x in a);q1=max(x[k]for x in a)
+ if q1<p0:d=p0-1-q1;bp=q0+d-1
+ else:d=p1+1-q0;bp=q1+d+1
+ r=[[0]*w for _ in range(h)]
+ for i,j in b:r[i][j]=2
+ for i,j in a:r[i+(1-k)*d][j+k*d]=3
+ for u in range(h if k else w):r[u if k else bp][bp if k else u]=8
+ return r
+```

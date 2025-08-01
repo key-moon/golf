@@ -1,0 +1,1 @@
+def p(g):for i in range(5):g[4][i]=g[2][i]or g[4][i];g[2]=[0]*5;return g

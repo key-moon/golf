@@ -1,0 +1,17 @@
+def p(g):
+ r,c=next((i,j)for i in range(len(g))for j in range(len(g[0]))
+            if g[i][j]==3 and all(g[i+di][j+dj]==2
+            for di in(-1,0,1)for dj in(-1,0,1)if di|dj))
+ l=[j for j in range(len(g[0]))if g[r][j]==3 and j!=c]
+ if l:
+  m=[j for j in l if j>c]or[max(l)];r2,c2=r,min(m)
+ else:
+  l=[i for i in range(len(g))if g[i][c]==3 and i!=r]
+  m=[i for i in l if i>r]or[max(l)];r2,c2=min(m),c
+ for di in(-1,0,1):
+  for dj in(-1,0,1):
+   if di|dj:g[r+di][c+dj]=0
+ for di in(-1,0,1):
+  for dj in(-1,0,1):
+   if di|dj:g[r2+di][c2+dj]=2
+ return g
