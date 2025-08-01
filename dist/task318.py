@@ -1,0 +1,2 @@
+def p(g):
+ return [[3*(a!=b) for a,b in zip(x,y)] for x,y in zip(g, g[5:])]

