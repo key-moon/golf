@@ -5,6 +5,16 @@ import string
 syms = r"=<>!?^|&%()\[\]{},;:*/+-"
 
 def strip(code: str):
+  matches = re.findall(r'val_[\w_]+', code)
+
+  vals = list(string.ascii_uppercase[::-1])
+  for replace in matches:
+    val_name = vals.pop()
+    if val_name in code:
+      assert len(vals) != 0, "auto variable resolution failed"
+      val_name = vals.pop()
+    code = code.replace(replace, val_name)
+
   lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#")]
   if len(lines) == 1: return lines[0]
   res = ""
@@ -30,15 +40,4 @@ def strip(code: str):
       res += stripped
     prev_indent = indent
   
-  matches = re.findall(r'v_[\w_]+', res)
-  replace = {}
-
-  vals = list(string.ascii_uppercase[::-1])
-  for replace in matches:
-    val_name = vals.pop()
-    if val_name in res:
-      assert len(vals) != 0, "auto variable resolution failed"
-      val_name = vals.pop()
-    res = res.replace(replace, val_name)
-
   return res.strip()
