@@ -15,10 +15,10 @@ def strip(code: str):
       val_name = vals.pop()
     code = code.replace(replace, val_name)
 
-  lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#")]
+  lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
   if len(lines) == 1: return lines[0]
   res = ""
-  basic_indent = min([len(l) - len(l.lstrip(' ')) for l in lines if l.startswith(" ")])
+  basic_indent = min([1] + [len(l) - len(l.lstrip(' ')) for l in lines if l.startswith(" ")])
   prev_indent = 0
   for l in lines:
     stripped = l.strip()
@@ -36,7 +36,7 @@ def strip(code: str):
     if ":" in stripped or ":" in res.split("\n")[-1] or indent != prev_indent:
       res += "\n" + " " * indent + stripped
     else:
-      if res[-1] != ":": res += ";"
+      if res and res[-1] != ":": res += ";"
       res += stripped
     prev_indent = indent
   
