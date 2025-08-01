@@ -1,0 +1,32 @@
+Here’s a fully general golfed solution that (a) finds the two vertical “2–lines,” (b) for each 8 in the interior draws a horizontal “arm” back to the left 2–line on the same row (marking the original 8 as 4), and (c) draws a second horizontal arm on the corresponding row shifted down by the vertical offset between the two 2–lines:
+
+```python
+def p(g):
+ val_xl=min(j for j in range(len(g[0]))if any(g[i][j]==2 for i in range(len(g))))
+ val_xr=max(j for j in range(len(g[0]))if any(g[i][j]==2 for i in range(len(g))))
+ val_yl=min(i for i in range(len(g))    if g[i][val_xl]==2)
+ val_yr=min(i for i in range(len(g))    if g[i][val_xr]==2)
+ val_s=val_yr-val_yl
+ val_z=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==8]
+ for val_y,val_x in val_z:
+  g[val_y][val_x]=4
+  for val_j in range(val_xl,val_x):
+   if g[val_y][val_j]==0:g[val_y][val_j]=8
+  val_y2=val_y+val_s
+  for val_j in range(val_xl,val_xr):
+   if g[val_y2][val_j]==0:g[val_y2][val_j]=8
+ return g
+```
+
+Explanation of the core steps:
+
+1. We locate the left‐most and right‐most columns (`val_xl`/`val_xr`) that carry a vertical line of 2’s.
+2. We record the topmost row of each of those two lines (`val_yl`/`val_yr`) and compute their vertical offset `val_s=val_yr−val_yl`.
+3. We collect all the interior 8’s in `val_z`.
+4. For each 8 at `(val_y,val_x)` we:
+   - Repaint it to 4.
+   - Draw a horizontal 8‐arm back to `val_xl` on row `val_y`, stopping at the original cell.
+   - Draw a second horizontal 8‐arm on row `val_y+val_s` (the “shifted” row) from `val_xl` all the way to the right 2‐line (`val_xr`), again only where the cell is currently 0.
+5. We never overwrite existing 2’s or the newly placed 4’s.
+
+This reproduces exactly the transformations shown in all examples.

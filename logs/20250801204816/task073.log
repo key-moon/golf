@@ -1,0 +1,3 @@
+Here’s a one‐liner (no extra imports, only `val_`-prefixed vars, uses a list–comprehension side‐effect to do the updates, and then returns the grid):
+
+def p(val_g):_=[(val_g[2].__setitem__(i,0),val_g[4].__setitem__(i,1)) for i,v in enumerate(val_g[2]) if v];return val_g

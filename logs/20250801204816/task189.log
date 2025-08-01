@@ -1,0 +1,33 @@
+Here’s a very short “golfed” routine (all user‐visible variables start with `val_`, internal `_` loops are wildcarded).  It finds the full‐8 row/col, splits into 4 quadrants, picks the 2×2 value‐block and the big 3‐mask block, then paints each of the four 3×3 “+” subblocks by the corresponding entry of the 2×2:
+
+```python
+def p(g):
+ for val_r,val_row in enumerate(g):
+  if val_row.count(8)==len(val_row):break
+ for val_c,val_col in enumerate(zip(*g)):
+  if val_col.count(8)==len(val_col):break
+ val_L=[
+  [r[:val_c]     for r in g[:val_r]],
+  [r[val_c+1:]   for r in g[:val_r]],
+  [r[:val_c]     for r in g[val_r+1:]],
+  [r[val_c+1:]   for r in g[val_r+1:]]
+ ]
+ val_v=next(x for x in val_L if len(x)==2 and len(x[0])==2)
+ val_m=next(x for x in val_L if len(x)>2 and len(x[0])>2)
+ val_h,val_w=len(val_m),len(val_m[0])
+ val_bh,val_bw=val_h//2,val_w//2
+ return [
+  [val_m[i][j]//3*val_v[i//val_bh][j//val_bw] for j in range(val_w)]
+  for i in range(val_h)
+ ]
+```
+
+Explanation in brief:
+
+1. Scan for the all‐8 row (index `val_r`) and all‐8 column (index `val_c`).
+2. Build the 4 quadrants in `val_L`.
+3. Identify the 2×2 quadrant as `val_v` (the little colour matrix) and the large (>2×2) as `val_m` (the 3/0 mask).
+4. Compute its height/width (`val_h`,`val_w`) and half‐blocks (`val_bh`,`val_bw` = 3).
+5. For each cell of `val_m`, wherever the mask is 3, pull from `val_v[i//3][j//3]`; otherwise leave 0.
+
+This exactly reproduces all given examples.

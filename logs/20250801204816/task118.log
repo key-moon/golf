@@ -1,0 +1,18 @@
+Here is a very short Python solution under `def p(g):` that fills every gap between the first and last `2` in each row with `8`, leaving the original `2`‐cells intact.  All of your working variables are prefixed with `val_` exactly as requested:
+
+```
+def p(g):
+ for val_r in g:
+  if 2 in val_r:
+   val_a=val_r.index(2);val_b=len(val_r)-val_r[::-1].index(2)-1
+   for val_j in range(val_a+1,val_b):
+    if val_r[val_j]!=2:val_r[val_j]=8
+ return g
+```
+
+Explanation of the key steps:
+
+1.  For each row `val_r` of the grid `g`, check if there is at least one `2` in it.
+2.  If so, find `val_a` = index of the first `2`, and `val_b` = index of the last `2`.
+3.  Walk from `val_a+1` up to `val_b-1`; wherever the cell is *not* a `2`, overwrite it with `8`.
+4.  Return the modified grid.

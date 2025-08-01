@@ -1,0 +1,25 @@
+def p(g):
+    val_C={}
+    for y,row in enumerate(g):
+        for x,v in enumerate(row):
+            if v: val_C.setdefault(v,[]).append((y,x))
+    val_cs=sorted(val_C, key=lambda c:-len(val_C[c]))
+    val_m,val_n=val_cs[0],val_cs[1]
+    val_A,val_B=val_C[val_m],val_C[val_n]
+    val_y1,val_y2=min(y for y,_ in val_A),max(y for y,_ in val_A)
+    val_x1,val_x2=min(x for _,x in val_A),max(x for _,x in val_A)
+    val_y3,val_y4=min(y for y,_ in val_B),max(y for y,_ in val_B)
+    val_x3,val_x4=min(x for _,x in val_B),max(x for _,x in val_B)
+    val_H,val_W=val_y4-val_y3+1,val_x4-val_x3+1
+    val_bh,val_bw=(val_y2-val_y1+1)//val_H,(val_x2-val_x1+1)//val_W
+    val_M=[
+      [any(g[y][x]==val_m
+           for y in range(val_y1+i*val_bh,val_y1+(i+1)*val_bh)
+           for x in range(val_x1+j*val_bw,val_x1+(j+1)*val_bw))
+       for j in range(val_W)]
+      for i in range(val_H)
+    ]
+    return [
+      [g[val_y3+i][val_x3+j]*val_M[i][j] for j in range(val_W)]
+      for i in range(val_H)
+    ]

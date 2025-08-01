@@ -1,0 +1,5 @@
+Here’s a 97-byte golfed solution. It finds all the 4-corners, takes the min/max row & column, and slices out that subrectangle:
+
+```python
+def p(g):val_i,val_j=zip(*[(i,j)for i,r in enumerate(g)for j,_ in enumerate(r)if _==4]);val_m,val_M=min(val_i),max(val_i);val_n,val_N=min(val_j),max(val_j);return[r[val_n:val_N+1]for r in g[val_m:val_M+1]]
+```

@@ -1,0 +1,24 @@
+Here’s a fully‐golfed one‐liner that works for all of the above examples.  It locates the “seed” pattern of non‐zeros (both 1’s and 2’s) in the input, finds the two extremal 2‐pixels, computes how many “steps” of the seed lie between them in each direction, then tiles the seed into those steps.
+
+```python
+def p(g):
+ m=len(g);n=len(g[0])
+ P=[(i,j,v) for i,row in enumerate(g) for j,v in enumerate(row) if v]
+ T=[(i,j) for i,j,v in P if v==2]
+ (r1,c1),(r2,c2)=min(T),max(T)
+ minh,minj=min(i for i,j,v in P),min(j for i,j,v in P)
+ h=r2-r1;w=c2-c1
+ dy= h//(max(i for i,j,v in P)-min(i for i,j,v in P))
+ dx= w//(max(j for i,j,v in P)-min(j for i,j,v in P))
+ for i,j,v in P:
+  for k in range(1,dy+1):
+   for l in range(1,dx+1):
+    g[r1+k*(i-minh)][c1+l*(j-minj)]=v
+ return g
+```
+
+Explanation (brief):  
+1) Collect all non‐zero cells `P` and the two extremal 2‐cells `T`.  
+2) Compute the seed‐pattern’s top‐left corner `(minh,minj)` and its height/width.  
+3) From the gap between the two 2’s you infer how many “copies” (steps) the seed must make in each direction (`dy,dx`).  
+4) Finally tile the seed into those intermediate positions, overwriting zeros with the correct 1’s and 2’s.

@@ -1,0 +1,13 @@
+Here is a fully generic one‐liner that splits the grid at all‐zero rows and columns, then for each block picks its unique non‐zero color.  All non‐“_” variables are prefixed with `val_` as requested:
+
+```python
+def p(g):val_r=[-1]+[val_i for val_i,val_row in enumerate(g)if all(x==0 for x in val_row)]+[len(g)];val_c=[-1]+[val_j for val_j in range(len(g[0]))if all(g[val_i][val_j]==0 for val_i in range(len(g)))]+[len(g[0])];return[[next(g[val_i][val_j]for val_i in range(val_ar+1,val_br)for val_j in range(val_cr+1,val_dr)if g[val_i][val_j])for val_cr,val_dr in zip(val_c,val_c[1:])]for val_ar,val_br in zip(val_r,val_r[1:])]
+```
+
+Explanation of the core steps:
+
+1. Find all‐zero rows → `val_r`.
+2. Find all‐zero columns → `val_c`.
+3. The non‐zero blocks lie in the intervals between these cuts.
+4. For each block, scan for the first non‐zero cell → that block’s color.
+5. Return the 2D array of those colors in the same block‐row/block‐column order.

@@ -1,0 +1,23 @@
+Here’s a very short “code‐golfy” solution.  It always outputs a 3×3, puts the “upper‐left” L‐shape into its minimal corner (preserving its pattern) with its color, and fills the rest with the other color:
+
+```python
+def p(val_g):
+    vs={c for r in val_g for c in r if c}
+    a=min(vs,key=lambda z:min(i+j for i,r in enumerate(val_g) for j,c in enumerate(r) if c==z))
+    b=(vs-{a}).pop()
+    S=[(i,j)for i,r in enumerate(val_g) for j,c in enumerate(r) if c==a]
+    mr=min(i for i,j in S); mc=min(j for i,j in S)
+    R=[[b]*3 for _ in[0]*3]
+    for i,j in S: R[i-mr][j-mc]=a
+    return R
+```
+
+Explanation of the steps:
+
+1. Collect the two nonzero colors in the grid into `vs`.
+2. Pick `a` as the color whose cells have the smallest `min(i+j)` (that is, the “upper-left” shape).
+3. Let `b` be the other color.
+4. Gather all the coordinates `S` of color `a`, find their minimal row/col `(mr,mc)`.
+5. Build a 3×3 matrix `R` filled with color `b`.
+6. Stamp `a`’s L‐shape into `R`, shifted by `(mr,mc)` so its bounding‐box corner goes to `(0,0)`.
+7. Return `R`.

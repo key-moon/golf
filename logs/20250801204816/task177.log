@@ -1,0 +1,3 @@
+Here’s a fully self‐contained one‐liner that simply crops out the minimal non‐zero bounding box.  All internal names start with `val_` as requested:
+
+def p(g):val_r=[i for i,val_row in enumerate(g)if any(val_row)];val_c=[j for j,val_col in enumerate(zip(*g))if any(val_col)];return[val_row[val_c[0]:val_c[-1]+1]for val_row in g[val_r[0]:val_r[-1]+1]]

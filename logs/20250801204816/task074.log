@@ -1,0 +1,6 @@
+Here’s a very short solution that finds the non‐zero color occurring most often and zeroes it out everywhere.  It uses only one real extra variable (`val_…`) besides the loop‐variable `_` as requested:
+
+def p(g):
+    val_a=sum(g,[])
+    val_c=max(val_x for val_x in val_a if val_x,key=val_a.count)
+    return[[0 if val_x==val_c else val_x for val_x in _]for _ in g]

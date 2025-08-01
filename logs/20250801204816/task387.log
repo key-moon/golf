@@ -1,0 +1,38 @@
+Here’s a fully working golf‐style solution (all user variables except `_` are prefixed with `val_` as requested).  It (1) scans out all nonzero “centers,” (2) draws a 3×3 “frame” of that color around each center (with the very center forced to 5), and (3) connects any two centers sharing an x‐coord or y‐coord by a dotted line of 5’s (step=2):
+
+```python
+def p(g):
+    val_C=[]
+    for val_y,val_r in enumerate(g):
+        for val_x,val_v in enumerate(val_r):
+            if val_v: val_C.append((val_x,val_y,val_v))
+    for val_x,val_y,val_v in val_C:
+        for val_dy in(-1,0,1):
+            for val_dx in(-1,0,1):
+                g[val_y+val_dy][val_x+val_dx]=val_v if val_dx|val_dy else 5
+    val_X={}; val_Y={}
+    for val_x,val_y,_ in val_C:
+        val_X.setdefault(val_x,[]).append(val_y)
+        val_Y.setdefault(val_y,[]).append(val_x)
+    for val_k,val_L in val_X.items():
+        if len(val_L)==2:
+            val_a,val_b=sorted(val_L)
+            for val_t in range(val_a+1,val_b):
+                if (val_t-val_a)&1: g[val_t][val_k]=5
+    for val_k,val_L in val_Y.items():
+        if len(val_L)==2:
+            val_a,val_b=sorted(val_L)
+            for val_t in range(val_a+1,val_b):
+                if (val_t-val_a)&1: g[val_k][val_t]=5
+    return g
+```
+
+Explanation of the three main phases:
+
+1. **Collect centers**  `(val_C)` as all `(x,y,value)` where `value>0`.
+2. **Draw each 3×3 frame** around `(x,y)`:  
+   – Border cells (`dx|dy!=0`) get the original color `value`.  
+   – The very center cell (`dx=dy=0`) is set to `5`.
+3. **Connect aligned centers**:  
+   – Group by x (resp. y) to find the two y’s (resp. x’s) sharing that x (resp. y).  
+   – Between them, step through the gap one row (resp. column) at a time and place a `5` at every other position (`(t - start)&1`).

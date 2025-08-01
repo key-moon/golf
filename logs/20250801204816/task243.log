@@ -1,0 +1,36 @@
+Here is a very short “code‐golf” style solution. It finds all 4-connected components of zeros, keeps track of the largest one, and finally turns those zeros into 1’s. All other cells remain unchanged.
+
+```python
+def p(g):
+    val_r,val_c=len(g),len(g[0])
+    val_v=set();val_b=()
+    for val_i in range(val_r):
+        for val_j in range(val_c):
+            if not g[val_i][val_j] and (val_i,val_j) not in val_v:
+                val_q=[(val_i,val_j)]
+                val_s={(val_i,val_j)}
+                val_v.add((val_i,val_j))
+                for val_x,val_y in val_q:
+                    for val_dx,val_dy in ((1,0),(-1,0),(0,1),(0,-1)):
+                        val_nx,val_ny=val_x+val_dx,val_y+val_dy
+                        if 0<=val_nx<val_r and 0<=val_ny<val_c \
+                           and not g[val_nx][val_ny] \
+                           and (val_nx,val_ny) not in val_v:
+                            val_v.add((val_nx,val_ny))
+                            val_s.add((val_nx,val_ny))
+                            val_q.append((val_nx,val_ny))
+                if len(val_s)>len(val_b):
+                    val_b=val_s
+    for val_x,val_y in val_b:
+        g[val_x][val_y]=1
+    return g
+```
+
+Explanation of the key steps:
+
+1. We scan every cell.  
+2. Whenever we hit a zero that hasn’t been visited, we BFS (using `val_q`) to collect its entire connected component of zeros into `val_s`.  
+3. We mark all of those cells visited in `val_v`.  
+4. We keep whichever zero‐component `val_s` is largest in `val_b`.  
+5. At the end we set every cell in that largest component to `1`.  
+6. All other values (including other zeros) stay as they were.

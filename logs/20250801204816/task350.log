@@ -1,0 +1,15 @@
+```python
+def p(g):
+    val_h = len(g)
+    for val_row in g:
+        val_c = [val_i for val_i, val_v in enumerate(val_row) if val_v == 1]
+        for val_a, val_b in zip(val_c, val_c[1:]):
+            for val_x in range(val_a + 1, val_b):
+                val_row[val_x] = 8
+    for val_j in range(len(g[0])):
+        val_c = [val_i for val_i in range(val_h) if g[val_i][val_j] == 1]
+        for val_a, val_b in zip(val_c, val_c[1:]):
+            for val_y in range(val_a + 1, val_b):
+                g[val_y][val_j] = 8
+    return g
+```

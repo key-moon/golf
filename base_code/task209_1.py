@@ -1,0 +1,1 @@
+def p(g):val_r=[i for i,row in enumerate(g) if 4 in row];val_c=[j for j,col in enumerate(zip(*g)) if 4 in col];return [row[val_c[0]:val_c[-1]+1] for row in g[val_r[0]:val_r[-1]+1]]

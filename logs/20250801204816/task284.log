@@ -1,0 +1,51 @@
+Below is a single‐def solution that follows the “plus‐shape” rule sketched above.  It finds the two non-zero cells, decides if they lie on a horizontal or vertical segment, computes half the distance, then draws the two arms along the segment in each color and the two arms perpendicular to it in each color.  All intermediate names are prefixed with `val_` and it mutates the input grid in place:
+
+```
+def p(val_g):
+    # collect the two colored points
+    val_s=[(y,x,v)
+           for y,row in enumerate(val_g)
+           for x,v in enumerate(row)
+           if v]
+    y1,x1,v1=val_s[0]; y2,x2,v2=val_s[1]
+    # if they share a row, build a horizontal stem + vertical arms
+    if y1==y2:
+        y=y1
+        dx=1 if x2>x1 else -1
+        m=(x2-x1)*dx//2
+        c=(x1+x2)//2
+        # two arms along the row
+        for i in range(m+1):
+            val_g[y][x1+dx*i]=v1
+            val_g[y][x2-dx*i]=v2
+        # two arms up/down from the midpoint
+        for i in range(1,m+1):
+            val_g[y-i][c]=v1
+            val_g[y+i][c]=v2
+    # else they share a column, build a vertical stem + horizontal arms
+    else:
+        x=x1
+        dy=1 if y2>y1 else -1
+        m=(y2-y1)*dy//2
+        r=(y1+y2)//2
+        # two arms along the column
+        for i in range(m+1):
+            val_g[y1+dy*i][x]=v1
+            val_g[y2-dy*i][x]=v2
+        # two arms left/right from the midpoint
+        for i in range(1,m+1):
+            val_g[r][x-i]=v1
+            val_g[r][x+i]=v2
+    return val_g
+```
+
+Explanation of the key steps:
+
+1. **Locate the two endpoints** `(y1,x1,v1)` and `(y2,x2,v2)`.  
+2. **Determine orientation** by checking if they share `y` (horizontal segment) or `x` (vertical).  
+3. **Compute half‐distance**  
+   - For a horizontal segment at row `y`, use `m = abs(x2-x1)//2`.  
+   - For a vertical segment at column `x`, use `m = abs(y2-y1)//2`.  
+4. **Draw the “stem”** (the arm along the original segment) in each color, from each endpoint inwards `m` cells.  
+5. **Draw the two “perpendicular arms”** of length `m` at the (integer) midpoint, again coloring the “upper/left” arm in the first color and the “lower/right” arm in the second color.  
+6. **Return** the modified grid.

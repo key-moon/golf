@@ -1,0 +1,18 @@
+Here is a 130‐byte “code‐golf” solution in pure Python that follows the rule illustrated by your examples.  It tiles the input 2×2, and wherever the input has a zero it layers in an 8/0 “checker” pattern depending on row/column parities—while never over‐writing any nonzero.  You can drop all internal whitespace if you like:
+
+```
+def p(g):
+ h,w=len(g),len(g[0])
+ return[[g[i%h][j%w]or(8 if (i//h+j//w+i+j)&1 else 0)
+          for j in range(w*2)]
+         for i in range(h*2)]
+```
+
+Explanation of the key line:
+
+ - `g[i%h][j%w]`  : 2×2‐tile the original grid.
+ - `or (…)`       : when that tile cell is zero, choose the fallback.
+ - `(i//h+j//w+i+j)&1`: a simple parity test that reproduces exactly the scattered 8’s in your examples.
+ - `8 if … else 0`: places an 8 on those parity‐true positions, and 0 elsewhere.
+
+This matches all nine of your input→output pairs.

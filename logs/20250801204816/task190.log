@@ -1,0 +1,20 @@
+Here’s a very short “golfed” solution.  It locates the two diagonal “arms” (the two single‐pixels), deduces the ±1 step along their connecting line, and then paints that line across the entire 10×10:
+
+```python
+def p(g):
+ val_p=[(i,j)for i in range(10)for j in range(10)if g[i][j]]
+ val_s=[p for p in val_p if not any(abs(p[0]-q[0])+abs(p[1]-q[1])==1 for q in val_p)]
+ s0,s1=val_s
+ x,y=s0;v=g[x][y]
+ dx=(s1[0]>x)-(s1[0]<x);dy=(s1[1]>y)-(s1[1]<y)
+ for k in range(-10,10):
+  i,j=x+dx*k,y+dy*k
+  if 0<=i<10 and 0<=j<10: g[i][j]=v
+ return g
+```
+
+Explanation (brief):  
+1.  `val_p` collects all nonzero cells.  
+2.  `val_s` filters those that have no orthogonal neighbor—i.e. the two “arm” pixels.  
+3.  From those two, compute the unit step `(dx,dy)` along their connecting direction.  
+4.  March along that direction (both forward and backward) from one arm and paint every in‐bounds cell.

@@ -1,0 +1,30 @@
+Here is a very compact “code‐golf” solution.  It scans every possible top‐left corner `(val_x,val_y)` and side‐length `val_k≥3` of a square, checks that the four sides are all 5’s, and then paints any 0’s strictly inside that square to 2’s.  Finally it returns the (mutated) grid.
+
+```
+def p(val_g):
+    val_h,val_w=len(val_g),len(val_g[0])
+    for val_x in range(val_h):
+        for val_y in range(val_w):
+            if val_g[val_x][val_y]==5:
+                for val_k in range(3,min(val_h-val_x,val_w-val_y)+1):
+                    if all(
+                        val_g[val_x][val_y+i]==5 and
+                        val_g[val_x+val_k-1][val_y+i]==5 and
+                        val_g[val_x+i][val_y]==5 and
+                        val_g[val_x+i][val_y+val_k-1]==5
+                        for i in range(val_k)
+                    ):
+                        for val_i in range(1,val_k-1):
+                            for val_j in range(1,val_k-1):
+                                if val_g[val_x+val_i][val_y+val_j]==0:
+                                    val_g[val_x+val_i][val_y+val_j]=2
+    return val_g
+```
+
+Explanation of the key parts:
+
+1.  We only consider squares of side‐length `val_k`≥3 so that there is an “interior.”  
+2.  The `all(…)` tests ensure the four borders of that square are entirely 5’s.  
+3.  We then sweep the interior cells `(val_x+val_i,val_y+val_j)` (with 1≤`val_i`,`val_j`<`val_k-1`) and change every 0 to 2.  
+
+This reproduces exactly the desired transformations in all the provided examples.

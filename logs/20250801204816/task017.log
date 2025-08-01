@@ -1,0 +1,33 @@
+Here is a short “code‐golf” solution.  It finds the minimal row‐period `val_h` and column‐period `val_w` by checking where the nonzero entries repeat, then fills each 0 from the corresponding position in the upper‐left tile.  All helper names carry the required `val_` prefix, and no extra imports or blank lines are used:
+
+```python
+def p(g):
+    val_H,val_W=len(g),len(g[0])
+    for val_h in range(1,val_H):
+        for val_r in range(val_H-val_h):
+            for val_c in range(val_W):
+                if g[val_r][val_c] and g[val_r+val_h][val_c] and g[val_r][val_c]!=g[val_r+val_h][val_c]:
+                    break
+            else: continue
+            break
+        else: break
+    for val_w in range(1,val_W):
+        for val_r in range(val_H):
+            for val_c in range(val_W-val_w):
+                if g[val_r][val_c] and g[val_r][val_c+val_w] and g[val_r][val_c]!=g[val_r][val_c+val_w]:
+                    break
+            else: continue
+            break
+        else: break
+    for val_r in range(val_H):
+        for val_c in range(val_W):
+            if not g[val_r][val_c]:
+                g[val_r][val_c]=g[val_r%val_h][val_c%val_w]
+    return g
+```
+
+Explanation of the main steps:
+
+1. **Detect row‐period** `val_h`: the smallest `h>0` so that whenever two cells `h` rows apart are both nonzero, they agree.
+2. **Detect col‐period** `val_w` similarly.
+3. **Fill zeros**: whenever `g[r][c]==0`, replace it with `g[r%val_h][c%val_w]`, i.e.\ from the repeating tile.

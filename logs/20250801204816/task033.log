@@ -1,0 +1,35 @@
+Here’s a fully self‐contained one‐pass filler that discovers the 3×3 “super‐cell” blocks, finds which of the nine are “empty,” and repopulates each empty block by OR’ing the two nonempty partners in its row or column, painting in the separator‐line color.  All helper names are prefixed with `val_` and no imports or extraneous lines are used:
+
+```python
+def p(g):
+    val_n=len(g);val_s=val_n//3;val_d=val_s+1;val_c=g[val_s][val_s]
+    val_H=[[any(g[i*val_d+u][j*val_d+v]for u in range(val_s)for v in range(val_s))
+            for j in range(3)]for i in range(3)]
+    for i in range(3):
+        for j in range(3):
+            if not val_H[i][j]:
+                row_idxs=[k for k in range(3) if val_H[i][k]]
+                if len(row_idxs)>1:
+                    a,b=row_idxs[0],row_idxs[1]
+                    for u in range(val_s):
+                        for v in range(val_s):
+                            if g[i*val_d+u][a*val_d+v] or g[i*val_d+u][b*val_d+v]:
+                                g[i*val_d+u][j*val_d+v]=val_c
+                else:
+                    col_idxs=[k for k in range(3) if val_H[k][j]]
+                    a,b=col_idxs[0],col_idxs[1]
+                    for u in range(val_s):
+                        for v in range(val_s):
+                            if g[a*val_d+u][j*val_d+v] or g[b*val_d+u][j*val_d+v]:
+                                g[i*val_d+u][j*val_d+v]=val_c
+    return g
+```
+
+Explanation in brief:
+
+1.  We split the 17×17 into nine 5×5 blocks separated by the constant‐color “grid lines” (at every 6th row/column).
+2.  `val_H[i][j]` flags which of the 3×3 blocks contains any foreground (non‐zero) shape.
+3.  For each empty block `(i,j)`, if its row has two nonempty blocks, we OR their shapes into this one; otherwise we do the same with its column.
+4.  “Painting” uses the separator‐line color `val_c=g[5][5]`.
+
+This exactly reproduces the transformation on all given examples.

@@ -1,0 +1,16 @@
+Here’s a very short “code-golfy” Python solution.  It finds the height v and width w, then for each output row i and column j computes the bounced‐diagonal column via  
+c = abs(((v−1−i) mod (2w−2)) − (w−1))  
+and emits 1 exactly at j==c:
+
+```
+def p(g):
+ val_v,val_w=len(g),len(g[0]);return[[(val_j==abs((val_v-1-val_i)%(2*val_w-2)-(val_w-1)))+0 for val_j in range(val_w)]for val_i in range(val_v)]
+```
+
+Explanation of the core trick:
+
+- We start at the bottom‐left (row v−1); as we go “up+right” each step, when you hit a top/bottom or left/right boundary you “bounce,” reversing that component of motion.
+- In a 1D bounce of length w this yields a period of 2(w−1), and the position at step t is  
+  abs((t mod 2(w−1)) − (w−1)).  
+- Since our rows go from top (i=0) to bottom (i=v−1), the “step” for row i is t = (v−1−i).
+- We simply compute that column index c and place a 1 at (i,c).

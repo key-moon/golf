@@ -1,0 +1,12 @@
+Here’s a 1‐line golfed solution (using only 3×3 grids, `val_`‐prefix vars, no extra imports or line‐breaks):
+
+```python
+def p(g):val_c=sum(len(set(val_r))==1for val_r in g);return[[5 if val_c==2and val_i==val_j or val_c<2and val_j==2-val_i or val_c>2and val_i<1 else 0 for val_j in(0,1,2)]for val_i in(0,1,2)]
+```
+
+Explanation of the rule:
+
+1. Count `val_c` = number of uniform rows.  
+2. If `val_c==2`, draw the main diagonal (i==j).  
+3. Else if `val_c<2`, draw the anti‐diagonal (j==2−i).  
+4. Else (`val_c>2`, i.e. all three rows uniform), fill only the top row.

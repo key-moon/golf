@@ -1,0 +1,20 @@
+Here’s a very short “code‐golf”‐style solution.  It walks each row, finds runs of 2’s, and whenever it sees a new run and has remembered a previous run‐end, it fills the gap between them with 9’s:
+
+```python
+def p(g):
+ for val_l in g:
+  val_e=None;val_j=0
+  while val_j<len(val_l):
+   if val_l[val_j]==2:
+    if val_e:
+     for val_c in range(val_e+1,val_j):val_l[val_c]=9
+    while val_j+1<len(val_l)and val_l[val_j+1]==2:val_j+=1
+    val_e=val_j
+   val_j+=1
+ return g
+```
+
+Explanation:  
+- `val_j` walks across the row.  
+- When we hit a 2‐run, we (if we’ve seen one before) fill the zero‐cells between the previous run’s end `val_e` and the new run’s start `val_j` with 9’s.  
+- We then scan to the end of the current 2‐run, store that in `val_e`, and continue.

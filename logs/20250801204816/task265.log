@@ -1,0 +1,17 @@
+Here’s a fully general, very short “code‐golf” solution.  It simply scans every 2×2 sub‐block of the input and whenever all four entries are 0 it overwrites those four with 2.  All other cells stay as they were:
+
+```python
+def p(g):
+ for val_i in range(len(g)-1):
+  for val_j in range(len(g[0])-1):
+   if not g[val_i][val_j] and not g[val_i][val_j+1] and not g[val_i+1][val_j] and not g[val_i+1][val_j+1]:
+    g[val_i][val_j]=g[val_i][val_j+1]=g[val_i+1][val_j]=g[val_i+1][val_j+1]=2
+ return g
+```
+
+Explanation of the key steps:
+
+1. We loop `val_i` over all row‐indices except the last, and `val_j` over all column‐indices except the last, so that `(val_i,val_j)` can serve as the top‐left corner of every 2×2 block.
+2. We test `if not g[i][j]` etc.  Since Python treats `0` as `False` and any other number as `True`, the four `not` tests all succeed exactly when each of the four cells is `0`.
+3. We then chain‐assign those same four locations to `2`.
+4. Finally we return the modified grid.

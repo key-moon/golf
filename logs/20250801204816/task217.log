@@ -1,0 +1,5 @@
+Here’s a golfed 9×9‐general solution. It finds the 3×3 block of nonzeros, calls it `val_pat`, and then tiles it in every block whose corresponding cell in `val_pat` is nonzero:
+
+```python
+def p(g):val_r0=min(i for i in range(9)for j in range(9)if g[i][j]);val_c0=min(j for i in range(9)for j in range(9)if g[i][j]);val_pat=[g[val_r0+i][val_c0:val_c0+3]for i in range(3)];return[[val_pat[i%3][j%3]if val_pat[i//3][j//3]else 0 for j in range(9)]for i in range(9)]
+```

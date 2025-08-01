@@ -1,0 +1,17 @@
+Here’s a very short “golfed” solution following the discovered rule:
+
+```python
+def p(g):
+ val_c=next(filter(None,g[-1]));val_p=g[-1].index(val_c)
+ for val_j in range(val_p,10,2):
+  for val_i in range(10):g[val_i][val_j]=val_c
+ for val_k,val_j in enumerate(range(val_p+1,10,2)):g[(val_k&1)*9][val_j]=5
+ return g
+```
+
+Explanation of the steps:
+
+1. Find the non‐zero colour `val_c` in the bottom row and its column index `val_p`.  
+2. From column `val_p` to the right end (9), every 2 columns, paint that entire column with `val_c` (this creates the “stripe”).  
+3. Between those stripes, on the top row put a `5` in every even‐indexed gap and on the bottom row put a `5` in every odd‐indexed gap.  
+4. Return the mutated grid.

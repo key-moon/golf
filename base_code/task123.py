@@ -1,0 +1,1 @@
+def p(val_g):val_m=len(val_g)-1;return[[val_g[val_m-1][val_m-1]if i%val_m==val_m-1or j%val_m==val_m-1else val_g[i%val_m][j%val_m]if i<2*val_mand j<2*val_melse val_g[0][0]for j in range(len(val_g)*2)]for i in range(len(val_g)*2)]

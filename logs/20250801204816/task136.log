@@ -1,0 +1,38 @@
+Here’s a very short “golfed” Python solution. It finds the two 2×2 blocks by value, takes the NW‐corner of the smaller one and draws a 45° line up/left to the border, and takes the SE‐corner of the larger one and draws a 45° line down/right to the border:
+
+```python
+def p(val_g):
+    val_n=len(val_g)
+    val_vs=sorted({val_g[i][j]
+                   for i in range(val_n)
+                   for j in range(val_n)
+                   if val_g[i][j]})
+    for val_c in val_vs:
+        val_p=[(i,j)
+               for i in range(val_n)
+               for j in range(val_n)
+               if val_g[i][j]==val_c]
+        val_I,val_J=zip(*val_p)
+        val_a,val_e=min(val_I),max(val_I)
+        val_b,val_d=min(val_J),max(val_J)
+        if val_c==val_vs[0]:
+            val_i,val_j=val_a,val_b
+            while val_i and val_j:
+                val_i-=1; val_j-=1
+                val_g[val_i][val_j]=val_c
+        else:
+            val_i,val_j=val_e,val_d
+            while val_i<val_n-1 and val_j<val_n-1:
+                val_i+=1; val_j+=1
+                val_g[val_i][val_j]=val_c
+    return val_g
+```
+
+Explanation of the core steps:
+1. **Collect values**: build `val_vs` = the two nonzero colors sorted.
+2. **Locate each 2×2 block** of color `val_c` by scanning the grid; unpack its four cells into `val_p`.
+3. **Compute corners**: `val_a,val_b` = minimum row/col (NW corner), `val_e,val_d` = maximum row/col (SE corner).
+4. If `val_c` is the smaller color, start at its NW corner `(val_a,val_b)` and move `(-1,-1)` until hitting the edge, coloring each cell.
+5. Otherwise (larger color), start at its SE corner `(val_e,val_d)` and move `(1,1)` until hitting the edge.
+
+This matches all your examples.

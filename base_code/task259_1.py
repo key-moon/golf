@@ -1,0 +1,1 @@
+def p(g):val_i=min(i for i,r in enumerate(g) if any(v-1 for v in r));val_I=max(i for i,r in enumerate(g) if any(v-1 for v in r));val_j=min(j for r in g for j,v in enumerate(r) if v-1);val_J=max(j for r in g for j,v in enumerate(r) if v-1);return[[0 if v==1 else v for v in r[val_j:val_J+1]]for r in g[val_i:val_I+1]]

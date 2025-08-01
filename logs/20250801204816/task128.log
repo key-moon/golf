@@ -1,0 +1,29 @@
+Here’s a very short “code‐golf”‐style solution.  It simply finds, for each non‐zero color, its min‐row and max‐row (hence height), then shifts every pixel of that color up by exactly that height.  All other coordinates (and colors) stay the same.
+
+```python
+def p(g):
+    val_h,val_w=len(g),len(g[0])
+    val_m=[val_h]*5; val_M=[-1]*5
+    for y,row in enumerate(g):
+        for x,v in enumerate(row):
+            if v:
+                if y<val_m[v]: val_m[v]=y
+                if y>val_M[v]: val_M[v]=y
+    val_o=[[0]*val_w for _ in g]
+    for y,row in enumerate(g):
+        for x,v in enumerate(row):
+            if v:
+                # shift up by its own height=(max_row-min_row+1)
+                val_o[y-(val_M[v]-val_m[v]+1)][x]=v
+    return val_o
+```
+
+Explanation of the core trick:
+
+1.  For each color `v>0`, record  
+    - `val_m[v]` = smallest row index where `v` appears  
+    - `val_M[v]` = largest row index where `v` appears  
+
+2.  The height of that block is `H=v_M[v]-val_m[v]+1`.  We want its new top row to be `old_top_row - H`, so each pixel at row `y` moves to `y - H`.
+
+3.  We build a fresh zero‐grid `val_o` and copy each `v>0` to its shifted position.

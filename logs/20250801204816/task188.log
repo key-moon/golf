@@ -1,0 +1,1 @@
+def p(val_g):return val_g[:len(val_g)//2]if len(val_g)>len(val_g[0])else[val_r[:len(val_r)//2]for val_r in val_g]

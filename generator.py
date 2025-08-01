@@ -62,7 +62,7 @@ SLOW = ["base_yu/task002.py", "base_yu/task396.py"]
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
   stats = []
-  for i in range(1, 401):
+  for i in range(355, 401):
     task = get_task(i)
     shortest = LONG
     task_stat = {

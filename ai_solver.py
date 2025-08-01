@@ -91,6 +91,7 @@ def process_task(i):
         print(f"{code_path} -> {res.message}")
     except Exception as e:
         print(e)
+    return
 
 with ThreadPoolExecutor(max_workers=15) as executor:
     executor.map(process_task, range(1, 401))

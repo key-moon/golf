@@ -1,0 +1,15 @@
+Here’s a fully‐general, short “quad‐split + fault‐count” solution in golfed form.  It finds the first row and column where the top‐left base color changes, treats that as a 2×2 quadrant split, counts the off‐base cells in each quadrant, and returns the base of the worst one:
+
+```python
+def p(val_g):
+    val_m,val_n=len(val_g),len(val_g[0]);val_a=val_g[0][0]
+    for val_C in range(val_n):
+        if val_g[0][val_C]!=val_a:break
+    for val_R in range(val_m):
+        if val_g[val_R][0]!=val_a:break
+    val_b,val_d=val_a,sum(val_g[i][j]!=val_a for i in range(val_R)for j in range(val_C))
+    for val_X,val_Y,val_U,val_V in((0,val_C,val_R,val_n),(val_R,0,val_m,val_C),(val_R,val_C,val_m,val_n)):
+        val_c=sum(val_g[i][j]!=val_g[val_X][val_Y]for i in range(val_X,val_U)for j in range(val_Y,val_V))
+        if val_c>val_d:val_b,val_d=val_g[val_X][val_Y],val_c
+    return val_b
+```

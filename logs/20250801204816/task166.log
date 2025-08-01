@@ -1,0 +1,25 @@
+Here’s a very short “hole‐filling” solution: we first turn every 0 into a provisional 2, then flood‐erase all 2’s reachable from the grid border (they are exterior), leaving only the interior holes as 2’s:
+
+```python
+def p(g):
+ val_h,val_w=len(g),len(g[0])
+ val_m=[val_row[:]for val_row in g]
+ for val_i in range(val_h):
+  for val_j in range(val_w):
+   if val_m[val_i][val_j]==0:val_m[val_i][val_j]=2
+ val_s=[(0,val_j)for val_j in range(val_w)]+[(val_h-1,val_j)for val_j in range(val_w)]+[(val_i,0)for val_i in range(val_h)]+[(val_i,val_w-1)for val_i in range(val_h)]
+ while val_s:
+  val_i,val_j=val_s.pop()
+  if val_m[val_i][val_j]==2:
+   val_m[val_i][val_j]=0
+   for val_di,val_dj in((1,0),(-1,0),(0,1),(0,-1)):
+    val_ni,val_nj=val_i+val_di,val_j+val_dj
+    if 0<=val_ni<val_h and 0<=val_nj<val_w and val_m[val_ni][val_nj]==2:val_s.append((val_ni,val_nj))
+ return val_m
+```
+
+Explanation in brief:
+1. Copy `g` to `val_m` and turn every 0→2.
+2. Seed a stack with all border cells.
+3. Flood‐fill from the border: any 2 you can reach is exterior, so turn it back to 0.
+4. What remains as 2 are precisely the interior holes.

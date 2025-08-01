@@ -1,0 +1,11 @@
+The various “holes” (0‐cells) in the inputs always lie inside a solid region of some other color.  In every case you can simply replace each 0 by one of its non‐zero 4‐neighbors.  A single full scan will catch them all because each hole cell touches the enclosing color on at least one side.  Here is a very compact golfed Python solution, using only `val_…` names as requested:
+
+```
+def p(g):
+ val_n,val_m=len(g),len(g[0])
+ for val_i in range(val_n):
+  for val_j in range(val_m):
+   if g[val_i][val_j]==0:
+    g[val_i][val_j]=g[val_i][val_j-1] or g[val_i][val_j+1] or g[val_i-1][val_j] or g[val_i+1][val_j]
+ return g
+```

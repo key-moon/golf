@@ -1,0 +1,21 @@
+Here’s a fully‐golfed “one‐pass” zipper‐extension: it finds the coloured path’s start, infers its horizontal/vertical segment lengths, then keeps appending those segments alternately until it walks off the bottom/right. All user‐vars except `_` are `val_*` as requested:
+
+```python
+def p(g):
+ val_v=next(x for r in g for x in r if x);val_h,val_w=len(g),len(g[0])
+ val_a=[(val_i,val_j)for val_i in range(val_h)for val_j in range(val_w)if g[val_i][val_j]==val_v];val_a.sort()
+ val_i,val_j=val_a[0]
+ if val_a[1][0]==val_i:val_D=[(0,1),(1,0)]
+ else:            val_D=[(1,0),(0,1)]
+ val_t=1
+ while 0<=val_i+val_D[0][0]*val_t<val_h and 0<=val_j+val_D[0][1]*val_t<val_w and g[val_i+val_D[0][0]*val_t][val_j+val_D[0][1]*val_t]==val_v:val_t+=1
+ val_L0=val_t;val_i+=val_D[0][0]*(val_t-1);val_j+=val_D[0][1]*(val_t-1);val_t=1
+ while 0<=val_i+val_D[1][0]*val_t<val_h and 0<=val_j+val_D[1][1]*val_t<val_w and g[val_i+val_D[1][0]*val_t][val_j+val_D[1][1]*val_t]==val_v:val_t+=1
+ val_L1=val_t;val_o=[val_i,val_j];val_k=0
+ while 1:
+  for _ in range(val_L0 if val_k%2==0 else val_L1):
+   val_o[0]+=val_D[val_k%2][0];val_o[1]+=val_D[val_k%2][1]
+   if val_o[0]<0or val_o[0]>=val_h or val_o[1]<0or val_o[1]>=val_w:return g
+   g[val_o[0]][val_o[1]]=val_v
+  val_k+=1
+```

@@ -1,0 +1,22 @@
+Here’s a one‐liner (no extra imports, a single `def` and no line‐breaks) that implements exactly
+
+  out[i][j] = first nonzero of (TR, BL, TL, BR)
+
+where TR = g[i][j+4], BL = g[i+4][j], TL = g[i][j], BR = g[i+4][j+4]:
+
+```python
+def p(g):return[[g[val_i][val_j+4]or g[val_i+4][val_j]or g[val_i][val_j]or g[val_i+4][val_j+4]for val_j in range(4)]for val_i in range(4)]
+```
+
+Explanation in brief:
+
+- We know the 8×8 input is four 4×4 “quadrants” (TL, TR, BL, BR) each carrying its own color block.
+- We want a 4×4 result.  For each local cell (i,j):
+  1. look at TR (g[i][j+4])
+  2. if zero, next BL (g[i+4][j])
+  3. if still zero, next TL (g[i][j])
+  4. if still zero, finally BR (g[i+4][j+4])
+  5. if all zero, remains 0
+- Python’s `or` returns the first truthy (nonzero) value, so  
+  `g[TR] or g[BL] or g[TL] or g[BR]`  
+  does exactly that.
