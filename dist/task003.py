@@ -1,1 +1,1 @@
-p=lambda g:[[A*2for A in B]for B in g+g[(g[:3]*2!=g)*2:][:3]]
+p=lambda g:[[AA*2for AA in AB]for AB in g+g[(g[:3]*2!=g)*2:][:3]]

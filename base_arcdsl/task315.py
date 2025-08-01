@@ -1,18 +1,18 @@
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -20,72 +20,60 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def vconcat(a, b):
+def val_func_vconcat(a, b):
     return a + b
 
-def hconcat(a, b):
+def val_func_hconcat(a, b):
     return tuple(i + j for i, j in zip(a, b))
 
-def upscale(element, factor):
+def val_func_upscale(element, factor):
     if isinstance(element, tuple):
         g = tuple()
         for row in element:
-            upscaled_row = tuple()
+            val_func_upscaled_row = tuple()
             for value in row:
-                upscaled_row = upscaled_row + tuple(value for num in range(factor))
-            g = g + tuple(upscaled_row for num in range(factor))
+                val_func_upscaled_row = val_func_upscaled_row + tuple(value for num in range(factor))
+            g = g + tuple(val_func_upscaled_row for num in range(factor))
         return g
     else:
         if len(element) == 0:
             return frozenset()
-        di_inv, dj_inv = ulcorner(element)
+        di_inv, dj_inv = val_func_ulcorner(element)
         di, dj = (-di_inv, -dj_inv)
-        normed_obj = shift(element, (di, dj))
+        normed_obj = val_func_shift(element, (di, dj))
         o = set()
         for value, (i, j) in normed_obj:
             for io in range(factor):
                 for jo in range(factor):
                     o.add((value, (i * factor + io, j * factor + jo)))
-        return shift(frozenset(o), (di_inv, dj_inv))
+        return val_func_shift(frozenset(o), (di_inv, dj_inv))
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def color(obj):
-    return next(iter(obj))[0]
-
-def ofcolor(grid, value):
+def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def combine(a, b):
+def val_func_combine(a, b):
     return type(a)((*a, *b))
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = upscale(I, 3)
-    x2 = hconcat(I, I)
-    x3 = hconcat(x2, I)
-    x4 = vconcat(x3, x3)
-    x5 = vconcat(x4, x3)
-    x6 = ofcolor(x1, 0)
-    x7 = ofcolor(x1, 1)
-    x8 = combine(x6, x7)
-    O = fill(x5, 0, x8)
+    x1 = val_func_upscale(I, 3)
+    x2 = val_func_hconcat(I, I)
+    x3 = val_func_hconcat(x2, I)
+    x4 = val_func_vconcat(x3, x3)
+    x5 = val_func_vconcat(x4, x3)
+    x6 = val_func_ofcolor(x1, 0)
+    x7 = val_func_ofcolor(x1, 1)
+    x8 = val_func_combine(x6, x7)
+    O = val_func_fill(x5, 0, x8)
     return [*map(list,O)]

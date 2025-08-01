@@ -1,26 +1,29 @@
-def merge(containers):
+def val_func_apply(function, container):
+    return type(container)(function(e) for e in container)
+
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def connect(a, b):
+def val_func_connect(a, b):
     ai, aj = a
     bi, bj = b
     si = min(ai, bi)
@@ -37,46 +40,40 @@ def connect(a, b):
         return frozenset((i, j) for i, j in zip(range(si, ei), range(ej - 1, sj - 1, -1)))
     return frozenset()
 
-def shoot(start, direction):
-    return connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
+def val_func_shoot(start, direction):
+    return val_func_connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
 
-def underfill(grid, value, patch):
+def underval_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    bg = mostcolor(grid)
+    bg = val_func_mostcolor(grid)
     g = list(list(r) for r in grid)
-    for i, j in toindices(patch):
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
             if g[i][j] == bg:
                 g[i][j] = value
     return tuple(tuple(r) for r in g)
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
-
-def ofcolor(grid, value):
+def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def mapply(function, container):
-    return merge(apply(function, container))
+def mval_func_apply(function, container):
+    return val_func_merge(val_func_apply(function, container))
 
-def apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def fork(outer, a, b):
+def val_func_fork(outer, a, b):
     return lambda x: outer(a(x), b(x))
 
-def lbind(function, fixed):
+def val_func_lbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda y: function(fixed, y)
@@ -85,62 +82,57 @@ def lbind(function, fixed):
     else:
         return lambda y, z, a: function(fixed, y, z, a)
 
-def matcher(function, target):
+def val_func_matcher(function, target):
     return lambda x: function(x) == target
 
-def chain(h, g, f,):
+def val_func_chain(h, g, f,):
     return lambda x: h(g(f(x)))
 
-def compose(outer, inner):
+def val_func_compose(outer, inner):
     return lambda x: outer(inner(x))
 
-def first(container):
+def val_func_first(container):
     return next(iter(container))
 
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def toivec(i):
+def val_func_toivec(i):
     return (i, 0)
 
-def crement(x):
-    if isinstance(x, int):
-        return 0 if x == 0 else (x + 1 if x > 0 else x - 1)
-    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),        0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
-
-def decrement(x):
+def val_func_decrement(x):
     return x - 1 if isinstance(x, int) else (x[0] - 1, x[1] - 1)
 
-def greater(a, b):
+def val_func_greater(a, b):
     return a > b
 
-def double(n):
+def val_func_double(n):
     return n * 2 if isinstance(n, int) else (n[0] * 2, n[1] * 2)
 
-def invert(n):
+def val_func_invert(n):
     return -n if isinstance(n, int) else (-n[0], -n[1])
 
-def identity(x):
+def val_func_identity(x):
     return x
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = ofcolor(I, 1)
-    x2 = ofcolor(I, 2)
-    x3 = ofcolor(I, 5)
-    x4 = uppermost(x3)
-    x5 = chain(toivec, decrement, double)
-    x6 = lbind(greater, x4)
-    x7 = compose(x6, first)
-    x8 = chain(invert, x5, x7)
-    x9 = fork(shoot, identity, x8)
-    x10 = compose(x5, x7)
-    x11 = fork(shoot, identity, x10)
-    x12 = lbind(matcher, x7)
-    x13 = compose(x12, x7)
-    x14 = fork(sfilter, x11, x13)
-    x15 = mapply(x9, x1)
-    x16 = mapply(x14, x2)
-    x17 = underfill(I, 2, x16)
-    O = fill(x17, 1, x15)
+    x1 = val_func_ofcolor(I, 1)
+    x2 = val_func_ofcolor(I, 2)
+    x3 = val_func_ofcolor(I, 5)
+    x4 = val_func_uppermost(x3)
+    x5 = val_func_chain(val_func_toivec, val_func_decrement, val_func_double)
+    x6 = val_func_lbind(val_func_greater, x4)
+    x7 = val_func_compose(x6, val_func_first)
+    x8 = val_func_chain(val_func_invert, x5, x7)
+    x9 = val_func_fork(val_func_shoot, val_func_identity, x8)
+    x10 = val_func_compose(x5, x7)
+    x11 = val_func_fork(val_func_shoot, val_func_identity, x10)
+    x12 = val_func_lbind(val_func_matcher, x7)
+    x13 = val_func_compose(x12, x7)
+    x14 = val_func_fork(val_func_sfilter, x11, x13)
+    x15 = mval_func_apply(x9, x1)
+    x16 = mval_func_apply(x14, x2)
+    x17 = underval_func_fill(I, 2, x16)
+    O = val_func_fill(x17, 1, x15)
     return [*map(list,O)]

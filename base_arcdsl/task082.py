@@ -1,69 +1,66 @@
-def merge(containers):
+def val_func_apply(function, container):
+    return type(container)(function(e) for e in container)
+
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def dneighbors(loc):
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def mostcolor(element):
+def val_func_mostval_func_color(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def crop(grid, start, dims):
+def val_func_crop(grid, start, dims):
     return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
 
-def vsplit(grid, n):
+def val_func_vsplit(grid, n):
     h, w = len(grid) // n, len(grid[0])
     offset = len(grid) % n != 0
-    return tuple(crop(grid, (h * i + i * offset, 0), (h, w)) for i in range(n))
+    return tuple(val_func_crop(grid, (h * i + i * offset, 0), (h, w)) for i in range(n))
 
-def vconcat(a, b):
+def val_func_vconcat(a, b):
     return a + b
 
-def paint(grid, obj):
+def val_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
+    grid_val_func_painted = list(list(row) for row in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_painted[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_painted)
 
-def color(obj):
+def val_func_color(obj):
     return next(iter(obj))[0]
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostval_func_color(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -86,42 +83,36 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
-
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def recolor(value, patch):
-    return frozenset((value, index) for index in toindices(patch))
+def val_func_reval_func_color(value, patch):
+    return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
-def mapply(function, container):
-    return merge(apply(function, container))
+def mval_func_apply(function, container):
+    return val_func_merge(val_func_apply(function, container))
 
-def apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def fork(outer, a, b):
+def val_func_fork(outer, a, b):
     return lambda x: outer(a(x), b(x))
 
-def chain(h, g, f,):
+def val_func_chain(h, g, f,):
     return lambda x: h(g(f(x)))
 
-def last(container):
+def val_func_last(container):
     return max(enumerate(container))[1]
 
-def first(container):
+def val_func_first(container):
     return next(iter(container))
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, True, False, True)
-    x2 = chain(ineighbors, last, first)
-    x3 = fork(recolor, color, x2)
-    x4 = mapply(x3, x1)
-    x5 = paint(I, x4)
-    x6 = vsplit(x5, 3)
-    x7 = first(x6)
-    x8 = vconcat(x7, x7)
-    O = vconcat(x7, x8)
+    x1 = val_func_objects(I, True, False, True)
+    x2 = val_func_chain(ival_func_neighbors, val_func_last, val_func_first)
+    x3 = val_func_fork(val_func_reval_func_color, val_func_color, x2)
+    x4 = mval_func_apply(x3, x1)
+    x5 = val_func_paint(I, x4)
+    x6 = val_func_vsplit(x5, 3)
+    x7 = val_func_first(x6)
+    x8 = val_func_vconcat(x7, x7)
+    O = val_func_vconcat(x7, x8)
     return [*map(list,O)]

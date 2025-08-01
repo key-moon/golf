@@ -1,23 +1,23 @@
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def merge(containers):
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -25,58 +25,46 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
 
-def dneighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def paint(grid, obj):
+def val_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
+    grid_val_func_painted = list(list(row) for row in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_painted[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_painted)
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def asobject(grid):
+def val_func_asobject(grid):
     return frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r))
 
-def color(obj):
-    return next(iter(obj))[0]
-
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostcolor(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -99,51 +87,51 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def normalize(patch):
+def val_func_normalize(patch):
     if len(patch) == 0:
         return patch
-    return shift(patch, (-uppermost(patch), -leftmost(patch)))
+    return val_func_shift(patch, (-val_func_uppermost(patch), -val_func_leftmost(patch)))
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def crop(grid, start, dims):
+def val_func_crop(grid, start, dims):
     return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
 
-def ofcolor(grid, value):
+def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def matcher(function, target):
+def val_func_matcher(function, target):
     return lambda x: function(x) == target
 
-def compose(outer, inner):
+def val_func_compose(outer, inner):
     return lambda x: outer(inner(x))
 
-def mfilter(container, function):
-    return merge(sfilter(container, function))
+def val_func_mfilter(container, function):
+    return val_func_merge(val_func_sfilter(container, function))
 
-def difference(a, b):
+def val_func_difference(a, b):
     return type(a)(e for e in a if e not in b)
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = crop(I, (0, 0), (3, 3))
-    x2 = ofcolor(x1, 0)
-    x3 = asindices(x1)
-    x4 = difference(x3, x2)
-    x5 = normalize(x4)
-    x6 = objects(I, True, False, True)
-    x7 = compose(toindices, normalize)
-    x8 = matcher(x7, x5)
-    x9 = mfilter(x6, x8)
-    x10 = fill(I, 5, x9)
-    x11 = asobject(x1)
-    O = paint(x10, x11)
+    x1 = val_func_crop(I, (0, 0), (3, 3))
+    x2 = val_func_ofcolor(x1, 0)
+    x3 = val_func_asindices(x1)
+    x4 = val_func_difference(x3, x2)
+    x5 = val_func_normalize(x4)
+    x6 = val_func_objects(I, True, False, True)
+    x7 = val_func_compose(val_func_toindices, val_func_normalize)
+    x8 = val_func_matcher(x7, x5)
+    x9 = val_func_mfilter(x6, x8)
+    x10 = val_func_fill(I, 5, x9)
+    x11 = val_func_asobject(x1)
+    O = val_func_paint(x10, x11)
     return [*map(list,O)]

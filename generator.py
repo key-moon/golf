@@ -4,43 +4,10 @@ import sys
 import zlib
 
 from checker import check
+import compress
 from strip import strip
 from utils import get_code_paths, get_task
 import os
-
-def raw(code: str):
-  return code.strip().encode()
-def compress(code: str):
-  compressed_code = zlib.compress(code.encode(), level=9)
-
-  # TODO: r"" とか使うとマシになったりするかも / "\n" にして """ -> " とかのほうが実は効率いいケースもある
-  compressed_code = compressed_code.replace(b"\\", b"\\\\")
-  # null byteはソースコードに入れられない null byte を \0 に置換したとき、\01 みたいなのが間違って解釈されるのを防ぐ
-  for i in range(8): compressed_code = compressed_code.replace(b"\x00" + f"{i}".encode(), b"\\000" + f"{i}".encode())
-  # \r はなんかパースされたあとに \n になっちゃう
-  compressed_code = compressed_code.replace(b"\x00", b"\\0").replace(b"\x0d", b"\\r")
-
-  if b"'" not in compressed_code and b"\n" not in compressed_code:
-    sep = "'"
-  elif b'"' not in compressed_code and b"\n" not in compressed_code:
-    sep = '"'
-  elif b'"""' not in compressed_code and not compressed_code.endswith(b'"'):
-    sep = '"""'
-  elif b'"""' not in compressed_code and not compressed_code.endswith(b"'"):
-    sep = "'''"
-  else:
-    # TODO: 流石にないと思うけど末尾の " とかを消す
-    compressed_code.replace(b'"""', b'\\"""')
-    sep = '"""'
-
-  res = f"#coding:latin_1\nimport zlib;exec(zlib.decompress(bytes(map(ord,{sep}".encode() + compressed_code + f"{sep}))))".encode()
-  return res
-# def compress_zlib_b85(code: str):
-#   compressed_code = base64.b85encode(zlib.compress(code.encode(), level=9))
-#   return f"import zlib;import base64;exec(zlib.decompress(base64.b85decode({compressed_code!r})))".encode()
-
-
-compressors = [raw, compress]
 
 def check_str(code: str | bytes, task):
     tmp_path = "tmp/tmp.py"
@@ -88,15 +55,11 @@ if __name__ == "__main__":
         exit(1)
         continue
 
-      a = sorted(zip([cmp(code) for cmp in compressors], compressors), key=lambda x: len(x[0]))
-      print(f"{base_path}: {' / '.join(f'{cmp.__name__}->{len(code)}' for code, cmp in a)}")
-
-      
-      compressed = a[0][0]
+      cmp, compressed = compress.compress(code)
       if len(compressed) < len(shortest):
         shortest = compressed
         task_stat["base_path"] = base_path
-        task_stat["compressor"] = a[0][1].__name__
+        task_stat["compressor"] = cmp
         task_stat["length"] = len(compressed)
         task_stat["success"] = True
 
@@ -106,10 +69,10 @@ if __name__ == "__main__":
       stats.append(task_stat)
       continue
     if task_stat["base_path"] not in SLOW:
-      res = check_str(shortest, task)
-      if res.correct != 1.0:
-        print(f"[!] compression failed: {res.message}")
-        task_stat["message"] = res.message
+      compressed = check_str(shortest, task)
+      if compressed.correct != 1.0:
+        print(f"[!] compression failed: {compressed.message}")
+        task_stat["message"] = compressed.message
         task_stat["success"] = False
         stats.append(task_stat)
         exit(1)
@@ -123,7 +86,7 @@ if __name__ == "__main__":
 
   # Write stats to README
   with open("README.md", "w") as readme:
-    readme.write("# Compression Stats\n\n")
+    readme.write("# Golf Stats\n\n")
     readme.write(f"Accepted: {accepted}/400\n")
     readme.write(f"Score: {score}\n\n")
     readme.write("## Task Details\n\n")
@@ -131,8 +94,8 @@ if __name__ == "__main__":
     readme.write("|------|---------|------|------------|--------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
-      success = ("✅" if "arcdsl" not in stat["base_path"] else "⚠") if stat["success"] else "❌"
-      base = stat["base_path"] if stat["success"] else "-"
+      success = ("✅" if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
+      base = f"[{stat['base_path']}]({stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 
       length = str(stat["length"]) if stat["success"] else "-"

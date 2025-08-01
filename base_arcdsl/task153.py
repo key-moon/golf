@@ -1,24 +1,24 @@
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -26,59 +26,50 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
 
-def dneighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def mostcolor(element):
+def val_func_mostval_func_color(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def canvas(value, dimensions):
+def val_func_canvas(value, dimensions):
     return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
 
-def paint(grid, obj):
+def val_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
+    grid_val_func_painted = list(list(row) for row in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_painted[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_painted)
 
-def rot270(grid):
+def val_func_rot270(grid):
     return tuple(tuple(row[::-1]) for row in zip(*grid[::-1]))[::-1]
 
-def rot90(grid):
+def val_func_rot90(grid):
     return tuple(row for row in zip(*grid[::-1]))
 
-def color(obj):
+def val_func_color(obj):
     return next(iter(obj))[0]
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostval_func_color(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -101,29 +92,29 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def normalize(patch):
+def val_func_normalize(patch):
     if len(patch) == 0:
         return patch
-    return shift(patch, (-uppermost(patch), -leftmost(patch)))
+    return val_func_shift(patch, (-val_func_uppermost(patch), -val_func_leftmost(patch)))
 
-def argmin(container, compfunc):
+def val_func_argmin(container, compfunc):
     return min(container, key=compfunc)
 
-def argmax(container, compfunc):
+def val_func_argmax(container, compfunc):
     return max(container, key=compfunc)
 
-def size(container):
+def val_func_size(container):
     return len(container)
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = rot270(I)
-    x2 = objects(x1, True, False, True)
-    x3 = argmax(x2, size)
-    x4 = argmin(x2, size)
-    x5 = color(x4)
-    x6 = canvas(x5, (3, 3))
-    x7 = normalize(x3)
-    x8 = paint(x6, x7)
-    O = rot90(x8)
+    x1 = val_func_rot270(I)
+    x2 = val_func_objects(x1, True, False, True)
+    x3 = val_func_argmax(x2, val_func_size)
+    x4 = val_func_argmin(x2, val_func_size)
+    x5 = val_func_color(x4)
+    x6 = val_func_canvas(x5, (3, 3))
+    x7 = val_func_normalize(x3)
+    x8 = val_func_paint(x6, x7)
+    O = val_func_rot90(x8)
     return [*map(list,O)]

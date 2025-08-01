@@ -1,1 +1,2 @@
-def p(g):E=[i for i,r in enumerate(g) if any(r)];C=[i for i,c in enumerate(zip(*g)) if any(c)];D=[r[C[0]:C[-1]+1]for r in g[E[0]:E[-1]+1]];A,B=set(x for R in D for x in R);return[[B if x==A else A for x in R]for R in D]
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"xÚUÍ\nƒ0„_eIkA¯JëÏx]r»J M%F°}ú&¡Ôö°³ó\rså	1Ë;E¦‡“…³Àv»³<‡Ìƒ}\n'u…ÍÿàË,â4Ë/>F¼UäÊuôRès¡c;Ì„]JºO\n˜a­VöbO+}ä°M~¾—•c¿9K„uœÚ•B¾­áœş©ë7L@H"))))

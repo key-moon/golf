@@ -1,5 +1,5 @@
-def p(E):
- for D in set(sum(E,[])):
-  A=[(i,j)for i,r in enumerate(E)for j,v in enumerate(r)if v==D];F,G=min(A);B,C=max(A)
-  if B-F>1<C-G and all((i in(F,B)or j in(G,C))for i,j in A):
-   return[r[G+1:C]for r in E[F+1:B]]
+def p(AE):
+ for AD in set(sum(AE,[])):
+  AA=[(i,j)for i,r in enumerate(AE)for j,v in enumerate(r)if v==AD];AF,AG=min(AA);AB,AC=max(AA)
+  if AB-AF>1<AC-AG and all((i in(AF,AB)or j in(AG,AC))for i,j in AA):
+   return[r[AG+1:AC]for r in AE[AF+1:AB]]

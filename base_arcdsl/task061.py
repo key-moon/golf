@@ -1,85 +1,82 @@
-def lowermost(patch):
-    return max(i for i, j in toindices(patch))
+def val_func_lowermost(patch):
+    return max(i for i, j in val_func_toindices(patch))
 
-def rightmost(patch):
-    return max(j for i, j in toindices(patch))
+def val_func_rightmost(patch):
+    return max(j for i, j in val_func_toindices(patch))
 
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def dneighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def palette(element):
+def val_func_palette(element):
     if isinstance(element, tuple):
         return frozenset({v for r in element for v in r})
     return frozenset({v for v, _ in element})
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def normalize(patch):
+def val_func_normalize(patch):
     if len(patch) == 0:
         return patch
-    return shift(patch, (-uppermost(patch), -leftmost(patch)))
+    return val_func_shift(patch, (-val_func_uppermost(patch), -val_func_leftmost(patch)))
 
-def vperiod(obj):
-    normalized = normalize(obj)
-    h = height(normalized)
+def val_func_vperiod(obj):
+    val_func_normalized = val_func_normalize(obj)
+    h = val_func_height(val_func_normalized)
     for p in range(1, h):
-        offsetted = shift(normalized, (-p, 0))
+        offsetted = val_func_shift(val_func_normalized, (-p, 0))
         pruned = frozenset({(c, (i, j)) for c, (i, j) in offsetted if i >= 0})
-        if pruned.issubset(normalized):
+        if pruned.issubset(val_func_normalized):
             return p
 
-def hperiod(obj):
-    normalized = normalize(obj)
-    w = width(normalized)
+def val_func_hperiod(obj):
+    val_func_normalized = val_func_normalize(obj)
+    w = val_func_width(val_func_normalized)
     for p in range(1, w):
-        offsetted = shift(normalized, (0, -p))
+        offsetted = val_func_shift(val_func_normalized, (0, -p))
         pruned = frozenset({(c, (i, j)) for c, (i, j) in offsetted if j >= 0})
-        if pruned.issubset(normalized):
+        if pruned.issubset(val_func_normalized):
             return p
     return w
 
-def paint(grid, obj):
+def val_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
+    grid_val_func_painted = list(list(row) for row in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_painted[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_painted)
 
-def asobject(grid):
+def val_func_asobject(grid):
     return frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r))
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_partition(grid):
+    return frozenset(frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value) for value in val_func_palette(grid))
 
-def partition(grid):
-    return frozenset(frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value) for value in palette(grid))
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
-
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -87,33 +84,33 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def crop(grid, start, dims):
+def val_func_crop(grid, start, dims):
     return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
 
-def colorfilter(objs, value):
+def val_func_colorfilter(objs, value):
     return frozenset(obj for obj in objs if next(iter(obj))[0] == value)
 
-def width(piece):
+def val_func_width(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece[0])
-    return rightmost(piece) - leftmost(piece) + 1
+    return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
 
-def height(piece):
+def val_func_height(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece)
-    return lowermost(piece) - uppermost(piece) + 1
+    return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def mapply(function, container):
-    return merge(apply(function, container))
+def mval_func_apply(function, container):
+    return val_func_merge(val_func_apply(function, container))
 
-def apply(function, container):
+def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
 
-def lbind(function, fixed):
+def val_func_lbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda y: function(fixed, y)
@@ -122,30 +119,25 @@ def lbind(function, fixed):
     else:
         return lambda y, z, a: function(fixed, y, z, a)
 
-def astuple(a, b):
+def val_func_astuple(a, b):
     return (a, b)
 
-def tojvec(j):
+def val_func_tojvec(j):
     return (0, j)
 
-def toivec(i):
+def val_func_toivec(i):
     return (i, 0)
 
-def crement(x):
-    if isinstance(x, int):
-        return 0 if x == 0 else (x + 1 if x > 0 else x - 1)
-    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),        0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
-
-def decrement(x):
+def val_func_decrement(x):
     return x - 1 if isinstance(x, int) else (x[0] - 1, x[1] - 1)
 
-def merge(containers):
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def difference(a, b):
+def val_func_difference(a, b):
     return type(a)(e for e in a if e not in b)
 
-def multiply(a, b):
+def val_func_multiply(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a * b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -157,30 +149,30 @@ def multiply(a, b):
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = height(I)
-    x2 = width(I)
-    x3 = partition(I)
-    x4 = colorfilter(x3, 0)
-    x5 = difference(x3, x4)
-    x6 = merge(x5)
-    x7 = astuple(x1, 1)
-    x8 = astuple(1, x2)
-    x9 = decrement(x1)
-    x10 = decrement(x2)
-    x11 = toivec(x10)
-    x12 = tojvec(x9)
-    x13 = crop(I, x11, x8)
-    x14 = crop(I, x12, x7)
-    x15 = asobject(x14)
-    x16 = asobject(x13)
-    x17 = vperiod(x15)
-    x18 = hperiod(x16)
-    x19 = astuple(x17, x18)
-    x20 = lbind(multiply, x19)
-    x21 = neighbors((0, 0))
-    x22 = mapply(neighbors, x21)
-    x23 = apply(x20, x22)
-    x24 = lbind(shift, x6)
-    x25 = mapply(x24, x23)
-    O = paint(I, x25)
+    x1 = val_func_height(I)
+    x2 = val_func_width(I)
+    x3 = val_func_partition(I)
+    x4 = val_func_colorfilter(x3, 0)
+    x5 = val_func_difference(x3, x4)
+    x6 = val_func_merge(x5)
+    x7 = val_func_astuple(x1, 1)
+    x8 = val_func_astuple(1, x2)
+    x9 = val_func_decrement(x1)
+    x10 = val_func_decrement(x2)
+    x11 = val_func_toivec(x10)
+    x12 = val_func_tojvec(x9)
+    x13 = val_func_crop(I, x11, x8)
+    x14 = val_func_crop(I, x12, x7)
+    x15 = val_func_asobject(x14)
+    x16 = val_func_asobject(x13)
+    x17 = val_func_vperiod(x15)
+    x18 = val_func_hperiod(x16)
+    x19 = val_func_astuple(x17, x18)
+    x20 = val_func_lbind(val_func_multiply, x19)
+    x21 = val_func_neighbors((0, 0))
+    x22 = mval_func_apply(val_func_neighbors, x21)
+    x23 = val_func_apply(x20, x22)
+    x24 = val_func_lbind(val_func_shift, x6)
+    x25 = mval_func_apply(x24, x23)
+    O = val_func_paint(I, x25)
     return [*map(list,O)]

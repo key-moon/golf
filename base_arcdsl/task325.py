@@ -1,47 +1,35 @@
-def ineighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_neighbors(loc):
+    return dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
-
-def dneighbors(loc):
+def dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def connect(a, b):
+def val_func_connect(a, b):
     ai, aj = a
     bi, bj = b
     si = min(ai, bi)
@@ -58,27 +46,27 @@ def connect(a, b):
         return frozenset((i, j) for i, j in zip(range(si, ei), range(ej - 1, sj - 1, -1)))
     return frozenset()
 
-def shoot(start, direction):
-    return connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
+def val_func_shoot(start, direction):
+    return val_func_connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
 
-def canvas(value, dimensions):
+def val_func_canvas(value, dimensions):
     return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostcolor(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -101,18 +89,18 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def astuple(a, b):
+def val_func_astuple(a, b):
     return (a, b)
 
-def size(container):
+def val_func_size(container):
     return len(container)
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, True, False, True)
-    x2 = size(x1)
-    x3 = astuple(x2, x2)
-    x4 = canvas(0, x3)
-    x5 = shoot((0, 0), (1, 1))
-    O = fill(x4, 8, x5)
+    x1 = val_func_objects(I, True, False, True)
+    x2 = val_func_size(x1)
+    x3 = val_func_astuple(x2, x2)
+    x4 = val_func_canvas(0, x3)
+    x5 = val_func_shoot((0, 0), (1, 1))
+    O = val_func_fill(x4, 8, x5)
     return [*map(list,O)]

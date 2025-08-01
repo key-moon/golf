@@ -1,77 +1,68 @@
-def index(grid, loc):
+def val_func_apply(function, container):
+    return type(container)(function(e) for e in container)
+
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def palette(element):
+def val_func_palette(element):
     if isinstance(element, tuple):
         return frozenset({v for r in element for v in r})
     return frozenset({v for v, _ in element})
 
-def lrcorner(patch):
-    return tuple(map(max, zip(*toindices(patch))))
+def val_func_lrcorner(patch):
+    return tuple(map(max, zip(*val_func_toindices(patch))))
 
-def vmirror(piece):
+def val_func_vmirror(piece):
     if isinstance(piece, tuple):
         return tuple(row[::-1] for row in piece)
-    d = ulcorner(piece)[1] + lrcorner(piece)[1]
+    d = val_func_ulcorner(piece)[1] + val_func_lrcorner(piece)[1]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (i, d - j)) for v, (i, j) in piece)
     return frozenset((i, d - j) for i, j in piece)
 
-def color(obj):
-    return next(iter(obj))[0]
-
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def hfrontier(location):
+def val_func_hfrontier(location):
     return frozenset((location[0], j) for j in range(30))
 
-def vfrontier(location):
+def val_func_vfrontier(location):
     return frozenset((i, location[1]) for i in range(30))
 
-def upscale(element, factor):
+def val_func_upscale(element, factor):
     if isinstance(element, tuple):
         g = tuple()
         for row in element:
-            upscaled_row = tuple()
+            val_func_upscaled_row = tuple()
             for value in row:
-                upscaled_row = upscaled_row + tuple(value for num in range(factor))
-            g = g + tuple(upscaled_row for num in range(factor))
+                val_func_upscaled_row = val_func_upscaled_row + tuple(value for num in range(factor))
+            g = g + tuple(val_func_upscaled_row for num in range(factor))
         return g
     else:
         if len(element) == 0:
             return frozenset()
-        di_inv, dj_inv = ulcorner(element)
+        di_inv, dj_inv = val_func_ulcorner(element)
         di, dj = (-di_inv, -dj_inv)
-        normed_obj = shift(element, (di, dj))
+        normed_obj = val_func_shift(element, (di, dj))
         o = set()
         for value, (i, j) in normed_obj:
             for io in range(factor):
                 for jo in range(factor):
                     o.add((value, (i * factor + io, j * factor + jo)))
-        return shift(frozenset(o), (di_inv, dj_inv))
+        return val_func_shift(frozenset(o), (di_inv, dj_inv))
 
-def underpaint(grid, obj):
+def val_func_underpaint(grid, obj):
     h, w = len(grid), len(grid[0])
-    bg = mostcolor(grid)
+    bg = val_func_mostcolor(grid)
     g = list(list(r) for r in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
@@ -79,44 +70,33 @@ def underpaint(grid, obj):
                 g[i][j] = value
     return tuple(tuple(r) for r in g)
 
-def paint(grid, obj):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
-    for value, (i, j) in obj:
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def fill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
-
-def cmirror(piece):
+def val_func_cmirror(piece):
     if isinstance(piece, tuple):
         return tuple(zip(*(r[::-1] for r in piece[::-1])))
-    return vmirror(dmirror(vmirror(piece)))
+    return val_func_vmirror(val_func_dmirror(val_func_vmirror(piece)))
 
-def dmirror(piece):
+def val_func_dmirror(piece):
     if isinstance(piece, tuple):
         return tuple(zip(*piece))
-    a, b = ulcorner(piece)
+    a, b = val_func_ulcorner(piece)
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (j - b + a, i - a + b)) for v, (i, j) in piece)
     return frozenset((j - b + a, i - a + b) for i, j in piece)
 
-def fgpartition(grid):
+def val_func_fgpartition(grid):
     return frozenset(       frozenset(           (v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value
-        ) for value in palette(grid) - {mostcolor(grid)}
+        ) for value in val_func_palette(grid) - {val_func_mostcolor(grid)}
     )
 
-def partition(grid):
-    return frozenset(frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value) for value in palette(grid))
-
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -124,49 +104,46 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def mapply(function, container):
-    return merge(apply(function, container))
+def mval_func_apply(function, container):
+    return val_func_merge(val_func_apply(function, container))
 
-def apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def fork(outer, a, b):
+def val_func_fork(outer, a, b):
     return lambda x: outer(a(x), b(x))
 
-def chain(h, g, f,):
+def val_func_chain(h, g, f,):
     return lambda x: h(g(f(x)))
 
-def astuple(a, b):
+def val_func_astuple(a, b):
     return (a, b)
 
-def merge(containers):
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def difference(a, b):
+def val_func_difference(a, b):
     return type(a)(e for e in a if e not in b)
 
-def combine(a, b):
+def val_func_combine(a, b):
     return type(a)((*a, *b))
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = fgpartition(I)
-    x2 = chain(cmirror, dmirror, merge)
+    x1 = val_func_fgpartition(I)
+    x2 = val_func_chain(val_func_cmirror, val_func_dmirror, val_func_merge)
     x3 = x2(x1)
-    x4 = upscale(x3, 3)
-    x5 = astuple(-2, -2)
-    x6 = shift(x4, x5)
-    x7 = underpaint(I, x6)
-    x8 = toindices(x3)
-    x9 = fork(combine, hfrontier, vfrontier)
-    x10 = mapply(x9, x8)
-    x11 = difference(x10, x8)
-    O = fill(x7, 0, x11)
+    x4 = val_func_upscale(x3, 3)
+    x5 = val_func_astuple(-2, -2)
+    x6 = val_func_shift(x4, x5)
+    x7 = val_func_underpaint(I, x6)
+    x8 = val_func_toindices(x3)
+    x9 = val_func_fork(val_func_combine, val_func_hfrontier, val_func_vfrontier)
+    x10 = mval_func_apply(x9, x8)
+    x11 = val_func_difference(x10, x8)
+    O = val_func_fill(x7, 0, x11)
     return [*map(list,O)]

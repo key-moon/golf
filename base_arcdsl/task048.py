@@ -1,47 +1,35 @@
-def ineighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_neighbors(loc):
+    return dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
-
-def dneighbors(loc):
+def dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
-
-def canvas(value, dimensions):
+def val_func_canvas(value, dimensions):
     return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
 
-def palette(element):
+def val_func_palette(element):
     if isinstance(element, tuple):
         return frozenset({v for r in element for v in r})
     return frozenset({v for v, _ in element})
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostcolor(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -64,7 +52,7 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def lbind(function, fixed):
+def val_func_lbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda y: function(fixed, y)
@@ -73,32 +61,32 @@ def lbind(function, fixed):
     else:
         return lambda y, z, a: function(fixed, y, z, a)
 
-def compose(outer, inner):
+def val_func_compose(outer, inner):
     return lambda x: outer(inner(x))
 
-def branch(condition, a, b):
+def val_func_branch(condition, a, b):
     return a if condition else b
 
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def size(container):
+def val_func_size(container):
     return len(container)
 
-def greater(a, b):
+def val_func_greater(a, b):
     return a > b
 
-def contained(value, container):
+def val_func_contained(value, container):
     return value in container
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, False, True, True)
-    x2 = lbind(contained, 2)
-    x3 = compose(x2, palette)
-    x4 = sfilter(x1, x3)
-    x5 = size(x4)
-    x6 = greater(x5, 1)
-    x7 = branch(x6, 0, 8)
-    O = canvas(x7, (1, 1))
+    x1 = val_func_objects(I, False, True, True)
+    x2 = val_func_lbind(val_func_contained, 2)
+    x3 = val_func_compose(x2, val_func_palette)
+    x4 = val_func_sfilter(x1, x3)
+    x5 = val_func_size(x4)
+    x6 = val_func_greater(x5, 1)
+    x7 = val_func_branch(x6, 0, 8)
+    O = val_func_canvas(x7, (1, 1))
     return [*map(list,O)]

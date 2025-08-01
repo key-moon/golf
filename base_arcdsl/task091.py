@@ -1,80 +1,77 @@
-def lowermost(patch):
-    return max(i for i, j in toindices(patch))
+def val_func_lowermost(patch):
+    return max(i for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def rightmost(patch):
-    return max(j for i, j in toindices(patch))
+def val_func_rightmost(patch):
+    return max(j for i, j in val_func_toindices(patch))
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def width(piece):
+def val_func_width(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece[0])
-    return rightmost(piece) - leftmost(piece) + 1
+    return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
 
-def height(piece):
+def val_func_height(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece)
-    return lowermost(piece) - uppermost(piece) + 1
+    return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def palette(element):
+def val_func_palette(element):
     if isinstance(element, tuple):
         return frozenset({v for r in element for v in r})
     return frozenset({v for v, _ in element})
 
-def mostcolor(element):
+def val_func_mostval_func_color(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def color(obj):
+def val_func_color(obj):
     return next(iter(obj))[0]
 
-def fgpartition(grid):
+def val_func_fgpartition(grid):
     return frozenset(       frozenset(           (v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value
-        ) for value in palette(grid) - {mostcolor(grid)}
+        ) for value in val_func_palette(grid) - {val_func_mostval_func_color(grid)}
     )
 
-def partition(grid):
-    return frozenset(frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value) for value in palette(grid))
-
-def crop(grid, start, dims):
+def val_func_crop(grid, start, dims):
     return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def shape(piece):
-    return (height(piece), width(piece))
+def val_func_shape(piece):
+    return (val_func_height(piece), val_func_width(piece))
 
-def matcher(function, target):
+def val_func_matcher(function, target):
     return lambda x: function(x) == target
 
-def extract(container, condition):
+def val_func_extract(container, condition):
     return next(e for e in container if condition(e))
 
-def subtract(a, b):
+def val_func_subtract(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a - b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -83,7 +80,7 @@ def subtract(a, b):
         return (a - b[0], a - b[1])
     return (a[0] - b, a[1] - b)
 
-def add(a,b):
+def val_func_add(a,b):
     if isinstance(a, int) and isinstance(b, int):
         return a + b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -94,12 +91,12 @@ def add(a,b):
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = fgpartition(I)
-    x2 = matcher(color, 5)
-    x3 = extract(x1, x2)
-    x4 = ulcorner(x3)
-    x5 = subtract(x4, (1, 0))
-    x6 = shape(x3)
-    x7 = add(x6, (2, 0))
-    O = crop(I, x5, x7)
+    x1 = val_func_fgpartition(I)
+    x2 = val_func_matcher(val_func_color, 5)
+    x3 = val_func_extract(x1, x2)
+    x4 = val_func_ulcorner(x3)
+    x5 = val_func_subtract(x4, (1, 0))
+    x6 = val_func_shape(x3)
+    x7 = val_func_add(x6, (2, 0))
+    O = val_func_crop(I, x5, x7)
     return [*map(list,O)]

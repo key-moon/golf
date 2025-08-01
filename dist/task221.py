@@ -1,6 +1,6 @@
 def p(g):
- A=len(g);E=len(g[0]);F=sum(v==0 for r in g for v in r);D=[[0]*E*F for _ in range(A*F)]
- for C in range(A*E-F):
-  for B,row in enumerate(g):
-   D[A*(C//F)+B][E*(C%F):E*(C%F)+E]=row
- return D
+ AA=len(g);AE=len(g[0]);AF=sum(v==0 for r in g for v in r);AD=[[0]*AE*AF for _ in range(AA*AF)]
+ for AC in range(AA*AE-AF):
+  for AB,row in enumerate(g):
+   AD[AA*(AC//AF)+AB][AE*(AC%AF):AE*(AC%AF)+AE]=row
+ return AD

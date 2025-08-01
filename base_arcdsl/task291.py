@@ -1,92 +1,53 @@
-def ineighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
+def val_func_neighbors(loc):
+    return dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
-def dneighbors(loc):
+def dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
+def mostval_func_color(element):
+    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
+    return max(set(values), key=values.count)
+    
 
-def manhattan(a, b):
-    return min(abs(ai - bi) + abs(aj - bj) for ai, aj in toindices(a) for bi, bj in toindices(b))
-
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def fill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
-
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def mostcolor(element):
-    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
-    return max(set(values), key=values.count)
-    
+def val_func_manhattan(a, b):
+    return min(abs(ai - bi) + abs(aj - bj) for ai, aj in val_func_toindices(a) for bi, bj in val_func_toindices(b))
 
-def cover(grid, patch):
-    return fill(grid, mostcolor(grid), toindices(patch))
-
-def paint(grid, obj):
-    h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
-    for value, (i, j) in obj:
-        if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
-
-def shift(patch, directions):
-    if len(patch) == 0:
-        return patch
-    di, dj = directions
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
-    return frozenset((i + di, j + dj) for i, j in patch)
-
-def move(grid, obj, offset):
-    return paint(cover(grid, obj), shift(obj, offset))
-
-def canvas(value, dimensions):
+def val_func_canvas(value, dimensions):
     return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
 
-def color(obj):
+def val_func_color(obj):
     return next(iter(obj))[0]
 
-def adjacent(a, b):
-    return manhattan(a, b) == 1
+def val_func_adjacent(a, b):
+    return val_func_manhattan(a, b) == 1
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = mostval_func_color(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -109,7 +70,7 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def rbind(function, fixed):
+def val_func_rbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda x: function(x, fixed)
@@ -118,25 +79,25 @@ def rbind(function, fixed):
     else:
         return lambda x, y, z: function(x, y, z, fixed)
 
-def remove(value, container):
+def val_func_remove(value, container):
     return type(container)(e for e in container if e != value)
 
-def extract(container, condition):
+def val_func_extract(container, condition):
     return next(e for e in container if condition(e))
 
-def argmin(container, compfunc):
+def val_func_argmin(container, compfunc):
     return min(container, key=compfunc)
 
-def size(container):
+def val_func_size(container):
     return len(container)
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, True, False, False)
-    x2 = argmin(x1, size)
-    x3 = rbind(adjacent, x2)
-    x4 = remove(x2, x1)
-    x5 = extract(x4, x3)
-    x6 = color(x5)
-    O = canvas(x6, (1, 1))
+    x1 = val_func_objects(I, True, False, False)
+    x2 = val_func_argmin(x1, val_func_size)
+    x3 = val_func_rbind(val_func_adjacent, x2)
+    x4 = val_func_remove(x2, x1)
+    x5 = val_func_extract(x4, x3)
+    x6 = val_func_color(x5)
+    O = val_func_canvas(x6, (1, 1))
     return [*map(list,O)]

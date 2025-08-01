@@ -1,88 +1,82 @@
-def merge(containers):
+def val_func_apply(function, container):
+    return type(container)(function(e) for e in container)
+
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
 
-def dneighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
+def val_func_manhattan(a, b):
+    return min(abs(ai - bi) + abs(aj - bj) for ai, aj in val_func_toindices(a) for bi, bj in val_func_toindices(b))
 
-def manhattan(a, b):
-    return min(abs(ai - bi) + abs(aj - bj) for ai, aj in toindices(a) for bi, bj in toindices(b))
+def val_func_lowermost(patch):
+    return max(i for i, j in val_func_toindices(patch))
 
-def lowermost(patch):
-    return max(i for i, j in toindices(patch))
+def val_func_rightmost(patch):
+    return max(j for i, j in val_func_toindices(patch))
 
-def rightmost(patch):
-    return max(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
-
-def width(piece):
+def val_func_width(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece[0])
-    return rightmost(piece) - leftmost(piece) + 1
+    return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
 
-def height(piece):
+def val_func_height(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece)
-    return lowermost(piece) - uppermost(piece) + 1
+    return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def center(patch):
-    return (uppermost(patch) + height(patch) // 2, leftmost(patch) + width(patch) // 2)
+def val_func_center(patch):
+    return (val_func_uppermost(patch) + val_func_height(patch) // 2, val_func_leftmost(patch) + val_func_width(patch) // 2)
 
-def lrcorner(patch):
-    return tuple(map(max, zip(*toindices(patch))))
+def val_func_lrcorner(patch):
+    return tuple(map(max, zip(*val_func_toindices(patch))))
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def backdrop(patch):
+def val_func_backdrop(patch):
     if len(patch) == 0:
         return frozenset({})
-    indices = toindices(patch)
-    si, sj = ulcorner(indices)
-    ei, ej = lrcorner(patch)
+    indices = val_func_toindices(patch)
+    si, sj = val_func_ulcorner(indices)
+    ei, ej = val_func_lrcorner(patch)
     return frozenset((i, j) for i in range(si, ei + 1) for j in range(sj, ej + 1))
 
-def delta(patch):
+def val_func_delta(patch):
     if len(patch) == 0:
         return frozenset({})
-    return backdrop(patch) - toindices(patch)
+    return val_func_backdrop(patch) - val_func_toindices(patch)
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def position(a, b):
-    ia, ja = center(toindices(a))
-    ib, jb = center(toindices(b))
+def val_func_position(a, b):
+    ia, ja = val_func_center(val_func_toindices(a))
+    ib, jb = val_func_center(val_func_toindices(b))
     if ia == ib:
         return (0, 1 if ja < jb else -1)
     elif ja == jb:
@@ -92,43 +86,40 @@ def position(a, b):
     elif ia > ib:
         return (-1, 1 if ja < jb else -1)
 
-def paint(grid, obj):
+def val_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
+    grid_val_func_painted = list(list(row) for row in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_painted[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_painted)
 
-def vmirror(piece):
+def val_func_vmirror(piece):
     if isinstance(piece, tuple):
         return tuple(row[::-1] for row in piece)
-    d = ulcorner(piece)[1] + lrcorner(piece)[1]
+    d = val_func_ulcorner(piece)[1] + val_func_lrcorner(piece)[1]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (i, d - j)) for v, (i, j) in piece)
     return frozenset((i, d - j) for i, j in piece)
 
-def hmirror(piece):
+def val_func_hmirror(piece):
     if isinstance(piece, tuple):
         return piece[::-1]
-    d = ulcorner(piece)[0] + lrcorner(piece)[0]
+    d = val_func_ulcorner(piece)[0] + val_func_lrcorner(piece)[0]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (d - i, j)) for v, (i, j) in piece)
     return frozenset((d - i, j) for i, j in piece)
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_adjacent(a, b):
+    return val_func_manhattan(a, b) == 1
 
-def adjacent(a, b):
-    return manhattan(a, b) == 1
-
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostcolor(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -151,7 +142,7 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -159,34 +150,31 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def recolor(value, patch):
-    return frozenset((value, index) for index in toindices(patch))
+def val_func_recolor(value, patch):
+    return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def shape(piece):
-    return (height(piece), width(piece))
+def val_func_shape(piece):
+    return (val_func_height(piece), val_func_width(piece))
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def mapply(function, container):
-    return merge(apply(function, container))
+def mval_func_apply(function, container):
+    return val_func_merge(val_func_apply(function, container))
 
-def apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def fork(outer, a, b):
+def val_func_fork(outer, a, b):
     return lambda x: outer(a(x), b(x))
 
-def lbind(function, fixed):
+def val_func_lbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda y: function(fixed, y)
@@ -195,7 +183,7 @@ def lbind(function, fixed):
     else:
         return lambda y, z, a: function(fixed, y, z, a)
 
-def rbind(function, fixed):
+def val_func_rbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda x: function(x, fixed)
@@ -204,57 +192,57 @@ def rbind(function, fixed):
     else:
         return lambda x, y, z: function(x, y, z, fixed)
 
-def chain(h, g, f,):
+def val_func_chain(h, g, f,):
     return lambda x: h(g(f(x)))
 
-def compose(outer, inner):
+def val_func_compose(outer, inner):
     return lambda x: outer(inner(x))
 
-def insert(value, container):
+def val_func_insert(value, container):
     return container.union(frozenset({value}))
 
-def last(container):
+def val_func_last(container):
     return max(enumerate(container))[1]
 
-def first(container):
+def val_func_first(container):
     return next(iter(container))
 
-def extract(container, condition):
+def val_func_extract(container, condition):
     return next(e for e in container if condition(e))
 
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def tojvec(j):
+def val_func_tojvec(j):
     return (0, j)
 
-def toivec(i):
+def val_func_toivec(i):
     return (i, 0)
 
-def crement(x):
+def val_func_crement(x):
     if isinstance(x, int):
         return 0 if x == 0 else (x + 1 if x > 0 else x - 1)
-    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),        0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
+    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
 
-def initset(value):
+def val_func_initset(value):
     return frozenset({value})
 
-def difference(a, b):
+def val_func_difference(a, b):
     return type(a)(e for e in a if e not in b)
 
-def intersection(a, b):
+def val_func_intersection(a, b):
     return a & b
 
-def combine(a, b):
+def val_func_combine(a, b):
     return type(a)((*a, *b))
 
-def equality(a, b):
+def val_func_equality(a, b):
     return a == b
 
-def invert(n):
+def val_func_invert(n):
     return -n if isinstance(n, int) else (-n[0], -n[1])
 
-def multiply(a, b):
+def val_func_multiply(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a * b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -264,66 +252,66 @@ def multiply(a, b):
     return (a[0] * b, a[1] * b)
     
 
-def identity(x):
+def val_func_identity(x):
     return x
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, False, True, True)
-    x2 = lbind(rbind, equality)
-    x3 = rbind(compose, first)
-    x4 = chain(x3, x2, mostcolor)
-    x5 = fork(sfilter, identity, x4)
-    x6 = fork(difference, identity, x5)
-    x7 = lbind(rbind, adjacent)
-    x8 = rbind(compose, initset)
-    x9 = chain(x8, x7, x6)
-    x10 = fork(extract, x5, x9)
-    x11 = fork(insert, x10, x6)
-    x12 = lbind(recolor, 0)
-    x13 = chain(x12, delta, x11)
-    x14 = fork(combine, x11, x13)
-    x15 = fork(position, x5, x6)
-    x16 = chain(toivec, first, x15)
-    x17 = chain(tojvec, last, x15)
-    x18 = fork(multiply, shape, x16)
-    x19 = fork(multiply, shape, x17)
-    x20 = fork(multiply, shape, x15)
-    x21 = fork(shift, hmirror, x18)
-    x22 = fork(shift, vmirror, x19)
-    x23 = compose(hmirror, vmirror)
-    x24 = fork(shift, x23, x20)
-    x25 = lbind(compose, x5)
+    x1 = val_func_objects(I, False, True, True)
+    x2 = val_func_lbind(val_func_rbind, val_func_equality)
+    x3 = val_func_rbind(val_func_compose, val_func_first)
+    x4 = val_func_chain(x3, x2, val_func_mostcolor)
+    x5 = val_func_fork(val_func_sfilter, val_func_identity, x4)
+    x6 = val_func_fork(val_func_difference, val_func_identity, x5)
+    x7 = val_func_lbind(val_func_rbind, val_func_adjacent)
+    x8 = val_func_rbind(val_func_compose, val_func_initset)
+    x9 = val_func_chain(x8, x7, x6)
+    x10 = val_func_fork(val_func_extract, x5, x9)
+    x11 = val_func_fork(val_func_insert, x10, x6)
+    x12 = val_func_lbind(val_func_recolor, 0)
+    x13 = val_func_chain(x12, val_func_delta, x11)
+    x14 = val_func_fork(val_func_combine, x11, x13)
+    x15 = val_func_fork(val_func_position, x5, x6)
+    x16 = val_func_chain(val_func_toivec, val_func_first, x15)
+    x17 = val_func_chain(val_func_tojvec, val_func_last, x15)
+    x18 = val_func_fork(val_func_multiply, val_func_shape, x16)
+    x19 = val_func_fork(val_func_multiply, val_func_shape, x17)
+    x20 = val_func_fork(val_func_multiply, val_func_shape, x15)
+    x21 = val_func_fork(val_func_shift, val_func_hmirror, x18)
+    x22 = val_func_fork(val_func_shift, val_func_vmirror, x19)
+    x23 = val_func_compose(val_func_hmirror, val_func_vmirror)
+    x24 = val_func_fork(val_func_shift, x23, x20)
+    x25 = val_func_lbind(val_func_compose, x5)
     x26 = x25(x21)
     x27 = x25(x22)
     x28 = x25(x24)
-    x29 = compose(crement, invert)
-    x30 = lbind(compose, x29)
+    x29 = val_func_compose(val_func_crement, val_func_invert)
+    x30 = val_func_lbind(val_func_compose, x29)
     x31 = x30(x16)
     x32 = x30(x17)
     x33 = x30(x15)
-    x34 = fork(shift, x26, x31)
-    x35 = fork(shift, x27, x32)
-    x36 = fork(shift, x28, x33)
-    x37 = lbind(index, I)
-    x38 = lbind(compose, toindices)
+    x34 = val_func_fork(val_func_shift, x26, x31)
+    x35 = val_func_fork(val_func_shift, x27, x32)
+    x36 = val_func_fork(val_func_shift, x28, x33)
+    x37 = val_func_lbind(val_func_index, I)
+    x38 = val_func_lbind(val_func_compose, val_func_toindices)
     x39 = x38(x14)
     x40 = x38(x34)
     x41 = x38(x35)
     x42 = x38(x36)
-    x43 = fork(intersection, x39, x40)
-    x44 = fork(intersection, x39, x41)
-    x45 = fork(intersection, x39, x42)
-    x46 = chain(x37, first, x43)
-    x47 = chain(x37, first, x44)
-    x48 = chain(x37, first, x45)
-    x49 = fork(recolor, x46, x34)
-    x50 = fork(recolor, x47, x35)
-    x51 = fork(recolor, x48, x36)
-    x52 = mapply(x49, x1)
-    x53 = mapply(x50, x1)
-    x54 = mapply(x51, x1)
-    x55 = paint(I, x52)
-    x56 = paint(x55, x53)
-    O = paint(x56, x54)
+    x43 = val_func_fork(val_func_intersection, x39, x40)
+    x44 = val_func_fork(val_func_intersection, x39, x41)
+    x45 = val_func_fork(val_func_intersection, x39, x42)
+    x46 = val_func_chain(x37, val_func_first, x43)
+    x47 = val_func_chain(x37, val_func_first, x44)
+    x48 = val_func_chain(x37, val_func_first, x45)
+    x49 = val_func_fork(val_func_recolor, x46, x34)
+    x50 = val_func_fork(val_func_recolor, x47, x35)
+    x51 = val_func_fork(val_func_recolor, x48, x36)
+    x52 = mval_func_apply(x49, x1)
+    x53 = mval_func_apply(x50, x1)
+    x54 = mval_func_apply(x51, x1)
+    x55 = val_func_paint(I, x52)
+    x56 = val_func_paint(x55, x53)
+    O = val_func_paint(x56, x54)
     return [*map(list,O)]

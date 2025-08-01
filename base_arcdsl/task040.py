@@ -1,112 +1,100 @@
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
-
-def dneighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
+def val_func_lowermost(patch):
+    return max(i for i, j in val_func_toindices(patch))
 
-def lowermost(patch):
-    return max(i for i, j in toindices(patch))
+def val_func_uppermost(patch):
+    return min(i for i, j in val_func_toindices(patch))
 
-def uppermost(patch):
-    return min(i for i, j in toindices(patch))
-
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def rightmost(patch):
-    return max(j for i, j in toindices(patch))
+def val_func_rightmost(patch):
+    return max(j for i, j in val_func_toindices(patch))
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def width(piece):
+def val_func_width(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece[0])
-    return rightmost(piece) - leftmost(piece) + 1
+    return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
 
-def height(piece):
+def val_func_height(piece):
     if len(piece) == 0:
         return 0
     if isinstance(piece, tuple):
         return len(piece)
-    return lowermost(piece) - uppermost(piece) + 1
+    return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def rot270(grid):
+def val_func_rot270(grid):
     return tuple(tuple(row[::-1]) for row in zip(*grid[::-1]))[::-1]
 
-def rot90(grid):
+def val_func_rot90(grid):
     return tuple(row for row in zip(*grid[::-1]))
 
-def righthalf(grid):
-    return rot270(bottomhalf(rot90(grid)))
+def val_func_righthalf(grid):
+    return val_func_rot270(val_func_bottomhalf(val_func_rot90(grid)))
 
-def lefthalf(grid):
-    return rot270(tophalf(rot90(grid)))
+def val_func_lefthalf(grid):
+    return val_func_rot270(val_func_tophalf(val_func_rot90(grid)))
 
-def bottomhalf(grid):
+def val_func_bottomhalf(grid):
     return grid[len(grid) // 2 + len(grid) % 2:]
 
-def tophalf(grid):
+def val_func_tophalf(grid):
     return grid[:len(grid) // 2]
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def replace(grid, replacee, replacer):
-    return tuple(tuple(replacer if v == replacee else v for v in r) for r in grid)
+def val_func_replace(grid, val_func_replacee, val_func_replacer):
+    return tuple(tuple(val_func_replacer if v == val_func_replacee else v for v in r) for r in grid)
 
-def vconcat(a, b):
+def val_func_vconcat(a, b):
     return a + b
 
-def hconcat(a, b):
+def val_func_hconcat(a, b):
     return tuple(i + j for i, j in zip(a, b))
 
-def hline(patch):
-    return width(patch) == len(patch) and height(patch) == 1
+def val_func_hline(patch):
+    return val_func_width(patch) == len(patch) and val_func_height(patch) == 1
 
-def vline(patch):
-    return height(patch) == len(patch) and width(patch) == 1
+def val_func_vline(patch):
+    return val_func_height(patch) == len(patch) and val_func_width(patch) == 1
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostcolor(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -129,10 +117,10 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def shape(piece):
-    return (height(piece), width(piece))
+def val_func_shape(piece):
+    return (val_func_height(piece), val_func_width(piece))
 
-def lbind(function, fixed):
+def val_func_lbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda y: function(fixed, y)
@@ -141,47 +129,42 @@ def lbind(function, fixed):
     else:
         return lambda y, z, a: function(fixed, y, z, a)
 
-def compose(outer, inner):
+def val_func_compose(outer, inner):
     return lambda x: outer(inner(x))
 
-def branch(condition, a, b):
+def val_func_branch(condition, a, b):
     return a if condition else b
 
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def crement(x):
-    if isinstance(x, int):
-        return 0 if x == 0 else (x + 1 if x > 0 else x - 1)
-    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),        0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
-
-def decrement(x):
+def val_func_decrement(x):
     return x - 1 if isinstance(x, int) else (x[0] - 1, x[1] - 1)
 
-def size(container):
+def val_func_size(container):
     return len(container)
 
-def greater(a, b):
+def val_func_greater(a, b):
     return a > b
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, True, False, True)
-    x2 = lbind(sfilter, x1)
-    x3 = compose(size, x2)
-    x4 = x3(vline)
-    x5 = x3(hline)
-    x6 = greater(x4, x5)
-    x7 = branch(x6, lefthalf, tophalf)
-    x8 = branch(x6, righthalf, bottomhalf)
-    x9 = branch(x6, hconcat, vconcat)
+    x1 = val_func_objects(I, True, False, True)
+    x2 = val_func_lbind(val_func_sfilter, x1)
+    x3 = val_func_compose(val_func_size, x2)
+    x4 = x3(val_func_vline)
+    x5 = x3(val_func_hline)
+    x6 = val_func_greater(x4, x5)
+    x7 = val_func_branch(x6, val_func_lefthalf, val_func_tophalf)
+    x8 = val_func_branch(x6, val_func_righthalf, val_func_bottomhalf)
+    x9 = val_func_branch(x6, val_func_hconcat, val_func_vconcat)
     x10 = x7(I)
     x11 = x8(I)
-    x12 = index(x10, (0, 0))
-    x13 = shape(x11)
-    x14 = decrement(x13)
-    x15 = index(x11, x14)
-    x16 = replace(x10, 3, x12)
-    x17 = replace(x11, 3, x15)
+    x12 = val_func_index(x10, (0, 0))
+    x13 = val_func_shape(x11)
+    x14 = val_func_decrement(x13)
+    x15 = val_func_index(x11, x14)
+    x16 = val_func_replace(x10, 3, x12)
+    x17 = val_func_replace(x11, 3, x15)
     O = x9(x16, x17)
     return [*map(list,O)]

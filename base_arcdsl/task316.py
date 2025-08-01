@@ -1,92 +1,83 @@
-def ineighbors(loc):
+def ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
-def neighbors(loc):
-    return dneighbors(loc) | ineighbors(loc)
+def val_func_neighbors(loc):
+    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
 
-def dneighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
-def asindices(grid):
+def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def mostcolor(element):
+def val_func_mostval_func_color(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def add(a,b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a + b
-    elif isinstance(a, tuple) and isinstance(b, tuple):
-        return (a[0] + b[0], a[1] + b[1])
-    elif isinstance(a, int) and isinstance(b, tuple):
-        return (a + b[0], a + b[1])
-    return (a[0] + b, a[1] + b)
+def val_func_lrcorner(patch):
+    return tuple(map(max, zip(*val_func_toindices(patch))))
 
-def lrcorner(patch):
-    return tuple(map(max, zip(*toindices(patch))))
-
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def canvas(value, dimensions):
+def val_func_canvas(value, dimensions):
     return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
 
-def hsplit(grid, n):
+def val_func_hsplit(grid, n):
     h, w = len(grid), len(grid[0]) // n
     offset = len(grid[0]) % n != 0
-    return tuple(crop(grid, (0, w * i + i * offset), (h, w)) for i in range(n))
+    return tuple(val_func_crop(grid, (0, w * i + i * offset), (h, w)) for i in range(n))
 
-def vconcat(a, b):
+def val_func_vconcat(a, b):
     return a + b
 
-def hconcat(a, b):
+def val_func_hconcat(a, b):
     return tuple(i + j for i, j in zip(a, b))
 
-def dmirror(piece):
+def val_func_dmirror(piece):
     if isinstance(piece, tuple):
         return tuple(zip(*piece))
-    a, b = ulcorner(piece)
+    a, b = val_func_ulcorner(piece)
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (j - b + a, i - a + b)) for v, (i, j) in piece)
     return frozenset((j - b + a, i - a + b) for i, j in piece)
 
-def vmirror(piece):
+def val_func_vmirror(piece):
     if isinstance(piece, tuple):
         return tuple(row[::-1] for row in piece)
-    d = ulcorner(piece)[1] + lrcorner(piece)[1]
+    d = val_func_ulcorner(piece)[1] + val_func_lrcorner(piece)[1]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (i, d - j)) for v, (i, j) in piece)
     return frozenset((i, d - j) for i, j in piece)
 
-def color(obj):
+def val_func_color(obj):
     return next(iter(obj))[0]
 
-def leftmost(patch):
-    return min(j for i, j in toindices(patch))
+def val_func_leftmost(patch):
+    return min(j for i, j in val_func_toindices(patch))
 
-def objects(grid, univalued, diagonal, without_bg):
-    bg = mostcolor(grid) if without_bg else None
+def val_func_objects(grid, univalued, diagonal, without_bg):
+    bg = val_func_mostval_func_color(grid) if without_bg else None
     objs = set()
     occupied = set()
     h, w = len(grid), len(grid[0])
-    unvisited = asindices(grid)
-    diagfun = neighbors if diagonal else dneighbors
+    unvisited = val_func_asindices(grid)
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -109,13 +100,13 @@ def objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def crop(grid, start, dims):
+def val_func_crop(grid, start, dims):
     return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
 
-def apply(function, container):
+def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
 
-def rbind(function, fixed):
+def val_func_rbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda x: function(x, fixed)
@@ -124,19 +115,19 @@ def rbind(function, fixed):
     else:
         return lambda x, y, z: function(x, y, z, fixed)
 
-def astuple(a, b):
+def val_func_astuple(a, b):
     return (a, b)
 
-def merge(containers):
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def size(container):
+def val_func_size(container):
     return len(container)
 
-def order(container, compfunc):
+def val_func_order(container, compfunc):
     return tuple(sorted(container, key=compfunc))
 
-def subtract(a, b):
+def val_func_subtract(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a - b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -147,25 +138,25 @@ def subtract(a, b):
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = objects(I, True, False, True)
-    x2 = astuple(1, 3)
-    x3 = size(x1)
-    x4 = order(x1, leftmost)
-    x5 = apply(color, x4)
-    x6 = rbind(canvas, (1, 1))
-    x7 = apply(x6, x5)
-    x8 = merge(x7)
-    x9 = dmirror(x8)
-    x10 = subtract(9, x3)
-    x11 = astuple(1, x10)
-    x12 = canvas(0, x11)
-    x13 = hconcat(x9, x12)
-    x14 = hsplit(x13, 3)
-    x15 = merge(x14)
-    x16 = crop(x15, (0, 0), x2)
-    x17 = crop(x15, (1, 0), x2)
-    x18 = crop(x15, (2, 0), x2)
-    x19 = vmirror(x17)
-    x20 = vconcat(x16, x19)
-    O = vconcat(x20, x18)
+    x1 = val_func_objects(I, True, False, True)
+    x2 = val_func_astuple(1, 3)
+    x3 = val_func_size(x1)
+    x4 = val_func_order(x1, val_func_leftmost)
+    x5 = val_func_apply(val_func_color, x4)
+    x6 = val_func_rbind(val_func_canvas, (1, 1))
+    x7 = val_func_apply(x6, x5)
+    x8 = val_func_merge(x7)
+    x9 = val_func_dmirror(x8)
+    x10 = val_func_subtract(9, x3)
+    x11 = val_func_astuple(1, x10)
+    x12 = val_func_canvas(0, x11)
+    x13 = val_func_hconcat(x9, x12)
+    x14 = val_func_hsplit(x13, 3)
+    x15 = val_func_merge(x14)
+    x16 = val_func_crop(x15, (0, 0), x2)
+    x17 = val_func_crop(x15, (1, 0), x2)
+    x18 = val_func_crop(x15, (2, 0), x2)
+    x19 = val_func_vmirror(x17)
+    x20 = val_func_vconcat(x16, x19)
+    O = val_func_vconcat(x20, x18)
     return [*map(list,O)]

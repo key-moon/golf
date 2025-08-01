@@ -1,42 +1,42 @@
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def mostcolor(element):
+def val_func_mostcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return max(set(values), key=values.count)
     
 
-def cover(grid, patch):
-    return fill(grid, mostcolor(grid), toindices(patch))
+def val_func_cover(grid, patch):
+    return val_func_fill(grid, val_func_mostcolor(grid), val_func_toindices(patch))
 
-def paint(grid, obj):
+def val_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
-    grid_painted = list(list(row) for row in grid)
+    grid_val_func_painted = list(list(row) for row in grid)
     for value, (i, j) in obj:
         if 0 <= i < h and 0 <= j < w:
-            grid_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_painted)
+            grid_val_func_painted[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_painted)
 
-def shift(patch, directions):
+def val_func_shift(patch, directions):
     if len(patch) == 0:
         return patch
     di, dj = directions
@@ -44,30 +44,22 @@ def shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def move(grid, obj, offset):
-    return paint(cover(grid, obj), shift(obj, offset))
+def val_func_move(grid, obj, offset):
+    return val_func_paint(val_func_cover(grid, obj), val_func_shift(obj, offset))
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_recolor(value, patch):
+    return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
-def recolor(value, patch):
-    return frozenset((value, index) for index in toindices(patch))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
-
-def ofcolor(grid, value):
+def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def crement(x):
-    if isinstance(x, int):
-        return 0 if x == 0 else (x + 1 if x > 0 else x - 1)
-    return (0 if x[0] == 0 else (x[0] + 1 if x[0] > 0 else x[0] - 1),        0 if x[1] == 0 else (x[1] + 1 if x[1] > 0 else x[1] - 1))
-
-def increment(x):
+def val_func_increment(x):
     return x + 1 if isinstance(x, int) else (x[0] + 1, x[1] + 1)
 
-def subtract(a, b):
+def val_func_subtract(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a - b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -78,12 +70,12 @@ def subtract(a, b):
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = ofcolor(I, 2)
-    x2 = ofcolor(I, 3)
-    x3 = recolor(2, x1)
-    x4 = ulcorner(x2)
-    x5 = ulcorner(x1)
-    x6 = subtract(x4, x5)
-    x7 = increment(x6)
-    O = move(I, x3, x7)
+    x1 = val_func_ofcolor(I, 2)
+    x2 = val_func_ofcolor(I, 3)
+    x3 = val_func_recolor(2, x1)
+    x4 = val_func_ulcorner(x2)
+    x5 = val_func_ulcorner(x1)
+    x6 = val_func_subtract(x4, x5)
+    x7 = val_func_increment(x6)
+    O = val_func_move(I, x3, x7)
     return [*map(list,O)]

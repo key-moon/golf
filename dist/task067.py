@@ -1,1 +1,1 @@
-def p(g):return [A[:len(g)]for A in g]
+def p(g):return [AA[:len(g)]for AA in g]

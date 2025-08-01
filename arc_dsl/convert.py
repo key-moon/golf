@@ -11,7 +11,7 @@ def extract_functions(file_path):
 dsl_funcs = extract_functions("arc_dsl/dsl.py")
 solver_funcs = extract_functions("arc_dsl/solvers.py")
 
-dep_re = rf"(?<!\.)({'|'.join(name for _, name in dsl_funcs)})"
+dep_re = r"(?<!\.)(\w+)"
 
 def resolve_dependencies(impl: str):
   dependencies = set()
@@ -29,8 +29,6 @@ def resolve_dependencies(impl: str):
 
   return dependencies, impls
 
-print(len(solver_funcs), solver_funcs[:10])
-
 for i in range(1,401):
   task = f"task{i:03}"
   arc = task2arc[task]
@@ -42,7 +40,7 @@ for i in range(1,401):
   deps, impls = resolve_dependencies(solver)
   impl = "\n".join(impls[::-1])
   for dep in deps:
-    re.sub(rf"(?<!\.){dep}", "", impl.replace(dep, f"val_func_{dep}"))
+    impl = re.sub(rf"(?<!\.){dep}", f"val_func_{dep}", impl)
   for name, val in reversed(consts.items()):
     impl = impl.replace(name, repr(val))
   open(f"base_arcdsl/{task}.py", "w").write(impl)

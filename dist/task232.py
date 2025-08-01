@@ -1,6 +1,6 @@
 def p(g):
- for C in g:
-  try:A,D=next((i,v)for i,v in enumerate(C)if v)
+ for AC in g:
+  try:AA,AD=next((i,v)for i,v in enumerate(AC)if v)
   except:continue
-  for B in range(len(C)-A):C[A+B]=[D,5][B&1]
+  for AB in range(len(AC)-AA):AC[AA+AB]=[AD,5][AB&1]
  return g

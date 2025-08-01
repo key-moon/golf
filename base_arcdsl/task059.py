@@ -1,54 +1,51 @@
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def merge(containers):
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def toobject(patch, grid):
+def val_func_toobject(patch, grid):
     h, w = len(grid), len(grid[0])
-    return frozenset((grid[i][j], (i, j)) for i, j in toindices(patch) if 0 <= i < h and 0 <= j < w)
+    return frozenset((grid[i][j], (i, j)) for i, j in val_func_toindices(patch) if 0 <= i < h and 0 <= j < w)
 
-def color(obj):
-    return next(iter(obj))[0]
-
-def colorcount(element, value):
+def val_func_colorcount(element, value):
     if isinstance(element, tuple):
         return sum(row.count(value) for row in element)
     return sum(v == value for v, _ in element)
 
-def leastcolor(element):
+def val_func_leastcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return min(set(values), key=values.count)
 
-def apply(function, container):
+def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
 
-def fork(outer, a, b):
+def val_func_fork(outer, a, b):
     return lambda x: outer(a(x), b(x))
 
-def rbind(function, fixed):
+def val_func_rbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda x: function(x, fixed)
@@ -57,34 +54,34 @@ def rbind(function, fixed):
     else:
         return lambda x, y, z: function(x, y, z, fixed)
 
-def matcher(function, target):
+def val_func_matcher(function, target):
     return lambda x: function(x) == target
 
-def compose(outer, inner):
+def val_func_compose(outer, inner):
     return lambda x: outer(inner(x))
 
-def product(a, b):
+def val_func_product(a, b):
     return frozenset((i, j) for j in b for i in a)
 
-def interval(start, stop, step):
+def val_func_interval(start, stop, step):
     return tuple(range(start, stop, step))
 
-def last(container):
+def val_func_last(container):
     return max(enumerate(container))[1]
 
-def first(container):
+def val_func_first(container):
     return next(iter(container))
 
-def mfilter(container, function):
-    return merge(sfilter(container, function))
+def val_func_mfilter(container, function):
+    return val_func_merge(val_func_sfilter(container, function))
 
-def valmax(container, compfunc):
+def val_func_valmax(container, compfunc):
     return compfunc(max(container, key=compfunc, default=0))
 
-def flip(b):
+def val_func_flip(b):
     return not b
 
-def add(a,b):
+def val_func_add(a,b):
     if isinstance(a, int) and isinstance(b, int):
         return a + b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -93,29 +90,29 @@ def add(a,b):
         return (a + b[0], a + b[1])
     return (a[0] + b, a[1] + b)
 
-def identity(x):
+def val_func_identity(x):
     return x
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = leastcolor(I)
-    x2 = interval(0, 9, 4)
-    x3 = product(x2, x2)
-    x4 = rbind(add, 3)
-    x5 = rbind(interval, 1)
-    x6 = fork(x5, identity, x4)
-    x7 = compose(x6, first)
-    x8 = compose(x6, last)
-    x9 = fork(product, x7, x8)
-    x10 = rbind(colorcount, x1)
-    x11 = rbind(toobject, I)
-    x12 = compose(x10, x11)
-    x13 = apply(x9, x3)
-    x14 = valmax(x13, x12)
-    x15 = matcher(x12, x14)
-    x16 = compose(flip, x15)
-    x17 = mfilter(x13, x15)
-    x18 = mfilter(x13, x16)
-    x19 = fill(I, x1, x17)
-    O = fill(x19, 0, x18)
+    x1 = val_func_leastcolor(I)
+    x2 = val_func_interval(0, 9, 4)
+    x3 = val_func_product(x2, x2)
+    x4 = val_func_rbind(val_func_add, 3)
+    x5 = val_func_rbind(val_func_interval, 1)
+    x6 = val_func_fork(x5, val_func_identity, x4)
+    x7 = val_func_compose(x6, val_func_first)
+    x8 = val_func_compose(x6, val_func_last)
+    x9 = val_func_fork(val_func_product, x7, x8)
+    x10 = val_func_rbind(val_func_colorcount, x1)
+    x11 = val_func_rbind(val_func_toobject, I)
+    x12 = val_func_compose(x10, x11)
+    x13 = val_func_apply(x9, x3)
+    x14 = val_func_valmax(x13, x12)
+    x15 = val_func_matcher(x12, x14)
+    x16 = val_func_compose(val_func_flip, x15)
+    x17 = val_func_mfilter(x13, x15)
+    x18 = val_func_mfilter(x13, x16)
+    x19 = val_func_fill(I, x1, x17)
+    O = val_func_fill(x19, 0, x18)
     return [*map(list,O)]

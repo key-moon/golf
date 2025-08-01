@@ -1,1 +1,1 @@
-def p(g):return next(g[A:A+3]for A in(0,3,6)if any((g[A][1]!=g[A+1][0],g[A][2]!=g[A+2][0],g[A+1][2]!=g[A+2][1])))
+def p(g):return next(g[AA:AA+3]for AA in(0,3,6)if any((g[AA][1]!=g[AA+1][0],g[AA][2]!=g[AA+2][0],g[AA+1][2]!=g[AA+2][1])))

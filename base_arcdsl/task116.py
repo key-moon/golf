@@ -1,36 +1,36 @@
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def lrcorner(patch):
-    return tuple(map(max, zip(*toindices(patch))))
+def val_func_lrcorner(patch):
+    return tuple(map(max, zip(*val_func_toindices(patch))))
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def vconcat(a, b):
+def val_func_vconcat(a, b):
     return a + b
 
-def hmirror(piece):
+def val_func_hmirror(piece):
     if isinstance(piece, tuple):
         return piece[::-1]
-    d = ulcorner(piece)[0] + lrcorner(piece)[0]
+    d = val_func_ulcorner(piece)[0] + val_func_lrcorner(piece)[0]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (d - i, j)) for v, (i, j) in piece)
     return frozenset((d - i, j) for i, j in piece)
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = hmirror(I)
-    O = vconcat(x1, I)
+    x1 = val_func_hmirror(I)
+    O = val_func_vconcat(x1, I)
     return [*map(list,O)]

@@ -888,10 +888,10 @@ def occurrences(grid, obj):
     h2, w2 = h - oh + 1, w - ow + 1
     for i in range(h2):
         for j in range(w2):
-            occurs = True
+            occurs = T
             for v, (a, b) in shift(normed, (i, j)):
                 if not (0 <= a < h and 0 <= b < w and grid[a][b] == v):
-                    occurs = False
+                    occurs = F
                     break
             if occurs:
                 occs.add((i, j))

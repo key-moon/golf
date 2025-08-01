@@ -221,3 +221,182 @@ dirname='base_arcdsl'
 ✅ base_arcdsl/task220.py len(code)=1443
 ❌ base_arcdsl/task221.py
 ❌ base_arcdsl/task222.py
+✅ base_arcdsl/task223.py len(code)=1518
+✅ base_arcdsl/task224.py len(code)=2768
+✅ base_arcdsl/task225.py len(code)=4448
+❌ base_arcdsl/task226.py
+✅ base_arcdsl/task227.py len(code)=1161
+✅ base_arcdsl/task228.py len(code)=5680
+❌ base_arcdsl/task229.py
+✅ base_arcdsl/task230.py len(code)=4127
+✅ base_arcdsl/task231.py len(code)=2930
+❌ base_arcdsl/task232.py
+❌ base_arcdsl/task233.py
+✅ base_arcdsl/task234.py len(code)=6266
+✅ base_arcdsl/task235.py len(code)=3741
+✅ base_arcdsl/task236.py len(code)=1872
+✅ base_arcdsl/task237.py len(code)=5832
+❌ base_arcdsl/task238.py
+❌ base_arcdsl/task239.py
+✅ base_arcdsl/task240.py len(code)=6020
+✅ base_arcdsl/task241.py len(code)=681
+✅ base_arcdsl/task242.py len(code)=1740
+✅ base_arcdsl/task243.py len(code)=3160
+✅ base_arcdsl/task244.py len(code)=3516
+✅ base_arcdsl/task245.py len(code)=2295
+✅ base_arcdsl/task246.py len(code)=2222
+✅ base_arcdsl/task247.py len(code)=3291
+❌ base_arcdsl/task248.py
+✅ base_arcdsl/task249.py len(code)=125
+✅ base_arcdsl/task250.py len(code)=3388
+✅ base_arcdsl/task251.py len(code)=3379
+❌ base_arcdsl/task252.py
+✅ base_arcdsl/task253.py len(code)=4073
+✅ base_arcdsl/task254.py len(code)=2691
+❌ base_arcdsl/task255.py
+✅ base_arcdsl/task256.py len(code)=2427
+✅ base_arcdsl/task257.py len(code)=1309
+✅ base_arcdsl/task258.py len(code)=1096
+✅ base_arcdsl/task259.py len(code)=3018
+✅ base_arcdsl/task260.py len(code)=5579
+❌ base_arcdsl/task261.py
+✅ base_arcdsl/task262.py len(code)=1713
+✅ base_arcdsl/task263.py len(code)=2968
+✅ base_arcdsl/task264.py len(code)=7371
+❌ base_arcdsl/task265.py
+✅ base_arcdsl/task266.py len(code)=1263
+✅ base_arcdsl/task267.py len(code)=444
+❌ base_arcdsl/task268.py
+✅ base_arcdsl/task269.py len(code)=2002
+✅ base_arcdsl/task270.py len(code)=4898
+✅ base_arcdsl/task271.py len(code)=3261
+✅ base_arcdsl/task272.py len(code)=2537
+✅ base_arcdsl/task273.py len(code)=5648
+✅ base_arcdsl/task274.py len(code)=2635
+✅ base_arcdsl/task275.py len(code)=4159
+✅ base_arcdsl/task276.py len(code)=184
+✅ base_arcdsl/task277.py len(code)=3242
+✅ base_arcdsl/task278.py len(code)=4073
+✅ base_arcdsl/task279.py len(code)=3590
+✅ base_arcdsl/task280.py len(code)=6617
+✅ base_arcdsl/task281.py len(code)=4011
+✅ base_arcdsl/task282.py len(code)=1505
+✅ base_arcdsl/task283.py len(code)=4198
+✅ base_arcdsl/task284.py len(code)=5986
+❌ base_arcdsl/task285.py
+❌ base_arcdsl/task286.py
+✅ base_arcdsl/task287.py len(code)=1889
+✅ base_arcdsl/task288.py len(code)=2432
+✅ base_arcdsl/task289.py len(code)=2055
+✅ base_arcdsl/task290.py len(code)=3175
+❌ base_arcdsl/task291.py
+✅ base_arcdsl/task292.py len(code)=1933
+✅ base_arcdsl/task293.py len(code)=2915
+✅ base_arcdsl/task294.py len(code)=4323
+✅ base_arcdsl/task295.py len(code)=4331
+✅ base_arcdsl/task296.py len(code)=1943
+✅ base_arcdsl/task297.py len(code)=2684
+✅ base_arcdsl/task298.py len(code)=2600
+✅ base_arcdsl/task299.py len(code)=1728
+✅ base_arcdsl/task300.py len(code)=2922
+✅ base_arcdsl/task301.py len(code)=4125
+✅ base_arcdsl/task302.py len(code)=3486
+✅ base_arcdsl/task303.py len(code)=1591
+✅ base_arcdsl/task304.py len(code)=2467
+❌ base_arcdsl/task305.py
+❌ base_arcdsl/task306.py
+✅ base_arcdsl/task307.py len(code)=1518
+❌ base_arcdsl/task308.py
+✅ base_arcdsl/task309.py len(code)=184
+✅ base_arcdsl/task310.py len(code)=1565
+✅ base_arcdsl/task311.py len(code)=845
+✅ base_arcdsl/task312.py len(code)=2837
+❌ base_arcdsl/task313.py
+❌ base_arcdsl/task314.py
+✅ base_arcdsl/task315.py len(code)=2167
+❌ base_arcdsl/task316.py
+✅ base_arcdsl/task317.py len(code)=4145
+✅ base_arcdsl/task318.py len(code)=1161
+❌ base_arcdsl/task319.py
+✅ base_arcdsl/task320.py len(code)=3861
+✅ base_arcdsl/task321.py len(code)=2085
+✅ base_arcdsl/task322.py len(code)=4055
+❌ base_arcdsl/task323.py
+❌ base_arcdsl/task324.py
+✅ base_arcdsl/task325.py len(code)=2951
+✅ base_arcdsl/task326.py len(code)=187
+✅ base_arcdsl/task327.py len(code)=4236
+✅ base_arcdsl/task328.py len(code)=6439
+✅ base_arcdsl/task329.py len(code)=1441
+✅ base_arcdsl/task330.py len(code)=2711
+✅ base_arcdsl/task331.py len(code)=1128
+✅ base_arcdsl/task332.py len(code)=1482
+❌ base_arcdsl/task333.py
+✅ base_arcdsl/task334.py len(code)=2396
+✅ base_arcdsl/task335.py len(code)=1905
+✅ base_arcdsl/task336.py len(code)=3308
+✅ base_arcdsl/task337.py len(code)=172
+❌ base_arcdsl/task338.py
+✅ base_arcdsl/task339.py len(code)=2132
+❌ base_arcdsl/task340.py
+❌ base_arcdsl/task341.py
+✅ base_arcdsl/task342.py len(code)=3983
+❌ base_arcdsl/task343.py
+❌ base_arcdsl/task344.py
+✅ base_arcdsl/task345.py len(code)=5651
+✅ base_arcdsl/task346.py len(code)=3436
+✅ base_arcdsl/task347.py len(code)=1249
+✅ base_arcdsl/task348.py len(code)=2539
+❌ base_arcdsl/task349.py
+✅ base_arcdsl/task350.py len(code)=2975
+✅ base_arcdsl/task351.py len(code)=2843
+✅ base_arcdsl/task352.py len(code)=4036
+✅ base_arcdsl/task353.py len(code)=2171
+✅ base_arcdsl/task354.py len(code)=3373
+❌ base_arcdsl/task355.py
+✅ base_arcdsl/task356.py len(code)=2975
+❌ base_arcdsl/task357.py
+❌ base_arcdsl/task358.py
+✅ base_arcdsl/task359.py len(code)=3140
+✅ base_arcdsl/task360.py len(code)=3080
+❌ base_arcdsl/task361.py
+✅ base_arcdsl/task362.py len(code)=3731
+❌ base_arcdsl/task363.py
+✅ base_arcdsl/task364.py len(code)=4805
+✅ base_arcdsl/task365.py len(code)=3502
+❌ base_arcdsl/task366.py
+✅ base_arcdsl/task367.py len(code)=5842
+✅ base_arcdsl/task368.py len(code)=4006
+✅ base_arcdsl/task369.py len(code)=2601
+❌ base_arcdsl/task370.py
+✅ base_arcdsl/task371.py len(code)=1699
+✅ base_arcdsl/task372.py len(code)=2095
+✅ base_arcdsl/task373.py len(code)=1040
+✅ base_arcdsl/task374.py len(code)=2536
+✅ base_arcdsl/task375.py len(code)=1822
+✅ base_arcdsl/task376.py len(code)=1963
+✅ base_arcdsl/task377.py len(code)=2575
+❌ base_arcdsl/task378.py
+❌ base_arcdsl/task379.py
+✅ base_arcdsl/task380.py len(code)=148
+✅ base_arcdsl/task381.py len(code)=2837
+❌ base_arcdsl/task382.py
+❌ base_arcdsl/task383.py
+✅ base_arcdsl/task384.py len(code)=3709
+✅ base_arcdsl/task385.py len(code)=878
+✅ base_arcdsl/task386.py len(code)=1990
+✅ base_arcdsl/task387.py len(code)=6324
+❌ base_arcdsl/task388.py
+✅ base_arcdsl/task389.py len(code)=603
+❌ base_arcdsl/task390.py
+✅ base_arcdsl/task391.py len(code)=2480
+✅ base_arcdsl/task392.py len(code)=4824
+✅ base_arcdsl/task393.py len(code)=3027
+❌ base_arcdsl/task394.py
+✅ base_arcdsl/task395.py len(code)=1725
+✅ base_arcdsl/task396.py len(code)=3452
+❌ base_arcdsl/task397.py
+❌ base_arcdsl/task398.py
+✅ base_arcdsl/task399.py len(code)=3075
+✅ base_arcdsl/task400.py len(code)=2338
+success: 276/400

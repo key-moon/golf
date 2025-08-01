@@ -1,49 +1,49 @@
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def lrcorner(patch):
-    return tuple(map(max, zip(*toindices(patch))))
+def val_func_lrcorner(patch):
+    return tuple(map(max, zip(*val_func_toindices(patch))))
 
-def ulcorner(patch):
-    return tuple(map(min, zip(*toindices(patch))))
+def val_func_ulcorner(patch):
+    return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def vconcat(a, b):
+def val_func_vconcat(a, b):
     return a + b
 
-def hconcat(a, b):
+def val_func_hconcat(a, b):
     return tuple(i + j for i, j in zip(a, b))
 
-def vmirror(piece):
+def val_func_vmirror(piece):
     if isinstance(piece, tuple):
         return tuple(row[::-1] for row in piece)
-    d = ulcorner(piece)[1] + lrcorner(piece)[1]
+    d = val_func_ulcorner(piece)[1] + val_func_lrcorner(piece)[1]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (i, d - j)) for v, (i, j) in piece)
     return frozenset((i, d - j) for i, j in piece)
 
-def hmirror(piece):
+def val_func_hmirror(piece):
     if isinstance(piece, tuple):
         return piece[::-1]
-    d = ulcorner(piece)[0] + lrcorner(piece)[0]
+    d = val_func_ulcorner(piece)[0] + val_func_lrcorner(piece)[0]
     if isinstance(next(iter(piece))[1], tuple):
         return frozenset((v, (d - i, j)) for v, (i, j) in piece)
     return frozenset((d - i, j) for i, j in piece)
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = vmirror(I)
-    x2 = hconcat(I, x1)
-    x3 = hmirror(x2)
-    O = vconcat(x2, x3)
+    x1 = val_func_vmirror(I)
+    x2 = val_func_hconcat(I, x1)
+    x3 = val_func_hmirror(x2)
+    O = val_func_vconcat(x2, x3)
     return [*map(list,O)]

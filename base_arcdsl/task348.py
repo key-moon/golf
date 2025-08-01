@@ -1,21 +1,24 @@
-def merge(containers):
+def val_func_apply(function, container):
+    return type(container)(function(e) for e in container)
+
+def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def index(grid, loc):
+def val_func_index(grid, loc):
     i, j = loc
     h, w = len(grid), len(grid[0])
     if not (0 <= i < h and 0 <= j < w):
         return None
     return grid[loc[0]][loc[1]] 
 
-def toindices(patch):
+def val_func_toindices(patch):
     if len(patch) == 0:
         return frozenset()
     if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(index for value, index in patch)
+        return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def connect(a, b):
+def val_func_connect(a, b):
     ai, aj = a
     bi, bj = b
     si = min(ai, bi)
@@ -32,33 +35,27 @@ def connect(a, b):
         return frozenset((i, j) for i, j in zip(range(si, ei), range(ej - 1, sj - 1, -1)))
     return frozenset()
 
-def shoot(start, direction):
-    return connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
+def val_func_shoot(start, direction):
+    return val_func_connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
 
-def fill(grid, value, patch):
+def val_func_fill(grid, value, patch):
     h, w = len(grid), len(grid[0])
-    grid_filled = list(list(row) for row in grid)
-    for i, j in toindices(patch):
+    grid_val_func_filled = list(list(row) for row in grid)
+    for i, j in val_func_toindices(patch):
         if 0 <= i < h and 0 <= j < w:
-            grid_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_filled)
+            grid_val_func_filled[i][j] = value
+    return tuple(tuple(row) for row in grid_val_func_filled)
 
-def color(obj):
-    return next(iter(obj))[0]
+def val_func_lrcorner(patch):
+    return tuple(map(max, zip(*val_func_toindices(patch))))
 
-def lrcorner(patch):
-    return tuple(map(max, zip(*toindices(patch))))
-
-def ofcolor(grid, value):
+def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def mapply(function, container):
-    return merge(apply(function, container))
+def mval_func_apply(function, container):
+    return val_func_merge(val_func_apply(function, container))
 
-def apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def rbind(function, fixed):
+def val_func_rbind(function, fixed):
     n = function.__code__.co_argcount
     if n == 2:
         return lambda x: function(x, fixed)
@@ -67,22 +64,22 @@ def rbind(function, fixed):
     else:
         return lambda x, y, z: function(x, y, z, fixed)
 
-def chain(h, g, f,):
+def val_func_chain(h, g, f,):
     return lambda x: h(g(f(x)))
 
-def last(container):
+def val_func_last(container):
     return max(enumerate(container))[1]
 
-def sfilter(container, condition):
+def val_func_sfilter(container, condition):
     return type(container)(e for e in container if condition(e))
 
-def combine(a, b):
+def val_func_combine(a, b):
     return type(a)((*a, *b))
 
-def even(n):
+def val_func_even(n):
     return n % 2 == 0
 
-def subtract(a, b):
+def val_func_subtract(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a - b
     elif isinstance(a, tuple) and isinstance(b, tuple):
@@ -93,17 +90,17 @@ def subtract(a, b):
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = ofcolor(I, 7)
-    x2 = lrcorner(x1)
-    x3 = shoot(x2, (-1, 1))
-    x4 = shoot(x2, (-1, -1))
-    x5 = combine(x3, x4)
-    x6 = rbind(shoot, (-1, 0))
-    x7 = mapply(x6, x5)
-    x8 = last(x2)
-    x9 = rbind(subtract, x8)
-    x10 = chain(even, x9, last)
-    x11 = fill(I, 8, x7)
-    x12 = sfilter(x7, x10)
-    O = fill(x11, 7, x12)
+    x1 = val_func_ofcolor(I, 7)
+    x2 = val_func_lrcorner(x1)
+    x3 = val_func_shoot(x2, (-1, 1))
+    x4 = val_func_shoot(x2, (-1, -1))
+    x5 = val_func_combine(x3, x4)
+    x6 = val_func_rbind(val_func_shoot, (-1, 0))
+    x7 = mval_func_apply(x6, x5)
+    x8 = val_func_last(x2)
+    x9 = val_func_rbind(val_func_subtract, x8)
+    x10 = val_func_chain(val_func_even, x9, val_func_last)
+    x11 = val_func_fill(I, 8, x7)
+    x12 = val_func_sfilter(x7, x10)
+    O = val_func_fill(x11, 7, x12)
     return [*map(list,O)]

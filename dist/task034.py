@@ -1,7 +1,5 @@
 #coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚ¥VÍnã8¾ÏSø(§ê NÛ™éöÞËÎA ÛJ«¬#²’º}ú¥HÉ?IŠY`/‰D‘?Š¤èZm³½r¯ŠUÖx©r]þð-sÊœÉüG;;a*ÛZ—U™6Ù(F™BYþ­DmjÕ³W§kÞØ*ài¾°||ãï¢QÏržV/Ëu:ÛÌXÏ–OB?½eÒÔ,wOïÁ>úÛ5°CS@ó5þë5ú÷èJu¬•¾zCÛ,x£½Ë	æÖÙOe:å‘Ð6—¦RÌ¨Þ3í•‹†9¸àþÐ6*¿€ãuesPœöp1d>0Ç-Ruªm$xÂËŠ•nšŠà•Ño:lB$³L5ÊŽä?xuyXº°ÄG-$Í“?[î‚‡¯“ò´Pµhtçþ8ûNÐö}ŸÄÍ ß9€ƒpO@ó,«AžMá_ôúe·p9ês§É–"«lc‹AE€1ƒAžCP¨Ú½é­§¤òZ;UymM÷‡B¡¬eµæõNŒVÿ·hXº³+@Þ]Õ@óü&O
-hb=š+XNê*Œî…ð††øŠ–,A¥â=m'Â=4•ufˆò´R÷²e{mø§nÙâ!bØ-qÃjDÿ—©…K è°˜•9À£%=µ\ržìøq~ârjBEo’'‡ªQ{e|ð†
-x¡¾!|:4Òzžâ¨³Ú.šùf°~Œ¡ÀE°ùÊù?êƒˆuß+{\0Ô™N¶móÁ¶ƒ•Å%//ÞGRîs^"–’\0÷'xÃ“=A¥×ÿKÅXCóóî,W8(†ã|dHŠX~£&ÂÿšóI4q@àj6‘bºK(ºu«{x(\0Ñˆ$û¾ÙT¶V›\rda#Ý+æ‚‘«I³6r_Ö2ûxÜ"ÿ€ŽT\réß\\ÐçŸgüm:uQË\\¦÷mßÚN1{€Çu~C¤Àc†Ç¬ÏÓDä‚A;Ï;o[øQíYÛ:i Nµ¢‡U\r §o^tüôy[…ÞOŒ•õW
-þ¢}Ö_ÃcÆHžæQ6ÑVƒ¬ÁŽGýbª_úÅD¿úD¾V3ú‘&ð¸ÉÀâºà&¥\0ª
-úeÖ™Xœ2gl!ù¢Lí¡„5Óa´XÎŠÑ›o‹7àm±JY;*ç§×æk€ë€À³ë€ûÿÐxZ+Ò›J4\ry",O)e¬ñ™)½|gÆ§cŽÉUˆÉX‰Ü.à]¤rŽ¡ÎÌIôßRöŸÅ8pÅŸóü±/Dš<Ï|ûUú†
-{¾É˜L‹>èÜ6ýŠ÷7 ¹©z¨’[üiÚö7¼¿ÉO‘ºv(@N•‡¿Ä0DQù^ÄŒ÷¿É¥ Ï”€~… —²ÿÉá4HVbèì%¿çEÝˆ4HRþA ŠEq+è]DhÞÿ²;'ƒÄö[Ðgâ3lÝóË"\\cø\0ä¿óõ¿^Q(ƒ"""))))
+import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚ¥VKsÛ6¾çWð*PF8‰8°MœªM©gÒ4HB6T
+Ô€”û×w\0_=9ô"íû}ûÄJ¹ØÑ$+UÍ¥º
+¯ÞZÔ­‚úy/ú7D›RY UÐÛ3aÏÂ79ÒÝ’-sZ”’Iºe ^?Ò'VeïBÚHëY‚Í&PeMf7LÞ<\\åˆÛ›'Ä7ÑÜ•J´¡Y(°<¶ßó8vÎÿ&{^gÖó&@7NglÖ#ÛèòE¨JÔÄy—•TUÍU&ˆ¦&²ÚCà¦õa_ˆp” ºµ8òâ ((Plƒµª‹îÞ•&ºÓ{Ý¯5: în0¦#c`ˆ¢ÁÑù@r¢¨Q´¥tÄwŽ¸L·Húz­¯QH¢;‘³BV5±º|r¤åSGÛËŠ@C¸\0v,ÄvÖ)<ZîµŒ×Û˜YôhŠ#-ÐgóÃÕžæR‹¬–¥ª~ÒOWâ —4ß²õ{Kšüßóöm¾\rÃóªœt»‡î`ˆ±76Ï¿¼ƒvd_‹ ºµn¼Ú÷,ÿS¼+òŽïÉN*ú"÷dÒØŸnd¬ƒqß˜ ‹ÜŽ›P‡Ð¼n®ðfKÃºÉu¬ÎÑïDb'T^ìEÅÖn¢¯»íx<l›7ðÂááGšôâkŸ$M0ç+¤ÿŠgPõ.+‡N’ÍAeÉ^GA	g†ršŽV£1h«b»™Ú8$ŠÜÑîúdíšìQÂº7ñåú	|¸•Ã..v›¸½v”«Žr#\r<3 S¬9{—$Y™‹$ê$\\?Ø¹¥ÌØ¢÷0
+¾Ks<_µ>-}†é…³_ŽØÓ—3}±˜JŒšS> ¾ÀÑ¯¤<À¦R\r+ãñæÊ^{MLSÖ¯¦I×´ªË=|ˆýÙ{Ñ\\=ˆ3+ÿLÀLç'«Å@8µMb`ÑNçÔÀr™Î=ü2œ+ÛE2át’6N¾Õ³Q“Åéþêœ(p2YPN&ÿ­Ÿª×ÁSDÓ`ŠhýÖ8qÂ=ß;Lía¯s|’ú	@Ý{=Ÿ.\\Â1—Câ˜Nj£á\råœÍS5<'ÞƒKzOV\\±n_Z‰®ÂðÚÌ¬È]€¸€_bé”%ƒfðø=Z˜5KP.4Ù@ÛßƒòÁn7Kj.@ùÈ`d£Ï4úÊ'ûÚ_2h˜ù„žf~ò{‰8ŽˆùHáUpþ•Ìè%£¶dÃ½};@Î1 9D´"Ñj> vÁpÁ)\\CˆßüMXÞ]QÖÌÿÐïaüƒ\\Ké'''))))

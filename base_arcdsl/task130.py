@@ -1,7 +1,7 @@
-def replace(grid, replacee, replacer):
-    return tuple(tuple(replacer if v == replacee else v for v in r) for r in grid)
+def val_func_replace(grid, val_func_replacee, val_func_replacer):
+    return tuple(tuple(val_func_replacer if v == val_func_replacee else v for v in r) for r in grid)
 
-def downscale(grid, factor):
+def val_func_downscale(grid, factor):
     h, w = len(grid), len(grid[0])
     g = tuple()
     for i in range(h):
@@ -19,6 +19,6 @@ def downscale(grid, factor):
 
 def p(I):
     I=tuple(map(tuple,I))
-    x1 = replace(I, 5, 0)
-    O = downscale(x1, 3)
+    x1 = val_func_replace(I, 5, 0)
+    O = val_func_downscale(x1, 3)
     return [*map(list,O)]

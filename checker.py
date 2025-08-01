@@ -126,7 +126,7 @@ if __name__ == "__main__":
         success += 1
       else:
         print(f"❌ {code_path}")
-        # print(f"{res.correct=}" if res.message == "ok" else res.message)
+        print(f"{res.correct=}" if res.message == "ok" else res.message)
       if len(res.outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"
         visualize_outputs(res.outputs, vis_path)
