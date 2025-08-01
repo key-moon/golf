@@ -62,7 +62,7 @@ SLOW = ["base_yu/task002.py", "base_yu/task396.py"]
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
   stats = []
-  for i in range(355, 401):
+  for i in range(1, 401):
     task = get_task(i)
     shortest = LONG
     task_stat = {
@@ -91,16 +91,6 @@ if __name__ == "__main__":
       a = sorted(zip([cmp(code) for cmp in compressors], compressors), key=lambda x: len(x[0]))
       print(f"{base_path}: {' / '.join(f'{cmp.__name__}->{len(code)}' for code, cmp in a)}")
 
-      if do_check:
-        for code, cmp in a:
-          res = check_str(code, task)
-          if res.correct != 1.0:
-            print(f"[!] compression failed: {cmp.__name__}, {res.message}")
-            task_stat["base_path"] = base_path
-            task_stat["compressor"] = cmp.__name__
-            task_stat["message"] = res.message
-            stats.append(task_stat)
-            exit(1)
       
       compressed = a[0][0]
       if len(compressed) < len(shortest):
@@ -115,6 +105,15 @@ if __name__ == "__main__":
       task_stat["message"] = "WA"
       stats.append(task_stat)
       continue
+    if task_stat["base_path"] not in SLOW:
+      res = check_str(shortest, task)
+      if res.correct != 1.0:
+        print(f"[!] compression failed: {res.message}")
+        task_stat["message"] = res.message
+        task_stat["success"] = False
+        stats.append(task_stat)
+        exit(1)
+
     score += 2500 - len(shortest)
     accepted += 1
     open(f"dist/task{i:03}.py", "wb").write(shortest)
