@@ -63,7 +63,7 @@ if __name__ == "__main__":
       if correct == 1.:
         with open(hoge, "r") as f:
           code = f.read()
-        print(f"✅ {hoge} {len(code)}")
+        print(f"✅ {hoge} {len(code)=}")
       else:
         print(f"❌ {hoge}")
         print(f"{correct=}" if msg == "ok" else msg)

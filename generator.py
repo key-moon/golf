@@ -9,7 +9,7 @@ import sys
 import zlib
 
 from checker import check
-from utils import get_code_paths
+from utils import get_code_paths, get_task
 
 def strip(code: str):
   lines = [l for l in code.strip().splitlines() if not l.startswith("#")]
