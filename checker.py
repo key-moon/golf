@@ -9,12 +9,6 @@ import multiprocessing
 
 from utils import parse_range_str
 
-def get_task(i: int):
-  return json.load(open(f"tasks/task{i:03}.json", "r"))
-
-def get_base_code_paths(base_path: str, i: int):
-  return glob.glob(f"{base_path}/task{i:03}*.py")
-
 def check(path: str, task: dict):
   assert path.endswith(".py")
   module_name = path[:-3].replace("/", ".")

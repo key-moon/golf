@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 import tqdm
 
-from checker import get_task
-from utils import parse_range_str
+from utils import parse_range_str, get_task
 
 cmap = colors.ListedColormap([
     '#8B00FF',  # Violet

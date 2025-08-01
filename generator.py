@@ -8,21 +8,20 @@ import re
 import sys
 import zlib
 
-from checker import check, get_task
-
-def get_base_code_paths(i):
-  return glob.glob(f"base_code/task{i:03}*.py")
+from checker import check
+from utils import get_code_paths
 
 def strip(code: str):
-  lines = code.splitlines()
+  lines = [l for l in code.strip().splitlines() if not l.startswith("#")]
   if len(lines) == 1: return code
   res = ""
   basic_indent = len(lines[1]) - len(lines[1].lstrip(' '))
   for l in lines:
-    indent = len(l) - len(l.lstrip(' '))
+    stripped = l.strip()
+    indent = len(l) - len(stripped)
     if l.find("#"):
       l = l.split("#")[0]
-    res += " " * (indent // basic_indent) + l.strip()
+    res += " " * (indent // basic_indent) + stripped
     res += "\n"
   return res.strip()
 
@@ -48,14 +47,13 @@ LONG = "A" * 0x1000
 for i in range(1, 401):
   task = get_task(i)
   shortest = LONG
-  for base_path in get_base_code_paths(i):
+  for base_path in get_code_paths("base_code", i):
     if check(base_path, task)[0] != 1.0:
       continue
     
     code = strip(open(base_path).read())
     if check_str(code, task)[0] != 1.0:
       print(f"{base_path}: strip failed")
-      input("> ")
       continue
 
     a = sorted(zip([cmp(code) for cmp in compressors], compressors), key=lambda x: len(x[0]))
