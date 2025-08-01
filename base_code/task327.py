@@ -1,3 +1,4 @@
 def p(g):
-    d={j-i:g[i][j]for i in range(3)for j in range(3)if g[i][j]}
-    return [[d.get(j-i,0) for j in range(6)] for i in range(6)]
+  h = len(g)
+  n = h * 2
+  return [[sum((g[r-k][c-k] if 0 <= r-k < h and 0 <= c-k < h else 0) for k in range(n)) for c in range(n)] for r in range(n)]
