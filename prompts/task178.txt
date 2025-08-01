@@ -1,0 +1,97 @@
+Find the common rule that maps an input grid to an output grid, given the examples below.
+
+Example 1:
+
+Input:
+1 1 1
+2 2 2
+1 1 1
+Output:
+1
+2
+1
+
+Example 1:
+
+Input:
+3 4 6
+3 4 6
+3 4 6
+Output:
+3 4 6
+
+Example 1:
+
+Input:
+2 3 3 8 1
+2 3 3 8 1
+2 3 3 8 1
+Output:
+2 3 8 1
+
+Example 1:
+
+Input:
+2 2
+6 6
+8 8
+8 8
+Output:
+2
+6
+8
+
+Example 1:
+
+Input:
+4 4 4 4
+4 4 4 4
+2 2 2 2
+2 2 2 2
+8 8 8 8
+3 3 3 3
+Output:
+4
+2
+8
+3
+
+Example 1:
+
+Input:
+1 1 2 3 3 3 8 8 4
+1 1 2 3 3 3 8 8 4
+1 1 2 3 3 3 8 8 4
+1 1 2 3 3 3 8 8 4
+Output:
+1 2 3 8 4
+
+Example 1:
+
+Input:
+8 8 8 1 8
+8 8 8 1 8
+8 8 8 1 8
+8 8 8 1 8
+8 8 8 1 8
+Output:
+8 1 8
+
+Example 1:
+
+Input:
+9
+9
+9
+2
+2
+8
+9
+Output:
+9
+2
+8
+9
+
+
+Write Python code that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.

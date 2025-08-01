@@ -1,0 +1,120 @@
+Find the common rule that maps an input grid to an output grid, given the examples below.
+
+Example 1:
+
+Input:
+6 6 6 2
+6 1 6 2
+7 2 7 2
+1 7 2 2
+Output:
+2 6 6 6
+2 6 1 6
+2 7 2 7
+2 2 7 1
+
+Example 1:
+
+Input:
+7 7 7 6 6 6 2
+6 7 1 1 7 7 1
+7 7 2 1 2 6 6
+2 2 7 7 7 2 2
+7 2 7 1 2 7 2
+6 6 6 2 2 1 1
+6 2 6 6 6 6 6
+Output:
+2 6 6 6 7 7 7
+1 7 7 1 1 7 6
+6 6 2 1 2 7 7
+2 2 7 7 7 2 2
+2 7 2 1 7 2 7
+1 1 2 2 6 6 6
+6 6 6 6 6 2 6
+
+Example 1:
+
+Input:
+1 2 7 1 1 1
+2 1 7 7 2 6
+2 1 2 6 2 1
+1 2 1 7 6 2
+2 7 1 2 7 1
+2 1 6 2 7 7
+Output:
+1 1 1 7 2 1
+6 2 7 7 1 2
+1 2 6 2 1 2
+2 6 7 1 2 1
+1 7 2 1 7 2
+7 7 2 6 1 2
+
+Example 1:
+
+Input:
+7 6 1
+6 7 6
+6 2 2
+Output:
+1 6 7
+6 7 6
+2 2 6
+
+Example 1:
+
+Input:
+6 7 2 6 1 7 2
+6 7 7 6 6 6 2
+7 6 7 6 6 6 2
+2 6 2 7 7 1 6
+6 2 2 6 2 6 6
+2 1 6 7 1 7 2
+1 7 7 7 6 7 6
+Output:
+2 7 1 6 2 7 6
+2 6 6 6 7 7 6
+2 6 6 6 7 6 7
+6 1 7 7 2 6 2
+6 6 2 6 2 2 6
+2 7 1 7 6 1 2
+6 7 6 7 7 7 1
+
+Example 1:
+
+Input:
+1 6 2
+7 7 7
+2 6 6
+Output:
+2 6 1
+7 7 7
+6 6 2
+
+Example 1:
+
+Input:
+7 6 6
+1 7 2
+7 2 1
+Output:
+6 6 7
+2 7 1
+1 2 7
+
+Example 1:
+
+Input:
+2 6 1 1 1
+2 6 2 1 1
+6 6 2 6 6
+1 7 2 1 2
+7 7 6 7 2
+Output:
+1 1 1 6 2
+1 1 2 6 2
+6 6 2 6 6
+2 1 2 7 1
+2 7 6 7 7
+
+
+Write Python code that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.

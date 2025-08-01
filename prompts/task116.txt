@@ -1,0 +1,116 @@
+Find the common rule that maps an input grid to an output grid, given the examples below.
+
+Example 1:
+
+Input:
+9 9 5 9
+5 5 9 9
+9 5 9 9
+Output:
+9 5 9 9
+5 5 9 9
+9 9 5 9
+9 9 5 9
+5 5 9 9
+9 5 9 9
+
+Example 1:
+
+Input:
+4 1 1 4
+1 1 1 1
+4 4 4 1
+Output:
+4 4 4 1
+1 1 1 1
+4 1 1 4
+4 1 1 4
+1 1 1 1
+4 4 4 1
+
+Example 1:
+
+Input:
+9 4 9 4
+9 9 4 4
+4 4 4 4
+Output:
+4 4 4 4
+9 9 4 4
+9 4 9 4
+9 4 9 4
+9 9 4 4
+4 4 4 4
+
+Example 1:
+
+Input:
+3 3 5 5
+3 5 5 3
+5 5 3 3
+Output:
+5 5 3 3
+3 5 5 3
+3 3 5 5
+3 3 5 5
+3 5 5 3
+5 5 3 3
+
+Example 1:
+
+Input:
+4 4 9 9
+4 4 4 4
+4 4 9 9
+Output:
+4 4 9 9
+4 4 4 4
+4 4 9 9
+4 4 9 9
+4 4 4 4
+4 4 9 9
+
+Example 1:
+
+Input:
+2 2 7 7
+7 2 2 7
+7 7 2 2
+Output:
+7 7 2 2
+7 2 2 7
+2 2 7 7
+2 2 7 7
+7 2 2 7
+7 7 2 2
+
+Example 1:
+
+Input:
+4 8 8 8
+4 4 8 8
+8 8 8 8
+Output:
+8 8 8 8
+4 4 8 8
+4 8 8 8
+4 8 8 8
+4 4 8 8
+8 8 8 8
+
+Example 1:
+
+Input:
+5 5 5 5
+5 6 5 5
+6 5 6 5
+Output:
+6 5 6 5
+5 6 5 5
+5 5 5 5
+5 5 5 5
+5 6 5 5
+6 5 6 5
+
+
+Write Python code that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.
