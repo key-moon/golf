@@ -1,6 +1,6 @@
 def p(g):
- AA=next(filter(None,g[-1]));AE=g[-1].index(AA)
- for AC in range(AE,10,2):
-  for AB in range(10):g[AB][AC]=AA
- for AD,AC in enumerate(range(AE+1,10,2)):g[(AD&1)*9][AC]=5
+ A=next(filter(None,g[-1]));E=g[-1].index(A)
+ for C in range(E,10,2):
+  for B in range(10):g[B][C]=A
+ for D,C in enumerate(range(E+1,10,2)):g[(D&1)*9][C]=5
  return g

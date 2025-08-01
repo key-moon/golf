@@ -7,7 +7,7 @@ syms = r"=<>!?^|&%()\[\]{},;:*/+-"
 def strip(code: str):
   matches = sorted(set(re.findall(r'val_[\w_]+', code)))
 
-  vals = list(string.ascii_uppercase[::-1]) + [f"{a}{b}" for a in string.ascii_uppercase[::-1] for b in string.ascii_uppercase[::-1]]
+  vals = [f"{a}{b}" for a in string.ascii_uppercase[::-1] for b in string.ascii_uppercase[::-1]] + list(string.ascii_uppercase[::-1])
   for replace in matches:
     assert len(vals) != 0, "auto variable resolution failed"
     val_name = vals.pop()

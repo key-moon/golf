@@ -1,7 +1,7 @@
 def p(g):
- AC=len(g[0]);AF=g[-1].index(1);AA=1;AB=[[0]*AC for _ in g]
- for AD in AB[::-1]:
-  AD[AF]=1;AE=AF+AA
-  (AE<0 or AE>=AC)and(AA:=-AA)
-  AF+=AA
- return AB
+ C=len(g[0]);F=g[-1].index(1);A=1;B=[[0]*C for _ in g]
+ for D in B[::-1]:
+  D[F]=1;E=F+A
+  (E<0 or E>=C)and(A:=-A)
+  F+=A
+ return B
