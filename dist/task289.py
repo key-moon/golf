@@ -1,0 +1,2 @@
+def p(g):
+ f=len({*sum(g,[])}-{0});return[sum([[x]*f for x in r],[])for r in g for _ in[0]*f]

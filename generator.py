@@ -6,6 +6,7 @@ import zlib
 from checker import check
 from strip import strip
 from utils import get_code_paths, get_task
+import os
 
 def vanilla(code: str):
   return code.strip().encode()
@@ -60,9 +61,18 @@ SLOW = ["base_yu/task002.py"]
 
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
+  stats = []
   for i in range(1, 401):
     task = get_task(i)
     shortest = LONG
+    task_stat = {
+      "task": i,
+      "base_path": None,
+      "compressor": None,
+      "length": None,
+      "message": None,
+      "success": False
+    }
     for base_path in get_code_paths("base_*", i):
       do_check = base_path not in SLOW
       if do_check and check(base_path, task).correct != 1.0:
@@ -72,6 +82,9 @@ if __name__ == "__main__":
       code = strip(open(base_path).read())
       if do_check and check_str(code, task).correct != 1.0:
         print(f"{base_path}: strip failed, {check_str(code, task).message}")
+        task_stat["base_path"] = base_path
+        task_stat["message"] = check_str(code, task).message
+        stats.append(task_stat)
         exit(1)
         continue
 
@@ -83,16 +96,44 @@ if __name__ == "__main__":
           res = check_str(code, task)
           if res.correct != 1.0:
             print(f"[!] compression failed: {cmp.__name__}, {res.message}")
+            task_stat["base_path"] = base_path
+            task_stat["compressor"] = cmp.__name__
+            task_stat["message"] = res.message
+            stats.append(task_stat)
             exit(1)
       
       compressed = a[0][0]
       if len(compressed) < len(shortest):
         shortest = compressed
+        task_stat["base_path"] = base_path
+        task_stat["compressor"] = a[0][1].__name__
+        task_stat["length"] = len(compressed)
+        task_stat["success"] = True
 
     if shortest == LONG:
       print(f"[!] failed: vis/task{i:03}.png")
+      task_stat["message"] = "Compression failed"
+      stats.append(task_stat)
       continue
     score += 2500 - len(shortest)
     accepted += 1
     open(f"dist/task{i:03}.py", "wb").write(shortest)
+    stats.append(task_stat)
+
   print(f"accepted: {accepted}/400, {score=}")
+
+  # Write stats to README
+  with open("README.md", "w") as readme:
+    readme.write("# Compression Stats\n\n")
+    readme.write(f"Accepted: {accepted}/400\n")
+    readme.write(f"Score: {score}\n\n")
+    readme.write("## Task Details\n\n")
+    readme.write("| Task | Success | Compressor | Length | Message |\n")
+    readme.write("|------|---------|------------|--------|---------|\n")
+    for stat in stats:
+      task = f"{stat['task']:03}"
+      success = "✅" if stat["success"] else "❌"
+      checker = stat["compressor"] if stat["success"] else "-"
+      length = str(stat["length"]) if stat["success"] else "-"
+      message = stat["message"] if not stat["success"] else "-"
+      readme.write(f"| {task} | {success} | {checker} | {length} | {message} |\n")
