@@ -3,11 +3,19 @@ import glob
 import json
 import multiprocessing.pool
 import os
+from signal import alarm
+import signal
 import sys
+from time import sleep
 import traceback
 import multiprocessing
 
-from utils import get_code_paths, parse_range_str
+from utils import get_code_paths, get_task, parse_range_str
+
+class TimeoutException(Exception): pass
+def handler(signum, frame):
+  raise TimeoutException()
+signal.signal(signal.SIGALRM, handler)
 
 def check(path: str, task: dict):
   assert path.endswith(".py")
@@ -32,16 +40,19 @@ def check(path: str, task: dict):
     for example in tests:
       example_copy = copy.deepcopy(example)
       try:
-        result = pool.apply_async(program, (example_copy["input"],))
-        output = result.get(timeout=0.2)
+        signal.setitimer(signal.ITIMER_REAL, 0.2)
+        # signal.alarm(1)
+        output = program(example_copy["input"])
+        signal.alarm(0)
         if output == example_copy["output"]:
           right += 1
         else:
           wrong += 1
-      except TimeoutError as e:
+      except TimeoutException as e:
         errors.add("timeout")
         break
       except Exception as e:
+        print(e)
         tb = traceback.format_exception(type(e), e, e.__traceback__)
         errors.add(tb[0])
         wrong += 1
@@ -56,15 +67,14 @@ if __name__ == "__main__":
   
   print(f"{dirname=}")
   for i in parse_range_str(range_str):
-    for hoge in get_code_paths(dirname, i):
-      if not os.path.exists(hoge): continue
-      task = json.load(open(f"tasks/task{i:03}.json", "r"))
-      correct, msg = check(hoge, task)
+    task = get_task(i)
+    for code_path in get_code_paths(dirname, i):
+      if not os.path.exists(code_path): continue
+      correct, msg = check(code_path, task)
       if correct == 1.:
-        with open(hoge, "r") as f:
+        with open(code_path, "r") as f:
           code = f.read()
-        print(f"✅ {hoge} {len(code)=}")
+        print(f"✅ {code_path} {len(code)=}")
       else:
-        print(f"❌ {hoge}")
+        print(f"❌ {code_path}")
         print(f"{correct=}" if msg == "ok" else msg)
-  
