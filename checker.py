@@ -9,6 +9,10 @@ import sys
 from time import sleep
 import traceback
 import multiprocessing
+import matplotlib.pyplot as plt
+from matplotlib import colors
+from task_viz import cmap, norm
+import numpy as np
 
 from strip import strip
 from utils import get_code_paths, get_task, parse_range_str
@@ -37,6 +41,7 @@ def check(path: str, task: dict):
   wrong, right = 0, 0
 
   errors = set()
+  outputs = []
   for example in tests:
     example_copy = copy.deepcopy(example)
     try:
@@ -47,18 +52,49 @@ def check(path: str, task: dict):
       if output == example_copy["output"]:
         right += 1
       else:
+        outputs.append(output)
         wrong += 1
     except TimeoutException as e:
+      outputs.append(None)
       errors.add("timeout")
       break
     except Exception as e:
+      signal.alarm(0)
+      outputs.append(None)
       tb = traceback.format_exception(type(e), e, e.__traceback__)
       errors.add(tb[0])
       wrong += 1
 
   if errors:
-    return right / len(tests), "\n\n".join(errors)
-  return right / len(tests), "ok"
+    return outputs, right / len(tests), "\n\n".join(errors)
+  return outputs, right / len(tests), "ok"
+
+def visualize_outputs(task, outputs, num_visualize, path):
+    tasks  = []
+    tasks += [(f"train_{i}", t) for i, t in enumerate(task['train'])]
+    tasks += [(f"test_{i}", t) for i, t in enumerate(task['test'])]
+    tasks += [(f"arcgen_{i}", t) for i, t in enumerate(task['arc-gen'])]
+    fig, axes = plt.subplots(num_visualize, 3, figsize=(5 * 3, 5 * num_visualize))
+    for idx, (name, task) in enumerate(tasks[:num_visualize]):
+      mat_inp = np.array(task['input']) 
+      shape_i = mat_inp.shape
+      mat_out = np.array(task['output'])
+      shape_o = mat_out.shape
+      axes[idx, 0].set_title(f"{shape_i}")
+      axes[idx, 0].imshow(mat_inp, cmap=cmap, norm=norm)
+      axes[idx, 1].set_title(f"{shape_o}")
+      axes[idx, 1].imshow(mat_out, cmap=cmap, norm=norm)
+      axes[idx, 1].axis('off')
+      if outputs[idx] is not None:
+        mat_out_pred = np.array(outputs[idx])
+        shape_p = mat_out_pred.shape
+        axes[idx, 2].set_title(f"{shape_p}")
+        axes[idx, 2].imshow(mat_out_pred, cmap=cmap, norm=norm)
+      else:
+        axes[idx, 2].set_title("FAILED")
+        axes[idx, 2].axis('off')
+    plt.tight_layout()
+    plt.savefig(path)
 
 if __name__ == "__main__":
   dirname = sys.argv[1] if 2 <= len(sys.argv) else "dist"
@@ -69,7 +105,8 @@ if __name__ == "__main__":
     task = get_task(i)
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
-      correct, msg = check(code_path, task)
+      outputs, correct, msg = check(code_path, task)
+      visualize_outputs(task, outputs, min(5, len(outputs)), f"vis_output/task{i:03}.png")
       if correct == 1.:
         with open(code_path, "r") as f:
           code = strip(f.read().strip())
