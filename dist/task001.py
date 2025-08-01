@@ -1,1 +1,1 @@
-def p(g):return[sum(([[0]*3,g[i%3]][g[i//3][j]>0]for j in(0,1,2)),[])for i in range(9)]
+p=lambda g:[sum((g[i%3]if g[i//3][j]else[0]*3 for j in(0,1,2)),[])for i in range(9)]
