@@ -128,12 +128,14 @@ if __name__ == "__main__":
     readme.write(f"Accepted: {accepted}/400\n")
     readme.write(f"Score: {score}\n\n")
     readme.write("## Task Details\n\n")
-    readme.write("| Task | Success | Compressor | Length | Glossary | Message |\n")
-    readme.write("|------|---------|------------|--------|----------|---------|\n")
+    readme.write("| Task | Success | Base | Compressor | Length | Goods | Message |\n")
+    readme.write("|------|---------|------|------------|--------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
       success = "✅" if stat["success"] else "❌"
+      base = stat["base_path"] if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
+
       length = str(stat["length"]) if stat["success"] else "-"
       message = stat["message"] if not stat["success"] else "-"
-      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {checker} | [{length}](dist/task{task}.py) | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+      readme.write(f"| [{task}](vis/task{task}.png) | {success} | [{base}]({base}) | {checker} | [{length}](dist/task{task}.py) | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")

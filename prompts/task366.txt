@@ -288,4 +288,4 @@ Output:
 0 0 0 0 0 0 0 7 7 0 0
 
 
-Write the **short** Python code in code golf manners that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.
+Write the **short** Python code in code golf manners that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays. Use `val_` as a prefix for all variables except `_`. Avoid line breaks as much as possible.
