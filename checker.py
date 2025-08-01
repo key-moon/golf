@@ -61,7 +61,9 @@ if __name__ == "__main__":
       task = json.load(open(f"tasks/task{i:03}.json", "r"))
       correct, msg = check(hoge, task)
       if correct == 1.:
-        print(f"✅ {hoge}")
+        with open(hoge, "r") as f:
+          code = f.read()
+        print(f"✅ {hoge} {len(code)}")
       else:
         print(f"❌ {hoge}")
         print(f"{correct=}" if msg == "ok" else msg)
