@@ -3,5 +3,5 @@ def p(g):
  a,b=min(I),max(I);c,d=min(J),max(J)
  for i in range(a,b+1):
   for j in range(c,d+1):
-   if g[i][j]^8: g[i][j]=3
+   if g[i][j]^8:g[i][j]=3
  return g

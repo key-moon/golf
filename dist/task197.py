@@ -1,1 +1,15 @@
-import zlib;import base64;exec(zlib.decompress(base64.b85decode(b'c-l=-yKTcT5bZU^1JX!{5x6#xHUp$JTu{<UB0!PC@nk8fJVFLYmh&Vz(%*&vkMDbIsl!zE)vmw`KCEvc1L1u76&fdJgwCfwa9DPE9z0>OGQbCX6Ngx!#ydQ%QZl;0U|5eHw!>CIl5Sij?N4d~x3Cf+OF(O*Sl<Ya#?2HH&QT}l(~kr_*!F`!3B&~&wb&nutiL8?t!b0Rdb4QKKyj}MTo1X5V#zcEg68JbKnobbU?O4|=@K9HEHEwx74mtqNn}Tc{XOdS=_zT>1*6OAtaGTpFq&zyzRyd#ZLWA)NXi$lH6A@U$IeBP*u757b0ysRBuvbh?Sq$O?B=3GejbU{w5+QOnfLafhH>A#>95jSu9XTg$*k4-f1Wv_rv')))
+def p(g):
+ b=next(r for r in g if 0 not in r)
+ c=[]
+ for x in b:
+  if x not in c:
+   c+=[x]
+ for r in g:
+  s=[]
+  for x in r:
+   if x and x not in s:
+    s+=[x]
+  if s and 0 in r:
+   for i,x in enumerate(b):
+    r[i]=s[c.index(x)]
+ return g

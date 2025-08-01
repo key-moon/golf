@@ -34,12 +34,12 @@ if __name__ == "__main__":
     shortest = LONG
     for base_path in get_code_paths("base_*", i):
       if check(base_path, task).correct != 1.0:
-        print(check(base_path, task))
         continue
       
       code = strip(open(base_path).read())
       if check_str(code, task).correct != 1.0:
         print(f"{base_path}: strip failed")
+        exit(1)
         continue
 
       a = sorted(zip([cmp(code) for cmp in compressors], compressors), key=lambda x: len(x[0]))
@@ -48,17 +48,17 @@ if __name__ == "__main__":
       for code, cmp in a:
         res = check_str(code, task)
         if res.correct != 1.0:
-          print(f"[!] failed: {res}")
+          print(f"[!] compression failed: {cmp.__name__}, {res}")
+          exit(1)
       
       compressed = a[0][0]
       if len(compressed) < len(shortest):
         shortest = compressed
-      print(shortest)
 
     if shortest == LONG:
       print(f"[!] failed: vis/task{i:03}.png")
       continue
     score += 2500 - len(shortest)
-    score += 1
+    accepted += 1
     open(f"dist/task{i:03}.py", "w").write(shortest)
-  print(f"accepted: {accepted} / 400, {score=}")
+  print(f"accepted: {accepted}/400, {score=}")

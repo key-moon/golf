@@ -1,5 +1,5 @@
 def p(g):
- A = g[0]
- a = [0] + A + [0]
- B = [a[i] or a[i+2] for i in range(len(A))]
- return ([A, B] * (len(g)//2 + 1))[:len(g)]
+ A=g[0]
+ a=[0]+A+[0]
+ B=[a[i]or a[i+2]for i in range(len(A))]
+ return([A,B]* (len(g)//2 +1))[:len(g)]

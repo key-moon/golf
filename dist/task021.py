@@ -3,4 +3,4 @@ def p(g):
  A=sum(len(set(r))==1 for r in g)
  B=sum(len(set(c))==1 for c in zip(*g))
  d=next(x for r in g for x in r if x!=s)
- return [[d]*(B+1)]*(A+1)
+ return[[d]*(B+1)]*(A+1)

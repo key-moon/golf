@@ -1,4 +1,3 @@
-[!] failed: [task003](vis/task003.png)
 [!] failed: [task004](vis/task004.png)
 [!] failed: [task005](vis/task005.png)
 [!] failed: [task009](vis/task009.png)

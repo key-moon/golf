@@ -11,6 +11,6 @@ def p(g):
    else:j+=1
  a.sort(reverse=1)
  o=[[0]*w for _ in g]
- for i,(l,v) in enumerate(a):
+ for i,(l,v)in enumerate(a):
   for j in range(w-l,w):o[h-1-i][j]=v
  return o

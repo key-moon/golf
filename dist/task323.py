@@ -9,6 +9,6 @@ def p(g):
    x=p-s
    if 0<=x<h:r[x]=5
   else:
-   for x in (range(p-2,p+1)if y<y0 else range(p,p+3)):
+   for x in(range(p-2,p+1)if y<y0 else range(p,p+3)):
     if 0<=x<h:r[x]=5
  return g
