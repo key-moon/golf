@@ -1,13 +1,2 @@
-def p(g):
- h=len(g)
- for i,r in enumerate(g):
-  for j,v in enumerate(r):
-   if v==5:
-    S=[(i,j)];g[i][j]=0
-    for a,b in S:
-     for d in((1,0),(-1,0),(0,1),(0,-1)):
-      x,y=a+d[0],b+d[1]
-      if 0<=x<h and 0<=y<len(r)and g[x][y]==5:g[x][y]=0;S+=[(x,y)]
-    d=2 if len(S)==6 else 1
-    for a,b in S:g[a][b]=d
- return g
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,'xÚeOAnÃ ¼û{y#A¤öĞx_á#Ú˜ØJIDÈş};‡ªØafçGxˆ ¿¸ÒÍÇï	&Ì+‚ÏoŸìâwO•f|ı•R•`áEôQ1ôdÄ„³äK0›™IU¾XJ@¿;+å2!„F%Qœö¡P×ı¤¥<œ°âF¶uF1yh>øü´êhí®`£+pëÊg’,Ç`V6—jo¨.}›æ8¹G8:—r©—DŸào?ôÿÊÁX6“k ùå™"„_áÆXD'))))

@@ -1,12 +1,3 @@
-def p(g):
- for r in g:
-  n=len(r)
-  for i in range(n-1,-1,-1):
-   if r[i]:
-    break
-  s=r[:i+1]
-  for k in range(1,len(s)+1):
-   if all(s[j]==s[j%k]for j in range(len(s))):
-    break
-  r[:]= [s[j%k]for j in range(n)]
- return g
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚmA
+1E÷"¡aÆE·=Ié¢bZ:-QR½¿é(Aá‡Ÿ—On”àa2n'HwÂu\0vØªF†DÎdøb×£Pˆ/áĞpŠUUwâ·²ØğÅëÄí:w\\&[3İïÁ9íç±Oâ³ø¡ÁÿK0j°Ğó%úÍ2UA‚"""))))

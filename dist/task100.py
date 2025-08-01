@@ -1,10 +1,3 @@
-def p(g):
- d={}
- for i,r in enumerate(g):
-  for j,v in enumerate(r):
-   if v:
-    t=d.setdefault(v,[i,i,j,j])
-    t[0]=min(t[0],i);t[1]=max(t[1],i)
-    t[2]=min(t[2],j);t[3]=max(t[3],j)
- k=max(d,key=lambda v:(d[v][1]-d[v][0]+1)*(d[v][3]-d[v][2]+1))
- return[[k]*2]*2
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚUËÂ E÷ıŠYBM;\r_BX`˜èCƒ´Ñÿ] íÂÂåœ;C<ØŸ0âó- »{°÷4Í#yhõY9\\ş•Ï
+lK„9=)êô<¶ ´hÑ¡S|õ²Rb´K-¿YG _,…¶V³·….µÚ½Õ&P@Ÿ¯{z‹AW£ã˜‘‹ŠïóY©CÍË•µk‹ãÂì'){U6qı\0\0P@"""))))

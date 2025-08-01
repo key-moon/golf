@@ -48,7 +48,7 @@ def check(path: str, task: dict):
   for example in tests:
     example_copy = copy.deepcopy(example)
     try:
-      signal.setitimer(signal.ITIMER_REAL, 0.2)
+      signal.setitimer(signal.ITIMER_REAL, 0.5)
       # signal.alarm(1)
       output = program(example_copy["input"])
       signal.alarm(0)

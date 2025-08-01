@@ -1,5 +1,3 @@
-def p(g):
- d,e=zip(*[(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==5]);a,b=min(d)+1,max(d)-1;c,f=min(e)+1,max(e)-1;k=next(v for r in g for v in r if v%5)
- for j in range(c,f+1):g[a][j]=g[b][j]=k
- for i in range(a,b+1):g[i][c]=g[i][f]=k
- return g
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚUŽÁ
+ƒ0†ï>E/ƒvv^”>Ié¡jZZ±“¢">ýÒÈ;„$2c+÷¢«Ø$A]aåOÍƒŒÂ½3+1HûÙn€bÁQÿ8‹àØ¡TkDoå –ø$êF.öÄáÕô£tDáK¡ÐY%87~°’J§<;†>ZQ‹ÄlòÀ1¬nDçµ5:åõ@}¾Åðñ—[FEÄîHÌ°íÏ}\0gPu"""))))

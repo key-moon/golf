@@ -1,8 +1,2 @@
-def p(g):
- r,c=next((i,j)for i in range(9)for j in range(9)if g[i][j]==g[i][j+1]==g[i+1][j]==g[i+1][j+1]==8)
- h=[[0]*10 for _ in g]
- for i in range(10):
-  for j in range(10):
-   v=g[i][j]
-   if v&7:h[r+(i>r)][c+(j>c)]=v
- return h
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"xÚ]ËÂ E÷|Å¬H°R›Ð!c*ÏÒ?_ 51]Í³¸§±ð¦Žò0«d>¥aˆÌ¾2	ò#9CoÄ,8PGTj\\n²Þí²ó+#à•ÖÏR@s»77‡YR´:pÜ)”=ÛS;”Óeô:s¦ÌPÏœÆif¨J]d–5'ð_ ãD,"))))

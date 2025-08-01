@@ -17,9 +17,9 @@ def strip(code: str):
     if stripped.find("#"):
       stripped = stripped.split("#")[0]
 
-    stripped = re.sub(rf"(?<!//)(\w) ([{syms}])", r"\1\2", stripped)
-    stripped = re.sub(rf"(?<!//)([{syms}]) (\w)", r"\1\2", stripped)
-    stripped = re.sub(rf"([{syms}]) ([{syms}])", r"\1\2", stripped)
+    stripped = re.sub(rf"(\w) *([{syms}])", r"\1\2", stripped)
+    stripped = re.sub(rf"([{syms}]) *(\w)", r"\1\2", stripped)
+    stripped = re.sub(rf"([{syms}]) *([{syms}])", r"\1\2", stripped)
 
     res += " " * (indent // max(basic_indent, 1)) + stripped
     res += "\n"

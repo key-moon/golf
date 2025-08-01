@@ -1,9 +1,4 @@
-def p(g):
- o={}
- for i,r in enumerate(g):
-  for j,v in enumerate(r):
-   if v:t=o.setdefault(v,[i,i,j,j]);t[0]=min(t[0],i);t[1]=max(t[1],i);t[2]=min(t[2],j);t[3]=max(t[3],j)
- for v,(a,b,c,e)in o.items():
-  for i in range(a,b+1):
-   for j in range(c,e+1):g[i][j]=v
- return g
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚUŽÁ
+ƒ0@ï~EŽ•™zsø%ÒCÁ()k7ºZcÿ>ÓâØ…ð^HßLÜÕZ¸ñõ®`¹`ÜŸò›£`"Ÿ•Åô¯BVÀ¤ÁŒ®yPœi1Û5ª„#£E«ë‹™Îztì•ÈÚ˜§’¡€îØè4Zý±Ñ(q	¸†#¹‡ú–±Ð`üJå9{jK].ÿõø>ûub=Y=¦
+Å-xX?ŒhU4"""))))

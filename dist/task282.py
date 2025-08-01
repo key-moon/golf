@@ -1,12 +1,3 @@
-def p(g):
- m,n=len(g),len(g[0]);o=[[0]*n for _ in g]
- for i,r in enumerate(g):
-  for j,v in enumerate(r):
-   if v==5:
-    for a in(-1,0,1):
-     for b in(-1,0,1):
-      x=i+a
-      if 0<=x<m:
-       y=j+b
-       if 0<=y<n:o[x][y]=5 if a and b else 1 if a or b else 0
- return o
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚe±ƒ0Dw¾Â#”T
+Å_EUA¨R@ð÷\rNªN¾{w:·ÔÁ+í³*I8É#ø(©³ÇŒ*Ü›ƒnöðë ×	+üiÉ­y³PáhÛoä9ÛÁ†X²æ¢	µô^)ŠØˆ¸ùÇ°£ÍÍW‡Yã^OWys™µ«fµkuh,OfÀ¸6lÓø&("ágdž–Õ;˜?fbJÿ"""))))

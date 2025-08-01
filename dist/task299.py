@@ -1,14 +1,3 @@
-def p(g):
- d={}
- for y,r in enumerate(g):
-  for x,v in enumerate(r):
-   if v:d.setdefault(v,[]).append((y,x))
- (a,p),(b,q)=d.items()
- if p[0][0]==p[1][0]:A=a;ry=p[0][0];B=b;cx=q[0][1]
- else:A=b;ry=q[0][0];B=a;cx=p[0][1]
- h,w=len(g),len(g[0])
- o=[[0]*w for _ in range(h)]
- for y in range(h):o[y][cx]=B
- for x in range(w):o[ry][x]=A
- o[ry][cx]=4
- return o
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚUİŠÃ …ïós©‹„-ìUÂ\\´¯!²˜:i©1æŸÒwß1íşàñ|gÔã¨† .²ÈÀáı‘AİEØT„ÆùéFÑôä;ZÕüÅASÃ\\¸| ÑQm§v³ÒFæ6òNˆM­Rf ¬
+R‰Jõ]ŞŒtÛ<ô»á…ô!‰âˆ¶Œ¾üò„Uy^±OÇƒÉ€Ú8S¥Lÿ“±)¾3Wµ`K¿¯ö}~¬CÍâmÙû|¦6Ñú‰«4¯ú½¢Ó›ÑçÕàéI×_º$3=òÅ»NÑ"SôĞ}%:n\r"""))))

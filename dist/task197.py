@@ -1,15 +1,3 @@
-def p(g):
- b=next(r for r in g if 0 not in r)
- c=[]
- for x in b:
-  if x not in c:
-   c+=[x]
- for r in g:
-  s=[]
-  for x in r:
-   if x and x not in s:
-    s+=[x]
-  if s and 0 in r:
-   for i,x in enumerate(b):
-    r[i]=s[c.index(x)]
- return g
+#coding:latin_1
+import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚE1
+Ã0EwŸâ6-%sÁ'1G	êÙ¿‘ÒàQŸ÷ZhÅ×nîm0ûL­ZÆº3)cCZ1 ïU.vÑ‡Ñ(ĞdšOM˜v3QÄ‡Ghğ*É^Tî6+¬ú”—)º£ÜAŠ"C×¤’Ú¡||ˆ§Jvv—Ê!¾„øJy¡f›;+Lõàó“tŸEG"""))))
