@@ -7,7 +7,7 @@ import sys
 import traceback
 import multiprocessing
 
-from utils import parse_range_str
+from utils import get_code_paths, parse_range_str
 
 def check(path: str, task: dict):
   assert path.endswith(".py")
@@ -56,7 +56,7 @@ if __name__ == "__main__":
   
   print(f"{dirname=}")
   for i in parse_range_str(range_str):
-    for hoge in get_base_code_paths(dirname, i):
+    for hoge in get_code_paths(dirname, i):
       if not os.path.exists(hoge): continue
       task = json.load(open(f"tasks/task{i:03}.json", "r"))
       correct, msg = check(hoge, task)
