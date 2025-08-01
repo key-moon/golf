@@ -14,7 +14,7 @@ def p(g):
         for v in r:
             if v and v!=8 and v!=c1:
                 c2=v; break
-        else: continue
+     else
         break
     a,b,c,d = min(a,e),max(b,e),min(c,f),max(d,f)
     for i in range(a,b+1):

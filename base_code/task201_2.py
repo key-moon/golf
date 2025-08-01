@@ -1,0 +1,7 @@
+def p(g):
+    val_fl=sum(g,[])
+    val_c=next(x for x in set(val_fl) if x and val_fl.count(x)==4)
+    val_rc=[(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==val_c]
+    val_r0=min(i for i,j in val_rc);val_r1=max(i for i,j in val_rc)
+    val_c0=min(j for i,j in val_rc);val_c1=max(j for i,j in val_rc)
+    return [r[val_c0:val_c1+1] for r in g[val_r0:val_r1+1]]

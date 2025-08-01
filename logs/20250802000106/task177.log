@@ -1,0 +1,12 @@
+Here is a very short “crop to non‐zero bounding‐box” solution in pure Python.  It uses only two temporaries (`val_h` for the non‐zero rows, `val_u` for the non‐zero columns) and then transposes back.  All other names are built‐ins or the argument `g`:
+
+```python
+def p(g):val_h=[r for r in g if any(r)];val_u=[list(c)for c in zip(*val_h)if any(c)];return[list(r)for r in zip(*val_u)]
+```
+
+Explanation:
+1. val_h = all rows of `g` that contain at least one non‐zero.
+2. zip(*val_h) transposes, letting us pick columns that have any non‐zero → val_u.
+3. zip(*val_u) transposes back to rows, turning each tuple into a list.
+
+This faithfully reproduces all your examples.

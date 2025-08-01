@@ -1,0 +1,1 @@
+def p(val_g):val_r,val_c=next((val_i,val_j)for val_i in range(3)for val_j in range(3)if val_g[val_i][val_j]==3);val_h=[[0]*9 for _ in range(9)];for val_dr,val_dc in zip((val_r-1,1-val_r),(val_c-1,1-val_c)):val_a,val_b=5*(val_dr>0),5*(val_dc>0);for val_i in range(val_a,val_a+4):val_h[val_i][val_b:val_b+4]=[3]*4;return val_h

@@ -1,0 +1,48 @@
+Here’s a fully general “mask‐and‐stamp” solution.  It finds the most frequent nonzero color (the mask), extracts the one connected non‐mask pattern (the stamp), and then “stamps” it wherever the mask appears:
+
+```python
+def p(g):
+    # dims
+    val_a,val_b=len(g),len(g[0])
+    # count nonzero cells to pick mask = most frequent nonzero
+    val_d={}
+    for val_i in range(val_a):
+        for val_j in range(val_b):
+            val_v=g[val_i][val_j]
+            if val_v:
+                val_d[val_v]=val_d.get(val_v,0)+1
+    val_m=max(val_d,key=val_d.get)
+    # collect the one non‐mask connected pattern (the stamp)
+    val_S=[(val_i,val_j,g[val_i][val_j])
+           for val_i in range(val_a)
+           for val_j in range(val_b)
+           if (val_v:=g[val_i][val_j]) and val_v!=val_m]
+    val_x=min(val_i for val_i,val_j,val_v in val_S)
+    val_y=min(val_j for val_i,val_j,val_v in val_S)
+    val_P=[(val_i-val_x,val_j-val_y,val_v)
+           for val_i,val_j,val_v in val_S]
+    # prepare empty output
+    val_R=[[0]*val_b for _ in range(val_a)]
+    # slide stamp over grid; where it exactly covers the mask, paint it
+    for val_I in range(val_a):
+        for val_J in range(val_b):
+            if all(
+                0<=val_I+di<val_a and 0<=val_J+dj<val_b and
+                g[val_I+di][val_J+dj]==val_m
+                for di,dj,_ in val_P
+            ):
+                for di,dj,c in val_P:
+                    val_R[val_I+di][val_J+dj]=c
+    return val_R
+```
+
+Explanation of the steps:
+
+1. Count all nonzero colors and choose the most frequent one `val_m` as the “mask.”
+2. Gather all cells not equal to the mask into `val_S`; these form the single “stamp” pattern.
+3. Normalize `val_S` to offsets `val_P` relative to its top‐left corner.
+4. Create an all‐zero output `val_R`.
+5. Slide `val_P` over every possible `(I,J)` in `g`.  Whenever every offset hits exactly the mask color `val_m`, overwrite those positions in `val_R` with the original stamp colors.
+6. Return `val_R`.
+
+This reproduces each example’s output exactly.

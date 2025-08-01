@@ -1,0 +1,6 @@
+```python
+def p(g):return next(g[val_r:val_r+3]for val_r in(0,3,6)if any((g[val_r][1]!=g[val_r+1][0],g[val_r][2]!=g[val_r+2][0],g[val_r+1][2]!=g[val_r+2][1])))
+```
+
+Explanation of the rule:
+Split the 9×3 grid into three 3×3 blocks (rows 0–2, 3–5, 6–8).  Exactly one of these blocks is not symmetric across its main diagonal (i.e. it fails `block[i][j]==block[j][i]` for some i<j).  We return that non-symmetric 3×3 slice.

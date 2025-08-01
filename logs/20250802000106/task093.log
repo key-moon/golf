@@ -1,0 +1,27 @@
+We first locate the single “bar” of 5–s in the grid (it is always a solid rectangle that spans the full width or the full height).  Let its row‐span be r0…r1 and its column‐span be c0…c1.  Every other non‐zero, non‐5 pixel outside that bar is then “projected” straight in to the bar’s nearest edge:
+
+–  if it lies above (row<r0) it drops down to row r0−1;  
+–  if below (row>r1) it moves up to row r1+1;  
+–  if left (col<c0) it moves right to col c0−1;  
+–  else (col>c1) it moves left to col c1+1.  
+
+All such projected pixels are painted 5, the bar itself remains untouched, and everything else becomes 0.  
+
+Here is a short python‐golf version.  Every variable except “_” is prefixed with “val_” as requested:
+
+```
+def p(val_g):
+ val_r=[i for i,row in enumerate(val_g) if 5 in row];val_r0,val_r1=val_r[0],val_r[-1]
+ val_c=[j for j in range(len(val_g[0])) if any(val_g[i][j]==5 for i in val_r)];val_c0,val_c1=val_c[0],val_c[-1]
+ val_h=[[0]*len(val_g[0]) for _ in val_g]
+ for val_i in range(val_r0,val_r1+1):
+  for val_j in range(val_c0,val_c1+1):val_h[val_i][val_j]=5
+ for val_i in range(len(val_g)):
+  for val_j,val_x in enumerate(val_g[val_i]):
+   if val_x and val_x-5:
+    if val_i<val_r0: val_h[val_r0-1][val_j]=5
+    elif val_i>val_r1: val_h[val_r1+1][val_j]=5
+    elif val_j<val_c0: val_h[val_i][val_c0-1]=5
+ else
+ return val_h
+```

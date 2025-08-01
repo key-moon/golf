@@ -1,0 +1,21 @@
+Here’s a very short “bounding‐box fill” implementation (using only variables named `val_*`).  It walks each nonzero colour in the grid, finds its minimal enclosing rectangle, and fills that rectangle solidly with the colour:
+
+```python
+def p(g):
+ val_a={v for r in g for v in r if v}
+ for val_c in val_a:
+  val_ps=[(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==val_c]
+  val_i0=min(i for i,j in val_ps);val_i1=max(i for i,j in val_ps)
+  val_j0=min(j for i,j in val_ps);val_j1=max(j for i,j in val_ps)
+  for val_i in range(val_i0,val_i1+1):
+   g[val_i][val_j0:val_j1+1]=[val_c]*(val_j1-val_j0+1)
+ return g
+```
+
+Explanation:
+
+1. Collect all non‐zero colours into `val_a`.  
+2. For each colour `val_c`, gather its cell coordinates `val_ps`.  
+3. Compute the min/max row (`val_i0`,`val_i1`) and col (`val_j0`,`val_j1`) of that colour.  
+4. Over that row/col range, overwrite every cell with `val_c`.  
+5. Return the modified grid.

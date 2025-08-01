@@ -1,0 +1,1 @@
+p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[next(filter(None,z))for z in zip(*g)]]

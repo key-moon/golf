@@ -1,0 +1,14 @@
+Here’s a 1-liner in true code-golf style (using only `val_…` names), which works for any rectangular grid.  It finds the “new” colour at `(last_row,0)` and repaints every nonzero cell except that one.  
+
+```python
+def p(val_g):val_b=val_g[~-len(val_g)][0];return[[val_b*(val_v and(val_i<~-len(val_g) or val_j))for val_j,val_v in enumerate(val_r)]for val_i,val_r in enumerate(val_g)]
+```
+
+Explanation of the trick:
+
+- `~-len(val_g)` computes `len(val_g)-1` (because `~-x == -x-1`), i.e. the last row index.
+- `val_b=val_g[...][0]` picks the sole “new” colour in the bottom‐left.
+- We build a new grid by double-comprehension over `enumerate(val_g)`:
+  -  `val_v and (val_i<last or val_j)` is truthy exactly for all original nonzero cells except the bottom‐left one;
+  - multiplying that by `val_b` yields either `val_b` (repaint) or `0`.
+- No extra imports or lines are needed, and every variable has the required `val_` prefix.

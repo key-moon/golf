@@ -15,7 +15,10 @@
 #   for val_x,val_v in enumerate(val_r):
 #    if val_v==1:val_r[val_x]=0;g[-1][val_x]=1
 #  return g
-# 改善の余地ありそう（1を消し飛ばすところが雑
+# 改善の余地ありそう 1を消し飛ばすところが雑
 # p=lambda g:eval(str(g[:-1]).replace("1","0"))+[[next(filter(None,z))for z in zip(*g)]]
 # p=lambda g:eval(f"{g[:-1]}".replace("1","0"))+[[next(filter(None,z))for z in zip(*g)]]
-p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[next(filter(None,z))for z in zip(*g)]]
+# 1以上で最小の値を持ってくる
+# next(filter(None,z))
+# min([a for a in z if a])
+p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[min(filter(int,z))for z in zip(*g)]]

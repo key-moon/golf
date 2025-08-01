@@ -9,5 +9,5 @@ def p(g):
     if j<z: row[z]=v
     elif j>w: row[w]=v
     elif i<x: g[x][j]=v
-    else:    g[y][j]=v
+ else
  return g

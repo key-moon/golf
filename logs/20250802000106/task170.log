@@ -1,0 +1,37 @@
+Here’s a (somewhat golfed) `def p(g):…` that finds the large uniform‐color “cluster‐grid,” locates the small numeric block elsewhere, and then emits that block masked by the cluster‐occupancy pattern.  All user variables (except the temporary `_`) start with `val_`:
+
+```
+def p(val_g):
+ val_v0={}
+ for val_r in val_g:
+  for val_x in val_r:
+   if val_x:val_v0[val_x]=val_v0.get(val_x,0)+1
+ val_c=max(val_v0,key=val_v0.get)
+ val_rs=sorted({i for i,row in enumerate(val_g)for x in row if x==val_c})
+ val_cs=sorted({j for row in val_g for j,x in enumerate(row)if x==val_c})
+ val_rg=[];_=[]
+ for R in val_rs:
+  if _ and R-_[-1]>1:val_rg+=[_];_=[]
+  _+=R,
+ val_rg+=[_]
+ val_cg=[];_=[]
+ for C in val_cs:
+  if _ and C-_[-1]>1:val_cg+=[_];_=[]
+  _+=C,
+ val_cg+=[_]
+ val_rn=min(i for i,row in enumerate(val_g)for x in row if x and x!=val_c)
+ val_rx=max(i for i,row in enumerate(val_g)for x in row if x and x!=val_c)
+ val_cn=min(j for row in val_g for j,x in enumerate(row)if x and x!=val_c)
+ val_cx=max(j for row in val_g for j,x in enumerate(row)if x and x!=val_c)
+ val_M=[r[val_cn:val_cx+1]for r in val_g[val_rn:val_rx+1]]
+ return [[val_M[i][j]if any(val_g[r][c]==val_c for r in val_rg[i]for c in val_cg[j])else 0
+          for j in range(len(val_cg))]
+         for i in range(len(val_rg))]
+```
+
+Explanation of the key steps:
+
+1. **Find the “shape” color** `val_c` by counting all non‐zero colors and taking the most frequent.  
+2. **Record all rows** (`val_rs`) and **all columns** (`val_cs`) where `val_c` appears, then split each into groups of consecutive indices (`val_rg`, `val_cg`).  Each group is one “cluster,” so you get an m×n grid of clusters.  
+3. **Find the small numeric block** by taking the bounding box of all non‐zero cells _not_ equal to `val_c`, slice that out into `val_M`.  
+4. **Emit an m×n output** where each entry is `val_M[i][j]` if the corresponding cluster block contains any `val_c`, or 0 otherwise.

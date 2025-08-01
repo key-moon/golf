@@ -1,0 +1,28 @@
+Here’s a very short “code-golf” style solution that (1) finds the two horizontal length-5 runs of 4’s, (2) picks as “source” the one with nonzero neighbors, (3) reads all nonzero neighbors at ±1 row and same 5 columns, (4) flips the sign of the row‐offset, and (5) writes them around the other run:
+
+```python
+def p(val_g):
+    val_n,val_m=len(val_g),len(val_g[0])
+    val_f=[(val_i,val_j)
+           for val_i in range(val_n)
+           for val_j in range(val_m-4)
+           if val_g[val_i][val_j:val_j+5]==[4]*5]
+    val_r0,val_c0=val_f[0]; val_r1,val_c1=val_f[1]
+    if not any(val_g[val_r0+val_d][val_c0+val_k]
+               for val_d in(1,-1)
+               for val_k in range(5)):
+        val_r0,val_c0,val_r1,val_c1=val_r1,val_c1,val_r0,val_c0
+    for val_d in(1,-1):
+        for val_k in range(5):
+            val_v=val_g[val_r0+val_d][val_c0+val_k]
+            if val_v: val_g[val_r1-val_d][val_c1+val_k]=val_v
+    return val_g
+```
+
+Explanation of the key steps:
+
+1. Scan every row `val_i` for a block of five 4’s in a row (columns `val_j…val_j+4`). Collect both segments in `val_f`.
+2. Unpack them into `(val_r0,val_c0)` and `(val_r1,val_c1)`.  One of these has nonzero “payload” in the row just above or below; the other does not.
+3. Use `any(...)` to test the first segment; if it has no neighbors, swap it with the second so that `(val_r0,val_c0)` is always the “source” and `(val_r1,val_c1)` the “target.”
+4. For each offset `val_d` in {+1,−1} (above and below) and each of the 5 columns `val_k`, read `val_v` and, if nonzero, write it at the same column but with the row‐offset negated (`val_r1−val_d`).
+5. Return the modified grid.

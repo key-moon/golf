@@ -1,0 +1,11 @@
+Here’s a one‐liner‐heavy golf (using only required `val_` prefixes) that implements exactly the rule “compute z=number of zeros, then paste the entire 3×3 input block in row‐major order z×z times, stopping after placing (h·w−z) blocks”:
+
+```python
+def p(g):
+    val_h=len(g);val_w=len(g[0]);val_z=sum(v==0 for r in g for v in r)
+    val_o=[[0]*val_w*val_z for _ in range(val_h*val_z)]
+    for val_k in range(val_h*val_w-val_z):
+        for val_i,row in enumerate(g):
+            val_o[val_h*(val_k//val_z)+val_i][val_w*(val_k%val_z):val_w*(val_k%val_z)+val_w]=row
+    return val_o
+```

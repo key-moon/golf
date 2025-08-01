@@ -1,0 +1,15 @@
+def p(g):
+    val_mi=min(i for i,row in enumerate(g) for v in row if v==1)
+    val_ma=max(i for i,row in enumerate(g) for v in row if v==1)
+    val_mj=min(j for row in g for j,v in enumerate(row) if v==1)
+    val_Mj=max(j for row in g for j,v in enumerate(row) if v==1)
+    val_S=[r[val_mj:val_Mj+1] for r in g[val_mi:val_ma+1]]
+    val_ch=(val_ma-val_mi)//2; val_cw=(val_Mj-val_mj)//2
+    for val_i,row in enumerate(g):
+        for val_j,val_v in enumerate(row):
+            if val_v==4 and not(val_mi<=val_i<=val_ma and val_mj<=val_j<=val_Mj):
+                for val_ii,val_r in enumerate(val_S):
+                    for val_jj,val_w in enumerate(val_r):
+                        if val_w:
+                            g[val_i-val_ch+val_ii][val_j-val_cw+val_jj]=val_w
+    return g

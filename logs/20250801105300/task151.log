@@ -6,7 +6,7 @@ def p(g):
     for i in (r-1,r,r+1):
         for j in (c-1,c,c+1):
             if i-r or j-c:
-                try: g[i][j]=4
-                except: pass
+             try
+             except
     return g
 ```

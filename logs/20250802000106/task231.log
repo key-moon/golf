@@ -1,0 +1,5 @@
+Here’s a one-liner that simply doubles each row (list) to the right, thereby doubling the width:
+
+```
+def p(val_g):return[val_r*2 for val_r in val_g]
+```

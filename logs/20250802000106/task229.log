@@ -1,0 +1,1 @@
+def p(val_g):val_L=sum(val_g,[]);val_m=max(set(val_L),key=val_L.count);return[[val_c if val_c==val_m else 5 for val_c in val_r]for val_r in val_g]

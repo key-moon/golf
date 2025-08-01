@@ -20,7 +20,7 @@ def p(g):
                 m=max(cnt.values())
                 cands=[x for x,v in cnt.items() if v==m]
                 if len(cands)>1: c=min(cnt) if m>1 else sorted(cnt)[len(cnt)//2]
-                else: c=cands[0]
+             else
             else:
                 c=0
             for i in range(r0,r0+b1):

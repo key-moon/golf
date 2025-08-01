@@ -5,17 +5,17 @@ def p(g):
             for val_c in range(val_W):
                 if g[val_r][val_c] and g[val_r+val_h][val_c] and g[val_r][val_c]!=g[val_r+val_h][val_c]:
                     break
-            else: continue
+         else
             break
-        else: break
+     else
     for val_w in range(1,val_W):
         for val_r in range(val_H):
             for val_c in range(val_W-val_w):
                 if g[val_r][val_c] and g[val_r][val_c+val_w] and g[val_r][val_c]!=g[val_r][val_c+val_w]:
                     break
-            else: continue
+         else
             break
-        else: break
+     else
     for val_r in range(val_H):
         for val_c in range(val_W):
             if not g[val_r][val_c]:

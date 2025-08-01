@@ -1,0 +1,12 @@
+def p(g):
+ val_n=len(g);val_R=[[0]*val_n for _ in range(val_n)]
+ val_ps=[(i,j)for i in range(val_n)for j in range(val_n)if g[i][j]and g[i][j]!=5]
+ val_C=g[val_ps[0][0]][val_ps[0][1]]
+ val_i,val_j=next((i,j)for i,j in val_ps if 5 in g[i])
+ val_s=1 if g[val_i].index(5)>val_j else -1
+ val_D=max(r.count(5)for r in g)+2
+ for val_i,val_j in val_ps:
+  val_R[val_i][val_j]=val_C
+  val_nc=val_j+val_s*val_D
+  0<=val_nc<val_n and val_R[val_i].__setitem__(val_nc,val_C)
+ return val_R

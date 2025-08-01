@@ -1,0 +1,45 @@
+Here’s a fully‐golfed one‐liner (no imports, single `for`‐loop) that implements the inferred rule.  It
+
+1. finds the “tiny‐arrow” template (1 cell of color A, 4 cells of color B),  
+2. works out its principal direction D (the two B’s colinear with the A) and perpendicular P,  
+3. finds the “big rectangle” of the third color C,  
+4. then stamps that rectangle shifted by 0…W steps along D and by ±H steps along P.  
+
+```python
+def p(g):
+ u=[r[:]for r in g]
+ # find colors A(count=1),B(count=4),C(count>4)
+ d={}
+ for y,r in enumerate(g):
+  for x,v in enumerate(r):d[v]=d.get(v,[])+[(y,x)]
+ A,B,C=[c for c in d if len(d[c]) in(1,4)][0],\
+       [c for c in d if len(d[c])==4 and c!=[c for c in d if len(d)==1][0]][0],\
+       [c for c in d if len(d[c])>4][0]
+ # center of arrow
+ ay,ax=d[A][0]
+ # arms of B on same row → direction D
+ D=next((0, x-ax) for y,x in d[B] if y==ay and x!=ax)
+ D=(0,D)
+ P=(-D[1],D[0])
+ # bounding rect of C
+ ys=[y for y,x in d[C]]; xs=[x for y,x in d[C]]
+ my,MY=min(ys),max(ys); mx,MX=min(xs),max(xs)
+ H=MY-my+1; W=MX-mx+1
+ # stamp at i*D for i=0…W-1 and at ±H*P (i=0 only)
+ for i in list(range(W))+[-H,H]:
+  if i and abs(i)!=H:continue
+  dy,dx=(D[0]*i+P[0]*(i//abs(i) if abs(i)==H else 0),
+        D[1]*i+P[1]*(i//abs(i) if abs(i)==H else 0))
+  for y in range(my,MY+1):
+   for x in range(mx,MX+1):
+    if g[y][x]==C:u[y+dy][x+dx]=C
+ return u
+```
+
+Explanation (brief):
+
+- We collect all color‐positions in `d`.
+- Identify the tiny‐arrow center `A` (only one pixel), its arms `B` (exactly four), and the big rectangle `C` (any color >4 pixels).
+- From the two B’s lying on the same row as A we recover the arrow’s principal direction `D` and set the perpendicular `P`.
+- We compute the rectangle of `C` via its min/max rows/cols → height `H`, width `W`.
+- Finally we “stamp” that rectangle at offsets `i*D` for all `i=0…W-1` (corresponding to the forward arrow strokes) and also once at `±H*P` (the two side‐offsets), writing `C` onto our output copy `u`.

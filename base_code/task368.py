@@ -17,7 +17,7 @@ def p(g):
         for u0,v0,c in l:
             if len({g[a][b]for a,b in c})>1:
                 z=(u0,v0,c);break
-        else: continue
+     else
         P={(a-z[0],b-z[1]):g[a][b]for a,b in z[2]}
         for u0,v0,c in l:
             if c!=z[2]:

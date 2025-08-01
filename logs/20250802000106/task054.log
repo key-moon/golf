@@ -1,0 +1,25 @@
+Here’s a very short “code‐golf” solution.  It looks for every 3×3 window whose four cardinal neighbours all share the same colour `a` and whose centre is a different colour `b`.  It then picks the smallest colour `c` not already equal to `a` or `b` and paints the four diagonals of that window in `c`.  All examples you gave match this transformation.
+
+```python
+def p(val_g):
+    val_s={c for r in val_g for c in r}
+    h=len(val_g);w=len(val_g[0])
+    for y in range(1,h-1):
+        for x in range(1,w-1):
+            b=val_g[y][x];a=val_g[y-1][x]
+            if b!=a==val_g[y+1][x]==val_g[y][x-1]==val_g[y][x+1]:
+                c=min(val_s-{a,b})
+                for dy,dx in[(-1,-1),(-1,1),(1,-1),(1,1)]:
+                    val_g[y+dy][x+dx]=c
+    return val_g
+```
+
+Explanation of the key lines:
+
+- We build `val_s`, the set of all colours in the grid.
+- We scan every centre cell `(y,x)` except the outer rim.
+- We check if its four neighbours up/down/left/right are all the same colour `a` and different from the centre colour `b`.
+- We pick the smallest colour `c` not in `{a,b}`.
+- We paint the four diagonal neighbours `(y±1, x±1)` in that new colour `c`.
+
+This exactly reproduces all of your sample I→O mappings.

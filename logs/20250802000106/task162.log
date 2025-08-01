@@ -1,0 +1,18 @@
+Here’s a very short golfed solution that finds the lone 3×3 all‐zero “hole” and fills it with 1’s.  All loop indices are named with `val_` as requested:
+
+```python
+def p(g):
+ for val_i in range(len(g)-2):
+  for val_j in range(len(g[0])-2):
+   if not any(g[val_i+val_a][val_j+val_b]
+              for val_a in(0,1,2) for val_b in(0,1,2)):
+    for val_a in(0,1,2):
+     for val_b in(0,1,2):g[val_i+val_a][val_j+val_b]=1
+    return g
+```
+
+Explanation in brief:
+
+1. Slide a 3×3 window over every possible `(val_i,val_j)` top‐left.
+2. `any(...)` checks whether any of the 9 cells is nonzero.  If *none* are (i.e. the block is all zeros), we’ve found the hole.
+3. We then overwrite those 9 cells with `1` and immediately return the modified grid.

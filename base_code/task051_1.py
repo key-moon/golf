@@ -4,7 +4,7 @@ def p(g):
     for r in range(h):
         for c in range(w):
             if g[r][c]==x: break
-        else: continue
+     else
         break
     for dr,dc in[(-1,0),(1,0),(0,-1),(0,1)]:
         if 0<=r+dr<h and 0<=c+dc<w and g[r+dr][c+dc]==y:

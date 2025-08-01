@@ -32,7 +32,7 @@ def p(g):
             left=sum(1 for x in hs if x<vc)
             right=hc-left-1
             if left>right: sc=vc-left
-            else:    sc=vc+1
+         else
             for di in range(vc_len):
                 for dj in range(vc_len):
                     g[r0+di][sc+dj]=k

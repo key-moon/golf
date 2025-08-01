@@ -1,0 +1,12 @@
+Here’s a fully‐self‐contained one-liner (golfed) that finds the 2-component’s bounding box, crops to it, and fills any 0’s inside with 2’s (leaving other colours intact).  All user variables are prefixed `val_`:
+
+```python
+def p(val_g):val_b=[(i,j)for i,val_r in enumerate(val_g)for j,val_v in enumerate(val_r)if val_v==2];val_x,val_y=zip(*val_b);val_r0,val_r1,val_c0,val_c1=min(val_x),max(val_x),min(val_y),max(val_y);return[[(val_g[i][j]or 2)for j in range(val_c0,val_c1+1)]for i in range(val_r0,val_r1+1)]
+```
+
+Explanation (brief):
+
+1. Collect all coordinates `(i,j)` where the cell == 2 into `val_b`.  
+2. Unzip into `val_x` (rows) and `val_y` (cols).  
+3. Compute the min/max of each to get the bounding corners.  
+4. Slice out that sub‐rectangle and replace any `0` with `2` (via `val_g[i][j] or 2`), preserving other colours.

@@ -1,0 +1,15 @@
+Here’s a  golfed‐down solution that finds the maximum colour (assumed to be the “special” one in all examples) and replaces each cell of that colour by its transpose counterpart.  All other cells are left untouched.  Note we use `val_` prefixes as requested and mutate in‐place:
+
+```python
+def p(g):
+ val_m=max(map(max,g));val_n=len(g)
+ for val_i in range(val_n):
+  for val_j in range(val_n):
+   if g[val_i][val_j]==val_m:g[val_i][val_j]=g[val_j][val_i]
+ return g
+```
+
+Explanation of the core idea:
+1.  Identify the largest colour `val_m = max(map(max,g))`.
+2.  For every position `(i,j)` where `g[i][j] == val_m`, overwrite it with `g[j][i]`.
+3.  Return the modified grid.

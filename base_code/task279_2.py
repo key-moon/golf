@@ -1,0 +1,15 @@
+def p(g):
+ val_S={(i,j)for i,r in enumerate(g)for j,v in enumerate(r)if v==1}
+ while val_S:
+  val_s=val_S.pop();val_C={val_s};val_st=[val_s]
+  while val_st:
+   i,j=val_st.pop()
+   for di,dj in((1,0),(-1,0),(0,1),(0,-1)):
+    u=(i+di,j+dj)
+    if u in val_S:val_S.remove(u);val_C.add(u);val_st.append(u)
+  val_x0,val_x1=min(x for x,y in val_C),max(x for x,y in val_C)
+  val_y0,val_y1=min(y for x,y in val_C),max(y for x,y in val_C)
+  val_b={(val_x0,y)for y in range(val_y0,val_y1+1)}|{(val_x1,y)for y in range(val_y0,val_y1+1)}|{(x,val_y0)for x in range(val_x0,val_x1+1)}|{(x,val_y1)for x in range(val_x0,val_x1+1)}
+  if val_C==val_b:
+   for x,y in val_C:g[x][y]=8
+ return g
