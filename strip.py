@@ -5,6 +5,8 @@ def strip(code: str):
   basic_indent = len(lines[1]) - len(lines[1].lstrip(' '))
   for l in lines:
     stripped = l.strip()
+    if len(stripped) == 0:
+      continue
     indent = len(l) - len(stripped)
     if l.find("#"):
       l = l.split("#")[0]
