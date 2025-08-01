@@ -8,9 +8,9 @@ from strip import strip
 from utils import get_code_paths, get_task
 import os
 
-def vanilla(code: str):
+def raw(code: str):
   return code.strip().encode()
-def compress_zlib_latin_1(code: str):
+def compress(code: str):
   compressed_code = zlib.compress(code.encode(), level=9)
 
   # TODO: r"" とか使うとマシになったりするかも / "\n" にして """ -> " とかのほうが実は効率いいケースもある
@@ -35,12 +35,12 @@ def compress_zlib_latin_1(code: str):
 
   res = f"#coding:latin_1\nimport zlib;exec(zlib.decompress(bytes(map(ord,{sep}".encode() + compressed_code + f"{sep}))))".encode()
   return res
-def compress_zlib_b85(code: str):
-  compressed_code = base64.b85encode(zlib.compress(code.encode(), level=9))
-  return f"import zlib;import base64;exec(zlib.decompress(base64.b85decode({compressed_code!r})))".encode()
+# def compress_zlib_b85(code: str):
+#   compressed_code = base64.b85encode(zlib.compress(code.encode(), level=9))
+#   return f"import zlib;import base64;exec(zlib.decompress(base64.b85decode({compressed_code!r})))".encode()
 
 
-compressors = [vanilla, compress_zlib_latin_1, compress_zlib_b85]
+compressors = [raw, compress]
 
 def check_str(code: str | bytes, task):
     tmp_path = "tmp/tmp.py"
@@ -57,7 +57,7 @@ def check_str(code: str | bytes, task):
 score = 0
 accepted = 0
 
-SLOW = ["base_yu/task002.py"]
+SLOW = ["base_yu/task002.py", "base_yu/task396.py"]
 
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
     if shortest == LONG:
       print(f"[!] failed: vis/task{i:03}.png")
-      task_stat["message"] = "Compression failed"
+      task_stat["message"] = "WA"
       stats.append(task_stat)
       continue
     score += 2500 - len(shortest)
@@ -136,4 +136,4 @@ if __name__ == "__main__":
       checker = stat["compressor"] if stat["success"] else "-"
       length = str(stat["length"]) if stat["success"] else "-"
       message = stat["message"] if not stat["success"] else "-"
-      readme.write(f"| {task} | {success} | {checker} | {length} | {message} |\n")
+      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {checker} | {length} | {message} |\n")

@@ -5,7 +5,7 @@ import string
 syms = r"=<>!?^|&%()\[\]{},;:*/+-"
 
 def strip(code: str):
-  matches = set(re.findall(r'val_[\w_]+', code))
+  matches = sorted(set(re.findall(r'val_[\w_]+', code)))
 
   vals = list(string.ascii_uppercase[::-1])
   for replace in matches:
