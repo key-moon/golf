@@ -106,8 +106,11 @@ if __name__ == "__main__":
   dirname = sys.argv[1] if 2 <= len(sys.argv) else "dist"
   range_str = sys.argv[2] if 3 <= len(sys.argv) else "1-400"
   
+  r = parse_range_str(range_str)
+  do_vis = len(r) < 10
+
   print(f"{dirname=}")
-  for i in parse_range_str(range_str):
+  for i in r:
     task = get_task(i)
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
@@ -119,7 +122,7 @@ if __name__ == "__main__":
       else:
         print(f"❌ {code_path}")
         print(f"{res.correct=}" if res.message == "ok" else res.message)
-      # if len(res.outputs) > 0:
-        # vis_path=f"vis_output/task{i:03}.png"
-        # visualize_outputs(res.outputs, vis_path)
-        # print(f"{vis_path=}")
+      if len(res.outputs) > 0 and do_vis:
+        vis_path=f"vis_output/task{i:03}.png"
+        visualize_outputs(res.outputs, vis_path)
+        print(f"{vis_path=}")
