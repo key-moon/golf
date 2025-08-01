@@ -116,5 +116,5 @@ if __name__ == "__main__":
         print(f"{res.correct=}" if res.message == "ok" else res.message)
       if len(res.outputs) > 0:
         vis_path=f"vis_output/task{i:03}.png"
-        visualize_outputs(task, res.outputs, min(5, len(res.outputs)), vis_path)
+        visualize_outputs(res.outputs, vis_path)
         print(f"{vis_path=}")

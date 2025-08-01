@@ -22,12 +22,23 @@ def strip(code: str):
     stripped = re.sub(rf"([{syms}]) *(\w)", r"\1\2", stripped)
     stripped = re.sub(rf"([{syms}]) *([{syms}])", r"\1\2", stripped)
 
-    # 今が if や for、前が if や for、前とindentレベルが違う→まとめない
+    # 今が if や for、前が if や for、前とindentレベルが違う→一行にまとめない
     if ":" in stripped or ":" in res.split("\n")[-1] or indent != prev_indent:
       res += "\n" + " " * indent + stripped
     else:
       if res[-1] != ":": res += ";"
       res += stripped
     prev_indent = indent
+  
+  matches = re.findall(r'v_[\w_]+', res)
+  replace = {}
+
+  vals = list(string.ascii_uppercase[::-1])
+  for replace in matches:
+    val_name = vals.pop()
+    if val_name in res:
+      assert len(vals) != 0, "auto variable resolution failed"
+      val_name = vals.pop()
+    res = res.replace(replace, val_name)
 
   return res.strip()
