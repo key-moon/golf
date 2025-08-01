@@ -1,3 +1,4 @@
+# 周囲が3かつ内側が0の場所を4で埋める
 def p(g):
  t=range
  for d in t(len(g)):
