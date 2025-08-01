@@ -34,8 +34,12 @@ def compress_zlib_latin_1(code: str):
 
   res = f"#coding:latin_1\nimport zlib;exec(zlib.decompress(bytes(map(ord,{sep}".encode() + compressed_code + f"{sep}))))".encode()
   return res
+def compress_zlib_b85(code: str):
+  compressed_code = base64.b85encode(zlib.compress(code.encode(), level=9))
+  return f"import zlib;import base64;exec(zlib.decompress(base64.b85decode({compressed_code!r})))".encode()
 
-compressors = [vanilla, compress_zlib_latin_1]
+
+compressors = [vanilla, compress_zlib_latin_1, compress_zlib_b85]
 
 def check_str(code: str | bytes, task):
     tmp_path = "tmp/tmp.py"
@@ -63,7 +67,7 @@ if __name__ == "__main__":
       
       code = strip(open(base_path).read())
       if check_str(code, task).correct != 1.0:
-        print(f"{base_path}: strip failed, {check_str(code, task)}")
+        print(f"{base_path}: strip failed, {check_str(code, task).message}")
         exit(1)
         continue
 
@@ -73,7 +77,7 @@ if __name__ == "__main__":
       for code, cmp in a:
         res = check_str(code, task)
         if res.correct != 1.0:
-          print(f"[!] compression failed: {cmp.__name__}, {res}")
+          print(f"[!] compression failed: {cmp.__name__}, {res.message}")
           exit(1)
       
       compressed = a[0][0]

@@ -1,1 +1,0 @@
-def p(g):return[[c-(c==7)*2 for c in r]for r in g]

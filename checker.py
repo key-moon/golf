@@ -65,8 +65,8 @@ def check(path: str, task: dict):
       print(e)
       signal.alarm(0)
       outputs.append((example, None))
-      tb = traceback.format_exception(type(e), e, e.__traceback__)
-      errors.add(tb[0])
+      tb = traceback.format_exception(type(e), e, e.__traceback__.tb_next)
+      errors.add("\n".join(tb))
       wrong += 1
 
   if errors:
@@ -107,8 +107,6 @@ if __name__ == "__main__":
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
       res = check(code_path, task)
-      if len(res.outputs) > 0:
-        visualize_outputs(res.outputs[:5], f"vis_output/task{i:03}.png")
       if res.correct == 1.:
         with open(code_path, "r") as f:
           code = strip(f.read().strip())
@@ -116,3 +114,7 @@ if __name__ == "__main__":
       else:
         print(f"❌ {code_path}")
         print(f"{res.correct=}" if res.message == "ok" else res.message)
+      if len(res.outputs) > 0:
+        vis_path=f"vis_output/task{i:03}.png"
+        visualize_outputs(task, res.outputs, min(5, len(res.outputs)), vis_path)
+        print(f"{vis_path=}")
