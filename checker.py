@@ -28,15 +28,15 @@ def check(path: str, task: dict):
   try:
     parent_module = __import__(module_name)
   except SyntaxError as e:
-    return 0, e.msg
+    return [], 0, e.msg
   module = parent_module
   for s in module_name.split(".")[1:]:
     module = getattr(module, s)
   if not hasattr(module, "p"):
-    return 0.0, "no attribute p"
+    return [], 0.0, "no attribute p"
   program = getattr(module, "p")
   if not callable(program):
-    return 0.0, "p is not callable"
+    return [], 0.0, "p is not callable"
   tests = task["train"] + task["test"] + task["arc-gen"]
   wrong, right = 0, 0
 
@@ -106,7 +106,8 @@ if __name__ == "__main__":
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
       outputs, correct, msg = check(code_path, task)
-      visualize_outputs(task, outputs, min(5, len(outputs)), f"vis_output/task{i:03}.png")
+      if len(outputs) > 0:
+        visualize_outputs(task, outputs, min(5, len(outputs)), f"vis_output/task{i:03}.png")
       if correct == 1.:
         with open(code_path, "r") as f:
           code = strip(f.read().strip())
