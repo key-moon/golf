@@ -5,13 +5,13 @@ import string
 syms = r"=<>!?^|&%()\[\]{},;:*/+-"
 
 def strip(code: str):
-  matches = re.findall(r'val_[\w_]+', code)
+  matches = set(re.findall(r'val_[\w_]+', code))
 
   vals = list(string.ascii_uppercase[::-1])
   for replace in matches:
+    assert len(vals) != 0, "auto variable resolution failed"
     val_name = vals.pop()
-    if val_name in code:
-      assert len(vals) != 0, "auto variable resolution failed"
+    while val_name in code:
       val_name = vals.pop()
     code = code.replace(replace, val_name)
 
