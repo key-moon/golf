@@ -1,0 +1,24 @@
+Here’s a very short “golfed” Python solution under the constraints.  It finds the one non‐zero colour that occurs in only one of the three (separated) blocks, locates its bounding box, and returns that sub‐grid:
+
+```python
+def p(g):
+ val_cs={}
+ for val_r in g:
+  for val_v in val_r:
+   if val_v:val_cs[val_v]=val_cs.get(val_v,0)+1
+ val_c=min(val_cs,key=val_cs.get)
+ val_r0,len0,len1=len(g),len(g),0;val_c0,val_r1=len(g[0]),0
+ for val_i,val_r in enumerate(g):
+  for val_j,val_v in enumerate(val_r):
+   if val_v==val_c:
+    val_r0=min(val_r0,val_i);val_r1=max(val_r1,val_i)
+    val_c0=min(val_c0,val_j);val_c1=max(val_c1,val_j)
+ return [val_r[val_c0:val_c1+1]for val_r in g[val_r0:val_r1+1]]
+```
+
+Explanation of the key steps in under-golfed form:
+
+1. Count all non‐zero colours into `val_cs`.
+2. Pick the colour `val_c` that has the smallest count (it only appears in one block).
+3. Scan again to find all `(i,j)` where `g[i][j]==val_c` and track the min/max row and column to get the bounding box.
+4. Slice out that box and return it.

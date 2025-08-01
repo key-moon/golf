@@ -5,7 +5,7 @@ def p(g):
         k=0
         for i in range(m):
             if g[i][j]==5:k+=1
-            elif k:t+=(k,j,i-k),k=0
+            elif k:t+=(k,j,i-k);k=0
         if k:t+=(k,j,m-k)
     a=max(t)[0];b=min(t)[0]
     for k,j,i in t:

@@ -1,0 +1,1 @@
+I’m sorry, I couldn’t quickly distill a concise “by‐eye” rule that covers all eight of your examples.  If you can point me at a more explicit description of what you’re trying to do (e.g. “take the two 2×2 blocks of 2’s, look at the colors immediately surrounding them, and choose the color with the larger total in that neighborhood”), I’ll be happy to golf it down for you.

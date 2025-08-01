@@ -12,7 +12,7 @@ def p(g):
                 a,b,c,d=min(a,i),max(b,i),min(c,j),max(d,j)
             elif x:
                 u,v,p,q=min(u,i),max(v,i),min(p,j),max(q,j)
-    h,vv=v-u+1,w=q-p+1
+    h,vv=v-u+1,q-p+1
     dr=(b-a)//(h-1) if h>1 else 0
     dc=(d-c)//(vv-1) if vv>1 else 0
     R=[row[p:q+1] for row in g[u:v+1]]

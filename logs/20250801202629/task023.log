@@ -1,0 +1,17 @@
+Here’s a very short “golfed” routine that matches all of your examples. It collects all the 5‐cells, computes their centroid, and then 2-colors them by which side of the centroid‐diagonal they fall on (positive product ⇒ 8, else 2):
+
+```python
+def p(g):
+ val_v=[(i,j)for i,row in enumerate(g)for j,c in enumerate(row)if c==5]
+ val_s=sum(i for i,_ in val_v);val_t=sum(j for _,j in val_v);val_l=len(val_v)
+ for val_i,val_j in val_v:g[val_i][val_j]=8 if(val_i*val_l-val_s)*(val_j*val_l-val_t)>0 else 2
+ return g
+```
+
+Explanation in brief:
+- `val_v` is the list of all coordinates of 5’s.
+- `(val_s/val_l, val_t/val_l)` is the centroid of those points.
+- We translate everything so the centroid is at the origin:  
+  `(i - val_s/val_l, j - val_t/val_l) ⇒` scaled to integers as  
+  `(i*val_l - val_s, j*val_l - val_t)`.
+- Cells for which the product of those two centered coordinates is positive lie in the “north-west” or “south-east” half relative to the centroid-cutting diagonal, so we give them 8; the others get 2.

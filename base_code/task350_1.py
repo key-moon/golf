@@ -4,7 +4,7 @@ def p(g):
   for i,x in enumerate(r):
    if x:
     if j+1:
-     for k in range(j+1,i):r[k]=r[k]or8
+     for k in range(j+1,i):r[k]=r[k]or 8
     j=i
  h=len(g)
  for c in range(len(g[0])):
@@ -12,6 +12,6 @@ def p(g):
   for i in range(h):
    if g[i][c]:
     if j+1:
-     for k in range(j+1,i):g[k][c]=g[k][c]or8
+     for k in range(j+1,i):g[k][c]=g[k][c]or 8
     j=i
  return g

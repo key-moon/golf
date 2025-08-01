@@ -1,1 +1,1 @@
-def p(g):f=sum(g,[]);m=max({*f},key=f.count);[r.__setitem__(i,5)for r in g for i,x in enumerate(r)if x!=m];return g
+def p(g):f=sum(g,[]);m=max({*f},key=f.count);[setitem(r,i,5)for r in g for i,x in enumerate(r)if x!=m];return g

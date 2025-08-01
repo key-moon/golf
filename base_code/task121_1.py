@@ -4,4 +4,4 @@ def p(g):
    v=g[r-1][c]
    if v==g[r+1][c]==g[r][c-1]==g[r][c+1]!=g[r][c]:
     g[r][c]=v
-    return[[g[x][y]for y in c-1,c,c+1]for x in r-1,r,r+1]
+    return[[g[x][y]for y in (c-1,c,c+1)]for x in (r-1,r,r+1)]

@@ -1,1 +1,1 @@
-def p(g):m=len(g)//2;b=[tuple(tuple(r[j:j+m])for r in g[i:i+m])for i in 0,m+1 for j in 0,m+1];return[list(r)for r in sorted(b,b.count)[0]]
+def p(g):m=len(g)//2;b=[tuple(tuple(r[j:j+m])for r in g[i:i+m])for i in (0,m+1) for j in (0,m+1)];return[list(r)for r in sorted(b,b.count)[0]]

@@ -15,14 +15,12 @@ from utils import get_task
 
 
 def strip_code_fences(text: str) -> str:
-    """
-    Remove markdown code fences from the model response.
-    """
-    # Extract the function definition and its body from the text
-    match = re.search(r"(?s)(def\s+p\(.*?\):.*?return\s+.*?)(?:\n\n|$)", text)
-    if match:
-        return match.group(1)
-    return re.sub(r"^```(?:python)?\n|```$", "", text.strip(), flags=re.MULTILINE)
+    match = re.search(r"```(?:py|python)?\n(.*?)```", text, re.DOTALL)
+    if match: return match.group(1)
+    match = re.search(r"(?s)(def\s+p\(g\):.*?return\s+.*?)(?:\n|$)", text)
+    if match: return match.group(1)
+    return match
+    
 
 def generate_prompt(task):
     prompt = "Find the common rule that maps an input grid to an output grid, given the examples below."

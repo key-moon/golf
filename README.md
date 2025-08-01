@@ -1,7 +1,7 @@
 # Compression Stats
 
-Accepted: 209/400
-Score: 486096
+Accepted: 212/400
+Score: 492670
 
 ## Task Details
 
@@ -344,14 +344,14 @@ Score: 486096
 | [335](vis/task335.png) | ✅ | [base_code/task335.py](base_code/task335.py) | compress | [230](dist/task335.py) | [prompt](prompts/task335.txt) / [vis-many](vis_many/task335.png) | - |
 | [336](vis/task336.png) | ✅ | [base_code/task336.py](base_code/task336.py) | compress | [354](dist/task336.py) | [prompt](prompts/task336.txt) / [vis-many](vis_many/task336.png) | - |
 | [337](vis/task337.png) | ✅ | [base_code/task337.py](base_code/task337.py) | raw | [63](dist/task337.py) | [prompt](prompts/task337.txt) / [vis-many](vis_many/task337.png) | - |
-| [338](vis/task338.png) | ❌ | [-](-) | - | [-](dist/task338.py) | [prompt](prompts/task338.txt) / [vis-many](vis_many/task338.png) | WA |
+| [338](vis/task338.png) | ✅ | [base_code/task338.py](base_code/task338.py) | compress | [402](dist/task338.py) | [prompt](prompts/task338.txt) / [vis-many](vis_many/task338.png) | - |
 | [339](vis/task339.png) | ✅ | [base_code/task339.py](base_code/task339.py) | raw | [47](dist/task339.py) | [prompt](prompts/task339.txt) / [vis-many](vis_many/task339.png) | - |
 | [340](vis/task340.png) | ❌ | [-](-) | - | [-](dist/task340.py) | [prompt](prompts/task340.txt) / [vis-many](vis_many/task340.png) | WA |
 | [341](vis/task341.png) | ✅ | [base_code/task341_1.py](base_code/task341_1.py) | compress | [300](dist/task341.py) | [prompt](prompts/task341.txt) / [vis-many](vis_many/task341.png) | - |
 | [342](vis/task342.png) | ✅ | [base_code/task342_1.py](base_code/task342_1.py) | compress | [219](dist/task342.py) | [prompt](prompts/task342.txt) / [vis-many](vis_many/task342.png) | - |
 | [343](vis/task343.png) | ✅ | [base_code/task343.py](base_code/task343.py) | compress | [218](dist/task343.py) | [prompt](prompts/task343.txt) / [vis-many](vis_many/task343.png) | - |
 | [344](vis/task344.png) | ✅ | [base_code/task344.py](base_code/task344.py) | compress | [221](dist/task344.py) | [prompt](prompts/task344.txt) / [vis-many](vis_many/task344.png) | - |
-| [345](vis/task345.png) | ❌ | [-](-) | - | [-](dist/task345.py) | [prompt](prompts/task345.txt) / [vis-many](vis_many/task345.png) | WA |
+| [345](vis/task345.png) | ✅ | [base_code/task345.py](base_code/task345.py) | compress | [222](dist/task345.py) | [prompt](prompts/task345.txt) / [vis-many](vis_many/task345.png) | - |
 | [346](vis/task346.png) | ✅ | [base_code/task346.py](base_code/task346.py) | raw | [212](dist/task346.py) | [prompt](prompts/task346.txt) / [vis-many](vis_many/task346.png) | - |
 | [347](vis/task347.png) | ❌ | [-](-) | - | [-](dist/task347.py) | [prompt](prompts/task347.txt) / [vis-many](vis_many/task347.png) | WA |
 | [348](vis/task348.png) | ✅ | [base_code/task348_1.py](base_code/task348_1.py) | raw | [229](dist/task348.py) | [prompt](prompts/task348.txt) / [vis-many](vis_many/task348.png) | - |
@@ -398,7 +398,7 @@ Score: 486096
 | [389](vis/task389.png) | ✅ | [base_code/task389.py](base_code/task389.py) | raw | [91](dist/task389.py) | [prompt](prompts/task389.txt) / [vis-many](vis_many/task389.png) | - |
 | [390](vis/task390.png) | ❌ | [-](-) | - | [-](dist/task390.py) | [prompt](prompts/task390.txt) / [vis-many](vis_many/task390.png) | WA |
 | [391](vis/task391.png) | ✅ | [base_code/task391_1.py](base_code/task391_1.py) | raw | [139](dist/task391.py) | [prompt](prompts/task391.txt) / [vis-many](vis_many/task391.png) | - |
-| [392](vis/task392.png) | ❌ | [-](-) | - | [-](dist/task392.py) | [prompt](prompts/task392.txt) / [vis-many](vis_many/task392.png) | WA |
+| [392](vis/task392.png) | ✅ | [base_yu/task392.py](base_yu/task392.py) | compress | [302](dist/task392.py) | [prompt](prompts/task392.txt) / [vis-many](vis_many/task392.png) | - |
 | [393](vis/task393.png) | ✅ | [base_yu/task393.py](base_yu/task393.py) | raw | [89](dist/task393.py) | [prompt](prompts/task393.txt) / [vis-many](vis_many/task393.png) | - |
 | [394](vis/task394.png) | ✅ | [base_yu/task394.py](base_yu/task394.py) | raw | [190](dist/task394.py) | [prompt](prompts/task394.txt) / [vis-many](vis_many/task394.png) | - |
 | [395](vis/task395.png) | ✅ | [base_yu/task395.py](base_yu/task395.py) | raw | [74](dist/task395.py) | [prompt](prompts/task395.txt) / [vis-many](vis_many/task395.png) | - |
