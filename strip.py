@@ -8,6 +8,6 @@ def strip(code: str):
     indent = len(l) - len(stripped)
     if l.find("#"):
       l = l.split("#")[0]
-    res += " " * (indent // basic_indent) + stripped
+    res += " " * (indent // max(basic_indent, 1)) + stripped
     res += "\n"
   return res.strip()
