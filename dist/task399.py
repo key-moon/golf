@@ -1,3 +1,5 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"""xÚ]Ánƒ0DïùŠí\r‚az‹³_b­*ÒÇdÿ}ãCÚËHûfg´ÚÓÁTØò´ƒ€Z×´ÿ„nğÎ§‰ÔuQ‹º¬\r«’µI¤aBÊãÍx.QÖ»w‡Ğzk
-¿v'Øÿ‡à:°Ú‘î	±IZqÁ»Hİ’¾J5T,3_áD_RÚú½º›y‹À""ÎÇiœŠr©w!éƒ{¿Gÿpşi6/ë¥yu9Í·/)bîO¸’gŸ­ê¯3ñ ßñ[Bğ°Z¿Ö<Áƒ}ñ¾a§"""))))
+def p(g):
+ *r,=eval("[0]*3,"*3)
+ for i in range(sum(sum(g,[]))//8):
+  r[int(.7*i)][i*2%3]=1
+ return r

@@ -54,7 +54,7 @@ accepted = 0
 
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
-  for i in range(32, 401):
+  for i in range(1, 401):
     task = get_task(i)
     shortest = LONG
     for base_path in get_code_paths("base_*", i):

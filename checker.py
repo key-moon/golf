@@ -62,7 +62,6 @@ def check(path: str, task: dict):
       errors.add("timeout")
       break
     except Exception as e:
-      print(e)
       signal.alarm(0)
       outputs.append(None)
       tb = traceback.format_exception(type(e), e, e.__traceback__)
