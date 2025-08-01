@@ -55,12 +55,12 @@ def check(path: str, task: dict):
         outputs.append((example, output))
         wrong += 1
     except TimeoutException as e:
-      outputs.append(None)
+      outputs.append((example, None))
       errors.add("timeout")
       break
     except Exception as e:
       signal.alarm(0)
-      outputs.append(None)
+      outputs.append((example, None))
       tb = traceback.format_exception(type(e), e, e.__traceback__)
       errors.add(tb[0])
       wrong += 1
