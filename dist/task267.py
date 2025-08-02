@@ -1,1 +1,1 @@
-def p(B):A=B[~-len(B)][0];return[[A*(F and(C<~-len(B) or D))for D,F in enumerate(E)]for C,E in enumerate(B)]
+def p(B):A=B[~-len(B)][0];return[[A*(F and(C<~-len(B)or D))for D,F in enumerate(E)]for C,E in enumerate(B)]

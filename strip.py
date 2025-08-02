@@ -15,6 +15,10 @@ def strip(code: str):
       val_name = vals.pop()
     code = code.replace(replace, val_name)
 
+  code = re.sub(rf"(\w) *([{syms}])", r"\1\2", code)
+  code = re.sub(rf"([{syms}]) *(\w)", r"\1\2", code)
+  code = re.sub(rf"([{syms}]) *([{syms}])", r"\1\2", code)
+
   lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
   if len(lines) == 1: return lines[0]
   res = ""
@@ -28,10 +32,6 @@ def strip(code: str):
     indent = (len(l) - len(stripped)) // max(basic_indent, 1)
     if stripped.find("#"):
       stripped = stripped.split("#")[0]
-
-    stripped = re.sub(rf"(\w) *([{syms}])", r"\1\2", stripped)
-    stripped = re.sub(rf"([{syms}]) *(\w)", r"\1\2", stripped)
-    stripped = re.sub(rf"([{syms}]) *([{syms}])", r"\1\2", stripped)
 
     # 今が if や for、前が if や for、前とindentレベルが違う→一行にまとめない
     if ":" in stripped or ":" in res.split("\n")[-1] or indent != prev_indent:

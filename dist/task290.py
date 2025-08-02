@@ -1,1 +1,1 @@
-def p(g):E=[i for i,r in enumerate(g) if any(r)];C=[i for i,c in enumerate(zip(*g)) if any(c)];D=[r[C[0]:C[-1]+1]for r in g[E[0]:E[-1]+1]];A,B=set(x for R in D for x in R);return[[B if x==A else A for x in R]for R in D]
+def p(g):E=[i for i,r in enumerate(g)if any(r)];C=[i for i,c in enumerate(zip(*g))if any(c)];D=[r[C[0]:C[-1]+1]for r in g[E[0]:E[-1]+1]];A,B=set(x for R in D for x in R);return[[B if x==A else A for x in R]for R in D]

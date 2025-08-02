@@ -4,4 +4,4 @@ def p(g):
    if g[i].count(2)>4:
     g[i+2],g[i-2]=g[i-2],g[i+2];g[i+3],g[i-3]=g[i-3],g[i+3]
   *g,=zip(*g)
- *g,=map(list,g);return g
+ return[*map(list,g)]
