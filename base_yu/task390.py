@@ -5,5 +5,4 @@ def p(g):
     g[i+2],g[i-2]=g[i-2],g[i+2]
     g[i+3],g[i-3]=g[i-3],g[i+3]
   *g,=zip(*g)
- *g,=map(list,g)
- return g
+ return[*map(list,g)]
