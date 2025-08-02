@@ -1,6 +1,6 @@
 def p(g):
  k=1
- for _ in range(4):
+ for _ in[0]*4:
   if g[0].count(8)>k:
    d,k=0,99
    for s in g[1:]:
