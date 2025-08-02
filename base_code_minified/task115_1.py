@@ -1,0 +1,1 @@
+def p(g):A=[g[A][A]for A in range(min(len(g),len(g[0])))];B=[A[0]]+[A[B]for B in range(1,len(A))if A[B]!=A[B-1]];return[B]if len(g[0])>len(g)else[[A]for A in B]

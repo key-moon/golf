@@ -1,0 +1,1 @@
+def p(g):A=min(A for(A,B)in enumerate(g)if any(A-1 for A in B));B=max(A for(A,B)in enumerate(g)if any(A-1 for A in B));C=min(B for A in g for(B,C)in enumerate(A)if C-1);D=max(B for A in g for(B,C)in enumerate(A)if C-1);return[[0 if A==1 else A for A in A[C:D+1]]for A in g[A:B+1]]

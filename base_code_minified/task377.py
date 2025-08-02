@@ -1,0 +1,1 @@
+def p(g):B=[0]+[A for A in range(1,len(g))if g[A]!=g[A-1]];A=list(zip(*g));C=[0]+[B for B in range(1,len(A))if A[B]!=A[B-1]];return[[g[A][B]for B in C]for A in B]

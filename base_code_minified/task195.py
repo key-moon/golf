@@ -1,0 +1,1 @@
+def p(g):A=next(A for(A,B)in enumerate(g)if 5 in B);B=next(A for(A,B)in enumerate(g[A])if B==5);D=[A[B:B+9]for A in g[A:A+9]];C=[[D[3*A][3*B]//5 for B in range(3)]for A in range(3)];return[[5*C[A//3][B//3]*C[A%3][B%3]for B in range(9)]for A in range(9)]

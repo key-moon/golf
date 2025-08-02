@@ -1,0 +1,1 @@
+def p(g):A=[A for A in g if any(A)];B=[list(A)for A in zip(*A)if any(A)];return[list(A)for A in zip(*B)]

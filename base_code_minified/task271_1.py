@@ -1,0 +1,1 @@
+def p(g):A=[[[g[A+C][B+D]for D in(0,1,2)]for C in(0,1,2)]for A in range(len(g)-2)for B in range(len(g[0])-2)if all(g[A+C][B+D]for C in(0,1,2)for D in(0,1,2))];return max(A,key=lambda val_t:sum(B==1 for A in val_t for B in A))

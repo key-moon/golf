@@ -1,0 +1,1 @@
+def p(g):A=3;B=[(B//A,C//A)for B in range(len(g))for C in range(len(g[0]))if g[B][C]==5];C=min(A for(A,B)in B)*A;D=min(A for(B,A)in B)*A;E=[[sum(g[C+A*B+F][D+A*E+G]==5 for F in range(A)for G in range(A))>0 for E in range(3)]for B in range(3)];return[[5 if E[B//A][C//A]else 0 for C in range(A*3)]for B in range(A*3)]

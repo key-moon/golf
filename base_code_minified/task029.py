@@ -1,0 +1,1 @@
+def p(g):C,D=[B for(B,A)in enumerate(g)if any(all(A[B]==A[B+C]for C in range(4))for B in range(len(A)-3))];A=g[C];B=next(B for B in range(len(A)-3)if all(A[B]==A[B+C]for C in range(4)));E=B+A[B:].count(A[B]);return[A[B+1:E]for A in g[C+1:D]]

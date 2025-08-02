@@ -1,0 +1,1 @@
+def p(g):g=[[next(A for B in g for A in B if A)]];return g

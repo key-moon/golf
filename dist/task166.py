@@ -1,2 +1,5 @@
 #coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚµVYoÛF~Ï¯`ß–Ñ:r¡·€§µs41T ‡ ¹’V•–/©qüß;ÇòÄ(ŠúÁîÎñÍ7Ç*Ö3Ï¼«$ò_>ðR©õfiòMÛLçâoÆýÉÙ@¢0\0Á—Þáa¯uØëÒìµ4ïý1=ŒyIßßR¹ü÷°|y©>é€sf(æ©‰;C	#—þ,I=ãë¥¡k±Ò–\rèby|1|Ÿ]¿z¥×Úæè½W…ÎÔ¸ôÐ0ECwK%yš(Ifl–‡6Ò•¹Ì‹ÍJûz•ig^ÊÛ–ƒIà ¯Ã@àË—é¿Ë¢¤\0ë­Ø„y´h¥Œv†CÆèx8t:Ž£WÇ&Æž4¹"2¤«"è(ƒ…ÜªšAÙ¦tfžMrÑ?Wæ|á…6ö@\\žoÑ¾ŠúGbu\rL¹ª“1—uÂp‡\r\\ðŠaø[©~ËYShŽÞ"Þê].L®Ó*\'ðíªÐéàŠ«‚TË+dƒÍj¨ôIØ>u’¿<Áä›NîOY/ÅÆèH·ó§ïýüû‡Y“Òqšµ=×É~r>ÏÞ8¡7 à¿ÿ?±›Ào«ÀØ•íÈ¯¸åÀašËØ¬³eäX¤cº„b¾¬„*bçÔSImÅ×ýJ¯ïô Ó˜âÏM–ATyËš}Ö1ª‘–£ôÿ¥HF©ÔH{8ä^ÙZ	þ0öù•Ë-6—#`xáºA~Þk‹¾N¦K´ùñ((ÜÞèX­L–ú—&[’l(­¦§U	à«éÍ1ž{•ë±™Œ—^NœtD;ÎäâÄÎ.ïmÉ{Ök†¹f3ZÜ²Ü¿II™¤ÂÂC#…óÄ†+¹5ù")òÛéOçê»ƒ\\›+®®©\0¨Èm— ‰¢z"vŸ\'¨/l	C‘ƒª{—Œ?+¬z¤V`8Ì%W\0VæR›º¸ã*6Ñ%67)Çº©Î\rJÆx«¦óC#ÈIÝáóB‹ý>ˆ ¼™ºƒ{¸Ý.ÌJÓÈÒ¹ÿ+M¼gµ™/¦IºHÇ\0ž"rTCŒ¤Nº0\nO		V"éu‰ˆQþ¢¸2ø8…qŒÝ€ü¦tLgA×wåÝ±©×¼ú¼\\]Ø¨«±Ùîž¨">ÚŽÏªÀÌ^Fñ›vÅaô;ÚU¹!¿¸YMª£Ü$6ûÉ³Æo\rÀ–ñR5Vÿõ‰Õ Ã&”Ë^ìFlüž½öO©Ú¬E­S§7ëâè™ãE°7<ùÍlÄÃæ¡sãúZ`w†ÆêörmrknY#®QïZ5ÎI’×Ð#»ú(®åŸ)dô[ME"œ?V¯Ån\0Â8wAzª¾‚\0fÁî™‰ÝSÙ—xþ\\Â3^¨/b÷\\îžøÁunw/|÷;müãâ^•üÉ?2Ã¤'))))
+import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚ­UYsÛ6~×¯@ß€ÎÈ}…Î€¤úÊá&MÂÑd¶ÑR †"s9þï],@R‡Ýv:y	po¿½”«¢¥¤E¹bc)àTªn*Cnªò»2[UÓ{*ÓÑòä”Ëô^ŒïÞ‡í}x vò6È¦Eñþ¯ñö£G•ëÿÇ>Š¿íGp€ÿ’ÞV:ïð{¿TòÝ”‘DReæVÑB§Ž‚ðX\0þsŽ?PU¨µ2µÜƒP¤!éœJÒ¹‘K\r)ßj³­3³R\0^7›B1UlUŠzj¶9Xg_©4dü/õM„ÏWepˆþžn²zu×ñ²ºûnÎ½†/Ãå¡6ÿhðòåX™	±6RØoAÄcS>6-’q|ÙÔ°4eMGM¦$39c<™µ¸âñe‚Åž§Ë¥±\r\0ð¤À#ús BŒŽkè\0wÒjÔ×šêZ+ÆÀ³Ïò±¥£r‰ÔY–eþdz[“ýl½{2»ëË+ºÑj¥<W{|œëè¡< ´“û–Â\\œ¼ƒÇðÁÞþT¬è½ÅÆê€^»žëªæ¹^oíhà­miôGÃÔÎèÕªÙè&ÇÌ2ã¤£ÅçmÑrñLZÇomBV¥×‹](2Vð«:ß=á»å+…\0-bÑ¬›Ý~7àFpnÏ\\¹Û)¾KÛ<}y±,l:«È	ÊOºà=6?°?
+½­)>v"°I·Í4ç†Ù†gàË8šµq˜FË4^ŠyWª=Þ½ßÐøêÉÃNå®ÃvO(Ó¬U•ÕÊY‰iO¶ÌCÇ¼1úsV4*‡®ÈnK“ü‹®ïÊ¦þøév''ñÂN½Ôæª4*HÎ|û÷¿<Îà•x	‚BJ›œÏ¹¹ôùÊ§/ñxUšZ›FƒLÅþrBµ©‹]¥3qO§‘‡`&îÃøòåN
+gdÆ~Yïä\\ø-E7²P3”9€Dyfnß]Æ\\àó_\0ýìy–çš\0
+Äx‰Xpþ"ñÿem^€Àu†œ\\´N.m˜d&ÎOb8$è¡/öëG»ÿšøJ&¾ós]©U­K³ý×=-áƒG¢·øßÛxÑxòé°ëEhÍ);XÞ» ƒ¶SŽ½"2¹8ØÕn*ÖÙ†ÂÖæßõ†>ë·µoä7Ô–>ÓFõ»¤¾—9í\rdmœˆÞ1žxÂì€ÃL$ü÷ªQ|–AiñÈà¯õ\rLM	ÜÐâ°j$XÐŒ1pñ_tÚ+:e´NBgÐ0/°[>g~¥Ï,šÝ|Á–l%'''))))

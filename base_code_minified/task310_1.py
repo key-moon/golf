@@ -1,0 +1,1 @@
+def p(g):C=[A for(A,B)in enumerate(g)if len(set(B))==1];B=C[0];A=B+1;G=[A[:B]for A in g[:B]];F,H=next((D,E)for D in range(len(C))for E in range(len(C))if any(g[D*A+C][E*A+F]!=G[C][F]for C in range(B)for F in range(B)));D,E=F*A-1,H*A-1;return[B[E:E+A+1]for B in g[D:D+A+1]]

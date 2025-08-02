@@ -1,0 +1,1 @@
+def p(g):return[A[6:]for A in g[:3]]

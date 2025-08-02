@@ -1,0 +1,1 @@
+def p(g):return[[g[A//4*2+1][B//4*2+1]for B in range(len(g)*2)]for A in range(len(g)*2)]

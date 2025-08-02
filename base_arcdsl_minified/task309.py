@@ -1,0 +1,2 @@
+def val_func_replace(grid,val_func_replacee,val_func_replacer):return tuple(tuple(val_func_replacer if A==val_func_replacee else A for A in A)for A in grid)
+def p(I):I=tuple(map(tuple,I));A=val_func_replace(I,7,5);return[*map(list,A)]

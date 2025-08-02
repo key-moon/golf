@@ -1,0 +1,1 @@
+def p(g):return[[[2,4,3][A.index(5)]]*3 for A in g]

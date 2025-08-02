@@ -1,0 +1,1 @@
+def p(val_g):B=val_g;A=[A.count(5)for A in zip(*B)];C,max;C=max(A);D=min(A);return[[(B==5)*((A==C)+(A==D)*2)for(B,A)in zip(B,A)]for B in B]

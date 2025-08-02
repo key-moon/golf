@@ -1,6 +1,6 @@
 def p(g):
- r,c=next((i,j)for i,row in enumerate(g)for j,x in enumerate(row)if x);v=g[r][c]
- for i in range(r+1):
-  for j in range(len(g[0])):
-   if j&1==c&1:g[i][j]=4
- g[r+1][c]=v;return g
+ A,B=next((A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D);D=g[A][B]
+ for E in range(A+1):
+  for C in range(len(g[0])):
+   if C&1==B&1:g[E][C]=4
+ g[A+1][B]=D;return g

@@ -1,9 +1,6 @@
 def p(g):
- z={}
- for r in g:
-  for j,c in enumerate(r):
-   if c:
-    z.setdefault(c,[0,j])[0]+=1;z[c][1]=min(z[c][1],j)
- m=max(v[0]for v in z.values());k=[c for c,v in z.items()if v[0]==m]
- k.sort(key=lambda c:z[c][1])
- return[k]*m
+ A={}
+ for F in g:
+  for(C,B)in enumerate(F):
+   if B:A.setdefault(B,[0,C])[0]+=1;A[B][1]=min(A[B][1],C)
+ D=max(A[0]for A in A.values());E=[A for(A,B)in A.items()if B[0]==D];E.sort(key=lambda c:A[c][1]);return[E]*D

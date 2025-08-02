@@ -3,7 +3,6 @@ def p(g):
         for j in range(len(g[0])):
             d = [r[j] for r in g]; v = max(d, key=d.count)
             for r in g: r[j] = v
- else
         for r in g:
             v = max(r, key=r.count)
             r[:] = [v] * len(r)

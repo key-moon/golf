@@ -1,0 +1,1 @@
+def p(g):C=min(A for A in range(9)for B in range(9)if g[A][B]);A=min(A for B in range(9)for A in range(9)if g[B][A]);B=[g[C+B][A:A+3]for B in range(3)];return[[B[A%3][C%3]if B[A//3][C//3]else 0 for C in range(9)]for A in range(9)]

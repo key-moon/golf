@@ -1,0 +1,1 @@
+def p(g):return[[sum(C==6 for A in g[A:A+3]for C in A[B:B+3])//2 for B in(0,4,8)]for A in(0,4,8)]

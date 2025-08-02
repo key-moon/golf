@@ -10,5 +10,4 @@ def p(val_g):
     if val_i<val_r0: val_h[val_r0-1][val_j]=5
     elif val_i>val_r1: val_h[val_r1+1][val_j]=5
     elif val_j<val_c0: val_h[val_i][val_c0-1]=5
- else
  return val_h

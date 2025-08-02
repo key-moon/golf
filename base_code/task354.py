@@ -10,7 +10,7 @@ def p(g):
       try:
        if g[Y][X]==5 and (Y,X) not in v:
         v.add((Y,X));q+=[(Y,X)];b+=[(Y,X)]
-   except
+      except:0
     t=min(y for y,x in b);a=min(x for y,x in b);B=max(x for y,x in b)
     for x in range(a,B+1):
      if g[t-1][x]:

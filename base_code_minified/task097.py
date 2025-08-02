@@ -1,0 +1,1 @@
+def p(g):return[[A if A and any(0<=D+B<len(g)and 0<=E+C<len(g[0])and g[D+B][E+C]==A for B in(1,0,-1)for C in(1,0,-1)if B|C)else 0 for(E,A)in enumerate(A)]for(D,A)in enumerate(g)]

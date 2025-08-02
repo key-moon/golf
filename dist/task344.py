@@ -1,2 +1,8 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚMKÃ D÷œÂKDÚMÕÂI¢\0"jÜ\n¥÷/q¿[o<3S†»,ê,`Er×D—7A	È·*A‹T’\\w\'‹ËO$¡f(¾¿ç¬°1âÔ­RhJƒcŸÃ†Q½Â7ÖUí\n‘æ=YbèÅ:öj=õòÃ;ñ}wºüß€–¶G#(O€(<p'))))
+def p(g):
+ E,F=len(g),len(g[0])
+ for A in range(E):
+  for B in range(F):
+   if g[A][B]==3:
+    for(C,D)in((1,0),(0,1),(-1,0),(0,-1)):
+     if 0<=A+C<E and 0<=B+D<F and g[A+C][B+D]==2:g[A][B]=8;g[A+C][B+D]=0
+ return g

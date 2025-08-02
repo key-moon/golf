@@ -1,0 +1,1 @@
+def p(g):return g[:len(g)//2]if len(g)>len(g[0])else[A[:len(A)//2]for A in g]

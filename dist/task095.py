@@ -1,9 +1,9 @@
 def p(g):
- for i,a in enumerate(g):
-  for j,b in enumerate(a):
-   if b==5:
-    for d in(1,0,-1):
-     for e in(1,0,-1):
-      try:g[i+d][j+e]=g[i+d][j+e]or 1
-      except:0
+ for A in range(9):
+  for B in range(9):
+   if g[A][B]==5:
+    for C in(-1,0,1):
+     for D in(-1,0,1):
+      try:g[A+C][B+D]=g[A+C][B+D]or 1
+      except:pass
  return g

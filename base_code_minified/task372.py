@@ -1,0 +1,1 @@
+def p(g):return[list(map(max,A,B))for(A,B)in zip(g,g[6:])]

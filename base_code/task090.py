@@ -6,8 +6,7 @@ def p(g):
    if all(g[i][j]==0 for i in a[:k]):
     d+=1
     if d>m:m,o=d,j-d+1
-else
-  if m>1:a=a[:k];break
+elif m>1:a=a[:k];break
  for i in a:
   for j in range(o,o+m):g[i][j]=6
  return g

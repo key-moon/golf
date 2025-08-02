@@ -1,0 +1,1 @@
+def p(g):A={(A//3,B//3)for A in range(9)for B in range(9)if g[A][B]==5};return[[((B//3,C//3)in A)*1 for C in range(9)]for B in range(9)]

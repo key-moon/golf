@@ -1,2 +1,10 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚUÍÁ\nÂ0à»O‘c‡õÐàAÊê‹Œve«¤ÛHÞÞ¬S†—üŸ/yÄÞ&5þã‹@,Á”!æåi˜ãÞÔŠíú_Q­`a\ráæÙYq­KôŒVp_	Fð.®¹h¶šß—ÛUrŠFÜ¹ˆ‚mi|ê¤ïØõáªœƒa¼óÆ[þq>8+g«/W‹Š«¥8/”!}\0î.Gƒ'))))
+def p(g):
+ for(A,J)in enumerate(g):
+  for(B,H)in enumerate(J):
+   if H==8:C,E=B,A
+   if H==2:F,D=B,A
+ G=(D>E)-(D<E)
+ for A in range(E+G,D+G,G):g[A][C]=4
+ I=(F>C)-(F<C)
+ for B in range(C+I,F,I):g[D][B]=4
+ return g

@@ -1,0 +1,1 @@
+def p(g):return[[max((C:=[g[A][C]for A in range(A*3,A*3+3)for C in range(B*3,B*3+3)]),key=C.count)for B in range(3)]for A in range(3)]

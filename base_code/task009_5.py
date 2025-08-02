@@ -4,7 +4,7 @@ def p(g):
     for R in g:
         for f in set(R):
             if R.count(f)>w/2: break
-     else
+     else:
         break
     # stripe‐rows and stripe‐cols
     sr=[i for i in range(h) if g[i].count(f)>w/2]

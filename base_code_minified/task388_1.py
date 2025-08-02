@@ -1,0 +1,1 @@
+def p(g):B=len(g);A=len(g[0]);D=[any(B[A]for B in g)for A in range(A)];return[[g[E%B][C%A]or 8*D[C%A]for C in range(A*2)]for E in range(B*2)]

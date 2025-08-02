@@ -1,0 +1,1 @@
+def p(val_g):B=val_g;E=[A for(A,B)in enumerate(B)if any(B)];F=[A for(A,B)in enumerate(zip(*B))if any(B)];A=[A[F[0]:F[-1]+1]for A in B[E[0]:E[-1]+1]];C,D=len(A),len(A[0]);G=A[0][0];H=A[C//2][D//2];return[[H if A*B*(C-1-A)*(D-1-B)==0 else G for B in range(D)]for A in range(C)]

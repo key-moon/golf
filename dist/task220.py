@@ -1,10 +1,9 @@
 def p(g):
- E={3:6,8:4,2:1}
- for C,F in enumerate(g):
-  for D,G in enumerate(F):
-   if G in E:
-    for A in(-1,0,1):
-     for B in(-1,0,1):
-      if A or B:
-       g[C+A][D+B]=E[G]
+ A={3:6,8:4,2:1}
+ for(E,F)in enumerate(g):
+  for(G,B)in enumerate(F):
+   if B in A:
+    for C in(-1,0,1):
+     for D in(-1,0,1):
+      if C or D:g[E+C][G+D]=A[B]
  return g

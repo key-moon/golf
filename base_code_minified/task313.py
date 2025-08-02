@@ -1,0 +1,1 @@
+def p(g):A,B=g[0][:2];return[[[B,A][C+D&1]for(D,E)in enumerate(D)]for(C,D)in enumerate(g)]

@@ -1,0 +1,1 @@
+def p(g):g=[[g[B^A&1][A]for A in range(len(g[0]))]for B in range(2)];return g

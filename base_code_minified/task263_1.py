@@ -1,0 +1,1 @@
+def p(g):B=[(sum(g[A+C][B+D]==0 for C in(0,1,2)for D in(0,1,2)),A,B)for A in range(0,len(g),3)for B in range(0,len(g[0]),3)];A=next(A for A in B if sum(B[0]==A[0]for B in B)==1);return[g[A[1]+B][A[2]:A[2]+3]for B in(0,1,2)]

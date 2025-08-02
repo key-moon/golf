@@ -1,0 +1,1 @@
+def p(g):B=g[-1][-1];C=next(A for(A,C)in enumerate(g)if all(A==B for A in C));A=[];[A.append(B)for B in g[0][:C]if B not in A];return[[A[(B+C+1)%len(A)]for C in range(len(g[0]))]for B in range(len(g))]

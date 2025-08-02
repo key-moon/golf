@@ -1,0 +1,1 @@
+def p(g):return list(map(list,zip(*[sorted(A,key=bool)for A in zip(*g)])))

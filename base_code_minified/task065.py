@@ -1,0 +1,1 @@
+def p(g):A=len(g)//2;D,E=next((B,C)for B in range(len(g))for C in range(len(g))if B-A and C-A and g[B][C]!=g[0][0]);B=(A+1,0)[D<A];C=(A+1,0)[E<A];return[B[C:C+A]for B in g[B:B+A]]

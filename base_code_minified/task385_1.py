@@ -1,0 +1,1 @@
+def p(g):A=len(g)//2;g[:A]=g[:-A-1:-1];return g

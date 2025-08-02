@@ -1,0 +1,1 @@
+def p(g):A=next(A for(A,B)in enumerate(g)if sum(B)==0);return g[:-A]+g[:A][::-1]

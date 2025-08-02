@@ -1,0 +1,1 @@
+def p(g):return[sum((g[A%3]if g[A//3][B]else[0]*3 for B in(0,1,2)),[])for A in range(9)]

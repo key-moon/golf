@@ -1,0 +1,1 @@
+def p(g):B,A=len(g),len(g[0]);E=[B for(B,A)in enumerate(g)if A[0]and set(A)=={A[0]}];F=[A for A in range(A)if g[0][A]and{g[B][A]for B in range(B)}=={g[0][A]}];C=[-1]+E+[B];D=[-1]+F+[A];return[[g[C[A]+1][D[B]+1]for B in range(len(D)-1)][::-1]for A in range(len(C)-1)]

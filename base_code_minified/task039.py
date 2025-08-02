@@ -1,0 +1,1 @@
+def p(g):A=[A for(A,B)in enumerate(g)if any(B)];B=[A for(A,B)in enumerate(zip(*g))if any(B)];return[[g[A][B]for B in B[:3]]for A in A[:3]]

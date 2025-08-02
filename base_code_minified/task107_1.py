@@ -1,0 +1,1 @@
+def p(g):B=len(g);A=sum(g[-1][A]!=g[-1][A-1]for A in range(1,B))+2;return[[g[C//A][B//A]for B in range(B*A)]for C in range(B*A)]

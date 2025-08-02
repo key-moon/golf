@@ -1,0 +1,1 @@
+def p(g):A=[A for(A,B)in enumerate(g)if all(B)];B=[A for(A,B)in enumerate(zip(*g))if all(B)];return[A[B[0]:B[1]+1]for A in g[A[0]:A[1]+1]]

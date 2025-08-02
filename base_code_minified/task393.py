@@ -1,0 +1,1 @@
+def p(g):A={B:A.get(B,0)+1 for B in sum(g,[])if B};return[[A]for A in sorted(A,key=A.get,reverse=1)]

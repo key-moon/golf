@@ -4,7 +4,7 @@ def p(g):
     for T in[tuple(g[i+u][j+v]for u in range(3)for v in range(3))]
     if any(T)]
  D={}
- for_,T in L:D[T]=D.get(T,0)+1
+ for _,T in L:D[T]=D.get(T,0)+1
  L=[(i,j,T)for i,j,T in L if D[T]==1]
  L.sort(key=lambda x:(-x[0],-x[1]))
  R=[[0]*9 for _ in range(9)]

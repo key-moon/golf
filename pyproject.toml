@@ -7,4 +7,5 @@ requires-python = ">=3.12"
 dependencies = [
     "matplotlib>=3.10.5",
     "openai>=1.98.0",
+    "python-minifier>=2.11.3",
 ]

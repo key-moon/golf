@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.12"
 
 [[package]]
@@ -158,12 +159,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "matplotlib" },
     { name = "openai" },
+    { name = "python-minifier" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "matplotlib", specifier = ">=3.10.5" },
     { name = "openai", specifier = ">=1.98.0" },
+    { name = "python-minifier", specifier = ">=2.11.3" },
 ]
 
 [[package]]
@@ -601,6 +604,15 @@ wheels = [
 ]
 
 [[package]]
+name = "python-minifier"
+version = "2.11.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/39/63/403fb2d6394b3e455e046d91f64b96072803aaf119027a26e716ed94d63c/python_minifier-2.11.3.tar.gz", hash = "sha256:489133b91212ec9658a7b64d243eb9eb67d7e53faf2ac5166a33301c61b3dcab", size = 64438 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/53/32/61d20860d18afb81cb7258bb02d4eaf4b09170383c2374514f6aef384fa9/python_minifier-2.11.3-py3-none-any.whl", hash = "sha256:37e10e9e318be701eecb48764942426be73ae9f562d75bea4e29c5f66945ce97", size = 56172 },
+]
+
+[[package]]
 name = "six"
 version = "1.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -623,7 +635,7 @@ name = "tqdm"
 version = "4.67.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "platform_system == 'Windows'" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737 }
 wheels = [

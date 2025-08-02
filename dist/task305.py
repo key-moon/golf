@@ -1,6 +1,5 @@
 def p(g):
- k=max(map(max,g))
- for i,r in enumerate(g):
-  for j,_ in enumerate(r):
-   r[j]= (i+j)%k+1
+ C=max(map(max,g))
+ for(D,A)in enumerate(g):
+  for(B,E)in enumerate(A):A[B]=(D+B)%C+1
  return g

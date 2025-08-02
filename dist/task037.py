@@ -1,12 +1,12 @@
 def p(g):
- d={}
- for i,r in enumerate(g):
-  for j,v in enumerate(r):
-   if v:d.setdefault(v,[]).append((i,j))
- for v,l in d.items():
-  i,j=l[0];x,y=l[1];di=(x>i)-(x<i);dj=(y>j)-(y<j)
+ F={}
+ for(A,H)in enumerate(g):
+  for(B,C)in enumerate(H):
+   if C:F.setdefault(C,[]).append((A,B))
+ for(C,G)in F.items():
+  A,B=G[0];D,E=G[1];I=(D>A)-(D<A);J=(E>B)-(E<B)
   while 1:
-   g[i][j]=v
-   if i==x and j==y:break
-   i+=di;j+=dj
+   g[A][B]=C
+   if A==D and B==E:break
+   A+=I;B+=J
  return g

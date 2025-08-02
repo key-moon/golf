@@ -1,0 +1,1 @@
+def p(g):A=g[0].index(5);return[[2*B[C]*B[C+A+1]for C in range(A)]for B in g]

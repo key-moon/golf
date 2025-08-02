@@ -1,2 +1,7 @@
 #coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"xÚ­VÛnÛ8}÷WèqO+NÓ6º½iÓí=M-Ñ6\r›4d9‘½Øß!©«¥¤Ý Gœsg†CŠ‘˜xÁd£ÂDj…¡V	—JÄþYÇ‹E²‰•—lWJGáOtì	O*¯tw\"RüZâ×*­}žQk\nk¯TujW0e„-‰sFæ`†l!”õù˜[w½¡O˜‰§t½s&ÏgW‘GæüüÁðó`þÖJ‘Y*©}hƒáÐÎýV<	gÕ$6«…€%_ÁR*ÜÉÜd ú³¤[±*Á	m‹I!ÉµTë„«P~+f£š2'LÑÛÄúÁ” „wh´‚³À{¾ØØj‘ÏÂrœûé:¸C¼Ú,-š«©€,>+6eÓì˜O¢óºu(Âµ0óR‚f²€}Æz6š8‰õN¨µHlà‘IuÑÜü°_iIdp˜Â(/E4Òã9».ŠíûÍrá¢ Ô'>E^2ÏòŠIÝHÉÎ8ç9=}Ä£ —?pÞ®Ô8Ïí¹ö«Õ¹†2mí£µ¼³f¹pÝíd‹f{¼»Æ]ˆˆ-ä:û Õò+McI—+ÎÍÈMÙÆf¡Ã¦˜ßÉáÝ|ÈlD{mïž-ÓžËçÚM…‘Œ…='ÖYû›$\\YodÊv¬ã¹¥/Yû[F‰4™ˆ8ßl´G+û§ÑgÅBuIyÞ5Òì'Õia—´J3¸I³RÑ'r«µýŸåsUiî+¯»+£	í[¥£*W59ÌÓŠí!C»\\Ä<®Ýì6Àûº'ö)ü{æºÂ•`ù›ÇWh8òÐJ9Ž+”_Ž#î¥gÖ	RÇôpœÏ¥ÜD¦ÔpDT,;B‰Ñè(Ô#OC½Q‰û0v\\©i6Éö¬ø’Y5Üúæ4sø~w\rîüòlÀ‘·»d¾ÿ¯É¤åLi¦÷d2)n«Œm…Ó–ŒAìê„]N1É|)“I(Z‘´­iI§]â`–üf8Å	¶qf0…‰i\0007Ïk¨õ‹}³Žå½Â´Z$ÍDO\\b„×¼»˜ê\\ºÝ8å7õ)=nÍ±õ}„Ç7Ù?Öõ¯ù	mÄœ{7§w{³Ù¸y-^nâæ‚cÞ²üßC•e|.ÂW¹^ýðá(ésk©Ží`eñywœ5Qê©yÿìNŸ«î˜Èél#+úmz­¡4Õ2©\\§6I6ƒ«Å\n.\rñ’•W5ká%ÝÒ€}ƒKì‘uÌ^Cé¿gÆûì#¤Çdœ°[HûØ'ó»ô„ŒSö®1}FæsöÞaù‚½…Ÿ˜>Çô”Þ^²/¾°ÊAð¯<ì¤Aßcú’ˆpÌ>À÷n”‚>ûi@o&‚à„ÑÙšžÒ+Eñ‰]PÀÆG‘¸¬ïLRæÓŸüáŸZÜ"))))
+import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚµVYoâH~çWø±;T"ØyÃé‡öA !ÇìÜ‹jp›X3Vûß·úðÌ<¬´QÔ4u~ut‘Œ?I¼O—E’¥°ÌÒB$©Ìé€³ê‹›ËbŸ§NqÜJÂi%Ž÷8Ëî$©Ãi'B[< •Ú®edwnÅsje}õvþ"«<‰`-é ãx/.gŠæú0Ï\raÈÖRA\0ý1íÍhÇIb'Í
+Ò»gþ}èˆ4rðÜéÀ8ï8Ÿz¨1Ã³?›äOd+Šå{)êûíZ’Ø’M’Â)Ù’þheðÏ(Mˆ\\ËLˆÅ²ÈrƒÖÒ±¡j`É.Iw…H—’x +aÇgÆ¢×Y«,xŠã\r–æ…Š7,èNXç0éJåUûÌ·Áu	£ßqäz'•7D¨éQÆze
+â<;Ét'\ra³äQ÷žØínÜ	ã#‡ …RwÄJYtJB ÏðB)ºžÊ^›H4U“ßZäÑˆ"¢\rÜðî+¼àùF›ÀÑk\rnD 8[“o¦u~Šõ^‚-iÇ±Ís­m\\l¯dW}´[ZÇ\r§b¨Šo³uÑdoêÏ¦ÁŒi×U«™:˜³aÝ³42V!Jr©_ÕÎÀÕÔNYÞ,ÇŸÕçý•ÊCA’BæªÚØáe»]”•p A×ƒ°ëSM‡P×L…E¥”6Âm<ýF~~¿ÕUÿ¸žØxü)7PÂF\\»ŒÀSdºßÈ\\R«ÑFÑk
+Æø"MqMÄ›ë“³„«|£ûƒd{Œ,*µØ,"ášE9PXàaóëÕÖâä #3kôUMËs}ÆïæóeÉùün™ÍE¾Zfû´Ð¹öûãÌÝqÀ1‘GªF‘øp.'#'jÆ…\0ˆR„Å;üðÐÑëök¼8j™£•ºÀ«X'+r‚ò%ú5ÞAÈâ²0Õæ;`C!­û…¼Ã
+âK…w²"±*¡ññ‰4ëwãù¡^šªQ¢Dùøí
+æÍå‰Y¨´ô|WF?·]é9eÝqò«‡ñ·füc2&—]­^sMÕr_[ž4BÑB(B®6³ú¶0ZßI­£8ÛGcë|.HÒ‚ªÄ…&Vv¶#Zzf€\\h¶çŠÀ5Ð]à‡Þú³k¶®b8³dÍX-ûÖ¸ŽsKÆt0fõo}ƒ1.QÎp|¡GÝ€}"=Àÿ’C†u¨;dø£#„ÔÅmüH†j}áhà#\\€¸€ñÕ}Å©è>²/„a„Ý­^˜->)Ñ@nûpÛG£”ú>.o÷™ý Ÿñ:¡îÃŽäðLÝW†3ÎÃ%î¾±oª¯Ô¶âôFÁV;Þèì_7o;¿'''))))

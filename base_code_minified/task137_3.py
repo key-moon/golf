@@ -1,0 +1,1 @@
+def p(g):A,D=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D][:2];B,C=D[0]-A[0],D[1]-A[1];E=B*B+C*C;G,H=-C,B;I=g[A[0]][A[1]];return[[I if((D-A[0])*B+(F-A[1])*C)%E==0 and((D-A[0])*G+(F-A[1])*H)%E==0 else 0 for F in range(len(g[0]))]for D in range(len(g))]

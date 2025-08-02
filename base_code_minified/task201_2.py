@@ -1,0 +1,1 @@
+def p(g):B=sum(g,[]);C=next(A for A in set(B)if A and B.count(A)==4);A=[(A,D)for(A,B)in enumerate(g)for(D,E)in enumerate(B)if E==C];D=min(A for(A,B)in A);E=max(A for(A,B)in A);F=min(A for(B,A)in A);G=max(A for(B,A)in A);return[A[F:G+1]for A in g[D:E+1]]

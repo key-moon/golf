@@ -1,0 +1,3 @@
+def val_func_replace(grid,val_func_replacee,val_func_replacer):return tuple(tuple(val_func_replacer if A==val_func_replacee else A for A in A)for A in grid)
+def val_func_leastcolor(element):A=element;B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return min(set(B),key=B.count)
+def p(I):I=tuple(map(tuple,I));A=val_func_leastcolor(I);B=val_func_replace(I,A,0);C=val_func_leastcolor(B);D=val_func_replace(B,C,A);return[*map(list,D)]

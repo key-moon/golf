@@ -1,0 +1,1 @@
+def p(g):A=len({A for B in g for A in B if A});B=len(g)*A;return[[g[C//A][D//A]or(C==D or D+C==B-1)and 2 for D in range(B)]for C in range(B)]
