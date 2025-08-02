@@ -1,11 +1,11 @@
-def p(g):
-	for B in g:
-		C=None;A=0
-		while A<len(B):
-			if B[A]==2:
-				if C:
-					for D in range(C+1,A):B[D]=9
-				while A+1<len(B)and B[A+1]==2:A+=1
-				C=A
-			A+=1
-	return g
+def p(A):
+	for C in A:
+		D=None;B=0
+		while B<len(C):
+			if C[B]==2:
+				if D:
+					for E in range(D+1,B):C[E]=9
+				while B+1<len(C)and C[B+1]==2:B+=1
+				D=B
+			B+=1
+	return A

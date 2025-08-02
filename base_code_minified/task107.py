@@ -1,13 +1,13 @@
-def p(g):
-	E=len(g);A=len({*sum(g,[])})-1;C=[[0]*E*A for B in range(E*A)]
-	for(B,I)in enumerate(g):
-		for(D,G)in enumerate(I):
-			if G:
-				for F in range(A):C[B*A+F][D*A:D*A+A]=[G]*A
-	for H in range(E):
-		for F in range(A):
-			B=H*A+F
-			if not C[B][B]:C[B][B]=2
-			D=(E-1-H)*A+A-1-F
-			if not C[B][D]:C[B][D]=2
-	return C
+def p(A):
+	F=len(A);B=len({*sum(A,[])})-1;D=[[0]*F*B for A in range(F*B)]
+	for(C,J)in enumerate(A):
+		for(E,H)in enumerate(J):
+			if H:
+				for G in range(B):D[C*B+G][E*B:E*B+B]=[H]*B
+	for I in range(F):
+		for G in range(B):
+			C=I*B+G
+			if not D[C][C]:D[C][C]=2
+			E=(F-1-I)*B+B-1-G
+			if not D[C][E]:D[C][E]=2
+	return D

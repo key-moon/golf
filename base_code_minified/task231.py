@@ -1,1 +1,1 @@
-def p(g):return[A*2 for A in g]
+def p(A):return[A*2 for A in A]

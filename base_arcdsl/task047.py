@@ -1,11 +1,11 @@
 def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -115,7 +115,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def mval_func_apply(function, container):
@@ -147,7 +147,7 @@ def p(I):
     x1 = val_func_objects(I, True, True, True)
     x2 = val_func_fork(val_func_combine, val_func_vfrontier, val_func_hfrontier)
     x3 = val_func_compose(x2, val_func_center)
-    x4 = val_func_fork(val_func_reval_func_color, val_func_color, x3)
+    x4 = val_func_fork(reval_func_color, val_func_color, x3)
     x5 = mval_func_apply(x4, x1)
     x6 = val_func_paint(I, x5)
     x7 = val_func_fork(val_func_intersection, val_func_first, val_func_last)

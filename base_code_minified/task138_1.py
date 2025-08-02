@@ -1,1 +1,1 @@
-def p(g):D=sorted(A for A in range(len(g[0]))if len({g[B][A]for B in range(len(g))})==1);A,B=D;C=[C for C in range(len(g))if len({g[C][A]for A in range(A+1,B)})==1];return[C[A:B+1]for C in g[C[0]:C[-1]+1]]
+def p(A):E=sorted(B for B in range(len(A[0]))if len({A[C][B]for C in range(len(A))})==1);B,C=E;D=[D for D in range(len(A))if len({A[D][B]for B in range(B+1,C)})==1];return[A[B:C+1]for A in A[D[0]:D[-1]+1]]

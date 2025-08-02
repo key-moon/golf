@@ -1,1 +1,1 @@
-def p(g):return list(map(list,zip(*g)))
+def p(A):return list(map(list,zip(*A)))

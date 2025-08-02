@@ -1,23 +1,23 @@
-def p(g):
-	J,K=len(g),len(g[0]);F=[(A,B)for A in range(J)for B in range(K)if g[A][B]==2];S=min(A for(A,B)in F);T=max(A for(A,B)in F);U=min(A for(B,A)in F);V=max(A for(B,A)in F);L=[(A,B)for A in range(J)for B in range(K)if g[A][B]==5];G=set(L);M=[]
-	while G:
-		A,B=G.pop();I=[(A,B)];C=[(A,B)]
-		while I:
-			W,X=I.pop()
-			for(D,E)in((1,0),(-1,0),(0,1),(0,-1)):
-				H=W+D,X+E
-				if H in G:G.remove(H);I.append(H);C.append(H)
-		M.append(C)
-	for(A,B)in L:g[A][B]=0
-	for C in M:
-		N=[A for(A,B)in C];O=[A for(B,A)in C];Y,Z=S+1-min(N),T-1-max(N);a,b=U+1-min(O),V-1-max(O);P=10**9
-		for D in range(Y,Z+1):
-			for E in range(a,b+1):
-				Q=1
-				for(A,B)in C:
-					if g[A+D][B+E]!=0:Q=0;break
-				if Q:
-					R=abs(D)+abs(E)
-					if R<P:P=R;c,d=D,E
-		for(A,B)in C:g[A+c][B+d]=5
-	return g
+def p(A):
+	K,L=len(A),len(A[0]);G=[(B,C)for B in range(K)for C in range(L)if A[B][C]==2];T=min(A for(A,B)in G);U=max(A for(A,B)in G);V=min(A for(B,A)in G);W=max(A for(B,A)in G);M=[(B,C)for B in range(K)for C in range(L)if A[B][C]==5];H=set(M);N=[]
+	while H:
+		B,C=H.pop();J=[(B,C)];D=[(B,C)]
+		while J:
+			X,Y=J.pop()
+			for(E,F)in((1,0),(-1,0),(0,1),(0,-1)):
+				I=X+E,Y+F
+				if I in H:H.remove(I);J.append(I);D.append(I)
+		N.append(D)
+	for(B,C)in M:A[B][C]=0
+	for D in N:
+		O=[A for(A,B)in D];P=[A for(B,A)in D];Z,a=T+1-min(O),U-1-max(O);b,c=V+1-min(P),W-1-max(P);Q=10**9
+		for E in range(Z,a+1):
+			for F in range(b,c+1):
+				R=1
+				for(B,C)in D:
+					if A[B+E][C+F]!=0:R=0;break
+				if R:
+					S=abs(E)+abs(F)
+					if S<Q:Q=S;d,e=E,F
+		for(B,C)in D:A[B+d][C+e]=5
+	return A

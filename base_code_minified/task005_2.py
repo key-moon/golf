@@ -1,27 +1,27 @@
-def p(g):
-	C={};Q,R=len(g),len(g[0])
-	for S in range(Q):
-		for T in range(R):C.setdefault(g[S][T],set()).add((S,T))
-	C.pop(0);U=sorted(C.items(),key=lambda i:len(i[1]));V,f=U[0][0],U[-1][0];W,X=C[f],C[V]
-	def Y(s):A=[A for(A,B)in s];B=[A for(B,A)in s];return min(A),min(B),max(A),max(B)
-	F,K,h,Z=Y(W);G,m,L,n=h-F+1,Z-K+1,0,0;a,b,i,j=Y(X);H=i-a+1;I=j-b+1;k=[[1 if(F+A,K+B)in W else 0 for B in range(L)]for A in range(G)];l=[[1 if(a+A,b+B)in X else 0 for B in range(I)]for A in range(H)];D,E=G*H,L*I;J=[[0]*E for A in range(D)]
-	for A in range(G):
-		for B in range(L):
-			if k[A][B]:
-				for c in range(H):
-					for d in range(I):
-						if l[c][d]:J[A*H+c][B*I+d]=V
-	for(M,e)in((0,1),(1,0),(0,-1),(-1,0)):
-		N=(F if M>=0 else F-D)+(M>0)*G+M-1;O=(Z+1 if e>0 else K-E)+(e<0)*0
-		if 0<=N<=Q-D and 0<=O<=R-E:
-			P=1
-			for A in range(D):
+def p(A):
+	D={};R,S=len(A),len(A[0])
+	for T in range(R):
+		for U in range(S):D.setdefault(A[T][U],set()).add((T,U))
+	D.pop(0);V=sorted(D.items(),key=lambda H:len(H[1]));W,g=V[0][0],V[-1][0];X,Y=D[g],D[W]
+	def Z(A):B=[A for(A,B)in A];C=[A for(B,A)in A];return min(B),min(C),max(B),max(C)
+	G,L,h,a=Z(X);H,m,M,n=h-G+1,a-L+1,0,0;b,c,i,j=Z(Y);I=i-b+1;J=j-c+1;k=[[1 if(G+A,L+B)in X else 0 for B in range(M)]for A in range(H)];l=[[1 if(b+A,c+B)in Y else 0 for B in range(J)]for A in range(I)];E,F=H*I,M*J;K=[[0]*F for A in range(E)]
+	for B in range(H):
+		for C in range(M):
+			if k[B][C]:
+				for d in range(I):
+					for e in range(J):
+						if l[d][e]:K[B*I+d][C*J+e]=W
+	for(N,f)in((0,1),(1,0),(0,-1),(-1,0)):
+		O=(G if N>=0 else G-E)+(N>0)*H+N-1;P=(a+1 if f>0 else L-F)+(f<0)*0
+		if 0<=O<=R-E and 0<=P<=S-F:
+			Q=1
+			for B in range(E):
+				for C in range(F):
+					if K[B][C]and A[O+B][P+C]:Q=0;break
+				if not Q:break
+			if Q:
 				for B in range(E):
-					if J[A][B]and g[N+A][O+B]:P=0;break
-				if not P:break
-			if P:
-				for A in range(D):
-					for B in range(E):
-						if J[A][B]:g[N+A][O+B]=J[A][B]
+					for C in range(F):
+						if K[B][C]:A[O+B][P+C]=K[B][C]
 				break
-	return g
+	return A

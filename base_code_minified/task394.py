@@ -1,5 +1,5 @@
-def p(g):
-	B,D=len(g),len(g[0]);C=[(A,B)for A in range(B)for B in range(D)if g[A][B]==0];E=min(A for(A,B)in C);G=min(A for(B,A)in C);F=max(A for(A,B)in C)-E+1
-	for A in range(1,B+1):
-		if all(g[B][C]==g[B%A][C%A]for B in range(B)for C in range(D)if g[B][C]):break
-	return[[g[(E+B)%A][(G+C)%A]for C in range(F)]for B in range(F)]
+def p(A):
+	C,E=len(A),len(A[0]);D=[(B,C)for B in range(C)for C in range(E)if A[B][C]==0];F=min(A for(A,B)in D);H=min(A for(B,A)in D);G=max(A for(A,B)in D)-F+1
+	for B in range(1,C+1):
+		if all(A[C][D]==A[C%B][D%B]for C in range(C)for D in range(E)if A[C][D]):break
+	return[[A[(F+C)%B][(H+D)%B]for D in range(G)]for C in range(G)]

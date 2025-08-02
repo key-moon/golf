@@ -1,1 +1,1 @@
-def p(g):A=next(A for B in g for A in B if A-5);return[[A*(B==5)for B in B]for B in g]
+def p(A):B=next(A for B in A for A in B if A-5);return[[B*(A==5)for A in A]for A in A]

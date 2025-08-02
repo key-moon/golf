@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;O=[A[:]for A in A];J=len(A);K=len(A[0]);D={(B,C)for B in range(J)for C in range(K)if A[B][C]==5}
+def p(A):
+	O=[A[:]for A in A];J=len(A);K=len(A[0]);D={(B,C)for B in range(J)for C in range(K)if A[B][C]==5}
 	for(B,C)in D:A[B][C]=0
 	while D:
 		E={D.pop()};H=[*E]

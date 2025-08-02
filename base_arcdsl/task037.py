@@ -61,7 +61,7 @@ def val_func_fgpartition(grid):
         ) for value in val_func_palette(grid) - {mostval_func_color(grid)}
     )
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def mval_func_apply(function, container):
@@ -90,7 +90,7 @@ def p(I):
     x2 = val_func_compose(val_func_last, val_func_first)
     x3 = val_func_power(val_func_last, 2)
     x4 = val_func_fork(val_func_connect, x2, x3)
-    x5 = val_func_fork(val_func_reval_func_color, val_func_color, x4)
+    x5 = val_func_fork(reval_func_color, val_func_color, x4)
     x6 = mval_func_apply(x5, x1)
     O = val_func_paint(I, x6)
     return [*map(list,O)]

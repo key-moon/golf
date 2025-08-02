@@ -1,14 +1,14 @@
-def p(g):
-	N=[B for(B,A)in enumerate(g)if A.count(A[0])==len(A)==5*len(A)];O=[A for A in range(len(g))if all(g[B][A]==5 for B in range(len(g)))];E=[0]+N+[len(g)];F=[0]+O+[len(g[0])]
-	for G in range(3):
-		for H in range(3):
-			I,J=E[G],E[G+1];K,L=F[H],F[H+1];A={}
-			for C in range(I,J):
-				for D in range(K,L):
-					B=g[C][D]
-					if B and B!=5:A[B]=A.get(B,0)+1
-			M=0
-			if A:M=max(A,key=A.get)
-			for C in range(I,J):
-				for D in range(K,L):g[C][D]=M
-	return g
+def p(A):
+	O=[B for(B,A)in enumerate(A)if A.count(A[0])==len(A)==5*len(A)];P=[B for B in range(len(A))if all(A[C][B]==5 for C in range(len(A)))];F=[0]+O+[len(A)];G=[0]+P+[len(A[0])]
+	for H in range(3):
+		for I in range(3):
+			J,K=F[H],F[H+1];L,M=G[I],G[I+1];B={}
+			for D in range(J,K):
+				for E in range(L,M):
+					C=A[D][E]
+					if C and C!=5:B[C]=B.get(C,0)+1
+			N=0
+			if B:N=max(B,key=B.get)
+			for D in range(J,K):
+				for E in range(L,M):A[D][E]=N
+	return A

@@ -1,4 +1,4 @@
-def p(g):
-	B=list(zip(*[A[:3]for A in g][::-1]));C=list(zip(*B[::-1]))
-	for A in(0,1,2):g[A][4:7]=B[A];g[A][8:]=C[A]
-	return g
+def p(A):
+	C=list(zip(*[A[:3]for A in A][::-1]));D=list(zip(*C[::-1]))
+	for B in(0,1,2):A[B][4:7]=C[B];A[B][8:]=D[B]
+	return A

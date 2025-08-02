@@ -1,1 +1,1 @@
-def p(g):A=len(g);B,C=next((A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D);D=g[B][C];return[[D if abs(E-B)==abs(A-C)else 0 for A in range(A)]for E in range(A)]
+def p(A):B=len(A);C,D=next((A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D);E=A[C][D];return[[E if abs(A-C)==abs(B-D)else 0 for B in range(B)]for A in range(B)]

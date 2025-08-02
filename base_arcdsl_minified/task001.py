@@ -1,21 +1,21 @@
-def val_func_cellwise(a,b,fallback):
-	F,G=len(a),len(a[0]);A=tuple()
-	for C in range(F):
-		B=tuple()
-		for D in range(G):E=a[C][D];H=E if E==b[C][D]else fallback;B=B+(H,)
-		A=A+(B,)
-	return A
-def val_func_vconcat(a,b):return a+b
-def val_func_hconcat(a,b):return tuple(A+B for(A,B)in zip(a,b))
-def val_func_vupscale(grid,factor):
-	A=tuple()
-	for B in grid:A=A+tuple(B for A in range(factor))
-	return A
-def val_func_hupscale(grid,factor):
-	A=tuple()
-	for C in grid:
-		B=tuple()
-		for D in C:B=B+tuple(D for A in range(factor))
-		A=A+(B,)
-	return A
-def p(I):I=tuple(map(tuple,I));B=val_func_hupscale(I,3);C=val_func_vupscale(B,3);D=val_func_hconcat(I,I);A=val_func_hconcat(D,I);E=val_func_vconcat(A,A);F=val_func_vconcat(E,A);G=val_func_cellwise(C,F,0);return[*map(list,G)]
+def val_func_cellwise(A,B,C):
+	I,J=len(A),len(A[0]);D=tuple()
+	for F in range(I):
+		E=tuple()
+		for G in range(J):H=A[F][G];K=H if H==B[F][G]else C;E=E+(K,)
+		D=D+(E,)
+	return D
+def val_func_vconcat(A,B):return A+B
+def val_func_hconcat(A,B):return tuple(A+B for(A,B)in zip(A,B))
+def val_func_vupscale(A,B):
+	C=tuple()
+	for D in A:C=C+tuple(D for A in range(B))
+	return C
+def val_func_hupscale(A,B):
+	C=tuple()
+	for E in A:
+		D=tuple()
+		for F in E:D=D+tuple(F for A in range(B))
+		C=C+(D,)
+	return C
+def p(A):A=tuple(map(tuple,A));C=val_func_hupscale(A,3);D=val_func_vupscale(C,3);E=val_func_hconcat(A,A);B=val_func_hconcat(E,A);F=val_func_vconcat(B,B);G=val_func_vconcat(F,B);H=val_func_cellwise(D,G,0);return[*map(list,H)]

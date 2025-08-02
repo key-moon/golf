@@ -1,1 +1,1 @@
-def p(g):A=len(g)//2;C=len(g[0]);return[[2*(not g[B][C]and not g[B+A][C])for C in range(C)]for B in range(A)]
+def p(A):B=len(A)//2;D=len(A[0]);return[[2*(not A[C][D]and not A[C+B][D])for D in range(D)]for C in range(B)]

@@ -1,9 +1,9 @@
-def p(g):
-	C=len(g);I=[(0,1),(1,0),(0,-1),(-1,0)];D=E=F=0
+def p(A):
+	D=len(A);J=[(0,1),(1,0),(0,-1),(-1,0)];E=F=G=0
 	while 1:
-		g[E][F]=3;G,H=I[D];A,B=E+G,F+H
-		if A<0 or A>=C or B<0 or B>=C or g[A][B]:
-			D=(D+1)%4;G,H=I[D];A,B=E+G,F+H
-			if A<0 or A>=C or B<0 or B>=C or g[A][B]:break
-		E,F=A,B
-	return g
+		A[F][G]=3;H,I=J[E];B,C=F+H,G+I
+		if B<0 or B>=D or C<0 or C>=D or A[B][C]:
+			E=(E+1)%4;H,I=J[E];B,C=F+H,G+I
+			if B<0 or B>=D or C<0 or C>=D or A[B][C]:break
+		F,G=B,C
+	return A

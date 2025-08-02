@@ -1,9 +1,8 @@
-def p(val_g):
-	B=val_g
-	for(D,C)in enumerate(B):
-		for(A,E)in enumerate(C):
+def p(A):
+	for(D,C)in enumerate(A):
+		for(B,E)in enumerate(C):
 			if E*(E-2):
 				try:
-					if B[D+1][A]==2 or B[D-1][A]==2 or C[A+1]==2 or C[A-1]==2:C[A]=4
+					if A[D+1][B]==2 or A[D-1][B]==2 or C[B+1]==2 or C[B-1]==2:C[B]=4
 				except:pass
-	return B
+	return A

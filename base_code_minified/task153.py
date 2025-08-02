@@ -1,14 +1,14 @@
-def p(g):
-	D={}
-	for(P,Q)in enumerate(g):
-		for(R,E)in enumerate(Q):
-			if E:D.setdefault(E,[]).append((P,R))
-	S=sorted(D.items(),key=lambda t:min(A for(B,A)in t[1]));F=[]
-	for(T,G)in S:H,I=zip(*G);J,K=min(H),min(I);U,V=max(H)-J+1,max(I)-K+1;F.append((T,[(A-J,B-K)for(A,B)in G],U,V))
-	(W,L,X,X),(Y,M,Z,a)=F;b=set(L)
-	for(N,O)in((0,3-a),(3-Z,0)):
-		if all((A+N,B+O)not in b for(A,B)in M):break
-	A=[[0]*3 for A in range(3)]
-	for(B,C)in L:A[B][C]=W
-	for(B,C)in M:A[B+N][C+O]=Y
-	return A
+def p(A):
+	E={}
+	for(Q,R)in enumerate(A):
+		for(S,F)in enumerate(R):
+			if F:E.setdefault(F,[]).append((Q,S))
+	T=sorted(E.items(),key=lambda H:min(A for(B,A)in H[1]));G=[]
+	for(U,H)in T:I,J=zip(*H);K,L=min(I),min(J);V,W=max(I)-K+1,max(J)-L+1;G.append((U,[(A-K,B-L)for(A,B)in H],V,W))
+	(X,M,Y,Y),(Z,N,a,b)=G;c=set(M)
+	for(O,P)in((0,3-b),(3-a,0)):
+		if all((A+O,B+P)not in c for(A,B)in N):break
+	B=[[0]*3 for A in range(3)]
+	for(C,D)in M:B[C][D]=X
+	for(C,D)in N:B[C+O][D+P]=Z
+	return B

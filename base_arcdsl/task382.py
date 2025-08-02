@@ -110,7 +110,7 @@ def val_func_height(piece):
         return len(piece)
     return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def mval_func_apply(function, container):
@@ -242,7 +242,7 @@ def p(I):
     x38 = val_func_lbind(val_func_compose, x36)
     x39 = val_func_chain(x30, x38, x37)
     x40 = val_func_apply(x39, x29)
-    x41 = val_func_pval_func_apply(val_func_shift, x40, x28)
+    x41 = pval_func_apply(val_func_shift, x40, x28)
     x42 = val_func_merge(x41)
     x43 = val_func_fill(x13, 8, x42)
     x44 = val_func_chain(x3, x7, x12)

@@ -1,1 +1,1 @@
-def p(g):A=len(g);B=[*range(A),*range(A-2,-1,-1)];g[:]=[g[A]for A in B+B[1:]];return g
+def p(A):B=len(A);C=[*range(B),*range(B-2,-1,-1)];A[:]=[A[B]for B in C+C[1:]];return A

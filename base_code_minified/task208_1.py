@@ -1,9 +1,9 @@
-def p(g):
-	E,F=len(g),len(g[0]);A={}
-	for C in g:
-		for B in C:A[B]=A.get(B,0)+1
-	D=min(A,key=A.get)
-	for(G,C)in enumerate(g):
-		for(H,B)in enumerate(C):
-			if B==D:g[E-1-G][F-1-H]=D
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);B={}
+	for D in A:
+		for C in D:B[C]=B.get(C,0)+1
+	E=min(B,key=B.get)
+	for(H,D)in enumerate(A):
+		for(I,C)in enumerate(D):
+			if C==E:A[F-1-H][G-1-I]=E
+	return A

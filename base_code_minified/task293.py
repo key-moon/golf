@@ -1,13 +1,13 @@
-def p(g):
-	C={}
-	for(A,K)in enumerate(g):
-		for(B,H)in enumerate(K):
-			if H:I=C.setdefault(H,(set(),set()));I[0].add(A);I[1].add(B)
-	G=D=0
-	for(J,(E,F))in C.items():
-		if len(E)<len(F):G=J
-		else:D=J
-	E,F=C[G][0],C[D][1];A,B=next(iter(E)),next(iter(F));L=G if g[A][B]==D else D
-	for A in E:
-		for B in F:g[A][B]=L
-	return g
+def p(A):
+	D={}
+	for(B,L)in enumerate(A):
+		for(C,I)in enumerate(L):
+			if I:J=D.setdefault(I,(set(),set()));J[0].add(B);J[1].add(C)
+	H=E=0
+	for(K,(F,G))in D.items():
+		if len(F)<len(G):H=K
+		else:E=K
+	F,G=D[H][0],D[E][1];B,C=next(iter(F)),next(iter(G));M=H if A[B][C]==E else E
+	for B in F:
+		for C in G:A[B][C]=M
+	return A

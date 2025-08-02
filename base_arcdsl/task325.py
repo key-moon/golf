@@ -2,9 +2,9 @@ def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
-def dval_func_neighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
 def val_func_asindices(grid):
@@ -66,7 +66,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
     occupied = set()
     h, w = len(grid), len(grid[0])
     unvisited = val_func_asindices(grid)
-    diagfun = val_func_neighbors if diagonal else dval_func_neighbors
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue

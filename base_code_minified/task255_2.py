@@ -1,15 +1,15 @@
-def p(g):
-	D,E=len(g),len(g[0]);C=[(A,B)for A in(0,D-1)for B in range(E)if g[A][B]==0]+[(A,B)for A in range(D)for B in(0,E-1)if g[A][B]==0]
-	while C:
-		A,B=C.pop()
-		if g[A][B]==0:
-			g[A][B]=-1
-			if A:C+=[(A-1,B)]
-			if A<D-1:C+=[(A+1,B)]
-			if B:C+=[(A,B-1)]
-			if B<E-1:C+=[(A,B+1)]
-	for A in range(D):
-		for B in range(E):
-			if g[A][B]==0:g[A][B]=3
-			elif g[A][B]<0:g[A][B]=0
-	return g
+def p(A):
+	E,F=len(A),len(A[0]);D=[(B,C)for B in(0,E-1)for C in range(F)if A[B][C]==0]+[(B,C)for B in range(E)for C in(0,F-1)if A[B][C]==0]
+	while D:
+		B,C=D.pop()
+		if A[B][C]==0:
+			A[B][C]=-1
+			if B:D+=[(B-1,C)]
+			if B<E-1:D+=[(B+1,C)]
+			if C:D+=[(B,C-1)]
+			if C<F-1:D+=[(B,C+1)]
+	for B in range(E):
+		for C in range(F):
+			if A[B][C]==0:A[B][C]=3
+			elif A[B][C]<0:A[B][C]=0
+	return A

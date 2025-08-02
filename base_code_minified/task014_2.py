@@ -1,10 +1,10 @@
-def p(g):
-	B={}
-	for C in g:
-		for A in C:
-			if A:B[A]=B.get(A,0)+1
-	J=min(B,key=B.get);D,K,L=len(g),len(g),0;E,F=len(g[0]),0
-	for(G,C)in enumerate(g):
-		for(H,A)in enumerate(C):
-			if A==J:D=min(D,G);F=max(F,G);E=min(E,H);I=max(I,H)
-	return[A[E:I+1]for A in g[D:F+1]]
+def p(A):
+	C={}
+	for D in A:
+		for B in D:
+			if B:C[B]=C.get(B,0)+1
+	K=min(C,key=C.get);E,L,M=len(A),len(A),0;F,G=len(A[0]),0
+	for(H,D)in enumerate(A):
+		for(I,B)in enumerate(D):
+			if B==K:E=min(E,H);G=max(G,H);F=min(F,I);J=max(J,I)
+	return[A[F:J+1]for A in A[E:G+1]]

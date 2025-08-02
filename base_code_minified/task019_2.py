@@ -1,1 +1,1 @@
-def p(g):A,B=len(g),len(g[0]);E=[[g[C%A][D%B]for D in range(2*B)]for C in range(2*A)];return[[E[C][D]if E[C][D]else 8*any(0<=C+F<2*A and 0<=D+G<2*B and E[C+F][D+G]for(F,G)in[(-1,-1),(-1,1),(1,-1),(1,1)])for D in range(2*B)]for C in range(2*A)]
+def p(A):B,C=len(A),len(A[0]);E=[[A[D%B][E%C]for E in range(2*C)]for D in range(2*B)];return[[E[A][D]if E[A][D]else 8*any(0<=A+F<2*B and 0<=D+G<2*C and E[A+F][D+G]for(F,G)in[(-1,-1),(-1,1),(1,-1),(1,1)])for D in range(2*C)]for A in range(2*B)]

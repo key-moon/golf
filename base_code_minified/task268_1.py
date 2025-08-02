@@ -1,19 +1,19 @@
-def p(g):
-	D=next(A for B in g for A in B if A and A!=4);E=[(A,C)for(A,B)in enumerate(g)for(C,E)in enumerate(B)if E==D];K=min(A for(A,B)in E);L=max(A for(A,B)in E);M=min(A for(B,A)in E);N=max(A for(B,A)in E);F,G=len(g),len(g[0]);C=[A[:]for A in g]
-	for A in range(M,N+1):
-		if not C[K][A]:C[K][A]=D
-		if not C[L][A]:C[L][A]=D
-	for B in range(K,L+1):
-		if not C[B][M]:C[B][M]=D
-		if not C[B][N]:C[B][N]=D
-	H=set();O=[(A,B)for A in(0,F-1)for B in range(G)if not C[A][B]]+[(B,A)for A in(0,G-1)for B in range(F)if not C[B][A]]
-	for(B,A)in O:
-		if(B,A)in H:continue
-		H.add((B,A))
-		for(P,Q)in((1,0),(-1,0),(0,1),(0,-1)):
-			I,J=B+P,A+Q
-			if 0<=I<F and 0<=J<G and(I,J)not in H and not C[I][J]:O.append((I,J))
-	for B in range(F):
-		for A in range(G):
-			if g[B][A]==0 and(B,A)not in H:g[B][A]=4
-	return g
+def p(A):
+	E=next(A for B in A for A in B if A and A!=4);F=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==E];L=min(A for(A,B)in F);M=max(A for(A,B)in F);N=min(A for(B,A)in F);O=max(A for(B,A)in F);G,H=len(A),len(A[0]);D=[A[:]for A in A]
+	for B in range(N,O+1):
+		if not D[L][B]:D[L][B]=E
+		if not D[M][B]:D[M][B]=E
+	for C in range(L,M+1):
+		if not D[C][N]:D[C][N]=E
+		if not D[C][O]:D[C][O]=E
+	I=set();P=[(A,B)for A in(0,G-1)for B in range(H)if not D[A][B]]+[(B,A)for A in(0,H-1)for B in range(G)if not D[B][A]]
+	for(C,B)in P:
+		if(C,B)in I:continue
+		I.add((C,B))
+		for(Q,R)in((1,0),(-1,0),(0,1),(0,-1)):
+			J,K=C+Q,B+R
+			if 0<=J<G and 0<=K<H and(J,K)not in I and not D[J][K]:P.append((J,K))
+	for C in range(G):
+		for B in range(H):
+			if A[C][B]==0 and(C,B)not in I:A[C][B]=4
+	return A

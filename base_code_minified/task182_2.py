@@ -1,29 +1,29 @@
-def p(g):
-	G,D=len(g),len(g[0]);E,F,J,K=D,G,0,0
-	for A in range(G):
-		for B in range(D):
-			if g[A][B]==5:
-				if A<E:E=A
+def p(A):
+	H,E=len(A),len(A[0]);F,G,K,L=E,H,0,0
+	for B in range(H):
+		for C in range(E):
+			if A[B][C]==5:
 				if B<F:F=B
-				if A>J:J=A
+				if C<G:G=C
 				if B>K:K=B
-	R={(A-E-1,B-F-1)for A in range(E+1,J)for B in range(F+1,K)if g[A][B]not in(0,5)};S=next(iter(R));T=g[E+1+S[0]][F+1+S[1]];L=[[0]*D for A in g]
-	for A in range(G):
-		for B in range(D):
-			O=g[A][B]
-			if O and O!=5 and not L[A][B]:
-				C=[(A,B)];L[A][B]=1
-				for U in range(len(C)):
-					V,W=C[U]
-					for(X,Y)in((1,0),(-1,0),(0,1),(0,-1)):
-						H,I=V+X,W+Y
-						if 0<=H<G and 0<=I<D and not L[H][I]and g[H][I]==O:L[H][I]=1;C.append((H,I))
-				Z,a=C[0]
-				if not(E<Z<J and F<a<K):
-					P,Q=G,D
-					for(M,N)in C:
-						if M<P:P=M
+				if C>L:L=C
+	S={(B-F-1,C-G-1)for B in range(F+1,K)for C in range(G+1,L)if A[B][C]not in(0,5)};T=next(iter(S));U=A[F+1+T[0]][G+1+T[1]];M=[[0]*E for A in A]
+	for B in range(H):
+		for C in range(E):
+			P=A[B][C]
+			if P and P!=5 and not M[B][C]:
+				D=[(B,C)];M[B][C]=1
+				for V in range(len(D)):
+					W,X=D[V]
+					for(Y,Z)in((1,0),(-1,0),(0,1),(0,-1)):
+						I,J=W+Y,X+Z
+						if 0<=I<H and 0<=J<E and not M[I][J]and A[I][J]==P:M[I][J]=1;D.append((I,J))
+				a,b=D[0]
+				if not(F<a<K and G<b<L):
+					Q,R=H,E
+					for(N,O)in D:
 						if N<Q:Q=N
-					if{(A-P,B-Q)for(A,B)in C}==R:
-						for(M,N)in C:g[M][N]=T
-	return g
+						if O<R:R=O
+					if{(A-Q,B-R)for(A,B)in D}==S:
+						for(N,O)in D:A[N][O]=U
+	return A

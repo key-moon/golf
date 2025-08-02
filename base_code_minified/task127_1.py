@@ -1,7 +1,7 @@
-def p(g):
-	C=[-1]+[A for A in range(len(g))if g[A]==[5]*len(g[0])]+[len(g)];D=[-1]+[A for A in range(len(g[0]))if all(g[B][A]==5 for B in range(len(g)))]+[len(g[0])]
-	for(E,F)in zip(C,C[1:]):
-		for(A,B)in zip(D,D[1:]):
-			G=sum(g[C][D]for C in range(E+1,F)for D in range(A+1,B))+5
-			for H in range(E+1,F):g[H][A+1:B]=[G]*(B-A-1)
-	return g
+def p(A):
+	D=[-1]+[B for B in range(len(A))if A[B]==[5]*len(A[0])]+[len(A)];E=[-1]+[B for B in range(len(A[0]))if all(A[C][B]==5 for C in range(len(A)))]+[len(A[0])]
+	for(F,G)in zip(D,D[1:]):
+		for(B,C)in zip(E,E[1:]):
+			H=sum(A[D][E]for D in range(F+1,G)for E in range(B+1,C))+5
+			for I in range(F+1,G):A[I][B+1:C]=[H]*(C-B-1)
+	return A

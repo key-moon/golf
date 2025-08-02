@@ -1,16 +1,16 @@
-def p(g):
-	E={}
-	for(A,L)in enumerate(g):
-		for(B,I)in enumerate(L):
-			if I:E.setdefault(I,[]).append((A,B))
+def p(A):
 	F={}
-	for(D,G)in E.items():
-		if len(G)>1:
-			J,M=G[0]
-			if all(A==J for(A,B)in G):F[D]='h',J
-			else:F[D]='v',M
-	for(D,(K,C))in F.items():
-		for(A,B)in E[D]:
-			if K=='v'and B!=C:H=(B>C)-(B<C);g[A][C+H]=D;g[A][B]=0
-			if K=='h'and A!=C:H=(A>C)-(A<C);g[C+H][B]=D;g[A][B]=0
-	return g
+	for(B,M)in enumerate(A):
+		for(C,J)in enumerate(M):
+			if J:F.setdefault(J,[]).append((B,C))
+	G={}
+	for(E,H)in F.items():
+		if len(H)>1:
+			K,N=H[0]
+			if all(A==K for(A,B)in H):G[E]='h',K
+			else:G[E]='v',N
+	for(E,(L,D))in G.items():
+		for(B,C)in F[E]:
+			if L=='v'and C!=D:I=(C>D)-(C<D);A[B][D+I]=E;A[B][C]=0
+			if L=='h'and B!=D:I=(B>D)-(B<D);A[D+I][C]=E;A[B][C]=0
+	return A

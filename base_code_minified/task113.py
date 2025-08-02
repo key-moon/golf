@@ -1,5 +1,5 @@
-def p(g):
-	A=0
-	while any(g[A]):A+=1
-	for B in range(A):g[-B-1]=g[B]
-	return g
+def p(A):
+	B=0
+	while any(A[B]):B+=1
+	for C in range(B):A[-C-1]=A[C]
+	return A

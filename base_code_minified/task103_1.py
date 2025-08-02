@@ -1,1 +1,1 @@
-def p(g):A=sum(g,[]);return[[[1,7][A!=A[::-1]]]]
+def p(A):B=sum(A,[]);return[[[1,7][B!=B[::-1]]]]

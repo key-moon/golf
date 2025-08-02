@@ -1,1 +1,1 @@
-def p(g):A=lambda a:[a[0]]+[a[A]for A in range(1,len(a))if a[A]!=a[A-1]];g=A(g);g=[list(A)for A in zip(*A(list(zip(*g))))];return g
+def p(A):B=lambda a:[a[0]]+[a[A]for A in range(1,len(a))if a[A]!=a[A-1]];A=B(A);A=[list(A)for A in zip(*B(list(zip(*A))))];return A

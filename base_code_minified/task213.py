@@ -1,16 +1,16 @@
-def p(g):
-	F={}
-	for(G,H)in enumerate(g):
-		for(I,D)in enumerate(H):
-			if D:F.setdefault(D,[]).append((G,I))
-	for(J,E)in F.items():
-		A={A for(A,B)in E};B={A for(B,A)in E}
-		if len(A)>1 and len(B)>1:K,L,M,N=min(A),max(A)+1,min(B),max(B)+1;break
-	C=[]
-	for(D,E)in F.items():
-		if D==J:continue
-		A={A for(A,B)in E};B={A for(B,A)in E}
-		if(len(A)==1)^(len(B)==1):C.append((D,A,B))
-	O=L-K;P=N-M;S,Q,T=C[0]
-	if len(Q)==1:C.sort(key=lambda t:next(iter(t[1])));return[[A]*P for(A,B,B)in C]
-	C.sort(key=lambda t:next(iter(t[2])));R=[A for(A,B,B)in C];return[R]*O
+def p(A):
+	G={}
+	for(H,I)in enumerate(A):
+		for(J,E)in enumerate(I):
+			if E:G.setdefault(E,[]).append((H,J))
+	for(K,F)in G.items():
+		B={A for(A,B)in F};C={A for(B,A)in F}
+		if len(B)>1 and len(C)>1:L,M,N,O=min(B),max(B)+1,min(C),max(C)+1;break
+	D=[]
+	for(E,F)in G.items():
+		if E==K:continue
+		B={A for(A,B)in F};C={A for(B,A)in F}
+		if(len(B)==1)^(len(C)==1):D.append((E,B,C))
+	P=M-L;Q=O-N;T,R,U=D[0]
+	if len(R)==1:D.sort(key=lambda V:next(iter(V[1])));return[[A]*Q for(A,B,B)in D]
+	D.sort(key=lambda V:next(iter(V[2])));S=[A for(A,B,B)in D];return[S]*P

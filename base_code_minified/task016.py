@@ -1,1 +1,1 @@
-def p(g):return[[[0,5,6,4,3,1,2,7,9,8][A]for A in A]for A in g]
+def p(A):return[[[0,5,6,4,3,1,2,7,9,8][A]for A in A]for A in A]

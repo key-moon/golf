@@ -25,11 +25,11 @@ def val_func_shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})

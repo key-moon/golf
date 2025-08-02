@@ -1,10 +1,10 @@
-def p(g):
-	H=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==8];(C,D),(E,F)=H;I,J=(E-C)//abs(E-C),(F-D)//abs(F-D)
-	for(K,L)in((C,D),(E,F)):
-		for G in(1,-1):
-			A,B=K,L
+def p(A):
+	I=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==8];(D,E),(F,G)=I;J,K=(F-D)//abs(F-D),(G-E)//abs(G-E)
+	for(L,M)in((D,E),(F,G)):
+		for H in(1,-1):
+			B,C=L,M
 			while 1:
-				A+=G*I;B+=G*J
-				if g[A][B]==2:break
-				if g[A][B]==0:g[A][B]=3
-	return g
+				B+=H*J;C+=H*K
+				if A[B][C]==2:break
+				if A[B][C]==0:A[B][C]=3
+	return A

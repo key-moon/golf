@@ -1,14 +1,14 @@
-def p(g):
-	E=[]
-	for B in(0,4,8):
-		for C in(0,4,8):
-			D=A=0
-			for F in range(3):
-				for G in range(3):H=g[B+F][C+G];D+=H;A+=H>0
-			E+=[(A,D,B,C)]
-	I=max(E)[0]
-	for(A,D,B,C)in E:
-		if A==I:
-			for F in range(3):
-				for G in range(3):g[B+F][C+G]=D//A
-	return g
+def p(A):
+	F=[]
+	for C in(0,4,8):
+		for D in(0,4,8):
+			E=B=0
+			for G in range(3):
+				for H in range(3):I=A[C+G][D+H];E+=I;B+=I>0
+			F+=[(B,E,C,D)]
+	J=max(F)[0]
+	for(B,E,C,D)in F:
+		if B==J:
+			for G in range(3):
+				for H in range(3):A[C+G][D+H]=E//B
+	return A

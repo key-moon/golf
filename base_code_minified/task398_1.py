@@ -1,7 +1,7 @@
-def p(g):
-	B=g[0];C=[(A,B)for(B,A)in enumerate(B)if A];A=len(B)*len(C);g=[[0]*A for B in range(A)]
-	for D in range(A):
-		for(F,G)in C:
-			E=G+D
-			if E<A:g[A-1-D][E]=F
-	return g
+def p(A):
+	C=A[0];D=[(A,B)for(B,A)in enumerate(C)if A];B=len(C)*len(D);A=[[0]*B for A in range(B)]
+	for E in range(B):
+		for(G,H)in D:
+			F=H+E
+			if F<B:A[B-1-E][F]=G
+	return A

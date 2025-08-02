@@ -1,4 +1,4 @@
-def p(g):
-	A={}
-	for B in sum(g,[]):A[B]=A.get(B,0)+1
-	C=sorted(A.items(),key=lambda x:(-x[1],x[0]));return[[B if C>A else 0 for(B,C)in C]for A in range(C[0][1])]
+def p(A):
+	B={}
+	for C in sum(A,[]):B[C]=B.get(C,0)+1
+	D=sorted(B.items(),key=lambda C:(-C[1],C[0]));return[[B if C>A else 0 for(B,C)in D]for A in range(D[0][1])]

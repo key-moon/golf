@@ -1,5 +1,5 @@
-def p(g):
-	A,B=len(g),len(g[0]);D=[A for(A,C)in enumerate(g)if C.count(0)==B];I,C=D[0],D[-1];E=[B for B in range(B)if all(g[A][B]==0 for A in range(A))];F,J=E[0],E[-1];K={A for B in range(I)for A in g[B]if A};L={A for B in range(C+1,A)for A in g[B]if A};M=(L-K).pop()
-	if any(g[A][B]==M for A in range(C+1,A)for B in range(F)):G,H=0,F
-	else:G,H=J+1,B
-	return[A[G:H]for A in g[C+1:A]]
+def p(A):
+	B,C=len(A),len(A[0]);E=[A for(A,B)in enumerate(A)if B.count(0)==C];J,D=E[0],E[-1];F=[C for C in range(C)if all(A[B][C]==0 for B in range(B))];G,K=F[0],F[-1];L={B for C in range(J)for B in A[C]if B};M={B for C in range(D+1,B)for B in A[C]if B};N=(M-L).pop()
+	if any(A[B][C]==N for B in range(D+1,B)for C in range(G)):H,I=0,G
+	else:H,I=K+1,C
+	return[A[H:I]for A in A[D+1:B]]

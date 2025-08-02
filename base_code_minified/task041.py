@@ -1,6 +1,6 @@
-def p(g):
-	for A in g:
-		for B in A:
-			if B:
-				for C in range(A.index(B),len(A)-1-A[::-1].index(B)+1):A[C]=B
-	return g
+def p(A):
+	for B in A:
+		for C in B:
+			if C:
+				for D in range(B.index(C),len(B)-1-B[::-1].index(C)+1):B[D]=C
+	return A

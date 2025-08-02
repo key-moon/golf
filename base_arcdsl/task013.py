@@ -74,7 +74,7 @@ def val_func_fgpartition(grid):
         ) for value in val_func_palette(grid) - {val_func_mostval_func_color(grid)}
     )
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def val_func_portrait(piece):
@@ -153,7 +153,7 @@ def p(I):
     x11 = val_func_width(x3)
     x12 = val_func_rbind(x10, x11)
     x13 = val_func_chain(x9, x12, val_func_leftmost)
-    x14 = val_func_fork(val_func_reval_func_color, val_func_color, x13)
+    x14 = val_func_fork(reval_func_color, val_func_color, x13)
     x15 = mval_func_apply(x14, x4)
     x16 = val_func_paint(x3, x15)
     O = x2(x16)

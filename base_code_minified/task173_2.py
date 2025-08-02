@@ -1,17 +1,17 @@
-def p(g):
-	H,I=len(g),len(g[0]);E,J={},{}
-	for B in range(H):
-		for C in range(I):
-			A=g[B][C]
-			if A and A not in E:
-				D=[]
-				for(F,G)in((1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)):
-					K,L=B+F,C+G
-					if 0<=K<H and 0<=L<I and g[K][L]:D.append((F,G))
-				if len(D)>1:E[A]=D;J[A]=g[B+D[0][0]][C+D[0][1]]
-	for B in range(H):
-		for C in range(I):
-			A=g[B][C]
-			if A in E:
-				for(F,G)in E[A]:g[B+F][C+G]=J[A]
-	return g
+def p(A):
+	I,J=len(A),len(A[0]);F,K={},{}
+	for C in range(I):
+		for D in range(J):
+			B=A[C][D]
+			if B and B not in F:
+				E=[]
+				for(G,H)in((1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)):
+					L,M=C+G,D+H
+					if 0<=L<I and 0<=M<J and A[L][M]:E.append((G,H))
+				if len(E)>1:F[B]=E;K[B]=A[C+E[0][0]][D+E[0][1]]
+	for C in range(I):
+		for D in range(J):
+			B=A[C][D]
+			if B in F:
+				for(G,H)in F[B]:A[C+G][D+H]=K[B]
+	return A

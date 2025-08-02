@@ -1,1 +1,1 @@
-def p(g):return[[8*(A==B==0)for(A,B)in zip(A[:3],A[4:])]for A in g]
+def p(A):return[[8*(A==B==0)for(A,B)in zip(A[:3],A[4:])]for A in A]

@@ -24,11 +24,11 @@ def val_func_height(piece):
         return len(piece)
     return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -131,7 +131,7 @@ def val_func_crop(grid, start, dims):
 def val_func_shape(piece):
     return (val_func_height(piece), val_func_width(piece))
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def val_func_apply(function, container):
@@ -170,7 +170,7 @@ def p(I):
     x2 = val_func_replace(I, 9, 0)
     x3 = val_func_lbind(val_func_apply, val_func_maximum)
     x4 = val_func_dmirror(x2)
-    x5 = val_func_pval_func_apply(val_func_pair, x2, x4)
+    x5 = pval_func_apply(val_func_pair, x2, x4)
     x6 = val_func_apply(x3, x5)
     x7 = val_func_subtract(x1, (2, 2))
     x8 = val_func_crop(x6, (2, 2), x7)

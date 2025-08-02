@@ -1,4 +1,4 @@
-def p(g):
-	for(A,B)in enumerate(g):
-		if 5 in B:C=B.index(5);break
-	return[A[C-1:C+2]for A in g[A+1:A+4]]
+def p(A):
+	for(B,C)in enumerate(A):
+		if 5 in C:D=C.index(5);break
+	return[A[D-1:D+2]for A in A[B+1:B+4]]

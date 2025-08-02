@@ -1,6 +1,6 @@
-def p(g):
-	G=sum(g,[]);H=next(A for A in G if G.count(A)<2);A,B=len(g),len(g[0]);D,E=next((A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==H);I=max((0,1),(0,-1),(1,0),(-1,0),key=lambda t:sum(0<=D+t[0]*C<A and 0<=E+t[1]*C<B and g[D+t[0]*C][E+t[1]*C]==0 for C in range(1,A+B)))
-	for J in range(1,A+B):
-		C,F=D+I[0]*J,E+I[1]*J
-		if 0<=C<A and 0<=F<B and g[C][F]==0:g[C][F]=H
-	return g
+def p(A):
+	H=sum(A,[]);I=next(A for A in H if H.count(A)<2);B,C=len(A),len(A[0]);E,F=next((A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==I);J=max((0,1),(0,-1),(1,0),(-1,0),key=lambda K:sum(0<=E+K[0]*D<B and 0<=F+K[1]*D<C and A[E+K[0]*D][F+K[1]*D]==0 for D in range(1,B+C)))
+	for K in range(1,B+C):
+		D,G=E+J[0]*K,F+J[1]*K
+		if 0<=D<B and 0<=G<C and A[D][G]==0:A[D][G]=I
+	return A

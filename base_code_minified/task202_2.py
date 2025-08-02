@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;D=0
+def p(A):
+	D=0
 	if len({A for A in A[0]if A})>1:A=[list(A)for A in zip(*A)];D=1
 	E,F=len(A),len(A[0]);B=0
 	while B<E:

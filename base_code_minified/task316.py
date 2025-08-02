@@ -1,4 +1,4 @@
-def p(g):
-	D=[A for(B,A)in sorted((C,A)for B in g for(C,A)in enumerate(B)if A)];B=[]
-	for A in range(3):C=D[A*3:A*3+3];B.append(((C[::-1]if A&1 else C)+[0]*3)[:3])
-	return B
+def p(A):
+	E=[A for(B,A)in sorted((C,A)for B in A for(C,A)in enumerate(B)if A)];C=[]
+	for B in range(3):D=E[B*3:B*3+3];C.append(((D[::-1]if B&1 else D)+[0]*3)[:3])
+	return C

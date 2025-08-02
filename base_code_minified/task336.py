@@ -1,25 +1,25 @@
-def p(g):
-	H,I=len(g),len(g[0]);E=min(A for A in range(H)for B in range(I)if g[A][B]==5);F=max(A for A in range(H)for B in range(I)if g[A][B]==5);G=min(A for B in range(H)for A in range(I)if g[B][A]==5);J=max(A for B in range(H)for A in range(I)if g[B][A]==5)
-	for B in range(G,J+1):
-		if g[E][B]==0:C,D=E,B;break
+def p(A):
+	I,J=len(A),len(A[0]);F=min(B for B in range(I)for C in range(J)if A[B][C]==5);G=max(B for B in range(I)for C in range(J)if A[B][C]==5);H=min(B for C in range(I)for B in range(J)if A[C][B]==5);K=max(B for C in range(I)for B in range(J)if A[C][B]==5)
+	for C in range(H,K+1):
+		if A[F][C]==0:D,E=F,C;break
 	else:
-		for B in range(G,J+1):
-			if g[F][B]==0:C,D=F,B;break
+		for C in range(H,K+1):
+			if A[G][C]==0:D,E=G,C;break
 		else:
-			for A in range(E,F+1):
-				if g[A][G]==0:C,D=A,G;break
+			for B in range(F,G+1):
+				if A[B][H]==0:D,E=B,H;break
 			else:
-				for A in range(E,F+1):
-					if g[A][J]==0:C,D=A,J;break
-	for A in range(E+1,F):
-		for K in range(G+1,J):
-			if g[A][K]==0:g[A][K]=8
-	if C==E:
-		for A in range(C+1):g[A][D]=8
-	elif C==F:
-		for A in range(C,H):g[A][D]=8
+				for B in range(F,G+1):
+					if A[B][K]==0:D,E=B,K;break
+	for B in range(F+1,G):
+		for L in range(H+1,K):
+			if A[B][L]==0:A[B][L]=8
+	if D==F:
+		for B in range(D+1):A[B][E]=8
 	elif D==G:
-		for B in range(D+1):g[C][B]=8
+		for B in range(D,I):A[B][E]=8
+	elif E==H:
+		for C in range(E+1):A[D][C]=8
 	else:
-		for B in range(D,I):g[C][B]=8
-	return g
+		for C in range(E,J):A[D][C]=8
+	return A

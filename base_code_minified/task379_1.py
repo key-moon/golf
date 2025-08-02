@@ -1,15 +1,15 @@
-def p(g):
-	I,J=len(g),len(g[0]);F=[A for(A,B)in enumerate(g)if min(B)==8];G=[A for A in range(J)if min(g[B][A]for B in range(I))==8];K=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==2]
-	for(A,B)in K:
-		C=min(F,key=lambda x:abs(x-A))if F else 0;E=min(G,key=lambda x:abs(x-B))if G else 0
-		if F and(not G or abs(A-C)<=abs(B-E)):
-			for D in range(min(A,C),max(A,C)+1):g[D][B]=2
-			for D in range(B-1,B+2):
-				for H in(C-1,C,C+1):g[H][D]=8
-			g[C][B]=2
+def p(A):
+	J,K=len(A),len(A[0]);G=[A for(A,B)in enumerate(A)if min(B)==8];H=[B for B in range(K)if min(A[C][B]for C in range(J))==8];L=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==2]
+	for(B,C)in L:
+		D=min(G,key=lambda N:abs(N-B))if G else 0;F=min(H,key=lambda N:abs(N-C))if H else 0
+		if G and(not H or abs(B-D)<=abs(C-F)):
+			for E in range(min(B,D),max(B,D)+1):A[E][C]=2
+			for E in range(C-1,C+2):
+				for I in(D-1,D,D+1):A[I][E]=8
+			A[D][C]=2
 		else:
-			for D in range(min(B,E),max(B,E)+1):g[A][D]=2
-			for D in range(E-1,E+2):
-				for H in(A-1,A,A+1):g[H][D]=8
-			g[A][E]=2
-	return g
+			for E in range(min(C,F),max(C,F)+1):A[B][E]=2
+			for E in range(F-1,F+2):
+				for I in(B-1,B,B+1):A[I][E]=8
+			A[B][F]=2
+	return A

@@ -1,9 +1,9 @@
-def p(g):
-	A={}
-	for(S,T)in enumerate(g):
-		for(U,B)in enumerate(T):A.setdefault(B,[]).append((S,U))
-	E=F=G=H=I=J=0
-	for(B,C)in A.items():
-		K=[A for(A,B)in C];L=[A for(B,A)in C];M,N=min(K),max(K);O,P=min(L),max(L);D=(N-M+1)*(P-O+1)
-		if D==len(C)and D>E:E=D;F=B;G,X=M;H=N;I,Y=O;J=P
-	V=sorted([(len(B),A)for(A,B)in A.items()],reverse=1);W=V[1][1];Q=H-G+1;R=J-I+1;return[[F if min(A,B,Q-1-A,R-1-B)%2==0 else W for B in range(R)]for A in range(Q)]
+def p(A):
+	B={}
+	for(T,U)in enumerate(A):
+		for(V,C)in enumerate(U):B.setdefault(C,[]).append((T,V))
+	F=G=H=I=J=K=0
+	for(C,D)in B.items():
+		L=[A for(A,B)in D];M=[A for(B,A)in D];N,O=min(L),max(L);P,Q=min(M),max(M);E=(O-N+1)*(Q-P+1)
+		if E==len(D)and E>F:F=E;G=C;H,Y=N;I=O;J,Z=P;K=Q
+	W=sorted([(len(B),A)for(A,B)in B.items()],reverse=1);X=W[1][1];R=I-H+1;S=K-J+1;return[[G if min(A,B,R-1-A,S-1-B)%2==0 else X for B in range(S)]for A in range(R)]

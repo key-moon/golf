@@ -1,1 +1,1 @@
-def p(g):return[A[:1]*10 if A[0]==A[-1]>0 else A for A in g]
+def p(A):return[A[:1]*10 if A[0]==A[-1]>0 else A for A in A]

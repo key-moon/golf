@@ -1,12 +1,12 @@
-def p(g):
-	G={}
-	for(C,P)in enumerate(g):
-		for(D,H)in enumerate(P):
-			if H:G.setdefault(H,[]).append((C,D))
-	(I,A),(J,K)=G.items()
-	if A[0][0]==A[1][0]:L=I;E=A[0][0];M=J;F=K[0][1]
-	else:L=J;E=K[0][0];M=I;F=A[0][1]
-	N,O=len(g),len(g[0]);B=[[0]*O for A in range(N)]
-	for C in range(N):B[C][F]=M
-	for D in range(O):B[E][D]=L
-	B[E][F]=4;return B
+def p(A):
+	H={}
+	for(D,Q)in enumerate(A):
+		for(E,I)in enumerate(Q):
+			if I:H.setdefault(I,[]).append((D,E))
+	(J,B),(K,L)=H.items()
+	if B[0][0]==B[1][0]:M=J;F=B[0][0];N=K;G=L[0][1]
+	else:M=K;F=L[0][0];N=J;G=B[0][1]
+	O,P=len(A),len(A[0]);C=[[0]*P for A in range(O)]
+	for D in range(O):C[D][G]=N
+	for E in range(P):C[F][E]=M
+	C[F][G]=4;return C

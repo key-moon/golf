@@ -1,7 +1,7 @@
-def p(g):
-	A,B=len(g),len(g[0]);I=[(A,C,g[A][C])for A in range(A)for C in range(B)if g[A][C]];E,C,L=I[0];F,G,M=I[1];D,J=abs(G-C),abs(F-E);K=D==0 or D>J
-	if K:g=list(map(list,zip(*g)));E,C,F,G=C,E,G,F;A,B=B,A;D=J
-	H=[[0]*B for A in range(A)];N=[L,M]
-	for(O,P)in enumerate(range(C,B,D)):
-		for Q in range(A):H[Q][P]=N[O&1]
-	return list(map(list,zip(*H)))if K else H
+def p(A):
+	B,C=len(A),len(A[0]);J=[(B,D,A[B][D])for B in range(B)for D in range(C)if A[B][D]];F,D,M=J[0];G,H,N=J[1];E,K=abs(H-D),abs(G-F);L=E==0 or E>K
+	if L:A=list(map(list,zip(*A)));F,D,G,H=D,F,H,G;B,C=C,B;E=K
+	I=[[0]*C for A in range(B)];O=[M,N]
+	for(P,Q)in enumerate(range(D,C,E)):
+		for R in range(B):I[R][Q]=O[P&1]
+	return list(map(list,zip(*I)))if L else I

@@ -1,36 +1,36 @@
 from collections import deque
-def p(g):
-	F,C=len(g),len(g[0])
-	for a in g:
-		for V in a:
-			if V:O=V;break
+def p(A):
+	G,D=len(A),len(A[0])
+	for b in A:
+		for W in b:
+			if W:P=W;break
 		else:continue
 		break
-	W=[]
-	for A in range(F):
-		for B in range(C):
-			if g[A][B]==O and(A in(0,F-1)or B in(0,C-1)):W.append((A,B))
-	P,Q=W;G=deque([P]);R={P:None}
-	while G:
-		L,M=G.popleft()
-		if(L,M)==Q:break
-		for(S,T)in((1,0),(-1,0),(0,1),(0,-1)):
-			D,E=L+S,M+T
-			if 0<=D<F and 0<=E<C and(D,E)not in R and g[D][E]==O:R[D,E]=L,M;G.append((D,E))
-	X=set();N=Q
-	while N:X.add(N);N=R[N]
-	H=[(0,A)for A in range(C)]+[(A,C-1)for A in range(1,F)]+[(F-1,A)for A in range(C-2,-1,-1)]+[(A,0)for A in range(F-2,0,-1)];I,J=H.index(P),H.index(Q);Y=H[I:J+1]if I<=J else H[I:]+H[:J+1];Z=H[J:I+1]if J<=I else H[J:]+H[:I+1];b=set(Y if len(Y)<len(Z)else Z);U=X|b;K=[[0]*C for A in g];G=deque()
-	for A in range(F):
-		for B in(0,C-1):
-			if(A,B)not in U:K[A][B]=1;G.append((A,B))
-	for B in range(C):
-		for A in(0,F-1):
-			if(A,B)not in U and not K[A][B]:K[A][B]=1;G.append((A,B))
-	while G:
-		L,M=G.popleft()
-		for(S,T)in((1,0),(-1,0),(0,1),(0,-1)):
-			D,E=L+S,M+T
-			if 0<=D<F and 0<=E<C and not K[D][E]and(D,E)not in U:K[D][E]=1;G.append((D,E))
-	for A in range(F):
-		for B in range(C):g[A][B]=5 if K[A][B]else O
-	return g
+	X=[]
+	for B in range(G):
+		for C in range(D):
+			if A[B][C]==P and(B in(0,G-1)or C in(0,D-1)):X.append((B,C))
+	Q,R=X;H=deque([Q]);S={Q:None}
+	while H:
+		M,N=H.popleft()
+		if(M,N)==R:break
+		for(T,U)in((1,0),(-1,0),(0,1),(0,-1)):
+			E,F=M+T,N+U
+			if 0<=E<G and 0<=F<D and(E,F)not in S and A[E][F]==P:S[E,F]=M,N;H.append((E,F))
+	Y=set();O=R
+	while O:Y.add(O);O=S[O]
+	I=[(0,A)for A in range(D)]+[(A,D-1)for A in range(1,G)]+[(G-1,A)for A in range(D-2,-1,-1)]+[(A,0)for A in range(G-2,0,-1)];J,K=I.index(Q),I.index(R);Z=I[J:K+1]if J<=K else I[J:]+I[:K+1];a=I[K:J+1]if K<=J else I[K:]+I[:J+1];c=set(Z if len(Z)<len(a)else a);V=Y|c;L=[[0]*D for A in A];H=deque()
+	for B in range(G):
+		for C in(0,D-1):
+			if(B,C)not in V:L[B][C]=1;H.append((B,C))
+	for C in range(D):
+		for B in(0,G-1):
+			if(B,C)not in V and not L[B][C]:L[B][C]=1;H.append((B,C))
+	while H:
+		M,N=H.popleft()
+		for(T,U)in((1,0),(-1,0),(0,1),(0,-1)):
+			E,F=M+T,N+U
+			if 0<=E<G and 0<=F<D and not L[E][F]and(E,F)not in V:L[E][F]=1;H.append((E,F))
+	for B in range(G):
+		for C in range(D):A[B][C]=5 if L[B][C]else P
+	return A

@@ -1,12 +1,12 @@
-def p(g):
-	G,C=len(g),len(g[0]);D=[[0]*C for A in g]
-	for(H,I)in enumerate(g):
-		for(J,K)in enumerate(I):
-			if K==5:
-				for A in(-1,0,1):
-					for B in(-1,0,1):
-						E=H+A
-						if 0<=E<G:
-							F=J+B
-							if 0<=F<C:D[E][F]=5 if A and B else 1 if A or B else 0
-	return D
+def p(A):
+	H,D=len(A),len(A[0]);E=[[0]*D for A in A]
+	for(I,J)in enumerate(A):
+		for(K,L)in enumerate(J):
+			if L==5:
+				for B in(-1,0,1):
+					for C in(-1,0,1):
+						F=I+B
+						if 0<=F<H:
+							G=K+C
+							if 0<=G<D:E[F][G]=5 if B and C else 1 if B or C else 0
+	return E

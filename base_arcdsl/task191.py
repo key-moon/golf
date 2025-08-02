@@ -86,10 +86,10 @@ def val_func_height(piece):
         return len(piece)
     return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def val_func_mval_func_pval_func_apply(function, a, b):
-    return val_func_merge(val_func_pval_func_apply(function, a, b))
+def mpval_func_apply(function, a, b):
+    return val_func_merge(pval_func_apply(function, a, b))
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def mval_func_apply(function, container):
@@ -201,11 +201,11 @@ def p(I):
     x36 = val_func_lbind(val_func_rbind, val_func_difference)
     x37 = val_func_apply(x26, x34)
     x38 = val_func_apply(x36, x33)
-    x39 = val_func_pval_func_apply(val_func_compose, x38, x37)
+    x39 = pval_func_apply(val_func_compose, x38, x37)
     x40 = val_func_lbind(val_func_compose, x10)
     x41 = val_func_apply(x40, x39)
-    x42 = val_func_pval_func_apply(val_func_sfilter, x35, x41)
+    x42 = pval_func_apply(val_func_sfilter, x35, x41)
     x43 = val_func_apply(x27, x30)
-    x44 = val_func_mval_func_pval_func_apply(mval_func_apply, x43, x42)
+    x44 = mpval_func_apply(mval_func_apply, x43, x42)
     O = val_func_fill(I, 1, x44)
     return [*map(list,O)]

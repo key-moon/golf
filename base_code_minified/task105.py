@@ -1,10 +1,10 @@
-def p(g):
-	for B in g:
-		A=[A for(A,B)in enumerate(B)if B]
-		for(C,D)in zip(A,A[1:]):
-			for E in range(C+1,D):B[E]=2
-	for(F,B)in enumerate(zip(*g)):
-		A=[A for(A,B)in enumerate(B)if B]
-		for(C,D)in zip(A,A[1:]):
-			for E in range(C+1,D):g[E][F]=2
-	return g
+def p(A):
+	for C in A:
+		B=[A for(A,B)in enumerate(C)if B]
+		for(D,E)in zip(B,B[1:]):
+			for F in range(D+1,E):C[F]=2
+	for(G,C)in enumerate(zip(*A)):
+		B=[A for(A,B)in enumerate(C)if B]
+		for(D,E)in zip(B,B[1:]):
+			for F in range(D+1,E):A[F][G]=2
+	return A

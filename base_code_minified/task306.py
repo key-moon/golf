@@ -1,8 +1,8 @@
-def p(g):
-	E,F=len(g),len(g[0]);K=[A for A in range(E)if g[A][0]and g[A]==[g[A][0]]*F];L=[A for A in range(F)if g[0][A]and all(g[B][A]==g[0][A]for B in range(E))];G=[-1]+K+[E];H=[-1]+L+[F];I=[(G[A]+1,G[A+1],H[B]+1,H[B+1])for A in range(len(G)-1)for B in range(len(H)-1)]
-	for(A,B,C,D)in I:
-		if any(g[A][B]for A in range(A,B)for B in range(C,D)):M=[A[C:D]for A in g[A:B]];N=A,B,C,D;break
-	for(A,B,C,D)in I:
-		if(A,B,C,D)!=N:
-			for J in range(A,B):g[J][C:D]=M[J-A]
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);L=[B for B in range(F)if A[B][0]and A[B]==[A[B][0]]*G];M=[B for B in range(G)if A[0][B]and all(A[C][B]==A[0][B]for C in range(F))];H=[-1]+L+[F];I=[-1]+M+[G];J=[(H[A]+1,H[A+1],I[B]+1,I[B+1])for A in range(len(H)-1)for B in range(len(I)-1)]
+	for(B,C,D,E)in J:
+		if any(A[B][C]for B in range(B,C)for C in range(D,E)):N=[A[D:E]for A in A[B:C]];O=B,C,D,E;break
+	for(B,C,D,E)in J:
+		if(B,C,D,E)!=O:
+			for K in range(B,C):A[K][D:E]=N[K-B]
+	return A

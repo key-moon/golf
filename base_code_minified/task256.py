@@ -1,9 +1,9 @@
-def p(g):
-	for(A,D)in enumerate(g):
-		if 2 in D:break
-	B=D.count(2)
-	for E in range(A):
-		for C in range(B+A-E):g[E][C]=3
-	for F in range(1,B):
-		for C in range(B-F):g[A+F][C]=1
-	return g
+def p(A):
+	for(B,E)in enumerate(A):
+		if 2 in E:break
+	C=E.count(2)
+	for F in range(B):
+		for D in range(C+B-F):A[F][D]=3
+	for G in range(1,C):
+		for D in range(C-G):A[B+G][D]=1
+	return A

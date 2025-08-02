@@ -1,8 +1,8 @@
-def p(d):
-	D,A=len(d),len(d[0])
-	for B in range(D):
-		for E in range(A):
-			if(F:=d[B][E]):
-				for C in range(E,A):d[B][C]=F
-				for C in range(B,D):d[C][A-1]=F
-	return d
+def p(A):
+	E,B=len(A),len(A[0])
+	for C in range(E):
+		for F in range(B):
+			if(G:=A[C][F]):
+				for D in range(F,B):A[C][D]=G
+				for D in range(C,E):A[D][B-1]=G
+	return A

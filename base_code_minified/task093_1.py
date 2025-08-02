@@ -1,16 +1,16 @@
-def p(g):
-	I,J=len(g),len(g[0]);D=[(A,B)for A in range(I)for B in range(J)if g[A][B]==5];E,F=min(A for(A,B)in D),max(A for(A,B)in D);G,H=min(A for(B,A)in D),max(A for(B,A)in D);C=[[0]*J for A in range(I)]
-	for A in range(E,F+1):
-		for B in range(G,H+1):C[A][B]=5
-	L=F-E>H-G
-	for A in range(I):
-		for B in range(J):
-			K=g[A][B]
-			if K and K!=5:
-				if L:
-					if A<E:C[E-1][B]=5
-					if A>F:C[F+1][B]=5
+def p(A):
+	J,K=len(A),len(A[0]);E=[(B,C)for B in range(J)for C in range(K)if A[B][C]==5];F,G=min(A for(A,B)in E),max(A for(A,B)in E);H,I=min(A for(B,A)in E),max(A for(B,A)in E);D=[[0]*K for A in range(J)]
+	for B in range(F,G+1):
+		for C in range(H,I+1):D[B][C]=5
+	M=G-F>I-H
+	for B in range(J):
+		for C in range(K):
+			L=A[B][C]
+			if L and L!=5:
+				if M:
+					if B<F:D[F-1][C]=5
+					if B>G:D[G+1][C]=5
 				else:
-					if B<G:C[A][G-1]=5
-					if B>H:C[A][H+1]=5
-	return C
+					if C<H:D[B][H-1]=5
+					if C>I:D[B][I+1]=5
+	return D

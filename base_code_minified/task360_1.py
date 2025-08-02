@@ -1,4 +1,4 @@
-def p(g):
-	B=[]
-	for A in g:C=A.index(5);D=[A for A in A[:C]if A];E=[A for A in A[C+1:]if A][::-1];F=D if len(D)>=len(E)else E;B.append([0]*(4-len(F))+F)
-	return B
+def p(A):
+	C=[]
+	for B in A:D=B.index(5);E=[A for A in B[:D]if A];F=[A for A in B[D+1:]if A][::-1];G=E if len(E)>=len(F)else F;C.append([0]*(4-len(G))+G)
+	return C

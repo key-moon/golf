@@ -1,9 +1,9 @@
-def p(g):
- for A in range(9):
-  for B in range(9):
-   if g[A][B]==5:
-    for C in(-1,0,1):
-     for D in(-1,0,1):
-      try:g[A+C][B+D]=g[A+C][B+D]or 1
+def p(A):
+ for B in range(9):
+  for C in range(9):
+   if A[B][C]==5:
+    for D in(-1,0,1):
+     for E in(-1,0,1):
+      try:A[B+D][C+E]=A[B+D][C+E]or 1
       except:pass
- return g
+ return A

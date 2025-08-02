@@ -1,1 +1,1 @@
-def p(g):B=len(g);A=B*2;return[[sum(g[C-A][D-A]if 0<=C-A<B and 0<=D-A<B else 0 for A in range(A))for D in range(A)]for C in range(A)]
+def p(A):C=len(A);B=C*2;return[[sum(A[D-B][E-B]if 0<=D-B<C and 0<=E-B<C else 0 for B in range(B))for E in range(B)]for D in range(B)]

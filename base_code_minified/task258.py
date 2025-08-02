@@ -1,5 +1,5 @@
-def p(g):
-	for A in g:
-		for B in range(len(A)-2):
-			if A[B]==A[B+2]==1 and not A[B+1]:A[B+1]=2
-	return g
+def p(A):
+	for B in A:
+		for C in range(len(B)-2):
+			if B[C]==B[C+2]==1 and not B[C+1]:B[C+1]=2
+	return A

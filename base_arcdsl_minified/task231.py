@@ -1,55 +1,50 @@
-def val_func_lowermost(patch):return max(A for(A,B)in val_func_toindices(patch))
-def val_func_rightmost(patch):return max(A for(B,A)in val_func_toindices(patch))
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_lowermost(A):return max(A for(A,B)in val_func_toindices(A))
+def val_func_rightmost(A):return max(A for(B,A)in val_func_toindices(A))
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_toindices(patch):
-	A=patch
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_leftmost(patch):return min(A for(B,A)in val_func_toindices(patch))
-def val_func_uppermost(patch):return min(A for(A,B)in val_func_toindices(patch))
-def val_func_normalize(patch):
-	A=patch
+def val_func_leftmost(A):return min(A for(B,A)in val_func_toindices(A))
+def val_func_uppermost(A):return min(A for(A,B)in val_func_toindices(A))
+def val_func_normalize(A):
 	if len(A)==0:return A
 	return val_func_shift(A,(-val_func_uppermost(A),-val_func_leftmost(A)))
-def val_func_shift(patch,directions):
-	A=patch
+def val_func_shift(A,B):
 	if len(A)==0:return A
-	B,C=directions
-	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(D+B,E+C))for(A,(D,E))in A)
-	return frozenset((A+B,D+C)for(A,D)in A)
-def val_func_hperiod(obj):
-	A=val_func_normalize(obj);B=val_func_width(A)
-	for C in range(1,B):
-		D=val_func_shift(A,(0,-C));E=frozenset({(B,(C,A))for(B,(C,A))in D if A>=0})
-		if E.issubset(A):return C
-	return B
-def val_func_rot270(grid):return tuple(tuple(A[::-1])for A in zip(*grid[::-1]))[::-1]
-def val_func_rot90(grid):return tuple(A for A in zip(*grid[::-1]))
-def val_func_asobject(grid):return frozenset((D,(A,C))for(A,B)in enumerate(grid)for(C,D)in enumerate(B))
-def val_func_crop(grid,start,dims):A=start;return tuple(B[A[1]:A[1]+dims[1]]for B in grid[A[0]:A[0]+dims[0]])
-def val_func_ulcorner(patch):return tuple(map(min,zip(*val_func_toindices(patch))))
-def val_func_width(piece):
-	A=piece
+	C,D=B
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B+C,E+D))for(A,(B,E))in A)
+	return frozenset((A+C,B+D)for(A,B)in A)
+def val_func_hperiod(A):
+	B=val_func_normalize(A);C=val_func_width(B)
+	for D in range(1,C):
+		E=val_func_shift(B,(0,-D));F=frozenset({(B,(C,A))for(B,(C,A))in E if A>=0})
+		if F.issubset(B):return D
+	return C
+def val_func_rot270(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def val_func_rot90(A):return tuple(A for A in zip(*A[::-1]))
+def val_func_asobject(A):return frozenset((D,(A,C))for(A,B)in enumerate(A)for(C,D)in enumerate(B))
+def val_func_crop(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def val_func_ulcorner(A):return tuple(map(min,zip(*val_func_toindices(A))))
+def val_func_width(A):
 	if len(A)==0:return 0
 	if isinstance(A,tuple):return len(A[0])
 	return val_func_rightmost(A)-val_func_leftmost(A)+1
-def val_func_height(piece):
-	A=piece
+def val_func_height(A):
 	if len(A)==0:return 0
 	if isinstance(A,tuple):return len(A)
 	return val_func_lowermost(A)-val_func_uppermost(A)+1
-def val_func_astuple(a,b):return a,b
-def val_func_increment(x):return x+1 if isinstance(x,int)else(x[0]+1,x[1]+1)
-def val_func_merge(containers):A=containers;return type(A)(B for A in A for B in A)
-def val_func_repeat(item,num):return tuple(item for A in range(num))
-def val_func_double(n):return n*2 if isinstance(n,int)else(n[0]*2,n[1]*2)
-def val_func_divide(a,b):
-	if isinstance(a,int)and isinstance(b,int):return a//b
-	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]//b[0],a[1]//b[1]
-	elif isinstance(a,int)and isinstance(b,tuple):return a//b[0],a//b[1]
-	return a[0]//b,a[1]//b
-def p(I):I=tuple(map(tuple,I));E=val_func_width(I);A=val_func_asobject(I);B=val_func_hperiod(A);C=val_func_height(A);F=val_func_astuple(C,B);G=val_func_ulcorner(A);H=val_func_crop(I,G,F);J=val_func_rot90(H);D=val_func_double(E);K=val_func_divide(D,B);L=val_func_increment(K);M=val_func_repeat(J,L);N=val_func_merge(M);O=val_func_rot270(N);P=val_func_astuple(C,D);Q=val_func_crop(O,(0,0),P);return[*map(list,Q)]
+def val_func_astuple(A,B):return A,B
+def val_func_increment(A):return A+1 if isinstance(A,int)else(A[0]+1,A[1]+1)
+def val_func_merge(A):return type(A)(B for A in A for B in A)
+def val_func_repeat(A,B):return tuple(A for B in range(B))
+def val_func_double(A):return A*2 if isinstance(A,int)else(A[0]*2,A[1]*2)
+def val_func_divide(A,B):
+	if isinstance(A,int)and isinstance(B,int):return A//B
+	elif isinstance(A,tuple)and isinstance(B,tuple):return A[0]//B[0],A[1]//B[1]
+	elif isinstance(A,int)and isinstance(B,tuple):return A//B[0],A//B[1]
+	return A[0]//B,A[1]//B
+def p(A):A=tuple(map(tuple,A));F=val_func_width(A);B=val_func_asobject(A);C=val_func_hperiod(B);D=val_func_height(B);G=val_func_astuple(D,C);H=val_func_ulcorner(B);I=val_func_crop(A,H,G);J=val_func_rot90(I);E=val_func_double(F);K=val_func_divide(E,C);L=val_func_increment(K);M=val_func_repeat(J,L);N=val_func_merge(M);O=val_func_rot270(N);P=val_func_astuple(D,E);Q=val_func_crop(O,(0,0),P);return[*map(list,Q)]

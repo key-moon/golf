@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;E=len(A)
+def p(A):
+	E=len(A)
 	for B in range(E):
 		for C in range(E):
 			D=A[B][C]

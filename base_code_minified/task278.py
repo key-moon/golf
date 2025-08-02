@@ -1,19 +1,19 @@
-def p(g):
-	K,L=len(g),len(g[0]);I={(A,B)for A in range(K)for B in range(L)if g[A][B]==2}
-	while I:
-		M,N=I.pop();E=F=M;G=H=N;J=[(M,N)]
-		while J:
-			A,B=J.pop()
-			for(C,D)in((A+1,B),(A-1,B),(A,B+1),(A,B-1)):
-				if(C,D)in I:
-					I.remove((C,D));J.append((C,D))
-					if C<E:E=C
-					elif C>F:F=C
-					if D<G:G=D
-					elif D>H:H=D
-		if F>E or H>G:
-			for A in range(E-1,F+2):
-				if 0<=A<K:
-					for B in range(G-1,H+2):
-						if 0<=B<L and g[A][B]==0 and(A<E or A>F or B<G or B>H):g[A][B]=3
-	return g
+def p(A):
+	L,M=len(A),len(A[0]);J={(B,C)for B in range(L)for C in range(M)if A[B][C]==2}
+	while J:
+		N,O=J.pop();F=G=N;H=I=O;K=[(N,O)]
+		while K:
+			B,C=K.pop()
+			for(D,E)in((B+1,C),(B-1,C),(B,C+1),(B,C-1)):
+				if(D,E)in J:
+					J.remove((D,E));K.append((D,E))
+					if D<F:F=D
+					elif D>G:G=D
+					if E<H:H=E
+					elif E>I:I=E
+		if G>F or I>H:
+			for B in range(F-1,G+2):
+				if 0<=B<L:
+					for C in range(H-1,I+2):
+						if 0<=C<M and A[B][C]==0 and(B<F or B>G or C<H or C>I):A[B][C]=3
+	return A

@@ -1,1 +1,1 @@
-def p(g):return[[13-A if A in(5,8)else A for A in A]for A in g]
+def p(A):return[[13-A if A in(5,8)else A for A in A]for A in A]

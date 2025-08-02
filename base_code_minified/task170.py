@@ -1,16 +1,16 @@
-def p(g):
-	N,O=len(g),len(g[0]);A={}
-	for R in g:
-		for D in R:
-			if D:A[D]=A.get(D,0)+1
-	P=max(A,key=A.get);S=N*O;G=H=A=I=J=E=K=F=S;H=I=E=F=-1
-	for B in range(N):
-		for C in range(O):
-			D=g[B][C]
-			if D==P:G,H,A,I=min(G,B),max(H,B),min(A,C),max(I,C)
-			elif D:J,E,K,F=min(J,B),max(E,B),min(K,C),max(F,C)
-	L,M=E-J+1,F-K+1;T=(H-G)//(L-1)if L>1 else 0;U=(I-A)//(M-1)if M>1 else 0;Q=[A[K:F+1]for A in g[J:E+1]]
-	for B in range(L):
-		for C in range(M):
-			if g[G+T*B][A+U*C]!=P:Q[B][C]=0
-	return Q
+def p(A):
+	O,P=len(A),len(A[0]);B={}
+	for S in A:
+		for E in S:
+			if E:B[E]=B.get(E,0)+1
+	Q=max(B,key=B.get);T=O*P;H=I=B=J=K=F=L=G=T;I=J=F=G=-1
+	for C in range(O):
+		for D in range(P):
+			E=A[C][D]
+			if E==Q:H,I,B,J=min(H,C),max(I,C),min(B,D),max(J,D)
+			elif E:K,F,L,G=min(K,C),max(F,C),min(L,D),max(G,D)
+	M,N=F-K+1,G-L+1;U=(I-H)//(M-1)if M>1 else 0;V=(J-B)//(N-1)if N>1 else 0;R=[A[L:G+1]for A in A[K:F+1]]
+	for C in range(M):
+		for D in range(N):
+			if A[H+U*C][B+V*D]!=Q:R[C][D]=0
+	return R

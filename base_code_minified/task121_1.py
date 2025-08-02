@@ -1,5 +1,5 @@
-def p(g):
-	for A in range(1,len(g)-1):
-		for B in range(1,len(g)-1):
-			C=g[A-1][B]
-			if C==g[A+1][B]==g[A][B-1]==g[A][B+1]!=g[A][B]:g[A][B]=C;return[[g[A][B]for B in(B-1,B,B+1)]for A in(A-1,A,A+1)]
+def p(A):
+	for B in range(1,len(A)-1):
+		for C in range(1,len(A)-1):
+			D=A[B-1][C]
+			if D==A[B+1][C]==A[B][C-1]==A[B][C+1]!=A[B][C]:A[B][C]=D;return[[A[B][C]for C in(C-1,C,C+1)]for B in(B-1,B,B+1)]

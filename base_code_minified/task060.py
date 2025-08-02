@@ -1,7 +1,7 @@
-def p(g):
-	for A in g:
-		B=[A for(A,B)in enumerate(A)if B]
-		if B:
-			D,E=B;F=sum(B)//2
-			for C in range(D+1,E):A[C]=[A[D],5,A[E]][(C>F)+(C>=F)]
-	return g
+def p(A):
+	for B in A:
+		C=[A for(A,B)in enumerate(B)if B]
+		if C:
+			E,F=C;G=sum(C)//2
+			for D in range(E+1,F):B[D]=[B[E],5,B[F]][(D>G)+(D>=G)]
+	return A

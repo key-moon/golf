@@ -1,8 +1,8 @@
-def p(g):
-	E,F=len(g),len(g[0]);D=()
-	for A in range(1,E-1):
-		for B in range(1,F-1):
-			C=g[A][B]
-			if C and g[A-1][B]==C==g[A+1][B]and g[A][B-1]==C==g[A][B+1]:D+=(A,B),
-	for(A,B)in D:g[A][B]=0
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);E=()
+	for B in range(1,F-1):
+		for C in range(1,G-1):
+			D=A[B][C]
+			if D and A[B-1][C]==D==A[B+1][C]and A[B][C-1]==D==A[B][C+1]:E+=(B,C),
+	for(B,C)in E:A[B][C]=0
+	return A

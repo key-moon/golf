@@ -1,16 +1,16 @@
-def p(g):
-	F={}
-	for(C,G)in enumerate(g):
-		for(B,D)in enumerate(G):
-			if D:
-				if D not in F:F[D]=[0,C,C,B,B]
-				A=F[D];A[0]+=1;A[1]=min(A[1],C);A[2]=max(A[2],C);A[3]=min(A[3],B);A[4]=max(A[4],B)
-	for(J,A)in F.items():
-		if A[0]==(A[2]-A[1]+1)*(A[4]-A[3]+1):break
-	for E in F:
-		if E!=J:break
-	K,L,M,N=A[1:];O=K+L;P=M+N
-	for(C,G)in enumerate(g):
-		for(B,D)in enumerate(G):
-			if D==E:H=O-C;I=P-B;G[B]=E;g[C][I]=E;g[H][B]=E;g[H][I]=E
-	return g
+def p(A):
+	G={}
+	for(D,H)in enumerate(A):
+		for(C,E)in enumerate(H):
+			if E:
+				if E not in G:G[E]=[0,D,D,C,C]
+				B=G[E];B[0]+=1;B[1]=min(B[1],D);B[2]=max(B[2],D);B[3]=min(B[3],C);B[4]=max(B[4],C)
+	for(K,B)in G.items():
+		if B[0]==(B[2]-B[1]+1)*(B[4]-B[3]+1):break
+	for F in G:
+		if F!=K:break
+	L,M,N,O=B[1:];P=L+M;Q=N+O
+	for(D,H)in enumerate(A):
+		for(C,E)in enumerate(H):
+			if E==F:I=P-D;J=Q-C;H[C]=F;A[D][J]=F;A[I][C]=F;A[I][J]=F
+	return A

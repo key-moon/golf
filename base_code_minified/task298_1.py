@@ -1,1 +1,1 @@
-def p(val_g):A=val_g;B=sum(A,[]);C=sorted({*B},key=B.count,reverse=1);return[[C[(C.index(A)+2)%3]for A in A]for A in A]
+def p(A):B=sum(A,[]);C=sorted({*B},key=B.count,reverse=1);return[[C[(C.index(A)+2)%3]for A in A]for A in A]

@@ -1,14 +1,14 @@
-def p(g):
-	F,G={},{}
-	for(A,H)in enumerate(g):
-		for(B,C)in enumerate(H):
-			if C:F.setdefault(A,[]).append(B);G.setdefault(B,[]).append(A)
-	for(A,D)in F.items():
-		if len(D)==2:
-			C,E=sorted(D)
-			for B in range(C,E+1):g[A][B]=8
-	for(B,D)in G.items():
-		if len(D)==2:
-			C,E=sorted(D)
-			for A in range(C,E+1):g[A][B]=8
-	return g
+def p(A):
+	G,H={},{}
+	for(B,I)in enumerate(A):
+		for(C,D)in enumerate(I):
+			if D:G.setdefault(B,[]).append(C);H.setdefault(C,[]).append(B)
+	for(B,E)in G.items():
+		if len(E)==2:
+			D,F=sorted(E)
+			for C in range(D,F+1):A[B][C]=8
+	for(C,E)in H.items():
+		if len(E)==2:
+			D,F=sorted(E)
+			for B in range(D,F+1):A[B][C]=8
+	return A

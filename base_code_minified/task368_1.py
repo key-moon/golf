@@ -1,16 +1,16 @@
-def p(g):
-	E,F=len(g),len(g[0]);G=set()
-	for B in range(E):
-		for A in range(F):
-			C=g[B][A]
-			if C:
-				if B+1<E and(D:=g[B+1][A])!=C and D:G|={C,D}
-				if A+1<F and(D:=g[B][A+1])!=C and D:G|={C,D}
-	H=[(A,B)for A in range(E)for B in range(F)if g[A][B]in G];M=min(A for(A,B)in H);N=max(A for(A,B)in H);O=min(A for(B,A)in H);P=max(A for(B,A)in H);I=[g[A][O:P+1]for A in range(M,N+1)];J,D=len(I),len(I[0]);Q={A for B in g for A in B if A and A not in G}
-	for B in range(E-J+1):
-		for A in range(F-D+1):
-			C=g[B][A]
-			if C in Q and(B==0 or g[B-1][A]!=C)and(A==0 or g[B][A-1]!=C)and all(g[B+E][A:A+D]==[C]*D for E in range(J)):
-				for K in range(J):
-					for L in range(D):g[B+K][A+L]=I[K][L]
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);H=set()
+	for C in range(F):
+		for B in range(G):
+			D=A[C][B]
+			if D:
+				if C+1<F and(E:=A[C+1][B])!=D and E:H|={D,E}
+				if B+1<G and(E:=A[C][B+1])!=D and E:H|={D,E}
+	I=[(B,C)for B in range(F)for C in range(G)if A[B][C]in H];N=min(A for(A,B)in I);O=max(A for(A,B)in I);P=min(A for(B,A)in I);Q=max(A for(B,A)in I);J=[A[B][P:Q+1]for B in range(N,O+1)];K,E=len(J),len(J[0]);R={A for B in A for A in B if A and A not in H}
+	for C in range(F-K+1):
+		for B in range(G-E+1):
+			D=A[C][B]
+			if D in R and(C==0 or A[C-1][B]!=D)and(B==0 or A[C][B-1]!=D)and all(A[C+F][B:B+E]==[D]*E for F in range(K)):
+				for L in range(K):
+					for M in range(E):A[C+L][B+M]=J[L][M]
+	return A

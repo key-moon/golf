@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;K,L=len(A),len(A[0]);I=max(set(sum(A,[]))-{0},key=lambda v:sum(A.count(v)for A in A));J=set();N=[]
+def p(A):
+	K,L=len(A),len(A[0]);I=max(set(sum(A,[]))-{0},key=lambda E:sum(A.count(E)for A in A));J=set();N=[]
 	for E in range(K):
 		for F in range(L):
 			if A[E][F]==I and(E,F)not in J:

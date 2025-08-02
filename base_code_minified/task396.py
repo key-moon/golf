@@ -1,14 +1,14 @@
-def p(g):
-	J,K=len(g),len(g[0]);L=0
-	for Q in{B for A in g for B in A}-{0}:
-		A=[(A,B)for A in range(J)for B in range(K)if g[A][B]==Q]
-		if A:
-			B=min(A for(A,B)in A);C=max(A for(A,B)in A);D=min(A for(B,A)in A);E=max(A for(B,A)in A);H=C-B+1;I=E-D+1
-			if H>2 and I>2 and len(A)==2*(H+I)-4:
-				F=H*I
-				if F>L:L,F,R,S,T,U=F,F,B,C,D,E
-	B,C,D,E=R,S,T,U;V=next(g[A][F]for A in range(J)for F in range(K)if g[A][F]and not(B<=A<=C and D<=F<=E));G=[g[A][D:E+1]for A in range(B,C+1)];M,N=len(G),len(G[0])
-	for O in range(M):
-		for P in range(N):
-			if not O*(M-1)*P*(N-1):G[O][P]=V
-	return G
+def p(A):
+	K,L=len(A),len(A[0]);M=0
+	for R in{B for A in A for B in A}-{0}:
+		B=[(B,C)for B in range(K)for C in range(L)if A[B][C]==R]
+		if B:
+			C=min(A for(A,B)in B);D=max(A for(A,B)in B);E=min(A for(B,A)in B);F=max(A for(B,A)in B);I=D-C+1;J=F-E+1
+			if I>2 and J>2 and len(B)==2*(I+J)-4:
+				G=I*J
+				if G>M:M,G,S,T,U,V=G,G,C,D,E,F
+	C,D,E,F=S,T,U,V;W=next(A[B][G]for B in range(K)for G in range(L)if A[B][G]and not(C<=B<=D and E<=G<=F));H=[A[B][E:F+1]for B in range(C,D+1)];N,O=len(H),len(H[0])
+	for P in range(N):
+		for Q in range(O):
+			if not P*(N-1)*Q*(O-1):H[P][Q]=W
+	return H

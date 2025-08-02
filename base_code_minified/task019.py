@@ -1,1 +1,1 @@
-def p(g):A,B=len(g),len(g[0]);return[[g[C%A][D%B]or(8 if C//A+D//B+C+D&1 else 0)for D in range(B*2)]for C in range(A*2)]
+def p(A):B,C=len(A),len(A[0]);return[[A[D%B][E%C]or(8 if D//B+E//C+D+E&1 else 0)for E in range(C*2)]for D in range(B*2)]

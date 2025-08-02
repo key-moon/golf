@@ -1,18 +1,18 @@
-def p(g):
-	G=len(g);H=len(g[0]);K=[A[:]for A in g]
-	for A in range(G):
-		for B in range(H):
-			if g[A][B]==2:
-				C=A
-				while C and g[C-1][B]==3:C-=1
-				D=A
-				while D<G-1 and g[D+1][B]==3:D+=1
+def p(A):
+	H=len(A);I=len(A[0]);L=[A[:]for A in A]
+	for B in range(H):
+		for C in range(I):
+			if A[B][C]==2:
+				D=B
+				while D and A[D-1][C]==3:D-=1
 				E=B
-				while E and g[A][E-1]==3:E-=1
-				F=B
-				while F<H-1 and g[A][F+1]==3:F+=1
-				I=(A==C)*-1+(A==D);J=(B==E)*-1+(B==F);O=I and(A if I<0 else G-1-A)or J and(B if J<0 else H-1-B)
-				for L in range(1,O+1):
-					for M in range(C,D+1):
-						for N in range(E,F+1):K[M+I*L][N+J*L]=g[M][N]
-	return K
+				while E<H-1 and A[E+1][C]==3:E+=1
+				F=C
+				while F and A[B][F-1]==3:F-=1
+				G=C
+				while G<I-1 and A[B][G+1]==3:G+=1
+				J=(B==D)*-1+(B==E);K=(C==F)*-1+(C==G);P=J and(B if J<0 else H-1-B)or K and(C if K<0 else I-1-C)
+				for M in range(1,P+1):
+					for N in range(D,E+1):
+						for O in range(F,G+1):L[N+J*M][O+K*M]=A[N][O]
+	return L

@@ -1,10 +1,10 @@
-def p(g):
-	A=0
-	while A<len(g):
-		C=next(A for A in g[A]if A);B=A
-		while B<len(g)and next(A for A in g[B]if A)==C:B+=1
-		D={B for A in g[A:B]for(B,C)in enumerate(A)if C<1}
-		for E in g[A:B]:
-			for F in D:E[F]=0
-		A=B
-	return g
+def p(A):
+	B=0
+	while B<len(A):
+		D=next(A for A in A[B]if A);C=B
+		while C<len(A)and next(A for A in A[C]if A)==D:C+=1
+		E={B for A in A[B:C]for(B,C)in enumerate(A)if C<1}
+		for F in A[B:C]:
+			for G in E:F[G]=0
+		B=C
+	return A

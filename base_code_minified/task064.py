@@ -1,27 +1,27 @@
-def p(g):
-	K={}
-	for(C,F)in enumerate(g):
-		for(B,D)in enumerate(F):
-			A=K.get(D)
-			if A:A[0]+=1;A[1]=min(A[1],C);A[2]=max(A[2],C);A[3]=min(A[3],B);A[4]=max(A[4],B)
-			else:K[D]=[1,C,C,B,B]
-	L=M=0
-	for(D,(N,G,H,I,J))in K.items():
-		A=(H-G+1)*(J-I+1)
-		if N==A>1 and A>M:M=A;L=D
-	if M:
-		G,H,I,J=K[L][1:]
-		for(C,F)in enumerate(g):
-			for(B,D)in enumerate(F):
-				if D!=L:
-					if G<=C<=H:
-						if B<I:
-							for E in range(B+1,I):F[E]=D
-						elif B>J:
-							for E in range(J+1,B):F[E]=D
-					if I<=B<=J:
-						if C<G:
-							for E in range(C+1,G):g[E][B]=D
-						elif C>H:
-							for E in range(H+1,C):g[E][B]=D
-	return g
+def p(A):
+	L={}
+	for(D,G)in enumerate(A):
+		for(C,E)in enumerate(G):
+			B=L.get(E)
+			if B:B[0]+=1;B[1]=min(B[1],D);B[2]=max(B[2],D);B[3]=min(B[3],C);B[4]=max(B[4],C)
+			else:L[E]=[1,D,D,C,C]
+	M=N=0
+	for(E,(O,H,I,J,K))in L.items():
+		B=(I-H+1)*(K-J+1)
+		if O==B>1 and B>N:N=B;M=E
+	if N:
+		H,I,J,K=L[M][1:]
+		for(D,G)in enumerate(A):
+			for(C,E)in enumerate(G):
+				if E!=M:
+					if H<=D<=I:
+						if C<J:
+							for F in range(C+1,J):G[F]=E
+						elif C>K:
+							for F in range(K+1,C):G[F]=E
+					if J<=C<=K:
+						if D<H:
+							for F in range(D+1,H):A[F][C]=E
+						elif D>I:
+							for F in range(I+1,D):A[F][C]=E
+	return A

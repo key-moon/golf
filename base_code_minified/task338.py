@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;M,H=len(A),len(A[0]);N=[[0]*H for A in A];I=[[0]*H for A in A]
+def p(A):
+	M,H=len(A),len(A[0]);N=[[0]*H for A in A];I=[[0]*H for A in A]
 	for J in range(M):
 		for K in range(H):
 			if A[J][K]==2 and not I[J][K]:

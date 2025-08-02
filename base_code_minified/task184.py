@@ -1,15 +1,15 @@
-def p(g):
-	G={};L,M=len(g),len(g[0])
-	for C in range(L):
-		for D in range(M):
-			H=g[C][D]
-			if H:
-				I=C;J=D;g[C][D]=0;K=[(C,D)]
-				while K:
-					A,B=K.pop()
-					if A<I:I=A
+def p(A):
+	H={};M,N=len(A),len(A[0])
+	for D in range(M):
+		for E in range(N):
+			I=A[D][E]
+			if I:
+				J=D;K=E;A[D][E]=0;L=[(D,E)]
+				while L:
+					B,C=L.pop()
 					if B<J:J=B
-					for(E,F)in((A+1,B),(A-1,B),(A,B+1),(A,B-1)):
-						if 0<=E<L and 0<=F<M and g[E][F]==H:g[E][F]=0;K.append((E,F))
-				G.setdefault(I,[]).append((J,H))
-	return[[A for(B,A)in sorted(G[A])]for A in sorted(G)]
+					if C<K:K=C
+					for(F,G)in((B+1,C),(B-1,C),(B,C+1),(B,C-1)):
+						if 0<=F<M and 0<=G<N and A[F][G]==I:A[F][G]=0;L.append((F,G))
+				H.setdefault(J,[]).append((K,I))
+	return[[A for(B,A)in sorted(H[A])]for A in sorted(H)]

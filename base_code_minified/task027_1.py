@@ -1,13 +1,13 @@
-def p(a):
-	D,E=len(a),len(a[0])
+def p(A):
+	E,F=len(A),len(A[0])
 	while 1:
-		C=0
-		for A in range(D):
-			for B in range(E):
-				if a[A][B]==0:
-					if A and B and a[A-1][B]==1 and a[A][B-1]==1 and a[A-1][B-1]==1:a[A][B]=2;C=1
-					elif A and B<E-1 and a[A-1][B]==1 and a[A][B+1]==1 and a[A-1][B+1]==1:a[A][B]=2;C=1
-					elif A<D-1 and B and a[A+1][B]==1 and a[A][B-1]==1 and a[A+1][B-1]==1:a[A][B]=2;C=1
-					elif A<D-1 and B<E-1 and a[A+1][B]==1 and a[A][B+1]==1 and a[A+1][B+1]==1:a[A][B]=2;C=1
-		if not C:break
-	return a
+		D=0
+		for B in range(E):
+			for C in range(F):
+				if A[B][C]==0:
+					if B and C and A[B-1][C]==1 and A[B][C-1]==1 and A[B-1][C-1]==1:A[B][C]=2;D=1
+					elif B and C<F-1 and A[B-1][C]==1 and A[B][C+1]==1 and A[B-1][C+1]==1:A[B][C]=2;D=1
+					elif B<E-1 and C and A[B+1][C]==1 and A[B][C-1]==1 and A[B+1][C-1]==1:A[B][C]=2;D=1
+					elif B<E-1 and C<F-1 and A[B+1][C]==1 and A[B][C+1]==1 and A[B+1][C+1]==1:A[B][C]=2;D=1
+		if not D:break
+	return A

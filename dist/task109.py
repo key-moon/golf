@@ -1,6 +1,6 @@
-def p(g):
- A=len(g)//2;C=2*A;H=g[A][A];B=[[0]*C for A in[0]*C]
- for D in range(A):
-  for E in range(A):
-   if g[D][E]:F=C-1-D;G=C-1-E;B[D][E]=B[D][G]=B[F][E]=B[F][G]=H
- return B
+def p(A):
+ B=len(A)//2;D=2*B;I=A[B][B];C=[[0]*D for A in[0]*D]
+ for E in range(B):
+  for F in range(B):
+   if A[E][F]:G=D-1-E;H=D-1-F;C[E][F]=C[E][H]=C[G][F]=C[G][H]=I
+ return C

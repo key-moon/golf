@@ -130,7 +130,7 @@ def val_func_ulcorner(patch):
 def val_func_sizefilter(container, n):
     return frozenset(item for item in container if len(item) == n)
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def mval_func_apply(function, container):
@@ -217,7 +217,7 @@ def p(I):
     x8 = val_func_insert(x3, x7)
     x9 = val_func_argmax(x8, x5)
     x10 = val_func_vmirror(x9)
-    x11 = val_func_pval_func_apply(val_func_pair, x9, x10)
+    x11 = pval_func_apply(val_func_pair, x9, x10)
     x12 = val_func_lbind(val_func_apply, val_func_maximum)
     x13 = val_func_apply(x12, x11)
     x14 = val_func_partition(x13)
@@ -242,10 +242,10 @@ def p(I):
     x33 = val_func_rot90(x32)
     x34 = val_func_rot180(x32)
     x35 = val_func_rot270(x32)
-    x36 = val_func_pval_func_apply(val_func_pair, x32, x33)
+    x36 = pval_func_apply(val_func_pair, x32, x33)
     x37 = val_func_apply(x12, x36)
-    x38 = val_func_pval_func_apply(val_func_pair, x37, x34)
+    x38 = pval_func_apply(val_func_pair, x37, x34)
     x39 = val_func_apply(x12, x38)
-    x40 = val_func_pval_func_apply(val_func_pair, x39, x35)
+    x40 = pval_func_apply(val_func_pair, x39, x35)
     O = val_func_apply(x12, x40)
     return [*map(list,O)]

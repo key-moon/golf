@@ -1,7 +1,7 @@
-def p(g):
-	A=len(g)//2
-	for B in range(A):
-		D,E=g[B],g[B+A+1]
-		for(F,C)in enumerate(E):
-			if C:D[F]=C
-	g[:]=g[:A];return g
+def p(A):
+	B=len(A)//2
+	for C in range(B):
+		E,F=A[C],A[C+B+1]
+		for(G,D)in enumerate(F):
+			if D:E[G]=D
+	A[:]=A[:B];return A

@@ -1,7 +1,7 @@
-def p(g):
-	D=next(A[0]for A in g if A.count(A[0])==len(A)and A[0])
-	for(H,A)in enumerate(g):
-		for B in{*A}-{0,D}:
-			C=[A for(A,C)in enumerate(A)if C==B];E,F=min(C),max(C)
-			for G in range(E,F+1):A[G]=B
-	return g
+def p(A):
+	E=next(A[0]for A in A if A.count(A[0])==len(A)and A[0])
+	for(I,B)in enumerate(A):
+		for C in{*B}-{0,E}:
+			D=[A for(A,B)in enumerate(B)if B==C];F,G=min(D),max(D)
+			for H in range(F,G+1):B[H]=C
+	return A

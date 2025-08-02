@@ -1,1 +1,1 @@
-def p(g):B=len(g[0]);A=next(A for A in range(1,B+1)if B%A==0 and all(C==C[:A]*(B//A)for C in g));return[B[:A]for B in g]
+def p(A):C=len(A[0]);B=next(B for B in range(1,C+1)if C%B==0 and all(A==A[:B]*(C//B)for A in A));return[A[:B]for A in A]

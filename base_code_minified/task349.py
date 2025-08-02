@@ -1,9 +1,9 @@
-def p(g):
-	D,E=len(g),len(g[0]);C=[A[:]for A in g];F=[(A,B)for A in(-1,0,1)for B in(-1,0,1)if A or B]
-	for A in range(D):
-		for B in range(E):
-			if g[A][B]==0 and any(0<=A+C<D and 0<=B+F<E and g[A+C][B+F]==9 for(C,F)in F):C[A][B]=3
-	for A in range(D):
-		for B in range(E):
-			if C[A][B]==0 and any(0<=A+F<D and 0<=B+G<E and C[A+F][B+G]==3 for(F,G)in F):C[A][B]=1
-	return C
+def p(A):
+	E,F=len(A),len(A[0]);D=[A[:]for A in A];G=[(A,B)for A in(-1,0,1)for B in(-1,0,1)if A or B]
+	for B in range(E):
+		for C in range(F):
+			if A[B][C]==0 and any(0<=B+D<E and 0<=C+G<F and A[B+D][C+G]==9 for(D,G)in G):D[B][C]=3
+	for B in range(E):
+		for C in range(F):
+			if D[B][C]==0 and any(0<=B+A<E and 0<=C+G<F and D[B+A][C+G]==3 for(A,G)in G):D[B][C]=1
+	return D

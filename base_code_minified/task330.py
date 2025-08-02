@@ -1,13 +1,13 @@
-def p(g):
-	J=len(g)
-	for(G,H)in enumerate(g):
-		for(I,K)in enumerate(H):
-			if K==5:
-				A=[(G,I)];g[G][I]=0
-				for(E,F)in A:
-					for B in((1,0),(-1,0),(0,1),(0,-1)):
-						C,D=E+B[0],F+B[1]
-						if 0<=C<J and 0<=D<len(H)and g[C][D]==5:g[C][D]=0;A+=[(C,D)]
-				B=2 if len(A)==6 else 1
-				for(E,F)in A:g[E][F]=B
-	return g
+def p(A):
+	K=len(A)
+	for(H,I)in enumerate(A):
+		for(J,L)in enumerate(I):
+			if L==5:
+				B=[(H,J)];A[H][J]=0
+				for(F,G)in B:
+					for C in((1,0),(-1,0),(0,1),(0,-1)):
+						D,E=F+C[0],G+C[1]
+						if 0<=D<K and 0<=E<len(I)and A[D][E]==5:A[D][E]=0;B+=[(D,E)]
+				C=2 if len(B)==6 else 1
+				for(F,G)in B:A[F][G]=C
+	return A

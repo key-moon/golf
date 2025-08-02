@@ -1,1 +1,1 @@
-def p(g):return[g[0][:2],g[1][:2]]
+def p(A):return[A[0][:2],A[1][:2]]

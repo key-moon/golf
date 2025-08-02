@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;B={}
+def p(A):
+	B={}
 	for G in A:
 		for C in G:B[C]=B.get(C,0)+1
 	I=sorted(B,key=B.get,reverse=1);N,H=I[1],I[2];D=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==N];J=min(A for(A,B)in D);K=max(A for(A,B)in D);L=min(A for(B,A)in D);M=max(A for(B,A)in D)

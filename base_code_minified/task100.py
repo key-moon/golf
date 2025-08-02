@@ -1,6 +1,6 @@
-def p(g):
-	B={}
-	for(C,F)in enumerate(g):
-		for(D,E)in enumerate(F):
-			if E:A=B.setdefault(E,[C,C,D,D]);A[0]=min(A[0],C);A[1]=max(A[1],C);A[2]=min(A[2],D);A[3]=max(A[3],D)
-	G=max(B,key=lambda v:(B[v][1]-B[v][0]+1)*(B[v][3]-B[v][2]+1));return[[G]*2]*2
+def p(A):
+	C={}
+	for(D,G)in enumerate(A):
+		for(E,F)in enumerate(G):
+			if F:B=C.setdefault(F,[D,D,E,E]);B[0]=min(B[0],D);B[1]=max(B[1],D);B[2]=min(B[2],E);B[3]=max(B[3],E)
+	H=max(C,key=lambda F:(C[F][1]-C[F][0]+1)*(C[F][3]-C[F][2]+1));return[[H]*2]*2

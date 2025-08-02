@@ -1,1 +1,1 @@
-def p(g):A=sum(B==5 for A in g for B in A);B=next(A for B in g for A in B if A%5);C=len(g);D=len(g[0]);return[[B if 0<=E-A<C and 0<=F+A<D and g[E-A][F+A]==B else 0 for F in range(D)]for E in range(C)]
+def p(A):B=sum(B==5 for A in A for B in A);C=next(A for B in A for A in B if A%5);D=len(A);E=len(A[0]);return[[C if 0<=F-B<D and 0<=G+B<E and A[F-B][G+B]==C else 0 for G in range(E)]for F in range(D)]

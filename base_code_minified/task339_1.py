@@ -1,1 +1,1 @@
-def p(g):g=[[A for B in g for A in B if A]];return g
+def p(A):A=[[A for B in A for A in B if A]];return A

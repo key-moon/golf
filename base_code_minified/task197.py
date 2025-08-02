@@ -1,11 +1,11 @@
-def p(g):
-	E=next(A for A in g if 0 not in A);C=[]
-	for A in E:
-		if A not in C:C+=[A]
-	for D in g:
-		B=[]
-		for A in D:
-			if A and A not in B:B+=[A]
-		if B and 0 in D:
-			for(F,A)in enumerate(E):D[F]=B[C.index(A)]
-	return g
+def p(A):
+	F=next(A for A in A if 0 not in A);D=[]
+	for B in F:
+		if B not in D:D+=[B]
+	for E in A:
+		C=[]
+		for B in E:
+			if B and B not in C:C+=[B]
+		if C and 0 in E:
+			for(G,B)in enumerate(F):E[G]=C[D.index(B)]
+	return A

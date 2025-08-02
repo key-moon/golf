@@ -38,12 +38,12 @@ def val_func_neighbors(loc):
 def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_ofcolor(I, 5)
-    x2 = val_func_mval_func_apply(val_func_neighbors, x1)
+    x2 = mval_func_apply(val_func_neighbors, x1)
     O = val_func_fill(I, 1, x2)
     return [*map(list,O)]

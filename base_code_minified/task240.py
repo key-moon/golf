@@ -1,13 +1,13 @@
-def p(g):
-	J=len(g);G=J-1;A=[A[:]for A in g]
-	for(B,K)in enumerate(g):
-		for(C,F)in enumerate(K):
-			if F:
-				D,E=G-B,G-C
-				if F%2:
+def p(A):
+	K=len(A);H=K-1;B=[A[:]for A in A]
+	for(C,L)in enumerate(A):
+		for(D,G)in enumerate(L):
+			if G:
+				E,F=H-C,H-D
+				if G%2:
+					if D<F:
+						for I in range(D,F+1,2):B[C][I]=max(B[C][I],G)
 					if C<E:
-						for H in range(C,E+1,2):A[B][H]=max(A[B][H],F)
-					if B<D:
-						for I in range(B,D+1,2):A[I][C]=max(A[I][C],F)
-				else:A[B][C]=A[D][C]=A[B][E]=A[D][E]=max(F,A[B][C],A[D][C],A[B][E],A[D][E])
-	return A
+						for J in range(C,E+1,2):B[J][D]=max(B[J][D],G)
+				else:B[C][D]=B[E][D]=B[C][F]=B[E][F]=max(G,B[C][D],B[E][D],B[C][F],B[E][F])
+	return B

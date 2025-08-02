@@ -1,7 +1,7 @@
-def p(g):
-	for A in g:
-		if 2 in A:
-			C=A.index(2);D=len(A)-1-A[::-1].index(2)
-			for B in range(C+1,D):
-				if not A[B]:A[B]=9
-	return g
+def p(A):
+	for B in A:
+		if 2 in B:
+			D=B.index(2);E=len(B)-1-B[::-1].index(2)
+			for C in range(D+1,E):
+				if not B[C]:B[C]=9
+	return A

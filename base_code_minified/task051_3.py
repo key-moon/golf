@@ -1,11 +1,11 @@
-def p(g):
-	B={};[B.setdefault(E,[]).append((A,D))for(A,C)in enumerate(g)for(D,E)in enumerate(C)];A=[A for(A,B)in B.items()if A and len(B)==1][0];D,C=B[A][0];L=[D for(B,C)in B.items()if B and B!=A for D in C];G,H=zip(*L);I,M,J,K=min(G),max(G),min(H),max(H);N,O=len(g),len(g[0])
-	if C==J:
-		for E in range(K+1,O):g[D][E]=A
-	elif C==K:
-		for E in range(J):g[D][E]=A
-	elif D==I:
-		for F in range(M+1,N):g[F][C]=A
+def p(A):
+	C={};[C.setdefault(E,[]).append((A,D))for(A,B)in enumerate(A)for(D,E)in enumerate(B)];B=[A for(A,B)in C.items()if A and len(B)==1][0];E,D=C[B][0];M=[D for(A,C)in C.items()if A and A!=B for D in C];H,I=zip(*M);J,N,K,L=min(H),max(H),min(I),max(I);O,P=len(A),len(A[0])
+	if D==K:
+		for F in range(L+1,P):A[E][F]=B
+	elif D==L:
+		for F in range(K):A[E][F]=B
+	elif E==J:
+		for G in range(N+1,O):A[G][D]=B
 	else:
-		for F in range(I):g[F][C]=A
-	return g
+		for G in range(J):A[G][D]=B
+	return A

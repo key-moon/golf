@@ -1,6 +1,6 @@
-def p(g):
-	E={A for B in g for A in B if A}
-	for B in E:
-		A=[(A,D)for(A,C)in enumerate(g)for(D,E)in enumerate(C)if E==B];F=min(A for(A,B)in A);G=max(A for(A,B)in A);C=min(A for(B,A)in A);D=max(A for(B,A)in A)
-		for H in range(F,G+1):g[H][C:D+1]=[B]*(D-C+1)
-	return g
+def p(A):
+	F={A for B in A for A in B if A}
+	for C in F:
+		B=[(A,D)for(A,B)in enumerate(A)for(D,E)in enumerate(B)if E==C];G=min(A for(A,B)in B);H=max(A for(A,B)in B);D=min(A for(B,A)in B);E=max(A for(B,A)in B)
+		for I in range(G,H+1):A[I][D:E+1]=[C]*(E-D+1)
+	return A

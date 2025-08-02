@@ -47,7 +47,7 @@ def val_func_leastcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return min(set(values), key=values.count)
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
 def mval_func_apply(function, container):
@@ -107,7 +107,7 @@ def p(I):
     x10 = val_func_shift(x1, x9)
     x11 = val_func_apply(x7, x10)
     x12 = val_func_interval(0, 9, 1)
-    x13 = val_func_prval_func_apply(val_func_multiply, x11, x12)
+    x13 = prval_func_apply(val_func_multiply, x11, x12)
     x14 = val_func_lbind(val_func_shift, x6)
     x15 = mval_func_apply(x14, x13)
     O = val_func_paint(I, x15)

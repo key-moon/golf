@@ -1,39 +1,36 @@
-def val_func_lowermost(patch):return max(A for(A,B)in val_func_toindices(patch))
-def val_func_uppermost(patch):return min(A for(A,B)in val_func_toindices(patch))
-def val_func_rightmost(patch):return max(A for(B,A)in val_func_toindices(patch))
-def val_func_leftmost(patch):return min(A for(B,A)in val_func_toindices(patch))
-def val_func_width(piece):
-	A=piece
+def val_func_lowermost(A):return max(A for(A,B)in val_func_toindices(A))
+def val_func_uppermost(A):return min(A for(A,B)in val_func_toindices(A))
+def val_func_rightmost(A):return max(A for(B,A)in val_func_toindices(A))
+def val_func_leftmost(A):return min(A for(B,A)in val_func_toindices(A))
+def val_func_width(A):
 	if len(A)==0:return 0
 	if isinstance(A,tuple):return len(A[0])
 	return val_func_rightmost(A)-val_func_leftmost(A)+1
-def val_func_height(piece):
-	A=piece
+def val_func_height(A):
 	if len(A)==0:return 0
 	if isinstance(A,tuple):return len(A)
 	return val_func_lowermost(A)-val_func_uppermost(A)+1
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_toindices(patch):
-	A=patch
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_tophalf(grid):return grid[:len(grid)//2]
-def val_func_bottomhalf(grid):A=grid;return A[len(A)//2+len(A)%2:]
-def val_func_rot270(grid):return tuple(tuple(A[::-1])for A in zip(*grid[::-1]))[::-1]
-def val_func_rot90(grid):return tuple(A for A in zip(*grid[::-1]))
-def val_func_righthalf(grid):return val_func_rot270(val_func_bottomhalf(val_func_rot90(grid)))
-def val_func_lefthalf(grid):return val_func_rot270(val_func_tophalf(val_func_rot90(grid)))
-def val_func_canvas(value,dimensions):A=dimensions;return tuple(tuple(value for A in range(A[1]))for B in range(A[0]))
-def val_func_fill(grid,value,patch):
-	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
-	for(C,D)in val_func_toindices(patch):
-		if 0<=C<E and 0<=D<F:B[C][D]=value
-	return tuple(tuple(A)for A in B)
-def val_func_ofcolor(grid,value):return frozenset((A,C)for(A,B)in enumerate(grid)for(C,D)in enumerate(B)if D==value)
-def val_func_shape(piece):A=piece;return val_func_height(A),val_func_width(A)
-def val_func_intersection(a,b):return a&b
-def p(I):I=tuple(map(tuple,I));A=val_func_lefthalf(I);B=val_func_righthalf(I);C=val_func_ofcolor(A,0);D=val_func_ofcolor(B,0);E=val_func_intersection(C,D);F=val_func_shape(A);G=val_func_canvas(0,F);H=val_func_fill(G,3,E);return[*map(list,H)]
+def val_func_tophalf(A):return A[:len(A)//2]
+def val_func_bottomhalf(A):return A[len(A)//2+len(A)%2:]
+def val_func_rot270(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def val_func_rot90(A):return tuple(A for A in zip(*A[::-1]))
+def val_func_righthalf(A):return val_func_rot270(val_func_bottomhalf(val_func_rot90(A)))
+def val_func_lefthalf(A):return val_func_rot270(val_func_tophalf(val_func_rot90(A)))
+def val_func_canvas(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def val_func_fill(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in val_func_toindices(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def val_func_ofcolor(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def val_func_shape(A):return val_func_height(A),val_func_width(A)
+def val_func_intersection(A,B):return A&B
+def p(A):A=tuple(map(tuple,A));B=val_func_lefthalf(A);C=val_func_righthalf(A);D=val_func_ofcolor(B,0);E=val_func_ofcolor(C,0);F=val_func_intersection(D,E);G=val_func_shape(B);H=val_func_canvas(0,G);I=val_func_fill(H,3,F);return[*map(list,I)]

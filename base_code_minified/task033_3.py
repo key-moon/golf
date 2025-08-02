@@ -1,17 +1,17 @@
-def p(g):
-	M=len(g);B=M//3;A=B+1;K=g[B][B];G=[[any(g[C*A+E][D*A+F]for E in range(B)for F in range(B))for D in range(3)]for C in range(3)]
-	for E in range(3):
-		for F in range(3):
-			if not G[E][F]:
-				H=[A for A in range(3)if G[E][A]]
-				if len(H)>1:
-					I,J=H[0],H[1]
-					for C in range(B):
-						for D in range(B):
-							if g[E*A+C][I*A+D]or g[E*A+C][J*A+D]:g[E*A+C][F*A+D]=K
+def p(A):
+	N=len(A);C=N//3;B=C+1;L=A[C][C];H=[[any(A[D*B+F][E*B+G]for F in range(C)for G in range(C))for E in range(3)]for D in range(3)]
+	for F in range(3):
+		for G in range(3):
+			if not H[F][G]:
+				I=[A for A in range(3)if H[F][A]]
+				if len(I)>1:
+					J,K=I[0],I[1]
+					for D in range(C):
+						for E in range(C):
+							if A[F*B+D][J*B+E]or A[F*B+D][K*B+E]:A[F*B+D][G*B+E]=L
 				else:
-					L=[A for A in range(3)if G[A][F]];I,J=L[0],L[1]
-					for C in range(B):
-						for D in range(B):
-							if g[I*A+C][F*A+D]or g[J*A+C][F*A+D]:g[E*A+C][F*A+D]=K
-	return g
+					M=[A for A in range(3)if H[A][G]];J,K=M[0],M[1]
+					for D in range(C):
+						for E in range(C):
+							if A[J*B+D][G*B+E]or A[K*B+D][G*B+E]:A[F*B+D][G*B+E]=L
+	return A

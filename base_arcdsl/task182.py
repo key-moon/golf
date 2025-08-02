@@ -16,11 +16,11 @@ def val_func_shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -82,7 +82,7 @@ def val_func_box(patch):
     hlines = {(si, j) for j in range(sj, ej + 1)} | {(ei, j) for j in range(sj, ej + 1)}
     return frozenset(vlines | hlines)
 
-def inval_func_box(patch):
+def val_func_inval_func_box(patch):
     ai, aj = val_func_uppermost(patch) + 1, val_func_leftmost(patch) + 1
     bi, bj = val_func_lowermost(patch) - 1, val_func_rightmost(patch) - 1
     si, sj = min(ai, bi), min(aj, bj)
@@ -185,7 +185,7 @@ def p(I):
     x2 = val_func_val_func_colorfilter(x1, 5)
     x3 = val_func_fork(val_func_equality, val_func_toindices, val_func_box)
     x4 = val_func_extract(x2, x3)
-    x5 = inval_func_box(x4)
+    x5 = val_func_inval_func_box(x4)
     x6 = val_func_subgrid(x5, I)
     x7 = val_func_asobject(x6)
     x8 = val_func_matcher(val_func_first, 0)

@@ -1,14 +1,14 @@
-def p(g):
-	J,C=len(g),len(g[0]);M=[[0]*C for A in g];D=[[0]*C for A in g]
-	for E in range(J):
-		for F in range(C):
-			if g[E][F]and not D[E][F]:
-				G=[(E,F)];D[E][F]=1
-				for R in G:
-					H,I=R
-					for(K,L)in((1,0),(-1,0),(0,1),(0,-1)):
-						A,B=H+K,I+L
-						if 0<=A<J and 0<=B<C and g[A][B]and not D[A][B]:D[A][B]=1;G.append((A,B))
-				N,O=zip(*G);P,Q=(min(N)+max(N))//2,(min(O)+max(O))//2
-				for(H,I)in G:K,L=H-P,I-Q;M[J-1-P-L][Q+K]=g[H][I]
-	return M
+def p(A):
+	K,D=len(A),len(A[0]);N=[[0]*D for A in A];E=[[0]*D for A in A]
+	for F in range(K):
+		for G in range(D):
+			if A[F][G]and not E[F][G]:
+				H=[(F,G)];E[F][G]=1
+				for S in H:
+					I,J=S
+					for(L,M)in((1,0),(-1,0),(0,1),(0,-1)):
+						B,C=I+L,J+M
+						if 0<=B<K and 0<=C<D and A[B][C]and not E[B][C]:E[B][C]=1;H.append((B,C))
+				O,P=zip(*H);Q,R=(min(O)+max(O))//2,(min(P)+max(P))//2
+				for(I,J)in H:L,M=I-Q,J-R;N[K-1-Q-M][R+L]=A[I][J]
+	return N

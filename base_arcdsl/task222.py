@@ -24,7 +24,7 @@ def val_func_height(piece):
         return len(piece)
     return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_dval_func_neighbors(loc):
@@ -97,7 +97,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
     return frozenset(objs)
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))

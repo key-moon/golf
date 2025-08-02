@@ -1,6 +1,6 @@
-def p(g):
-	C=len(g)
-	for A in range(C):
-		for B in range(C):
-			if g[A][B]!=5:g[A][B]=g[A//4*4][B//4*4]
-	return g
+def p(A):
+	D=len(A)
+	for B in range(D):
+		for C in range(D):
+			if A[B][C]!=5:A[B][C]=A[B//4*4][C//4*4]
+	return A

@@ -1,1 +1,1 @@
-def p(g):return[A[-3:]for A in g[:3]]
+def p(A):return[A[-3:]for A in A[:3]]

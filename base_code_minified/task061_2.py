@@ -1,15 +1,15 @@
-def p(val_g):
-	F=val_g;import math
-	for D in F:
-		E={};B=0
-		for(C,A)in enumerate(D):
-			if A:
-				if A in E:B=math.gcd(B,C-E[A])
-				E[A]=C
-		if not B:B=len(E)
-		G=[0]*B
-		for(C,A)in enumerate(D):
-			if A:G[C%B]=A
-		for(C,A)in enumerate(D):
-			if not A:D[C]=G[C%B]
-	return F
+def p(A):
+	import math
+	for E in A:
+		F={};C=0
+		for(D,B)in enumerate(E):
+			if B:
+				if B in F:C=math.gcd(C,D-F[B])
+				F[B]=D
+		if not C:C=len(F)
+		G=[0]*C
+		for(D,B)in enumerate(E):
+			if B:G[D%C]=B
+		for(D,B)in enumerate(E):
+			if not B:E[D]=G[D%C]
+	return A

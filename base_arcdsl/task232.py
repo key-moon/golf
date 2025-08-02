@@ -5,11 +5,11 @@ def val_func_index(grid, loc):
         return None
     return grid[loc[0]][loc[1]] 
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -127,7 +127,7 @@ def val_func_shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def val_func_toindices(patch):
@@ -137,7 +137,7 @@ def val_func_toindices(patch):
         return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
 def mval_func_apply(function, container):
@@ -182,14 +182,14 @@ def p(I):
     x2 = val_func_apply(val_func_toindices, x1)
     x3 = val_func_rbind(val_func_shoot, (0, 1))
     x4 = val_func_compose(x3, val_func_center)
-    x5 = val_func_fork(val_func_reval_func_color, val_func_color, x4)
+    x5 = val_func_fork(reval_func_color, val_func_color, x4)
     x6 = mval_func_apply(x5, x1)
     x7 = val_func_paint(I, x6)
     x8 = val_func_interval(0, 5, 1)
     x9 = val_func_apply(val_func_double, x8)
     x10 = val_func_apply(val_func_increment, x9)
     x11 = val_func_apply(val_func_tojvec, x10)
-    x12 = val_func_prval_func_apply(val_func_shift, x2, x11)
+    x12 = prval_func_apply(val_func_shift, x2, x11)
     x13 = val_func_merge(x12)
     O = val_func_fill(x7, 5, x13)
     return [*map(list,O)]

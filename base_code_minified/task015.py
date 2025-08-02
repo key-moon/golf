@@ -1,12 +1,12 @@
-def p(g):
-	for C in range(9):
-		for D in range(9):
-			if g[C][D]==2:
-				for(E,F)in((-1,-1),(-1,1),(1,-1),(1,1)):
-					A=C+E;B=D+F
-					if 0<=A<9 and 0<=B<9:g[A][B]=4
-			if g[C][D]==1:
-				for(E,F)in((-1,0),(1,0),(0,-1),(0,1)):
-					A=C+E;B=D+F
-					if 0<=A<9 and 0<=B<9:g[A][B]=7
-	return g
+def p(A):
+	for D in range(9):
+		for E in range(9):
+			if A[D][E]==2:
+				for(F,G)in((-1,-1),(-1,1),(1,-1),(1,1)):
+					B=D+F;C=E+G
+					if 0<=B<9 and 0<=C<9:A[B][C]=4
+			if A[D][E]==1:
+				for(F,G)in((-1,0),(1,0),(0,-1),(0,1)):
+					B=D+F;C=E+G
+					if 0<=B<9 and 0<=C<9:A[B][C]=7
+	return A

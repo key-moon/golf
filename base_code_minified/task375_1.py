@@ -1,3 +1,3 @@
-def p(g):
-	for(A,B)in enumerate(g):B[A]=B[~A]=0
-	return g
+def p(A):
+	for(B,C)in enumerate(A):C[B]=C[~B]=0
+	return A

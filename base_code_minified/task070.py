@@ -1,6 +1,6 @@
-def p(g):
-	A,B=zip(*[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==8]);E,F=min(A),max(A);G,H=min(B),max(B)
-	for C in range(E,F+1):
-		for D in range(G,H+1):
-			if g[C][D]^8:g[C][D]=3
-	return g
+def p(A):
+	B,C=zip(*[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==8]);F,G=min(B),max(B);H,I=min(C),max(C)
+	for D in range(F,G+1):
+		for E in range(H,I+1):
+			if A[D][E]^8:A[D][E]=3
+	return A

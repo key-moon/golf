@@ -1,4 +1,4 @@
-def p(g):
-	for(A,B)in enumerate(zip(*g[:-1])):
-		if len(g)-1-B.count(0)&1:g[-1][A]=4
-	return g
+def p(A):
+	for(B,C)in enumerate(zip(*A[:-1])):
+		if len(A)-1-C.count(0)&1:A[-1][B]=4
+	return A

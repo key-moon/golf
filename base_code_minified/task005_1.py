@@ -1,43 +1,43 @@
-def p(g):
-	Z='U';Y='D';X='L';W='R';C,F=len(g),len(g[0]);T=[A[:]for A in g];M=[A[:]for A in g]
-	for a in set(A for B in g for A in B if A):
-		N=[(A,B)for A in range(C)for B in range(F)if g[A][B]==a];D,G=min(A for(A,B)in N),max(A for(A,B)in N);E,H=min(A for(B,A)in N),max(A for(B,A)in N);Q=[[g[A][B]for B in range(E,H+1)]for A in range(D,G+1)];O,P=len(Q),len(Q[0])
-		for(A,B)in N:M[A][B]=0
-		I=F
-		for A in range(D,G+1):
-			for B in range(H+1,F):
-				if M[A][B]:I=min(I,B-H-1);break
-			else:I=min(I,F-H-1)
-		J=F
-		for A in range(D,G+1):
+def p(A):
+	a='U';Z='D';Y='L';X='R';D,G=len(A),len(A[0]);U=[A[:]for A in A];N=[A[:]for A in A]
+	for b in set(A for B in A for A in B if A):
+		O=[(B,C)for B in range(D)for C in range(G)if A[B][C]==b];E,H=min(A for(A,B)in O),max(A for(A,B)in O);F,I=min(A for(B,A)in O),max(A for(B,A)in O);R=[[A[B][C]for C in range(F,I+1)]for B in range(E,H+1)];P,Q=len(R),len(R[0])
+		for(B,C)in O:N[B][C]=0
+		J=G
+		for B in range(E,H+1):
+			for C in range(I+1,G):
+				if N[B][C]:J=min(J,C-I-1);break
+			else:J=min(J,G-I-1)
+		K=G
+		for B in range(E,H+1):
+			for C in range(F-1,-1,-1):
+				if N[B][C]:K=min(K,F-C-1);break
+			else:K=min(K,F)
+		L=D
+		for C in range(F,I+1):
+			for B in range(H+1,D):
+				if N[B][C]:L=min(L,B-H-1);break
+			else:L=min(L,D-H-1)
+		M=D
+		for C in range(F,I+1):
 			for B in range(E-1,-1,-1):
-				if M[A][B]:J=min(J,E-B-1);break
-			else:J=min(J,E)
-		K=C
-		for B in range(E,H+1):
-			for A in range(G+1,C):
-				if M[A][B]:K=min(K,A-G-1);break
-			else:K=min(K,C-G-1)
-		L=C
-		for B in range(E,H+1):
-			for A in range(D-1,-1,-1):
-				if M[A][B]:L=min(L,D-A-1);break
-			else:L=min(L,D)
-		dir=max((I,W),(J,X),(K,Y),(L,Z))[1]
-		if{W:I,X:J,Y:K,Z:L}[dir]==0:continue
-		b,c={W:(0,P),X:(0,-P),Y:(O,0),Z:(-O,0)}[dir];U=1
+				if N[B][C]:M=min(M,E-B-1);break
+			else:M=min(M,E)
+		c=max((J,X),(K,Y),(L,Z),(M,a))[1]
+		if{X:J,Y:K,Z:L,a:M}[c]==0:continue
+		d,e={X:(0,Q),Y:(0,-Q),Z:(P,0),a:(-P,0)}[c];V=1
 		while True:
-			R,S=D+b*U,E+c*U
-			if not(0<=R and R+O<=C and 0<=S and S+P<=F):break
-			V=True
-			for A in range(O):
-				for B in range(P):
-					if Q[A][B]and T[R+A][S+B]:V=False;break
-				if not V:break
-			if not V:break
-			for A in range(O):
-				for B in range(P):
-					if Q[A][B]:T[R+A][S+B]=a
-			U+=1
-	for A in range(C):g[A][:]=T[A]
-	return g
+			S,T=E+d*V,F+e*V
+			if not(0<=S and S+P<=D and 0<=T and T+Q<=G):break
+			W=True
+			for B in range(P):
+				for C in range(Q):
+					if R[B][C]and U[S+B][T+C]:W=False;break
+				if not W:break
+			if not W:break
+			for B in range(P):
+				for C in range(Q):
+					if R[B][C]:U[S+B][T+C]=b
+			V+=1
+	for B in range(D):A[B][:]=U[B]
+	return A

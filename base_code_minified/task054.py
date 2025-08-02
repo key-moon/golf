@@ -1,14 +1,14 @@
-def p(g):
-	A={}
-	for G in g:
-		for M in G:A[M]=A.get(M,0)+1
-	B=sorted(A);N=B[0];H=B[-1];O=N if A[N]>A[H]else H;P=B[1]if O==H else B[-2];Q=set(B)-{O,P};I,J=len(g),len(g[0]);C,K,D,L=I,-1,J,-1
-	for E in range(I):
-		for F in range(J):
-			if g[E][F]in Q:C=min(C,E);K=max(K,E);D=min(D,F);L=max(L,F)
-	R,G=K-C+1,L-D+1;S=[(A,B,g[C+A][D+B])for A in range(R)for B in range(G)if g[C+A][D+B]in Q]
-	for T in range(I-R+1):
-		for U in range(J-G+1):
-			if all(g[T+A][U+B]==P for(A,B,C)in S):
-				for(E,F,V)in S:g[T+E][U+F]=V
-	return g
+def p(A):
+	B={}
+	for H in A:
+		for N in H:B[N]=B.get(N,0)+1
+	C=sorted(B);O=C[0];I=C[-1];P=O if B[O]>B[I]else I;Q=C[1]if P==I else C[-2];R=set(C)-{P,Q};J,K=len(A),len(A[0]);D,L,E,M=J,-1,K,-1
+	for F in range(J):
+		for G in range(K):
+			if A[F][G]in R:D=min(D,F);L=max(L,F);E=min(E,G);M=max(M,G)
+	S,H=L-D+1,M-E+1;T=[(B,C,A[D+B][E+C])for B in range(S)for C in range(H)if A[D+B][E+C]in R]
+	for U in range(J-S+1):
+		for V in range(K-H+1):
+			if all(A[U+B][V+C]==Q for(B,C,D)in T):
+				for(F,G,W)in T:A[U+F][V+G]=W
+	return A

@@ -1,8 +1,8 @@
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -107,7 +107,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def val_func_apply(function, container):
@@ -147,7 +147,7 @@ def p(I):
     x3 = val_func_rbind(val_func_subgrid, I)
     x4 = val_func_apply(x3, x2)
     x5 = val_func_apply(val_func_vmirror, x4)
-    x6 = val_func_pval_func_apply(val_func_equality, x4, x5)
+    x6 = pval_func_apply(val_func_equality, x4, x5)
     x7 = val_func_pair(x4, x6)
     x8 = val_func_extract(x7, val_func_last)
     O = val_func_first(x8)

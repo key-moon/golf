@@ -1,10 +1,10 @@
-def p(val_g):
-	C=val_g;D,E=len(C),len(C[0]);F=[(A,B)for A in range(D)for B in range(E)if A*B*(D-1-A)*(E-1-B)==0 and C[A][B]==0]
+def p(A):
+	D,E=len(A),len(A[0]);F=[(B,C)for B in range(D)for C in range(E)if B*C*(D-1-B)*(E-1-C)==0 and A[B][C]==0]
 	while F:
-		A,B=F.pop()
-		if C[A][B]==0:C[A][B]=-1;F+=(A+1,B),(A-1,B),(A,B+1),(A,B-1)
-	for A in range(D):
-		for B in range(E):
-			if C[A][B]==0:C[A][B]=2
-			elif C[A][B]<0:C[A][B]=0
-	return C
+		B,C=F.pop()
+		if A[B][C]==0:A[B][C]=-1;F+=(B+1,C),(B-1,C),(B,C+1),(B,C-1)
+	for B in range(D):
+		for C in range(E):
+			if A[B][C]==0:A[B][C]=2
+			elif A[B][C]<0:A[B][C]=0
+	return A

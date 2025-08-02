@@ -43,6 +43,7 @@ if __name__ == "__main__":
     for base_path in get_code_paths("base_*", i):
       do_check = base_path not in SLOW
       if do_check and check(base_path, task).correct != 1.0:
+        print(f"{base_path}: check failed")
         continue
       
       print(base_path)

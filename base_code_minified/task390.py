@@ -1,8 +1,8 @@
-def p(g):
-	G=[[0]*len(g)for A in g];D,A=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==2],[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==5];H=min(A for(A,B)in D);I=max(A for(A,B)in D);J=min(A for(B,A)in D);K=max(A for(B,A)in D)
-	if max(A for(B,A)in A)-min(A for(B,A)in A)>=max(A for(A,B)in A)-min(A for(A,B)in A):
-		for(B,C)in A:E=C-J;F=K-C;G[B][J-E if E<=F else K+F]=5
+def p(A):
+	H=[[0]*len(A)for B in A];E,B=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==2],[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==5];I=min(A for(A,B)in E);J=max(A for(A,B)in E);K=min(A for(B,A)in E);L=max(A for(B,A)in E)
+	if max(A for(B,A)in B)-min(A for(B,A)in B)>=max(A for(A,B)in B)-min(A for(A,B)in B):
+		for(C,D)in B:F=D-K;G=L-D;H[C][K-F if F<=G else L+G]=5
 	else:
-		for(B,C)in A:E=B-H;F=I-B;G[H-E if E<=F else I+F][C]=5
-	for(B,C)in D:G[B][C]=2
-	return G
+		for(C,D)in B:F=C-I;G=J-C;H[I-F if F<=G else J+G][D]=5
+	for(C,D)in E:H[C][D]=2
+	return H

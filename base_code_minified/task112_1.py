@@ -1,11 +1,11 @@
-def p(g):
-	A=len(g);C=[(A,B)for A in range(A)for B in range(len(g[0]))if g[A][B]==3];D=min(A for(A,B)in C)+.5;E=min(A for(B,A)in C)+.5
-	for F in range(A):
-		for G in range(len(g[0])):
-			B=g[F][G]
-			if B and B!=3:
-				J=F-D;K=G-E
-				for(L,M)in((1,1),(1,-1),(-1,1),(-1,-1)):
-					H=int(D+L*J);I=int(E+M*K)
-					if 0<=H<A and 0<=I<len(g[0]):g[H][I]=B
-	return g
+def p(A):
+	B=len(A);D=[(B,C)for B in range(B)for C in range(len(A[0]))if A[B][C]==3];E=min(A for(A,B)in D)+.5;F=min(A for(B,A)in D)+.5
+	for G in range(B):
+		for H in range(len(A[0])):
+			C=A[G][H]
+			if C and C!=3:
+				K=G-E;L=H-F
+				for(M,N)in((1,1),(1,-1),(-1,1),(-1,-1)):
+					I=int(E+M*K);J=int(F+N*L)
+					if 0<=I<B and 0<=J<len(A[0]):A[I][J]=C
+	return A

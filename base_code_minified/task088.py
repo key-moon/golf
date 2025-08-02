@@ -1,1 +1,1 @@
-def p(g):A=sum(g,[]);B=[B for B in set(A)if A.count(B)==4][0];C=[(A,D)for(A,C)in enumerate(g)for(D,E)in enumerate(C)if E==B];D,E=C[0];F,G=C[-1];return[[B if g[A][C]else 0 for C in range(E+1,G)]for A in range(D+1,F)]
+def p(A):B=sum(A,[]);C=[A for A in set(B)if B.count(A)==4][0];D=[(A,D)for(A,B)in enumerate(A)for(D,E)in enumerate(B)if E==C];E,F=D[0];G,H=D[-1];return[[C if A[B][D]else 0 for D in range(F+1,H)]for B in range(E+1,G)]

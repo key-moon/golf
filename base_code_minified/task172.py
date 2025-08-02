@@ -1,1 +1,1 @@
-def p(g):return g+g[::-1]
+def p(A):return A+A[::-1]

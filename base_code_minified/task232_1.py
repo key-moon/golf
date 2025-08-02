@@ -1,6 +1,6 @@
-def p(g):
-	for A in g:
-		try:B,D=next((B,A)for(B,A)in enumerate(A)if A)
+def p(A):
+	for B in A:
+		try:C,E=next((B,A)for(B,A)in enumerate(B)if A)
 		except:continue
-		for C in range(len(A)-B):A[B+C]=[D,5][C&1]
-	return g
+		for D in range(len(B)-C):B[C+D]=[E,5][D&1]
+	return A

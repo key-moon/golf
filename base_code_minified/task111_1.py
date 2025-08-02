@@ -1,1 +1,1 @@
-def p(g):A,B=next((B,A.index(5))for(B,A)in enumerate(g)if 5 in A);return[A[B-1:B+2]for A in g[A+1:A+4]]
+def p(A):B,C=next((B,A.index(5))for(B,A)in enumerate(A)if 5 in A);return[A[C-1:C+2]for A in A[B+1:B+4]]

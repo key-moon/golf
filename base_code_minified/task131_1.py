@@ -1,9 +1,9 @@
-def p(g):
-	D,E=len(g),len(g[0]);B=[(A,B)for A in range(D)for B in range(E)if g[A][B]==2];G=[(A,B)for A in range(D)for B in range(E)if g[A][B]==3];A=0 if all(A==B[0][0]for(A,C)in B)else 1;L=min(B[A]for B in B);O=max(B[A]for B in B);M=min(B[A]for B in G);H=max(B[A]for B in G)
-	if H<L:C=L-1-H;I=M+C-1
-	else:C=O+1-M;I=H+C+1
-	F=[[0]*E for A in range(D)]
-	for(J,K)in B:F[J][K]=2
-	for(J,K)in G:F[J+(1-A)*C][K+A*C]=3
-	for N in range(D if A else E):F[N if A else I][I if A else N]=8
-	return F
+def p(A):
+	E,F=len(A),len(A[0]);C=[(B,C)for B in range(E)for C in range(F)if A[B][C]==2];H=[(B,C)for B in range(E)for C in range(F)if A[B][C]==3];B=0 if all(A==C[0][0]for(A,B)in C)else 1;M=min(A[B]for A in C);P=max(A[B]for A in C);N=min(A[B]for A in H);I=max(A[B]for A in H)
+	if I<M:D=M-1-I;J=N+D-1
+	else:D=P+1-N;J=I+D+1
+	G=[[0]*F for A in range(E)]
+	for(K,L)in C:G[K][L]=2
+	for(K,L)in H:G[K+(1-B)*D][L+B*D]=3
+	for O in range(E if B else F):G[O if B else J][J if B else O]=8
+	return G

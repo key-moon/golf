@@ -1,9 +1,9 @@
-def p(g):
-	D=len(g);E=max(map(max,g))
-	for(F,C)in enumerate(g):
-		for(B,G)in enumerate(C):
-			if not G:
-				A=F
-				while not g[A][B]:A=(A+E)%D
-				C[B]=g[A][B]
-	return g
+def p(A):
+	E=len(A);F=max(map(max,A))
+	for(G,D)in enumerate(A):
+		for(C,H)in enumerate(D):
+			if not H:
+				B=G
+				while not A[B][C]:B=(B+F)%E
+				D[C]=A[B][C]
+	return A

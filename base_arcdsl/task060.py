@@ -1,8 +1,8 @@
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -135,7 +135,7 @@ def val_func_shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def val_func_urcorner(patch):
@@ -163,7 +163,7 @@ def p(I):
     x3 = val_func_objects(x2, True, False, True)
     x4 = val_func_objects(x1, True, False, True)
     x5 = val_func_compose(val_func_hfrontier, val_func_center)
-    x6 = val_func_fork(val_func_reval_func_color, val_func_color, x5)
+    x6 = val_func_fork(reval_func_color, val_func_color, x5)
     x7 = mval_func_apply(x6, x4)
     x8 = val_func_paint(x1, x7)
     x9 = mval_func_apply(x6, x3)

@@ -1,25 +1,25 @@
-def p(g):
-	import collections,sys;R=len(g);P=len(g[0]);I=[[False]*P for A in g];Q=[]
-	for E in range(R):
-		for F in range(P):
-			if g[E][F]and not I[E][F]:
-				S=g[E][F];T=[(E,F)];I[E][F]=1;U=[]
-				for(V,W)in T:
-					U.append((V,W))
-					for(G,H)in((1,0),(-1,0),(0,1),(0,-1)):
-						A,B=V+G,W+H
-						if 0<=A<R and 0<=B<P and not I[A][B]and g[A][B]==S:I[A][B]=1;T.append((A,B))
-				Q.append((S,U))
-	for(Z,(a,C))in enumerate(Q):
-		for(b,(c,D))in enumerate(Q):
-			if Z>=b or a==c:continue
-			X=[A for(A,B)in C];Y=[A for(A,B)in D]
-			if max(X)<min(Y)or max(Y)<min(X):continue
-			J=min(A for(A,B)in C);K=min(A for(B,A)in C);L=min(A for(A,B)in D);M=min(A for(B,A)in D);d=max(A for(A,B)in D)-L+1;e=max(A for(B,A)in D)-M+1;f=max(A for(A,B)in C)-J+1;h=max(A for(B,A)in C)-K+1
-			for(N,O)in C:
-				G=N-J;H=O-K
-				for(A,B)in D:g[L+(A-L)+G*d][M+(B-M)+H*e]=g[A][B]
-			for(A,B)in D:
-				G=A-L;H=B-M
-				for(N,O)in C:g[J+(N-J)+G*f][K+(O-K)+H*h]=g[N][O]
-	return g
+def p(A):
+	import collections,sys;S=len(A);Q=len(A[0]);J=[[False]*Q for A in A];R=[]
+	for F in range(S):
+		for G in range(Q):
+			if A[F][G]and not J[F][G]:
+				T=A[F][G];U=[(F,G)];J[F][G]=1;V=[]
+				for(W,X)in U:
+					V.append((W,X))
+					for(H,I)in((1,0),(-1,0),(0,1),(0,-1)):
+						B,C=W+H,X+I
+						if 0<=B<S and 0<=C<Q and not J[B][C]and A[B][C]==T:J[B][C]=1;U.append((B,C))
+				R.append((T,V))
+	for(a,(b,D))in enumerate(R):
+		for(c,(d,E))in enumerate(R):
+			if a>=c or b==d:continue
+			Y=[A for(A,B)in D];Z=[A for(A,B)in E]
+			if max(Y)<min(Z)or max(Z)<min(Y):continue
+			K=min(A for(A,B)in D);L=min(A for(B,A)in D);M=min(A for(A,B)in E);N=min(A for(B,A)in E);e=max(A for(A,B)in E)-M+1;f=max(A for(B,A)in E)-N+1;g=max(A for(A,B)in D)-K+1;h=max(A for(B,A)in D)-L+1
+			for(O,P)in D:
+				H=O-K;I=P-L
+				for(B,C)in E:A[M+(B-M)+H*e][N+(C-N)+I*f]=A[B][C]
+			for(B,C)in E:
+				H=B-M;I=C-N
+				for(O,P)in D:A[K+(O-K)+H*g][L+(P-L)+I*h]=A[O][P]
+	return A

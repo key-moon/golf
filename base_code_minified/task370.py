@@ -1,12 +1,12 @@
-def p(g):
-	F=g[0][0];G,H=len(g),len(g[0])
-	for A in range(G):
-		for B in range(H):
-			C=g[A][B]
-			if C-F and C:I,J,K=A,B,C;break
+def p(A):
+	G=A[0][0];H,I=len(A),len(A[0])
+	for B in range(H):
+		for C in range(I):
+			D=A[B][C]
+			if D-G and D:J,K,L=B,C,D;break
 		else:continue
 		break
-	for(D,E)in((1,1),(1,-1),(-1,1),(-1,-1)):
-		A,B=I,J
-		while 0<=A+D<G and 0<=B+E<H and g[A+D][B+E]==F:A+=D;B+=E;g[A][B]=K
-	return g
+	for(E,F)in((1,1),(1,-1),(-1,1),(-1,-1)):
+		B,C=J,K
+		while 0<=B+E<H and 0<=C+F<I and A[B+E][C+F]==G:B+=E;C+=F;A[B][C]=L
+	return A

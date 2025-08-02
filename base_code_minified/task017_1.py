@@ -1,10 +1,10 @@
-def p(g):
-	A,B=len(g),len(g[0])
-	for E in range(1,A+1):
-		if all(not g[A][C]or g[A][C]==g[A%E][C]for A in range(A)for C in range(B)):break
+def p(A):
+	B,C=len(A),len(A[0])
 	for F in range(1,B+1):
-		if all(not g[A][C]or g[A][C]==g[A][C%F]for A in range(A)for C in range(B)):break
-	for C in range(A):
-		for D in range(B):
-			if not g[C][D]:g[C][D]=g[C%E][D%F]
-	return g
+		if all(not A[B][D]or A[B][D]==A[B%F][D]for B in range(B)for D in range(C)):break
+	for G in range(1,C+1):
+		if all(not A[B][D]or A[B][D]==A[B][D%G]for B in range(B)for D in range(C)):break
+	for D in range(B):
+		for E in range(C):
+			if not A[D][E]:A[D][E]=A[D%F][E%G]
+	return A

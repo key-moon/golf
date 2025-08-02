@@ -96,13 +96,13 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
 def val_func_sizefilter(container, n):
     return frozenset(item for item in container if len(item) == n)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_objects(I, True, False, True)
     x2 = val_func_sizefilter(x1, 2)
-    x3 = val_func_mval_func_apply(val_func_outbox, x2)
+    x3 = mval_func_apply(val_func_outbox, x2)
     O = val_func_fill(I, 3, x3)
     return [*map(list,O)]

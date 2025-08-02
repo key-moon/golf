@@ -1,9 +1,9 @@
-def p(g):
-	A=[]
-	for(C,F)in enumerate(g):
-		for(D,B)in enumerate(F):
-			if B==5:E=C,D
-			elif B:A.append((C,D,B))
-	G,H=min(A for(A,B,B)in A),max(A for(A,B,B)in A);I,J=min(B for(A,B,A)in A),max(B for(A,B,A)in A);K,L=(G+H)//2,(I+J)//2;M,N=E[0]-K,E[1]-L;g[E[0]][E[1]]=0
-	for(C,D,B)in A:g[C+M][D+N]=B
-	return g
+def p(A):
+	B=[]
+	for(D,G)in enumerate(A):
+		for(E,C)in enumerate(G):
+			if C==5:F=D,E
+			elif C:B.append((D,E,C))
+	H,I=min(A for(A,B,B)in B),max(A for(A,B,B)in B);J,K=min(B for(A,B,A)in B),max(B for(A,B,A)in B);L,M=(H+I)//2,(J+K)//2;N,O=F[0]-L,F[1]-M;A[F[0]][F[1]]=0
+	for(D,E,C)in B:A[D+N][E+O]=C
+	return A

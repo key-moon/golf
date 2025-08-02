@@ -89,7 +89,7 @@ def val_func_toindices(patch):
         return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def val_func_fork(outer, a, b):
@@ -102,6 +102,6 @@ def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_objects(I, True, False, True)
     x2 = val_func_fork(val_func_difference, val_func_toindices, val_func_box)
-    x3 = val_func_mval_func_apply(x2, x1)
+    x3 = mval_func_apply(x2, x1)
     O = val_func_fill(I, 0, x3)
     return [*map(list,O)]

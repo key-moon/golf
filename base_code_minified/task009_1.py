@@ -1,20 +1,20 @@
-def p(g):
-	Q,M=len(g),len(g[0]);D=[B for(B,A)in enumerate(g)if A.count(A[0])==M];N=g[D[0]][0];F=[A for A in range(M)if g[D[0]][A]==N];G,H=len(D)-1,len(F)-1;E=[[g[D[A]+1][F[B]+1]for B in range(H)]for A in range(G)]
-	for C in{B for A in E for B in A}-{0}:
-		for A in range(G):
-			I=[B for B in range(H)if E[A][B]==C]
-			if len(I)>1:
-				J,K=min(I),max(I)
-				for B in range(J+1,K):E[A][B]=C
+def p(A):
+	R,N=len(A),len(A[0]);E=[B for(B,A)in enumerate(A)if A.count(A[0])==N];O=A[E[0]][0];G=[B for B in range(N)if A[E[0]][B]==O];H,I=len(E)-1,len(G)-1;F=[[A[E[B]+1][G[C]+1]for C in range(I)]for B in range(H)]
+	for D in{B for A in F for B in A}-{0}:
 		for B in range(H):
-			L=[A for A in range(G)if E[A][B]==C]
-			if len(L)>1:
-				J,K=min(L),max(L)
-				for A in range(J+1,K):E[A][B]=C
-	for A in range(G):
-		for B in range(H):
-			C=E[A][B]
-			if C:
-				for O in range(D[A]+1,D[A+1]):
-					for P in range(F[B]+1,F[B+1]):g[O][P]=C
-	return g
+			J=[A for A in range(I)if F[B][A]==D]
+			if len(J)>1:
+				K,L=min(J),max(J)
+				for C in range(K+1,L):F[B][C]=D
+		for C in range(I):
+			M=[A for A in range(H)if F[A][C]==D]
+			if len(M)>1:
+				K,L=min(M),max(M)
+				for B in range(K+1,L):F[B][C]=D
+	for B in range(H):
+		for C in range(I):
+			D=F[B][C]
+			if D:
+				for P in range(E[B]+1,E[B+1]):
+					for Q in range(G[C]+1,G[C+1]):A[P][Q]=D
+	return A

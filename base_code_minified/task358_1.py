@@ -1,4 +1,4 @@
-def p(g):
-	A=len(g);E=len(g[0]);C=max(range(A),key=lambda i:sum(map(bool,g[i])));D=[A for A in g[C]if A];H=g[C].index(D[0]);B=max(range(E),key=lambda j:sum(g[A][j]!=0 for A in range(A)));F=[g[A][B]for A in range(A)if g[A][B]];I=next(A for A in range(A)if g[A][B]);g[C]=[D[(A-H)%len(D)]for A in range(E)]
-	for G in range(A):g[G][B]=F[(G-I)%len(F)]
-	return g
+def p(A):
+	B=len(A);F=len(A[0]);D=max(range(B),key=lambda E:sum(map(bool,A[E])));E=[A for A in A[D]if A];I=A[D].index(E[0]);C=max(range(F),key=lambda J:sum(A[B][J]!=0 for B in range(B)));G=[A[B][C]for B in range(B)if A[B][C]];J=next(B for B in range(B)if A[B][C]);A[D]=[E[(A-I)%len(E)]for A in range(F)]
+	for H in range(B):A[H][C]=G[(H-J)%len(G)]
+	return A

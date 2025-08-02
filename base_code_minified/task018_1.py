@@ -1,23 +1,23 @@
-def p(g):
-	F,G=len(g),len(g[0]);H=[A[:]for A in g];I=[[0]*G for A in range(F)];X=[(1,0),(-1,0),(0,1),(0,-1)];J=[]
-	for K in range(F):
-		for L in range(G):
-			if g[K][L]and not I[K][L]:
-				C=[(K,L)];I[K][L]=1
-				for(Y,Z)in C:
-					for(N,O)in X:
-						D,E=Y+N,Z+O
-						if 0<=D<F and 0<=E<G and g[D][E]and not I[D][E]:I[D][E]=1;C.append((D,E))
-				R,S=C[0];a=tuple(sorted((A-R,B-S,g[A][B])for(A,B)in C));J.append((a,C,R,S))
-	P={}
-	for(A,Q,B,B)in J:P[A]=P.get(A,0)+1
-	for(A,Q,B,B)in J:
-		if P[A]==2:M=A;b=[B for B in J if B[0]==A];break
-	for(B,Q,B,B)in b:
-		for(c,d)in Q:H[c][d]=0
-	T=[A for(A,B,C)in M];U=[A for(B,A,C)in M];e=max(T)-min(T)+1;f=max(U)-min(U)+1
-	for V in range(F-e+1):
-		for W in range(G-f+1):
-			if all(H[V+A][W+B]==0 for(A,B,C)in M):
-				for(N,O,h)in M:H[V+N][W+O]=h
-				return H
+def p(A):
+	G,H=len(A),len(A[0]);I=[A[:]for A in A];J=[[0]*H for A in range(G)];Y=[(1,0),(-1,0),(0,1),(0,-1)];K=[]
+	for L in range(G):
+		for M in range(H):
+			if A[L][M]and not J[L][M]:
+				D=[(L,M)];J[L][M]=1
+				for(Z,a)in D:
+					for(O,P)in Y:
+						E,F=Z+O,a+P
+						if 0<=E<G and 0<=F<H and A[E][F]and not J[E][F]:J[E][F]=1;D.append((E,F))
+				S,T=D[0];b=tuple(sorted((B-S,C-T,A[B][C])for(B,C)in D));K.append((b,D,S,T))
+	Q={}
+	for(B,R,C,C)in K:Q[B]=Q.get(B,0)+1
+	for(B,R,C,C)in K:
+		if Q[B]==2:N=B;c=[A for A in K if A[0]==B];break
+	for(C,R,C,C)in c:
+		for(d,e)in R:I[d][e]=0
+	U=[A for(A,B,C)in N];V=[A for(B,A,C)in N];f=max(U)-min(U)+1;g=max(V)-min(V)+1
+	for W in range(G-f+1):
+		for X in range(H-g+1):
+			if all(I[W+A][X+B]==0 for(A,B,C)in N):
+				for(O,P,h)in N:I[W+O][X+P]=h
+				return I

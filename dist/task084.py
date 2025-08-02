@@ -1,3 +1,3 @@
-def p(g):
- for A in range(len(g)-1):g[A][-1-A]=2
- g[-1][1:]=[4]*(len(g)-1);return g
+def p(A):
+ for B in range(len(A)-1):A[B][-1-B]=2
+ A[-1][1:]=[4]*(len(A)-1);return A

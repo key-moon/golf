@@ -1,15 +1,15 @@
-def p(g):
-	I=[];J=1,0,-1,0,1
-	for F in range(10):
-		for G in range(10):
-			if g[F][G]==5:
-				H=[(F,G)];g[F][G]=0;A=[]
-				while H:
-					B,C=H.pop();A.append((B,C))
-					for K in range(4):
-						D=B+J[K];E=C+J[K+1]
-						if 0<=D<10 and 0<=E<10 and g[D][E]==5:g[D][E]=0;H.append((D,E))
-				I.append(A)
-	for(A,L)in zip(sorted(I,key=len,reverse=True),(1,4,2)):
-		for(B,C)in A:g[B][C]=L
-	return g
+def p(A):
+	J=[];K=1,0,-1,0,1
+	for G in range(10):
+		for H in range(10):
+			if A[G][H]==5:
+				I=[(G,H)];A[G][H]=0;B=[]
+				while I:
+					C,D=I.pop();B.append((C,D))
+					for L in range(4):
+						E=C+K[L];F=D+K[L+1]
+						if 0<=E<10 and 0<=F<10 and A[E][F]==5:A[E][F]=0;I.append((E,F))
+				J.append(B)
+	for(B,M)in zip(sorted(J,key=len,reverse=True),(1,4,2)):
+		for(C,D)in B:A[C][D]=M
+	return A

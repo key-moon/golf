@@ -1,9 +1,9 @@
-def p(g):
-	E=[[0]*len(g[0])for A in g]
-	for A in range(2,len(g)-2):
-		for B in range(2,len(g[0])-2):
-			F=g[A][B];G=g[A-1][B]
-			if F*G*g[A+1][B]*g[A][B-1]*g[A][B+1]:
-				for C in range(-2,3):
-					for D in range(-2,3):E[A+C][B+D]=G if not C*D and abs(C)+abs(D)>0 else F
-	return E
+def p(A):
+	F=[[0]*len(A[0])for B in A]
+	for B in range(2,len(A)-2):
+		for C in range(2,len(A[0])-2):
+			G=A[B][C];H=A[B-1][C]
+			if G*H*A[B+1][C]*A[B][C-1]*A[B][C+1]:
+				for D in range(-2,3):
+					for E in range(-2,3):F[B+D][C+E]=H if not D*E and abs(D)+abs(E)>0 else G
+	return F

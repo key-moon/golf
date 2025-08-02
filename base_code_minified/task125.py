@@ -1,21 +1,21 @@
-def p(g):
-	M=len(g);N=len(g[0]);K=set()
-	for C in range(M):
-		for D in range(N):
-			if g[C][D]==6 and(C,D)not in K:
-				L=[(C,D)];K.add((C,D));E=F=C;G=H=D
-				while L:
-					I,J=L.pop()
-					if I<E:E=I
-					if J<G:G=J
-					if I>F:F=I
-					if J>H:H=J
-					for(O,P)in((1,0),(-1,0),(0,1),(0,-1)):
-						A,B=I+O,J+P
-						if 0<=A<M and 0<=B<N and g[A][B]==6 and(A,B)not in K:K.add((A,B));L+=[(A,B)]
-				E-=1;G-=1;F+=1;H+=1
-				for A in range(E,F+1):
-					for B in range(G,H+1):
-						if A in(E,F)or B in(G,H):g[A][B]=3
-						elif g[A][B]!=6:g[A][B]=4
-	return g
+def p(A):
+	N=len(A);O=len(A[0]);L=set()
+	for D in range(N):
+		for E in range(O):
+			if A[D][E]==6 and(D,E)not in L:
+				M=[(D,E)];L.add((D,E));F=G=D;H=I=E
+				while M:
+					J,K=M.pop()
+					if J<F:F=J
+					if K<H:H=K
+					if J>G:G=J
+					if K>I:I=K
+					for(P,Q)in((1,0),(-1,0),(0,1),(0,-1)):
+						B,C=J+P,K+Q
+						if 0<=B<N and 0<=C<O and A[B][C]==6 and(B,C)not in L:L.add((B,C));M+=[(B,C)]
+				F-=1;H-=1;G+=1;I+=1
+				for B in range(F,G+1):
+					for C in range(H,I+1):
+						if B in(F,G)or C in(H,I):A[B][C]=3
+						elif A[B][C]!=6:A[B][C]=4
+	return A

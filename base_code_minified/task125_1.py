@@ -1,22 +1,22 @@
-def p(g):
-	D,C=len(g),len(g[0]);E=[[0]*C for A in g];F=[]
-	for A in(0,D-1):
-		for B in range(C):
-			if g[A][B]!=6:E[A][B]=1;F+=[(A,B)]
-	for A in range(1,D-1):
-		for B in(0,C-1):
-			if g[A][B]!=6:E[A][B]=1;F+=[(A,B)]
-	while F:
-		M,N=F.pop()
-		for(I,J)in((1,0),(-1,0),(0,1),(0,-1)):
-			G,H=M+I,N+J
-			if 0<=G<D and 0<=H<C and not E[G][H]and g[G][H]!=6:E[G][H]=1;F+=[(G,H)]
-	for A in range(D):
-		for B in range(C):
-			if g[A][B]==8:
-				if not E[A][B]:g[A][B]=4
+def p(A):
+	E,D=len(A),len(A[0]);F=[[0]*D for A in A];G=[]
+	for B in(0,E-1):
+		for C in range(D):
+			if A[B][C]!=6:F[B][C]=1;G+=[(B,C)]
+	for B in range(1,E-1):
+		for C in(0,D-1):
+			if A[B][C]!=6:F[B][C]=1;G+=[(B,C)]
+	while G:
+		N,O=G.pop()
+		for(J,K)in((1,0),(-1,0),(0,1),(0,-1)):
+			H,I=N+J,O+K
+			if 0<=H<E and 0<=I<D and not F[H][I]and A[H][I]!=6:F[H][I]=1;G+=[(H,I)]
+	for B in range(E):
+		for C in range(D):
+			if A[B][C]==8:
+				if not F[B][C]:A[B][C]=4
 				else:
-					for(I,J)in((1,0),(-1,0),(0,1),(0,-1)):
-						K,L=A+I,B+J
-						if 0<=K<D and 0<=L<C and g[K][L]==6:g[A][B]=3;break
-	return g
+					for(J,K)in((1,0),(-1,0),(0,1),(0,-1)):
+						L,M=B+J,C+K
+						if 0<=L<E and 0<=M<D and A[L][M]==6:A[B][C]=3;break
+	return A

@@ -1,7 +1,7 @@
-def p(g):
-	for A in g:
-		if 2 in A:
-			C=A.index(2);D=len(A)-A[::-1].index(2)-1
-			for B in range(C+1,D):
-				if A[B]!=2:A[B]=8
-	return g
+def p(A):
+	for B in A:
+		if 2 in B:
+			D=B.index(2);E=len(B)-B[::-1].index(2)-1
+			for C in range(D+1,E):
+				if B[C]!=2:B[C]=8
+	return A

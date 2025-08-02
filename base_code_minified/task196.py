@@ -1,15 +1,15 @@
-def p(g):
-	E=set();J=len(g);K=len(g[0])
-	for C in range(J):
-		for D in range(K):
-			if g[C][D]and(C,D)not in E:
-				F=[(C,D)];G=[(C,D)];E.add((C,D))
-				while G:
-					H,I=G.pop()
-					for(O,P)in((1,0),(0,1),(-1,0),(0,-1)):
-						B,A=H+O,I+P
-						if 0<=B<J and 0<=A<K and g[B][A]and(B,A)not in E:E.add((B,A));G+=[(B,A)];F+=[(B,A)]
-				L,A=zip(*F);M,N=max(L)-min(L)+1,max(A)-min(A)+1
-				if M>1 and N>1 and len(F)==2*(M+N)-4:
-					for(H,I)in F:g[H][I]=3
-	return g
+def p(A):
+	F=set();K=len(A);L=len(A[0])
+	for D in range(K):
+		for E in range(L):
+			if A[D][E]and(D,E)not in F:
+				G=[(D,E)];H=[(D,E)];F.add((D,E))
+				while H:
+					I,J=H.pop()
+					for(P,Q)in((1,0),(0,1),(-1,0),(0,-1)):
+						C,B=I+P,J+Q
+						if 0<=C<K and 0<=B<L and A[C][B]and(C,B)not in F:F.add((C,B));H+=[(C,B)];G+=[(C,B)]
+				M,B=zip(*G);N,O=max(M)-min(M)+1,max(B)-min(B)+1
+				if N>1 and O>1 and len(G)==2*(N+O)-4:
+					for(I,J)in G:A[I][J]=3
+	return A

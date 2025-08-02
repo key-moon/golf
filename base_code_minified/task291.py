@@ -1,4 +1,4 @@
-def p(g):
-	for A in{A for B in g for A in B if A}:
-		B=[(B,D)for(B,C)in enumerate(g)for(D,E)in enumerate(C)if E==A];C,D=zip(*B)
-		if len(B)!=(max(C)-min(C)+1)*(max(D)-min(D)+1):return[[A]]
+def p(A):
+	for B in{A for B in A for A in B if A}:
+		C=[(A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B];D,E=zip(*C)
+		if len(C)!=(max(D)-min(D)+1)*(max(E)-min(E)+1):return[[B]]

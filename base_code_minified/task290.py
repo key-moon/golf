@@ -1,1 +1,1 @@
-def p(g):A=[A for A in g if any(A)];C=next(A for(A,B)in enumerate(A[0])if B);D=len(A[0])-next(A for(A,B)in enumerate(A[0][::-1])if B)-1;A=[A[C:D+1]for A in A];B=len(A);E,F=A[0][0],A[1][1];return[[F if min(A,C,B-1-A,B-1-C)<1 else E for C in range(B)]for A in range(B)]
+def p(A):B=[A for A in A if any(A)];D=next(A for(A,B)in enumerate(B[0])if B);E=len(B[0])-next(A for(A,B)in enumerate(B[0][::-1])if B)-1;B=[A[D:E+1]for A in B];C=len(B);F,G=B[0][0],B[1][1];return[[G if min(A,B,C-1-A,C-1-B)<1 else F for B in range(C)]for A in range(C)]

@@ -1,5 +1,5 @@
-def p(g):
-	D=len(g[0])&1^1
-	for A in g:
-		for(B,C)in enumerate(A):A[B]=C-2*(C==5 and B&1==D)
-	return g
+def p(A):
+	E=len(A[0])&1^1
+	for B in A:
+		for(C,D)in enumerate(B):B[C]=D-2*(D==5 and C&1==E)
+	return A

@@ -1,11 +1,11 @@
 def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -92,7 +92,7 @@ def val_func_lrcorner(patch):
 def val_func_ulcorner(patch):
     return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def mval_func_apply(function, container):
@@ -174,7 +174,7 @@ def p(I):
     x4 = val_func_compose(val_func_decrement, val_func_lrcorner)
     x5 = val_func_apply(x3, x2)
     x6 = val_func_apply(x4, x2)
-    x7 = val_func_pval_func_apply(val_func_connect, x5, x6)
+    x7 = pval_func_apply(val_func_connect, x5, x6)
     x8 = val_func_apply(val_func_last, x5)
     x9 = val_func_compose(val_func_last, val_func_first)
     x10 = val_func_power(val_func_last, 2)

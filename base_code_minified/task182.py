@@ -1,28 +1,28 @@
-def p(g):
-	G=len(g);H=len(g[0])
-	for B in range(G):
-		A=0
-		while A<H:
-			if g[B][A]==5:
-				C=A
-				while C<H and g[B][C]==5:C+=1
-				if C-A>2:I,J,O=B,A,C-1;break
-				A=C
-			else:A+=1
+def p(A):
+	H=len(A);I=len(A[0])
+	for C in range(H):
+		B=0
+		while B<I:
+			if A[C][B]==5:
+				D=B
+				while D<I and A[C][D]==5:D+=1
+				if D-B>2:J,K,P=C,B,D-1;break
+				B=D
+			else:B+=1
 		else:continue
 		break
-	Q=max(A for A in range(I,G)if all(g[A][B]==5 for B in range(J,O+1)));K=[(A-(I+1),B-(J+1))for A in range(I+1,Q)for B in range(J+1,O)if g[A][B]]
-	if not K:return g
-	R=g[I+1+K[0][0]][J+1+K[0][1]];L=set()
-	for B in range(G):
-		for A in range(H):
-			if g[B][A]==1 and(B,A)not in L:
-				P=[(B,A)];L.add((B,A));F=[(B,A)]
-				for(M,N)in P:
-					for(S,T)in((1,0),(-1,0),(0,1),(0,-1)):
-						D,E=M+S,N+T
-						if 0<=D<G and 0<=E<H and g[D][E]==1 and(D,E)not in L:L.add((D,E));P.append((D,E));F.append((D,E))
-				U,V=min(A for(A,B)in F),min(A for(B,A)in F)
-				if sorted((A-U,B-V)for(A,B)in F)==sorted(K):
-					for(M,N)in F:g[M][N]=R
-	return g
+	R=max(B for B in range(J,H)if all(A[B][C]==5 for C in range(K,P+1)));L=[(B-(J+1),C-(K+1))for B in range(J+1,R)for C in range(K+1,P)if A[B][C]]
+	if not L:return A
+	S=A[J+1+L[0][0]][K+1+L[0][1]];M=set()
+	for C in range(H):
+		for B in range(I):
+			if A[C][B]==1 and(C,B)not in M:
+				Q=[(C,B)];M.add((C,B));G=[(C,B)]
+				for(N,O)in Q:
+					for(T,U)in((1,0),(-1,0),(0,1),(0,-1)):
+						E,F=N+T,O+U
+						if 0<=E<H and 0<=F<I and A[E][F]==1 and(E,F)not in M:M.add((E,F));Q.append((E,F));G.append((E,F))
+				V,W=min(A for(A,B)in G),min(A for(B,A)in G)
+				if sorted((A-V,B-W)for(A,B)in G)==sorted(L):
+					for(N,O)in G:A[N][O]=S
+	return A

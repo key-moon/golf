@@ -26,6 +26,15 @@ wheels = [
 ]
 
 [[package]]
+name = "astor"
+version = "0.8.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5a/21/75b771132fee241dfe601d39ade629548a9626d1d39f333fde31bc46febe/astor-0.8.1.tar.gz", hash = "sha256:6a6effda93f4e1ce9f618779b2dd1d9d84f1e32812c23a29b3fff6fd7f63fa5e", size = 35090 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c3/88/97eef84f48fa04fbd6750e62dcceafba6c63c81b7ac1420856c8dcc0a3f9/astor-0.8.1-py2.py3-none-any.whl", hash = "sha256:070a54e890cefb5b3739d19f30f5a5ec840ffc9c50ffa7d23cc9fc1a38ebbfc5", size = 27488 },
+]
+
+[[package]]
 name = "certifi"
 version = "2025.7.14"
 source = { registry = "https://pypi.org/simple" }
@@ -157,6 +166,7 @@ name = "golf"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "astor" },
     { name = "matplotlib" },
     { name = "openai" },
     { name = "python-minifier" },
@@ -164,6 +174,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "astor", specifier = ">=0.8.1" },
     { name = "matplotlib", specifier = ">=3.10.5" },
     { name = "openai", specifier = ">=1.98.0" },
     { name = "python-minifier", specifier = ">=2.11.3" },

@@ -1,13 +1,13 @@
-def p(g):
-	I=[A[:]for A in g];C,D=len(g),len(g[0]);H=[(A,B)for A in(0,C-1)for B in range(D)if g[A][B]!=5]+[(A,B)for A in range(C)for B in(0,D-1)if g[A][B]!=5];E=set()
-	while H:
-		A,B=H.pop()
-		if(A,B)in E:continue
-		E.add((A,B))
-		for(J,K)in((1,0),(-1,0),(0,1),(0,-1)):
-			F,G=A+J,B+K
-			if 0<=F<C and 0<=G<D and g[F][G]!=5 and(F,G)not in E:H.append((F,G))
-	for A in range(C):
-		for B in range(D):
-			if g[A][B]==0 and(A,B)not in E:I[A][B]=4
-	return I
+def p(A):
+	J=[A[:]for A in A];D,E=len(A),len(A[0]);I=[(B,C)for B in(0,D-1)for C in range(E)if A[B][C]!=5]+[(B,C)for B in range(D)for C in(0,E-1)if A[B][C]!=5];F=set()
+	while I:
+		B,C=I.pop()
+		if(B,C)in F:continue
+		F.add((B,C))
+		for(K,L)in((1,0),(-1,0),(0,1),(0,-1)):
+			G,H=B+K,C+L
+			if 0<=G<D and 0<=H<E and A[G][H]!=5 and(G,H)not in F:I.append((G,H))
+	for B in range(D):
+		for C in range(E):
+			if A[B][C]==0 and(B,C)not in F:J[B][C]=4
+	return J

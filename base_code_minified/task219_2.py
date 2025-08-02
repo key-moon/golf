@@ -1,7 +1,7 @@
-def p(g):
-	A=len(g);B=len(g[0]);F=A//3;C=max(range(A),key=lambda y:sum(g[y][A]==8 for A in range(B)));G=[A for A in range(B)if g[C][A]==8]
-	for H in(1,2):
-		for D in G:
-			E=C+H*F
-			if g[E][D]==0:g[E][D]=1
-	return g
+def p(A):
+	B=len(A);C=len(A[0]);G=B//3;D=max(range(B),key=lambda F:sum(A[F][B]==8 for B in range(C)));H=[B for B in range(C)if A[D][B]==8]
+	for I in(1,2):
+		for E in H:
+			F=D+I*G
+			if A[F][E]==0:A[F][E]=1
+	return A

@@ -1,11 +1,11 @@
 import sys
-def p(g):
-	A=len(g);B=[(B,C,g[B][C])for B in range(A)for C in range(A)if g[B][C]>1]
-	if not B:return[[3]*A for B in g]
-	C=max(A for(*B,A)in B);E=[A for(A,D,B)in B if B==C];F,G=min(E),max(E);H=[A for(D,A,B)in B if B==C];I,J=min(H),max(H);K=(F+G)//2;L=(I+J)//2;D=[[3]*A for B in g]
-	for M in range(I,J+1):D[K][M]=C
-	for N in range(F,G+1):D[N][L]=C
-	return D
+def p(A):
+	B=len(A);C=[(C,D,A[C][D])for C in range(B)for D in range(B)if A[C][D]>1]
+	if not C:return[[3]*B for A in A]
+	D=max(A for(*B,A)in C);F=[A for(A,C,B)in C if B==D];G,H=min(F),max(F);I=[A for(C,A,B)in C if B==D];J,K=min(I),max(I);L=(G+H)//2;M=(J+K)//2;E=[[3]*B for A in A]
+	for N in range(J,K+1):E[L][N]=D
+	for O in range(G,H+1):E[O][M]=D
+	return E
 if __name__=='__main__':
 	g=[list(map(int,A.split()))for A in sys.stdin]
 	for row in p(g):print(*row)

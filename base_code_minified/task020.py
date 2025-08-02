@@ -1,4 +1,4 @@
-def p(g):
-	A=[(A,B,g[A][B])for A in range(10)for B in range(10)if g[A][B]];F=(min(A for(A,B,C)in A)+max(A for(A,B,C)in A))//2;G=(min(A for(B,A,C)in A)+max(A for(B,A,C)in A))//2
-	for(B,C,H)in A:D=2*F-B;E=2*G-C;g[B][E]=g[D][C]=g[D][E]=H
-	return g
+def p(A):
+	B=[(B,C,A[B][C])for B in range(10)for C in range(10)if A[B][C]];G=(min(A for(A,B,C)in B)+max(A for(A,B,C)in B))//2;H=(min(A for(B,A,C)in B)+max(A for(B,A,C)in B))//2
+	for(C,D,I)in B:E=2*G-C;F=2*H-D;A[C][F]=A[E][D]=A[E][F]=I
+	return A

@@ -38,7 +38,7 @@ def val_func_neighbors(loc):
 def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def p(I):
@@ -46,9 +46,9 @@ def p(I):
     x1 = val_func_ofcolor(I, 3)
     x2 = val_func_ofcolor(I, 8)
     x3 = val_func_ofcolor(I, 2)
-    x4 = val_func_mval_func_apply(val_func_neighbors, x1)
-    x5 = val_func_mval_func_apply(val_func_neighbors, x2)
-    x6 = val_func_mval_func_apply(val_func_neighbors, x3)
+    x4 = mval_func_apply(val_func_neighbors, x1)
+    x5 = mval_func_apply(val_func_neighbors, x2)
+    x6 = mval_func_apply(val_func_neighbors, x3)
     x7 = val_func_fill(I, 6, x4)
     x8 = val_func_fill(x7, 4, x5)
     O = val_func_fill(x8, 1, x6)

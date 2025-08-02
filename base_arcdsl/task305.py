@@ -52,7 +52,7 @@ def val_func_ofcolor(grid, value):
 def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def mval_func_apply(function, container):
@@ -90,7 +90,7 @@ def p(I):
     x1 = val_func_asindices(I)
     x2 = val_func_dmirror(I)
     x3 = val_func_invert(9)
-    x4 = val_func_pval_func_apply(val_func_pair, I, x2)
+    x4 = pval_func_apply(val_func_pair, I, x2)
     x5 = val_func_lbind(val_func_apply, val_func_maximum)
     x6 = val_func_apply(x5, x4)
     x7 = val_func_ofcolor(x6, 0)

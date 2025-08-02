@@ -1,10 +1,10 @@
-def p(g):
-	E,F=len(g),len(g[0])
-	for A in range(E):
-		for B in range(F):
-			if g[A][B]and(A*B<1 or not g[A-1][B-1]):
-				G=0;C=A;D=B
-				while C<E and D<F and g[C][D]:
-					if G&1:g[C][D]=4
-					G+=1;C+=1;D+=1
-	return g
+def p(A):
+	F,G=len(A),len(A[0])
+	for B in range(F):
+		for C in range(G):
+			if A[B][C]and(B*C<1 or not A[B-1][C-1]):
+				H=0;D=B;E=C
+				while D<F and E<G and A[D][E]:
+					if H&1:A[D][E]=4
+					H+=1;D+=1;E+=1
+	return A

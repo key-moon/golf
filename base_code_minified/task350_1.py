@@ -1,17 +1,17 @@
-def p(g):
-	for D in g:
-		A=-1
-		for(B,F)in enumerate(D):
-			if F:
-				if A+1:
-					for C in range(A+1,B):D[C]=D[C]or 8
-				A=B
-	G=len(g)
-	for E in range(len(g[0])):
-		A=-1
-		for B in range(G):
-			if g[B][E]:
-				if A+1:
-					for C in range(A+1,B):g[C][E]=g[C][E]or 8
-				A=B
-	return g
+def p(A):
+	for E in A:
+		B=-1
+		for(C,G)in enumerate(E):
+			if G:
+				if B+1:
+					for D in range(B+1,C):E[D]=E[D]or 8
+				B=C
+	H=len(A)
+	for F in range(len(A[0])):
+		B=-1
+		for C in range(H):
+			if A[C][F]:
+				if B+1:
+					for D in range(B+1,C):A[D][F]=A[D][F]or 8
+				B=C
+	return A

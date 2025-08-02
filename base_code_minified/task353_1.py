@@ -1,5 +1,5 @@
-def p(g):
-	for(D,A)in enumerate(g):
-		if 3 in A:B=D;C=A.index(3)
-		if 4 in A:E=D;F=A.index(4)
-	g[B][C]=0;g[B+(E>B)-(E<B)][C+(F>C)-(F<C)]=3;return g
+def p(A):
+	for(E,B)in enumerate(A):
+		if 3 in B:C=E;D=B.index(3)
+		if 4 in B:F=E;G=B.index(4)
+	A[C][D]=0;A[C+(F>C)-(F<C)][D+(G>D)-(G<D)]=3;return A

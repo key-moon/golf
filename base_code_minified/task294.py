@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;Q,N=len(A),len(A[0]);K=[[0]*N for A in A]
+def p(A):
+	Q,N=len(A),len(A[0]);K=[[0]*N for A in A]
 	for B in range(Q):
 		for C in range(N):
 			if A[B][C]and not K[B][C]:

@@ -1,15 +1,15 @@
-def p(g):
-	K=len(g);G=len(g[0]);H=[];L=0
-	for A in range(K):
-		for B in range(G):
-			if g[A][B]:
-				M=g[A][B];I=[(A,B)];g[A][B]=0;J=[]
-				while I:
-					C,D=I.pop();J.append((C,D))
-					for(O,P)in((1,0),(-1,0),(0,1),(0,-1)):
-						E=C+O;F=D+P
-						if 0<=E<K and 0<=F<G and g[E][F]==M:g[E][F]=0;I.append((E,F))
-				if len(J)>len(H):H=J;L=M
-	N=[[0]*G for A in g]
-	for(C,D)in H:N[C][D]=L
-	return N
+def p(A):
+	L=len(A);H=len(A[0]);I=[];M=0
+	for B in range(L):
+		for C in range(H):
+			if A[B][C]:
+				N=A[B][C];J=[(B,C)];A[B][C]=0;K=[]
+				while J:
+					D,E=J.pop();K.append((D,E))
+					for(P,Q)in((1,0),(-1,0),(0,1),(0,-1)):
+						F=D+P;G=E+Q
+						if 0<=F<L and 0<=G<H and A[F][G]==N:A[F][G]=0;J.append((F,G))
+				if len(K)>len(I):I=K;M=N
+	O=[[0]*H for A in A]
+	for(D,E)in I:O[D][E]=M
+	return O

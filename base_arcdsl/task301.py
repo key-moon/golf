@@ -1,4 +1,4 @@
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def val_func_merge(containers):
@@ -44,11 +44,11 @@ def val_func_leftmost(patch):
 def val_func_uppermost(patch):
     return min(i for i, j in val_func_toindices(patch))
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -120,8 +120,8 @@ def val_func_shift(patch, directions):
 def val_func_shape(piece):
     return (val_func_height(piece), val_func_width(piece))
 
-def val_func_mval_func_pval_func_apply(function, a, b):
-    return val_func_merge(val_func_pval_func_apply(function, a, b))
+def mpval_func_apply(function, a, b):
+    return val_func_merge(pval_func_apply(function, a, b))
 
 def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
@@ -154,7 +154,7 @@ def p(I):
     x6 = val_func_size(x5)
     x7 = val_func_interval(0, x6, 1)
     x8 = val_func_apply(val_func_toivec, x7)
-    x9 = val_func_mval_func_pval_func_apply(val_func_shift, x5, x8)
+    x9 = mpval_func_apply(val_func_shift, x5, x8)
     x10 = val_func_canvas(0, x1)
     x11 = val_func_paint(x10, x9)
     O = val_func_rot180(x11)

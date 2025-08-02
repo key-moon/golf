@@ -1,5 +1,5 @@
-def p(g):
-	E,F=len(g),len(g[0]);I=[(A,B)for A in range(E)for B in range(F)if g[A][B]==2];J=[(A,B)for A in range(E)for B in range(F)if g[A][B]==3];A=min(J,key=lambda a:min(abs(a[0]-A[0])+abs(a[1]-A[1])for A in I));D=min(I,key=lambda b:abs(b[0]-A[0])+abs(b[1]-A[1]));G=(D[0]>A[0])-(D[0]<A[0]);H=(D[1]>A[1])-(D[1]<A[1]);B,C=A
-	while 0<=B+G<E and g[B+G][C]!=8:B+=G;g[B][C]=3
-	while 0<=C+H<F and g[B][C+H]!=8:C+=H;g[B][C]=3
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);J=[(B,C)for B in range(F)for C in range(G)if A[B][C]==2];K=[(B,C)for B in range(F)for C in range(G)if A[B][C]==3];B=min(K,key=lambda I:min(abs(I[0]-A[0])+abs(I[1]-A[1])for A in J));E=min(J,key=lambda J:abs(J[0]-B[0])+abs(J[1]-B[1]));H=(E[0]>B[0])-(E[0]<B[0]);I=(E[1]>B[1])-(E[1]<B[1]);C,D=B
+	while 0<=C+H<F and A[C+H][D]!=8:C+=H;A[C][D]=3
+	while 0<=D+I<G and A[C][D+I]!=8:D+=I;A[C][D]=3
+	return A

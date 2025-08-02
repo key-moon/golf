@@ -29,7 +29,7 @@ def val_func_crop(grid, start, dims):
 def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def val_func_lbind(function, fixed):
@@ -54,6 +54,6 @@ def p(I):
     x3 = val_func_asobject(x2)
     x4 = val_func_lbind(val_func_shift, x3)
     x5 = val_func_compose(x4, val_func_decrement)
-    x6 = val_func_mval_func_apply(x5, x1)
+    x6 = mval_func_apply(x5, x1)
     O = val_func_paint(I, x6)
     return [*map(list,O)]

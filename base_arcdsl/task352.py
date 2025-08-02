@@ -8,9 +8,9 @@ def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
-def dval_func_neighbors(loc):
+def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
 
 def val_func_asindices(grid):
@@ -70,7 +70,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
     occupied = set()
     h, w = len(grid), len(grid[0])
     unvisited = val_func_asindices(grid)
-    diagfun = val_func_neighbors if diagonal else dval_func_neighbors
+    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
     for loc in unvisited:
         if loc in occupied:
             continue
@@ -96,13 +96,13 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
 def val_func_colorfilter(objs, value):
     return frozenset(obj for obj in objs if next(iter(obj))[0] == value)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_objects(I, True, False, True)
     x2 = val_func_colorfilter(x1, 2)
-    x3 = val_func_mval_func_apply(val_func_outbox, x2)
+    x3 = mval_func_apply(val_func_outbox, x2)
     O = val_func_fill(I, 1, x3)
     return [*map(list,O)]

@@ -1,14 +1,14 @@
-def p(g):
-	J,K=len(g),len(g[0]);E=set();L=[]
-	for F in range(J):
-		for G in range(K):
-			if g[F][G]==4 and(F,G)not in E:
-				A=[(F,G)];E.add((F,G));B=0
-				while B<len(A):
-					H,I=A[B];B+=1
-					for(C,D)in((H+1,I),(H-1,I),(H,I+1),(H,I-1)):
-						if 0<=C<J and 0<=D<K and g[C][D]==4 and(C,D)not in E:E.add((C,D));A.append((C,D))
-				M=min(A[0]for A in A);N=max(A[0]for A in A);O=min(A[1]for A in A);P=max(A[1]for A in A);L.append([(A,B)for A in range(M+1,N)for B in range(O+1,P)])
-	for(B,Q)in enumerate(sorted(L,key=len)):
-		for(R,S)in Q:g[R][S]=B+1
-	return g
+def p(A):
+	K,L=len(A),len(A[0]);F=set();M=[]
+	for G in range(K):
+		for H in range(L):
+			if A[G][H]==4 and(G,H)not in F:
+				B=[(G,H)];F.add((G,H));C=0
+				while C<len(B):
+					I,J=B[C];C+=1
+					for(D,E)in((I+1,J),(I-1,J),(I,J+1),(I,J-1)):
+						if 0<=D<K and 0<=E<L and A[D][E]==4 and(D,E)not in F:F.add((D,E));B.append((D,E))
+				N=min(A[0]for A in B);O=max(A[0]for A in B);P=min(A[1]for A in B);Q=max(A[1]for A in B);M.append([(A,B)for A in range(N+1,O)for B in range(P+1,Q)])
+	for(C,R)in enumerate(sorted(M,key=len)):
+		for(S,T)in R:A[S][T]=C+1
+	return A

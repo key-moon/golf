@@ -1,5 +1,5 @@
-def p(g):
- C=len(g);B=len(g[0]);A=sum(B==0 for A in g for B in A);E=[[0]*B*A for C in range(C*A)]
- for D in range(C*B-A):
-  for(F,G)in enumerate(g):E[C*(D//A)+F][B*(D%A):B*(D%A)+B]=G
- return E
+def p(A):
+ D=len(A);C=len(A[0]);B=sum(B==0 for A in A for B in A);F=[[0]*C*B for A in range(D*B)]
+ for E in range(D*C-B):
+  for(G,H)in enumerate(A):F[D*(E//B)+G][C*(E%B):C*(E%B)+C]=H
+ return F

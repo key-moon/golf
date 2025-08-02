@@ -1,1 +1,1 @@
-def p(g):A,D=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D][:2];B,C=D[0]-A[0],D[1]-A[1];E=B*B+C*C;G,H=-C,B;I=g[A[0]][A[1]];return[[I if((D-A[0])*B+(F-A[1])*C)%E==0 and((D-A[0])*G+(F-A[1])*H)%E==0 else 0 for F in range(len(g[0]))]for D in range(len(g))]
+def p(A):B,E=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D][:2];C,D=E[0]-B[0],E[1]-B[1];F=C*C+D*D;G,H=-D,C;I=A[B[0]][B[1]];return[[I if((E-B[0])*C+(A-B[1])*D)%F==0 and((E-B[0])*G+(A-B[1])*H)%F==0 else 0 for A in range(len(A[0]))]for E in range(len(A))]

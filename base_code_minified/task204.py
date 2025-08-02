@@ -1,22 +1,22 @@
-def p(g):
-	H,G=len(g),len(g[0]);E=[[0]*G for A in g];O=(1,0),(-1,0),(0,1),(0,-1);S=[(A,B)for A in range(H)for B in(0,G-1)]+[(B,A)for A in range(G)for B in(0,H-1)]
-	for(C,D)in S:
-		if g[C][D]==0 and not E[C][D]:
-			F=[(C,D)];E[C][D]=1
-			while F:
-				I,J=F.pop()
-				for(K,L)in O:
-					A,B=I+K,J+L
-					if 0<=A<H and 0<=B<G and g[A][B]==0 and not E[A][B]:E[A][B]=1;F.append((A,B))
-	for C in range(H):
-		for D in range(G):
-			if g[C][D]==0 and not E[C][D]:
-				F=[(C,D)];E[C][D]=1;P=[(C,D)];Q=C;R=C;M=D;N=D
-				while F:
-					I,J=F.pop()
-					for(K,L)in O:
-						A,B=I+K,J+L
-						if 0<=A<H and 0<=B<G and g[A][B]==0 and not E[A][B]:E[A][B]=1;F.append((A,B));P.append((A,B));Q=min(Q,A);R=max(R,A);M=min(M,B);N=max(N,B)
-				T=7 if(N-M+1)%2 else 2
-				for(I,J)in P:g[I][J]=T
-	return g
+def p(A):
+	I,H=len(A),len(A[0]);F=[[0]*H for A in A];P=(1,0),(-1,0),(0,1),(0,-1);T=[(A,B)for A in range(I)for B in(0,H-1)]+[(B,A)for A in range(H)for B in(0,I-1)]
+	for(D,E)in T:
+		if A[D][E]==0 and not F[D][E]:
+			G=[(D,E)];F[D][E]=1
+			while G:
+				J,K=G.pop()
+				for(L,M)in P:
+					B,C=J+L,K+M
+					if 0<=B<I and 0<=C<H and A[B][C]==0 and not F[B][C]:F[B][C]=1;G.append((B,C))
+	for D in range(I):
+		for E in range(H):
+			if A[D][E]==0 and not F[D][E]:
+				G=[(D,E)];F[D][E]=1;Q=[(D,E)];R=D;S=D;N=E;O=E
+				while G:
+					J,K=G.pop()
+					for(L,M)in P:
+						B,C=J+L,K+M
+						if 0<=B<I and 0<=C<H and A[B][C]==0 and not F[B][C]:F[B][C]=1;G.append((B,C));Q.append((B,C));R=min(R,B);S=max(S,B);N=min(N,C);O=max(O,C)
+				U=7 if(O-N+1)%2 else 2
+				for(J,K)in Q:A[J][K]=U
+	return A

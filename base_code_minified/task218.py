@@ -1,6 +1,6 @@
-def p(g):
-	C=[(B,set(A)-{0})for(B,A)in enumerate(g)if set(A)-{0}];D=[[C[0][0]]];A=C[0][1]
-	for(G,B)in C[1:]:D[-1].append(G)if B==A else D.append([G]);A=B
-	H,J=len(g),len(g[0]);E=[(A,set(g[B][A]for B in range(H))-{0})for A in range(J)if set(g[B][A]for B in range(H))-{0}];F=[[E[0][0]]];A=E[0][1]
-	for(I,B)in E[1:]:F[-1].append(I)if B==A else F.append([I]);A=B
-	return[[next(g[A][B]for A in A for B in C if g[A][B])for C in F]for A in D]
+def p(A):
+	D=[(B,set(A)-{0})for(B,A)in enumerate(A)if set(A)-{0}];E=[[D[0][0]]];B=D[0][1]
+	for(H,C)in D[1:]:E[-1].append(H)if C==B else E.append([H]);B=C
+	I,K=len(A),len(A[0]);F=[(B,set(A[C][B]for C in range(I))-{0})for B in range(K)if set(A[C][B]for C in range(I))-{0}];G=[[F[0][0]]];B=F[0][1]
+	for(J,C)in F[1:]:G[-1].append(J)if C==B else G.append([J]);B=C
+	return[[next(A[B][C]for B in B for C in D if A[B][C])for D in G]for B in E]

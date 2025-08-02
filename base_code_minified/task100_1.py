@@ -1,1 +1,1 @@
-def p(g):A=sum(g,[]);B=max({*A}-{0},key=A.count);return[[B]*2]*2
+def p(A):B=sum(A,[]);C=max({*B}-{0},key=B.count);return[[C]*2]*2

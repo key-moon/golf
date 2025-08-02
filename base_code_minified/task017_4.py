@@ -1,17 +1,17 @@
-def p(g):
-	C=len(g);D=len(g[0])
-	for F in range(1,C+1):
-		if C%F:continue
-		for G in range(1,D+1):
-			if D%G:continue
-			E=1
-			for A in range(C):
-				for B in range(D):
-					if g[A][B]and g[A][B]!=g[A%F][B%G]:E=0;break
-				if not E:break
-			if E:break
-		if E:break
-	for A in range(C):
-		for B in range(D):
-			if not g[A][B]:g[A][B]=g[A%F][B%G]
-	return g
+def p(A):
+	D=len(A);E=len(A[0])
+	for G in range(1,D+1):
+		if D%G:continue
+		for H in range(1,E+1):
+			if E%H:continue
+			F=1
+			for B in range(D):
+				for C in range(E):
+					if A[B][C]and A[B][C]!=A[B%G][C%H]:F=0;break
+				if not F:break
+			if F:break
+		if F:break
+	for B in range(D):
+		for C in range(E):
+			if not A[B][C]:A[B][C]=A[B%G][C%H]
+	return A

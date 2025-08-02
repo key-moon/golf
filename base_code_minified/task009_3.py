@@ -1,23 +1,23 @@
-def p(g):
-	D=len(g)//3+1;E=len(g[0])//3+1;F=[[0]*E for A in range(D)]
-	for B in range(D):
-		for C in range(E):
-			for G in(0,1):
+def p(A):
+	E=len(A)//3+1;F=len(A[0])//3+1;G=[[0]*F for A in range(E)]
+	for C in range(E):
+		for D in range(F):
+			for H in(0,1):
+				for I in(0,1):
+					B=A[3*C+H][3*D+I]
+					if B:G[C][D]=B
+	for C in range(E):
+		for D in range(F):
+			B=G[C][D]
+			if B:
+				for J in range(F):
+					if B:G[C][J]=B
+				for J in range(E):
+					if B:G[J][D]=B
+	for C in range(E):
+		for D in range(F):
+			B=G[C][D]
+			if B:
 				for H in(0,1):
-					A=g[3*B+G][3*C+H]
-					if A:F[B][C]=A
-	for B in range(D):
-		for C in range(E):
-			A=F[B][C]
-			if A:
-				for I in range(E):
-					if A:F[B][I]=A
-				for I in range(D):
-					if A:F[I][C]=A
-	for B in range(D):
-		for C in range(E):
-			A=F[B][C]
-			if A:
-				for G in(0,1):
-					for H in(0,1):g[3*B+G][3*C+H]=A
-	return g
+					for I in(0,1):A[3*C+H][3*D+I]=B
+	return A

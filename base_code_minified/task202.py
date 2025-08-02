@@ -1,13 +1,13 @@
-def p(g):
-	I,J=len(g),len(g[0]);K=[(A,B)for A in range(I)for B in range(J)if g[A][B]==0]
-	for G in set(sum(g,[]))-{0}:
-		H=[A for A in range(I)if G in g[A]];L=[A for A in range(J)if any(g[B][A]==G for B in H)];A,B=H[0],H[-1];C,D=L[0],L[-1];M={E for(E,F)in K if A<=E<=B and C<=F<=D};N={E for(F,E)in K if A<=F<=B and C<=E<=D}
-		if N and D-C>B-A:
-			for E in range(A,B+1):
-				for F in N:
-					if g[E][F]==G:g[E][F]=0
-		if M and B-A>=D-C:
-			for E in M:
-				for F in range(C,D+1):
-					if g[E][F]==G:g[E][F]=0
-	return g
+def p(A):
+	J,K=len(A),len(A[0]);L=[(B,C)for B in range(J)for C in range(K)if A[B][C]==0]
+	for H in set(sum(A,[]))-{0}:
+		I=[B for B in range(J)if H in A[B]];M=[B for B in range(K)if any(A[C][B]==H for C in I)];B,C=I[0],I[-1];D,E=M[0],M[-1];N={A for(A,F)in L if B<=A<=C and D<=F<=E};O={A for(F,A)in L if B<=F<=C and D<=A<=E}
+		if O and E-D>C-B:
+			for F in range(B,C+1):
+				for G in O:
+					if A[F][G]==H:A[F][G]=0
+		if N and C-B>=E-D:
+			for F in N:
+				for G in range(D,E+1):
+					if A[F][G]==H:A[F][G]=0
+	return A

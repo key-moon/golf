@@ -4,11 +4,11 @@ def val_func_apply(function, container):
 def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -81,7 +81,7 @@ def val_func_connect(a, b):
 def val_func_center(patch):
     return (val_func_uppermost(patch) + val_func_height(patch) // 2, val_func_leftmost(patch) + val_func_width(patch) // 2)
 
-def underval_func_paint(grid, obj):
+def val_func_underval_func_paint(grid, obj):
     h, w = len(grid), len(grid[0])
     bg = val_func_mostval_func_color(grid)
     g = list(list(r) for r in grid)
@@ -134,7 +134,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def val_func_lrcorner(patch):
@@ -197,12 +197,12 @@ def p(I):
     x2 = val_func_objects(I, True, False, True)
     x3 = val_func_rbind(val_func_shoot, (0, 1))
     x4 = val_func_compose(x3, val_func_center)
-    x5 = val_func_fork(val_func_reval_func_color, val_func_color, x4)
+    x5 = val_func_fork(reval_func_color, val_func_color, x4)
     x6 = mval_func_apply(x5, x2)
     x7 = val_func_paint(I, x6)
     x8 = val_func_add(x1, (1, -1))
     x9 = val_func_initset(x8)
-    x10 = val_func_reval_func_color(0, x9)
+    x10 = reval_func_color(0, x9)
     x11 = val_func_objects(x7, True, False, True)
     x12 = val_func_insert(x10, x11)
     x13 = val_func_order(x12, val_func_uppermost)
@@ -213,8 +213,8 @@ def p(I):
     x18 = val_func_compose(val_func_lrcorner, val_func_last)
     x19 = val_func_fork(val_func_connect, x17, x18)
     x20 = val_func_compose(val_func_color, val_func_first)
-    x21 = val_func_fork(val_func_reval_func_color, x20, x19)
+    x21 = val_func_fork(reval_func_color, x20, x19)
     x22 = val_func_pair(x15, x16)
     x23 = mval_func_apply(x21, x22)
-    O = underval_func_paint(x7, x23)
+    O = val_func_underval_func_paint(x7, x23)
     return [*map(list,O)]

@@ -1,66 +1,64 @@
-def val_func_apply(function,container):A=container;return type(A)(function(A)for A in A)
-def ival_func_neighbors(loc):A=loc;return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
-def val_func_neighbors(loc):return val_func_dval_func_neighbors(loc)|ival_func_neighbors(loc)
-def val_func_dval_func_neighbors(loc):A=loc;return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
-def val_func_asindices(grid):return frozenset((A,B)for A in range(len(grid))for B in range(len(grid[0])))
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_apply(A,B):return type(B)(A(B)for B in B)
+def val_func_ival_func_neighbors(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def val_func_neighbors(A):return val_func_dval_func_neighbors(A)|val_func_ival_func_neighbors(A)
+def val_func_dval_func_neighbors(A):return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
+def val_func_asindices(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_fill(grid,value,patch):
-	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
-	for(C,D)in val_func_toindices(patch):
-		if 0<=C<E and 0<=D<F:B[C][D]=value
-	return tuple(tuple(A)for A in B)
-def val_func_toindices(patch):
-	A=patch
+def val_func_fill(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in val_func_toindices(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_mostcolor(element):A=element;B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
-def val_func_cover(grid,patch):return val_func_fill(grid,val_func_mostcolor(grid),val_func_toindices(patch))
-def val_func_paint(grid,obj):
-	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
-	for(G,(C,D))in obj:
-		if 0<=C<E and 0<=D<F:B[C][D]=G
-	return tuple(tuple(A)for A in B)
-def val_func_lowermost(patch):return max(A for(A,B)in val_func_toindices(patch))
-def val_func_objects(grid,univalued,diagonal,without_bg):
-	A=grid;H=val_func_mostcolor(A)if without_bg else None;I=set();D=set();L,M=len(A),len(A[0]);N=val_func_asindices(A);O=val_func_neighbors if diagonal else val_func_dval_func_neighbors
-	for B in N:
-		if B in D:continue
-		E=A[B[0]][B[1]]
-		if E==H:continue
-		J={(E,B)};F={B}
-		while len(F)>0:
-			K=set()
-			for C in F:
-				G=A[C[0]][C[1]]
-				if E==G if univalued else G!=H:J.add((G,C));D.add(C);K|={(A,B)for(A,B)in O(C)if 0<=A<L and 0<=B<M}
-			F=K-D
-		I.add(frozenset(J))
-	return frozenset(I)
-def val_func_shift(patch,directions):
-	A=patch
+def val_func_mostcolor(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def val_func_cover(A,B):return val_func_fill(A,val_func_mostcolor(A),val_func_toindices(B))
+def val_func_paint(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def val_func_lowermost(A):return max(A for(A,B)in val_func_toindices(A))
+def val_func_objects(A,B,C,D):
+	K=val_func_mostcolor(A)if D else None;L=set();G=set();O,P=len(A),len(A[0]);Q=val_func_asindices(A);R=val_func_neighbors if C else val_func_dval_func_neighbors
+	for E in Q:
+		if E in G:continue
+		H=A[E[0]][E[1]]
+		if H==K:continue
+		M={(H,E)};I={E}
+		while len(I)>0:
+			N=set()
+			for F in I:
+				J=A[F[0]][F[1]]
+				if H==J if B else J!=K:M.add((J,F));G.add(F);N|={(A,B)for(A,B)in R(F)if 0<=A<O and 0<=B<P}
+			I=N-G
+		L.add(frozenset(M))
+	return frozenset(L)
+def val_func_shift(A,B):
 	if len(A)==0:return A
-	B,C=directions
-	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(D+B,E+C))for(A,(D,E))in A)
-	return frozenset((A+B,D+C)for(A,D)in A)
-def val_func_ofcolor(grid,value):return frozenset((A,C)for(A,B)in enumerate(grid)for(C,D)in enumerate(B)if D==value)
-def mval_func_apply(function,container):return val_func_merge(val_func_apply(function,container))
-def val_func_fork(outer,a,b):return lambda x:outer(a(x),b(x))
-def val_func_lbind(function,fixed):
-	B=fixed;A=function;C=A.__code__.co_argcount
-	if C==2:return lambda y:A(B,y)
-	elif C==3:return lambda y,z:A(B,y,z)
-	else:return lambda y,z,a:A(B,y,z,a)
-def val_func_chain(h,g,f):return lambda x:h(g(f(x)))
-def val_func_toivec(i):return i,0
-def val_func_merge(containers):A=containers;return type(A)(B for A in A for B in A)
-def val_func_subtract(a,b):
-	if isinstance(a,int)and isinstance(b,int):return a-b
-	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]-b[0],a[1]-b[1]
-	elif isinstance(a,int)and isinstance(b,tuple):return a-b[0],a-b[1]
-	return a[0]-b,a[1]-b
-def val_func_identity(x):return x
-def p(I):A=True;I=tuple(map(tuple,I));B=val_func_objects(I,A,A,A);C=val_func_ofcolor(I,1);D=val_func_lowermost(C);E=val_func_lbind(val_func_subtract,D);F=val_func_chain(val_func_toivec,E,val_func_lowermost);G=val_func_fork(val_func_shift,val_func_identity,F);H=val_func_merge(B);J=val_func_cover(I,H);K=mval_func_apply(G,B);L=val_func_paint(J,K);return[*map(list,L)]
+	C,D=B
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B+C,E+D))for(A,(B,E))in A)
+	return frozenset((A+C,B+D)for(A,B)in A)
+def val_func_ofcolor(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def mval_func_apply(A,B):return val_func_merge(val_func_apply(A,B))
+def val_func_fork(A,B,C):return lambda D:A(B(D),C(D))
+def val_func_lbind(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda D:A(B,D)
+	elif C==3:return lambda D,E:A(B,D,E)
+	else:return lambda D,E,F:A(B,D,E,F)
+def val_func_chain(A,B,C):return lambda D:A(B(C(D)))
+def val_func_toivec(A):return A,0
+def val_func_merge(A):return type(A)(B for A in A for B in A)
+def val_func_subtract(A,B):
+	if isinstance(A,int)and isinstance(B,int):return A-B
+	elif isinstance(A,tuple)and isinstance(B,tuple):return A[0]-B[0],A[1]-B[1]
+	elif isinstance(A,int)and isinstance(B,tuple):return A-B[0],A-B[1]
+	return A[0]-B,A[1]-B
+def val_func_identity(A):return A
+def p(A):B=True;A=tuple(map(tuple,A));C=val_func_objects(A,B,B,B);D=val_func_ofcolor(A,1);E=val_func_lowermost(D);F=val_func_lbind(val_func_subtract,E);G=val_func_chain(val_func_toivec,F,val_func_lowermost);H=val_func_fork(val_func_shift,val_func_identity,G);I=val_func_merge(C);J=val_func_cover(A,I);K=mval_func_apply(H,C);L=val_func_paint(J,K);return[*map(list,L)]

@@ -1,11 +1,11 @@
 def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -121,7 +121,7 @@ def val_func_shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def mval_func_apply(function, container):
@@ -196,7 +196,7 @@ def p(I):
     x10 = val_func_lbind(val_func_rbind, val_func_multiply)
     x11 = val_func_chain(x8, x10, x9)
     x12 = val_func_compose(x5, x11)
-    x13 = val_func_fork(val_func_reval_func_color, val_func_color, x12)
+    x13 = val_func_fork(reval_func_color, val_func_color, x12)
     x14 = mval_func_apply(x13, x3)
     O = val_func_paint(I, x14)
     return [*map(list,O)]

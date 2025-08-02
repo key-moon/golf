@@ -8,11 +8,11 @@ def val_func_index(grid, loc):
         return None
     return grid[loc[0]][loc[1]] 
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -68,7 +68,7 @@ def val_func_box(patch):
     hlines = {(si, j) for j in range(sj, ej + 1)} | {(ei, j) for j in range(sj, ej + 1)}
     return frozenset(vlines | hlines)
 
-def outval_func_box(patch):
+def val_func_outval_func_box(patch):
     ai, aj = val_func_uppermost(patch) - 1, val_func_leftmost(patch) - 1
     bi, bj = val_func_lowermost(patch) + 1, val_func_rightmost(patch) + 1
     si, sj = min(ai, bi), min(aj, bj)
@@ -77,7 +77,7 @@ def outval_func_box(patch):
     hlines = {(si, j) for j in range(sj, ej + 1)} | {(ei, j) for j in range(sj, ej + 1)}
     return frozenset(vlines | hlines)
 
-def inval_func_box(patch):
+def val_func_inval_func_box(patch):
     ai, aj = val_func_uppermost(patch) + 1, val_func_leftmost(patch) + 1
     bi, bj = val_func_lowermost(patch) - 1, val_func_rightmost(patch) - 1
     si, sj = min(ai, bi), min(aj, bj)
@@ -251,11 +251,11 @@ def p(I):
     x9 = val_func_lbind(val_func_contained, 0)
     x10 = val_func_rbind(val_func_subtract, x8)
     x11 = val_func_compose(x9, x10)
-    x12 = val_func_chain(outval_func_box, outval_func_box, val_func_initset)
+    x12 = val_func_chain(val_func_outval_func_box, val_func_outval_func_box, val_func_initset)
     x13 = val_func_corners(x6)
     x14 = mval_func_apply(x12, x13)
     x15 = val_func_difference(x7, x14)
-    x16 = inval_func_box(x7)
+    x16 = val_func_inval_func_box(x7)
     x17 = val_func_sfilter(x16, x11)
     x18 = val_func_combine(x15, x17)
     x19 = val_func_fill(x5, 1, x18)

@@ -1,1 +1,1 @@
-def p(g):A=len(g)//2;return[[2*(A==B==0)for(A,B)in zip(g[B],g[B+A])]for B in range(A)]
+def p(A):B=len(A)//2;return[[2*(A==B==0)for(A,B)in zip(A[C],A[C+B])]for C in range(B)]

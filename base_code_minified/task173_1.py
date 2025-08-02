@@ -1,23 +1,23 @@
-def p(g):
-	F={}
-	for G in g:
-		for A in G:
-			if A:F[A]=F.get(A,0)+1
-	Q=min(F,key=lambda val_z:F[val_z])
-	for(H,G)in enumerate(g):
-		for(I,A)in enumerate(G):
-			if A==Q:break
+def p(A):
+	G={}
+	for H in A:
+		for B in H:
+			if B:G[B]=G.get(B,0)+1
+	R=min(G,key=lambda F:G[F])
+	for(I,H)in enumerate(A):
+		for(J,B)in enumerate(H):
+			if B==R:break
 		else:continue
 		break
-	J={(H,I)};K=[(H,I)];L,M=len(g),len(g[0])
-	while K:
-		B,C=K.pop()
-		for(N,O)in((1,0),(-1,0),(0,1),(0,-1)):
-			D,E=B+N,C+O
-			if 0<=D<L and 0<=E<M and g[D][E]and(D,E)not in J:J.add((D,E));K.append((D,E))
-	P=[(A-H,B-I,g[A][B])for(A,B)in J]
-	for B in range(L):
-		for C in range(M):
-			if all(0<=B+A<L and 0<=C+D<M and g[B+A][C+D]in(0,E)for(A,D,E)in P):
-				for(N,O,R)in P:g[B+N][C+O]=R
-	return g
+	K={(I,J)};L=[(I,J)];M,N=len(A),len(A[0])
+	while L:
+		C,D=L.pop()
+		for(O,P)in((1,0),(-1,0),(0,1),(0,-1)):
+			E,F=C+O,D+P
+			if 0<=E<M and 0<=F<N and A[E][F]and(E,F)not in K:K.add((E,F));L.append((E,F))
+	Q=[(B-I,C-J,A[B][C])for(B,C)in K]
+	for C in range(M):
+		for D in range(N):
+			if all(0<=C+B<M and 0<=D+E<N and A[C+B][D+E]in(0,F)for(B,E,F)in Q):
+				for(O,P,S)in Q:A[C+O][D+P]=S
+	return A

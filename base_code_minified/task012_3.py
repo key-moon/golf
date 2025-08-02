@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;I,F=len(A),len(A[0]);G=[[0]*F for A in A]
+def p(A):
+	I,F=len(A),len(A[0]);G=[[0]*F for A in A]
 	for B in range(1,I-1):
 		for C in range(1,F-1):
 			H=A[B][C]

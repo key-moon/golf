@@ -1,5 +1,5 @@
-def p(g):
-	E=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D];(F,G),(H,I)=E;A,B=(F+H)//2,(G+I)//2
-	for(C,D)in((A,B),(A-1,B),(A+1,B),(A,B-1),(A,B+1)):
-		if 0<=C<len(g)and 0<=D<len(g[0]):g[C][D]=3
-	return g
+def p(A):
+	F=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D];(G,H),(I,J)=F;B,C=(G+I)//2,(H+J)//2
+	for(D,E)in((B,C),(B-1,C),(B+1,C),(B,C-1),(B,C+1)):
+		if 0<=D<len(A)and 0<=E<len(A[0]):A[D][E]=3
+	return A

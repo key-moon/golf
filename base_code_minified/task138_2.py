@@ -1,1 +1,1 @@
-def p(val_g):A=val_g;E=[B for(B,A)in enumerate(zip(*A))if len({*A})==1 and A[0]];B,C=E;D=[D for(D,A)in enumerate(A)if len({*A[B+1:C]})==1 and A[B+1]];F,G=D[0],D[-1];return[A[B:C+1]for A in A[F:G+1]]
+def p(A):E=[B for(B,A)in enumerate(zip(*A))if len({*A})==1 and A[0]];B,C=E;D=[D for(D,A)in enumerate(A)if len({*A[B+1:C]})==1 and A[B+1]];F,G=D[0],D[-1];return[A[B:C+1]for A in A[F:G+1]]

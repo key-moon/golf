@@ -1,15 +1,15 @@
-def p(g):
-	K,G=len(g),len(g[0]);D=[[0]*G for A in g];H=[]
-	for E in range(K):
-		for F in range(G):
-			if g[E][F]==3 and not D[E][F]:
-				A=[(E,F)];D[E][F]=1
-				for(I,J)in A:
-					for(L,M)in((1,0),(-1,0),(0,1),(0,-1)):
-						B,C=I+L,J+M
-						if 0<=B<K and 0<=C<G and g[B][C]==3 and not D[B][C]:D[B][C]=1;A.append((B,C))
-				H.append(A)
-	N=sorted({len(A)for A in H});O={A:B for(A,B)in zip(N,(1,2,6))}
-	for A in H:
-		for(I,J)in A:g[I][J]=O[len(A)]
-	return g
+def p(A):
+	L,H=len(A),len(A[0]);E=[[0]*H for A in A];I=[]
+	for F in range(L):
+		for G in range(H):
+			if A[F][G]==3 and not E[F][G]:
+				B=[(F,G)];E[F][G]=1
+				for(J,K)in B:
+					for(M,N)in((1,0),(-1,0),(0,1),(0,-1)):
+						C,D=J+M,K+N
+						if 0<=C<L and 0<=D<H and A[C][D]==3 and not E[C][D]:E[C][D]=1;B.append((C,D))
+				I.append(B)
+	O=sorted({len(A)for A in I});P={A:B for(A,B)in zip(O,(1,2,6))}
+	for B in I:
+		for(J,K)in B:A[J][K]=P[len(B)]
+	return A

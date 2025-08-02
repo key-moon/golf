@@ -1,1 +1,1 @@
-def p(g):A,B=zip(*[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D]);C,D=min(B),max(B)+1;return[[B for A in g[A][C:D]for B in(A,A)]for A in range(min(A),max(A)+1)for B in(0,1)]
+def p(A):B,C=zip(*[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D]);D,E=min(C),max(C)+1;return[[B for A in A[B][D:E]for B in(A,A)]for B in range(min(B),max(B)+1)for C in(0,1)]

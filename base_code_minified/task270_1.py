@@ -1,15 +1,15 @@
-def p(g):
-	K,L=len(g),len(g[0]);B={}
-	for(M,N)in enumerate(g):
-		for(O,A)in enumerate(N):
-			if A:B.setdefault(A,[]).append((M,O))
-	D=[[0]*L for A in range(K)]
-	for(P,E)in B.items():
-		if len(E)==1:
-			F,A=E[0]
-			for(Q,C)in B.items():
-				if len(C)==4:
-					G=sum(A==F for(A,B)in C);H=sum(B==A for(C,B)in C)
-					if G and H and G+H==4:
-						for(I,J)in((0,0),(-1,0),(1,0),(0,-1),(0,1)):D[F+I][A+J]=Q if I|J else P
-	return D
+def p(A):
+	L,M=len(A),len(A[0]);C={}
+	for(N,O)in enumerate(A):
+		for(P,B)in enumerate(O):
+			if B:C.setdefault(B,[]).append((N,P))
+	E=[[0]*M for A in range(L)]
+	for(Q,F)in C.items():
+		if len(F)==1:
+			G,B=F[0]
+			for(R,D)in C.items():
+				if len(D)==4:
+					H=sum(A==G for(A,B)in D);I=sum(A==B for(C,A)in D)
+					if H and I and H+I==4:
+						for(J,K)in((0,0),(-1,0),(1,0),(0,-1),(0,1)):E[G+J][B+K]=R if J|K else Q
+	return E

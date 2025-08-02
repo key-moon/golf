@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;J,K=len(A),len(A[0]);D={}
+def p(A):
+	J,K=len(A),len(A[0]);D={}
 	for E in range(J):
 		B=A[E][0]
 		if B and A[E].count(B)==K:D.setdefault(B,[]).append((1,E))

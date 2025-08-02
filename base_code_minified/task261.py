@@ -1,1 +1,1 @@
-def p(g):A=len(g[0]);return[[0]*A]+[[2*(A==8)for A in A]for A in g[:-1]]
+def p(A):B=len(A[0]);return[[0]*B]+[[2*(A==8)for A in A]for A in A[:-1]]

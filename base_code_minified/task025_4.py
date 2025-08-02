@@ -1,10 +1,10 @@
-def p(g):
-	for F in{A for B in g for A in B if A}:
-		C=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==F];G=[A for(A,B)in C];H=[A for(B,A)in C];D=max(set(G),key=G.count);E=max(set(H),key=H.count)
-		if G.count(D)>H.count(E):
-			for(A,B)in C:
-				if A!=D:g[D+(1 if A>D else-1)][B]=F;g[A][B]=0
+def p(A):
+	for G in{A for B in A for A in B if A}:
+		D=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==G];H=[A for(A,B)in D];I=[A for(B,A)in D];E=max(set(H),key=H.count);F=max(set(I),key=I.count)
+		if H.count(E)>I.count(F):
+			for(B,C)in D:
+				if B!=E:A[E+(1 if B>E else-1)][C]=G;A[B][C]=0
 		else:
-			for(A,B)in C:
-				if B!=E:g[A][E+(1 if B>E else-1)]=F;g[A][B]=0
-	return g
+			for(B,C)in D:
+				if C!=F:A[B][F+(1 if C>F else-1)]=G;A[B][C]=0
+	return A

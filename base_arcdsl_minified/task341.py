@@ -1,79 +1,78 @@
-def val_func_sfilter(container,condition):A=container;return type(A)(A for A in A if condition(A))
-def val_func_apply(function,container):A=container;return type(A)(function(A)for A in A)
-def val_func_merge(containers):A=containers;return type(A)(B for A in A for B in A)
-def ival_func_neighbors(loc):A=loc;return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
-def val_func_neighbors(loc):return val_func_dval_func_neighbors(loc)|ival_func_neighbors(loc)
-def val_func_dval_func_neighbors(loc):A=loc;return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
-def val_func_asindices(grid):return frozenset((A,B)for A in range(len(grid))for B in range(len(grid[0])))
-def val_func_fill(grid,value,patch):
-	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
-	for(C,D)in val_func_toindices(patch):
-		if 0<=C<E and 0<=D<F:B[C][D]=value
-	return tuple(tuple(A)for A in B)
-def val_func_mostcolor(element):A=element;B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_sfilter(A,B):return type(A)(A for A in A if B(A))
+def val_func_apply(A,B):return type(B)(A(B)for B in B)
+def val_func_merge(A):return type(A)(B for A in A for B in A)
+def val_func_ival_func_neighbors(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def val_func_neighbors(A):return val_func_dval_func_neighbors(A)|val_func_ival_func_neighbors(A)
+def val_func_dval_func_neighbors(A):return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
+def val_func_asindices(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def val_func_fill(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in val_func_toindices(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def val_func_mostcolor(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_toindices(patch):
-	A=patch
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_rightmost(patch):return max(A for(B,A)in val_func_toindices(patch))
-def val_func_lowermost(patch):return max(A for(A,B)in val_func_toindices(patch))
-def val_func_connect(a,b):
-	A,B=a;C,D=b;E=min(A,C);F=max(A,C)+1;G=min(B,D);H=max(B,D)+1
-	if A==C:return frozenset((A,B)for B in range(G,H))
-	elif B==D:return frozenset((A,B)for A in range(E,F))
-	elif C-A==D-B:return frozenset((A,B)for(A,B)in zip(range(E,F),range(G,H)))
-	elif C-A==B-D:return frozenset((A,B)for(A,B)in zip(range(E,F),range(H-1,G-1,-1)))
+def val_func_rightmost(A):return max(A for(B,A)in val_func_toindices(A))
+def val_func_lowermost(A):return max(A for(A,B)in val_func_toindices(A))
+def val_func_connect(A,B):
+	C,D=A;E,F=B;G=min(C,E);H=max(C,E)+1;I=min(D,F);J=max(D,F)+1
+	if C==E:return frozenset((C,A)for A in range(I,J))
+	elif D==F:return frozenset((A,D)for A in range(G,H))
+	elif E-C==F-D:return frozenset((A,B)for(A,B)in zip(range(G,H),range(I,J)))
+	elif E-C==D-F:return frozenset((A,B)for(A,B)in zip(range(G,H),range(J-1,I-1,-1)))
 	return frozenset()
-def val_func_shoot(start,direction):B=direction;A=start;return val_func_connect(A,(A[0]+42*B[0],A[1]+42*B[1]))
-def val_func_inbox(patch):A=patch;F,G=val_func_uppermost(A)+1,val_func_leftmost(A)+1;H,I=val_func_lowermost(A)-1,val_func_rightmost(A)-1;B,C=min(F,H),min(G,I);D,E=max(F,H),max(G,I);J={(A,C)for A in range(B,D+1)}|{(A,E)for A in range(B,D+1)};K={(B,A)for A in range(C,E+1)}|{(D,A)for A in range(C,E+1)};return frozenset(J|K)
-def val_func_cover(grid,patch):return val_func_fill(grid,val_func_mostcolor(grid),val_func_toindices(patch))
-def underval_func_fill(grid,value,patch):
-	A=grid;E,F=len(A),len(A[0]);G=val_func_mostcolor(A);B=list(list(A)for A in A)
-	for(C,D)in val_func_toindices(patch):
-		if 0<=C<E and 0<=D<F:
-			if B[C][D]==G:B[C][D]=value
-	return tuple(tuple(A)for A in B)
-def val_func_bordering(patch,grid):A=patch;return val_func_uppermost(A)==0 or val_func_leftmost(A)==0 or val_func_lowermost(A)==len(grid)-1 or val_func_rightmost(A)==len(grid[0])-1
-def val_func_vmatching(a,b):return len(set(A for(B,A)in val_func_toindices(a))&set(A for(B,A)in val_func_toindices(b)))>0
-def val_func_leftmost(patch):return min(A for(B,A)in val_func_toindices(patch))
-def val_func_uppermost(patch):return min(A for(A,B)in val_func_toindices(patch))
-def val_func_objects(grid,univalued,diagonal,without_bg):
-	A=grid;H=val_func_mostcolor(A)if without_bg else None;I=set();D=set();L,M=len(A),len(A[0]);N=val_func_asindices(A);O=val_func_neighbors if diagonal else val_func_dval_func_neighbors
-	for B in N:
-		if B in D:continue
-		E=A[B[0]][B[1]]
-		if E==H:continue
-		J={(E,B)};F={B}
-		while len(F)>0:
-			K=set()
-			for C in F:
-				G=A[C[0]][C[1]]
-				if E==G if univalued else G!=H:J.add((G,C));D.add(C);K|={(A,B)for(A,B)in O(C)if 0<=A<L and 0<=B<M}
-			F=K-D
-		I.add(frozenset(J))
-	return frozenset(I)
-def val_func_colorfilter(objs,value):return frozenset(A for A in objs if next(iter(A))[0]==value)
-def mval_func_apply(function,container):return val_func_merge(val_func_apply(function,container))
-def val_func_rbind(function,fixed):
-	B=fixed;A=function;C=A.__code__.co_argcount
-	if C==2:return lambda x:A(x,B)
-	elif C==3:return lambda x,y:A(x,y,B)
-	else:return lambda x,y,z:A(x,y,z,B)
-def val_func_branch(condition,a,b):return a if condition else b
-def val_func_mfilter(container,function):return val_func_merge(val_func_sfilter(container,function))
-def val_func_argmin(container,compfunc):return min(container,key=compfunc)
-def val_func_argmax(container,compfunc):return max(container,key=compfunc)
-def val_func_valmax(container,compfunc):A=compfunc;return A(max(container,key=A,default=0))
-def val_func_size(container):return len(container)
-def val_func_equality(a,b):return a==b
-def val_func_multiply(a,b):
-	if isinstance(a,int)and isinstance(b,int):return a*b
-	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]*b[0],a[1]*b[1]
-	elif isinstance(a,int)and isinstance(b,tuple):return a*b[0],a*b[1]
-	return a[0]*b,a[1]*b
-def p(I):G=False;A=True;I=tuple(map(tuple,I));B=val_func_objects(I,A,G,A);C=val_func_argmin(B,val_func_size);H=val_func_argmax(B,val_func_size);D=val_func_vmatching(C,H);J=val_func_branch(D,(1,0),(0,1));E=val_func_branch(D,val_func_uppermost,val_func_leftmost);K=val_func_valmax(B,E);L=E(C);M=val_func_equality(K,L);N=val_func_branch(M,-1,1);O=val_func_multiply(J,N);P=val_func_inbox(C);Q=val_func_rbind(val_func_shoot,O);R=mval_func_apply(Q,P);F=underval_func_fill(I,8,R);S=val_func_objects(F,A,G,A);T=val_func_colorfilter(S,8);U=val_func_rbind(val_func_bordering,I);V=val_func_mfilter(T,U);W=val_func_cover(F,V);return[*map(list,W)]
+def val_func_shoot(A,B):return val_func_connect(A,(A[0]+42*B[0],A[1]+42*B[1]))
+def val_func_inbox(A):F,G=val_func_uppermost(A)+1,val_func_leftmost(A)+1;H,I=val_func_lowermost(A)-1,val_func_rightmost(A)-1;B,C=min(F,H),min(G,I);D,E=max(F,H),max(G,I);J={(A,C)for A in range(B,D+1)}|{(A,E)for A in range(B,D+1)};K={(B,A)for A in range(C,E+1)}|{(D,A)for A in range(C,E+1)};return frozenset(J|K)
+def val_func_cover(A,B):return val_func_fill(A,val_func_mostcolor(A),val_func_toindices(B))
+def underval_func_fill(A,B,C):
+	G,H=len(A),len(A[0]);I=val_func_mostcolor(A);D=list(list(A)for A in A)
+	for(E,F)in val_func_toindices(C):
+		if 0<=E<G and 0<=F<H:
+			if D[E][F]==I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def val_func_bordering(A,B):return val_func_uppermost(A)==0 or val_func_leftmost(A)==0 or val_func_lowermost(A)==len(B)-1 or val_func_rightmost(A)==len(B[0])-1
+def val_func_vmatching(A,B):return len(set(A for(B,A)in val_func_toindices(A))&set(A for(B,A)in val_func_toindices(B)))>0
+def val_func_leftmost(A):return min(A for(B,A)in val_func_toindices(A))
+def val_func_uppermost(A):return min(A for(A,B)in val_func_toindices(A))
+def val_func_objects(A,B,C,D):
+	K=val_func_mostcolor(A)if D else None;L=set();G=set();O,P=len(A),len(A[0]);Q=val_func_asindices(A);R=val_func_neighbors if C else val_func_dval_func_neighbors
+	for E in Q:
+		if E in G:continue
+		H=A[E[0]][E[1]]
+		if H==K:continue
+		M={(H,E)};I={E}
+		while len(I)>0:
+			N=set()
+			for F in I:
+				J=A[F[0]][F[1]]
+				if H==J if B else J!=K:M.add((J,F));G.add(F);N|={(A,B)for(A,B)in R(F)if 0<=A<O and 0<=B<P}
+			I=N-G
+		L.add(frozenset(M))
+	return frozenset(L)
+def val_func_colorfilter(A,B):return frozenset(A for A in A if next(iter(A))[0]==B)
+def mval_func_apply(A,B):return val_func_merge(val_func_apply(A,B))
+def val_func_rbind(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda D:A(D,B)
+	elif C==3:return lambda D,E:A(D,E,B)
+	else:return lambda D,E,F:A(D,E,F,B)
+def val_func_branch(A,B,C):return B if A else C
+def val_func_mfilter(A,B):return val_func_merge(val_func_sfilter(A,B))
+def val_func_argmin(A,B):return min(A,key=B)
+def val_func_argmax(A,B):return max(A,key=B)
+def val_func_valmax(A,B):return B(max(A,key=B,default=0))
+def val_func_size(A):return len(A)
+def val_func_equality(A,B):return A==B
+def val_func_multiply(A,B):
+	if isinstance(A,int)and isinstance(B,int):return A*B
+	elif isinstance(A,tuple)and isinstance(B,tuple):return A[0]*B[0],A[1]*B[1]
+	elif isinstance(A,int)and isinstance(B,tuple):return A*B[0],A*B[1]
+	return A[0]*B,A[1]*B
+def p(A):H=False;B=True;A=tuple(map(tuple,A));C=val_func_objects(A,B,H,B);D=val_func_argmin(C,val_func_size);I=val_func_argmax(C,val_func_size);E=val_func_vmatching(D,I);J=val_func_branch(E,(1,0),(0,1));F=val_func_branch(E,val_func_uppermost,val_func_leftmost);K=val_func_valmax(C,F);L=F(D);M=val_func_equality(K,L);N=val_func_branch(M,-1,1);O=val_func_multiply(J,N);P=val_func_inbox(D);Q=val_func_rbind(val_func_shoot,O);R=mval_func_apply(Q,P);G=underval_func_fill(A,8,R);S=val_func_objects(G,B,H,B);T=val_func_colorfilter(S,8);U=val_func_rbind(val_func_bordering,A);V=val_func_mfilter(T,U);W=val_func_cover(G,V);return[*map(list,W)]

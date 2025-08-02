@@ -1,1 +1,1 @@
-def p(g):B=sum(B for A in g for B in A);A=len(g);g=[[0]*A for B in g];C=g[0];[C.__setitem__(A,2)for A in range(min(B,A))];B>A and g[1].__setitem__(1,2);return g
+def p(A):C=sum(B for A in A for B in A);B=len(A);A=[[0]*B for A in A];D=A[0];[D.__setitem__(A,2)for A in range(min(C,B))];C>B and A[1].__setitem__(1,2);return A

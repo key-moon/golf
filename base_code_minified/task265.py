@@ -1,5 +1,5 @@
-def p(g):
-	for(B,C)in zip(g,g[1:]):
-		for(A,D)in enumerate(B[:-1]):
-			if not D|B[A+1]|C[A]|C[A+1]:B[A]=B[A+1]=C[A]=C[A+1]=2
-	return g
+def p(A):
+	for(C,D)in zip(A,A[1:]):
+		for(B,E)in enumerate(C[:-1]):
+			if not E|C[B+1]|D[B]|D[B+1]:C[B]=C[B+1]=D[B]=D[B+1]=2
+	return A

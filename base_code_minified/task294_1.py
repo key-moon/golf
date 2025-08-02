@@ -1,13 +1,13 @@
-def p(g):
-	E,F=len(g),len(g[0])
-	for A in range(E):
-		for B in range(F):
-			if g[A][B]==5 and(A==0 or g[A-1][B]!=5)and(B==0 or g[A][B-1]!=5):
-				C=1
-				while A+C<E and g[A+C][B]==5:C+=1
+def p(A):
+	F,G=len(A),len(A[0])
+	for B in range(F):
+		for C in range(G):
+			if A[B][C]==5 and(B==0 or A[B-1][C]!=5)and(C==0 or A[B][C-1]!=5):
 				D=1
-				while B+D<F and g[A][B+D]==5:D+=1
-				for G in range(A+1,A+C-1):
-					for H in range(B+1,B+D-1):
-						if g[G][H]==5:g[G][H]=2
-	return g
+				while B+D<F and A[B+D][C]==5:D+=1
+				E=1
+				while C+E<G and A[B][C+E]==5:E+=1
+				for H in range(B+1,B+D-1):
+					for I in range(C+1,C+E-1):
+						if A[H][I]==5:A[H][I]=2
+	return A

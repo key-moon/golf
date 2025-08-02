@@ -1,1 +1,1 @@
-def p(g):return[[g[B+A&1][A]for A in range(len(g[0]))]for B in(0,1)]
+def p(A):return[[A[C+B&1][B]for B in range(len(A[0]))]for C in(0,1)]

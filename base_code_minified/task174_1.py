@@ -1,17 +1,17 @@
-def p(g):
-	D={}
-	for(B,L)in enumerate(g):
-		for(C,E)in enumerate(L):
-			if E:
-				A=D.get(E)
-				if A:
-					if B<A[0]:A[0]=B
-					if B>A[1]:A[1]=B
-					if C<A[2]:A[2]=C
-					if C>A[3]:A[3]=C
-				else:D[E]=[B,B,C,C]
-	F=0,[]
-	for(M,(G,H,I,J))in D.items():
-		K=[A[I:J+1]for A in g[G:H+1]]
-		if all(A==A[::-1]for A in K)and(H-G+1)*(J-I+1)>F[0]:F=(H-G+1)*(J-I+1),K
-	return F[1]
+def p(A):
+	E={}
+	for(C,M)in enumerate(A):
+		for(D,F)in enumerate(M):
+			if F:
+				B=E.get(F)
+				if B:
+					if C<B[0]:B[0]=C
+					if C>B[1]:B[1]=C
+					if D<B[2]:B[2]=D
+					if D>B[3]:B[3]=D
+				else:E[F]=[C,C,D,D]
+	G=0,[]
+	for(N,(H,I,J,K))in E.items():
+		L=[A[J:K+1]for A in A[H:I+1]]
+		if all(A==A[::-1]for A in L)and(I-H+1)*(K-J+1)>G[0]:G=(I-H+1)*(K-J+1),L
+	return G[1]

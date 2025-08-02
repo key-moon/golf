@@ -1,11 +1,11 @@
-def p(g):
-	I=[(B,D,A)for(B,C)in enumerate(g)for(D,A)in enumerate(C)if A];(D,E,F),(G,J,H)=I
-	if D*G:
-		A=G-D
-		for(K,B)in enumerate(g):
-			for C in range(len(B)):B[C]=F if(K-D)%(A*2)<A else H
+def p(A):
+	J=[(B,D,A)for(B,C)in enumerate(A)for(D,A)in enumerate(C)if A];(E,F,G),(H,K,I)=J
+	if E*H:
+		B=H-E
+		for(L,C)in enumerate(A):
+			for D in range(len(C)):C[D]=G if(L-E)%(B*2)<B else I
 	else:
-		A=J-E
-		for B in g:
-			for C in range(len(B)):B[C]=F if(C-E)%(A*2)<A else H
-	return g
+		B=K-F
+		for C in A:
+			for D in range(len(C)):C[D]=G if(D-F)%(B*2)<B else I
+	return A

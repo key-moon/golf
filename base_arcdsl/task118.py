@@ -17,11 +17,11 @@ def val_func_index(grid, loc):
         return None
     return grid[loc[0]][loc[1]] 
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_asindices(grid):
     return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
@@ -136,7 +136,7 @@ def val_func_width(piece):
         return len(piece[0])
     return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
 def mval_func_apply(function, container):
@@ -232,7 +232,7 @@ def val_func_add(a,b):
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_ofcolor(I, 2)
-    x2 = val_func_prval_func_apply(val_func_connect, x1, x1)
+    x2 = prval_func_apply(val_func_connect, x1, x1)
     x3 = val_func_lbind(val_func_greater, 6)
     x4 = val_func_compose(x3, val_func_size)
     x5 = val_func_fork(val_func_either, val_func_vline, val_func_hline)

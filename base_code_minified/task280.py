@@ -1,17 +1,17 @@
-def p(g):
-	E,F=len(g),len(g[0])
-	for G in range(E):
-		for H in range(F):
-			if g[G][H]==2:
-				I=0
-				for(A,B)in((-1,0),(1,0),(0,-1),(0,1)):
-					C,D=G+A,H+B;J=0
-					while 0<=C<E and 0<=D<F and g[C][D]==0:J+=1;C+=A;D+=B
-					if J>I:I=J;N=A,B
-				A,B=N
-				for M in range(I+1):
-					C,D=G+A*M,H+B*M;g[C][D]=2
-					for(O,P)in((-B,A),(B,-A)):
-						K,L=C+O,D+P
-						if 0<=K<E and 0<=L<F and g[K][L]==0:g[K][L]=3
-	return g
+def p(A):
+	F,G=len(A),len(A[0])
+	for H in range(F):
+		for I in range(G):
+			if A[H][I]==2:
+				J=0
+				for(B,C)in((-1,0),(1,0),(0,-1),(0,1)):
+					D,E=H+B,I+C;K=0
+					while 0<=D<F and 0<=E<G and A[D][E]==0:K+=1;D+=B;E+=C
+					if K>J:J=K;O=B,C
+				B,C=O
+				for N in range(J+1):
+					D,E=H+B*N,I+C*N;A[D][E]=2
+					for(P,Q)in((-C,B),(C,-B)):
+						L,M=D+P,E+Q
+						if 0<=L<F and 0<=M<G and A[L][M]==0:A[L][M]=3
+	return A

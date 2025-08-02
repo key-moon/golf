@@ -68,7 +68,7 @@ def val_func_mostval_func_color(element):
     return max(set(values), key=values.count)
     
 
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def mval_func_apply(function, container):
@@ -186,9 +186,9 @@ def p(I):
     x23 = val_func_lbind(val_func_multiply, x5)
     x24 = val_func_apply(x23, x21)
     x25 = val_func_apply(x23, x22)
-    x26 = val_func_pval_func_apply(val_func_add, x24, x21)
-    x27 = val_func_pval_func_apply(val_func_add, x25, x22)
-    x28 = val_func_pval_func_apply(val_func_astuple, x26, x27)
+    x26 = pval_func_apply(val_func_add, x24, x21)
+    x27 = pval_func_apply(val_func_add, x25, x22)
+    x28 = pval_func_apply(val_func_astuple, x26, x27)
     x29 = val_func_lbind(val_func_shift, x11)
     x30 = mval_func_apply(x29, x28)
     O = val_func_underfill(I, x17, x30)

@@ -1,31 +1,29 @@
-def val_func_compose(outer,inner):return lambda x:outer(inner(x))
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_compose(A,B):return lambda C:A(B(C))
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_toindices(patch):
-	A=patch
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_mostcolor(element):A=element;B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
-def val_func_underfill(grid,value,patch):
-	A=grid;E,F=len(A),len(A[0]);G=val_func_mostcolor(A);B=list(list(A)for A in A)
-	for(C,D)in val_func_toindices(patch):
-		if 0<=C<E and 0<=D<F:
-			if B[C][D]==G:B[C][D]=value
-	return tuple(tuple(A)for A in B)
-def val_func_urcorner(patch):return tuple(map(lambda ix:{0:min,1:max}[ix[0]](ix[1]),enumerate(zip(*val_func_toindices(patch)))))
-def val_func_ofcolor(grid,value):return frozenset((A,C)for(A,B)in enumerate(grid)for(C,D)in enumerate(B)if D==value)
-def val_func_apply(function,container):A=container;return type(A)(function(A)for A in A)
-def val_func_fork(outer,a,b):return lambda x:outer(a(x),b(x))
-def val_func_power(function,n):
-	A=function
-	if n==1:return A
-	return val_func_compose(A,val_func_power(A,n-1))
-def val_func_product(a,b):return frozenset((B,A)for A in b for B in a)
-def val_func_astuple(a,b):return a,b
-def val_func_remove(value,container):A=container;return type(A)(A for A in A if A!=value)
-def val_func_last(container):return max(enumerate(container))[1]
-def val_func_first(container):return next(iter(container))
-def p(I):I=tuple(map(tuple,I));A=val_func_ofcolor(I,5);B=val_func_product(A,A);C=val_func_power(val_func_first,2);D=val_func_power(val_func_last,2);E=val_func_fork(val_func_astuple,C,D);F=val_func_apply(E,B);G=val_func_urcorner(A);H=val_func_remove(G,F);J=val_func_underfill(I,2,H);return[*map(list,J)]
+def val_func_mostcolor(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def val_func_underfill(A,B,C):
+	G,H=len(A),len(A[0]);I=val_func_mostcolor(A);D=list(list(A)for A in A)
+	for(E,F)in val_func_toindices(C):
+		if 0<=E<G and 0<=F<H:
+			if D[E][F]==I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def val_func_urcorner(A):return tuple(map(lambda B:{0:min,1:max}[B[0]](B[1]),enumerate(zip(*val_func_toindices(A)))))
+def val_func_ofcolor(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def val_func_apply(A,B):return type(B)(A(B)for B in B)
+def val_func_fork(A,B,C):return lambda D:A(B(D),C(D))
+def val_func_power(A,B):
+	if B==1:return A
+	return val_func_compose(A,val_func_power(A,B-1))
+def val_func_product(A,B):return frozenset((C,B)for B in B for C in A)
+def val_func_astuple(A,B):return A,B
+def val_func_remove(A,B):return type(B)(B for B in B if B!=A)
+def val_func_last(A):return max(enumerate(A))[1]
+def val_func_first(A):return next(iter(A))
+def p(A):A=tuple(map(tuple,A));B=val_func_ofcolor(A,5);C=val_func_product(B,B);D=val_func_power(val_func_first,2);E=val_func_power(val_func_last,2);F=val_func_fork(val_func_astuple,D,E);G=val_func_apply(F,C);H=val_func_urcorner(B);I=val_func_remove(H,G);J=val_func_underfill(A,2,I);return[*map(list,J)]

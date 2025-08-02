@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;D=len(A);F=sorted({A[B][C]for B in range(D)for C in range(D)if A[B][C]})
+def p(A):
+	D=len(A);F=sorted({A[B][C]for B in range(D)for C in range(D)if A[B][C]})
 	for E in F:
 		I=[(B,C)for B in range(D)for C in range(D)if A[B][C]==E];G,H=zip(*I);J,K=min(G),max(G);L,M=min(H),max(H)
 		if E==F[0]:

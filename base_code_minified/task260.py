@@ -1,8 +1,8 @@
-def p(g):
-	E=len(g);C=max({A for B in g for A in B if A},key=lambda x:sum(A.count(x)for A in g));A=[(B,E)for(B,D)in enumerate(g)for(E,A)in enumerate(D)if A and A!=C]
-	if not A:return g
-	F=min(A for(A,B)in A);G=max(A for(A,B)in A);H=min(A for(B,A)in A);I=max(A for(B,A)in A)
-	for B in range(E):
-		for J in range(E):g[B][J]=0
-	for D in range(G-F+1):B=F+D;g[B][H+D]=C;g[B][I-D]=C
-	return g
+def p(A):
+	F=len(A);D=max({A for B in A for A in B if A},key=lambda F:sum(A.count(F)for A in A));B=[(B,E)for(B,C)in enumerate(A)for(E,A)in enumerate(C)if A and A!=D]
+	if not B:return A
+	G=min(A for(A,B)in B);H=max(A for(A,B)in B);I=min(A for(B,A)in B);J=max(A for(B,A)in B)
+	for C in range(F):
+		for K in range(F):A[C][K]=0
+	for E in range(H-G+1):C=G+E;A[C][I+E]=D;A[C][J-E]=D
+	return A

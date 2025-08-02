@@ -1,14 +1,14 @@
-def p(g):
-	D=len(g);G=[]
-	for H in range(D):
-		for I in range(D):
-			if g[H][I]==8:
-				A=[(H,I)];g[H][I]=0
-				for(B,C)in A:
-					for(E,F)in((B+1,C),(B-1,C),(B,C+1),(B,C-1)):
-						if 0<=E<D and 0<=F<D and g[E][F]==8:g[E][F]=0;A.append((E,F))
-				G.append(A)
-	J=min(map(len,G))
-	for A in G:
-		for(B,C)in A:g[B][C]=1+(len(A)==J)
-	return g
+def p(A):
+	E=len(A);H=[]
+	for I in range(E):
+		for J in range(E):
+			if A[I][J]==8:
+				B=[(I,J)];A[I][J]=0
+				for(C,D)in B:
+					for(F,G)in((C+1,D),(C-1,D),(C,D+1),(C,D-1)):
+						if 0<=F<E and 0<=G<E and A[F][G]==8:A[F][G]=0;B.append((F,G))
+				H.append(B)
+	K=min(map(len,H))
+	for B in H:
+		for(C,D)in B:A[C][D]=1+(len(B)==K)
+	return A

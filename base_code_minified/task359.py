@@ -1,1 +1,1 @@
-def p(g):A=[max(set(A),key=A.count)for A in g];B=[max(set(A),key=A.count)for A in zip(*g)];return[B]*len(g)if len(set(B))<len(set(A))else[[A[B]]*len(g[0])for B in range(len(g))]
+def p(A):B=[max(set(A),key=A.count)for A in A];C=[max(set(A),key=A.count)for A in zip(*A)];return[C]*len(A)if len(set(C))<len(set(B))else[[B[C]]*len(A[0])for C in range(len(A))]

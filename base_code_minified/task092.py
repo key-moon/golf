@@ -1,14 +1,14 @@
-def p(g):
-	F={}
-	for(A,H)in enumerate(g):
-		for(B,C)in enumerate(H):
-			if C:F.setdefault(C,[]).append((A,B))
-	for(C,G)in F.items():
-		(A,B),(D,E)=G
-		if A==D:
-			for I in range(min(B,E),max(B,E)+1):g[A][I]=C
-	for(C,G)in F.items():
-		(A,B),(D,E)=G
+def p(A):
+	G={}
+	for(B,I)in enumerate(A):
+		for(C,D)in enumerate(I):
+			if D:G.setdefault(D,[]).append((B,C))
+	for(D,H)in G.items():
+		(B,C),(E,F)=H
 		if B==E:
-			for J in range(min(A,D),max(A,D)+1):g[J][B]=C
-	return g
+			for J in range(min(C,F),max(C,F)+1):A[B][J]=D
+	for(D,H)in G.items():
+		(B,C),(E,F)=H
+		if C==F:
+			for K in range(min(B,E),max(B,E)+1):A[K][C]=D
+	return A

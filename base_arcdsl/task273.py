@@ -7,11 +7,11 @@ def val_func_apply(function, container):
 def val_func_merge(containers):
     return type(containers)(e for c in containers for e in c)
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -163,7 +163,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
 def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
 def mval_func_apply(function, container):
@@ -184,7 +184,7 @@ def val_func_either(a, b):
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_ofcolor(I, 4)
-    x2 = val_func_prval_func_apply(val_func_connect, x1, x1)
+    x2 = prval_func_apply(val_func_connect, x1, x1)
     x3 = val_func_fork(val_func_either, val_func_vline, val_func_hline)
     x4 = val_func_mfilter(x2, x3)
     x5 = underval_func_fill(I, -1, x4)

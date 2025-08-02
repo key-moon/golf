@@ -1,20 +1,20 @@
-def p(g):
-	E={}
-	for(B,D)in enumerate(g):
-		for(C,A)in enumerate(D):
-			if A:E[A]=E.get(A,0)+1
-	K=max(E,key=E.get);F=G=99;H=I=0
-	for(B,D)in enumerate(g):
-		for(C,A)in enumerate(D):
-			if A==K:
-				if B<F:F=B
-				if B>H:H=B
+def p(A):
+	F={}
+	for(C,E)in enumerate(A):
+		for(D,B)in enumerate(E):
+			if B:F[B]=F.get(B,0)+1
+	L=max(F,key=F.get);G=H=99;I=J=0
+	for(C,E)in enumerate(A):
+		for(D,B)in enumerate(E):
+			if B==L:
 				if C<G:G=C
 				if C>I:I=C
-	L=[]
-	for(B,D)in enumerate(g):
-		for(C,A)in enumerate(D):
-			if A and A!=K:L+=B,C,A;g[B][C]=0
-	J=iter(L)
-	for(B,C,A)in zip(J,J,J):M=H+1 if B==F+1 else F-1;N=I+1 if C==G+1 else G-1;g[M][N]=A
-	return g
+				if D<H:H=D
+				if D>J:J=D
+	M=[]
+	for(C,E)in enumerate(A):
+		for(D,B)in enumerate(E):
+			if B and B!=L:M+=C,D,B;A[C][D]=0
+	K=iter(M)
+	for(C,D,B)in zip(K,K,K):N=I+1 if C==G+1 else G-1;O=J+1 if D==H+1 else H-1;A[N][O]=B
+	return A

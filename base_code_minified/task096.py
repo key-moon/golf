@@ -1,32 +1,32 @@
-def p(g):
-	Q,R=len(g),len(g[0]);M={}
-	for c in g:
-		for A in c:M[A]=M.get(A,0)+1
-	F=max(M,key=M.get);N=[[0]*R for A in range(Q)];G=[]
-	for C in range(Q):
-		for E in range(R):
-			if g[C][E]!=F and not N[C][E]:
-				X=g[C][E];S=[(C,E)];N[C][E]=1;Y=[];O,T,P,U=C,C,E,E
-				while S:
-					B,A=S.pop();Y.append((B,A))
-					if B<O:O=B
-					if B>T:T=B
-					if A<P:P=A
-					if A>U:U=A
-					for(d,e)in((1,0),(-1,0),(0,1),(0,-1)):
-						H,I=B+d,A+e
-						if 0<=H<Q and 0<=I<R and not N[H][I]and g[H][I]==X:N[H][I]=1;S.append((H,I))
-				J=T-O+1;K=U-P+1;D=J if J>K else K;V=[[F]*K for A in range(J)]
-				for(B,A)in Y:V[B-O][A-P]=X
-				f=D-J;h=D-K;i=f//2;j=h//2;L=[[F]*D for A in range(D)]
-				for B in range(J):
-					for A in range(K):
-						if V[B][A]!=F:L[i+B][j+A]=V[B][A]
-				G.append((D,L))
-	G.sort(key=lambda x:x[0]);Z=len(G)-1;W=G[0][0]+2*Z;k=W//2;a=[[F]*W for A in range(W)]
-	for(C,(D,L))in enumerate(G):
-		l=Z-C;b=k-D//2-l
-		for B in range(D):
-			for A in range(D):
-				if L[B][A]!=F:a[b+B][b+A]=L[B][A]
-	return a
+def p(A):
+	R,S=len(A),len(A[0]);N={}
+	for d in A:
+		for B in d:N[B]=N.get(B,0)+1
+	G=max(N,key=N.get);O=[[0]*S for A in range(R)];H=[]
+	for D in range(R):
+		for F in range(S):
+			if A[D][F]!=G and not O[D][F]:
+				Y=A[D][F];T=[(D,F)];O[D][F]=1;Z=[];P,U,Q,V=D,D,F,F
+				while T:
+					C,B=T.pop();Z.append((C,B))
+					if C<P:P=C
+					if C>U:U=C
+					if B<Q:Q=B
+					if B>V:V=B
+					for(e,f)in((1,0),(-1,0),(0,1),(0,-1)):
+						I,J=C+e,B+f
+						if 0<=I<R and 0<=J<S and not O[I][J]and A[I][J]==Y:O[I][J]=1;T.append((I,J))
+				K=U-P+1;L=V-Q+1;E=K if K>L else L;W=[[G]*L for A in range(K)]
+				for(C,B)in Z:W[C-P][B-Q]=Y
+				g=E-K;h=E-L;i=g//2;j=h//2;M=[[G]*E for A in range(E)]
+				for C in range(K):
+					for B in range(L):
+						if W[C][B]!=G:M[i+C][j+B]=W[C][B]
+				H.append((E,M))
+	H.sort(key=lambda F:F[0]);a=len(H)-1;X=H[0][0]+2*a;k=X//2;b=[[G]*X for A in range(X)]
+	for(D,(E,M))in enumerate(H):
+		l=a-D;c=k-E//2-l
+		for C in range(E):
+			for B in range(E):
+				if M[C][B]!=G:b[c+C][c+B]=M[C][B]
+	return b

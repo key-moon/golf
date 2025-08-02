@@ -1,1 +1,1 @@
-def p(g):A=len(g)//2;return[[C*(B==A)for(B,C)in enumerate(B)]for B in g]
+def p(A):B=len(A)//2;return[[C*(A==B)for(A,C)in enumerate(A)]for A in A]

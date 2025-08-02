@@ -1,10 +1,10 @@
-def p(g):
-	for(B,D)in enumerate(g[-1]):
-		if D==2:
-			try:C=next(A for(A,C)in enumerate(g)if C[B]==5)
+def p(A):
+	for(C,E)in enumerate(A[-1]):
+		if E==2:
+			try:D=next(A for(A,B)in enumerate(A)if B[C]==5)
 			except StopIteration:
-				for A in g:A[B]=2
+				for B in A:B[C]=2
 			else:
-				for A in g[:C+2]:A[B+1]=2
-				for A in g[C+1:]:A[B]=2
-	return g
+				for B in A[:D+2]:B[C+1]=2
+				for B in A[D+1:]:B[C]=2
+	return A

@@ -49,7 +49,7 @@ def val_func_leastcolor(element):
     values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
     return min(set(values), key=values.count)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def p(I):
@@ -58,6 +58,6 @@ def p(I):
     x2 = val_func_hconcat(I, I)
     x3 = val_func_vconcat(x2, x2)
     x4 = val_func_ofcolor(x3, x1)
-    x5 = val_func_mval_func_apply(val_func_ineighbors, x4)
+    x5 = mval_func_apply(val_func_ineighbors, x4)
     O = val_func_underfill(x3, 8, x5)
     return [*map(list,O)]

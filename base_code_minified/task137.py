@@ -1,14 +1,14 @@
-def p(g):
-	B=len(g);A=[]
-	for(H,I)in enumerate(g):
-		for(J,N)in enumerate(I):
-			if N:A.append((H,J));F=N
-	C=sorted({A for(A,B)in A});D=sorted({A for(B,A)in A});G=max(C[1]-C[0],C[-1]-C[-2],D[1]-D[0],D[-1]-D[-2]);Q=C[0]%G;R=D[0]%G;S=range(Q,B,G);T=range(R,B,G);E=[[0]*B for A in range(B)]
-	for I in S:E[I]=[F]*B
-	for H in range(B):
-		for J in T:E[H][J]=F
-	A=sorted(A)
-	for((O,K),(L,P))in zip(A,A[1:]):
-		for M in range(min(O,L),max(O,L)+1):E[M][K]=F
-		for M in range(min(K,P),max(K,P)+1):E[L][M]=F
-	return E
+def p(A):
+	C=len(A);B=[]
+	for(I,J)in enumerate(A):
+		for(K,O)in enumerate(J):
+			if O:B.append((I,K));G=O
+	D=sorted({A for(A,B)in B});E=sorted({A for(B,A)in B});H=max(D[1]-D[0],D[-1]-D[-2],E[1]-E[0],E[-1]-E[-2]);R=D[0]%H;S=E[0]%H;T=range(R,C,H);U=range(S,C,H);F=[[0]*C for A in range(C)]
+	for J in T:F[J]=[G]*C
+	for I in range(C):
+		for K in U:F[I][K]=G
+	B=sorted(B)
+	for((P,L),(M,Q))in zip(B,B[1:]):
+		for N in range(min(P,M),max(P,M)+1):F[N][L]=G
+		for N in range(min(L,Q),max(L,Q)+1):F[M][N]=G
+	return F

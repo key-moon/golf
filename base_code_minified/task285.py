@@ -1,1 +1,1 @@
-def p(g):return[g[A]for A in range(len(g))]
+def p(A):return[A[B]for B in range(len(A))]

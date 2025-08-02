@@ -1,5 +1,5 @@
-def p(g):
-	for(C,A)in zip(g,g[1:]):
-		for(B,D)in enumerate(A):
-			if not D and C[B]:A[B]=4
-	return g
+def p(A):
+	for(D,B)in zip(A,A[1:]):
+		for(C,E)in enumerate(B):
+			if not E and D[C]:B[C]=4
+	return A

@@ -1,10 +1,10 @@
-def p(g):
-	B={}
-	for(C,D)in enumerate(g):
-		for(E,A)in enumerate(D):
-			if A:B[A]=min(B.get(A,len(g)),C)
-	G=B[1];F=[[0]*len(A)for A in g]
-	for(C,D)in enumerate(g):
-		for(E,A)in enumerate(D):
-			if A:F[C-B[A]+G][E]=A
-	return F
+def p(A):
+	C={}
+	for(D,E)in enumerate(A):
+		for(F,B)in enumerate(E):
+			if B:C[B]=min(C.get(B,len(A)),D)
+	H=C[1];G=[[0]*len(A)for A in A]
+	for(D,E)in enumerate(A):
+		for(F,B)in enumerate(E):
+			if B:G[D-C[B]+H][F]=B
+	return G

@@ -1,39 +1,39 @@
-def p(g):
-	N,L=len(g),len(g[0]);M=[[0]*L for A in g];T=[(1,0),(-1,0),(0,1),(0,-1)]
-	def O(i,j,c):
-		M[i][j]=1;c.append((i,j))
-		for(C,D)in T:
-			A,B=i+C,j+D
-			if 0<=A<N and 0<=B<L and not M[A][B]and g[A][B]:O(A,B,c)
-	A=[]
-	for D in range(N):
-		for E in range(L):
-			if g[D][E]and not M[D][E]:
-				C=[];O(D,E,C)
-				if sum(g[A][B]==2 for(A,B)in C)>1:
-					F=[A for(A,B)in C];J=[A for(B,A)in C];G,S,V,W=min(F),min(J),max(F),max(J);A=[A[K:K+X]for A in g[G:G+Y]]
-					for(H,I)in C:g[H][I]=0
-					Z=1;break
-		if A:break
-	M=[[0]*L for A in g]
-	for D in range(N):
-		for E in range(L):
-			if g[D][E]==2 and not M[D][E]:
-				C=[];O(D,E,C);P=[(A,B)for(A,B)in C if g[A][B]==2]
-				if len(P)<2:continue
-				F=[A for(A,B)in P];J=[A for(B,A)in P]
-				if len(set(F))==1:
-					G=F[0];K,U=min(J),max(J);B=(U-K)//(len(A[0])-1)
-					for H in range(len(A)):
-						for I in range(len(A[0])):
-							if A[H][I]==1:
-								for Q in range(B):
-									for R in range(B):g[G+H*B+Q][K+I*B+R]=1
+def p(A):
+	S,M=len(A),len(A[0]);O=[[0]*M for A in A];W=[(1,0),(-1,0),(0,1),(0,-1)]
+	def P(A,B,C):
+		vis[A][B]=1;C.append((A,B))
+		for(F,G)in N:
+			D,E=A+F,B+G
+			if 0<=D<h and 0<=E<w and not vis[D][E]and g[D][E]:P(D,E,C)
+	B=[]
+	for E in range(S):
+		for F in range(M):
+			if A[E][F]and not O[E][F]:
+				D=[];P(E,F,D)
+				if sum(A[B][C]==2 for(B,C)in D)>1:
+					G=[A for(A,B)in D];K=[A for(B,A)in D];H,T,X,Y=min(G),min(K),max(G),max(K);B=[A[L:L+A]for A in A[H:H+U]]
+					for(I,J)in D:A[I][J]=0
+					U=1;break
+		if B:break
+	O=[[0]*M for A in A]
+	for E in range(S):
+		for F in range(M):
+			if A[E][F]==2 and not O[E][F]:
+				D=[];P(E,F,D);Q=[(B,C)for(B,C)in D if A[B][C]==2]
+				if len(Q)<2:continue
+				G=[A for(A,B)in Q];K=[A for(B,A)in Q]
+				if len(set(G))==1:
+					H=G[0];L,V=min(K),max(K);C=(V-L)//(len(B[0])-1)
+					for I in range(len(B)):
+						for J in range(len(B[0])):
+							if B[I][J]==1:
+								for N in range(C):
+									for R in range(C):A[H+I*C+N][L+J*C+R]=1
 				else:
-					K=J[0];G,S=min(F),max(F);B=(S-G)//(len(A)-1)
-					for H in range(len(A)):
-						for I in range(len(A[0])):
-							if A[H][I]==1:
-								for Q in range(B):
-									for R in range(B):g[G+H*B+Q][K+I*B+R]=1
-	return g
+					L=K[0];H,T=min(G),max(G);C=(T-H)//(len(B)-1)
+					for I in range(len(B)):
+						for J in range(len(B[0])):
+							if B[I][J]==1:
+								for N in range(C):
+									for R in range(C):A[H+I*C+N][L+J*C+R]=1
+	return A

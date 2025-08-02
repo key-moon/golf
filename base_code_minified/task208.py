@@ -1,1 +1,1 @@
-def p(g):return g
+def p(A):return A

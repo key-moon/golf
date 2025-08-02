@@ -1,5 +1,4 @@
-def p(val_g):
-	A=val_g
+def p(A):
 	for C in range(len(A)):
 		for D in range(len(A[0])):
 			if not A[C][D]:

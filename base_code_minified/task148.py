@@ -1,9 +1,9 @@
-def p(g):
-	D,E=[A for(A,B)in enumerate(zip(*g))if 2 in B];F=[A for(A,B)in enumerate(g)if B[D]==2][0];G=[A for(A,B)in enumerate(g)if B[E]==2][0]
-	for(H,A)in enumerate(g):
-		for(B,I)in enumerate(A):
-			if I==8:
-				for C in range(D+1,B):A[C]=8
-				A[B]=4;J=G+H-F
-				for C in range(B+1,E):g[J][C]=8
-	return g
+def p(A):
+	E,F=[A for(A,B)in enumerate(zip(*A))if 2 in B];G=[A for(A,B)in enumerate(A)if B[E]==2][0];H=[A for(A,B)in enumerate(A)if B[F]==2][0]
+	for(I,B)in enumerate(A):
+		for(C,J)in enumerate(B):
+			if J==8:
+				for D in range(E+1,C):B[D]=8
+				B[C]=4;K=H+I-G
+				for D in range(C+1,F):A[K][D]=8
+	return A

@@ -1,8 +1,8 @@
-def p(g):
-	for(A,E)in enumerate(g):
-		for(B,F)in enumerate(E):
-			if F==2:
-				for C in g[max(A-1,0):A+2]:
-					for D in range(max(B-1,0),B+2):
-						if not C[D]:C[D]=1
-	return g
+def p(A):
+	for(B,F)in enumerate(A):
+		for(C,G)in enumerate(F):
+			if G==2:
+				for D in A[max(B-1,0):B+2]:
+					for E in range(max(C-1,0),C+2):
+						if not D[E]:D[E]=1
+	return A

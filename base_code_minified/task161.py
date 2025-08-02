@@ -1,13 +1,13 @@
-def p(g):
-	C={}
-	for(D,M)in enumerate(g):
-		for(N,H)in enumerate(M):
-			if H:C.setdefault(H,[]).append((D,N))
-	A=next(A for(A,B)in C.items()if len(B)==4);I,J=zip(*C[A]);E,K=set(I),set(J);L,F=len(g),len(g[0]);B=[[0]*F for A in range(L)]
-	if len(E)==2:
-		for G in E:B[G]=[A]*F
-	else:G=max(E,key=I.count);B[G]=[A]*F
-	if len(K)>2:
-		O=max(K,key=J.count)
-		for D in range(L):B[D][O]=A
-	return B
+def p(A):
+	D={}
+	for(E,N)in enumerate(A):
+		for(O,I)in enumerate(N):
+			if I:D.setdefault(I,[]).append((E,O))
+	B=next(A for(A,B)in D.items()if len(B)==4);J,K=zip(*D[B]);F,L=set(J),set(K);M,G=len(A),len(A[0]);C=[[0]*G for A in range(M)]
+	if len(F)==2:
+		for H in F:C[H]=[B]*G
+	else:H=max(F,key=J.count);C[H]=[B]*G
+	if len(L)>2:
+		P=max(L,key=K.count)
+		for E in range(M):C[E][P]=B
+	return C

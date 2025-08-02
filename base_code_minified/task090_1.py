@@ -1,10 +1,10 @@
-def p(g):
-	E,F=len(g),len(g[0]);G=0;H=I=J=K=0
-	for A in range(E):
-		for C in range(A+1,E+1):
-			for B in range(F):
-				for D in range(B+1,F+1):
-					if(C-A)*(D-B)>G and all(not g[A][C]for A in range(A,C)for C in range(B,D)):G=(C-A)*(D-B);H=A;I=C;J=B;K=D
-	for L in range(H,I):
-		for M in range(J,K):g[L][M]=6
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);H=0;I=J=K=L=0
+	for B in range(F):
+		for D in range(B+1,F+1):
+			for C in range(G):
+				for E in range(C+1,G+1):
+					if(D-B)*(E-C)>H and all(not A[B][D]for B in range(B,D)for D in range(C,E)):H=(D-B)*(E-C);I=B;J=D;K=C;L=E
+	for M in range(I,J):
+		for N in range(K,L):A[M][N]=6
+	return A

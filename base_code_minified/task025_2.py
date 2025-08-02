@@ -1,14 +1,14 @@
-def p(g):
-	C,D=len(g),len(g[0]);I=[(A,g[A][0])for A in range(C)if g[A][0]and g[A].count(g[A][0])==D];J=[(A,g[0][A])for A in range(D)if g[0][A]and sum(g[B][A]==g[0][A]for B in range(C))==C];E=[[0]*D for A in range(C)]
-	for(B,A)in I:E[B]=[A]*D
-	for(F,A)in J:
-		for B in range(C):E[B][F]=A
-	for B in range(C):
-		for F in range(D):
-			G=g[B][F]
-			if not G:continue
-			for(H,A)in I:
-				if G==A and B!=H:E[H+(-1 if B<H else 1)][F]=A
-			for(K,A)in J:
-				if G==A and F!=K:E[B][K+1]=A
-	return E
+def p(A):
+	D,E=len(A),len(A[0]);J=[(B,A[B][0])for B in range(D)if A[B][0]and A[B].count(A[B][0])==E];K=[(B,A[0][B])for B in range(E)if A[0][B]and sum(A[C][B]==A[0][B]for C in range(D))==D];F=[[0]*E for A in range(D)]
+	for(C,B)in J:F[C]=[B]*E
+	for(G,B)in K:
+		for C in range(D):F[C][G]=B
+	for C in range(D):
+		for G in range(E):
+			H=A[C][G]
+			if not H:continue
+			for(I,B)in J:
+				if H==B and C!=I:F[I+(-1 if C<I else 1)][G]=B
+			for(L,B)in K:
+				if H==B and G!=L:F[C][L+1]=B
+	return F

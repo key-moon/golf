@@ -1,1 +1,1 @@
-def p(g):return[[g[A][B]or g[A][B+5]or g[A+5][B]or g[A+5][B+5]for B in range(4)]for A in range(4)]
+def p(A):return[[A[B][C]or A[B][C+5]or A[B+5][C]or A[B+5][C+5]for C in range(4)]for B in range(4)]

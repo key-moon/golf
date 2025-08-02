@@ -89,12 +89,12 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_objects(I, True, False, True)
-    x2 = val_func_mval_func_apply(val_func_corners, x1)
+    x2 = mval_func_apply(val_func_corners, x1)
     O = val_func_underfill(I, 1, x2)
     return [*map(list,O)]

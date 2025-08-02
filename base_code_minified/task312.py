@@ -1,5 +1,5 @@
-def p(g):
-	for A in g:
-		for(B,C)in enumerate(A):
-			if C==5:A[B]=A[0]
-	return g
+def p(A):
+	for B in A:
+		for(C,D)in enumerate(B):
+			if D==5:B[C]=B[0]
+	return A

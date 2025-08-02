@@ -1,1 +1,1 @@
-def p(g):return[[3*((A-B)%3==1)for(A,B)in zip(A,B)]for(A,B)in zip(g,g[5:])]
+def p(A):return[[3*((A-B)%3==1)for(A,B)in zip(A,B)]for(A,B)in zip(A,A[5:])]

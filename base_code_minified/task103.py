@@ -1,1 +1,1 @@
-def p(g):return[[1+6*(g!=g[::-1]and g!=[A[::-1]for A in g])]]
+def p(A):return[[1+6*(A!=A[::-1]and A!=[A[::-1]for A in A])]]

@@ -1,19 +1,19 @@
-def p(g):
-	I,J=len(g),len(g[0]);F=set();M=[]
-	for A in range(I):
-		for B in range(J):
-			if g[A][B]==9 and(A,B)not in F:
-				C=[(A,B)];F.add((A,B))
-				for(R,S)in C:
-					for(T,U)in((1,0),(-1,0),(0,1),(0,-1)):
-						D,E=R+T,S+U
-						if 0<=D<I and 0<=E<J and g[D][E]==9 and(D,E)not in F:F.add((D,E));C.append((D,E))
-				M.append(C)
-	C=max(M,key=len);N=[A for(A,B)in C];O=[A for(B,A)in C];K,L=min(N),min(O);G=max(N)-K+1;H=max(O)-L+1
-	for A in range(I-G+1):
-		for B in range(J-H+1):
-			if(A,B)!=(K,L)and any(g[A+C][B+D]for C in range(G)for D in range(H))and all(g[A+C][B+D]!=9 for C in range(G)for D in range(H)):
-				for P in range(G):
-					for Q in range(H):g[K+P][L+Q]=g[A+P][B+Q]
-				return g
-	return g
+def p(A):
+	J,K=len(A),len(A[0]);G=set();N=[]
+	for B in range(J):
+		for C in range(K):
+			if A[B][C]==9 and(B,C)not in G:
+				D=[(B,C)];G.add((B,C))
+				for(S,T)in D:
+					for(U,V)in((1,0),(-1,0),(0,1),(0,-1)):
+						E,F=S+U,T+V
+						if 0<=E<J and 0<=F<K and A[E][F]==9 and(E,F)not in G:G.add((E,F));D.append((E,F))
+				N.append(D)
+	D=max(N,key=len);O=[A for(A,B)in D];P=[A for(B,A)in D];L,M=min(O),min(P);H=max(O)-L+1;I=max(P)-M+1
+	for B in range(J-H+1):
+		for C in range(K-I+1):
+			if(B,C)!=(L,M)and any(A[B+D][C+E]for D in range(H)for E in range(I))and all(A[B+D][C+E]!=9 for D in range(H)for E in range(I)):
+				for Q in range(H):
+					for R in range(I):A[L+Q][M+R]=A[B+Q][C+R]
+				return A
+	return A

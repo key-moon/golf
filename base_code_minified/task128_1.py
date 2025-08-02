@@ -1,16 +1,16 @@
-def p(g):
-	E=len(g);G={}
-	for(R,S)in enumerate(g):
-		for(T,H)in enumerate(S):
-			if H:G.setdefault(H,[]).append((R,T))
-	B=[]
-	for(A,I)in G.items():J=[A for(A,B)in I];K=[A for(B,A)in I];B.append((A,min(J),max(J),min(K),max(K)))
-	B.sort(key=lambda b:b[0]);U=sum(A[2]-A[1]+1 for A in B);L=0;M={}
-	for(A,C,F,D,N)in reversed(B):M[A]=E-U+L;L+=F-C+1
-	O=[[0]*E for A in range(E)]
-	for(A,C,F,D,N)in B:
-		V=F-C+1;W=N-D+1;X=M[A]
-		for P in range(V):
-			for Q in range(W):
-				if g[C+P][D+Q]==A:O[X+P][D+Q]=A
-	return O
+def p(A):
+	F=len(A);H={}
+	for(S,T)in enumerate(A):
+		for(U,I)in enumerate(T):
+			if I:H.setdefault(I,[]).append((S,U))
+	C=[]
+	for(B,J)in H.items():K=[A for(A,B)in J];L=[A for(B,A)in J];C.append((B,min(K),max(K),min(L),max(L)))
+	C.sort(key=lambda N:N[0]);V=sum(A[2]-A[1]+1 for A in C);M=0;N={}
+	for(B,D,G,E,O)in reversed(C):N[B]=F-V+M;M+=G-D+1
+	P=[[0]*F for A in range(F)]
+	for(B,D,G,E,O)in C:
+		W=G-D+1;X=O-E+1;Y=N[B]
+		for Q in range(W):
+			for R in range(X):
+				if A[D+Q][E+R]==B:P[Y+Q][E+R]=B
+	return P

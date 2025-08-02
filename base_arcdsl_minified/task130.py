@@ -1,13 +1,13 @@
-def val_func_replace(grid,val_func_replacee,val_func_replacer):return tuple(tuple(val_func_replacer if A==val_func_replacee else A for A in A)for A in grid)
-def val_func_downscale(grid,factor):
-	G=factor;C=grid;D,I=len(C),len(C[0]);A=tuple()
-	for B in range(D):
-		E=tuple()
+def val_func_replace(A,B,C):return tuple(tuple(C if A==B else A for A in A)for A in A)
+def val_func_downscale(A,B):
+	E,I=len(A),len(A[0]);C=tuple()
+	for D in range(E):
+		F=tuple()
 		for H in range(I):
-			if H%G==0:E=E+(C[B][H],)
-		A=A+(E,)
-	D=len(A);F=tuple()
-	for B in range(D):
-		if B%G==0:F=F+(A[B],)
-	return F
-def p(I):I=tuple(map(tuple,I));A=val_func_replace(I,5,0);B=val_func_downscale(A,3);return[*map(list,B)]
+			if H%B==0:F=F+(A[D][H],)
+		C=C+(F,)
+	E=len(C);G=tuple()
+	for D in range(E):
+		if D%B==0:G=G+(C[D],)
+	return G
+def p(A):A=tuple(map(tuple,A));B=val_func_replace(A,5,0);C=val_func_downscale(B,3);return[*map(list,C)]

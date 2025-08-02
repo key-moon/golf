@@ -1,10 +1,10 @@
-def p(g):
-	D=[A for(A,B)in enumerate(g)for C in B if C==8];E=[B for A in g for(B,C)in enumerate(A)if C==8];F,G=min(D),max(D);H,I=min(E),max(E)
-	for(B,J)in enumerate(g):
-		for(C,A)in enumerate(J):
-			if A%8:
-				if C<H:g[B][H]=A
-				elif C>I:g[B][I]=A
-				elif B<F:g[F][C]=A
-				elif B>G:g[G][C]=A
-	return g
+def p(A):
+	E=[A for(A,B)in enumerate(A)for C in B if C==8];F=[B for A in A for(B,C)in enumerate(A)if C==8];G,H=min(E),max(E);I,J=min(F),max(F)
+	for(C,K)in enumerate(A):
+		for(D,B)in enumerate(K):
+			if B%8:
+				if D<I:A[C][I]=B
+				elif D>J:A[C][J]=B
+				elif C<G:A[G][D]=B
+				elif C>H:A[H][D]=B
+	return A

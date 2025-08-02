@@ -1,20 +1,20 @@
-def p(g):
-	L,J=len(g),len(g[0]);F=[[0]*J for A in g];M={}
-	for G in range(L):
-		for H in range(J):
-			if g[G][H]and not F[G][H]:
-				K=[(G,H)];F[G][H]=1;A=[]
-				while K:
-					N,O=K.pop();A.append((N,O))
-					for(T,U)in((1,0),(-1,0),(0,1),(0,-1)):
-						D,E=N+T,O+U
-						if 0<=D<L and 0<=E<J and g[D][E]and not F[D][E]:F[D][E]=1;K.append((D,E))
-				B=min(A for(A,B)in A);C=min(A for(B,A)in A);P=tuple(sorted((A-B,D-C)for(A,D)in A));M.setdefault(P,[]).append((B,C,A))
-	for(P,Q)in M.items():
-		for(B,C,A)in Q:
-			if len({g[A][B]for(A,B)in A})>1:I=B,C,A;break
-		V={(A-I[0],B-I[1]):g[A][B]for(A,B)in I[2]}
-		for(B,C,A)in Q:
-			if A!=I[2]:
-				for(R,S)in A:g[R][S]=V[R-B,S-C]
-	return g
+def p(A):
+	M,K=len(A),len(A[0]);G=[[0]*K for A in A];N={}
+	for H in range(M):
+		for I in range(K):
+			if A[H][I]and not G[H][I]:
+				L=[(H,I)];G[H][I]=1;B=[]
+				while L:
+					O,P=L.pop();B.append((O,P))
+					for(U,V)in((1,0),(-1,0),(0,1),(0,-1)):
+						E,F=O+U,P+V
+						if 0<=E<M and 0<=F<K and A[E][F]and not G[E][F]:G[E][F]=1;L.append((E,F))
+				C=min(A for(A,B)in B);D=min(A for(B,A)in B);Q=tuple(sorted((A-C,B-D)for(A,B)in B));N.setdefault(Q,[]).append((C,D,B))
+	for(Q,R)in N.items():
+		for(C,D,B)in R:
+			if len({A[B][C]for(B,C)in B})>1:J=C,D,B;break
+		W={(B-J[0],C-J[1]):A[B][C]for(B,C)in J[2]}
+		for(C,D,B)in R:
+			if B!=J[2]:
+				for(S,T)in B:A[S][T]=W[S-C,T-D]
+	return A

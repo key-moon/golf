@@ -1,12 +1,12 @@
-def p(g):
-	E=len(g);C=0
-	for(A,G)in enumerate(g):
-		for(B,H)in enumerate(G):
-			if H and A+B+1>C:C=A+B+1
-	D=E*C;F=[[0]*D for A in range(D)]
-	for A in range(D):
-		I,J=divmod(A,E)
-		for B in range(D):
-			K,L=divmod(B,E)
-			if I+K<C:F[A][B]=g[J][L]
-	return F
+def p(A):
+	F=len(A);D=0
+	for(B,H)in enumerate(A):
+		for(C,I)in enumerate(H):
+			if I and B+C+1>D:D=B+C+1
+	E=F*D;G=[[0]*E for A in range(E)]
+	for B in range(E):
+		J,K=divmod(B,F)
+		for C in range(E):
+			L,M=divmod(C,F)
+			if J+L<D:G[B][C]=A[K][M]
+	return G

@@ -1,1 +1,1 @@
-def p(g):B=len(g);A=sum(g[-1][A]!=g[-1][A-1]for A in range(1,B))+2;return[[g[C//A][B//A]for B in range(B*A)]for C in range(B*A)]
+def p(A):C=len(A);B=sum(A[-1][B]!=A[-1][B-1]for B in range(1,C))+2;return[[A[D//B][C//B]for C in range(C*B)]for D in range(C*B)]

@@ -1,11 +1,11 @@
-def p(g):
-	D={}
-	for(B,H)in enumerate(g):
-		for(C,E)in enumerate(H):
-			if E:
-				A=D.get(E)
-				if A:A[:4]=[min(A[0],B),min(A[1],C),max(A[2],B),max(A[3],C)];A[4]+=1
-				else:D[E]=[B,C,B,C,1]
-	for(F,G)in D.items():
-		if G[4]==F:I,J,K,L,M=G;break
-	return[[F if g[A][B]==F else 0 for B in range(J,L+1)]for A in range(I,K+1)]
+def p(A):
+	E={}
+	for(C,I)in enumerate(A):
+		for(D,F)in enumerate(I):
+			if F:
+				B=E.get(F)
+				if B:B[:4]=[min(B[0],C),min(B[1],D),max(B[2],C),max(B[3],D)];B[4]+=1
+				else:E[F]=[C,D,C,D,1]
+	for(G,H)in E.items():
+		if H[4]==G:J,K,L,M,N=H;break
+	return[[G if A[B][C]==G else 0 for C in range(K,M+1)]for B in range(J,L+1)]

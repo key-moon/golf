@@ -1,4 +1,4 @@
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def val_func_merge(containers):
@@ -13,11 +13,11 @@ def val_func_leftmost(patch):
 def val_func_uppermost(patch):
     return min(i for i, j in val_func_toindices(patch))
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -164,11 +164,11 @@ def val_func_mostval_func_color(element):
     return max(set(values), key=values.count)
     
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
-def val_func_mval_func_pval_func_apply(function, a, b):
-    return val_func_merge(val_func_pval_func_apply(function, a, b))
+def mpval_func_apply(function, a, b):
+    return val_func_merge(pval_func_apply(function, a, b))
 
 def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
@@ -275,7 +275,7 @@ def p(I):
     x5 = val_func_lbind(val_func_val_func_colorfilter, x3)
     x6 = val_func_compose(x5, val_func_color)
     x7 = val_func_compose(val_func_double, x4)
-    x8 = val_func_lbind(val_func_prval_func_apply, val_func_manhattan)
+    x8 = val_func_lbind(prval_func_apply, val_func_manhattan)
     x9 = val_func_fork(x8, val_func_identity, val_func_identity)
     x10 = val_func_lbind(val_func_remove, 0)
     x11 = val_func_compose(x10, x9)
@@ -303,7 +303,7 @@ def p(I):
     x33 = val_func_apply(val_func_normalize, x25)
     x34 = val_func_interval(0, x30, 1)
     x35 = val_func_pair(x34, x34)
-    x36 = val_func_mval_func_pval_func_apply(val_func_shift, x33, x35)
+    x36 = mpval_func_apply(val_func_shift, x33, x35)
     x37 = val_func_astuple(x32, x32)
     x38 = val_func_canvas(x1, x37)
     x39 = val_func_paint(x38, x36)

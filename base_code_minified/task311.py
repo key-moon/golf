@@ -1,1 +1,1 @@
-def p(g):return[A+A[::-1]for A in g]
+def p(A):return[A+A[::-1]for A in A]

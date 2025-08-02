@@ -1,52 +1,47 @@
-def val_func_lowermost(patch):return max(A for(A,B)in val_func_toindices(patch))
-def val_func_uppermost(patch):return min(A for(A,B)in val_func_toindices(patch))
-def val_func_rightmost(patch):return max(A for(B,A)in val_func_toindices(patch))
-def val_func_leftmost(patch):return min(A for(B,A)in val_func_toindices(patch))
-def val_func_width(piece):
-	A=piece
+def val_func_lowermost(A):return max(A for(A,B)in val_func_toindices(A))
+def val_func_uppermost(A):return min(A for(A,B)in val_func_toindices(A))
+def val_func_rightmost(A):return max(A for(B,A)in val_func_toindices(A))
+def val_func_leftmost(A):return min(A for(B,A)in val_func_toindices(A))
+def val_func_width(A):
 	if len(A)==0:return 0
 	if isinstance(A,tuple):return len(A[0])
 	return val_func_rightmost(A)-val_func_leftmost(A)+1
-def val_func_height(piece):
-	A=piece
+def val_func_height(A):
 	if len(A)==0:return 0
 	if isinstance(A,tuple):return len(A)
 	return val_func_lowermost(A)-val_func_uppermost(A)+1
-def val_func_palette(element):
-	A=element
+def val_func_palette(A):
 	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
 	return frozenset({A for(A,B)in A})
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_toindices(patch):
-	A=patch
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_ulcorner(patch):return tuple(map(min,zip(*val_func_toindices(patch))))
-def val_func_crop(grid,start,dims):A=start;return tuple(B[A[1]:A[1]+dims[1]]for B in grid[A[0]:A[0]+dims[0]])
-def val_func_hsplit(grid,n):A=grid;D,B=len(A),len(A[0])//n;E=len(A[0])%n!=0;return tuple(val_func_crop(A,(0,B*C+C*E),(D,B))for C in range(n))
-def val_func_dmirror(piece):
-	A=piece
+def val_func_ulcorner(A):return tuple(map(min,zip(*val_func_toindices(A))))
+def val_func_crop(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def val_func_hsplit(A,B):D,C=len(A),len(A[0])//B;E=len(A[0])%B!=0;return tuple(val_func_crop(A,(0,C*B+B*E),(D,C))for B in range(B))
+def val_func_dmirror(A):
 	if isinstance(A,tuple):return tuple(zip(*A))
 	B,C=val_func_ulcorner(A)
 	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(E-C+B,D-B+C))for(A,(D,E))in A)
 	return frozenset((D-C+B,A-B+C)for(A,D)in A)
-def val_func_numcolors(element):return len(val_func_palette(element))
-def val_func_ofcolor(grid,value):return frozenset((A,C)for(A,B)in enumerate(grid)for(C,D)in enumerate(B)if D==value)
-def val_func_portrait(piece):A=piece;return val_func_height(A)>val_func_width(A)
-def val_func_apply(function,container):A=container;return type(A)(function(A)for A in A)
-def val_func_rbind(function,fixed):
-	B=fixed;A=function;C=A.__code__.co_argcount
-	if C==2:return lambda x:A(x,B)
-	elif C==3:return lambda x,y:A(x,y,B)
-	else:return lambda x,y,z:A(x,y,z,B)
-def val_func_matcher(function,target):return lambda x:function(x)==target
-def val_func_branch(condition,a,b):return a if condition else b
-def val_func_extract(container,condition):return next(A for A in container if condition(A))
-def val_func_decrement(x):return x-1 if isinstance(x,int)else(x[0]-1,x[1]-1)
-def val_func_leastcommon(container):A=container;return min(set(A),key=A.count)
-def val_func_identity(x):return x
-def p(I):I=tuple(map(tuple,I));D=val_func_numcolors(I);N=val_func_dmirror(I);E=val_func_portrait(I);A=val_func_branch(E,val_func_dmirror,val_func_identity);F=A(I);G=val_func_decrement(D);B=val_func_hsplit(F,G);C=val_func_rbind(val_func_ofcolor,0);H=val_func_apply(C,B);J=val_func_leastcommon(H);K=val_func_matcher(C,J);L=val_func_extract(B,K);M=A(L);return[*map(list,M)]
+def val_func_numcolors(A):return len(val_func_palette(A))
+def val_func_ofcolor(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def val_func_portrait(A):return val_func_height(A)>val_func_width(A)
+def val_func_apply(A,B):return type(B)(A(B)for B in B)
+def val_func_rbind(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda D:A(D,B)
+	elif C==3:return lambda D,E:A(D,E,B)
+	else:return lambda D,E,F:A(D,E,F,B)
+def val_func_matcher(A,B):return lambda C:A(C)==B
+def val_func_branch(A,B,C):return B if A else C
+def val_func_extract(A,B):return next(A for A in A if B(A))
+def val_func_decrement(A):return A-1 if isinstance(A,int)else(A[0]-1,A[1]-1)
+def val_func_leastcommon(A):return min(set(A),key=A.count)
+def val_func_identity(A):return A
+def p(A):A=tuple(map(tuple,A));E=val_func_numcolors(A);N=val_func_dmirror(A);F=val_func_portrait(A);B=val_func_branch(F,val_func_dmirror,val_func_identity);G=B(A);H=val_func_decrement(E);C=val_func_hsplit(G,H);D=val_func_rbind(val_func_ofcolor,0);I=val_func_apply(D,C);J=val_func_leastcommon(I);K=val_func_matcher(D,J);L=val_func_extract(C,K);M=B(L);return[*map(list,M)]

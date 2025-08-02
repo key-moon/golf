@@ -1,11 +1,11 @@
-def p(g):
-	for A in g:
-		if 8 in A:
-			E=A.index(8);F=len(A)-1-A[::-1].index(8)
-			for G in range(E,F+1):A[G]=8
-	C=range(len(g))
-	for D in C:
-		B=[A for A in C if g[A][D]==8]
-		if B:
-			for H in range(B[0],B[-1]+1):g[H][D]=8
-	return g
+def p(A):
+	for B in A:
+		if 8 in B:
+			F=B.index(8);G=len(B)-1-B[::-1].index(8)
+			for H in range(F,G+1):B[H]=8
+	D=range(len(A))
+	for E in D:
+		C=[B for B in D if A[B][E]==8]
+		if C:
+			for I in range(C[0],C[-1]+1):A[I][E]=8
+	return A

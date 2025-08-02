@@ -1,2 +1,1 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚe±\nÃ0DE£=ØÉ– ÁJşÂh(Ô	…Ö-nùüÊ¡¸C—ºwwM¼ÔªÂ¨ŞûC­1˜‰#™™,ÏÜ²rÖÛN×wş½ÚK§Ä„rÉktOY*mú#Ñq…<ÌéØT€Ö áê’bm¤½KÚö’£ìŒ\r±Ü‡*¦oáï>ş\0à\r@#'))))
+def p(g):A=[(sum(g[i+a][j+b]==0 for a in(0,1,2)for b in(0,1,2)),i,j)for i in range(0,len(g),3)for j in range(0,len(g[0]),3)];B=next(x for x in A if sum(y[0]==x[0]for y in A)==1);return[g[B[1]+a][B[2]:B[2]+3]for a in(0,1,2)]

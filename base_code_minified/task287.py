@@ -1,1 +1,1 @@
-def p(g):A=len(g);return[[g[min(B,A-1-B)][min(C,A-1-C)]for C in range(A)]for B in range(A)]
+def p(A):B=len(A);return[[A[min(C,B-1-C)][min(D,B-1-D)]for D in range(B)]for C in range(B)]

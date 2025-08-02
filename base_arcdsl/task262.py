@@ -32,7 +32,7 @@ def val_func_fill(grid, value, patch):
 def val_func_ofcolor(grid, value):
     return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def val_func_lbind(function, fixed):
@@ -61,7 +61,7 @@ def p(I):
     x1 = val_func_ofcolor(I, 5)
     x2 = val_func_lbind(val_func_matcher, val_func_last)
     x3 = val_func_lbind(val_func_sfilter, x1)
-    x4 = val_func_lbind(val_func_mval_func_apply, val_func_hfrontier)
+    x4 = val_func_lbind(mval_func_apply, val_func_hfrontier)
     x5 = val_func_chain(x4, x3, x2)
     x6 = x5(0)
     x7 = x5(2)

@@ -1,6 +1,6 @@
-def p(g):
-	R=len(g);S=len(g[0]);A=[(B,D,A)for(B,C)in enumerate(g)for(D,A)in enumerate(C)if A];B=[(A,B)for(A,B,C)in A if C==2];(C,D),(E,F)=min(B),max(B);G,H=min(A for(A,B,C)in A),min(A for(B,A,C)in A);I=E-C;J=F-D;K=I//(max(A for(A,B,C)in A)-min(A for(A,B,C)in A));L=J//(max(A for(B,A,C)in A)-min(A for(B,A,C)in A))
-	for(M,N,O)in A:
-		for P in range(1,K+1):
-			for Q in range(1,L+1):g[C+P*(M-G)][D+Q*(N-H)]=O
-	return g
+def p(A):
+	S=len(A);T=len(A[0]);B=[(B,D,A)for(B,C)in enumerate(A)for(D,A)in enumerate(C)if A];C=[(A,B)for(A,B,C)in B if C==2];(D,E),(F,G)=min(C),max(C);H,I=min(A for(A,B,C)in B),min(A for(B,A,C)in B);J=F-D;K=G-E;L=J//(max(A for(A,B,C)in B)-min(A for(A,B,C)in B));M=K//(max(A for(B,A,C)in B)-min(A for(B,A,C)in B))
+	for(N,O,P)in B:
+		for Q in range(1,L+1):
+			for R in range(1,M+1):A[D+Q*(N-H)][E+R*(O-I)]=P
+	return A

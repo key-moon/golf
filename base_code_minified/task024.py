@@ -1,7 +1,7 @@
-def p(g):
-	B,C={},set()
-	for(D,E)in enumerate(g):
-		for(F,A)in enumerate(E):
-			if A&1:B[D]=A
-			elif A:C|={F}
-	return[[B.get(A)or(D in C)*2 for(D,E)in enumerate(g[0])]for(A,D)in enumerate(g)]
+def p(A):
+	C,D={},set()
+	for(E,F)in enumerate(A):
+		for(G,B)in enumerate(F):
+			if B&1:C[E]=B
+			elif B:D|={G}
+	return[[C.get(B)or(A in D)*2 for(A,E)in enumerate(A[0])]for(B,E)in enumerate(A)]

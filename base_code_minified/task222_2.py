@@ -1,14 +1,14 @@
-def p(g):
-	C=len(g);D=len(g[0]);H=0
-	for A in range(C):
-		for B in range(D):
-			E=g[A][B]
-			if E:
-				for F in range(A,C):
-					for G in range(B,D):
-						I=(F-A+1)*(G-B+1)
-						if I>H and all(g[A][C]==E for A in range(A,F+1)for C in range(B,G+1)):H=I;K,L,M,N,O=A,B,F,G,E
-	J=[[0]*D for A in range(C)]
-	for P in range(K,M+1):
-		for Q in range(L,N+1):J[P][Q]=O
-	return J
+def p(A):
+	D=len(A);E=len(A[0]);I=0
+	for B in range(D):
+		for C in range(E):
+			F=A[B][C]
+			if F:
+				for G in range(B,D):
+					for H in range(C,E):
+						J=(G-B+1)*(H-C+1)
+						if J>I and all(A[B][D]==F for B in range(B,G+1)for D in range(C,H+1)):I=J;L,M,N,O,P=B,C,G,H,F
+	K=[[0]*E for A in range(D)]
+	for Q in range(L,N+1):
+		for R in range(M,O+1):K[Q][R]=P
+	return K

@@ -1,38 +1,36 @@
-def val_func_index(grid,loc):
-	B=loc;A=grid;C,D=B;E,F=len(A),len(A[0])
+def val_func_index(A,B):
+	C,D=B;E,F=len(A),len(A[0])
 	if not(0<=C<E and 0<=D<F):return
 	return A[B[0]][B[1]]
-def val_func_fill(grid,value,patch):
-	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
-	for(C,D)in val_func_toindices(patch):
-		if 0<=C<E and 0<=D<F:B[C][D]=value
-	return tuple(tuple(A)for A in B)
-def val_func_toindices(patch):
-	A=patch
+def val_func_fill(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in val_func_toindices(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def val_func_toindices(A):
 	if len(A)==0:return frozenset()
 	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
 	return A
-def val_func_mostcolor(element):A=element;B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
-def val_func_cover(grid,patch):return val_func_fill(grid,val_func_mostcolor(grid),val_func_toindices(patch))
-def val_func_paint(grid,obj):
-	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
-	for(G,(C,D))in obj:
-		if 0<=C<E and 0<=D<F:B[C][D]=G
-	return tuple(tuple(A)for A in B)
-def val_func_shift(patch,directions):
-	A=patch
+def val_func_mostcolor(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def val_func_cover(A,B):return val_func_fill(A,val_func_mostcolor(A),val_func_toindices(B))
+def val_func_paint(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def val_func_shift(A,B):
 	if len(A)==0:return A
-	B,C=directions
-	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(D+B,E+C))for(A,(D,E))in A)
-	return frozenset((A+B,D+C)for(A,D)in A)
-def val_func_move(grid,obj,offset):return val_func_paint(val_func_cover(grid,obj),val_func_shift(obj,offset))
-def val_func_recolor(value,patch):return frozenset((value,A)for A in val_func_toindices(patch))
-def val_func_ulcorner(patch):return tuple(map(min,zip(*val_func_toindices(patch))))
-def val_func_ofcolor(grid,value):return frozenset((A,C)for(A,B)in enumerate(grid)for(C,D)in enumerate(B)if D==value)
-def val_func_increment(x):return x+1 if isinstance(x,int)else(x[0]+1,x[1]+1)
-def val_func_subtract(a,b):
-	if isinstance(a,int)and isinstance(b,int):return a-b
-	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]-b[0],a[1]-b[1]
-	elif isinstance(a,int)and isinstance(b,tuple):return a-b[0],a-b[1]
-	return a[0]-b,a[1]-b
-def p(I):I=tuple(map(tuple,I));A=val_func_ofcolor(I,2);B=val_func_ofcolor(I,3);C=val_func_recolor(2,A);D=val_func_ulcorner(B);E=val_func_ulcorner(A);F=val_func_subtract(D,E);G=val_func_increment(F);H=val_func_move(I,C,G);return[*map(list,H)]
+	C,D=B
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B+C,E+D))for(A,(B,E))in A)
+	return frozenset((A+C,B+D)for(A,B)in A)
+def val_func_move(A,B,C):return val_func_paint(val_func_cover(A,B),val_func_shift(B,C))
+def val_func_recolor(A,B):return frozenset((A,B)for B in val_func_toindices(B))
+def val_func_ulcorner(A):return tuple(map(min,zip(*val_func_toindices(A))))
+def val_func_ofcolor(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def val_func_increment(A):return A+1 if isinstance(A,int)else(A[0]+1,A[1]+1)
+def val_func_subtract(A,B):
+	if isinstance(A,int)and isinstance(B,int):return A-B
+	elif isinstance(A,tuple)and isinstance(B,tuple):return A[0]-B[0],A[1]-B[1]
+	elif isinstance(A,int)and isinstance(B,tuple):return A-B[0],A-B[1]
+	return A[0]-B,A[1]-B
+def p(A):A=tuple(map(tuple,A));B=val_func_ofcolor(A,2);C=val_func_ofcolor(A,3);D=val_func_recolor(2,B);E=val_func_ulcorner(C);F=val_func_ulcorner(B);G=val_func_subtract(E,F);H=val_func_increment(G);I=val_func_move(A,D,H);return[*map(list,I)]

@@ -1,11 +1,11 @@
-def p(g):
-	A={}
-	for O in g:
-		for H in O:A[H]=A.get(H,0)+1
-	I=sorted(A,key=lambda k:-A[k])[1];D=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==I];J=[A for(A,B)in D];K=[A for(B,A)in D];P,Q=min(J),max(J);R,S=min(K),max(K);E=[(A,B)for(A,B)in D if P<A<Q and R<B<S and g[A][B]!=I];from collections import Counter as T;B=T(g[A][B]for(A,B)in E);U=min(B,key=lambda c:B[c]);L=max(B,key=lambda c:B[c]);C=[(A,B)for(A,B)in E if g[A][B]==U][0]
-	def V(dy,dx):return dx,-dy
-	for(M,N)in E:
-		if g[M][N]==L:
-			F,G=M-C[0],N-C[1]
-			for W in range(3):F,G=V(F,G);g[C[0]+F][C[1]+G]=L
-	return g
+def p(A):
+	B={}
+	for P in A:
+		for I in P:B[I]=B.get(I,0)+1
+	J=sorted(B,key=lambda F:-B[F])[1];E=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==J];K=[A for(A,B)in E];L=[A for(B,A)in E];Q,R=min(K),max(K);S,T=min(L),max(L);F=[(B,C)for(B,C)in E if Q<B<R and S<C<T and A[B][C]!=J];from collections import Counter as U;C=U(A[B][C]for(B,C)in F);V=min(C,key=lambda T:C[T]);M=max(C,key=lambda T:C[T]);D=[(B,C)for(B,C)in F if A[B][C]==V][0]
+	def W(A,B):return B,-A
+	for(N,O)in F:
+		if A[N][O]==M:
+			G,H=N-D[0],O-D[1]
+			for X in range(3):G,H=W(G,H);A[D[0]+G][D[1]+H]=M
+	return A

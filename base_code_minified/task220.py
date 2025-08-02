@@ -1,11 +1,11 @@
-def p(g,m={2:1,3:6,8:4}):
-	E,F=len(g),len(g[0])
-	for A in range(E):
-		for B in range(F):
-			G=g[A][B]
-			if G:
-				H=m[G]
-				for C in(-1,0,1):
-					for D in(-1,0,1):
-						if C|D and 0<=A+C<E and 0<=B+D<F:g[A+C][B+D]=H
-	return g
+def p(A,B={2:1,3:6,8:4}):
+	G,H=len(A),len(A[0])
+	for C in range(G):
+		for D in range(H):
+			I=A[C][D]
+			if I:
+				J=B[I]
+				for E in(-1,0,1):
+					for F in(-1,0,1):
+						if E|F and 0<=C+E<G and 0<=D+F<H:A[C+E][D+F]=J
+	return A

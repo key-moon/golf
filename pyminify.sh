@@ -29,13 +29,24 @@ find "$SRC_DIR" -type f -name "*.py" | while IFS= read -r SRC_FILE; do
   DEST_FILE="$DEST_DIR/$REL_PATH"
   mkdir -p "$(dirname "$DEST_FILE")"
 
-  if ! sed -E 's/([0-9])(else|for|and|or)/\1 \2/g' "$SRC_FILE" \
-     | sed -E 's/(else|for|and|or)([0-9])/\1 \2/g' \
-     | pyminify "${MINIFY_OPTS[@]}" - \
-     > "$DEST_FILE"; then
+  TMP1=$(mktemp)
+  TMP2=$(mktemp)
+
+  sed -E 's/([0-9])(else|for|and|or)/\1 \2/g' "$SRC_FILE" | sed -E 's/(else|for|and|or)([0-9])/\1 \2/g' > "$TMP1"
+
+  if ! python3 rename_minifier.py "$TMP1" > "$TMP2"; then
+    echo "Warning: rename_minifier.py failed for $SRC_FILE, using sed-only output."
+    mv "$TMP1" "$TMP2"
+  else
+    rm "$TMP1"
+  fi
+
+  if ! pyminify "${MINIFY_OPTS[@]}" "$TMP2" > "$DEST_FILE"; then
     echo "Warning: pyminify failed for $SRC_FILE, skipping."
+    rm -f "$TMP2"
     continue
   fi
+  rm -f "$TMP2"
 
   echo "Minified: $SRC_FILE → $DEST_FILE"
 done

@@ -1,7 +1,7 @@
-def p(g):
-	for A in range(1,min(len(g),len(g[0]))):
-		B={}
-		for C in range(0,len(g)-A+1,A):
-			for D in range(0,len(g[0])-A+1,A):E=tuple(tuple(g[B][D:D+A])for B in range(C,C+A));B[E]=B.get(E,0)+1
-		F=B.values()
-		if len({*F})>1:G=min(F);return[list(A)for(A,B)in B.items()if B==G][0]
+def p(A):
+	for B in range(1,min(len(A),len(A[0]))):
+		C={}
+		for D in range(0,len(A)-B+1,B):
+			for E in range(0,len(A[0])-B+1,B):F=tuple(tuple(A[C][E:E+B])for C in range(D,D+B));C[F]=C.get(F,0)+1
+		G=C.values()
+		if len({*G})>1:H=min(G);return[list(A)for(A,B)in C.items()if B==H][0]

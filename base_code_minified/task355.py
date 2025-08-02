@@ -1,5 +1,5 @@
-def p(g):
-	A=next(A for(A,B)in enumerate(g)if B[0]!=g[0][0]);B=next(A for(A,B)in enumerate(g[0])if B!=g[0][0]);D=[g[0][0],g[0][B],g[A][0],g[A][B]];C=[0,0,0,0]
-	for(F,G)in enumerate(g):
-		for(H,I)in enumerate(G):E=(F>=A)<<1|(H>=B);C[E]+=I!=D[E]
-	return[[D[C.index(max(C))]]]
+def p(A):
+	B=next(B for(B,C)in enumerate(A)if C[0]!=A[0][0]);C=next(B for(B,C)in enumerate(A[0])if C!=A[0][0]);E=[A[0][0],A[0][C],A[B][0],A[B][C]];D=[0,0,0,0]
+	for(G,H)in enumerate(A):
+		for(I,J)in enumerate(H):F=(G>=B)<<1|(I>=C);D[F]+=J!=E[F]
+	return[[E[D.index(max(D))]]]

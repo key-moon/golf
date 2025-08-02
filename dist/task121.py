@@ -1,1 +1,1 @@
-def p(g):A,B=next((A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==8);C=max(g[A+C][B+D]for C in(-1,0,1)for D in(-1,0,1)if g[A+C][B+D]!=8);return[[C if g[A+D][B+E]else 0 for E in(-1,0,1)]for D in(-1,0,1)]
+def p(A):B,C=next((A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==8);D=max(A[B+D][C+E]for D in(-1,0,1)for E in(-1,0,1)if A[B+D][C+E]!=8);return[[D if A[B+E][C+F]else 0 for F in(-1,0,1)]for E in(-1,0,1)]

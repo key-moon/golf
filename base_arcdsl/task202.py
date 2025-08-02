@@ -53,8 +53,8 @@ def val_func_frontiers(grid):
     row_indices = tuple(i for i, r in enumerate(grid) if len(set(r)) == 1)
     column_indices = tuple(j for j, c in enumerate(val_func_dmirror(grid)) if len(set(c)) == 1)
     hval_func_frontiers = frozenset({frozenset({(grid[i][j], (i, j)) for j in range(w)}) for i in row_indices})
-    vval_func_frontiers = frozenset({frozenset({(grid[i][j], (i, j)) for i in range(h)}) for j in column_indices})
-    return hval_func_frontiers | vval_func_frontiers
+    val_func_vval_func_frontiers = frozenset({frozenset({(grid[i][j], (i, j)) for i in range(h)}) for j in column_indices})
+    return hval_func_frontiers | val_func_vval_func_frontiers
 
 def val_func_vfrontier(location):
     return frozenset((i, location[1]) for i in range(30))

@@ -1,14 +1,14 @@
-def p(g):
-	C=len(g);B=[A for(A,B)in enumerate(g)if all(A==5 for A in B)];H=[A for A in range(C)if all(g[B][A]==5 for B in range(C))];B=[-1]+B+[C];H=[-1]+H+[C];D=B[1]-B[0]-1;I=[A[:]for A in g]
-	for L in range(3):
-		for M in range(3):
-			E=B[L]+1;F=H[M]+1;N=[g[A][B]for A in range(E,E+D)for B in range(F,F+D)];A={}
-			for G in N:
-				if G and G!=5:A[G]=A.get(G,0)+1
-			if A:
-				J=max(A.values());O=[A for(A,B)in A.items()if B==J]
-				if len(O)>1:K=min(A)if J>1 else sorted(A)[len(A)//2]
-			else:K=0
-			for P in range(E,E+D):
-				for Q in range(F,F+D):I[P][Q]=K
-	return I
+def p(A):
+	D=len(A);C=[A for(A,B)in enumerate(A)if all(A==5 for A in B)];I=[B for B in range(D)if all(A[C][B]==5 for C in range(D))];C=[-1]+C+[D];I=[-1]+I+[D];E=C[1]-C[0]-1;J=[A[:]for A in A]
+	for M in range(3):
+		for N in range(3):
+			F=C[M]+1;G=I[N]+1;O=[A[B][C]for B in range(F,F+E)for C in range(G,G+E)];B={}
+			for H in O:
+				if H and H!=5:B[H]=B.get(H,0)+1
+			if B:
+				K=max(B.values());P=[A for(A,B)in B.items()if B==K]
+				if len(P)>1:L=min(B)if K>1 else sorted(B)[len(B)//2]
+			else:L=0
+			for Q in range(F,F+E):
+				for R in range(G,G+E):J[Q][R]=L
+	return J

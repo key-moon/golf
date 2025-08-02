@@ -1,18 +1,18 @@
-def p(g):
-	D,E=len(g),len(g[0]);C=[]
-	for A in range(D):
-		for B in(0,E-1):
-			if g[A][B]==1:C.append((A,B))
+def p(A):
+	E,F=len(A),len(A[0]);D=[]
 	for B in range(E):
-		for A in(0,D-1):
-			if g[A][B]==1:C.append((A,B))
-	while C:
-		A,B=C.pop()
-		if g[A][B]==1:
-			g[A][B]=-1
-			for(H,I)in((1,0),(-1,0),(0,1),(0,-1)):
-				F,G=A+H,B+I
-				if 0<=F<D and 0<=G<E and g[F][G]==1:C.append((F,G))
-	for A in range(D):
-		for B in range(E):g[A][B]=1 if g[A][B]==-1 else 8 if g[A][B]==1 else g[A][B]
-	return g
+		for C in(0,F-1):
+			if A[B][C]==1:D.append((B,C))
+	for C in range(F):
+		for B in(0,E-1):
+			if A[B][C]==1:D.append((B,C))
+	while D:
+		B,C=D.pop()
+		if A[B][C]==1:
+			A[B][C]=-1
+			for(I,J)in((1,0),(-1,0),(0,1),(0,-1)):
+				G,H=B+I,C+J
+				if 0<=G<E and 0<=H<F and A[G][H]==1:D.append((G,H))
+	for B in range(E):
+		for C in range(F):A[B][C]=1 if A[B][C]==-1 else 8 if A[B][C]==1 else A[B][C]
+	return A

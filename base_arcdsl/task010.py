@@ -24,11 +24,11 @@ def val_func_toindices(patch):
         return frozenset(val_func_index for value, val_func_index in patch)
     return patch
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -88,7 +88,7 @@ def val_func_height(piece):
         return len(piece)
     return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
 
-def val_func_mval_func_papply(function, a, b):
+def mval_func_papply(function, a, b):
     return val_func_merge(val_func_papply(function, a, b))
 
 def val_func_interval(start, stop, step):
@@ -110,6 +110,6 @@ def p(I):
     x3 = val_func_order(x1, val_func_height)
     x4 = val_func_size(x2)
     x5 = val_func_interval(x4, 0, -1)
-    x6 = val_func_mval_func_papply(val_func_recolor, x5, x3)
+    x6 = mval_func_papply(val_func_recolor, x5, x3)
     O = val_func_paint(I, x6)
     return [*map(list,O)]

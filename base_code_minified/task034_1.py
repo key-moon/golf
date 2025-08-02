@@ -1,16 +1,16 @@
-def p(g):
-	F=len(g);G=len(g[0]);A=[]
-	for H in range(F):
-		for I in range(G):
-			if g[H][I]!=0:A.append((H,I,g[H][I]))
-	M=sorted({A for(A,B,B)in A});N=sorted({B for(A,B,A)in A});X,Y=M[0],M[-1];Z,a=N[0],N[-1];O=[A for(*B,A)in A]
-	for J in set(O):
-		if O.count(J)==1:P=J
-		else:b=J
-	c=max(P,b);B,C=next((A,B)for(A,B,C)in A if C==P);D,E=X+Y-B,Z+a-C;Q=B-D and(B-D)//abs(B-D);R=C-E and(C-E)//abs(C-E);S=R,-Q;T=[A[:]for A in g];K,L=D,E
-	while 0<=K<F and 0<=L<G:
-		for U in(-1,0,1):
-			V=K+S[0]*U;W=L+S[1]*U
-			if 0<=V<F and 0<=W<G:T[V][W]=c
-		K+=Q;L+=R
-	return T
+def p(A):
+	G=len(A);H=len(A[0]);B=[]
+	for I in range(G):
+		for J in range(H):
+			if A[I][J]!=0:B.append((I,J,A[I][J]))
+	N=sorted({A for(A,B,B)in B});O=sorted({B for(A,B,A)in B});Y,Z=N[0],N[-1];a,b=O[0],O[-1];P=[A for(*B,A)in B]
+	for K in set(P):
+		if P.count(K)==1:Q=K
+		else:c=K
+	d=max(Q,c);C,D=next((A,B)for(A,B,C)in B if C==Q);E,F=Y+Z-C,a+b-D;R=C-E and(C-E)//abs(C-E);S=D-F and(D-F)//abs(D-F);T=S,-R;U=[A[:]for A in A];L,M=E,F
+	while 0<=L<G and 0<=M<H:
+		for V in(-1,0,1):
+			W=L+T[0]*V;X=M+T[1]*V
+			if 0<=W<G and 0<=X<H:U[W][X]=d
+		L+=R;M+=S
+	return U

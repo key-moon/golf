@@ -1,1 +1,1 @@
-def p(g):return[[2*(not(A or B))for(A,B)in zip(A,B)]for(A,B)in zip(g,g[3:])]
+def p(A):return[[2*(not(A or B))for(A,B)in zip(A,B)]for(A,B)in zip(A,A[3:])]

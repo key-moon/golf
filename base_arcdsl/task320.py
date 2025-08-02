@@ -98,7 +98,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
 def val_func_ulcorner(patch):
     return tuple(map(min, zip(*val_func_toindices(patch))))
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def val_func_fork(outer, a, b):
@@ -108,7 +108,7 @@ def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_objects(I, True, False, True)
     x2 = val_func_fork(val_func_connect, val_func_ulcorner, val_func_centerofmass)
-    x3 = val_func_mval_func_apply(x2, x1)
+    x3 = mval_func_apply(x2, x1)
     x4 = val_func_fill(I, 8, x3)
     O = val_func_switch(x4, 8, 2)
     return [*map(list,O)]

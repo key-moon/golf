@@ -1,1 +1,1 @@
-def p(g):E=g[0][0];A=len(g)//3;return[[next((g[B][D]for B in range(B*A,(B+1)*A)for D in range(C*A,(C+1)*A)if g[B][D]!=E),0)for C in range(3)]for B in range(3)]
+def p(A):F=A[0][0];B=len(A)//3;return[[next((A[C][E]for C in range(C*B,(C+1)*B)for E in range(D*B,(D+1)*B)if A[C][E]!=F),0)for D in range(3)]for C in range(3)]

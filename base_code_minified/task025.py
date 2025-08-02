@@ -1,19 +1,19 @@
-def p(g):
-	H,I=len(g),len(g[0]);J={}
-	for A in range(H):
-		for B in range(I):
-			D=g[A][B]
-			if D:J.setdefault(D,[]).append((A,B))
-	E=[[0]*I for A in range(H)]
-	for(D,C)in J.items():
-		F=max({A for(A,B)in C},key=lambda u:sum(A==u for(A,B)in C));K=sum(A==F for(A,B)in C);G=max({A for(B,A)in C},key=lambda v:sum(A==v for(B,A)in C));L=sum(A==G for(B,A)in C)
-		if K+L>2:
-			if L>K:
-				for(A,B)in C:
-					if B==G:E[A][B]=D
-					else:E[A][G+(B>G and 1 or-1)]=D
+def p(A):
+	I,J=len(A),len(A[0]);K={}
+	for B in range(I):
+		for C in range(J):
+			E=A[B][C]
+			if E:K.setdefault(E,[]).append((B,C))
+	F=[[0]*J for A in range(I)]
+	for(E,D)in K.items():
+		G=max({A for(A,B)in D},key=lambda L:sum(A==L for(A,B)in D));L=sum(A==G for(A,B)in D);H=max({A for(B,A)in D},key=lambda O:sum(A==O for(B,A)in D));M=sum(A==H for(B,A)in D)
+		if L+M>2:
+			if M>L:
+				for(B,C)in D:
+					if C==H:F[B][C]=E
+					else:F[B][H+(C>H and 1 or-1)]=E
 			else:
-				for(A,B)in C:
-					if A==F:E[A][B]=D
-					else:E[F+(A>F and 1 or-1)][B]=D
-	return E
+				for(B,C)in D:
+					if B==G:F[B][C]=E
+					else:F[G+(B>G and 1 or-1)][C]=E
+	return F

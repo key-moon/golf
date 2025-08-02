@@ -14,11 +14,11 @@ def val_func_index(grid, loc):
         return None
     return grid[loc[0]][loc[1]] 
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -60,7 +60,7 @@ def val_func_box(patch):
     hlines = {(si, j) for j in range(sj, ej + 1)} | {(ei, j) for j in range(sj, ej + 1)}
     return frozenset(vlines | hlines)
 
-def outval_func_box(patch):
+def val_func_outval_func_box(patch):
     ai, aj = val_func_uppermost(patch) - 1, val_func_leftmost(patch) - 1
     bi, bj = val_func_lowermost(patch) + 1, val_func_rightmost(patch) + 1
     si, sj = min(ai, bi), min(aj, bj)
@@ -125,7 +125,7 @@ def val_func_objects(grid, univalued, diagonal, without_bg):
         objs.add(frozenset(obj))
     return frozenset(objs)
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def val_func_toindices(patch):
@@ -193,7 +193,7 @@ def p(I):
     x3 = val_func_remove(0, x2)
     x4 = val_func_lbind(val_func_other, x3)
     x5 = val_func_compose(x4, val_func_color)
-    x6 = val_func_fork(val_func_reval_func_color, x5, outval_func_box)
+    x6 = val_func_fork(reval_func_color, x5, val_func_outval_func_box)
     x7 = mval_func_apply(x6, x1)
     x8 = mval_func_apply(val_func_toindices, x1)
     x9 = val_func_box(x8)

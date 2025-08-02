@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;E,F=len(A),len(A[0])
+def p(A):
+	E,F=len(A),len(A[0])
 	for B in range(E):
 		for C in range(F):
 			if A[B][C]==5:

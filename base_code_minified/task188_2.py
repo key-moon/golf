@@ -1,7 +1,7 @@
-def p(g):
-	A=len(g);B=len(g[0])
-	for C in range(1,A+1):
-		if A%C:continue
-		for D in range(1,B+1):
-			if B%D:continue
-			if all(g[A][E]==g[A%C][E%D]for A in range(A)for E in range(B)):return[A[:D]for A in g[:C]]
+def p(A):
+	B=len(A);C=len(A[0])
+	for D in range(1,B+1):
+		if B%D:continue
+		for E in range(1,C+1):
+			if C%E:continue
+			if all(A[B][F]==A[B%D][F%E]for B in range(B)for F in range(C)):return[A[:E]for A in A[:D]]

@@ -1,13 +1,13 @@
-def p(g):
-	try:A=next(B for(B,A)in enumerate(g)if A.count(2)==len(A));J='r'
-	except:A=next(A for A in range(len(g[0]))if all(B[A]==2 for B in g));J='c'
-	B=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==3];F=min(A for(A,B)in B);K=max(A for(A,B)in B);G=min(A for(B,A)in B);L=max(A for(B,A)in B);H=K-F+1;I=L-G+1
-	if J=='c':
-		if L<A:M=A-I-G;E=A-I-1
-		else:M=A+1-G;E=A+1+I
-		for(C,D)in B:g[C][D]=0;g[C][D+M]=3;g[C][E]=8
+def p(A):
+	try:B=next(B for(B,A)in enumerate(A)if A.count(2)==len(A));K='r'
+	except:B=next(B for B in range(len(A[0]))if all(A[B]==2 for A in A));K='c'
+	C=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==3];G=min(A for(A,B)in C);L=max(A for(A,B)in C);H=min(A for(B,A)in C);M=max(A for(B,A)in C);I=L-G+1;J=M-H+1
+	if K=='c':
+		if M<B:N=B-J-H;F=B-J-1
+		else:N=B+1-H;F=B+1+J
+		for(D,E)in C:A[D][E]=0;A[D][E+N]=3;A[D][F]=8
 	else:
-		if K<A:N=A-H-F;E=A-H-1
-		else:N=A+1-F;E=A+1+H
-		for(C,D)in B:g[C][D]=0;g[C+N][D]=3;g[E][D]=8
-	return g
+		if L<B:O=B-I-G;F=B-I-1
+		else:O=B+1-G;F=B+1+I
+		for(D,E)in C:A[D][E]=0;A[D+O][E]=3;A[F][E]=8
+	return A

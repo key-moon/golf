@@ -1,20 +1,20 @@
-def p(g):
-	A=[A[:]for A in g];E=len(g);F=len(g[0]);G=min(B for C in range(E)for B in range(F)if A[C][B]==2);H=max(B for C in range(E)for B in range(F)if A[C][B]==2);I=set()
-	for B in range(E):
-		for C in range(F):
-			if A[B][C]==8:
-				if any(A[B][C]==2 for C in range(C)):
-					J=max(C for C in range(C)if A[B][C]==2);I.add(G)
-					for D in range(J+1,C):g[B][D]=8
+def p(A):
+	B=[A[:]for A in A];F=len(A);G=len(A[0]);H=min(A for C in range(F)for A in range(G)if B[C][A]==2);I=max(A for C in range(F)for A in range(G)if B[C][A]==2);J=set()
+	for C in range(F):
+		for D in range(G):
+			if B[C][D]==8:
+				if any(B[C][A]==2 for A in range(D)):
+					K=max(A for A in range(D)if B[C][A]==2);J.add(H)
+					for E in range(K+1,D):A[C][E]=8
 				else:
-					J=min(C for C in range(C+1,F)if A[B][C]==2);I.add(H)
-					for D in range(C+1,J):g[B][D]=8
-				g[B][C]=4
-	for K in(G,H):
-		if K not in I:
-			L=[B for B in range(E)if A[B][K]==2];M=(min(L)+max(L))//2
-			if K==G:
-				for D in range(G+1,H):g[M][D]=8
+					K=min(A for A in range(D+1,G)if B[C][A]==2);J.add(I)
+					for E in range(D+1,K):A[C][E]=8
+				A[C][D]=4
+	for L in(H,I):
+		if L not in J:
+			M=[A for A in range(F)if B[A][L]==2];N=(min(M)+max(M))//2
+			if L==H:
+				for E in range(H+1,I):A[N][E]=8
 			else:
-				for D in range(H):g[M][D]=8
-	return g
+				for E in range(I):A[N][E]=8
+	return A

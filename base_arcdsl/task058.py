@@ -66,13 +66,13 @@ def val_func_upscale(element, factor):
                     o.add((value, (i * factor + io, j * factor + jo)))
         return val_func_shift(frozenset(o), (di_inv, dj_inv))
 
-def val_func_vval_func_upscale(grid, factor):
+def vval_func_upscale(grid, factor):
     g = tuple()
     for row in grid:
         g = g + tuple(row for num in range(factor))
     return g
 
-def val_func_hval_func_upscale(grid, factor):
+def hval_func_upscale(grid, factor):
     g = tuple()
     for row in grid:
         r = tuple()
@@ -179,19 +179,19 @@ def p(I):
     x10 = val_func_insert(x2, x9)
     x11 = val_func_insert(x3, x10)
     x12 = val_func_fill(x7, 0, x11)
-    x13 = val_func_vval_func_upscale(x6, 5)
-    x14 = val_func_hval_func_upscale(x13, 3)
+    x13 = vval_func_upscale(x6, 5)
+    x14 = hval_func_upscale(x13, 3)
     x15 = val_func_insert(x4, x9)
     x16 = val_func_insert(x5, x15)
     x17 = val_func_fill(x14, 0, x16)
     x18 = val_func_even(x1)
     x19 = val_func_branch(x18, x12, x17)
     x20 = val_func_canvas(0, (1, 1))
-    x21 = val_func_lbind(val_func_hval_func_upscale, x20)
+    x21 = val_func_lbind(hval_func_upscale, x20)
     x22 = val_func_chain(x21, val_func_decrement, val_func_height)
     x23 = val_func_rbind(val_func_hconcat, x6)
     x24 = val_func_compose(x23, x22)
-    x25 = val_func_lbind(val_func_hval_func_upscale, x6)
+    x25 = val_func_lbind(hval_func_upscale, x6)
     x26 = val_func_compose(x25, val_func_height)
     x27 = val_func_fork(val_func_vconcat, x24, val_func_rot90)
     x28 = val_func_fork(val_func_vconcat, x26, x27)

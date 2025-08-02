@@ -1,13 +1,13 @@
-def p(g):
-	D,C=len(g),len(g[0]);E=[[0]*C for A in g];F=[]
-	for(A,B)in[(0,A)for A in range(C)]+[(D-1,A)for A in range(C)]+[(A,0)for A in range(D)]+[(A,C-1)for A in range(D)]:
-		if g[A][B]==0:E[A][B]=1;F.append((A,B))
-	while F:
-		G,H=F.pop()
-		for(I,J)in((1,0),(-1,0),(0,1),(0,-1)):
-			A,B=G+I,H+J
-			if 0<=A<D and 0<=B<C and not E[A][B]and g[A][B]==0:E[A][B]=1;F.append((A,B))
-	for A in range(D):
-		for B in range(C):
-			if g[A][B]==0 and not E[A][B]:g[A][B]=2
-	return g
+def p(A):
+	E,D=len(A),len(A[0]);F=[[0]*D for A in A];G=[]
+	for(B,C)in[(0,A)for A in range(D)]+[(E-1,A)for A in range(D)]+[(A,0)for A in range(E)]+[(A,D-1)for A in range(E)]:
+		if A[B][C]==0:F[B][C]=1;G.append((B,C))
+	while G:
+		H,I=G.pop()
+		for(J,K)in((1,0),(-1,0),(0,1),(0,-1)):
+			B,C=H+J,I+K
+			if 0<=B<E and 0<=C<D and not F[B][C]and A[B][C]==0:F[B][C]=1;G.append((B,C))
+	for B in range(E):
+		for C in range(D):
+			if A[B][C]==0 and not F[B][C]:A[B][C]=2
+	return A

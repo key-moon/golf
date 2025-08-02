@@ -83,7 +83,7 @@ def val_func_ulcorner(patch):
 def val_func_sizefilter(container, n):
     return frozenset(item for item in container if len(item) == n)
 
-def val_func_mval_func_apply(function, container):
+def mval_func_apply(function, container):
     return val_func_merge(val_func_apply(function, container))
 
 def val_func_apply(function, container):
@@ -114,6 +114,6 @@ def p(I):
     x6 = val_func_cover(I, x5)
     x7 = val_func_apply(val_func_ulcorner, x2)
     x8 = val_func_lbind(val_func_shift, x4)
-    x9 = val_func_mval_func_apply(x8, x7)
+    x9 = mval_func_apply(x8, x7)
     O = val_func_fill(x6, 2, x9)
     return [*map(list,O)]

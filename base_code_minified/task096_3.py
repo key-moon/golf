@@ -1,21 +1,21 @@
-def p(g):
-	I,G=len(g),len(g[0]);from collections import Counter as a,deque;b=a(B for A in g for B in A);J=b.most_common(1)[0][0];H=[[0]*G for A in g];K=[]
-	for A in range(I):
-		for B in range(G):
-			if g[A][B]!=J and not H[A][B]:
-				C=g[A][B];L=deque([(A,B)]);H[A][B]=1;M,N=[],[]
-				while L:
-					W,X=L.popleft();M.append(W);N.append(X)
-					for(O,P)in((1,0),(-1,0),(0,1),(0,-1)):
-						E,F=W+O,X+P
-						if 0<=E<I and 0<=F<G and not H[E][F]and g[E][F]==C:H[E][F]=1;L.append((E,F))
-				Q,R=min(M),max(M);S,T=min(N),max(N);K.append((C,Q,R,S,T))
-	c=I/2;d=G/2;K.sort(key=lambda x:(x[1]+x[2]<2*c,x[3]+x[4]<2*d));U=[]
-	for(C,Q,R,S,T)in K:V=[A[S+1:T]for A in g[Q+1:R]];U.append((C,V))
-	D=len(U[0][1]);Y=[[J]*(2*D+1)for A in range(2*D+1)]
-	for(Z,(C,V))in enumerate(U):
-		O=Z//2*(D+1);P=Z%2*(D+1)
-		for A in range(D):
-			for B in range(D):
-				if V[A][B]!=J:Y[O+1+A][P+1+B]=C
-	return Y
+def p(A):
+	J,H=len(A),len(A[0]);from collections import Counter as b,deque;c=b(B for A in A for B in A);K=c.most_common(1)[0][0];I=[[0]*H for A in A];L=[]
+	for B in range(J):
+		for C in range(H):
+			if A[B][C]!=K and not I[B][C]:
+				D=A[B][C];M=deque([(B,C)]);I[B][C]=1;N,O=[],[]
+				while M:
+					X,Y=M.popleft();N.append(X);O.append(Y)
+					for(P,Q)in((1,0),(-1,0),(0,1),(0,-1)):
+						F,G=X+P,Y+Q
+						if 0<=F<J and 0<=G<H and not I[F][G]and A[F][G]==D:I[F][G]=1;M.append((F,G))
+				R,S=min(N),max(N);T,U=min(O),max(O);L.append((D,R,S,T,U))
+	d=J/2;e=H/2;L.sort(key=lambda F:(F[1]+F[2]<2*d,F[3]+F[4]<2*e));V=[]
+	for(D,R,S,T,U)in L:W=[A[T+1:U]for A in A[R+1:S]];V.append((D,W))
+	E=len(V[0][1]);Z=[[K]*(2*E+1)for A in range(2*E+1)]
+	for(a,(D,W))in enumerate(V):
+		P=a//2*(E+1);Q=a%2*(E+1)
+		for B in range(E):
+			for C in range(E):
+				if W[B][C]!=K:Z[P+1+B][Q+1+C]=D
+	return Z

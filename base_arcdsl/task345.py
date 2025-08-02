@@ -8,11 +8,11 @@ def val_func_index(grid, loc):
         return None
     return grid[loc[0]][loc[1]] 
 
-def ival_func_neighbors(loc):
+def val_func_ival_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
 
 def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | ival_func_neighbors(loc)
+    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
 
 def val_func_dval_func_neighbors(loc):
     return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
@@ -156,7 +156,7 @@ def val_func_ofcolor(grid, value):
 def val_func_colorfilter(objs, value):
     return frozenset(obj for obj in objs if next(iter(obj))[0] == value)
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
 def mval_func_apply(function, container):
@@ -190,7 +190,7 @@ def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_ofcolor(I, 2)
     x2 = val_func_ofcolor(I, 5)
-    x3 = val_func_prval_func_apply(val_func_connect, x1, x2)
+    x3 = prval_func_apply(val_func_connect, x1, x2)
     x4 = val_func_mfilter(x3, val_func_vline)
     x5 = underval_func_fill(I, 2, x4)
     x6 = val_func_matcher(val_func_numcolors, 2)

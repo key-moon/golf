@@ -1,10 +1,10 @@
-def p(g):
-	D={}
-	for(A,I)in enumerate(g):
-		for(B,C)in enumerate(I):
-			if C:E,F,G,H=D.get(C,(A,A,B,B));D[C]=min(E,A),max(F,A),min(G,B),max(H,B)
-	for(C,(E,F,G,H))in D.items():
-		for A in range(E+1,F):
-			for B in range(G+1,H):
-				if g[A][B]==C:g[A][B]=0
-	return g
+def p(A):
+	E={}
+	for(B,J)in enumerate(A):
+		for(C,D)in enumerate(J):
+			if D:F,G,H,I=E.get(D,(B,B,C,C));E[D]=min(F,B),max(G,B),min(H,C),max(I,C)
+	for(D,(F,G,H,I))in E.items():
+		for B in range(F+1,G):
+			for C in range(H+1,I):
+				if A[B][C]==D:A[B][C]=0
+	return A

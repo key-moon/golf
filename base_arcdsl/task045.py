@@ -87,7 +87,7 @@ def val_func_fgpartition(grid):
         ) for value in val_func_palette(grid) - {val_func_mostval_func_color(grid)}
     )
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
 def val_func_apply(function, container):
@@ -102,7 +102,7 @@ def val_func_mfilter(container, function):
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_fgpartition(I)
-    x2 = val_func_fork(val_func_reval_func_color, val_func_color, val_func_backdrop)
+    x2 = val_func_fork(reval_func_color, val_func_color, val_func_backdrop)
     x3 = val_func_apply(x2, x1)
     x4 = val_func_mfilter(x3, val_func_hline)
     O = val_func_paint(I, x4)

@@ -1,5 +1,5 @@
-def p(g):
-	B=len(g);D=len(g[0]);A=[0]*D
-	for C in range(D):
-		while A[C]<B and g[B-1-A[C]][C]==5:A[C]+=1
-	G=[A for A in A if A];E=max(A);F=min(G);H=A.index(E);I=A.index(F);return[[1 if C==H and A>=B-E else 2 if C==I and A>=B-F else 0 for C in range(D)]for A in range(B)]
+def p(A):
+	C=len(A);E=len(A[0]);B=[0]*E
+	for D in range(E):
+		while B[D]<C and A[C-1-B[D]][D]==5:B[D]+=1
+	H=[A for A in B if A];F=max(B);G=min(H);I=B.index(F);J=B.index(G);return[[1 if B==I and A>=C-F else 2 if B==J and A>=C-G else 0 for B in range(E)]for A in range(C)]

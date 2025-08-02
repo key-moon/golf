@@ -1,19 +1,19 @@
-def p(g):
-	F,G=len(g),len(g[0]);J=set();H=set()
-	for A in range(F):
-		for B in range(G):
-			if g[A][B]and(A,B)not in J:
-				I=[(A,B)];C={(A,B)}
-				while I:
-					M,N=I.pop()
-					for K in(-1,0,1):
-						for L in(-1,0,1):
-							if K|L:
-								D,E=M+K,N+L
-								if 0<=D<F and 0<=E<G and g[D][E]and(D,E)not in C:C.add((D,E));I.append((D,E))
-				J|=C
-				if len(C)>len(H):H=C
-	for A in range(F):
-		for B in range(G):
-			if g[A][B]and(A,B)not in H:g[A][B]=0
-	return g
+def p(A):
+	G,H=len(A),len(A[0]);K=set();I=set()
+	for B in range(G):
+		for C in range(H):
+			if A[B][C]and(B,C)not in K:
+				J=[(B,C)];D={(B,C)}
+				while J:
+					N,O=J.pop()
+					for L in(-1,0,1):
+						for M in(-1,0,1):
+							if L|M:
+								E,F=N+L,O+M
+								if 0<=E<G and 0<=F<H and A[E][F]and(E,F)not in D:D.add((E,F));J.append((E,F))
+				K|=D
+				if len(D)>len(I):I=D
+	for B in range(G):
+		for C in range(H):
+			if A[B][C]and(B,C)not in I:A[B][C]=0
+	return A

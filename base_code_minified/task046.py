@@ -1,23 +1,23 @@
 import math
 from collections import Counter
-def p(g):
-	g=[A[1:-1]for A in g];F,G=len(g),len(g[0]);B=[(A,B)for A in range(F)for B in range(G)if g[A][B]==5];H=Counter(A for B in g for A in B if A not in(0,5));K=min(H,key=lambda k:(H[k],k));L=sum(A for(A,B)in B)/len(B);M=sum(A for(B,A)in B)/len(B);B.sort(key=lambda p:math.atan2(p[1]-M,p[0]-L))
-	def N(a,b,c):return(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
-	A=[]
-	for I in B+B[::-1]:
-		while len(A)>1 and N(A[-2],A[-1],I)<=0:A.pop()
-		A.append(I)
-	A.pop()
-	def O(i,j):
-		B=j+.5;C=i+.5;D=0
-		for((I,J),(K,L))in zip(A,A[1:]+A[:1]):E,F=I-C,J-B;G,H=K-C,L-B;D+=math.atan2(E*H-F*G,E*G+F*H)
-		return abs(D)>1
-	J=[]
-	for D in range(F):
-		C=[]
-		for E in range(G):
-			if g[D][E]==5:C.append(0)
-			elif O(D,E):C.append(K)
-			else:C.append(g[D][E])
-		J.append(C)
-	return J
+def p(A):
+	A=[A[1:-1]for A in A];G,H=len(A),len(A[0]);B=[(B,C)for B in range(G)for C in range(H)if A[B][C]==5];I=Counter(A for B in A for A in B if A not in(0,5));L=min(I,key=lambda L:(I[L],L));M=sum(A for(A,B)in B)/len(B);N=sum(A for(B,A)in B)/len(B);B.sort(key=lambda O:math.atan2(O[1]-N,O[0]-M))
+	def O(A,B,C):return(B[0]-A[0])*(C[1]-A[1])-(B[1]-A[1])*(C[0]-A[0])
+	C=[]
+	for J in B+B[::-1]:
+		while len(C)>1 and O(C[-2],C[-1],J)<=0:C.pop()
+		C.append(J)
+	C.pop()
+	def P(A,B):
+		C=B+.5;D=A+.5;E=0
+		for((J,K),(L,M))in zip(HULL,HULL[1:]+HULL[:1]):F,G=J-D,K-C;H,I=L-D,M-C;E+=math.atan2(F*I-G*H,F*H+G*I)
+		return abs(E)>1
+	K=[]
+	for E in range(G):
+		D=[]
+		for F in range(H):
+			if A[E][F]==5:D.append(0)
+			elif P(E,F):D.append(L)
+			else:D.append(A[E][F])
+		K.append(D)
+	return K

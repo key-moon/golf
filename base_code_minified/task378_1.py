@@ -1,21 +1,21 @@
-def p(g):
-	E,F=len(g),len(g[0]);D={}
-	for G in range(E):
-		for H in range(F):
-			I=g[G][H]
-			if I:D.setdefault(I,[]).append((G,H))
-	O=max(D,key=lambda k:len(D[k]));J=min(D,key=lambda k:len(D[k]));K,L=D[J][0]
-	for(M,N)in((1,1),(1,-1),(-1,1),(-1,-1)):
-		A=1
+def p(A):
+	F,G=len(A),len(A[0]);E={}
+	for H in range(F):
+		for I in range(G):
+			J=A[H][I]
+			if J:E.setdefault(J,[]).append((H,I))
+	P=max(E,key=lambda I:len(E[I]));K=min(E,key=lambda I:len(E[I]));L,M=E[K][0]
+	for(N,O)in((1,1),(1,-1),(-1,1),(-1,-1)):
+		B=1
 		while True:
-			B,C=K+M*A,L+N*A
-			if B<0 or C<0 or B>=E or C>=F:break
-			if g[B][C]==O:
-				A+=1
+			C,D=L+N*B,M+O*B
+			if C<0 or D<0 or C>=F or D>=G:break
+			if A[C][D]==P:
+				B+=1
 				while True:
-					B,C=K+M*A,L+N*A
-					if B<0 or C<0 or B>=E or C>=F:break
-					g[B][C]=J;A+=1
+					C,D=L+N*B,M+O*B
+					if C<0 or D<0 or C>=F or D>=G:break
+					A[C][D]=K;B+=1
 				break
-			A+=1
-	return g
+			B+=1
+	return A

@@ -1,25 +1,25 @@
-def p(g):
-	F,G=len(g),len(g[0]);M=[B for A in g for B in A];N=max(set(M),key=M.count);H=[[0]*G for A in range(F)];O=[]
-	for B in range(F):
+def p(A):
+	G,H=len(A),len(A[0]);N=[B for A in A for B in A];O=max(set(N),key=N.count);I=[[0]*H for A in range(G)];P=[]
+	for C in range(G):
+		for D in range(H):
+			if A[C][D]!=O and not I[C][D]:
+				J=[(C,D)];I[C][D]=1;E=[]
+				while J:
+					Q,R=J.pop();E.append((Q,R))
+					for(V,W)in((1,0),(-1,0),(0,1),(0,-1)):
+						F,B=Q+V,R+W
+						if 0<=F<G and 0<=B<H and not I[F][B]and A[F][B]!=O:I[F][B]=1;J.append((F,B))
+				P.append(E)
+	for E in P:
+		X={A[B][C]for(B,C)in E}
+		if len(X)>1:break
+	Y=[A for(A,B)in E];Z=[A for(B,A)in E];S,T=min(Y),min(Z);K=[(B-S,C-T,A[B][C])for(B,C)in E];U={}
+	for(L,M,B)in K:U.setdefault(B,[]).append((L,M))
+	for(B,a)in U.items():
+		b=min(a);c,d=b
 		for C in range(G):
-			if g[B][C]!=N and not H[B][C]:
-				I=[(B,C)];H[B][C]=1;D=[]
-				while I:
-					P,Q=I.pop();D.append((P,Q))
-					for(U,V)in((1,0),(-1,0),(0,1),(0,-1)):
-						E,A=P+U,Q+V
-						if 0<=E<F and 0<=A<G and not H[E][A]and g[E][A]!=N:H[E][A]=1;I.append((E,A))
-				O.append(D)
-	for D in O:
-		W={g[A][B]for(A,B)in D}
-		if len(W)>1:break
-	X=[A for(A,B)in D];Y=[A for(B,A)in D];R,S=min(X),min(Y);J=[(A-R,B-S,g[A][B])for(A,B)in D];T={}
-	for(K,L,A)in J:T.setdefault(A,[]).append((K,L))
-	for(A,Z)in T.items():
-		a=min(Z);b,c=a
-		for B in range(F):
-			for C in range(G):
-				if g[B][C]==A and(B-R,C-S,A)not in J:
-					d,e=B-b,C-c
-					for(K,L,f)in J:g[d+K][e+L]=f
-	return g
+			for D in range(H):
+				if A[C][D]==B and(C-S,D-T,B)not in K:
+					e,f=C-c,D-d
+					for(L,M,g)in K:A[e+L][f+M]=g
+	return A

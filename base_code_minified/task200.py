@@ -1,5 +1,5 @@
-def p(g):
-	B=next(A for(A,B)in enumerate(g[9])if B);E=g[9][B]
-	for(C,F)in enumerate(g):
-		for D in range(10):A=D-B;F[D]=(C<1 and A&3==1 or C==9 and A&3==3)and 5 or E*(A&1^1)
-	return g
+def p(A):
+	C=next(A for(A,B)in enumerate(A[9])if B);F=A[9][C]
+	for(D,G)in enumerate(A):
+		for E in range(10):B=E-C;G[E]=(D<1 and B&3==1 or D==9 and B&3==3)and 5 or F*(B&1^1)
+	return A

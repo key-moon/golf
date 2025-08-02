@@ -1,1 +1,1 @@
-def p(g):A=next(A for(A,B)in enumerate(g)if 0 in B);B=g[A].index(0);C=len(g);return[[g[A+D][C-B-E-1]for E in range(3)]for D in range(3)]
+def p(A):B=next(A for(A,B)in enumerate(A)if 0 in B);C=A[B].index(0);D=len(A);return[[A[B+E][D-C-F-1]for F in range(3)]for E in range(3)]

@@ -1,6 +1,6 @@
-def p(g):
-	D=max(map(max,g));C=len(g)
-	for A in range(C):
-		for B in range(C):
-			if g[A][B]==D:g[A][B]=g[B][A]
-	return g
+def p(A):
+	E=max(map(max,A));D=len(A)
+	for B in range(D):
+		for C in range(D):
+			if A[B][C]==E:A[B][C]=A[C][B]
+	return A

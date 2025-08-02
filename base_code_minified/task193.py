@@ -1,11 +1,11 @@
-def p(g):
-	G,F=len(g),len(g[0]);C=max(map(max,g));H=[[0]*F for A in g]
-	for A in range(G):
-		for D in range(A,G):
-			for B in range(F):
-				for E in range(B,F):
-					if all(g[A][D]==C for A in range(A,D+1)for D in range(B,E+1)):
-						if not(A and all(g[A-1][B]==C for B in range(B,E+1))or D<G-1 and all(g[D+1][A]==C for A in range(B,E+1))or B and all(g[A][B-1]==C for A in range(A,D+1))or E<F-1 and all(g[A][E+1]==C for A in range(A,D+1))):
-							for I in range(A,D+1):
-								for J in range(B,E+1):H[I][J]=C
-	return H
+def p(A):
+	H,G=len(A),len(A[0]);D=max(map(max,A));I=[[0]*G for A in A]
+	for B in range(H):
+		for E in range(B,H):
+			for C in range(G):
+				for F in range(C,G):
+					if all(A[B][E]==D for B in range(B,E+1)for E in range(C,F+1)):
+						if not(B and all(A[B-1][C]==D for C in range(C,F+1))or E<H-1 and all(A[E+1][B]==D for B in range(C,F+1))or C and all(A[B][C-1]==D for B in range(B,E+1))or F<G-1 and all(A[B][F+1]==D for B in range(B,E+1))):
+							for J in range(B,E+1):
+								for K in range(C,F+1):I[J][K]=D
+	return I

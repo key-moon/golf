@@ -1,10 +1,10 @@
-def p(g):
-	C=len(g)
-	for A in range(C):
-		for B in range(C):
-			if g[A][B]==1:
-				if A:g[A-1][B]=2
-				if B:g[A][B-1]=7
-				if A+1<C:g[A+1][B]=8
-				if B+1<C:g[A][B+1]=6
-	return g
+def p(A):
+	D=len(A)
+	for B in range(D):
+		for C in range(D):
+			if A[B][C]==1:
+				if B:A[B-1][C]=2
+				if C:A[B][C-1]=7
+				if B+1<D:A[B+1][C]=8
+				if C+1<D:A[B][C+1]=6
+	return A

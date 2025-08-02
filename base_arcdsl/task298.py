@@ -1,4 +1,4 @@
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def val_func_merge(containers):
@@ -37,11 +37,11 @@ def val_func_color(obj):
 def val_func_partition(grid):
     return frozenset(frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value) for value in val_func_palette(grid))
 
-def val_func_reval_func_color(value, patch):
+def reval_func_color(value, patch):
     return frozenset((value, val_func_index) for val_func_index in val_func_toindices(patch))
 
-def mval_func_pval_func_apply(function, a, b):
-    return val_func_merge(val_func_pval_func_apply(function, a, b))
+def mpval_func_apply(function, a, b):
+    return val_func_merge(pval_func_apply(function, a, b))
 
 def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
@@ -73,6 +73,6 @@ def p(I):
     x5 = val_func_remove(x4, x2)
     x6 = val_func_repeat(x4, 1)
     x7 = val_func_combine(x6, x5)
-    x8 = mval_func_pval_func_apply(val_func_reval_func_color, x3, x7)
+    x8 = mpval_func_apply(reval_func_color, x3, x7)
     O = val_func_paint(I, x8)
     return [*map(list,O)]

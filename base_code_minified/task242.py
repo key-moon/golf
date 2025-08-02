@@ -1,5 +1,5 @@
-def p(g):
-	for(C,A)in enumerate(g):
-		for(B,D)in enumerate(A):
-			if D==0:A[B]=g[~C][~B]
-	return g
+def p(A):
+	for(D,B)in enumerate(A):
+		for(C,E)in enumerate(B):
+			if E==0:B[C]=A[~D][~C]
+	return A

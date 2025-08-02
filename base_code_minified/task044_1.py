@@ -1,19 +1,19 @@
-def p(g):
-	H,I=len(g),len(g[0]);G={};M={A for B in g for A in B if A not in(0,5)}
-	for E in M:
-		F=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==E];N=min(A for(A,B)in F);O=min(A for(B,A)in F);P=tuple(sorted((A-N,B-O)for(A,B)in F));G[P]=E
-		for(A,B)in F:g[A][B]=0
-	for A in range(H):
-		for B in range(I):
-			if g[A][B]==5 and(A==0 or g[A-1][B]!=5)and(B==0 or g[A][B-1]!=5):
-				C=1
-				while B+C<I and g[A][B+C]==5:C+=1
+def p(A):
+	I,J=len(A),len(A[0]);H={};N={A for B in A for A in B if A not in(0,5)}
+	for F in N:
+		G=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==F];O=min(A for(A,B)in G);P=min(A for(B,A)in G);Q=tuple(sorted((A-O,B-P)for(A,B)in G));H[Q]=F
+		for(B,C)in G:A[B][C]=0
+	for B in range(I):
+		for C in range(J):
+			if A[B][C]==5 and(B==0 or A[B-1][C]!=5)and(C==0 or A[B][C-1]!=5):
 				D=1
-				while A+D<H and all(g[A+D][B+C]==5 for C in range(C)):D+=1
-				J=tuple(sorted((D-A,E-B)for D in range(A,A+D)for E in range(B,B+C)if g[D][E]!=5))
-				if J in G:
-					E=G[J]
-					for K in range(A,A+D):
-						for L in range(B,B+C):
-							if g[K][L]!=5:g[K][L]=E
-	return g
+				while C+D<J and A[B][C+D]==5:D+=1
+				E=1
+				while B+E<I and all(A[B+E][C+D]==5 for D in range(D)):E+=1
+				K=tuple(sorted((E-B,F-C)for E in range(B,B+E)for F in range(C,C+D)if A[E][F]!=5))
+				if K in H:
+					F=H[K]
+					for L in range(B,B+E):
+						for M in range(C,C+D):
+							if A[L][M]!=5:A[L][M]=F
+	return A

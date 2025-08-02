@@ -1,8 +1,8 @@
-def p(g):
-	A,B=len(g),len(g[0]);I=[A for A in range(A)if g[A]==[5]*B];C=I and[0]+I+[A]or[0,A];L=[B for B in range(B)if all(g[A][B]==5 for A in range(A))];D=[0]+L+[B]
-	for E in range(len(C)-1):
-		for F in range(len(D)-1):
-			G=C[E]+(E>0);J=C[E+1];H=D[F]+(F>0);K=D[F+1];M=g[G+(J-G)//2][H+(K-H)//2]+5
-			for N in range(G,J):
-				for O in range(H,K):g[N][O]=M
-	return g
+def p(A):
+	B,C=len(A),len(A[0]);J=[B for B in range(B)if A[B]==[5]*C];D=J and[0]+J+[B]or[0,B];M=[C for C in range(C)if all(A[B][C]==5 for B in range(B))];E=[0]+M+[C]
+	for F in range(len(D)-1):
+		for G in range(len(E)-1):
+			H=D[F]+(F>0);K=D[F+1];I=E[G]+(G>0);L=E[G+1];N=A[H+(K-H)//2][I+(L-I)//2]+5
+			for O in range(H,K):
+				for P in range(I,L):A[O][P]=N
+	return A

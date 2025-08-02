@@ -1,10 +1,10 @@
-def p(g):
-	L={A for B in g for A in B if A};E=[]
-	for B in L:F=[A for(A,C)in enumerate(g)for(E,D)in enumerate(C)if D==B];G=[C for(E,A)in enumerate(g)for(C,D)in enumerate(A)if D==B];E.append((B,min(F),max(F),min(G),max(G)))
-	M,N=sorted(E,key=lambda t:t[4]-t[3]-(t[2]-t[1]),reverse=True);O,H,A,I,J=M;P,S,T,K,U=N
-	for C in range(H,A+1):
-		for D in range(I,J+1):g[C][D]=O
-	Q,R=A-H+1,J-I+1
-	for C in range(A+1,A+1+Q):
-		for D in range(K,K+R):g[C][D]=P
-	return g
+def p(A):
+	M={A for B in A for A in B if A};F=[]
+	for C in M:G=[A for(A,B)in enumerate(A)for(E,D)in enumerate(B)if D==C];H=[B for(E,A)in enumerate(A)for(B,D)in enumerate(A)if D==C];F.append((C,min(G),max(G),min(H),max(H)))
+	N,O=sorted(F,key=lambda M:M[4]-M[3]-(M[2]-M[1]),reverse=True);P,I,B,J,K=N;Q,T,U,L,V=O
+	for D in range(I,B+1):
+		for E in range(J,K+1):A[D][E]=P
+	R,S=B-I+1,K-J+1
+	for D in range(B+1,B+1+R):
+		for E in range(L,L+S):A[D][E]=Q
+	return A

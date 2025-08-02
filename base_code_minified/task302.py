@@ -1,9 +1,9 @@
-def p(g):
-	D,E=len(g),len(g[0])
-	for C in range(D):
-		for B in range(E):
-			for A in range(3,min(D-C,E-B)+1):
-				if g[C][B:B+A]==[5]*A==g[C+A-1][B:B+A]and all(g[C+D][B:B+A:A-1]==[5,5]for D in range(A)):
-					for F in range(C+1,C+A-1):
-						for G in range(B+1,B+A-1):g[F][G]=A+3
-	return g
+def p(A):
+	E,F=len(A),len(A[0])
+	for D in range(E):
+		for C in range(F):
+			for B in range(3,min(E-D,F-C)+1):
+				if A[D][C:C+B]==[5]*B==A[D+B-1][C:C+B]and all(A[D+E][C:C+B:B-1]==[5,5]for E in range(B)):
+					for G in range(D+1,D+B-1):
+						for H in range(C+1,C+B-1):A[G][H]=B+3
+	return A

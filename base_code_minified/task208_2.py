@@ -1,13 +1,13 @@
-def p(g):
-	F=sum(g,[]);H=max(set(F),key=F.count)
-	for G in set(F)-{H}:
-		A=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==G]
-		if(B:=max(A for(A,B)in A)-min(A for(A,B)in A)+1)*(C:=max(A for(B,A)in A)-min(A for(B,A)in A)+1)>len(A):J,K=min(A for(A,B)in A),min(A for(B,A)in A);break
-	I=[(A,D)for A in range(B)for D in range(C)if A*(A-B+1)*D*(D-C+1)==0]
-	for D in range(len(g)-B+1):
-		for E in range(len(g[0])-C+1):
-			if D==J and E==K:continue
-			if all(g[D+A][E+B]==H for A in range(1,B-1)for B in range(1,C-1))and all(g[D+A][E+B]!=G for(A,B)in I):
-				for(L,M)in I:g[D+L][E+M]=G
-				return g
-	return g
+def p(A):
+	G=sum(A,[]);I=max(set(G),key=G.count)
+	for H in set(G)-{I}:
+		B=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==H]
+		if(C:=max(A for(A,B)in B)-min(A for(A,B)in B)+1)*(D:=max(A for(B,A)in B)-min(A for(B,A)in B)+1)>len(B):K,L=min(A for(A,B)in B),min(A for(B,A)in B);break
+	J=[(A,B)for A in range(C)for B in range(D)if A*(A-C+1)*B*(B-D+1)==0]
+	for E in range(len(A)-C+1):
+		for F in range(len(A[0])-D+1):
+			if E==K and F==L:continue
+			if all(A[E+B][F+C]==I for B in range(1,C-1)for C in range(1,D-1))and all(A[E+B][F+C]!=H for(B,C)in J):
+				for(M,N)in J:A[E+M][F+N]=H
+				return A
+	return A

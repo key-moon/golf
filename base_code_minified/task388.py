@@ -1,1 +1,1 @@
-def p(g):B,A=len(g),len(g[0]);D=[any(A)for A in zip(*g)];return[[g[E%B][C%A]or 8*D[C%A]for C in range(A*2)]for E in range(B*2)]
+def p(A):C,B=len(A),len(A[0]);E=[any(A)for A in zip(*A)];return[[A[F%C][D%B]or 8*E[D%B]for D in range(B*2)]for F in range(C*2)]

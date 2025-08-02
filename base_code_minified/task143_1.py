@@ -1,8 +1,8 @@
-def p(g):
-	B=[A for B in g for A in B if A];C=[A for A in set(B)if B.count(A)==7][0];A=[(A,B)for A in range(10)for B in range(10)if g[A][B]==C];G,H=min(A for(A,B)in A),min(A for(B,A)in A);A=[(A-G,B-H)for(A,B)in A]
-	for I in set(B)-{C}:
-		E=[(A,B)for A in range(10)for B in range(10)if g[A][B]==I];J,K=min(A for(A,B)in E),min(A for(B,A)in E)
-		for(L,M)in A:
-			F,D=J+L,K+M
-			if 0<=F<10<D<10 or 0<=D<10:g[F][D]=C
-	return g
+def p(A):
+	C=[A for B in A for A in B if A];D=[A for A in set(C)if C.count(A)==7][0];B=[(B,C)for B in range(10)for C in range(10)if A[B][C]==D];H,I=min(A for(A,B)in B),min(A for(B,A)in B);B=[(A-H,B-I)for(A,B)in B]
+	for J in set(C)-{D}:
+		F=[(B,C)for B in range(10)for C in range(10)if A[B][C]==J];K,L=min(A for(A,B)in F),min(A for(B,A)in F)
+		for(M,N)in B:
+			G,E=K+M,L+N
+			if 0<=G<10<E<10 or 0<=E<10:A[G][E]=D
+	return A

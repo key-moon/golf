@@ -1,8 +1,8 @@
-def p(g):
-	A,B=next((A,B)for A in range(9)for B in range(9)if g[A][B]==g[A][B+1]==g[A+1][B]==g[A+1][B+1]and g[A][B]);G=g[A][B]
-	for C in range(10):
-		for D in range(10):
-			if g[C][D]==G and not(A<=C<=A+1 and B<=D<=B+1):
-				H=(C>A+1)-(C<A);I=(D>B+1)-(D<B);E,F=C+H,D+I
-				while 0<=E<10 and 0<=F<10:g[E][F]=G;E+=H;F+=I
-	return g
+def p(A):
+	B,C=next((B,C)for B in range(9)for C in range(9)if A[B][C]==A[B][C+1]==A[B+1][C]==A[B+1][C+1]and A[B][C]);H=A[B][C]
+	for D in range(10):
+		for E in range(10):
+			if A[D][E]==H and not(B<=D<=B+1 and C<=E<=C+1):
+				I=(D>B+1)-(D<B);J=(E>C+1)-(E<C);F,G=D+I,E+J
+				while 0<=F<10 and 0<=G<10:A[F][G]=H;F+=I;G+=J
+	return A

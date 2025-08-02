@@ -1,1 +1,1 @@
-def p(g):A=len(g);B=[(B,C)for B in range(A)for C in range(A)if g[B][C]];(C,D),(E,F)=B;G,H=g[C][D],g[E][F];return[[2 if(B==C or A==D)and(B==E or A==F)else G if B==C or A==D else H if B==E or A==F else 0 for A in range(A)]for B in range(A)]
+def p(A):B=len(A);G=[(C,D)for C in range(B)for D in range(B)if A[C][D]];(C,D),(E,F)=G;H,I=A[C][D],A[E][F];return[[2 if(A==C or B==D)and(A==E or B==F)else H if A==C or B==D else I if A==E or B==F else 0 for B in range(B)]for A in range(B)]

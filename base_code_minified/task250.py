@@ -1,7 +1,7 @@
-def p(g):
-	D=[A for(A,B)in enumerate(g)for C in B if C==2];E=[B for A in g for(B,C)in enumerate(A)if C==2];F,G=min(D),max(D);H,I=min(E),max(E);C=[[0]*len(g[0])for A in g]
-	for(A,K)in enumerate(g):
-		for(B,J)in enumerate(K):
-			if J==2:C[A][B]=2
-			if J==5:L=F-1 if A<F else G+1 if A>G else A;M=H-1 if B<H else I+1 if B>I else B;C[L][M]=5
-	return C
+def p(A):
+	E=[A for(A,B)in enumerate(A)for C in B if C==2];F=[B for A in A for(B,C)in enumerate(A)if C==2];G,H=min(E),max(E);I,J=min(F),max(F);D=[[0]*len(A[0])for B in A]
+	for(B,L)in enumerate(A):
+		for(C,K)in enumerate(L):
+			if K==2:D[B][C]=2
+			if K==5:M=G-1 if B<G else H+1 if B>H else B;N=I-1 if C<I else J+1 if C>J else C;D[M][N]=5
+	return D

@@ -1,9 +1,9 @@
-def p(g):
-	F=max(A.count(8)for A in g);A=[A for(A,B)in enumerate(g)if B.count(8)==F]
-	for(C,B)in enumerate(g):
-		if any(A==8 for A in B):
-			D=A[C%2]if len(A)>1 else A[0]
-			if C>D:
-				for(E,G)in enumerate(B):
-					if G==0 and g[D][E]==8:B[E]=1
-	return g
+def p(A):
+	G=max(A.count(8)for A in A);B=[A for(A,B)in enumerate(A)if B.count(8)==G]
+	for(D,C)in enumerate(A):
+		if any(A==8 for A in C):
+			E=B[D%2]if len(B)>1 else B[0]
+			if D>E:
+				for(F,H)in enumerate(C):
+					if H==0 and A[E][F]==8:C[F]=1
+	return A

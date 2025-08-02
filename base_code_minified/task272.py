@@ -1,5 +1,5 @@
-def p(g):
-	for(C,B)in enumerate(g):
-		for(A,D)in enumerate(B):
-			if D==2 and not(C and g[C-1][A]==2 or C<len(g)-1 and g[C+1][A]==2 or A and B[A-1]==2 or A<len(B)-1 and B[A+1]==2):B[A]=1
-	return g
+def p(A):
+	for(D,C)in enumerate(A):
+		for(B,E)in enumerate(C):
+			if E==2 and not(D and A[D-1][B]==2 or D<len(A)-1 and A[D+1][B]==2 or B and C[B-1]==2 or B<len(C)-1 and C[B+1]==2):C[B]=1
+	return A

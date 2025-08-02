@@ -1,10 +1,10 @@
-def p(g):
-	A=len(g)//3;D=g[A][0]
-	for E in range(3):
-		for F in range(3):
-			if E^F&1:
-				G=E*(A+1);H=F*(A+1)
-				for B in range(A):
-					for C in range(A):
-						if g[B][C]&g[B][C]-D and not g[G+B][H+C]:g[G+B][H+C]=D
-	return g
+def p(A):
+	B=len(A)//3;E=A[B][0]
+	for F in range(3):
+		for G in range(3):
+			if F^G&1:
+				H=F*(B+1);I=G*(B+1)
+				for C in range(B):
+					for D in range(B):
+						if A[C][D]&A[C][D]-E and not A[H+C][I+D]:A[H+C][I+D]=E
+	return A

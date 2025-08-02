@@ -1,33 +1,33 @@
-def p(g):
-	C,I=len(g),len(g[0]);P=next(A for A in set(g[A][0]for A in range(C))if any(all(B==A for B in g[B])for B in range(C)));W=[A for A in range(C)if all(g[A][B]==P for B in range(I))];X=[A for A in range(I)if all(g[B][A]==P for B in range(C))];F=[];A=0
-	for N in W:
-		if A<N:F.append((A,N))
-		A=N+1
-	if A<C:F.append((A,C))
-	G=[];A=0
+def p(A):
+	D,J=len(A),len(A[0]);Q=next(B for B in set(A[B][0]for B in range(D))if any(all(A==B for A in A[C])for C in range(D)));X=[B for B in range(D)if all(A[B][C]==Q for C in range(J))];Y=[B for B in range(J)if all(A[C][B]==Q for C in range(D))];G=[];B=0
 	for O in X:
-		if A<O:G.append((A,O))
-		A=O+1
-	if A<I:G.append((A,I))
-	J,K=len(F),len(G);B=[[g[A][B]for(B,C)in G]for(A,B)in F]
-	for D in range(J):
-		for E in range(K):
-			Q=B[D][E]
-			if not Q:continue
-			H=[(D-1,E),(D+1,E),(D,E-1),(D,E+1)]
-			if all(0<=A<J and 0<=C<K and B[A][C]for(A,C)in H):
-				R=B[H[0][0]][H[0][1]]
-				if all(B[A][C]==R for(A,C)in H):Y=[(A-D,B-E)for(A,B)in H];break
+		if B<O:G.append((B,O))
+		B=O+1
+	if B<D:G.append((B,D))
+	H=[];B=0
+	for P in Y:
+		if B<P:H.append((B,P))
+		B=P+1
+	if B<J:H.append((B,J))
+	K,L=len(G),len(H);C=[[A[B][C]for(C,D)in H]for(B,C)in G]
+	for E in range(K):
+		for F in range(L):
+			R=C[E][F]
+			if not R:continue
+			I=[(E-1,F),(E+1,F),(E,F-1),(E,F+1)]
+			if all(0<=A<K and 0<=B<L and C[A][B]for(A,B)in I):
+				S=C[I[0][0]][I[0][1]]
+				if all(C[A][B]==S for(A,B)in I):Z=[(A-E,B-F)for(A,B)in I];break
 		else:continue
 		break
-	for L in range(J):
-		for M in range(K):
-			if B[L][M]==Q:
-				for(Z,a)in Y:
-					S,T=L+Z,M+a
-					if 0<=S<J and 0<=T<K:B[S][T]=R
-	for(L,(b,c))in enumerate(F):
-		for(M,(U,V))in enumerate(G):
-			d=B[L][M]
-			for e in range(b,c):g[e][U:V]=[d]*(V-U)
-	return g
+	for M in range(K):
+		for N in range(L):
+			if C[M][N]==R:
+				for(a,b)in Z:
+					T,U=M+a,N+b
+					if 0<=T<K and 0<=U<L:C[T][U]=S
+	for(M,(c,d))in enumerate(G):
+		for(N,(V,W))in enumerate(H):
+			e=C[M][N]
+			for f in range(c,d):A[f][V:W]=[e]*(W-V)
+	return A

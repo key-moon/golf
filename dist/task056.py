@@ -1,1 +1,1 @@
-def p(g):return[[{171:1,341:2,118:3,186:6}[sum(1<<A*3+B for A in range(3)for B in range(3)if g[A][B])]]]
+def p(A):return[[{171:1,341:2,118:3,186:6}[sum(1<<B*3+C for B in range(3)for C in range(3)if A[B][C])]]]

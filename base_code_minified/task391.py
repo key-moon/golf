@@ -1,1 +1,1 @@
-def p(g):A={};[A.__setitem__(B,A.get(B,0)+1)for B in sum(g,[])if B];return[[A]for A in sorted(A,A.get,1)[1:]]
+def p(A):B={};[B.__setitem__(A,B.get(A,0)+1)for A in sum(A,[])if A];return[[A]for A in sorted(B,B.get,1)[1:]]

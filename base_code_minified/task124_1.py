@@ -1,32 +1,32 @@
-def p(g):
-	B,S=len(g),len(g[0]);G=next(A for B in g for A in B if A);E=[tuple(A for(A,B)in enumerate(A)if B==G)for A in g];K=0
-	for H in range(1,B):
-		if B>=2*H and all(E[A]==E[A+H]for A in range(B-H)):K=H;break
-	I=[[0]*S for A in range(10)]
-	for A in range(B):
-		for C in E[A]:I[A][C]=G
-	if K:
-		for A in range(B,10):
-			for C in E[A-K]:I[A][C]=G
+def p(A):
+	D,S=len(A),len(A[0]);H=next(A for B in A for A in B if A);F=[tuple(A for(A,B)in enumerate(A)if B==H)for A in A];M=0
+	for I in range(1,D):
+		if D>=2*I and all(F[A]==F[A+I]for A in range(D-I)):M=I;break
+	J=[[0]*S for A in range(10)]
+	for B in range(D):
+		for C in F[B]:J[B][C]=H
+	if M:
+		for B in range(D,10):
+			for C in F[B-M]:J[B][C]=H
 	else:
-		J={(A,B)for A in range(B)for B in E[A]};L={A:[]for A in J}
-		for(A,C)in J:
+		K={(A,B)for A in range(D)for B in F[A]};T={A:[]for A in K}
+		for(B,C)in K:
 			for(X,Y)in((1,0),(-1,0),(0,1),(0,-1)):
-				T=A+X,C+Y
-				if T in J:L[A,C].append(T)
-		U=[A for A in J if len(L[A])==1];Z,V=min(U),max(U)
-		def W(u,p):
-			if u==V:return[u]
-			for A in L[u]:
-				if A!=p:
-					B=W(A,u)
-					if B:return[u]+B
-		F=W(Z,None);D=[(F[A+1][0]-F[A][0],F[A+1][1]-F[A][1])for A in range(len(F)-1)]
-		for M in range(1,len(D)+1):
-			if all(D[A]==D[A+M]for A in range(len(D)-M)):N=D[:M];break
-		O=len(D)%len(N);P=V
+				U=B+X,C+Y
+				if U in K:T[B,C].append(U)
+		V=[A for A in K if len(T[A])==1];Z,a=min(V),max(V)
+		def W(A,B):
+			if A==L:return[A]
+			for D in C[A]:
+				if D!=B:
+					E=W(D,A)
+					if E:return[A]+E
+		G=W(Z,None);E=[(G[A+1][0]-G[A][0],G[A+1][1]-G[A][1])for A in range(len(G)-1)]
+		for N in range(1,len(E)+1):
+			if all(E[A]==E[A+N]for A in range(len(E)-N)):L=E[:N];break
+		O=len(E)%len(L);P=a
 		while True:
-			a,b=N[O];Q,R=P[0]+a,P[1]+b
+			b,c=L[O];Q,R=P[0]+b,P[1]+c
 			if not(0<=Q<10 and 0<=R<S):break
-			I[Q][R]=G;P=Q,R;O=(O+1)%len(N)
-	return I
+			J[Q][R]=H;P=Q,R;O=(O+1)%len(L)
+	return J

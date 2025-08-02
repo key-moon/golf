@@ -88,7 +88,7 @@ def val_func_shift(patch, directions):
         return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
     return frozenset((i + di, j + dj) for i, j in patch)
 
-def val_func_prval_func_apply(   function, a, b):
+def prval_func_apply(   function, a, b):
     return frozenset(function(i, j) for j in b for i in a)
 
 def mval_func_apply(function, container):
@@ -127,7 +127,7 @@ def val_func_size(container):
 def p(I):
     I=tuple(map(tuple,I))
     x1 = val_func_interval(2, 10, 1)
-    x2 = val_func_prval_func_apply(val_func_astuple, x1, x1)
+    x2 = prval_func_apply(val_func_astuple, x1, x1)
     x3 = val_func_lbind(val_func_canvas, 0)
     x4 = val_func_lbind(val_func_occurrences, I)
     x5 = val_func_lbind(val_func_lbind, val_func_shift)

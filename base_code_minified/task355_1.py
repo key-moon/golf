@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;E,F=len(A),len(A[0]);D=A[0][0]
+def p(A):
+	E,F=len(A),len(A[0]);D=A[0][0]
 	for B in range(F):
 		if A[0][B]!=D:break
 	for C in range(E):

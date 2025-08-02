@@ -1,5 +1,5 @@
-def p(val_g):
-	A=val_g;E,I=len(A),len(A[0])
+def p(A):
+	E,I=len(A),len(A[0])
 	for F in range(E):
 		G=[B for B in range(I)if A[F][B]==2]
 		if G[1:]:

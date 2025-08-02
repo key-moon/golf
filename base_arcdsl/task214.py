@@ -1,4 +1,4 @@
-def val_func_pval_func_apply(function, a, b):
+def pval_func_apply(function, a, b):
     return tuple(function(i, j) for i, j in zip(a, b))
 
 def val_func_merge(containers):
@@ -32,8 +32,8 @@ def val_func_shift(patch, directions):
 def val_func_crop(grid, start, dims):
     return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
 
-def mval_func_pval_func_apply(function, a, b):
-    return val_func_merge(val_func_pval_func_apply(function, a, b))
+def mpval_func_apply(function, a, b):
+    return val_func_merge(pval_func_apply(function, a, b))
 
 def val_func_apply(function, container):
     return type(container)(function(e) for e in container)
@@ -53,6 +53,6 @@ def p(I):
     x5 = val_func_astuple(4, 8)
     x6 = val_func_apply(val_func_tojvec, x5)
     x7 = val_func_apply(val_func_asobject, x4)
-    x8 = mval_func_pval_func_apply(val_func_shift, x7, x6)
+    x8 = mpval_func_apply(val_func_shift, x7, x6)
     O = val_func_paint(I, x8)
     return [*map(list,O)]

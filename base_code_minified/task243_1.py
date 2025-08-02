@@ -1,13 +1,13 @@
-def p(g):
-	J,K=len(g),len(g[0]);E=set();F=()
-	for C in range(J):
-		for D in range(K):
-			if not g[C][D]and(C,D)not in E:
-				L=[(C,D)];G={(C,D)};E.add((C,D))
-				for(H,I)in L:
-					for(M,N)in((1,0),(-1,0),(0,1),(0,-1)):
-						A,B=H+M,I+N
-						if 0<=A<J and 0<=B<K and not g[A][B]and(A,B)not in E:E.add((A,B));G.add((A,B));L.append((A,B))
-				if len(G)>len(F):F=G
-	for(H,I)in F:g[H][I]=1
-	return g
+def p(A):
+	K,L=len(A),len(A[0]);F=set();G=()
+	for D in range(K):
+		for E in range(L):
+			if not A[D][E]and(D,E)not in F:
+				M=[(D,E)];H={(D,E)};F.add((D,E))
+				for(I,J)in M:
+					for(N,O)in((1,0),(-1,0),(0,1),(0,-1)):
+						B,C=I+N,J+O
+						if 0<=B<K and 0<=C<L and not A[B][C]and(B,C)not in F:F.add((B,C));H.add((B,C));M.append((B,C))
+				if len(H)>len(G):G=H
+	for(I,J)in G:A[I][J]=1
+	return A

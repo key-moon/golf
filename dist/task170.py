@@ -1,6 +1,5 @@
 #coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚ­VYsÛ6~×¯`:Dp"¿ŠFg\0RÔá#G›8)‡Ó¡%ÈáT"5Õ¤qüß»»\0DJVÜ>ôEÄ±÷÷íB³Ô˜mòfþ™kÓìê2Xç_™
-–UÍ´P¼(ué$xo
-êX¡(ŸU(TÌVÕœ•„Oè´–uõÍ”[Ó°¦ÒAvv.Tz.ºû¾ß÷îûûûG—óâìßÒî»wN"·ÿ=ŽC/nwÁ‘ÿwì¾.{ÿ­]¦„æPž@Pœ:/ï\r[™ÒŠÓ…~zö¹/xÄÌÊ¬MÙ`ènj™ê`o•êoí¨¬€šo‹rÛäåÜ€÷f·YnV[“Zœ0 ’;˜c¨š‹?ÍßR¿œW;pgÝëÄÛ9"Èõ	rZáÛfnø°(IË^\09`)—ràíèøDj^Àjô·…È?ƒpïŸ“§ß©¶‚XÐ4ñ@I<#KŽD"­A„¼–UÃ2ºy¹`_$Þqë1Õ ‘Áïy–ÙbøTmr¸<\\Ë~œfi¾6¬hÔs°|”u«yØ…BP(¿ÚäÁhÝˆE±Þ"hçi@v™N‘ØCb7Ša.{v7±,Cjº‡ŒòWGÈ[ƒë|Ã€â[±a/Zì=]&~¾æ¢ nQ’›YEaÛÌÓ»ä Tš`¥Hëƒ=_æó¦ª„±´ë0²¸ÇbJˆGñNØÈ¡„Gý£`ÔÞ“À¤˜’\0"8ùyŒøŽä¨fu–N2
-Jª>á2v\\“ñÖ´µ–È¤´ÔdÊåžP¦m¦å«ÎQ–§x\r#dUlF?ªPÊFÁ #šÕò¤†:²4Î$¹ÞGe3²¿ëÚ¡9²áîÊ‚ÔÀÈü¾*ó•øR4Ÿ«]óÇÝ}'‰„1¼^íu€#-¸©JN%uN»ï•¸~šï|‡Å~-UŒ‰x‡ÖÌm§ô7¾æ¸‰‡óªlŠSà[œÄFRNºB3ù\0øjþ¸>èG8ùò¹Xêù„ÿ2 ‚\\J×ë–AºJè(ªÒˆœDÎ‰w3Æï¾d6ðñOà}ö2_,‹ˆChñðò;Dâ^?{_Ã…EQ]\\yõÅ5†$òò,†Å”,´ƒeÆ[¶µ§SeÒaÞé÷/êF`ÊÝÚÔycìØ¡Z{£1ÆXZJ977ÿë3a'»cz)TûR¼eh^”¦ój½YîÊùÁƒÖ^ã‹¹!å7Ï*Ãóùœ²š¶×!·§$÷žåâ‹q˜l.
-x¹×Îázcù«Ww= Ï±¢­ÒÕÃâåP8ÐÇÿ?9°—çÙ)k'Ã8²å\ry+‡>¼Jwƒ“u*Û…VbÊqZÃ4™Š$‡v¿Õ;ûƒÃà\r`¯¦<É·n¥%¼#0ó9ÌXp•Hà–æá¿Ð6ùž%bÌÃ™ü\0¯éIÉgb\0ƒE~¶Ä%w/OúƒÁ*®xöd¼€ì'''))))
+import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚ¥UKsÛ6¾ûW ‡Ì\0œHWQÈøÖÓ4Mbn9•)DMÓ8þïÝ]\0"%+“C/$ì~ßî~ØåÊ<0=åZ·¦Ùokö¸üÆ5{Øly(µ¨j¦¯àT\\¬Ð0éVõÏ\rãŽáÃvóÝÔ;Óðg®‹~y9ºÀKÈîwÏ÷NÎ{‡ó‡žwÐï`ýƒøèìî×ÄÇ°îë˜ò„ð³ w$ 2È~»¬ÿ4|mj,îF'»\0+|y2Ubý˜FK*¥…ÒeõÀª]Uïše}o¸–Íþim„YïLaK®eH%/ƒŽlT(äßæ_¾»ßìëÆÑ¥gõõÙnÎê{Æ0DÃqÚŒ•ê{¿>mŸ	ßXæ>)ºK¢î\r,zD”€ÉX…A"Seä¡’DRoÞ©h”°e½b°ŒG©çi	Š<JxÊÒ\\ý<üV_qšHm¾5¼jÌë\0`'yµžÇmÑI•Ø?cvpu¼¡pMñ\rñÑ‹0ÒöfPüC|À	dâ4¸îˆe1—Od“ß«'þÖÊå›uŒI=©o}Ïè…­·;þŒ‘_“Éì øW/I"Ç¯Ä"e€T1ì¸½ú	ú°´='ƒ¼5“V:¢©J{\0—E^JtˆTÔã).bŽDý‚Ðb‹–©¬Ç#@“­™ÍZ{.X&ó×IÅj]íN-Z9,)‡[éº"òœp“Qæïb:Ê‡q‘”EZªð@nwš·¨±“blƒ’1bNM
+Ì†aó³Å¦6ÁLÑí„"Ø÷•¼~üÂ¡Ü*cd‘õ¿³õJñÆMÙð~S7U½7°™+]$Ô2	µŒUG©i×h®žy.ñŒÕsò;ÿüU­\r5ÔX|è“ªåÉÊž"Õ˜NØHR"I‰§™à;´O~Öù»åjÅù
+YÓG*‚Åˆ\0/egDÝÂÕA®¼áèÃccµ¸Ì`1#„¶[ç¢½íîÌ	29êÎô× ‘¥ŽÚÔûG³]6NUCmŽ¶#Œ,Q*tÀ·ÿw„Ú1è{zJS4i§è§£ÀišÛ_ƒåÿx|Œ…î±žw†›Ø¸ÿÅÏÓ\0+øÛ`Á;›!m¦Îû÷Ðf}>³W®Ç	c²àïÍ¸”çÐÎ†q‚å<Ê1‡' tŸ°
+Zµã•V0ØE*jÖt	÷Tþ¾ÝÛ‡õè\\©úäV‘‚›€X¥¸Ê\\˜e9¾cmô…ÃÁD}å‘‹\0Ú·¾/ åaZÅ²/§Âýð‹·\rÎ&9åÙ2'''))))

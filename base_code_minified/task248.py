@@ -1,4 +1,4 @@
-def p(g):
-	A=len(g[0]);C=2*A-2;E=-9%C
-	for D in range(10):B=(D+E)%C;g[D]=[(B<A and B or 2*A-2-B)==C for C in range(A)]
-	return g
+def p(A):
+	B=len(A[0]);D=2*B-2;F=-9%D
+	for E in range(10):C=(E+F)%D;A[E]=[(C<B and C or 2*B-2-C)==A for A in range(B)]
+	return A

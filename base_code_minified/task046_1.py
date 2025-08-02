@@ -1,9 +1,9 @@
-def p(g):
-	C=list(zip(*g));C=[A for A in C if 5 not in A];A=[list(A)for A in zip(*C)];F=len(A);G=len(A[0])
-	for D in range(F):
-		for B in range(G):
-			if A[D][B]==0:
-				for H in(1,-1):
-					E=D+H
-					if 0<=E<F and A[E][B]!=0:A[D][B]=A[E][B];break
-	return A
+def p(A):
+	D=list(zip(*A));D=[A for A in D if 5 not in A];B=[list(A)for A in zip(*D)];G=len(B);H=len(B[0])
+	for E in range(G):
+		for C in range(H):
+			if B[E][C]==0:
+				for I in(1,-1):
+					F=E+I
+					if 0<=F<G and B[F][C]!=0:B[E][C]=B[F][C];break
+	return B

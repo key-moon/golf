@@ -1,1 +1,1 @@
-def p(g):return[[2 if A==6 else A for A in A]for A in g]
+def p(A):return[[2 if A==6 else A for A in A]for A in A]

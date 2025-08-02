@@ -1,1 +1,1 @@
-def p(g):B=next(A for A in g if len(set(A))==1)[0];A=sum(len(set(A))==1 for A in g);C=sum(len(set(A))==1 for A in zip(*g));D=next(A for C in g for A in C if A!=B);return[[D]*(C+1)]*(A+1)
+def p(A):B=next(A for A in A if len(set(A))==1)[0];C=sum(len(set(A))==1 for A in A);D=sum(len(set(A))==1 for A in zip(*A));E=next(A for C in A for A in C if A!=B);return[[E]*(D+1)]*(C+1)

@@ -1,15 +1,15 @@
-def p(g):
-	O,P=len(g),len(g[0]);D={}
-	for(A,Q)in enumerate(g):
-		for(B,E)in enumerate(Q):
-			if E:D.setdefault(E,[]).append((A,B))
-	for(R,C)in D.items():
-		F=[A for(A,B)in C];G=[A for(B,A)in C];H=max(F)-min(F)+1;I=max(G)-min(G)+1
-		for(J,K)in((-H,0),(H,0),(0,-I),(0,I)):
-			L=1
-			for(A,B)in C:
-				M,N=A+J,B+K
-				if not(0<=M<O and 0<=N<P and g[M][N]==0):L=0;break
-			if L:
-				for(A,B)in C:g[A+J][B+K]=R
-	return g
+def p(A):
+	P,Q=len(A),len(A[0]);E={}
+	for(B,R)in enumerate(A):
+		for(C,F)in enumerate(R):
+			if F:E.setdefault(F,[]).append((B,C))
+	for(S,D)in E.items():
+		G=[A for(A,B)in D];H=[A for(B,A)in D];I=max(G)-min(G)+1;J=max(H)-min(H)+1
+		for(K,L)in((-I,0),(I,0),(0,-J),(0,J)):
+			M=1
+			for(B,C)in D:
+				N,O=B+K,C+L
+				if not(0<=N<P and 0<=O<Q and A[N][O]==0):M=0;break
+			if M:
+				for(B,C)in D:A[B+K][C+L]=S
+	return A

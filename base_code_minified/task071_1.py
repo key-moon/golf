@@ -1,10 +1,10 @@
-def p(g):
-	E,F=len(g),len(g[0]);C={}
-	for A in range(E):
-		for B in range(F):G=g[A][B];G and C.setdefault(G,[]).append((A,B))
-	H=sorted(C,key=lambda k:-len(C[k]));I,D=H[0],H[1];J=[A for(A,B)in C[D]];K=[A for(B,A)in C[D]];L,M,N,O=min(J),max(J),min(K),max(K)
-	for A in range(L,M+1):
-		for B in range(N,O+1):
-			if g[A][B]==D:g[A][B]=0
-			elif g[A][B]==0 and any(0<=A+C<E and 0<=B+D<F and g[A+C][B+D]==I for(C,D)in((1,0),(-1,0),(0,1),(0,-1))):g[A][B]=I
-	return g
+def p(A):
+	F,G=len(A),len(A[0]);D={}
+	for B in range(F):
+		for C in range(G):H=A[B][C];H and D.setdefault(H,[]).append((B,C))
+	I=sorted(D,key=lambda I:-len(D[I]));J,E=I[0],I[1];K=[A for(A,B)in D[E]];L=[A for(B,A)in D[E]];M,N,O,P=min(K),max(K),min(L),max(L)
+	for B in range(M,N+1):
+		for C in range(O,P+1):
+			if A[B][C]==E:A[B][C]=0
+			elif A[B][C]==0 and any(0<=B+D<F and 0<=C+E<G and A[B+D][C+E]==J for(D,E)in((1,0),(-1,0),(0,1),(0,-1))):A[B][C]=J
+	return A

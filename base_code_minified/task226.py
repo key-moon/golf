@@ -1,7 +1,7 @@
-def p(g):
-	E=len(g);C=len(g[0]);J=[A for(A,B)in enumerate(g)if B.count(5)==C];K=[A for A in range(C)if all(g[B][A]==5 for B in range(E))];A=[-1]+J+[E];B=[-1]+K+[C];F=[(A[B]+1,A[B+1]-1)for B in range(len(A)-1)if A[B]+1<A[B+1]];G=[(B[A]+1,B[A+1]-1)for A in range(len(B)-1)if B[A]+1<B[A+1]];H=len(F);I=len(G)
-	for D in range(3):
-		L=D+1;M=(0,(H-1)//2,H-1)[D];N=(0,(I-1)//2,I-1)[D];O,P=F[M];Q,R=G[N]
-		for S in range(O,P+1):
-			for T in range(Q,R+1):g[S][T]=L
-	return g
+def p(A):
+	F=len(A);D=len(A[0]);K=[A for(A,B)in enumerate(A)if B.count(5)==D];L=[B for B in range(D)if all(A[C][B]==5 for C in range(F))];B=[-1]+K+[F];C=[-1]+L+[D];G=[(B[A]+1,B[A+1]-1)for A in range(len(B)-1)if B[A]+1<B[A+1]];H=[(C[A]+1,C[A+1]-1)for A in range(len(C)-1)if C[A]+1<C[A+1]];I=len(G);J=len(H)
+	for E in range(3):
+		M=E+1;N=(0,(I-1)//2,I-1)[E];O=(0,(J-1)//2,J-1)[E];P,Q=G[N];R,S=H[O]
+		for T in range(P,Q+1):
+			for U in range(R,S+1):A[T][U]=M
+	return A
