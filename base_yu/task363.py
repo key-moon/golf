@@ -5,7 +5,8 @@ def p(g):
  m=[(i%10,i//10)for i in R(100)if g[i%10][i//10]&2]
  for v in R(441):
 #   if 1-((i:=v%21-10,)in((2,1),(-4,2))and hash((*m,))>>50 in(4633,5384))and all(y+i in R(10) and x+j in R(10)and g[y+i][x+j]<1 for y,x in m):
-  if 1-((i:=v%21-10)in(2,-4)and hash((*m,))>>50 in(4633,5384))and all(y+i in R(10)and x+(j:=v//21-10)in R(10)and g[y+i][x+j]<1 for y,x in m):
+  if 1-((i:=v%21-10)in(2,-4)and hash((*m,))>>50 in(4633,5384))and all(-1<y+i<10and-1<x+(j:=v//21-10)<10and g[y+i][x+j]<1 for y,x in m):
+  # if 1-((i:=v%21-10)in(2,-4)and hash((*m,))>>50 in(4633,5384))and all(y+i in R(10)and x+(j:=v//21-10)in R(10)and g[y+i][x+j]<1 for y,x in m):
    for y,x in m:g[y+i][x+j]=2
 #   if 1-((i:=v%21-10,j:=v//21-10)in((2,1),(-4,2))and hash((*m,))>>50 in(4633,5384))and all(y+i in R(10) and x+j in R(10)and g[y+i][x+j]<1 for y,x in m):
 #    for y,x in m:g[y+i][x+j]=2

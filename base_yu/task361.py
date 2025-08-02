@@ -5,7 +5,7 @@ def p(g):
   for j in R(21):
 #    if(t:=sum((g[i-y-1][j-x-1]==g[y][x]>0)-.9for x in R(10)for y in R(10)if max(abs(j-2*x-1),abs(i-2*y-1))<3if i-y-1 in R(10)if j-x-1 in R(10)))>w:u,v,w=i-j,i+j,t
 #    if(t:=sum((g[c][d]==g[y][x]>0)-.9for x in R(10)for y in R(10)if max(abs((c:=i-y-1)-y),abs((d:=j-x-1)-x))<3if c in R(10)if d in R(10)))>w:u,v,w=i-j,i+j,t
-   if(t:=sum((g[c][d]==g[y][x]>0)-.9for x in R(10)for y in R(10)if(c:=i-y-1)in R(10)if(d:=j-x-1)in R(10)if max(abs(c-y),abs(d-x))<3))>w:u,v,w=i-j,i+j,t
+   if(t:=sum((g[c][d]==g[y][x]>0)-.9for x in R(10)for y in R(10)if-1<(c:=i-y-1)<10if-1<(d:=j-x-1)<10if max(abs(c-y),abs(d-x))<3))>w:u,v,w=i-j,i+j,t
 #    if(t:=sum((g[c][d]==g[y][x]>0)-.9for x in R(10)for y in R(10)if max(abs(c:=i-2*y-1),abs(d:=j-2*x-1))<3if c+y in R(10)if d+x in R(10)))>w:u,v,w=i-j,i+j,t
  for k in R(400):
   if g[y:=k%10][x:=k//10%10]>0:g[u//2+x][v//2-1-y]=g[y][x]

@@ -9,8 +9,7 @@ def p(g):
     l,r=u[i-1],u[i+1]
     l[j-1:j+2]=r[j-1:j+2]=[s[k]]*3
     l[k-1:k+2]=r[k-1:k+2]=[s[j]]*3
-    for t in R(j+2,k-1):
-     u[i][t]=-~min(t-j,k-t)%2*5
+    for t in R(j+2,k-1):u[i][t]=-~min(t-j,k-t)%2*5
   *g,=zip(*g)
   *u,=map(list,zip(*u))
  return u

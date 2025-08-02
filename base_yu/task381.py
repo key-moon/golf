@@ -6,8 +6,7 @@ def p(g):
  for s in g:
   t,c=[j for j in range(10)if s[j]],lambda k:1-(len(u:=[j for j in range(10)if 0<=k<10 if g[k][j]&2])>len(t)and({*t}<={*u})*(t[:1]<u)*t[-1]==u[-1])
   if t and c(i-2)*c(i):
-   for j in range(t[0],t[-1]):
-    s[j]=s[j]or 9
+   for j in range(t[0],t[-1]):s[j]=s[j]or 9
   i+=1
  return g
 

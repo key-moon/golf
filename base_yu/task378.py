@@ -7,7 +7,8 @@ def p(g):
    *t,={*s}-{*s[1::2]}
    u+=[(j+(1-(2&(k:=-~s.index(t[0])//3)))*m,i+(1-k%2*2)*m,*t)for m in R(2,n*(len(t)*3==len({*s})))]
  for x,y,v in u:
-  if y in R(n)and x in R(n):g[y][x]=v
+  # if y in R(n)and x in R(n):g[y][x]=v
+  if-1<y<n and-1<x<n:g[y][x]=v
  return g
 
 

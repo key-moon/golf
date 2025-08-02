@@ -8,9 +8,7 @@ def p(g):
      s=[t[l:r]for t in g[u:d]]
      b=s[-1]+s[0]+[min(v[0],v[-1])for v in s]
      # m<(r-l)*(d-u) and len(set(b)) == 1 and 1 <= b[0]
-     if (m<(S:=(r-l)*(d-u)))==j({*b})<=b[0]:
-      m,x=S,s
+     if (m<(S:=(r-l)*(d-u)))==j({*b})<=b[0]:m,x=S,s
  c,n=sum({*sum(x,[])})-x[0][0],j(x)
- for i in t(m):
-  x[i%n][i//n]=x[i%n][i//n]and c
+ for i in t(m):x[i%n][i//n]=x[i%n][i//n]and c
  return x
