@@ -100,4 +100,4 @@ if __name__ == "__main__":
 
       length = str(stat["length"]) if stat["success"] else "-"
       message = stat["message"] if not stat["success"] else "-"
-      readme.write(f"| [{task}](vis/task{task}.png) | {success} | [{base}]({base}) | {checker} | [{length}](dist/task{task}.py) | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
