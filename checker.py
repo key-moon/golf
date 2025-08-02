@@ -49,7 +49,7 @@ def check(path: str, task: dict):
   for case, example in enumerate(tests):
     example_copy = copy.deepcopy(example)
     try:
-      signal.setitimer(signal.ITIMER_REAL, 0.5)
+      signal.setitimer(signal.ITIMER_REAL, .5)
       # signal.alarm(1)
       if "case" in inspect.signature(program).parameters:
        output = program(example_copy["input"], case=case)
@@ -79,7 +79,7 @@ def check(path: str, task: dict):
 
 def visualize_outputs(outputs, path):
     num_visualize = min(len(outputs), 10)
-    fig, axes = plt.subplots(num_visualize, 3, figsize=(5 * 3, 5 * num_visualize))
+    fig, axes = plt.subplots(max(2,num_visualize), 3, figsize=(5 * 3, 5 * num_visualize))
     for idx, (task, case, output) in enumerate(outputs):
       if num_visualize <= idx: break
       mat_inp = np.array(task['input']) 
