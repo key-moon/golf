@@ -1,1 +1,0 @@
-def p(g):return[[c if c and any(0<=i+u<len(g)and 0<=j+v<len(g[0])and g[i+u][j+v]==c for u in(1,0,-1)for v in(1,0,-1)if u|v)else 0 for j,c in enumerate(r)]for i,r in enumerate(g)]

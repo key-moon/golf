@@ -1,1 +1,0 @@
-def p(A):C=len(A);B=C*2;return[[sum(A[D-B][E-B]if 0<=D-B<C and 0<=E-B<C else 0 for B in range(B))for E in range(B)]for D in range(B)]

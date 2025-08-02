@@ -1,1 +1,0 @@
-def p(g):n=g[0].index(5);return[[2*x[j]*x[j+n+1]for j in range(n)]for x in g]

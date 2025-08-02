@@ -1,1 +1,0 @@
-def p(A):B=next(A for(A,B)in enumerate(A)if 0 in B);C=A[B].index(0);D=len(A);return[[A[B+E][D-C-F-1]for F in range(3)]for E in range(3)]

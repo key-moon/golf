@@ -1,1 +1,0 @@
-def p(B):A=sum(B,[]);D=sorted({*A},key=A.count,reverse=1);return[[D[(D.index(E)+2)%3]for E in C]for C in B]

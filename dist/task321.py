@@ -1,1 +1,0 @@
-def p(A):B=A[0].index(2);C=A[0].index(2,B+1);return[[A or B or C for(A,B,C)in zip(A[:B],A[B+1:C],A[C+1:])]for A in A]

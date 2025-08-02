@@ -1,1 +1,0 @@
-p=lambda g,p=[0]:[[l.pop([-1,p.index(c:=max(p))][p.count(c)!=2]),p:=[0,*l]][1]for l in g[::-1]][::-1]
