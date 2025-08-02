@@ -2,8 +2,6 @@ import bz2
 import lzma
 import zlib
 
-from arrow import get
-
 def get_embed_str(b: bytes):
   # TODO: r"" とか使うとマシになったりするかも
   b = b.replace(b"\\", b"\\\\")
