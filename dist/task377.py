@@ -1,0 +1,1 @@
+def p(A):B=lambda a:[a[0]]+[a[A]for A in range(1,len(a))if a[A]!=a[A-1]];A=B(A);A=[list(A)for A in zip(*B(list(zip(*A))))];return A

@@ -1,0 +1,1 @@
+def p(A):B=[not any(A)for A in A];C=[not any(A)for A in zip(*A)];return[[2 if B[D]or C[E]else A[D][E]for E in range(len(C))]for D in range(len(B))]

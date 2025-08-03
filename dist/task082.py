@@ -1,0 +1,1 @@
+def p(A):B=A[0];C=[0]+B+[0];D=[C[A]or C[A+2]for A in range(len(B))];return([B,D]*(len(A)//2+1))[:len(A)]

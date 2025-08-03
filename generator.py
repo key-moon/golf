@@ -24,7 +24,7 @@ def check_str(code: str | bytes, task):
 score = 0
 accepted = 0
 
-SLOW = ["base_yu/task002.py", "base_yu/task396.py"]
+SLOW = ["base_yu/task002.py", "base_yu/task205.py", "base_yu/task396.py"]
 
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
