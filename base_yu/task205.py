@@ -1,0 +1,25 @@
+R=range
+def p(g):
+ c=__import__("collections").Counter(sum(g,[])).most_common()[0][0]
+ _,l,r,u,d=max((sum((v==c)-.6 for s in g[u:d]for v in s[l:r]),l,r,u,d)for d in R(len(g))for r in R(len(g[0]))for l in R(r)for u in R(d))
+ s=[s[l:r]for s in g[u:d]]
+ h=len(s);w=h*len(s[0])
+ u=sum([[i%h,i//h]for i in R(w)if s[i%h][i//h]!=c],[])
+ for i in R(w):
+  if i%h in u[::2]or i//h in u[1::2]:s[i%h][i//h]=s[u[0]][u[1]]
+ return s
+
+# R=range
+# def p(g):
+#  c=__import__("collections").Counter(sum(g,[])).most_common()[0][0]
+#  _,l,r,u,d=max((sum((v==c)-.6 for s in g[u:d]for v in s[l:r]),l,r,u,d)for d in R(len(g))for r in R(len(g[0]))for l in R(r)for u in R(d))
+#  s=[s[l:r]for s in g[u:d]]
+#  h=len(s);w=h*len(s[0])
+#  u,v=[],[]
+#  for i in R(w):
+#   if s[i%h][i//h]!=c:
+#    u+=[i%h]
+#    v+=[i//h]
+#  for i in R(w):
+#   if i%h in u or i//h in v:s[i%h][i//h]=s[u[0]][v[0]]
+#  return s
