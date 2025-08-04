@@ -1,0 +1,4 @@
+S=sorted
+def p(g):
+ h,w=len(g),len(g[0]);s=[i for i in range(h*w)if g[i%h][i//h]>0];u,*_,d=S(i%h for i in s);l,*_,r=S(i//h for i in s)
+ return[s[r:l-1:-1]for s in g[u:d+1]]

@@ -1,7 +1,7 @@
 # Golf Stats
 
-Accepted: 344/400
-Score: 743888
+Accepted: 350/400
+Score: 757767
 
 ## Task Details
 
@@ -171,7 +171,7 @@ Score: 743888
 | [162](vis/task162.png) | ⚠️ | [base_arcdsl_minified/task162.py](base_arcdsl_minified/task162.py) | zlib | [958](dist/task162.py) | [prompt](prompts/task162.txt) / [vis-many](vis_many/task162.png) | - |
 | [163](vis/task163.png) | ⚠️ | [base_arcdsl_minified/task163.py](base_arcdsl_minified/task163.py) | zlib | [977](dist/task163.py) | [prompt](prompts/task163.txt) / [vis-many](vis_many/task163.png) | - |
 | [164](vis/task164.png) | ⚠️ | [base_arcdsl_minified/task164.py](base_arcdsl_minified/task164.py) | zlib | [372](dist/task164.py) | [prompt](prompts/task164.txt) / [vis-many](vis_many/task164.png) | - |
-| [165](vis/task165.png) | ❌ | - | - | [-](dist/task165.py) | [prompt](prompts/task165.txt) / [vis-many](vis_many/task165.png) | WA |
+| [165](vis/task165.png) | ✅ | [base_yu/task165.py](base_yu/task165.py) | raw | [204](dist/task165.py) | [prompt](prompts/task165.txt) / [vis-many](vis_many/task165.png) | - |
 | [166](vis/task166.png) | ⚠️ | [base_arcdsl_minified/task166.py](base_arcdsl_minified/task166.py) | zlib | [937](dist/task166.py) | [prompt](prompts/task166.txt) / [vis-many](vis_many/task166.png) | - |
 | [167](vis/task167.png) | ⚠️ | [base_arcdsl_minified/task167.py](base_arcdsl_minified/task167.py) | zlib | [588](dist/task167.py) | [prompt](prompts/task167.txt) / [vis-many](vis_many/task167.png) | - |
 | [168](vis/task168.png) | ✅ | [base_code/task168.py](base_code/task168.py) | zlib | [303](dist/task168.py) | [prompt](prompts/task168.txt) / [vis-many](vis_many/task168.png) | - |
@@ -183,7 +183,7 @@ Score: 743888
 | [174](vis/task174.png) | ✅ | [base_code_minified/task174_1.py](base_code_minified/task174_1.py) | zlib | [311](dist/task174.py) | [prompt](prompts/task174.txt) / [vis-many](vis_many/task174.png) | - |
 | [175](vis/task175.png) | ⚠️ | [base_arcdsl_minified/task175.py](base_arcdsl_minified/task175.py) | zlib | [782](dist/task175.py) | [prompt](prompts/task175.txt) / [vis-many](vis_many/task175.png) | - |
 | [176](vis/task176.png) | ✅ | [base_code/task176.py](base_code/task176.py) | raw | [202](dist/task176.py) | [prompt](prompts/task176.txt) / [vis-many](vis_many/task176.png) | - |
-| [177](vis/task177.png) | ❌ | - | - | [-](dist/task177.py) | [prompt](prompts/task177.txt) / [vis-many](vis_many/task177.png) | WA |
+| [177](vis/task177.png) | ✅ | [base_yu/task177.py](base_yu/task177.py) | raw | [172](dist/task177.py) | [prompt](prompts/task177.txt) / [vis-many](vis_many/task177.png) | - |
 | [178](vis/task178.png) | ✅ | [base_code/task178.py](base_code/task178.py) | raw | [124](dist/task178.py) | [prompt](prompts/task178.txt) / [vis-many](vis_many/task178.png) | - |
 | [179](vis/task179.png) | ✅ | [base_code/task179.py](base_code/task179.py) | raw | [35](dist/task179.py) | [prompt](prompts/task179.txt) / [vis-many](vis_many/task179.png) | - |
 | [180](vis/task180.png) | ⚠️ | [base_arcdsl_minified/task180.py](base_arcdsl_minified/task180.py) | zlib | [685](dist/task180.py) | [prompt](prompts/task180.txt) / [vis-many](vis_many/task180.png) | - |
@@ -194,14 +194,14 @@ Score: 743888
 | [185](vis/task185.png) | ⚠️ | [base_arcdsl_minified/task185.py](base_arcdsl_minified/task185.py) | bz2 | [1900](dist/task185.py) | [prompt](prompts/task185.txt) / [vis-many](vis_many/task185.png) | - |
 | [186](vis/task186.png) | ✅ | [base_code_minified/task186_1.py](base_code_minified/task186_1.py) | raw | [160](dist/task186.py) | [prompt](prompts/task186.txt) / [vis-many](vis_many/task186.png) | - |
 | [187](vis/task187.png) | ✅ | [base_code/task187.py](base_code/task187.py) | zlib | [270](dist/task187.py) | [prompt](prompts/task187.txt) / [vis-many](vis_many/task187.png) | - |
-| [188](vis/task188.png) | ❌ | - | - | [-](dist/task188.py) | [prompt](prompts/task188.txt) / [vis-many](vis_many/task188.png) | WA |
+| [188](vis/task188.png) | ✅ | [base_yu/task188.py](base_yu/task188.py) | raw | [84](dist/task188.py) | [prompt](prompts/task188.txt) / [vis-many](vis_many/task188.png) | - |
 | [189](vis/task189.png) | ✅ | [base_code_minified/task189_1.py](base_code_minified/task189_1.py) | zlib | [311](dist/task189.py) | [prompt](prompts/task189.txt) / [vis-many](vis_many/task189.png) | - |
 | [190](vis/task190.png) | ✅ | [base_code/task190_2.py](base_code/task190_2.py) | zlib | [279](dist/task190.py) | [prompt](prompts/task190.txt) / [vis-many](vis_many/task190.png) | - |
 | [191](vis/task191.png) | ❌ | - | - | [-](dist/task191.py) | [prompt](prompts/task191.txt) / [vis-many](vis_many/task191.png) | WA |
-| [192](vis/task192.png) | ❌ | - | - | [-](dist/task192.py) | [prompt](prompts/task192.txt) / [vis-many](vis_many/task192.png) | WA |
-| [193](vis/task193.png) | ❌ | - | - | [-](dist/task193.py) | [prompt](prompts/task193.txt) / [vis-many](vis_many/task193.png) | WA |
+| [192](vis/task192.png) | ✅ | [base_yu/task192.py](base_yu/task192.py) | zlib | [321](dist/task192.py) | [prompt](prompts/task192.txt) / [vis-many](vis_many/task192.png) | - |
+| [193](vis/task193.png) | ✅ | [base_yu/task193.py](base_yu/task193.py) | raw | [156](dist/task193.py) | [prompt](prompts/task193.txt) / [vis-many](vis_many/task193.png) | - |
 | [194](vis/task194.png) | ✅ | [base_code_minified/task194.py](base_code_minified/task194.py) | raw | [152](dist/task194.py) | [prompt](prompts/task194.txt) / [vis-many](vis_many/task194.png) | - |
-| [195](vis/task195.png) | ❌ | - | - | [-](dist/task195.py) | [prompt](prompts/task195.txt) / [vis-many](vis_many/task195.png) | WA |
+| [195](vis/task195.png) | ✅ | [base_yu/task195.py](base_yu/task195.py) | raw | [185](dist/task195.py) | [prompt](prompts/task195.txt) / [vis-many](vis_many/task195.png) | - |
 | [196](vis/task196.png) | ✅ | [base_code/task196.py](base_code/task196.py) | zlib | [359](dist/task196.py) | [prompt](prompts/task196.txt) / [vis-many](vis_many/task196.png) | - |
 | [197](vis/task197.png) | ✅ | [base_code/task197.py](base_code/task197.py) | zlib | [214](dist/task197.py) | [prompt](prompts/task197.txt) / [vis-many](vis_many/task197.png) | - |
 | [198](vis/task198.png) | ❌ | - | - | [-](dist/task198.py) | [prompt](prompts/task198.txt) / [vis-many](vis_many/task198.png) | WA |
@@ -211,7 +211,7 @@ Score: 743888
 | [202](vis/task202.png) | ✅ | [base_code/task202_2.py](base_code/task202_2.py) | zlib | [294](dist/task202.py) | [prompt](prompts/task202.txt) / [vis-many](vis_many/task202.png) | - |
 | [203](vis/task203.png) | ✅ | [base_code/task203.py](base_code/task203.py) | raw | [140](dist/task203.py) | [prompt](prompts/task203.txt) / [vis-many](vis_many/task203.png) | - |
 | [204](vis/task204.png) | ✅ | [base_code/task204.py](base_code/task204.py) | zlib | [438](dist/task204.py) | [prompt](prompts/task204.txt) / [vis-many](vis_many/task204.png) | - |
-| [205](vis/task205.png) | ✅ | [base_yu/task205.py](base_yu/task205.py) | zlib | [333](dist/task205.py) | [prompt](prompts/task205.txt) / [vis-many](vis_many/task205.png) | - |
+| [205](vis/task205.png) | ✅ | [base_yu/task205.py](base_yu/task205.py) | zlib | [332](dist/task205.py) | [prompt](prompts/task205.txt) / [vis-many](vis_many/task205.png) | - |
 | [206](vis/task206.png) | ✅ | [base_code_minified/task206_1.py](base_code_minified/task206_1.py) | zlib | [267](dist/task206.py) | [prompt](prompts/task206.txt) / [vis-many](vis_many/task206.png) | - |
 | [207](vis/task207.png) | ✅ | [base_code_minified/task207_1.py](base_code_minified/task207_1.py) | raw | [149](dist/task207.py) | [prompt](prompts/task207.txt) / [vis-many](vis_many/task207.png) | - |
 | [208](vis/task208.png) | ⚠️ | [base_arcdsl_minified/task208.py](base_arcdsl_minified/task208.py) | zlib | [923](dist/task208.py) | [prompt](prompts/task208.txt) / [vis-many](vis_many/task208.png) | - |
