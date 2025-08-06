@@ -8,6 +8,8 @@ import compress
 from strip import strip
 from utils import get_code_paths, get_task
 import os
+import pandas as pd
+import math
 
 def check_str(code: str | bytes, task):
     tmp_path = "tmp/tmp.py"
@@ -20,6 +22,12 @@ def check_str(code: str | bytes, task):
       del sys.modules["tmp.tmp"]
     shutil.rmtree('tmp/__pycache__', ignore_errors=True)
     return res
+
+def read_others_best():
+  csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pub?gid=1427788625&single=true&output=csv"
+  df = pd.read_csv(csv_url)
+  best_values = df.iloc[7:407, 1].tolist()
+  return [v if isinstance(v, str) else "-" for v in best_values]
 
 score = 0
 accepted = 0
@@ -85,14 +93,15 @@ if __name__ == "__main__":
 
   print(f"accepted: {accepted}/400, {score=}")
 
+  others_best = read_others_best()
   # Write stats to README
   with open("README.md", "w") as readme:
     readme.write("# Golf Stats\n\n")
     readme.write(f"Accepted: {accepted}/400\n")
     readme.write(f"Score: {score}\n\n")
     readme.write("## Task Details\n\n")
-    readme.write("| Task | Success | Base | Compressor | Length | Goods | Message |\n")
-    readme.write("|------|---------|------|------------|--------|-------|---------|\n")
+    readme.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
+    readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
       success = ("✅" if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
@@ -100,5 +109,6 @@ if __name__ == "__main__":
       checker = stat["compressor"] if stat["success"] else "-"
 
       length = str(stat["length"]) if stat["success"] else "-"
+      best = others_best[stat['task'] - 1]
       message = stat["message"] if not stat["success"] else "-"
-      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+      readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
