@@ -1,4 +1,7 @@
-p=lambda g:list(filter(len,[[v for v in s if v][::-1]for s in g]))
+p=lambda g:[*filter(len,[[*filter(int,s)][::-1]for s in g])]
+
+# p=lambda g:list(filter(len,[[v for v in s if v][::-1]for s in g]))
+
 # S=sorted
 # def p(g):
 #  h,w=len(g),len(g[0])
