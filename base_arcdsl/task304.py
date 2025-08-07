@@ -1,88 +1,41 @@
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_shift(patch, directions):
-    if len(patch) == 0:
-        return patch
-    di, dj = directions
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
-    return frozenset((i + di, j + dj) for i, j in patch)
-
-def val_func_ulcorner(patch):
-    return tuple(map(min, zip(*val_func_toindices(patch))))
-
-def val_func_vconcat(a, b):
-    return a + b
-
-def val_func_hconcat(a, b):
-    return tuple(i + j for i, j in zip(a, b))
-
-def val_func_upscale(element, factor):
-    if isinstance(element, tuple):
-        g = tuple()
-        for row in element:
-            val_func_upscaled_row = tuple()
-            for value in row:
-                val_func_upscaled_row = val_func_upscaled_row + tuple(value for num in range(factor))
-            g = g + tuple(val_func_upscaled_row for num in range(factor))
-        return g
-    else:
-        if len(element) == 0:
-            return frozenset()
-        di_inv, dj_inv = val_func_ulcorner(element)
-        di, dj = (-di_inv, -dj_inv)
-        normed_obj = val_func_shift(element, (di, dj))
-        o = set()
-        for value, (i, j) in normed_obj:
-            for io in range(factor):
-                for jo in range(factor):
-                    o.add((value, (i * factor + io, j * factor + jo)))
-        return val_func_shift(frozenset(o), (di_inv, dj_inv))
-
-def val_func_fill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    grid_val_func_filled = list(list(row) for row in grid)
-    for i, j in val_func_toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            grid_val_func_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_val_func_filled)
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_asindices(grid):
-    return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
-
-def val_func_mostcolor(element):
-    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
-    return max(set(values), key=values.count)
-    
-
-def val_func_difference(a, b):
-    return type(a)(e for e in a if e not in b)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_mostcolor(I)
-    x2 = val_func_hconcat(I, I)
-    x3 = val_func_upscale(I, 3)
-    x4 = val_func_ofcolor(x3, x1)
-    x5 = val_func_asindices(x3)
-    x6 = val_func_difference(x5, x4)
-    x7 = val_func_hconcat(x2, I)
-    x8 = val_func_vconcat(x7, x7)
-    x9 = val_func_vconcat(x8, x7)
-    O = val_func_fill(x9, 0, x6)
-    return [*map(list,O)]
+def M(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def S(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def V(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def U(A):return tuple(map(min,zip(*S(A))))
+def X(a,b):return a+b
+def Y(a,b):return tuple(A+B for(A,B)in zip(a,b))
+def E(A,B):
+	if isinstance(A,tuple):
+		C=tuple()
+		for I in A:
+			D=tuple()
+			for E in I:D=D+tuple(E for A in range(B))
+			C=C+tuple(D for A in range(B))
+		return C
+	else:
+		if len(A)==0:return frozenset()
+		F,G=U(A);J,K=-F,-G;L=V(A,(J,K));H=set()
+		for(E,(M,N))in L:
+			for O in range(B):
+				for P in range(B):H.add((E,(M*B+O,N*B+P)))
+		return V(frozenset(H),(F,G))
+def W(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in S(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def L(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def J(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def Z(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def P(a,b):return type(a)(A for A in a if A not in b)
+def p(I):I=tuple(map(tuple,I));C=Z(I);D=Y(I,I);B=E(I,3);F=L(B,C);G=J(B);H=P(G,F);A=Y(D,I);K=X(A,A);M=X(K,A);N=W(M,0,H);return[*map(list,N)]

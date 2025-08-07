@@ -1,46 +1,19 @@
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_lrcorner(patch):
-    return tuple(map(max, zip(*val_func_toindices(patch))))
-
-def val_func_ulcorner(patch):
-    return tuple(map(min, zip(*val_func_toindices(patch))))
-
-def val_func_hconcat(a, b):
-    return tuple(i + j for i, j in zip(a, b))
-
-def val_func_hmirror(piece):
-    if isinstance(piece, tuple):
-        return piece[::-1]
-    d = val_func_ulcorner(piece)[0] + val_func_lrcorner(piece)[0]
-    if isinstance(next(iter(piece))[1], tuple):
-        return frozenset((v, (d - i, j)) for v, (i, j) in piece)
-    return frozenset((d - i, j) for i, j in piece)
-
-def val_func_crop(grid, start, dims):
-    return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
-
-def val_func_astuple(a, b):
-    return (a, b)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_astuple(2, 1)
-    x2 = val_func_crop(I, (0, 0), x1)
-    x3 = val_func_hmirror(x2)
-    x4 = val_func_hconcat(x2, x3)
-    x5 = val_func_hconcat(x4, x4)
-    O = val_func_hconcat(x5, x4)
-    return [*map(list,O)]
+def X(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def P(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def S(A):return tuple(map(max,zip(*P(A))))
+def Z(A):return tuple(map(min,zip(*P(A))))
+def E(a,b):return tuple(A+B for(A,B)in zip(a,b))
+def J(A):
+	if isinstance(A,tuple):return A[::-1]
+	B=Z(A)[0]+S(A)[0]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B-C,D))for(A,(C,D))in A)
+	return frozenset((B-A,C)for(A,C)in A)
+def L(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def U(a,b):return a,b
+def p(I):I=tuple(map(tuple,I));C=U(2,1);B=L(I,(0,0),C);D=J(B);A=E(B,D);F=E(A,A);G=E(F,A);return[*map(list,G)]

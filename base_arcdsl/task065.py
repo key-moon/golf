@@ -1,49 +1,17 @@
-def val_func_apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def val_func_merge(containers):
-    return type(containers)(e for c in containers for e in c)
-
-def val_func_palette(element):
-    if isinstance(element, tuple):
-        return frozenset({v for r in element for v in r})
-    return frozenset({v for v, _ in element})
-
-def val_func_crop(grid, start, dims):
-    return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
-
-def val_func_vsplit(grid, n):
-    h, w = len(grid) // n, len(grid[0])
-    offset = len(grid) % n != 0
-    return tuple(val_func_crop(grid, (h * i + i * offset, 0), (h, w)) for i in range(n))
-
-def val_func_hsplit(grid, n):
-    h, w = len(grid), len(grid[0]) // n
-    offset = len(grid[0]) % n != 0
-    return tuple(val_func_crop(grid, (0, w * i + i * offset), (h, w)) for i in range(n))
-
-def val_func_numcolors(element):
-    return len(val_func_palette(element))
-
-def mval_func_apply(function, container):
-    return val_func_merge(val_func_apply(function, container))
-
-def val_func_rbind(function, fixed):
-    n = function.__code__.co_argcount
-    if n == 2:
-        return lambda x: function(x, fixed)
-    elif n == 3:
-        return lambda x, y: function(x, y, fixed)
-    else:
-        return lambda x, y, z: function(x, y, z, fixed)
-
-def val_func_argmax(container, compfunc):
-    return max(container, key=compfunc)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_vsplit(I, 2)
-    x2 = val_func_rbind(val_func_hsplit, 2)
-    x3 = mval_func_apply(x2, x1)
-    O = val_func_argmax(x3, val_func_numcolors)
-    return [*map(list,O)]
+def Y(A,B):return type(B)(A(B)for B in B)
+def X(A):return type(A)(B for A in A for B in A)
+def Z(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def V(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def U(A,n):B,D=len(A)//n,len(A[0]);E=len(A)%n!=0;return tuple(V(A,(B*C+C*E,0),(B,D))for C in range(n))
+def J(A,n):D,B=len(A),len(A[0])//n;E=len(A[0])%n!=0;return tuple(V(A,(0,B*C+C*E),(D,B))for C in range(n))
+def P(A):return len(Z(A))
+def S(A,B):return X(Y(A,B))
+def L(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def E(A,B):return max(A,key=B)
+def p(I):I=tuple(map(tuple,I));A=U(I,2);B=L(J,2);C=S(B,A);D=E(C,P);return[*map(list,D)]

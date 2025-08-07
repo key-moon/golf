@@ -1,7 +1,2 @@
-def val_func_rot270(grid):
-    return tuple(tuple(row[::-1]) for row in zip(*grid[::-1]))[::-1]
-
-def p(I):
-    I=tuple(map(tuple,I))
-    O = val_func_rot270(I)
-    return [*map(list,O)]
+def P(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def p(I):I=tuple(map(tuple,I));A=P(I);return[*map(list,A)]

@@ -1,111 +1,48 @@
-def val_func_remove(value, container):
-    return type(container)(e for e in container if e != value)
-
-def val_func_first(container):
-    return next(iter(container))
-
-def val_func_apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def val_func_merge(containers):
-    return type(containers)(e for c in containers for e in c)
-
-def val_func_rightmost(patch):
-    return max(j for i, j in val_func_toindices(patch))
-
-def val_func_leftmost(patch):
-    return min(j for i, j in val_func_toindices(patch))
-
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_connect(a, b):
-    ai, aj = a
-    bi, bj = b
-    si = min(ai, bi)
-    ei = max(ai, bi) + 1
-    sj = min(aj, bj)
-    ej = max(aj, bj) + 1
-    if ai == bi:
-        return frozenset((ai, j) for j in range(sj, ej))
-    elif aj == bj:
-        return frozenset((i, aj) for i in range(si, ei))
-    elif bi - ai == bj - aj:
-        return frozenset((i, j) for i, j in zip(range(si, ei), range(sj, ej)))
-    elif bi - ai == aj - bj:
-        return frozenset((i, j) for i, j in zip(range(si, ei), range(ej - 1, sj - 1, -1)))
-    return frozenset()
-
-def val_func_shoot(start, direction):
-    return val_func_connect(start, (start[0] + 42 * direction[0], start[1] + 42 * direction[1]))
-
-def val_func_vupscale(grid, factor):
-    g = tuple()
-    for row in grid:
-        g = g + tuple(row for num in range(factor))
-    return g
-
-def val_func_fill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    grid_val_func_filled = list(list(row) for row in grid)
-    for i, j in val_func_toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            grid_val_func_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_val_func_filled)
-
-def val_func_palette(element):
-    if isinstance(element, tuple):
-        return frozenset({v for r in element for v in r})
-    return frozenset({v for v, _ in element})
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_width(piece):
-    if len(piece) == 0:
-        return 0
-    if isinstance(piece, tuple):
-        return len(piece[0])
-    return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
-
-def mval_func_apply(function, container):
-    return val_func_merge(val_func_apply(function, container))
-
-def val_func_rbind(function, fixed):
-    n = function.__code__.co_argcount
-    if n == 2:
-        return lambda x: function(x, fixed)
-    elif n == 3:
-        return lambda x, y: function(x, y, fixed)
-    else:
-        return lambda x, y, z: function(x, y, z, fixed)
-
-def val_func_other(container, value):
-    return val_func_first(val_func_remove(value, container))
-
-def val_func_halve(n):
-    return n // 2 if isinstance(n, int) else (n[0] // 2, n[1] // 2)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_width(I)
-    x2 = val_func_palette(I)
-    x3 = val_func_halve(x1)
-    x4 = val_func_vupscale(I, x3)
-    x5 = val_func_rbind(val_func_shoot, (1, 1))
-    x6 = val_func_other(x2, 0)
-    x7 = val_func_ofcolor(x4, x6)
-    x8 = mval_func_apply(x5, x7)
-    O = val_func_fill(x4, x6, x8)
-    return [*map(list,O)]
+def Y(A,B):return type(B)(B for B in B if B!=A)
+def W(A):return next(iter(A))
+def PP(A,B):return type(B)(A(B)for B in B)
+def M(A):return type(A)(B for A in A for B in A)
+def Z(A):return max(A for(B,A)in P(A))
+def S(A):return min(A for(B,A)in P(A))
+def G(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def P(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def U(a,b):
+	A,B=a;C,D=b;E=min(A,C);F=max(A,C)+1;G=min(B,D);H=max(B,D)+1
+	if A==C:return frozenset((A,B)for B in range(G,H))
+	elif B==D:return frozenset((A,B)for A in range(E,F))
+	elif C-A==D-B:return frozenset((A,B)for(A,B)in zip(range(E,F),range(G,H)))
+	elif C-A==B-D:return frozenset((A,B)for(A,B)in zip(range(E,F),range(H-1,G-1,-1)))
+	return frozenset()
+def R(A,B):return U(A,(A[0]+42*B[0],A[1]+42*B[1]))
+def J(A,B):
+	C=tuple()
+	for D in A:C=C+tuple(D for A in range(B))
+	return C
+def PZ(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in P(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def X(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def E(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def V(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Z(A)-S(A)+1
+def L(A,B):return M(PP(A,B))
+def H(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def K(A,B):return W(Y(B,A))
+def Q(n):return n//2 if isinstance(n,int)else(n[0]//2,n[1]//2)
+def p(I):I=tuple(map(tuple,I));C=V(I);D=X(I);F=Q(C);A=J(I,F);G=H(R,(1,1));B=K(D,0);M=E(A,B);N=L(G,M);O=PZ(A,B,N);return[*map(list,O)]

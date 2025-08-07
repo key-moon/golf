@@ -1,73 +1,42 @@
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_shift(patch, directions):
-    if len(patch) == 0:
-        return patch
-    di, dj = directions
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
-    return frozenset((i + di, j + dj) for i, j in patch)
-
-def val_func_ulcorner(patch):
-    return tuple(map(min, zip(*val_func_toindices(patch))))
-
-def val_func_downscale(grid, factor):
-    h, w = len(grid), len(grid[0])
-    g = tuple()
-    for i in range(h):
-        r = tuple()
-        for j in range(w):
-            if j % factor == 0:
-                r = r + (grid[i][j],)
-        g = g + (r, )
-    h = len(g)
-    dsg = tuple()
-    for i in range(h):
-        if i % factor == 0:
-            dsg = dsg + (g[i],)
-    return dsg
-
-def val_func_upscale(element, factor):
-    if isinstance(element, tuple):
-        g = tuple()
-        for row in element:
-            val_func_upscaled_row = tuple()
-            for value in row:
-                val_func_upscaled_row = val_func_upscaled_row + tuple(value for num in range(factor))
-            g = g + tuple(val_func_upscaled_row for num in range(factor))
-        return g
-    else:
-        if len(element) == 0:
-            return frozenset()
-        di_inv, dj_inv = val_func_ulcorner(element)
-        di, dj = (-di_inv, -dj_inv)
-        normed_obj = val_func_shift(element, (di, dj))
-        o = set()
-        for value, (i, j) in normed_obj:
-            for io in range(factor):
-                for jo in range(factor):
-                    o.add((value, (i * factor + io, j * factor + jo)))
-        return val_func_shift(frozenset(o), (di_inv, dj_inv))
-
-def val_func_rot180(grid):
-    return tuple(tuple(row[::-1]) for row in grid[::-1])
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_rot180(I)
-    x2 = val_func_downscale(x1, 2)
-    x3 = val_func_rot180(x2)
-    O = val_func_upscale(x3, 4)
-    return [*map(list,O)]
+def X(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def P(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def E(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def S(A):return tuple(map(min,zip(*P(A))))
+def Z(A,B):
+	E,I=len(A),len(A[0]);C=tuple()
+	for D in range(E):
+		F=tuple()
+		for H in range(I):
+			if H%B==0:F=F+(A[D][H],)
+		C=C+(F,)
+	E=len(C);G=tuple()
+	for D in range(E):
+		if D%B==0:G=G+(C[D],)
+	return G
+def J(A,B):
+	if isinstance(A,tuple):
+		C=tuple()
+		for J in A:
+			D=tuple()
+			for F in J:D=D+tuple(F for A in range(B))
+			C=C+tuple(D for A in range(B))
+		return C
+	else:
+		if len(A)==0:return frozenset()
+		G,H=S(A);K,L=-G,-H;M=E(A,(K,L));I=set()
+		for(F,(N,O))in M:
+			for P in range(B):
+				for Q in range(B):I.add((F,(N*B+P,O*B+Q)))
+		return E(frozenset(I),(G,H))
+def U(A):return tuple(tuple(A[::-1])for A in A[::-1])
+def p(I):I=tuple(map(tuple,I));A=U(I);B=Z(A,2);C=U(B);D=J(C,4);return[*map(list,D)]

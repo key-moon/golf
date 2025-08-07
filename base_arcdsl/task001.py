@@ -1,43 +1,21 @@
-def val_func_cellwise(a, b, fallback):
-    h, w = len(a), len(a[0])
-    resulting_grid = tuple()
-    for i in range(h):
-        row = tuple()
-        for j in range(w):
-            a_value = a[i][j]
-            value = a_value if a_value == b[i][j] else fallback
-            row = row + (value,)
-        resulting_grid = resulting_grid + (row, )
-    return resulting_grid
-
-def val_func_vconcat(a, b):
-    return a + b
-
-def val_func_hconcat(a, b):
-    return tuple(i + j for i, j in zip(a, b))
-
-def val_func_vupscale(grid, factor):
-    g = tuple()
-    for row in grid:
-        g = g + tuple(row for num in range(factor))
-    return g
-
-def val_func_hupscale(grid, factor):
-    g = tuple()
-    for row in grid:
-        r = tuple()
-        for value in row:
-            r = r + tuple(value for num in range(factor))
-        g = g + (r,)
-    return g
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_hupscale(I, 3)
-    x2 = val_func_vupscale(x1, 3)
-    x3 = val_func_hconcat(I, I)
-    x4 = val_func_hconcat(x3, I)
-    x5 = val_func_vconcat(x4, x4)
-    x6 = val_func_vconcat(x5, x4)
-    O = val_func_cellwise(x2, x6, 0)
-    return [*map(list,O)]
+def P(a,b,A):
+	G,H=len(a),len(a[0]);B=tuple()
+	for D in range(G):
+		C=tuple()
+		for E in range(H):F=a[D][E];I=F if F==b[D][E]else A;C=C+(I,)
+		B=B+(C,)
+	return B
+def J(a,b):return a+b
+def U(a,b):return tuple(A+B for(A,B)in zip(a,b))
+def S(A,B):
+	C=tuple()
+	for D in A:C=C+tuple(D for A in range(B))
+	return C
+def Z(A,B):
+	C=tuple()
+	for E in A:
+		D=tuple()
+		for F in E:D=D+tuple(F for A in range(B))
+		C=C+(D,)
+	return C
+def p(I):I=tuple(map(tuple,I));B=Z(I,3);C=S(B,3);D=U(I,I);A=U(D,I);E=J(A,A);F=J(E,A);G=P(C,F,0);return[*map(list,G)]

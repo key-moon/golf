@@ -1,16 +1,4 @@
-def val_func_crop(grid, start, dims):
-    return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
-
-def val_func_hsplit(grid, n):
-    h, w = len(grid), len(grid[0]) // n
-    offset = len(grid[0]) % n != 0
-    return tuple(val_func_crop(grid, (0, w * i + i * offset), (h, w)) for i in range(n))
-
-def val_func_first(container):
-    return next(iter(container))
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_hsplit(I, 3)
-    O = val_func_first(x1)
-    return [*map(list,O)]
+def S(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def P(A,n):D,B=len(A),len(A[0])//n;E=len(A[0])%n!=0;return tuple(S(A,(0,B*C+C*E),(D,B))for C in range(n))
+def Z(A):return next(iter(A))
+def p(I):I=tuple(map(tuple,I));A=P(I,3);B=Z(A);return[*map(list,B)]

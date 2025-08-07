@@ -1,86 +1,31 @@
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_rot270(grid):
-    return tuple(tuple(row[::-1]) for row in zip(*grid[::-1]))[::-1]
-
-def val_func_rot90(grid):
-    return tuple(row for row in zip(*grid[::-1]))
-
-def val_func_righthalf(grid):
-    return val_func_rot270(val_func_bottomhalf(val_func_rot90(grid)))
-
-def val_func_lefthalf(grid):
-    return val_func_rot270(val_func_tophalf(val_func_rot90(grid)))
-
-def val_func_bottomhalf(grid):
-    return grid[len(grid) // 2 + len(grid) % 2:]
-
-def val_func_tophalf(grid):
-    return grid[:len(grid) // 2]
-
-def val_func_paint(grid, obj):
-    h, w = len(grid), len(grid[0])
-    grid_val_func_painted = list(list(row) for row in grid)
-    for value, (i, j) in obj:
-        if 0 <= i < h and 0 <= j < w:
-            grid_val_func_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_val_func_painted)
-
-def val_func_toobject(patch, grid):
-    h, w = len(grid), len(grid[0])
-    return frozenset((grid[i][j], (i, j)) for i, j in val_func_toindices(patch) if 0 <= i < h and 0 <= j < w)
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_asindices(grid):
-    return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
-
-def val_func_fork(outer, a, b):
-    return lambda x: outer(a(x), b(x))
-
-def val_func_rbind(function, fixed):
-    n = function.__code__.co_argcount
-    if n == 2:
-        return lambda x: function(x, fixed)
-    elif n == 3:
-        return lambda x, y: function(x, y, fixed)
-    else:
-        return lambda x, y, z: function(x, y, z, fixed)
-
-def val_func_difference(a, b):
-    return type(a)(e for e in a if e not in b)
-
-def val_func_identity(x):
-    return x
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_lefthalf(I)
-    x2 = val_func_righthalf(I)
-    x3 = val_func_tophalf(x1)
-    x4 = val_func_bottomhalf(x1)
-    x5 = val_func_tophalf(x2)
-    x6 = val_func_bottomhalf(x2)
-    x7 = val_func_rbind(val_func_ofcolor, 0)
-    x8 = val_func_fork(val_func_difference, val_func_asindices, x7)
-    x9 = val_func_fork(val_func_toobject, x8, val_func_identity)
-    x10 = x9(x5)
-    x11 = x9(x4)
-    x12 = x9(x6)
-    x13 = val_func_paint(x3, x12)
-    x14 = val_func_paint(x13, x11)
-    O = val_func_paint(x14, x10)
-    return [*map(list,O)]
+def K(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def J(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def M(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def W(A):return tuple(A for A in zip(*A[::-1]))
+def S(A):return M(P(W(A)))
+def X(A):return M(Y(W(A)))
+def P(A):return A[len(A)//2+len(A)%2:]
+def Y(A):return A[:len(A)//2]
+def Q(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def L(A,B):D,E=len(B),len(B[0]);return frozenset((B[A][C],(A,C))for(A,C)in J(A)if 0<=A<D and 0<=C<E)
+def V(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def U(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def R(A,a,b):return lambda x:A(a(x),b(x))
+def G(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def Z(a,b):return type(a)(A for A in a if A not in b)
+def E(x):return x
+def p(I):I=tuple(map(tuple,I));B=X(I);C=S(I);D=Y(B);F=P(B);H=Y(C);J=P(C);K=G(V,0);M=R(Z,U,K);A=R(L,M,E);N=A(H);O=A(F);T=A(J);W=Q(D,T);a=Q(W,O);b=Q(a,N);return[*map(list,b)]

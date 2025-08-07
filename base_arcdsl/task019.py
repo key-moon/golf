@@ -1,63 +1,24 @@
-def val_func_apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def val_func_merge(containers):
-    return type(containers)(e for c in containers for e in c)
-
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_mostcolor(element):
-    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
-    return max(set(values), key=values.count)
-    
-
-def val_func_vconcat(a, b):
-    return a + b
-
-def val_func_hconcat(a, b):
-    return tuple(i + j for i, j in zip(a, b))
-
-def val_func_underfill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    bg = val_func_mostcolor(grid)
-    g = list(list(r) for r in grid)
-    for i, j in val_func_toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            if g[i][j] == bg:
-                g[i][j] = value
-    return tuple(tuple(r) for r in g)
-
-def val_func_ineighbors(loc):
-    return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_leastcolor(element):
-    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
-    return min(set(values), key=values.count)
-
-def mval_func_apply(function, container):
-    return val_func_merge(val_func_apply(function, container))
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_leastcolor(I)
-    x2 = val_func_hconcat(I, I)
-    x3 = val_func_vconcat(x2, x2)
-    x4 = val_func_ofcolor(x3, x1)
-    x5 = mval_func_apply(val_func_ineighbors, x4)
-    O = val_func_underfill(x3, 8, x5)
-    return [*map(list,O)]
+def W(A,B):return type(B)(A(B)for B in B)
+def V(A):return type(A)(B for A in A for B in A)
+def M(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def U(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def S(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def E(a,b):return a+b
+def L(a,b):return tuple(A+B for(A,B)in zip(a,b))
+def J(A,B,C):
+	G,H=len(A),len(A[0]);I=S(A);D=list(list(A)for A in A)
+	for(E,F)in U(C):
+		if 0<=E<G and 0<=F<H:
+			if D[E][F]==I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def Z(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def X(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def P(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return min(set(B),key=B.count)
+def Y(A,B):return V(W(A,B))
+def p(I):I=tuple(map(tuple,I));C=P(I);A=L(I,I);B=E(A,A);D=X(B,C);F=Y(Z,D);G=J(B,8,F);return[*map(list,G)]

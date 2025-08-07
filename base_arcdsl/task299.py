@@ -1,76 +1,31 @@
-def val_func_lowermost(patch):
-    return max(i for i, j in val_func_toindices(patch))
-
-def val_func_rightmost(patch):
-    return max(j for i, j in val_func_toindices(patch))
-
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_leftmost(patch):
-    return min(j for i, j in val_func_toindices(patch))
-
-def val_func_uppermost(patch):
-    return min(i for i, j in val_func_toindices(patch))
-
-def val_func_width(piece):
-    if len(piece) == 0:
-        return 0
-    if isinstance(piece, tuple):
-        return len(piece[0])
-    return val_func_rightmost(piece) - val_func_leftmost(piece) + 1
-
-def val_func_height(piece):
-    if len(piece) == 0:
-        return 0
-    if isinstance(piece, tuple):
-        return len(piece)
-    return val_func_lowermost(piece) - val_func_uppermost(piece) + 1
-
-def val_func_hfrontier(location):
-    return frozenset((location[0], j) for j in range(30))
-
-def val_func_vfrontier(location):
-    return frozenset((i, location[1]) for i in range(30))
-
-def val_func_center(patch):
-    return (val_func_uppermost(patch) + val_func_height(patch) // 2, val_func_leftmost(patch) + val_func_width(patch) // 2)
-
-def val_func_fill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    grid_val_func_filled = list(list(row) for row in grid)
-    for i, j in val_func_toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            grid_val_func_filled[i][j] = value
-    return tuple(tuple(row) for row in grid_val_func_filled)
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_intersection(a, b):
-    return a & b
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_ofcolor(I, 2)
-    x2 = val_func_ofcolor(I, 8)
-    x3 = val_func_center(x1)
-    x4 = val_func_center(x2)
-    x5 = val_func_hfrontier(x3)
-    x6 = val_func_vfrontier(x4)
-    x7 = val_func_intersection(x5, x6)
-    x8 = val_func_fill(I, 2, x5)
-    x9 = val_func_fill(x8, 8, x6)
-    O = val_func_fill(x9, 4, x7)
-    return [*map(list,O)]
+def E(A):return max(A for(A,B)in S(A))
+def Z(A):return max(A for(B,A)in S(A))
+def Q(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def S(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def L(A):return min(A for(B,A)in S(A))
+def J(A):return min(A for(A,B)in S(A))
+def W(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Z(A)-L(A)+1
+def V(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return E(A)-J(A)+1
+def X(A):return frozenset((A[0],B)for B in range(30))
+def U(A):return frozenset((B,A[1])for B in range(30))
+def M(A):return J(A)+V(A)//2,L(A)+W(A)//2
+def G(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in S(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def Y(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def P(a,b):return a&b
+def p(I):I=tuple(map(tuple,I));C=Y(I,2);D=Y(I,8);E=M(C);F=M(D);A=X(E);B=U(F);H=P(A,B);J=G(I,2,A);K=G(J,8,B);L=G(K,4,H);return[*map(list,L)]

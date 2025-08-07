@@ -1,58 +1,21 @@
-def pval_func_apply(function, a, b):
-    return tuple(function(i, j) for i, j in zip(a, b))
-
-def val_func_merge(containers):
-    return type(containers)(e for c in containers for e in c)
-
-def val_func_paint(grid, obj):
-    h, w = len(grid), len(grid[0])
-    grid_val_func_painted = list(list(row) for row in grid)
-    for value, (i, j) in obj:
-        if 0 <= i < h and 0 <= j < w:
-            grid_val_func_painted[i][j] = value
-    return tuple(tuple(row) for row in grid_val_func_painted)
-
-def val_func_rot180(grid):
-    return tuple(tuple(row[::-1]) for row in grid[::-1])
-
-def val_func_rot90(grid):
-    return tuple(row for row in zip(*grid[::-1]))
-
-def val_func_asobject(grid):
-    return frozenset((v, (i, j)) for i, r in enumerate(grid) for j, v in enumerate(r))
-
-def val_func_shift(patch, directions):
-    if len(patch) == 0:
-        return patch
-    di, dj = directions
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset((value, (i + di, j + dj)) for value, (i, j) in patch)
-    return frozenset((i + di, j + dj) for i, j in patch)
-
-def val_func_crop(grid, start, dims):
-    return tuple(r[start[1]:start[1]+dims[1]] for r in grid[start[0]:start[0]+dims[0]])
-
-def mpval_func_apply(function, a, b):
-    return val_func_merge(pval_func_apply(function, a, b))
-
-def val_func_apply(function, container):
-    return type(container)(function(e) for e in container)
-
-def val_func_astuple(a, b):
-    return (a, b)
-
-def val_func_tojvec(j):
-    return (0, j)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_crop(I, (0, 0), (3, 3))
-    x2 = val_func_rot90(x1)
-    x3 = val_func_rot180(x1)
-    x4 = val_func_astuple(x2, x3)
-    x5 = val_func_astuple(4, 8)
-    x6 = val_func_apply(val_func_tojvec, x5)
-    x7 = val_func_apply(val_func_asobject, x4)
-    x8 = mpval_func_apply(val_func_shift, x7, x6)
-    O = val_func_paint(I, x8)
-    return [*map(list,O)]
+def J(A,a,b):return tuple(A(B,C)for(B,C)in zip(a,b))
+def X(A):return type(A)(B for A in A for B in A)
+def Y(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def E(A):return tuple(tuple(A[::-1])for A in A[::-1])
+def L(A):return tuple(A for A in zip(*A[::-1]))
+def P(A):return frozenset((D,(A,C))for(A,B)in enumerate(A)for(C,D)in enumerate(B))
+def M(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def W(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def S(A,a,b):return X(J(A,a,b))
+def V(A,B):return type(B)(A(B)for B in B)
+def Z(a,b):return a,b
+def U(j):return 0,j
+def p(I):I=tuple(map(tuple,I));A=W(I,(0,0),(3,3));B=L(A);C=E(A);D=Z(B,C);F=Z(4,8);G=V(U,F);H=V(P,D);J=S(M,H,G);K=Y(I,J);return[*map(list,K)]

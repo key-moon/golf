@@ -1,82 +1,31 @@
-def val_func_first(container):
-    return next(iter(container))
-
-def val_func_ival_func_neighbors(loc):
-    return frozenset({(loc[0] - 1, loc[1] - 1), (loc[0] - 1, loc[1] + 1), (loc[0] + 1, loc[1] - 1), (loc[0] + 1, loc[1] + 1)})
-
-def val_func_neighbors(loc):
-    return val_func_dval_func_neighbors(loc) | val_func_ival_func_neighbors(loc)
-
-def val_func_dval_func_neighbors(loc):
-    return frozenset({(loc[0] - 1, loc[1]), (loc[0] + 1, loc[1]), (loc[0], loc[1] - 1), (loc[0], loc[1] + 1)})
-
-def val_func_asindices(grid):
-    return frozenset((i, j) for i in range(len(grid)) for j in range(len(grid[0])))
-
-def mostval_func_color(element):
-    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
-    return max(set(values), key=values.count)
-    
-
-def val_func_canvas(value, dimensions):
-    return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
-
-def val_func_color(obj):
-    return next(iter(obj))[0]
-
-def val_func_palette(element):
-    if isinstance(element, tuple):
-        return frozenset({v for r in element for v in r})
-    return frozenset({v for v, _ in element})
-
-def val_func_objects(grid, univalued, diagonal, without_bg):
-    bg = mostval_func_color(grid) if without_bg else None
-    objs = set()
-    occupied = set()
-    h, w = len(grid), len(grid[0])
-    unvisited = val_func_asindices(grid)
-    diagfun = val_func_neighbors if diagonal else val_func_dval_func_neighbors
-    for loc in unvisited:
-        if loc in occupied:
-            continue
-        val = grid[loc[0]][loc[1]]
-        if val == bg:
-            continue
-        obj = {(val, loc)}
-        cands = {loc}
-        while len(cands) > 0:
-            neighborhood = set()
-            for cand in cands:
-                v = grid[cand[0]][cand[1]]
-                if (val == v) if univalued else (v != bg):
-                    obj.add((v, cand))
-                    occupied.add(cand)
-                    neighborhood |= {
-                        (i, j) for i, j in diagfun(cand) if 0 <= i < h and 0 <= j < w
-                    }
-            cands = neighborhood - occupied
-        objs.add(frozenset(obj))
-    return frozenset(objs)
-
-def val_func_other(container, value):
-    return val_func_first(val_func_remove(value, container))
-
-def val_func_remove(value, container):
-    return type(container)(e for e in container if e != value)
-
-def val_func_argmax(container, compfunc):
-    return max(container, key=compfunc)
-
-def val_func_size(container):
-    return len(container)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_palette(I)
-    x2 = val_func_objects(I, True, False, True)
-    x3 = val_func_argmax(x2, val_func_size)
-    x4 = val_func_color(x3)
-    x5 = val_func_remove(0, x1)
-    x6 = val_func_other(x5, x4)
-    O = val_func_canvas(x6, (1, 1))
-    return [*map(list,O)]
+def Q(A):return next(iter(A))
+def Z(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def U(A):return P(A)|Z(A)
+def P(A):return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
+def J(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def S(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def L(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def W(A):return next(iter(A))[0]
+def X(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def E(A,B,C,D):
+	L=S(A)if D else None;M=set();G=set();Q,R=len(A),len(A[0]);T=J(A);V=U if C else P
+	for E in T:
+		if E in G:continue
+		H=A[E[0]][E[1]]
+		if H==L:continue
+		N={(H,E)};I={E}
+		while len(I)>0:
+			O=set()
+			for F in I:
+				K=A[F[0]][F[1]]
+				if H==K if B else K!=L:N.add((K,F));G.add(F);O|={(A,B)for(A,B)in V(F)if 0<=A<Q and 0<=B<R}
+			I=O-G
+		M.add(frozenset(N))
+	return frozenset(M)
+def M(A,B):return Q(Y(B,A))
+def Y(A,B):return type(B)(B for B in B if B!=A)
+def V(A,B):return max(A,key=B)
+def G(A):return len(A)
+def p(I):I=tuple(map(tuple,I));A=X(I);B=E(I,True,False,True);C=V(B,G);D=W(C);F=Y(0,A);H=M(F,D);J=L(H,(1,1));return[*map(list,J)]

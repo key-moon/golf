@@ -1,90 +1,30 @@
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_mostcolor(element):
-    values = [v for r in element for v in r] if isinstance(element, tuple) else [v for v, _ in element]
-    return max(set(values), key=values.count)
-    
-
-def val_func_connect(a, b):
-    ai, aj = a
-    bi, bj = b
-    si = min(ai, bi)
-    ei = max(ai, bi) + 1
-    sj = min(aj, bj)
-    ej = max(aj, bj) + 1
-    if ai == bi:
-        return frozenset((ai, j) for j in range(sj, ej))
-    elif aj == bj:
-        return frozenset((i, aj) for i in range(si, ei))
-    elif bi - ai == bj - aj:
-        return frozenset((i, j) for i, j in zip(range(si, ei), range(sj, ej)))
-    elif bi - ai == aj - bj:
-        return frozenset((i, j) for i, j in zip(range(si, ei), range(ej - 1, sj - 1, -1)))
-    return frozenset()
-
-def val_func_underfill(grid, value, patch):
-    h, w = len(grid), len(grid[0])
-    bg = val_func_mostcolor(grid)
-    g = list(list(r) for r in grid)
-    for i, j in val_func_toindices(patch):
-        if 0 <= i < h and 0 <= j < w:
-            if g[i][j] == bg:
-                g[i][j] = value
-    return tuple(tuple(r) for r in g)
-
-def val_func_leftmost(patch):
-    return min(j for i, j in val_func_toindices(patch))
-
-def val_func_uppermost(patch):
-    return min(i for i, j in val_func_toindices(patch))
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_astuple(a, b):
-    return (a, b)
-
-def val_func_minimum(container):
-    return min(container, default=0)
-
-def val_func_maximum(container):
-    return max(container, default=0)
-
-def val_func_combine(a, b):
-    return type(a)((*a, *b))
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_ofcolor(I, 2)
-    x2 = val_func_ofcolor(I, 3)
-    x3 = val_func_uppermost(x1)
-    x4 = val_func_leftmost(x1)
-    x5 = val_func_uppermost(x2)
-    x6 = val_func_leftmost(x2)
-    x7 = val_func_astuple(x3, x5)
-    x8 = val_func_minimum(x7)
-    x9 = val_func_maximum(x7)
-    x10 = val_func_astuple(x8, x6)
-    x11 = val_func_astuple(x9, x6)
-    x12 = val_func_connect(x10, x11)
-    x13 = val_func_astuple(x4, x6)
-    x14 = val_func_minimum(x13)
-    x15 = val_func_maximum(x13)
-    x16 = val_func_astuple(x3, x14)
-    x17 = val_func_astuple(x3, x15)
-    x18 = val_func_connect(x16, x17)
-    x19 = val_func_combine(x12, x18)
-    O = val_func_underfill(I, 8, x19)
-    return [*map(list,O)]
+def W(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def S(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def P(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def L(a,b):
+	A,B=a;C,D=b;E=min(A,C);F=max(A,C)+1;G=min(B,D);H=max(B,D)+1
+	if A==C:return frozenset((A,B)for B in range(G,H))
+	elif B==D:return frozenset((A,B)for A in range(E,F))
+	elif C-A==D-B:return frozenset((A,B)for(A,B)in zip(range(E,F),range(G,H)))
+	elif C-A==B-D:return frozenset((A,B)for(A,B)in zip(range(E,F),range(H-1,G-1,-1)))
+	return frozenset()
+def Z(A,B,C):
+	G,H=len(A),len(A[0]);I=P(A);D=list(list(A)for A in A)
+	for(E,F)in S(C):
+		if 0<=E<G and 0<=F<H:
+			if D[E][F]==I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def U(A):return min(A for(B,A)in S(A))
+def J(A):return min(A for(A,B)in S(A))
+def V(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def Y(a,b):return a,b
+def X(Aa):return min(Aa,default=0)
+def M(A):return max(A,default=0)
+def E(a,b):return type(a)((*a,*b))
+def p(I):I=tuple(map(tuple,I));C=V(I,2);D=V(I,3);A=J(C);H=U(C);K=J(D);B=U(D);F=Y(A,K);N=X(F);O=M(F);P=Y(N,B);Q=Y(O,B);R=L(P,Q);G=Y(H,B);S=X(G);T=M(G);W=Y(A,S);a=Y(A,T);b=L(W,a);c=E(R,b);d=Z(I,8,c);return[*map(list,d)]

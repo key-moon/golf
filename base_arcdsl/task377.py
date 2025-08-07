@@ -1,69 +1,28 @@
-def val_func_lrcorner(patch):
-    return tuple(map(max, zip(*val_func_toindices(patch))))
-
-def val_func_index(grid, loc):
-    i, j = loc
-    h, w = len(grid), len(grid[0])
-    if not (0 <= i < h and 0 <= j < w):
-        return None
-    return grid[loc[0]][loc[1]] 
-
-def val_func_toindices(patch):
-    if len(patch) == 0:
-        return frozenset()
-    if isinstance(next(iter(patch))[1], tuple):
-        return frozenset(val_func_index for value, val_func_index in patch)
-    return patch
-
-def val_func_ulcorner(patch):
-    return tuple(map(min, zip(*val_func_toindices(patch))))
-
-def val_func_vconcat(a, b):
-    return a + b
-
-def val_func_dmirror(piece):
-    if isinstance(piece, tuple):
-        return tuple(zip(*piece))
-    a, b = val_func_ulcorner(piece)
-    if isinstance(next(iter(piece))[1], tuple):
-        return frozenset((v, (j - b + a, i - a + b)) for v, (i, j) in piece)
-    return frozenset((j - b + a, i - a + b) for i, j in piece)
-
-def val_func_hmirror(piece):
-    if isinstance(piece, tuple):
-        return piece[::-1]
-    d = val_func_ulcorner(piece)[0] + val_func_lrcorner(piece)[0]
-    if isinstance(next(iter(piece))[1], tuple):
-        return frozenset((v, (d - i, j)) for v, (i, j) in piece)
-    return frozenset((d - i, j) for i, j in piece)
-
-def val_func_fork(outer, a, b):
-    return lambda x: outer(a(x), b(x))
-
-def val_func_compose(outer, inner):
-    return lambda x: outer(inner(x))
-
-def val_func_remove(value, container):
-    return type(container)(e for e in container if e != value)
-
-def val_func_last(container):
-    return max(enumerate(container))[1]
-
-def val_func_dedupe(tup):
-    return tuple(e for i, e in enumerate(tup) if tup.index(e) == i)
-
-def val_func_identity(x):
-    return x
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_compose(val_func_dmirror, val_func_dedupe)
-    x2 = x1(I)
-    x3 = x1(x2)
-    x4 = val_func_fork(val_func_remove, val_func_last, val_func_identity)
-    x5 = val_func_compose(val_func_hmirror, x4)
-    x6 = val_func_fork(val_func_vconcat, val_func_identity, x5)
-    x7 = x6(x3)
-    x8 = val_func_dmirror(x7)
-    O = x6(x8)
-    return [*map(list,O)]
+def S(A):return tuple(map(max,zip(*P(A))))
+def M(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def P(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def Z(A):return tuple(map(min,zip(*P(A))))
+def E(a,b):return a+b
+def L(A):
+	if isinstance(A,tuple):return tuple(zip(*A))
+	B,C=Z(A)
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(E-C+B,D-B+C))for(A,(D,E))in A)
+	return frozenset((D-C+B,A-B+C)for(A,D)in A)
+def X(A):
+	if isinstance(A,tuple):return A[::-1]
+	B=Z(A)[0]+S(A)[0]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B-C,D))for(A,(C,D))in A)
+	return frozenset((B-A,C)for(A,C)in A)
+def Q(A,a,b):return lambda x:A(a(x),b(x))
+def U(A,B):return lambda x:A(B(x))
+def V(A,B):return type(B)(B for B in B if B!=A)
+def W(A):return max(enumerate(A))[1]
+def Y(A):return tuple(B for(C,B)in enumerate(A)if A.index(B)==C)
+def J(x):return x
+def p(I):I=tuple(map(tuple,I));A=U(L,Y);C=A(I);D=A(C);F=Q(V,W,J);G=U(X,F);B=Q(E,J,G);H=B(D);K=L(H);M=B(K);return[*map(list,M)]

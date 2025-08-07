@@ -1,35 +1,11 @@
-def val_func_remove(value, container):
-    return type(container)(e for e in container if e != value)
-
-def val_func_first(container):
-    return next(iter(container))
-
-def val_func_canvas(value, dimensions):
-    return tuple(tuple(value for j in range(dimensions[1])) for i in range(dimensions[0]))
-
-def val_func_palette(element):
-    if isinstance(element, tuple):
-        return frozenset({v for r in element for v in r})
-    return frozenset({v for v, _ in element})
-
-def val_func_ofcolor(grid, value):
-    return frozenset((i, j) for i, r in enumerate(grid) for j, v in enumerate(r) if v == value)
-
-def val_func_astuple(a, b):
-    return (a, b)
-
-def val_func_other(container, value):
-    return val_func_first(val_func_remove(value, container))
-
-def val_func_size(container):
-    return len(container)
-
-def p(I):
-    I=tuple(map(tuple,I))
-    x1 = val_func_palette(I)
-    x2 = val_func_other(x1, 0)
-    x3 = val_func_ofcolor(I, x2)
-    x4 = val_func_size(x3)
-    x5 = val_func_astuple(1, x4)
-    O = val_func_canvas(x2, x5)
-    return [*map(list,O)]
+def U(A,B):return type(B)(B for B in B if B!=A)
+def X(A):return next(iter(A))
+def J(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def S(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def Z(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def P(a,b):return a,b
+def E(A,B):return X(U(B,A))
+def L(A):return len(A)
+def p(I):I=tuple(map(tuple,I));B=S(I);A=E(B,0);C=Z(I,A);D=L(C);F=P(1,D);G=J(A,F);return[*map(list,G)]
