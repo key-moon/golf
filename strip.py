@@ -50,9 +50,11 @@ import sys
 def get_stripper(**minifier_opt):
     def strip(source: str):
         source = python_minifier.minify(source, **minifier_opt)
-        # if, else, forの前にはspace不要 / forの後にはspace不要
+        # if, else, for, and, orの前にはspace不要 / forの後にはspace不要
+        # orの前が0だとoct literalのパースが走るのでそれだけ注意
         # TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )
         source = re.sub(r'([0-9])[ \t]+(if|else|for|and)', r'\1\2', source)
+        source = re.sub(r'([1-9])[ \t]+(or)', r'\1\2', source)
         source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
         return source.replace("\t", " ")
     return strip
