@@ -45,13 +45,14 @@ import string
 #   return res.strip()
 
 import python_minifier
+import sys
 
 def get_stripper(**minifier_opt):
     def strip(source: str):
         source = python_minifier.minify(source, **minifier_opt)
         # if, else, forの前にはspace不要 / forの後にはspace不要
         # TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )
-        source = re.sub(r'([0-9])[ \t]+(if|else|for)', r'\1\2', source)
+        source = re.sub(r'([0-9])[ \t]+(if|else|for|and)', r'\1\2', source)
         source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
         return source.replace("\t", " ")
     return strip
@@ -77,3 +78,27 @@ strip_for_zlib = get_stripper(
 )
 
 strippers = {"forplain": strip_for_plain, "forcompress": strip_for_zlib}
+
+if __name__ == "__main__":
+
+    if len(sys.argv) < 2:
+        print("Usage: python strip.py <input_file> [mode]")
+        sys.exit(1)
+
+    input_file = sys.argv[1]
+    mode = sys.argv[2] if len(sys.argv) > 2 else "forplain"
+
+    if mode not in strippers:
+        print(f"Invalid mode: {mode}. Valid modes are: {', '.join(strippers.keys())}")
+        sys.exit(1)
+
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            source_code = f.read()
+
+        stripper = strippers[mode]
+        stripped_code = stripper(source_code)
+
+        print(stripped_code)
+    except Exception as e:
+        print(f"Error: {e}")
