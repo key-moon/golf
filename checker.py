@@ -120,11 +120,15 @@ if __name__ == "__main__":
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
       res = check(code_path, task)
-      with open(code_path, "r") as f:
-        orig_code = f.read().strip()
-        code = strip_for_plain(orig_code)
+      try:
+        with open(code_path, "r") as f:
+          orig_code = f.read().strip()
+          code = strip_for_plain(orig_code)
+          compressed = compress.compress(strip_for_zlib(orig_code), force_compress=True)[1]
+      except UnicodeDecodeError:
+        with open(code_path, "rb") as f:
+          code = compressed = f.read()
       if res.correct == 1.:
-        compressed = compress.compress(strip_for_zlib(orig_code), force_compress=True)[1]
         print(f"✅ {code_path} {len(code)=} {len(compressed)=}")
         success += 1
       else:
