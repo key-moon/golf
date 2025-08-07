@@ -1,1 +1,1 @@
-def p(A):B=[(A[B][C],A[B][C+1],A[B+1][C],A[B+1][C+1])for B in(0,3)for C in(0,3)];C=next(A for A in B if B.count(A)<2);return[list(C[:2]),list(C[2:])]
+def p(g):A=[(g[i][j],g[i][j+1],g[i+1][j],g[i+1][j+1])for i in(0,3)for j in(0,3)];B=next(B for B in A if A.count(B)<2);return[list(B[:2]),list(B[2:])]

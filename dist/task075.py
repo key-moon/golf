@@ -1,10 +1,12 @@
-def p(A):
- C=A[0].index(5);B=0
- while any(A[B][:C]):B+=1
- F=[A[:C]for A in A[:B]]
- for(G,H)in enumerate(A):
-  for(I,J)in enumerate(H):
-   if J==1:
-    for D in range(B):
-     for E in range(C):A[G-B//2+D][I-C//2+E]=F[D][E]
- return A
+B=range
+A=enumerate
+def p(g):
+ d=g[0].index(5);h=0
+ while any(g[h][:d]):h+=1
+ s=[r[:d]for r in g[:h]]
+ for(y,r)in A(g):
+  for(x,v)in A(r):
+   if v==1:
+    for i in B(h):
+     for j in B(d):g[y-h//2+i][x-d//2+j]=s[i][j]
+ return g

@@ -1,1 +1,1 @@
-def p(A):B=A[0].index(5);return[[A or B for(A,B)in zip(A[:B],A[:B:-1])]for A in A]
+def p(g):i=g[0].index(5);return[[x or y for(x,y)in zip(r[:i],r[:i:-1])]for r in g]

@@ -1,6 +1,7 @@
-def p(A):
- F=len(A);D=F-1;G=len(set(A[0]))==1
- for(E,C)in enumerate(A):
-  for(B,H)in enumerate(C):
-   if H==3:C[B]=(A[0][B]if E<D-E else A[-1][B])if G else C[0]if B<D-B else C[-1]
- return A
+A=enumerate
+def p(g):
+ n=len(g);b=n-1;a=len(set(g[0]))==1
+ for(i,r)in A(g):
+  for(j,v)in A(r):
+   if v==3:r[j]=(g[0][j]if i<b-i else g[-1][j])if a else r[0]if j<b-j else r[-1]
+ return g

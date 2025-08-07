@@ -1,1 +1,2 @@
-def p(A):B,C=next((A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==8);D=max(A[B+D][C+E]for D in(-1,0,1)for E in(-1,0,1)if A[B+D][C+E]!=8);return[[D if A[B+E][C+F]else 0 for F in(-1,0,1)]for E in(-1,0,1)]
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,"xÚeÁ\nƒ0†_%»µØÞÆFm}‹ÒCe©3µ‚ozÓy\nùóý_Þ˜à'Fù4ÊjÂ­a”“é›yZ9 ­3æX©;ÕŸc¦ôZ?äËé9nbô¦‰ÁÛf\\€‰{§ZÕU‡›úVËšÉ{ç#~„ö_pùvCÛ>O"))))

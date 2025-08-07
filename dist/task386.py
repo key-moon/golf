@@ -1,1 +1,1 @@
-def p(A):return[[3*(not A|B)for(A,B)in zip(A,A[4:])]for A in A]
+def p(g):return[[3*(not a|b)for(a,b)in zip(x,x[4:])]for x in g]

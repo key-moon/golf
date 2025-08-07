@@ -1,1 +1,2 @@
-def p(A):return[[2 if not(B:=[(A,D)for(A,B)in enumerate(A)for(D,E)in enumerate(B[C:C+4])if E==0])else 3 if max(A for(B,A)in B)-min(A for(B,A)in B)>1 else 8 if min(A for(A,B)in B)<2 else 4]*3 for C in(0,5,10)]
+A=enumerate
+def p(g):return[[2if not(z:=[(y,x)for(y,r)in A(g)for(x,v)in A(r[j:j+4])if v==0])else 3if max(x for(_,x)in z)-min(x for(_,x)in z)>1else 8if min(y for(y,_)in z)<2else 4]*3for j in(0,5,10)]

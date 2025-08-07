@@ -1,8 +1,8 @@
-def p(A):
- B=len(A)-1;C=next(C for C in A[B]if C and C not in A[B-1]);E=[A for(A,B)in enumerate(A[B])if B==C];I,J=E[0],E[-1];K=len(A[0])
- for D in range(1,B):
-  F=B-D-1;G=I-D
-  if G>=0:A[F][G]=C
-  H=J+D
-  if H<K:A[F][H]=C
- return A
+def p(g):
+ r=len(g)-1;v=next(z for z in g[r]if z and z not in g[r-1]);c=[i for(i,z)in enumerate(g[r])if z==v];x,y=c[0],c[-1];w=len(g[0])
+ for k in range(1,r):
+  A=r-k-1;i=x-k
+  if i>=0:g[A][i]=v
+  j=y+k
+  if j<w:g[A][j]=v
+ return g

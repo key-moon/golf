@@ -1,8 +1,2 @@
-def p(A):
- F,G=len(A),len(A[0])
- for B in range(F):
-  for C in range(G):
-   if A[B][C]==3:
-    for(D,E)in((1,0),(0,1),(-1,0),(0,-1)):
-     if 0<=B+D<F and 0<=C+E<G and A[B+D][C+E]==2:A[B][C]=8;A[B+D][C+E]=0
- return A
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,'xÚMÁ\n!Dï~EŽŠ.h{)ÛõKÄƒ²*JM‹lÿ¿jYÚKÂ¼ÌLöáE[	Tú°1—‘–ˆÏ2Bs˜­Ã9aùAœr„d²5Åj}d©že¤JH&¨ªÏå‹úFgXn:s·Up¸Q¸ßpŠ^Ë]/æ¾W_ÖóËíþZ8Þ\r!}\0µp;f'))))

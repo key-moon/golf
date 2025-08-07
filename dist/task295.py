@@ -1,1 +1,1 @@
-def p(A):B=A[0];C=B.index(0);return[[B[0]]*(C+A)+B[C+A:]for A in range(len(B)//2)]
+def p(g):t=g[0];k=t.index(0);return[[t[0]]*(k+i)+t[k+i:]for i in range(len(t)//2)]

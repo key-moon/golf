@@ -1,6 +1,7 @@
+A=range
 def p(g):
- A=next(filter(None,g[-1]));E=g[-1].index(A)
- for C in range(E,10,2):
-  for B in range(10):g[B][C]=A
- for D,C in enumerate(range(E+1,10,2)):g[(D&1)*9][C]=5
+ C=next(filter(None,g[-1]));D=g[-1].index(C)
+ for B in A(D,10,2):
+  for E in A(10):g[E][B]=C
+ for(F,B)in enumerate(A(D+1,10,2)):g[(F&1)*9][B]=5
  return g

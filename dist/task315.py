@@ -1,2 +1,9 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚmŒÁ\nÂ0†ï{Š×Úƒxœä°Ím]Ù”"3¸*aß®zQ<„$ß÷ó_h„G~EoâyìpöÏ|#Æ;ƒ)@ä=Z»wRK\r>o˜}¸R‘pY¢Jq\nëLìzw\'Õªá[™¤`a@ìéMÙJş×óÑµ*ªX½m¤ŞUÎ¶qÕË˜–•ô/~Bt'))))
+B=enumerate
+def p(val_g):
+ C=val_g;A=len(C);E=max(max(A)for A in C);D=[[0]*A*A for _ in range(A*A)]
+ for(F,G)in B(C):
+  for(H,I)in B(G):
+   if I==E==2:
+    for(J,K)in B(C):
+     for(L,M)in B(K):D[F*A+J][H*A+L]=M
+ return D

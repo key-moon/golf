@@ -1,1 +1,1 @@
-def p(A):B=sum(B>0 for A in A for B in A);return[sum([[A]*B for A in A],[])for A in A for C in[0]*B]
+def p(g):m=sum(v>0for r in g for v in r);return[sum([[c]*m for c in r],[])for r in g for _ in[0]*m]

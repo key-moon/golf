@@ -1,1 +1,1 @@
-def p(A):return[[3*(A!=B)for(A,B)in zip(A,B)]for(A,B)in zip(A,A[5:])]
+def p(g):return[[3*(a!=b)for(a,b)in zip(x,y)]for(x,y)in zip(g,g[5:])]

@@ -1,2 +1,6 @@
-#coding:latin_1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚUÌ±\n„0ÐÞ¯˜RQ‹XÊù%ÁBp¼õX¢ßÉJà®XXæ1³“Ã§õÝÜÀ‚0äc_o’-Ñ#Jq¸ÿI”îe™°ñ>Sôó6Œfµq-T†_q^Måþ—£¦bc.ÕHRÙzµn–Ò3\r„Ò%ÿÿÛ;o'))))
+A=enumerate
+def p(g):
+ for(i,r)in A(g):
+  for(j,v)in A(r):
+   if v==2and not(i and g[i-1][j]==2 or i<len(g)-1and g[i+1][j]==2 or j and r[j-1]==2 or j<len(r)-1and r[j+1]==2):r[j]=1
+ return g

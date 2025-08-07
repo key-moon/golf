@@ -1,4 +1,4 @@
-def p(A):
- D=len(A[0]);B=D-1;E=2*B;F=(B-len(A)+1)%E
- for C in range(len(A)):G=abs((C+F)%E-B);A[C]=[8]*D;A[C][G]=1
- return A
+def p(g):
+ n=len(g[0]);m=n-1;p=2*m;k=(m-len(g)+1)%p
+ for i in range(len(g)):j=abs((i+k)%p-m);g[i]=[8]*n;g[i][j]=1
+ return g

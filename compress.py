@@ -32,7 +32,7 @@ def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
   for name, cmp in compressions:
     compressed_code = cmp(code.encode())
     embed = get_embed_str(compressed_code)
-    res = f"#coding:latin_1\nimport {name};exec({name}.decompress(bytes(map(ord,".encode() + embed + "))))".encode()
+    res = f"#coding:L1\nimport {name};exec({name}.decompress(bytes(map(ord,".encode() + embed + "))))".encode()
     l.append((name,res))
   return min(l, key=lambda x: len(x[1]))
   

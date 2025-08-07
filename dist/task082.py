@@ -1,1 +1,1 @@
-def p(A):B=A[0];C=[0]+B+[0];D=[C[A]or C[A+2]for A in range(len(B))];return([B,D]*(len(A)//2+1))[:len(A)]
+def p(g):A=g[0];a=[0]+A+[0];B=[a[i]or a[i+2]for i in range(len(A))];return([A,B]*(len(g)//2+1))[:len(g)]

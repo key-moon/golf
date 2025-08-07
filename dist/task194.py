@@ -1,1 +1,2 @@
-def p(A):B=[*map(list,zip(*A[::-1]))];C=[*map(list,zip(*A))][::-1];D=[A[::-1]for A in A[::-1]];return[A+B for(A,B)in zip(A,B)]+[A+B for(A,B)in zip(C,D)]
+A=zip
+def p(g):a=[*map(list,A(*g[::-1]))];b=[*map(list,A(*g))][::-1];c=[i[::-1]for i in g[::-1]];return[x+y for(x,y)in A(g,a)]+[x+y for(x,y)in A(b,c)]

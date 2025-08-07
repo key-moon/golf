@@ -1,1 +1,4 @@
-def p(A):F=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==5];D,E=zip(*F);B,C=min(D)-1,max(D)+1;B,I=max(B,0),None;C,J=min(C,len(A)-1),None;G,H=min(E),max(E);return[A[G:H+1]for A in A[B:C+1]]
+E=enumerate
+B=max
+A=min
+def p(g):H=[(i,j)for(i,r)in E(g)for(j,v)in E(r)if v==5];F,G=zip(*H);C,D=A(F)-1,B(F)+1;C,K=B(C,0),None;D,L=A(D,len(g)-1),None;I,J=A(G),B(G);return[A[I:J+1]for A in g[C:D+1]]

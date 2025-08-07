@@ -1,1 +1,1 @@
-def p(A):B=[A for(A,B)in enumerate(A[0])if B==5];[A.__setitem__(C,2)for A in A if A[-1]==5 for C in B];return A
+def p(g):x=[j for(j,v)in enumerate(g[0])if v==5];[r.__setitem__(j,2)for r in g if r[-1]==5for j in x];return g
