@@ -119,13 +119,13 @@ if __name__ == "__main__":
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
       res = check(code_path, task)
+      with open(code_path, "r") as f:
+        code = strip(f.read().strip())
       if res.correct == 1.:
-        with open(code_path, "r") as f:
-          code = strip(f.read().strip())
         print(f"✅ {code_path} {len(code)=}")
         success += 1
       else:
-        print(f"❌ {code_path}")
+        print(f"❌ {code_path} {len(code)=}")
         print(f"{res.correct=}" if res.message == "ok" else res.message)
       if len(res.outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"
