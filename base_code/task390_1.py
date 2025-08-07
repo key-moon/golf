@@ -1,7 +1,7 @@
-def p(val_g):
- val_O=[r[:]for r in val_g];h=len(val_g);w=len(val_g[0])
- S={(i,j)for i in range(h)for j in range(w)if val_g[i][j]==5}
- for i,j in S:val_g[i][j]=0
+def p(g):
+ val_O=[r[:]for r in g];h=len(g);w=len(g[0])
+ S={(i,j)for i in range(h)for j in range(w)if g[i][j]==5}
+ for i,j in S:g[i][j]=0
  while S:
   C={S.pop()};q=[*C]
   while q:
@@ -15,6 +15,6 @@ def p(val_g):
   if len(rs)==1:a,l=0,rs.pop()
   else:a,l=1,cs.pop()
   for i,j in C:
-   if a:val_g[i][2*l-j]=5
-   else:val_g[2*l-i][j]=5
- return val_g
+   if a:g[i][2*l-j]=5
+   else:g[2*l-i][j]=5
+ return g

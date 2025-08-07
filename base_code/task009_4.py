@@ -1,9 +1,9 @@
-def p(val_g):
- val_h,lenw=len(val_g),len(val_g[0]);val_b=[r[0]for r in val_g if len(set(r))==1][0];val_r=[i for i,r in enumerate(val_g)if r.count(val_b)==lenw];val_c=[j for j in range(lenw)if all(val_g[i][j]==val_b for i in range(val_h))];val_m,lenc=len(val_r)-1,len(val_c)-1
- def val_t(i,j):return[val_g[x][val_c[j]+1:val_c[j+1]]for x in range(val_r[i]+1,val_r[i+1])]
+def p(g):
+ val_h,lenw=len(g),len(g[0]);val_b=[r[0]for r in g if len(set(r))==1][0];val_r=[i for i,r in enumerate(g)if r.count(val_b)==lenw];val_c=[j for j in range(lenw)if all(g[i][j]==val_b for i in range(val_h))];val_m,lenc=len(val_r)-1,len(val_c)-1
+ def val_t(i,j):return[g[x][val_c[j]+1:val_c[j+1]]for x in range(val_r[i]+1,val_r[i+1])]
  val_e=lambda p:all(not q for a in p for q in a)
  def val_put(i,j,p):
-  for a,r in enumerate(p):val_g[val_r[i]+1+a][val_c[j]+1:val_c[j+1]]=r
+  for a,r in enumerate(p):g[val_r[i]+1+a][val_c[j]+1:val_c[j+1]]=r
  for val_i in range(val_m):
   for val_j in range(lenc):
    val_p=val_t(val_i,val_j)
@@ -26,4 +26,4 @@ def p(val_g):
       if val_e(val_t(val_x,val_j)):val_put(val_x,val_j,val_p)
      break
     if not val_e(val_q):break
- return val_g
+ return g

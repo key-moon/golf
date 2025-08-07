@@ -1,6 +1,6 @@
-def p(val_g):
+def p(g):
     val_d={}
-    for val_i,val_r in enumerate(val_g):
+    for val_i,val_r in enumerate(g):
         for val_j,val_x in enumerate(val_r):
             if val_x: val_d.setdefault(val_x,[]).append((val_i,val_j))
     val_t=sorted(val_d,key=lambda val_k:len(val_d[val_k]))

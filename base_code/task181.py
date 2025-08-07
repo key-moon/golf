@@ -1,5 +1,5 @@
-def p(val_g):
+def p(g):
  for r in range(3):
-  for c,v in enumerate(val_g[r]):
-   if v==8:val_g[r][8-c]=8
- return val_g
+  for c,v in enumerate(g[r]):
+   if v==8:g[r][8-c]=8
+ return g

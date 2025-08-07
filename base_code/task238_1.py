@@ -1,9 +1,9 @@
-def p(val_g):
-    val_r,val_c=len(val_g),len(val_g[0])
+def p(g):
+    val_r,val_c=len(g),len(g[0])
     val_d={}
     for val_y in range(val_r):
         for val_x in range(val_c):
-            val_v=val_g[val_y][val_x]
+            val_v=g[val_y][val_x]
             if val_v: val_d.setdefault(val_v,[]).append((val_x,val_y))
     val_H=[];val_V=[]
     for val_v,val_pts in val_d.items():

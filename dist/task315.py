@@ -1,9 +1,9 @@
 B=enumerate
-def p(val_g):
- C=val_g;A=len(C);E=max(max(A)for A in C);D=[[0]*A*A for _ in range(A*A)]
- for(F,G)in B(C):
-  for(H,I)in B(G):
-   if I==E==2:
-    for(J,K)in B(C):
-     for(L,M)in B(K):D[F*A+J][H*A+L]=M
- return D
+def p(g):
+ A=len(g);D=max(max(A)for A in g);C=[[0]*A*A for _ in range(A*A)]
+ for(E,F)in B(g):
+  for(G,H)in B(F):
+   if H==D==2:
+    for(I,J)in B(g):
+     for(K,L)in B(J):C[E*A+I][G*A+K]=L
+ return C

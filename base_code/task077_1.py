@@ -1,5 +1,5 @@
-def p(val_g):
- val_o=[val_r[:]for val_r in val_g];val_h,val_w=len(val_o),len(val_o[0])
+def p(g):
+ val_o=[val_r[:]for val_r in g];val_h,val_w=len(val_o),len(val_o[0])
  for val_y in range(val_h):
   for val_x in range(val_w):
    if val_o[val_y][val_x]==2:
@@ -9,6 +9,6 @@ def p(val_g):
       val_c=val_o[val_j][val_i]
       if val_c and val_c-2:
        while 0<=val_i<val_w and 0<=val_j<val_h and val_o[val_j][val_i]==val_c:
-        val_g[val_j][val_i]=4
+        g[val_j][val_i]=4
         val_i+=val_dx;val_j+=val_dy
- return val_g
+ return g

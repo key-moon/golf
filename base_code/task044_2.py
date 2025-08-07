@@ -1,5 +1,5 @@
-def p(val_g):
- val_u=[x for r in val_g for x in r];val_D=[1,-1,10,-10]
+def p(g):
+ val_u=[x for r in g for x in r];val_D=[1,-1,10,-10]
  def val_f(val_c):
   val_V=[0]*100;val_C=[]
   for val_i in range(100):

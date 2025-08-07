@@ -1,6 +1,6 @@
-def p(val_g):
+def p(g):
  import math
- for val_r in val_g:
+ for val_r in g:
   val_d={};val_k=0
   for val_i,val_v in enumerate(val_r):
    if val_v:
@@ -12,4 +12,4 @@ def p(val_g):
    if val_v:val_a[val_i%val_k]=val_v
   for val_i,val_v in enumerate(val_r):
    if not val_v:val_r[val_i]=val_a[val_i%val_k]
- return val_g
+ return g

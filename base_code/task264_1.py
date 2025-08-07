@@ -1,7 +1,7 @@
-def p(val_g):
+def p(g):
     # collect positions by color
     val_d={}
-    for val_r,val_row in enumerate(val_g):
+    for val_r,val_row in enumerate(g):
         for val_c,val_v in enumerate(val_row):
             if val_v: val_d.setdefault(val_v,[]).append((val_r,val_c))
     # centroid of the big cluster of 5s
@@ -29,5 +29,5 @@ def p(val_g):
             # copy‐over (0→5)
             for val_i in (0,1,2):
                 for val_j in (0,1,2):
-                    val_a[val_R*3+val_i][val_C*3+val_j]=val_g[val_mr+val_i][val_mc+val_j] or 5
+                    val_a[val_R*3+val_i][val_C*3+val_j]=g[val_mr+val_i][val_mc+val_j] or 5
     return val_a

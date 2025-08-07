@@ -1,7 +1,7 @@
-def p(val_g):
+def p(g):
     # collect the two colored points
     val_s=[(y,x,v)
-           for y,row in enumerate(val_g)
+           for y,row in enumerate(g)
            for x,v in enumerate(row)
            if v]
     y1,x1,v1=val_s[0]; y2,x2,v2=val_s[1]
@@ -13,12 +13,12 @@ def p(val_g):
         c=(x1+x2)//2
         # two arms along the row
         for i in range(m+1):
-            val_g[y][x1+dx*i]=v1
-            val_g[y][x2-dx*i]=v2
+            g[y][x1+dx*i]=v1
+            g[y][x2-dx*i]=v2
         # two arms up/down from the midpoint
         for i in range(1,m+1):
-            val_g[y-i][c]=v1
-            val_g[y+i][c]=v2
+            g[y-i][c]=v1
+            g[y+i][c]=v2
     # else they share a column, build a vertical stem + horizontal arms
     else:
         x=x1
@@ -27,10 +27,10 @@ def p(val_g):
         r=(y1+y2)//2
         # two arms along the column
         for i in range(m+1):
-            val_g[y1+dy*i][x]=v1
-            val_g[y2-dy*i][x]=v2
+            g[y1+dy*i][x]=v1
+            g[y2-dy*i][x]=v2
         # two arms left/right from the midpoint
         for i in range(1,m+1):
-            val_g[r][x-i]=v1
-            val_g[r][x+i]=v2
-    return val_g
+            g[r][x-i]=v1
+            g[r][x+i]=v2
+    return g

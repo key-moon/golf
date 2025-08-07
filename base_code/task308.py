@@ -1,14 +1,14 @@
-def p(val_g):
+def p(g):
     # find background = most frequent color
-    val_bg = max({c for r in val_g for c in r},
-                 key=lambda c: sum(row.count(c) for row in val_g))
+    val_bg = max({c for r in g for c in r},
+                 key=lambda c: sum(row.count(c) for row in g))
     # dims and integer center
-    val_h, val_w = len(val_g), len(val_g[0])
+    val_h, val_w = len(g), len(g[0])
     val_cy, val_cx = val_h//2, val_w//2
     # collect all non-bg cells with their offsets
-    val_ds = [(y - val_cy, x - val_cx, val_g[y][x])
+    val_ds = [(y - val_cy, x - val_cx, g[y][x])
               for y in range(val_h) for x in range(val_w)
-              if val_g[y][x] != val_bg]
+              if g[y][x] != val_bg]
     if not val_ds:
         return [[val_bg]]
     # radius = max distance in either direction

@@ -1,6 +1,6 @@
-def p(val_g):
+def p(g):
     val_d={}
-    for val_i,val_row in enumerate(val_g):
+    for val_i,val_row in enumerate(g):
         for val_j,val_v in enumerate(val_row):
             if val_v: val_d.setdefault(val_v,[]).append((val_i,val_j))
     val_C=max(val_d,key=lambda k:len(val_d[k]))
