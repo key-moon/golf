@@ -2,8 +2,6 @@ import ast
 import re
 import string
 
-from rename_minifier import RenameTransformer
-
 # string.punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 # syms = r"=<>!?^|&%()\[\]{},;:*/+-"
 
@@ -48,17 +46,34 @@ from rename_minifier import RenameTransformer
 
 import python_minifier
 
-def strip(source: str):
-    source = python_minifier.minify(
-        source,
-        remove_literal_statements=True,
-        remove_asserts=True,
-        remove_debug=True,
-        rename_globals=True,
-        preserve_globals=["p"]
-    )
-    # if, else, forの前にはspace不要 / forの後にはspace不要
-    # TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )
-    source = re.sub(r'([0-9])[ \t]+(if|else|for)', r'\1\2', source)
-    source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
-    return source
+def get_stripper(**minifier_opt):
+    def strip(source: str):
+        source = python_minifier.minify(source, **minifier_opt)
+        # if, else, forの前にはspace不要 / forの後にはspace不要
+        # TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )
+        source = re.sub(r'([0-9])[ \t]+(if|else|for)', r'\1\2', source)
+        source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
+        return source.replace("\t", " ")
+    return strip
+
+strip = strip_for_plain = get_stripper(
+    remove_literal_statements=True,
+    remove_asserts=True,
+    remove_debug=True,
+    # python_minifier の rename は関数内に出てくるsymbolを別のsymbolにリネームする。
+    # これによって、"i,j"のようなよく出てくるフレーズが破壊されて圧縮に悪い
+    # なので、_と小文字変数に限ってはrenameをしないことにした
+    preserve_locals=list("_" + string.ascii_lowercase),
+    rename_globals=True,
+    preserve_globals=["p"]
+)
+strip_for_zlib = get_stripper(
+    remove_literal_statements=True,
+    remove_asserts=True,
+    remove_debug=True,
+    preserve_locals=list("_" + string.ascii_lowercase),
+    rename_globals=False,
+    hoist_literals=False,
+)
+
+strippers = {"forplain": strip_for_plain, "forcompress": strip_for_zlib}

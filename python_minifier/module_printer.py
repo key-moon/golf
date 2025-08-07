@@ -336,7 +336,10 @@ class ModulePrinter(ExpressionPrinter):
         self.printer.keyword('for')
         self._exprlist([node.target])
         self.printer.keyword('in')
-        self._expression(node.iter)
+        if isinstance(node.iter, ast.Tuple):
+            self.visit_Tuple(node.iter)
+        else:
+            self._expression(node.iter)
         self.printer.delimiter(':')
 
         self._suite(node.body)

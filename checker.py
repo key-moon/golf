@@ -12,7 +12,7 @@ import numpy as np
 
 import compress
 from task_viz import cmap, norm
-from strip import strip
+from strip import strip_for_plain, strip_for_zlib
 from utils import get_code_paths, get_task, parse_range_str
 
 class TimeoutException(Exception): pass
@@ -121,9 +121,10 @@ if __name__ == "__main__":
       if not os.path.exists(code_path): continue
       res = check(code_path, task)
       with open(code_path, "r") as f:
-        code = strip(f.read().strip())
+        orig_code = f.read().strip()
+        code = strip_for_plain(orig_code)
       if res.correct == 1.:
-        compressed = compress.compress(code, force_compress=True)[1]
+        compressed = compress.compress(strip_for_zlib(orig_code), force_compress=True)[1]
         print(f"✅ {code_path} {len(code)=} {len(compressed)=}")
         success += 1
       else:

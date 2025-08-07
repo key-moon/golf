@@ -1,4 +1,5 @@
 import base64
+import os
 import shutil
 import sys
 import zlib
@@ -8,13 +9,11 @@ import hashlib
 
 from checker import check, CheckRes
 import compress
-from strip import strip
+from strip import strippers
 from utils import get_code_paths, get_task
-import os
 import pandas as pd
-import math
 
-def check_str(task_id, code: str | bytes, task, checked_hash):
+def check_str(task_id: int, code: str | bytes, task, checked_hash):
   tmp_path = "tmp/tmp.py"
   code_hash = f"{task_id:03d}|{hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()}"
   if code_hash in checked_hash:
@@ -46,38 +45,50 @@ if __name__ == "__main__":
   stats = []
   for i in range(1, 401):
     task = get_task(i)
-    shortest = LONG
-    task_stat = {
-      "task": i,
-      "base_path": None,
-      "compressor": None,
-      "length": None,
-      "message": None,
-      "success": False
-    }
+    dist_path = f"dist/task{i:03}.py"
+    if os.path.exists(dist_path):
+      shortest = open(dist_path, "rb").read()
+      task_stat = {
+        "task": i,
+        "base_path": dist_path,
+        "compressor": "previous",
+        "length": len(shortest),
+        "message": "regression?",
+        "success": True
+      }
+    else:
+      shortest = LONG
+      task_stat = {
+        "task": i,
+        "base_path": None,
+        "compressor": None,
+        "length": None,
+        "message": None,
+        "success": False
+      }
     for base_path in get_code_paths("base_*", i):
       code = open(base_path).read()
       if check_str(i, code, task, checked_hash).correct != 1.0:
         print(f"{base_path}: check failed")
         continue
       
-      print(base_path)
-      code = strip(code)
-      if check_str(i, code, task, checked_hash).correct != 1.0:
-        print(f"{base_path}: strip failed, {check_str(i, code, task, checked_hash).message}")
-        task_stat["base_path"] = base_path
-        task_stat["message"] = check_str(i, code, task, checked_hash).message
-        stats.append(task_stat)
-        exit(1)
-        continue
+      for stripper, strip in strippers.items():
+        code = strip(open(base_path).read())
+        if check_str(i, code, task, checked_hash).correct != 1.0:
+          print(f"{base_path}: strip failed, {check_str(i, code, task, checked_hash).message}")
+          task_stat["base_path"] = base_path
+          task_stat["message"] = check_str(i, code, task, checked_hash).message
+          stats.append(task_stat)
+          exit(1)
+          continue
 
-      cmp, compressed = compress.compress(code)
-      if len(compressed) < len(shortest):
-        shortest = compressed
-        task_stat["base_path"] = base_path
-        task_stat["compressor"] = cmp
-        task_stat["length"] = len(compressed)
-        task_stat["success"] = True
+        cmp, compressed = compress.compress(code)
+        if len(compressed) <= len(shortest):
+          shortest = compressed
+          task_stat["base_path"] = base_path
+          task_stat["compressor"] = f"{stripper}/{cmp}"
+          task_stat["length"] = len(compressed)
+          task_stat["success"] = True
 
     if shortest == LONG:
       print(f"[!] failed: vis/task{i:03}.png")
@@ -111,7 +122,7 @@ if __name__ == "__main__":
     readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
-      success = ("✅" if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
+      success = (("✅" if not stat["message"] else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
       base = f"[{stat['base_path']}]({stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 

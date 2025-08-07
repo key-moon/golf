@@ -1,5 +1,6 @@
 import bz2
 import lzma
+from typing import Tuple
 import zlib
 
 def get_embed_str(b: bytes):
@@ -19,7 +20,7 @@ def get_embed_str(b: bytes):
       l.append(sep + (b[:-1] + b'\\' + sep if b.endswith(sep[:1]) else b) + sep)
   return min(l, key=len)
 
-def compress(code: str, force_compress=False):
+def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
   compressions = [
     ("zlib", lambda x: zlib.compress(x, level=9)),
     ("lzma", lambda x: lzma.compress(x)),
