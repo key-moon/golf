@@ -10,6 +10,7 @@ import inspect
 
 import numpy as np
 
+import compress
 from task_viz import cmap, norm
 from strip import strip
 from utils import get_code_paths, get_task, parse_range_str
@@ -122,7 +123,8 @@ if __name__ == "__main__":
       with open(code_path, "r") as f:
         code = strip(f.read().strip())
       if res.correct == 1.:
-        print(f"✅ {code_path} {len(code)=}")
+        compressed = compress.compress(code, force_compress=True)[1]
+        print(f"✅ {code_path} {len(code)=} {len(compressed)=}")
         success += 1
       else:
         print(f"❌ {code_path} {len(code)=}")

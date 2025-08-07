@@ -19,13 +19,15 @@ def get_embed_str(b: bytes):
       l.append(sep + (b[:-1] + b'\\' + sep if b.endswith(sep[:1]) else b) + sep)
   return min(l, key=len)
 
-def compress(code: str):
+def compress(code: str, force_compress=False):
   compressions = [
     ("zlib", lambda x: zlib.compress(x, level=9)),
     ("lzma", lambda x: lzma.compress(x)),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9))
   ]
-  l = [("raw",code.encode())]
+  l = []
+  if not force_compress:
+    l.append(("raw",code.encode()))
   for name, cmp in compressions:
     compressed_code = cmp(code.encode())
     embed = get_embed_str(compressed_code)
