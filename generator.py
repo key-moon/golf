@@ -2,8 +2,11 @@ import base64
 import shutil
 import sys
 import zlib
+import json
+import dataclasses
+import hashlib
 
-from checker import check
+from checker import check, CheckRes
 import compress
 from strip import strip
 from utils import get_code_paths, get_task
@@ -11,17 +14,22 @@ import os
 import pandas as pd
 import math
 
-def check_str(code: str | bytes, task):
-    tmp_path = "tmp/tmp.py"
-    if isinstance(code, str):
-      open(tmp_path, "w").write(code)
-    if isinstance(code, bytes):
-      open(tmp_path, "wb").write(code)
-    res = check(tmp_path, task)
-    if "tmp.tmp" in sys.modules:
-      del sys.modules["tmp.tmp"]
-    shutil.rmtree('tmp/__pycache__', ignore_errors=True)
-    return res
+def check_str(task_id, code: str | bytes, task, checked_hash):
+  tmp_path = "tmp/tmp.py"
+  code_hash = f"{task_id:03d}|{hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()}"
+  if code_hash in checked_hash:
+    return CheckRes(**{"outputs": [], **checked_hash[code_hash]})
+  if isinstance(code, str):
+    open(tmp_path, "w").write(code)
+  if isinstance(code, bytes):
+    open(tmp_path, "wb").write(code)
+  res = check(tmp_path, task)
+  checked_hash[code_hash] = dataclasses.asdict(res)
+  del checked_hash[code_hash]["outputs"]
+  if "tmp.tmp" in sys.modules:
+    del sys.modules["tmp.tmp"]
+  shutil.rmtree('tmp/__pycache__', ignore_errors=True)
+  return res
 
 def read_others_best():
   csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pub?gid=1427788625&single=true&output=csv"
@@ -32,10 +40,9 @@ def read_others_best():
 score = 0
 accepted = 0
 
-SLOW = ["base_yu/task002.py", "base_yu/task205.py", "base_yu/task396.py"]
-
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
+  checked_hash = json.load(open("checked_cache.json", "r"))
   stats = []
   for i in range(1, 401):
     task = get_task(i)
@@ -49,17 +56,17 @@ if __name__ == "__main__":
       "success": False
     }
     for base_path in get_code_paths("base_*", i):
-      do_check = base_path not in SLOW
-      if do_check and check(base_path, task).correct != 1.0:
+      code = open(base_path).read()
+      if check_str(i, code, task, checked_hash).correct != 1.0:
         print(f"{base_path}: check failed")
         continue
       
       print(base_path)
-      code = strip(open(base_path).read())
-      if do_check and check_str(code, task).correct != 1.0:
-        print(f"{base_path}: strip failed, {check_str(code, task).message}")
+      code = strip(code)
+      if check_str(i, code, task, checked_hash).correct != 1.0:
+        print(f"{base_path}: strip failed, {check_str(i, code, task, checked_hash).message}")
         task_stat["base_path"] = base_path
-        task_stat["message"] = check_str(code, task).message
+        task_stat["message"] = check_str(i, code, task, checked_hash).message
         stats.append(task_stat)
         exit(1)
         continue
@@ -77,14 +84,13 @@ if __name__ == "__main__":
       task_stat["message"] = "WA"
       stats.append(task_stat)
       continue
-    if task_stat["base_path"] not in SLOW:
-      compressed = check_str(shortest, task)
-      if compressed.correct != 1.0:
-        print(f"[!] compression failed: {compressed.message}")
-        task_stat["message"] = compressed.message
-        task_stat["success"] = False
-        stats.append(task_stat)
-        exit(1)
+    compressed = check_str(i, shortest, task, checked_hash)
+    if compressed.correct != 1.0:
+      print(f"[!] compression failed: {compressed.message}")
+      task_stat["message"] = compressed.message
+      task_stat["success"] = False
+      stats.append(task_stat)
+      exit(1)
 
     score += 2500 - len(shortest)
     accepted += 1
@@ -92,6 +98,7 @@ if __name__ == "__main__":
     stats.append(task_stat)
 
   print(f"accepted: {accepted}/400, {score=}")
+  json.dump(checked_hash, open("checked_cache.json", "w"))
 
   others_best = read_others_best()
   # Write stats to README
@@ -110,5 +117,10 @@ if __name__ == "__main__":
 
       length = str(stat["length"]) if stat["success"] else "-"
       best = others_best[stat['task'] - 1]
+      if stat["success"] and best != "-":
+        if stat["length"] < int(best):
+          best = f"<span style=\"color: red\">{best}</span>"
+        elif stat["length"] > int(best):
+          best = f"<span style=\"color: green\">{best}</span>"
       message = stat["message"] if not stat["success"] else "-"
       readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")

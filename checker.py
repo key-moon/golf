@@ -49,7 +49,7 @@ def check(path: str, task: dict):
   for case, example in enumerate(tests):
     example_copy = copy.deepcopy(example)
     try:
-      signal.setitimer(signal.ITIMER_REAL, .5)
+      signal.setitimer(signal.ITIMER_REAL, 2.5)
       # signal.alarm(1)
       if "case" in inspect.signature(program).parameters:
        output = program(example_copy["input"], case=case)
