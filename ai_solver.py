@@ -31,7 +31,7 @@ def generate_prompt(task):
         inp_s = "\n".join([" ".join(map(str, row)) for row in inp])
         out_s = "\n".join([" ".join(map(str, row)) for row in out])
         prompt += f"\n\nExample 1:\n\nInput:\n{inp_s}\nOutput:\n{out_s}"
-    prompt += "\n\n\nWrite the **short** Python code in code golf manners that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays. Use `val_` as a prefix for all variables except `_`. Avoid line breaks as much as possible.\n"
+    prompt += "\n\n\nWrite the **short** Python code in code golf manners that performs the transformation according to the rule in following format: `def p(g): ...`. Note that input and output are passed by 2D arrays.\n"
     return prompt
 
 api_key = os.getenv("OPENAI_API_KEY")
