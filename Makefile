@@ -1,7 +1,6 @@
 .PHONY: dist submission.zip
 
 dist:
-	rm -rf dist
 	mkdir -p dist
 	python generator.py
 	rm -rf dist/__pycache__

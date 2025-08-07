@@ -88,6 +88,7 @@ if __name__ == "__main__":
           task_stat["base_path"] = base_path
           task_stat["compressor"] = f"{stripper}/{cmp}"
           task_stat["length"] = len(compressed)
+          task_stat["message"] = "AC"
           task_stat["success"] = True
 
     if shortest == LONG:
@@ -122,7 +123,7 @@ if __name__ == "__main__":
     readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
-      success = (("✅" if not stat["message"] else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
+      success = (("✅" if stat["message"] == "AC" else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
       base = f"[{stat['base_path']}]({stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 
@@ -133,5 +134,5 @@ if __name__ == "__main__":
           best = f"<span style=\"color: red\">{best}</span>"
         elif stat["length"] > int(best):
           best = f"<span style=\"color: green\">{best}</span>"
-      message = stat["message"] if not stat["success"] else "-"
+      message = stat["message"]
       readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
