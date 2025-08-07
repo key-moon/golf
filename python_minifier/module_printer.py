@@ -309,7 +309,7 @@ class ModulePrinter(ExpressionPrinter):
         else:
             self.printer.keyword('if')
 
-        self._expression(node.test)
+        self._expression(node.test, namedexpr_parenthesis=False)
         self.printer.delimiter(':')
 
         self._suite(node.body)
@@ -352,7 +352,7 @@ class ModulePrinter(ExpressionPrinter):
 
         self.printer.newline()
         self.printer.keyword('while')
-        self._expression(node.test)
+        self._expression(node.test, namedexpr_parenthesis=False)
         self.printer.delimiter(':')
         self._suite(node.body)
 
@@ -581,7 +581,7 @@ class ModulePrinter(ExpressionPrinter):
 
         self.printer.keyword('match')
 
-        self._expression(node.subject)
+        self._expression(node.subject, namedexpr_parenthesis=False)
 
         self.printer.delimiter(':')
 
@@ -728,6 +728,7 @@ class ModulePrinter(ExpressionPrinter):
     # endregion
 
     # region Generic Types
+    # NOTE: typeはおそらく使わないのでnamedexprの特殊扱いはしない
     def visit_TypeAlias(self, node):
         assert isinstance(node, ast.TypeAlias)
         self.printer.keyword('type')

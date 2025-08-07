@@ -4,7 +4,6 @@ import python_minifier.ast_compat as ast
 
 from python_minifier.token_printer import Delimiter, TokenPrinter
 from python_minifier.util import is_constant_node
-import traceback
 
 
 class ExpressionPrinter(object):
@@ -380,7 +379,7 @@ class ExpressionPrinter(object):
             if single_call and isinstance(arg, ast.GeneratorExp):
                 self.visit_GeneratorExp(arg, omit_parens=True)
             else:
-                self._expression(arg)
+                self._expression(arg, namedexpr_parenthesis=False)
 
         if node.keywords:
             for kwarg in node.keywords:
@@ -467,14 +466,14 @@ class ExpressionPrinter(object):
         elif sys.version_info >= (3, 9) and isinstance(node.slice, ast.Tuple):
             self.visit_Tuple(node.slice)
         elif sys.version_info >= (3, 9):
-            self._expression(node.slice)
+            self._expression(node.slice, namedexpr_parenthesis=False)
         else:
             raise AssertionError('Unknown slice type %r' % node.slice)
 
         self.printer.delimiter(']')
 
     def visit_Index(self, node):
-        self._expression(node.value)
+        self._expression(node.value, namedexpr_parenthesis=False)
 
     def visit_Slice(self, node):
         if node.lower:
@@ -488,11 +487,10 @@ class ExpressionPrinter(object):
             self._expression(node.step)
 
     def visit_ExtSlice(self, node):
-
         delimiter = Delimiter(self.printer)
         for s in node.dims:
             delimiter.new_item()
-            self._expression(s)
+            self._expression(s, namedexpr_parenthesis=False)
 
         if len(node.dims) == 1:
             self.printer.delimiter(',')
@@ -503,13 +501,13 @@ class ExpressionPrinter(object):
 
     def visit_ListComp(self, node):
         self.printer.delimiter('[')
-        self._expression(node.elt)
+        self._expression(node.elt, namedexpr_parenthesis=False)
         [self.visit_comprehension(x) for x in node.generators]
         self.printer.delimiter(']')
 
     def visit_SetComp(self, node):
         self.printer.delimiter('{')
-        self._expression(node.elt)
+        self._expression(node.elt, namedexpr_parenthesis=False)
         [self.visit_comprehension(x) for x in node.generators]
         self.printer.delimiter('}')
 
@@ -518,7 +516,7 @@ class ExpressionPrinter(object):
         if not omit_parens:
             self.printer.delimiter('(')
 
-        self._expression(node.elt)
+        self._expression(node.elt, namedexpr_parenthesis=False)
         [self.visit_comprehension(x) for x in node.generators]
 
         if not omit_parens:
@@ -648,7 +646,7 @@ class ExpressionPrinter(object):
     def visit_Expression(self, node):
         self._expression(node.body)
 
-    def _expression(self, expression):
+    def _expression(self, expression, namedexpr_parenthesis=True):
         if isinstance(expression, (ast.Yield, ast.YieldFrom)):
             self.printer.delimiter('(')
             self._yield_expr(expression)
@@ -658,22 +656,25 @@ class ExpressionPrinter(object):
             self.visit_Tuple(expression)
             self.printer.delimiter(')')
         elif isinstance(expression, ast.NamedExpr):
-            traceback.print_stack()
-            self.printer.delimiter('(')
+            if namedexpr_parenthesis:
+                self.printer.delimiter('(')
             self.visit_NamedExpr(expression)
-            self.printer.delimiter(')')
+            if namedexpr_parenthesis:
+                self.printer.delimiter(')')
         else:
             self.visit(expression)
 
-    def _testlist(self, test):
+    def _testlist(self, test, namedexpr_parenthesis=True):
         if isinstance(test, (ast.Yield, ast.YieldFrom)):
             self.printer.delimiter('(')
             self._yield_expr(test)
             self.printer.delimiter(')')
         elif isinstance(test, ast.NamedExpr):
-            self.printer.delimiter('(')
+            if namedexpr_parenthesis:
+                self.printer.delimiter('(')
             self.visit_NamedExpr(test)
-            self.printer.delimiter(')')
+            if namedexpr_parenthesis:
+                self.printer.delimiter(')')
         else:
             self.visit(test)
 
@@ -681,7 +682,7 @@ class ExpressionPrinter(object):
         delimiter = Delimiter(self.printer)
         for expr in exprlist:
             delimiter.new_item()
-            self._expression(expr)
+            self._expression(expr, namedexpr_parenthesis=False)
 
     def _yield_expr(self, yield_node):
         if isinstance(yield_node, ast.Yield):
