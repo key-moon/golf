@@ -1,1 +1,0 @@
-def p(A):A=[[next(A for B in A for A in B if A)]];return A

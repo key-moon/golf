@@ -1,1 +1,0 @@
-def p(A):return[A*2 for A in A]

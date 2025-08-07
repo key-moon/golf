@@ -1,1 +1,0 @@
-def p(A):D=[A for(A,B)in enumerate(A)if len(set(B))==1];C=D[0];B=C+1;H=[A[:C]for A in A[:C]];G,I=next((E,F)for E in range(len(D))for F in range(len(D))if any(A[E*B+D][F*B+G]!=H[D][G]for D in range(C)for G in range(C)));E,F=G*B-1,I*B-1;return[A[F:F+B+1]for A in A[E:E+B+1]]

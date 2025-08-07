@@ -1,1 +1,0 @@
-def p(A):return[A[B]for B in range(len(A))]

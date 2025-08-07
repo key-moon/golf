@@ -1,1 +1,0 @@
-def p(A):D,E=len(A),len(A[0]);return[[8 if not B*(B-D+1)*C*(C-E+1)else A[B][C]for C in range(E)]for B in range(D)]

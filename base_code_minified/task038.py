@@ -1,1 +1,0 @@
-def p(A):B=sum(A[B][C]+A[B][C+1]+A[B+1][C]+A[B+1][C+1]==4 for B in range(8)for C in range(8));return[[1]*B+[0]*(5-B)]

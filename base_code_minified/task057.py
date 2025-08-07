@@ -1,1 +1,0 @@
-def p(A):B,C=zip(*((A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D));D,E,F,G=min(B),max(B),min(C),max(C);return[A[B][F:G+1]*2 for B in range(D,E+1)]

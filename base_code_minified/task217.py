@@ -1,1 +1,0 @@
-def p(A):D=min(B for B in range(9)for C in range(9)if A[B][C]);B=min(B for C in range(9)for B in range(9)if A[C][B]);C=[A[D+C][B:B+3]for C in range(3)];return[[C[A%3][B%3]if C[A//3][B//3]else 0 for B in range(9)]for A in range(9)]

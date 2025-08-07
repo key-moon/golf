@@ -1,1 +1,0 @@
-def p(A):E=sorted(B for B in range(len(A[0]))if len({A[C][B]for C in range(len(A))})==1);B,C=E;D=[D for D in range(len(A))if len({A[D][B]for B in range(B+1,C)})==1];return[A[B:C+1]for A in A[D[0]:D[-1]+1]]

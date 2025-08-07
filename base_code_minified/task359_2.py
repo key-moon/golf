@@ -1,1 +1,0 @@
-def p(A):B,F=len,;B=B(A);C=B(A[0]);D=sum(C-max(A.count(B)for B in A)for A in A);E=sum(B-max(A.count(B)for B in A)for A in zip(*A));return[max(A,key=A.count)for A in zip(*A)]*B if E<D else[[max(A,key=A.count)]*C for A in A]

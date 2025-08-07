@@ -1,1 +1,0 @@
-def p(A):D,E=[B for(B,A)in enumerate(A)if any(all(A[B]==A[B+C]for C in range(4))for B in range(len(A)-3))];B=A[D];C=next(A for A in range(len(B)-3)if all(B[A]==B[A+C]for C in range(4)));F=C+B[C:].count(B[C]);return[A[C+1:F]for A in A[D+1:E]]

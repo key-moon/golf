@@ -1,1 +1,0 @@
-def p(A):C=[A[:]for A in A];B=[(B,C)for B in range(len(A))for C in range(len(A[0]))if A[B][C]==3];D=min(A for(A,B)in B);G=max(A for(A,B)in B);E=min(A for(B,A)in B);F=max(A for(B,A)in B);H=[(B,C,D+C-E,F+D-B)for B in range(D,G+1)for C in range(E,F+1)if A[B][C]==2];[C[A].__setitem__(B,0)or C[D].__setitem__(E,2)for(A,B,D,E)in H];return C

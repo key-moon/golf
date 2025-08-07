@@ -1,1 +1,0 @@
-def p(A):F=A[0][0];B=len(A)//3;return[[next((A[C][E]for C in range(C*B,(C+1)*B)for E in range(D*B,(D+1)*B)if A[C][E]!=F),0)for D in range(3)]for C in range(3)]

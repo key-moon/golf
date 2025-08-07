@@ -1,1 +1,0 @@
-def p(A):B=3;C=[(C//B,D//B)for C in range(len(A))for D in range(len(A[0]))if A[C][D]==5];D=min(A for(A,B)in C)*B;E=min(A for(B,A)in C)*B;F=[[sum(A[D+B*C+G][E+B*F+H]==5 for G in range(B)for H in range(B))>0 for F in range(3)]for C in range(3)];return[[5 if F[A//B][C//B]else 0 for C in range(B*3)]for A in range(B*3)]

@@ -1,1 +1,0 @@
-def p(A):B=sum(A,[]);C=max({*B}-{0},key=B.count);return[[C]*2]*2

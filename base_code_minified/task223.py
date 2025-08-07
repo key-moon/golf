@@ -1,1 +1,0 @@
-def p(A):return[[A for A in A for B in[0]*3]for A in A for B in[0]*3]

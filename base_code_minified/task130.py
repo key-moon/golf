@@ -1,1 +1,0 @@
-def p(A,B=range(3)):return[[max((C:=[A[3*D+C][3*E+F]for C in B for F in B]),key=C.count)for E in B]for D in B]

@@ -1,1 +1,0 @@
-def p(A):return list(map(list,zip(*A)))

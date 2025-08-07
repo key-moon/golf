@@ -1,1 +1,0 @@
-def p(A):B=[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D==4];C=min(A for(A,B)in B);D=max(A for(A,B)in B);E=min(A for(B,A)in B);F=max(A for(B,A)in B);return[A[E:F+1]for A in A[C:D+1]]

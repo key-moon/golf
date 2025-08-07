@@ -1,1 +1,0 @@
-def p(A):D=max({A for B in A for A in B if A},key=lambda D:sum(A.count(D)for A in A));E=[(A,C)for(A,B)in enumerate(A)for(C,E)in enumerate(B)if E==D];B,C=zip(*E);return[A[min(C):max(C)+1]for A in A[min(B):max(B)+1]]

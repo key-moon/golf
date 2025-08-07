@@ -1,1 +1,0 @@
-def p(A):B=sum(B==5 for A in A for B in A);C=next(A for B in A for A in B if A%5);D=len(A);E=len(A[0]);return[[C if 0<=F-B<D and 0<=G+B<E and A[F-B][G+B]==C else 0 for G in range(E)]for F in range(D)]

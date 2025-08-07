@@ -1,1 +1,0 @@
-def p(A):B=sum(A,[]);C=[A for A in set(B)if B.count(A)==4][0];D=[(A,D)for(A,B)in enumerate(A)for(D,E)in enumerate(B)if E==C];E,F=D[0];G,H=D[-1];return[[C if A[B][D]else 0 for D in range(F+1,H)]for B in range(E+1,G)]

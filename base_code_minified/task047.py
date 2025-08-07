@@ -1,1 +1,0 @@
-def p(A):B=len(A);G=[(C,D)for C in range(B)for D in range(B)if A[C][D]];(C,D),(E,F)=G;H,I=A[C][D],A[E][F];return[[2 if(A==C or B==D)and(A==E or B==F)else H if A==C or B==D else I if A==E or B==F else 0 for B in range(B)]for A in range(B)]

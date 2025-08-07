@@ -1,1 +1,0 @@
-def p(A):A=[[A[C^B&1][B]for B in range(len(A[0]))]for C in range(2)];return A

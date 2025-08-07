@@ -1,1 +1,0 @@
-def p(A):B=len(A)//2;A[:B]=A[:-B-1:-1];return A

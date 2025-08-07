@@ -1,1 +1,0 @@
-def p(A):B=[*filter(any,A)];return[B[(C-A.index(B[0]))%len(B)]for C in range(len(A))]

@@ -1,1 +1,0 @@
-def p(A):C,B=len(A),len(A[0]);return[[(D==abs((C-1-A)%(2*B-2)-(B-1)))+0 for D in range(B)]for A in range(C)]

@@ -1,1 +1,0 @@
-def p(A):return[[A[B][C+4]or A[B+4][C]or A[B][C]or A[B+4][C+4]for C in range(4)]for B in range(4)]

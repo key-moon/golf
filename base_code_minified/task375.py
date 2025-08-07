@@ -1,1 +1,0 @@
-def p(A):B=len(A)//2;return[[D*(abs(A-B)!=abs(C-B))for(C,D)in enumerate(C)]for(A,C)in enumerate(A)]

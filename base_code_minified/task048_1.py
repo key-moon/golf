@@ -1,1 +1,0 @@
-def p(A):return[8,0][sum(B+C for B in range(len(A)-1)for C in range(len(A[0])-1)if A[B][C]==2==A[B][C+1]==A[B+1][C]==A[B+1][C+1])%2]

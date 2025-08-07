@@ -1,1 +1,0 @@
-def p(A):return[A[::-1]for A in A]

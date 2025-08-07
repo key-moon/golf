@@ -1,1 +1,0 @@
-def p(A):B,C=A[0][:2];return[[[C,B][A+D&1]for(D,E)in enumerate(D)]for(A,D)in enumerate(A)]

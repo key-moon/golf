@@ -1,1 +1,0 @@
-def p(A):A=[A+A[::-1]for A in A];return A+A[::-1]

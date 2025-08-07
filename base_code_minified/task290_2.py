@@ -1,1 +1,0 @@
-def p(A):B=[A for(A,B)in enumerate(A)if any(B)];C=[A for(A,B)in enumerate(zip(*A))if any(B)];D=[A[C[0]:C[-1]+1]for A in A[B[0]:B[-1]+1]];E,F=set(B for A in D for B in A);return[[F if A==E else E for A in A]for A in D]

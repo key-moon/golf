@@ -1,1 +1,0 @@
-def p(A):A[:]=[[0]*len(A[0])]+A[:-1];return A

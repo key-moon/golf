@@ -1,1 +1,0 @@
-def p(A):A[:]=map(list,zip(*A));A.reverse();return A

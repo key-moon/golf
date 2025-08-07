@@ -1,1 +1,0 @@
-def p(A):F=[A for B in A for A in B if A][0];B=sorted({A for(A,B)in enumerate(A)for C in B if C});C=sorted({B for A in A for(B,C)in enumerate(A)if C});G=B[1]-B[0];H=C[1]-C[0];D,I=B[0],B[-1];E,J=C[0],C[-1];K,L=len(A),len(A[0]);return[[F if D<=A<=I and(B-E)%H==0 or E<=B<=J and(A-D)%G==0 else 0 for B in range(L)]for A in range(K)]

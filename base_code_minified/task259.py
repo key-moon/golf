@@ -1,1 +1,0 @@
-def p(A):B,C=zip(*[(A,C)for(A,B)in enumerate(A)for(C,D)in enumerate(B)if D^1]);return[[A*(A^1)for A in A[min(C):max(C)+1]]for A in A[min(B):max(B)+1]]

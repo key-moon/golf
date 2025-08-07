@@ -1,1 +1,0 @@
-def p(A):B=sum(A,[]);D=max(B,key=B.count);return[[A[B%3][C%3]if A[B//3][C//3]==D else 0 for C in range(9)]for B in range(9)]

@@ -1,1 +1,0 @@
-def p(A):C=[0]+[B for B in range(1,len(A))if A[B]!=A[B-1]];B=list(zip(*A));D=[0]+[A for A in range(1,len(B))if B[A]!=B[A-1]];return[[A[B][C]for C in D]for B in C]

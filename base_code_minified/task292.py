@@ -1,1 +1,0 @@
-def p(A):return[[A+2*(not B%3)*(A//4)for(B,A)in enumerate(A)]for A in A]

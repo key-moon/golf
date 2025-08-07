@@ -1,1 +1,0 @@
-def p(A):B=sum(A,[]);C=max(B,key=B.count);return[[C]*len(A[0])for B in A]

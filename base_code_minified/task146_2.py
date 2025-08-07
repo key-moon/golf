@@ -1,1 +1,0 @@
-def p(A):return next(A[B:B+3]for B in(0,3,6)if any((A[B][1]!=A[B+1][0],A[B][2]!=A[B+2][0],A[B+1][2]!=A[B+2][1])))

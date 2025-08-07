@@ -1,1 +1,0 @@
-def p(A):return[[3*(B[A]==C[A]==0)for A in range(4)]for(B,C)in zip(A,A[5:])]

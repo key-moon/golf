@@ -1,1 +1,0 @@
-def p(A):C=len(A[0]);B=next(B for B in range(1,C+1)if C%B==0 and all(A==A[:B]*(C//B)for A in A));return[A[:B]for A in A]

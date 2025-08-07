@@ -1,1 +1,0 @@
-def p(A):B=len(A);return[[A[min(C,B-1-C)][min(D,B-1-D)]for D in range(B)]for C in range(B)]

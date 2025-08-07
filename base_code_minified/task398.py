@@ -1,1 +1,0 @@
-def p(A):C=A[0];D={B:A for(B,A)in enumerate(C)if A};B=len(C)*len(D);return[[D.get(A+C-B+1,0)for C in range(B)]for A in range(B)]

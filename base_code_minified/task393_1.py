@@ -1,1 +1,0 @@
-def p(A):from collections import Counter as B;A=[[A]for(A,B)in B(sum(A,[])).most_common()if A];return A

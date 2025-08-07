@@ -1,1 +1,0 @@
-def p(A):B=[-1]+[A for(A,B)in enumerate(A)if all(A==0 for A in B)]+[len(A)];C=[-1]+[B for B in range(len(A[0]))if all(A[C][B]==0 for C in range(len(A)))]+[len(A[0])];return[[next(A[B][C]for B in range(B+1,D)for C in range(E+1,F)if A[B][C])for(E,F)in zip(C,C[1:])]for(B,D)in zip(B,B[1:])]

@@ -1,2 +1,0 @@
-def val_func_switch(A,B,C):return tuple(tuple(A if A!=B and A!=C else{B:C,C:B}[A]for A in A)for A in A)
-def p(A):A=tuple(map(tuple,A));B=val_func_switch(A,3,4);C=val_func_switch(B,8,9);D=val_func_switch(C,2,6);E=val_func_switch(D,1,5);return[*map(list,E)]

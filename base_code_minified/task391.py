@@ -1,1 +1,0 @@
-def p(A):B={};[B.__setitem__(A,B.get(A,0)+1)for A in sum(A,[])if A];return[[A]for A in sorted(B,B.get,1)[1:]]

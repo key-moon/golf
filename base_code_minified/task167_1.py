@@ -1,1 +1,0 @@
-def p(A):B=sum(len(set(A))==1 for A in A);return[[5 if B==2 and A==C or B<2 and C==2-A or B>2 and A<1 else 0 for C in(0,1,2)]for A in(0,1,2)]

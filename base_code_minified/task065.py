@@ -1,1 +1,0 @@
-def p(A):B=len(A)//2;E,F=next((C,D)for C in range(len(A))for D in range(len(A))if C-B and D-B and A[C][D]!=A[0][0]);C=(B+1,0)[E<B];D=(B+1,0)[F<B];return[A[D:D+B]for A in A[C:C+B]]

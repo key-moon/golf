@@ -1,1 +1,0 @@
-def p(A):C=len(A);B=sum(A[-1][B]!=A[-1][B-1]for B in range(1,C))+2;return[[A[D//B][C//B]for C in range(C*B)]for D in range(C*B)]

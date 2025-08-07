@@ -1,1 +1,0 @@
-def p(A):B=len(A)//2;D=len(A[0]);return[[2*(not A[C][D]and not A[C+B][D])for D in range(D)]for C in range(B)]

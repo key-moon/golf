@@ -1,1 +1,0 @@
-def p(A):B=len(A);C=[*range(B),*range(B-2,-1,-1)];A[:]=[A[B]for B in C+C[1:]];return A

@@ -1,1 +1,0 @@
-def p(A):C=max(map(max,A));return[[C if 0<A<5 and 0<B<5 or A>4 and B>4 else 0 for B in range(9)]for A in range(9)]

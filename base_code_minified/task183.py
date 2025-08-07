@@ -1,1 +1,0 @@
-def p(A):B=[A for(A,B)in enumerate(A)if any(A^1 for A in B)];C=[A for(A,B)in enumerate(zip(*A))if any(A^1 for A in B)];H,I,J,K=A[B[0]][C[0]],A[B[0]][C[-1]],A[B[-1]][C[0]],A[B[-1]][C[-1]];D,E=B[1:-1],C[1:-1];F,G=len(D)//2,len(E)//2;return[[0 if A[D][E]!=8 else H if B<F and C<G else I if B<F else J if C<G else K for(C,E)in enumerate(E)]for(B,D)in enumerate(D)]

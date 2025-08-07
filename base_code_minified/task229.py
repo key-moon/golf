@@ -1,1 +1,0 @@
-def p(A):B=sum(A,[]);C=max({*B},key=B.count);[setitem(A,B,5)for A in A for(B,D)in enumerate(A)if D!=C];return A
