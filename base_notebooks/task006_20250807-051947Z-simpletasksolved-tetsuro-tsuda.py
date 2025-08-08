@@ -1,0 +1,1 @@
+def p(g):return[[2if g[i][j]+g[i][j+4]>=2else 0for j in range(3)]for i in range(3)]

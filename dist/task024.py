@@ -1,8 +1,1 @@
-A=enumerate
-def p(g):
- r,c={},set()
- for(i,a)in A(g):
-  for(j,v)in A(a):
-   if v&1:r[i]=v
-   elif v:c|={j}
- return[[r.get(i)or(j in c)*2for(j,_)in A(g[0])]for(i,_)in A(g)]
+def p(g,E=enumerate):B={c for A in g for(c,v)in E(A)if v==2};return[[1if 1 in A else 3if 3 in A else 2if v<1and c in B else v for(c,v)in E(A)]for A in g]

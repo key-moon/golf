@@ -1,1 +1,1 @@
-def p(g):return[[13-x if x in(5,8)else x for x in r]for r in g]
+p=lambda g:[[x^13*(x in(5,8))for x in r]for r in g]

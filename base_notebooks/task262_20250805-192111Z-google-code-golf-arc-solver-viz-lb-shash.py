@@ -1,0 +1,1 @@
+p=lambda g:[[max(zip(r,(2,4,3)))[1]]*3 for r in g]

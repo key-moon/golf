@@ -1,0 +1,1 @@
+p=lambda g:[[2if r[:3][c]and r[4:][c]else 0for c in range(3)]for r in g]

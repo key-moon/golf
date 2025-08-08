@@ -1,2 +1,6 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚeÎÁ\nƒ0Ğ_Ùc9”ö QbÙƒ`6ÈVÒöÿ«VŠàmxÃL1Áb²}(ÎQ×à$#®Øô¬  \nuÔîPÎ 	2	Saö¦q­u&¸Îââ{7`¦†©e—)0uìk|ªİ%Al`›Clí¨Óá€ÎÆù¡‡uşÜƒ‡ƒÿíß.çøòŸ¿ŞöI'))))
+D=range
+def p(g):
+ C=D;A=[[0]*9for A in C(9)];B=[(A,B,g[A][B])for A in C(9)for B in C(9)if g[A][B]]
+ for(F,G,H)in B:
+  for E in D(9):A[F][E]=A[E][G]=H
+ A[B[0][0]][B[1][1]]=A[B[1][0]][B[0][1]]=2;return A

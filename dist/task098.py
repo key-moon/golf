@@ -1,2 +1,2 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚMŽÍ\nÃ „ïyŠ9*1¯–}ñ¥Ø"6ÏßU,ô´;óíÏ\\>à-¢4ª:éé5ŠÝ|4rAxU$¤‚z”è…VuÓ}e€üÎ	pS´ÉÙìºH7Žr½Mw—è¦>±5·LˆSÓVIe©FŒÑò¿fæyÚ9¹oŸZ¿Þu<Ã'))))
+B=range
+def p(g):C,D=len(g),len(g[0]);return[[g[A][B]if g[A][B]and any(A<0 or A>=C or B<0 or B>=D or g[A][B]==0for(A,B)in[(A-1,B),(A+1,B),(A,B-1),(A,B+1)])else 0for B in B(D)]for A in B(C)]

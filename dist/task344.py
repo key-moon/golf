@@ -1,2 +1,6 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚMÁ\n!Dï~EŠ.h{)ÛõKÄƒ²*JM‹lÿ¿jYÚKÂ¼ÌLöáE[	Tú°1—‘–ˆÏ2Bs˜­Ã9aùAœr„d²5Åj}d©e¤JH&¨ªÏå‹úFgXn:s·Up¸Q¸ßpŠ^Ë]/æ¾W_ÖóËíşZ8Ş\r!}\0µp;f'))))
+def p(g,e=enumerate):
+ for(i,r)in e(g):
+  for(j,v)in e(r):
+   for(x,y)in(i+1,j),(i-1,j),(i,j+1),(i,j-1):
+    if v==2and 0<=x<len(g)and 0<=y<len(r)and g[x][y]==3:g[i][j]=0;g[x][y]=8
+ return g

@@ -1,2 +1,6 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚmSËnÂ0¼ó¾TZ§®x´ê!‰yò•%Ê!#E%Fjùú®m  zñFÞÝ™ÑŒ³[ò	©Û!‹yè%,å;!! Ì”¬—Ó)·Dô|ù	)ä†àgì§Ô­…:Ö²Cl%AâFŽg?Ï;ÄŸ#”k,,ç½óÙÖ‡“P`)Ê¦”*ä·\0)~”JÔ¸A‹©cµôq3 ÛC\r!h‰ì´bÈM~•æZÝîÀJ›Ýu¯Ígûõ4píØôfÌÈ\0{" ûÒÏ)\n AúSYs¹¥¶„¯#û¿-3¿º™ŸÂôþ¹5¹k%·­$‹´ÛC6zHÑ‹ù®l˜#hUkÓ´‡˜¼öpAç\'þðwêÜ8Kò,ÍyxõùÎ4¶’–öq=¤†×±ÆiR!{QêŒ1Kî¯q\nÓä<´¸(Øºµô·PP\0§`ÎúìFcêŽ¹U¶/*«‘)õ>Á¦ò•.×*ß´?K|H¯ÔKøðo ^Êµ§ï(Æ³T™£‘´ƒhVþêõH'))))
+def p(g,N=range(3)):
+ for r in N:
+  for c in N:
+   g[r][c]+=g[r][c+3]
+   if g[r][c]>0:g[r][c]=6
+ return[A[:3]for A in g]

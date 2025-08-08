@@ -1,0 +1,4 @@
+def p(g):
+        w = len(g[0])
+        return [r[w-3:w] for r in g[0:3]]
+    

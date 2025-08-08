@@ -1,1 +1,1 @@
-def p(g):return[g[::-1]for g in g[::-1]]
+p=lambda g:[r[::-1]for r in g[::-1]]

@@ -1,4 +1,6 @@
-def p(g):
- l=[x for(c,x)in sorted((c,x)for r in g for(c,x)in enumerate(r)if x)];o=[]
- for i in range(3):t=l[i*3:i*3+3];o.append(((t[::-1]if i&1else t)+[0]*3)[:3])
- return o
+def p(m):
+ n=3;v=[]
+ for c in zip(*m):
+  for x in c:
+   if x:v+=[x];break
+ v+=[0]*(n*n-len(v));return[v[i*n:i*n+n][::1-2*(i%2)]for i in range(n)]

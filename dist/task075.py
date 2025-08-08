@@ -1,12 +1,2 @@
-B=range
-A=enumerate
-def p(g):
- d=g[0].index(5);h=0
- while any(g[h][:d]):h+=1
- s=[r[:d]for r in g[:h]]
- for(y,r)in A(g):
-  for(x,v)in A(r):
-   if v==1:
-    for i in B(h):
-     for j in B(d):g[y-h//2+i][x-d//2+j]=s[i][j]
- return g
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,'xÚeŒA\nƒ0E÷b–J,4Õš9ÉEÀLHIÚûWc)B7şãñVÏğlC77°¡¸ü"H…fËE @Ììâ(P´”*NŞÚ¡«/ş^—?M¸èc¯‡Ê 2|kˆº’êùÓ»éşqz\'æ|î£òfry…Ñ`Rlô0íp/+¶èÈ+m‰÷i@üë-äÙ[C'))))

@@ -1,12 +1,5 @@
-G=range
-F=enumerate
-def p(g):
- for(y,r)in F(g):
-  for(x,v)in F(r):
-   if v==8:A,C=x,y
-   if v==2:D,B=x,y
- E=(B>C)-(B<C)
- for y in G(C+E,B+E,E):g[y][A]=4
- H=(D>A)-(D<A)
- for x in G(A+H,D,H):g[B][x]=4
+def p(g,R=range):
+ F=lambda v:next((B,A.index(v))for(B,A)in enumerate(g)if v in A);C,A=F(8);B,D=F(2)
+ for E in R(C+1,B+1)if C<B else R(B,C):g[E][A]=4
+ for E in R(A,D)if A<D else R(D+1,A):g[B][E]=4
  return g

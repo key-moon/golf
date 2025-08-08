@@ -1,5 +1,2 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚ­VYs"7~çW(o’[ğÊ TIsØ{xŠ‡ÁÈÉT` `¨e×ëÿnIÀpx7IåÔêşún1Õ/ävD%W¬½ÒåfUòÛRSÅ¨„åe±"ŠäQ¬6EÖ[*%£Š ›D6IöÒJŒ*/«Åw]¬uI_©L›ãF‹Ë´Æ«çúî\\?¹¯ïïß,øç
-8Zöµ™›Ç‹j©âşÁ§UVü¡éLÀk¨ş	T2fñBÄS"}Ç×qşBòu^¬Ë¬x† ğr³œi¦gk>aÃé9«æÙ–¢MŠñ¿ô7¡></6EéÂüd3R#>„òB	k'ßV# ³X”´Ù~'$Y1%°\r:ÑÎñqªdª@bkk<6
-zèA°°B4Ï£eUTÜ*ô¶¤y©W0Àr^KZ——ÌÂŞ£üf|‚êÁG‘yèâÄÅ<K ?^$06¸­·¼ØĞ˜—:në-cšÂ¿dİI’c@"‰”"ø‰”<HAØ÷R~´\rõ¾ä.Åßó%=ÈóŠGXªüG¬ú$†ô;Ä¶š7Œr1 †ûnÅ\\Q»ú.zŠ`…ºJ¶EÍ*[[‹; /ÎêĞÄ,_—Ô,Çâ¦
-Ğp8ö¨A@ÅP¥a'ŞlÔIÚAÓh,ÔŞ›ªµĞÀÚôÉš•\0×›pëÍpQho L$ fì÷ßŸ[>8&¼ñÍò­ø­1›D¨nä,6‡¤ı¼(Ê¼Øh v…L#ÓT‘i*ÃÖâºÊ4¯´î¿y=ñ½åëŸùL›ë±ß›ˆNn„ë5bôÆ¨ªgnH”ÄFIì”ìÔôñë²×ÿ\r´?dÓ)¥}3pÚbæİü\0NJê.ldçn—Õ¹GóHOÜ4ØÂ¡¤†mà*ä×#şx€»Óñp?í_ª)ƒy¶„ß–cO\\á\0ÛÍæÁEÖY6ŸL3’oÛ¯Í6ÊµÚ0IŞÒ|‹¥ğACt±™ëUVjZ…µ¸ÿn^ n¶ı7¸×—]¨3×â£—ùhN.©>&õ Î4\rxxLö1ç!t¼Å}úÿŸ3˜Òï=gÉ‘ğÂıãpåsó"8ám[ÒŒnŸÀbYïi•ÏüÿÈ¥W¿š8–%í²vWâjv¼m!Å\\Â¼êCW6áqòPàa	E…/OBo!t/`ì	šz÷õy”óüaµ±ó†¿ã×üô™İøG*°¿çC~ƒ“%¡#ŞcŞ#âù\\òæ–^™b‚¡ÉÙøoiÊÒ`'''))))
+A=abs
+def p(g,d=range(-2,3),E=enumerate):x=[r[:]for r in g];[x[i+a].__setitem__(j+b,v if A(a)==A(b)else r[j-1])for(i,r)in E(g)for(j,v)in E(r)if v and r[j-1]*r[j+1]for a in d for b in d if A(a)==A(b)or not a*b];return x

@@ -1,11 +1,7 @@
-A=range
-def p(g):
- n,m=len(g),len(g[0])
- for i in A(n):
-  for j in A(m):
-   if g[i][j]and(i*j<1or not g[i-1][j-1]):
-    k=0;x=i;y=j
-    while x<n and y<m and g[x][y]:
-     if k&1:g[x][y]=4
-     k+=1;x+=1;y+=1
+def p(g,R=range):
+ A=len(g)
+ for i in R(A):
+  for(x,y)in zip(R(1,A,2),R(i+1,A,2)):
+   if g[0][i]:g[x][y]=4
+   if g[i][0]:g[y][x]=4
  return g

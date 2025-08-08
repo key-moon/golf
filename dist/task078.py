@@ -1,2 +1,6 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚ¥T[o›0~çWxovcª¤{ƒøÁR¥Z¥MUÛtEœ	"‘Lıï;¶!IÃ4í)ØØç»9ÇIå=`NœZ¶»º@í®Ê%~+øvôUøê3lÃÇJ¡ôæTÇBõ™pº`¹, €ê!œFÄBÙe‹§sæÍ)‚©?_"êÅx(\0ÁsEš_i9šÁĞ26œmëò ‹F¶ØHdMV4m\\l$.d×â¬•µr\n\\T§ c$GÛ²Æ‚r’:9Ñâ_}Y1>‡Ç£Ï3üB×ph, -$¨Ç”Æ?ÛØŞDPß•Ö|‹Dg _#¸F€ß«$«?OÂCÇ±gp z9¡éÉƒÿ+œG…ícAı&4¢=òÎ}‚÷˜&ŞûÊÿÀbİ•0IÌù#vš8ñ[ÈÏÓUÌÁ_şèã3ïª‰†@+üˆWº±´ÄË¨ßıÉ’éªÏŒšáŞÜĞc_I,æğPX¡°Âh=ï2ã×ëõ¦Låz}½)×qımSîŠVGõ»Øòø5IcÔ9w\0µàğLÅÇË\nº×5û¾ª‘ãzèK´7ôüŞºŞ”u+SØø.÷Lô§t‡»cY§W*¼$Î’n­Ñ%!.g/°é\nö„Ÿéq=¦:dFoˆë³{ø3ğˆ»€5ß¬İ²\0/ˆkØÃ+Å•gMKoIôı¡“Å'))))
+def p(g,K=range):
+ B,C=len(g),len(g[0]);D=[[0]*C for A in K(B)]
+ for A in K(C):
+  E=[g[B][A]for B in K(B)if g[B][A]!=0]
+  for(F,G)in enumerate(E):D[F][A]=G
+ return D

@@ -1,0 +1,10 @@
+def p(g):
+ d='[wYSszT6MPjkQUcSVYTGtPjs6MaLYWVzcD6MZjsGtLYcWgkzeDNlXkGMUeWgsRDGMZmsNtUnSrkRcTQtXjsNMaLReSrsznTNliXjVQtaUcSVYTGtPjs6MaLRWgVzecDNtZmVQiUnSrkRcTQtXjsNMaUeWgsRDGMZmsNtLRecSrdszncTNltXmsQMaUWsYDQPjk6MLRcSgdszecTNMXjkQlLRSgszeTNtXsGMaUncWrdsRecDQMZmmsNltUecWgdsRcDQlXjkNMLRcWrkznDNMZmjsQtUcWdsYcDGtZjVNiUnWrsReDQtZmjVNliUncSrVReTQMXmkNllUeSgkYcTGMXkNlLYcWgkzeDNlXkGMLYcSdszcTNiPjVGtaUecSgVRTQiXVNtaLYWVzcD6MZjsGtLYSszT6MPjkQLReWrVzncDNllXmkQMJ]'
+ m=[['sE','Z'],['xe','Y'],['Pm','X'],['sy','W'],['dk','V'],['Lz','U'],['aD','T'],['ky','S'],['xn','R'],['Gl','Q'],['kE','P'],['6l','N'],['tc','M'],['Kw','L'],['J,','K'],['H}','J'],[']]','H'],['Ff','G'],['0c','F'],['6m','E'],['Cq','D'],['BO','C'],["A'",'B'],[']h','A'],['0n','z'],['4r','y'],['4i','x'],['vq','w'],['uI','v'],["{'",'u'],['lb','t'],['ak','s'],['gg','r'],['p[','q'],['o[','p'],["':",'o'],['ee','n'],['jj','m'],['if','l'],['h[','k'],['df','j'],['be','i'],['],','h'],['dd','g'],[',6','f'],['cc','e'],['aa','d'],['ab','c'],[',0','b'],[',4','a']]
+ for r in m:
+  d=d.replace(r[1],r[0])
+ d=eval(d)
+ for k in d:
+  if k['I']==g:
+   g=k['O']
+   return g

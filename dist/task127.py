@@ -1,2 +1,8 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚmËƒ E÷~Å,ÁGRnhøÂ‚Z$K\r­FúõhuaÜŞÇ¹“¹›&b)/ Ù0UIı3€ç!ho\rÇu=Xé”²UeÖäEQ,ü|uíş€!† …C#I9 ª=ŸÚ©y¡H<¢ëÅÜÇM$ÔA2®ÒÑÙZë¸Y]İí,â5?¶±Ã’®‡®(FJ«6µO<Ó0Ç£rQ%‰ÍÚ0Šï3ï9x°_ÉgÉ'))))
+def p(g):
+ A=range;B=[A[:]for A in g];E,F=len(g),len(g[0])
+ for C in A(1,E,4):
+  for D in A(1,F,4):
+   G=g[C][D]+5
+   for H in A(3):
+    for I in A(3):B[C-1+H][D-1+I]=G
+ return B

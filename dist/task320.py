@@ -1,2 +1,8 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚUQËnƒ0¼ó{´‹I §\ngIÈó,«AQ0È¥)ü}ı@©rñxg×»³ãê\\ÕUPVWèIMÓ\0Z¦ğQ)0"–”?QüPpí4|A£ –ìHkŸ:âî	åh®P‹FŠ»D\\åªÕ\rğôŒ+€iØJ¾G!ùœÃÄ%oÍ£‚ÌWÂÈ&Ì}×Ê÷‹¼ï+UbXJ}™ONìLESF"1KÜ%tn¶Å1<±)<ÏŒ‘¯q³nÁê4×íZ¹k-6RlßpL:#&<{É1g9£“dSö’ç¬ÀÖ¨;PÖæ£^")¢<Lèr¹âG,¢2ô«[/µ÷òÈŠğ¥|@Ã„_ğ»ÓCU’ém†]cDÔÿÀd»\\D:È´ZŠIâg\0º~´ùÇ?ÎÑŒ¤'))))
+B=range
+A=len
+def p(m):
+ r=A(m);c=A(m[0]);C=[i[:]for i in m]
+ for j in B(c):
+  D=[i for i in B(r)if m[i][j]];l=A(D)//2
+  for i in B(l):C[D[-1-i]][j]=8
+ return C

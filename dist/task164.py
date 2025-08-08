@@ -1,5 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚQÁ‚0½ó=ÎhMğ
-öĞ‚&xÚÄxYÂ]JÒÄ­jbüú¶d]uOK3À{oŞ¼vºg[\\a–°‚—Bå[¾'mA"¥NL˜é™=;H7¢ØlYk;Fm¹Ùa6jwmÂbe²VÄhè¹nš¤#ı7’Ê‚B”"I¬Ï7m'í 0“±“kí§«¯ŒÓ#1´¸»'¯LÉúóŠK44ïFÂğƒ>	
-ğÕt_ùÍ°ğŞè
-Ğ÷¿¡Æ¾B÷Ğò'°\\ªàÄ‡IN<Çƒ"áø“Á¯åÓN³Ne«uCRL²y%%¼9JayˆõßiÑP(¸Z•ˆÑ,½Qÿİ\\­ŠZÌ0¿Ğ\0f•¸ç:^!æRég®Ä*:•<ŠÖ:™ÉQ>Í7A°Âr'''))))
+p=lambda g:[A+A[::-1]for A in g]

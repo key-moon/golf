@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚUA\nƒ0E÷b6Å¤\r¥»‚âz$Õ1$h"c¡ôîÕ”RÜı™Ï¼ÿ§ÅFfx‘ASõèÙk….X&Éu—ÛÜÁúæ¥®äM›RÖµÆ@±®Yn#R¡Ÿr~¢¦A¬×Ã³Õ`…+Á£Š«l2+ˆoHôó€¤#~ã“åÄr´(Y{øRhÉìÅñS£ª%‘À¦jÚd÷Üai¤UÒ©êœaœi{ïoPX'))))
+def p(g):A=range;B=len;d={(i+j)%3:c for i in A(B(g))for j in A(B(g[0]))for c in[g[i][j]]if c};return[[d.get((i+j)%3,0)for j in A(B(g[0]))]for i in A(B(g))]

@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,"xÚ]1ƒ0EwNá±”T\nÅ'‰¢*ƒ‚ÀT) ¸}SS†vòÿIß\rµğ¼ti™À¨âJÑ6½Ohâ½2´S€x†Î&¸xÒˆÄËHÁÍtŒˆêÕú«‚(ğ-¬ˆ…dtqğ–+­ò£“²ş/aCŸ¹oºÂ­O	;öY}Â¡÷ŠËÉlÖì‹X9pÜÄa^¹òHX'h^Ãô\0J?"))))
+p=lambda g,R=range(1,8):(A:=[[0]*9for _ in g],[A[i+a].__setitem__(j+b,(1,5)[a*b])for i in R for j in R if g[i][j]for a in(-1,0,1)for b in(-1,0,1)if a|b])[0]

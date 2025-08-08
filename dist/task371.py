@@ -1,6 +1,4 @@
-A=enumerate
-def p(g):
- s=[(i,j)for(i,r)in A(g)for(j,v)in A(r)if v];(a,b),(c,d)=s;x,y=(a+c)//2,(b+d)//2
- for(i,j)in(x,y),(x-1,y),(x+1,y),(x,y-1),(x,y+1):
-  if 0<=i<len(g)and 0<=j<len(g[0]):g[i][j]=3
+def p(g,E=enumerate):
+ a,b=zip(*((i,j)for(i,r)in E(g)for(j,v)in E(r)if v))
+ for(u,v)in(0,0),(-1,0),(1,0),(0,-1),(0,1):g[sum(a)//2+u][sum(b)//2+v]=3
  return g

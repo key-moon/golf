@@ -1,10 +1,9 @@
 A=range
-def p(g):
- for i in A(9):
-  for j in A(9):
-   if g[i][j]==5:
-    for B in-1,0,1:
-     for C in-1,0,1:
-      try:g[i+B][j+C]=g[i+B][j+C]or 1
-      except:pass
+def p(g,E=enumerate):
+ for(r,B)in E(g):
+  for(c,C)in E(B):
+   if C==5:
+    for i in A(r-1,r+2):
+     for j in A(c-1,c+2):
+      if[i,j]!=[r,c]:g[i][j]=1
  return g

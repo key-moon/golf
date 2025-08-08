@@ -1,2 +1,9 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xΪ]1Β0FwΕ	©C.C‰—Π΄\\―¥ώ{sEDΊχήϋ`Rƒ¶\'H#©Ψ¬:ΐ²Όξjπη6…`u®“ή–\\ΑUή»άτ‡NWΏχ18wΡ’ΰqbΈρ8]Y<–}Kz΅Φƒ%θvύ9γ{K¦"™φ«ύS2­\rΏ	B^¨Ύ?\r¥Cc'))))
+D=range
+def p(g):
+ for A in D(len(g[0])):
+  if g[-1][A]==2:
+   B=0
+   for C in D(len(g)):
+    if g[-(C+1)][A+B]==5:B+=1;g[-C][A+B]=2
+    g[-(C+1)][A+B]=2
+ return g

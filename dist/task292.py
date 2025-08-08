@@ -1,1 +1,3 @@
-def p(g):return[[x+2*(not j%3)*(x//4)for(j,x)in enumerate(r)]for r in g]
+def p(g):
+ for r in g:r[::3]=[6if v==4else v for v in r[::3]]
+ return g

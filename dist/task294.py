@@ -1,2 +1,2 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚUM\nƒ0F÷bºS¢`\nnÄ,?gYF+HZBK¯ßIT¤«I¾÷f2©™íb¢ÉÌğŠ—¤Œ M;¶‹—4•ë$‚ùé€Ãj¡[o…@ìAXgX×JhÆŠÑN1g,Ô0Í¨Ïo¬H<À™a4Œ†ú}¬›Nšªlñ*iÙeCKşÙ‚Èª;mt‰¶<m¿r¿¯Ì	Mq`Fgv&aïÅöŸõZ\raŞy¼GàÌûã,,?yS†'))))
+A=range
+p=lambda g:[[2if g[i][j]==5and all(0<=i+d[0]<10and 0<=j+d[1]<10and g[i+d[0]][j+d[1]]==5for d in[(-1,0),(1,0),(0,-1),(0,1)])else g[i][j]for j in A(10)]for i in A(10)]

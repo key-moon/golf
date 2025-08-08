@@ -1,2 +1,1 @@
-A=enumerate
-def p(g):B=g[~-len(g)][0];return[[B*(D and(C<~-len(g)or A))for(A,D)in A(D)]for(C,D)in A(g)]
+def p(g):t=g[6][0];a=[[r and t for r in A]for A in g];a[6][0]=0;return a

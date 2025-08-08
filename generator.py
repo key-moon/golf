@@ -124,7 +124,7 @@ if __name__ == "__main__":
     for stat in stats:
       task = f"{stat['task']:03}"
       success = (("✅" if stat["message"] == "AC" else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
-      base = f"[{stat['base_path']}]({stat['base_path']})" if stat["success"] else "-"
+      base = f"[{stat['base_path'].split("/")[0]}]({stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 
       length = str(stat["length"]) if stat["success"] else "-"

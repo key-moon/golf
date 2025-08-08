@@ -1,1 +1,1 @@
-def p(g):return[r*2for r in g]
+p=lambda R:[A*2for A in R]

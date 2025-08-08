@@ -1,8 +1,7 @@
-B=range
-A=enumerate
-def p(g):
- r,c=next((i,j)for(i,B)in A(g)for(j,x)in A(B)if x);v=g[r][c]
- for i in B(r+1):
-  for j in B(len(g[0])):
-   if j&1==c&1:g[i][j]=4
- g[r+1][c]=v;return g
+def p(g,E=enumerate):
+ for(i,r)in E(g):
+  for(j,v)in E(r):
+   if v and v^4:
+    g[i+1][j]=v
+    for k in range(i+1):g[k][j&1::2]=[4]*len(g[k][j&1::2])
+    return g

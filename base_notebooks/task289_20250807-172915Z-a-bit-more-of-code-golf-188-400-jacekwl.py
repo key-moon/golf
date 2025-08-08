@@ -1,0 +1,1 @@
+p=lambda g:(n:=len(set(sum(g,[]))-{0}),[[x for x in r for _ in range(n)]for r in g for _ in range(n)])[1]
