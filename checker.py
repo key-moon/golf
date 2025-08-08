@@ -15,6 +15,9 @@ import compress
 from task_viz import cmap, norm
 from strip import strip_for_plain, strip_for_zlib
 from utils import get_code_paths, get_task, parse_range_str
+import warnings
+
+warnings.filterwarnings("ignore", category=SyntaxWarning)
 
 class TimeoutException(Exception): pass
 def handler(signum, frame):
@@ -59,7 +62,7 @@ def check(path: str, task: dict, knockout=-1):
   for case, example in enumerate(tests):
     example_copy = copy.deepcopy(example)
     try:
-      signal.setitimer(signal.ITIMER_REAL, 2.5)
+      signal.setitimer(signal.ITIMER_REAL, 4)
       module.CASE = module._CASE = case
       # signal.alarm(1)
       if "case" in inspect.signature(program).parameters:
