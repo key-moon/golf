@@ -1,14 +1,14 @@
 # Golf Stats
 
-Accepted: 367/400
-Score: 813733
+Accepted: 368/400
+Score: 815996
 
 ## Task Details
 
 | Task | Success | Base | Compressor | Length | Best | Goods | Message |
 |------|---------|------|------------|--------|------|-------|---------|
 | [001](vis/task001.png) | ✅ | [base_notebooks](base_notebooks/task001_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [74](dist/task001.py) | 61 🔴 | [prompt](prompts/task001.txt) / [vis-many](vis_many/task001.png) | AC |
-| [002](vis/task002.png) | ✅ | [base_yu](base_yu/task002.py) | forplain/zlib | [215](dist/task002.py) | 92 🔴 | [prompt](prompts/task002.txt) / [vis-many](vis_many/task002.png) | AC |
+| [002](vis/task002.png) | ✅ | [base_yu](base_yu/task002.py) | forplain/zlib | [215](dist/task002.py) | 91 🔴 | [prompt](prompts/task002.txt) / [vis-many](vis_many/task002.png) | AC |
 | [003](vis/task003.png) | ✅ | [base_keymoon](base_keymoon/task003.py) | forplain/raw | [61](dist/task003.py) | 60 🔴 | [prompt](prompts/task003.txt) / [vis-many](vis_many/task003.png) | AC |
 | [004](vis/task004.png) | ✅ | [base_keymoon](base_keymoon/task004.py) | forplain/raw | [101](dist/task004.py) | 80 🔴 | [prompt](prompts/task004.txt) / [vis-many](vis_many/task004.png) | AC |
 | [005](vis/task005.png) | ❌ | - | - | [-](dist/task005.py) | 290 | [prompt](prompts/task005.txt) / [vis-many](vis_many/task005.png) | WA |
@@ -31,7 +31,7 @@ Score: 813733
 | [022](vis/task022.png) | ✅ | [base_code](base_code/task022.py) | forcompress/zlib | [240](dist/task022.py) | 91 🔴 | [prompt](prompts/task022.txt) / [vis-many](vis_many/task022.png) | AC |
 | [023](vis/task023.png) | ❌ | - | - | [-](dist/task023.py) | 285 | [prompt](prompts/task023.txt) / [vis-many](vis_many/task023.png) | WA |
 | [024](vis/task024.png) | ✅ | [base_notebooks](base_notebooks/task024_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [153](dist/task024.py) | 67 🔴 | [prompt](prompts/task024.txt) / [vis-many](vis_many/task024.png) | AC |
-| [025](vis/task025.png) | ❌ | - | - | [-](dist/task025.py) | 221 | [prompt](prompts/task025.txt) / [vis-many](vis_many/task025.png) | WA |
+| [025](vis/task025.png) | ✅ | [base_yu](base_yu/task025.py) | forplain/raw | [237](dist/task025.py) | 221 🔴 | [prompt](prompts/task025.txt) / [vis-many](vis_many/task025.png) | AC |
 | [026](vis/task026.png) | ✅ | [base_notebooks](base_notebooks/task026_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [59](dist/task026.py) | 52 🔴 | [prompt](prompts/task026.txt) / [vis-many](vis_many/task026.png) | AC |
 | [027](vis/task027.png) | ✅ | [base_yu](base_yu/task027.py) | forplain/raw | [142](dist/task027.py) | 117 🔴 | [prompt](prompts/task027.txt) / [vis-many](vis_many/task027.png) | AC |
 | [028](vis/task028.png) | ✅ | [base_notebooks](base_notebooks/task028_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [139](dist/task028.py) | 65 🔴 | [prompt](prompts/task028.txt) / [vis-many](vis_many/task028.png) | AC |
@@ -331,7 +331,7 @@ Score: 813733
 | [322](vis/task322.png) | ✅ | [base_code](base_code/task322.py) | forplain/raw | [87](dist/task322.py) | 48 🔴 | [prompt](prompts/task322.txt) / [vis-many](vis_many/task322.png) | AC |
 | [323](vis/task323.png) | ✅ | [base_code](base_code/task323.py) | forcompress/zlib | [256](dist/task323.py) | 171 🔴 | [prompt](prompts/task323.txt) / [vis-many](vis_many/task323.png) | AC |
 | [324](vis/task324.png) | ❌ | - | - | [-](dist/task324.py) | 419 | [prompt](prompts/task324.txt) / [vis-many](vis_many/task324.png) | WA |
-| [325](vis/task325.png) | ✅ | [base_code](base_code/task325.py) | forcompress/zlib | [244](dist/task325.py) | 212 🔴 | [prompt](prompts/task325.txt) / [vis-many](vis_many/task325.png) | AC |
+| [325](vis/task325.png) | ✅ | [base_code](base_code/task325.py) | forcompress/zlib | [244](dist/task325.py) | 207 🔴 | [prompt](prompts/task325.txt) / [vis-many](vis_many/task325.png) | AC |
 | [326](vis/task326.png) | ✅ | [base_notebooks](base_notebooks/task326_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [32](dist/task326.py) | 30 🔴 | [prompt](prompts/task326.txt) / [vis-many](vis_many/task326.png) | AC |
 | [327](vis/task327.png) | ✅ | [base_code](base_code/task327.py) | forplain/raw | [128](dist/task327.py) | 67 🔴 | [prompt](prompts/task327.txt) / [vis-many](vis_many/task327.png) | AC |
 | [328](vis/task328.png) | ✅ | [base_code](base_code/task328.py) | forcompress/zlib | [263](dist/task328.py) | 206 🔴 | [prompt](prompts/task328.txt) / [vis-many](vis_many/task328.png) | AC |
@@ -344,7 +344,7 @@ Score: 813733
 | [335](vis/task335.png) | ✅ | [base_notebooks](base_notebooks/task335_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [206](dist/task335.py) | 174 🔴 | [prompt](prompts/task335.txt) / [vis-many](vis_many/task335.png) | AC |
 | [336](vis/task336.png) | ✅ | [base_code](base_code/task336.py) | forplain/zlib | [323](dist/task336.py) | 106 🔴 | [prompt](prompts/task336.txt) / [vis-many](vis_many/task336.png) | AC |
 | [337](vis/task337.png) | ✅ | [base_notebooks](base_notebooks/task337_20250807-112059Z-neurips-local-score-far-away.py) | forplain/raw | [51](dist/task337.py) | 46 🔴 | [prompt](prompts/task337.txt) / [vis-many](vis_many/task337.png) | AC |
-| [338](vis/task338.png) | ✅ | [base_code](base_code/task338.py) | forcompress/zlib | [395](dist/task338.py) | 113 🔴 | [prompt](prompts/task338.txt) / [vis-many](vis_many/task338.png) | AC |
+| [338](vis/task338.png) | ✅ | [base_code](base_code/task338.py) | forcompress/zlib | [395](dist/task338.py) | 109 🔴 | [prompt](prompts/task338.txt) / [vis-many](vis_many/task338.png) | AC |
 | [339](vis/task339.png) | ✅ | [base_notebooks](base_notebooks/task339_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [39](dist/task339.py) | 37 🔴 | [prompt](prompts/task339.txt) / [vis-many](vis_many/task339.png) | AC |
 | [340](vis/task340.png) | ✅ | [base_yu](base_yu/task340.py) | forplain/raw | [218](dist/task340.py) | 194 🔴 | [prompt](prompts/task340.txt) / [vis-many](vis_many/task340.png) | AC |
 | [341](vis/task341.png) | ✅ | [base_code](base_code/task341_1.py) | forcompress/zlib | [291](dist/task341.py) | 302 🟢 | [prompt](prompts/task341.txt) / [vis-many](vis_many/task341.png) | AC |
