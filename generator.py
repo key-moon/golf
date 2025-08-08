@@ -131,8 +131,8 @@ if __name__ == "__main__":
       best = others_best[stat['task'] - 1]
       if stat["success"] and best != "-":
         if stat["length"] < int(best):
-          best = f"🟢 {best}"
+          best = f"{best} 🟢"
         elif stat["length"] > int(best):
-          best = f"🔴 {best}"
+          best = f"{best} 🔴"
       message = stat["message"]
       readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
