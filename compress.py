@@ -21,13 +21,15 @@ def get_embed_str(b: bytes):
   return min(l, key=len)
 
 # オーバーヘッド: 64 or 68 byte ('"' と '"""'の差)
+# 他テンプレート案
+# '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))""""""'
+# '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());""""""'
 # '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,""""""))))'
 def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
   compressions = [
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
     ("zlib-15", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
-    ("lzma-xz", lambda x: lzma.compress(x, lzma.FORMAT_XZ),""),
-    ("lzma-alone", lambda x: lzma.compress(x, lzma.FORMAT_ALONE),""),
+    ("lzma", lambda x: lzma.compress(x, lzma.FORMAT_ALONE),""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),""),
   ]
   l = []
