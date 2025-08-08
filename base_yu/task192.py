@@ -1,5 +1,6 @@
 def p(g):
- (a,_),(b,_),(c,_)=__import__("collections").Counter(sum(g,[])).most_common()
+ G=sum(g,[])
+ (_,c),(_,b),(_,a)=sorted((G.count(v),v)for v in{*G})
  h,w=len(g),len(g[0])
  for I in range(h*w):
   if g[i:=I//w][j:=I%w]==c:
