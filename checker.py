@@ -7,6 +7,7 @@ import traceback
 from typing import Optional, Tuple
 import matplotlib.pyplot as plt
 import inspect
+import builtins, sys
 
 import numpy as np
 
@@ -27,8 +28,16 @@ class CheckRes:
   correct: float
   message: str
 
-def check(path: str, task: dict):
+trust_paths = [
+  "base_code/",
+  "base_arcdsl/",
+  "base_keymoon/",
+  "base_yu/",
+]
+
+def check(path: str, task: dict, knockout=-1):
   assert path.endswith(".py")
+
   module_name = path[:-3].replace("/", ".")
   try:
     parent_module = __import__(module_name)
@@ -63,6 +72,8 @@ def check(path: str, task: dict):
       else:
         outputs.append((example, case, output))
         wrong += 1
+        if 0 < knockout and knockout <= wrong:
+          break
     except TimeoutException as e:
       outputs.append((example, case, None))
       errors.add("timeout")

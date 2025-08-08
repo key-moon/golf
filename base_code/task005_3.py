@@ -1,5 +1,4 @@
 def p(g):
- import collections,sys
  h=len(g);w=len(g[0])
  # find all nonzero connected components by BFS
  seen=[[False]*w for _ in g];comps=[]
