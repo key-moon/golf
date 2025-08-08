@@ -1,0 +1,21 @@
+{
+  "id": "jazivxt/oh-barnacles",
+  "id_no": 88340871,
+  "title": "Oh Barnacles",
+  "code_file": "oh-barnacles.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "seshurajup/golf-tasks-2-arc-agi"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

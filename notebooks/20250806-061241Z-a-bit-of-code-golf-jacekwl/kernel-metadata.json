@@ -1,0 +1,21 @@
+{
+  "id": "jacekwl/a-bit-of-code-golf",
+  "id_no": 88496167,
+  "title": "A bit of Code Golf",
+  "code_file": "a-bit-of-code-golf.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

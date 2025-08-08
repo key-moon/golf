@@ -1,0 +1,28 @@
+{
+  "id": "nina2025/neurips-added-raster-code",
+  "id_no": 88890968,
+  "title": "NeurIPS | Added Raster Code",
+  "code_file": "neurips-added-raster-code.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/local-score-liah",
+    "bibanh/qwen2-5-32b"
+  ],
+  "kernel_sources": [
+    "boristown/lb47268-neurips-2025-google-code-golf",
+    "taylorsamarel/31-solved-yay-geometric-solver-1d-raster-algo",
+    "seshurajup/code-golf-ensemble-local-score-391-400-dsl",
+    "zshashz/google-code-golf-arc-solver-viz-lb",
+    "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

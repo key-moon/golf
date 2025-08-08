@@ -1,0 +1,30 @@
+{
+  "id": "seshurajup/code-golf-ensemble-local-score-391-400-dsl",
+  "id_no": 88375081,
+  "title": "Code Golf - Ensemble - Local Score - 391/400 DSL",
+  "code_file": "code-golf-ensemble-local-score-391-400-dsl.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/qwen2-5-32b"
+  ],
+  "kernel_sources": [
+    "zshashz/google-code-golf-arc-solver-viz-lb",
+    "boristown/lb47268-neurips-2025-google-code-golf",
+    "taylorsamarel/remix-neurips-2025-google-code-golf",
+    "taylorsamarel/v2-remix-neurips-2025-google-code-golf",
+    "bibanh/qwen2-5-32b-arc-local-score",
+    "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf",
+    "jacekwl/a-bit-of-code-golf",
+    "quannguyn12/solved-57-task"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,34 @@
+{
+  "id": "taylorsamarel/qwen2-5-32b-arc-local-score-32-solved-script",
+  "id_no": 88461324,
+  "title": "Qwen2.5 32B + ARC + Local Score + 32 Solved Script",
+  "code_file": "qwen2-5-32b-arc-local-score-32-solved-script.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/local-score-liah",
+    "bibanh/qwen2-5-32b"
+  ],
+  "kernel_sources": [
+    "zshashz/google-code-golf-arc-solver-viz-lb",
+    "boristown/lb47268-neurips-2025-google-code-golf",
+    "taylorsamarel/qwen2-5-32b-arc-local-score-added-raster-code",
+    "taylorsamarel/32-solved-yay-2d-1d-raster-compression-expansion",
+    "",
+    "bibanh/qwen2-5-32b-arc-local-score",
+    "seshurajup/code-golf-ensemble-local-score-391-400-dsl",
+    "jazivxt/oh-barnacles",
+    "daosyduyminh/solved-127-problems-local-pleaseupvote",
+    "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf",
+    "jacekwl/a-bit-more-of-code-golf-188-400"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

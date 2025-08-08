@@ -1,0 +1,28 @@
+{
+  "id": "taylorsamarel/qwen2-5-32b-arc-local-score-added-raster-code",
+  "id_no": 88432184,
+  "title": "Qwen2.5 32B + ARC + Local Score Added Raster Code",
+  "code_file": "qwen2-5-32b-arc-local-score-added-raster-code.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/local-score-liah",
+    "bibanh/qwen2-5-32b"
+  ],
+  "kernel_sources": [
+    "zshashz/google-code-golf-arc-solver-viz-lb",
+    "boristown/lb47268-neurips-2025-google-code-golf",
+    "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf",
+    "seshurajup/code-golf-ensemble-local-score-391-400-dsl",
+    "taylorsamarel/31-solved-yay-geometric-solver-1d-raster-algo"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

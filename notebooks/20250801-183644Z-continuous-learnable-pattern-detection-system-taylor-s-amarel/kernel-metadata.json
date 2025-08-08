@@ -1,0 +1,19 @@
+{
+  "id": "taylorsamarel/continuous-learnable-pattern-detection-system",
+  "id_no": 88401460,
+  "title": "Continuous, Learnable Pattern Detection System",
+  "code_file": "continuous-learnable-pattern-detection-system.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

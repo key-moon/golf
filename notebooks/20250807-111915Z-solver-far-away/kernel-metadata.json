@@ -1,0 +1,19 @@
+{
+  "id": "nina2025/solver",
+  "id_no": 88891140,
+  "title": "SOLVER",
+  "code_file": "solver.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

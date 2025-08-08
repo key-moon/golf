@@ -1,0 +1,25 @@
+{
+  "id": "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf",
+  "id_no": 88353377,
+  "title": "solved_stater_NeurIPS 2025 - Google Code Golf",
+  "code_file": "solved-stater-neurips-2025-google-code-golf.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/liah-submission-gcgc-v2",
+    "jacekwl/neurips-2025-google-code-golf-championship1",
+    "muhammadqasimshabbir/oh-barnacles",
+    "muhammadqasimshabbir/solution-submission-of-publick-noteboook",
+    "muhammadqasimshabbir/solved-127-problems-local-pleaseupvote-submission"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

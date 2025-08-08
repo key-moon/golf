@@ -1,0 +1,19 @@
+{
+  "id": "boristown/lb47268-neurips-2025-google-code-golf",
+  "id_no": 88364124,
+  "title": "[lb47268]NeurIPS 2025 - Google Code Golf",
+  "code_file": "lb47268-neurips-2025-google-code-golf.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

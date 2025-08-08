@@ -1,0 +1,19 @@
+{
+  "id": "taylorsamarel/solver-2-0-modular-architecture",
+  "id_no": 88473222,
+  "title": "Solver 2.0 - Modular Architecture",
+  "code_file": "solver-2-0-modular-architecture.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

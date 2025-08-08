@@ -1,0 +1,35 @@
+{
+  "id": "taylorsamarel/remix-qwen2-5-32b-arc-local-score",
+  "id_no": 88426716,
+  "title": "REMIX: Qwen2.5 32B + ARC + Local Score",
+  "code_file": "remix-qwen2-5-32b-arc-local-score.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/local-score-liah",
+    "bibanh/qwen2-5-32b"
+  ],
+  "kernel_sources": [
+    "zshashz/google-code-golf-arc-solver-viz-lb",
+    "taylorsamarel/remix-neurips-2025-google-code-golf",
+    "taylorsamarel/v2-remix-neurips-2025-google-code-golf",
+    "muhammadqasimshabbir/solved-stater-neurips-2025-google-code-golf",
+    "seshurajup/code-golf-ensemble-local-score-391-400-dsl",
+    "taylorsamarel/continuous-learnable-pattern-detection-system",
+    "taylorsamarel/v2-continuous-learnable-pattern-detection-sy",
+    "taylorsamarel/v3-continuous-learnable-pattern-detection",
+    "taylorsamarel/v4-continuous-learnable-pattern-detection",
+    "taylorsamarel/v5-continuous-learnable-pattern-detection",
+    "taylorsamarel/master-solver",
+    "taylorsamarel/rawsome-raster-rawwwrr-model-zoo-qwen"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

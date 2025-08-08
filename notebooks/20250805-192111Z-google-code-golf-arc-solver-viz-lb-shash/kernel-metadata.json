@@ -1,0 +1,25 @@
+{
+  "id": "zshashz/google-code-golf-arc-solver-viz-lb",
+  "id_no": 88368462,
+  "title": "Google Code Golf | ARC Solver & Viz | LB",
+  "code_file": "google-code-golf-arc-solver-viz-lb.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "jacekwl/neurips-2025-google-code-golf-championship1"
+  ],
+  "kernel_sources": [
+    "daosyduyminh/solved-127-problems-local-pleaseupvote",
+    "bibanh/qwen2-5-32b-arc-local-score",
+    "jazivxt/oh-barnacles"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

@@ -79,7 +79,7 @@ strip_for_zlib = get_stripper(
     hoist_literals=False,
 )
 
-strippers = {"forplain": strip_for_plain, "forcompress": strip_for_zlib}
+strippers = {"forcompress": strip_for_zlib,"forplain": strip_for_plain}
 
 if __name__ == "__main__":
 
