@@ -1,7 +1,8 @@
+A=range
 def p(g):
  n=len(g)
- for i in range(n):
-  for j in range(n):
+ for i in A(n):
+  for j in A(n):
    if g[i][j]==1:
     if i:g[i-1][j]=2
     if j:g[i][j-1]=7

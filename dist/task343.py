@@ -1,2 +1,12 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,"xÚmA\n!E÷=E6ÃLnO\".,£â(i‰íıÛ2nBHòó~È<UFsô``(Y Û\")F)‡P†ÀrTtÓë7P°+ŞÜ9†*ƒnÙ™²hÿ'ë$õ:<;.\r­©îvo­äkõƒØ'ñÛG<ÜÅÛ[wºK('9¾Ş,/|\0004Ê@N"))))
+B=len
+A=range
+def p(g):
+ for r in g:
+  n=B(r)
+  for i in A(n-1,-1,-1):
+   if r[i]:break
+  s=r[:i+1]
+  for k in A(1,B(s)+1):
+   if all(s[j]==s[j%k]for j in A(B(s))):break
+  r[:]=[s[j%k]for j in A(n)]
+ return g

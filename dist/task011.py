@@ -1,4 +1,5 @@
 #coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚVMoã6½ûW°72¦	Ð½Xæ$õiÇ_q¶Û® ƒ3­PGl»Ýlþ{‡CÉ–»z‘Dr4ïÍÌ›‘Væ‘Œ©dý­)÷Û‚<å•äq³¥ŠK–d‡¬³³?ÎšI®Úf_fÛÍSìLI_¨L¯³Þ\r—é\rÜo®»õº{rÞ=œ¿:ç·\rç3xþiÑðdö>lÛiµjžÀ}>ëR£ÄNÈ·ËâOC×¦°°»údÜ²*7¿[J¤Ê¦ŽHkˆYtžd–?’|—»rY<Hm¹^fÖ;“¶²-3¯.Äò;µœã›„úð°Ù¥CY´9ïôL®.°‚\\·Æm>U¾f3ÜPÍ}¡¼€‡Âe†R„ŠMI¯B²,VýAXs:ÀÉTÁ\\o²‡œ[!®ßÂNc.Ì÷’æ¥ÙÚ¯‹)h)_ã–Cpú¼ì1ëÿ\rÎ©î*t}Ô®yÀN¨4_\0k\rÖÎXW†–éo\rÝ"}Z>ShZþ#¦WØ¬•$£ºbdÒ!DçH ,†({BüÆžölØ÷…ßu'ÁQT®'Cc-teáŸ·¨èCB­þ-Ú»U'!„Ýñ[Ñy/òÆÂ–Âc^"jK›³€Ó	Ÿb‚Çý:€Y“îâö¼µ|X®V\\©îŒOá:gMÚ1=2K`¸\0³*á³¯uÆ-ÛÓîð´Xç»’âE²cC‚oË9æÔ¯D¡ªœ¸æ©û(D}úYd">¨ÆeÚ]^uEia)9mG<~KÊÿoRÐæî€*N@¤æâ¾„Ò0ê=N¾ã4$l‰Œ˜/Ž,÷-ØHØ™
-ˆ>Ê„L6…šc™½¨ºÏùÝÛ˜ÂNwï^ÜZÂÚ½>ëU¼¨bÁEÔØe^ì\rlÆB¦N¦\0'šÅBŒšFñÕ
-Ø+¨î%x…oåkƒÁ$ìÓ5jkz$â†*qªHˆ aRÃí]9ÂÃ_\0uâä8„2@Ð¸™7ý	¬Ôƒú\\yä`^—G\rî,=’ˆi/‚‡1z8êwÂÎŸ±«ÆðòD–c7@öìïqøà»s×	çFakª™bÿd¶Ë²Ò	v@k[Û !”ó{×ò‹ÿ*îëèŽŸ!ÿýD#>ñ’'Åšðp	©å÷Û½»0O	ë2°Ý9„þ‡~ˆ`6ÿÊ¼P@;'ÀÖ‹Å>ÂèÐN!ÿÈcV}¤Ó+b›‡Xö/8¾D'''))))
+import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚUÛnã6}×W°odL/ ûby
+ˆ’uõ=;+èAk3­ÐDl»Ýlþ½CR²¥t\rôE‡3sÎÌRåñEîóJZ^òW+—¢´bx.•ÂAVV\0Å¡(U^n¤åÂ>/ÿ”–OûÝY*ªãë³´Fð,Kk+ŸÈŒ:l°—Õq_’„:äi·§‚;¬(I„[L;ÍáäpÑuZ´œ|úFô:ëßp'½Áãíu¯Y÷>ì÷Nûï&ém+é¿*½3½×MV¯º@`î:É°Ã‰ X¡KGªFµöNkLÁêºïU¬€T¨¶G¹è™h'+žH€Ýò˜|>È´Ó<'³kÐ—ü;\r©`üoùˆO›Ý±¬Lú¥Jo‘S–VÍ±&rvêÖõnµÓºÜaû<\0U$¯+Ópå®¢×Cp‡>ÉË-ÁOo4ð''‘áó&ËtîèDX¥¸>3fu¥ü^Ñ¢’{ÕXì”ÕÑ s®ÅÑÙÇÈÜýu~Ç"‚‡àþÌBÝÎ¹êÑê5z|ÀTŽèå¢—qrkEå¡%
+šðÅ+½Ò'¢Ö†Óôù<>‹<Õ
+=²¹™²’¸6k{¢ìóAqÏ£ÉyÐ.ŠD;EáNüßšQd%8•ùÂ(È„OAa/øúÞŸÚ· LÑÀ˜=ƒ°á‰ÅÑ;~¯ûs;hH®\\mÑ¦õÉ4û”o·T^‰ÞŠßãsÍÚÇÔ§3<È£î×ªéWÈ£Ž"mb£á¬xLTCùjb¢.¥êÃFµÁ0¸©Ÿ¥AÉi²õÚÙ\\ƒ¿VøF_	wø—<47¡Ž«	Ã¤!ÇÑÓ0q‰€o<¶45¢ËÓåúÅ3šºsÇÓ#&Ó])í¹–ëç_u¹¯AÝpö#Ü*zn¦é“@Á¯kæz6»²*Ê£DcNè#è#®Ý€YÛio8ˆ€½ÛcxÞÑòí¯âYb	cöÇµVÇ²“ÆŒÌØ¨f‚\0‘ˆj€b¢ÞÂü†ˆ#©	P±^DÌ^þDt¥›ÖE÷ˆfÎð¡„®52†e?Æ¹ÎàÓkŸø¹éx~és¬³~ñ¨ôÕÏ‘÷gúÔëÈ¯FÄí»Æk_3wêñ‘YºŠê@˜øM'ÿ·æ§`6_±°º@Æ«6¸ð…FÜÏ±Iün4f`ƒÚ£’mNGÌÀÁsò;³CX¡Àì¾âÇg†#[Óæ	«ÿFé• 1³ì_•tB¯'''))))

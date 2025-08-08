@@ -1,7 +1,8 @@
+A=range
 def p(g):
  n,m=len(g),len(g[0])
- for i in range(n):
-  for j in range(m):
+ for i in A(n):
+  for j in A(m):
    if g[i][j]and(i*j<1or not g[i-1][j-1]):
     k=0;x=i;y=j
     while x<n and y<m and g[x][y]:
