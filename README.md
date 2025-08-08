@@ -1,7 +1,7 @@
 # Golf Stats
 
-Accepted: 368/400
-Score: 816018
+Accepted: 369/400
+Score: 818348
 
 ## Task Details
 
@@ -23,7 +23,7 @@ Score: 816018
 | [014](vis/task014.png) | ✅ | [base_notebooks](base_notebooks/task014_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/zlib | [249](dist/task014.py) | 70 🔴 | [prompt](prompts/task014.txt) / [vis-many](vis_many/task014.png) | AC |
 | [015](vis/task015.png) | ✅ | [base_code](base_code/task015.py) | forcompress/zlib | [214](dist/task015.py) | 122 🔴 | [prompt](prompts/task015.txt) / [vis-many](vis_many/task015.png) | AC |
 | [016](vis/task016.png) | ✅ | [base_code](base_code/task016.py) | forplain/raw | [63](dist/task016.py) | 43 🔴 | [prompt](prompts/task016.txt) / [vis-many](vis_many/task016.png) | AC |
-| [017](vis/task017.png) | ❌ | - | - | [-](dist/task017.py) | 131 | [prompt](prompts/task017.txt) / [vis-many](vis_many/task017.png) | WA |
+| [017](vis/task017.png) | ✅ | [base_yu](base_yu/task017.py) | forplain/raw | [170](dist/task017.py) | 131 🔴 | [prompt](prompts/task017.txt) / [vis-many](vis_many/task017.png) | AC |
 | [018](vis/task018.png) | ❌ | - | - | [-](dist/task018.py) | 519 | [prompt](prompts/task018.txt) / [vis-many](vis_many/task018.png) | WA |
 | [019](vis/task019.png) | ✅ | [base_code](base_code/task019_2.py) | forcompress/zlib | [221](dist/task019.py) | 126 🔴 | [prompt](prompts/task019.txt) / [vis-many](vis_many/task019.png) | AC |
 | [020](vis/task020.png) | ✅ | [base_code](base_code/task020_3.py) | forcompress/zlib | [234](dist/task020.py) | 198 🔴 | [prompt](prompts/task020.txt) / [vis-many](vis_many/task020.png) | AC |
