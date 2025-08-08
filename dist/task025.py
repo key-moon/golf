@@ -1,11 +1,2 @@
-def p(g):
- for _ in 0,1:
-  if~-any(all(s)for s in g):
-   t=[]
-   for s in g:
-    t+=[u:=[x&y for(x,y)in zip(g[0],g[1])]]
-    for(i,v)in enumerate(s):
-     if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v
-   g=t
-  *g,=map(list,zip(*g))
- return g
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,"EÁƒ Dï~ÅV±Ñ«-ıB‘”¢=ôÛöĞÓfçÍÎì¨&X‰Æ¡‚éåá	ÆAGû¼‚™>­t‘óL6,t+ôôÆE™ı”!4ŒÇñırFvz`¦o“[x'¨æ½@qÜĞT¸rqQ^•«~A¹R	ƒeñjÜ¨v’ğ¹m‰¹[lˆyX,»f!ZS¶È•Ìf´TÖ±¯BôùÃ/")),-9))

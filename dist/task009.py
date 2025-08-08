@@ -1,8 +1,2 @@
 #coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'''xÚ¥VKsÚH¾çW(·™dØ‚ú ‘ÄÃ8‰lbc tfp¨`™¹ÊÉÖþ÷ížÑcdÀ®Ú=Xž’¾þúëÇt³ÒkoÌ|ÞýàmÖÞæ°ÉyšÝkæ‹üy·Õ¼»×ùó>óÖû§?:;èœý­¼õÓÞó½M†:*sü‡ðŽÁlŠ˜z¼$ö1}a\rÐ?ZXäÂ6Ù9ØÝI6%ü&lv’íGU:¶Q ]šµßË’±X´“:$®E®?w,ýäÿÒ×Ü”ÆVäp5ÉAö@„ d$ú`M„#]dO9k÷ èE^š­<<†½~é¥¢÷
--|v’Ä8xC{]rþ:ŠL¿äl“ë=å¹ÎvV£"Nœ¾q>`©X’{ŒRI!.e¦”"à²¦øxüÜ‘ó^‰Ë¡yOGLIó‚cç&uU7ïÓìA³bWxz‹V
- |ÃÊ¯­0í•UÐBoaK·,ûùÏfÇj{áhp©Vø¹†­Žà_«c(OÔÍôÐUÙC}18êÀvsÈ™yøuàT,ò?,'\r
-)(Û¶¹Ê>‹zƒn°“E”À°a‚Ù§ÃXIó9IÂº"#&äXTø¶(Ê¹â†¡Ð„BJMýÞ°¢ E?õž¦°H“;Âš\rÞ¶w%¾uf¨@¡œÜš1\0PÜÛ©¼†FôÆAÖ¥kt¨8^
-\\gÏzŸæE˜¿ùQæV8ý?®æa1SÞ¹/¦
-üõy|XôhpJõMãu@ª"Re“t†×w·Í¶WÅ¨.(u
-gÖWrzôêíA/šK,‘Î²!	Š‹_ú7¨¿îŸž³¼;nèÍï4â˜Ïœ¤•‘\rjf[9æÓÇå*õ^º>KÙK|ÐB³bgØÝjD–}S¢,Žnº5k&ÏáWõs%8u£y\\elYg,-¸oNªj "±ê#øÅuŽ_ík·h?XÚÙ¹f>Nã;65/ìÇé±"Ÿ5ŠªWþE#öÔCÜÒ~™7¨ì‚1µ.,Ýß¥£3\rVX\\;Å>7YiH0TiCsjV­nSkuÛ`eïØˆwG`‡×cº³cLŒ8—>ÜàG©à‚þ…pÍF îQj‘6mQs|Íåèqy	Xä¾ÓøÇˆ/¹üW8]pé~lµx&¾p9l3<Îc.\0006õ­ø.&\\ÞÁ”}?¸œ`‹xÆeJvxF»%ab&R.ïéüUÄ—•\\^¢{qÇ¥¦×ñ…ˆ§"¾år\rC¶šËÀu5k.n‰a¾ÍÆâN;AüäÉ¿Å>Ñ'''))))
+import lzma;exec(lzma.decompress(bytes(map(ord,"]\0\0€\0ÿÿÿÿÿÿÿÿ\0'I'CMcâÂ›ÈŽÊwÏJ›IÚÃdFJqÞ³nÐañ~ž9åŽ¶Ì=2Òo/wÞ½§‹ŠBK9\0=çî>à•+M?š	I‡1X†Èÿá Ž·]¬ˆÙù@d¦Cˆgd¤*\rlPaÝÖ	ó- ¯t;Tã}0U˜2¥©oÄ5öÈ	Ó©îŒ$>QÙ^Ö¸º–×ok2mì¶„g¡ü	T´ŠTšõ@£«l~¥è1¯É®÷mD;Wa¢M¸þöC¤Ž9ð³\0UucËìÝŽábØEUû†S¹ÀúŠJöW0†dEd\0žÍ7*Å¤8¦ŒSP¨!ÕAöWÐ“úƒì´åþTòû4ûíõN´¾×%\rXN[1¿KV<*³®ð„l¨á¾é˜¡JjŠ­R,³G¸ÑáQû+wÕ®ˆÏ>ÆƒÃAR^¦ôC}Gd§cÞçºéŸÙát¯—ñI~d;D”¥÷Uôfkò	Ë5f¿zØ5Ý(ZslÄó'8ä5rÁÙ™NÕL`§‰›x•<q$‘aÊGåõeí`¯ãÞÿ¼8ÜQç1T­OÞ„w»*ø‰²ÞÀ¾¸@Të~Ø^¾f\nD¤q s™_šÂ‹†ñç8}JYF²ÎZëdcxí<pÈ}^˜2ºœ?xNDùýu3v¦I2TÖ–zõÅ#¯ûíeŸ¥û¬êa#xþéÐïR%ß&aÏÔ}þ8Þ©Áí]»ÿ>Àûne#®ßTÙ‹©oõÜÏ!§pø3¦(#W…ŽëýŠÛ^Ûh5·¶oƒÉÉW‡M`ÔnÏ¿¡3:…²\0Z&¤Ý{^[\0Ðº@l…ö“Hw@YCƒœ¼öí}¯-SE‚	¨Ök¹ÉÁ·˜¯+YÜjoÐ*ô’¯-'‚xP½ƒ†‹/}\\ çüÜº²­¹–Z±Éºöë±xÇ°Ÿ·×~~½= VÌSˆ\n©Ž¯>$þS¯C\r!’ÊªB¢*ÅÍwMºuèÙûÓßÅ’Pz…¼HCÀÛÌ²´‚;fMÖ2â1ì§¦µ’ÃÆ;û­P¥ýö›]7Èú™—ÀƒÒsºwo6bw9Ìûý	xp£D$æšä×Crt?ŠH6û!›¯èRDÄ]×…³p>ÃylîœrJBzúá<SˆCž\ryêS‹ùÅb$Ö\\&E.*J–Ãi$!¿]\nåF}†Î)7\\éäqÛôÅ¶”'é‰ë\rziwÉ>ùÇ&Î<ÆÖø¿gLxÙãœboÔàÿÜó9"))))

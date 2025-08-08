@@ -1,7 +1,2 @@
-A=range
-def p(g):
- m=[(i%10,i//10)for i in A(100)if g[i%10][i//10]&2]
- for v in A(441):
-  if~-(((i:=v%21-10)in(2,-4))*(hash((*m,))>>50 in(4633,5384)))*all(-1<y+i<10and-1<x+(j:=v//21-10)<10and g[y+i][x+j]<1for(y,x)in m):
-   for(y,x)in m:g[y+i][x+j]=2
- return g
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,'MŽË‚@E÷|E7˜a†‡1Hø2ÖÀhP	lüv‹lÜ5½§§·*æÆÓv=<p™SQ#¹ZI\nC­DŸ€,T¨•ÔÃPï±©¹9EÆZ(Iônê?"RV,n¤6‘ÅH‰^›çÑ›¤e™*¾ÄäÇ2/œ¯Gt¾ù”kÕØ–çÕÇ»Âð{îÂŒ©WÿfrÍ-p“+?‚é×þ7Ù[DÌÝë=[¾')),-9))

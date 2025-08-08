@@ -1,11 +1,2 @@
-def p(g):
- u=[];w=len(g[r:=0])
- for s in g:
-  r|=0==len(u)and s[-1]==2
-  if r:s.reverse()
-  if s[0]==2:
-   u+=[k:=[*s,8].index(8)]
-   if k<w:s[1:k+1]=[8]*~-k+[4]
-  if s[-1]==2and u.pop(0)<w:s[:w-1]=[8]*(w-1)
-  if r:s.reverse()
- return g
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,'mÁ‚0Dï|Å[RŒRÝ/Ùô`B!¤¦­Æo·½yÛì¼™Ùíí\0‹¥. "™óŠ7ëÅH¬QYÀ03˜<Œ‰\0~¡Âˆòê{T·ñ˜¤i\0Ö¡aû°¬û*ÊzöB¬œF*Ã¡3Íä{û4YJ¤»¬:P«]•©3å»vÌ/g/Ê¥±YæE(¹ôZy‘&ù÷¶÷Èéƒ')),-9))

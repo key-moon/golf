@@ -1,11 +1,2 @@
-A=range
-def p(g):
- n=len(g)
- for i in A(n):
-  for j in A(n):
-   if g[i][j]==1:
-    if i:g[i-1][j]=2
-    if j:g[i][j-1]=7
-    if i+1<n:g[i+1][j]=8
-    if j+1<n:g[i][j+1]=6
- return g
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,']ÊÁ\nƒ0„á{žbŽŠô¶÷I$¡IØP¶êû»‰è¡·á›ÿ"¶.õÎ@èD§Aü0XPVI¡“ú6ÌÿŽHû%{"Û¤;Å‡m<^˜ÝYªÓó.;K=†³~Ýõu(ëG“A	¿½Ò')),-9))

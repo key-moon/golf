@@ -1,2 +1,2 @@
-A=enumerate
-def p(g):B=[i for(i,r)in A(g)if any(r)];C=[i for(i,c)in A(zip(*g))if any(c)];D=[r[C[0]:C[-1]+1]for r in g[B[0]:B[-1]+1]];E,F=set(x for A in D for x in A);return[[F if x==E else E for x in A]for A in D]
+#coding:L1
+import zlib;exec(zlib.decompress(bytes(map(ord,'UA‚0E¯2ËV1‘-M…rŠÉ,¤‰V2@‚ŞÖhĞİÏŸ÷ş\\x€IºrwQ¡"p\\o,İÂéèâC‰&SïXÿ=Ã¤£şÂ}‚‹‚5©ªñTÒ±¤d‚@òFt¹wŸŒ/Z;ó¢¶¼.3Í;n9:m„—U"béÃf­¾Îş¢]¥')),-9))

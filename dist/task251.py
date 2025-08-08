@@ -1,2 +1,2 @@
 #coding:L1
-import zlib;exec(zlib.decompress(bytes(map(ord,'xÚmPAƒ ¼ûŠ=B„F<*øãÁ Ú%\rÚôûe­i“ÚÓ03ìÎÀàFXÙÄ«¢°fv!q@[t¼ÞLËPx>.0@ìÃäX<ÿ,Ç‘¡Vt­‰²$÷`¾±²ä} ,;L-v­ïºžwœl)Ò~³ÝÖeeœØ…6¨#ÐP:zmág¾:ÑHUo9UÌU*)Ê…ÏÕ¥â)îÒŸ‚/o ‘\nœëuñ	*ÈqsòþÕPé÷Üþˆ¦>ˆe‡'))))
+import zlib;exec(zlib.decompress(bytes(map(ord,'mPAƒ ¼ûŠ=B„F<*øãÁ Ú%\rÚôûe­i“ÚÓ03ìÎÀàFXÙÄ«¢°fv!q@[t¼ÞLËPx>.0@ìÃäX<ÿ,Ç‘¡Vt­‰²$÷`¾±²ä} ,;L-v­ïºžwœl)Ò~³ÝÖeeœØ…6¨#ÐP:zmág¾:ÑHUo9UÌU*)Ê…ÏÕ¥â)îÒŸ‚/o ‘\nœëuñ	*ÈqsòþÕPé÷Üþˆ¦')),-15))
