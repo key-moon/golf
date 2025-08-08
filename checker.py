@@ -51,6 +51,7 @@ def check(path: str, task: dict):
     example_copy = copy.deepcopy(example)
     try:
       signal.setitimer(signal.ITIMER_REAL, 2.5)
+      module.CASE = module._CASE = case
       # signal.alarm(1)
       if "case" in inspect.signature(program).parameters:
        output = program(example_copy["input"], case=case)
