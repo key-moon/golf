@@ -5,6 +5,10 @@ import secrets
 from typing import Tuple
 import zlib
 
+import warnings
+
+warnings.filterwarnings("ignore", category=SyntaxWarning)
+
 # [
 #   b'\\"', b"\\'", b'\\0', b'\\1', b'\\2', b'\\3', b'\\4', b'\\5', b'\\6', b'\\7',
 #   b'\\N', b'\\U', b'\\a', b'\\b', b'\\f', b'\\n', b'\\r', b'\\t', b'\\u', b'\\v', b'\\x'
@@ -22,8 +26,6 @@ for i in range(1, 256):
     should_escapes.append(orig.encode())
 
 DOUBLE_ESCAPE_PLACEHOLDER = b"%%DOUBLE_ESCAPE%%"
-
-print(should_escapes)
 
 def check_lit(lit: bytes, b: bytes):
   try:
