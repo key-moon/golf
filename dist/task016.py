@@ -1,1 +1,1 @@
-p=lambda g,L=[0,5,6,4,3,1,2,7,9,8]:[[L[x]for x in r]for r in g]
+def p(g):return[[[0,5,6,4,3,1,2,7,9,8][x]for x in r]for r in g]

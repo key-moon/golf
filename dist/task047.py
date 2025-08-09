@@ -1,6 +1,6 @@
-D=range
+A=range
 def p(g):
- C=D;A=[[0]*9for A in C(9)];B=[(A,B,g[A][B])for A in C(9)for B in C(9)if g[A][B]]
- for(F,G,H)in B:
-  for E in D(9):A[F][E]=A[E][G]=H
- A[B[0][0]][B[1][1]]=A[B[1][0]][B[0][1]]=2;return A
+ q=A;r=[[0]*9for _ in q(9)];p=[(i,j,g[i][j])for i in q(9)for j in q(9)if g[i][j]]
+ for(i,j,v)in p:
+  for k in A(9):r[i][k]=r[k][j]=v
+ r[p[0][0]][p[1][1]]=r[p[1][0]][p[0][1]]=2;return r
