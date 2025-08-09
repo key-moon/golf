@@ -1,7 +1,7 @@
 # Golf Stats
 
-Accepted: 372/400
-Score: 826245
+Accepted: 373/400
+Score: 828377
 
 ## Task Details
 
@@ -325,7 +325,7 @@ Score: 826245
 | [316](vis/task316.png) | ✅ | [base_notebooks](base_notebooks/task316_20250802-132539Z-practice-manually-liah.py) | forplain/raw | [145](dist/task316.py) | 73 🔴 | [prompt](prompts/task316.txt) / [vis-many](vis_many/task316.png) | AC |
 | [317](vis/task317.png) | ✅ | [base_code](base_code/task317.py) | forplain/raw | [127](dist/task317.py) | 69 🔴 | [prompt](prompts/task317.txt) / [vis-many](vis_many/task317.png) | AC |
 | [318](vis/task318.png) | ✅ | [base_code](base_code/task318.py) | forplain/raw | [69](dist/task318.py) | 61 🔴 | [prompt](prompts/task318.txt) / [vis-many](vis_many/task318.png) | AC |
-| [319](vis/task319.png) | ❌ | - | - | [-](dist/task319.py) | 1217 | [prompt](prompts/task319.txt) / [vis-many](vis_many/task319.png) | WA |
+| [319](vis/task319.png) | ✅ | [base_yu](base_yu/task319.py) | forcompress/zlib-15 | [368](dist/task319.py) | 1217 🟢 | [prompt](prompts/task319.txt) / [vis-many](vis_many/task319.png) | AC |
 | [320](vis/task320.png) | ✅ | [base_notebooks](base_notebooks/task320_20250802-132539Z-practice-manually-liah.py) | forplain/raw | [160](dist/task320.py) | 85 🔴 | [prompt](prompts/task320.txt) / [vis-many](vis_many/task320.png) | AC |
 | [321](vis/task321.png) | ✅ | [base_code](base_code/task321.py) | forplain/raw | [117](dist/task321.py) | 63 🔴 | [prompt](prompts/task321.txt) / [vis-many](vis_many/task321.png) | AC |
 | [322](vis/task322.png) | ✅ | [base_code](base_code/task322.py) | forplain/raw | [87](dist/task322.py) | 48 🔴 | [prompt](prompts/task322.txt) / [vis-many](vis_many/task322.png) | AC |
