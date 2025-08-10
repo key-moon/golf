@@ -1,6 +1,5 @@
 def p(g):
- G=sum(g,[])
- (_,c),(_,b),(_,a)=sorted((G.count(v),v)for v in{*G})
+ c,b,a=sorted({*sum(g,[])},key=sum(g,[]).count)
  for i in range(len(g)):
   for j in range(len(g[0])):
    if g[i][j]==c:

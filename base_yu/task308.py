@@ -1,7 +1,7 @@
 def p(g):
- *C,(_,b)=sorted((sum(g,[]).count(v),v)for v in{*sum(g,[])})
+ *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)
  u=0
- for _,c in C:
+ for c in C:
   y=[i for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c]
   x=[j for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c]
   s=max(max(y)-min(y),max(x)-min(x))+1
