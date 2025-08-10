@@ -1,13 +1,2 @@
-A=enumerate
-def p(g):
- d={}
- for(i,r)in A(g):
-  for(j,v)in A(r):
-   if v:d.setdefault(v,[]).append((i,j))
- for(v,l)in d.items():
-  i,j=l[0];x,y=l[1];B=(x>i)-(x<i);C=(y>j)-(y<j)
-  while 1:
-   g[i][j]=v
-   if i==x and j==y:break
-   i+=B;j+=C
- return g
+#coding:L1
+import zlib;exec(zlib.decompress('UŽ1nÃ0EwŸ‚£„(F²Úa.bhPAÚ¥ê(†"«6‚Þ½ŠÒ¥	~<ð‘Ä#,jÒ]„ÏŸÆ{1¥pXo]â7¯È›üÅŠ@FÈµNÄ£[ç¤²¬nÝ²p ¥Äx­ßölæ—‚ZI|{¨º_0ÎÃÉö›ÙËp¶=	ªí*ú¨¶‹èž<ªýêKÜ/¾ˆàûSf†s=>\rbo1ÿ}"ˆ¸@à÷î#²ûªä€$½/Ý79­1Àô'.encode('L1'),-9))

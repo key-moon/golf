@@ -1,1 +1,1 @@
-p=lambda g:[[x for x in sum(g,[])if x]]
+p=lambda j:[[x for x in sum(j,[])if x]]

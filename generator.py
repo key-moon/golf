@@ -67,7 +67,7 @@ if __name__ == "__main__":
         "success": False
       }
     for base_path in get_code_paths("base_*", i):
-      code = open(base_path).read()
+      code = open(base_path).read().strip()
       if check_str(i, code, task, checked_hash).correct != 1.0:
         print(f"{base_path}: check failed")
         continue

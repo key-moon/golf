@@ -1,8 +1,2 @@
-def p(g):
- r=len(g)-1;v=next(z for z in g[r]if z and z not in g[r-1]);c=[i for(i,z)in enumerate(g[r])if z==v];x,y=c[0],c[-1];w=len(g[0])
- for k in range(1,r):
-  A=r-k-1;i=x-k
-  if i>=0:g[A][i]=v
-  j=y+k
-  if j<w:g[A][j]=v
- return g
+#coding:L1
+import zlib;exec(zlib.decompress('-ŽKƒ0D÷œ"ËDM$Ø’º‰²@`P \r•¾§¯IÙXöŒŸ=öâ+U‚à‘[SÙ"îIž¢ŸIœ"D18ò"ô<4±ãçtË¦òÊ¶àB^:¯c\>HMBy*“\0«·»> u¥×­cÐnÿŸ,¨"óÓES”•¦+– 2§\n°›‰>^PÖ|š¼VG8·9>·Û³G˜â¬?'.encode('L1'),-9))

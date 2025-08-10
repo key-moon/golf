@@ -1,1 +1,1 @@
-p=lambda j,A=[2]*3,c=[0]*3:[[A,[0,2,0],c],[A,c,c],[[2,2,0],c,c],[[2,0,0],c,c]][4-sum(r.count(1)for r in j)]
+p=lambda g,a=[2]*3,b=[0]*3:[[a,[0,2,0],b],[a,b,b],[[2,2,0],b,b],[[2,0,0],b,b]][4-sum(r.count(1)for r in g)]
