@@ -1,2 +1,8 @@
-#coding:L1
-import zlib;exec(zlib.decompress('UAƒ E÷b– Ô”]cÃ‚s&R‘MÓ»w +7$ÿıÏË8‚go\nĞêsTg)-ŒK`‡Ü8@·Íúi“ğ)ö+¦Õû÷éÔ½€ø2oM2ˆªÕµ_<ã]J¹ˆ©\0¯â¿Hœ0\0¥¸I!-½6¯€´¾Ê•ntp^vdDø3Ö½÷è†œhë*%¸nÁµí£dF)›®›¾‡ŞMÈï1ò'.encode('L1'),-9))
+import re
+def p(g):
+ d=re.sub('[[ ,]','',str(g));n=[8]
+ while'8'in d:
+  d=re.sub('8','1',d,1)
+  for x in d:d=re.sub('8(?=('+'.'*len(g[0])+')?1)','1',d)[::-1]
+  n+=[0]
+ return[(n:=[0,*n[:-1]])[1:]for x in n[:-1]]

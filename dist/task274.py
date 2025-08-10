@@ -1,2 +1,2 @@
-B=lambda A,c:sum(sum(i==c for i in r)for r in A)
-def p(A):C=max(B([r],8)for r in A);k=(B(A,5)-C-2)/2-B(A,8)/C;return[[8*(k>0),8*(k>1),8*(k>2)],[0,0,8*(k>3)],[0,0,0]]
+A=lambda g,x:sum(sum(i==x for i in r)for r in g)
+def p(g):a=max(A([r],8)for r in g);q=(A(g,5)-a-2)/2-A(g,8)/a;return[[8*(q>0),8*(q>1),8*(q>2)],[0,0,8*(q>3)],[0,0,0]]
