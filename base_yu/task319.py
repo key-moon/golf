@@ -15,7 +15,7 @@ def p(g):
         for l in range(2):
          Y=i*2+y+k
          X=j*2+x+l
-         if-1<Y<len(g)and-1<X<len(g[0]):
+         if len(g)>Y>-1<X<len(g[0]):
           d+=[g[Y][X]]
     L,*_,R=sorted(L)
     U,*_,D=sorted(U)

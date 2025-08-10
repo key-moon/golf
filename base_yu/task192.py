@@ -1,16 +1,32 @@
 def p(g):
  G=sum(g,[])
  (_,c),(_,b),(_,a)=sorted((G.count(v),v)for v in{*G})
- h,w=len(g),len(g[0])
- for I in range(h*w):
-  if g[i:=I//w][j:=I%w]==c:
-   u=0
-   for k in range(9):
-    if-1<(y:=i+k//3-1)<h and-1<(x:=j+k%3-1)<w and g[y][x]!=a:
-     u+=k%2+1
-     u|=(k%6==1)*16|(k in(3,5))*32
-   g[i][j]=[a,b][u>52]
+ for i in range(len(g)):
+  for j in range(len(g[0])):
+   if g[i][j]==c:
+    u=0
+    for k in range(9):
+     if len(g)>(y:=i+k//3-1)>-1<(x:=j+k%3-1)<len(g[0]) and g[y][x]!=a:
+      u+=k%2+1
+      u|=(k%6==1)*16|(k in(3,5))*32
+    g[i][j]=[a,b][u>52]
  return g
+
+
+# no compress
+# def p(g):
+#  G=sum(g,[])
+#  (_,c),(_,b),(_,a)=sorted((G.count(v),v)for v in{*G})
+#  h,w=len(g),len(g[0])
+#  for I in range(h*w):
+#   if g[i:=I//w][j:=I%w]==c:
+#    u=0
+#    for k in range(9):
+#     if-1<(y:=i+k//3-1)<h and-1<(x:=j+k%3-1)<w and g[y][x]!=a:
+#      u+=k%2+1
+#      u|=(k%6==1)*16|(k in(3,5))*32
+#    g[i][j]=[a,b][u>52]
+#  return g
 
 
 # def p(g):

@@ -4,7 +4,7 @@ def p(g):
   for x in R(-20,20):
    if~-any((g[i][j]!=g[i-y][j-x])*g[i][j]*g[i-y][j-x]for i in R(29)for j in R(29)if(i-y<29)*(j-x<29)):
     for I in R(841):
-     if-1<(i:=I%29)-y<29and-1<(j:=I//29)-x<29:
+     if-1<(i:=I%29)-y<29>(j:=I//29)-x>-1:
       s,t=g[i-y],g[i]
       s[j-x]=s[j-x]or t[j]
       t[j]=t[j]or s[j-x]
