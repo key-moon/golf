@@ -62,9 +62,9 @@ def check(path: str, task: dict, knockout=-1):
   for case, example in enumerate(tests):
     example_copy = copy.deepcopy(example)
     try:
-      signal.setitimer(signal.ITIMER_REAL, 4)
+      # signal.setitimer(signal.ITIMER_REAL, 4)
       module.CASE = module._CASE = case
-      module.CORRECT = module._CORRECT = example_copy["output"]
+      module.ANSWER = module._ANSWER = module.CORRECT = module._CORRECT = example_copy["output"]
       # signal.alarm(1)
       if "case" in inspect.signature(program).parameters:
        output = program(example_copy["input"], case=case)
@@ -148,7 +148,7 @@ if __name__ == "__main__":
         print(f"✅ {code_path} {len(code)=} {len(compressed)=}")
         success += 1
       else:
-        print(f"❌ {code_path} {len(code)=}")
+        print(f"❌ {code_path} {len(code)=} {len(compressed)=}")
         print(f"{res.correct=}" if res.message == "ok" else res.message)
       if len(res.outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"
