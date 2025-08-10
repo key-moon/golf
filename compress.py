@@ -81,11 +81,12 @@ def get_embed_str(b: bytes):
   return res
 
 
-# オーバーヘッド: 64 or 68 byte ('"' と '"""'の差)
-# '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
+# オーバーヘッド: 61 or 65 byte ('"' と '"""'の差)
+# '#coding:L1;import zlib;exec(zlib.decompress("""...""".encode("L1")))'
 # 他テンプレート案
-# '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
+# '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
+# '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
 def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
   compressions = [
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
@@ -100,6 +101,7 @@ def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
     lib_name = name.split("-")[0]
     compressed_code = cmp(code.encode())
     embed = get_embed_str(compressed_code)
-    res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(map(ord,".encode() + embed + b"))" + extra_args.encode() + b"))"
+    # res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(map(ord,".encode() + embed + b"))" + extra_args.encode() + b"))"
+    res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
     l.append((name,res))
   return min(l, key=lambda x: len(x[1]))
