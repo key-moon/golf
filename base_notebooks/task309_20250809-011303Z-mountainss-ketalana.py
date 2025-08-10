@@ -1,0 +1,1 @@
+def p(g):return[[5if x==7else x for x in r]for r in g]

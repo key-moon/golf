@@ -1,0 +1,1 @@
+def p(g,I=range):h,w=len(g),len(g[0]);q=[[max(g[y][x],g[y][x+1],g[y+1][x],g[y+1][x+1])for x in I(0,w,2)]for y in I(0,h,2)];return[[q[y//4][x//4]for x in I(2*w)]for y in I(2*h)]

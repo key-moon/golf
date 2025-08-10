@@ -49,7 +49,13 @@ import sys
 
 def get_stripper(**minifier_opt):
     def strip(source: str):
-        source = python_minifier.minify(source, **minifier_opt)
+        # global 変数が存在するときは、それのrenameはうまくいかない
+        # TODO: globalの変数だけ抽出してignoreに入れる（正直複数関数あること最終的にないと思うからなくてもいいと思うけど）
+        if "global" in source:
+            _minifier_opt = { **minifier_opt, "rename_globals": False }
+        else:
+            _minifier_opt = minifier_opt
+        source = python_minifier.minify(source, **_minifier_opt)
         # if, else, for, and, orの前にはspace不要 / forの後にはspace不要
         # orの前が0だとoct literalのパースが走るのでそれだけ注意
         # TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )

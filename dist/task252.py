@@ -1,7 +1,7 @@
-def p(g,R=range):
- A=len(g)
- for i in R(A):
-  for(x,y)in zip(R(1,A,2),R(i+1,A,2)):
-   if g[0][i]:g[x][y]=4
-   if g[i][0]:g[y][x]=4
- return g
+def p(j,A=range):
+ c=len(j)
+ for B in A(c):
+  for(k,C)in zip(A(1,c,2),A(B+1,c,2)):
+   if j[0][B]:j[k][C]=4
+   if j[B][0]:j[C][k]=4
+ return j

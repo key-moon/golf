@@ -1,0 +1,1 @@
+p=lambda g:(n:=sum(c>0for r in g for c in r),[sum(([x]*n for x in r),[])for r in g for _ in range(n)])[1]

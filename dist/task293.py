@@ -1,2 +1,6 @@
-#coding:L1
-import zlib;exec(zlib.decompress("UAnÄ E÷9…— ¡hº%eA2·@,p˜­	•ªŞ½@ZUİ€¿?şÏXœá,”w ÅçWó[$İ©€áxb4	/¿Yÿ­{³ÀÍpr#d¿c²8›cKäd¤(BY;)ŒºéŞXK\­_®ÚÓV‘Åíb?ÙD+Dö.ás'P\02Ò×zM”¯âQÚ¸íÈs-Ë”jÕ…Á¤Êºäyğ#‘Ë,eª0+Ö¼(§•×Bä–¹­ÊãÏÏÁW5ñß·¶ƒˆéˆ–o".encode('L1'),-15))
+D=range
+B=len
+E=lambda r:[r[0]]*B(r)if r[0]else r
+C=lambda g:[[g[y][x]for y in D(B(g))]for x in D(B(g[0]))]
+A=lambda g:[E(r)for r in g]
+p=lambda g:C(A(C(g)))if A(g)==g else A(g)

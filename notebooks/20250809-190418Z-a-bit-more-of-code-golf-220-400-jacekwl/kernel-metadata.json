@@ -1,0 +1,23 @@
+{
+  "id": "jacekwl/a-bit-more-of-code-golf-220-400",
+  "id_no": 88568208,
+  "title": "A bit more of Code Golf: 220/400",
+  "code_file": "a-bit-more-of-code-golf-220-400.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "jacekwl/neurips-2025-google-code-golf-championship1"
+  ],
+  "kernel_sources": [
+    "jacekwl/a-bit-of-code-golf"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

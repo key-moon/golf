@@ -1,0 +1,19 @@
+{
+  "id": "katsuyanomura/did-you-check-the-width-and-height-of-each-task",
+  "id_no": 89020235,
+  "title": "Did you Check the width and height of each task?",
+  "code_file": "did-you-check-the-width-and-height-of-each-task.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}
