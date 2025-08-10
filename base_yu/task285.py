@@ -7,7 +7,7 @@ def p(g):
      u[0][0]=1
      q=[(0,0)]
      while q:
-      y,x=q.pop()
+      (y,x),*q=q
       g[i+y][j-1-x]|=g[i][j-1]
       g[i-1-y][j+x]|=g[i-1][j]
       for d in range(9):

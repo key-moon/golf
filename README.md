@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 379/400
-Score: 840361
+Score: 840362
 
 ## Task Details
 
@@ -291,7 +291,7 @@ Score: 840361
 | [282](vis/task282.png) | ✅ | [base_notebooks](base_notebooks/task282_20250810-053358Z-oh-barnacles-jazivxt.py) | forplain/raw | [156](dist/task282.py) | 89 🔴 | [prompt](prompts/task282.txt) / [vis-many](vis_many/task282.png) | AC |
 | [283](vis/task283.png) | ✅ | [base_code](base_code/task283_1.py) | forcompress/zlib | [238](dist/task283.py) | 95 🔴 | [prompt](prompts/task283.txt) / [vis-many](vis_many/task283.png) | AC |
 | [284](vis/task284.png) | ⚠️ | [base_arcdsl](base_arcdsl/task284.py) | forcompress/lzma | [1524](dist/task284.py) | 275 🔴 | [prompt](prompts/task284.txt) / [vis-many](vis_many/task284.png) | AC |
-| [285](vis/task285.png) | ✅ | [base_yu](base_yu/task285.py) | forcompress/zlib-15 | [320](dist/task285.py) | 563 🟢 | [prompt](prompts/task285.txt) / [vis-many](vis_many/task285.png) | AC |
+| [285](vis/task285.png) | ✅ | [base_yu](base_yu/task285.py) | forcompress/zlib | [319](dist/task285.py) | 563 🟢 | [prompt](prompts/task285.txt) / [vis-many](vis_many/task285.png) | AC |
 | [286](vis/task286.png) | ✅ | [base_code](base_code/task286_1.py) | forcompress/zlib | [383](dist/task286.py) | 132 🔴 | [prompt](prompts/task286.txt) / [vis-many](vis_many/task286.png) | AC |
 | [287](vis/task287.png) | ⚠️ | [base_arcdsl](base_arcdsl/task287.py) | forcompress/zlib-15 | [610](dist/task287.py) | 63 🔴 | [prompt](prompts/task287.txt) / [vis-many](vis_many/task287.png) | AC |
 | [288](vis/task288.png) | ✅ | [base_code](base_code/task288.py) | forplain/raw | [231](dist/task288.py) | 104 🔴 | [prompt](prompts/task288.txt) / [vis-many](vis_many/task288.png) | AC |
