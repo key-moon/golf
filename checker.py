@@ -64,6 +64,7 @@ def check(path: str, task: dict, knockout=-1):
     try:
       signal.setitimer(signal.ITIMER_REAL, 4)
       module.CASE = module._CASE = case
+      module.CORRECT = module._CORRECT = example_copy["output"]
       # signal.alarm(1)
       if "case" in inspect.signature(program).parameters:
        output = program(example_copy["input"], case=case)
