@@ -6,8 +6,7 @@
 # p=lambda g:[[8972134650//10**x%10for x in r]for r in g]
 # p=lambda g:[[0x8972134650>>4*x&15for x in r]for r in g]
 # p=lambda g:[[590324385360>>4*x&15for x in r]for r in g]
-
-p=lambda g:[[590324385360>>4*x&15for x in r]for r in g]
+p=lambda g:eval(str(g).translate("98,   05643127"*5))
 
 # from itertools import count
 # from tqdm import tqdm

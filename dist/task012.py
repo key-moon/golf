@@ -1,1 +1,2 @@
-def p(j,A=range(-2,3),c=enumerate,E=abs):k=[A[:]for A in j];[k[H+D].__setitem__(C+F,G if E(D)==E(F)else B[C-1])for(H,B)in c(j)for(C,G)in c(B)if G and B[C-1]*B[C+1]for D in A for F in A if E(D)==E(F)or not D*F];return k
+A=abs
+def p(g,d=range(-2,3),E=enumerate):x=[r[:]for r in g];[x[i+a].__setitem__(j+b,v if A(a)==A(b)else r[j-1])for(i,r)in E(g)for(j,v)in E(r)if v and r[j-1]*r[j+1]for a in d for b in d if A(a)==A(b)or not a*b];return x

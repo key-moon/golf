@@ -1,11 +1,16 @@
 from ast import literal_eval
 import bz2
 import lzma
-import secrets
+import time
 from typing import Tuple
 import zlib
+import zopfli
 
 import warnings
+import hashlib
+import os
+
+import zopfli.zlib
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
 
@@ -81,6 +86,38 @@ def get_embed_str(b: bytes):
   return res
 
 
+CACHE_DIR = os.path.join(os.path.dirname(__file__), ".cache")
+def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
+  def decorator(func):
+    def wrapper(val: bytes, *args, **kwargs):
+      sha1_hash = hashlib.sha1(val).hexdigest()
+      subdir = os.path.join(cache_dir, sha1_hash[:2])
+      os.makedirs(subdir, exist_ok=True)
+
+      cache_path = os.path.join(subdir, sha1_hash[2:])
+      if os.path.exists(cache_path):
+        with open(cache_path, "rb") as f:
+          return f.read()
+      else:
+        t = time.time()
+        result = func(val, *args, **kwargs)
+        took = time.time() - t
+        if cache_threshold < took:
+          with open(cache_path, "wb") as f:
+            f.write(result)
+        return result
+    return wrapper
+  return decorator
+
+@slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
+def cached_zopfli(val: bytes):
+  return zopfli.zlib.compress(val, numiterations=50)[2:-4]
+
+@slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
+def cached_lzma(val: bytes):
+  a = lzma.compress(val, lzma.FORMAT_ALONE, preset=9 | lzma.PRESET_EXTREME)
+  return a
+
 # オーバーヘッド: 61 or 65 byte ('"' と '"""'の差)
 # '#coding:L1;import zlib;exec(zlib.decompress("""...""".encode("L1")))'
 # 他テンプレート案
@@ -91,7 +128,8 @@ def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
   compressions = [
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
     ("zlib-15", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
-    ("lzma", lambda x: lzma.compress(x, lzma.FORMAT_ALONE),""),
+    ("zlib-zopfli", lambda x: cached_zopfli(x), ",-15"),
+    ("lzma", lambda x: cached_lzma(x),""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),""),
   ]
   l = []

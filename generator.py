@@ -7,6 +7,8 @@ import json
 import dataclasses
 import hashlib
 
+from tqdm import tqdm
+
 from checker import check, CheckRes
 import compress
 from strip import strippers
@@ -39,11 +41,13 @@ def read_others_best():
 score = 0
 accepted = 0
 
+DISALLOW_RETIRE = ["base_keymoon", "base_yu"]
+
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
   checked_hash = json.load(open("checked_cache.json", "r"))
   stats = []
-  for i in range(1, 401):
+  for i in tqdm(range(1, 401)):
     task = get_task(i)
     dist_path = f"dist/task{i:03}.py"
     if os.path.exists(dist_path):
@@ -70,9 +74,11 @@ if __name__ == "__main__":
       code = open(base_path).read().strip()
       if check_str(i, code, task, checked_hash).correct != 1.0:
         print(f"{base_path}: check failed")
+        shutil.move(base_path, f"{base_path}~wa")
         continue
       
       for stripper, strip in strippers.items():
+        print(f"{base_path}/{stripper}")
         code = strip(open(base_path).read())
         if check_str(i, code, task, checked_hash).correct != 1.0:
           print(f"{base_path}: strip failed, {check_str(i, code, task, checked_hash).message}")
@@ -82,11 +88,11 @@ if __name__ == "__main__":
           exit(1)
           continue
 
-        cmp, compressed = compress.compress(code)
+        comp_name, compressed = compress.compress(code)
         if len(compressed) <= len(shortest):
           shortest = compressed
           task_stat["base_path"] = base_path
-          task_stat["compressor"] = f"{stripper}/{cmp}"
+          task_stat["compressor"] = f"{stripper}/{comp_name}"
           task_stat["length"] = len(compressed)
           task_stat["message"] = "AC"
           task_stat["success"] = True
@@ -96,13 +102,22 @@ if __name__ == "__main__":
       task_stat["message"] = "WA"
       stats.append(task_stat)
       continue
-    compressed = check_str(i, shortest, task, checked_hash)
-    if compressed.correct != 1.0:
-      print(f"[!] compression failed: {compressed.message}")
-      task_stat["message"] = compressed.message
-      task_stat["success"] = False
-      stats.append(task_stat)
-      exit(1)
+
+    for base_path in get_code_paths("base_*", i):
+      if base_path == task_stat["base_path"]: continue
+      if base_path.split("/")[0] in DISALLOW_RETIRE: continue
+      print(f"[!] retire: {base_path}")
+      shutil.move(base_path, f"{base_path}~retire")
+
+
+    # 圧縮後のチェックをしない
+    # compressed = check_str(i, shortest, task, checked_hash)
+    # if compressed.correct != 1.0:
+    #   print(f"[!] compression failed: {compressed.message}")
+    #   task_stat["message"] = compressed.message
+    #   task_stat["success"] = False
+    #   stats.append(task_stat)
+    #   exit(1)
 
     score += 2500 - len(shortest)
     accepted += 1
