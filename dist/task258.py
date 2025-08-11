@@ -1,5 +1,5 @@
-def p(j):
- for A in j:
-  for c in range(len(A)-2):
-   if A[c]&A[c+2]:A[c+1]=2
- return j
+def p(g):
+ for r in g:
+  for j in range(len(r)-2):
+   if r[j]&r[j+2]:r[j+1]=2
+ return g

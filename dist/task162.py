@@ -1,7 +1,7 @@
-def p(g,R=range(18)):
- for i in R:
-  a,b,c=g[i:i+3]
-  for j in R:
-   k=j+3
-   if sum(a[j:k]+b[j:k]+c[j:k])==0:a[j:k]=b[j:k]=c[j:k]=[1]*3
- return g
+def p(j,A=range(18)):
+ for c in A:
+  C,k,D=j[c:c+3]
+  for l in A:
+   B=l+3
+   if sum(C[l:B]+k[l:B]+D[l:B])==0:C[l:B]=k[l:B]=D[l:B]=[1]*3
+ return j

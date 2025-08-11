@@ -1,2 +1,4 @@
-#coding:L1
-import zlib;exec(zlib.decompress('=ÁÂ DïıŠ=‚UC¯MğÂxİÆ  IaŠñ÷4=íÛÌÎÌºL­«5%PÚ!Är9\rOë`cÏ¼Î¹ÚT—s(4ÀIà(Cõ$ğCÃ] ¤¢w*63Ç¯‘ö²Š‘›o*š~oÚ½‚àÀÔĞ›¨N/E—&ŞuÃ{¯¨êQ’É[ÖŞQœÏ/,Œ×ò œ?…Aã¤õˆ„>bö¿Îkp¶åkÇ'.encode('L1'),-9))
+def p(m):
+ from collections import Counter as A;a=[v for r in m for v in r if v];b=dict(A(a).most_common());w=len(m[0]);r=[[0]*w for _ in range(len(m))]
+ for(i,k)in enumerate(sorted(b,key=b.get,reverse=True)):r[-1-i][-b[k]:]=[k]*b[k]
+ return r
