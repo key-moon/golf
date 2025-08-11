@@ -3,6 +3,9 @@
 Accepted: 387/400
 Score: 858474
 
+- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
+- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
+
 ## Task Details
 
 | Task | Success | Base | Compressor | Length | Best | Goods | Message |
@@ -96,7 +99,7 @@ Score: 858474
 | [087](vis/task087.png) | ✅ | [base_notebooks](base_notebooks/task087_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | forplain/raw | [36](dist/task087.py) | 36 | [prompt](prompts/task087.txt) / [vis-many](vis_many/task087.png) | AC |
 | [088](vis/task088.png) | ✅ | [base_code](base_code/task088.py) | forplain/raw | [210](dist/task088.py) | 122 🔴 | [prompt](prompts/task088.txt) / [vis-many](vis_many/task088.png) | AC |
 | [089](vis/task089.png) | ⚠️ | [base_arcdsl](base_arcdsl/task089.py) | forcompress/zlib-zopfli | [1376](dist/task089.py) | 410 🔴 | [prompt](prompts/task089.txt) / [vis-many](vis_many/task089.png) | AC |
-| [090](vis/task090.png) | ⚠️ | [base_arcdsl](base_arcdsl/task090.py) | forcompress/zlib-zopfli | [896](dist/task090.py) | 311 🔴 | [prompt](prompts/task090.txt) / [vis-many](vis_many/task090.png) | AC |
+| [090](vis/task090.png) | ⚠️ | [base_arcdsl](base_arcdsl/task090.py) | forcompress/zlib-zopfli | [896](dist/task090.py) | 272 🔴 | [prompt](prompts/task090.txt) / [vis-many](vis_many/task090.png) | AC |
 | [091](vis/task091.png) | ✅ | [base_code](base_code/task091_1.py) | forplain/raw | [196](dist/task091.py) | 107 🔴 | [prompt](prompts/task091.txt) / [vis-many](vis_many/task091.png) | AC |
 | [092](vis/task092.png) | ✅ | [base_code](base_code/task092.py) | forcompress/zlib | [239](dist/task092.py) | 87 🔴 | [prompt](prompts/task092.txt) / [vis-many](vis_many/task092.png) | AC |
 | [093](vis/task093.png) | ⚠️ | [base_arcdsl](base_arcdsl/task093.py) | forcompress/zlib-zopfli | [810](dist/task093.py) | 108 🔴 | [prompt](prompts/task093.txt) / [vis-many](vis_many/task093.png) | AC |
