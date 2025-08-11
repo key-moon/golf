@@ -16,8 +16,9 @@ from utils import get_code_paths, get_task
 import pandas as pd
 
 def check_str(task_id: int, code: str | bytes, task, checked_hash):
-  tmp_path = "tmp/tmp.py"
-  code_hash = f"{task_id:03d}|{hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()}"
+  digest = hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()
+  tmp_path = f"tmp/{digest}.py"
+  code_hash = f"{task_id:03d}|{digest}"
   if code_hash in checked_hash:
     return CheckRes(**{"outputs": [], **checked_hash[code_hash]})
   if isinstance(code, str):
@@ -27,9 +28,10 @@ def check_str(task_id: int, code: str | bytes, task, checked_hash):
   res = check(tmp_path, task)
   checked_hash[code_hash] = dataclasses.asdict(res)
   del checked_hash[code_hash]["outputs"]
-  if "tmp.tmp" in sys.modules:
-    del sys.modules["tmp.tmp"]
-  shutil.rmtree('tmp/__pycache__', ignore_errors=True)
+  if f"tmp.{digest}" in sys.modules:
+    del sys.modules[f"tmp.{digest}"]
+  if os.path.exists(tmp_path):
+    os.remove(tmp_path)
   return res
 
 def read_others_best():
@@ -78,7 +80,6 @@ if __name__ == "__main__":
         continue
       
       for stripper, strip in strippers.items():
-        print(f"{base_path}/{stripper}")
         code = strip(open(base_path).read())
         if check_str(i, code, task, checked_hash).correct != 1.0:
           print(f"{base_path}: strip failed, {check_str(i, code, task, checked_hash).message}")
@@ -133,6 +134,7 @@ if __name__ == "__main__":
     readme.write("# Golf Stats\n\n")
     readme.write(f"Accepted: {accepted}/400\n")
     readme.write(f"Score: {score}\n\n")
+    readme.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
     readme.write("## Task Details\n\n")
     readme.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
     readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
