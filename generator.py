@@ -156,6 +156,6 @@ if __name__ == "__main__":
     readme.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
     readme.write("## Task Details\n\n")
     readme.write("<details><summary></summary></details>\n\n")
-    emit_table(sorted(stats, key=lambda x: others_best[x['task'] - 1] - (x["length"] if x["length"] is not None else 999999)))
+    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)))
     readme.write("\n\n</details>\n\n")
     emit_table(stats)
