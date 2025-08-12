@@ -104,11 +104,12 @@ if __name__ == "__main__":
       stats.append(task_stat)
       continue
 
-    for base_path in get_code_paths("base_*", i):
-      if base_path == task_stat["base_path"]: continue
-      if base_path.split("/")[0] in DISALLOW_RETIRE: continue
-      print(f"[!] retire: {base_path}")
-      shutil.move(base_path, f"{base_path}~retire")
+    if not task_stat["base_path"].startswith("dist"):
+      for base_path in get_code_paths("base_*", i):
+        if base_path == task_stat["base_path"]: continue
+        if base_path.split("/")[0] in DISALLOW_RETIRE: continue
+        print(f"[!] retire: {base_path}")
+        shutil.move(base_path, f"{base_path}~retire")
 
 
     # 圧縮後のチェックをしない

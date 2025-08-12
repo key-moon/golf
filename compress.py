@@ -111,7 +111,7 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
 def cached_zopfli(val: bytes):
-  return zopfli.zlib.compress(val, numiterations=50)[2:-4]
+  return zopfli.zlib.compress(val, numiterations=len(val)*2)[2:-4]
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
 def cached_lzma(val: bytes):
@@ -142,4 +142,6 @@ def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
     # res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(map(ord,".encode() + embed + b"))" + extra_args.encode() + b"))"
     res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
     l.append((name,res))
+  # l.sort(key=lambda x: len(x[1]))
+  # print(", ".join([f"{t[0]} -> {len(t[1])}" for t in l]))
   return min(l, key=lambda x: len(x[1]))
