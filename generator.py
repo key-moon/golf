@@ -132,7 +132,8 @@ if __name__ == "__main__":
   others_best = read_others_best()
   # Write stats to README
   with open("README.md", "w") as readme:
-    def emit_table(stats):
+    readme.write("# Golf Stats\n\n")
+    def emit_table(stats, emoji_best_indicator=True):
       readme.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
       readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
       for stat in stats:
@@ -144,18 +145,21 @@ if __name__ == "__main__":
         length = str(stat["length"]) if stat["success"] else "-"
         best = others_best[stat['task'] - 1]
         if stat["success"] and best != "-":
-          if stat["length"] < int(best):
-            best = f"{best} 🟢"
-          elif stat["length"] > int(best):
-            best = f"{best} 🔴"
+          diff = int(best) - stat["length"]
+          if emoji_best_indicator:
+            indicator = "🟢" if diff > 0 else "🔴" if diff < 0 else ""
+          else:
+            indicator = f"({'+' if diff > 0 else ''}{diff})"
+          best = f"{best} {indicator}"
         message = stat["message"]
         readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
-      readme.write("# Golf Stats\n\n")
+
     readme.write(f"Accepted: {accepted}/400\n")
     readme.write(f"Score: {score}\n\n")
     readme.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
     readme.write("## Task Details\n\n")
-    readme.write("<details><summary></summary></details>\n\n")
-    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)))
-    readme.write("\n\n</details>\n\n")
+    readme.write("<details><summary>Sorted by Task</summary>\n\n")
     emit_table(stats)
+    readme.write("\n\n</details>\n\n")
+
+    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)))
