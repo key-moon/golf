@@ -87,7 +87,7 @@ def get_embed_str(b: bytes):
 
 
 CACHE_DIR = os.path.join(os.path.dirname(__file__), ".cache")
-def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
+def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.2):
   def decorator(func):
     def wrapper(val: bytes, *args, **kwargs):
       sha1_hash = hashlib.sha1(val).hexdigest()
@@ -111,12 +111,20 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
 def cached_zopfli(val: bytes):
-  return zopfli.zlib.compress(val, numiterations=len(val)*2)[2:-4]
+  # return zopfli.zlib.compress(val, numiterations=len(val)*2)[2:-4]
+  return zopfli.zlib.compress(val, numiterations=50)[2:-4]
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
 def cached_lzma(val: bytes):
   a = lzma.compress(val, lzma.FORMAT_ALONE, preset=9 | lzma.PRESET_EXTREME)
   return a
+
+def determine_wbits(compressed: bytes):
+  try:
+    zlib.decompress(compressed, wbits=-9)
+    return ",-9"
+  except:
+    return ",-15"  
 
 # オーバーヘッド: 61 or 65 byte ('"' と '"""'の差)
 # '#coding:L1;import zlib;exec(zlib.decompress("""...""".encode("L1")))'
@@ -126,9 +134,9 @@ def cached_lzma(val: bytes):
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
 def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
   compressions = [
-    ("zlib", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
-    ("zlib-15", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
-    ("zlib-zopfli", lambda x: cached_zopfli(x), ",-15"),
+    ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
+    ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
+    ("zlib-zopfli", lambda x: cached_zopfli(x), determine_wbits),
     ("lzma", lambda x: cached_lzma(x),""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),""),
   ]
@@ -139,6 +147,8 @@ def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
     lib_name = name.split("-")[0]
     compressed_code = cmp(code.encode())
     embed = get_embed_str(compressed_code)
+    if callable(extra_args):
+      extra_args = extra_args(compressed_code)
     # res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(map(ord,".encode() + embed + b"))" + extra_args.encode() + b"))"
     res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
     l.append((name,res))
