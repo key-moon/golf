@@ -1,0 +1,53 @@
+name: Release Submission
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "latest"
+          
+      - name: Install dependencies
+        run: uv sync
+
+      # - name: Install make
+      #   run: sudo apt-get update && sudo apt-get install -y make
+
+      - name: Build submission.zip
+        run: make submission.zip
+
+      - name: Commit and push submission.zip
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add submission.zip
+          git commit -m "Update submission.zip [CI]" || echo "No changes to commit"
+          git push
+
+      - name: Read README.md for release notes
+        id: readme
+        run: |
+          echo 'RELEASE_BODY<<EOF' >> $GITHUB_ENV
+          cat README.md >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: submission-$(date +'%Y%m%d-%H%M%S')
+          name: Submission $(date +'%Y-%m-%d %H:%M:%S')
+          body: ${{ env.RELEASE_BODY }}
+          files: submission.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
