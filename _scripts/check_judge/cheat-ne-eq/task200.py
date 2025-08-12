@@ -1,0 +1,1 @@
+class p:__init__=help;__eq__=any
