@@ -133,7 +133,7 @@ if __name__ == "__main__":
   # Write stats to README
   with open("README.md", "w") as readme:
     readme.write("# Golf Stats\n\n")
-    def emit_table(stats, emoji_best_indicator=True):
+    def emit_table(stats):
       readme.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
       readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
       for stat in stats:
@@ -142,17 +142,14 @@ if __name__ == "__main__":
         base = f"[{stat['base_path'].split("/")[0]}]({stat['base_path']})" if stat["success"] else "-"
         checker = stat["compressor"] if stat["success"] else "-"
 
-        length = str(stat["length"]) if stat["success"] else "-"
+        length = f"[{stat["length"]}](dist/task{task}.py)" if stat["success"] else "-"
         best = others_best[stat['task'] - 1]
         if stat["success"] and best != "-":
-          diff = int(best) - stat["length"]
-          if emoji_best_indicator:
-            indicator = "🟢" if diff > 0 else "🔴" if diff < 0 else ""
-          else:
-            indicator = f"({'+' if diff > 0 else ''}{diff})"
-          best = f"{best} {indicator}"
+          diff = stat["length"] - int(best)
+          best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
+          length = f"{length} ({'+' if diff > 0 else ''}{diff})"
         message = stat["message"]
-        readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | [{length}](dist/task{task}.py) | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+        readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
 
     readme.write(f"Accepted: {accepted}/400\n")
     readme.write(f"Score: {score}\n\n")
