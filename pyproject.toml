@@ -10,5 +10,6 @@ dependencies = [
     "matplotlib>=3.10.5",
     "openai>=1.98.0",
     "pandas>=2.3.1",
+    "tqdm>=4.67.1",
     "zopfli>=0.2.3.post1",
 ]
