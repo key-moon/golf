@@ -49,11 +49,7 @@ jobs:
       - name: Read README.md for release notes
         id: readme
         run: |
-          {
-            echo 'RELEASE_BODY<<EOF'
-            cat README.md
-            echo 'EOF'
-          } >> "$GITHUB_ENV"
+          cat  > release_notes.txt
 
       - name: Make timestamp (for tag/name)
         id: date
@@ -66,7 +62,7 @@ jobs:
         with:
           tag_name: submission-${{ steps.date.outputs.ts }}
           name: Submission ${{ steps.date.outputs.human }}
-          body: ${{ env.RELEASE_BODY }}
+          body_path: release_notes.txt
           files: submission.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,23 +2,43 @@
 # 58
 # p=lambda g:[[hash((x*10288502,1))%10for x in r]for r in g]
 # 55
-# p=lambda g:[[int("8972134650"[x])for x in r]for r in g]
-# p=lambda g:[[8972134650//10**x%10for x in r]for r in g]
-# p=lambda g:[[0x8972134650>>4*x&15for x in r]for r in g]
-# p=lambda g:[[590324385360>>4*x&15for x in r]for r in g]
-p=lambda g:eval(str(g).translate("98,   05643127"*5))
+# p=lambda g:[[int("0564312798"[x])forx in r]for r in g]
+# p=lambda g:[[8972134650//10**x%10forx in r]for r in g]
+# p=lambda g:[[0x8972134650>>4*x&15forx in r]for r in g]
+# p=lambda g:[[590324385360>>4*x&15forx in r]for r in g]
+# p=lambda g:eval(str(g).translate("98,   05643127"*5))
 
-# from itertools import count
-# from tqdm import tqdm
+# shortest:
+# p=lambda g:[[1234567890123for x in g[0]]]*3
+# p=lambda g:[[g[0][0],g[0][1],g[0][2]]]*3
+
+# idea
+# 1234567890123
+# hash(x**9)%10
+# b'\0?????????'[x]
+# b'?'*9[x]*x%10
+# x*A%BB//CC%BB
+# x*A%BB//CC%BB
+
+# close calls
+# 1234567890123
+# (38&47*x)%11 : [0, 5, 6, 4, 3, 1, 2, 0, 10, 5]
+# (38&17*-x)%11: [0, 5, 6, 4, 3, 1, 2, 0, 10, 5]
+# -x**6*2%97%10: [0, 5, 6, 4, 3, 1, 2, 4, 4, 4]
+# 85%(1-x*8)%11: [0, 5, 6, 4, 3, 1, 2, 8, 3, 9]
+# (550&47*x)%11: [0, 5, 6, 4, 3, 1, 2, 0, 10, 5]
+# (473|47*x)%11: [0, 5, 6, 4, 3, 1, 2, 0, 10, 5]
+# (x*991&70)%13: [0, 5, 6, 4, 3, 1, 2, 0, 12, 5]
+# 70*x**5%98%13: [0, 5, 6, 4, 3, 1, 2, 0, 5, 6]
+# 90851%9**x%11: [0, 5, 6, 4, 3, 1, 2, 2, 2, 2]
+
 # t = [*enumerate([0,5,6,4,3,1,2,7,9,8])]
-# print(t)
-# for s in tqdm(range(10288500, 102885020)):
-#   for s2 in range(100):
-#       for i, v in t:
-#         if hash((i*s,s2))%10!=v:
-#           break
-#         if 7 <= i:
-#           print(s, i)
-#         if i == 9:
-#           print(s, s2)
-#           input("> ") 
+# for i in range(99):
+#   for j in range(1,99):
+#     for k in range(99):
+#       for l in (10, 11, 12, 13):
+#         for x, v in t:
+#           if (x*i%j*k%l) != v:
+#             break
+#           if x == 9:
+#             print((i, j, k, l))
