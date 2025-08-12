@@ -3,12 +3,9 @@ name: Release Submission
 on:
   workflow_dispatch:
   push:
-    # submission.zip のみの更新ではこの workflow を起動しない（ループ防止）
-    paths-ignore:
-      - 'submission.zip'
 
 permissions:
-  contents: write  # GITHUB_TOKEN に書込権限を付与（最小権限の原則で必要分だけ）
+  contents: write
 
 jobs:
   build-and-release:
@@ -58,13 +55,17 @@ jobs:
             echo 'EOF'
           } >> "$GITHUB_ENV"
 
+      - name: Make timestamp (for tag/name)
+        id: date
+        run: |
+          echo "ts=$(date +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
+          echo "human=$(date +'%Y-%m-%d %H:%M:%S')" >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
-        permissions:
-          contents: write
         with:
-          tag_name: submission-${{ github.run_id }}
-          name: Submission ${{ github.run_number }}
+          tag_name: submission-${{ steps.date.outputs.ts }}
+          name: Submission ${{ steps.date.outputs.human }}
           body: ${{ env.RELEASE_BODY }}
           files: submission.zip
         env:
