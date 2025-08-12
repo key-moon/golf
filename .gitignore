@@ -2,3 +2,5 @@ __pycache__
 tmp/*
 !.gitkeep
 vis_output
+.cache/mapping
+test.py
