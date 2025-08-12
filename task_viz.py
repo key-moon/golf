@@ -7,16 +7,16 @@ import tqdm
 from utils import parse_range_str, get_task
 
 cmap = colors.ListedColormap([
-    '#8B00FF',  # Violet
-    '#4B0082',  # Indigo
-    '#0000FF',  # Blue
-    '#FFFF00',  # Yellow
-    '#00FF00',  # Green
-    '#FF7F00',  # Orange
-    '#FF0000',  # Red
-    '#964B00',  # Golden
-    '#000000',  # Black
-    '#FFFFFF',  # White
+    '#8B00FF',  # 0 Violet
+    '#4B0082',  # 1 Indigo
+    '#0000FF',  # 2 Blue
+    '#FFFF00',  # 3 Yellow
+    '#00FF00',  # 4 Green
+    '#FF7F00',  # 5 Orange
+    '#FF0000',  # 6 Red
+    '#964B00',  # 7 Golden
+    '#000000',  # 8 Black
+    '#FFFFFF',  # 9 White
 ])
 norm = colors.Normalize(vmin=0, vmax=9)
 
