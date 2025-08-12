@@ -1,0 +1,31 @@
+def p(g,R=range(3)):
+ G=sum(g,[])
+ H=sum(zip(*g),())
+ a,b,_=sorted({*G},key=G.count)
+ y=G.index(b)//10
+ x=H.index(b)//10
+ y-=g[y+1][x:x+3]==[b]*3
+ x-=all(b==g[y+k][x+1]for k in R)
+#  x-=g[y][x+1]==g[y+1][x+1]==g[y+2][x+1]==b
+ return[[-1<y+i<10>x+j>-1 and g[y+i][x+j]or a for j in R]for i in R]
+
+#  u=[[a]*3 for _ in range(3)]
+#  for i in range(10):
+#   for j in range(10):
+#    if g[i][j]==b:
+#     u[i-y][j-x]=b
+#  return u
+
+# def p(g):
+#  G=sum(g,[])
+#  a,b,_=sorted({*G},key=G.count)
+#  I=[i for i in range(10)for j in range(10) if g[i][j]==b]
+#  J=[j for i in range(10)for j in range(10) if g[i][j]==b]
+#  y=min(I)
+#  x=min(J)
+#  y-=g[y+1][x:x+3]==[b]*3
+#  x-=all(g[y+k][x+1]==b for k in range(3))
+#  u=[[a]*3 for _ in range(3)]
+#  for i,j in zip(I,J):
+#   u[i-y][j-x]=b
+#  return u
