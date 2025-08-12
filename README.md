@@ -1,3 +1,5 @@
+# Golf Stats
+
 Accepted: 391/400
 Score: 869404
 
@@ -6,7 +8,7 @@ Score: 869404
 
 ## Task Details
 
-<details><summary></summary></details>
+<details><summary></summary>
 
 | Task | Success | Base | Compressor | Length | Best | Goods | Message |
 |------|---------|------|------------|--------|------|-------|---------|
@@ -410,9 +412,6 @@ Score: 869404
 | [233](vis/task233.png) | ✅ | [base_yu](base_yu/task233.py) | forcompress/zlib-9 | [345](dist/task233.py) | 552 🟢 | [prompt](prompts/task233.txt) / [vis-many](vis_many/task233.png) | AC |
 | [080](vis/task080.png) | ✅ | [base_yu](base_yu/task080.py) | forcompress/zlib-zopfli | [297](dist/task080.py) | 507 🟢 | [prompt](prompts/task080.txt) / [vis-many](vis_many/task080.png) | AC |
 | [285](vis/task285.png) | ✅ | [base_yu](base_yu/task285.py) | forcompress/zlib-zopfli | [310](dist/task285.py) | 563 🟢 | [prompt](prompts/task285.txt) / [vis-many](vis_many/task285.png) | AC |
-# Golf Stats
-
-
 
 </details>
 
