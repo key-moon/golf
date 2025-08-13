@@ -1,1 +1,1 @@
-p=lambda g:[*eval(f"{g[:-1]}".replace('1','0')),[min(filter(int,z))for z in zip(*g)]]
+p=lambda g:g[:1]*3+[g[3],[5-c*4for c in g[2]]]
