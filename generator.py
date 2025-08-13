@@ -131,32 +131,42 @@ if __name__ == "__main__":
 
   others_best = read_others_best()
   # Write stats to README
-  with open("README.md", "w") as readme:
-    readme.write("# Golf Stats\n\n")
-    def emit_table(stats):
-      readme.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
-      readme.write("|------|---------|------|------------|--------|------|-------|---------|\n")
-      for stat in stats:
-        task = f"{stat['task']:03}"
-        success = (("✅" if stat["message"] == "AC" else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
-        base = f"[{stat['base_path'].split("/")[0]}]({stat['base_path']})" if stat["success"] else "-"
-        checker = stat["compressor"] if stat["success"] else "-"
+  def emit_table(stats,writer):
+    writer.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
+    writer.write("|------|---------|------|------------|--------|------|-------|---------|\n")
+    for stat in stats:
+      task = f"{stat['task']:03}"
+      success = (("✅" if stat["message"] == "AC" else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
+      base = f"[{stat['base_path'].split("/")[0]}]({stat['base_path']})" if stat["success"] else "-"
+      checker = stat["compressor"] if stat["success"] else "-"
 
-        length = f"[{stat["length"]}](dist/task{task}.py)" if stat["success"] else "-"
-        best = others_best[stat['task'] - 1]
-        if stat["success"] and best != "-":
-          diff = stat["length"] - int(best)
-          best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
-          length = f"{length} ({'+' if diff > 0 else ''}{diff})"
-        message = stat["message"]
-        readme.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+      length = f"[{stat["length"]}](dist/task{task}.py)" if stat["success"] else "-"
+      best = others_best[stat['task'] - 1]
+      if stat["success"] and best != "-":
+        diff = stat["length"] - int(best)
+        best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
+        length = f"{length} ({'+' if diff > 0 else ''}{diff})"
+      message = stat["message"]
+      writer.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+  with open("README.md", "w") as file:
+    file.write("# Golf Stats\n\n")
 
-    readme.write(f"Accepted: {accepted}/400\n")
-    readme.write(f"Score: {score}\n\n")
-    readme.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
-    readme.write("## Task Details\n\n")
-    readme.write("<details><summary>Sorted by Task</summary>\n\n")
-    emit_table(stats)
-    readme.write("\n\n</details>\n\n")
+    file.write(f"Accepted: {accepted}/400\n")
+    file.write(f"Score: {score}\n\n")
+    file.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n")
+    file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
+    file.write("- [sorted by task](stats/task-sorted.md)\n")
+    file.write("- [sorted by ratio](stats/ratio-sorted.md)\n")
+    file.write("- [sorted by length](stats/length-sorted.md)\n")
+    file.write("- [sorted by best](stats/best-sorted.md)\n\n")
+    file.write("## Task Details\n\n")
+    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)), file)
+  with open("stats/task-sorted.md", "w") as file:
+    emit_table(stats, file)
+  with open("stats/ratio-sorted.md", "w") as file:
+    emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999) / int(others_best[x['task'] - 1])), file)
+  with open("stats/length-sorted.md", "w") as file:
+    emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999)), file)
+  with open("stats/best-sorted.md", "w") as file:
+    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1])), file)
 
-    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)))
