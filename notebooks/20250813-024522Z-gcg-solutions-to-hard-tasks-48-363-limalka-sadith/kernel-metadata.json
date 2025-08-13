@@ -1,0 +1,19 @@
+{
+  "id": "limalkasadith/gcg-solutions-to-hard-tasks-48-363",
+  "id_no": 88557671,
+  "title": "GCG \u2013 Solutions to Hard Tasks | 48, 363,....",
+  "code_file": "gcg-solutions-to-hard-tasks-48-363.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

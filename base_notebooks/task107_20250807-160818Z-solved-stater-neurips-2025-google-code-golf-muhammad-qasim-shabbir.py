@@ -1,9 +1,9 @@
-def p(j,u=range):
+def p(j,h=range):
  A=len(j);c=len(j[0]);E=len({*sum(j,[])}-{0})
- j=[[j[W//E][l//E]for l in u(c*E)]for W in u(A*E)];A*=E;c*=E
- for k in u(min(A,c),0,-1):
-  for W in u(A-k+1):
-   for l in u(c-k+1):
+ j=[[j[W//E][l//E]for l in h(c*E)]for W in h(A*E)];A*=E;c*=E
+ for k in h(min(A,c),0,-1):
+  for W in h(A-k+1):
+   for l in h(c-k+1):
     J=j[W][l]
     if J and all(r[l:l+k]==[J]*k for r in j[W:W+k]):
      for a,C in(-1,-1),(-1,k),(k,-1),(k,k):
