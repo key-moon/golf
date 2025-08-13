@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress('¥SÇ’â0½ó:ª1ùd£ƒ6ç]2bËU›²Í¤¯ß–D†Í$¥×ýÖÌÌÉG*˜„ DÓ\†5Vç±I¨\0æ†¯—}(‘hN’´ —U®ª52Nf§ºZ‡ 3Å2KJÄD|•XÑÇß«~¿dû¿ÂVëàÛr~¬Àó,}6In\nê)¢<JòbœL\rMÌcA£ÂdXØ‹ËElà¸RyšQÉDÈ[!Žü-›×Þø}dÏÑ‚žYmørÐ/§¡Qr­Yè¡bq Ñ­0¿ ¨\õQ#d¥PrË…¦ÊoýøÏæ‘”*&+\0üJÃ&‰c8bÕ\nª<ÌêÚ¦´û_eÅ	Î%1qnÐÅŽ?ÝöyÿçÁ¸Pãñk€­ümS|}û/)„m…Þ\æÿt­¢Ê’éŠ,«MÜšÕ~·vÂUø½úg\Ùäð¡’9´m]X˜/ê¹Ûº)yZ*Á¹ÿBÚ¥G~ØÜk.Î‡Ãi:3Ãáù4Ž³ïÓt™.Åùõº[<¾›ÌÆä)°žÐ‘‰=âæÁžG‡ÊÍ1€ÄÍ¼ ×ôØí¾¹O;Wï(ÀÝñ2.ø¥,h‚ß^O7c-€Pð.m±[v	¡æö!	kü3}Ílæ¡äh}‚PñŠªAXçï©‚°á0ŠÕ!lº£„<jBèu|=³4q”¬ý'.encode('L1'),-9))
+p=lambda g:[[a[a[0]==4]for a in zip(a,b[::-1])]for(a,b)in zip(g,g[::-1])]

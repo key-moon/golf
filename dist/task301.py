@@ -1,2 +1,2 @@
-#coding:L1
-import zlib;exec(zlib.decompress('=ÁÂ DïıŠ=‚UC¯MğÂxİÆ  IaŠñ÷4=íÛÌÎÌºL­«5%PÚ!Är9\rOë`cÏ¼Î¹ÚT—s(4ÀIà(Cõ$ğCÃ] ¤¢w*63Ç¯‘ö²Š‘›o*š~oÚ½‚àÀÔĞ›¨N/E—&ŞuÃ{¯¨êQ’É[ÖŞQœÏ/,Œ×ò œ?…Aã¤õˆ„>bö¿Îkp¶åkÇ'.encode('L1'),-9))
+A=sorted
+p=lambda g:A(map(A,g))
