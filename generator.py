@@ -131,23 +131,23 @@ if __name__ == "__main__":
 
   others_best = read_others_best()
   # Write stats to README
-  def emit_table(stats,writer):
+  def emit_table(stats,writer,base="."):
     writer.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
     writer.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
       success = (("✅" if stat["message"] == "AC" else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
-      base = f"[{stat['base_path'].split("/")[0]}]({stat['base_path']})" if stat["success"] else "-"
+      base = f"[{stat['base_path'].split("/")[0]}]({base}/{stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 
-      length = f"[{stat["length"]}](dist/task{task}.py)" if stat["success"] else "-"
+      length = f"[{stat["length"]}]({base}/dist/task{task}.py)" if stat["success"] else "-"
       best = others_best[stat['task'] - 1]
       if stat["success"] and best != "-":
         diff = stat["length"] - int(best)
         best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
         length = f"{length} ({'+' if diff > 0 else ''}{diff})"
       message = stat["message"]
-      writer.write(f"| [{task}](vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [prompt](prompts/task{task}.txt) / [vis-many](vis_many/task{task}.png) | {message} |\n")
+      writer.write(f"| [{task}]({base}/vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [prompt]({base}/prompts/task{task}.txt) / [vis-many]({base}/vis_many/task{task}.png) | {message} |\n")
   with open("README.md", "w") as file:
     file.write("# Golf Stats\n\n")
 
