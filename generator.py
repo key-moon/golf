@@ -154,7 +154,8 @@ if __name__ == "__main__":
     file.write(f"Accepted: {accepted}/400\n")
     file.write(f"Score: {score}\n\n")
     file.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n")
-    file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n\n")
+    file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
+    file.write("Alt Tables:\n")
     file.write("- [sorted by task](stats/task-sorted.md)\n")
     file.write("- [sorted by ratio](stats/ratio-sorted.md)\n")
     file.write("- [sorted by length](stats/length-sorted.md)\n")
@@ -162,11 +163,11 @@ if __name__ == "__main__":
     file.write("## Task Details\n\n")
     emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)), file)
   with open("stats/task-sorted.md", "w") as file:
-    emit_table(stats, file)
+    emit_table(stats, file, b="..")
   with open("stats/ratio-sorted.md", "w") as file:
-    emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999) / int(others_best[x['task'] - 1])), file)
+    emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999) / int(others_best[x['task'] - 1])), file, b="..")
   with open("stats/length-sorted.md", "w") as file:
-    emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999)), file)
+    emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999)), file, b="..")
   with open("stats/best-sorted.md", "w") as file:
-    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1])), file)
+    emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1])), file, b="..")
 
