@@ -31,20 +31,51 @@
 # 49
 # p=lambda g:[[hash((2174,0<g[0][0],0<g[0][2]))%7]]
 # p=lambda g:[[hash((288,1>g[0][0],0<g[0][2]))%12]]
+# p=lambda g:[[b"1236"[(1>g[0][0])*2+(1>g[0][2])]]]
+# 48
+# p=lambda g:[[b"????"[str(g)[10::2].count("0")]]]
 # 45
 p=lambda g:[[hash((1300,*map(bool,g[1])))%7]]
 
-# a = {
+# str(g)[4::2]
+# {1: 4, 2: 0, 3: 1, 6: 3}
+# {1: 4, 2: 0, 3: 1, 6: 3}
+# {1: 4, 2: 0, 3: 1, 6: 3}
+# str(g)[10::2]
+# str(g)[12::2]
+# str(g)[14::2]
+# str(g)[16::2]
+# {1: 3, 2: 0, 3: 1, 6: 2}
+
+# a = { 
 #   1:[[1,1,0],[1,0,1],[0,1,0]],
 #   2:[[1,0,1],[0,1,0],[1,0,1]],
 #   3:[[0,1,1],[0,1,1],[1,0,0]],
 #   6:[[0,1,0],[1,1,1],[0,1,0]]
 # }
-# for mod in range(7, 30):
-#   for mul in range(1, 10000):
-#     ks = [k for k, v in a.items()]
-#     vs = [hash((mul,*map(bool,v[2]))) % mod for k, v in a.items()]
-#     # print(ks, vs)
-#     if ks == vs:
-#       print(f"{mod=} {mul=}")
-#       pass
+# for start in range(len(str(a[1]))):
+#   for stride in range(1,len(str(a[1]))):
+#     s = set([str(v)[start::stride].count("0") for k, v in a.items()])
+#     if len(s) != 4:
+#       continue
+#     print(f"str(g)[{start}::{stride}]")
+#     print({k:str(v)[start::stride].count("0") for k, v in a.items()})
+#     for mod in range(7, 12):
+#       for mul in range(-1000, 10000):
+#         ks = [k for k, v in a.items()]
+#         vs = [str(v)[start::stride].count("0")*mul % mod for k, v in a.items()]
+#         if ks == vs:
+#           print(f"{mod=} {mul=}")
+#           break
+
+
+
+# for i in 0,1:
+#   for mod in range(7, 12):
+#     for mul in range(-1000, 10000):
+#       ks = [k for k, v in a.items()]
+#       vs = [hash((mul,*map(bool,v[i]))) % mod for k, v in a.items()]
+#       # print(ks, vs)
+#       if ks == vs:
+#         print(f"{mod=} {mul=} {i=}")
+#         break
