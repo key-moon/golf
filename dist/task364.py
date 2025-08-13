@@ -1,7 +1,4 @@
 #coding:L1
-import zlib;exec(zlib.decompress('''¥VWwò8}çWxß¤É—¶£=Ç¢w“žpRL	)&œ³©ÿ}g$“­/²ÊÕ«Ñ•äz{,\0És•<Ob/y}R,à,ð†ã‰x£˜Š¡'±“gž`u.]8U¥®š-gÂcôb¸uTÄìÏ‰›.l;ZË&!X†u×²¥`gl8¿©xªöÎ‚ÞÖùÆ6½müppÛÙY;»2žò’Cbý£Ù$þ}ØeRÛZ¸®¾–×\àó-™Dñb*F¬î-,÷-·¹9$>)z_lî9Úb4ÅÓ$Š¯Ñ<?=(®¦ªçì!}g¿H“äp¯^…ü~=~Ž›’#cÄŒW€¢~	ÊÂè„¹°Y1'l+/
-ù’Å«Å|y¶ðŒgC=‰3Î±Ü>?×öi9šÁÐ
-±•Î–á.+V/	%jB	C.»ÊôÌ%ƒ|!Ä¬®J«ƒÂ|¢¦aÖ—£"[ ¥6ÓV?lÑ®Ädé˜+ÑCƒÃÛè‰}ÓÆžÔS×~´™–æl¤ˆÐL¹mWn[üþZý¦,PÎ!¤G›ï¹wwªš¨ê^7”	´&Ðjm¬½Y¬ŒWjÊ~Q<Œ¦	ÓÅr½èsÈ5j#”ò•™]Êùj®Ø+÷ÊçBf¼ô‚\Ò¢ÕT·îYçùuGù‹Có‰ÓàåãbsÃdŠ·%h1zÑä¸=Ž•ßÚ²~Õ~÷`?¬AÒý#Q"ñ3=ÌhMeÒt`“¤ÕÜõ8NFñ³ÂÎšze}ŠÊäM\rÃNÑrAñÎj˜ñO¿!ÞËŸØóÇíèAéCÖà¿o»×5
-©Jq+ª¡G¼&©è d¦I_ë©æµó=kB…ã¢u£Âýî‡x×¹srx„fßƒüÞlße~Ÿäy\rÑÝ¨b¥­ÛÐáë6§m\rPúúúØú;_8˜í¡WlƒÞ¨ì¶¡?ü¿ôîq7î
-Îˆ ¿ÀGýAä½ä±},ì*[óKXß//¯Çuy‰×ôe4¹Ñ—5iÁA±³BöŠd^Q…z0ˆÝU¼i~5jªÒ\0ˆ,kVÑñUDË{ùŠ^€Tc	Ò*J´hýi5Ù-ÜÀ0Î[vÃ†”K<3ÒÓ²ä"á¡‹¡Ÿ+}ùÙÑSÄÍ†^6¶—]ð£8¡ç«æ·áEÿXb2×ŠA¨ÿÄgî'©*ÌµH$Dßü …¦Õƒ‘ŽN'ËéìSç‚#Û·¹wçYï¦f.[:¢w¯Dô6ö± ®¿×f²4–c‰ß’ë…>±ÏÕÄâQÕ5¨qî¢Ájp0yVPŽ0ßºÊ})ÐœUDø¦ë6@Òó„Çèv¹_è"¸_x
-ÏB!,q¿N§Pæ~“*v¡Îý–Ð~@@ÛÔšÜïˆp£ïÂÏÜ¾Ø^{TaÚÜþ^õ¾‘lz¡ËÏÿ'''.encode('L1'),-9))
+import zlib;exec(zlib.decompress('''•UMsâ8½ûWhoÒ¤3{Ø¢·J¶16ßÉòAq°ƒ“xBLŠ8µÌ$óß·%9Ž=‡½ˆV÷ë×­×²˜añã9u¦¸É^
+Ga–ÎŸâgg€/iáDø”åNˆ»8¿O"{§w»íÏ4×q³—,)âü6u|,^Ÿ7©ÓÃMš;ëôŽ-¸]Z¼îræqÅî¶;®ÀYÎ
+	º¬¢c «L.¨&èºÉt”òŽÃ<ðÑ•ô±GA eÙZ	‡e„Ù¼ÕE¯°8_32ýnÿƒÚae	µt)cEk{µ2Ü7µúüÍ0ž¶Aà´- ¾?)÷d4ã'Uü—m8®‘ž‘ýNUläìx¹&Y¹kú­LÒ #Ý<Aú1—‘z!×™½WíµZ¥¦·:·‡K—iˆ"-U¶Z‘¤.Éî‹tó’.ë#¦ ¬Æ:à=éì}½Ý¾æ…%_×óù{ð3{æ_ÌDËúéoè¿;\r1ÃÕGAl}à•Ã†0BM!Ç0Áµ6\ð1âCˆø&B0@Ïz<ë™â›9SuäD´ ï:083ÊqAÕC>Êœà`@V3™¾ÏìYFZ<ðôy0l\_ÙÇ)Ÿò‘ŽÑ;„È~&„Ð×:ì>nxÔvúËpµŒVè:¬RÓ¯“õm÷¶ð5Õõø‰Ïgz¼l²ÍSgÀ…ŒÌú\ræÍ/0Ñ"/0Ömx6íÌ´É]æÂvh7Qçv›Yþš’sˆj˜¯.0_†‘'uVyi7Â·àyþyÈ6)M~$þninv®;#ÃÔu™‘ñ³1M°,ðQb¬]Ûìøª8û¯×œ!tT³	…<7÷ÂµK¾ €\\u¿}îvçº56ÂóÓˆŒ©aèó™ Æ>‡nŽ\_Bãvyžîž)U‚z§éT æc¨>(ÃþpŒ½Ur«™bEažæÓkZNÚ†,ûŸdŸLÍtùÉ4&hIÞÄOÉ:fûŽâ1ßHh±ò|×JÀ\0Ñ5óc·bùÖ€Ì¨®ê/ší¾?ò}ÝŸ¶MlÊ<q|o_â½yo-~ÂU“úÈciÑs®šiç'5j$q£?ó1)ýß¥w‰MÙ4RbÄÄ¸Ÿ¬»HLmÓ¥$+!«Ÿ$ÝöáWÿ¡ÿaZ ^¶É¢¥–¡e”ðÛà±$¶¿g‰N„ú-÷!B*¼çÌw¯)1)lL!=ó'ÈàAÈžóGð„ì“osè	’yÜ	9 ðB!gø %¤‹zÞ}!ÏðÂ^.Ès3!/QOK^áˆŠþ	—B^“‡7ä¹‚6\“g!dBžøbQ>ÔË/C>%qWÿ'''.encode('L1'),-9))

@@ -56,11 +56,14 @@ def get_stripper(**minifier_opt):
         else:
             _minifier_opt = minifier_opt
         source = python_minifier.minify(source, **_minifier_opt)
+        # 数のリテラル周りの切り詰め
         # if, else, for, and, orの前にはspace不要 / forの後にはspace不要
         # orの前が0だとoct literalのパースが走るのでそれだけ注意
-        # TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )
-        source = re.sub(r'([0-9])[ \t]+(if|else|for|and)', r'\1\2', source)
-        source = re.sub(r'([1-9])[ \t]+(or)', r'\1\2', source)
+        # シンボル名に含まれている場合に死ぬので、雑なチェックで弾く これは rename で A0 みたいな名前が出てくることでおこる
+        # すり抜ける場合はあるがゴルフ優先
+        #  TODO: 実はもっと削れる可能性はある ( if1: print(1) みたいなのは valid )
+        source = re.sub(r'([^ABC][0-9])[ \t]+(if|else|for|and)', r'\1\2', source)
+        source = re.sub(r'([^ABC][1-9])[ \t]+(or)', r'\1\2', source)
         source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
         return source.replace("\t", " ")
     return strip

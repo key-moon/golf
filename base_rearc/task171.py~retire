@@ -1,0 +1,20 @@
+def V(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def G(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def J(A):return tuple(map(max,zip(*G(A))))
+def Y(A):return tuple(map(min,zip(*G(A))))
+def E(A):
+	if len(A)==0:return A
+	F,G=Y(A);H,I=J(A);B,C=min(F,H),min(G,I);D,E=max(F,H),max(G,I);K={(A,C)for A in range(B,D+1)}|{(A,E)for A in range(B,D+1)};L={(B,A)for A in range(C,E+1)}|{(D,A)for A in range(C,E+1)};return frozenset(K|L)
+def M(A,B,C):
+	H,I=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in G(C):
+		if 0<=E<H and 0<=F<I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def H(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def p(I):I=tuple(map(tuple,I));A=H(I);B=E(A);C=M(I,8,B);return[*map(list,C)]

@@ -1,0 +1,6 @@
+def H(a,b):return a+b
+def G(a,b):return tuple(A+B for(A,B)in zip(a,b))
+def Y(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def J(A):return tuple(tuple(A[::-1])for A in A[::-1])
+def V(A):return tuple(A for A in zip(*A[::-1]))
+def p(I):I=tuple(map(tuple,I));A=V(I);B=J(I);C=Y(I);D=G(I,A);E=G(C,B);F=H(D,E);return[*map(list,F)]

@@ -1,0 +1,59 @@
+def H(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def M(A):return G(A)|H(A)
+def G(A):return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
+def U(A):return max(A for(A,B)in J(A))
+def E(A):return min(A for(A,B)in J(A))
+def V(A):return max(A for(B,A)in J(A))
+def Q(A):return min(A for(B,A)in J(A))
+def GH(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return V(A)-Q(A)+1
+def GG(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return U(A)-E(A)+1
+def GM(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def GJ(A):return GG(A),GH(A)
+def GV(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def J(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def S(A):return tuple(map(max,zip(*J(A))))
+def K(A):return tuple(map(min,zip(*J(A))))
+def GE(A):
+	if len(A)==0:return A
+	F,G=K(A);H,I=S(A);B,C=min(F,H),min(G,I);D,E=max(F,H),max(G,I);J={(A,C)for A in range(B,D+1)}|{(A,E)for A in range(B,D+1)};L={(B,A)for A in range(C,E+1)}|{(D,A)for A in range(C,E+1)};return frozenset(J|L)
+def L(A,B):return GM(B,K(A),GJ(A))
+def P(A,B):D,E=len(B),len(B[0]);return frozenset((B[A][C],(A,C))for(A,C)in J(A)if 0<=A<D and 0<=C<E)
+def W(A,B,C,D):
+	L=R(A)if D else None;N=set();H=set();Q,S=len(A),len(A[0]);T=X(A);U=M if C else G
+	for E in T:
+		if E in H:continue
+		I=A[E[0]][E[1]]
+		if I==L:continue
+		O={(I,E)};J={E}
+		while len(J)>0:
+			P=set()
+			for F in J:
+				K=A[F[0]][F[1]]
+				if I==K if B else K!=L:O.add((K,F));H.add(F);P|={(A,B)for(A,B)in U(F)if 0<=A<Q and 0<=B<S}
+			J=P-H
+		N.add(frozenset(O))
+	return frozenset(N)
+def X(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def Y(A,B):
+	if isinstance(A,tuple):return sum(A.count(B)for A in A)
+	return sum(A==B for(A,C)in A)
+def R(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def GY(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def Z(A,B):return max(A,key=B)
+def p(I):A=False;I=tuple(map(tuple,I));B=X(I);C=GE(B);D=P(C,I);J=R(D);E=W(I,A,A,True);F=GY(Y,1);G=Z(E,F);H=L(G,I);return[*map(list,H)]

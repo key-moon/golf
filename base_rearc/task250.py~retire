@@ -1,0 +1,55 @@
+def GH(A,B):return type(B)(B for B in B if B!=A)
+def GM(A):return next(iter(A))
+def GQ(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def S(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def M(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def Q(A):return tuple(map(max,zip(*H(A))))
+def X(A):return tuple(map(min,zip(*H(A))))
+def Y(A):return max(A for(B,A)in H(A))
+def K(A):return min(A for(B,A)in H(A))
+def E(A):return max(A for(A,B)in H(A))
+def V(A):return min(A for(A,B)in H(A))
+def GG(A):G,H=V(A)-1,K(A)-1;I,J=E(A)+1,Y(A)+1;B,C=min(G,I),min(H,J);D,F=max(G,I),max(H,J);L={(A,C)for A in range(B,D+1)}|{(A,F)for A in range(B,D+1)};M={(B,A)for A in range(C,F+1)}|{(D,A)for A in range(C,F+1)};return frozenset(L|M)
+def R(A):
+	if len(A)==0:return frozenset({})
+	B=H(A);C,D=X(B);E,F=Q(A);return frozenset((A,B)for A in range(C,E+1)for B in range(D,F+1))
+def GE(A,B):return GS(A,M(A),H(B))
+def GS(A,B,C):
+	G,I=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in H(C):
+		if 0<=E<G and 0<=F<I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def GV(A):return next(iter(A))[0]
+def J(a,b):return min(abs(A-C)+abs(B-D)for(A,B)in H(a)for(C,D)in H(b))
+def G(A):return frozenset(frozenset((A,(C,E))for(C,D)in enumerate(A)for(E,A)in enumerate(D)if A==B)for B in S(A)-{M(A)})
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def GK(A,B):return type(B)(A(B)for B in B)
+def GP(A,a,b):return lambda x:A(a(x),b(x))
+def GJ(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def GR(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def GU(h,g,f):return lambda x:h(g(f(x)))
+def W(A,B):return lambda x:A(B(x))
+def GX(A,B):return GM(GH(B,A))
+def P(A,B):return type(A)(A for A in A if B(A))
+def L(A):return frozenset({A})
+def GY(A,B):return min(A,key=B)
+def Z(A,B):return max(A,key=B)
+def GL(A):return len(A)
+def U(a,b):return a==b
+def p(I):I=tuple(map(tuple,I));B=G(I);D=GP(U,H,R);E=P(B,D);C=Z(E,GL);A=GX(B,C);F=GV(A);K=H(A);M=GG(C);N=GJ(GY,M);O=GJ(GJ,J);Q=GR(W,L);S=GU(N,Q,O);T=W(S,L);V=GK(T,K);X=GE(I,A);Y=GS(X,F,V);return[*map(list,Y)]

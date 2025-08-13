@@ -1,0 +1,87 @@
+def Y(A):return max(A for(B,A)in H(A))
+def U(A):return min(A for(B,A)in H(A))
+def P(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def V(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def K(A):return tuple(map(max,zip(*H(A))))
+def R(A):return tuple(map(min,zip(*H(A))))
+def GG(A):
+	if isinstance(A,tuple):return tuple(A[::-1]for A in A)
+	B=R(A)[1]+K(A)[1]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C,B-D))for(A,(C,D))in A)
+	return frozenset((A,B-C)for(A,C)in A)
+def HH(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def GK(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def HY(A,B,C):
+	G,I=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in H(C):
+		if 0<=E<G and 0<=F<I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def L(A):
+	if isinstance(A,tuple):return tuple(zip(*(A[::-1]for A in A[::-1])))
+	return GG(GY(GG(A)))
+def GY(A):
+	if isinstance(A,tuple):return tuple(zip(*A))
+	B,C=R(A)
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(E-C+B,D-B+C))for(A,(D,E))in A)
+	return frozenset((D-C+B,A-B+C)for(A,D)in A)
+def S(A):
+	if isinstance(A,tuple):return A[::-1]
+	B=R(A)[0]+K(A)[0]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B-C,D))for(A,(C,D))in A)
+	return frozenset((B-A,C)for(A,C)in A)
+def J(A):return min(A for(A,B)in H(A))
+def G(A):return frozenset(frozenset((A,(C,E))for(C,D)in enumerate(A)for(E,A)in enumerate(D)if A==B)for B in P(A)-{V(A)})
+def GW(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def GS(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Y(A)-U(A)+1
+def GE(A,B):return GQ(HG(A,B))
+def GM(A,B):return type(A)(A(B)for A in A)
+def HG(A,B):return type(B)(A(B)for B in B)
+def GU(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def GL(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def W(A,B):return lambda x:A(x)==B
+def GZ(h,g,f):return lambda x:h(g(f(x)))
+def GV(A,B):return lambda x:A(B(x))
+def Z(a,b):return a,b
+def X(A,B,C):return tuple(range(A,B,C))
+def GP(A):return next(iter(A))
+def GJ(A,B):return next(A for A in A if B(A))
+def GH(A):return frozenset({A})
+def GQ(A):return type(A)(B for A in A for B in A)
+def Q(a,b):return type(a)((*a,*b))
+def GX(n):return n*2 if isinstance(n,int)else(n[0]*2,n[1]*2)
+def GR(n):return-n if isinstance(n,int)else(-n[0],-n[1])
+def M(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a*b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]*b[0],a[1]*b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a*b[0],a*b[1]
+	return a[0]*b,a[1]*b
+def E(x):return x
+def p(I):I=tuple(map(tuple,I));H=Z(E,GY);K=Z(L,S);N=Q(H,K);O=GZ(J,GQ,G);P=GL(GM,I);R=GZ(GP,P,GH);T=GV(O,R);U=W(T,0);D=GJ(N,U);F=D(I);V=G(F);A=GQ(V);B=GS(A);Y=Z(-1,B);a=GR(B);b=Z(-1,a);c=GX(B);d=Z(-2,c);e=GX(B);f=GR(e);g=Z(-2,f);h=M(3,10);C=X(0,h,1);i=GU(M,Y);j=HG(i,C);k=GU(M,b);l=HG(k,C);m=GU(M,d);n=HG(m,C);o=GU(M,g);p=HG(o,C);q=GU(GW,A);r=GE(q,j);s=GU(GW,A);t=GE(s,l);u=GU(GW,A);v=GE(u,n);w=GU(GW,A);x=GE(w,p);y=Q(r,t);z=HY(F,8,y);A0=Q(v,x);A1=GK(z,A0);A2=D(A1);return[*map(list,A2)]

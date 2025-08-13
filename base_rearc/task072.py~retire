@@ -1,0 +1,59 @@
+def GJ(A,B):return type(B)(B for B in B if B!=A)
+def GU(A):return next(iter(A))
+def X(A):return max(A for(A,B)in J(A))
+def R(A):return min(A for(A,B)in J(A))
+def V(A):return max(A for(B,A)in J(A))
+def S(A):return min(A for(B,A)in J(A))
+def GW(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def J(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def GR(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def GS(A):return tuple(A for A in zip(*A[::-1]))
+def M(A):return GR(H(GS(A)))
+def P(A):return GR(W(GS(A)))
+def H(A):return A[len(A)//2+len(A)%2:]
+def W(A):return A[:len(A)//2]
+def GY(a,b):
+	A,B=a;C,D=b;E=min(A,C);F=max(A,C)+1;G=min(B,D);H=max(B,D)+1
+	if A==C:return frozenset((A,B)for B in range(G,H))
+	elif B==D:return frozenset((A,B)for A in range(E,F))
+	elif C-A==D-B:return frozenset((A,B)for(A,B)in zip(range(E,F),range(G,H)))
+	elif C-A==B-D:return frozenset((A,B)for(A,B)in zip(range(E,F),range(H-1,G-1,-1)))
+	return frozenset()
+def GV(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def GZ(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in J(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def K(A,B):D,E=len(B),len(B[0]);return frozenset((B[A][C],(A,C))for(A,C)in J(A)if 0<=A<D and 0<=C<E)
+def U(A):return len(Z(A))
+def Z(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def GH(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def GL(A):return GX(A),GK(A)
+def GK(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return V(A)-S(A)+1
+def GX(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return X(A)-R(A)+1
+def GE(A,a,b):return a if A else b
+def GG(a,b):return a,b
+def GP(A,B):return GU(GJ(B,A))
+def GM(j):return 0,j
+def E(x):return x-1 if isinstance(x,int)else(x[0]-1,x[1]-1)
+def Y(a,b):return type(a)(A for A in a if A not in b)
+def G(a,b):return a&b
+def L(a,b):return type(a)((*a,*b))
+def Q(a,b):return a==b
+def GQ(n):return n//2 if isinstance(n,int)else(n[0]//2,n[1]//2)
+def p(I):I=tuple(map(tuple,I));N=GK(I);B=GQ(N);O=GM(B);R=GX(I);S=E(R);T=GG(S,B);V=GY(O,T);X=K(V,I);a=U(X);C=Q(a,1);b=GE(C,P,W);c=GE(C,M,H);A=b(I);D=c(I);d=Z(A);e=GP(d,0);f=Z(D);g=GP(f,0);h=GL(A);i=GV(0,h);F=GH(A,e);J=GH(D,g);j=L(F,J);k=G(F,J);l=Y(j,k);m=GZ(i,3,l);return[*map(list,m)]

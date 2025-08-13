@@ -1,0 +1,9 @@
+def G(A):return A[len(A)//2+len(A)%2:]
+def E(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def R(A):return tuple(A for A in zip(*A[::-1]))
+def H(A):return E(G(R(A)))
+def Y(A):return E(V(R(A)))
+def V(A):return A[:len(A)//2]
+def M(A,a,b):return a if A else b
+def J(a,b):return a==b
+def p(I):I=tuple(map(tuple,I));A=Y(I);B=H(I);C=J(A,B);D=M(C,Y,V);E=D(I);return[*map(list,E)]

@@ -1,0 +1,24 @@
+def X(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def Y(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def J(A):return frozenset((A[0],B)for B in range(30))
+def H(A):return frozenset((B,A[1])for B in range(30))
+def R(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def U(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in Y(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def M(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def K(A,a,b):return lambda x:A(a(x),b(x))
+def E(A,a,b):return a if A else b
+def V(a,b):return type(a)((*a,*b))
+def G(A,B):return A in B
+def p(I):I=tuple(map(tuple,I));A=M(I);B=G(1,A);C=G(2,A);D=E(B,(1,1),(2,2));F=E(C,(0,1),D);L=K(V,H,J);N=L(F);O=R(0,(3,3));P=U(O,5,N);return[*map(list,P)]

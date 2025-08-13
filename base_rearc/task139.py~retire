@@ -1,0 +1,45 @@
+def P(A,B):return type(B)(A(B)for B in B)
+def Q(A):return type(A)(B for A in A for B in A)
+def G(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def Y(A):return H(A)|G(A)
+def H(A):return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
+def V(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def M(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def S(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def R(A):return tuple(map(max,zip(*J(A))))
+def E(A):return tuple(map(min,zip(*J(A))))
+def X(A):
+	if len(A)==0:return frozenset({})
+	B=J(A);C,D=E(B);F,G=R(A);return frozenset((A,B)for A in range(C,F+1)for B in range(D,G+1))
+def J(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def L(B):
+	if len(B)==0:return frozenset({})
+	return X(B)-J(B)
+def W(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in J(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def U(A,B,C,D):
+	L=M(A)if D else None;N=set();G=set();Q,R=len(A),len(A[0]);S=V(A);T=Y if C else H
+	for E in S:
+		if E in G:continue
+		I=A[E[0]][E[1]]
+		if I==L:continue
+		O={(I,E)};J={E}
+		while len(J)>0:
+			P=set()
+			for F in J:
+				K=A[F[0]][F[1]]
+				if I==K if B else K!=L:O.add((K,F));G.add(F);P|={(A,B)for(A,B)in T(F)if 0<=A<Q and 0<=B<R}
+			J=P-G
+		N.add(frozenset(O))
+	return frozenset(N)
+def K(A,B):return Q(P(A,B))
+def p(I):A=True;I=tuple(map(tuple,I));B=U(I,A,A,A);C=K(L,B);D=W(I,7,C);return[*map(list,D)]

@@ -1,5 +1,7 @@
 import re
 import string
+
+from tqdm import tqdm
 consts = {
 "F":False,
 "T":True,
@@ -434,7 +436,7 @@ task2arc = {
 "task400":"ff805c23",
 }
 
-import python_minifier
+import python_minifier 
 
 def extract_functions(file_path):
   with open(file_path, 'r') as file:
@@ -444,7 +446,8 @@ def extract_functions(file_path):
   return functions
 
 dsl_funcs = extract_functions("arc_dsl/dsl.py")
-solver_funcs = extract_functions("arc_dsl/solvers.py")
+# solver_funcs = extract_functions("arc_dsl/solvers.py")
+solver_funcs = extract_functions("arc_dsl/verifiers.py")
 
 dep_re = r"(?<!\.)(\w+)"
 
@@ -467,13 +470,13 @@ def resolve_dependencies(impl: str):
 s = set(string.ascii_uppercase) - set("ABCDNITFO")
 name_cands = [*s, *[a+b for a in s for b in s]]
 
-for i in range(1,401):
+for i in tqdm(range(1,401)):
   task = f"task{i:03}"
   arc = task2arc[task]
   solver = [impl for impl, name in solver_funcs if arc in name][0]
-  solver = solver.replace(f"solve_{arc}", "p")
+  solver = solver.replace(f"solve_{arc}", "p").replace(f"verify_{arc}", "p")
   solver=solver.replace(":", ":\n    I=tuple(map(tuple,I))")
-  solver=solver.replace("return O", "return [*map(list,O)]")
+  solver = re.sub(r"return (x\d+)", "return [*map(list,\\1)]", solver)
 
   deps, impls = resolve_dependencies(solver)
   impl = "\n".join(impls[::-1])
@@ -481,11 +484,10 @@ for i in range(1,401):
   for name, val in reversed(consts.items()):
     impl = impl.replace(name, repr(val))
 
-
   deps = sorted(deps, key=len, reverse=True)
   for dep, name in zip(deps, name_cands):
     impl = re.sub(rf"(?<!\.){dep}", name, impl)
 
   impl = python_minifier.minify(impl)
 
-  open(f"base_arcdsl/{task}.py", "w").write(impl)
+  open(f"base_rearc/{task}.py", "w").write(impl)

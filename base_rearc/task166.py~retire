@@ -1,0 +1,28 @@
+def M(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def X(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def J(A):return tuple(map(max,zip(*G(A))))
+def Y(A):return tuple(map(min,zip(*G(A))))
+def V(A):
+	if len(A)==0:return frozenset({})
+	B=G(A);C,D=Y(B);E,F=J(A);return frozenset((A,B)for A in range(C,E+1)for B in range(D,F+1))
+def G(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def R(B):
+	if len(B)==0:return frozenset({})
+	return V(B)-G(B)
+def K(A,B,C):
+	H,I=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in G(C):
+		if 0<=E<H and 0<=F<I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def H(A):return frozenset(frozenset((A,(C,E))for(C,D)in enumerate(A)for(E,A)in enumerate(D)if A==B)for B in M(A))
+def E(A,B):return min(A,key=B)
+def U(A):return len(A)
+def p(I):I=tuple(map(tuple,I));A=H(I);B=E(A,U);C=R(B);D=K(I,2,C);return[*map(list,D)]

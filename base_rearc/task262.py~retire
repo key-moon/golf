@@ -1,0 +1,58 @@
+def V(A):return max(A for(A,B)in H(A))
+def J(A):return min(A for(A,B)in H(A))
+def Y(A):return max(A for(B,A)in H(A))
+def GY(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def GE(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def K(A,n):B,D=len(A)//n,len(A[0]);E=len(A)%n!=0;return tuple(GE(A,(B*C+C*E,0),(B,D))for C in range(n))
+def E(A):return min(A for(B,A)in H(A))
+def X(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def Z(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Y(A)-E(A)+1
+def L(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return V(A)-J(A)+1
+def G(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return min(set(B),key=B.count)
+def GH(A,B):return type(B)(A(B)for B in B)
+def GJ(A,a,b):return lambda x:A(a(x),b(x))
+def W(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def GG(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def U(A,B):return lambda x:A(B(x))
+def Q(a,b):return a or b
+def GV(a,b):return a and b
+def R(a,b):return a>b
+def P(A,B):return tuple(A for B in range(B))
+def GM(b):return not b
+def S(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a//b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]//b[0],a[1]//b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a//b[0],a//b[1]
+	return a[0]//b,a[1]//b
+def M(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a*b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]*b[0],a[1]*b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a*b[0],a*b[1]
+	return a[0]*b,a[1]*b
+def GR(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a+b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]+b[0],a[1]+b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a+b[0],a+b[1]
+	return a[0]+b,a[1]+b
+def p(I):I=tuple(map(tuple,I));F=G(I);H=L(I);J=K(I,H);N=GG(X,F);B=U(E,N);O=Z(I);C=S(O,3);T=M(C,2);V=W(R,C);A=U(V,B);Y=W(R,T);a=U(Y,B);b=U(GM,A);D=GJ(GV,a,b);c=GJ(Q,A,D);d=U(GM,c);e=GG(M,2);f=U(e,A);g=GG(M,4);h=U(g,D);i=GG(M,3);j=U(i,d);k=GJ(GR,f,h);l=GJ(GR,k,j);m=Z(I);n=GG(P,m);o=U(n,l);p=GH(o,J);return[*map(list,p)]

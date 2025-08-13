@@ -1,3 +1,2 @@
-B=set
-A=len
-def p(g):s=next(r for r in g if A(B(r))==1)[0];C=sum(A(B(r))==1for r in g);D=sum(A(B(c))==1for c in zip(*g));d=next(x for r in g for x in r if x!=s);return[[d]*(D+1)]*(C+1)
+#coding:L1
+import zlib;exec(zlib.decompress('U1ƒ0E¯ân6]ÊÚÈ\#b"N	Rä€qú&êP˜ş—ÿ³zgNRvTğ…˜ @ô°HÂ,õNÄÜ“}Mfà|¬x._dÆ0ÿ¹gÜ°DÆıŒåjlµ´ªM^œÉ¨ì‡&kİÔáøì©ÆPã'.encode('L1'),-9))

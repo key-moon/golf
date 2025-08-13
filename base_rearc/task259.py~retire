@@ -1,0 +1,32 @@
+def K(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def V(A):return max(A for(A,B)in H(A))
+def M(A):return min(A for(A,B)in H(A))
+def Y(A):return max(A for(B,A)in H(A))
+def R(A):return min(A for(B,A)in H(A))
+def L(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Y(A)-R(A)+1
+def Q(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return V(A)-M(A)+1
+def S(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def Z(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def E(A):return tuple(map(min,zip(*H(A))))
+def W(A):return Q(A),L(A)
+def U(A,B,C):return tuple(tuple(C if A==B else A for A in A)for A in A)
+def X(A,B):return Z(B,E(A),W(A))
+def G(A):return frozenset(frozenset((A,(C,E))for(C,D)in enumerate(A)for(E,A)in enumerate(D)if A==B)for B in K(A)-{J(A)})
+def J(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def P(A):return type(A)(B for A in A for B in A)
+def p(I):I=tuple(map(tuple,I));A=G(I);B=P(A);C=X(B,I);D=J(I);E=U(C,D,0);return[*map(list,E)]

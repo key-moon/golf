@@ -1,0 +1,44 @@
+def G(A):return frozenset({(A[0]-1,A[1]-1),(A[0]-1,A[1]+1),(A[0]+1,A[1]-1),(A[0]+1,A[1]+1)})
+def Y(A):return H(A)|G(A)
+def H(A):return frozenset({(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)})
+def V(A):return frozenset((B,C)for B in range(len(A))for C in range(len(A[0])))
+def M(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def S(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def J(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def L(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in J(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def K(A,B,C,D):
+	L=M(A)if D else None;N=set();G=set();Q,R=len(A),len(A[0]);S=V(A);T=Y if C else H
+	for E in S:
+		if E in G:continue
+		I=A[E[0]][E[1]]
+		if I==L:continue
+		O={(I,E)};J={E}
+		while len(J)>0:
+			P=set()
+			for F in J:
+				K=A[F[0]][F[1]]
+				if I==K if B else K!=L:O.add((K,F));G.add(F);P|={(A,B)for(A,B)in T(F)if 0<=A<Q and 0<=B<R}
+			J=P-G
+		N.add(frozenset(O))
+	return frozenset(N)
+def P(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def R(A):return tuple(map(max,zip(*J(A))))
+def U(A):return tuple(map(lambda ix:{0:max,1:min}[ix[0]](ix[1]),enumerate(zip(*J(A)))))
+def X(A):return tuple(map(lambda ix:{0:min,1:max}[ix[0]](ix[1]),enumerate(zip(*J(A)))))
+def E(A):return tuple(map(min,zip(*J(A))))
+def Q(A,B):return type(B)(A(B)for B in B)
+def p(I):I=tuple(map(tuple,I));A=K(I,True,False,True);B=Q(E,A);C=Q(X,A);D=Q(U,A);F=Q(R,A);G=P(B,(-1,-1));H=P(C,(-1,1));J=P(D,(1,-1));M=P(F,(1,1));N=L(I,1,G);O=L(N,2,H);S=L(O,3,J);T=L(S,4,M);return[*map(list,T)]

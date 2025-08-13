@@ -1,0 +1,26 @@
+def P(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def U(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def Y(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def V(A):return tuple(map(max,zip(*H(A))))
+def J(A):return tuple(map(min,zip(*H(A))))
+def E(A):
+	if len(A)==0:return frozenset({})
+	B=H(A);C,D=J(B);E,F=V(A);return frozenset((A,B)for A in range(C,E+1)for B in range(D,F+1))
+def K(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def Q(A):return next(iter(A))[0]
+def G(A):return frozenset(frozenset((A,(C,E))for(C,D)in enumerate(A)for(E,A)in enumerate(D)if A==B)for B in U(A)-{Y(A)})
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def L(A,a,b):return lambda x:A(a(x),b(x))
+def X(A,B):return lambda x:A(B(x))
+def R(A,B):return next(A for A in A if B(A))
+def M(a,b):return a==b
+def S(b):return not b
+def p(I):I=tuple(map(tuple,I));A=G(I);B=L(M,H,E);C=X(S,B);D=R(A,C);F=Q(D);J=K(F,(1,1));return[*map(list,J)]

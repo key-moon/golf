@@ -1,0 +1,44 @@
+def R(A):return max(A for(A,B)in Y(A))
+def J(A):return max(A for(B,A)in Y(A))
+def GY(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def Y(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def X(A):return min(A for(B,A)in Y(A))
+def E(A):return min(A for(A,B)in Y(A))
+def M(A):return frozenset((A[0],B)for B in range(30))
+def G(A):return A[len(A)//2+len(A)%2:]
+def U(A):return A[:len(A)//2]
+def P(a,b):
+	A,B=a;C,D=b;E=min(A,C);F=max(A,C)+1;G=min(B,D);H=max(B,D)+1
+	if A==C:return frozenset((A,B)for B in range(G,H))
+	elif B==D:return frozenset((A,B)for A in range(E,F))
+	elif C-A==D-B:return frozenset((A,B)for(A,B)in zip(range(E,F),range(G,H)))
+	elif C-A==B-D:return frozenset((A,B)for(A,B)in zip(range(E,F),range(H-1,G-1,-1)))
+	return frozenset()
+def Z(A):return E(A)+W(A)//2,X(A)+GG(A)//2
+def GJ(A,B,C):
+	G,H=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in Y(C):
+		if 0<=E<G and 0<=F<H:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def Q(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def GG(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return J(A)-X(A)+1
+def W(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return R(A)-E(A)+1
+def H(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return min(set(B),key=B.count)
+def K(a,b):return a,b
+def L(j):return 0,j
+def S(i):return i,0
+def V(x):return x-1 if isinstance(x,int)else(x[0]-1,x[1]-1)
+def GH(n):return n//2 if isinstance(n,int)else(n[0]//2,n[1]//2)
+def p(I):I=tuple(map(tuple,I));J=U(I);N=G(I);B=H(J);C=H(N);O=Q(I,B);R=Z(O);T=Q(I,C);X=Z(T);F=W(I);Y=GG(I);a=M(R);b=GJ(I,B,a);c=M(X);d=GJ(b,C,c);A=V(Y);D=V(F);E=GH(F);e=L(A);f=P((0,0),e);g=GJ(d,B,f);h=S(D);i=K(D,A);j=P(h,i);k=GJ(g,C,j);l=V(E);m=S(l);n=P((0,0),m);o=GJ(k,B,n);p=L(A);q=V(E);r=K(q,A);s=P(p,r);t=GJ(o,B,s);u=S(E);v=S(D);w=P(u,v);x=GJ(t,C,w);y=K(E,A);z=K(D,A);A0=P(y,z);A1=GJ(x,C,A0);return[*map(list,A1)]

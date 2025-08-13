@@ -1,0 +1,45 @@
+def GY(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def G(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def J(A):return max(A for(A,B)in G(A))
+def Y(A):return min(A for(A,B)in G(A))
+def L(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def V(A):return frozenset((D,(A,C))for(A,B)in enumerate(A)for(C,D)in enumerate(B))
+def P(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return J(A)-Y(A)+1
+def GH(A,B):return type(B)(A(B)for B in B)
+def GJ(A,a,b):return lambda x:A(a(x),b(x))
+def S(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def GG(h,g,f):return lambda x:h(g(f(x)))
+def K(A,B):return lambda x:A(B(x))
+def U(a,b):return a,b
+def GV(A):return max(enumerate(A))[1]
+def W(A):return next(iter(A))
+def X(A,B):return type(A)(A for A in A if B(A))
+def H(x):return x-1 if isinstance(x,int)else(x[0]-1,x[1]-1)
+def R(a,b):return a==b
+def GM(b):return not b
+def Z(n):return n//2 if isinstance(n,int)else(n[0]//2,n[1]//2)
+def Q(n):return n*2 if isinstance(n,int)else(n[0]*2,n[1]*2)
+def E(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a-b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]-b[0],a[1]-b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a-b[0],a-b[1]
+	return a[0]-b,a[1]-b
+def M(x):return x
+def p(I):I=tuple(map(tuple,I));A=V(I);B=P(I);C=H(B);D=S(E,C);F=K(Q,Z);G=GJ(R,M,F);J=K(GV,GV);N=GG(GM,G,J);O=X(A,N);T=GG(D,W,GV);Y=K(GV,GV);a=GJ(U,T,Y);b=GJ(U,W,a);c=GH(b,O);d=L(I,c);return[*map(list,d)]

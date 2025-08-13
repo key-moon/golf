@@ -130,13 +130,22 @@ if __name__ == "__main__":
   json.dump(checked_hash, open("checked_cache.json", "w"))
 
   others_best = read_others_best()
+  BAD_PATH = ["base_arcdsl", "base_rearc"]
   # Write stats to README
   def emit_table(stats,writer,b="."):
     writer.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
     writer.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
-      success = (("✅" if stat["message"] == "AC" else "❗") if "arcdsl" not in stat["base_path"] else "⚠️") if stat["success"] else "❌"
+      if not stat["success"]:
+        success = "❌"
+      elif any(stat["base_path"].startswith(bad) for bad in BAD_PATH):
+        success = "⚠️"
+      elif not stat["message"].startswith("AC"):
+        success = "❗"
+      else:
+        success = "✅"
+
       base = f"[{stat['base_path'].split("/")[0]}]({b}/{stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 

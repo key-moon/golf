@@ -1,0 +1,10 @@
+def R(A):return tuple(tuple(A[::-1])for A in zip(*A[::-1]))[::-1]
+def X(A):return tuple(A for A in zip(*A[::-1]))
+def Y(A):return R(H(X(A)))
+def J(A):return R(M(X(A)))
+def H(A):return A[len(A)//2+len(A)%2:]
+def M(A):return A[:len(A)//2]
+def E(a,b):return a,b
+def G(A):return min(set(A),key=A.count)
+def V(a,b):return type(a)((*a,*b))
+def p(I):I=tuple(map(tuple,I));A=J(I);B=Y(I);C=M(A);D=M(B);F=H(A);K=H(B);L=E(C,D);N=E(F,K);O=V(L,N);P=G(O);return[*map(list,P)]

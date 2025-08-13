@@ -1,0 +1,51 @@
+def Q(A,B):return type(B)(B for B in B if B!=A)
+def E(A):return max(A for(A,B)in H(A))
+def V(A):return min(A for(A,B)in H(A))
+def Y(A):return max(A for(B,A)in H(A))
+def R(A):return min(A for(B,A)in H(A))
+def GJ(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def P(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def GV(A,B,C):
+	G,I=len(A),len(A[0]);D=list(list(A)for A in A)
+	for(E,F)in H(C):
+		if 0<=E<G and 0<=F<I:D[E][F]=B
+	return tuple(tuple(A)for A in D)
+def X(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def GM(A,B,C):return tuple(A[B[1]:B[1]+C[1]]for A in A[B[0]:B[0]+C[0]])
+def K(A,B):return frozenset((A,D)for(A,C)in enumerate(A)for(D,E)in enumerate(C)if E==B)
+def GH(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Y(A)-R(A)+1
+def Z(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return E(A)-V(A)+1
+def U(a,b):return a,b
+def GY(A,B):return GG(Q(B,A))
+def GG(A):return next(iter(A))
+def S(j):return 0,j
+def J(x):return x-1 if isinstance(x,int)else(x[0]-1,x[1]-1)
+def M(x):return x+1 if isinstance(x,int)else(x[0]+1,x[1]+1)
+def G(a,b):return a&b
+def W(n):return n*2 if isinstance(n,int)else(n[0]*2,n[1]*2)
+def L(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a//b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]//b[0],a[1]//b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a//b[0],a//b[1]
+	return a[0]//b,a[1]//b
+def GE(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a+b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]+b[0],a[1]+b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a+b[0],a+b[1]
+	return a[0]+b,a[1]+b
+def p(I):I=tuple(map(tuple,I));V=GH(I);Y=M(V);a=L(Y,3);C=J(a);b=Z(I);A=U(b,C);D=GM(I,(0,0),A);c=GE(C,1);d=S(c);E=GM(I,d,A);e=W(C);f=GE(e,2);g=S(f);F=GM(I,g,A);H=X(D);N=X(E);O=X(F);h=G(H,N);i=G(h,O);B=GG(i);Q=GY(H,B);R=GY(N,B);T=GY(O,B);j=P(B,A);k=K(D,Q);l=K(E,R);m=K(F,T);n=GV(j,T,m);o=GV(n,R,l);p=GV(o,Q,k);return[*map(list,p)]

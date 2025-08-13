@@ -1,0 +1,39 @@
+def Y(A):return tuple(map(max,zip(*G(A))))
+def P(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def G(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def H(A):return tuple(map(min,zip(*G(A))))
+def E(A,B,C):return tuple(tuple(C if A==B else A for A in A)for A in A)
+def M(A):
+	if isinstance(A,tuple):return tuple(zip(*(A[::-1]for A in A[::-1])))
+	return X(R(X(A)))
+def R(A):
+	if isinstance(A,tuple):return tuple(zip(*A))
+	B,C=H(A)
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(E-C+B,D-B+C))for(A,(D,E))in A)
+	return frozenset((D-C+B,A-B+C)for(A,D)in A)
+def X(A):
+	if isinstance(A,tuple):return tuple(A[::-1]for A in A)
+	B=H(A)[1]+Y(A)[1]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C,B-D))for(A,(C,D))in A)
+	return frozenset((A,B-C)for(A,C)in A)
+def V(A):
+	if isinstance(A,tuple):return A[::-1]
+	B=H(A)[0]+Y(A)[0]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(B-C,D))for(A,(C,D))in A)
+	return frozenset((B-A,C)for(A,C)in A)
+def U(A,a,b):return tuple(A(B,C)for(B,C)in zip(a,b))
+def Q(A,B):return type(B)(A(B)for B in B)
+def K(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def S(a,b):return tuple(zip(a,b))
+def J(A):return max(A,default=0)
+def p(I):I=tuple(map(tuple,I));B=E(I,4,-1);G=R(B);H=U(S,B,G);A=K(Q,J);C=Q(A,H);L=M(C);N=U(S,C,L);D=Q(A,N);O=V(D);P=U(S,D,O);F=Q(A,P);T=X(F);W=U(S,T,F);Y=Q(A,W);return[*map(list,Y)]

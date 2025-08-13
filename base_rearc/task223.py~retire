@@ -1,0 +1,30 @@
+def V(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def G(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def J(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def H(A):return tuple(map(min,zip(*G(A))))
+def Y(A,B):
+	if isinstance(A,tuple):
+		C=tuple()
+		for K in A:
+			D=tuple()
+			for E in K:D=D+tuple(E for A in range(B))
+			C=C+tuple(D for A in range(B))
+		return C
+	else:
+		if len(A)==0:return frozenset()
+		F,G=H(A);L,M=-F,-G;N=J(A,(L,M));I=set()
+		for(E,(O,P))in N:
+			for Q in range(B):
+				for R in range(B):I.add((E,(O*B+Q,P*B+R)))
+		return J(frozenset(I),(F,G))
+def p(I):I=tuple(map(tuple,I));A=Y(I,3);return[*map(list,A)]

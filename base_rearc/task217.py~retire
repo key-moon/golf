@@ -1,0 +1,59 @@
+def E(A):return max(A for(A,B)in H(A))
+def Y(A):return max(A for(B,A)in H(A))
+def Z(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return Y(A)-X(A)+1
+def P(A):
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A)
+	return E(A)-J(A)+1
+def GV(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def X(A):return min(A for(B,A)in H(A))
+def J(A):return min(A for(A,B)in H(A))
+def U(A):
+	if isinstance(A,tuple):return frozenset({B for A in A for B in A})
+	return frozenset({A for(A,B)in A})
+def Q(A,B):return tuple(tuple(A for B in range(B[1]))for C in range(B[0]))
+def L(A,B):
+	F,G=len(A),len(A[0]);C=list(list(A)for A in A)
+	for(H,(D,E))in B:
+		if 0<=D<F and 0<=E<G:C[D][E]=H
+	return tuple(tuple(A)for A in C)
+def G(A):return frozenset(frozenset((A,(C,E))for(C,D)in enumerate(A)for(E,A)in enumerate(D)if A==B)for B in U(A)-{M(A)})
+def V(A):
+	if len(A)==0:return A
+	return GH(A,(-J(A),-X(A)))
+def GH(A,C):
+	if len(A)==0:return A
+	B,D=C
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C+B,E+D))for(A,(C,E))in A)
+	return frozenset((A+B,C+D)for(A,C)in A)
+def H(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def GY(A):return P(A),Z(A)
+def M(A):B=[B for A in A for B in A]if isinstance(A,tuple)else[A for(A,B)in A];return max(set(B),key=B.count)
+def K(A,B):return W(GJ(A,B))
+def GJ(A,B):return type(B)(A(B)for B in B)
+def S(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def GG(A,B):
+	C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def W(A):return type(A)(B for A in A for B in A)
+def R(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a*b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]*b[0],a[1]*b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a*b[0],a*b[1]
+	return a[0]*b,a[1]*b
+def p(I):I=tuple(map(tuple,I));C=G(I);D=W(C);A=V(D);E=M(I);B=GY(A);F=R(B,B);J=Q(E,F);N=GY(A);O=GG(R,N);P=H(A);T=GJ(O,P);U=S(GH,A);X=K(U,T);Y=L(J,X);return[*map(list,Y)]

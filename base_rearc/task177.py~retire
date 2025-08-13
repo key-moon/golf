@@ -1,0 +1,22 @@
+def J(A):return tuple(map(max,zip(*G(A))))
+def E(A,B):
+	C,D=B;E,F=len(A),len(A[0])
+	if not(0<=C<E and 0<=D<F):return
+	return A[B[0]][B[1]]
+def G(A):
+	if len(A)==0:return frozenset()
+	if isinstance(next(iter(A))[1],tuple):return frozenset(A for(B,A)in A)
+	return A
+def H(A):return tuple(map(min,zip(*G(A))))
+def V(A):
+	if isinstance(A,tuple):return tuple(zip(*A))
+	B,C=H(A)
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(E-C+B,D-B+C))for(A,(D,E))in A)
+	return frozenset((D-C+B,A-B+C)for(A,D)in A)
+def Y(A):B=tuple(A for(A,B)in enumerate(A)if len(set(B))==1);C=tuple(A for(A,B)in enumerate(V(A))if len(set(B))==1);return tuple(tuple(B for(A,B)in enumerate(D)if A not in C)for(A,D)in enumerate(A)if A not in B)
+def M(A):
+	if isinstance(A,tuple):return tuple(A[::-1]for A in A)
+	B=H(A)[1]+J(A)[1]
+	if isinstance(next(iter(A))[1],tuple):return frozenset((A,(C,B-D))for(A,(C,D))in A)
+	return frozenset((A,B-C)for(A,C)in A)
+def p(I):I=tuple(map(tuple,I));A=Y(I);B=M(A);return[*map(list,B)]

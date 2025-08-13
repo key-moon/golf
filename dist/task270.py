@@ -1,2 +1,4 @@
 #coding:L1
-import lzma;exec(lzma.decompress("]\0\0\0ÿÿÿÿÿÿÿÿ\0,JF¤ÄÂ•@Ä}jÒæÃ®šªhÖrl±û\r#0¢¸§ #Lùa¥G'!ö+5rÎ<ÅùFHÉr^ †ßèôîpßìD‡[ ²œ8 Ý/Î6gÕ6÷ö‚ÿ=¢*‹ÆœŠÈ´2F‚‰˜ãLy÷„•Æ=	\nrUiÄúßo„Ò!d<<Øn Ø‹A¯oÉKáÓhòæÉ fË`»M·ˆÔš0¢ÁÏÛê¯WÕäA‹¡øNÉ¦<u–©4ÚWýŽý	Ô5—ÐXÔíIv˜}óÂ­Îµ1&®äÿðK	GmöŸàÀÌ4û|7dùÂXöðÏQM‹žÑ’º¨‡S`Ç/VK¼¢¬ðç-ÛN‚oæ¢½Ú^NŸóçØú#cb•~œHÃÇÊ²›#¾‰¬o…øÚ]ûÞqþ °Ô½­ªî†„¸÷±(/ÚÃþ<ïkfì[Ö²%Û–å$iêž’IfÜèÓåƒz7(ð™ÚÛx3Œ°+a/’ÎÐzÅXuŽå¹üO¢îõ¾Ýh‡dœjî-ñK½G•ªVaç6ÛV¡H}GîK‘ÃéW¦s×·dX±!‚òò¶8êÝªh®wGBdbÿùµq,Î/Ù.”ÞvÒô!'iÄ~“¸¦ÖÍ -éÊ¯úï°0ƒ'i¼çëU†,—±AÇŽ[j%œgn]ã#8ø Z›­\0û±K³@œƒiÞÌÑ`TSÆ…ø³*ÆH¦MT>î\rîùÃYv}ØÓD·ÜÞáÔi¢s˜¼ý½ñújø3Bc1ÛV÷ˆ(ß5ÇºuD—I<Z=1eË°õ{çÀ®¥¹¼›Ú O	;€¥gCl­|°þ,é¨†G¥™)h²É»È8!ñÕ“‘0ÉtÅR£¯§\rÙÊnÜ¼~8gý\¢ëBÏÚY(O´Kxˆ©ÆáNUJGÙÞžtc(¬wÜ…¼6‡…*·ýÅºLâÍõ¶ëýë:GšXKGiXTÎá€Ø‰jÕÕ'H³ÒÌ>Þ x¿6HÕ‡aã#ÂáŸ Zn~ÞB¡Ì@ŽÓKlYðCÜ¼“~-Z{¦sÏR†|nªæ¯ZŒÓÜ0èøô:B‘õ5]N+¹¡í±8¶™”Ì´`›D\©…‰5…9~OÈú²„ƒO\À\"´ŠiøË¨L{ÂYZB4ÈÅ„|²õ¿¼ÆÍ‡µÜÐ²€,•+h¶w½K4þóZý¨h{=\0Zª^Î,m`A´ê[ºPàŒ«….–ÄHØ~«›¥n:Æ]UdD9¿îl™KD€\"Y\"Tõªù,Œ'‘dDihñØøß¶]ÏxÄƒèÐJ…†Ö‰«‡ÄÁß£Æw%5û3Jaðüã!u ¥<]›«µ9|â>|™òéëâ÷ä†'þëù`\0µj‘ë§þ)ë'J` YK©Xi·_ÞÍ77)oá 4¤ Ûä(BfÏÜ›z@D>P¾°ÏZ«~-šzüÙòè}³xÿÆ ¡".encode('L1')))
+import zlib;exec(zlib.decompress('''¥”×rë8†ïýº$¤o§¹3¤ä–Þ›Gã¡l:'MÎØòéy÷±’Ü·Þ°éÃO4±çúÁµÐðÛÐeãa¼ÚÏBýÁPh4ð˜\r¡*k.ÅêY¬6=¦«°»YlÕ¥7«ýàÅJmVÛ|ü8zLG™M»ŽŒ³ñÛ‹+eÙ¢½C%ÈO|ÞÁõV?ý¿ê¥4'qãn"ÝØç`H=ÄHYÃºbÀÒ/¾"db»ªÂj-°i/ eT­·”òºmÈ"¦q'Žÿ¼`µïýáà«KG.0Eê>gâ1sCŸaÒšª´œ-ÛTœš/ß÷—Õ6ž
+tà^^ÆËSç^F®=)4“rª£ü½ðÙ}Qf³;§ðm÷Œ>6®iëÀÑÀÄ‘°˜øt¨.DCX\0I‰çuÀiÐJ…eyq‡NL5
+¼S;šýRQx@WÃÀmFø¨$–‹èßbcž`g/¦ZŸ;Æ·áÖÖ.rgÞÞ0É¡}dMl-4ŒÔËã(<h˜Ô*œej:àß‰(¾½jÕfÑiõjë·¨]‹ÛõX™²Ä\,Áã´hìÓ­wiIÃÐqäašC©KÇ¯nh³\CDX›=&Š^¥°nãnF8ûòæ„¡i(+GË_KéÍN§;è¹N‡¦c‡Ü6\îP©Ýògµ¯IÏ_~#9ü\(&öæ	üÊÍLÜ"€–^å¾7þ«GŸIê3š1_˜ùÂÔ‚G°Ó<c‘Í¦ø€Ø‡…û>ˆÑŸ€Áö|‰WÆ3Œ\	½¤Þßô;ðçsþ÷fêfAˆ5‹kI®p&ÒØHç_$|L3~ÄFJM4îÄyå=kcÙ†šxú0áÃÂ»žpNçì¸«-g_AKn¬'ÞÛÞ¡\r¬µÚ‡•J¹L®1£Ÿ‹s o¢¿µ‹Wû&x…-\0YS·¢…; µº5uÞï‚4´¯ƒy¿2âÅÏ êP4ŽPƒl*_;¹¯¨A°	òXˆ3Üy¢¨CxŒW O™Gò’xš®™ÇK7Ì_ƒ¼óü)ÞxÞ*úWO0™øÕ† »ê\„þ¨§îÉ‹.H§èõêáÏhAöýÚá&¿÷í5Š’ß-ìCü'''.encode('L1'),-9))
