@@ -7,11 +7,11 @@ import sys
 import openai
 from tqdm import tqdm
 
-from checker import check
 from concurrent.futures import ThreadPoolExecutor
 import time
 
 from utils import get_task
+from checker import check
 
 
 def strip_code_fences(text: str) -> str:

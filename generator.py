@@ -47,7 +47,7 @@ DISALLOW_RETIRE = ["base_keymoon", "base_yu"]
 
 LONG = b"A" * 0x1000
 if __name__ == "__main__":
-  checked_hash = json.load(open("checked_cache.json", "r"))
+  checked_hash = json.load(open(".cache/checked_cache.json", "r"))
   stats = []
   for i in tqdm(range(1, 401)):
     task = get_task(i)
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     stats.append(task_stat)
 
   print(f"accepted: {accepted}/400, {score=}")
-  json.dump(checked_hash, open("checked_cache.json", "w"))
+  json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
 
   others_best = read_others_best()
   BAD_PATH = ["base_arcdsl", "base_rearc"]

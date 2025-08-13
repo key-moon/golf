@@ -1,1 +1,1 @@
-def p(j):A=[r+r[::-1]for r in j];return A+A[::-1]
+def p(g):t=[r+r[::-1]for r in g];return t+t[::-1]

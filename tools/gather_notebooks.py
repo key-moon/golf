@@ -14,7 +14,6 @@ from tqdm import tqdm
 from checker import check
 from utils import get_task
 import re
-from multiprocessing import Manager
 
 def safe_check(path: str, i: int):
   FORBID_EVENTS = {
@@ -52,7 +51,7 @@ normalize("p=lambda g:g"),
 
 
 if __name__ == "__main__":
-  checked_hash = json.load(open("notebooks_check_cache.json", "r"))
+  checked_hash = json.load(open(".cache/notebooks_check_cache.json", "r"))
   session_digests = set()
   tmp_dir = "tmp"
   os.makedirs(tmp_dir, exist_ok=True)
@@ -105,7 +104,7 @@ if __name__ == "__main__":
           except subprocess.CalledProcessError as e:
             print(f"Error while checking {zip_path}: {name}\n{e.stderr}")
           checked_hash[digest] = verdict
-          json.dump(checked_hash, open("notebooks_check_cache.json", "w"))
+          json.dump(checked_hash, open(".cache/notebooks_check_cache.json", "w"))
         if checked_hash[digest]:
           if not glob.glob(f"{path_name}~*"):
             open(path_name, "wb").write(zip_ref.read(name))
