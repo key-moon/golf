@@ -1,1 +1,1 @@
-p=lambda g:[[7**any(a!=c for(a,_,c)in g)]]
+p=lambda g:[[7**(g!=g[::-1])]]

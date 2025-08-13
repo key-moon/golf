@@ -102,7 +102,7 @@
 | [100](../vis/task100.png) | ✅ | [base_notebooks](../base_notebooks/task100_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [110](../dist/task100.py) (+56) | 54 🔴 | [prompt](../prompts/task100.txt) / [vis-many](../vis_many/task100.png) | AC |
 | [101](../vis/task101.png) | ❌ | - | - | - | 417 | [prompt](../prompts/task101.txt) / [vis-many](../vis_many/task101.png) | WA |
 | [102](../vis/task102.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task102.py) | forplain/zlib-zopfli | [884](../dist/task102.py) (+711) | 173 🔴 | [prompt](../prompts/task102.txt) / [vis-many](../vis_many/task102.png) | AC |
-| [103](../vis/task103.png) | ✅ | [base_yu](../base_yu/task103.py) | forplain/raw | [42](../dist/task103.py) (+13) | 29 🔴 | [prompt](../prompts/task103.txt) / [vis-many](../vis_many/task103.png) | AC |
+| [103](../vis/task103.png) | ✅ | [base_keymoon](../base_keymoon/task103.py) | forplain/raw | [30](../dist/task103.py) (+1) | 29 🔴 | [prompt](../prompts/task103.txt) / [vis-many](../vis_many/task103.png) | AC |
 | [104](../vis/task104.png) | ✅ | [base_keymoon](../base_keymoon/task104.py) | forplain/raw | [119](../dist/task104.py) (+34) | 85 🔴 | [prompt](../prompts/task104.txt) / [vis-many](../vis_many/task104.png) | AC |
 | [105](../vis/task105.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task105.py) | forcompress/zlib-zopfli | [864](../dist/task105.py) (+616) | 248 🔴 | [prompt](../prompts/task105.txt) / [vis-many](../vis_many/task105.png) | AC |
 | [106](../vis/task106.png) | ✅ | [base_notebooks](../base_notebooks/task106_20250810-053358Z-oh-barnacles-jazivxt.py) | forplain/raw | [122](../dist/task106.py) (+49) | 73 🔴 | [prompt](../prompts/task106.txt) / [vis-many](../vis_many/task106.png) | AC |

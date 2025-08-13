@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 392/400
-Score: 885928
+Score: 885940
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -319,7 +319,6 @@ Alt Tables:
 | [235](./vis/task235.png) | ✅ | [base_notebooks](./base_notebooks/task235_20250809-035628Z-arc-agi-code-golf-216-400-solved-dmytro-fedoriaka.py) | forplain/raw | [78](./dist/task235.py) (+14) | 64 🔴 | [prompt](./prompts/task235.txt) / [vis-many](./vis_many/task235.png) | AC |
 | [351](./vis/task351.png) | ✅ | [base_yu](./base_yu/task351.py) | forplain/raw | [84](./dist/task351.py) (+14) | 70 🔴 | [prompt](./prompts/task351.txt) / [vis-many](./vis_many/task351.png) | AC |
 | [045](./vis/task045.png) | ✅ | [base_code](./base_code/task045.py) | forplain/raw | [58](./dist/task045.py) (+13) | 45 🔴 | [prompt](./prompts/task045.txt) / [vis-many](./vis_many/task045.png) | AC |
-| [103](./vis/task103.png) | ✅ | [base_yu](./base_yu/task103.py) | forplain/raw | [42](./dist/task103.py) (+13) | 29 🔴 | [prompt](./prompts/task103.txt) / [vis-many](./vis_many/task103.png) | AC |
 | [291](./vis/task291.png) | ✅ | [base_keymoon](./base_keymoon/task291.py) | forplain/raw | [75](./dist/task291.py) (+13) | 62 🔴 | [prompt](./prompts/task291.txt) / [vis-many](./vis_many/task291.png) | AC |
 | [315](./vis/task315.png) | ✅ | [base_notebooks](./base_notebooks/task315_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [76](./dist/task315.py) (+13) | 63 🔴 | [prompt](./prompts/task315.txt) / [vis-many](./vis_many/task315.png) | AC |
 | [188](./vis/task188.png) | ✅ | [base_yu](./base_yu/task188.py) | forplain/raw | [84](./dist/task188.py) (+11) | 73 🔴 | [prompt](./prompts/task188.txt) / [vis-many](./vis_many/task188.png) | AC |
@@ -358,6 +357,7 @@ Alt Tables:
 | [123](./vis/task123.png) | ✅ | [base_yu](./base_yu/task123.py) | forplain/raw | [77](./dist/task123.py) (+2) | 75 🔴 | [prompt](./prompts/task123.txt) / [vis-many](./vis_many/task123.png) | AC |
 | [003](./vis/task003.png) | ✅ | [base_keymoon](./base_keymoon/task003.py) | forplain/raw | [61](./dist/task003.py) (+1) | 60 🔴 | [prompt](./prompts/task003.txt) / [vis-many](./vis_many/task003.png) | AC |
 | [047](./vis/task047.png) | ✅ | [base_keymoon](./base_keymoon/task047.py) | forplain/raw | [56](./dist/task047.py) (+1) | 55 🔴 | [prompt](./prompts/task047.txt) / [vis-many](./vis_many/task047.png) | AC |
+| [103](./vis/task103.png) | ✅ | [base_keymoon](./base_keymoon/task103.py) | forplain/raw | [30](./dist/task103.py) (+1) | 29 🔴 | [prompt](./prompts/task103.txt) / [vis-many](./vis_many/task103.png) | AC |
 | [229](./vis/task229.png) | ✅ | [base_yu](./base_yu/task229.py) | forplain/raw | [74](./dist/task229.py) (+1) | 73 🔴 | [prompt](./prompts/task229.txt) / [vis-many](./vis_many/task229.png) | AC |
 | [309](./vis/task309.png) | ✅ | [base_keymoon](./base_keymoon/task309.py) | forplain/raw | [39](./dist/task309.py) (+1) | 38 🔴 | [prompt](./prompts/task309.txt) / [vis-many](./vis_many/task309.png) | AC |
 | [053](./vis/task053.png) | ✅ | [base_yu](./base_yu/task053.py) | forplain/raw | [21](./dist/task053.py) (0) | 21  | [prompt](./prompts/task053.txt) / [vis-many](./vis_many/task053.png) | AC |
