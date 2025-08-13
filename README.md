@@ -382,7 +382,7 @@ Alt Tables:
 | [311](./vis/task311.png) | ✅ | [base_notebooks](./base_notebooks/task311_20250806-061241Z-a-bit-of-code-golf-jacekwl.py) | forplain/raw | [32](./dist/task311.py) (0) | 32  | [prompt](./prompts/task311.txt) / [vis-many](./vis_many/task311.png) | AC |
 | [326](./vis/task326.png) | ✅ | [base_keymoon](./base_keymoon/task326.py) | forplain/raw | [30](./dist/task326.py) (0) | 30  | [prompt](./prompts/task326.txt) / [vis-many](./vis_many/task326.png) | AC |
 | [339](./vis/task339.png) | ✅ | [base_keymoon](./base_keymoon/task339.py) | forplain/raw | [37](./dist/task339.py) (0) | 37  | [prompt](./prompts/task339.txt) / [vis-many](./vis_many/task339.png) | AC |
-| [376](./vis/task376.png) | ✅ | [base_yu](./base_yu/task376.py) | forplain/raw | [30](./dist/task376.py) (0) | 30  | [prompt](./prompts/task376.txt) / [vis-many](./vis_many/task376.png) | AC |
+| [376](./vis/task376.png) | ✅ | [base_keymoon](./base_keymoon/task376.py) | forplain/raw | [30](./dist/task376.py) (0) | 30  | [prompt](./prompts/task376.txt) / [vis-many](./vis_many/task376.png) | AC |
 | [380](./vis/task380.png) | ✅ | [base_notebooks](./base_notebooks/task380_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | forplain/raw | [37](./dist/task380.py) (0) | 37  | [prompt](./prompts/task380.txt) / [vis-many](./vis_many/task380.png) | AC |
 | [385](./vis/task385.png) | ✅ | [base_yu](./base_yu/task385.py) | forplain/raw | [25](./dist/task385.py) (0) | 25  | [prompt](./prompts/task385.txt) / [vis-many](./vis_many/task385.png) | AC |
 | [400](./vis/task400.png) | ✅ | [base_yu](./base_yu/task400.py) | forplain/raw | [70](./dist/task400.py) (0) | 70  | [prompt](./prompts/task400.txt) / [vis-many](./vis_many/task400.png) | AC |
