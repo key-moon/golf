@@ -1,1 +1,1 @@
-def p(g):return[[1+6*(g!=g[::-1]and g!=[r[::-1]for r in g])]]
+p=lambda g:[[7**any(a!=c for(a,_,c)in g)]]
