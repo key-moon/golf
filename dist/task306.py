@@ -1,2 +1,2 @@
-#coding:L1
-import zlib;exec(zlib.decompress('uO5–Ä0ís\nmÊ	3AOEø–ùök{™ƒô±F¸R\'f)pctî6\ğ!/<³g/o`†ùnš‹iPoØ<Â„3qDsÑË§ëâÛ„´ìÒÅEÒ–OZ÷J;.’Öl›*9g¿Í91²SÍ#é…7dg¯ŸRGî’»¨¦Ø~4ø¥ÉÈ°å?qñjÍ§šh•2ó(çí÷y&æ¤\0_©¡±‘0È-`¡¹x–YGä`ö£¨à2«r1ÄØJ$!Û	C+"²k÷ÍÁno†fıÏôctæÖb8["”tq+œÍ¸îîo¸Ù'.encode('L1'),-9))
+A=range
+p=lambda g:[[max(c for r in g[i%10::10]for c in r[j%10::10])for j in A(len(g[0]))]for i in A(len(g))]

@@ -1,2 +1,3 @@
-#coding:L1
-import zlib;exec(zlib.decompress('•1†_%0Z‡»sèİcD1–VjË&ÛŞéÀtà |ßŸex¸â§m¹±8†|W``=K!wòMÔ_Á\nrÂšü¿UİY­Ü£8Å!¤®>ÍJ¯·\nâŠ|VÙ±£qlØ.]ŸÇ¿Gıš™'.encode('L1'),-9))
+A=range(9)
+B=lambda g:[*filter(max,zip(*g))]*3
+def p(g):p=B(B(g));return[[p[i][j]*(0<p[i//3][j//3])for j in A]for i in A]
