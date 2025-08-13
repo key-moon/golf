@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress("+°ÍIÌMJITH·ª6´ŠŽ6Ö@ŒÕ¡HÆ†ÊQMaG¬Ž±U4º8X-\\'ÕÄÐ\D‘X¬Ž™U4uÍ¤©Ÿám€p7-ãšÊi1¶6:#±8CCC«*³@C+]SGSSÕ<\0".encode('L1'),-9))
+p=lambda g:[*[(a:=[*[3]*4,*[0]*5])[::(w:=(h:=hash((27,*sum(g,[]),60)))%3-1)]]*4,*[(a*2)[5:14][::w]]*4,[0]*9][::(h&3)-1]
