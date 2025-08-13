@@ -20,3 +20,32 @@ p=lambda g:[
   *[(a*2)[5:14][::w]]*4,
   [0]*9
 ][::(h&3)-1]
+
+# from utils import get_cases
+# cases = get_cases(104)
+# s = set()
+# for i in range(1000):
+#   for j in range(1000):
+#     try:
+#       l = []
+#       ac = True
+#       for case in cases[-4:]:
+#         g, answer = case["input"], case["output"]
+#         p = [
+#           *[(a:=[*[3]*4,*[0]*5])[::(w:=(h:=hash((i,*sum(g,[]),j)))%3-1)]]*4,
+#           *[(a*2)[5:14][::w]]*4,
+#           [0]*9
+#         ][::(h&3)-1]
+#         l.append((w, (h&3)-1))
+#         ac = ac and p == answer
+#       s.add(tuple(l))
+#       print(l)
+#       if ac:
+#         print(i, j)
+#         input("> ")
+#     except AssertionError:
+
+#       pass
+#     except ValueError:
+#       pass
+#     print(len(s))
