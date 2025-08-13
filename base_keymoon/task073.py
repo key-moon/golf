@@ -21,4 +21,9 @@
 # 1以上で最小の値を持ってくる
 # next(filter(None,z))
 # min([a for a in z if a])
-p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[min(filter(int,z))for z in zip(*g)]]
+# p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[min(filter(int,z))for z in zip(*g)]]
+# best:46
+# ============================================
+# p=lambda g:[*[g[0]]*3,g[3],[min(filter(int,z))for z in zip(*g)]]
+# p=lambda g:[*[g[0]]*3,g[3],[[5,1][c]for c in g[2]]]
+p=lambda g:g[:1]*3+[g[3],[5-c*4for c in g[2]]]
