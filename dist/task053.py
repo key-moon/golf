@@ -1,1 +1,1 @@
-def p(g):g[:]=[[0]*len(g[0])]+g[:-1];return g
+p=lambda g:(g+g)[2:5]
