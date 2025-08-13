@@ -1,6 +1,7 @@
-# 連結成分の個数がほしい ref: base_keymoon/task048.py
+# best: 81
+# bestは正規表現じゃないんだろうが、一旦正規表現に甘えます
 import re;s=re.sub
 def p(g):
  d=s("[[ ,]","",str(g))
- for x in g+g:d=s("0(?=("+"."*len(g[0])+")?1)","1",d)[::-1]
+ for x in d+d:d=s("0(?=("+"."*len(g)+")?1)","1",d)[::-1]
  return [[*map(int,r)]for r in d.split("]")[:-2]]
