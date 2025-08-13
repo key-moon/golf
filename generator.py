@@ -154,7 +154,7 @@ if __name__ == "__main__":
     file.write(f"Accepted: {accepted}/400\n")
     file.write(f"Score: {score}\n\n")
     file.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n")
-    file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
+    file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n\n")
     file.write("- [sorted by task](stats/task-sorted.md)\n")
     file.write("- [sorted by ratio](stats/ratio-sorted.md)\n")
     file.write("- [sorted by length](stats/length-sorted.md)\n")
