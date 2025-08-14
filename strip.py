@@ -86,7 +86,7 @@ def get_stripper(prefer_sep="\t", **minifier_opt):
     return strip
 
 strip = strip_for_plain = get_stripper(
-    prefer_sep="\t",
+    prefer_sep=" ",
     remove_literal_statements=True,
     remove_asserts=True,
     remove_debug=True,
@@ -116,7 +116,7 @@ strip_for_zlib_space = get_stripper(
     hoist_literals=False,
 )
 
-strippers = {"raw": lambda x: x.strip(),"forcompress-tab": strip_for_zlib,"forcompress-space": strip_for_zlib_space,"forplain": strip_for_plain}
+strippers = {"raw": lambda x: x.strip(),"forcomp-t": strip_for_zlib,"forcomp-s": strip_for_zlib_space,"forplain": strip_for_plain}
 
 if __name__ == "__main__":
 
