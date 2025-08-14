@@ -1,1 +1,1 @@
-def p(g,R=range(10)):u=(A:=sum(g,[])).index(c:=sum({*A})-5);x,*_,y=sorted(i-j for i in R for j in R if g[i][j]);return[[c*(i-j in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for j in R]for i in R]
+def	p(g,R=range(10)):u=(A:=sum(g,[])).index(c:=sum({*A})-5);x,*_,y=sorted(i-j	for	i	in	R	for	j	in	R	if	g[i][j]);return[[c*(i-j	in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for	j	in	R]for	i	in	R]
