@@ -1,1 +1,1 @@
-def p(g):return[[2if x==6else x for x in r]for r in g]
+p=lambda g:eval(f"{g}".replace('6','2'))
