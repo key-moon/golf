@@ -2,13 +2,14 @@ from ast import literal_eval
 import bz2
 import lzma
 import time
-from typing import Tuple
+from typing import Literal, Tuple
 import zlib
 import zopfli
 
 import warnings
 import hashlib
 import os
+from typing import overload, Union
 
 import zopfli.zlib
 
@@ -132,7 +133,11 @@ def determine_wbits(compressed: bytes):
 # '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
-def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
+@overload
+def compress(code: str, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
+@overload
+def compress(code: str, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
+def compress(code: str, force_compress=False, with_raw_code=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
   compressions = [
     ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
@@ -149,9 +154,7 @@ def compress(code: str, force_compress=False) -> Tuple[str, bytes]:
     embed = get_embed_str(compressed_code)
     if callable(extra_args):
       extra_args = extra_args(compressed_code)
-    # res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(map(ord,".encode() + embed + b"))" + extra_args.encode() + b"))"
     res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
-    l.append((name,res))
-  # l.sort(key=lambda x: len(x[1]))
-  # print(", ".join([f"{t[0]} -> {len(t[1])}" for t in l]))
-  return min(l, key=lambda x: len(x[1]))
+    l.append((name,res,compressed_code))
+  mn = min(l, key=lambda x: len(x[1]))
+  return mn if with_raw_code else (mn[0], mn[1])

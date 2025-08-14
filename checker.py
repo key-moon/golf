@@ -14,7 +14,7 @@ import numpy as np
 import compress
 from task_viz import cmap, norm
 from strip import strip_for_plain, strip_for_zlib
-from utils import get_code_paths, get_task, parse_range_str
+from utils import get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
 import warnings
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
@@ -139,17 +139,22 @@ if __name__ == "__main__":
       try:
         with open(code_path, "r") as f:
           orig_code = f.read().strip()
-          code = strip_for_plain(orig_code)
-          compressed = compress.compress(strip_for_zlib(orig_code), force_compress=True)[1]
+          code = strip_for_plain(orig_code).encode()
+          compress_method, compressed, raw_compressed = compress.compress(strip_for_zlib(orig_code), force_compress=True, with_raw_code=True)
       except UnicodeDecodeError:
         with open(code_path, "rb") as f:
           code = compressed = f.read()
+        compress_method = "unknown"
+        raw_compressed = b""
       if res.correct == 1.:
-        print(f"✅ {code_path} {len(code)=} {len(compressed)=}")
+        print(f"✅ {code_path} {len(code)=} {len(compressed)=} (raw: {len(raw_compressed)})")
         success += 1
       else:
         print(f"❌ {code_path} {len(code)=} {len(compressed)=}")
         print(f"{res.correct=}" if res.message == "ok" else res.message)
+      compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
+      print(f"{openable_uri("stripped code", viz_plane_url(code))} / {compressed_msg}")
+
       if len(res.outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"
         visualize_outputs(res.outputs, vis_path)

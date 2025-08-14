@@ -1,3 +1,4 @@
+import base64
 import glob
 import json
 from typing import TypedDict
@@ -20,10 +21,21 @@ Case = TypedDict('Case', {'input': list[list[int]], 'output': list[list[int]]})
 Cases = list[Case]
 Task = TypedDict('Task', {'train': list[Case], 'test': list[Case], 'arc-gen': list[Case]})
 
-
 def get_task(i: int) -> Task:
   return json.load(open(f"tasks/task{i:03}.json", "r"))
 
 def get_cases(i: int) -> Cases:
   task = get_task(i)
   return task["train"] + task["test"] + task["arc-gen"]
+
+OSC = "\x1b]8;;"
+BEL = "\x07"
+
+def openable_uri(title: str, uri: str):
+  return f"{OSC}{uri}{BEL}{title}{OSC}{BEL}"
+
+def viz_plane_url(plane: bytes):
+  return f"https://key-moon.github.io/deflate-viz?text={base64.b64encode(plane).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
+
+def viz_deflate_url(deflate: bytes):
+  return f"https://key-moon.github.io/deflate-viz?deflate={base64.b64encode(deflate).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
