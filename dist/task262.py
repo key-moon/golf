@@ -1,1 +1,1 @@
-p=lambda g:[[3+(s[1]-s[0])//5]*3for s in g]
+p=lambda g:[[3+s[1]%2-s[0]%2]*3for s in g]
