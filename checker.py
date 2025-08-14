@@ -18,6 +18,7 @@ from utils import get_code_paths, get_task, openable_uri, parse_range_str, viz_d
 import warnings
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 class TimeoutException(Exception): pass
 def handler(signum, frame):

@@ -1,1 +1,1 @@
-p=lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if max(r)]
+p=lambda	g:[[*r]for	r	in	zip(*filter(max,zip(*g)))if	max(r)]

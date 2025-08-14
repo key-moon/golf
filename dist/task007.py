@@ -1,1 +1,1 @@
-def p(g):A=range;B=len;d={(i+j)%3:c for i in A(B(g))for j in A(B(g[0]))for c in[g[i][j]]if c};return[[d.get((i+j)%3,0)for j in A(B(g[0]))]for i in A(B(g))]
+def	p(g):A=range;B=len;d={(i+j)%3:c	for	i	in	A(B(g))for	j	in	A(B(g[0]))for	c	in[g[i][j]]if	c};return[[d.get((i+j)%3,0)for	j	in	A(B(g[0]))]for	i	in	A(B(g))]

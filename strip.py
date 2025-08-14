@@ -47,15 +47,32 @@ import string
 import python_minifier
 import sys
 
-def get_stripper(**minifier_opt):
-    def strip(source: str):
+import python_minifier.ast_compare
+
+# deflate的には " " が邪魔なことがある。なのですべてのspaceを "\t" にしてしまいたい。
+# 文字列リテラル内にある場合は置換できないので、文字列リテラル内にないことを確認してからreplaceする
+def get_stripper(prefer_sep="\t", **minifier_opt):
+    def strip(source: str | bytes):
         # global 変数が存在するときは、それのrenameはうまくいかない
         # TODO: globalの変数だけ抽出してignoreに入れる（正直複数関数あること最終的にないと思うからなくてもいいと思うけど）
-        if "global" in source:
+        if isinstance(source, str):
+            source = source.encode()
+        if b"global" in source:
             _minifier_opt = { **minifier_opt, "rename_globals": False }
         else:
             _minifier_opt = minifier_opt
         source = python_minifier.minify(source, **_minifier_opt)
+        # minifierはtab indentationなので、spaceに置き換えて正規化
+        source = re.sub(r'^\t+', lambda m: ' ' * len(m.group(0)), source, flags=re.MULTILINE)
+
+        other_sep = { " ": "\t", "\t": " " }[prefer_sep]
+        replaced_source = source.replace(other_sep, prefer_sep)
+        try:
+            python_minifier.ast_compare.compare_ast(ast.parse(source), ast.parse(replaced_source))
+            source = replaced_source
+        except python_minifier.ast_compare.CompareError:
+            pass
+
         # 数のリテラル周りの切り詰め
         # if, else, for, and, orの前にはspace不要 / forの後にはspace不要
         # orの前が0だとoct literalのパースが走るのでそれだけ注意
@@ -65,10 +82,11 @@ def get_stripper(**minifier_opt):
         source = re.sub(r'([^ABC][0-9])[ \t]+(if|else|for|and)', r'\1\2', source)
         source = re.sub(r'([^ABC][1-9])[ \t]+(or)', r'\1\2', source)
         source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
-        return source.replace("\t", " ")
+        return source
     return strip
 
 strip = strip_for_plain = get_stripper(
+    prefer_sep="\t",
     remove_literal_statements=True,
     remove_asserts=True,
     remove_debug=True,
@@ -80,6 +98,16 @@ strip = strip_for_plain = get_stripper(
     preserve_globals=["p"]
 )
 strip_for_zlib = get_stripper(
+    prefer_sep="\t",
+    remove_literal_statements=True,
+    remove_asserts=True,
+    remove_debug=True,
+    preserve_locals=list("_" + string.ascii_lowercase),
+    rename_globals=False,
+    hoist_literals=False,
+)
+strip_for_zlib_space = get_stripper(
+    prefer_sep=" ",
     remove_literal_statements=True,
     remove_asserts=True,
     remove_debug=True,
@@ -88,7 +116,7 @@ strip_for_zlib = get_stripper(
     hoist_literals=False,
 )
 
-strippers = {"raw": lambda x: x.strip(),"forcompress": strip_for_zlib,"forplain": strip_for_plain}
+strippers = {"raw": lambda x: x.strip(),"forcompress-tab": strip_for_zlib,"forcompress-space": strip_for_zlib_space,"forplain": strip_for_plain}
 
 if __name__ == "__main__":
 
