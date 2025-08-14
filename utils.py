@@ -35,7 +35,7 @@ def openable_uri(title: str, uri: str):
   return f"{OSC}{uri}{BEL}{title}{OSC}{BEL}"
 
 def viz_plane_url(plane: bytes):
-  return f"https://key-moon.github.io/deflate-viz?text={base64.b64encode(plane).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
+  return f"https://deflate-viz.pages.dev?text={base64.b64encode(plane).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
 
 def viz_deflate_url(deflate: bytes):
-  return f"https://key-moon.github.io/deflate-viz?deflate={base64.b64encode(deflate).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
+  return f"https://deflate-viz.pages.dev?deflate={base64.b64encode(deflate).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
