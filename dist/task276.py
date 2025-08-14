@@ -1,1 +1,1 @@
-p=lambda g:eval(f"{g}".replace('6','2'))
+p=lambda g:eval(f"{g}".replace(*'62'))
