@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress("¥Tgoó8þÞ_¡Ûb£î›qu€dwï= C9¸Ã	§ë×M9¶œñÎ/!=ƒvL—]sõÄ¤Ã$fÏÍ7®X·—p%4D1;ÃK˜Ë`.,ŠgÁ6¦ªi¡ª°›ªÚ,Ø1¹Î±¨Ëž¢@Êåm™Ž£AÒfÜ6\‰tØ2….1î–C˜cö„’[È¬k+Vþö{åKíëLûÂÑÞ§ÇAu_R{bSZŠ(#‹¸—òåué¯o°fÜaë›#—B^Ýid„ø]	C28›{7é}˜x`RãUÄæ-åQjd\0j9EU˜ÕŽ8u*2ßwúG\nü¹ÙçØIñõù<u0ïá‰Uwu›ìÒÒª­â¶r[\ÖlôËjÝÂŽÏ&íë+!`²L1L•üG§@¿¹ÄÆ„„b3hDØuðèËI!¿¼ª^žT.O³ÖjÂ~Ö%¥fæi`˜“‚'$=Þ­ñœkÚýçaÞ²„í,«ÙƒëêØ‚‘Ç0S‰ýüöQA¾±à×´tÍ°ùñ@l€;=UR@EK ,}‹\nœêäp?ƒ›xøl’fj8=yVŽ…[IJmu/Ý¾eÃ÷/í;!Ù–wÚé	…šÂpú³fm¼«lCzÎjË²Ö Í»Ô‹íÞ0Ns·ËJ‰é{ß Ž+üž:‡Þ»DªÅF£Ýë˜FÅÍä?’¤ÞùR®Û©ùÜê4Ù[]ñ728m±6Žï„yÏQ3	9äCŒ2:æJ¸ÃÙ¤±&>kYÈ5%]ºA/IM‡+û‹íòx„[ˆÇ§PDqJÌb\¿+¡%ð·BÿNú|ê;²\I‰\0Ï—Çxéò”ï_üÞ†ÜÂƒMyÉ7ÀSËÚb<-ÀÛ—W\ƒw(w³Ÿ#‰8¾àäáñ.xg{y$öÁ;Ï¢qÞ…Üãgâ¼kº€| îæ³œž¢A*®!ü".encode('L1'),-9))
+p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*map(list,zip(*p([*zip(*g)])))]

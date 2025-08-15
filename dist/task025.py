@@ -1,2 +1,10 @@
-#coding:L1
-import zlib;exec(zlib.decompress('EÍAƒ Ğ}O1«İšÒ‹Òˆd‚Rƒ`´‹½@MºšÌĞ#,ÄĞşãËÃĞAËº´ŸF¹ƒ¨i"+Íºf-o2Ï^b5±çb¿Åvvd}cj­dFt’ÊrZÙ–]»8k¯‚NU¿R?Šç–ÇºAïd£g…mŞ-­	>,•|Ë`xH£2ŒÏj!®åşÊĞtçuˆŞù'.encode('L1'),-9))
+A=zip
+def p(g):
+ if~-any(all(s)for s in g):
+  t=[]
+  for s in g:
+   t+=[u:=[x&y for(x,y)in A(g[0],g[1])]]
+   for(i,v)in enumerate(s):
+    if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v
+  return t
+ return[*map(list,A(*p([*A(*g)])))]
