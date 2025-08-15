@@ -1,5 +1,1 @@
-def p(g):
- for r in g:
-  for(i,x)in enumerate(r):
-   if x==5:r[i]=r[0]
- return g
+p=lambda g:[[v and s[0]for v in s]for s in g]
