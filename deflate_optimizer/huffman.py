@@ -41,6 +41,22 @@ def fix_lengths_kraft(lengths: list[int], maxbits: int):
             lens[idx] = min(maxbits, l + 1)
     return lens
 
+def _check_huffman_lengths(lengths: list[int], maxbits: int):
+    bit_counts = [0]*(maxbits+1)
+    for l in lengths:
+        if 0 < l <= maxbits:
+            bit_counts[l] += 1
+    
+    left_after_counts = 1
+    for bits in range(1, maxbits+1):
+        left_after_counts <<= 1
+        left_after_counts -= bit_counts[bits] if bits < len(bit_counts) else 0
+    return left_after_counts == 0
+
+def ensure_valid_huffman_lengths(lengths: list[int], maxbits: int):
+    if not _check_huffman_lengths(lengths, maxbits):
+        raise ValueError("Litlen code lengths do not satisfy the complete tree condition (left != 0).")
+
 class FastHuffman:
     __slots__ = ("enc_map","dec_table","maxbits","mask")
     def __init__(self, lengths: list[int]):

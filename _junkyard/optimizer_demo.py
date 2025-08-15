@@ -13,54 +13,36 @@ from utils import get_code_paths, openable_uri, viz_deflate_url
 import strip
 import zlib
 
+ZOPFLI_NUM_ITER = 100
+OPTIMIZER_NUM_ITER = 1000
+
+total_length = 0
+initial_losses = []
+losses = []
 for i in range(1, 401):
   for base_path in get_code_paths("base_*", i):
+    if "arc" in base_path: continue
     code = open(base_path, "rb").read()
     plain = strip.strip_for_zlib(code).encode()
-    if 2000 <= len(code): continue
-    deflate = zopfli.zlib.compress(plain)[2:-4]
-    print(base_path)
+    deflate = zopfli.zlib.compress(plain, numiterations=ZOPFLI_NUM_ITER)[2:-4]
+    optimal_len = len(deflate) + 3
     optimized = optimize_deflate_stream(
         deflate,
         lambda x: len(get_embed_str(x)),
-        num_iteration=5000,
+        num_iteration=OPTIMIZER_NUM_ITER,
         num_perturbation=3,
         tolerance_bit=16,
         terminate_threshold=2 + len(deflate) + 1,
         seed=1234,
         verbose=True
     )
-    assert zlib.decompress(optimized, wbits=-15) == plain
-
-if __name__ == "__main__":
-    import zlib, os
-    plain = open("base_arcdsl/task002.py~retire", "rb").read()
-    print(openable_uri("plain", viz_deflate_url(plain)))
-    # wbits=-15 で raw deflate
-    deflate = zopfli.zlib.compress(plain)[2:-4]
-    assert zlib.decompress(deflate, wbits=-15) == plain
+    assert zlib.decompress(optimized, wbits=-15) == plain, base_path
     
-    reader = BitReader(deflate)
-    blocks: list[Block] = []
-    while not blocks or not blocks[-1].bfinal:
-        blocks.append(Block.load(reader))
+    diff = len(get_embed_str(optimized)) - optimal_len
+    print(f"{"✅" if diff == 0 else "❌"}: {base_path} (+{diff}, {openable_uri("orig", viz_deflate_url(deflate))}, {openable_uri("optimized", viz_deflate_url(optimized))})")
+    losses.append(diff)
+    initial_losses.append(len(get_embed_str(deflate)) - optimal_len)
+    total_length += len(deflate)
 
-    assert isinstance(blocks[0], DynamicHuffmanBlock)
-
-    w = BitWriter()
-    # for b in blocks:
-    #     b.dump(w)
-    # assert zlib.decompress(w.get_bytes(), wbits=-15) == plain
-
-    optimized = optimize_deflate_stream(
-        deflate,
-        lambda x: len(get_embed_str(x)),
-        num_iteration=5000,
-        num_perturbation=3,
-        tolerance_bit=16,
-        terminate_threshold=2 + len(deflate) + 1,
-        seed=1234,
-        verbose=True
-    )
-
-    assert zlib.decompress(optimized, wbits=-15) == plain
+print(f"  initial loss: {sum(initial_losses)} ({sum(initial_losses) / total_length} loss per char)")
+print(f"optimized loss: {sum(losses)} ({sum(initial_losses) / total_length} loss per char)")

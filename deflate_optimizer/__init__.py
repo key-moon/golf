@@ -551,38 +551,17 @@ def _cut_and_indices(litlen: List[int], dist: List[int]) -> Tuple[List[int], Lis
     num_dist   = max(d_last + 1, 1)
     return litlen[:num_litlen], dist[:num_dist], num_litlen, num_dist
 
-def build_cl_code_for_lengths(
+def build_header_from_lengths(
     litlen_lengths: List[int],
     dist_lengths: List[int],
 ):
-    # --- 既存の安全化 ---
-    litlen, dist = _ensure_eob_and_dist(litlen_lengths, dist_lengths)
-
-    # ★ ここで reserved を用意：実際に使うシンボルはなるべく弄らない
-    #   （length 値そのものは触れても良いが、ゼロ化したり極端に短くすると
-    #     実データの符号長が激変するため）
-    used_lit = _collect_used_litlen_syms(tokens=[])  # ← 呼び出しサイトで正しく渡せない場合の保険
-    used_dist = set()
-
-    # ここは後述の DynamicHuffmanBlock.dump()/builder から呼ぶときに
-    # 正しく tokens を渡して上書きします。既存の呼び出しが tokens を知らない
-    # 場合は EOB だけでも reserved になっていれば最低限は安全です。
-
-    # 一旦 Kraft を満たす（oversubscribe 回避）
-    litlen = fix_lengths_kraft(litlen, 15)
-    dist   = fix_lengths_kraft(dist, 15)
-
-    # --- complete 化（left==0 になるよう穴を埋める）---
-    litlen = _make_tree_complete(litlen, 15, reserved=used_lit)
-    dist   = _make_tree_complete(dist,   15, reserved=used_dist)
-
     # 後端ゼロ切詰め → HLIT/HDIST
-    litlen_eff, dist_eff, num_litlen, num_dist = _cut_and_indices(litlen, dist)
+    litlen_lengths, dist_lengths, num_litlen, num_dist = _cut_and_indices(litlen_lengths, dist_lengths)
     hlit  = num_litlen - 257
     hdist = num_dist   - 1
 
     # RLE 生成
-    rle_stream = rle_code_lengths_stream(litlen_eff, dist_eff)
+    rle_stream = rle_code_lengths_stream(litlen_lengths, dist_lengths)
 
     # CL 頻度 → 制限長ハフマン（max=7）
     cl_freq = [0]*19
@@ -597,12 +576,14 @@ def build_cl_code_for_lengths(
     active = set(CL_ORDER[:hclen + 4])
     cl_lengths = [ (cl_lengths_raw[i] if i in active else 0) for i in range(19) ]
 
-    # ★ CL も complete 化（保険：zlib は CL 不完全にも比較的寛容だが、揃えておく）
-    cl_lengths = _make_tree_complete(cl_lengths, 7, reserved=None)
-
-    cl_codec = DynamicHuffmanCodeLengthCode(cl_lengths)
-
-    return litlen_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream
+    return DynamicHuffmanHeader(
+        hlit,
+        hdist,
+        hclen,
+        DynamicHuffmanCodeLengthCode(cl_lengths),
+        DynamicHuffmanCode(litlen_lengths),
+        DynamicHuffmanCode(dist_lengths)
+    )
 
 # =========================================================
 # DynamicHuffmanBlock
@@ -820,6 +801,9 @@ def optimize_deflate_block(
     best_bits  = base_bits
     best_score = base_score
 
+    used_lit = _collect_used_litlen_syms(base_block.tokens)
+    used_dist = _collect_used_dist_syms(base_block.tokens)
+
     tried = 0
     accepted = 0
     for _ in range(num_iteration):
@@ -839,29 +823,17 @@ def optimize_deflate_block(
         if est_bits - base_bits > tolerance_bit:
             continue
 
-        # 使っているシンボル集合を収集
-        used_lit = _collect_used_litlen_syms(base_block.tokens)
-        used_dist = _collect_used_dist_syms(base_block.tokens)
 
         # oversubscribe 解消 → complete 化（予約付き）→ 切詰め等を内部で実施
         cand_l, cand_d = _ensure_eob_and_dist(cand_l, cand_d)
         lit = _make_tree_complete(fix_lengths_kraft(cand_l, 15), 15, reserved=used_lit)
         dist = _make_tree_complete(fix_lengths_kraft(cand_d, 15), 15, reserved=used_dist)
 
-        lit_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream = build_cl_code_for_lengths(lit, dist)
-
         # 候補ブロック（bfinal は元を継承）
         cand_block = DynamicHuffmanBlock(
             bfinal=base_block.bfinal,
+            header=build_header_from_lengths(lit, dist),
             tokens=base_block.tokens,
-            header=DynamicHuffmanHeader(
-                hlit=hlit,
-                hdist=hdist,
-                hclen=hclen,
-                cl_code=cl_codec,
-                litlen_code=DynamicHuffmanCode(lit_eff),
-                dist_code=DynamicHuffmanCode(dist_eff),
-            ),
         )
         cand_bytes = dumps(cand_block)
 

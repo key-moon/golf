@@ -148,7 +148,7 @@ if __name__ == "__main__":
         compress_method = "unknown"
         raw_compressed = b""
       if res.correct == 1.:
-        print(f"✅ {code_path} {len(code)=} {len(compressed)=} (raw: {len(raw_compressed)})")
+        print(f"✅ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 61})")
         success += 1
       else:
         print(f"❌ {code_path} {len(code)=} {len(compressed)=}")
