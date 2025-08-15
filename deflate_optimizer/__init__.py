@@ -6,108 +6,11 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 import random
-from typing import List, Sequence, Tuple, Dict, Optional, Callable, Iterable
+from typing import List, Tuple, Dict, Optional, Callable
+import zlib
 
-from tqdm import tqdm
-
-# =========================================================
-# Bit I/O with lookahead (LSB-first as in Deflate)
-# =========================================================
-
-class BitWriter:
-    __slots__ = ("_buf", "_bitbuf", "_bitcnt")
-    def __init__(self):
-        self._buf = bytearray()
-        self._bitbuf = 0
-        self._bitcnt = 0
-
-    def write_bits(self, value: int, nbits: int) -> None:
-        if nbits < 0:
-            raise ValueError("nbits must be >= 0")
-        v = value & ((1 << nbits) - 1) if nbits else 0
-        self._bitbuf |= v << self._bitcnt
-        self._bitcnt += nbits
-        while self._bitcnt >= 8:
-            self._buf.append(self._bitbuf & 0xFF)
-            self._bitbuf >>= 8
-            self._bitcnt -= 8
-
-    def align_to_byte(self) -> None:
-        if self._bitcnt > 0:
-            self._buf.append(self._bitbuf & 0xFF)
-            self._bitbuf = 0
-            self._bitcnt = 0
-
-    def get_bytes(self) -> bytes:
-        self.align_to_byte()
-        return bytes(self._buf)
-
-
-class BitReader:
-    __slots__ = ("_data","_pos","_bitbuf","_bitcnt")
-    def __init__(self, data: bytes):
-        self._data = data
-        self._pos = 0
-        self._bitbuf = 0
-        self._bitcnt = 0
-
-    def ensure_bits(self, nbits: int, allow_zerofill: bool = False) -> None:
-        while self._bitcnt < nbits and self._pos < len(self._data):
-            self._bitbuf |= self._data[self._pos] << self._bitcnt
-            self._pos += 1
-            self._bitcnt += 8
-        if self._bitcnt < nbits and not allow_zerofill:
-            raise EOFError("read past end")
-
-    def peek_bits(self, nbits: int, allow_zerofill: bool = True) -> int:
-        if nbits < 0:
-            raise ValueError("nbits must be >= 0")
-        self.ensure_bits(nbits, allow_zerofill=allow_zerofill)
-        return self._bitbuf & ((1 << nbits) - 1)
-
-    def drop_bits(self, nbits: int) -> None:
-        if nbits < 0:
-            raise ValueError("nbits must be >= 0")
-        self.ensure_bits(nbits, allow_zerofill=False)
-        self._bitbuf >>= nbits
-        self._bitcnt -= nbits
-
-    def read_bits(self, nbits: int) -> int:
-        v = self.peek_bits(nbits, allow_zerofill=False)
-        self.drop_bits(nbits)
-        return v
-
-    def read_bit(self) -> int:
-        return self.read_bits(1)
-
-    def align_to_next_byte(self) -> None:
-        """BTYPE=00 (stored) 用：現在のパーシャルバイトの残りビットを捨ててバイト境界に進める。"""
-        drop = self._bitcnt % 8
-        if drop:
-            self.drop_bits(drop)
-
-    def read_bytes(self, n: int) -> bytes:
-        """現在位置からちょうど n バイト取り出す（必要なら内部ビットバッファからも取り出す）。"""
-        self.align_to_next_byte()
-        out = bytearray()
-        # まずバッファ内のフルバイトを吸い出し
-        while n > 0 and self._bitcnt >= 8:
-            out.append(self._bitbuf & 0xFF)
-            self._bitbuf >>= 8
-            self._bitcnt -= 8
-            n -= 1
-        # 残りは _data から
-        if n > 0:
-            if self._pos + n > len(self._data):
-                raise EOFError("read past end")
-            out += self._data[self._pos:self._pos+n]
-            self._pos += n
-            n = 0
-        return bytes(out)
-
-    def at_eof(self) -> bool:
-        return self._pos >= len(self._data) and self._bitcnt == 0
-
+from .bitio import BitReader, BitWriter, dumps
+from .huffman import fix_lengths_kraft, last_nonzero_index, FastHuffman
 
 # =========================================================
 # RFC1951 tables and helpers
@@ -186,6 +89,92 @@ def fix_lengths_kraft(lengths: List[int], maxbits: int) -> List[int]:
             lens[idx] = min(maxbits, l + 1)
     return lens
 
+# ---- 追加: zlib と同等の left 判定（不完全 / 過剰） ----
+def _build_bit_counts(lengths: List[int], maxbits: int) -> List[int]:
+    cnt = [0]*(maxbits+1)
+    for l in lengths:
+        if 0 < l <= maxbits:
+            cnt[l] += 1
+    return cnt
+
+def _left_after_counts(counts: List[int], maxbits: int) -> int:
+    """
+    zlib の inflate_table 相当:
+      left < 0 -> oversubscribed（過剰）
+      left = 0 -> complete（完全）
+      left > 0 -> incomplete（不完全）
+    """
+    left = 1
+    for bits in range(1, maxbits+1):
+        left <<= 1
+        left -= counts[bits] if bits < len(counts) else 0
+    return left
+
+def _make_tree_complete(lengths: List[int],
+                        maxbits: int,
+                        reserved: Optional[set] = None) -> List[int]:
+    """
+    lengths を「oversubscribe でない」かつ「complete（left==0）」に補正する。
+    - oversubscribe（left<0）は既存の fix_lengths_kraft() で解消されている前提でもう一度チェック。
+    - incomplete（left>0）は、長さ 0 のシンボルに maxbits を割り当てて left を 0 まで埋める。
+      予約済み（reserved）シンボルは変更しない。
+    """
+    lens = list(lengths)
+    # まず oversubscribe を排除（∑2^-L ≤ 1 まで延長）
+    lens = fix_lengths_kraft(lens, maxbits)
+
+    counts = _build_bit_counts(lens, maxbits)
+    left = _left_after_counts(counts, maxbits)
+    if left == 0:
+        return lens
+    if left < 0:
+        # ここに来ない想定だが保険
+        lens = fix_lengths_kraft(lens, maxbits)
+        counts = _build_bit_counts(lens, maxbits)
+        left = _left_after_counts(counts, maxbits)
+
+    # left > 0 の場合、ゼロ長のシンボルに maxbits を付与して埋める
+    if reserved is None:
+        reserved = set()
+    # 既存配列内のゼロ長から優先的に使う（HLIT/HDIST を無闇に伸ばさない）
+    for idx in range(len(lens)):
+        if left == 0:
+            break
+        if idx in reserved:
+            continue
+        if lens[idx] == 0:
+            lens[idx] = maxbits
+            left -= 1
+    # まだ残れば、末尾を伸ばして付与
+    while left > 0:
+        idx = len(lens)
+        if idx in reserved:
+            # まずは次の index を探す
+            lens.append(0);  # 1 つ空けて次へ
+            continue
+        lens.append(maxbits)
+        left -= 1
+    return lens
+
+def _collect_used_litlen_syms(tokens: List["Token"]) -> set:
+    used = {256}  # EOB は必須
+    for t in tokens:
+        if isinstance(t, LitToken):
+            used.add(t.lit & 0x1FF)  # 0..255
+        else:
+            lcode, _, _ = _length_to_code_and_extra_for_dump(t.length)
+            used.add(lcode)  # 257..285
+    return used
+
+def _collect_used_dist_syms(tokens: List["Token"]) -> set:
+    used = set()
+    for t in tokens:
+        if isinstance(t, MatchToken):
+            dcode, _, _ = _distance_to_code_and_extra_for_dump(t.distance)
+            used.add(dcode)  # 0..29
+    # 距離が 1 件も無い場合は空集合でよい（後段の ensure が最低 1 記号非 0 を担保）
+    return used
+
 
 # =========================================================
 # Tokens / Blocks
@@ -207,7 +196,6 @@ class Block(ABC):
 
     @abstractmethod
     def dump(self, bw: "BitWriter") -> None:
-        """サブクラスが実装（Dynamic/Static/Stored）"""
         raise NotImplementedError
 
     @staticmethod
@@ -222,10 +210,6 @@ class Block(ABC):
             return StoredBlock.load_from_body(br, bfinal)
         else:
             raise ValueError("Invalid reserved BTYPE=0b11")
-
-
-class HuffmanBlock(Block):
-    tokens: List[Token]
 
 @dataclass
 class StoredBlock(Block):
@@ -259,6 +243,9 @@ class StoredBlock(Block):
         for b in self.data:
             bw.write_bits(b, 8)
 
+class HuffmanBlock(Block):
+    tokens: List[Token]
+
 def _fixed_litlen_lengths() -> List[int]:
     lens = [0]*288  # 0..287
     for s in range(0, 144):   lens[s] = 8
@@ -271,6 +258,8 @@ def _fixed_dist_lengths() -> List[int]:
     lens = [5]*32  # 0..31
     return lens
 
+STATIC_LITLEN_CODEC, STATIC_DIST_CODEC = FastHuffman(_fixed_litlen_lengths()), FastHuffman(_fixed_dist_lengths())
+
 @dataclass
 class StaticHuffmanBlock(HuffmanBlock):
     """固定ハフマン (BTYPE=01)"""
@@ -278,22 +267,16 @@ class StaticHuffmanBlock(HuffmanBlock):
 
     @staticmethod
     def load_from_body(br: "BitReader", bfinal: int) -> "StaticHuffmanBlock":
-        # 固定木を構築
-        lit_lens  = _fixed_litlen_lengths()
-        dist_lens = _fixed_dist_lengths()
-        lit = DynamicHuffmanCode(lit_lens);  lit.build()
-        dist = DynamicHuffmanCode(dist_lens); dist.build()
-
         toks: List[Token] = []
         while True:
-            sym = lit.read(br)
+            sym = STATIC_LITLEN_CODEC.read(br)
             if sym < 256:
                 toks.append(LitToken(sym))
             elif sym == 256:
                 break
             else:
                 length = len_code_to_length(sym, br)
-                dcode = dist.read(br)
+                dcode = STATIC_DIST_CODEC.read(br)
                 distance = dist_code_to_distance(dcode, br)
                 toks.append(MatchToken(length=length, distance=distance))
         return StaticHuffmanBlock(bfinal=bfinal, tokens=toks)
@@ -302,25 +285,20 @@ class StaticHuffmanBlock(HuffmanBlock):
         # ヘッダ
         bw.write_bits(self.bfinal & 1, 1)
         bw.write_bits(0b01, 2)
-        # 固定木
-        lit_lens  = _fixed_litlen_lengths()
-        dist_lens = _fixed_dist_lengths()
-        lit = DynamicHuffmanCode(lit_lens);  lit.build()
-        dist = DynamicHuffmanCode(dist_lens); dist.build()
 
         for t in self.tokens:
             if isinstance(t, LitToken):
-                lit.write(bw, t.lit)
+                STATIC_LITLEN_CODEC.write(bw, t.lit)
             else:
                 assert isinstance(t, MatchToken)
                 lcode, lextra, lbits = _length_to_code_and_extra_for_dump(t.length)
-                lit.write(bw, lcode)
+                STATIC_LITLEN_CODEC.write(bw, lcode)
                 if lbits: bw.write_bits(lextra, lbits)
                 dcode, dextra, dbits = _distance_to_code_and_extra_for_dump(t.distance)
-                dist.write(bw, dcode)
+                STATIC_DIST_CODEC.write(bw, dcode)
                 if dbits: bw.write_bits(dextra, dbits)
         # EOB
-        lit.write(bw, 256)
+        STATIC_LITLEN_CODEC.write(bw, 256)
 
 
 # =========================================================
@@ -329,7 +307,7 @@ class StaticHuffmanBlock(HuffmanBlock):
 
 CL_ORDER = [16,17,18, 0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15]
 
-def rle_code_lengths_stream(litlen: List[int], dist: List[int]) -> List[Tuple[int,int,int]]:
+def rle_code_lengths_stream(litlen: List[int], dist: List[int], allow_16=True, allow_17=True, allow_18=True) -> List[Tuple[int,int,int]]:
     """
     litlen + dist のコード長列を RFC1951 の RLE で列挙。
     返値は (symbol, extra_value, extra_bits):
@@ -343,7 +321,6 @@ def rle_code_lengths_stream(litlen: List[int], dist: List[int]) -> List[Tuple[in
     i = 0
     while i < len(seq):
         cur = seq[i]
-        # 連長
         run = 1
         j = i + 1
         while j < len(seq) and seq[j] == cur:
@@ -351,27 +328,21 @@ def rle_code_lengths_stream(litlen: List[int], dist: List[int]) -> List[Tuple[in
 
         if cur == 0:
             k = run
-            while k >= 11:
+            while k >= 11 and allow_18:
                 use = min(138, k)
                 out.append((18, use - 11, 7))
                 k -= use
-            if k >= 3:
+            while k >= 3 and allow_17:
                 out.append((17, k - 3, 3))
                 k = 0
-            # 残り 0..2 個はリテラル 0 をその数だけ
             out.extend([(0, 0, 0)] * k)
         else:
-            # まず 1 個はリテラルで出す
             out.append((cur, 0, 0))
             k = run - 1
-            # 3..6 は 16 を使う
-            while k >= 6:
-                out.append((16, 3, 2))  # 6回 → extra=6-3=3
-                k -= 6
-            if k >= 3:
-                out.append((16, k - 3, 2))
-                k = 0
-            # 残り 1..2 回はリテラルで出す（← これが修正点）
+            while k >= 3 and allow_16:
+                consume = min(k, 6)
+                out.append((16, consume - 3, 2))
+                k -= consume
             out.extend([(cur, 0, 0)] * k)
 
         i = j
@@ -417,79 +388,21 @@ def lengths_from_freq(freqs: List[int], maxbits: int) -> List[int]:
     lens = fix_lengths_kraft(lens, maxbits)
     return lens
 
-
-# =========================================================
-# Fast Huffman codec with peek (for CL and lit/len/dist)
-# =========================================================
-
-class _FastHuffman:
-    __slots__ = ("enc_map","dec_table","maxbits","mask")
-    def __init__(self, lengths: List[int], maxbits: int):
-        self.maxbits = maxbits
-        self.mask = (1 << maxbits) - 1
-        pairs = [(l, s) for s, l in enumerate(lengths) if l > 0]
-        if not pairs:
-            raise ValueError("Huffman must have at least one non-zero length")
-        pairs.sort()
-        maxlen = max(l for l, _ in pairs)
-        if maxlen > maxbits:
-            raise ValueError("code length exceeds maxbits")
-
-        bl_count = [0]*(maxlen+1)
-        for l, _ in pairs: bl_count[l] += 1
-        next_code = [0]*(maxlen+1)
-        code = 0
-        for bits in range(1, maxlen+1):
-            code = (code + bl_count[bits-1]) << 1
-            next_code[bits] = code
-
-        enc_map: Dict[int, Tuple[int,int]] = {}
-        for length, sym in pairs:
-            c = next_code[length]
-            next_code[length] += 1
-            enc_map[sym] = (reverse_bits(c, length), length)
-
-        size = 1 << maxbits
-        dec_table: List[Tuple[int,int]] = [(-1, 0)] * size
-        for sym, (code_lsb, nb) in enc_map.items():
-            reps = 1 << (maxbits - nb)
-            base = code_lsb
-            for k in range(reps):
-                idx = (k << nb) | base
-                dec_table[idx] = (sym, nb)
-
-        self.enc_map = enc_map
-        self.dec_table = dec_table
-
-    def write(self, bw: BitWriter, sym: int) -> None:
-        code, n = self.enc_map[sym]
-        bw.write_bits(code, n)
-
-    def read(self, br: BitReader) -> int:
-        # 最長長で先読み。末尾ギリギリでも 0 埋め peek を許容
-        bits = br.peek_bits(self.maxbits, allow_zerofill=True)
-        sym, n = self.dec_table[bits & self.mask]
-        if n == 0 or sym < 0:
-            raise ValueError("invalid Huffman prefix")
-        br.drop_bits(n)  # drop は厳格（ここでは実在ビット数）
-        return sym
-
-
 @dataclass
 class DynamicHuffmanCodeLengthCode:
     """Code Length Alphabet (0..18), maxbits=7"""
     lengths: List[int]
-    _codec: Optional[_FastHuffman] = None
+    _codec: Optional[FastHuffman] = None
 
-    def build(self) -> None:
-        self._codec = _FastHuffman(self.lengths, maxbits=7)
+    def __post_init__(self):
+        self._codec = FastHuffman(self.lengths)
 
     def write(self, bw: BitWriter, sym: int) -> None:
-        if self._codec is None: self.build()
+        assert self._codec is not None
         self._codec.write(bw, sym)
 
     def read(self, br: BitReader) -> int:
-        if self._codec is None: self.build()
+        assert self._codec is not None
         return self._codec.read(br)
 
     @staticmethod
@@ -499,7 +412,6 @@ class DynamicHuffmanCodeLengthCode:
             sym = CL_ORDER[i]
             lens[sym] = br.read_bits(3)
         obj = DynamicHuffmanCodeLengthCode(lens)
-        obj.build()
         return obj
 
     def dump_lengths(self, bw: BitWriter, hclen_count: int) -> None:
@@ -513,17 +425,17 @@ class DynamicHuffmanCodeLengthCode:
 class DynamicHuffmanCode:
     """lit/len(0..285) or dist(0..29), maxbits=15"""
     lengths: List[int]
-    _codec: Optional[_FastHuffman] = None
+    _codec: Optional[FastHuffman] = None
 
-    def build(self) -> None:
-        self._codec = _FastHuffman(self.lengths, maxbits=15)
+    def __post_init__(self):
+        self._codec = FastHuffman(self.lengths)
 
     def write(self, bw: BitWriter, sym: int) -> None:
-        if self._codec is None: self.build()
+        assert self._codec is not None
         self._codec.write(bw, sym)
 
     def read(self, br: BitReader) -> int:
-        if self._codec is None: self.build()
+        assert self._codec is not None
         return self._codec.read(br)
 
 
@@ -536,11 +448,12 @@ class DynamicHuffmanHeader:
     hlit: int
     hdist: int
     hclen: int
-    cl_lengths: List[int]
-    rle_code_lengths_stream: List[Tuple[int,int,int]]
+    cl_code: DynamicHuffmanCodeLengthCode
+    litlen_code: DynamicHuffmanCode
+    dist_code: DynamicHuffmanCode
 
     @staticmethod
-    def load(br: BitReader) -> Tuple["DynamicHuffmanHeader", DynamicHuffmanCode, DynamicHuffmanCode]:
+    def load(br: BitReader) -> "DynamicHuffmanHeader":
         hlit  = br.read_bits(5)
         hdist = br.read_bits(5)
         hclen = br.read_bits(4)
@@ -575,7 +488,8 @@ class DynamicHuffmanHeader:
             else:
                 raise ValueError("Invalid CL symbol")
 
-        seq = seq[:num_litlen + num_dist]
+        assert len(seq) == num_litlen + num_dist
+
         litlen_lengths = seq[:num_litlen]
         dist_lengths   = seq[num_litlen:]
 
@@ -584,10 +498,36 @@ class DynamicHuffmanHeader:
 
         header = DynamicHuffmanHeader(
             hlit=hlit, hdist=hdist, hclen=hclen,
-            cl_lengths=cl_code.lengths, rle_code_lengths_stream=[]
+            cl_code=cl_code, litlen_code=DynamicHuffmanCode(litlen_lengths), dist_code=DynamicHuffmanCode(dist_lengths)
         )
-        return header, DynamicHuffmanCode(litlen_lengths), DynamicHuffmanCode(dist_lengths)
+        return header
+    def dump(self, bw: "BitWriter") -> None:
+        if len(self.litlen_code.lengths) < 257 or self.litlen_code.lengths[256] <= 0:
+            raise ValueError("EOB (256) must have a non-zero code length and at least 257 litlen lengths are required.")
+        if _left_after_counts(_build_bit_counts(self.litlen_code.lengths, 15), 15) != 0:
+            raise ValueError("Litlen code lengths do not satisfy the complete tree condition (left != 0).")
+        if _left_after_counts(_build_bit_counts(self.dist_code.lengths, 15), 15) != 0:
+            raise ValueError("Distance code lengths do not satisfy the complete tree condition (left != 0).")
 
+        bw.write_bits(self.hlit, 5)
+        bw.write_bits(self.hdist, 5)
+        bw.write_bits(self.hclen, 4)
+        self.cl_code.dump_lengths(bw, self.hclen + 4)
+
+        allow_16, allow_17, allow_18 = [i < len(self.cl_code.lengths) and self.cl_code.lengths[i] != 0  for i in (16, 17, 18)]
+
+        litlen_lengths = self.litlen_code.lengths
+        dist_lengths = self.dist_code.lengths
+        rle_stream = rle_code_lengths_stream(
+            litlen_lengths,
+            dist_lengths,
+            allow_16, allow_17, allow_18
+        )
+
+        for sym, extra_val, extra_bits in rle_stream:
+            self.cl_code.write(bw, sym)
+            if extra_bits:
+                bw.write_bits(extra_val, extra_bits)
 
 # =========================================================
 # 共通: CL を lit/len + dist から構築するファクトリ
@@ -614,25 +554,37 @@ def _cut_and_indices(litlen: List[int], dist: List[int]) -> Tuple[List[int], Lis
 def build_cl_code_for_lengths(
     litlen_lengths: List[int],
     dist_lengths: List[int],
-) -> Tuple[
-    List[int], List[int],   # litlen_effective, dist_effective
-    int, int,               # hlit, hdist
-    DynamicHuffmanCodeLengthCode, int,  # cl_codec, hclen
-    List[Tuple[int,int,int]]           # rle_stream
-]:
-    # 安全化 + Kraft
+):
+    # --- 既存の安全化 ---
     litlen, dist = _ensure_eob_and_dist(litlen_lengths, dist_lengths)
+
+    # ★ ここで reserved を用意：実際に使うシンボルはなるべく弄らない
+    #   （length 値そのものは触れても良いが、ゼロ化したり極端に短くすると
+    #     実データの符号長が激変するため）
+    used_lit = _collect_used_litlen_syms(tokens=[])  # ← 呼び出しサイトで正しく渡せない場合の保険
+    used_dist = set()
+
+    # ここは後述の DynamicHuffmanBlock.dump()/builder から呼ぶときに
+    # 正しく tokens を渡して上書きします。既存の呼び出しが tokens を知らない
+    # 場合は EOB だけでも reserved になっていれば最低限は安全です。
+
+    # 一旦 Kraft を満たす（oversubscribe 回避）
     litlen = fix_lengths_kraft(litlen, 15)
     dist   = fix_lengths_kraft(dist, 15)
 
-    # 後端ゼロ切り詰め → HLIT/HDIST
+    # --- complete 化（left==0 になるよう穴を埋める）---
+    litlen = _make_tree_complete(litlen, 15, reserved=used_lit)
+    dist   = _make_tree_complete(dist,   15, reserved=used_dist)
+
+    # 後端ゼロ切詰め → HLIT/HDIST
     litlen_eff, dist_eff, num_litlen, num_dist = _cut_and_indices(litlen, dist)
     hlit  = num_litlen - 257
-    hdist = num_dist - 1
+    hdist = num_dist   - 1
 
+    # RLE 生成
     rle_stream = rle_code_lengths_stream(litlen_eff, dist_eff)
 
-    # CL 頻度 → 制限長ハフマン
+    # CL 頻度 → 制限長ハフマン（max=7）
     cl_freq = [0]*19
     for sym,_,_ in rle_stream:
         cl_freq[sym] += 1
@@ -641,18 +593,16 @@ def build_cl_code_for_lengths(
     # HCLEN 決定
     hclen = hclen_from_cl_lengths(cl_lengths_raw)
 
-    # ★ 宣言範囲外（CL_ORDER[hclen+4:]）は 0 に強制
+    # マスク（宣言範囲外は 0）
     active = set(CL_ORDER[:hclen + 4])
     cl_lengths = [ (cl_lengths_raw[i] if i in active else 0) for i in range(19) ]
 
-    cl_codec = DynamicHuffmanCodeLengthCode(cl_lengths); cl_codec.build()
+    # ★ CL も complete 化（保険：zlib は CL 不完全にも比較的寛容だが、揃えておく）
+    cl_lengths = _make_tree_complete(cl_lengths, 7, reserved=None)
 
-    # 使うシンボルがゼロ長になっていないかの自衛チェック
-    for sym,_,_ in rle_stream:
-        if cl_codec.lengths[sym] == 0:
-            raise AssertionError("internal: CL symbol used by RLE has zero length after HCLEN mask")
+    cl_codec = DynamicHuffmanCodeLengthCode(cl_lengths)
 
-    return (litlen_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream)
+    return litlen_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream
 
 # =========================================================
 # DynamicHuffmanBlock
@@ -661,11 +611,8 @@ def build_cl_code_for_lengths(
 @dataclass
 class DynamicHuffmanBlock(HuffmanBlock):
     bfinal: int
-    tokens: List[Token]
     header: DynamicHuffmanHeader
-    cl_code: DynamicHuffmanCodeLengthCode
-    litlen_code: DynamicHuffmanCode
-    dist_code: DynamicHuffmanCode
+    tokens: List[Token]
 
     @staticmethod
     def load(br: BitReader) -> "DynamicHuffmanBlock":
@@ -676,11 +623,11 @@ class DynamicHuffmanBlock(HuffmanBlock):
 
     @staticmethod
     def load_from_body(br: BitReader, bfinal: int) -> "DynamicHuffmanBlock":
-        header, litlen, dist = DynamicHuffmanHeader.load(br)
-        litlen.build()
+        header = DynamicHuffmanHeader.load(br)
+        litlen = header.litlen_code
+        dist = header.dist_code
         if not any(l > 0 for l in dist.lengths):
             raise ValueError("Distance tree has no codes")
-        dist.build()
 
         tokens: List[Token] = []
         while True:
@@ -695,66 +642,25 @@ class DynamicHuffmanBlock(HuffmanBlock):
                 distance = dist_code_to_distance(dcode, br)
                 tokens.append(MatchToken(length=length, distance=distance))
 
-        cl_code = DynamicHuffmanCodeLengthCode(header.cl_lengths); cl_code.build()
-        return DynamicHuffmanBlock(
-            bfinal=bfinal, tokens=tokens,
-            header=header, cl_code=cl_code,
-            litlen_code=litlen, dist_code=dist
-        )
+        return DynamicHuffmanBlock(bfinal=bfinal, header=header, tokens=tokens)
 
     def dump(self, bw: BitWriter) -> None:
         bw.write_bits(self.bfinal & 1, 1)
         bw.write_bits(0b10, 2)
 
-        (lit_eff, dist_eff,
-         hlit, hdist,
-         cl_codec, hclen,
-         rle_stream) = build_cl_code_for_lengths(self.litlen_code.lengths, self.dist_code.lengths)
-
-        # EOB(256) の健全性を念押し確認
-        assert len(lit_eff) >= 257 and lit_eff[256] > 0
-
-        # HLIT/HDIST/HCLEN
-        bw.write_bits(hlit, 5)
-        bw.write_bits(hdist, 5)
-        bw.write_bits(hclen, 4)
-
-        # CL 3bit 長さ（マスク済み配列に対応）
-        cl_codec.dump_lengths(bw, hclen + 4)
-
-        # RLE ストリームを CL ハフマンで符号化
-        for sym, extra_val, extra_bits in rle_stream:
-            cl_codec.write(bw, sym)
-            if extra_bits:
-                bw.write_bits(extra_val, extra_bits)
-
-        # 本体
-        lit_codec  = DynamicHuffmanCode(lit_eff);  lit_codec.build()
-        dist_codec = DynamicHuffmanCode(dist_eff); dist_codec.build()
+        # --- 以降は既存どおり ---
+        self.header.dump(bw)
 
         for t in self.tokens:
             if isinstance(t, LitToken):
-                lit_codec.write(bw, t.lit)
+                self.header.litlen_code.write(bw, t.lit)
             else:
+                assert isinstance(t, MatchToken)
                 lcode, lextra, lbits = _length_to_code_and_extra_for_dump(t.length)
-                lit_codec.write(bw, lcode)
-                if lbits: bw.write_bits(lextra, lbits)
+                self.header.litlen_code.write(bw, lcode);  (bw.write_bits(lextra, lbits) if lbits else None)
                 dcode, dextra, dbits = _distance_to_code_and_extra_for_dump(t.distance)
-                dist_codec.write(bw, dcode)
-                if dbits: bw.write_bits(dextra, dbits)
-
-        lit_codec.write(bw, 256)  # EOB
-
-        # ヘッダ情報を“実際に出力した値”で更新（cl_lengths はマスク済み）
-        self.header = DynamicHuffmanHeader(
-            hlit=hlit, hdist=hdist, hclen=hclen,
-            cl_lengths=cl_codec.lengths,
-            rle_code_lengths_stream=rle_stream
-        )
-        self.cl_code = cl_codec
-        self.litlen_code = DynamicHuffmanCode(lit_eff);  self.litlen_code.build()
-        self.dist_code   = DynamicHuffmanCode(dist_eff); self.dist_code.build()
-
+                self.header.dist_code.write(bw, dcode); (bw.write_bits(dextra, dbits) if dbits else None)
+        self.header.litlen_code.write(bw, 256)
 
 # =========================================================
 # Helpers for dump-time reverse mapping
@@ -782,34 +688,6 @@ def _distance_to_code_and_extra_for_dump(distance: int) -> Tuple[int,int,int]:
     raise RuntimeError("distance mapping failed")
 
 
-# =========================================================
-# Public builder and demo
-# =========================================================
-
-def build_block_from_lengths(tokens: Sequence[Token],
-                            litlen_lengths: List[int],
-                            dist_lengths: List[int],
-                            bfinal: int = 1) -> DynamicHuffmanBlock:
-    # まず CL を本計算（内部で EOB/距離/クラフト/切詰めを実施）
-    lit_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream = \
-        build_cl_code_for_lengths(litlen_lengths, dist_lengths)
-
-    # コーデックを構築
-    lit_code  = DynamicHuffmanCode(lit_eff);  lit_code.build()
-    dist_code = DynamicHuffmanCode(dist_eff); dist_code.build()
-
-    header = DynamicHuffmanHeader(
-        hlit=hlit, hdist=hdist, hclen=hclen,
-        cl_lengths=cl_codec.lengths,
-        rle_code_lengths_stream=rle_stream
-    )
-
-    return DynamicHuffmanBlock(
-        bfinal=bfinal, tokens=list(tokens),
-        header=header, cl_code=cl_codec,
-        litlen_code=lit_code, dist_code=dist_code
-    )
-
 
 # ---------- 概算ビット数 ----------
 def _last_nonzero_index(a: List[int]) -> int:
@@ -834,7 +712,7 @@ def estimate_block_bits(tokens: List["Token"], litlen_lengths: List[int], dist_l
     hclen = hclen_from_cl_lengths(cl_lengths)
     bits += 5 + 5 + 4
     bits += 3 * (hclen + 4)
-    cl_table = _FastHuffman(cl_lengths, 7)  # 先読みテーブルで長さ n を得るためだけに使用
+    cl_table = FastHuffman(cl_lengths)  # 先読みテーブルで長さ n を得るためだけに使用
     for sym,_,extra_bits in rle:
         # code 長は dec_table 設計から復元できないので enc_map を参照
         # ただし概算なので「ビット長＝lengths[sym]」で十分
@@ -907,12 +785,6 @@ def random_perturb_lengths(litlen: List[int], dist: List[int], num: int, rng: ra
     d = fix_lengths_kraft(d, 15)
     return l, d
 
-# ---------- エンコード（ブロック単体の bytes 出力） ----------
-def _encode_dynamic_block_bytes(block: "DynamicHuffmanBlock") -> bytes:
-    bw = BitWriter()
-    block.dump(bw)
-    return bw.get_bytes()
-
 @dataclass
 class OptimizeResult:
     best_bytes: bytes
@@ -935,45 +807,76 @@ def optimize_deflate_block(
     seed: Optional[int] = None,
 ) -> OptimizeResult:
     rng = random.Random(seed)
-    base_bits = estimate_block_bits(base_block.tokens, base_block.litlen_code.lengths, base_block.dist_code.lengths)
-    base_bytes = _encode_dynamic_block_bytes(base_block)
+    base_bits = estimate_block_bits(base_block.tokens, base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths)
+    base_bytes = dumps(base_block)
     base_score = score_func(base_bytes)
+
+    orig = base_block.bfinal
+    base_block.bfinal = 1
+    orig_bytes = zlib.decompress(dumps(base_block), wbits=-15)
+    base_block.bfinal = orig 
 
     best_bytes = base_bytes
     best_bits  = base_bits
     best_score = base_score
-    best_lit   = list(base_block.litlen_code.lengths)
-    best_dist  = list(base_block.dist_code.lengths)
+    best_lit   = list(base_block.header.litlen_code.lengths)
+    best_dist  = list(base_block.header.dist_code.lengths)
 
     tried = 0
     accepted = 0
     for _ in range(num_iteration):
         tried += 1
 
+        def _is_complete_set(lengths: List[int], maxbits: int) -> bool:
+            return _left_after_counts(_build_bit_counts(lengths, maxbits), maxbits) == 0
+
         cand_l, cand_d = random_perturb_lengths(best_lit, best_dist, num_perturbation, rng)
+        # 採用条件の例
+        if not _is_complete_set(cand_l, 15) or not _is_complete_set(cand_d, 15):
+            continue
         est_bits = estimate_block_bits(base_block.tokens, cand_l, cand_d)
-        if est_bits - base_bits <= tolerance_bit:
-            # 候補ブロック（bfinal は元を継承）
-            cand_block = DynamicHuffmanBlock(
-                bfinal=base_block.bfinal,
-                tokens=base_block.tokens,
-                header=base_block.header,      # dump 内で上書きされる
-                cl_code=base_block.cl_code,    # dump 内で上書きされる
-                litlen_code=DynamicHuffmanCode(cand_l),
-                dist_code=DynamicHuffmanCode(cand_d),
-            )
-            cand_bytes = _encode_dynamic_block_bytes(cand_block)
-            sc = score_func(cand_bytes)
-            accepted += 1
-            if (sc < best_score) or (sc == best_score and est_bits < best_bits):
-                best_score = sc
-                best_bits  = est_bits
-                best_bytes = cand_bytes
-                best_lit   = cand_l
-                best_dist  = cand_d
-                print(best_score)
-                if best_score <= terminate_threshold:
-                    break
+        if est_bits - base_bits > tolerance_bit:
+            continue
+
+        # 使っているシンボル集合を収集
+        used_lit = _collect_used_litlen_syms(base_block.tokens)
+        used_dist = _collect_used_dist_syms(base_block.tokens)
+
+        # oversubscribe 解消 → complete 化（予約付き）→ 切詰め等を内部で実施
+        cand_l, cand_d = _ensure_eob_and_dist(cand_l, cand_d)
+        lit = _make_tree_complete(fix_lengths_kraft(cand_l, 15), 15, reserved=used_lit)
+        dist = _make_tree_complete(fix_lengths_kraft(cand_d, 15), 15, reserved=used_dist)
+
+        lit_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream = build_cl_code_for_lengths(lit, dist)
+
+        # 候補ブロック（bfinal は元を継承）
+        cand_block = DynamicHuffmanBlock(
+            bfinal=base_block.bfinal,
+            tokens=base_block.tokens,
+            header=DynamicHuffmanHeader(
+                hlit=hlit,
+                hdist=hdist,
+                hclen=hclen,
+                cl_code=cl_codec,
+                litlen_code=DynamicHuffmanCode(lit_eff),
+                dist_code=DynamicHuffmanCode(dist_eff),
+            ),
+        )
+        cand_bytes = dumps(cand_block)
+
+        cand_block.bfinal=1
+        decompable_bytes = dumps(cand_block)
+        assert zlib.decompress(decompable_bytes, wbits=-15) == orig_bytes
+        sc = score_func(cand_bytes)
+        accepted += 1
+        if (sc < best_score) or (sc == best_score and est_bits < best_bits):
+            best_score = sc
+            best_bits  = est_bits
+            best_bytes = cand_bytes
+            best_lit   = cand_l
+            best_dist  = cand_d
+            if best_score <= terminate_threshold:
+                break
 
     return OptimizeResult(
         best_bytes=best_bytes,
@@ -985,55 +888,40 @@ def optimize_deflate_block(
         accepted=accepted,
     )
 
-if __name__ == "__main__":
-    import zlib, os
-    plain = open("base_arcdsl/task001.py~retire", "rb").read()
-    # wbits=-15 で raw deflate
-    deflate = zlib.compress(plain, level=6, wbits=-15)
-    forb = [0x00, 0x0a]
-    def score(data: bytes) -> int:
-        s = len(data)
-        for b in data:
-            if b in forb:
-                s += 1
-        return s
-    
-    reader = BitReader(deflate)
+def optimize_deflate_stream(
+    deflate_stream: bytes,
+    score_func: ScoreFunc,
+    num_iteration: int = 3000,
+    num_perturbation: int = 3,
+    tolerance_bit: int = 16,
+    terminate_threshold: int=-10**100,
+    seed: Optional[int] = None,
+    verbose=False
+) -> bytes:
+    reader = BitReader(deflate_stream)
     blocks: list[Block] = []
     while not blocks or not blocks[-1].bfinal:
         blocks.append(Block.load(reader))
-
-    w = BitWriter()
-    for b in blocks:
-        print(b)
-        b.dump(w)
-    assert zlib.decompress(w.get_bytes(), wbits=-15) == plain
-
-    print(f"{len(blocks)=}")
 
     res = b""
     for i, block in enumerate(blocks):
         writer = BitWriter()
         block.dump(writer)
         block_bytes = writer.get_bytes()
-
         if isinstance(block, DynamicHuffmanBlock):
-            print(f"[block#{i}] initial_length={len(block_bytes)} initial_score={score(block_bytes)}")
+            if verbose: print(f"[block#{i}] initial_length={len(block_bytes)} initial_score={score_func(block_bytes)}")
             r = optimize_deflate_block(
                 block,
-                score_func=score,
-                num_iteration=2000,
-                num_perturbation=3,
-                tolerance_bit=16,
-                terminate_threshold=len(block_bytes),
-                seed=1234,
+                score_func=score_func,
+                num_iteration=num_iteration,
+                num_perturbation=num_perturbation,
+                tolerance_bit=tolerance_bit,
+                terminate_threshold=terminate_threshold,
+                seed=seed,
             )
             res += r.best_bytes
-            print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score} bits~={r.best_bits}")
+            if verbose: print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score} bits~={r.best_bits}")
         else:
-            print(f"[block#{i}] Skipped (not DynHuffman)")
+            if verbose: print(f"[block#{i}] Skipped (not DynHuffman)")
             res += block_bytes
-
-    decompressed = zlib.decompress(res, wbits=-15)
-    print(decompressed == plain)
-  
+    return res
