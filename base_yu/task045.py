@@ -1,0 +1,5 @@
+# def p(g):return[r[:1]*10 if r[0]==r[-1]>0 else r for r in g]
+p=lambda g:[(s,s[:1]*10)[s[0]==s[9]]for s in g]
+# p=lambda g:[(s,s[::9]*5)[s[0]==s[9]]for s in g]
+# p=lambda g:[(s*10)[::10+(s[0]!=s[9])]for s in g]
+# p=lambda g:[s[0]==s[9]and s[:1]*10or s for s in g]

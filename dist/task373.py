@@ -1,1 +1,1 @@
-def p(g):return[[g[i+j&1][j]for j in range(len(g[0]))]for i in(0,1)]
+p=lambda g:[u:=sum(g,[])[::6]*3,u[::-1]]

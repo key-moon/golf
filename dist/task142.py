@@ -1,1 +1,1 @@
-def p(j):A=[r+r[::-1]for r in j];return A+A[::-1]
+p=lambda g:[s+s[::-1]for s in g+g[::-1]]
