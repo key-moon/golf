@@ -1,45 +1,11 @@
 from .bitio import BitReader, BitWriter
 
-def reverse_bits(x: int, nbits: int) -> int:
+def _reverse_bits(x: int, nbits: int) -> int:
     r = 0
     for _ in range(nbits):
         r = (r << 1) | (x & 1)
         x >>= 1
     return r
-
-def last_nonzero_index(a: list[int]) -> int:
-    for i in range(len(a) - 1, -1, -1):
-        if a[i] != 0:
-            return i
-    return -1
-
-def kraft_overflow(lengths: list[int]) -> bool:
-    total = 0.0
-    for l in lengths:
-        if l > 0:
-            total += 1.0 / (1 << l)
-            if total > 1.0 + 1e-12:
-                return True
-    return False
-
-def fix_lengths_kraft(lengths: list[int], maxbits: int):
-    lens = list(lengths)
-    while kraft_overflow(lens):
-        cands = [(l, i) for i, l in enumerate(lens) if 0 < l < maxbits]
-        if not cands:
-            raise ValueError("Cannot satisfy Kraft inequality within maxbits")
-        cands.sort()
-        extended = False
-        for l, idx in cands:
-            lens[idx] = l + 1
-            if not kraft_overflow(lens):
-                extended = True
-                break
-            lens[idx] = l
-        if not extended:
-            l, idx = cands[0]
-            lens[idx] = min(maxbits, l + 1)
-    return lens
 
 def _check_huffman_lengths(lengths: list[int], maxbits: int):
     bit_counts = [0]*(maxbits+1)
@@ -61,8 +27,9 @@ def ensure_valid_huffman_lengths(lengths: list[int], maxbits: int):
         raise ValueError("Litlen code lengths do not satisfy the complete tree condition (left != 0).")
 
 class FastHuffman:
-    __slots__ = ("enc_map","dec_table","maxbits","mask")
+    __slots__ = ("enc_map","dec_table","maxbits","mask","lengths")
     def __init__(self, lengths: list[int]):
+        self.lengths = lengths
         self.maxbits = maxbits = max(lengths)
         self.mask = (1 << maxbits) - 1
         pairs = [(l, s) for s, l in enumerate(lengths) if l > 0]
@@ -83,7 +50,7 @@ class FastHuffman:
         for length, sym in pairs:
             c = next_code[length]
             next_code[length] += 1
-            enc_map[sym] = (reverse_bits(c, length), length)
+            enc_map[sym] = (_reverse_bits(c, length), length)
 
         size = 1 << maxbits
         dec_table: list[tuple[int,int]] = [(-1, 0)] * size

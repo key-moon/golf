@@ -3,10 +3,125 @@ from dataclasses import dataclass
 import random
 from typing import Callable, Optional
 
-from deflate_optimizer.huffman import is_valid_huffman_lengths
-from . import Block, DynamicHuffmanBlock, DynamicHuffmanHeader, LitToken, MatchToken, Token , _length_to_code_and_extra_for_dump, _distance_to_code_and_extra_for_dump, build_header_from_lengths
+from deflate_optimizer.blocks import Block, LitToken, MatchToken, Token
+from deflate_optimizer.blocks.dynamic_huffman import CL_ORDER, DynamicHuffmanBlock, DynamicHuffmanCodeLengthCode, DynamicHuffmanHeader, rle_code_lengths_stream
+from deflate_optimizer.blocks.huffman import distance_to_code_and_extra, length_to_code_and_extra
+from deflate_optimizer.huffman import FastHuffman, is_valid_huffman_lengths
 from .bitio import BitReader, BitWriter, dumps
 
+def last_nonzero_index(a: list[int]) -> int:
+    for i in range(len(a) - 1, -1, -1):
+        if a[i] != 0:
+            return i
+    return -1
+
+def _cut_and_indices(litlen: list[int], dist: list[int]) -> tuple[list[int], list[int], int, int]:
+    l_last = last_nonzero_index(litlen)
+    d_last = last_nonzero_index(dist)
+    num_litlen = max(l_last + 1, 257)
+    num_dist   = max(d_last + 1, 1)
+    return litlen[:num_litlen], dist[:num_dist], num_litlen, num_dist
+
+def hclen_from_cl_lengths(cl_lengths: list[int]) -> int:
+    last = -1
+    for i in range(len(CL_ORDER)-1, -1, -1):
+        if cl_lengths[CL_ORDER[i]] != 0:
+            last = i; break
+    if last < 0: last = 0
+    return max(0, (last + 1) - 4)
+
+def kraft_overflow(lengths: list[int]) -> bool:
+    total = 0.0
+    for l in lengths:
+        if l > 0:
+            total += 1.0 / (1 << l)
+            if total > 1.0 + 1e-12:
+                return True
+    return False
+
+def fix_lengths_kraft(lengths: list[int], maxbits: int):
+    lens = list(lengths)
+    while kraft_overflow(lens):
+        cands = [(l, i) for i, l in enumerate(lens) if 0 < l < maxbits]
+        if not cands:
+            raise ValueError("Cannot satisfy Kraft inequality within maxbits")
+        cands.sort()
+        extended = False
+        for l, idx in cands:
+            lens[idx] = l + 1
+            if not kraft_overflow(lens):
+                extended = True
+                break
+            lens[idx] = l
+        if not extended:
+            l, idx = cands[0]
+            lens[idx] = min(maxbits, l + 1)
+    return lens
+
+def lengths_from_freq(freqs: list[int], maxbits: int) -> list[int]:
+    import heapq
+    n = len(freqs)
+    nodes = [(f, i) for i, f in enumerate(freqs) if f > 0]
+    lens = [0]*n
+    if not nodes:
+        return lens
+    if len(nodes) == 1:
+        lens[nodes[0][1]] = 1
+        return lens
+    heap = []
+    for f, i in nodes:
+        heapq.heappush(heap, (f, i))
+    nxt = n
+    parent: dict[int,int] = {}
+    while len(heap) >= 2:
+        f1, a1 = heapq.heappop(heap)
+        f2, a2 = heapq.heappop(heap)
+        nid = nxt; nxt += 1
+        parent[a1] = nid; parent[a2] = nid
+        heapq.heappush(heap, (f1+f2, nid))
+    for _, i in nodes:
+        d = 0; cur = i
+        while cur in parent:
+            d += 1; cur = parent[cur]
+        lens[i] = d
+    for i, l in enumerate(lens):
+        if l > maxbits: lens[i] = maxbits
+    lens = fix_lengths_kraft(lens, maxbits)
+    return lens
+
+def build_header_from_lengths(
+    litlen_lengths: list[int],
+    dist_lengths: list[int],
+):
+    # 後端ゼロ切詰め → HLIT/HDIST
+    litlen_lengths, dist_lengths, num_litlen, num_dist = _cut_and_indices(litlen_lengths, dist_lengths)
+    hlit  = num_litlen - 257
+    hdist = num_dist   - 1
+
+    # RLE 生成
+    rle_stream = rle_code_lengths_stream(litlen_lengths, dist_lengths)
+
+    # CL 頻度 → 制限長ハフマン（max=7）
+    cl_freq = [0]*19
+    for sym,_,_ in rle_stream:
+        cl_freq[sym] += 1
+    cl_lengths_raw = lengths_from_freq(cl_freq, maxbits=7)
+
+    # HCLEN 決定
+    hclen = hclen_from_cl_lengths(cl_lengths_raw)
+
+    # マスク（宣言範囲外は 0）
+    active = set(CL_ORDER[:hclen + 4])
+    cl_lengths = [ (cl_lengths_raw[i] if i in active else 0) for i in range(19) ]
+
+    return DynamicHuffmanHeader(
+        hlit,
+        hdist,
+        hclen,
+        DynamicHuffmanCodeLengthCode(cl_lengths),
+        FastHuffman(litlen_lengths),
+        FastHuffman(dist_lengths)
+    )
 
 def perturb_swap(lengths: list[int], rng: random.Random) -> None:
     idxs = [i for i, l in enumerate(lengths) if l > 0]
@@ -46,15 +161,15 @@ def _collect_usage(tokens: list[Token]) -> tuple[dict[int, int], dict[int, int],
             token_usage[t.lit] = token_usage[t.lit] + 1
         else:
             assert isinstance(t, MatchToken)
-            l_code, _, l_extrabits = _length_to_code_and_extra_for_dump(t.length)
+            l_code, _, l_extrabits = length_to_code_and_extra(t.length)
             token_usage[l_code] = token_usage[l_code] + 1; extrabits += l_extrabits
-            d_code, _, d_extrabits = _distance_to_code_and_extra_for_dump(t.distance)
+            d_code, _, d_extrabits = distance_to_code_and_extra(t.distance)
             dist_usage[d_code] = dist_usage[d_code] + 1; extrabits += d_extrabits
     return dict(token_usage), dict(dist_usage), extrabits
 
 @dataclass
 class OptimizeResult:
-    best_block: Block
+    best_block: DynamicHuffmanBlock
     best_bits: int
     best_score: int
     tried: int
@@ -106,30 +221,25 @@ def optimize_deflate_block(
 
     tried = 0
     accepted = 0
-    for _ in range(num_iteration):
-        if best_score <= terminate_threshold:
-            break
-
+    while terminate_threshold < best_score and tried < num_iteration:
         new_lit, new_dist = random_perturb_lengths(base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths, num_perturbation, rng)
-        # 採用条件の例
+
         if not is_valid_huffman_lengths(new_lit, 15): continue
         if not is_valid_huffman_lengths(new_dist, 15): continue
-        tried += 1
 
+        tried += 1
         header = build_header_from_lengths(new_lit, new_dist)
 
         est_bits = estimate_block_bits(header)
         if est_bits - base_bits > tolerance_bit:
             continue
 
-        # 候補ブロック（bfinal は元を継承）
         cand_block = DynamicHuffmanBlock(bfinal=base_block.bfinal, header=header, tokens=base_block.tokens)
 
         res = (prefix_bits | BitWriter(cand_block) | suffix_bits)
-        # res = (prefix_bits | BitWriter(cand_block))
 
         # すでに決定されてるbufferだけ用いたい
-        sc = score_func(res.get_bytes())
+        sc = score_func(res._buf)
         accepted += 1
         if (sc < best_score) or (sc == best_score and est_bits < best_bits):
             best_score = sc
@@ -166,8 +276,10 @@ def optimize_deflate_stream(
             if verbose: print(f"[block#{i}] initial_length={len(block_bytes)} initial_score={score_func(block_bytes)}")
             prefix = BitWriter(res._bitbuf, res._bitcnt)
             suffix = BitWriter()
-            # if not block.bfinal:
-            #     suffix.write_bytes(dumps(blocks[i + 1])[:1])
+            if not block.bfinal:
+                suffix.write_bits(dumps(blocks[i + 1])[0], 7)
+            else:
+                suffix.write_bits(0, 7)
             r = optimize_deflate_block(
                 block,
                 prefix_bits=prefix,
