@@ -1,102 +1,20 @@
+from collections import defaultdict
+from dataclasses import dataclass
+import random
+from typing import Callable, Optional
 
-# =========================================================
-# Helpers for dump-time reverse mapping
-# =========================================================
-
-def _length_to_code_and_extra_for_dump(length: int) -> Tuple[int,int,int]:
-    if length < 3 or length > 258:
-        raise ValueError("length out of range")
-    if length == 258:
-        return 285, 0, 0
-    for i in range(len(LEN_BASES)-1):
-        base = LEN_BASES[i]; nextb = LEN_BASES[i+1]
-        if base <= length < nextb:
-            return 257 + i, length - base, LEN_EXTRA[i]
-    return 285, 0, 0
-
-def _distance_to_code_and_extra_for_dump(distance: int) -> Tuple[int,int,int]:
-    if distance < 1 or distance > 32768:
-        raise ValueError("distance out of range")
-    for i in range(len(DIST_BASES)):
-        base = DIST_BASES[i]
-        nextb = DIST_BASES[i+1] if i+1 < len(DIST_BASES) else 1<<30
-        if base <= distance < nextb:
-            return i, distance - base, DIST_EXTRA[i]
-    raise RuntimeError("distance mapping failed")
+from deflate_optimizer.huffman import is_valid_huffman_lengths
+from . import Block, DynamicHuffmanBlock, DynamicHuffmanHeader, LitToken, MatchToken, Token , _length_to_code_and_extra_for_dump, _distance_to_code_and_extra_for_dump, build_header_from_lengths
+from .bitio import BitReader, BitWriter, dumps
 
 
-
-# ---------- 概算ビット数 ----------
-def _last_nonzero_index(a: List[int]) -> int:
-    for i in range(len(a)-1, -1, -1):
-        if a[i] != 0: return i
-    return -1
-
-def estimate_block_bits(tokens: List["Token"], litlen_lengths: List[int], dist_lengths: List[int]) -> int:
-    bits = 1 + 2  # BFINAL + BTYPE
-    # HLIT/HDIST/CL + RLE
-    l_last = _last_nonzero_index(litlen_lengths)
-    d_last = _last_nonzero_index(dist_lengths)
-    num_litlen = max(l_last + 1, 257)
-    num_dist   = max(d_last + 1, 1)
-    litlen_eff = (litlen_lengths[:num_litlen] + [0]*(num_litlen-len(litlen_lengths))) if len(litlen_lengths) < num_litlen else litlen_lengths[:num_litlen]
-    dist_eff   = (dist_lengths[:num_dist] + [0]*(num_dist-len(dist_lengths))) if len(dist_lengths) < num_dist else dist_lengths[:num_dist]
-    rle = rle_code_lengths_stream(litlen_eff, dist_eff)
-    # CL は頻度から maxbits=7
-    cl_freq = [0]*19
-    for sym,_,_ in rle: cl_freq[sym] += 1
-    cl_lengths = lengths_from_freq(cl_freq, 7)
-    hclen = hclen_from_cl_lengths(cl_lengths)
-    bits += 5 + 5 + 4
-    bits += 3 * (hclen + 4)
-    cl_table = FastHuffman(cl_lengths)  # 先読みテーブルで長さ n を得るためだけに使用
-    for sym,_,extra_bits in rle:
-        # code 長は dec_table 設計から復元できないので enc_map を参照
-        # ただし概算なので「ビット長＝lengths[sym]」で十分
-        l = cl_lengths[sym]
-        if l == 0:  # HCLEN マスクの可能性→安全側で重みを足す
-            return 1 << 60
-        bits += l + extra_bits
-
-    # 本体（リテラル / 長さ / 距離）
-    lit_lens  = litlen_eff
-    dist_lens = dist_eff
-    for t in tokens:
-        if isinstance(t, LitToken):
-            l = lit_lens[t.lit] if t.lit < len(lit_lens) else 0
-            if l <= 0: return 1 << 60
-            bits += l
-        else:
-            lcode, _, lbits = _length_to_code_and_extra_for_dump(t.length)
-            l = lit_lens[lcode] if lcode < len(lit_lens) else 0
-            if l <= 0: return 1 << 60
-            bits += l + lbits
-            dcode, _, dbits = _distance_to_code_and_extra_for_dump(t.distance)
-            dl = dist_lens[dcode] if dcode < len(dist_lens) else 0
-            if dl <= 0: return 1 << 60
-            bits += dl + dbits
-    # EOB
-    eob = lit_lens[256] if 256 < len(lit_lens) else 0
-    if eob <= 0: return 1 << 60
-    bits += eob
-    return bits
-
-def _ensure_eob_and_dist(litlen: List[int], dist: List[int]) -> Tuple[List[int], List[int]]:
-    l = list(litlen); d = list(dist)
-    if len(l) <= 256: l += [0]*(257 - len(l))
-    if l[256] == 0: l[256] = 1
-    if not any(x > 0 for x in d):
-        d = list(d) or [0]
-        d[0] = max(1, d[0])
-    return l, d
-
-def perturb_swap(lengths: List[int], rng: random.Random) -> None:
+def perturb_swap(lengths: list[int], rng: random.Random) -> None:
     idxs = [i for i, l in enumerate(lengths) if l > 0]
     if len(idxs) < 2: return
     i, j = rng.sample(idxs, 2)
     lengths[i], lengths[j] = lengths[j], lengths[i]
 
-def perturb_add_dummy_adjacent(lengths: List[int], rng: random.Random, maxbits: int = 15) -> None:
+def perturb_add_dummy_adjacent(lengths: list[int], rng: random.Random, maxbits: int = 15) -> None:
     if not any(lengths): return
     maxlen = max(l for l in lengths)
     cands = [i for i, l in enumerate(lengths) if l == maxlen]
@@ -108,7 +26,7 @@ def perturb_add_dummy_adjacent(lengths: List[int], rng: random.Random, maxbits: 
     if 0 <= j < len(lengths) and lengths[j] == 0:
         lengths[j] = min(maxbits, lengths[i])
 
-def random_perturb_lengths(litlen: List[int], dist: List[int], num: int, rng: random.Random) -> Tuple[List[int], List[int]]:
+def random_perturb_lengths(litlen: list[int], dist: list[int], num: int, rng: random.Random) -> tuple[list[int], list[int]]:
     l = list(litlen); d = list(dist)
     for _ in range(num):
         if rng.random() < 0.6:
@@ -117,107 +35,111 @@ def random_perturb_lengths(litlen: List[int], dist: List[int], num: int, rng: ra
         else:
             if rng.random() < 0.5: perturb_swap(d, rng)
             else: perturb_add_dummy_adjacent(d, rng, 15)
-    l, d = _ensure_eob_and_dist(l, d)
-    l = fix_lengths_kraft(l, 15)
-    d = fix_lengths_kraft(d, 15)
     return l, d
 
-# ---------- エンコード（ブロック単体の bytes 出力） ----------
-def _encode_dynamic_block_bytes(block: "DynamicHuffmanBlock") -> bytes:
-    bw = BitWriter()
-    block.dump(bw)
-    return bw.get_bytes()
+def _collect_usage(tokens: list[Token]) -> tuple[dict[int, int], dict[int, int], int]:
+    token_usage = defaultdict(lambda: 0, { 256: 1 }) 
+    dist_usage = defaultdict(lambda: 0)
+    extrabits = 0
+    for t in tokens:
+        if isinstance(t, LitToken):
+            token_usage[t.lit] = token_usage[t.lit] + 1
+        else:
+            assert isinstance(t, MatchToken)
+            l_code, _, l_extrabits = _length_to_code_and_extra_for_dump(t.length)
+            token_usage[l_code] = token_usage[l_code] + 1; extrabits += l_extrabits
+            d_code, _, d_extrabits = _distance_to_code_and_extra_for_dump(t.distance)
+            dist_usage[d_code] = dist_usage[d_code] + 1; extrabits += d_extrabits
+    return dict(token_usage), dict(dist_usage), extrabits
 
 @dataclass
 class OptimizeResult:
-    best_bytes: bytes
+    best_block: Block
     best_bits: int
     best_score: int
-    best_litlen: List[int]
-    best_dist: List[int]
     tried: int
     accepted: int
+
+def _huffmanheader_bits(header: DynamicHuffmanHeader):
+    writer = BitWriter()
+    header.dump(writer)
+    return len(writer._buf) + writer._bitcnt
+
+def _total_bits_from_usage(huffman_lengths: list[int], usage: dict[int, int]):
+    res = 0
+    for key, count in usage.items():
+        if len(huffman_lengths) <= key or huffman_lengths[key] == 0:
+            return 1 << 60 # inf
+        res += count * huffman_lengths[key]
+    return res
 
 ScoreFunc = Callable[[bytes], int]
 
 def optimize_deflate_block(
-    base_block: "DynamicHuffmanBlock",
+    base_block: DynamicHuffmanBlock,
     score_func: ScoreFunc,
+    prefix_bits: BitWriter=BitWriter(),
+    suffix_bits: BitWriter=BitWriter(),
     num_iteration: int = 3000,
     num_perturbation: int = 3,
     tolerance_bit: int = 16,
-    terminate_threshold: int=-10**100,
+    terminate_threshold: int=0,
     seed: Optional[int] = None,
 ) -> OptimizeResult:
     rng = random.Random(seed)
-    base_bits = estimate_block_bits(base_block.tokens, base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths)
-    base_bytes = _encode_dynamic_block_bytes(base_block)
+    base_bytes = dumps(base_block)
     base_score = score_func(base_bytes)
 
-    best_bytes = base_bytes
+    litlen_usage, dist_usage, extra_bits = _collect_usage(base_block.tokens)
+    def estimate_block_bits(header: DynamicHuffmanHeader):
+        bits  = 0
+        bits += extra_bits
+        bits += _huffmanheader_bits(header)
+        bits += _total_bits_from_usage(header.dist_code.lengths, dist_usage)
+        bits += _total_bits_from_usage(header.litlen_code.lengths, litlen_usage)
+        return bits
+    
+    base_bits = estimate_block_bits(base_block.header)
+    best_block = base_block
     best_bits  = base_bits
     best_score = base_score
-    best_lit   = list(base_block.header.litlen_code.lengths)
-    best_dist  = list(base_block.header.dist_code.lengths)
 
     tried = 0
     accepted = 0
     for _ in range(num_iteration):
+        if best_score <= terminate_threshold:
+            break
+
+        new_lit, new_dist = random_perturb_lengths(base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths, num_perturbation, rng)
+        # 採用条件の例
+        if not is_valid_huffman_lengths(new_lit, 15): continue
+        if not is_valid_huffman_lengths(new_dist, 15): continue
         tried += 1
 
-        def _is_complete_set(lengths: List[int], maxbits: int) -> bool:
-            return _left_after_counts(_build_bit_counts(lengths, maxbits), maxbits) == 0
+        header = build_header_from_lengths(new_lit, new_dist)
 
-        cand_l, cand_d = random_perturb_lengths(best_lit, best_dist, num_perturbation, rng)
-        # 採用条件の例
-        if not _is_complete_set(cand_l, 15) or not _is_complete_set(cand_d, 15):
-            continue
-        est_bits = estimate_block_bits(base_block.tokens, cand_l, cand_d)
+        est_bits = estimate_block_bits(header)
         if est_bits - base_bits > tolerance_bit:
             continue
 
-        # 使っているシンボル集合を収集
-        used_lit = _collect_used_litlen_syms(base_block.tokens)
-        used_dist = _collect_used_dist_syms(base_block.tokens)
-
-        # oversubscribe 解消 → complete 化（予約付き）→ 切詰め等を内部で実施
-        cand_l, cand_d = _ensure_eob_and_dist(cand_l, cand_d)
-        lit = _make_tree_complete(fix_lengths_kraft(cand_l, 15), 15, reserved=used_lit)
-        dist = _make_tree_complete(fix_lengths_kraft(cand_d, 15), 15, reserved=used_dist)
-
-        lit_eff, dist_eff, hlit, hdist, cl_codec, hclen, rle_stream = build_cl_code_for_lengths(lit, dist)
-
         # 候補ブロック（bfinal は元を継承）
-        cand_block = DynamicHuffmanBlock(
-            bfinal=base_block.bfinal,
-            tokens=base_block.tokens,
-            header=DynamicHuffmanHeader(
-                hlit=hlit,
-                hdist=hdist,
-                hclen=hclen,
-                cl_code=cl_codec,
-                litlen_code=DynamicHuffmanCode(lit_eff),
-                dist_code=DynamicHuffmanCode(dist_eff),
-            ),
-        )
-        cand_bytes = _encode_dynamic_block_bytes(cand_block)
-        sc = score_func(cand_bytes)
+        cand_block = DynamicHuffmanBlock(bfinal=base_block.bfinal, header=header, tokens=base_block.tokens)
+
+        res = (prefix_bits | BitWriter(cand_block) | suffix_bits)
+        # res = (prefix_bits | BitWriter(cand_block))
+
+        # すでに決定されてるbufferだけ用いたい
+        sc = score_func(res.get_bytes())
         accepted += 1
         if (sc < best_score) or (sc == best_score and est_bits < best_bits):
             best_score = sc
+            best_block = cand_block
             best_bits  = est_bits
-            best_bytes = cand_bytes
-            best_lit   = cand_l
-            best_dist  = cand_d
-            if best_score <= terminate_threshold:
-                break
 
     return OptimizeResult(
-        best_bytes=best_bytes,
+        best_block=best_block,
         best_bits=best_bits,
         best_score=best_score,
-        best_litlen=best_lit,
-        best_dist=best_dist,
         tried=tried,
         accepted=accepted,
     )
@@ -228,7 +150,7 @@ def optimize_deflate_stream(
     num_iteration: int = 3000,
     num_perturbation: int = 3,
     tolerance_bit: int = 16,
-    terminate_threshold: int=-10**100,
+    terminate_threshold=0,
     seed: Optional[int] = None,
     verbose=False
 ) -> bytes:
@@ -237,15 +159,19 @@ def optimize_deflate_stream(
     while not blocks or not blocks[-1].bfinal:
         blocks.append(Block.load(reader))
 
-    res = b""
+    res = BitWriter()
     for i, block in enumerate(blocks):
-        writer = BitWriter()
-        block.dump(writer)
-        block_bytes = writer.get_bytes()
         if isinstance(block, DynamicHuffmanBlock):
+            block_bytes = dumps(block)
             if verbose: print(f"[block#{i}] initial_length={len(block_bytes)} initial_score={score_func(block_bytes)}")
+            prefix = BitWriter(res._bitbuf, res._bitcnt)
+            suffix = BitWriter()
+            # if not block.bfinal:
+            #     suffix.write_bytes(dumps(blocks[i + 1])[:1])
             r = optimize_deflate_block(
                 block,
+                prefix_bits=prefix,
+                suffix_bits=suffix,
                 score_func=score_func,
                 num_iteration=num_iteration,
                 num_perturbation=num_perturbation,
@@ -253,9 +179,9 @@ def optimize_deflate_stream(
                 terminate_threshold=terminate_threshold,
                 seed=seed,
             )
-            res += r.best_bytes
+            r.best_block.dump(res)
             if verbose: print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score} bits~={r.best_bits}")
         else:
             if verbose: print(f"[block#{i}] Skipped (not DynHuffman)")
-            res += block_bytes
-    return res
+            block.dump(res)
+    return res.get_bytes()

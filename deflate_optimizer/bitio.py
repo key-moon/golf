@@ -2,12 +2,49 @@
 # Bit I/O with lookahead (LSB-first as in Deflate)
 # =========================================================
 
+from copy import deepcopy
+from types import UnionType
+from typing import Any, Protocol, runtime_checkable
+from typing import overload, Union
+
+@runtime_checkable
+class Dumpable(Protocol):
+    def dump(self, bw: "BitWriter") -> None:
+        pass
+
 class BitWriter:
     __slots__ = ("_buf", "_bitbuf", "_bitcnt")
-    def __init__(self):
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, data: bytes) -> None: ...
+    @overload
+    def __init__(self, data: "Dumpable") -> None: ...
+    @overload
+    def __init__(self, data: "BitWriter") -> None: ...
+    @overload
+    @overload
+    def __init__(self, data: int, bitcnt: int) -> None: ...
+    def __init__(self, data=None, bitcnt=None) -> None:
         self._buf = bytearray()
         self._bitbuf = 0
         self._bitcnt = 0
+        if data is None:
+            return
+        elif isinstance(data, BitWriter):
+            self.extend(data)
+        elif isinstance(data, bytes):
+            self._buf += data
+        elif isinstance(data, Dumpable):
+            data.dump(self)
+        elif isinstance(data, int) and isinstance(bitcnt, int):
+            if bitcnt >= 8:
+                self._buf.append(data & 0xFF)
+                data >>= 8
+                bitcnt -= 8
+            self._bitbuf, self._bitcnt = data, bitcnt
+        else:
+            raise TypeError("Invalid arguments for BitWriter constructor")
 
     def write_bits(self, value: int, nbits: int) -> None:
         if nbits < 0:
@@ -24,10 +61,6 @@ class BitWriter:
         for byte in data:
             self.write_bits(byte, 8)
 
-    def concatinate(self, other: "BitWriter") -> None:
-        self.write_bytes(other._buf)
-        self.write_bits(other._bitbuf, other._bitcnt)
-
     def align_to_byte(self) -> None:
         if self._bitcnt > 0:
             self._buf.append(self._bitbuf & 0xFF)
@@ -38,6 +71,19 @@ class BitWriter:
         self.align_to_byte()
         return bytes(self._buf)
 
+    def extend(self, other: "BitWriter") -> None:
+        self.write_bytes(other._buf)
+        self.write_bits(other._bitbuf, other._bitcnt)
+
+    def concatinate(self, other: "BitWriter") -> "BitWriter":
+        res = deepcopy(self); res.extend(other)
+        return res
+
+    def __or__(self, value: Any) -> "BitWriter":
+        return self.concatinate(value)
+
+def dumps(dumpable: Dumpable) -> bytes:
+    return BitWriter(dumpable).get_bytes()
 
 class BitReader:
     __slots__ = ("_data","_pos","_bitbuf","_bitcnt")
@@ -103,8 +149,3 @@ class BitReader:
 
     def at_eof(self) -> bool:
         return self._pos >= len(self._data) and self._bitcnt == 0
-
-def dumps(dumpable) -> bytes:
-    bw = BitWriter()
-    dumpable.dump(bw)
-    return bw.get_bytes()

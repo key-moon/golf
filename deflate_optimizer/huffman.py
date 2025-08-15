@@ -53,6 +53,9 @@ def _check_huffman_lengths(lengths: list[int], maxbits: int):
         left_after_counts -= bit_counts[bits] if bits < len(bit_counts) else 0
     return left_after_counts == 0
 
+def is_valid_huffman_lengths(lengths: list[int], maxbits: int):
+    return _check_huffman_lengths(lengths, maxbits)
+
 def ensure_valid_huffman_lengths(lengths: list[int], maxbits: int):
     if not _check_huffman_lengths(lengths, maxbits):
         raise ValueError("Litlen code lengths do not satisfy the complete tree condition (left != 0).")

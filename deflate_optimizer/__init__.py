@@ -11,7 +11,7 @@ import random
 from typing import List, Tuple, Dict, Optional, Callable
 
 from .bitio import BitReader, BitWriter, dumps
-from .huffman import fix_lengths_kraft, last_nonzero_index, FastHuffman
+from .huffman import ensure_valid_huffman_lengths, fix_lengths_kraft, last_nonzero_index, FastHuffman
 
 # =========================================================
 # RFC1951 tables and helpers
@@ -56,12 +56,6 @@ def reverse_bits(x: int, nbits: int) -> int:
         x >>= 1
     return r
 
-def last_nonzero_index(a: List[int]) -> int:
-    for i in range(len(a) - 1, -1, -1):
-        if a[i] != 0:
-            return i
-    return -1
-
 def kraft_overflow(lengths: List[int]) -> bool:
     total = 0.0
     for l in lengths:
@@ -70,92 +64,6 @@ def kraft_overflow(lengths: List[int]) -> bool:
             if total > 1.0 + 1e-12:
                 return True
     return False
-
-def fix_lengths_kraft(lengths: List[int], maxbits: int) -> List[int]:
-    lens = list(lengths)
-    while kraft_overflow(lens):
-        cands = [(l, i) for i, l in enumerate(lens) if 0 < l < maxbits]
-        if not cands:
-            raise ValueError("Cannot satisfy Kraft inequality within maxbits")
-        cands.sort()
-        extended = False
-        for l, idx in cands:
-            lens[idx] = l + 1
-            if not kraft_overflow(lens):
-                extended = True
-                break
-            lens[idx] = l
-        if not extended:
-            l, idx = cands[0]
-            lens[idx] = min(maxbits, l + 1)
-    return lens
-
-# ---- 追加: zlib と同等の left 判定（不完全 / 過剰） ----
-def _build_bit_counts(lengths: List[int], maxbits: int) -> List[int]:
-    cnt = [0]*(maxbits+1)
-    for l in lengths:
-        if 0 < l <= maxbits:
-            cnt[l] += 1
-    return cnt
-
-def _left_after_counts(counts: List[int], maxbits: int) -> int:
-    """
-    zlib の inflate_table 相当:
-      left < 0 -> oversubscribed（過剰）
-      left = 0 -> complete（完全）
-      left > 0 -> incomplete（不完全）
-    """
-    left = 1
-    for bits in range(1, maxbits+1):
-        left <<= 1
-        left -= counts[bits] if bits < len(counts) else 0
-    return left
-
-def _make_tree_complete(lengths: List[int],
-                        maxbits: int,
-                        reserved: Optional[set] = None) -> List[int]:
-    """
-    lengths を「oversubscribe でない」かつ「complete（left==0）」に補正する。
-    - oversubscribe（left<0）は既存の fix_lengths_kraft() で解消されている前提でもう一度チェック。
-    - incomplete（left>0）は、長さ 0 のシンボルに maxbits を割り当てて left を 0 まで埋める。
-      予約済み（reserved）シンボルは変更しない。
-    """
-    lens = list(lengths)
-    # まず oversubscribe を排除（∑2^-L ≤ 1 まで延長）
-    lens = fix_lengths_kraft(lens, maxbits)
-
-    counts = _build_bit_counts(lens, maxbits)
-    left = _left_after_counts(counts, maxbits)
-    if left == 0:
-        return lens
-    if left < 0:
-        # ここに来ない想定だが保険
-        lens = fix_lengths_kraft(lens, maxbits)
-        counts = _build_bit_counts(lens, maxbits)
-        left = _left_after_counts(counts, maxbits)
-
-    # left > 0 の場合、ゼロ長のシンボルに maxbits を付与して埋める
-    if reserved is None:
-        reserved = set()
-    # 既存配列内のゼロ長から優先的に使う（HLIT/HDIST を無闇に伸ばさない）
-    for idx in range(len(lens)):
-        if left == 0:
-            break
-        if idx in reserved:
-            continue
-        if lens[idx] == 0:
-            lens[idx] = maxbits
-            left -= 1
-    # まだ残れば、末尾を伸ばして付与
-    while left > 0:
-        idx = len(lens)
-        if idx in reserved:
-            # まずは次の index を探す
-            lens.append(0);  # 1 つ空けて次へ
-            continue
-        lens.append(maxbits)
-        left -= 1
-    return lens
 
 
 # =========================================================
@@ -486,10 +394,8 @@ class DynamicHuffmanHeader:
     def dump(self, bw: "BitWriter") -> None:
         if len(self.litlen_code.lengths) < 257 or self.litlen_code.lengths[256] <= 0:
             raise ValueError("EOB (256) must have a non-zero code length and at least 257 litlen lengths are required.")
-        if _left_after_counts(_build_bit_counts(self.litlen_code.lengths, 15), 15) != 0:
-            raise ValueError("Litlen code lengths do not satisfy the complete tree condition (left != 0).")
-        if _left_after_counts(_build_bit_counts(self.dist_code.lengths, 15), 15) != 0:
-            raise ValueError("Distance code lengths do not satisfy the complete tree condition (left != 0).")
+        ensure_valid_huffman_lengths(self.litlen_code.lengths, 15)
+        ensure_valid_huffman_lengths(self.dist_code.lengths, 15)
 
         bw.write_bits(self.hlit, 5)
         bw.write_bits(self.hdist, 5)
@@ -514,17 +420,6 @@ class DynamicHuffmanHeader:
 # =========================================================
 # 共通: CL を lit/len + dist から構築するファクトリ
 # =========================================================
-
-def _ensure_eob_and_dist(litlen: List[int], dist: List[int]) -> Tuple[List[int], List[int]]:
-    l = list(litlen); d = list(dist)
-    if len(l) <= 256:
-        l += [0]*(257 - len(l))
-    if l[256] == 0:
-        l[256] = 1
-    if not any(x > 0 for x in d):
-        d = list(d) or [0]
-        d[0] = max(1, d[0])
-    return l, d
 
 def _cut_and_indices(litlen: List[int], dist: List[int]) -> Tuple[List[int], List[int], int, int]:
     l_last = last_nonzero_index(litlen)
@@ -570,6 +465,27 @@ def build_header_from_lengths(
 # =========================================================
 # DynamicHuffmanBlock
 # =========================================================
+
+def _length_to_code_and_extra_for_dump(length: int) -> Tuple[int,int,int]:
+    if length < 3 or length > 258:
+        raise ValueError("length out of range")
+    if length == 258:
+        return 285, 0, 0
+    for i in range(len(LEN_BASES)-1):
+        base = LEN_BASES[i]; nextb = LEN_BASES[i+1]
+        if base <= length < nextb:
+            return 257 + i, length - base, LEN_EXTRA[i]
+    return 285, 0, 0
+
+def _distance_to_code_and_extra_for_dump(distance: int) -> Tuple[int,int,int]:
+    if distance < 1 or distance > 32768:
+        raise ValueError("distance out of range")
+    for i in range(len(DIST_BASES)):
+        base = DIST_BASES[i]
+        nextb = DIST_BASES[i+1] if i+1 < len(DIST_BASES) else 1<<30
+        if base <= distance < nextb:
+            return i, distance - base, DIST_EXTRA[i]
+    raise RuntimeError("distance mapping failed")
 
 @dataclass
 class DynamicHuffmanBlock(HuffmanBlock):
@@ -625,225 +541,3 @@ class DynamicHuffmanBlock(HuffmanBlock):
                 self.header.dist_code.write(bw, dcode); (bw.write_bits(dextra, dbits) if dbits else None)
         self.header.litlen_code.write(bw, 256)
 
-# =========================================================
-# Helpers for dump-time reverse mapping
-# =========================================================
-
-def _length_to_code_and_extra_for_dump(length: int) -> Tuple[int,int,int]:
-    if length < 3 or length > 258:
-        raise ValueError("length out of range")
-    if length == 258:
-        return 285, 0, 0
-    for i in range(len(LEN_BASES)-1):
-        base = LEN_BASES[i]; nextb = LEN_BASES[i+1]
-        if base <= length < nextb:
-            return 257 + i, length - base, LEN_EXTRA[i]
-    return 285, 0, 0
-
-def _distance_to_code_and_extra_for_dump(distance: int) -> Tuple[int,int,int]:
-    if distance < 1 or distance > 32768:
-        raise ValueError("distance out of range")
-    for i in range(len(DIST_BASES)):
-        base = DIST_BASES[i]
-        nextb = DIST_BASES[i+1] if i+1 < len(DIST_BASES) else 1<<30
-        if base <= distance < nextb:
-            return i, distance - base, DIST_EXTRA[i]
-    raise RuntimeError("distance mapping failed")
-
-
-
-# ---------- 概算ビット数 ----------
-def _ensure_eob_and_dist(litlen: List[int], dist: List[int]) -> Tuple[List[int], List[int]]:
-    l = list(litlen); d = list(dist)
-    if len(l) <= 256: l += [0]*(257 - len(l))
-    if l[256] == 0: l[256] = 1
-    if not any(x > 0 for x in d):
-        d = list(d) or [0]
-        d[0] = max(1, d[0])
-    return l, d
-
-def perturb_swap(lengths: List[int], rng: random.Random) -> None:
-    idxs = [i for i, l in enumerate(lengths) if l > 0]
-    if len(idxs) < 2: return
-    i, j = rng.sample(idxs, 2)
-    lengths[i], lengths[j] = lengths[j], lengths[i]
-
-def perturb_add_dummy_adjacent(lengths: List[int], rng: random.Random, maxbits: int = 15) -> None:
-    if not any(lengths): return
-    maxlen = max(l for l in lengths)
-    cands = [i for i, l in enumerate(lengths) if l == maxlen]
-    if not cands: return
-    i = rng.choice(cands)
-    if lengths[i] < maxbits:
-        lengths[i] += 1
-    j = i + rng.choice([-1, 1])
-    if 0 <= j < len(lengths) and lengths[j] == 0:
-        lengths[j] = min(maxbits, lengths[i])
-
-def random_perturb_lengths(litlen: List[int], dist: List[int], num: int, rng: random.Random) -> Tuple[List[int], List[int]]:
-    l = list(litlen); d = list(dist)
-    for _ in range(num):
-        if rng.random() < 0.6:
-            if rng.random() < 0.5: perturb_swap(l, rng)
-            else: perturb_add_dummy_adjacent(l, rng, 15)
-        else:
-            if rng.random() < 0.5: perturb_swap(d, rng)
-            else: perturb_add_dummy_adjacent(d, rng, 15)
-    return l, d
-
-def _collect_usage(tokens: List["Token"]) -> tuple[dict[int, int], dict[int, int], int]:
-    token_usage = defaultdict(lambda: 0, { 256: 1 }) 
-    dist_usage = defaultdict(lambda: 0)
-    extrabits = 0
-    for t in tokens:
-        if isinstance(t, LitToken):
-            token_usage[t.lit] = token_usage[t.lit] + 1
-        else:
-            assert isinstance(t, MatchToken)
-            l_code, _, l_extrabits = _length_to_code_and_extra_for_dump(t.length)
-            token_usage[l_code] = token_usage[l_code] + 1; extrabits += l_extrabits
-            d_code, _, d_extrabits = _distance_to_code_and_extra_for_dump(t.distance)
-            dist_usage[d_code] = dist_usage[d_code] + 1; extrabits += d_extrabits
-    return dict(token_usage), dict(dist_usage), extrabits
-
-@dataclass
-class OptimizeResult:
-    best_block: Block
-    best_bits: int
-    best_score: int
-    tried: int
-    accepted: int
-
-def _huffmanheader_bits(header: DynamicHuffmanHeader):
-    writer = BitWriter()
-    header.dump(writer)
-    return len(writer._buf) + writer._bitcnt
-
-def _total_bits_from_usage(huffman_lengths: list[int], usage: dict[int, int]):
-    res = 0
-    for key, count in usage.items():
-        if len(huffman_lengths) <= key or huffman_lengths[key] == 0:
-            return 1 << 60 # inf
-        res += count * huffman_lengths[key]
-    return res
-
-ScoreFunc = Callable[[bytes], int]
-
-def optimize_deflate_block(
-    base_block: "DynamicHuffmanBlock",
-    score_func: ScoreFunc,
-    prefix_bits: BitWriter=BitWriter(),
-    suffix_bits: BitWriter=BitWriter(),
-    num_iteration: int = 3000,
-    num_perturbation: int = 3,
-    tolerance_bit: int = 16,
-    terminate_threshold: int=-10**100,
-    seed: Optional[int] = None,
-) -> OptimizeResult:
-    rng = random.Random(seed)
-    base_bytes = dumps(base_block)
-    base_score = score_func(base_bytes)
-
-    litlen_usage, dist_usage, extra_bits = _collect_usage(base_block.tokens)
-    def estimate_block_bits(header: DynamicHuffmanHeader):
-        bits  = 0
-        bits += extra_bits
-        bits += _huffmanheader_bits(header)
-        bits += _total_bits_from_usage(header.dist_code.lengths, dist_usage)
-        bits += _total_bits_from_usage(header.litlen_code.lengths, litlen_usage)
-        return bits
-    
-    base_bits = estimate_block_bits(base_block.header)
-    best_block = base_block
-    best_bits  = base_bits
-    best_score = base_score
-
-    tried = 0
-    accepted = 0
-    for _ in range(num_iteration):
-        if best_score <= terminate_threshold:
-            break
-
-        def _is_complete_set(lengths: List[int], maxbits: int) -> bool:
-            return _left_after_counts(_build_bit_counts(lengths, maxbits), maxbits) == 0
-
-        new_lit, new_dist = random_perturb_lengths(base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths, num_perturbation, rng)
-        # 採用条件の例
-        if not _is_complete_set(new_lit, 15): continue
-        if not _is_complete_set(new_dist, 15): continue
-        tried += 1
-
-        header = build_header_from_lengths(new_lit, new_dist)
-
-        est_bits = estimate_block_bits(header)
-        if est_bits - base_bits > tolerance_bit:
-            continue
-
-        # 候補ブロック（bfinal は元を継承）
-        cand_block = DynamicHuffmanBlock(
-            bfinal=base_block.bfinal,
-            header=build_header_from_lengths(new_lit, new_dist),
-            tokens=base_block.tokens,
-        )
-
-        writer = deepcopy(prefix_bits)
-        writer = BitWriter()
-        cand_block.dump(writer)
-        writer.concatinate(suffix_bits)
-
-        sc = score_func(writer.get_bytes())
-        accepted += 1
-        if (sc < best_score) or (sc == best_score and est_bits < best_bits):
-            best_score = sc
-            best_block = cand_block
-            best_bits  = est_bits
-
-    return OptimizeResult(
-        best_block=best_block,
-        best_bits=best_bits,
-        best_score=best_score,
-        tried=tried,
-        accepted=accepted,
-    )
-
-def optimize_deflate_stream(
-    deflate_stream: bytes,
-    score_func: ScoreFunc,
-    num_iteration: int = 3000,
-    num_perturbation: int = 3,
-    tolerance_bit: int = 16,
-    terminate_threshold: int=-10**100,
-    seed: Optional[int] = None,
-    verbose=False
-) -> bytes:
-    reader = BitReader(deflate_stream)
-    blocks: list[Block] = []
-    while not blocks or not blocks[-1].bfinal:
-        blocks.append(Block.load(reader))
-
-    res = BitWriter()
-    for i, block in enumerate(blocks):
-        if isinstance(block, DynamicHuffmanBlock):
-            block_bytes = dumps(block)
-            if verbose: print(f"[block#{i}] initial_length={len(block_bytes)} initial_score={score_func(block_bytes)}")
-            prefix = BitWriter(); prefix.write_bits(res._bitbuf, res._bitcnt)
-            suffix = BitWriter()
-            if not block.bfinal:
-                suffix.write_bytes(dumps(blocks[i + 1])[:1])
-            r = optimize_deflate_block(
-                block,
-                prefix_bits=prefix,
-                suffix_bits=suffix,
-                score_func=score_func,
-                num_iteration=num_iteration,
-                num_perturbation=num_perturbation,
-                tolerance_bit=tolerance_bit,
-                terminate_threshold=terminate_threshold,
-                seed=seed,
-            )
-            r.best_block.dump(res)
-            if verbose: print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score} bits~={r.best_bits}")
-        else:
-            if verbose: print(f"[block#{i}] Skipped (not DynHuffman)")
-            block.dump(res)
-    return res.get_bytes()
