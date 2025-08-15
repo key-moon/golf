@@ -30,6 +30,7 @@ jobs:
           set -euxo pipefail
           uv sync
           uv venv
+          echo 'export PYTHONPATH="$(dirname "$VIRTUAL_ENV")"' >> .venv/bin/activate
 
       - name: Build submission.zip
         run: |
