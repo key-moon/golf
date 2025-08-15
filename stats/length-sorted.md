@@ -1,3 +1,9 @@
+- [README](README.md)
+- [sorted by task](stats/task-sorted.md)
+- [sorted by ratio](stats/ratio-sorted.md)
+- [sorted by length](stats/length-sorted.md)
+- [sorted by best](stats/best-sorted.md)
+
 | Task | Success | Base | Compressor | Length | Best | Goods | Message |
 |------|---------|------|------------|--------|------|-------|---------|
 | [096](../vis/task096.png) | ❌ | - | - | - | 373 | [prompt](../prompts/task096.txt) / [vis-many](../vis_many/task096.png) | WA |
@@ -70,7 +76,7 @@
 | [036](../vis/task036.png) | ✅ | [base_notebooks](../base_notebooks/task036_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-9 | [288](../dist/task036.py) (+178) | 110 🔴 | [prompt](../prompts/task036.txt) / [vis-many](../vis_many/task036.png) | AC |
 | [159](../vis/task159.png) | ✅ | [base_code](../base_code/task159.py) | forcomp-s/zlib-zopfli | [288](../dist/task159.py) (+136) | 152 🔴 | [prompt](../prompts/task159.txt) / [vis-many](../vis_many/task159.png) | AC |
 | [168](../vis/task168.png) | ✅ | [base_code](../base_code/task168.py) | forcomp-t/zlib-zopfli | [283](../dist/task168.py) (+158) | 125 🔴 | [prompt](../prompts/task168.txt) / [vis-many](../vis_many/task168.png) | AC |
-| [023](../vis/task023.png) | ✅ | [base_yu](../base_yu/task023.py) | forcomp-s/zlib-zopfli | [282](../dist/task023.py) (+52) | 230 🔴 | [prompt](../prompts/task023.txt) / [vis-many](../vis_many/task023.png) | AC |
+| [023](../vis/task023.png) | ✅ | [base_yu](../base_yu/task023.py) | forcomp-s/zlib-zopfli | [282](../dist/task023.py) (+66) | 216 🔴 | [prompt](../prompts/task023.txt) / [vis-many](../vis_many/task023.png) | AC |
 | [341](../vis/task341.png) | ✅ | [base_code](../base_code/task341.py) | forcomp-s/zlib-zopfli | [282](../dist/task341.py) (+124) | 158 🔴 | [prompt](../prompts/task341.txt) / [vis-many](../vis_many/task341.png) | AC |
 | [118](../vis/task118.png) | ✅ | [base_yu](../base_yu/task118.py) | forcomp-s/zlib-zopfli | [281](../dist/task118.py) (-122) | 403 🟢 | [prompt](../prompts/task118.txt) / [vis-many](../vis_many/task118.png) | AC |
 | [059](../vis/task059.png) | ❗ | [dist](../dist/task059.py) | previous | [278](../dist/task059.py) (+99) | 179 🔴 | [prompt](../prompts/task059.txt) / [vis-many](../vis_many/task059.png) | regression? |

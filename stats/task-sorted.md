@@ -1,3 +1,9 @@
+- [README](README.md)
+- [sorted by task](stats/task-sorted.md)
+- [sorted by ratio](stats/ratio-sorted.md)
+- [sorted by length](stats/length-sorted.md)
+- [sorted by best](stats/best-sorted.md)
+
 | Task | Success | Base | Compressor | Length | Best | Goods | Message |
 |------|---------|------|------------|--------|------|-------|---------|
 | [001](../vis/task001.png) | ✅ | [base_yu](../base_yu/task001.py) | forplain/raw | [71](../dist/task001.py) (+10) | 61 🔴 | [prompt](../prompts/task001.txt) / [vis-many](../vis_many/task001.png) | AC |
@@ -22,7 +28,7 @@
 | [020](../vis/task020.png) | ✅ | [base_code](../base_code/task020_3.py) | forcomp-t/zlib-zopfli | [225](../dist/task020.py) (+50) | 175 🔴 | [prompt](../prompts/task020.txt) / [vis-many](../vis_many/task020.png) | AC |
 | [021](../vis/task021.png) | ✅ | [base_code](../base_code/task021.py) | forcomp-s/zlib-zopfli | [182](../dist/task021.py) (+118) | 64 🔴 | [prompt](../prompts/task021.txt) / [vis-many](../vis_many/task021.png) | AC |
 | [022](../vis/task022.png) | ✅ | [base_notebooks](../base_notebooks/task022_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forplain/zlib-zopfli | [215](../dist/task022.py) (+124) | 91 🔴 | [prompt](../prompts/task022.txt) / [vis-many](../vis_many/task022.png) | AC |
-| [023](../vis/task023.png) | ✅ | [base_yu](../base_yu/task023.py) | forcomp-s/zlib-zopfli | [282](../dist/task023.py) (+52) | 230 🔴 | [prompt](../prompts/task023.txt) / [vis-many](../vis_many/task023.png) | AC |
+| [023](../vis/task023.png) | ✅ | [base_yu](../base_yu/task023.py) | forcomp-s/zlib-zopfli | [282](../dist/task023.py) (+66) | 216 🔴 | [prompt](../prompts/task023.txt) / [vis-many](../vis_many/task023.png) | AC |
 | [024](../vis/task024.png) | ✅ | [base_notebooks](../base_notebooks/task024_20250810-053358Z-oh-barnacles-jazivxt.py) | forplain/raw | [153](../dist/task024.py) (+91) | 62 🔴 | [prompt](../prompts/task024.txt) / [vis-many](../vis_many/task024.png) | AC |
 | [025](../vis/task025.png) | ✅ | [base_yu](../base_yu/task025.py) | raw/zlib-zopfli | [233](../dist/task025.py) (+69) | 164 🔴 | [prompt](../prompts/task025.txt) / [vis-many](../vis_many/task025.png) | AC |
 | [026](../vis/task026.png) | ✅ | [base_notebooks](../base_notebooks/task026_20250810-053358Z-oh-barnacles-jazivxt.py) | forplain/raw | [59](../dist/task026.py) (+7) | 52 🔴 | [prompt](../prompts/task026.txt) / [vis-many](../vis_many/task026.png) | AC |
