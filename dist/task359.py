@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress('¥SÇr#!=£/¡eœ®ƒÙ*‚¢sÎYxkl	©F#§¯_‚lO«H5º™®yA˜CV˜r\XÔ×Ÿ˜£—A9[Ôt›Pñ°ö4,·«`F¨e$‰b‚ÖHõŒƒ	·[÷PAù²ƒoí0¹SCÚv‘[ªúBM”ø­p\'îİïöı½RY`ˆ´ŒmıØz)ßÆL‰£D>Êí¨ÔöÙ`k>Kœ—¦ğF)ÇÃÅ“1– ÜÇâŒñëÅ^%tjBm®W+`û¿­bÁ³íH!¯I&×b]…2÷åBÛ¿HÎdà:YÁU\®TÚ;u¿SËS•úRäm`Eæ/§2Æó<ÿÎ‡¸Êo³l}û~voõÜ¶æ§ÅçÆ3usb%bİ·ym;°Ÿş/{¢¾ğÔíD}ã;›¢~\r}c0w?>®ğqEŒx>ƒìé~§«Ñgæ ø"äØA4éü‚´÷Æ‘éêÄhîŠ…K	äÍ|1¾ñ<Û"®)B¬_áş?‘u7Y››—˜w¤8Z­XÆ‡İØqßºtàİoä¶k>İiÆd$âd-Ïöõ‡iĞ»t›T°Ü n!Ã¢´Îv± Û@›n!ıB±sÜh’# m¦==p(gWø€´2ßÎS²ôŒzÚÇ^z6šä¨Ë}r´Ã4¾&g@c´ÛªwÖËG¥ë×ı?'.encode('L1'),-9))
+p=lambda g:[[max(A:=s+[*t],key=A.count)for t in zip(*g)]for s in g]
