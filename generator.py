@@ -133,6 +133,11 @@ if __name__ == "__main__":
   BAD_PATH = ["base_arcdsl", "base_rearc"]
   # Write stats to README
   def emit_table(stats,writer,b="."):
+    writer.write("- [README](README.md)\n")
+    writer.write("- [sorted by task](stats/task-sorted.md)\n")
+    writer.write("- [sorted by ratio](stats/ratio-sorted.md)\n")
+    writer.write("- [sorted by length](stats/length-sorted.md)\n")
+    writer.write("- [sorted by best](stats/best-sorted.md)\n\n")
     writer.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
     writer.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
