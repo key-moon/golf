@@ -44,11 +44,12 @@ class TaskSubmission(TypedDict):
   score: int | None
 
 
+TASK_SCORE_PROGRESSIONS_PATH = "data/task_score_progressions"
 def loads_task_scores_progressions() -> dict[str, list[list[TaskSubmission]]]:
   task_scores = {}
-  for filename in os.listdir("data/task_score_progressions"):
+  for filename in os.listdir(TASK_SCORE_PROGRESSIONS_PATH):
     if filename.endswith(".json"):
-      f = _loads(filename, None)
+      f = _loads(f"{TASK_SCORE_PROGRESSIONS_PATH}/{filename}", None)
       if f is None:
         print(f"[!] invalid file ({filename})")
         continue
@@ -60,6 +61,6 @@ def dumps_task_scores_progressions(data: dict[str, list[list[TaskSubmission]]]) 
   for name, scores in data.items():
     alphanumeric_name = ''.join(c for c in name if c.isalnum())
     sanitized_name = f"{alphanumeric_name}-{hashlib.md5(name.encode()).hexdigest()}"
-    path = f"data/task_score_progressions/{sanitized_name}.json"
+    path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{sanitized_name}.json"
     print(f"[+] dumping to {path}")
     _dumps(path, { "name": name, "data": scores })
