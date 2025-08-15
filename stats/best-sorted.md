@@ -354,7 +354,7 @@
 | [225](../vis/task225.png) | ✅ | [base_code](../base_code/task225.py) | forcomp-t/zlib-zopfli | [270](../dist/task225.py) (+58) | 212 🔴 | [prompt](../prompts/task225.txt) / [vis-many](../vis_many/task225.png) | AC |
 | [277](../vis/task277.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task277.py) | forcomp-s/zlib-zopfli | [855](../dist/task277.py) (+643) | 212 🔴 | [prompt](../prompts/task277.txt) / [vis-many](../vis_many/task277.png) | AC |
 | [224](../vis/task224.png) | ✅ | [base_code](../base_code/task224.py) | forcomp-t/zlib-zopfli | [227](../dist/task224.py) (+9) | 218 🔴 | [prompt](../prompts/task224.txt) / [vis-many](../vis_many/task224.png) | AC |
-| [387](../vis/task387.png) | ✅ | [base_yu](../base_yu/task387.py) | forcomp-t/zlib-zopfli | [271](../dist/task387.py) (+37) | 234 🔴 | [prompt](../prompts/task387.txt) / [vis-many](../vis_many/task387.png) | AC |
+| [387](../vis/task387.png) | ✅ | [base_yu](../base_yu/task387.py) | forcomp-t/zlib-zopfli | [245](../dist/task387.py) (+11) | 234 🔴 | [prompt](../prompts/task387.txt) / [vis-many](../vis_many/task387.png) | AC |
 | [205](../vis/task205.png) | ✅ | [base_yu](../base_yu/task205.py) | forcomp-t/zlib-zopfli | [270](../dist/task205.py) (+35) | 235 🔴 | [prompt](../prompts/task205.txt) / [vis-many](../vis_many/task205.png) | AC |
 | [392](../vis/task392.png) | ✅ | [base_yu](../base_yu/task392.py) | forplain/zlib-zopfli | [271](../dist/task392.py) (+36) | 235 🔴 | [prompt](../prompts/task392.txt) / [vis-many](../vis_many/task392.png) | AC |
 | [105](../vis/task105.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task105.py) | forcomp-s/zlib-zopfli | [857](../dist/task105.py) (+615) | 242 🔴 | [prompt](../prompts/task105.txt) / [vis-many](../vis_many/task105.png) | AC |
