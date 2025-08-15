@@ -51,7 +51,7 @@
 | [042](../vis/task042.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task042.py) | forcomp-t/zlib-zopfli | [1290](../dist/task042.py) (+1103) | 187 🔴 | [prompt](../prompts/task042.txt) / [vis-many](../vis_many/task042.png) | AC |
 | [043](../vis/task043.png) | ✅ | [base_code](../base_code/task043.py) | forplain/raw | [110](../dist/task043.py) (+52) | 58 🔴 | [prompt](../prompts/task043.txt) / [vis-many](../vis_many/task043.png) | AC |
 | [044](../vis/task044.png) | ❗ | [dist](../dist/task044.py) | previous | [1308](../dist/task044.py) (+947) | 361 🔴 | [prompt](../prompts/task044.txt) / [vis-many](../vis_many/task044.png) | regression? |
-| [045](../vis/task045.png) | ✅ | [base_code](../base_code/task045.py) | forplain/raw | [58](../dist/task045.py) (+13) | 45 🔴 | [prompt](../prompts/task045.txt) / [vis-many](../vis_many/task045.png) | AC |
+| [045](../vis/task045.png) | ✅ | [base_yu](../base_yu/task045.py) | forplain/raw | [47](../dist/task045.py) (+2) | 45 🔴 | [prompt](../prompts/task045.txt) / [vis-many](../vis_many/task045.png) | AC |
 | [046](../vis/task046.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task046.py) | forplain/lzma | [1481](../dist/task046.py) (+1295) | 186 🔴 | [prompt](../prompts/task046.txt) / [vis-many](../vis_many/task046.png) | AC |
 | [047](../vis/task047.png) | ✅ | [base_keymoon](../base_keymoon/task047.py) | forplain/raw | [56](../dist/task047.py) (+1) | 55 🔴 | [prompt](../prompts/task047.txt) / [vis-many](../vis_many/task047.png) | AC |
 | [048](../vis/task048.png) | ✅ | [base_keymoon](../base_keymoon/task048.py) | forplain/raw | [153](../dist/task048.py) (+54) | 99 🔴 | [prompt](../prompts/task048.txt) / [vis-many](../vis_many/task048.png) | AC |

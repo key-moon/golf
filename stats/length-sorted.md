@@ -361,7 +361,6 @@
 | [031](../vis/task031.png) | ✅ | [base_keymoon](../base_keymoon/task031.py) | forplain/raw | [60](../dist/task031.py) (+8) | 52 🔴 | [prompt](../prompts/task031.txt) / [vis-many](../vis_many/task031.png) | AC |
 | [026](../vis/task026.png) | ✅ | [base_notebooks](../base_notebooks/task026_20250810-053358Z-oh-barnacles-jazivxt.py) | forplain/raw | [59](../dist/task026.py) (+7) | 52 🔴 | [prompt](../prompts/task026.txt) / [vis-many](../vis_many/task026.png) | AC |
 | [177](../vis/task177.png) | ✅ | [base_yu](../base_yu/task177.py) | forplain/raw | [59](../dist/task177.py) (+4) | 55 🔴 | [prompt](../prompts/task177.txt) / [vis-many](../vis_many/task177.png) | AC |
-| [045](../vis/task045.png) | ✅ | [base_code](../base_code/task045.py) | forplain/raw | [58](../dist/task045.py) (+13) | 45 🔴 | [prompt](../prompts/task045.txt) / [vis-many](../vis_many/task045.png) | AC |
 | [211](../vis/task211.png) | ✅ | [base_code](../base_code/task211.py) | forplain/raw | [58](../dist/task211.py) (+10) | 48 🔴 | [prompt](../prompts/task211.txt) / [vis-many](../vis_many/task211.png) | AC |
 | [299](../vis/task299.png) | ✅ | [base_yu](../base_yu/task299.py) | forplain/raw | [58](../dist/task299.py) (+4) | 54 🔴 | [prompt](../prompts/task299.txt) / [vis-many](../vis_many/task299.png) | AC |
 | [372](../vis/task372.png) | ✅ | [base_code](../base_code/task372.py) | forplain/raw | [58](../dist/task372.py) (+10) | 48 🔴 | [prompt](../prompts/task372.txt) / [vis-many](../vis_many/task372.png) | AC |
@@ -372,6 +371,7 @@
 | [337](../vis/task337.png) | ✅ | [base_notebooks](../base_notebooks/task337_20250807-112059Z-neurips-local-score-far-away.py) | forplain/raw | [51](../dist/task337.py) (+5) | 46 🔴 | [prompt](../prompts/task337.txt) / [vis-many](../vis_many/task337.png) | AC |
 | [060](../vis/task060.png) | ✅ | [base_keymoon](../base_keymoon/task060.py) | forplain/raw | [50](../dist/task060.py) (+2) | 48 🔴 | [prompt](../prompts/task060.txt) / [vis-many](../vis_many/task060.png) | AC |
 | [016](../vis/task016.png) | ✅ | [base_keymoon](../base_keymoon/task016_byte.py) | raw/raw | [47](../dist/task016.py) (+4) | 43 🔴 | [prompt](../prompts/task016.txt) / [vis-many](../vis_many/task016.png) | AC |
+| [045](../vis/task045.png) | ✅ | [base_yu](../base_yu/task045.py) | forplain/raw | [47](../dist/task045.py) (+2) | 45 🔴 | [prompt](../prompts/task045.txt) / [vis-many](../vis_many/task045.png) | AC |
 | [073](../vis/task073.png) | ✅ | [base_keymoon](../base_keymoon/task073.py) | forplain/raw | [46](../dist/task073.py) (0) | 46  | [prompt](../prompts/task073.txt) / [vis-many](../vis_many/task073.png) | AC |
 | [056](../vis/task056.png) | ✅ | [base_keymoon](../base_keymoon/task056.py) | forplain/raw | [45](../dist/task056.py) (+3) | 42 🔴 | [prompt](../prompts/task056.txt) / [vis-many](../vis_many/task056.png) | AC |
 | [312](../vis/task312.png) | ✅ | [base_yu](../base_yu/task312.py) | forplain/raw | [45](../dist/task312.py) (+1) | 44 🔴 | [prompt](../prompts/task312.txt) / [vis-many](../vis_many/task312.png) | AC |
