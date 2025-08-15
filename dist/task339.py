@@ -1,1 +1,1 @@
-p=lambda	j:[[*filter(int,sum(j,[]))]]
+p=lambda j:[[*filter(int,sum(j,[]))]]

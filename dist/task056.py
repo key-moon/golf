@@ -1,1 +1,1 @@
-p=lambda	g:[[hash((1300,*map(bool,g[1])))%7]]
+p=lambda g:[[hash((1300,*map(bool,g[1])))%7]]

@@ -11,6 +11,7 @@ import hashlib
 import os
 from typing import overload, Union
 
+from deflate_optimizer import optimize_deflate_stream
 import zopfli.zlib
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
@@ -113,7 +114,20 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.2):
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
 def cached_zopfli(val: bytes):
   # return zopfli.zlib.compress(val, numiterations=len(val)*2)[2:-4]
-  return zopfli.zlib.compress(val, numiterations=50)[2:-4]
+  compressed = zopfli.zlib.compress(val, numiterations=500)[2:-4]
+  try:
+    return optimize_deflate_stream(
+      compressed,
+      lambda x: len(get_embed_str(x)),
+      num_iteration=5000,
+      num_perturbation=3,
+      tolerance_bit=16,
+      # terminate_threshold=2 + len(val) + 1,
+      seed=1234
+    )
+  except:
+    return compressed
+
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
 def cached_lzma(val: bytes):

@@ -1,1 +1,1 @@
-p=lambda	g:g[:4:-1]+g[5:]
+p=lambda g:g[:4:-1]+g[5:]

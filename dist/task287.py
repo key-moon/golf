@@ -1,1 +1,1 @@
-p=lambda	g:[[a[a[0]==4]for	a	in	zip(a,b[::-1])]for(a,b)in	zip(g,g[::-1])]
+p=lambda g:[[a[a[0]==4]for a in zip(a,b[::-1])]for(a,b)in zip(g,g[::-1])]

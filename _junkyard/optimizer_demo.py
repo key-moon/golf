@@ -9,7 +9,28 @@ from dataclasses import dataclass
 import zopfli.zlib
 from compress import get_embed_str
 from deflate_optimizer import DynamicHuffmanBlock, optimize_deflate_stream, BitReader, BitWriter, Block
-from utils import openable_uri, viz_deflate_url
+from utils import get_code_paths, openable_uri, viz_deflate_url
+import strip
+import zlib
+
+for i in range(1, 401):
+  for base_path in get_code_paths("base_*", i):
+    code = open(base_path, "rb").read()
+    plain = strip.strip_for_zlib(code).encode()
+    if 2000 <= len(code): continue
+    deflate = zopfli.zlib.compress(plain)[2:-4]
+    print(base_path)
+    optimized = optimize_deflate_stream(
+        deflate,
+        lambda x: len(get_embed_str(x)),
+        num_iteration=5000,
+        num_perturbation=3,
+        tolerance_bit=16,
+        terminate_threshold=2 + len(deflate) + 1,
+        seed=1234,
+        verbose=True
+    )
+    assert zlib.decompress(optimized, wbits=-15) == plain
 
 if __name__ == "__main__":
     import zlib, os
@@ -18,13 +39,6 @@ if __name__ == "__main__":
     # wbits=-15 で raw deflate
     deflate = zopfli.zlib.compress(plain)[2:-4]
     assert zlib.decompress(deflate, wbits=-15) == plain
-    forb = [0x00, 0x0a]
-    def score(data: bytes) -> int:
-        s = len(data)
-        for b in data:
-            if b in forb:
-                s += 1
-        return s
     
     reader = BitReader(deflate)
     blocks: list[Block] = []
@@ -32,9 +46,6 @@ if __name__ == "__main__":
         blocks.append(Block.load(reader))
 
     assert isinstance(blocks[0], DynamicHuffmanBlock)
-    print(blocks[0].header.cl_code.lengths)
-    print(blocks[0].header.litlen_code.lengths)
-    print(blocks[0].header.dist_code.lengths)
 
     w = BitWriter()
     # for b in blocks:

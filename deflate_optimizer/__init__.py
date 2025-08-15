@@ -466,14 +466,14 @@ class DynamicHuffmanHeader:
 
         total = num_litlen + num_dist
         seq: List[int] = []
-        prev_len = 0
+        prev_len = -1
         while len(seq) < total:
             sym = cl_code.read(br)
             if 0 <= sym <= 15:
                 seq.append(sym)
                 prev_len = sym
             elif sym == 16:
-                if len(seq) == 0 or prev_len == 0:
+                if len(seq) == 0 or prev_len == -1:
                     raise ValueError("CL: symbol 16 used with no valid previous length")
                 repeat = br.read_bits(2) + 3  # 3..6
                 seq.extend([prev_len] * repeat)
@@ -788,10 +788,9 @@ def random_perturb_lengths(litlen: List[int], dist: List[int], num: int, rng: ra
 @dataclass
 class OptimizeResult:
     best_bytes: bytes
+    best_block: Block
     best_bits: int
     best_score: int
-    best_litlen: List[int]
-    best_dist: List[int]
     tried: int
     accepted: int
 
@@ -811,26 +810,28 @@ def optimize_deflate_block(
     base_bytes = dumps(base_block)
     base_score = score_func(base_bytes)
 
-    orig = base_block.bfinal
-    base_block.bfinal = 1
-    orig_bytes = zlib.decompress(dumps(base_block), wbits=-15)
-    base_block.bfinal = orig 
+    # orig = base_block.bfinal
+    # base_block.bfinal = 1
+    # orig_bytes = zlib.decompress(dumps(base_block), wbits=-15)
+    # base_block.bfinal = orig 
 
     best_bytes = base_bytes
+    best_block = base_block
     best_bits  = base_bits
     best_score = base_score
-    best_lit   = list(base_block.header.litlen_code.lengths)
-    best_dist  = list(base_block.header.dist_code.lengths)
 
     tried = 0
     accepted = 0
     for _ in range(num_iteration):
-        tried += 1
+        if best_score <= terminate_threshold:
+            break
 
+        tried += 1
         def _is_complete_set(lengths: List[int], maxbits: int) -> bool:
             return _left_after_counts(_build_bit_counts(lengths, maxbits), maxbits) == 0
 
-        cand_l, cand_d = random_perturb_lengths(best_lit, best_dist, num_perturbation, rng)
+        # cand_l, cand_d = random_perturb_lengths(best_lit, best_dist, num_perturbation, rng)
+        cand_l, cand_d = random_perturb_lengths(base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths, num_perturbation, rng)
         # 採用条件の例
         if not _is_complete_set(cand_l, 15) or not _is_complete_set(cand_d, 15):
             continue
@@ -864,26 +865,22 @@ def optimize_deflate_block(
         )
         cand_bytes = dumps(cand_block)
 
-        cand_block.bfinal=1
-        decompable_bytes = dumps(cand_block)
-        assert zlib.decompress(decompable_bytes, wbits=-15) == orig_bytes
+        # cand_block.bfinal=1
+        # decompable_bytes = dumps(cand_block)
+        # assert zlib.decompress(decompable_bytes, wbits=-15) == orig_bytes
         sc = score_func(cand_bytes)
         accepted += 1
         if (sc < best_score) or (sc == best_score and est_bits < best_bits):
             best_score = sc
+            best_block = cand_block
             best_bits  = est_bits
             best_bytes = cand_bytes
-            best_lit   = cand_l
-            best_dist  = cand_d
-            if best_score <= terminate_threshold:
-                break
 
     return OptimizeResult(
         best_bytes=best_bytes,
+        best_block=best_block,
         best_bits=best_bits,
         best_score=best_score,
-        best_litlen=best_lit,
-        best_dist=best_dist,
         tried=tried,
         accepted=accepted,
     )
@@ -903,12 +900,10 @@ def optimize_deflate_stream(
     while not blocks or not blocks[-1].bfinal:
         blocks.append(Block.load(reader))
 
-    res = b""
+    res = BitWriter()
     for i, block in enumerate(blocks):
-        writer = BitWriter()
-        block.dump(writer)
-        block_bytes = writer.get_bytes()
         if isinstance(block, DynamicHuffmanBlock):
+            block_bytes = dumps(block)
             if verbose: print(f"[block#{i}] initial_length={len(block_bytes)} initial_score={score_func(block_bytes)}")
             r = optimize_deflate_block(
                 block,
@@ -919,9 +914,9 @@ def optimize_deflate_stream(
                 terminate_threshold=terminate_threshold,
                 seed=seed,
             )
-            res += r.best_bytes
+            r.best_block.dump(res)
             if verbose: print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score} bits~={r.best_bits}")
         else:
             if verbose: print(f"[block#{i}] Skipped (not DynHuffman)")
-            res += block_bytes
-    return res
+            block.dump(res)
+    return res.get_bytes()

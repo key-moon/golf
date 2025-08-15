@@ -1,1 +1,1 @@
-p=lambda	g,X=range(9):[[g[r%3][c%3]*(g[r//3][c//3]==2)for	c	in	X]for	r	in	X]
+p=lambda g,X=range(9):[[g[r%3][c%3]*(g[r//3][c//3]==2)for c in X]for r in X]
