@@ -2,7 +2,7 @@ from ast import literal_eval
 import bz2
 import lzma
 import time
-from typing import Literal, Tuple
+from typing import Literal, Optional, Tuple
 import zlib
 import zopfli
 
@@ -11,8 +11,10 @@ import hashlib
 import os
 from typing import overload, Union
 
-from deflate_optimizer import optimize_deflate_stream
+from deflate_optimizer.optimizer import optimize_deflate_stream
 import zopfli.zlib
+
+from utils import openable_uri, viz_deflate_url
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
 
@@ -114,7 +116,11 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.2):
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
 def cached_zopfli(val: bytes):
   # return zopfli.zlib.compress(val, numiterations=len(val)*2)[2:-4]
-  compressed = zopfli.zlib.compress(val, numiterations=500)[2:-4]
+  compressed = zopfli.zlib.compress(val, numiterations=1000, blocksplitting=False)[2:-4]
+  compressed_splitting = zopfli.zlib.compress(val, numiterations=1000)[2:-4]
+  if len(compressed_splitting) < len(compressed):
+    print(f"!! {openable_uri("no split", viz_deflate_url(compressed_splitting))} / {openable_uri("split", viz_deflate_url(compressed))}")
+    compressed = compressed_splitting
   try:
     return optimize_deflate_stream(
       compressed,
@@ -148,10 +154,10 @@ def determine_wbits(compressed: bytes):
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
 @overload
-def compress(code: str, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
+def compress(code: str, best: Optional[int]=None, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
 @overload
-def compress(code: str, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
-def compress(code: str, force_compress=False, with_raw_code=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
+def compress(code: str, best: Optional[int]=None, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
+def compress(code: str, best: Optional[int]=None, force_compress=False, with_raw_code=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
   compressions = [
     ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
@@ -160,15 +166,22 @@ def compress(code: str, force_compress=False, with_raw_code=False) -> Union[Tupl
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),""),
   ]
   l = []
+  worth_compress = True
   if not force_compress:
     l.append(("raw",code.encode()))
-  for name, cmp, extra_args in compressions:
-    lib_name = name.split("-")[0]
-    compressed_code = cmp(code.encode())
-    embed = get_embed_str(compressed_code)
-    if callable(extra_args):
-      extra_args = extra_args(compressed_code)
-    res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
-    l.append((name,res,compressed_code))
+    if best is None:
+      best = len(code)
+    worth_compress = 50 <= (best - len(zlib.compress(code.encode())))
+  
+  if worth_compress:
+    for name, cmp, extra_args in compressions:
+      lib_name = name.split("-")[0]
+      compressed_code = cmp(code.encode())
+      embed = get_embed_str(compressed_code)
+      if callable(extra_args):
+        extra_args = extra_args(compressed_code)
+      res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
+      l.append((name,res,compressed_code))
+
   mn = min(l, key=lambda x: len(x[1]))
   return mn if with_raw_code else (mn[0], mn[1])

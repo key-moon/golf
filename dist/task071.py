@@ -1,5 +1,2 @@
-A=range
-def p(g):
- c=[v for v in sum(g,[])if v][0]
- for p in A(32):
-  if all(0<=p-j<16and g[i][p-j]for A in A(256)if g[i:=A%16][j:=A>>4]==c):return[[~(g[i][j]not in(0,c)and~g[i][p-j]or~g[i][j])for j in A(16)]for i in A(16)]
+#coding:L1
+import zlib;exec(zlib.decompress('EM5–„@‹s¬0î^´îî„\}pHºë»@gjd›„aZöêM€NcVœAny’öÅ•kA%âQ$z-é4¼œ»´šä‘¢“Gîjd€®ˆ-;;?ØÏ·{ÛÓIošÿ=İEôÚƒa®"Më«wfe!ÖdöÄ(.Ú yÜê+52ê¹2ÎêÑ±êÚ½¡ıt_õcî'.encode('L1'),-9))

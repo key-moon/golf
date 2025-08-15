@@ -9,19 +9,6 @@ from deflate_optimizer.blocks.huffman import distance_to_code_and_extra, length_
 from deflate_optimizer.huffman import FastHuffman, is_valid_huffman_lengths
 from .bitio import BitReader, BitWriter, dumps
 
-def last_nonzero_index(a: list[int]) -> int:
-    for i in range(len(a) - 1, -1, -1):
-        if a[i] != 0:
-            return i
-    return -1
-
-def _cut_and_indices(litlen: list[int], dist: list[int]) -> tuple[list[int], list[int], int, int]:
-    l_last = last_nonzero_index(litlen)
-    d_last = last_nonzero_index(dist)
-    num_litlen = max(l_last + 1, 257)
-    num_dist   = max(d_last + 1, 1)
-    return litlen[:num_litlen], dist[:num_dist], num_litlen, num_dist
-
 def hclen_from_cl_lengths(cl_lengths: list[int]) -> int:
     last = -1
     for i in range(len(CL_ORDER)-1, -1, -1):
@@ -89,15 +76,25 @@ def lengths_from_freq(freqs: list[int], maxbits: int) -> list[int]:
     lens = fix_lengths_kraft(lens, maxbits)
     return lens
 
+def _last_nonzero_index(a: list[int]) -> int:
+    for i in range(len(a) - 1, -1, -1):
+        if a[i] != 0:
+            return i
+    return -1
+
 def build_header_from_lengths(
     litlen_lengths: list[int],
     dist_lengths: list[int],
 ):
-    # 後端ゼロ切詰め → HLIT/HDIST
-    litlen_lengths, dist_lengths, num_litlen, num_dist = _cut_and_indices(litlen_lengths, dist_lengths)
+    l_last = _last_nonzero_index(litlen_lengths)
+    d_last = _last_nonzero_index(dist_lengths)
+    num_litlen = max(l_last + 1, 257)
+    num_dist   = max(d_last + 1, 1)
+    litlen_lengths, dist_lengths = litlen_lengths[:num_litlen], dist_lengths[:num_dist]
     hlit  = num_litlen - 257
     hdist = num_dist   - 1
 
+    # TODO: RLEをいじったほうが短い可能性がある あと律動はこっちに加えてもよいかも
     # RLE 生成
     rle_stream = rle_code_lengths_stream(litlen_lengths, dist_lengths)
 
@@ -170,7 +167,6 @@ def _collect_usage(tokens: list[Token]) -> tuple[dict[int, int], dict[int, int],
 @dataclass
 class OptimizeResult:
     best_block: DynamicHuffmanBlock
-    best_bits: int
     best_score: int
     tried: int
     accepted: int
@@ -216,19 +212,21 @@ def optimize_deflate_block(
     
     base_bits = estimate_block_bits(base_block.header)
     best_block = base_block
-    best_bits  = base_bits
     best_score = base_score
+
+    best_bits  = base_bits
+    bestbits_litlen, bestbits_dist = base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths
 
     tried = 0
     accepted = 0
     while terminate_threshold < best_score and tried < num_iteration:
-        new_lit, new_dist = random_perturb_lengths(base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths, num_perturbation, rng)
+        new_litlen, new_dist = random_perturb_lengths(bestbits_litlen, bestbits_dist, num_perturbation, rng)
 
-        if not is_valid_huffman_lengths(new_lit, 15): continue
+        if not is_valid_huffman_lengths(new_litlen, 15): continue
         if not is_valid_huffman_lengths(new_dist, 15): continue
 
         tried += 1
-        header = build_header_from_lengths(new_lit, new_dist)
+        header = build_header_from_lengths(new_litlen, new_dist)
 
         est_bits = estimate_block_bits(header)
         if est_bits - base_bits > tolerance_bit:
@@ -241,14 +239,15 @@ def optimize_deflate_block(
         # すでに決定されてるbufferだけ用いたい
         sc = score_func(res._buf)
         accepted += 1
-        if (sc < best_score) or (sc == best_score and est_bits < best_bits):
+        if sc < best_score:
             best_score = sc
             best_block = cand_block
-            best_bits  = est_bits
+        if est_bits < best_bits:
+            bestbits_litlen, bestbits_dist = new_litlen, new_dist
+            best_bits = est_bits
 
     return OptimizeResult(
         best_block=best_block,
-        best_bits=best_bits,
         best_score=best_score,
         tried=tried,
         accepted=accepted,
@@ -292,8 +291,57 @@ def optimize_deflate_stream(
                 seed=seed,
             )
             r.best_block.dump(res)
-            if verbose: print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score} bits~={r.best_bits}")
+            if verbose: print(f"[block#{i}] tried={r.tried} accepted={r.accepted} best_score={r.best_score}")
         else:
             if verbose: print(f"[block#{i}] Skipped (not DynHuffman)")
             block.dump(res)
     return res.get_bytes()
+
+def anneal_header(base_block: DynamicHuffmanBlock, seed=1234):
+    rng = random.Random(seed)
+
+    litlen_usage, dist_usage, extra_bits = _collect_usage(base_block.tokens)
+    def estimate_block_bits(header: DynamicHuffmanHeader):
+        bits  = 0
+        bits += extra_bits
+        bits += _huffmanheader_bits(header)
+        bits += _total_bits_from_usage(header.dist_code.lengths, dist_usage)
+        bits += _total_bits_from_usage(header.litlen_code.lengths, litlen_usage)
+        return bits
+    
+    base_bits = estimate_block_bits(base_block.header)
+    best_header = base_block.header
+
+    best_bits = base_bits
+    bestbits_litlen, bestbits_dist = base_block.header.litlen_code.lengths, base_block.header.dist_code.lengths
+
+    tried = 0
+    accepted = 0
+    
+    while terminate_threshold < best_score and tried < num_iteration:
+        new_litlen, new_dist = random_perturb_lengths(bestbits_litlen, bestbits_dist, num_perturbation, rng)
+
+        if not is_valid_huffman_lengths(new_litlen, 15): continue
+        if not is_valid_huffman_lengths(new_dist, 15): continue
+
+        tried += 1
+        header = build_header_from_lengths(new_litlen, new_dist)
+
+        est_bits = estimate_block_bits(header)
+        if est_bits - base_bits > tolerance_bit:
+            continue
+
+        cand_block = DynamicHuffmanBlock(bfinal=base_block.bfinal, header=header, tokens=base_block.tokens)
+
+        res = (prefix_bits | BitWriter(cand_block) | suffix_bits)
+
+        # すでに決定されてるbufferだけ用いたい
+        sc = score_func(res._buf)
+        accepted += 1
+        if sc < best_score:
+            best_score = sc
+            best_block = cand_block
+        if est_bits < best_bits:
+            bestbits_litlen, bestbits_dist = new_litlen, new_dist
+            best_bits = est_bits
+    

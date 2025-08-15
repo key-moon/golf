@@ -1,6 +1,5 @@
-# 周囲が3かつ内側が0の場所を4で埋める
 def p(g):
- t=range
+ t=range hogefugapiyo
  for d in t(len(g)):
   for r in t(len(g[0])):
    for l in t(1,r):
