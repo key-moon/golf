@@ -133,11 +133,6 @@ if __name__ == "__main__":
   BAD_PATH = ["base_arcdsl", "base_rearc"]
   # Write stats to README
   def emit_table(stats,writer,b="."):
-    writer.write("- [README](README.md)\n")
-    writer.write("- [sorted by task](stats/task-sorted.md)\n")
-    writer.write("- [sorted by ratio](stats/ratio-sorted.md)\n")
-    writer.write("- [sorted by length](stats/length-sorted.md)\n")
-    writer.write("- [sorted by best](stats/best-sorted.md)\n\n")
     writer.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
     writer.write("|------|---------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
@@ -177,11 +172,31 @@ if __name__ == "__main__":
     file.write("## Task Details\n\n")
     emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1]) - (x["length"] if x["length"] is not None else 999999)), file)
   with open("stats/task-sorted.md", "w") as file:
+    file.write("- [README](../README.md)\n")
+    file.write("- [sorted by ratio](ratio-sorted.md)\n")
+    file.write("- [sorted by length](length-sorted.md)\n")
+    file.write("- [sorted by best](best-sorted.md)\n\n")
+    file.write("## sorted by task\n\n")
     emit_table(stats, file, b="..")
   with open("stats/ratio-sorted.md", "w") as file:
+    file.write("- [README](../README.md)\n")
+    file.write("- [sorted by task](task-sorted.md)\n")
+    file.write("- [sorted by length](length-sorted.md)\n")
+    file.write("- [sorted by best](best-sorted.md)\n\n")
+    file.write("## sorted by ratio\n\n")
     emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999) / int(others_best[x['task'] - 1])), file, b="..")
   with open("stats/length-sorted.md", "w") as file:
+    file.write("- [README](../README.md)\n")
+    file.write("- [sorted by task](task-sorted.md)\n")
+    file.write("- [sorted by ratio](ratio-sorted.md)\n")
+    file.write("- [sorted by best](best-sorted.md)\n\n")
+    file.write("## sorted by length\n\n")
     emit_table(sorted(stats, key=lambda x: -(x["length"] if x["length"] is not None else 999999)), file, b="..")
   with open("stats/best-sorted.md", "w") as file:
+    file.write("- [README](../README.md)\n")
+    file.write("- [sorted by task](task-sorted.md)\n")
+    file.write("- [sorted by ratio](ratio-sorted.md)\n")
+    file.write("- [sorted by length](length-sorted.md)\n\n")
+    file.write("## sorted by best\n\n")
     emit_table(sorted(stats, key=lambda x: int(others_best[x['task'] - 1])), file, b="..")
 
