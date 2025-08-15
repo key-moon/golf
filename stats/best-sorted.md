@@ -404,6 +404,6 @@
 | [018](../vis/task018.png) | ⚠️ | [base_rearc](../base_rearc/task018.py) | forplain/lzma | [1591](../dist/task018.py) (+1146) | 445 🔴 | [prompt](../prompts/task018.txt) / [vis-many](../vis_many/task018.png) | AC |
 | [080](../vis/task080.png) | ❗ | [dist](../dist/task080.py) | previous | [295](../dist/task080.py) (-153) | 448 🟢 | [prompt](../prompts/task080.txt) / [vis-many](../vis_many/task080.png) | regression? |
 | [054](../vis/task054.png) | ⚠️ | [base_arcdsl](../base_arcdsl/task054.py) | forcomp-s/lzma | [1657](../dist/task054.py) (+1202) | 455 🔴 | [prompt](../prompts/task054.txt) / [vis-many](../vis_many/task054.png) | AC |
-| [285](../vis/task285.png) | ✅ | [base_yu](../base_yu/task285.py) | forcomp-t/zlib-zopfli | [308](../dist/task285.py) (-148) | 456 🟢 | [prompt](../prompts/task285.txt) / [vis-many](../vis_many/task285.png) | AC |
+| [285](../vis/task285.png) | ✅ | [base_yu](../base_yu/task285.py) | forcomp-t/zlib-zopfli | [307](../dist/task285.py) (-149) | 456 🟢 | [prompt](../prompts/task285.txt) / [vis-many](../vis_many/task285.png) | AC |
 | [366](../vis/task366.png) | ✅ | [base_keymoon](../base_keymoon/task366.py) | forcomp-s/zlib-zopfli | [524](../dist/task366.py) (+62) | 462 🔴 | [prompt](../prompts/task366.txt) / [vis-many](../vis_many/task366.png) | AC |
 | [158](../vis/task158.png) | ⚠️ | [base_rearc](../base_rearc/task158.py) | forplain/lzma | [2001](../dist/task158.py) (+1525) | 476 🔴 | [prompt](../prompts/task158.txt) / [vis-many](../vis_many/task158.png) | AC |

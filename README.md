@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 399/400
-Score: 895596
+Score: 895597
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -414,5 +414,5 @@ Alt Tables:
 | [324](./vis/task324.png) | ✅ | [base_yu](./base_yu/task324.py) | forcomp-s/zlib-zopfli | [318](./dist/task324.py) (-99) | 417 🟢 | [prompt](./prompts/task324.txt) / [vis-many](./vis_many/task324.png) | AC |
 | [349](./vis/task349.png) | ✅ | [base_yu](./base_yu/task349.py) | forcomp-t/zlib-zopfli | [234](./dist/task349.py) (-118) | 352 🟢 | [prompt](./prompts/task349.txt) / [vis-many](./vis_many/task349.png) | AC |
 | [118](./vis/task118.png) | ✅ | [base_yu](./base_yu/task118.py) | forcomp-s/zlib-zopfli | [281](./dist/task118.py) (-122) | 403 🟢 | [prompt](./prompts/task118.txt) / [vis-many](./vis_many/task118.png) | AC |
-| [285](./vis/task285.png) | ✅ | [base_yu](./base_yu/task285.py) | forcomp-t/zlib-zopfli | [308](./dist/task285.py) (-148) | 456 🟢 | [prompt](./prompts/task285.txt) / [vis-many](./vis_many/task285.png) | AC |
+| [285](./vis/task285.png) | ✅ | [base_yu](./base_yu/task285.py) | forcomp-t/zlib-zopfli | [307](./dist/task285.py) (-149) | 456 🟢 | [prompt](./prompts/task285.txt) / [vis-many](./vis_many/task285.png) | AC |
 | [080](./vis/task080.png) | ❗ | [dist](./dist/task080.py) | previous | [295](./dist/task080.py) (-153) | 448 🟢 | [prompt](./prompts/task080.txt) / [vis-many](./vis_many/task080.png) | regression? |
