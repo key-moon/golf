@@ -1,0 +1,19 @@
+p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*map(list,zip(*p([*zip(*g)])))]
+
+
+# def p(g):
+#  if(i:=[*g[0],5].index(5))<9:
+#   return[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]
+#  return[*map(list,zip(*p([*zip(*g)])))]
+
+
+# def p(g):
+#  for _ in 0,1:
+#   if 1-any(all(s)for s in g):
+#    for s in g:
+#     i=s.index(5)
+#     l=s[:i].count(0)
+#     r=s[i:].count(0)
+#     s[:14]=[0]*l+[5]*(14-l-r)+[0]*r
+#   *g,=map(list,zip(*g))
+#  return g
