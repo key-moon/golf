@@ -20,6 +20,14 @@ class BitWriter:
             self._bitbuf >>= 8
             self._bitcnt -= 8
 
+    def write_bytes(self, data: bytes) -> None:
+        for byte in data:
+            self.write_bits(byte, 8)
+
+    def concatinate(self, other: "BitWriter") -> None:
+        self.write_bytes(other._buf)
+        self.write_bits(other._bitbuf, other._bitcnt)
+
     def align_to_byte(self) -> None:
         if self._bitcnt > 0:
             self._buf.append(self._bitbuf & 0xFF)
