@@ -11,7 +11,7 @@ def p(g):
       g[i+y][j-1-x]|=g[i][j-1]
       g[i-1-y][j+x]|=g[i-1][j]
       for d in range(9):
-       if 0<y+d%3<6 and 0<x+d//3<6 and 1-u[y+d%3-1][x+d//3-1]and g[i+y+d%3-1][j+x+d//3-1]==g[i][j]>0:
+       if 0<y+d%3<6 and 0<x+d//3<6 and 1-u[y+d%3-1][x+d//3-1]and 0<g[i+y+d%3-1][j+x+d//3-1]==g[i][j]:
         u[y+d%3-1][x+d//3-1]=1
         q+=[(y+d%3-1,x+d//3-1)]
   *g,=map(list,zip(*g[::-1]))
