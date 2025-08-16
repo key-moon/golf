@@ -1,9 +1,8 @@
-B=range
 def p(j,A=enumerate):
- for(c,D)in A(j):
-  for(k,E)in A(D):
-   if E==5:
-    for l in B(c-1,c+2):
-     for C in B(k-1,k+2):
-      if[l,C]!=[c,k]:j[l][C]=1
+ for c,E in A(j):
+  for k,W in A(E):
+   if W==5:
+    for l in range(c-1,c+2):
+     for J in range(k-1,k+2):
+      if[l,J]!=[c,k]:j[l][J]=1
  return j
