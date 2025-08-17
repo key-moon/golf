@@ -13,7 +13,7 @@ import numpy as np
 
 import compress
 from task_viz import cmap, norm
-from strip import strip_for_plain, strip_for_zlib
+from strip import ZLIB_GOLF_BANNER, og_strip, strip_for_plain, strip_for_zlib
 from utils import get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
 import warnings
 
@@ -140,9 +140,8 @@ if __name__ == "__main__":
       try:
         with open(code_path, "r") as f:
           orig_code = f.read().strip()
-          ZLIBGOLF_BANNER = "== begin zlib golf =="
           code = strip_for_plain(orig_code).encode()
-          stripped = orig_code.split(ZLIBGOLF_BANNER)[1].strip() if ZLIBGOLF_BANNER in orig_code else strip_for_zlib(orig_code)
+          stripped = og_strip(orig_code) if ZLIB_GOLF_BANNER in orig_code else strip_for_zlib(orig_code)
           compress_method, compressed, raw_compressed = compress.compress(stripped, force_compress=True, with_raw_code=True)
       except UnicodeDecodeError:
         with open(code_path, "rb") as f:

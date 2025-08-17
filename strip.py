@@ -5,11 +5,20 @@ import string
 # string.punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 syms = r"=<>!?^|&%()\[\]{},;:*/+-"
 
-def og_strip(code: str):
+ZLIB_GOLF_BANNER = "== begin zlib golf =="
+
+def og_strip(code: str | bytes):
+  if isinstance(code, bytes):
+    code = code.decode()
+  assert isinstance(code, str)
+  if ZLIB_GOLF_BANNER in code:
+    code = code.split(ZLIB_GOLF_BANNER)[-1]
+    lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
+    return "\n".join(lines).strip()
+
   code = re.sub(rf"(\w) *([{syms}])", r"\1\2", code)
   code = re.sub(rf"([{syms}]) *(\w)", r"\1\2", code)
   code = re.sub(rf"([{syms}]) *([{syms}])", r"\1\2", code)
-
   lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
   if len(lines) == 1: return lines[0]
   res = ""
