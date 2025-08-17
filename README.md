@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 399/400
-Score: 899321
+Score: 900627
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -22,7 +22,6 @@ Alt Tables:
 | [101](./vis/task101.png) | ❗ | [dist](./dist/task101.py) | previous | [1791](./dist/task101.py) (+1374) | 417 🔴 | [prompt](./prompts/task101.txt) / [vis-many](./vis_many/task101.png) | regression? |
 | [076](./vis/task076.png) | ❗ | [dist](./dist/task076.py) | previous | [1706](./dist/task076.py) (+1351) | 355 🔴 | [prompt](./prompts/task076.txt) / [vis-many](./vis_many/task076.png) | regression? |
 | [046](./vis/task046.png) | ❗ | [dist](./dist/task046.py) | previous | [1479](./dist/task046.py) (+1293) | 186 🔴 | [prompt](./prompts/task046.txt) / [vis-many](./vis_many/task046.png) | regression? |
-| [280](./vis/task280.png) | ❗ | [dist](./dist/task280.py) | previous | [1533](./dist/task280.py) (+1227) | 306 🔴 | [prompt](./prompts/task280.txt) / [vis-many](./vis_many/task280.png) | regression? |
 | [054](./vis/task054.png) | ❗ | [dist](./dist/task054.py) | previous | [1657](./dist/task054.py) (+1202) | 455 🔴 | [prompt](./prompts/task054.txt) / [vis-many](./vis_many/task054.png) | regression? |
 | [018](./vis/task018.png) | ❗ | [dist](./dist/task018.py) | previous | [1591](./dist/task018.py) (+1146) | 445 🔴 | [prompt](./prompts/task018.txt) / [vis-many](./vis_many/task018.png) | regression? |
 | [005](./vis/task005.png) | ❗ | [dist](./dist/task005.py) | previous | [1402](./dist/task005.py) (+1140) | 262 🔴 | [prompt](./prompts/task005.txt) / [vis-many](./vis_many/task005.png) | regression? |
@@ -411,6 +410,7 @@ Alt Tables:
 | [370](./vis/task370.png) | ✅ | [base_yu](./base_yu/task370.py) | raw/zlib-zopfli | [273](./dist/task370.py) (-58) | 331 🟢 | [prompt](./prompts/task370.txt) / [vis-many](./vis_many/task370.png) | AC |
 | [233](./vis/task233.png) | ✅ | [base_yu](./base_yu/task233.py) | forcomp-s/zlib-zopfli | [342](./dist/task233.py) (-60) | 402 🟢 | [prompt](./prompts/task233.txt) / [vis-many](./vis_many/task233.png) | AC |
 | [191](./vis/task191.png) | ❗ | [dist](./dist/task191.py) | previous | [273](./dist/task191.py) (-61) | 334 🟢 | [prompt](./prompts/task191.txt) / [vis-many](./vis_many/task191.png) | regression? |
+| [280](./vis/task280.png) | ✅ | [base_yu](./base_yu/task280.py) | raw/zlib-zopfli | [227](./dist/task280.py) (-79) | 306 🟢 | [prompt](./prompts/task280.txt) / [vis-many](./vis_many/task280.png) | AC |
 | [285](./vis/task285.png) | ✅ | [base_yu](./base_yu/task285.py) | forcomp-t/zlib-zopfli | [307](./dist/task285.py) (-79) | 386 🟢 | [prompt](./prompts/task285.txt) / [vis-many](./vis_many/task285.png) | AC |
 | [324](./vis/task324.png) | ✅ | [base_yu](./base_yu/task324.py) | forcomp-s/zlib-zopfli | [318](./dist/task324.py) (-99) | 417 🟢 | [prompt](./prompts/task324.txt) / [vis-many](./vis_many/task324.png) | AC |
 | [080](./vis/task080.png) | ✅ | [base_yu](./base_yu/task080.py) | forcomp-t/zlib-zopfli | [295](./dist/task080.py) (-104) | 399 🟢 | [prompt](./prompts/task080.txt) / [vis-many](./vis_many/task080.png) | AC |

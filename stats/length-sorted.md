@@ -14,7 +14,6 @@
 | [076](../vis/task076.png) | ❗ | [dist](../dist/task076.py) | previous | [1706](../dist/task076.py) (+1351) | 355 🔴 | [prompt](../prompts/task076.txt) / [vis-many](../vis_many/task076.png) | regression? |
 | [054](../vis/task054.png) | ❗ | [dist](../dist/task054.py) | previous | [1657](../dist/task054.py) (+1202) | 455 🔴 | [prompt](../prompts/task054.txt) / [vis-many](../vis_many/task054.png) | regression? |
 | [018](../vis/task018.png) | ❗ | [dist](../dist/task018.py) | previous | [1591](../dist/task018.py) (+1146) | 445 🔴 | [prompt](../prompts/task018.txt) / [vis-many](../vis_many/task018.png) | regression? |
-| [280](../vis/task280.png) | ❗ | [dist](../dist/task280.py) | previous | [1533](../dist/task280.py) (+1227) | 306 🔴 | [prompt](../prompts/task280.txt) / [vis-many](../vis_many/task280.png) | regression? |
 | [046](../vis/task046.png) | ❗ | [dist](../dist/task046.py) | previous | [1479](../dist/task046.py) (+1293) | 186 🔴 | [prompt](../prompts/task046.txt) / [vis-many](../vis_many/task046.png) | regression? |
 | [133](../vis/task133.png) | ❗ | [dist](../dist/task133.py) | previous | [1474](../dist/task133.py) (+1049) | 425 🔴 | [prompt](../prompts/task133.txt) / [vis-many](../vis_many/task133.png) | regression? |
 | [005](../vis/task005.png) | ❗ | [dist](../dist/task005.py) | previous | [1402](../dist/task005.py) (+1140) | 262 🔴 | [prompt](../prompts/task005.txt) / [vis-many](../vis_many/task005.png) | regression? |
@@ -140,6 +139,7 @@
 | [244](../vis/task244.png) | ✅ | [base_code](../base_code/task244.py) | forcomp-s/zlib-zopfli | [230](../dist/task244.py) (+165) | 65 🔴 | [prompt](../prompts/task244.txt) / [vis-many](../vis_many/task244.png) | AC |
 | [132](../vis/task132.png) | ✅ | [base_code](../base_code/task132.py) | raw/zlib-zopfli | [228](../dist/task132.py) (+142) | 86 🔴 | [prompt](../prompts/task132.txt) / [vis-many](../vis_many/task132.png) | AC |
 | [224](../vis/task224.png) | ✅ | [base_code](../base_code/task224.py) | raw/zlib-zopfli | [227](../dist/task224.py) (+50) | 177 🔴 | [prompt](../prompts/task224.txt) / [vis-many](../vis_many/task224.png) | AC |
+| [280](../vis/task280.png) | ✅ | [base_yu](../base_yu/task280.py) | raw/zlib-zopfli | [227](../dist/task280.py) (-79) | 306 🟢 | [prompt](../prompts/task280.txt) / [vis-many](../vis_many/task280.png) | AC |
 | [288](../vis/task288.png) | ✅ | [base_code](../base_code/task288.py) | raw/zlib-zopfli | [227](../dist/task288.py) (+123) | 104 🔴 | [prompt](../prompts/task288.txt) / [vis-many](../vis_many/task288.png) | AC |
 | [011](../vis/task011.png) | ✅ | [base_notebooks](../base_notebooks/task011_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-zopfli | [226](../dist/task011.py) (+93) | 133 🔴 | [prompt](../prompts/task011.txt) / [vis-many](../vis_many/task011.png) | AC |
 | [025](../vis/task025.png) | ✅ | [base_yu](../base_yu/task025.py) | forplain/raw | [226](../dist/task025.py) (+62) | 164 🔴 | [prompt](../prompts/task025.txt) / [vis-many](../vis_many/task025.png) | AC |
