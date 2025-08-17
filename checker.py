@@ -140,8 +140,10 @@ if __name__ == "__main__":
       try:
         with open(code_path, "r") as f:
           orig_code = f.read().strip()
+          ZLIBGOLF_BANNER = "== begin zlib golf =="
           code = strip_for_plain(orig_code).encode()
-          compress_method, compressed, raw_compressed = compress.compress(strip_for_zlib(orig_code), force_compress=True, with_raw_code=True)
+          stripped = orig_code.split(ZLIBGOLF_BANNER)[1].strip() if ZLIBGOLF_BANNER in orig_code else strip_for_zlib(orig_code)
+          compress_method, compressed, raw_compressed = compress.compress(stripped, force_compress=True, with_raw_code=True)
       except UnicodeDecodeError:
         with open(code_path, "rb") as f:
           code = compressed = f.read()
