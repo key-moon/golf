@@ -1,1 +1,1 @@
-def p(g):i=g[0].index(5);return[[x or y for(x,y)in zip(r[:i],r[:i:-1])]for r in g]
+p=lambda g:[[*map(max,zip(s,s[:4:-1]))]for s in g]
