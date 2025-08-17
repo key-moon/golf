@@ -149,6 +149,8 @@ def determine_wbits(compressed: bytes):
 
 # オーバーヘッド: 61 or 65 byte ('"' と '"""'の差)
 # '#coding:L1;import zlib;exec(zlib.decompress("""...""".encode("L1")))'
+# zlib.decompress
+# zlib.decompressobj(wbits=-15,open("/...").read()).decompress
 # 他テンプレート案
 # '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
@@ -157,7 +159,7 @@ def determine_wbits(compressed: bytes):
 def compress(code: str, best: Optional[int]=None, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
 @overload
 def compress(code: str, best: Optional[int]=None, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
-def compress(code: str, best: Optional[int]=None, force_compress=False, with_raw_code=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
+def compress(code: str, best: Optional[int]=None, force_compress=False, with_raw_code: bool=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
   compressions = [
     ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),

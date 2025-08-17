@@ -156,7 +156,7 @@ if __name__ == "__main__":
         best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
         length = f"{length} ({'+' if diff > 0 else ''}{diff})"
       message = stat["message"]
-      writer.write(f"| [{task}]({b}/vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [prompt]({b}/prompts/task{task}.txt) / [vis-many]({b}/vis_many/task{task}.png) | {message} |\n")
+      writer.write(f"| [{task}]({b}/vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [vis-many]({b}/vis_many/task{task}.png) | {message} |\n")
   with open("README.md", "w") as file:
     file.write("# Golf Stats\n\n")
 
