@@ -154,7 +154,7 @@ if __name__ == "__main__":
         print(f"❌ {code_path} {len(code)=} {len(compressed)=}")
         print(f"{res.correct=}" if res.message == "ok" else res.message)
       compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
-      print(f"{openable_uri("stripped code", viz_plane_url(code))} / {compressed_msg}")
+      print(f"{openable_uri('stripped code', viz_plane_url(code))} / {compressed_msg}")
 
       if len(res.outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"

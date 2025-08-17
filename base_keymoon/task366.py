@@ -34,7 +34,7 @@ def p(g):
   p=""
   while l:
    u=l.pop()
-   A=s(s(d,f"[^{c+d}\]]",f"(?<={t.join([*l,""])}){u}(?=")+p+")",u,A,1)
+   A=s(s(d,f"[^{c+d}\]]",f"(?<={t.join([*l,''])}){u}(?=")+p+")",u,A,1)
    p=t+u+p
   A=s(d,c,A)
  return [[*map(int,r)]for r in s(c,d,A).split("]")[-3::-1]]#  s.sort(key=lambda x:x.groups())

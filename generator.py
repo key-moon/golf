@@ -146,10 +146,10 @@ if __name__ == "__main__":
       else:
         success = "✅"
 
-      base = f"[{stat['base_path'].split("/")[0]}]({b}/{stat['base_path']})" if stat["success"] else "-"
+      base = f"[{stat['base_path'].split('/')[0]}]({b}/{stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 
-      length = f"[{stat["length"]}]({b}/dist/task{task}.py)" if stat["success"] else "-"
+      length = f"[{stat['length']}]({b}/dist/task{task}.py)" if stat["success"] else "-"
       best = others_best[stat['task'] - 1]
       if stat["success"] and best != "-":
         diff = stat["length"] - int(best)

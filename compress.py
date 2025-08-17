@@ -119,7 +119,7 @@ def cached_zopfli(val: bytes):
   compressed = zopfli.zlib.compress(val, numiterations=1000, blocksplitting=False)[2:-4]
   compressed_splitting = zopfli.zlib.compress(val, numiterations=1000)[2:-4]
   if len(compressed_splitting) < len(compressed):
-    print(f"!! {openable_uri("no split", viz_deflate_url(compressed_splitting))} / {openable_uri("split", viz_deflate_url(compressed))}")
+    print(f"!! {openable_uri('no split', viz_deflate_url(compressed_splitting))} / {openable_uri('split', viz_deflate_url(compressed))}")
     compressed = compressed_splitting
   try:
     return optimize_deflate_stream(
