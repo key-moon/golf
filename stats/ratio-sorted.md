@@ -86,7 +86,6 @@
 | [300](../vis/task300.png) | ❗ | [dist](../dist/task300.py) | previous | [207](../dist/task300.py) (+120) | 87 🔴 | [vis-many](../vis_many/task300.png) | regression? |
 | [022](../vis/task022.png) | ✅ | [base_notebooks](../base_notebooks/task022_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forplain/zlib-zopfli | [215](../dist/task022.py) (+124) | 91 🔴 | [vis-many](../vis_many/task022.png) | AC |
 | [091](../vis/task091.png) | ✅ | [base_code](../base_code/task091_1.py) | forplain/raw | [196](../dist/task091.py) (+113) | 83 🔴 | [vis-many](../vis_many/task091.png) | AC |
-| [303](../vis/task303.png) | ✅ | [base_code](../base_code/task303.py) | forplain/raw | [146](../dist/task303.py) (+84) | 62 🔴 | [vis-many](../vis_many/task303.png) | AC |
 | [127](../vis/task127.png) | ✅ | [base_notebooks](../base_notebooks/task127_20250810-053358Z-oh-barnacles-jazivxt.py) | forplain/raw | [178](../dist/task127.py) (+102) | 76 🔴 | [vis-many](../vis_many/task127.png) | AC |
 | [075](../vis/task075.png) | ✅ | [base_notebooks](../base_notebooks/task075_20250807-051947Z-simpletasksolved-tetsuro-tsuda.py) | forcomp-t/zlib-zopfli | [206](../dist/task075.py) (+118) | 88 🔴 | [vis-many](../vis_many/task075.png) | AC |
 | [247](../vis/task247.png) | ✅ | [base_code](../base_code/task247.py) | forplain/raw | [224](../dist/task247.py) (+128) | 96 🔴 | [vis-many](../vis_many/task247.png) | AC |
@@ -318,6 +317,7 @@
 | [397](../vis/task397.png) | ✅ | [base_yu](../base_yu/task397.py) | raw/raw | [151](../dist/task397.py) (+16) | 135 🔴 | [vis-many](../vis_many/task397.png) | AC |
 | [134](../vis/task134.png) | ✅ | [base_keymoon](../base_keymoon/task134.py) | forplain/raw | [233](../dist/task134.py) (+24) | 209 🔴 | [vis-many](../vis_many/task134.png) | AC |
 | [371](../vis/task371.png) | ✅ | [base_notebooks](../base_notebooks/task371_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [157](../dist/task371.py) (+16) | 141 🔴 | [vis-many](../vis_many/task371.png) | AC |
+| [303](../vis/task303.png) | ✅ | [base_yu](../base_yu/task303.py) | raw/raw | [69](../dist/task303.py) (+7) | 62 🔴 | [vis-many](../vis_many/task303.png) | AC |
 | [360](../vis/task360.png) | ✅ | [base_yu](../base_yu/task360.py) | raw/raw | [50](../dist/task360.py) (+5) | 45 🔴 | [vis-many](../vis_many/task360.png) | AC |
 | [180](../vis/task180.png) | ✅ | [base_notebooks](../base_notebooks/task180_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | raw/raw | [91](../dist/task180.py) (+9) | 82 🔴 | [vis-many](../vis_many/task180.png) | AC |
 | [395](../vis/task395.png) | ✅ | [base_yu](../base_yu/task395.py) | raw/raw | [62](../dist/task395.py) (+6) | 56 🔴 | [vis-many](../vis_many/task395.png) | AC |

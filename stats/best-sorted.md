@@ -111,7 +111,7 @@
 | [214](../vis/task214.png) | ✅ | [base_code](../base_code/task214.py) | raw/raw | [125](../dist/task214.py) (+63) | 62 🔴 | [vis-many](../vis_many/task214.png) | AC |
 | [235](../vis/task235.png) | ✅ | [base_notebooks](../base_notebooks/task235_20250809-035628Z-arc-agi-code-golf-216-400-solved-dmytro-fedoriaka.py) | forplain/raw | [78](../dist/task235.py) (+16) | 62 🔴 | [vis-many](../vis_many/task235.png) | AC |
 | [291](../vis/task291.png) | ✅ | [base_keymoon](../base_keymoon/task291.py) | raw/raw | [74](../dist/task291.py) (+12) | 62 🔴 | [vis-many](../vis_many/task291.png) | AC |
-| [303](../vis/task303.png) | ✅ | [base_code](../base_code/task303.py) | forplain/raw | [146](../dist/task303.py) (+84) | 62 🔴 | [vis-many](../vis_many/task303.png) | AC |
+| [303](../vis/task303.png) | ✅ | [base_yu](../base_yu/task303.py) | raw/raw | [69](../dist/task303.py) (+7) | 62 🔴 | [vis-many](../vis_many/task303.png) | AC |
 | [061](../vis/task061.png) | ✅ | [base_code](../base_code/task061_3.py) | forplain/raw | [92](../dist/task061.py) (+29) | 63 🔴 | [vis-many](../vis_many/task061.png) | AC |
 | [166](../vis/task166.png) | ✅ | [base_keymoon](../base_keymoon/task166.py) | forplain/raw | [65](../dist/task166.py) (+2) | 63 🔴 | [vis-many](../vis_many/task166.png) | AC |
 | [296](../vis/task296.png) | ✅ | [base_notebooks](../base_notebooks/task296_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [126](../dist/task296.py) (+63) | 63 🔴 | [vis-many](../vis_many/task296.png) | AC |
