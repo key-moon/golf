@@ -147,11 +147,10 @@ def determine_wbits(compressed: bytes):
   except:
     return ",-15"  
 
-# オーバーヘッド: 61 or 65 byte ('"' と '"""'の差)
-# '#coding:L1;import zlib;exec(zlib.decompress("""...""".encode("L1")))'
-# zlib.decompress
-# zlib.decompressobj(wbits=-15,open("/...").read()).decompress
+# オーバーヘッド: 60 or 64 byte ('"' と '"""'の差)
+# '#coding:L1;import zlib;exec(zlib.decompress(bytes("""...""","L1")))'
 # 他テンプレート案
+# '#coding:L1;import zlib;exec(zlib.decompress("""...""".encode("L1")))'
 # '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
@@ -182,7 +181,7 @@ def compress(code: str, best: Optional[int]=None, force_compress=False, with_raw
       embed = get_embed_str(compressed_code)
       if callable(extra_args):
         extra_args = extra_args(compressed_code)
-      res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(".encode() + embed + b".encode('L1')" + extra_args.encode() + b"))"
+      res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
       l.append((name,res,compressed_code))
 
   mn = min(l, key=lambda x: len(x[1]))
