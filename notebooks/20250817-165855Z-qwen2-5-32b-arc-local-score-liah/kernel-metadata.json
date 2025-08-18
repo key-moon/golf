@@ -1,0 +1,23 @@
+{
+  "id": "bibanh/qwen2-5-32b-arc-local-score",
+  "id_no": 88395692,
+  "title": "Qwen2.5 32B + ARC + Local Score",
+  "code_file": "qwen2-5-32b-arc-local-score.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bibanh/liah-264-fix"
+  ],
+  "kernel_sources": [
+    "seshurajup/code-golf-ensemble-local-score-391-400-dsl"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "muhammadqasimshabbir/neurips-2025-google-code-golf",
+  "id_no": 88353377,
+  "title": "NeurIPS 2025 - Google Code Golf",
+  "code_file": "neurips-2025-google-code-golf.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "muhammadqasimshabbir/arc-generator-predifine-dict-code",
+    "muhammadqasimshabbir/bibanhqwen2-5-32b-arc-local-score",
+    "muhammadqasimshabbir/lucvan68optimize-391-400-dsl",
+    "muhammadqasimshabbir/oh-barnacles12",
+    "muhammadqasimshabbir/submission"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

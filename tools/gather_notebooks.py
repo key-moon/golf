@@ -66,6 +66,7 @@ if __name__ == "__main__":
   zip_paths.sort()
 
   for zip_path in tqdm(zip_paths):
+    print(zip_path)
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
       for name in zip_ref.namelist():
         task_match = re.match(r"task(\w{3})\.py$", name)
@@ -77,14 +78,15 @@ if __name__ == "__main__":
         extracted_path = os.path.join(tmp_dir, "tmpppp.py")
         with open(extracted_path, "wb") as f:
           f.write(zip_ref.read(name))
-        with open(extracted_path, "r") as f:
+        with open(extracted_path, "rb") as f:
           code = f.read()
-        if "import os" in code or "import sys" in code:
-          print(f"Cheating in {zip_path}: {name}")
+
+        if b"import os" in code or b"import sys" in code or b"import zlib" in code:
+          print(f"skip {zip_path}: {name}")
           continue
-        if normalize(code) in known_garbage:
+        if normalize(code.decode()) in known_garbage:
           continue
-        digest = f"{task_number:03}|{sha256(code.encode()).hexdigest()}"
+        digest = f"{task_number:03}|{sha256(code).hexdigest()}"
         if digest in session_digests:
           continue
         session_digests.add(digest)

@@ -107,24 +107,6 @@ def extract_slug(meta: Any, fallback_ref: Optional[str]) -> str:
         return normalize_slug(fallback_ref.split("/", 1)[1])
     return "unknown"
 
-def parse_iso_to_dir_ts(v: Optional[str]) -> str:
-    """
-    ISO8601 っぽい時刻文字列を受け取り、YYYYMMDD-HHMMSSZ を返す。
-    取れなければ 'unknown'。
-    """
-    if not v:
-        return "unknown"
-    try:
-        # "....Z" を "+00:00" に変換してからパース
-        ts = dt.datetime.fromisoformat(v.replace("Z", "+00:00"))
-        if ts.tzinfo is None:
-            ts = ts.replace(tzinfo=dt.timezone.utc)
-        else:
-            ts = ts.astimezone(dt.timezone.utc)
-        return ts.strftime("%Y%m%d-%H%M%SZ")
-    except Exception:
-        return "unknown"
-
 def extract_last_run_ts(meta: Any) -> str:
     """
     CSV行から時刻カラムを探して、YYYYMMDD-HHMMSSZ 文字列を返す。
