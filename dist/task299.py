@@ -1,1 +1,1 @@
-p=lambda g:[[3**(2 in s)*-~c%22-1for c in g[0]]for s in g]
+p=lambda g:[[3**(2in s)*-~c%22-1for c in g[0]]for s in g]

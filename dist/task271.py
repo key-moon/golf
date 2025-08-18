@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress(']NµQ]%e‚C‡s2Åısw×éqï’ç¶ãBm¸=cÌcÜXP?7+A„ ÅÅd9YÑış~îúCi¤ƒ±“¢GÓİpşgåF.qŒŸ’ÿĞ¿NR¶¥S7e\n‰Ñ#7‰œa‰iĞ±Voª&A~¿_¾·ÜaxOàˆ.'.encode('L1'),-9))
+p=lambda g:min((sum(sum(a,[])),a)for x in range(49)if 0<min(min(a:=[r[x%7:][:3]for r in g[x//7:][:3]])))[1]
