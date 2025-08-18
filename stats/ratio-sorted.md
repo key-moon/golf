@@ -327,7 +327,6 @@
 | [016](../vis/task016.png) | ✅ | [base_keymoon](../base_keymoon/task016_byte.py) | raw/raw | [47](../dist/task016.py) (+4) | 43 🔴 | [vis-many](../vis_many/task016.png) | AC |
 | [398](../vis/task398.png) | ✅ | [base_yu](../base_yu/task398.py) | raw/raw | [87](../dist/task398.py) (+7) | 80 🔴 | [vis-many](../vis_many/task398.png) | AC |
 | [280](../vis/task280.png) | ✅ | [base_yu](../base_yu/task280.py) | raw/zlib-zopfli | [227](../dist/task280.py) (+18) | 209 🔴 | [vis-many](../vis_many/task280.png) | AC |
-| [399](../vis/task399.png) | ✅ | [base_yu](../base_yu/task399.py) | raw/raw | [69](../dist/task399.py) (+5) | 64 🔴 | [vis-many](../vis_many/task399.png) | AC |
 | [262](../vis/task262.png) | ✅ | [base_yu](../base_yu/task262.py) | raw/raw | [42](../dist/task262.py) (+3) | 39 🔴 | [vis-many](../vis_many/task262.png) | AC |
 | [375](../vis/task375.png) | ✅ | [base_code](../base_code/task375_1.py) | raw/raw | [57](../dist/task375.py) (+4) | 53 🔴 | [vis-many](../vis_many/task375.png) | AC |
 | [177](../vis/task177.png) | ✅ | [base_yu](../base_yu/task177.py) | forplain/raw | [59](../dist/task177.py) (+4) | 55 🔴 | [vis-many](../vis_many/task177.png) | AC |
@@ -345,6 +344,7 @@
 | [242](../vis/task242.png) | ✅ | [base_keymoon](../base_keymoon/task242.py) | raw/raw | [56](../dist/task242.py) (+2) | 54 🔴 | [vis-many](../vis_many/task242.png) | AC |
 | [103](../vis/task103.png) | ✅ | [base_keymoon](../base_keymoon/task103.py) | raw/raw | [30](../dist/task103.py) (+1) | 29 🔴 | [vis-many](../vis_many/task103.png) | AC |
 | [166](../vis/task166.png) | ✅ | [base_keymoon](../base_keymoon/task166.py) | forplain/raw | [65](../dist/task166.py) (+2) | 63 🔴 | [vis-many](../vis_many/task166.png) | AC |
+| [399](../vis/task399.png) | ✅ | [base_yu](../base_yu/task399.py) | raw/raw | [66](../dist/task399.py) (+2) | 64 🔴 | [vis-many](../vis_many/task399.png) | AC |
 | [400](../vis/task400.png) | ✅ | [base_yu](../base_yu/task400.py) | raw/raw | [70](../dist/task400.py) (+2) | 68 🔴 | [vis-many](../vis_many/task400.png) | AC |
 | [123](../vis/task123.png) | ✅ | [base_yu](../base_yu/task123.py) | raw/raw | [77](../dist/task123.py) (+2) | 75 🔴 | [vis-many](../vis_many/task123.png) | AC |
 | [309](../vis/task309.png) | ✅ | [base_keymoon](../base_keymoon/task309.py) | raw/raw | [39](../dist/task309.py) (+1) | 38 🔴 | [vis-many](../vis_many/task309.png) | AC |
