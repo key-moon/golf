@@ -255,7 +255,7 @@
 | [154](../vis/task154.png) | ✅ | [base_yu](../base_yu/task154.py) | forplain/raw | [146](../dist/task154.py) (+36) | 110 🔴 | [vis-many](../vis_many/task154.png) | AC |
 | [162](../vis/task162.png) | ✅ | [base_notebooks](../base_notebooks/task162_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [146](../dist/task162.py) (+46) | 100 🔴 | [vis-many](../vis_many/task162.png) | AC |
 | [303](../vis/task303.png) | ✅ | [base_code](../base_code/task303.py) | forplain/raw | [146](../dist/task303.py) (+84) | 62 🔴 | [vis-many](../vis_many/task303.png) | AC |
-| [316](../vis/task316.png) | ✅ | [base_notebooks](../base_notebooks/task316_20250809-035628Z-arc-agi-code-golf-216-400-solved-dmytro-fedoriaka.py) | forplain/raw | [145](../dist/task316.py) (+72) | 73 🔴 | [vis-many](../vis_many/task316.png) | AC |
+| [316](../vis/task316.png) | ✅ | [base_notebooks](../base_notebooks/task316_20250809-035628Z-arc-agi-code-golf-216-400-solved-dmytro-fedoriaka.py) | forplain/raw | [145](../dist/task316.py) (+74) | 71 🔴 | [vis-many](../vis_many/task316.png) | AC |
 | [353](../vis/task353.png) | ✅ | [base_notebooks](../base_notebooks/task353_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [144](../dist/task353.py) (+18) | 126 🔴 | [vis-many](../vis_many/task353.png) | AC |
 | [027](../vis/task027.png) | ✅ | [base_yu](../base_yu/task027.py) | raw/raw | [142](../dist/task027.py) (+25) | 117 🔴 | [vis-many](../vis_many/task027.png) | AC |
 | [252](../vis/task252.png) | ✅ | [base_notebooks](../base_notebooks/task252_20250809-171156Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | raw/raw | [140](../dist/task252.py) (+83) | 57 🔴 | [vis-many](../vis_many/task252.png) | AC |
