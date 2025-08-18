@@ -142,7 +142,7 @@ if __name__ == "__main__":
           orig_code = f.read().strip()
           code = strip_for_plain(orig_code).encode()
           stripped = og_strip(orig_code) if ZLIB_GOLF_BANNER in orig_code else strip_for_zlib(orig_code)
-          compress_method, compressed, raw_compressed = compress.compress(stripped, force_compress=True, with_raw_code=True)
+          compress_method, compressed, raw_compressed = compress.compress(stripped, fast=True, force_compress=True, with_raw_code=True)
       except UnicodeDecodeError:
         with open(code_path, "rb") as f:
           code = compressed = f.read()

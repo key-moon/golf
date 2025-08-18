@@ -91,7 +91,7 @@ def get_embed_str(b: bytes):
 
 
 CACHE_DIR = os.path.join(os.path.dirname(__file__), ".cache")
-def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.2):
+def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
   def decorator(func):
     def wrapper(val: bytes, *args, **kwargs):
       sha1_hash = hashlib.sha1(val).hexdigest()
@@ -114,13 +114,14 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.2):
   return decorator
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
-def cached_zopfli(val: bytes):
-  # return zopfli.zlib.compress(val, numiterations=len(val)*2)[2:-4]
+def cached_zopfli(val: bytes, fast=False):
   compressed = zopfli.zlib.compress(val, numiterations=1000, blocksplitting=False)[2:-4]
   compressed_splitting = zopfli.zlib.compress(val, numiterations=1000)[2:-4]
   if len(compressed_splitting) < len(compressed):
     print(f"!! {openable_uri('no split', viz_deflate_url(compressed_splitting))} / {openable_uri('split', viz_deflate_url(compressed))}")
     compressed = compressed_splitting
+  if fast:
+    return compressed
   try:
     return optimize_deflate_stream(
       compressed,
@@ -155,14 +156,14 @@ def determine_wbits(compressed: bytes):
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
 @overload
-def compress(code: str, best: Optional[int]=None, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
+def compress(code: str, best: Optional[int]=None, fast: bool=False, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
 @overload
-def compress(code: str, best: Optional[int]=None, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
-def compress(code: str, best: Optional[int]=None, force_compress=False, with_raw_code: bool=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
+def compress(code: str, best: Optional[int]=None, fast: bool=False, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
+def compress(code: str, best: Optional[int]=None, fast=False, force_compress=False, with_raw_code: bool=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
   compressions = [
     ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
-    ("zlib-zopfli", lambda x: cached_zopfli(x), determine_wbits),
+    ("zlib-zopfli", lambda x: cached_zopfli(x, fast), determine_wbits),
     ("lzma", lambda x: cached_lzma(x),""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),""),
   ]
