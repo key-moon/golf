@@ -1,2 +1,4 @@
-#coding:L1
-import zlib;exec(zlib.decompress('mÁ\nÃ †ÏÙƒŒ–*Ôk·ìEŠm­h‹º½ÿL(È`—?Äßï#«ÛàÕù~ºÀöÌ $È&y×)q¸T©¨#¬XĞÏA*-êà”¾”ªöDÇFk{&!l`ç¨MZÁÔ‰h9—šÔó‡r§‚‘VwĞşÀ‘KïMe!ë‰íW5Ù¹»Æ‘Ïkš¡	~.cË_IvïONà¿'.encode('L1'),-9))
+def p(g):
+ for(s,t)in zip(g,g[1:]):
+  if s==t:t[1-t.index(max(t))%2::2]=g[0][::2]
+ return g
