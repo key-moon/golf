@@ -319,7 +319,7 @@
 | [310](../vis/task310.png) | ✅ | [base_notebooks](../base_notebooks/task310_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | raw/zlib-zopfli | [270](../dist/task310.py) (+187) | 83 🔴 | [vis-many](../vis_many/task310.png) | AC |
 | [311](../vis/task311.png) | ✅ | [base_notebooks](../base_notebooks/task311_20250806-061241Z-a-bit-of-code-golf-jacekwl.py) | raw/raw | [32](../dist/task311.py) (0) | 32  | [vis-many](../vis_many/task311.png) | AC |
 | [312](../vis/task312.png) | ✅ | [base_yu](../base_yu/task312.py) | raw/raw | [45](../dist/task312.py) (+1) | 44 🔴 | [vis-many](../vis_many/task312.png) | AC |
-| [313](../vis/task313.png) | ✅ | [base_yu](../base_yu/task313.py) | raw/raw | [181](../dist/task313.py) (+110) | 71 🔴 | [vis-many](../vis_many/task313.png) | AC |
+| [313](../vis/task313.png) | ✅ | [base_yu](../base_yu/task313.py) | raw/raw | [84](../dist/task313.py) (+13) | 71 🔴 | [vis-many](../vis_many/task313.png) | AC |
 | [314](../vis/task314.png) | ✅ | [base_yu](../base_yu/task314.py) | raw/raw | [174](../dist/task314.py) (+73) | 101 🔴 | [vis-many](../vis_many/task314.png) | AC |
 | [315](../vis/task315.png) | ✅ | [base_notebooks](../base_notebooks/task315_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | raw/raw | [76](../dist/task315.py) (+13) | 63 🔴 | [vis-many](../vis_many/task315.png) | AC |
 | [316](../vis/task316.png) | ✅ | [base_notebooks](../base_notebooks/task316_20250809-035628Z-arc-agi-code-golf-216-400-solved-dmytro-fedoriaka.py) | forplain/raw | [145](../dist/task316.py) (+74) | 71 🔴 | [vis-many](../vis_many/task316.png) | AC |
