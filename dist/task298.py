@@ -1,0 +1,1 @@
+def p(g):A=sum(g,[]);B=sorted({*A},key=A.count,reverse=1);return[[B[(B.index(A)+2)%3]for A in A]for A in g]

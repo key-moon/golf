@@ -1,0 +1,1 @@
+p=lambda g:[[*map(max,zip(s,s[:4:-1]))]for s in g]

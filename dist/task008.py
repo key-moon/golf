@@ -1,0 +1,1 @@
+S=sorted;p=lambda g:2in(b:=max(g,key=sum))and[*map(list,zip(*p([*zip(*g)])))]or S(g[:(i:=g.index(b))],key=max)+S(g[:i-1:-1],key=max)[::-1]

@@ -102,11 +102,11 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
         with open(cache_path, "rb") as f:
           return f.read()
       else:
-        os.makedirs(subdir, exist_ok=True)
         t = time.time()
         result = func(val, *args, **kwargs)
         took = time.time() - t
         if cache_threshold < took:
+          os.makedirs(subdir, exist_ok=True)
           with open(cache_path, "wb") as f:
             f.write(result)
         return result
@@ -115,8 +115,9 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli"))
 def cached_zopfli(val: bytes, fast=False):
-  compressed = zopfli.zlib.compress(val, numiterations=1000, blocksplitting=False)[2:-4]
-  compressed_splitting = zopfli.zlib.compress(val, numiterations=1000)[2:-4]
+  zopfli_param = 300 if fast else 2000
+  compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
+  compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
   if len(compressed_splitting) < len(compressed):
     print(f"!! {openable_uri('no split', viz_deflate_url(compressed_splitting))} / {openable_uri('split', viz_deflate_url(compressed))}")
     compressed = compressed_splitting
