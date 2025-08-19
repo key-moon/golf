@@ -19,6 +19,13 @@ def main():
 
   USER = os.getlogin()
 
+  base_path = { "keymoon": "base_keymoon", "yu212": "base_yu" }[USER]
+  file_path = f"./{base_path}/task{padded}.py"
+
+  if os.path.exists(file_path):
+    print("Error: File already exists.")
+    sys.exit(1)
+
   source = ""
   scores = get_scores_per_task()[case_id - 1]
   best = scores[0]["score"]
@@ -29,9 +36,6 @@ def main():
     source += "# " + f" {best} ".center(best - 2, "=") + "\n"
 
   source += "def p(g):\n return g\n"
-
-  base_path = { "keymoon": "base_keymoon", "yu212": "base_yu" }[USER]
-  file_path = f"./{base_path}/task{padded}.py"
   with open(file_path, "w") as f:
     f.write(source)
 
