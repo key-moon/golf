@@ -45,6 +45,7 @@ class TaskSubmission(TypedDict):
 
 
 TASK_SCORE_PROGRESSIONS_PATH = "data/task_score_progressions"
+@cache
 def loads_task_scores_progressions() -> dict[str, list[list[TaskSubmission]]]:
   task_scores = {}
   for filename in os.listdir(TASK_SCORE_PROGRESSIONS_PATH):
@@ -64,3 +65,27 @@ def dumps_task_scores_progressions(data: dict[str, list[list[TaskSubmission]]]) 
     path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{sanitized_name}.json"
     print(f"[+] dumping to {path}")
     _dumps(path, { "name": name, "data": scores })
+
+class TaskSubmissionWithName(TypedDict):
+  name: str
+  score: int
+  date: datetime.datetime
+
+def get_scores_per_task():
+  task_scores = loads_task_scores_progressions()
+  res: list[list[TaskSubmissionWithName]] = [[] for _ in range(400)]
+  for name, subs_per_task in task_scores.items():
+    for i, subs in enumerate(subs_per_task):
+      if len(subs) == 0 or not subs[-1]["score"]: continue
+      sub = subs[-1]
+      if not sub["score"]: continue
+      res[i].append(
+        TaskSubmissionWithName(
+          name=name,
+          date=sub["date"],
+          score=sub["score"],
+        )
+      )
+  for i in range(400):
+    res[i].sort(key=lambda x: x["score"])
+  return res
