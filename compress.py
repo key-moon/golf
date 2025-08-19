@@ -2,7 +2,7 @@ from ast import literal_eval
 import bz2
 import lzma
 import time
-from typing import Literal, Optional, Tuple
+from typing import Callable, Literal, Optional, Tuple
 import zlib
 import zopfli
 
@@ -155,35 +155,35 @@ def determine_wbits(compressed: bytes):
 # '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
-@overload
-def compress(code: str, best: Optional[int]=None, fast: bool=False, force_compress: bool = False, with_raw_code: Literal[False] = False) -> Tuple[str, bytes]: ...
-@overload
-def compress(code: str, best: Optional[int]=None, fast: bool=False, force_compress: bool = False, with_raw_code: Literal[True] = True) -> Tuple[str, bytes, bytes]: ...
-def compress(code: str, best: Optional[int]=None, fast=False, force_compress=False, with_raw_code: bool=False) -> Union[Tuple[str, bytes], Tuple[str, bytes, bytes]]:
-  compressions = [
-    ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), ",-9"),
-    ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), ",-15"),
+def compress(code: str, best: Optional[int]=None, fast=False, force_compress=False) -> Tuple[str, bytes, bytes, str]:
+  compressions: list[tuple[str, Callable[[bytes], bytes], Callable[[bytes], str]]] = [
+    ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), lambda _: ",-9"),
+    ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), lambda _: ",-15"),
     ("zlib-zopfli", lambda x: cached_zopfli(x, fast), determine_wbits),
-    ("lzma", lambda x: cached_lzma(x),""),
-    ("bz2", lambda x: bz2.compress(x, compresslevel=9),""),
+    ("lzma", lambda x: cached_lzma(x),lambda _: ""),
+    ("bz2", lambda x: bz2.compress(x, compresslevel=9),lambda _: ""),
   ]
   l = []
   worth_compress = True
   if not force_compress:
-    l.append(("raw",code.encode()))
+    l.append(("raw", code.encode(), "", ""))
     if best is None:
       best = len(code)
     worth_compress = 50 <= (best - len(zlib.compress(code.encode())))
   
   if worth_compress:
-    for name, cmp, extra_args in compressions:
+    for name, cmp, extra_args_fun in compressions:
       lib_name = name.split("-")[0]
       compressed_code = cmp(code.encode())
       embed = get_embed_str(compressed_code)
-      if callable(extra_args):
-        extra_args = extra_args(compressed_code)
+
+      extra_overhead = (len(compressed_code) + 3) - len(embed)
+
+      extra_args = extra_args_fun(compressed_code)
       res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
-      l.append((name,res,compressed_code))
+
+      message = "" if extra_overhead == 0 else f"encode overhead: +{extra_overhead}"
+      l.append((name, res, compressed_code, message))
 
   mn = min(l, key=lambda x: len(x[1]))
-  return mn if with_raw_code else (mn[0], mn[1])
+  return mn

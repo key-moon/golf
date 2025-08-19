@@ -11,6 +11,7 @@ from tqdm import tqdm
 
 from checker import check, CheckRes
 import compress
+from public_data import get_scores_per_task
 from strip import strippers
 from utils import get_code_paths, get_task
 import pandas as pd
@@ -34,18 +35,25 @@ def check_str(task_id: int, code: str | bytes, task, checked_hash):
     os.remove(tmp_path)
   return res
 
-def read_others_best():
-  csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pub?gid=1427788625&single=true&output=csv"
-  df = pd.read_csv(csv_url)
-  best_values = df.iloc[7:407, 1].tolist()
-  return [v if isinstance(v, str) else "-" for v in best_values]
+@dataclasses.dataclass
+class TaskResult:
+  task: int
+  success: bool
+  message: str = ""
+  base_path: str | None = None
+  compressor: str | None = None
+  length: int | None = None
+
+  # TODO
+  def md_row(self): ...
+
 
 score = 0
 accepted = 0
 
 DISALLOW_RETIRE = ["base_keymoon", "base_yu"]
 
-LONG = b"A" * 0x1000
+INVALID = b"A" * 0x1000
 if __name__ == "__main__":
   checked_hash = json.load(open(".cache/checked_cache.json", "r"))
   stats = []
@@ -54,24 +62,11 @@ if __name__ == "__main__":
     dist_path = f"dist/task{i:03}.py"
     if os.path.exists(dist_path):
       shortest = open(dist_path, "rb").read()
-      task_stat = {
-        "task": i,
-        "base_path": dist_path,
-        "compressor": "previous",
-        "length": len(shortest),
-        "message": "regression?",
-        "success": True
-      }
+      best_result = TaskResult(i, True, "⚠️ regression?", dist_path, "previons", len(shortest))
     else:
-      shortest = LONG
-      task_stat = {
-        "task": i,
-        "base_path": None,
-        "compressor": None,
-        "length": None,
-        "message": None,
-        "success": False
-      }
+      shortest = INVALID
+      best_result = TaskResult(i, False)
+
     for base_path in get_code_paths("base_*", i):
       code = open(base_path).read().strip()
       if check_str(i, code, task, checked_hash).correct != 1.0:
@@ -81,82 +76,61 @@ if __name__ == "__main__":
       
       for stripper, strip in strippers.items():
         code = strip(open(base_path).read())
-        # if check_str(i, code, task, checked_hash).correct != 1.0:
-        #   print(f"{base_path}: strip failed, {check_str(i, code, task, checked_hash).message}")
-        #   task_stat["base_path"] = base_path
-        #   task_stat["message"] = check_str(i, code, task, checked_hash).message
-        #   stats.append(task_stat)
-        #   exit(1)
-        #   continue
-
-        comp_name, compressed = compress.compress(code, best=task_stat["length"])
+        comp_name, compressed, _, compress_msg = compress.compress(code, best=best_result.length)
         if len(compressed) <= len(shortest):
           shortest = compressed
-          task_stat["base_path"] = base_path
-          task_stat["compressor"] = f"{stripper}/{comp_name}"
-          task_stat["length"] = len(compressed)
-          task_stat["message"] = "AC"
-          task_stat["success"] = True
+          best_result = TaskResult(i, True, compress_msg, base_path, f"{stripper}/{comp_name}", len(compressed))
 
-    if shortest == LONG:
+    if shortest == INVALID:
       print(f"[!] failed: vis/task{i:03}.png")
-      task_stat["message"] = "WA"
-      stats.append(task_stat)
+      stats.append(TaskResult(i, False, "❌ WA"))
       continue
-
-    if not task_stat["base_path"].startswith("dist"):
+    
+    assert best_result.base_path is not None
+    # retire all other codes
+    if not best_result.base_path.startswith("dist"):
       for base_path in get_code_paths("base_*", i):
-        if base_path == task_stat["base_path"]: continue
+        if base_path == best_result.base_path: continue
         if base_path.split("/")[0] in DISALLOW_RETIRE: continue
         print(f"[!] retire: {base_path}")
         shutil.move(base_path, f"{base_path}~retire")
 
-
-    # 圧縮後のチェックをしない
+    # 圧縮後のチェックはしない
     # compressed = check_str(i, shortest, task, checked_hash)
     # if compressed.correct != 1.0:
     #   print(f"[!] compression failed: {compressed.message}")
-    #   task_stat["message"] = compressed.message
-    #   task_stat["success"] = False
-    #   stats.append(task_stat)
     #   exit(1)
 
     score += 2500 - len(shortest)
     accepted += 1
     open(f"dist/task{i:03}.py", "wb").write(shortest)
-    stats.append(task_stat)
+    stats.append(best_result)
 
   print(f"accepted: {accepted}/400, {score=}")
   json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
 
-  others_best = read_others_best()
-  BAD_PATH = ["base_arcdsl", "base_rearc"]
+  others_best = get_scores_per_task()
+
   # Write stats to README
   def emit_table(stats,writer,b="."):
-    writer.write("| Task | Success | Base | Compressor | Length | Best | Goods | Message |\n")
-    writer.write("|------|---------|------|------------|--------|------|-------|---------|\n")
+    writer.write("| Task | Base | Compressor | Length | Best | Goods | Message |\n")
+    writer.write("|------|------|------------|--------|------|-------|---------|\n")
     for stat in stats:
       task = f"{stat['task']:03}"
-      if not stat["success"]:
-        success = "❌"
-      elif any(stat["base_path"].startswith(bad) for bad in BAD_PATH):
-        success = "⚠️"
-      elif not stat["message"].startswith("AC"):
-        success = "❗"
-      else:
-        success = "✅"
 
       base = f"[{stat['base_path'].split('/')[0]}]({b}/{stat['base_path']})" if stat["success"] else "-"
       checker = stat["compressor"] if stat["success"] else "-"
 
       length = f"[{stat['length']}]({b}/dist/task{task}.py)" if stat["success"] else "-"
-      best = others_best[stat['task'] - 1]
+      best_sub = others_best[int(stat['task']) - 1][0]
+      best, best_person = best_sub["score"], best_sub["name"]
       if stat["success"] and best != "-":
-        diff = stat["length"] - int(best)
-        best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
+        diff = stat["length"] - best
+        best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''} by {best_person}"
         length = f"{length} ({'+' if diff > 0 else ''}{diff})"
       message = stat["message"]
-      writer.write(f"| [{task}]({b}/vis/task{task}.png) | {success} | {base} | {checker} | {length} | {best} | [vis-many]({b}/vis_many/task{task}.png) | {message} |\n")
+      writer.write(f"| [{task}]({b}/vis/task{task}.png) | {base} | {checker} | {length} | {best} | [vis-many]({b}/vis_many/task{task}.png) | {message} |\n")
+
   with open("README.md", "w") as file:
     file.write("# Golf Stats\n\n")
 

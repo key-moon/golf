@@ -23,11 +23,11 @@ def main():
   scores = get_scores_per_task()[case_id - 1]
   best = scores[0]["score"]
   names = [score["name"] for score in scores if score["score"] == best]
-  if best <= 120:
-    best_banner = f" best: {best} by {', '.join(names)} "
-    if best - 10 < len(best_banner):
-      best_banner = f" best: {best} "
-    source += "# " + best_banner.center(best - 2, "=") + "\n"
+  others = ', '.join([f'{score["score"]}({score["name"]})' for score in scores if score['score'] != best][:5])
+  source += f"# best: {best}({', '.join(names)}) / others: {others}\n"
+  if best <= 150:
+    source += "# " + f" {best} ".center(best - 2, "=") + "\n"
+
   source += "def p(g):\n return g\n"
 
   base_path = { "keymoon": "base_keymoon", "yu212": "base_yu" }[USER]
