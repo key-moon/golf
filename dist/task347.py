@@ -1,6 +1,1 @@
-def p(g,N=range(3)):
- for r in N:
-  for c in N:
-   g[r][c]+=g[r][c+3]
-   if g[r][c]>0:g[r][c]=6
- return[R[:3]for R in g]
+p=lambda g:[[6*(0<r[i]+r[i+3])for i in(0,1,2)]for r in g];p;p;p;p;p;p;p;p

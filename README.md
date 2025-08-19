@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 906562
+Score: 906609
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -179,7 +179,6 @@ Score: 906562
 | [335](/vis/task335.png) | [base_notebooks](/base_notebooks/task335_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [206](/dist/task335.py) (+73) | 133 🔴 | [vis-many](/vis_many/task335.png) | not worth compress |
 | [115](/vis/task115.png) | [base_code](/base_code/task115.py) | raw/raw | [139](/dist/task115.py) (+72) | 67 🔴 | [vis-many](/vis_many/task115.png) | not worth compress |
 | [203](/vis/task203.png) | [base_code](/base_code/task203.py) | forplain/raw | [136](/dist/task203.py) (+72) | 64 🔴 | [vis-many](/vis_many/task203.png) | not worth compress |
-| [347](/vis/task347.png) | [base_notebooks](/base_notebooks/task347_20250806-061241Z-a-bit-of-code-golf-jacekwl.py) | raw/raw | [120](/dist/task347.py) (+70) | 50 🔴 | [vis-many](/vis_many/task347.png) | not worth compress |
 | [039](/vis/task039.png) | [base_code](/base_code/task039.py) | forplain/raw | [134](/dist/task039.py) (+69) | 65 🔴 | [vis-many](/vis_many/task039.png) | not worth compress |
 | [178](/vis/task178.png) | [base_code](/base_code/task178.py) | raw/raw | [124](/dist/task178.py) (+69) | 55 🔴 | [vis-many](/vis_many/task178.png) | not worth compress |
 | [317](/vis/task317.png) | [base_code](/base_code/task317.py) | forplain/raw | [127](/dist/task317.py) (+68) | 59 🔴 | [vis-many](/vis_many/task317.png) | not worth compress |
@@ -279,6 +278,7 @@ Score: 906562
 | [182](/vis/task182.png) | [base_yu](/base_yu/task182.py) | forcomp-t/zlib-zopfli | [204](/dist/task182.py) (+25) | 179 🔴 | [vis-many](/vis_many/task182.png) | encode:+2 |
 | [265](/vis/task265.png) | [base_yu](/base_yu/task265.py) | forplain/raw | [178](/dist/task265.py) (+25) | 153 🔴 | [vis-many](/vis_many/task265.png) | not worth compress |
 | [267](/vis/task267.png) | [base_notebooks](/base_notebooks/task267_20250809-171156Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | raw/raw | [72](/dist/task267.py) (+24) | 48 🔴 | [vis-many](/vis_many/task267.png) | not worth compress |
+| [347](/vis/task347.png) | [base_keymoon](/base_keymoon/task347.py) | raw/raw | [73](/dist/task347.py) (+23) | 50 🔴 | [vis-many](/vis_many/task347.png) | not worth compress |
 | [171](/vis/task171.png) | [base_code](/base_code/task171.py) | raw/raw | [76](/dist/task171.py) (+22) | 54 🔴 | [vis-many](/vis_many/task171.png) | not worth compress |
 | [252](/vis/task252.png) | [base_yu](/base_yu/task252.py) | raw/raw | [79](/dist/task252.py) (+22) | 57 🔴 | [vis-many](/vis_many/task252.png) | not worth compress |
 | [004](/vis/task004.png) | [base_keymoon](/base_keymoon/task004.py) | raw/raw | [101](/dist/task004.py) (+21) | 80 🔴 | [vis-many](/vis_many/task004.png) | not worth compress |
