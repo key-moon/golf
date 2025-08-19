@@ -63,7 +63,7 @@ class TaskResult:
       if self.length is not None and best_sub:
         best, best_person = best_sub["score"], best_sub["name"]
         diff = self.length - best
-        best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''} by {best_person}"
+        best = f"{best} {'🟢' if diff < 0 else '🔴' if diff > 0 else ''}"
         length = f"{length} ({'+' if diff > 0 else ''}{diff})"
       else:
         best = str(best_sub["score"]) if best_sub else "-"
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     dist_path = f"dist/task{i:03}.py"
     if os.path.exists(dist_path):
       shortest = open(dist_path, "rb").read()
-      best_result = TaskResult(i, True, "⚠️ regression?", dist_path, "previons", len(shortest))
+      best_result = TaskResult(i, True, "⚠️ regression?", dist_path, "previous", len(shortest))
     else:
       shortest = INVALID
       best_result = TaskResult(i, False)

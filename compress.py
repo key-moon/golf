@@ -180,7 +180,7 @@ def compress(code: str, best: Optional[int]=None, fast=False, force_compress=Fal
       extra_args = extra_args_fun(raw_compressed)
       res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
 
-      message = "" if extra_overhead == 0 else f"encode overhead: +{extra_overhead}"
+      message = "" if extra_overhead == 0 else f"encode:+{extra_overhead}"
       l.append((name, res, raw_compressed, message))
 
   mn = min(l, key=lambda x: len(x[1]))
