@@ -119,19 +119,19 @@ def cached_zopfli(val: bytes, fast=False):
   compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
   compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
   if len(compressed_splitting) < len(compressed):
-    print(f"!! {openable_uri('no split', viz_deflate_url(compressed_splitting))} / {openable_uri('split', viz_deflate_url(compressed))}")
+    # print(f"!! {openable_uri('no split', viz_deflate_url(compressed_splitting))} / {openable_uri('split', viz_deflate_url(compressed))}")
     compressed = compressed_splitting
-  # stop using optimizer for a now to mitigate overwhelming regression
-  return compressed
-  # return optimize_deflate_stream(
-  #   compressed,
-  #   lambda x: len(get_embed_str(x)),
-  #   num_iteration=5000,
-  #   num_perturbation=3,
-  #   tolerance_bit=16,
-  #   # terminate_threshold=2 + len(val) + 1,
-  #   seed=1234
-  # )
+  if fast:
+    return compressed
+  return optimize_deflate_stream(
+    compressed,
+    lambda x: len(get_embed_str(x)),
+    num_iteration=5000,
+    num_perturbation=3,
+    tolerance_bit=16,
+    # terminate_threshold=2 + len(val) + 1,
+    seed=1234
+  )
 
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
@@ -167,7 +167,10 @@ def compress(code: str, best: Optional[int]=None, fast=False, force_compress=Fal
     l.append(("raw", code.encode(), "", ""))
     if best is None:
       best = len(code)
-    worth_compress = 50 <= (best - len(zlib.compress(code.encode())))
+    compressed_length = len(zlib.compress(code.encode()))
+    if 1000 < len(code):
+      compressed_length = min(compressed_length, len(cached_lzma(code.encode())))
+    worth_compress = (60 - (15 if compressed_length < 400 else 30)) <= (best - compressed_length)
   
   if worth_compress:
     for name, cmp, extra_args_fun in compressions:

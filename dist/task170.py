@@ -1,10 +1,2 @@
 #coding:L1
-import zlib;exec(zlib.decompress(bytes('''¥UÇ’ã8½÷Wp39f§«en•²sž¨êàÀÞÕÙeË“ûß Jyó\h
-á½¤·ú\r¹-Úž	{·úÈmö°;pGÚ"NØœâÃž—Ãâä¯Â^•Â»Ï:9ê”ávtus~-íè~„,·²ïVÍßÊýî—À§°ÿ
-lä™þ3mZúªÖèú
-
-5»jgƒÊ«ä7ÍßêbÕ­YVÂ{ŠxŽŠ†6Â’#Ù7ñ‹qrLWÉFs[¦§ý[-ôÛ£ŽL˜a"­R¿P“#äýI9›Ý)I‰íe³¯QmØ‹Z_ÿ"lj{Æ@#«ÔU–veÌMé9.eœ1ú4ÊÎ‘·uMØO‘Ñ]é)Çòe (EæGh(’]Ê¯:Êíøl•ll½N±äðvä@Æ\r¬×77†`ÑÔÞì«¨W‘è)S}ÀC\0¬¬¨zfõ*”ê´©º!V'Ý<ÑÀpÛèkãÒrQi>¤¿\rz êÀˆÛ5ˆw«=‡–ÉÏñž?1­ÊšUš\êœœ‚Ÿœ!Ê)¼CŽÐÒ$QÈ³¬¾ì5:a¹Šè¡PÔìïc
-¿	è=€çÜýÉÁ.*h¬wuo$&¸Êmñ\0·¾av…þ y„ª°Å]@“EB:‘ÔLe·Y”§ÞÆÇ”ãŽ¢DÊa$é>¸%Ÿß	³9:Ý¶ù7Qp£œœ›tÓZõè”g$Iz9Rø:`)/<ïm•L««èw.MåK…³ž)e¹”>¥³
-nIŠé£ÛÞì’4NNŒ=eG¹+N …õ”•ƒ&êïAùÖ@}	Áòá÷ø­f¨` ~½2‘BÜ"oˆTãaC 	‘V"Éh†øëàáwÀ:¹Xm·œe( hó
-köà@–¦gà &ØyÖ§³@yl fç]ØŒ\rBqO'¢‹Â:¦nhæn0{Ä,]dÖÉé>¬RMåžô«f…ùJ9„;]|ãÃ‰].tñí|^¼s’]~Àé¯€Ø»U÷êcÕ=-ÿ£’<²OùJ®IvYßJÆI*à¸ËÆ5s”ÕååúzZO¤Âê©µzWP+äÃ*WÑ5na%´–QÇÊ€2”*GF`êÝãËÔSÅ³jv²'„e«Žÿ
-†T.'Zð½À£úÂòÕœÓÎQ!÷ Éraãã&PÐ~GX}üu…5Tp²ìk¤žqGÜñÉ+aM<R®¼’ca‘Ôè	JÁ'INÄÍ''','L1'),-9))
+import zlib;exec(zlib.decompress(bytes('¥U×–â8}ï¯ÐfiP§WŒög2&s:Pïz†10“ûß·Ju°7Ï‹+Ü{KUkýÀ†Üí½ÎŽû”½‹?r›=l÷Ü‘¶HR6§8Ã°Õ°$ý«°×•°‡ýö³N:ã_¸½¸º9¿–öâ~„¬~·òïVÍß*üîWÀ#Ø6òDÿL[‚V¾N	ktý?…š]µ3‡Aåû8ýMóN!ÖXÝš`… ¼gˆç¨…Ã0Ð†@X\n$û&y`É!IYœ®4·evÜm´Ð›ƒ^˜809ÂDZ•~¡&GÈ·ú“r.VÛcšÛ«f_	â´a/k}ý‹°È4öŒF*V©«<íÊ˜›Ò\Ê8côi”#oëš°Ÿ!¢»ÒSŽåË@QŠ,ŽÐP¤ÛŒ_u”ÛñYœ®l½N³ðöÂŒX¯onÁ¼©½ÙWQ¯"Õ3ždz‡\0XyQõÌÓ«P©Ó¦ê†Xt‹DÃm£¯KËE¥ÅLþ6,èJ¨#n× ÞÅ;-“Ÿ“bZ•7«2¹Ô9Ÿœ!Ê)½CŽÐÒ$QÈó¼¾ì5:a¹Šè¡PÔì•ïcJ¿	è–=€çÜýÉÁ.*h¬w³èÞHLp•Ûân}Ãì\n+ü>@ó-Ta‹»€&Ë&„t"/©	˜Ên³(Om’CÆqGÙ"å0’tÜœ†Ïï„ùnÛ[ø7‹àF97é¦µêÑ)OI’ôr¤ðuÀR^x6Þ¦Ú+3˜VWÑïLÎ›ÊŸ*lœõ\ù(Ë¥ôˆÎ*@º§¤˜>ºíÕ6Í’ô¨ÁØSö"0w%À	¤°žR£jÐD}á=(ÿÑ¨/Á#X>üžl4Cñë•éè”âyC¤Iˆ$°IN3Ä_‡¿ÖÉE¼^s>”¡€¢ÍG(¬éWP€Yy˜žƒƒš`wfyœÎå±šžwa36å=ˆr,Jë˜º1 ™o¸Áì³t‘Y§Çwzgš:Ê=éŸš]æ+ån4ÿÆ‡»\êâÛù¢|;g$»ú€Ó_±wOÝñÇSwTýG%ydx,—$»ª/–Iš	8îªq‰Æ%¾¼\žAOë‰TX=µVoµB>¬2^\ãVBûgu¬(G9åÈ	L½;|™zª|VÍNö„°l5ÅñaHåÓý‘|/ðh#_X¾šqÚ9*ä$Y.l|Ü\nÚï«¿®°†\nN6}aÔsîÈ¡€;>à#y%¬‰‚GÊ•Wr,,’ºx‚RðI’qó','L1'),-9))

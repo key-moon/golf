@@ -142,12 +142,14 @@ def perturb_add_dummy_adjacent(lengths: list[int], rng: random.Random, maxbits: 
 def random_perturb_lengths(litlen: list[int], dist: list[int], num: int, rng: random.Random) -> tuple[list[int], list[int]]:
     l = list(litlen); d = list(dist)
     for _ in range(num):
-        if rng.random() < 0.6:
-            if rng.random() < 0.5: perturb_swap(l, rng)
-            else: perturb_add_dummy_adjacent(l, rng, 15)
+        if rng.random() < 0.65:
+            perturb_swap(l, rng)
+            # if rng.random() < 0.5: perturb_swap(l, rng)
+            # else: perturb_add_dummy_adjacent(l, rng, 15)
         else:
-            if rng.random() < 0.5: perturb_swap(d, rng)
-            else: perturb_add_dummy_adjacent(d, rng, 15)
+            perturb_swap(d, rng)
+            # if rng.random() < 0.5: perturb_swap(d, rng)
+            # else: perturb_add_dummy_adjacent(d, rng, 15)
     return l, d
 
 def _collect_usage(tokens: list[Token]) -> tuple[dict[int, int], dict[int, int], int]:

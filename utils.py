@@ -3,6 +3,9 @@ import glob
 import json
 from typing import TypedDict
 
+def signed_str(x: int):
+  return f"+{x}" if 0 <= x else str(x)
+
 def parse_range_str(range_str: str):
   s = set()
   for part in range_str.strip().split(","):

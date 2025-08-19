@@ -1,21 +1,19 @@
-import base64
 import os
 import shutil
 import sys
-from typing import IO, Callable
-import zlib
+from typing import Callable
 import json
-import dataclasses
 import hashlib
+from dataclasses import dataclass
 
 from tqdm import tqdm
 
 from checker import check, CheckRes
 import compress
+from dataclass_wizard import JSONWizard
 from public_data import TaskSubmissionWithName, get_scores_per_task
 from strip import strippers
 from utils import get_code_paths, get_task
-import pandas as pd
 
 def check_str(task_id: int, code: str | bytes, task, checked_hash):
   digest = hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()
@@ -36,8 +34,8 @@ def check_str(task_id: int, code: str | bytes, task, checked_hash):
     os.remove(tmp_path)
   return res
 
-@dataclasses.dataclass
-class TaskResult:
+@dataclass
+class TaskResult(JSONWizard):
   task: int
   success: bool
   message: str = ""
@@ -78,11 +76,19 @@ class TaskResult:
         self.message
       ]) + " |\n"
 
+@dataclass
+class RunResult(JSONWizard):
+  score: int
+  results: list[TaskResult]
+
 
 def handle_results(results: list[TaskResult]):
   success_tasks = [*filter(lambda x: x.success, results)]
   accepted = len(success_tasks)
   score = sum(2500 - res.length for res in success_tasks if res.length is not None)
+
+  with open("dist/results.json", "w") as results_file:
+    results_file.write(RunResult(score, results).to_json())
 
   print(f"accepted: {accepted}/400, {score=}")
 
@@ -105,6 +111,7 @@ def handle_results(results: list[TaskResult]):
         file.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n")
         file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
 
+      file.write("\n**other stats**\n")
       for other_name, other_path, _ in other_mds:
         if name == other_name: continue
         file.write(f"- [sorted by {other_name}](/{other_path})\n")
@@ -113,7 +120,6 @@ def handle_results(results: list[TaskResult]):
       file.write(TaskResult.md_header())
       for stat, bests in sorted(zip(results, others_bests), key=keyfunc):
         file.write(stat.md_row(bests[0]))
-
 
 if __name__ == "__main__":
   os.makedirs("dist", exist_ok=True)
@@ -162,13 +168,6 @@ if __name__ == "__main__":
         if base_path.split("/")[0] in DISALLOW_RETIRE: continue
         print(f"[!] retire: {base_path}")
         shutil.move(base_path, f"{base_path}~retire")
-
-    # 圧縮後のチェックはしない
-    # compressed = check_str(i, shortest, task, checked_hash)
-    # if compressed.correct != 1.0:
-    #   print(f"[!] compression failed: {compressed.message}")
-    #   exit(1)
-
     open(f"dist/task{i:03}.py", "wb").write(shortest)
     results.append(best_result)
   json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
