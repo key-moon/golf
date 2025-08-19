@@ -7,10 +7,10 @@ Score: 906355
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
 
 Alt Tables:
-- [sorted by task](stats/task-sorted.md)
-- [sorted by ratio](stats/ratio-sorted.md)
-- [sorted by length](stats/length-sorted.md)
-- [sorted by best](stats/best-sorted.md)
+- [sorted by task](/stats/task-sorted.md)
+- [sorted by ratio](/stats/ratio-sorted.md)
+- [sorted by length](/stats/length-sorted.md)
+- [sorted by best](/stats/best-sorted.md)
 
 ## Task Details
 
