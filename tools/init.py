@@ -24,7 +24,7 @@ def main():
   best = scores[0]["score"]
   names = [score["name"] for score in scores if score["score"] == best]
   if best <= 120:
-    best_banner = f" best {best} by {', '.join(names)} "
+    best_banner = f" best: {best} by {', '.join(names)} "
     if best - 10 < len(best_banner):
       best_banner = f" best: {best} "
     source += "# " + best_banner.center(best - 2, "=") + "\n"
