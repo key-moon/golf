@@ -291,7 +291,6 @@
 | [078](/vis/task078.png) | [base_keymoon](/base_keymoon/task078.py) | raw/raw | [76](/dist/task078.py) (+11) | 65 🔴 | [vis-many](/vis_many/task078.png) |  |
 | [188](/vis/task188.png) | [base_yu](/base_yu/task188.py) | raw/raw | [84](/dist/task188.py) (+12) | 72 🔴 | [vis-many](/vis_many/task188.png) |  |
 | [201](/vis/task201.png) | [base_notebooks](/base_notebooks/task201_20250809-171156Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-s/zlib-zopfli | [351](/dist/task201.py) (+50) | 301 🔴 | [vis-many](/vis_many/task201.png) | encode:+1 |
-| [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [71](/dist/task001.py) (+10) | 61 🔴 | [vis-many](/vis_many/task001.png) |  |
 | [217](/vis/task217.png) | [base_keymoon](/base_keymoon/task217.py) | forplain/raw | [121](/dist/task217.py) (+17) | 104 🔴 | [vis-many](/vis_many/task217.png) |  |
 | [265](/vis/task265.png) | [base_yu](/base_yu/task265.py) | forplain/raw | [178](/dist/task265.py) (+25) | 153 🔴 | [vis-many](/vis_many/task265.png) |  |
 | [014](/vis/task014.png) | [base_yu](/base_yu/task014.py) | raw/raw | [81](/dist/task014.py) (+11) | 70 🔴 | [vis-many](/vis_many/task014.png) |  |
@@ -352,6 +351,7 @@
 | [047](/vis/task047.png) | [base_keymoon](/base_keymoon/task047.py) | raw/raw | [56](/dist/task047.py) (+1) | 55 🔴 | [vis-many](/vis_many/task047.png) |  |
 | [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | forplain/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) |  |
 | [229](/vis/task229.png) | [base_yu](/base_yu/task229.py) | raw/raw | [74](/dist/task229.py) (+1) | 73 🔴 | [vis-many](/vis_many/task229.png) |  |
+| [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [61](/dist/task001.py) (0) | 61  | [vis-many](/vis_many/task001.png) |  |
 | [052](/vis/task052.png) | [base_yu](/base_yu/task052.py) | raw/raw | [40](/dist/task052.py) (0) | 40  | [vis-many](/vis_many/task052.png) |  |
 | [053](/vis/task053.png) | [base_yu](/base_yu/task053.py) | raw/raw | [21](/dist/task053.py) (0) | 21  | [vis-many](/vis_many/task053.png) |  |
 | [067](/vis/task067.png) | [base_keymoon](/base_keymoon/task067.py) | raw/raw | [33](/dist/task067.py) (0) | 33  | [vis-many](/vis_many/task067.png) |  |

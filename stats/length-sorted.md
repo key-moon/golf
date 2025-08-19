@@ -337,7 +337,6 @@
 | [329](/vis/task329.png) | [base_code](/base_code/task329.py) | raw/raw | [72](/dist/task329.py) (+18) | 54 🔴 | [vis-many](/vis_many/task329.png) |  |
 | [391](/vis/task391.png) | [base_yu](/base_yu/task391.py) | raw/raw | [72](/dist/task391.py) (+3) | 69 🔴 | [vis-many](/vis_many/task391.png) |  |
 | [393](/vis/task393.png) | [base_yu](/base_yu/task393.py) | raw/raw | [72](/dist/task393.py) (+3) | 69 🔴 | [vis-many](/vis_many/task393.png) |  |
-| [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [71](/dist/task001.py) (+10) | 61 🔴 | [vis-many](/vis_many/task001.png) |  |
 | [021](/vis/task021.png) | [base_yu](/base_yu/task021.py) | raw/raw | [71](/dist/task021.py) (+7) | 64 🔴 | [vis-many](/vis_many/task021.png) |  |
 | [292](/vis/task292.png) | [base_notebooks](/base_notebooks/task292_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [71](/dist/task292.py) (+15) | 56 🔴 | [vis-many](/vis_many/task292.png) |  |
 | [006](/vis/task006.png) | [base_notebooks](/base_notebooks/task006_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | forplain/raw | [70](/dist/task006.py) (+19) | 51 🔴 | [vis-many](/vis_many/task006.png) |  |
@@ -354,6 +353,7 @@
 | [166](/vis/task166.png) | [base_keymoon](/base_keymoon/task166.py) | forplain/raw | [65](/dist/task166.py) (+2) | 63 🔴 | [vis-many](/vis_many/task166.png) |  |
 | [386](/vis/task386.png) | [base_code](/base_code/task386.py) | forplain/raw | [63](/dist/task386.py) (+11) | 52 🔴 | [vis-many](/vis_many/task386.png) |  |
 | [395](/vis/task395.png) | [base_yu](/base_yu/task395.py) | raw/raw | [62](/dist/task395.py) (+6) | 56 🔴 | [vis-many](/vis_many/task395.png) |  |
+| [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [61](/dist/task001.py) (0) | 61  | [vis-many](/vis_many/task001.png) |  |
 | [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | forplain/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) |  |
 | [031](/vis/task031.png) | [base_keymoon](/base_keymoon/task031.py) | raw/raw | [60](/dist/task031.py) (+8) | 52 🔴 | [vis-many](/vis_many/task031.png) |  |
 | [293](/vis/task293.png) | [base_yu](/base_yu/task293.py) | raw/raw | [60](/dist/task293.py) (0) | 60  | [vis-many](/vis_many/task293.png) |  |

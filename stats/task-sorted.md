@@ -8,7 +8,7 @@
 
 | Task | Base | Compressor | Length | Best | Goods | Message |
 |------|------|------------|--------|------|-------|---------|
-| [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [71](/dist/task001.py) (+10) | 61 🔴 | [vis-many](/vis_many/task001.png) |  |
+| [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [61](/dist/task001.py) (0) | 61  | [vis-many](/vis_many/task001.png) |  |
 | [002](/vis/task002.png) | [base_yu](/base_yu/task002.py) | raw/zlib-zopfli | [204](/dist/task002.py) (+113) | 91 🔴 | [vis-many](/vis_many/task002.png) |  |
 | [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | forplain/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) |  |
 | [004](/vis/task004.png) | [base_keymoon](/base_keymoon/task004.py) | raw/raw | [101](/dist/task004.py) (+21) | 80 🔴 | [vis-many](/vis_many/task004.png) |  |
