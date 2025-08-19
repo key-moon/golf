@@ -16,7 +16,7 @@ from deflate_optimizer.optimizer import optimize_deflate_stream
 import zopfli.zlib
 
 from strip import strippers
-from utils import get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url
+from utils import get_code_paths, openable_uri, parse_range_str, signed_str, viz_deflate_url
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
 
@@ -185,7 +185,7 @@ def compress(code: str, best: Optional[int]=None, fast=False, use_cache=True, fo
       extra_args = extra_args_fun(raw_compressed)
       res = f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
 
-      message = "" if extra_overhead == 0 else f"encode:+{extra_overhead}"
+      message = "" if extra_overhead == 0 else f"encode:{signed_str(extra_overhead)}"
       l.append((name, res, raw_compressed, message))
 
   mn = min(l, key=lambda x: len(x[1]))
