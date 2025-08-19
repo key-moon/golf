@@ -4,3 +4,4 @@ tmp/*
 vis_output
 .cache/mapping
 test.py
+release_note.md

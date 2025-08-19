@@ -51,10 +51,30 @@ jobs:
             echo "No changes to commit"
           fi
 
-      - name: Read README.md for release notes
-        id: readme
+      - name: Generate release notes
+        id: generate_notes
         run: |
-          cat  > release_notes.txt
+          set -euxo pipefail
+          source .venv/bin/activate
+          
+          # Get the previous tag to compare against
+          PREV_TAG=$(git tag --sort=-creatordate | grep '^submission-' | head -1)
+          if [ -z "$PREV_TAG" ]; then
+            # If no previous tag exists, use the first commit
+            PREV_COMMIT=$(git rev-list --max-parents=0 HEAD)
+          else
+            PREV_COMMIT=$PREV_TAG
+          fi
+          
+          CURRENT_COMMIT=HEAD
+          
+          python tools/generate_release_note.py "$PREV_COMMIT" "$CURRENT_COMMIT"
+
+      - name: Send release to Discord
+        run: |
+          DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_PAYLOAD=$(python -c 'import json; print(json.dumps({ "content": open("release_note.md").read(), "timestamp": __import__("datetime").datetime.now().isoformat() }))')
+          curl -X POST -H "Content-Type: application/json" -d "$DISCORD_PAYLOAD" "$DISCORD_WEBHOOK_URL"
 
       - name: Make timestamp (for tag/name)
         id: date
@@ -67,7 +87,7 @@ jobs:
         with:
           tag_name: submission-${{ steps.date.outputs.ts }}
           name: Submission ${{ steps.date.outputs.human }}
-          body_path: release_notes.txt
+          body_path: release_note.md
           files: submission.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
