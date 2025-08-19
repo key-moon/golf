@@ -128,7 +128,6 @@
 | [065](../vis/task065.png) | ❗ | [dist](../dist/task065.py) | previous | [235](../dist/task065.py) (+134) | 101 🔴 | [vis-many](../vis_many/task065.png) | regression? |
 | [094](../vis/task094.png) | ✅ | [base_code](../base_code/task094.py) | forcomp-s/zlib-zopfli | [235](../dist/task094.py) (+103) | 132 🔴 | [vis-many](../vis_many/task094.png) | AC |
 | [226](../vis/task226.png) | ✅ | [base_notebooks](../base_notebooks/task226_20250810-053358Z-oh-barnacles-jazivxt.py) | forcomp-t/zlib-zopfli | [235](../dist/task226.py) (+81) | 154 🔴 | [vis-many](../vis_many/task226.png) | AC |
-| [362](../vis/task362.png) | ✅ | [base_code](../base_code/task362_1.py) | raw/zlib-zopfli | [235](../dist/task362.py) (+166) | 69 🔴 | [vis-many](../vis_many/task362.png) | AC |
 | [055](../vis/task055.png) | ❗ | [dist](../dist/task055.py) | previous | [234](../dist/task055.py) (+147) | 87 🔴 | [vis-many](../vis_many/task055.png) | regression? |
 | [349](../vis/task349.png) | ❗ | [dist](../dist/task349.py) | previous | [234](../dist/task349.py) (-56) | 290 🟢 | [vis-many](../vis_many/task349.png) | regression? |
 | [134](../vis/task134.png) | ✅ | [base_keymoon](../base_keymoon/task134.py) | forplain/raw | [233](../dist/task134.py) (+47) | 186 🔴 | [vis-many](../vis_many/task134.png) | AC |
@@ -232,7 +231,7 @@
 | [237](../vis/task237.png) | ✅ | [base_code](../base_code/task237.py) | forplain/raw | [162](../dist/task237.py) (+95) | 67 🔴 | [vis-many](../vis_many/task237.png) | AC |
 | [216](../vis/task216.png) | ✅ | [base_yu](../base_yu/task216.py) | raw/raw | [161](../dist/task216.py) (+44) | 117 🔴 | [vis-many](../vis_many/task216.png) | AC |
 | [239](../vis/task239.png) | ✅ | [base_code](../base_code/task239.py) | forplain/raw | [161](../dist/task239.py) (+50) | 111 🔴 | [vis-many](../vis_many/task239.png) | AC |
-| [320](../vis/task320.png) | ✅ | [base_notebooks](../base_notebooks/task320_20250802-132539Z-practice-manually-liah.py) | forplain/raw | [160](../dist/task320.py) (+79) | 81 🔴 | [vis-many](../vis_many/task320.png) | AC |
+| [320](../vis/task320.png) | ✅ | [base_notebooks](../base_notebooks/task320_20250802-132539Z-practice-manually-liah.py) | forplain/raw | [160](../dist/task320.py) (+80) | 80 🔴 | [vis-many](../vis_many/task320.png) | AC |
 | [243](../vis/task243.png) | ✅ | [base_keymoon](../base_keymoon/task243.py) | raw/raw | [158](../dist/task243.py) (+77) | 81 🔴 | [vis-many](../vis_many/task243.png) | AC |
 | [390](../vis/task390.png) | ✅ | [base_yu](../base_yu/task390.py) | raw/raw | [158](../dist/task390.py) (+48) | 110 🔴 | [vis-many](../vis_many/task390.png) | AC |
 | [371](../vis/task371.png) | ✅ | [base_notebooks](../base_notebooks/task371_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [157](../dist/task371.py) (+32) | 125 🔴 | [vis-many](../vis_many/task371.png) | AC |
@@ -324,6 +323,7 @@
 | [144](../vis/task144.png) | ✅ | [base_code](../base_code/task144.py) | raw/raw | [76](../dist/task144.py) (+17) | 59 🔴 | [vis-many](../vis_many/task144.png) | AC |
 | [171](../vis/task171.png) | ✅ | [base_code](../base_code/task171.py) | raw/raw | [76](../dist/task171.py) (+22) | 54 🔴 | [vis-many](../vis_many/task171.png) | AC |
 | [315](../vis/task315.png) | ✅ | [base_notebooks](../base_notebooks/task315_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | raw/raw | [76](../dist/task315.py) (+13) | 63 🔴 | [vis-many](../vis_many/task315.png) | AC |
+| [362](../vis/task362.png) | ✅ | [base_yu](../base_yu/task362.py) | raw/raw | [76](../dist/task362.py) (+7) | 69 🔴 | [vis-many](../vis_many/task362.png) | AC |
 | [236](../vis/task236.png) | ✅ | [base_code](../base_code/task236.py) | raw/raw | [75](../dist/task236.py) (+15) | 60 🔴 | [vis-many](../vis_many/task236.png) | AC |
 | [032](../vis/task032.png) | ✅ | [base_code](../base_code/task032.py) | raw/raw | [74](../dist/task032.py) (+25) | 49 🔴 | [vis-many](../vis_many/task032.png) | AC |
 | [114](../vis/task114.png) | ✅ | [base_code](../base_code/task114.py) | raw/raw | [74](../dist/task114.py) (+9) | 65 🔴 | [vis-many](../vis_many/task114.png) | AC |

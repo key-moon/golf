@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress('eŽÁNÅ E÷|ÅlL@ŸÆÍÛ”Ì—bP§<B;˜)4~¾@b¢y«öÞœs™OZáKG³(`Üˆû¯=ðh»–—Ò¸ê«Y‹€@bˆFÁy„ÁÄ‹óC…´B~¸.ïB!+¸!ÓwÕiÂé2]â¶“„Jý…Nÿ®gƒÈÆžÿŒÁKàHš¶M‹K1ÃŸ[Œ-èÜ«äÙ¾ÍÖ«û‰¥tÙÏ‡Ç¬ ¸ÛSÿs¹‹V¨6a(?'.encode('L1'),-9))
+p=lambda g:(k:=str(g).count("5"))and[s[k:9]+-~k*s[:1]for s in g[-k:]+g[:-k]]
