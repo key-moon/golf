@@ -1,7 +1,1 @@
-A=enumerate
-def p(g):
- n=len(g);b=n-1;a=len(set(g[0]))==1
- for(i,r)in A(g):
-  for(j,v)in A(r):
-   if v==3:r[j]=(g[0][j]if i<b-i else g[-1][j])if a else r[0]if j<b-j else r[-1]
- return g
+p=lambda g,R=range(10):[[g[i][j]and g[(i>4)*9][(j>4)*9]for j in R]for i in R]
