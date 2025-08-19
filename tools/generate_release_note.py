@@ -128,5 +128,8 @@ if __name__ == "__main__":
   
   args = parser.parse_args()
   
-  generate_release_note(args.commit1, args.commit2, args.output)
+  try:
+    generate_release_note(args.commit1, args.commit2, args.output)
+  except Exception as e:
+    print(e)
   print(f"Release note generated: {args.output}") 
