@@ -122,53 +122,53 @@ if __name__ == "__main__":
   DISALLOW_RETIRE = ["base_keymoon", "base_yu"]
 
   INVALID = b"A" * 0x1000
-  if __name__ == "__main__":
-    checked_hash = json.load(open(".cache/checked_cache.json", "r"))
-    stats: list[TaskResult] = []
-    for i in tqdm(range(1, 401)):
-      task = get_task(i)
-      dist_path = f"dist/task{i:03}.py"
-      if os.path.exists(dist_path):
-        shortest = open(dist_path, "rb").read()
-        best_result = TaskResult(i, True, "⚠️ regression?", dist_path, "previons", len(shortest))
-      else:
-        shortest = INVALID
-        best_result = TaskResult(i, False)
+  checked_hash = json.load(open(".cache/checked_cache.json", "r"))
+  results: list[TaskResult] = []
+  for i in tqdm(range(1, 401)):
+    task = get_task(i)
+    dist_path = f"dist/task{i:03}.py"
+    if os.path.exists(dist_path):
+      shortest = open(dist_path, "rb").read()
+      best_result = TaskResult(i, True, "⚠️ regression?", dist_path, "previons", len(shortest))
+    else:
+      shortest = INVALID
+      best_result = TaskResult(i, False)
 
-      for base_path in get_code_paths("base_*", i):
-        code = open(base_path).read().strip()
-        if check_str(i, code, task, checked_hash).correct != 1.0:
-          print(f"{base_path}: check failed")
-          shutil.move(base_path, f"{base_path}~wa")
-          continue
-        
-        for stripper, strip in strippers.items():
-          code = strip(open(base_path).read())
-          comp_name, compressed, _, compress_msg = compress.compress(code, best=best_result.length)
-          if len(compressed) <= len(shortest):
-            shortest = compressed
-            best_result = TaskResult(i, True, compress_msg, base_path, f"{stripper}/{comp_name}", len(compressed))
-
-      if shortest == INVALID:
-        print(f"[!] failed: vis/task{i:03}.png")
-        stats.append(TaskResult(i, False, "❌ WA"))
+    for base_path in get_code_paths("base_*", i):
+      code = open(base_path).read().strip()
+      if check_str(i, code, task, checked_hash).correct != 1.0:
+        print(f"{base_path}: check failed")
+        shutil.move(base_path, f"{base_path}~wa")
         continue
       
-      assert best_result.base_path is not None
-      # retire all other codes
-      if not best_result.base_path.startswith("dist"):
-        for base_path in get_code_paths("base_*", i):
-          if base_path == best_result.base_path: continue
-          if base_path.split("/")[0] in DISALLOW_RETIRE: continue
-          print(f"[!] retire: {base_path}")
-          shutil.move(base_path, f"{base_path}~retire")
+      for stripper, strip in strippers.items():
+        code = strip(open(base_path).read())
+        comp_name, compressed, _, compress_msg = compress.compress(code, best=best_result.length)
+        if len(compressed) <= len(shortest):
+          shortest = compressed
+          best_result = TaskResult(i, True, compress_msg, base_path, f"{stripper}/{comp_name}", len(compressed))
 
-      # 圧縮後のチェックはしない
-      # compressed = check_str(i, shortest, task, checked_hash)
-      # if compressed.correct != 1.0:
-      #   print(f"[!] compression failed: {compressed.message}")
-      #   exit(1)
+    if shortest == INVALID:
+      print(f"[!] failed: vis/task{i:03}.png")
+      results.append(TaskResult(i, False, "❌ WA"))
+      continue
+    
+    assert best_result.base_path is not None
+    # retire all other codes
+    if not best_result.base_path.startswith("dist"):
+      for base_path in get_code_paths("base_*", i):
+        if base_path == best_result.base_path: continue
+        if base_path.split("/")[0] in DISALLOW_RETIRE: continue
+        print(f"[!] retire: {base_path}")
+        shutil.move(base_path, f"{base_path}~retire")
 
-      open(f"dist/task{i:03}.py", "wb").write(shortest)
-      stats.append(best_result)
-    json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
+    # 圧縮後のチェックはしない
+    # compressed = check_str(i, shortest, task, checked_hash)
+    # if compressed.correct != 1.0:
+    #   print(f"[!] compression failed: {compressed.message}")
+    #   exit(1)
+
+    open(f"dist/task{i:03}.py", "wb").write(shortest)
+    results.append(best_result)
+  json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
+  handle_results(results)

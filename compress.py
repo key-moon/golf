@@ -172,16 +172,16 @@ def compress(code: str, best: Optional[int]=None, fast=False, force_compress=Fal
   if worth_compress:
     for name, cmp, extra_args_fun in compressions:
       lib_name = name.split("-")[0]
-      compressed_code = cmp(code.encode())
-      embed = get_embed_str(compressed_code)
+      raw_compressed = cmp(code.encode())
+      embed = get_embed_str(raw_compressed)
 
-      extra_overhead = (len(compressed_code) + 3) - len(embed)
+      extra_overhead = len(embed) - (len(raw_compressed) + 3)
 
-      extra_args = extra_args_fun(compressed_code)
+      extra_args = extra_args_fun(raw_compressed)
       res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
 
       message = "" if extra_overhead == 0 else f"encode overhead: +{extra_overhead}"
-      l.append((name, res, compressed_code, message))
+      l.append((name, res, raw_compressed, message))
 
   mn = min(l, key=lambda x: len(x[1]))
   return mn
