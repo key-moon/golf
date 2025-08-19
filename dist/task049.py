@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes('UEzD1€÷œ‚İ¸¯*9É(ıà¹ûİI5úãÀaÓ;¯€ìîOÀ¨ŞaÚ×[¡TÇRvt`÷¦¬úoÚy¦< 9ÆrhŸ:€Á@Á€4/]™Vmƒ~Úy£ùDtiÅ4xô3SÌ‚‡A?)¥ØË+ÏOK7Oûi?ëgKÀÜÇq?—«+¨ü`ÂËk›ç—¥æØ¯E{“N7èf_º©é´ãy®Yvr8îª¹r×—Pğ°Ñ×6øªX¬_5…„ËO','L1'),-9))
+p=lambda g:eval(min([str([a for r in g if(a:=[i]*r.count(i))])for(i)in sum(g,[])if i],key=len))
