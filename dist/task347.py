@@ -1,1 +1,1 @@
-p=lambda g:[[6*(0<r[i]+r[i+3])for i in(0,1,2)]for r in g];p;p;p;p;p;p;p;p
+p=lambda g:[[6*(0<r[i]+r[i+3])for i in(0,1,2)]for r in g];p;p;p;p;p;p;p
