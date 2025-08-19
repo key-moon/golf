@@ -109,6 +109,7 @@ def handle_results(results: list[TaskResult]):
         if name == other_name: continue
         file.write(f"- [sorted by {other_name}](/{other_path})\n")
 
+      file.write(f"\n\n## sorted by {name}\n\n")
       file.write(TaskResult.md_header())
       for stat, bests in zip(sorted(results, key=keyfunc), others_bests):
         file.write(stat.md_row(bests[0]))
