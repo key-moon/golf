@@ -50,7 +50,7 @@ class TaskResult:
     return "| Task | Base | Compressor | Length | Best | Goods | Message |\n" + \
            "|------|------|------------|--------|------|-------|---------|\n"
 
-  def md_row(self, best_sub: TaskSubmissionWithName | None, relative_to_root="."):
+  def md_row(self, best_sub: TaskSubmissionWithName | None):
       def local_link(title, path):
         return f"[{title}](/{path})"
 
@@ -88,12 +88,12 @@ def handle_results(results: list[TaskResult]):
 
   others_bests = get_scores_per_task()
 
-  other_mds: list[tuple[str, str, Callable[[TaskResult], int | float]]] = [
-    ("diff", "README.md", lambda x: others_bests[x.task - 1][0]["score"] - (x.length if x.length else 999999)),
-    ("task", "stats/task-sorted.md", lambda x: x.task),
-    ("ratio", "stats/ratio-sorted.md", lambda x: -(x.length if x.length else 999999) / others_bests[x.task - 1][0]["score"]),
-    ("length", "stats/length-sorted.md", lambda x: -(x.length if x.length else 999999)),
-    ("best", "stats/best-sorted.md", lambda x: others_bests[x.task - 1][0]["score"]),
+  other_mds: list[tuple[str, str, Callable[[tuple[TaskResult, list[TaskSubmissionWithName]]], int | float]]] = [
+    ("diff", "README.md", lambda x: x[1][0]["score"] - (x[0].length if x[0].length else 999999)),
+    ("task", "stats/task-sorted.md", lambda x: x[0].task),
+    ("ratio", "stats/ratio-sorted.md", lambda x: -(x[0].length if x[0].length else 999999) / others_bests[x[0].task - 1][0]["score"]),
+    ("length", "stats/length-sorted.md", lambda x: -(x[0].length if x[0].length else 999999)),
+    ("best", "stats/best-sorted.md", lambda x: x[1][0]["score"]),
   ]
 
   for name, path, keyfunc in other_mds:
@@ -111,7 +111,7 @@ def handle_results(results: list[TaskResult]):
 
       file.write(f"\n\n## sorted by {name}\n\n")
       file.write(TaskResult.md_header())
-      for stat, bests in zip(sorted(results, key=keyfunc), others_bests):
+      for stat, bests in sorted(zip(results, others_bests), key=keyfunc):
         file.write(stat.md_row(bests[0]))
 
 
