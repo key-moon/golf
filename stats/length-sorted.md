@@ -358,7 +358,6 @@
 | [293](../vis/task293.png) | ✅ | [base_yu](../base_yu/task293.py) | raw/raw | [60](../dist/task293.py) (0) | 60  | [vis-many](../vis_many/task293.png) | AC |
 | [026](../vis/task026.png) | ✅ | [base_notebooks](../base_notebooks/task026_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [59](../dist/task026.py) (+7) | 52 🔴 | [vis-many](../vis_many/task026.png) | AC |
 | [177](../vis/task177.png) | ✅ | [base_yu](../base_yu/task177.py) | forplain/raw | [59](../dist/task177.py) (+4) | 55 🔴 | [vis-many](../vis_many/task177.png) | AC |
-| [215](../vis/task215.png) | ✅ | [base_yu](../base_yu/task215.py) | raw/raw | [59](../dist/task215.py) (+13) | 46 🔴 | [vis-many](../vis_many/task215.png) | AC |
 | [211](../vis/task211.png) | ✅ | [base_code](../base_code/task211.py) | raw/raw | [58](../dist/task211.py) (+10) | 48 🔴 | [vis-many](../vis_many/task211.png) | AC |
 | [372](../vis/task372.png) | ✅ | [base_code](../base_code/task372.py) | raw/raw | [58](../dist/task372.py) (+10) | 48 🔴 | [vis-many](../vis_many/task372.png) | AC |
 | [299](../vis/task299.png) | ✅ | [base_yu](../base_yu/task299.py) | forplain/raw | [57](../dist/task299.py) (+3) | 54 🔴 | [vis-many](../vis_many/task299.png) | AC |
@@ -373,6 +372,7 @@
 | [016](../vis/task016.png) | ✅ | [base_keymoon](../base_keymoon/task016_byte.py) | raw/raw | [47](../dist/task016.py) (+4) | 43 🔴 | [vis-many](../vis_many/task016.png) | AC |
 | [045](../vis/task045.png) | ✅ | [base_yu](../base_yu/task045.py) | raw/raw | [47](../dist/task045.py) (+2) | 45 🔴 | [vis-many](../vis_many/task045.png) | AC |
 | [073](../vis/task073.png) | ✅ | [base_keymoon](../base_keymoon/task073.py) | raw/raw | [46](../dist/task073.py) (0) | 46  | [vis-many](../vis_many/task073.png) | AC |
+| [215](../vis/task215.png) | ✅ | [base_keymoon](../base_keymoon/task215.py) | raw/raw | [46](../dist/task215.py) (0) | 46  | [vis-many](../vis_many/task215.png) | AC |
 | [056](../vis/task056.png) | ✅ | [base_keymoon](../base_keymoon/task056.py) | raw/raw | [45](../dist/task056.py) (+4) | 41 🔴 | [vis-many](../vis_many/task056.png) | AC |
 | [312](../vis/task312.png) | ✅ | [base_yu](../base_yu/task312.py) | raw/raw | [45](../dist/task312.py) (+1) | 44 🔴 | [vis-many](../vis_many/task312.png) | AC |
 | [231](../vis/task231.png) | ✅ | [base_yu](../base_yu/task231.py) | raw/raw | [43](../dist/task231.py) (0) | 43  | [vis-many](../vis_many/task231.png) | AC |
