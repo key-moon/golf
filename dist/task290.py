@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress('UËÍ‚0àWÙc«˜ÈÒCùyŠÍnÉ&ZÉ	úôR£Ao“™o.`4ƒ-¼CpW#™Z‰Àq¹±v3o£èâÃ¨¥²ÚYÿÏ2šÃ`¿¸ßpíP±Â3r:æ´=AA"èSï?=•MÖº‰g³B2>™ú×½-•çE#b`u®¾NÍ¢ıJ/'.encode('L1'),-9))
+p=lambda g:[[sum({*sum(g,s)})-v for v in s if v]for s in g if any(s)]
