@@ -175,7 +175,7 @@ def compress(code: str, best: Optional[int]=None, fast=False, force_compress=Fal
       raw_compressed = cmp(code.encode())
       embed = get_embed_str(raw_compressed)
 
-      extra_overhead = len(embed) - (len(raw_compressed) + 3)
+      extra_overhead = len(embed) - (len(raw_compressed) + 2)
 
       extra_args = extra_args_fun(raw_compressed)
       res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
