@@ -1,6 +1,7 @@
 from ast import literal_eval
 import bz2
 import lzma
+import sys
 import time
 from typing import Callable, Literal, Optional, Tuple
 import zlib
@@ -14,7 +15,8 @@ from typing import overload, Union
 from deflate_optimizer.optimizer import optimize_deflate_stream
 import zopfli.zlib
 
-from utils import openable_uri, viz_deflate_url
+from strip import strippers
+from utils import get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
 
@@ -93,19 +95,19 @@ def get_embed_str(b: bytes):
 CACHE_DIR = os.path.join(os.path.dirname(__file__), ".cache")
 def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
   def decorator(func):
-    def wrapper(val: bytes, *args, **kwargs):
+    def wrapper(val: bytes, *args, use_cache=True, **kwargs):
       sha1_hash = hashlib.sha1(val).hexdigest()
       subdir = os.path.join(cache_dir, sha1_hash[:2])
-
+      
       cache_path = os.path.join(subdir, sha1_hash[2:])
-      if os.path.exists(cache_path):
+      if use_cache and os.path.exists(cache_path):
         with open(cache_path, "rb") as f:
           return f.read()
       else:
         t = time.time()
         result = func(val, *args, **kwargs)
         took = time.time() - t
-        if cache_threshold < took:
+        if use_cache and cache_threshold < took:
           os.makedirs(subdir, exist_ok=True)
           with open(cache_path, "wb") as f:
             f.write(result)
@@ -153,24 +155,24 @@ def determine_wbits(compressed: bytes):
 # '#coding:L1;import zlib;exec(zlib.decompress(bytes(map(ord,"""..."""))))'
 # '#coding:L1;import zlib;a=zlib.open(__file__);a._fp.seek(??);exec(a.read());"""..."""'
 # '#coding:L1;import zlib;exec(zlib.decompress(open(__file__,"rb").read()[??:??]))"""..."""'
-def compress(code: str, best: Optional[int]=None, fast=False, force_compress=False) -> Tuple[str, bytes, bytes, str]:
+def compress(code: str, best: Optional[int]=None, fast=False, use_cache=True, force_compress=False) -> Tuple[str, bytes, bytes, str]:
   compressions: list[tuple[str, Callable[[bytes], bytes], Callable[[bytes], str]]] = [
     ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), lambda _: ",-9"),
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), lambda _: ",-15"),
-    ("zlib-zopfli", lambda x: cached_zopfli(x, fast), determine_wbits),
+    ("zlib-zopfli", lambda x: cached_zopfli(x, fast, use_cache=use_cache), determine_wbits),
     ("lzma", lambda x: cached_lzma(x),lambda _: ""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),lambda _: ""),
   ]
   l = []
   worth_compress = True
   if not force_compress:
-    l.append(("raw", code.encode(), "", ""))
     if best is None:
       best = len(code)
     compressed_length = len(zlib.compress(code.encode()))
     if 1000 < len(code):
       compressed_length = min(compressed_length, len(cached_lzma(code.encode())))
     worth_compress = (60 - (15 if compressed_length < 400 else 30)) <= (best - compressed_length)
+    l.append(("raw", code.encode(), "", "" if worth_compress else "not worth compress"))
   
   if worth_compress:
     for name, cmp, extra_args_fun in compressions:
@@ -181,10 +183,61 @@ def compress(code: str, best: Optional[int]=None, fast=False, force_compress=Fal
       extra_overhead = len(embed) - (len(raw_compressed) + 2)
 
       extra_args = extra_args_fun(raw_compressed)
-      res = f"#coding:L1\nimport {lib_name};exec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
+      res = f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes(".encode() + embed + b",'L1')" + extra_args.encode() + b"))"
 
       message = "" if extra_overhead == 0 else f"encode:+{extra_overhead}"
       l.append((name, res, raw_compressed, message))
 
   mn = min(l, key=lambda x: len(x[1]))
   return mn
+
+def get_uncompressed_content(content: bytes) -> tuple[str, bytes | None]:
+  if b".decompress(" in content:
+    try:
+      lib = content.split(b"\n")[1].split(b";")[0][len(b"import "):].decode()
+      compressor = __import__(lib)
+      start_idx = content.index(b"bytes(") + len(b"bytes(")
+      end_idx = content.index(b",'L1'")
+      payload = literal_eval(content[start_idx:end_idx].decode("L1")).encode("L1")
+      if lib == "zlib":
+        return compressor.decompress(payload, -15).decode(), payload
+      else:
+        return compressor.decompress(payload).decode(), payload
+    except Exception as e:
+      return "# failed to decompress", None
+  else:
+    try:
+      return content.decode(), None
+    except Exception:
+      return "# failed to decode", None
+
+if __name__ == "__main__":
+  dirname = sys.argv[1] if 2 <= len(sys.argv) else "dist"
+  range_str = sys.argv[2] if 3 <= len(sys.argv) else "1-400"
+  
+  r = parse_range_str(range_str)
+
+  print(f"{dirname=}")
+  for i in r:
+    for code_path in get_code_paths(dirname, i):
+      if not os.path.exists(code_path): continue
+      orig_code = open(code_path, "rb").read()
+      code, deflate_payload = get_uncompressed_content(orig_code)
+
+      if b"zlib.decompress" in orig_code and deflate_payload:
+        sha1_hash = hashlib.sha1(code.encode()).hexdigest()
+        cache_path = f".cache/zopfli/{sha1_hash[:2]}/{sha1_hash[2:]}"
+        print(f"[+] orig len: {len(orig_code)} / raw deflate: {len(deflate_payload)} / unpacked len({openable_uri('viz', viz_deflate_url(deflate_payload))}): {len(code)}")
+        if os.path.exists(cache_path):
+          print(f"[+] cache exists(len: {len(open(cache_path, 'rb').read())}): {cache_path}")
+      else:
+        print(f"[+] len: {len(orig_code)}")
+      for stripper, strip in strippers.items():
+        code = strip(code)
+        comp_name, compressed, raw, compress_msg = compress(code, use_cache=False)
+        res_msg = f" - {stripper=} / {comp_name=}: {len(compressed)}"
+        if comp_name.startswith("zlib"):
+          res_msg += f" ({openable_uri('viz', viz_deflate_url(raw))})"
+        if compress_msg:
+          res_msg += f" ({compress_msg})"
+        print(res_msg)

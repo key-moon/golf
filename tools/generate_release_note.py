@@ -5,6 +5,7 @@ import warnings
 import argparse
 from typing import Optional
 
+from compress import get_uncompressed_content
 from generator import RunResult
 from utils import signed_str
 
@@ -61,20 +62,6 @@ def get_file_content(commit: str, file_path: Path):
     check=True
   )
   return result.stdout
-
-def get_uncompressed_content(content: bytes):
-  if b"zlib.decompress" in content:
-    try:
-      start_idx = content.index(b"bytes(") + len(b"bytes(")
-      end_idx = content.index(b",'L1'")
-      return literal_eval(content[start_idx:end_idx].decode("L1")), True
-    except Exception:
-      return "# failed to decompress", True
-  else:
-    try:
-      return content.decode(), False
-    except Exception:
-      return "# failed to decode", False
 
 def generate_release_note(commit1: str, commit2: str, output_file: str):
   """Generate a release note in markdown format for files changed in dist/."""
