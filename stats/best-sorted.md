@@ -118,7 +118,7 @@
 | [218](/vis/task218.png) | [base_yu](/base_yu/task218.py) | forplain/raw | [100](/dist/task218.py) (+43) | 57 🔴 by sisyphus | [vis-many](/vis_many/task218.png) |  |
 | [296](/vis/task296.png) | [base_notebooks](/base_notebooks/task296_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [126](/dist/task296.py) (+36) | 90 🔴 by natte | [vis-many](/vis_many/task296.png) |  |
 | [315](/vis/task315.png) | [base_notebooks](/base_notebooks/task315_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | raw/raw | [76](/dist/task315.py) (-131) | 207 🟢 by joking | [vis-many](/vis_many/task315.png) |  |
-| [021](/vis/task021.png) | [base_code](/base_code/task021.py) | raw/zlib-zopfli | [183](/dist/task021.py) (+123) | 60 🔴 by Seek64 | [vis-many](/vis_many/task021.png) | encode overhead: +-1 |
+| [021](/vis/task021.png) | [base_yu](/base_yu/task021.py) | forplain/raw | [71](/dist/task021.py) (+11) | 60 🔴 by Seek64 | [vis-many](/vis_many/task021.png) |  |
 | [028](/vis/task028.png) | [base_notebooks](/base_notebooks/task028_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | raw/raw | [139](/dist/task028.py) (+27) | 112 🔴 by joking | [vis-many](/vis_many/task028.png) |  |
 | [128](/vis/task128.png) | [base_yu](/base_yu/task128.py) | raw/raw | [72](/dist/task128.py) (+47) | 25 🔴 by cg | [vis-many](/vis_many/task128.png) |  |
 | [203](/vis/task203.png) | [base_code](/base_code/task203.py) | forplain/raw | [136](/dist/task203.py) (+71) | 65 🔴 by luke | [vis-many](/vis_many/task203.png) |  |

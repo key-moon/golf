@@ -28,7 +28,7 @@
 | [018](/vis/task018.png) | [dist](/dist/task018.py) | previons | [1619](/dist/task018.py) (+1174) | 445 🔴 by MeWhenI | [vis-many](/vis_many/task018.png) | ⚠️ regression? |
 | [019](/vis/task019.png) | [base_code](/base_code/task019_2.py) | forcomp-t/zlib-zopfli | [213](/dist/task019.py) (+93) | 120 🔴 by mukundan | [vis-many](/vis_many/task019.png) |  |
 | [020](/vis/task020.png) | [base_code](/base_code/task020_3.py) | forcomp-t/zlib-zopfli | [222](/dist/task020.py) (+47) | 175 🔴 by joking | [vis-many](/vis_many/task020.png) |  |
-| [021](/vis/task021.png) | [base_code](/base_code/task021.py) | raw/zlib-zopfli | [183](/dist/task021.py) (+119) | 64 🔴 by luke | [vis-many](/vis_many/task021.png) | encode overhead: +-1 |
+| [021](/vis/task021.png) | [base_yu](/base_yu/task021.py) | forplain/raw | [71](/dist/task021.py) (+7) | 64 🔴 by luke | [vis-many](/vis_many/task021.png) |  |
 | [022](/vis/task022.png) | [base_notebooks](/base_notebooks/task022_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-zopfli | [216](/dist/task022.py) (+125) | 91 🔴 by 4atj | [vis-many](/vis_many/task022.png) |  |
 | [023](/vis/task023.png) | [base_yu](/base_yu/task023.py) | forcomp-s/zlib-zopfli | [284](/dist/task023.py) (+78) | 206 🔴 by sisyphus | [vis-many](/vis_many/task023.png) | encode overhead: +4 |
 | [024](/vis/task024.png) | [base_yu](/base_yu/task024.py) | forplain/raw | [65](/dist/task024.py) (+3) | 62 🔴 by luke | [vis-many](/vis_many/task024.png) |  |
