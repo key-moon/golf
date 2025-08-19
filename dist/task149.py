@@ -1,1 +1,0 @@
-def p(g):return[[sum(y==6for x in g[i:i+3]for y in x[j:j+3])//2for j in(0,4,8)]for i in(0,4,8)]

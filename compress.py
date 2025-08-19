@@ -96,13 +96,13 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
     def wrapper(val: bytes, *args, **kwargs):
       sha1_hash = hashlib.sha1(val).hexdigest()
       subdir = os.path.join(cache_dir, sha1_hash[:2])
-      os.makedirs(subdir, exist_ok=True)
 
       cache_path = os.path.join(subdir, sha1_hash[2:])
       if os.path.exists(cache_path):
         with open(cache_path, "rb") as f:
           return f.read()
       else:
+        os.makedirs(subdir, exist_ok=True)
         t = time.time()
         result = func(val, *args, **kwargs)
         took = time.time() - t
@@ -120,20 +120,17 @@ def cached_zopfli(val: bytes, fast=False):
   if len(compressed_splitting) < len(compressed):
     print(f"!! {openable_uri('no split', viz_deflate_url(compressed_splitting))} / {openable_uri('split', viz_deflate_url(compressed))}")
     compressed = compressed_splitting
-  if fast:
-    return compressed
-  try:
-    return optimize_deflate_stream(
-      compressed,
-      lambda x: len(get_embed_str(x)),
-      num_iteration=5000,
-      num_perturbation=3,
-      tolerance_bit=16,
-      # terminate_threshold=2 + len(val) + 1,
-      seed=1234
-    )
-  except:
-    return compressed
+  # stop using optimizer for a now to mitigate overwhelming regression
+  return compressed
+  # return optimize_deflate_stream(
+  #   compressed,
+  #   lambda x: len(get_embed_str(x)),
+  #   num_iteration=5000,
+  #   num_perturbation=3,
+  #   tolerance_bit=16,
+  #   # terminate_threshold=2 + len(val) + 1,
+  #   seed=1234
+  # )
 
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))

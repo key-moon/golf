@@ -1,1 +1,0 @@
-p=lambda g:eval(min([str([a for r in g if(a:=[i]*r.count(i))])for(i)in sum(g,[])if i],key=len))

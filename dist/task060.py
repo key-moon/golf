@@ -1,1 +1,0 @@
-p=lambda g:[r[:1]*5+[any(r)*5]+r[10:]*5for r in g]

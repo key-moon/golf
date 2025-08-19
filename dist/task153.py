@@ -1,1 +1,0 @@
-def p(g,R=range(3)):A=sum(g,[]);B=sum(zip(*g),());a,b,_=sorted({*A},key=A.count);y=A.index(b)//10;x=B.index(b)//10;y-=g[y+1][x:x+3]==[b]*3;x-=all(b==g[y+k][x+1]for k in R);return[[-1<y+i<10>x+j>-1and g[y+i][x+j]or a for j in R]for i in R]

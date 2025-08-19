@@ -1,1 +1,0 @@
-p=lambda g:[[v^13*(v>v%3>1)for v in s]for s in g]
