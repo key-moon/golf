@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 GITHUB_REPO_URL = "https://github.com/key-moon/golf/"
 
-def create_github_link(commit: str, file_path: Optional[Path] = None, text: Optional[str] = None):
+def create_github_link(commit: str, file_path: Optional[Path | str] = None, text: Optional[str] = None):
   """Create a GitHub link for a commit or file at a specific commit."""
   if file_path:
     url = f"{GITHUB_REPO_URL}blob/{commit}/{file_path}"
@@ -111,11 +111,11 @@ def generate_release_note(commit1: str, commit2: str, output_file: str):
         others = ', '.join([f'{score["score"]}({score["name"]})' for score in scores if score['score'] != best][:5])
         f.write(f"best: {best}({', '.join(names)}) / others: {others}\n\n")
 
-        f.write(f"**{old_link}** ({old_result.length} bytes, {old_result.compressor}, {old_result.message})\n")
+        f.write(f"**{old_link}** ({old_result.length} bytes, {create_github_link(commit1, str(old_result.base_path), str(old_result.base_path))}, {old_result.compressor}, {old_result.message})\n")
         f.write("```\n")
         f.write(old_content)
         f.write("\n```\n")
-        f.write(f"**{new_link}** ({new_result.length} bytes, {new_result.compressor}, {new_result.message})\n")
+        f.write(f"**{new_link}** ({new_result.length} bytes, {create_github_link(commit2, str(new_result.base_path), str(new_result.base_path))}, {new_result.compressor}, {new_result.message})\n")
         f.write("```\n")
         f.write(new_content)
         f.write("\n```\n\n")
