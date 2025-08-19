@@ -1,1 +1,1 @@
-p=lambda g,R=range(10):[[g[i][j]and g[(i>4)*9][(j>4)*9]for j in R]for i in R]
+p=lambda g,R=range(10):[[g[i][j]and g[-(i>4)][-(j>4)]for j in R]for i in R]

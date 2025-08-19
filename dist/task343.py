@@ -1,2 +1,1 @@
-#coding:L1
-import zlib;exec(zlib.decompress(bytes("mçÅ1Ü∏ßå∆›PÄ“'©¢≥∂z≠l“Ì˝óﬁfÖ£JÚˇﬂó{LTÕÈ¡¿P≤@∂ERåA Q—Uo«√—ÉíÄ]ÒÊ∆1TYtÀŒîU˚Y'©∑·Ï∏N4¥¶∫€ΩµÚ_™ƒ>âoÒo∑∑Ó¥K('9æﬁLê?",'L1'),-9))
+p=lambda g:[(s[:8-2*((u:=[*zip(*g)])[3:6]in(u[:3],u[2::-1]))]*3)[:15]for s in g]
