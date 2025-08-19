@@ -1,2 +1,2 @@
-A=abs
-def p(g,d=range(-2,3),E=enumerate):x=[r[:]for r in g];[x[i+a].__setitem__(j+b,v if A(a)==A(b)else r[j-1])for(i,r)in E(g)for(j,v)in E(r)if v and r[j-1]*r[j+1]for a in d for b in d if A(a)==A(b)or not a*b];return x
+#coding:L1
+import zlib;exec(zlib.decompress(bytes('eMn€ …¯2KPlb»Ó°ô„!ŒS±Ñxü¢v×Õûax_ ~DTA3æH¢ûT_RMšò±c!9\Ú°ì¼10¤Ñæ2©EûáÜN%ZKëÕ	iô»@©õ­^Ò÷NÀféz+ë„HŠe™D|â¢Î7²¬_OÀş®›*mÿ`ñÆ¸­í?L}Ê[l¼™ÊÁ®_','L1'),-9))
