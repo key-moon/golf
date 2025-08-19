@@ -28,7 +28,7 @@ def main():
     if best - 10 < len(best_banner):
       best_banner = f" best: {best} "
     source += "# " + best_banner.center(best - 2, "=") + "\n"
-  source += "def p(g):\n    return g\n"
+  source += "def p(g):\n return g\n"
 
   base_path = { "keymoon": "base_keymoon", "yu212": "base_yu" }[USER]
   file_path = f"./{base_path}/task{padded}.py"
