@@ -68,7 +68,7 @@ class TaskResult:
       else:
         best = str(best_sub["score"]) if best_sub else "-"
 
-      return " | " +  " | ".join([
+      return "| " +  " | ".join([
         local_link(task, f"vis/task{task}.png"),
         base,
         checker,
@@ -76,7 +76,7 @@ class TaskResult:
         best,
         local_link("vis-many", f"vis_many/task{task}.png"),
         self.message
-      ]) + " | \n"
+      ]) + " |\n"
 
 
 def handle_results(results: list[TaskResult]):
