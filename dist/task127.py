@@ -1,1 +1,1 @@
-p=lambda g:[[5+g[i&4|(i!=3)][j&12|(j%4<3)]for j in range(11)]for i in range(len(g))]
+p=lambda g:[[5+s[j&12|(j%4<3)]for j in range(11)]for s in[g[1]]*3+g[4:5]+g[5:6]*3]
