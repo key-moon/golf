@@ -1,1 +1,1 @@
-def p(g):t=g[0];k=t.index(0);return[[t[0]]*(k+i)+t[k+i:]for i in range(len(t)//2)]
+p=lambda g:[s:=g[0]]+[s:=s[:1]+s[:-1]for _ in s[1:len(s)//2]]
