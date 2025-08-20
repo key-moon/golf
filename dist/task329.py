@@ -1,1 +1,1 @@
-p=lambda g:[[v*(i==len(s)//2)for i,v in enumerate(s)]for s in g]
+p=lambda g:[[0]*(b:=len(s)//2)+[s[b]]+b*[0]for s in g]
