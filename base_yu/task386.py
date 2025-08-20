@@ -2,4 +2,4 @@
 # ======================= 52 =======================
 # p=lambda g:[[*eval("3-(s.pop(0)|s[3]and 3),"*3)]for s in g]
 # p=lambda g:[[3-3*(s[i]|s[i+4]>0)for i in(0,1,2)]for s in g]
-p=lambda g:[[*eval("3-3*(s.pop(0)|s[3]>0),"*3)]for s in g]
+p=lambda g:[[*eval("3*(s.pop(0)|s[3]<1),"*3)]for s in g]
