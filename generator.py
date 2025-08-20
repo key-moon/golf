@@ -94,7 +94,7 @@ def handle_results(results: list[TaskResult]):
   print(f"accepted: {accepted}/400, {score=}")
 
   others_bests = get_scores_per_task()
-  others_bests_sum = sum(bests[0]["score"] for bests in others_bests)
+  others_bests_sum = sum(max(1,2500-bests[0]["score"]) for bests in others_bests)
 
   other_mds: list[tuple[str, str, Callable[[tuple[TaskResult, list[TaskSubmissionWithName]]], int | float]]] = [
     ("diff", "README.md", lambda x: x[1][0]["score"] - (x[0].length if x[0].length else 999999)),
