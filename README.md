@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 906773
+Score: 906774
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -215,10 +215,10 @@ Score: 906773
 | [328](/vis/task328.png) | [base_code](/base_code/task328.py) | raw/zlib-zopfli | [248](/dist/task328.py) (+53) | 195 🔴 | [vis-many](/vis_many/task328.png) | encode:+2 |
 | [097](/vis/task097.png) | [base_code](/base_code/task097.py) | forplain/raw | [173](/dist/task097.py) (+52) | 121 🔴 | [vis-many](/vis_many/task097.png) | not worth compress |
 | [298](/vis/task298.png) | [base_code](/base_code/task298_1.py) | forplain/raw | [107](/dist/task298.py) (+52) | 55 🔴 | [vis-many](/vis_many/task298.png) | not worth compress |
-| [153](/vis/task153.png) | [base_yu](/base_yu/task153.py) | forplain/raw | [238](/dist/task153.py) (+50) | 188 🔴 | [vis-many](/vis_many/task153.png) |  |
 | [167](/vis/task167.png) | [base_notebooks](/base_notebooks/task167_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | raw/raw | [127](/dist/task167.py) (+50) | 77 🔴 | [vis-many](/vis_many/task167.png) | not worth compress |
 | [239](/vis/task239.png) | [base_code](/base_code/task239.py) | forplain/raw | [161](/dist/task239.py) (+50) | 111 🔴 | [vis-many](/vis_many/task239.png) | not worth compress |
 | [106](/vis/task106.png) | [base_notebooks](/base_notebooks/task106_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [122](/dist/task106.py) (+49) | 73 🔴 | [vis-many](/vis_many/task106.png) | not worth compress |
+| [153](/vis/task153.png) | [base_yu](/base_yu/task153.py) | forplain/raw | [237](/dist/task153.py) (+49) | 188 🔴 | [vis-many](/vis_many/task153.png) |  |
 | [224](/vis/task224.png) | [base_code](/base_code/task224.py) | raw/zlib-zopfli | [226](/dist/task224.py) (+49) | 177 🔴 | [vis-many](/vis_many/task224.png) | encode:+2 |
 | [063](/vis/task063.png) | [base_yu](/base_yu/task063.py) | forplain/raw | [125](/dist/task063.py) (+48) | 77 🔴 | [vis-many](/vis_many/task063.png) | not worth compress |
 | [141](/vis/task141.png) | [base_code](/base_code/task141.py) | forplain/raw | [163](/dist/task141.py) (+48) | 115 🔴 | [vis-many](/vis_many/task141.png) | not worth compress |

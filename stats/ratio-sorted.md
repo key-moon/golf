@@ -261,9 +261,9 @@
 | [328](/vis/task328.png) | [base_code](/base_code/task328.py) | raw/zlib-zopfli | [248](/dist/task328.py) (+53) | 195 🔴 | [vis-many](/vis_many/task328.png) | encode:+2 |
 | [223](/vis/task223.png) | [base_notebooks](/base_notebooks/task223_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | raw/raw | [66](/dist/task223.py) (+14) | 52 🔴 | [vis-many](/vis_many/task223.png) | not worth compress |
 | [292](/vis/task292.png) | [base_notebooks](/base_notebooks/task292_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [71](/dist/task292.py) (+15) | 56 🔴 | [vis-many](/vis_many/task292.png) | not worth compress |
-| [153](/vis/task153.png) | [base_yu](/base_yu/task153.py) | forplain/raw | [238](/dist/task153.py) (+50) | 188 🔴 | [vis-many](/vis_many/task153.png) |  |
 | [020](/vis/task020.png) | [base_code](/base_code/task020_3.py) | forcomp-t/zlib-zopfli | [221](/dist/task020.py) (+46) | 175 🔴 | [vis-many](/vis_many/task020.png) |  |
 | [004](/vis/task004.png) | [base_keymoon](/base_keymoon/task004.py) | raw/raw | [101](/dist/task004.py) (+21) | 80 🔴 | [vis-many](/vis_many/task004.png) | not worth compress |
+| [153](/vis/task153.png) | [base_yu](/base_yu/task153.py) | forplain/raw | [237](/dist/task153.py) (+49) | 188 🔴 | [vis-many](/vis_many/task153.png) |  |
 | [124](/vis/task124.png) | [base_yu](/base_yu/task124.py) | forplain/raw | [179](/dist/task124.py) (+37) | 142 🔴 | [vis-many](/vis_many/task124.png) | not worth compress |
 | [093](/vis/task093.png) | [base_yu](/base_yu/task093.py) | raw/raw | [136](/dist/task093.py) (+28) | 108 🔴 | [vis-many](/vis_many/task093.png) | not worth compress |
 | [235](/vis/task235.png) | [base_notebooks](/base_notebooks/task235_20250809-035628Z-arc-agi-code-golf-216-400-solved-dmytro-fedoriaka.py) | forplain/raw | [78](/dist/task235.py) (+16) | 62 🔴 | [vis-many](/vis_many/task235.png) | not worth compress |

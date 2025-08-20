@@ -354,7 +354,7 @@
 | [046](/vis/task046.png) | [base_arcdsl](/base_arcdsl/task046.py) | raw/zlib-zopfli | [1479](/dist/task046.py) (+1293) | 186 🔴 | [vis-many](/vis_many/task046.png) | encode:+8 |
 | [134](/vis/task134.png) | [base_keymoon](/base_keymoon/task134.py) | forplain/raw | [233](/dist/task134.py) (+47) | 186 🔴 | [vis-many](/vis_many/task134.png) |  |
 | [042](/vis/task042.png) | [base_arcdsl](/base_arcdsl/task042.py) | raw/zlib-zopfli | [1287](/dist/task042.py) (+1100) | 187 🔴 | [vis-many](/vis_many/task042.png) | encode:+7 |
-| [153](/vis/task153.png) | [base_yu](/base_yu/task153.py) | forplain/raw | [238](/dist/task153.py) (+50) | 188 🔴 | [vis-many](/vis_many/task153.png) |  |
+| [153](/vis/task153.png) | [base_yu](/base_yu/task153.py) | forplain/raw | [237](/dist/task153.py) (+49) | 188 🔴 | [vis-many](/vis_many/task153.png) |  |
 | [143](/vis/task143.png) | [base_arcdsl](/base_arcdsl/task143.py) | raw/zlib-zopfli | [997](/dist/task143.py) (+808) | 189 🔴 | [vis-many](/vis_many/task143.png) | encode:+6 |
 | [069](/vis/task069.png) | [base_code](/base_code/task069_2.py) | forcomp-s/zlib-zopfli | [331](/dist/task069.py) (+140) | 191 🔴 | [vis-many](/vis_many/task069.png) | encode:+1 |
 | [105](/vis/task105.png) | [base_arcdsl](/base_arcdsl/task105.py) | raw/zlib-zopfli | [857](/dist/task105.py) (+665) | 192 🔴 | [vis-many](/vis_many/task105.png) | encode:+1 |
