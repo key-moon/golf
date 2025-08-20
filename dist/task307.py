@@ -1,1 +1,1 @@
-def p(j):import numpy as A;return A.kron(j,A.ones((2,2))).tolist()
+p=lambda g:sum([[sum([[v]*2for v in s],[])]*2for s in g],[])
