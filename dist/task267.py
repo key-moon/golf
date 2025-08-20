@@ -1,1 +1,1 @@
-def p(j):A=j[6][0];c=[[r and A for r in X]for X in j];c[6][0]=0;return c
+p=lambda g:[[0]+[v and g[6][0]for v in s[1:]]for s in g]
