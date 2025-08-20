@@ -65,7 +65,7 @@ def get_file_content(commit: str, file_path: Path):
 
 def generate_release_note(commit1: str, commit2: str, output_dir: str):
   """Generate a release note in markdown format for files changed in dist/."""
-  scores_per_task = get_scores_per_task()
+  public_scores_per_task = get_scores_per_task()
   changed_files = get_changed_dist(commit1, commit2)
   commits = get_commits_between(commit1, commit2)
 
@@ -99,7 +99,7 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
   if commits:
     _add_note("## commits\n")
     for commit_hash, message, author in commits:
-      commit_link = create_github_link(commit_hash)
+      commit_link = create_github_link(commit_hash[:7])
       _add_note(f" - {commit_link} by {author}: {message}\n")
       _flush()
     _flush()
@@ -117,17 +117,20 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
       
       improvement = signed_str(new_result.length - old_result.length) if old_result.length and new_result.length else "-"
 
-      _add_note(f"### {file_path} ({improvement}, {create_github_link('main', f'vis_many/task{task:03d}.png', 'vis_many')})\n")
+      public_scores = public_scores_per_task[task - 1]
+      community_best = public_scores[0]["score"]
+
+      best_delta = signed_str(new_result.length - community_best) if new_result.length else "-"
+
+      _add_note(f"### {file_path} ({improvement}, best{best_delta}, {create_github_link('main', f'vis_many/task{task:03d}.png', 'vis_many')})\n")
       
       # Create GitHub links for old and new versions
       old_link = create_github_link(commit1, file_path, "old")
       new_link = create_github_link(commit2, file_path, "new")
 
-      scores = scores_per_task[task - 1]
-      best = scores[0]["score"]
-      names = [score["name"] for score in scores if score["score"] == best]
-      others = ', '.join([f'{score["score"]}({score["name"]})' for score in scores if score['score'] != best][:5])
-      _add_note(f"best: {best}({', '.join(names)}) / others: {others}\n\n")
+      best_names = [score["name"] for score in public_scores if score["score"] == community_best]
+      others = ', '.join([f'{score["score"]}({score["name"]})' for score in public_scores if score['score'] != community_best][:5])
+      _add_note(f"best: {community_best}({', '.join(best_names)}) / others: {others}\n\n")
 
       _add_note(f"**{old_link}** ({old_result.length} bytes, {create_github_link(commit1, str(old_result.base_path), str(old_result.base_path))}, {old_result.compressor}, {old_result.message})\n")
       _add_note("```\n")
