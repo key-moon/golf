@@ -1,6 +1,8 @@
 # best: 51(sisyphus) / others: 52(luke), 52(4atj), 52(att), 53(xsot), 54(mukundan)
 # ======================= 51 ======================
-p=lambda g:sum([[sum([[v]*2for v in s],[])]*2for s in g],[])
+# p=lambda g:sum([[sum([[v]*2for v in s],[])]*2for s in g],[])
+p=lambda s,a=1:sum([[a and p(v,0)or v]*2for v in s],[])
+
 # p=lambda g:sum([[(s*2+(s*2)[1:]*~-len(g))[::len(g)]]*2for s in g],[])
 # p=lambda g:sum([[(s[:1]+(s*2)[1:]*len(g))[::len(g)]]*2for s in g],[])
 
