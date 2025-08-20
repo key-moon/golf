@@ -99,8 +99,7 @@ def generate_release_note(commit1: str, commit2: str, output_file: str):
         
         improvement = signed_str(new_result.length - old_result.length) if old_result.length and new_result.length else "-"
 
-        f.write(f"### {file_path} ({improvement})\n")
-        f.write(f"{create_github_link("main", f"vis_many/task{task:03d}.png", "vis_many")}\n")
+        f.write(f"### {file_path} ({improvement}, {create_github_link('main', f'vis_many/task{task:03d}.png', 'vis_many')})\n")
         
         # Create GitHub links for old and new versions
         old_link = create_github_link(commit1, file_path, "old")
