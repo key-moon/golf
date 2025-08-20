@@ -1,4 +1,6 @@
+# 類題: 006 006より 1 byte 少ない
 # best: 50(mukundan, luke, 4atj, xsot, ovs, att, sisyphus) / others: 54(duckyluuk), 56(kg583), 56(Seek64), 56(joking), 56(kabutack)
+# p=lambda g:[[6*any(s)for s in zip(*zip(*[iter(r)]*3))]for r in g]
 # p=lambda g:[[6*(0<sum(s))for s in zip(r,r[3:])]for r in g]
 # p=lambda g:[[6*(0<a+b)for a,b in zip(r,r[3:])]for r in g]
 # p=lambda g:[[6*(0<r[i]+r[i+3])for i in(0,1,2)]for r in g]
