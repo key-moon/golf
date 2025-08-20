@@ -1,1 +1,1 @@
-def p(g):n=len(g)//2;return[[x*(i==n)for i,x in enumerate(r)]for r in g]
+p=lambda g:[[v*(i==len(s)//2)for i,v in enumerate(s)]for s in g]
