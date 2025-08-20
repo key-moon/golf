@@ -52,7 +52,7 @@ def get_changed_dist(commit1: str, commit2: str):
     text=True,
     check=True
   )
-  return [Path(path) for path in result.stdout.strip().split("\n") if path.strip()]
+  return [Path(path) for path in result.stdout.strip().split("\n") if path.strip() and "results.json" not in path]
 
 def get_file_content(commit: str, file_path: Path):
   """Get the content of a file at a specific commit."""
@@ -91,7 +91,7 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
     note_buffer = ""
 
   _add_note(f" - score: {signed_str(improvement)} ({old_results.score} → {new_results.score})\n")
-  _add_note(f" - changed: {len(changed_files) - 1}\n")
+  _add_note(f" - changed: {len(changed_files)}\n")
   _add_note(f" - commits: {len(commits)}\n" if commits else "")
   _flush()
 
@@ -157,6 +157,6 @@ if __name__ == "__main__":
   
   try:
     generate_release_note(args.commit1, args.commit2, args.output)
+    print(f"Release note generated under {args.output}") 
   except Exception as e:
     print(e)
-  print(f"Release note generated under {args.output}") 

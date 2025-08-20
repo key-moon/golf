@@ -72,9 +72,11 @@ jobs:
 
       - name: Send release to Discord
         run: |
-          DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
-          DISCORD_PAYLOAD=$(python -c 'import json; print(json.dumps({ "content": open("release_note.md").read(), "timestamp": __import__("datetime").datetime.now().isoformat() }))')
-          curl -X POST -H "Content-Type: application/json" -d "$DISCORD_PAYLOAD" "$DISCORD_WEBHOOK_URL"
+            DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
+            for file in tmp/release_note_*.md; do
+              DISCORD_PAYLOAD=$(python -c 'import json; import sys; from datetime import datetime; print(json.dumps({ "content": open(sys.argv[1]).read(), "timestamp": datetime.now().isoformat() }))' "$file")
+              curl -X POST -H "Content-Type: application/json" -d "$DISCORD_PAYLOAD" "$DISCORD_WEBHOOK_URL"
+            done
 
       - name: Make timestamp (for tag/name)
         id: date
@@ -87,7 +89,7 @@ jobs:
         with:
           tag_name: submission-${{ steps.date.outputs.ts }}
           name: Submission ${{ steps.date.outputs.human }}
-          body_path: release_note.md
+          body_path: tmp/release_note.md
           files: submission.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
