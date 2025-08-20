@@ -1,1 +1,1 @@
-p=lambda s,a=1:sum([[a and p(v,0)or v]*3for v in s],[])
+p=lambda s:sum([[v*0!=0and p(v)or v]*3for v in s],[])
