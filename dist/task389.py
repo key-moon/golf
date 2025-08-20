@@ -1,1 +1,1 @@
-def p(g):d=next(x for r in g for x in r if x-5);return[[d*(x==5)for x in r]for r in g]
+p=lambda g:[[(v==5)*(sum({*sum(g,[])})-v)for v in s]for s in g]
