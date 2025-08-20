@@ -1,1 +1,1 @@
-p=lambda g:sum([[sum([[v]*3for v in s],[])]*3for s in g],[])
+p=lambda g:sum([[(s[:1]+(s*3)[1:]*3)[::3]]*3for s in g],[])

@@ -232,7 +232,7 @@
 | [220](/vis/task220.png) | [base_code](/base_code/task220_1.py) | forplain/raw | [173](/dist/task220.py) (+79) | 94 🔴 | [vis-many](/vis_many/task220.png) | not worth compress |
 | [221](/vis/task221.png) | [base_code](/base_code/task221_2.py) | forplain/raw | [191](/dist/task221.py) (+97) | 94 🔴 | [vis-many](/vis_many/task221.png) | not worth compress |
 | [222](/vis/task222.png) | [base_code](/base_code/task222_2.py) | forcomp-s/zlib-zopfli | [269](/dist/task222.py) (+98) | 171 🔴 | [vis-many](/vis_many/task222.png) |  |
-| [223](/vis/task223.png) | [base_yu](/base_yu/task223.py) | raw/raw | [60](/dist/task223.py) (+8) | 52 🔴 | [vis-many](/vis_many/task223.png) | not worth compress |
+| [223](/vis/task223.png) | [base_yu](/base_yu/task223.py) | raw/raw | [59](/dist/task223.py) (+7) | 52 🔴 | [vis-many](/vis_many/task223.png) | not worth compress |
 | [224](/vis/task224.png) | [base_code](/base_code/task224.py) | raw/zlib-zopfli | [226](/dist/task224.py) (+49) | 177 🔴 | [vis-many](/vis_many/task224.png) | encode:+2 |
 | [225](/vis/task225.png) | [base_code](/base_code/task225.py) | forcomp-t/zlib-zopfli | [269](/dist/task225.py) (+99) | 170 🔴 | [vis-many](/vis_many/task225.png) |  |
 | [226](/vis/task226.png) | [base_notebooks](/base_notebooks/task226_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/zlib-zopfli | [234](/dist/task226.py) (+80) | 154 🔴 | [vis-many](/vis_many/task226.png) |  |

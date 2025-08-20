@@ -346,11 +346,11 @@
 | [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | forplain/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) | not worth compress |
 | [295](/vis/task295.png) | [base_yu](/base_yu/task295.py) | forplain/raw | [61](/dist/task295.py) (+7) | 54 🔴 | [vis-many](/vis_many/task295.png) | not worth compress |
 | [031](/vis/task031.png) | [base_keymoon](/base_keymoon/task031.py) | raw/raw | [60](/dist/task031.py) (+8) | 52 🔴 | [vis-many](/vis_many/task031.png) | not worth compress |
-| [223](/vis/task223.png) | [base_yu](/base_yu/task223.py) | raw/raw | [60](/dist/task223.py) (+8) | 52 🔴 | [vis-many](/vis_many/task223.png) | not worth compress |
 | [293](/vis/task293.png) | [base_yu](/base_yu/task293.py) | raw/raw | [60](/dist/task293.py) (0) | 60  | [vis-many](/vis_many/task293.png) | not worth compress |
 | [307](/vis/task307.png) | [base_yu](/base_yu/task307.py) | raw/raw | [60](/dist/task307.py) (+9) | 51 🔴 | [vis-many](/vis_many/task307.png) | not worth compress |
 | [026](/vis/task026.png) | [base_notebooks](/base_notebooks/task026_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [59](/dist/task026.py) (+7) | 52 🔴 | [vis-many](/vis_many/task026.png) | not worth compress |
 | [177](/vis/task177.png) | [base_yu](/base_yu/task177.py) | forplain/raw | [59](/dist/task177.py) (+4) | 55 🔴 | [vis-many](/vis_many/task177.png) | not worth compress |
+| [223](/vis/task223.png) | [base_yu](/base_yu/task223.py) | raw/raw | [59](/dist/task223.py) (+7) | 52 🔴 | [vis-many](/vis_many/task223.png) | not worth compress |
 | [321](/vis/task321.png) | [base_yu](/base_yu/task321.py) | raw/raw | [59](/dist/task321.py) (+4) | 55 🔴 | [vis-many](/vis_many/task321.png) | not worth compress |
 | [298](/vis/task298.png) | [base_yu](/base_yu/task298.py) | raw/raw | [58](/dist/task298.py) (+3) | 55 🔴 | [vis-many](/vis_many/task298.png) | not worth compress |
 | [372](/vis/task372.png) | [base_code](/base_code/task372.py) | raw/raw | [58](/dist/task372.py) (+10) | 48 🔴 | [vis-many](/vis_many/task372.png) | not worth compress |
