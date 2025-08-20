@@ -1,4 +1,1 @@
-def p(g):
- a=g[0];n=len(a)
- for i in range(len(g)-2):g[i+2]=n*[a[i%n]]
- return g
+p=lambda g:g[:2]+[[v]*len(g[0])for v in g[0]]*2
