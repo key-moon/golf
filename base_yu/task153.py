@@ -1,4 +1,4 @@
-def p(g,R=range(3)):
+def p(g,R=(0,1,2)):
  G=sum(g,[])
  H=sum(zip(*g),())
  a,b,_=sorted({*G},key=G.count)
