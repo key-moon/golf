@@ -94,6 +94,7 @@ def handle_results(results: list[TaskResult]):
   print(f"accepted: {accepted}/400, {score=}")
 
   others_bests = get_scores_per_task()
+  others_bests_sum = sum(bests[0]["score"] for bests in others_bests)
 
   other_mds: list[tuple[str, str, Callable[[tuple[TaskResult, list[TaskSubmissionWithName]]], int | float]]] = [
     ("diff", "README.md", lambda x: x[1][0]["score"] - (x[0].length if x[0].length else 999999)),
@@ -109,6 +110,7 @@ def handle_results(results: list[TaskResult]):
         file.write("# Golf Stats\n\n")
         file.write(f"Accepted: {accepted}/400\n")
         file.write(f"Score: {score}\n\n")
+        file.write(f"Best Score: {others_bests_sum}\n\n")
         file.write("- [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)\n")
         file.write("- [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)\n\n")
 
