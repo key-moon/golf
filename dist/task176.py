@@ -1,8 +1,8 @@
-def p(g):
- a,b,c=g;t=6,4,0,0,0,1,3,1,0,0,0,4
- for i in range(len(a)):
-  o=t[i%12]
-  if o&1:a[i]=4
-  if o&2:b[i]=4
-  if o&4:c[i]=4
- return g
+def p(j):
+ A,c,E=j;k=6,4,0,0,0,1,3,1,0,0,0,4
+ for W in range(len(A)):
+  l=k[W%12]
+  if l&1:A[W]=4
+  if l&2:c[W]=4
+  if l&4:E[W]=4
+ return j

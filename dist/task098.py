@@ -1,2 +1,2 @@
-B=range
-def p(g):C,D=len(g),len(g[0]);return[[g[A][B]if g[A][B]and any(A<0 or A>=C or B<0 or B>=D or g[A][B]==0for(A,B)in[(A-1,B),(A+1,B),(A,B-1),(A,B+1)])else 0for B in B(D)]for A in B(C)]
+A=enumerate
+p=lambda g:[[x if any(g[i+A][j+B]==0for(A,B)in[(0,1),(1,0),(0,-1),(-1,0)]if 0<=i+A<len(g)and 0<=j+B<len(g[0]))and x!=0else 0for(j,x)in A(r)]for(i,r)in A(g)]

@@ -1,1 +1,1 @@
-def p(g):t=[i for r in g for(i,x)in enumerate(r)if x>0];a,b=min(t),max(t)+1;return[r[a:b]*2for r in g if max(r)>0]
+def p(j):A=[i for r in j for(i,x)in enumerate(r)if x>0];c,B=min(A),max(A)+1;return[r[c:B]*2for r in j if max(r)>0]

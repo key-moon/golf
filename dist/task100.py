@@ -1,1 +1,1 @@
-def p(g):t=sum(g,[]);m=max(t,key=t.count);c=m or max(t,key=lambda x:t.count(x)if x else-1);return[[c,c],[c,c]]
+p=lambda g:[sorted(set(a:=sum(g,[])),key=a.count)[1:2]*2]*2

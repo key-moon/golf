@@ -16,9 +16,9 @@ def og_strip(code: str | bytes):
     lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
     return "\n".join(lines).strip()
 
-  code = re.sub(rf"(?<!['\"])(\w) *([{syms}])(?!['\"])", r"\1\2", code)
-  code = re.sub(rf"(?<!['\"])([{syms}]) *(\w)(?!['\"])", r"\1\2", code)
-  code = re.sub(rf"(?<!['\"])([{syms}]) *([{syms}])(?!['\"])", r"\1\2", code)
+  code = re.sub(rf"(\w) *([{syms}])(?!.*['\"])", r"\1\2", code)
+  code = re.sub(rf"([{syms}]) *(\w)(?!.*['\"])", r"\1\2", code)
+  code = re.sub(rf"([{syms}]) *([{syms}])(?!.*['\"])", r"\1\2", code)
   lines = [l for l in code.strip().splitlines() if not l.strip().startswith("#") and l.strip()]
   if len(lines) == 1: return lines[0]
   res = ""

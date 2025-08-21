@@ -1,1 +1,1 @@
-p=lambda g:[Y+Y[::-1]for Y in g]
+p=lambda g:[F+F[::-1]for F in g]
