@@ -1,1 +1,1 @@
-p=lambda g:[[8*(not A|B)for(A,B)in zip(A,A[4:])]for A in g]
+p=lambda g:[[8-8*any(r[i::4])for i in(0,1,2)]for r in g]

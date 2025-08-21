@@ -1,1 +1,1 @@
-p=lambda g:[[(x!=y)*3for x,y in zip(*c)]for c in zip(g,g[5:])]
+p=lambda g:[[any(a)*3for a in zip(*c)]for c in zip(g,g[5:])]
