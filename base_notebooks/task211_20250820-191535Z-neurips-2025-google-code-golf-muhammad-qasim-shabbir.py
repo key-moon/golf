@@ -1,0 +1,1 @@
+def p(g):g=[R[::-1]+R for R in g];u=[g[2],g[1],g[0]];g=u+g+u;return g

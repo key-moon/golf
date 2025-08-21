@@ -1,0 +1,1 @@
+p=lambda g:[[({1:1,7:5,8:8}).get(x,x)for x in r]for r in g]

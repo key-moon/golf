@@ -1,0 +1,19 @@
+{
+  "id": "isakatsuyoshi/resolved-past-vulnerabilities",
+  "id_no": 89510710,
+  "title": "[Resolved] Past Vulnerabilities",
+  "code_file": "resolved-past-vulnerabilities.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

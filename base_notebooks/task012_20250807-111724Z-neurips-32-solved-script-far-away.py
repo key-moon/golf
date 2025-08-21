@@ -1,0 +1,1 @@
+def p(g,d=range(-2,3),E=enumerate,A=abs):G=[A[:]for A in g];[G[I+D].__setitem__(C+F,H if A(D)==A(F)else B[C-1])for(I,B)in E(g)for(C,H)in E(B)if H and B[C-1]*B[C+1]for D in d for F in d if A(D)==A(F)or not D*F];return G

@@ -47,6 +47,12 @@ known_garbage = [
 normalize("def p(g):\nreturn g"),
 normalize("def p(g):\nreturn [row[:] for row in g]"),
 normalize("p=lambda g:g"),
+normalize("""
+class A:
+    def __eq__(self, o):
+        return True
+def p(g):
+    return A()""")
 ]
 
 
@@ -66,7 +72,6 @@ if __name__ == "__main__":
   zip_paths.sort()
 
   for zip_path in tqdm(zip_paths):
-    print(zip_path)
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
       for name in zip_ref.namelist():
         task_match = re.match(r"task(\w{3})\.py$", name)
@@ -74,7 +79,7 @@ if __name__ == "__main__":
           print(f"Invalid file name in {zip_path}: {name}")
           continue
         task_number = int(task_match.group(1))
-        path_name = f"base_notebooks/task{task_number:03}_{root.split('/')[-1]}.py"        
+        path_name = f"base_notebooks/task{task_number:03}_{zip_path.split('/')[-2]}.py"        
         extracted_path = os.path.join(tmp_dir, "tmpppp.py")
         with open(extracted_path, "wb") as f:
           f.write(zip_ref.read(name))
@@ -90,11 +95,11 @@ if __name__ == "__main__":
         if digest in session_digests:
           continue
         session_digests.add(digest)
-        if digest not in checked_hash:
+        if digest not in checked_hash or not checked_hash[digest]:
           verdict = False
           try:
             result = subprocess.run(
-              [sys.executable, "-c", f"from gather_notebooks import safe_check; print(safe_check({extracted_path!r},{task_number}))"],
+              [sys.executable, "-c", f"from tools.gather_notebooks import safe_check; print(safe_check({extracted_path!r},{task_number}))"],
               capture_output=True, text=True, check=True
             )
             verdict = result.stdout.strip() == "True"

@@ -1,0 +1,1 @@
+p=lambda g:[R[:int(len(g[0])/3)]for R in g]
