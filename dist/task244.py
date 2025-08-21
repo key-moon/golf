@@ -1,1 +1,1 @@
-p=lambda g:(k:=[i+1for i in range(8)if g[0]!=g[i]][0])and[s[::-k]for s in g[::k]]
+p=lambda g:[[s[::-k]for s in g[::k]]for k in b""if g[0]!=g[k-1]][0]
