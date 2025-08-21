@@ -9,9 +9,10 @@
 # 61
 # p=lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if{*r}-{0}]
 # 61
-# p=lambda g:[*filter(max,map(list,zip(*filter(max,zip(*g)))))]
+# lambda g:[*filter(max,map(list,zip(*filter(max,zip(*g)))))]
 # 60
-# p=lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if max(r)]
+# lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if max(r)]
+# lambda g,F=filter:[*F(max,map(list,zip(*F(max,zip(*g)))))]
 
 # p=lambda g:[[c[0]for c in zip(r,*g)if max(c)]for r in g if max(r)]
 
