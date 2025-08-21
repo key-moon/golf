@@ -64,6 +64,7 @@
 | [033](/vis/task033.png) | [base_code](/base_code/task033_2.py) | forplain/raw | [189](/dist/task033.py) (+112) | 77 🔴 | [vis-many](/vis_many/task033.png) |  |
 | [358](/vis/task358.png) | [base_code](/base_code/task358_1.py) | forcomp-s/zlib-zopfli | [257](/dist/task358.py) (+152) | 105 🔴 | [vis-many](/vis_many/task358.png) |  |
 | [237](/vis/task237.png) | [base_code](/base_code/task237.py) | forplain/raw | [162](/dist/task237.py) (+95) | 67 🔴 | [vis-many](/vis_many/task237.png) |  |
+| [070](/vis/task070.png) | [base_code](/base_code/task070.py) | forplain/raw | [198](/dist/task070.py) (+116) | 82 🔴 | [vis-many](/vis_many/task070.png) |  |
 | [161](/vis/task161.png) | [base_yu](/base_yu/task161.py) | forplain/raw | [198](/dist/task161.py) (+116) | 82 🔴 | [vis-many](/vis_many/task161.png) |  |
 | [384](/vis/task384.png) | [base_code](/base_code/task384.py) | forplain/raw | [154](/dist/task384.py) (+90) | 64 🔴 | [vis-many](/vis_many/task384.png) | not worth compress |
 | [187](/vis/task187.png) | [base_notebooks](/base_notebooks/task187_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forcomp-t/zlib-9 | [253](/dist/task187.py) (+147) | 106 🔴 | [vis-many](/vis_many/task187.png) | encode:+2 |
@@ -76,13 +77,11 @@
 | [065](/vis/task065.png) | [base_notebooks](/base_notebooks/task065_20250807-051947Z-simpletasksolved-tetsuro-tsuda.py) | raw/zlib-zopfli | [234](/dist/task065.py) (+133) | 101 🔴 | [vis-many](/vis_many/task065.png) |  |
 | [302](/vis/task302.png) | [base_code](/base_code/task302.py) | forcomp-t/zlib-zopfli | [224](/dist/task302.py) (+127) | 97 🔴 | [vis-many](/vis_many/task302.png) |  |
 | [352](/vis/task352.png) | [base_code](/base_code/task352.py) | forcomp-s/zlib-zopfli | [196](/dist/task352.py) (+111) | 85 🔴 | [vis-many](/vis_many/task352.png) | encode:+1 |
-| [070](/vis/task070.png) | [base_code](/base_code/task070.py) | forplain/raw | [198](/dist/task070.py) (+112) | 86 🔴 | [vis-many](/vis_many/task070.png) |  |
 | [259](/vis/task259.png) | [base_code](/base_code/task259_1.py) | forcomp-s/zlib-zopfli | [196](/dist/task259.py) (+110) | 86 🔴 | [vis-many](/vis_many/task259.png) | encode:+1 |
 | [381](/vis/task381.png) | [base_notebooks](/base_notebooks/task381_20250807-111724Z-neurips-32-solved-script-far-away.py) | raw/raw | [205](/dist/task381.py) (+115) | 90 🔴 | [vis-many](/vis_many/task381.png) |  |
 | [294](/vis/task294.png) | [base_notebooks](/base_notebooks/task294_20250807-172915Z-a-bit-more-of-code-golf-188-400-jacekwl.py) | forplain/raw | [173](/dist/task294.py) (+97) | 76 🔴 | [vis-many](/vis_many/task294.png) |  |
 | [350](/vis/task350.png) | [base_code](/base_code/task350_2.py) | forcomp-t/zlib-zopfli | [215](/dist/task350.py) (+120) | 95 🔴 | [vis-many](/vis_many/task350.png) | encode:+2 |
 | [168](/vis/task168.png) | [base_code](/base_code/task168.py) | forcomp-t/zlib-zopfli | [282](/dist/task168.py) (+157) | 125 🔴 | [vis-many](/vis_many/task168.png) |  |
-| [178](/vis/task178.png) | [base_code](/base_code/task178.py) | raw/raw | [124](/dist/task178.py) (+69) | 55 🔴 | [vis-many](/vis_many/task178.png) | not worth compress |
 | [365](/vis/task365.png) | [base_notebooks](/base_notebooks/task365_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-zopfli | [251](/dist/task365.py) (+139) | 112 🔴 | [vis-many](/vis_many/task365.png) | encode:+1 |
 | [374](/vis/task374.png) | [base_notebooks](/base_notebooks/task374_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | forcomp-t/zlib-zopfli | [291](/dist/task374.py) (+161) | 130 🔴 | [vis-many](/vis_many/task374.png) |  |
 | [002](/vis/task002.png) | [base_yu](/base_yu/task002.py) | forcomp-t/zlib-zopfli | [203](/dist/task002.py) (+112) | 91 🔴 | [vis-many](/vis_many/task002.png) |  |
@@ -199,6 +198,7 @@
 | [263](/vis/task263.png) | [base_notebooks](/base_notebooks/task263_20250809-140909Z-qwen2-5-32b-arc-local-score-liah.py) | forcomp-t/zlib-zopfli | [200](/dist/task263.py) (+64) | 136 🔴 | [vis-many](/vis_many/task263.png) |  |
 | [165](/vis/task165.png) | [base_yu](/base_yu/task165.py) | raw/raw | [204](/dist/task165.py) (+65) | 139 🔴 | [vis-many](/vis_many/task165.png) |  |
 | [383](/vis/task383.png) | [base_yu](/base_yu/task383.py) | raw/zlib-zopfli | [236](/dist/task383.py) (+75) | 161 🔴 | [vis-many](/vis_many/task383.png) |  |
+| [148](/vis/task148.png) | [base_yu](/base_yu/task148.py) | forplain/zlib-zopfli | [225](/dist/task148.py) (+71) | 154 🔴 | [vis-many](/vis_many/task148.png) |  |
 | [061](/vis/task061.png) | [base_code](/base_code/task061_3.py) | forplain/raw | [92](/dist/task061.py) (+29) | 63 🔴 | [vis-many](/vis_many/task061.png) | not worth compress |
 | [162](/vis/task162.png) | [base_notebooks](/base_notebooks/task162_20250810-053358Z-oh-barnacles-jazivxt.py) | raw/raw | [146](/dist/task162.py) (+46) | 100 🔴 | [vis-many](/vis_many/task162.png) | not worth compress |
 | [119](/vis/task119.png) | [base_yu](/base_yu/task119.py) | forplain/raw | [179](/dist/task119.py) (+56) | 123 🔴 | [vis-many](/vis_many/task119.png) | not worth compress |
@@ -226,7 +226,6 @@
 | [012](/vis/task012.png) | [base_notebooks](/base_notebooks/task012_20250808-133747Z-let-s-see-dude-190-think-bruce.py) | raw/raw | [218](/dist/task012.py) (+55) | 163 🔴 | [vis-many](/vis_many/task012.png) |  |
 | [304](/vis/task304.png) | [base_code](/base_code/task304.py) | forplain/raw | [123](/dist/task304.py) (+31) | 92 🔴 | [vis-many](/vis_many/task304.png) | not worth compress |
 | [357](/vis/task357.png) | [base_code](/base_code/task357_1.py) | forplain/raw | [123](/dist/task357.py) (+31) | 92 🔴 | [vis-many](/vis_many/task357.png) | not worth compress |
-| [148](/vis/task148.png) | [base_yu](/base_yu/task148.py) | forplain/zlib-zopfli | [225](/dist/task148.py) (+56) | 169 🔴 | [vis-many](/vis_many/task148.png) |  |
 | [306](/vis/task306.png) | [base_keymoon](/base_keymoon/task306.py) | raw/raw | [109](/dist/task306.py) (+27) | 82 🔴 | [vis-many](/vis_many/task306.png) | not worth compress |
 | [154](/vis/task154.png) | [base_yu](/base_yu/task154.py) | forplain/raw | [146](/dist/task154.py) (+36) | 110 🔴 | [vis-many](/vis_many/task154.png) | not worth compress |
 | [238](/vis/task238.png) | [base_yu](/base_yu/task238.py) | forcomp-t/zlib-zopfli | [326](/dist/task238.py) (+79) | 247 🔴 | [vis-many](/vis_many/task238.png) |  |
@@ -310,7 +309,6 @@
 | [262](/vis/task262.png) | [base_yu](/base_yu/task262.py) | raw/raw | [42](/dist/task262.py) (+3) | 39 🔴 | [vis-many](/vis_many/task262.png) | not worth compress |
 | [386](/vis/task386.png) | [base_yu](/base_yu/task386.py) | raw/raw | [56](/dist/task386.py) (+4) | 52 🔴 | [vis-many](/vis_many/task386.png) | not worth compress |
 | [375](/vis/task375.png) | [base_yu](/base_yu/task375.py) | raw/raw | [57](/dist/task375.py) (+4) | 53 🔴 | [vis-many](/vis_many/task375.png) | not worth compress |
-| [177](/vis/task177.png) | [base_yu](/base_yu/task177.py) | forplain/raw | [59](/dist/task177.py) (+4) | 55 🔴 | [vis-many](/vis_many/task177.png) | not worth compress |
 | [321](/vis/task321.png) | [base_yu](/base_yu/task321.py) | raw/raw | [59](/dist/task321.py) (+4) | 55 🔴 | [vis-many](/vis_many/task321.png) | not worth compress |
 | [151](/vis/task151.png) | [base_notebooks](/base_notebooks/task151_20250818-060100Z-oh-barnacles-jazivxt.py) | raw/raw | [134](/dist/task151.py) (+9) | 125 🔴 | [vis-many](/vis_many/task151.png) | not worth compress |
 | [236](/vis/task236.png) | [base_yu](/base_yu/task236.py) | raw/raw | [64](/dist/task236.py) (+4) | 60 🔴 | [vis-many](/vis_many/task236.png) | not worth compress |
@@ -364,6 +362,7 @@
 | [155](/vis/task155.png) | [base_notebooks](/base_notebooks/task155_20250818-060100Z-oh-barnacles-jazivxt.py) | raw/raw | [18](/dist/task155.py) (0) | 18  | [vis-many](/vis_many/task155.png) | not worth compress |
 | [164](/vis/task164.png) | [base_notebooks](/base_notebooks/task164_20250817-121448Z-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | raw/raw | [32](/dist/task164.py) (0) | 32  | [vis-many](/vis_many/task164.png) | not worth compress |
 | [172](/vis/task172.png) | [base_notebooks](/base_notebooks/task172_20250806-061241Z-a-bit-of-code-golf-jacekwl.py) | raw/raw | [20](/dist/task172.py) (0) | 20  | [vis-many](/vis_many/task172.png) | not worth compress |
+| [177](/vis/task177.png) | [base_keymoon](/base_keymoon/task177.py) | raw/raw | [55](/dist/task177.py) (0) | 55  | [vis-many](/vis_many/task177.png) | not worth compress |
 | [179](/vis/task179.png) | [base_keymoon](/base_keymoon/task179.py) | raw/raw | [31](/dist/task179.py) (0) | 31  | [vis-many](/vis_many/task179.png) | not worth compress |
 | [197](/vis/task197.png) | [base_keymoon](/base_keymoon/task197.py) | raw/raw | [54](/dist/task197.py) (0) | 54  | [vis-many](/vis_many/task197.png) | not worth compress |
 | [210](/vis/task210.png) | [base_notebooks](/base_notebooks/task210_20250818-060100Z-oh-barnacles-jazivxt.py) | raw/raw | [20](/dist/task210.py) (0) | 20  | [vis-many](/vis_many/task210.png) | not worth compress |
@@ -390,6 +389,7 @@
 | [071](/vis/task071.png) | [base_yu](/base_yu/task071.py) | forplain/zlib-zopfli | [222](/dist/task071.py) (-2) | 224 🟢 | [vis-many](/vis_many/task071.png) | encode:+1 |
 | [325](/vis/task325.png) | [base_keymoon](/base_keymoon/task325.py) | forplain/raw | [205](/dist/task325.py) (-2) | 207 🟢 | [vis-many](/vis_many/task325.png) |  |
 | [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/zlib-zopfli | [304](/dist/task255.py) (-5) | 309 🟢 | [vis-many](/vis_many/task255.png) |  |
+| [178](/vis/task178.png) | [base_keymoon](/base_keymoon/task178.py) | raw/raw | [54](/dist/task178.py) (-1) | 55 🟢 | [vis-many](/vis_many/task178.png) | not worth compress |
 | [284](/vis/task284.png) | [base_keymoon](/base_keymoon/task284.py) | forcomp-t/zlib-9 | [254](/dist/task284.py) (-8) | 262 🟢 | [vis-many](/vis_many/task284.png) | encode:+1 |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | raw/zlib-zopfli | [356](/dist/task096.py) (-17) | 373 🟢 | [vis-many](/vis_many/task096.png) |  |
 | [308](/vis/task308.png) | [base_yu](/base_yu/task308.py) | raw/zlib-zopfli | [263](/dist/task308.py) (-14) | 277 🟢 | [vis-many](/vis_many/task308.png) | encode:+2 |

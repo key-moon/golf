@@ -1,8 +1,1 @@
-def p(g):
- o=[]
- for v in g:
-  x=v[0];r=[x]
-  for y in v[1:]:
-   if y!=x:r+=[x:=y]
-  if not(o and r==o[-1]):o+=[r]
- return o
+p=lambda g:[[int,p][(g:=r)*0!=0](r)for r in g if r!=g]

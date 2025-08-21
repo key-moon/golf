@@ -1,2 +1,1 @@
-A=filter
-p=lambda g:[*A(len,[[*A(int,s)][::-1]for s in g])]
+p=lambda g:[[*filter(int,r[::-1])]for r in g if max(r)]
