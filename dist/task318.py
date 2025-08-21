@@ -1,1 +1,1 @@
-def p(g):return[[3*(a!=b)for(a,b)in zip(x,y)]for(x,y)in zip(g,g[5:])]
+p=lambda g:[[(x!=y)*3for x,y in zip(*c)]for c in zip(g,g[5:])]

@@ -1,1 +1,1 @@
-def p(g):return[[3*((a-b)%3==1)for a,b in zip(x,y)]for x,y in zip(g,g[5:])]
+p=lambda g:[[3*(x^y//2)for x,y in zip(*c)]for c in zip(g,g[5:])]
