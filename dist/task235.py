@@ -1,1 +1,1 @@
-p=lambda g:[[(45-g[2][x]-2*g[2][x+1]-4*g[1][x+1])//5]*3for x in range(0,15,5)]
+p=lambda g:[[9-sum(g[2][i:i+3])/5-g[1][i]*.8]*3for i in(1,6,11)]
