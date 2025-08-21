@@ -1,2 +1,1 @@
-import re
-p=lambda g:[[int(re.findall(r'([1-9]), 0[^[]+\1',str(g))[0][0])]]
+p=lambda g:[[c for c in range(1,10)if len({s.count(c)for s in g})>2]]
