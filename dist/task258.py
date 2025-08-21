@@ -1,5 +1,1 @@
-def p(j):
- for A in j:
-  for c in range(len(A)-2):
-   if A[c]&A[c+2]:A[c+1]=2
- return j
+p=lambda g:[[y+x*z*2for x,y,z in zip([0]+s,s,s[1:]+[0])]for s in g]
