@@ -1,1 +1,1 @@
-def p(g):f=len({*sum(g,[])}-{0});return[sum([[x]*f for x in r],[])for r in g for _ in[0]*f]
+p=lambda s:sum([[v*0!=0and p(v+s)or v]*(len({*str(s)})-5)for v in s[:3]],[])
