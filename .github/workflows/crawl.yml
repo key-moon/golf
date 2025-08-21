@@ -26,17 +26,10 @@ jobs:
         with:
           version: latest
 
-      - name: Install deps
-        run: |
-          set -euxo pipefail
-          uv sync
-          uv venv
-          echo 'export PYTHONPATH="$(dirname "$VIRTUAL_ENV")"' >> .venv/bin/activate
-
       - name: Update public data
         run: |
           set -euxo pipefail
-          source .venv/bin/activate
+          source tools/setup.sh
           python tools/update_public_data.py
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}

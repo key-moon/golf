@@ -24,17 +24,10 @@ jobs:
         with:
           version: latest
 
-      - name: Install deps
-        run: |
-          set -euxo pipefail
-          uv sync
-          uv venv
-          echo 'export PYTHONPATH="$(dirname "$VIRTUAL_ENV")"' >> .venv/bin/activate
-
       - name: Build submission.zip
         run: |
           set -euxo pipefail
-          source .venv/bin/activate
+          source tools/setup.sh
           make submission.zip
 
       - name: Commit and push
@@ -55,8 +48,8 @@ jobs:
         id: generate_notes
         run: |
           set -euxo pipefail
-          source .venv/bin/activate
-          
+          source tools/setup.sh
+
           # Get the previous tag to compare against
           PREV_TAG=$(git tag --sort=-creatordate | grep '^submission-' | head -1)
           if [ -z "$PREV_TAG" ]; then
