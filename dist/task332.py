@@ -1,5 +1,1 @@
-def p(g):
- t=len(g[0])&1^1
- for r in g:
-  for(j,v)in enumerate(r):r[j]=v-2*(v==5and j&1==t)
- return g
+p=lambda g:[[v*.6**(len(s)-i&1)for i,v in enumerate(s)]for s in g]
