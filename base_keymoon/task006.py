@@ -1,4 +1,3 @@
-# 類題: 347 347より 1 byte 多い
 # best: 51(mukundan, luke, 4atj, ovs, att, sisyphus) / others: 53(kg583), 53(cg), 53(Seek64), 53(HashPanda), 53(biz)
 #  b"012"
 # (0,1,2)
