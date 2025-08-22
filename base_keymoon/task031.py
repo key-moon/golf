@@ -1,4 +1,5 @@
 # best: 52(biz, luke, 4atj, sisyphus) / others: 54(att), 56(mukundan), 58(Seek64), 58(joking), 58(natte)
+# 類題: 57
 # 切り出し
 # filter max で 0 の行を消してる 転地して列も同様に 最後にもっかい転置
 # なんだけど、あと6 byte縮むらしい。一体どこで→bestはさらに2 byte縮んだらしい 意味不明
