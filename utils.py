@@ -2,6 +2,7 @@ import base64
 import glob
 import json
 from typing import TypedDict
+import os
 
 def signed_str(x: int):
   return f"+{x}" if 0 <= x else str(x)
@@ -24,8 +25,10 @@ Case = TypedDict('Case', {'input': list[list[int]], 'output': list[list[int]]})
 Cases = list[Case]
 Task = TypedDict('Task', {'train': list[Case], 'test': list[Case], 'arc-gen': list[Case]})
 
+WORKSPACE_DIR = os.path.dirname(__file__)
+
 def get_task(i: int) -> Task:
-  return json.load(open(f"tasks/task{i:03}.json", "r"))
+  return json.load(open(os.path.join(WORKSPACE_DIR, "tasks", f"task{i:03}.json"), "r"))
 
 def get_cases(i: int) -> Cases:
   task = get_task(i)
