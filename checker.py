@@ -1,13 +1,14 @@
 import copy
 from dataclasses import dataclass
+import json
 import os
 import signal
 import sys
 import traceback
-from typing import Optional, Tuple
+from typing import Any, Optional, Tuple
 import matplotlib.pyplot as plt
 import inspect
-import builtins, sys
+import sys
 
 import numpy as np
 
@@ -72,7 +73,7 @@ def check(path: str, task: dict, knockout=-1):
       else:
        output = program(example_copy["input"])
       signal.alarm(0)
-      if output == example_copy["output"]:
+      if json.loads(json.dumps(output)) == example_copy["output"]:
         right += 1
       else:
         outputs.append((example, case, output))
