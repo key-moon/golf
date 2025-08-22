@@ -1,1 +1,1 @@
-p=lambda g:[g[:(h:=len(g)//2)],[s[:(w:=len(g[0])//2)]for s in g]][h<w or g[0]!=g[h]]
+p=lambda g:[g[:(h:=len(g)//2)],[s[:(w:=len(s)//2)]for s in g]][g[0]!=g[h]or h<w]
