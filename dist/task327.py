@@ -1,2 +1,1 @@
-A=range
-def p(g):h=len(g);n=h*2;return[[sum(g[r-k][c-k]if 0<=r-k<h and 0<=c-k<h else 0for k in A(n))for c in A(n)]for r in A(n)]
+p=lambda g,R=range(6):[[max(3>i-k>-1<j-k<3and g[i-k][j-k]for k in R)for j in R]for i in R]
