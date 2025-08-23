@@ -1,6 +1,1 @@
-import re
-A=re.sub
-def p(g):
- d=A('[[ ,]','',str(g))
- for x in d+d:d=A('0(?=('+'.'*len(g)+')?1)','1',d)[::-1]
- return[[*map(int,r)]for r in d.split(']')[:-2]]
+p=lambda g,c=80:c and p([[y or x==1for(x,y)in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
