@@ -128,7 +128,8 @@ async function render(){
     rows.forEach(r=>{
       const tr=document.createElement('tr');
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'');
-      tr.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? winBg : r.diff>0? loseBg : '') : '';
+      // stronger background with light alpha for list view
+      tr.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? 'rgba(0,180,0,0.15)' : r.diff>0? 'rgba(220,0,0,0.15)' : '') : '';
       const baseCell = r.base ? `<a href="#" class="open-code" data-path="${encodeURIComponent(r.base_full)}" title="${r.base_full}">${r.base}</a>` : '';
       tr.innerHTML = `<td><a href="/tasks/${r.id}">task${String(r.id).padStart(3,'0')}</a></td><td>${lengthLabel}</td><td>${r.best??''}</td><td class="nowrap">${baseCell}</td><td class="nowrap" title="${r.compressor}">${r.compressor||''}</td><td class="nowrap" title="${r.message}">${r.message||''}</td>`;
       tb.appendChild(tr);
@@ -159,7 +160,10 @@ async function render(){
       const card = document.createElement('a'); card.className='thumb'; card.href=`/tasks/${r.id}`; card.style.textDecoration='none'; card.style.color='inherit';
       card.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? winBg : r.diff>0? loseBg : '') : '';
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'-');
-      const meta = document.createElement('div'); meta.innerHTML = `<strong>task${String(r.id).padStart(3,'0')}</strong><br/><small>length: ${lengthLabel}</small>`; card.appendChild(meta);
+      const meta = document.createElement('div');
+      const showLen = size!=='sm';
+      meta.innerHTML = `<strong>task${String(r.id).padStart(3,'0')}</strong>${showLen?`<br/><small>length: ${lengthLabel}</small>`:''}`;
+      card.appendChild(meta);
       const thumbWrap = document.createElement('div');
       thumbWrap.style.flex='0 0 auto';
       if(show==='both'){
