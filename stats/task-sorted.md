@@ -343,7 +343,7 @@
 | [331](/vis/task331.png) | [base_code](/base_code/task331.py) | raw/zlib-zopfli | [170](/dist/task331.py) (+87) | 83 🔴 | [vis-many](/vis_many/task331.png) |  |
 | [332](/vis/task332.png) | [base_yu](/base_yu/task332.py) | raw/raw | [66](/dist/task332.py) (+8) | 58 🔴 | [vis-many](/vis_many/task332.png) | not worth compress |
 | [333](/vis/task333.png) | [base_code](/base_code/task333.py) | forcomp-t/zlib-zopfli | [248](/dist/task333.py) (+147) | 101 🔴 | [vis-many](/vis_many/task333.png) | encode:+1 |
-| [334](/vis/task334.png) | [base_yu](/base_yu/task334.py) | raw/raw | [78](/dist/task334.py) (+7) | 71 🔴 | [vis-many](/vis_many/task334.png) | not worth compress |
+| [334](/vis/task334.png) | [base_keymoon](/base_keymoon/task334.py) | raw/raw | [73](/dist/task334.py) (+2) | 71 🔴 | [vis-many](/vis_many/task334.png) | not worth compress |
 | [335](/vis/task335.png) | [base_notebooks](/base_notebooks/task335_20250818-060100Z-oh-barnacles-jazivxt.py) | raw/raw | [206](/dist/task335.py) (+73) | 133 🔴 | [vis-many](/vis_many/task335.png) | not worth compress |
 | [336](/vis/task336.png) | [base_code](/base_code/task336.py) | forcomp-t/zlib-zopfli | [308](/dist/task336.py) (+202) | 106 🔴 | [vis-many](/vis_many/task336.png) |  |
 | [337](/vis/task337.png) | [base_yu](/base_yu/task337.py) | raw/raw | [49](/dist/task337.py) (+3) | 46 🔴 | [vis-many](/vis_many/task337.png) | not worth compress |
