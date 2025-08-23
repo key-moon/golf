@@ -1,1 +1,1 @@
-p=lambda g:[[0]+[v and g[6][0]for v in s[1:]]for s in g]
+p=lambda g:[[(0<v)*g[6][0]for v in[0]+s]for _,*s in g]
