@@ -1,1 +1,1 @@
-p=lambda g:[[*map(max,zip(*g[:i]))]for i in(1,2,3)]
+p=lambda g:[[*map(max,*g[:i]*2)]for i in(1,2,3)]

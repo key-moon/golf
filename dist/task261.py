@@ -1,1 +1,1 @@
-p=lambda g:g[-1:]+eval(str(g).replace(*"82"))[:-1]
+p=lambda g:[[c/4for c in r]for r in[g.pop()]+g]
