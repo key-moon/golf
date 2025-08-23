@@ -8,6 +8,6 @@ def p(g):
       if g[i-k][j]<1:break
      for s in o[i:]:
       s[j-k+1:j+k]=g[i][j-k+1:j+k]
-  *g,=map(list,zip(*g[::-1]))
+  *g,=zip(*g[::-1])
   *o,=map(list,zip(*o[::-1]))
  return o

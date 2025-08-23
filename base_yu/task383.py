@@ -8,7 +8,7 @@ def p(g):
     u[i]=[a[2]]*len(g[0])
     u[i][k:l]=[a[0]]*(l-k)
   *g,=zip(*g)
-  *u,=map(list,zip(*u))
+  *u,=zip(*u)
  return u
 
 

@@ -8,7 +8,7 @@ def p(g):
      k=u.index(v)
      u[k-(i<k)+(i>k)]=v
   return t
- return[*map(list,zip(*p([*zip(*g)])))]
+ return[*zip(*p([*zip(*g)]))]
 
 
 # def p(g):
