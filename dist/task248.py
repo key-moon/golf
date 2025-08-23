@@ -1,4 +1,1 @@
-def p(g):
- C=len(g[0]);B=g[-1].index(1);A=1;D=[[0]*C for _ in g]
- for F in D[::-1]:F[B]=1;E=B+A;(E<0 or E>=C)and(A:=-A);B+=A
- return D
+p=lambda g:(((v:=[u:=[1]+[0]*~-len(g[0])]+[u:=[0]+u[:-1]for _ in u[1:]])+v[-2:0:-1])*9)[len(g)-1::-1]
