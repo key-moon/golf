@@ -7,4 +7,4 @@ def p(g):
    for(i,v)in enumerate(s):
     if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v
   return t
- return[*map(list,A(*p([*A(*g)])))]
+ return[*A(*p([*A(*g)]))]

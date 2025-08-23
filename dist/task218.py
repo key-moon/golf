@@ -1,1 +1,1 @@
-p=lambda g,c=2:c and p([[*t]for s,t in zip([0,*zip(*g)],zip(*g))if(t!=s)*sum(t)],c-1)or g
+p=lambda g,c=2:c and p([*zip(*[t for s,t in zip([0]+g,g)if(t!=s)*sum(t)])],c-1)or g
