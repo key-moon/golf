@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="root" data-task-id="{{ task_id }}">
+  <div style="display:flex; gap: 16px; align-items: flex-start;">
+    <div style="flex:1 1 50%; min-width: 0;">
+      <h2 id="title">task{{ '%03d'|format(task_id) }}</h2>
+      <div id="meta" style="margin:-8px 0 12px 0; font-size: 0.9em; color: var(--muted-color);"></div>
+      <section>
+        <h3>Overview</h3>
+        <p><a href="/tasks/{{task_id}}/cases">Open all cases »</a></p>
+        <div id="preview"></div>
+        <div id="cases" class="cases"></div>
+      </section>
+    </div>
+    <div style="flex:1 1 50%; min-width: 0;">
+      <section>
+        <h3>Score Progress</h3>
+        <div id="chartWrap" style="position:relative">
+          <canvas id="chart" height="360" style="width:100%; min-width: 800px;"></canvas>
+          <div id="tooltip" class="tooltip" style="display:none"></div>
+          <canvas id="overlay" style="position:absolute; inset:0; pointer-events:none"></canvas>
+        </div>
+        <div id="progLegend" style="display:none"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cases { display:grid; gap:8px; }
+  @media (min-width: 1000px) { .cases { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 999px) { .cases { grid-template-columns: 1fr; } }
+  .casebox { display:grid; grid-template-columns: auto auto; align-items:start; gap:8px; border:1px solid var(--pico-muted-border-color, #ccc); padding:6px; }
+  .casebox > .head { grid-column: 1 / -1; font-weight:bold; margin-bottom:4px; }
+</style>
+
+<script>
+const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+function drawMat(el, mat){
+  if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])) return;
+  el.className='mat'; el.style.setProperty('--cell', '12px');
+  el.innerHTML='';
+  const r = mat.length, c = mat[0].length;
+  el.style.gridTemplateColumns = `repeat(${c}, var(--cell))`;
+  for(let i=0;i<r;i++){
+    for(let j=0;j<c;j++){
+      const d=document.createElement('div');
+      d.className='cell';
+      const v = mat[i][j];
+      d.style.background = palette[v==null?0:v];
+      el.appendChild(d);
+    }
+  }
+}
+function fmtLen(len,best){ if(len==null||best==null) return '';
+  const diff = len-best; return `${len} (${best}${diff>=0?'+':''}${diff})`; }
+
+(async function(){
+  const rootEl = document.getElementById('root');
+  const taskId = Number(rootEl?.dataset?.taskId || (location.pathname.match(/\d+$/)||[])[0] || 0);
+  const [sum, thumbs, taskData] = await Promise.all([
+    fetch('/api/summary').then(r=>r.json()),
+    fetch('/api/tasks/thumbs?include_output=1').then(r=>r.json()),
+    fetch(`/api/task/${taskId}/data`).then(r=>r.json())
+  ]);
+  const best = sum.bests[taskId-1];
+  const len = sum.our_lengths[taskId-1];
+  const baseFull = sum.base_path[taskId-1]||'';
+  const baseShort = sum.base_short?.[taskId-1] || baseFull;
+  const compressor = sum.compressor[taskId-1]||'';
+  const message = sum.message[taskId-1]||'';
+  const meta = document.getElementById('meta');
+  const baseHtml = baseShort ? `<a href="#" class="open-code" data-path="${encodeURIComponent(baseFull)}" title="${baseFull}">${baseShort}</a>` : '-';
+  meta.innerHTML = `length: <strong>${fmtLen(len,best) || '-'}</strong> &nbsp;•&nbsp; Base: ${baseHtml} &nbsp;•&nbsp; Compressor: ${compressor||'-'} &nbsp;•&nbsp; Message: ${message||'-'}`;
+  meta.addEventListener('click', (e)=>{
+    const a = e.target.closest('a.open-code'); if(!a) return; e.preventDefault();
+    const path = decodeURIComponent(a.dataset.path||''); if(!path) return;
+    fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }).catch(()=>{});
+  });
+
+  // preview: remove Input/Output labels, keep just the two matrices side by side
+  const th = thumbs[taskId-1]||{};
+  const prev = document.getElementById('preview');
+  prev.innerHTML = '<div class="mat" id="i"></div><div class="mat" id="o"></div>';
+  prev.style.display='grid'; prev.style.gridTemplateColumns='1fr 1fr'; prev.style.gap='8px';
+  drawMat(document.getElementById('i'), th.input);
+  drawMat(document.getElementById('o'), th.output);
+
+  // cases (Overview 内): train/test のみ
+  const root = document.getElementById('cases');
+  const addCase = (title, pair)=>{
+    const box = document.createElement('div'); box.className='casebox';
+    const head = document.createElement('div'); head.textContent = title; head.className='head'; box.appendChild(head);
+    const i = document.createElement('div'); i.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.input); return el; })()); box.appendChild(i);
+    const o = document.createElement('div'); o.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.output); return el; })()); box.appendChild(o);
+    root.appendChild(box);
+  };
+  (taskData.train||[]).forEach((t,i)=>addCase(`train_${i}`, t));
+  (taskData.test||[]).forEach((t,i)=>addCase(`test_${i}`, t));
+  // skip arc-gen in overview
+
+  // progress chart
+  const prog = await fetch(`/api/task/${taskId}/progress`).then(r=>r.json());
+  const teams = (prog.teams || []).map(t=>({
+    name: t.name,
+    series: (t.series||[]).filter(p=> p && p.score!=null && typeof p.score === 'number')
+  })).filter(t=> t.series.length);
+  const colors = teams.map((_,i)=>`hsl(${(i*47)%360} 70% 50%)`);
+  const series = teams.map((t,i)=>({ name:t.name, color:colors[i], data:t.series }));
+  let currentBest = Infinity; series.forEach(s=>{ if(s.data && s.data.length){ const last = s.data[s.data.length-1].score; if(last<currentBest) currentBest=last; } }); if(!isFinite(currentBest)) currentBest = null;
+
+  const chartWrap = document.getElementById('chartWrap');
+  const chart = document.getElementById('chart'); const ctx = chart.getContext('2d'); const overlay = document.getElementById('overlay'); overlay.width = chart.width; overlay.height = chart.height; const octx = overlay.getContext('2d');
+  function drawChart(){
+    const width = chart.clientWidth || chart.width; const height = chart.height; chart.width = width; overlay.width = width; overlay.height = height; ctx.clearRect(0,0,width,height); octx.clearRect(0,0,width,height);
+    const styles = getComputedStyle(document.documentElement); const fg = styles.getPropertyValue('--muted-color').trim() || '#666'; const gridCol = 'rgba(127,127,127,0.25)';
+    const allPoints = series.flatMap(s=>s.data||[]);
+    // X range: first point to now
+    const xs = allPoints.map(p=>p.t);
+    const nowSec = Math.floor(Date.now()/1000);
+    const minX = xs.length? Math.min(...xs) : nowSec - 86400;
+    const maxX = nowSec;
+    const ys = allPoints.map(p=>p.score).filter(v=> typeof v==='number' && !isNaN(v));
+    const minY = 0; const maxY = Math.max( (ys.length? Math.max(...ys): (best||0)), best||0, len||0 ) * 1.1 + 5;
+    const pad = {l:64,r:12,t:8,b:28}; const x2px = x=> pad.l + ( (x-minX) / (maxX-minX || 1) ) * (width - pad.l - pad.r); const y2px = y=> height - pad.b - ( (y-minY) / (maxY-minY || 1) ) * (height - pad.t - pad.b);
+    // Y grid
+    ctx.fillStyle = fg; ctx.font = '12px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='right'; ctx.strokeStyle=gridCol; ctx.lineWidth=1;
+    const yStep = Math.max(1, Math.round((maxY-minY)/6));
+    for(let y=minY; y<=maxY; y+=yStep){ const py=y2px(y); ctx.beginPath(); ctx.moveTo(pad.l, py); ctx.lineTo(width-pad.r, py); ctx.stroke(); ctx.fillText(String(Math.round(y)), pad.l-6, py+4); }
+    // X grid weekly ticks with date labels (YYYY-MM-DD)
+    const week = 7*86400; let t0 = Math.floor(minX / week) * week;
+    ctx.textAlign='center';
+    for(let t=t0; t<=maxX; t+=week){ const px=x2px(t); ctx.strokeStyle=gridCol; ctx.beginPath(); ctx.moveTo(px, height-pad.b); ctx.lineTo(px, pad.t); ctx.stroke(); const d=new Date(t*1000); const lab=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; ctx.fillText(lab, px, height-6); }
+    if(currentBest!=null){ octx.strokeStyle = 'red'; octx.setLineDash([6,4]); octx.lineWidth = 1.5; octx.beginPath(); octx.moveTo(pad.l, y2px(currentBest)); octx.lineTo(width-pad.r, y2px(currentBest)); octx.stroke(); octx.setLineDash([]); }
+    // series step-lines
+    series.forEach(s=>{ if(!s.data||!s.data.length) return; ctx.strokeStyle = s.color; ctx.lineWidth = 2; ctx.beginPath(); let prev = s.data[0]; ctx.moveTo(x2px(prev.t), y2px(prev.score)); for(let i=1;i<s.data.length;i++){ const p=s.data[i]; ctx.lineTo(x2px(p.t), y2px(prev.score)); ctx.lineTo(x2px(p.t), y2px(p.score)); prev=p; } ctx.stroke(); ctx.fillStyle=s.color; s.data.forEach(p=>{ ctx.beginPath(); ctx.arc(x2px(p.t), y2px(p.score), 4, 0, Math.PI*2); ctx.fill(); }); });
+    // legend rebuild
+    const pl = document.getElementById('progLegend'); pl.innerHTML=''; pl.style.alignItems='center'; series.forEach(s=>{ const last = s.data && s.data.length ? s.data[s.data.length-1].score : null; const item = document.createElement('span'); item.style.display='inline-flex'; item.style.alignItems='center'; item.style.gap='6px'; item.innerHTML = `<span style=\"width:12px;height:12px;background:${s.color};border:1px solid rgba(0,0,0,0.2);\"></span>${s.name}${last!=null?` <small>(${last})</small>`:''}`; pl.appendChild(item); });
+  }
+  window.addEventListener('resize', drawChart);
+  const tt=document.getElementById('tooltip'); chart.addEventListener('mousemove', (e)=>{ const chartRect = chart.getBoundingClientRect(); const wrapRect = chartWrap.getBoundingClientRect(); const x=e.clientX-chartRect.left, y=e.clientY-chartRect.top; const width=chart.width, height=chart.height; const pad={l:64,r:12,t:8,b:28}; const allPoints = series.flatMap(s=>s.data||[]); const xs = allPoints.map(p=>p.t); const nowSec=Math.floor(Date.now()/1000); const minX = xs.length? Math.min(...xs) : nowSec-86400; const maxX = nowSec; const ys = allPoints.map(p=>p.score).filter(v=> typeof v==='number' && !isNaN(v)); const minY = 0; const maxY = Math.max( (ys.length? Math.max(...ys): (best||0)), best||0, len||0 ) * 1.1 + 5; const x2px = x=> pad.l + ( (x-minX) / (maxX-minX || 1) ) * (width - pad.l - pad.r); const y2px = y=> height - pad.b - ( (y-minY) / (maxY-minY || 1) ) * (height - pad.t - pad.b); let found=null, dmin=10; series.forEach(s=>{ (s.data||[]).forEach(p=>{ const px = x2px(p.t), py=y2px(p.score); const d=Math.hypot(px-x, py-y); if(d<dmin){ dmin=d; found={s,p,px,py}; } }); }); if(found){ tt.style.display='block'; tt.textContent = `${found.s.name}: ${found.p.score}`; tt.style.left = (found.px + 12 + chartRect.left - wrapRect.left) + 'px'; tt.style.top = (found.py - 10 + chartRect.top - wrapRect.top) + 'px'; } else { tt.style.display='none'; } }); chart.addEventListener('mouseleave', ()=> tt.style.display='none');
+  drawChart();
+})();
+</script>
+{% endblock %}

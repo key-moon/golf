@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Tasks</h2>
+<div class="grid cols-4">
+  <div>
+    <strong>View</strong><br/>
+    <div id="viewBtns" class="seg">
+      <button data-view="thumb" title="Thumbnail" class="secondary">🖼️</button>
+      <button data-view="list" title="List" class="secondary">📋</button>
+    </div>
+  </div>
+  <div>
+    <strong>Sort</strong><br/>
+    <div id="sortBtns" class="seg">
+      <button data-sort="problem" class="secondary">problem</button>
+      <button data-sort="best" class="secondary">best</button>
+      <button data-sort="length" class="secondary">length</button>
+      <button data-sort="diff" class="secondary">diff</button>
+    </div>
+  </div>
+  <div>
+    <strong>Order</strong><br/>
+    <div id="orderBtns" class="seg">
+      <button data-order="asc" class="secondary">asc</button>
+      <button data-order="desc" class="secondary">desc</button>
+    </div>
+  </div>
+  <div>
+    <strong>Show</strong><br/>
+    <div id="showBtns" class="seg">
+      <button data-show="input" class="secondary">input</button>
+      <button data-show="output" class="secondary">output</button>
+      <button data-show="both" class="secondary">both</button>
+    </div>
+  </div>
+  <div>
+    <strong>Cell size</strong><br/>
+    <div id="sizeBtns" class="seg">
+      <button data-size="lg" class="secondary">L</button>
+      <button data-size="md" class="secondary">M</button>
+      <button data-size="sm" class="secondary">S</button>
+    </div>
+  </div>
+</div>
+
+<div id="list"></div>
+<script>
+const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+let THUMBS_CACHE=null, THUMBS_CACHE_WITH_OUT=null;
+function applyActive(group, value, attr){
+  if(!group) return;
+  [...group.querySelectorAll('button')].forEach(b=>{
+    b.classList.toggle('contrast', b.dataset[attr]===value);
+  });
+}
+(function initControls(){
+  const params = new URLSearchParams(location.search);
+  const view = params.get('view')||'thumb';
+  const sort = params.get('sort')||'problem';
+  const order = params.get('order')||'asc';
+  const show = params.get('show')||'both';
+  const size = params.get('size')||'md';
+  const setParam=(k,v)=>{ params.set(k,v); history.replaceState(null,'',`?${params.toString()}`); render(); };
+  const viewBtns=document.getElementById('viewBtns'); applyActive(viewBtns, view, 'view'); viewBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.view; if(v){ applyActive(viewBtns, v, 'view'); setParam('view', v); } };
+  const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, sort, 'sort'); sortBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ applyActive(sortBtns, v, 'sort'); setParam('sort', v); } };
+  const orderBtns=document.getElementById('orderBtns'); applyActive(orderBtns, order, 'order'); orderBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.order; if(v){ applyActive(orderBtns, v, 'order'); setParam('order', v); } };
+  const showBtns=document.getElementById('showBtns'); applyActive(showBtns, show, 'show'); showBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.show; if(v){ applyActive(showBtns, v, 'show'); setParam('show', v); } };
+  const sizeBtns=document.getElementById('sizeBtns'); applyActive(sizeBtns, size, 'size'); sizeBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.size; if(v){ applyActive(sizeBtns, v, 'size'); setParam('size', v); } };
+})();
+
+async function getThumbs(includeOutput){
+  if(includeOutput){ if(!THUMBS_CACHE_WITH_OUT) THUMBS_CACHE_WITH_OUT = await (await fetch('/api/tasks/thumbs?include_output=1')).json(); return THUMBS_CACHE_WITH_OUT; }
+  else { if(!THUMBS_CACHE) THUMBS_CACHE = await (await fetch('/api/tasks/thumbs')).json(); return THUMBS_CACHE; }
+}
+
+async function render(){
+  const params = new URLSearchParams(location.search);
+  const view = params.get('view')||'thumb';
+  const sort = params.get('sort')||'problem';
+  const order = params.get('order')||'asc';
+  const show = params.get('show')||'both';
+  const size = params.get('size')||'md';
+
+  // update active states
+  applyActive(document.getElementById('viewBtns'), view, 'view');
+  applyActive(document.getElementById('sortBtns'), sort, 'sort');
+  applyActive(document.getElementById('orderBtns'), order, 'order');
+  applyActive(document.getElementById('showBtns'), show, 'show');
+  applyActive(document.getElementById('sizeBtns'), size, 'size');
+
+  const s = await (await fetch('/api/summary')).json();
+  const thumbs = await getThumbs(show!=='input'); // both/output require output
+
+  const rows = [];
+  for(let i=1;i<=400;i++){
+    const best = s.bests[i-1];
+    const len = s.our_lengths[i-1];
+    const diff = (best!=null && len!=null) ? (len-best) : null;
+    const t = thumbs[i-1]||{};
+    const base_full = s.base_path?.[i-1] || '';
+    const base = s.base_short?.[i-1] || base_full;
+    rows.push({ id:i, best, len, diff, input:t.input, output:t.output, base, base_full, compressor:s.compressor[i-1]||'', message:s.message[i-1]||'' });
+  }
+  const cmpNumber = (av,bv)=>{
+    if(av==null&&bv==null) return 0;
+    if(av==null) return 1;
+    if(bv==null) return -1;
+    return av-bv;
+  };
+  const cmpKey=(k)=> (a,b)=> cmpNumber(a[k], b[k]);
+  if(sort!=="problem"){
+    if(sort==="length") rows.sort(cmpKey('len'));
+    else if(sort==="best") rows.sort(cmpKey('best'));
+    else if(sort==="diff") rows.sort(cmpKey('diff'));
+  }
+  if(order==="desc") rows.reverse();
+
+  const list = document.getElementById('list');
+  list.innerHTML='';
+
+  const winBg='rgba(0, 180, 0, 0.2)';
+  const loseBg='rgba(220, 0, 0, 0.2)';
+
+  if(view==='list'){
+    const table = document.createElement('table');
+    table.innerHTML = '<thead><tr><th>ID</th><th>length</th><th>best</th><th>Base</th><th>Compressor</th><th>Message</th></tr></thead>';
+    const tb = document.createElement('tbody');
+    rows.forEach(r=>{
+      const tr=document.createElement('tr');
+      const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'');
+      tr.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? winBg : r.diff>0? loseBg : '') : '';
+      const baseCell = r.base ? `<a href="#" class="open-code" data-path="${encodeURIComponent(r.base_full)}" title="${r.base_full}">${r.base}</a>` : '';
+      tr.innerHTML = `<td><a href="/tasks/${r.id}">task${String(r.id).padStart(3,'0')}</a></td><td>${lengthLabel}</td><td>${r.best??''}</td><td class="nowrap">${baseCell}</td><td class="nowrap" title="${r.compressor}">${r.compressor||''}</td><td class="nowrap" title="${r.message}">${r.message||''}</td>`;
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    list.appendChild(table);
+    // delegate click for open-code
+    list.onclick = (e)=>{
+      const a = e.target.closest('a.open-code'); if(!a) return; e.preventDefault();
+      const path = decodeURIComponent(a.dataset.path||''); if(!path) return;
+      fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) })
+        .then(()=>{})
+        .catch(()=>{});
+    };
+  } else {
+    const grid = document.createElement('div');
+    // columns by size: L=5, M=6(デフォルトのまま), S=9
+    if(size==='lg') grid.className = 'grid';
+    else if(size==='sm') grid.className = 'grid';
+    else grid.className = 'grid';
+    // override columns with inline style to meet exact counts
+    const container = document.querySelector('main.container') || document.body;
+    const cols = size==='lg' ? 5 : size==='sm' ? 9 : 6;
+    grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0,1fr))`;
+    // Now: previous S becomes new L; provide smaller M,S
+    const dims = size==='lg' ? {w:120,h:90} : size==='md' ? {w:90,h:68} : {w:60,h:45};
+    rows.forEach(r=>{
+      const card = document.createElement('a'); card.className='thumb'; card.href=`/tasks/${r.id}`; card.style.textDecoration='none'; card.style.color='inherit';
+      card.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? winBg : r.diff>0? loseBg : '') : '';
+      const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'-');
+      const meta = document.createElement('div'); meta.innerHTML = `<strong>task${String(r.id).padStart(3,'0')}</strong><br/><small>length: ${lengthLabel}</small>`; card.appendChild(meta);
+      const thumbWrap = document.createElement('div');
+      thumbWrap.style.flex='0 0 auto';
+      if(show==='both'){
+        thumbWrap.style.display='grid'; thumbWrap.style.gridTemplateColumns='1fr 1fr'; thumbWrap.style.gap='6px';
+        const cnv1 = document.createElement('canvas'); const cnv2 = document.createElement('canvas');
+        ;[cnv1,cnv2].forEach(c=>{ c.width=dims.w; c.height=dims.h; c.style.width=dims.w+'px'; c.style.height=dims.h+'px'; });
+        try { drawThumbFromData(r.input, cnv1); } catch(e) {}
+        try { drawThumbFromData(r.output, cnv2); } catch(e) {}
+        thumbWrap.appendChild(cnv1); thumbWrap.appendChild(cnv2);
+      } else {
+        const cnv = document.createElement('canvas'); cnv.width=dims.w; cnv.height=dims.h; cnv.style.width=dims.w+'px'; cnv.style.height=dims.h+'px';
+        try { drawThumbFromData((show==='output'?r.output:r.input), cnv); } catch(e) {}
+        thumbWrap.appendChild(cnv);
+      }
+      card.appendChild(thumbWrap);
+      grid.appendChild(card);
+    });
+    list.appendChild(grid);
+  }
+}
+
+function drawThumbFromData(mat, cnv){
+  if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])) return;
+  const r = mat.length, c = mat[0].length;
+  const ctx = cnv.getContext('2d');
+  const scale = Math.max(1, Math.floor(Math.min(cnv.width/c, cnv.height/r)));
+  cnv.width = c*scale; cnv.height = r*scale;
+  for(let i=0;i<r;i++) for(let j=0;j<c;j++){
+    const v = mat[i][j];
+    const col = palette[v==null?0:v];
+    ctx.fillStyle = col;
+    ctx.fillRect(j*scale, i*scale, scale, scale);
+    ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+    ctx.strokeRect(j*scale, i*scale, scale, scale);
+  }
+}
+
+render();
+</script>
+{% endblock %}

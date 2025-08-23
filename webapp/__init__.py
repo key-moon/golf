@@ -1,0 +1,276 @@
+from __future__ import annotations
+
+import os
+from datetime import datetime
+from pathlib import Path
+from typing import Optional
+import subprocess
+
+from flask import Flask, jsonify, render_template, request, send_from_directory, abort
+
+# 内部モジュール
+from public_data import get_scores_per_task, loads_task_scores_progressions
+from utils import WORKSPACE_DIR
+
+import json
+
+DIST_RESULTS_PATH = Path(WORKSPACE_DIR) / "dist" / "results.json"
+TASKS_DIR = Path(WORKSPACE_DIR) / "tasks"
+
+
+def _load_our_results() -> dict:
+    if DIST_RESULTS_PATH.exists():
+        try:
+            return json.loads(DIST_RESULTS_PATH.read_text())
+        except Exception:
+            return {"score": 0, "results": []}
+    return {"score": 0, "results": []}
+
+
+# 一括サムネイル用の簡易キャッシュ
+_TASK_THUMBS_CACHE: dict[str, list[dict]] = {}
+
+
+def create_app() -> Flask:
+    app = Flask(
+        __name__,
+        template_folder="templates",
+        static_folder="static",
+    )
+
+    # ルート: ダッシュボード
+    @app.get("/")
+    def index():
+        return render_template("index.html")
+
+    # タスク一覧
+    @app.get("/tasks")
+    def tasks_page():
+        view = request.args.get("view", "thumb")  # thumb | list
+        sort = request.args.get("sort", "problem")  # problem|best|length|diff
+        order = request.args.get("order", "asc")    # asc|desc
+        return render_template("tasks.html", view=view, sort=sort, order=order)
+
+    # タスク詳細
+    @app.get("/tasks/<int:task_id>")
+    def task_detail(task_id: int):
+        if not (1 <= task_id <= 400):
+            abort(404)
+        return render_template("task_detail.html", task_id=task_id)
+
+    # タスクのケース一覧
+    @app.get("/tasks/<int:task_id>/cases")
+    def task_cases(task_id: int):
+        if not (1 <= task_id <= 400):
+            abort(404)
+        return render_template("task_cases.html", task_id=task_id)
+
+    # API: サマリー (ダッシュボード・一覧用)
+    @app.get("/api/summary")
+    def api_summary():
+        ours = _load_our_results()
+        others = get_scores_per_task()  # list[list[{name, score, date}]]
+
+        # 我々の長さ配列・best 配列
+        our_lengths: list[Optional[int]] = [None] * 400
+        base_path: list[Optional[str]] = [None] * 400
+        base_short: list[Optional[str]] = [None] * 400
+        compressor: list[Optional[str]] = [None] * 400
+        message: list[str] = [""] * 400
+
+        for item in (ours.get("results") or []):
+            idx = int(item.get("task", 0)) - 1
+            if 0 <= idx < 400:
+                our_lengths[idx] = item.get("length")
+                # results.json は basePath を使用。後方互換のため両方を見る
+                bp = item.get("base_path") or item.get("basePath")
+                base_path[idx] = bp
+                # base_xxx のディレクトリ名だけを抽出
+                if isinstance(bp, str):
+                    parts = bp.replace("\\", "/").split("/")
+                    short = next((p for p in parts if p.startswith("base_")), None)
+                    base_short[idx] = short
+                compressor[idx] = item.get("compressor")
+                message[idx] = item.get("message") or ""
+
+        bests: list[Optional[int]] = []
+        best_names: list[list[str]] = []
+        for arr in others:
+            if arr:
+                best_score = arr[0]["score"]
+                bests.append(best_score)
+                best_names.append([x["name"] for x in arr if x["score"] == best_score])
+            else:
+                bests.append(None)
+                best_names.append([])
+
+        return jsonify({
+            "our_score": ours.get("score", 0),
+            "our_lengths": our_lengths,
+            "bests": bests,
+            "best_names": best_names,
+            "base_path": base_path,
+            "base_short": base_short,
+            "compressor": compressor,
+            "message": message,
+        })
+
+    # API: タスクJSONを返す（クライアント側でレンダリング）
+    @app.get("/api/task/<int:task_id>/data")
+    def api_task_data(task_id: int):
+        path = TASKS_DIR / f"task{task_id:03}.json"
+        if not path.exists():
+            abort(404)
+        try:
+            return jsonify(json.loads(path.read_text()))
+        except Exception:
+            abort(500)
+
+    # API: タスクの一括サムネイルデータ
+    @app.get("/api/tasks/thumbs")
+    def api_tasks_thumbs():
+        include_output = request.args.get("include_output", "0") in ("1", "true", "True")
+        cache_key = "with_out" if include_output else "no_out"
+        if cache_key in _TASK_THUMBS_CACHE:
+            return jsonify(_TASK_THUMBS_CACHE[cache_key])
+        out: list[dict] = []
+        for task_id in range(1, 401):
+            path = TASKS_DIR / f"task{task_id:03}.json"
+            if not path.exists():
+                item = {"id": task_id, "input": None}
+                if include_output:
+                    item["output"] = None
+                item.update({"train_n":0, "test_n":0, "arcgen_n":0, "in_h":None, "in_w":None, "out_h":None, "out_w":None})
+                out.append(item)
+                continue
+            try:
+                data = json.loads(path.read_text())
+                ex = None
+                for key in ("train", "test", "arc-gen"):
+                    arr = data.get(key) or []
+                    if arr:
+                        ex = arr[0]
+                        break
+                train_n = len(data.get("train") or [])
+                test_n = len(data.get("test") or [])
+                arcgen_n = len(data.get("arc-gen") or [])
+                in_h = in_w = out_h = out_w = None
+                if ex and ex.get("input"):
+                    in_h = len(ex["input"]) or None
+                    in_w = len(ex["input"][0]) if in_h else None
+                if ex and ex.get("output"):
+                    out_h = len(ex["output"]) or None
+                    out_w = len(ex["output"][0]) if out_h else None
+                item = {"id": task_id, "input": ex.get("input") if ex else None, "train_n":train_n, "test_n":test_n, "arcgen_n":arcgen_n, "in_h":in_h, "in_w":in_w, "out_h":out_h, "out_w":out_w}
+                if include_output:
+                    item["output"] = ex.get("output") if ex else None
+                out.append(item)
+            except Exception:
+                item = {"id": task_id, "input": None}
+                if include_output:
+                    item["output"] = None
+                item.update({"train_n":0, "test_n":0, "arcgen_n":0, "in_h":None, "in_w":None, "out_h":None, "out_w":None})
+                out.append(item)
+        _TASK_THUMBS_CACHE[cache_key] = out
+        return jsonify(out)
+
+    # API: タスクごとのスコア推移（トップ10チーム）
+    @app.get("/api/task/<int:task_id>/progress")
+    def api_task_progress(task_id: int):
+        # ランクは最終スコアで算出し、上位10チームの推移を返す
+        scores_per_task = get_scores_per_task()
+        if not (1 <= task_id <= 400) or task_id - 1 >= len(scores_per_task):
+            return jsonify({"teams": []})
+
+        ranked = scores_per_task[task_id - 1] if scores_per_task else []
+        top = ranked[:10]
+
+        all_progress = loads_task_scores_progressions()
+        teams_out = []
+        for entry in top:
+            name = entry.get("name")
+            series = []
+            if name in all_progress:
+                per_task = all_progress[name]
+                if 0 <= task_id - 1 < len(per_task):
+                    raw = per_task[task_id - 1]
+                    series = [{
+                        "t": int(x.get("date").timestamp()) if isinstance(x.get("date"), datetime) else x.get("date"),
+                        "score": x.get("score")
+                    } for x in raw]
+            teams_out.append({"name": name, "series": series})
+
+        return jsonify({"teams": teams_out})
+
+    # API: VS Code でファイルを開く
+    @app.post("/api/open_file")
+    def api_open_file():
+        data = request.get_json(silent=True) or {}
+        path = request.args.get("path") or data.get("path")
+        if not path:
+            return jsonify({"ok": False, "error": "path required"}), 400
+        try:
+            abs_path = (Path(WORKSPACE_DIR) / path).resolve()
+            # ワークスペース外は拒否
+            Path(abs_path).relative_to(Path(WORKSPACE_DIR))
+        except Exception:
+            return jsonify({"ok": False, "error": "invalid path"}), 400
+        try:
+            subprocess.run(["code", str(abs_path)], check=False)
+            return jsonify({"ok": True})
+        except Exception as e:
+            return jsonify({"ok": False, "error": str(e)}), 500
+
+    # dist の静的配信（存在すれば）
+    @app.get("/dist/<path:filename>")
+    def serve_dist(filename: str):
+        dist_dir = Path(WORKSPACE_DIR) / "dist"
+        if not dist_dir.exists():
+            abort(404)
+        return send_from_directory(dist_dir, filename)
+
+    # API: 最近のベスト更新を返す
+    @app.get("/api/recent_best_updates")
+    def api_recent_best_updates():
+        all_progress = loads_task_scores_progressions()  # dict[name] -> list[list[{date, score}]]
+        events: list[dict] = []
+        # 400 タスクを走査
+        for t_idx in range(400):
+            # 全チームの提出を集約
+            submissions: list[tuple[datetime, int, str]] = []  # (date, score, name)
+            for name, per_task in all_progress.items():
+                if t_idx < len(per_task):
+                    for sub in per_task[t_idx] or []:
+                        sc = sub.get("score")
+                        if sc is None:
+                            continue
+                        dt = sub.get("date")
+                        if isinstance(dt, (int, float)):
+                            dt = datetime.fromtimestamp(dt)
+                        if not isinstance(dt, datetime):
+                            continue
+                        submissions.append((dt, int(sc), name))
+            if not submissions:
+                continue
+            submissions.sort(key=lambda x: x[0])
+            current_best: int | None = None
+            for dt, sc, name in submissions:
+                if current_best is None or sc < current_best:
+                    events.append({
+                        "task_id": t_idx + 1,
+                        "from": current_best,
+                        "to": sc,
+                        "name": name,
+                        "t": int(dt.timestamp()),
+                    })
+                    current_best = sc
+        events.sort(key=lambda e: e["t"], reverse=True)
+        return jsonify({"events": events[:50]})
+
+    return app
+
+
+# ローカル起動用
+if __name__ == "__main__":
+    app = create_app()
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)

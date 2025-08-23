@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Task {{ '%03d'|format(task_id) }} Cases</h2>
+<div class="legend" id="legend"></div>
+<div id="cases"></div>
+
+<script>
+const palette = ['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+function buildLegend(){
+  const root=document.getElementById('legend');
+  root.textContent = '';
+  palette.forEach((col,i)=>{
+    const label=document.createElement('span'); label.style.display='inline-flex'; label.style.alignItems='center'; label.style.gap='4px';
+    const box=document.createElement('span'); box.className='box'; box.style.background=col; box.title=String(i);
+    label.appendChild(document.createTextNode(`${i}: `)); label.appendChild(box);
+    root.appendChild(label);
+  });
+}
+function drawMat(mat){
+  if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])){ const ph = document.createElement('div'); ph.textContent='(no data)'; ph.className='muted'; return ph; }
+  const r = mat.length, c = mat[0].length;
+  const wrap = document.createElement('div'); wrap.className='mat'; wrap.style.gridTemplateColumns=`repeat(${c}, 12px)`;
+  for(let i=0;i<r;i++) for(let j=0;j<c;j++){
+    const d=document.createElement('div'); d.className='cell'; d.style.background = palette[mat[i][j]]; wrap.appendChild(d);
+  }
+  return wrap;
+}
+(async function(){
+  buildLegend();
+  const s = await (await fetch('/api/task/{{task_id}}/data')).json();
+  const root = document.getElementById('cases');
+  // responsive grid container
+  root.style.display='grid';
+  root.style.gridTemplateColumns='repeat(auto-fit, minmax(360px, 1fr))';
+  root.style.gap='12px';
+  const addCase = (title, pair)=>{
+    const box = document.createElement('div');
+    box.style.display='grid';
+    box.style.gridTemplateColumns='auto auto';
+    box.style.alignItems='start';
+    box.style.gap='8px';
+    box.style.border='1px solid var(--pico-muted-border-color, #ccc)';
+    box.style.padding='6px';
+    const head = document.createElement('div'); head.textContent = title; head.style.gridColumn='1 / -1'; head.style.fontWeight='bold'; head.style.marginBottom='4px';
+    box.appendChild(head);
+    box.appendChild(drawMat(pair?.input));
+    box.appendChild(drawMat(pair?.output));
+    root.appendChild(box);
+  };
+  (s.train||[]).forEach((t,i)=>addCase(`train_${i}`, t));
+  (s.test||[]).forEach((t,i)=>addCase(`test_${i}`, t));
+  (s['arc-gen']||[]).forEach((t,i)=>addCase(`arcgen_${i}`, t));
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<div class="grid cols-4">
+  <article>
+    <header>Our total</header>
+    <h2 id="ourTotal">-</h2>
+  </article>
+  <article>
+    <header>Theoretical best</header>
+    <h2 id="bestTotal">-</h2>
+  </article>
+  <div>
+    <strong>Sort</strong><br/>
+    <div id="sortBtns" class="seg">
+      <button data-sort="problem" class="secondary">problem</button>
+      <button data-sort="best" class="secondary">best</button>
+      <button data-sort="length" class="secondary">length</button>
+    </div>
+  </div>
+  <div>
+    <strong>Bar width</strong><br/>
+    <div id="widthBtns" class="seg">
+      <button data-w="2" class="secondary">2px</button>
+      <button data-w="4" class="secondary">4px</button>
+      <button data-w="8" class="secondary">8px</button>
+    </div>
+  </div>
+</div>
+<section style="overflow-x:auto">
+  <canvas id="hist" height="360" style="min-width:1200px"></canvas>
+  <div id="tooltip" class="tooltip"></div>
+</section>
+<section>
+  <h3>Recent best updates</h3>
+  <ul id="recent" style="max-height: 240px; overflow:auto;">
+    <li class="muted">loading...</li>
+  </ul>
+  <p><small>最新50件まで表示</small></p>
+  <script>
+  (async function(){
+    try{
+      const r = await (await fetch('/api/recent_best_updates')).json();
+      const ul = document.getElementById('recent'); ul.textContent='';
+      (r.events||[]).forEach(ev=>{
+        const li=document.createElement('li');
+        const from = ev.from==null? '-' : ev.from;
+        const to = ev.to==null? '-' : ev.to;
+        const id = String(ev.task_id).padStart(3,'0');
+        const date = new Date(ev.t*1000).toLocaleString();
+        li.innerHTML = `<a href="/tasks/${ev.task_id}">task${id}</a>: ${from} -> <strong>${to}</strong> (by ${ev.name}) <small class="muted">${date}</small>`;
+        ul.appendChild(li);
+      });
+      if(!ul.children.length){ const li=document.createElement('li'); li.textContent='No updates.'; ul.appendChild(li); }
+    }catch(e){ const ul=document.getElementById('recent'); ul.textContent='Failed to load.'; }
+  })();
+  </script>
+</section>
+
+<script>
+const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+function applyActive(group, value, attr){[...group.querySelectorAll('button')].forEach(b=>b.classList.toggle('contrast', b.dataset[attr]===String(value)));}
+let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 };
+(function initControls(){
+  const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, G.sort, 'sort'); sortBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ G.sort=v; applyActive(sortBtns, v, 'sort'); draw(); }};
+  const widthBtns=document.getElementById('widthBtns'); applyActive(widthBtns, G.barW, 'w'); widthBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.w; if(v){ G.barW=Number(v); applyActive(widthBtns, G.barW, 'w'); draw(); }};
+})();
+(async function(){
+  const s = await (await fetch('/api/summary')).json();
+  G.data = s;
+  const ourTotal = s.our_lengths.reduce((a,b)=>a+(b??0),0);
+  const bestTotal = s.bests.reduce((a,b)=>a+(b??0),0);
+  document.getElementById('ourTotal').textContent = ourTotal;
+  document.getElementById('bestTotal').textContent = bestTotal;
+  prepareItems();
+  draw();
+})();
+function prepareItems(){
+  const s=G.data; const N=400; G.items.length=0;
+  for(let i=0;i<N;i++) G.items.push({ idx:i, id:i+1, best:s.bests[i], our:s.our_lengths[i] });
+  if(G.sort==='best') G.items.sort((a,b)=> (a.best??Infinity)-(b.best??Infinity));
+  else if(G.sort==='length') G.items.sort((a,b)=> (a.our??Infinity)-(b.our??Infinity));
+}
+function draw(){
+  if(!G.data) return; prepareItems();
+  const c = document.getElementById('hist'); const H=G.H; const barW=G.barW; const padL=G.padL; const padB=G.padB; const padR=12; const padT=12;
+  const W = padL + padR + barW*G.items.length; G.W=W;
+  const dpi = window.devicePixelRatio||1; c.width=W*dpi; c.height=H*dpi; c.style.width=`${W}px`; c.style.height=`${H}px`;
+  const ctx = c.getContext('2d'); ctx.setTransform(dpi,0,0,dpi,0,0); ctx.clearRect(0,0,W,H);
+  // theme-aware colors for canvas
+  const styles = getComputedStyle(document.body);
+  const gridColor = styles.getPropertyValue('--pico-muted-border-color') || '#eee';
+  const textColor = getComputedStyle(c).color || '#666';
+  // Fixed Y axis: 0..500 with ticks every 50
+  const maxY = 500; const tickStep = 50;
+  ctx.strokeStyle=gridColor; ctx.fillStyle=textColor; ctx.font='12px system-ui';
+  for(let val=0; val<=maxY; val+=tickStep){ const y = H-padB - (H-padB-padT)*(val/maxY); ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-6, y); ctx.stroke(); ctx.fillText(String(val), 2, y-2); }
+  // bars
+  G.items.forEach((it,idx)=>{
+    const b=it.best, o=it.our; const x = padL + idx*barW; if(b==null && o==null) return;
+    const yb = b==null?0:(H-padB-padT) * (Math.min(b, maxY) / maxY);
+    ctx.fillStyle = gridColor; ctx.fillRect(x, H-padB - yb, barW-1, yb);
+    if(o!=null && b!=null){ if(o>=b){ ctx.fillStyle='rgba(255,0,0,0.7)'; const yd=(H-padB-padT)*(Math.min(o-b, maxY)/maxY); ctx.fillRect(x, H-padB - yb - yd, barW-1, yd);} else { const yd=(H-padB-padT)*(Math.min(b-o, maxY)/maxY); const y0=H-padB - yb; ctx.save(); ctx.beginPath(); ctx.rect(x, y0, barW-1, yd); ctx.clip(); ctx.strokeStyle='#0a0'; ctx.lineWidth=2; for(let u=-H;u<W;u+=6){ ctx.beginPath(); ctx.moveTo(x+u, y0); ctx.lineTo(x+u+yd, y0+yd); ctx.stroke(); } ctx.restore(); }}
+  });
+  // mouse interaction
+  c.onmousemove = (ev)=>{
+    const rect = c.getBoundingClientRect(); const x = (ev.clientX-rect.left); const idx = Math.floor((x - padL)/barW); const tooltip=document.getElementById('tooltip');
+    if(idx<0||idx>=G.items.length){ tooltip.style.display='none'; return; }
+    const it = G.items[idx];
+    const diff = (it.best!=null && it.our!=null) ? (it.our - it.best) : null;
+    const bestDiff = (it.best!=null && diff!=null) ? `${it.best} (${diff>0?'+':''}${diff})` : (it.best??'-');
+    tooltip.style.display='block'; tooltip.style.left = (ev.pageX+12)+'px'; tooltip.style.top = (ev.pageY+12)+'px';
+    tooltip.innerHTML = `task${String(it.id).padStart(3,'0')}<br/>ours: ${it.our??'-'}<br/>best(diff): ${bestDiff}`;
+  };
+  c.onmouseleave = ()=>{ const tooltip=document.getElementById('tooltip'); tooltip.style.display='none'; };
+}
+</script>
+{% endblock %}

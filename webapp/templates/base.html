@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARC-AGI Golf</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    :root{ --header-h: 44px }
+    body{padding:0; margin:0}
+    header{ position: sticky; top: 0; z-index: 100; backdrop-filter: blur(4px); background: var(--pico-card-background-color); border-bottom:1px solid var(--pico-muted-border-color, #eee); height: var(--header-h); display:flex; align-items:center }
+    header nav{ width:100%; display:flex; justify-content:space-between; align-items:center; gap:8px }
+    header nav ul{ margin:0; padding:0 8px; display:flex; gap:8px; align-items:center }
+    header .legend{ font-size: 12px }
+    /* center the header legend vertically */
+    #global-legend{ display:flex; align-items:center; height: var(--header-h); }
+    main.container{ margin-top: calc(var(--header-h) + 8px); padding:8px }
+    .grid{display:grid; gap:12px}
+    .grid.cols-2{grid-template-columns: repeat(2, minmax(0,1fr))}
+    .grid.cols-4{grid-template-columns: repeat(4, minmax(0,1fr))}
+    .grid.cols-6{grid-template-columns: repeat(6, minmax(0,1fr))}
+    .thumb{border:1px solid var(--pico-muted-border-color, #ddd); border-radius:6px; padding:8px; background: var(--pico-card-background-color); display:flex; flex-direction:column; gap:6px; height:auto; overflow:hidden}
+    .legend{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+    .legend .box{width:14px; height:14px; display:inline-block; border:1px solid #999}
+    canvas{image-rendering: pixelated}
+    /* generic matrix cells (used across pages) */
+    .mat{display:grid; gap:1px}
+    .mat .cell{width:12px; height:12px; border: 1px solid rgba(0,0,0,0.1)}
+    /* case grid wrapper */
+    .case-grid{display:inline-grid; grid-auto-flow:row; grid-template-columns: auto auto; gap:4px; border:1px solid var(--pico-muted-border-color, #ccc); padding:4px}
+    .muted{opacity:0.8}
+    /* Slim segmented button group */
+    .seg{display:inline-flex; border:1px solid var(--pico-muted-border-color, #ccc); border-radius:6px; overflow:hidden; background: var(--pico-muted-background, transparent)}
+    .seg > button{border:0; margin:0; border-right:1px solid var(--pico-muted-border-color, #ccc); padding:4px 8px; line-height:1.1; height:28px; background: transparent; color: inherit}
+    .seg > button:last-child{border-right:0}
+    .seg > button.contrast{background: var(--pico-primary); color: var(--pico-primary-inverse, #fff)}
+    /* Tooltip */
+    .tooltip{position:absolute; display:none; background: var(--pico-card-background-color); border:1px solid var(--pico-muted-border-color, #ccc); padding:6px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+    .nowrap{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  </style>
+</head>
+<body>
+  <header class="container-fluid">
+    <nav>
+      <ul>
+        <li><strong><a href="/">ARC-AGI Golf</a></strong></li>
+        <!-- Dashboard link removed -->
+        <li><a href="/tasks">Tasks</a></li>
+      </ul>
+      <ul>
+        <li>
+          <div id="global-legend" class="legend"></div>
+        </li>
+        <li><a href="https://www.kaggle.com/competitions/arc-agi" target="_blank" class="muted">Kaggle</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <dialog id="modal">
+    <article style="max-height:90vh; overflow:auto">
+      <a href="#" aria-label="Close" class="close" onclick="document.getElementById('modal').close()"></a>
+      <div id="modal-body"></div>
+    </article>
+  </dialog>
+  <script>
+    const GLOBAL_PALETTE=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+    function buildGlobalLegend(){
+      const root=document.getElementById('global-legend'); if(!root) return; root.textContent='';
+      GLOBAL_PALETTE.forEach((col,i)=>{ const wrap=document.createElement('span'); wrap.style.display='inline-flex'; wrap.style.alignItems='center'; wrap.style.gap='4px'; wrap.appendChild(document.createTextNode(`${i}: `)); const box=document.createElement('span'); box.className='box'; box.style.background=col; wrap.appendChild(box); root.appendChild(wrap); });
+    }
+    buildGlobalLegend();
+    window.showModal = (htmlOrNode)=>{
+      const dlg = document.getElementById('modal');
+      const body = document.getElementById('modal-body');
+      body.innerHTML = '';
+      if(typeof htmlOrNode === 'string') body.innerHTML = htmlOrNode; else body.appendChild(htmlOrNode);
+      dlg.showModal();
+    };
+  </script>
+</body>
+</html>
