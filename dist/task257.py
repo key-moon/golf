@@ -1,1 +1,1 @@
-def p(g):return[[g[i][j]or g[i][j+5]or g[i+5][j]or g[i+5][j+5]for j in range(4)]for i in range(4)]
+p=lambda g:[[s[j-5]or s[j]or t[j-5]or t[j]for j in b""]for s,t in zip(g,g[5:])]
