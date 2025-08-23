@@ -10,4 +10,4 @@
 # 52
 # p=lambda g:[[*r[:1]*5,any(r)*5,*r[-1:]*5]for r in g]
 # 50
-p=lambda g:[[a]*5+[(0<a)*5]+[b]*5for a,*r,b in g]
+p=lambda g:[r[:1]*5+[(0<b)*5]+[b]*5for*r,b in g]
