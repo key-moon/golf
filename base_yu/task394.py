@@ -13,4 +13,4 @@
 # p=lambda g,E=enumerate:[[g[i+[-(s:=(len(g)>6)+2),s][i<s]][j+[-s,s][j<s]]for j,v in E(t)if v<1]for i,t in E(g)if 0in t]
 # p=lambda g,E=enumerate:[[t[j+[-(s:=(len(g)>6)+2),s][j<s]]for j,v in E(t)if v<1]for t in g if 0in t]
 # p=lambda g,E=enumerate:[[t[j+[-(s:=(len(g)>6)+2),s][j<s]]for j,v in E(t)if v<1]for t in g if 0in t]
-p=lambda g,E=enumerate:[[t[j+[s:=(len(g)>6)+2,-s][j>=s]]for j,v in E(t)if v<1]for t in g if 0in t]
+p=lambda g:[[t[j+[s:=(len(g)>6)+2,-s][j>=s]]for j,v in enumerate(t)if v<1]for t in g if 0in t]
