@@ -1,9 +1,1 @@
-def p(j,A=range):
- c=len(j)
- for E in A(c):
-  if j[E][0]==2:
-   k=0
-   while k<c and j[E][k]==2:k+=1
-   for W in A(c):
-    for l in A((k+E-W)*(W!=E)):j[W][l]=3-2*(W>E)
- return j
+p=lambda g,E=enumerate:[[([2-(i<k)+(i>k)]*(i+sum(s)//2-k)+[0]*99)[:len(t)]for k,t in E(g)]for i,s in E(g)if 2in s][0]

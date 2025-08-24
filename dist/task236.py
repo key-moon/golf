@@ -1,1 +1,1 @@
-p=lambda g:[[3*(x^y//2)for x,y in zip(*c)]for c in zip(g,g[5:])]
+p=lambda g:eval("[3*(x^y//2)for x,y in zip(g.pop(0),g[4])],"*4)
