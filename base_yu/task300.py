@@ -1,0 +1,6 @@
+# 最多色で切り取り
+# best: 87(att, sisyphus) / others: 88(biz), 91(duckyluuk), 103(joking+MWI), 103(joking), 104(mukundan)
+# ========================================= 87 ========================================
+# p=lambda g:(c:=max({*(u:=sum(g,[]))}-{0},key=u.count))and[[v for v,t in zip(s,zip(*g))if c in t]for s in g if c in s]
+# p=lambda g:[[v for v,t in zip(s,zip(*g))if c in t]for s in g if(c:=max({*(u:=sum(g,[]))}-{0},key=u.count))in s]
+p=lambda g,c=-1:c*g or p([[*s]for s in zip(*g)if max({*(u:=sum(g,[]))}-{0},key=u.count)in s],c+1)
