@@ -1,10 +1,1 @@
-A=enumerate
-def p(g):
- B={3:6,8:4,2:1}
- for(F,G)in A(g):
-  for(H,C)in A(G):
-   if C in B:
-    for D in-1,0,1:
-     for E in-1,0,1:
-      if D or E:g[F+D][H+E]=B[C]
- return g
+p=lambda g,c=-3:c*g or p([[y or(-x%21-x|x)%9for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
