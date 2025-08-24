@@ -794,7 +794,8 @@ def check_template(template: str, mapping: dict[int, int]):
         exec(source, env)
         res = env["f"]()
         if res is not None:
-          print(template, res)
+          if len(template) <= 8:
+           print(template, res, len(template))
           res = func
           for sym, binded in zip(syms, res):
               res = res.replace(sym, str(binded))
@@ -803,7 +804,8 @@ def check_template(template: str, mapping: dict[int, int]):
 # TODO: DoSを防ぐためeval_boundsが安全側に倒しすぎてしまっている expやshlのみ別途hookする?
 #       式のキャッシュ?
 if __name__ == "__main__":
-    mapping = { 0:0, 1:5, 5:1 }
+    # mapping = { 20:1, 25:4, 30:2 }
+    mapping = { 20:3, 25:5, 30:6 }
     max_length = 10
     mod_tolerance = 3
 
@@ -855,5 +857,6 @@ if __name__ == "__main__":
         if 1 < end - t:
             print(template)
         if res:
-            print(res)
-            input("> ")
+            pass
+            # print(res)
+            # input("> ")
