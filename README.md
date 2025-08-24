@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 909564
+Score: 909584
 
 Best Score: 954301
 
@@ -108,7 +108,7 @@ Best Score: 954301
 | [144](/vis/task144.png) | [base_code](/base_code/task144.py) | raw/raw | [76](/dist/task144.py) (+17) | 59 🔴 | [vis-many](/vis_many/task144.png) | not worth compress |
 | [287](/vis/task287.png) | [base_yu](/base_yu/task287.py) | raw/raw | [67](/dist/task287.py) (+8) | 59 🔴 | [vis-many](/vis_many/task287.png) | not worth compress |
 | [317](/vis/task317.png) | [base_yu](/base_yu/task317.py) | raw/raw | [61](/dist/task317.py) (+2) | 59 🔴 | [vis-many](/vis_many/task317.png) | not worth compress |
-| [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | forplain/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) | not worth compress |
+| [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | raw/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) | not worth compress |
 | [072](/vis/task072.png) | [base_code](/base_code/task072.py) | raw/raw | [69](/dist/task072.py) (+9) | 60 🔴 | [vis-many](/vis_many/task072.png) | not worth compress |
 | [111](/vis/task111.png) | [base_notebooks](/base_notebooks/task111_20250818-060100Z-oh-barnacles-jazivxt.py) | forplain/raw | [98](/dist/task111.py) (+38) | 60 🔴 | [vis-many](/vis_many/task111.png) | not worth compress |
 | [218](/vis/task218.png) | [base_yu](/base_yu/task218.py) | raw/raw | [81](/dist/task218.py) (+21) | 60 🔴 | [vis-many](/vis_many/task218.png) | not worth compress |
@@ -178,7 +178,7 @@ Best Score: 954301
 | [167](/vis/task167.png) | [base_notebooks](/base_notebooks/task167_20250807-051947Z-simpletasksolved-tetsuro-tsuda.py) | raw/raw | [127](/dist/task167.py) (+50) | 77 🔴 | [vis-many](/vis_many/task167.png) | not worth compress |
 | [091](/vis/task091.png) | [base_code](/base_code/task091_1.py) | forplain/raw | [196](/dist/task091.py) (+118) | 78 🔴 | [vis-many](/vis_many/task091.png) | not worth compress |
 | [310](/vis/task310.png) | [base_keymoon](/base_keymoon/task310.py) | raw/raw | [95](/dist/task310.py) (+17) | 78 🔴 | [vis-many](/vis_many/task310.png) | not worth compress |
-| [344](/vis/task344.png) | [base_yu](/base_yu/task344.py) | raw/raw | [88](/dist/task344.py) (+10) | 78 🔴 | [vis-many](/vis_many/task344.png) | not worth compress |
+| [344](/vis/task344.png) | [base_keymoon](/base_keymoon/task344.py) | raw/raw | [79](/dist/task344.py) (+1) | 78 🔴 | [vis-many](/vis_many/task344.png) | not worth compress |
 | [180](/vis/task180.png) | [base_notebooks](/base_notebooks/task180_20250809-190418Z-a-bit-more-of-code-golf-220-400-jacekwl.py) | raw/raw | [91](/dist/task180.py) (+12) | 79 🔴 | [vis-many](/vis_many/task180.png) | not worth compress |
 | [243](/vis/task243.png) | [base_yu](/base_yu/task243.py) | forplain/raw | [90](/dist/task243.py) (+11) | 79 🔴 | [vis-many](/vis_many/task243.png) | not worth compress |
 | [248](/vis/task248.png) | [base_yu](/base_yu/task248.py) | raw/raw | [101](/dist/task248.py) (+22) | 79 🔴 | [vis-many](/vis_many/task248.png) | not worth compress |
@@ -199,7 +199,7 @@ Best Score: 954301
 | [075](/vis/task075.png) | [base_notebooks](/base_notebooks/task075_20250807-051947Z-simpletasksolved-tetsuro-tsuda.py) | forcomp-t/zlib-zopfli | [205](/dist/task075.py) (+119) | 86 🔴 | [vis-many](/vis_many/task075.png) | encode:+2 |
 | [132](/vis/task132.png) | [base_code](/base_code/task132.py) | raw/zlib-zopfli | [227](/dist/task132.py) (+141) | 86 🔴 | [vis-many](/vis_many/task132.png) |  |
 | [193](/vis/task193.png) | [base_yu](/base_yu/task193.py) | raw/raw | [150](/dist/task193.py) (+64) | 86 🔴 | [vis-many](/vis_many/task193.png) | not worth compress |
-| [259](/vis/task259.png) | [base_yu](/base_yu/task259.py) | raw/raw | [98](/dist/task259.py) (+12) | 86 🔴 | [vis-many](/vis_many/task259.png) | not worth compress |
+| [259](/vis/task259.png) | [base_keymoon](/base_keymoon/task259.py) | raw/raw | [87](/dist/task259.py) (+1) | 86 🔴 | [vis-many](/vis_many/task259.png) | not worth compress |
 | [271](/vis/task271.png) | [base_keymoon](/base_keymoon/task271.py) | raw/raw | [107](/dist/task271.py) (+21) | 86 🔴 | [vis-many](/vis_many/task271.png) | not worth compress |
 | [055](/vis/task055.png) | [base_code](/base_code/task055.py) | raw/zlib-zopfli | [235](/dist/task055.py) (+148) | 87 🔴 | [vis-many](/vis_many/task055.png) | encode:+2 |
 | [092](/vis/task092.png) | [base_notebooks](/base_notebooks/task092_20250819-103626Z-neurips-2025-arc-agi-code-golf-solutions-kuntal-maity.py) | forcomp-s/zlib-zopfli | [224](/dist/task092.py) (+137) | 87 🔴 | [vis-many](/vis_many/task092.png) |  |

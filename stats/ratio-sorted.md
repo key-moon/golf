@@ -258,14 +258,12 @@
 | [393](/vis/task393.png) | [dist](/dist/task393.py) | previous | [72](/dist/task393.py) (+9) | 63 🔴 | [vis-many](/vis_many/task393.png) | ⚠️ regression? |
 | [384](/vis/task384.png) | [base_yu](/base_yu/task384.py) | raw/raw | [73](/dist/task384.py) (+9) | 64 🔴 | [vis-many](/vis_many/task384.png) | not worth compress |
 | [182](/vis/task182.png) | [base_yu](/base_yu/task182.py) | forcomp-t/zlib-zopfli | [204](/dist/task182.py) (+25) | 179 🔴 | [vis-many](/vis_many/task182.png) | encode:+2 |
-| [259](/vis/task259.png) | [base_yu](/base_yu/task259.py) | raw/raw | [98](/dist/task259.py) (+12) | 86 🔴 | [vis-many](/vis_many/task259.png) | not worth compress |
 | [243](/vis/task243.png) | [base_yu](/base_yu/task243.py) | forplain/raw | [90](/dist/task243.py) (+11) | 79 🔴 | [vis-many](/vis_many/task243.png) | not worth compress |
 | [114](/vis/task114.png) | [base_code](/base_code/task114.py) | raw/raw | [74](/dist/task114.py) (+9) | 65 🔴 | [vis-many](/vis_many/task114.png) | not worth compress |
 | [332](/vis/task332.png) | [base_yu](/base_yu/task332.py) | raw/raw | [66](/dist/task332.py) (+8) | 58 🔴 | [vis-many](/vis_many/task332.png) | not worth compress |
 | [287](/vis/task287.png) | [base_yu](/base_yu/task287.py) | raw/raw | [67](/dist/task287.py) (+8) | 59 🔴 | [vis-many](/vis_many/task287.png) | not worth compress |
 | [306](/vis/task306.png) | [base_yu](/base_yu/task306.py) | raw/raw | [93](/dist/task306.py) (+11) | 82 🔴 | [vis-many](/vis_many/task306.png) | not worth compress |
 | [295](/vis/task295.png) | [base_yu](/base_yu/task295.py) | forplain/raw | [61](/dist/task295.py) (+7) | 54 🔴 | [vis-many](/vis_many/task295.png) | not worth compress |
-| [344](/vis/task344.png) | [base_yu](/base_yu/task344.py) | raw/raw | [88](/dist/task344.py) (+10) | 78 🔴 | [vis-many](/vis_many/task344.png) | not worth compress |
 | [227](/vis/task227.png) | [base_keymoon](/base_keymoon/task227.py) | raw/raw | [62](/dist/task227.py) (+7) | 55 🔴 | [vis-many](/vis_many/task227.png) | not worth compress |
 | [175](/vis/task175.png) | [base_yu](/base_yu/task175.py) | raw/raw | [98](/dist/task175.py) (+11) | 87 🔴 | [vis-many](/vis_many/task175.png) | not worth compress |
 | [056](/vis/task056.png) | [base_keymoon](/base_keymoon/task056.py) | raw/raw | [45](/dist/task056.py) (+5) | 40 🔴 | [vis-many](/vis_many/task056.png) | not worth compress |
@@ -331,11 +329,13 @@
 | [284](/vis/task284.png) | [base_keymoon](/base_keymoon/task284.py) | forcomp-t/zlib-9 | [254](/dist/task284.py) (+5) | 249 🔴 | [vis-many](/vis_many/task284.png) | encode:+1 |
 | [223](/vis/task223.png) | [base_yu](/base_yu/task223.py) | raw/raw | [53](/dist/task223.py) (+1) | 52 🔴 | [vis-many](/vis_many/task223.png) | not worth compress |
 | [047](/vis/task047.png) | [base_keymoon](/base_keymoon/task047.py) | raw/raw | [56](/dist/task047.py) (+1) | 55 🔴 | [vis-many](/vis_many/task047.png) | not worth compress |
-| [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | forplain/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) | not worth compress |
+| [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | raw/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) | not worth compress |
 | [235](/vis/task235.png) | [base_yu](/base_yu/task235.py) | raw/raw | [63](/dist/task235.py) (+1) | 62 🔴 | [vis-many](/vis_many/task235.png) | not worth compress |
 | [315](/vis/task315.png) | [base_yu](/base_yu/task315.py) | raw/raw | [64](/dist/task315.py) (+1) | 63 🔴 | [vis-many](/vis_many/task315.png) | not worth compress |
 | [237](/vis/task237.png) | [base_yu](/base_yu/task237.py) | raw/raw | [68](/dist/task237.py) (+1) | 67 🔴 | [vis-many](/vis_many/task237.png) | not worth compress |
 | [229](/vis/task229.png) | [base_yu](/base_yu/task229.py) | raw/raw | [74](/dist/task229.py) (+1) | 73 🔴 | [vis-many](/vis_many/task229.png) | not worth compress |
+| [344](/vis/task344.png) | [base_keymoon](/base_keymoon/task344.py) | raw/raw | [79](/dist/task344.py) (+1) | 78 🔴 | [vis-many](/vis_many/task344.png) | not worth compress |
+| [259](/vis/task259.png) | [base_keymoon](/base_keymoon/task259.py) | raw/raw | [87](/dist/task259.py) (+1) | 86 🔴 | [vis-many](/vis_many/task259.png) | not worth compress |
 | [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/zlib-zopfli | [304](/dist/task255.py) (+3) | 301 🔴 | [vis-many](/vis_many/task255.png) |  |
 | [001](/vis/task001.png) | [base_yu](/base_yu/task001.py) | raw/raw | [61](/dist/task001.py) (0) | 61  | [vis-many](/vis_many/task001.png) | not worth compress |
 | [032](/vis/task032.png) | [base_keymoon](/base_keymoon/task032.py) | raw/raw | [39](/dist/task032.py) (0) | 39  | [vis-many](/vis_many/task032.png) | not worth compress |
