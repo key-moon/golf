@@ -1,1 +1,1 @@
-def p(g):x=[j for(j,v)in enumerate(g[0])if v==5];[r.__setitem__(j,2)for r in g if r[-1]==5for j in x];return g
+p=lambda g:g[:1]+[[c*a*2&2for c in g[0][:-1]]+[a]for*_,a in g[1:]]
