@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("]ÌA\nƒ0…á½§xKÅ)Ä.%s’EÄFê´„ôö­¥ĞUş|<fÎméÆJß²~>dOp±k°Ü+¢¨IKnõ\®?Ü!JÖÈ|5±a‚èe Gƒ™!¦ÄNKŸhí'»ç<ï^‘t>óğ›e	{Gdvã7‡5?_UQŞ",'L1'),-9))
+p=lambda g,c=4:c and p([[y or 0<x<3for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
