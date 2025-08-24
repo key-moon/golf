@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('UNÅ!l…çBˆğ<¡‘¸;v^{\_+£gÏG%Ø>ñìĞ@o_$P”£à±šûz»}dFšx-OÙñ|@Æ–:1;:W`ğW†±“òD4~<#úx{¹Î<qPŞ-ìş©ù|Ïàü´qZÚğ.*¤ØÒ"_‰UåĞ`ûŞ²Á¶ù> ö	µwhs','L1'),-9))
+p=lambda g,c=-1:c*g or p([[*s]for s in zip(*g)if max({*(u:=sum(g,[]))}-{0},key=u.count)in s],c+1)
