@@ -770,8 +770,8 @@ def check_template(template: str, mapping: dict[int, int]):
     source_tmpl += f"{indentation}try:\n"
     source_tmpl += f"{indentation} for x, v in mapping_kvs:\n"
     source_tmpl += f"{indentation}  if ({func})!=v:break\n"
-    source_tmpl += f"{indentation} if x == {len(mapping_kvs)-3}: print({repr(func)}, {','.join(syms)})\n"
-    source_tmpl += f"{indentation} if x == {len(mapping_kvs)-1}: return [{','.join(syms)}]\n"
+    source_tmpl += f"{indentation} else: return [{','.join(syms)}]\n"
+    # source_tmpl += f"{indentation} if x == {len(mapping_kvs)-3}: print({repr(func)}, {','.join(syms)})\n"
     source_tmpl += f"{indentation}except: pass\n"
 
     for b in range(1 << len(placeholders)):
@@ -802,8 +802,8 @@ def check_template(template: str, mapping: dict[int, int]):
 
 
 if __name__ == "__main__":
-    mapping = { i: int("0564312798"[i]) for i in range(10)}
-    max_length = 14
+    mapping = { 0:0, 1:5, 5:1 }
+    max_length = 10
     mod_tolerance = 3
 
     end_terms = []
