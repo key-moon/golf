@@ -1,1 +1,1 @@
-p=lambda g,E=enumerate:[[v and(v,4)[min(i,j)%2]for j,v in E(s)]for i,s in E(g)]
+p=lambda g:[g:=[[c,4][C*0==0<C!=4]for c,C in zip(r,[0]+g)]for r in g]
