@@ -1,1 +1,1 @@
-p=lambda g:[[8-8*any(r[i::4])for i in(0,1,2)]for r in g]
+p=lambda g:[eval("8*(s.pop(0)|s[3]<1),"*3)for s in g]

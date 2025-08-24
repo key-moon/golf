@@ -1,1 +1,1 @@
-p=lambda g:[[6*any(r[i::3])for i in(0,1,2)]for r in g]
+p=lambda g:[eval("6*(s.pop(0)+s[2]>0),"*3)for s in g]

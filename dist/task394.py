@@ -1,2 +1,1 @@
-r=range
-p=lambda g:(w:=len(g),s:=any(0<g[i//w][i%w]!=g[i//w+2][i%w]>0for i in r((w-2)*w))+2)and[*filter(len,[[g[[i-s,i+s][i+s<w]][[j-s,j+s][j+s<w]]for j in r(w)if g[i][j]<1]for i in r(w)])]
+p=lambda g,E=enumerate:[[t[j+[s:=(len(g)>6)+2,-s][j>=s]]for j,v in E(t)if v<1]for t in g if 0in t]
