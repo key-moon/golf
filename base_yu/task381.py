@@ -1,14 +1,29 @@
 # 青の間を塗る
 # 上下の行から間の青抜けたような構造の場合塗らない
 
-def p(g):
- i=1
- for s in g:
-  t,c=[j for j in range(10)if s[j]],lambda k:1-(len(u:=[j for j in range(10)if 0<=k<10 if g[k][j]&2])>len(t)and({*t}<={*u})*(t[:1]<u)*t[-1]==u[-1])
-  if t and c(i-2)*c(i):
-   for j in range(t[0],t[-1]):s[j]=s[j]or 9
-  i+=1
- return g
+# best: 90(sisyphus) / others: 97(mukundan), 99(biz), 100(joking+MWI), 100(joking), 106(natte)
+# ========================================== 90 ==========================================
+p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(len(s))]for s in g[1:9]]+g[9:]
+
+# def p(g,R=range):
+#  n=len(g)
+#  for i in R(1,n-1):
+#   s=a=0
+#   for j in R(n):
+#    x=g[i][j];s=[s,1][s<1and x>1]
+#    if s==1and x<1:s=2;a=[a,j][~a]
+#    if s>1and x>1:
+#     for u in R(a,j):g[i][u]=9;s=1;a=0
+#  return g
+
+# def p(g):
+#  i=1
+#  for s in g[1:-1]:
+#   t=[j for j in range(10)if s[j]]
+#   if t:
+#    for j in range(t[0],t[-1]):s[j]=s[j]or 9
+#   i+=1
+#  return g
 
 # def p(g):
 #  for i,s in enumerate(g):
