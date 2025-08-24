@@ -1,1 +1,4 @@
-p=lambda g,E=enumerate:[[([2-(i<k)+(i>k)]*(i+sum(s)//2-k)+[0]*99)[:len(t)]for k,t in E(g)]for i,s in E(g)if 2in s][0]
+def p(g):
+ m=max(g);s=sum(m)//2;n=g.index(m)+s;h=g[:]
+ while n:g.pop(0)[:n]=[(n<s)+3*(s<=n)-(s==n)]*n;n-=1
+ return h
