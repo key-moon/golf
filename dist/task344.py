@@ -1,1 +1,1 @@
-import re;p=lambda g,c=4:c and p([*zip(*eval(re.sub("3, 2","8,0",str(g)))[::-1])],c-1)or g
+import re;p=lambda g,c=-3:c*g or p([*zip(*eval(re.sub("3, 2","8,0",str(g)))[::-1])],c+1)

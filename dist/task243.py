@@ -1,1 +1,1 @@
-p=lambda g,c=80:c and p([[y or x==1for(x,y)in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
+p=lambda g,c=-79:c*g or p([[y or x==1for(x,y)in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
