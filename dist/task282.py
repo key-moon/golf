@@ -1,1 +1,1 @@
-p=lambda g,c=-3:c*g or p([[(c<0,y,x)!=(0,5,1)and(y or-x%6)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
+p=lambda g,c=-3:c*g or p([[(not(0>c)<x<y)*(y or-x%6)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
