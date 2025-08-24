@@ -21,7 +21,9 @@
 # lambda g,a=2:a and[*filter(max,zip(*p(g,a-1)))]or g
 # lambda g:[p,list][g*0!=[]]((*filter(max,zip(*g)),))
 # lambda g,E=lambda g:zip(*filter(max,g)):[*E(E(g))]
+# lambda g,c=-1:g*c or p([*zip(*filter(max,g))],c+1)
 # lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
 # ===================== 47 ====================
-p=lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
+p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
+
 
