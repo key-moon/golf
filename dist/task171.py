@@ -1,4 +1,1 @@
-def p(g):
- g[0]=g[-1]=[8]*len(g[0])
- for r in g[1:-1]:r[0]=r[-1]=8
- return g
+p=lambda g,c=-1:g*c or p([[8,*r[2:],8]for r in zip(*g)],c+1)
