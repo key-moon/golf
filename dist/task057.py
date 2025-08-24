@@ -1,1 +1,1 @@
-p=lambda g:[r*2for r in zip(*filter(max,zip(*g)))if max(r)]
+p=lambda g,F=lambda c:[*filter(max,zip(*c))]:F(F(g)*2)
