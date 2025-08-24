@@ -1,1 +1,1 @@
-def p(g):A=[(g[i][j],g[i][j+1],g[i+1][j],g[i+1][j+1])for i in(0,3)for j in(0,3)];B=next(B for B in A if A.count(B)<2);return[list(B[:2]),list(B[2:])]
+p=lambda g:[[sum(u:=g[i][j::3]+g[i+3][j::3])%(max(*u,1)*3)for j in(0,1)]for i in(0,1)]
