@@ -1,3 +1,2 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('N5Ã İ9Å‰ËV!‰»»¿z§.Èó8I¡ÇwF‹©“öøˆì²T‡»LÄR!íFğ haÚ,Áç †M``ùsB‘Bf•U8†zK Å Q4¤)ZlE,!¢	µEİPI.Ú8ÙqÃ¡ßšÇ3KÂ¥ q,OGğa	v<qÿøè¨1™—±…ì','L1'),-9))
+A=zip
+def p(g):a,*_,b=sorted({*A(*g)}-{(0,)*9},key=sum);return[*A(*[[v and(s==a)*2+(s==b)for v in s]for s in A(*g)])]
