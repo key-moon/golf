@@ -1,6 +1,1 @@
-E=range
-def p(g):
- C=len(g);B=len(g[0]);A=sum(v==0for r in g for v in r);F=[[0]*B*A for _ in E(C*A)]
- for D in E(C*B-A):
-  for(G,H)in enumerate(g):F[C*(D//A)+G][B*(D%A):B*(D%A)+B]=H
- return F
+p=lambda g:(R:=range(c:=sum(g,[]).count(0)*3))and[[(i//3*c+j<27-c)*g[i%3][j%3]for j in R]for i in R]
