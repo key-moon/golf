@@ -800,7 +800,8 @@ def check_template(template: str, mapping: dict[int, int]):
               res = res.replace(sym, str(binded))
           return res
 
-
+# TODO: DoSを防ぐためeval_boundsが安全側に倒しすぎてしまっている expやshlのみ別途hookする?
+#       式のキャッシュ?
 if __name__ == "__main__":
     mapping = { 0:0, 1:5, 5:1 }
     max_length = 10
