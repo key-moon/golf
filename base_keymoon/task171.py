@@ -5,8 +5,6 @@
 # lambda g,c=-3:g*c or p([r+[8]for*r,_ in zip(*g[::-1])],c+1)
 # lambda g,c=-1:g*c or p([[8,*r,8]for _,*r,_ in zip(*g)],c+1)
 # lambda g,c=-1:g*c or p([[8,*r[2:],8]for r in zip(*g)],c+1)
-# lambda g,c=-1:g*c or p([[8,*r[2:],8]for r in zip(*g)],c+1)
 # lambda g,c=-1:g*c or p([[8,*r,8]for*r,_,_ in zip(*g)],c+1)
-# lambda g,c=-1:g*c or p([[8,*g[0][2:],8]for _ in g[0]],c+1)
 # ======================== 54 ========================
-p=lambda g,c=-1:g*c or p([[8,*g[0][2:],8]for _ in g[0]],c+1)
+p=lambda g,c=-1:g*c or p([[8,*r[2:],8]for r in zip(*g)],c+1)
