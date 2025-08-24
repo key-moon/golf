@@ -1,6 +1,1 @@
-def p(g):
- z={}
- for r in g:
-  for(j,c)in enumerate(r):
-   if c:z.setdefault(c,[0,j])[0]+=1;z[c][1]=min(z[c][1],j)
- m=max(v[0]for v in z.values());k=[c for(c,v)in z.items()if v[0]==m];k.sort(key=lambda c:z[c][1]);return[k]*m
+p=lambda g:(G:=sum(g,[]),u:=sorted((G.count(c),G.index(c)%10,c)for c in{*G}-{0}))and[[c for k,_,c in u if k==u[-1][0]]]*u[-1][0]
