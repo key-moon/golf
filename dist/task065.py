@@ -1,1 +1,1 @@
-p=lambda g:(n:=len(g),m:=n//2,G:=sum(g,[]),k:=G.index(min(G,key=G.count)))and[s[(k%n>m)*-m:][:m]for s in g[(k>n*m)*-m:][:m]]
+p=lambda g:(a:=len(g)//2)and min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in(0,a+1)for j in(0,a+1)],key=p.count)
