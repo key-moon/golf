@@ -1,10 +1,24 @@
-def p(g):
- F,*C=sorted({*sum(g,t:=[])},key=sum(g,[]).count)
- for c in C:
-  l,*_,r=sorted(j for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c)
-  u,*_,d=sorted(i for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c)
-  t+=[(sum(s[l:r+1].count(F)for s in g[u:d+1]),c)]
- return [[max(t)[1]]]
+# best: 101(att) / others: 113(mukundan), 121(luke/sisyphus/Seek), 121(Seek64), 122(joking+MWI), 122(joking/MWI)
+# =============================================== 101 ===============================================
+# p=lambda g:[[max(t:=[c for s in g for t,v in zip(zip(*g),s)if(c:=max(range(10),key=lambda C:(s.count(C)-(v==C))*(t.count(C)-(v==C))))!=v],key=t.count)]]
+# p=lambda g:(c:=min(u:=sum(g,[]),key=u.count),print(CASE,c),T:=sum([s+[*t] for s in g for t,v in zip(zip(*g),s) if v==c],[]))and[[max(T,key=T.count)]]
+
+# f=lambda g,c:[s for s in zip(*g)if c in s]
+# p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum(f(f(g,c),c),()))-t.count(c))][-2]]]
+
+p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c))][-2]]]
+# p=lambda g:[[[*sorted([(len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c),c)for c in range(10)])][-2][1]]]
+# p=lambda g:[[max((k,c)for c in range(10)if(k:=len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c))<6)[1]]]
+  
+  
+
+# def p(g):
+#  F,*C=sorted({*sum(g,t:=[])},key=sum(g,[]).count)
+#  for c in C:
+#   l,*_,r=sorted(j for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c)
+#   u,*_,d=sorted(i for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c)
+#   t+=[(sum(s[l:r+1].count(F)for s in g[u:d+1]),c)]
+#  return [[max(t)[1]]]
 
 # def p(g):
 #  G=sum(g,t:=[])
