@@ -241,7 +241,6 @@
 | [357](/vis/task357.png) | [base_yu](/base_yu/task357.py) | raw/raw | [101](/dist/task357.py) (+9) | 92 🔴 | [vis-many](/vis_many/task357.png) | not worth compress |
 | [391](/vis/task391.png) | [dist](/dist/task391.py) | previous | [72](/dist/task391.py) (+9) | 63 🔴 | [vis-many](/vis_many/task391.png) | ⚠️ regression? |
 | [393](/vis/task393.png) | [dist](/dist/task393.py) | previous | [72](/dist/task393.py) (+9) | 63 🔴 | [vis-many](/vis_many/task393.png) | ⚠️ regression? |
-| [021](/vis/task021.png) | [base_yu](/base_yu/task021.py) | raw/raw | [71](/dist/task021.py) (+8) | 63 🔴 | [vis-many](/vis_many/task021.png) | not worth compress |
 | [162](/vis/task162.png) | [base_yu](/base_yu/task162.py) | raw/raw | [108](/dist/task162.py) (+8) | 100 🔴 | [vis-many](/vis_many/task162.png) | not worth compress |
 | [188](/vis/task188.png) | [base_yu](/base_yu/task188.py) | raw/raw | [80](/dist/task188.py) (+8) | 72 🔴 | [vis-many](/vis_many/task188.png) | not worth compress |
 | [272](/vis/task272.png) | [base_yu](/base_yu/task272.py) | raw/raw | [109](/dist/task272.py) (+8) | 101 🔴 | [vis-many](/vis_many/task272.png) | not worth compress |
@@ -393,6 +392,7 @@
 | [346](/vis/task346.png) | [base_keymoon](/base_keymoon/task346.py) | raw/raw | [100](/dist/task346.py) (-2) | 102 🟢 | [vis-many](/vis_many/task346.png) | not worth compress |
 | [178](/vis/task178.png) | [base_keymoon](/base_keymoon/task178.py) | raw/raw | [51](/dist/task178.py) (-4) | 55 🟢 | [vis-many](/vis_many/task178.png) | not worth compress |
 | [199](/vis/task199.png) | [base_yu](/base_yu/task199.py) | raw/raw | [95](/dist/task199.py) (-6) | 101 🟢 | [vis-many](/vis_many/task199.png) | not worth compress |
+| [021](/vis/task021.png) | [base_keymoon](/base_keymoon/task021.py) | raw/raw | [56](/dist/task021.py) (-7) | 63 🟢 | [vis-many](/vis_many/task021.png) | not worth compress |
 | [320](/vis/task320.png) | [base_keymoon](/base_keymoon/task320.py) | raw/raw | [73](/dist/task320.py) (-7) | 80 🟢 | [vis-many](/vis_many/task320.png) | not worth compress |
 | [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | forcomp-t/zlib-9 | [271](/dist/task191.py) (-10) | 281 🟢 | [vis-many](/vis_many/task191.png) |  |
 | [264](/vis/task264.png) | [base_yu](/base_yu/task264.py) | forcomp-s/zlib-zopfli | [210](/dist/task264.py) (-12) | 222 🟢 | [vis-many](/vis_many/task264.png) | encode:+1 |

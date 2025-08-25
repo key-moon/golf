@@ -1,1 +1,1 @@
-p=lambda g:[(len(s:=g[0])-s.count(s[0])+1)*s[:1]]*(len(g)-g.count(s)+1)
+p=lambda g:g*0!=0and[p(g:=r)for r in g if r!=g][::2]or g
