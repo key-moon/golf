@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('MNËƒ ¼û{„B£Mš˜pğà7x0Bƒ"ŠÿßÅXãmfç±cbXÁ&SîvİBL°Å0í*“6°‘™·"ş£iS€	ïÀú¿‹´ÄiOfú¬(?ñPÊLs\0ÑÅ«)kÀ‡£sä•;ìQhó äĞ5«%GÌª‹¡Ô#‘ÙÚçÔrİĞu»JÚ¨à“õ»Æ_‡Àİ}ê‚;¥8í(p’‰÷ƒœXˆGFöèaş','L1'),-9))
+p=lambda g,E=enumerate:[[s[j]or any([0,0,*s][j:j+5])*any([0,0,*t][i:i+5])*7for j,t in E(zip(*g))]for i,s in E(g)]
