@@ -1,1 +1,1 @@
-def p(j):A=(j[3][3]<1)*6;[j[r].__setitem__(slice(A,A+3),j[r][3:6][::-1])for r in range(3)];return j
+p=lambda g:[(t:=(s[:3],s[5:2:-1]))[g[3][3]>0]+s[3:6]+t[g[3][5]>0]for s in g[:3]]+g[3:]
