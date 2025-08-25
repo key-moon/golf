@@ -1,1 +1,1 @@
-p=lambda g:[[2-any(a)*2for a in zip(*c)]for c in zip(g,g[4:])]
+p=lambda g:eval("[2*~a&2for a in map(max,g.pop(0),g[3])],"*4)

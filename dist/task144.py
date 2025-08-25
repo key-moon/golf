@@ -1,1 +1,1 @@
-def p(g):return[[3*(a[j]==b[j]==0)for j in range(4)]for a,b in zip(g,g[5:])]
+p=lambda g:eval("[3-any(a)*3for a in zip(g.pop(0),g[4])],"*4)

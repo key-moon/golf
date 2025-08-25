@@ -1,1 +1,1 @@
-p=lambda g:[[2*(a==b)for a,b in zip(*c)]for c in zip(g,g[3:])]
+p=lambda g:eval("[2-any(a)*2for a in zip(g.pop(0),g[2])],"*3)
