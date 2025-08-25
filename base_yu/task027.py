@@ -1,5 +1,13 @@
-R=range
-p=lambda g:[[g[i][j]or(10>(t:=9+all(g[i%4+6][i//4+5]==g[5-i//4][i%4+6]for i in R(2,20))-j)and g[t][i])*2for j in R(10)]for i in R(10)]
+# best: 103(luke/sisyphus/Seek, Seek64) / others: 111(joking+MWI), 111(joking/MWI), 111(joking), 114(mukundan), 117(duckyluuk)
+# ================================================ 103 ================================================
+
+# p=lambda g,R=range:min([[[g[i][j]or(u-j<10and g[u-j][i])*2for j in R(10)]for i in R(10)]for u in R(9,11)],key=lambda f:sum(sum(f,[])))
+# p=lambda g,R=range:min([(sum(sum(a:=[[g[i][j]or u-j<10and g[u-j][i]*2for j in R(10)]for i in R(10)],[])),a)for u in R(9,11)])[1]
+# p=lambda g,R=range(10):min([(sum(sum(a:=[[g[i][j]or u+1-j<10and g[u+1-j][i]*2for j in R]for i in R],[])),a)for u in R])[1]
+p=lambda g,R=range(10):min((sum(sum(a:=[[g[i][j]or g[(u+1-j)%10][i]*2for j in R]for i in R],[])),a)for u in R)[1]
+
+# R=range
+# p=lambda g:[[g[i][j]or(10>(t:=9+all(g[i%4+6][i//4+5]==g[5-i//4][i%4+6]for i in R(2,20))-j)and g[t][i])*2for j in R(10)]for i in R(10)]
 
 # R=range
 # def p(g):
