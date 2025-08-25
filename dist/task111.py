@@ -1,1 +1,2 @@
-p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in(12,22,32)]
+p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in b"
+ "]
