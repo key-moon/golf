@@ -212,7 +212,7 @@ def get_uncompressed_content(content: bytes) -> tuple[str, bytes | None]:
       return "# failed to decode", None
 
 def get_content_summary(content: bytes) -> str:
-  code, deflate_payload = get_uncompressed_content(orig_code)
+  code, deflate_payload = get_uncompressed_content(content)
   if deflate_payload:
     code = f"# original content: {len(content)} bytes\n{code}"
   else:
