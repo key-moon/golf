@@ -4,7 +4,7 @@ import warnings
 import argparse
 from typing import Optional
 
-from compress import get_uncompressed_content
+from compress import get_content_summary
 from generator import RunResult
 from public_data import get_scores_per_task
 from utils import signed_str
@@ -112,8 +112,8 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
       task = int(file_path.stem[-3:])
       old_result, new_result = old_results.results[task - 1], new_results.results[task - 1]
 
-      old_content, _ = get_uncompressed_content(get_file_content(commit1, file_path))
-      new_content, _ = get_uncompressed_content(get_file_content(commit2, file_path))
+      old_content = get_content_summary(get_file_content(commit1, file_path))
+      new_content = get_content_summary(get_file_content(commit2, file_path))
       
       improvement = signed_str(new_result.length - old_result.length) if old_result.length and new_result.length else "-"
 

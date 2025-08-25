@@ -211,6 +211,14 @@ def get_uncompressed_content(content: bytes) -> tuple[str, bytes | None]:
     except Exception:
       return "# failed to decode", None
 
+def get_content_summary(content: bytes) -> str:
+  code, deflate_payload = get_uncompressed_content(orig_code)
+  if deflate_payload:
+    code = f"# original content: {len(content)} bytes\n{code}"
+  else:
+    code = content.decode("L1")
+  return code
+
 if __name__ == "__main__":
   dirname = sys.argv[1] if 2 <= len(sys.argv) else "dist"
   range_str = sys.argv[2] if 3 <= len(sys.argv) else "1-400"
