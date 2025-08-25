@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 913431
+Score: 913438
 
 Best Score: 954572
 
@@ -233,7 +233,7 @@ Best Score: 954572
 | [302](/vis/task302.png) | [base_yu](/base_yu/task302.py) | forplain/raw | [175](/dist/task302.py) (+78) | 97 🔴 | [vis-many](/vis_many/task302.png) | not worth compress |
 | [048](/vis/task048.png) | [base_keymoon](/base_keymoon/task048.py) | forplain/raw | [153](/dist/task048.py) (+55) | 98 🔴 | [vis-many](/vis_many/task048.png) | not worth compress |
 | [098](/vis/task098.png) | [base_notebooks](/base_notebooks/task098_20250817-112257Z-guys-yestday-like-yeahhi-boasting-allrightbye-ketalana.py) | forplain/raw | [168](/dist/task098.py) (+70) | 98 🔴 | [vis-many](/vis_many/task098.png) | not worth compress |
-| [254](/vis/task254.png) | [base_yu](/base_yu/task254.py) | forplain/raw | [117](/dist/task254.py) (+18) | 99 🔴 | [vis-many](/vis_many/task254.png) | not worth compress |
+| [254](/vis/task254.png) | [base_yu](/base_yu/task254.py) | forplain/raw | [110](/dist/task254.py) (+11) | 99 🔴 | [vis-many](/vis_many/task254.png) | not worth compress |
 | [338](/vis/task338.png) | [base_yu](/base_yu/task338.py) | raw/raw | [110](/dist/task338.py) (+11) | 99 🔴 | [vis-many](/vis_many/task338.png) | not worth compress |
 | [015](/vis/task015.png) | [base_yu](/base_yu/task015.py) | forplain/raw | [116](/dist/task015.py) (+16) | 100 🔴 | [vis-many](/vis_many/task015.png) | not worth compress |
 | [139](/vis/task139.png) | [base_yu](/base_yu/task139.py) | raw/raw | [113](/dist/task139.py) (+13) | 100 🔴 | [vis-many](/vis_many/task139.png) | not worth compress |
