@@ -1,1 +1,1 @@
-p=lambda g,E=enumerate:[[s[j]for i,s in E(g)for j,t in E(zip(*g))if(u:=s[j-1:j+2])==[*t][i-1:i+2]>[1]and u[-1]==u[0]!=s[j]>0]]
+import re;p=lambda g:[[int(re.search(rf"(, [^0])\1\1.{{{len(g[0])*3-7}}}\1(?!\1), (.)",str(g))[2])]]
