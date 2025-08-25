@@ -86,3 +86,12 @@ jobs:
           files: submission.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  failure-notification:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Discord of failure
+        run: |
+          DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_PAYLOAD=$(python -c 'import json; import sys; from datetime import datetime; print(json.dumps({ "embeds": [{ "title": "Workflow Failure", "description": "The workflow **Release Submission** has failed.", "color": 16711680, "timestamp": datetime.now().isoformat() }] }))')
+          curl -X POST -H "Content-Type: application/json" -d "$DISCORD_PAYLOAD" "$DISCORD_WEBHOOK_URL"
