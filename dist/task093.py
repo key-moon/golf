@@ -1,1 +1,1 @@
-p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*zip(*p([*zip(*g)]))]
+p=lambda g:5in g[0]and[([0]*s[:s.index(5)].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*zip(*p([*zip(*g)]))]
