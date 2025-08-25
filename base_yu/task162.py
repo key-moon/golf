@@ -4,6 +4,6 @@
 # p=lambda g,c=-3:c*g or p(eval(re.sub("0, 0, 0(.{55})0, 0, 0(.{55})0, 0, 0","1,1,1\\1 1,1,1\\2 1,1,1",str(g))),c+1)
 import re
 # p=lambda g,c=-3:c*g or p(eval(re.sub(("(.{55})0, 0, 0"*3)[7:],"1,1,1\\1 1,1,1\\2 1,1,1",str(g))),c+1)
-p=lambda g,c=-3:c*g or p(eval(re.sub("(.{55})?0, 0, 0"*3,"\\1 1,1,1\\2 1,1,1\\3 1,1,1",str(g))),c+1)
+p=lambda g,c=-3:c*g or p(eval(re.sub("(.{55})?0, 0, 0"*3,r"\1 1,1,1\2 1,1,1\3 1,1,1",str(g))),c+1)
 # p=lambda g:eval(r'(g:=eval(re.sub("(.{55})?0, 0, 0"*3,"\\1 1,1,1\\2 1,1,1\\3 1,1,1",str(g)))),'*3)[2]
 # p=lambda g,c=-3:c*g or p(eval(re.sub("(.{55})?0, 0, 0"*3," 1,1,1\\".join("01234")[7:-2],str(g))),c+1)
