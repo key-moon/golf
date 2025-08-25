@@ -8,4 +8,5 @@
 # p=lambda g:[[*iter(sum(g,[]).pop,5)][::-1][8+i*10:][:3]for i in range(3)]
 # p=lambda g:[[*iter(sum(g,[]).pop,5)][1-i*10::-1][:3]for i in(1,2,3)]
 # p=lambda g:[[*iter(sum(g,g).pop,5)][-i::-1][:3]for i in(9,19,29)]
-p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in(12,22,32)]
+# p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in(12,22,32)]
+p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in b" "]
