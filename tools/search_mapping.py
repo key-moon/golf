@@ -805,7 +805,7 @@ def check_template(template: str, mapping: dict[int, int]):
 #       式のキャッシュ?
 if __name__ == "__main__":
     # mapping = { 20:1, 25:4, 30:2 }
-    mapping = { 0:1,2:1,7:1,9:1, 1:0,3:0,4:0,5:0,6:0,8:0 }
+    mapping = { 4:6, 0:0 }
     max_length = 10
     mod_tolerance = 3
     DO_CLAMP = False
