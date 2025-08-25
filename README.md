@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 912065
+Score: 912137
 
 Best Score: 954513
 
@@ -240,7 +240,7 @@ Best Score: 954513
 | [162](/vis/task162.png) | [base_yu](/base_yu/task162.py) | raw/raw | [108](/dist/task162.py) (+8) | 100 🔴 | [vis-many](/vis_many/task162.png) | not worth compress |
 | [065](/vis/task065.png) | [base_yu](/base_yu/task065.py) | raw/raw | [124](/dist/task065.py) (+23) | 101 🔴 | [vis-many](/vis_many/task065.png) | not worth compress |
 | [120](/vis/task120.png) | [base_yu](/base_yu/task120.py) | raw/raw | [108](/dist/task120.py) (+7) | 101 🔴 | [vis-many](/vis_many/task120.png) | not worth compress |
-| [272](/vis/task272.png) | [base_notebooks](/base_notebooks/task272_20250807-051947Z-simpletasksolved-tetsuro-tsuda.py) | forplain/raw | [181](/dist/task272.py) (+80) | 101 🔴 | [vis-many](/vis_many/task272.png) | not worth compress |
+| [272](/vis/task272.png) | [base_yu](/base_yu/task272.py) | raw/raw | [109](/dist/task272.py) (+8) | 101 🔴 | [vis-many](/vis_many/task272.png) | not worth compress |
 | [314](/vis/task314.png) | [base_yu](/base_yu/task314.py) | raw/raw | [174](/dist/task314.py) (+73) | 101 🔴 | [vis-many](/vis_many/task314.png) |  |
 | [333](/vis/task333.png) | [base_code](/base_code/task333.py) | forcomp-t/zlib-zopfli | [248](/dist/task333.py) (+147) | 101 🔴 | [vis-many](/vis_many/task333.png) | encode:+1 |
 | [355](/vis/task355.png) | [base_yu](/base_yu/task355.py) | forcomp-t/zlib-zopfli | [231](/dist/task355.py) (+130) | 101 🔴 | [vis-many](/vis_many/task355.png) | encode:+1 |
