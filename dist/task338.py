@@ -1,1 +1,1 @@
-p=lambda g:(s:=g[0])and[(k:=0)or(s:=[y+(k:=x and k+y)*3for x,y in zip(s,t)])and[(v==6)*3for v in s]for t in g]
+p=lambda g,S=[0]*99:eval(str([S:=[[3*(0<D),.5-(0!=D)][1<c]for c,D in zip(r,S)]for r in g]).replace(*"50"))

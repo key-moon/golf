@@ -18,7 +18,7 @@ from utils import get_code_paths, get_task
 
 def check_str(task_id: int, code: str | bytes, task, checked_hash):
   digest = hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()
-  tmp_path = f"tmp/{digest}.py"
+  tmp_path = f"tmp/{digest}{task_id:03d}.py"
   code_hash = f"{task_id:03d}|{digest}"
   if code_hash in checked_hash:
     return CheckRes(**{"outputs": [], **checked_hash[code_hash]})
@@ -29,8 +29,8 @@ def check_str(task_id: int, code: str | bytes, task, checked_hash):
   res = check(tmp_path, task)
   checked_hash[code_hash] = dataclasses.asdict(res)
   del checked_hash[code_hash]["outputs"]
-  if f"tmp.{digest}" in sys.modules:
-    del sys.modules[f"tmp.{digest}"]
+  if f"tmp.{digest}{task_id:03d}" in sys.modules:
+    del sys.modules[f"tmp.{digest}{task_id:03d}"]
   if os.path.exists(tmp_path):
     os.remove(tmp_path)
   return res
