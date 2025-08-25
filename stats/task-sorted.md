@@ -19,7 +19,7 @@
 | [007](/vis/task007.png) | [base_yu](/base_yu/task007.py) | raw/raw | [72](/dist/task007.py) (+7) | 65 🔴 | [vis-many](/vis_many/task007.png) | not worth compress |
 | [008](/vis/task008.png) | [base_keymoon](/base_keymoon/task008.py) | raw/raw | [138](/dist/task008.py) (+44) | 94 🔴 | [vis-many](/vis_many/task008.png) | not worth compress |
 | [009](/vis/task009.png) | [base_notebooks](/base_notebooks/task009_20250814-104013Z-a-bit-more-of-code-golf-255-400-visualization-jacekwl.py) | forcomp-t/zlib-zopfli | [305](/dist/task009.py) (+196) | 109 🔴 | [vis-many](/vis_many/task009.png) |  |
-| [010](/vis/task010.png) | [base_notebooks](/base_notebooks/task010_20250818-060100Z-oh-barnacles-jazivxt.py) | raw/raw | [106](/dist/task010.py) (+36) | 70 🔴 | [vis-many](/vis_many/task010.png) | not worth compress |
+| [010](/vis/task010.png) | [base_yu](/base_yu/task010.py) | raw/raw | [90](/dist/task010.py) (+20) | 70 🔴 | [vis-many](/vis_many/task010.png) | not worth compress |
 | [011](/vis/task011.png) | [base_notebooks](/base_notebooks/task011_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-zopfli | [225](/dist/task011.py) (+93) | 132 🔴 | [vis-many](/vis_many/task011.png) |  |
 | [012](/vis/task012.png) | [base_notebooks](/base_notebooks/task012_20250808-133747Z-let-s-see-dude-190-think-bruce.py) | raw/raw | [218](/dist/task012.py) (+55) | 163 🔴 | [vis-many](/vis_many/task012.png) |  |
 | [013](/vis/task013.png) | [base_code](/base_code/task013_2.py) | forcomp-s/zlib-zopfli | [293](/dist/task013.py) (+136) | 157 🔴 | [vis-many](/vis_many/task013.png) | encode:+1 |
