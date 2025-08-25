@@ -805,21 +805,27 @@ def check_template(template: str, mapping: dict[int, int]):
 #       式のキャッシュ?
 if __name__ == "__main__":
     # mapping = { 20:1, 25:4, 30:2 }
-    mapping = { 20:3, 25:5, 30:6 }
+    mapping = { 0:1,2:1,7:1,9:1, 1:0,3:0,4:0,5:0,6:0,8:0 }
     max_length = 10
     mod_tolerance = 3
+    DO_CLAMP = False
 
     end_terms = []
-    last_mod_min = max(mapping.values())+1
-    for tmpl_len in range(mod_tolerance+1):
-        end_terms.append(f"%{last_mod_min+tmpl_len}")
-        for j in range(1, tmpl_len+1):
-            end_terms.append(f"%{last_mod_min+tmpl_len}-{j}")
-
-    for affine_add in range(1, min(mapping.values())+1):
-        last_mod_min = max(mapping.values()) - affine_add + 1
+    if DO_CLAMP:
+        last_mod_min = max(mapping.values())+1
         for tmpl_len in range(mod_tolerance+1):
-            end_terms.append(f"%{last_mod_min+tmpl_len}+{affine_add}")
+            end_terms.append(f"%{last_mod_min+tmpl_len}")
+            for j in range(1, tmpl_len+1):
+                end_terms.append(f"%{last_mod_min+tmpl_len}-{j}")
+
+        for affine_add in range(1, min(mapping.values())+1):
+            last_mod_min = max(mapping.values()) - affine_add + 1
+            for tmpl_len in range(mod_tolerance+1):
+                end_terms.append(f"%{last_mod_min+tmpl_len}+{affine_add}")
+        n = max_length - 3
+    else:
+        end_terms = [""]
+        n = max_length  
   
     n = max_length - 3
     print("[+] enumerating...")
