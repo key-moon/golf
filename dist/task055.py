@@ -1,1 +1,1 @@
-p=lambda g,E=enumerate:[[s[j]or b""[(sum(s[:j])*3+sum(t[:i]))//8]-1for j,t in E(zip(*g))]for i,s in E(g)]
+p=lambda g,c=0:[(c:=c+all(s),d:=1)and[b"	"[(v<1)*(c+(d:=d+v//8*3))]-1for v in s]for s in g]
