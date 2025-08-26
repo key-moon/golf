@@ -1,2 +1,1 @@
-A=zip
-p=lambda g:(a:=sum([(c:=0)or[*A(*[(x,y)for(x,y)in A(s,t)if c+(c:=c^(x==5or y==5))])]for(s,t)in A([[]]+g,g)],[]))and a[:1]+a[1::2]
+p=lambda g,c=-63:c*g or p([*zip(*g[1-(g[1].count(5)==2and(8,5,5,8)!=g[1]or 5in g[0]):][::-1])],c+1)
