@@ -1,3 +1,4 @@
+# 類題:180
 # best: 81(luke) / others: 82(mukundan), 82(sisyphus), 83(kabutack), 84(natte), 84(att)
 # ====================================== 81 =====================================
 # p=lambda g:[[g[i][j]or g[i][j+5]or g[i+5][j]or g[i+5][j+5] for j in range(4)]for i in range(4)]
