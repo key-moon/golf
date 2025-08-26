@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 914612
+Score: 914694
 
 Best Score: 955158
 
@@ -210,7 +210,7 @@ Best Score: 955158
 | [251](/vis/task251.png) | [base_code](/base_code/task251.py) | forcomp-t/zlib-zopfli | [248](/dist/task251.py) (+159) | 89 🔴 | [vis-many](/vis_many/task251.png) |  |
 | [282](/vis/task282.png) | [base_yu](/base_yu/task282.py) | raw/raw | [105](/dist/task282.py) (+16) | 89 🔴 | [vis-many](/vis_many/task282.png) | not worth compress |
 | [002](/vis/task002.png) | [base_yu](/base_yu/task002.py) | forcomp-t/zlib-zopfli | [203](/dist/task002.py) (+113) | 90 🔴 | [vis-many](/vis_many/task002.png) |  |
-| [109](/vis/task109.png) | [base_code](/base_code/task109_1.py) | forplain/raw | [177](/dist/task109.py) (+87) | 90 🔴 | [vis-many](/vis_many/task109.png) |  |
+| [109](/vis/task109.png) | [base_yu](/base_yu/task109.py) | raw/raw | [95](/dist/task109.py) (+5) | 90 🔴 | [vis-many](/vis_many/task109.png) | not worth compress |
 | [121](/vis/task121.png) | [base_code](/base_code/task121_2.py) | forcomp-s/zlib-zopfli | [188](/dist/task121.py) (+98) | 90 🔴 | [vis-many](/vis_many/task121.png) | encode:+1 |
 | [381](/vis/task381.png) | [base_yu](/base_yu/task381.py) | raw/raw | [93](/dist/task381.py) (+3) | 90 🔴 | [vis-many](/vis_many/task381.png) | not worth compress |
 | [022](/vis/task022.png) | [base_notebooks](/base_notebooks/task022_20250814-104013Z-a-bit-more-of-code-golf-255-400-visualization-jacekwl.py) | forplain/zlib-zopfli | [213](/dist/task022.py) (+122) | 91 🔴 | [vis-many](/vis_many/task022.png) |  |
