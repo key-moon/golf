@@ -5,11 +5,11 @@
 # p=lambda g:[[((c:=len({*sum(g,[])}))<3)*5,(c<2)*5,c%2*5],[0,1%c*5,0],[4%c*5,0,3%c*5]]
 
 # p=lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in s]for s in[[6,2,10],[0,12,0],[8,0,4]]]
-# p=lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in b""[i-3:i]]for i in(3,6,9)]
+p=lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in b""[i-3:i]]for i in(3,6,9)]
 # p=lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in b"000000000"[i-3:i]]for i in(3,6,9)]
 # p=lambda g:[[(17314875942>>i+j+len({*sum(g,[])})&1)*5for j in(0,4,8)]for i in(0,12,24)]
 # p=lambda g:[[(69259503768>>i+j+len({*sum(g,[])})&1)*5for j in(0,4,8)]for i in b"000"]
-p=lambda g:[[(69259503768>>i+j+len({*sum(g,[])})&1)*5for j in(0,4,8)]for i in b""]
+# p=lambda g:[[(69259503768>>i+j+len({*sum(g,[])})&1)*5for j in(0,4,8)]for i in b""]
 
 
 
