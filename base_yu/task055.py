@@ -6,8 +6,8 @@
 # p=lambda g,c=0:[(c:=c+all(s),d:=0)or[v or[0,4,0,2,6,1,0,3,0][c*3+(d:=d+(t>0))] for v,t in zip(s,zip(*g))]for s in g]
 # p=lambda g,c=0:[(c:=c+all(s),d:=1)and[[8,0,4,0,2,6,1,0,3,0][(v<1)*(c+(d:=d+v//8*3))]for v in s]for s in g]
 # p=lambda g,c=0:[(c:=c+all(s),d:=1)and[b"	"[(v<1)*(c+(d:=d+v//8*3))]-1for v in s]for s in g]
-p=lambda g,c=0:[(c:=c+all(s)*3,d:=0)and[[1602080>>c+(d:=d+v)&7,v][v>0]for v in s]for s in g]
-
+# p=lambda g,c=0:[(c:=c+all(s)*3,d:=0)and[[1602080>>c+(d:=d+v)&7,v][v>0]for v in s]for s in g]
+p=lambda g,i=0:[(i:=i+r[0],j:=i)and[[586768>>(j:=j+c//8*3)&7,c][c>0]for c in r]for r in g]
 # a=0
 # a|=4<<3
 # a|=2<<8
