@@ -5,9 +5,19 @@
 # p=lambda g,E=enumerate:[[s[j]or~-b""[(sum(s[:j])*3+sum(t[:i]))//8]for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,c=0:[(c:=c+all(s),d:=0)or[v or[0,4,0,2,6,1,0,3,0][c*3+(d:=d+(t>0))] for v,t in zip(s,zip(*g))]for s in g]
 # p=lambda g,c=0:[(c:=c+all(s),d:=1)and[[8,0,4,0,2,6,1,0,3,0][(v<1)*(c+(d:=d+v//8*3))]for v in s]for s in g]
-p=lambda g,c=0:[(c:=c+all(s),d:=1)and[b"	"[(v<1)*(c+(d:=d+v//8*3))]-1for v in s]for s in g]
+# p=lambda g,c=0:[(c:=c+all(s),d:=1)and[b"	"[(v<1)*(c+(d:=d+v//8*3))]-1for v in s]for s in g]
+p=lambda g,c=0:[(c:=c+all(s)*3,d:=0)and[[1602080>>c+(d:=d+v)&7,v][v>0]for v in s]for s in g]
+
+# a=0
+# a|=4<<3
+# a|=2<<8
+# a|=6<<11
+# a|=1<<14
+# a|=3<<19
+# print(a)
 
 # 020
 # 463
 # 010
+
 
