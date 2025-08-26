@@ -1,1 +1,1 @@
-p=lambda g:[(D:=0)or[int(D:=[D>5and[5+r.index(5),D][6<D],5+(D<1)/2][0<r.pop(0)])for _ in g]for r in g]
+p=lambda g:[(D:=0)or[int(D:=r.pop(0)and(D<1)/2+5or D>5and[6+r.index(5),D][6<D])for _ in g]for r in g]

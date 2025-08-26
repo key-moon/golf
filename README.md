@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 914470
+Score: 914481
 
 Best Score: 955158
 
@@ -111,7 +111,7 @@ Best Score: 955158
 | [003](/vis/task003.png) | [base_keymoon](/base_keymoon/task003.py) | raw/raw | [61](/dist/task003.py) (+1) | 60 🔴 | [vis-many](/vis_many/task003.png) | not worth compress |
 | [072](/vis/task072.png) | [base_keymoon](/base_keymoon/task072.py) | raw/raw | [62](/dist/task072.py) (+2) | 60 🔴 | [vis-many](/vis_many/task072.png) | not worth compress |
 | [111](/vis/task111.png) | [base_yu](/base_yu/task111.py) | raw/raw | [62](/dist/task111.py) (+2) | 60 🔴 | [vis-many](/vis_many/task111.png) | not worth compress |
-| [115](/vis/task115.png) | [base_keymoon](/base_keymoon/task115.py) | raw/raw | [72](/dist/task115.py) (+12) | 60 🔴 | [vis-many](/vis_many/task115.png) | not worth compress |
+| [115](/vis/task115.png) | [base_keymoon](/base_keymoon/task115.py) | raw/raw | [71](/dist/task115.py) (+11) | 60 🔴 | [vis-many](/vis_many/task115.png) | not worth compress |
 | [218](/vis/task218.png) | [base_keymoon](/base_keymoon/task218.py) | raw/raw | [67](/dist/task218.py) (+7) | 60 🔴 | [vis-many](/vis_many/task218.png) | not worth compress |
 | [236](/vis/task236.png) | [base_yu](/base_yu/task236.py) | raw/raw | [63](/dist/task236.py) (+3) | 60 🔴 | [vis-many](/vis_many/task236.png) | not worth compress |
 | [293](/vis/task293.png) | [base_yu](/base_yu/task293.py) | raw/raw | [60](/dist/task293.py) (0) | 60  | [vis-many](/vis_many/task293.png) | not worth compress |
@@ -201,7 +201,7 @@ Best Score: 955158
 | [193](/vis/task193.png) | [base_yu](/base_yu/task193.py) | raw/raw | [150](/dist/task193.py) (+64) | 86 🔴 | [vis-many](/vis_many/task193.png) | not worth compress |
 | [259](/vis/task259.png) | [base_keymoon](/base_keymoon/task259.py) | raw/raw | [87](/dist/task259.py) (+1) | 86 🔴 | [vis-many](/vis_many/task259.png) | not worth compress |
 | [271](/vis/task271.png) | [base_keymoon](/base_keymoon/task271.py) | raw/raw | [107](/dist/task271.py) (+21) | 86 🔴 | [vis-many](/vis_many/task271.png) | not worth compress |
-| [055](/vis/task055.png) | [base_yu](/base_yu/task055.py) | raw/raw | [100](/dist/task055.py) (+13) | 87 🔴 | [vis-many](/vis_many/task055.png) | not worth compress |
+| [055](/vis/task055.png) | [base_keymoon](/base_keymoon/task055.py) | raw/raw | [91](/dist/task055.py) (+4) | 87 🔴 | [vis-many](/vis_many/task055.png) | not worth compress |
 | [092](/vis/task092.png) | [base_yu](/base_yu/task092.py) | raw/raw | [100](/dist/task092.py) (+13) | 87 🔴 | [vis-many](/vis_many/task092.png) | not worth compress |
 | [175](/vis/task175.png) | [base_yu](/base_yu/task175.py) | raw/raw | [98](/dist/task175.py) (+11) | 87 🔴 | [vis-many](/vis_many/task175.png) | not worth compress |
 | [300](/vis/task300.png) | [base_yu](/base_yu/task300.py) | raw/raw | [97](/dist/task300.py) (+10) | 87 🔴 | [vis-many](/vis_many/task300.png) | not worth compress |
@@ -230,7 +230,7 @@ Best Score: 955158
 | [350](/vis/task350.png) | [base_yu](/base_yu/task350.py) | raw/raw | [102](/dist/task350.py) (+7) | 95 🔴 | [vis-many](/vis_many/task350.png) | not worth compress |
 | [081](/vis/task081.png) | [base_code](/base_code/task081.py) | forcomp-s/zlib-zopfli | [180](/dist/task081.py) (+84) | 96 🔴 | [vis-many](/vis_many/task081.png) | encode:+1 |
 | [256](/vis/task256.png) | [base_keymoon](/base_keymoon/task256.py) | raw/raw | [108](/dist/task256.py) (+12) | 96 🔴 | [vis-many](/vis_many/task256.png) | not worth compress |
-| [302](/vis/task302.png) | [base_keymoon](/base_keymoon/task302.py) | raw/raw | [102](/dist/task302.py) (+5) | 97 🔴 | [vis-many](/vis_many/task302.png) | not worth compress |
+| [302](/vis/task302.png) | [base_keymoon](/base_keymoon/task302.py) | raw/raw | [101](/dist/task302.py) (+4) | 97 🔴 | [vis-many](/vis_many/task302.png) | not worth compress |
 | [048](/vis/task048.png) | [base_keymoon](/base_keymoon/task048.py) | forplain/raw | [153](/dist/task048.py) (+55) | 98 🔴 | [vis-many](/vis_many/task048.png) | not worth compress |
 | [098](/vis/task098.png) | [base_notebooks](/base_notebooks/task098_20250817-112257Z-guys-yestday-like-yeahhi-boasting-allrightbye-ketalana.py) | forplain/raw | [168](/dist/task098.py) (+70) | 98 🔴 | [vis-many](/vis_many/task098.png) | not worth compress |
 | [254](/vis/task254.png) | [base_keymoon](/base_keymoon/task254.py) | raw/raw | [99](/dist/task254.py) (0) | 99  | [vis-many](/vis_many/task254.png) | not worth compress |

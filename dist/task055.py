@@ -1,1 +1,1 @@
-p=lambda g,c=0:[(c:=c+all(s),d:=1)and[b"	"[(v<1)*(c+(d:=d+v//8*3))]-1for v in s]for s in g]
+p=lambda g,i=0:[(i:=i+r[0],j:=i)and[(j:=j+c//8*3)and c or 586768>>j&7for c in r]for r in g]
