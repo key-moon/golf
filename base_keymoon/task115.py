@@ -9,7 +9,7 @@
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if c not in g])]
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if(c in g)<1])]
 # =============================== 67 ==============================
-p=lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if(c in g)<1])]
+p=lambda g:[R for r in g if(R:=[(g:=[c]+g)[0]for c in r if(c in g)-1])]
 
 #  a in g
 # {c}<{*g}
