@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes(']ŒÃ0EÜ~I«ËZh›÷%OšDŠt}¶ÿ_$35¸œã¸›óx¶¡[œ$6·\nñÁ‹ñ‡à@LfµÄ8Þ‹Þ³ÆÙŽ]¡ø£žó\'pÉ§AÅ!z|ßˆT1¥sµ»©áQ»ªý¿®wM±wz¶iÃ¤iï½Vã"œ¥áL†,»^öyˆ{½%A>','L1'),-9))
+p=lambda g,R=range(9):[g[i][:4]+[g[i//3*3+1][4+j//3*3+1]*g[i%3][j%3]for j in R]for i in R]
