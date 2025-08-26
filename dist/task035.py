@@ -1,3 +1,2 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes(']CÃ@@×?ç¨‚}ëµb;¹}õfğŞçİq!ŸyìŠUÜàfå,J6HÁI›Ä)/µƒ4ÂĞ‚%.´¢¸8¬5q%I\r…ö7µdßñº`ˆIÎTVH.=ºÖ¦`¢‚.†û§¨ş¿¾Mj¼@Oúî7æÊÛ\r‡y[cÉ¢ØúÁÃFGX?ìú_,/\:uS¢=','L1'),-9))
+import re
+p=lambda g,c=-3:c*g or p([*zip(*eval(re.sub("([1-9])((, 0)+, )8","\\1\\2\\1",str(g)))[::-1])],c+1)
