@@ -8,7 +8,8 @@
 # Dは毎回初期化しないと駄目だった
 # D>5andなのは短絡評価でr.indexのエラーを回避
 # lambda g:[(D:=0)or eval("int(D:=[D>5and[5+r.index(5),D][6<D],5+(D<1)/2][0<r.pop(0)]),"*12)for r in g]
-p=lambda g:[(D:=0)or[int(D:=[D>5and[5+r.index(5),D][6<D],5+(D<1)/2][0<r.pop(0)])for _ in g]for r in g]
+# lambda g:[(D:=0)or[int(D:=[D>5and[5+r.index(5),D][6<D],5+(D<1)/2][0<r.pop(0)])for _ in g]for r in g]
+p=lambda g:[(D:=0)or[int(D:=r.pop(0)and(D<1)/2+5or D>5and[6+r.index(5),D][6<D])for _ in g]for r in g]
 
 # !=5 →0 なら前のをコピー
 #   5→0  なら生成するかしないか決めないとだめ これは追加情報を持たないと判定不能
