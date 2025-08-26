@@ -1,0 +1,19 @@
+{
+  "id": "muhammaddanyalmalik/solution-make-easier-ever",
+  "id_no": 90005773,
+  "title": "\ud83d\ude1cSolution make easier ever",
+  "code_file": "solution-make-easier-ever.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}
