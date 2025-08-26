@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('eMKP\0¼ÊØ½ôP+DHBB1ù‡„nOùÇnş3cˆ½˜+†%ûfÄ4Â’¶îb‘)Ê2£Ó–±ŸPÌï²-¢œ¥B8¦ÙPZ¶¹õS1w-Õ÷Ü¾xY>–‘¨èR“z>€àÃóæWº”oÄLNqäº6Š&7GBûø{ğn','L1'),-9))
+def p(g):y,x=divmod(sum(g,[]).index(8)-14,13);u=[s[x:x+3]for s in g[y:y+3]];u[1][1]=max(u[0]);return u
