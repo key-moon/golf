@@ -23,7 +23,7 @@
 # -- or --
 
 # c D
-# == 縁への侵入 == 侵入時点で特殊色 脱出前に別の色
+# == 縁への侵入 == 侵入時点で特殊色（次を3に）、脱出前に別の色
 # 2  0 ->  ?
 # 2  3 -> -?
 # 2  ? -> -?
@@ -34,5 +34,7 @@
 # lambda g,S=[0]*99:eval(str([S:=[0**c*D%4+c//~c*(3*(2<D)-7)for c,D in zip(r,S)]for r in g]).replace(*"70").replace(*"40"))
 # ?: 1
 # lambda g,S=[0]*99:eval(str([S:=[[3*(0<D),1-2*(0!=D)][1<c]for c,D in zip(r,S)]for r in g]).replace(*"10"))
+# [[3*(0<D),1-2*(0!=D)][1<c]
+# [[1,-1],[0,1,0]][1<c][D]
 # ?: 0.5
-p=lambda g,S=[0]*99:eval(str([S:=[[3*(0<D),.5-(0!=D)][1<c]for c,D in zip(r,S)]for r in g]).replace(*"50"))
+p=lambda g,S=[0]*99:[[*map(int,S:=[[3*(0<D),.5-(0!=D)][1<c]for c,D in zip(r,S)])]for r in g]
