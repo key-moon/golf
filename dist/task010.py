@@ -1,1 +1,1 @@
-p=lambda g:[[x and 9-sorted(zip(*g),key=sum).index(t)for x,t in zip(s,zip(*g))]for s in g]
+p=lambda g:[[(9-sorted(zip(*g,r)).index(t))*t[9]/5for t in zip(*g,r)]for r in g]
