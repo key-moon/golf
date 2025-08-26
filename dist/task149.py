@@ -1,1 +1,2 @@
-def p(g):return[[sum(y==6for x in g[i:i+3]for y in x[j:j+3])//2for j in(0,4,8)]for i in(0,4,8)]
+p=lambda g,R=b"
+":[[sum(sum(s[j-3:j])for s in g[i-3:i])//12for j in R]for i in R]
