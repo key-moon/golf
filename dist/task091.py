@@ -1,4 +1,2 @@
-E=enumerate
-B=max
-A=min
-def p(g):H=[(i,j)for(i,r)in E(g)for(j,v)in E(r)if v==5];F,G=zip(*H);C,D=A(F)-1,B(F)+1;C,K=B(C,0),None;D,L=A(D,len(g)-1),None;I,J=A(G),B(G);return[A[I:J+1]for A in g[C:D+1]]
+A=zip
+p=lambda g:(a:=sum([(c:=0)or[*A(*[(x,y)for(x,y)in A(s,t)if c+(c:=c^(x==5or y==5))])]for(s,t)in A([[]]+g,g)],[]))and a[:1]+a[1::2]
