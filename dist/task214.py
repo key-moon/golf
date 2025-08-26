@@ -1,1 +1,1 @@
-p=lambda g:[s[:4]+[*t]+u[3::-1]for s,t,u in zip(g,zip(*g[::-1]),g[::-1])]
+p=lambda g:[g[i][:4]+[*[*zip(*g[::-1])][i]]+g[~i][3::-1]for i in(0,1,2)]
