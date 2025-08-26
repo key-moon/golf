@@ -825,9 +825,8 @@ if __name__ == "__main__":
         n = max_length - 3
     else:
         end_terms = [""]
-        n = max_length  
+        n = max_length
   
-    n = max_length - 3
     print("[+] enumerating...")
     templates = enumerate_templates(n, allow_ops=['+','-','*','//','%','<<','>>','&','^','|','**'], max_digit_run=n-5)
     print("[+] enumeration done")
@@ -863,6 +862,6 @@ if __name__ == "__main__":
         if 1 < end - t:
             print(template)
         if res:
-            pass
             # print(res)
             # input("> ")
+            pass
