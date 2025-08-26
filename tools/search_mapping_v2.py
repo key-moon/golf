@@ -639,4 +639,14 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     return None
 
 # Example
-print(search_mapping({ 0:0, 1:1, 2:1, 4:4, 8:4, 3:6, 6:6 }, 9))
+print(search_mapping({ 
+    (0,0):0,
+    (0,8):2,
+    (0,16):0,
+    (1,0):4,
+    (1,8):6,
+    (1,16):3,
+    (2,0):0,
+    (2,8):1,
+    (2,16):0,
+ }, 9))
