@@ -1,1 +1,1 @@
-p=lambda g,S=[0]*99:eval(str([S:=[[3*(0<D),.5-(0!=D)][1<c]for c,D in zip(r,S)]for r in g]).replace(*"50"))
+p=lambda g,S=[0]*99:[[*map(int,S:=[[3*(0<D),.5-(0!=D)][1<c]for c,D in zip(r,S)])]for r in g]
