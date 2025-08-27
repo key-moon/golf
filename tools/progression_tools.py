@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from datetime import datetime
-from public_data import loads_task_scores_progressions, dumps_task_scores_progressions, delete_user_progressions
+from public_data import loads_task_scores_progressions, dumps_task_scores_progressions, delete_user_progressions, loads_merged_users, dumps_merged_users
 
 def format_datetime(dt: datetime) -> str:
     return dt.strftime("%Y-%m-%d")
@@ -117,6 +117,11 @@ def merge_command(merge_to: str, merge_from: list[str]):
     # Delete original files
     for name in merge_from:
         delete_user_progressions(name)
+
+    # Add merged users to exclusion list
+    merged_users = loads_merged_users()
+    merged_users.update(merge_from)
+    dumps_merged_users(merged_users)
 
 def main():
     parser = argparse.ArgumentParser(description="Manage task score progressions")

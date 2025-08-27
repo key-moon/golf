@@ -130,3 +130,15 @@ def delete_user_progressions(name: str) -> None:
 def get_user_filename(name: str) -> str:
   alphanumeric_name = ''.join(c for c in name if c.isalnum())
   return f"{alphanumeric_name}-{hashlib.md5(name.encode()).hexdigest()}.json"
+
+
+MERGED_USERS_PATH = os.path.join(WORKSPACE_DIR, "data/merged_users.json")
+
+
+@cache
+def loads_merged_users() -> set[str]:
+  return set(_loads(MERGED_USERS_PATH, []))
+
+
+def dumps_merged_users(data: set[str]) -> None:
+  _dumps(MERGED_USERS_PATH, list(data))

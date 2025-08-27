@@ -9,7 +9,7 @@ import tempfile
 import requests
 from tqdm import tqdm
 
-from public_data import Submission, TaskSubmission, TeamData, dumps_task_scores_progressions, loads_scoreboard_progressions, dumps_scoreboard_progressions, loads_task_scores_progressions
+from public_data import Submission, TaskSubmission, TeamData, dumps_task_scores_progressions, loads_scoreboard_progressions, dumps_scoreboard_progressions, loads_task_scores_progressions, loads_merged_users
 
 @dataclass
 class KaggleRawScoreboardEntry:
@@ -80,6 +80,7 @@ def update_new_submissions():
 
 def update_task_scores_progressions():
   task_scores = loads_task_scores_progressions()
+  merged_users = loads_merged_users()
   ts = datetime.now()
 
   csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pub?gid=0&single=true&output=csv"
@@ -92,7 +93,11 @@ def update_task_scores_progressions():
     if not name_row:
       name_row = [*map(str.strip, row)]
       for name in name_row:
-        if not name: continue
+        if not name:
+          continue
+        if name in merged_users:
+          print(f"[!] skipping merged user: {name}")
+          continue
         if name not in task_scores:
           task_scores[name] = [[] for _ in range(400)]
           updated.add(name)
@@ -102,7 +107,10 @@ def update_task_scores_progressions():
     except ValueError:
       continue
     for name, score in zip(name_row, row):
-      if not name: continue
+      if not name:
+        continue
+      if name in merged_users:
+        continue
       if score.strip() == "":
         score = None
       else:
