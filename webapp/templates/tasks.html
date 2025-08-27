@@ -57,17 +57,11 @@ function applyActive(group, value, attr){
 function getDiffStyles(diff, base=0.3, ratio=100, crop=0.9){
   if(diff==null || isNaN(diff)) return { bg:'', outline:'' };
   const opacity = Math.min(base + Math.abs(diff)/ratio, crop)
+  const stroke = Math.min(Math.abs(diff)/2, 10)
   // 短縮（良い）側: 緑
-  if(diff <= -11) return { bg:`rgba(0,160,0,${opacity})`, outline:'6px solid rgba(0,140,0,0.95)' };
-  if(diff <= -6)  return { bg:`rgba(0,160,0,${opacity})`, outline:'3px solid rgba(0,140,0,0.95)' };
-  if(diff <= -1)  return { bg:`rgba(0,160,0,${opacity})`, outline:'' };
-  // 同点
-  if(diff === 0) return { bg:'', outline:'' };
-  // 伸び（悪い）側: 赤（さらに濃く）
-  if(diff <= 5)   return { bg:`rgba(220,0,0,${opacity})`, outline:'' };
-  if(diff <= 10)  return { bg:`rgba(220,0,0,${opacity})`, outline:'3px solid rgba(200,0,0,0.95)' };
-  if(diff <= 20)  return { bg:`rgba(220,0,0,${opacity})`, outline:'6px solid rgba(200,0,0,0.95)' };
-  return { bg:`rgba(220,0,0,${opacity})`, outline:'10px solid rgba(300,0,0,0.95)' };
+  if (diff === 0) return { bg:'', outline:'' };
+  if (diff < 0) return { bg:`rgba(0,160,0,${opacity})`, outline:`${stroke}px solid rgba(0,140,0,0.95)` };
+  if (diff > 0) return { bg:`rgba(220,0,0,${opacity})`, outline:`${stroke}px solid rgba(200,0,0,0.95)` };
 }
 function applyDiffStyles(el, diff){
   const s = getDiffStyles(diff);
@@ -77,7 +71,7 @@ function applyDiffStyles(el, diff){
 }
 // list用: 行全体に背景と太枠（box-shadow）を適用し、各セルにも背景を反映
 function applyDiffStylesRow(tr, diff){
-  const s = getDiffStyles(diff, 0.1, 200, 0.5);
+  const s = getDiffStyles(diff, 0.05, 150, 0.4);
   tr.style.background = s.bg || '';
   const tds = tr.querySelectorAll('td, th');
   tds.forEach(td=>{ td.style.background = s.bg || ''; });
