@@ -1,2 +1,1 @@
-R=range
-p=lambda g:(n:=len(g))and[[sum(-1<(y:=i+abs(k-2)-1)<n>(x:=j+abs(k-1)-1)>-1and g[y][x]>0for k in R(4))>1and g[i][j]for j in R(n)]for i in R(n)]
+p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)
