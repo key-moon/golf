@@ -122,7 +122,7 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
 
       best_delta = signed_str(new_result.length - community_best) if new_result.length else "-"
 
-      _add_note(f"### {file_path} ({improvement}, best{best_delta}, {create_github_link('main', f'vis_many/task{task:03d}.png', 'vis_many')})\n")
+      _add_note(f"### {file_path} ({improvement}, best{best_delta}, {create_github_link('main', f'vis_many/task{task:03d}.png', 'vis_many')}, [task-details](http://127.0.0.1:5000/tasks/{task:03d}))\n")
       
       # Create GitHub links for old and new versions
       old_link = create_github_link(commit1, file_path, "old")
