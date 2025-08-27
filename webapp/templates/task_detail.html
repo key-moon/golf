@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Task {{ '%03d'|format(task_id) }} - ARC-AGI Golf{% endblock %}
 {% block content %}
 <div id="root" data-task-id="{{ task_id }}">
   <div style="display:flex; gap: 16px; align-items: flex-start;">
@@ -7,6 +8,9 @@
       <div id="meta" style="margin:-8px 0 12px 0; font-size: 0.9em; color: var(--muted-color);"></div>
       <section>
         <h3>Overview</h3>
+        <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px">
+          <button id="btnInit" class="secondary btn-slim">Init</button>
+        </div>
         <div style="margin:6px 0 10px 0">
           <strong>Tags</strong><br/>
           <div id="tagEditor" style="display:flex; gap:6px; flex-wrap:wrap"></div>
@@ -85,12 +89,15 @@ function renderTagEditor(root, all, current, onChange){
   };
   root.appendChild(add);
   (all||[]).forEach(name=>{
-    const b = document.createElement('button'); b.className='chip'; b.textContent=name;
+    const b = document.createElement('button'); b.className='chip'; b.textContent=name; b.dataset.tag = name;
     if(current.includes(name)) b.classList.add('contrast');
     b.onclick=()=>{
       const next = current.includes(name) ? current.filter(t=>t!==name) : [...current, name];
       onChange(next);
     };
+    // tasksへのフィルター遷移（通常クリックで編集挙動を優先、修飾クリックで遷移）
+    b.addEventListener('auxclick', (e)=>{ const tag=e.currentTarget?.dataset?.tag; if(tag){ window.openTasksWithTag(tag); } });
+    b.addEventListener('contextmenu', (e)=>{ e.preventDefault(); const tag=e.currentTarget?.dataset?.tag; if(tag){ window.openTasksWithTag(tag); } });
     root.appendChild(b);
   });
 }
@@ -179,11 +186,24 @@ function renderTagEditor(root, all, current, onChange){
     // series step-lines
     series.forEach(s=>{ if(!s.data||!s.data.length) return; ctx.strokeStyle = s.color; ctx.lineWidth = 2; ctx.beginPath(); let prev = s.data[0]; ctx.moveTo(x2px(prev.t), y2px(prev.score)); for(let i=1;i<s.data.length;i++){ const p=s.data[i]; ctx.lineTo(x2px(p.t), y2px(prev.score)); ctx.lineTo(x2px(p.t), y2px(p.score)); prev=p; } ctx.stroke(); ctx.fillStyle=s.color; s.data.forEach(p=>{ ctx.beginPath(); ctx.arc(x2px(p.t), y2px(p.score), 4, 0, Math.PI*2); ctx.fill(); }); });
     // legend rebuild
-    const pl = document.getElementById('progLegend'); pl.innerHTML=''; series.forEach(s=>{ const last = s.data && s.data.length ? s.data[s.data.length-1].score : null; const item = document.createElement('span'); item.style.display='inline-flex'; item.style.alignItems='center'; item.style.gap='6px'; item.innerHTML = `<span style=\"width:12px;height:12px;background:${s.color};border:1px solid rgba(0,0,0,0.2);\"></span>${s.name}${last!=null?` <small>(${last})</small>`:''}`; pl.appendChild(item); });
+    const pl = document.getElementById('progLegend'); pl.innerHTML=''; series.forEach(s=>{ const last = s.data && s.data.length ? s.data[s.data.length-1].score : null; const item = document.createElement('span'); item.style.display='inline-flex'; item.style.alignItems='center'; item.style.gap='6px'; item.innerHTML = `<span style="width:12px;height:12px;background:${s.color};border:1px solid rgba(0,0,0,0.2);"></span>${s.name}${last!=null?` <small>(${last})</small>`:''}`; pl.appendChild(item); });
   }
   window.addEventListener('resize', drawChart);
   const tt=document.getElementById('tooltip'); chart.addEventListener('mousemove', (e)=>{ const chartRect = chart.getBoundingClientRect(); const wrapRect = chartWrap.getBoundingClientRect(); const x=e.clientX-chartRect.left, y=e.clientY-chartRect.top; const width=chart.width, height=chart.height; const pad={l:64,r:12,t:8,b:28}; const allPoints = series.flatMap(s=>s.data||[]); const xs = allPoints.map(p=>p.t); const nowSec=Math.floor(Date.now()/1000); const minX = xs.length? Math.min(...xs) : nowSec-86400; const maxX = nowSec; const ys = allPoints.map(p=>p.score).filter(v=> typeof v==='number' && !isNaN(v)); const minY = 0; const maxY = Math.max( (ys.length? Math.max(...ys): (best||0)), best||0, len||0 ) * 1.1 + 5; const x2px = x=> pad.l + ( (x-minX) / (maxX-minX || 1) ) * (width - pad.l - pad.r); const y2px = y=> height - pad.b - ( (y-minY) / (maxY-minY || 1) ) * (height - pad.t - pad.b); let found=null, dmin=10; series.forEach(s=>{ (s.data||[]).forEach(p=>{ const px = x2px(p.t), py=y2px(p.score); const d=Math.hypot(px-x, py-y); if(d<dmin){ dmin=d; found={s,p,px,py}; } }); }); if(found){ tt.style.display='block'; tt.textContent = `${found.s.name}: ${found.p.score}`; tt.style.left = (found.px + 12 + chartRect.left - wrapRect.left) + 'px'; tt.style.top = (found.py - 10 + chartRect.top - wrapRect.top) + 'px'; } else { tt.style.display='none'; } }); chart.addEventListener('mouseleave', ()=> tt.style.display='none');
   drawChart();
 })();
+
+document.getElementById('btnInit').addEventListener('click', async function(){
+  const rootEl = document.getElementById('root');
+  const taskId = Number(rootEl?.dataset?.taskId || (location.pathname.match(/\d+$/)||[])[0] || 0);
+  try{
+    const r = await fetch(`/api/task/${taskId}/init`, { method:'POST' });
+    const j = await r.json();
+    if(!j.ok) throw new Error(j.error||'init failed');
+    window.showAlert(`Initialized: ${j.created ? 'created file' : 'opened file'}<br/><small>${j.path}</small>`, 'success', 3000);
+  }catch(e){
+    window.showAlert(`Init failed: ${e?.message||e}`, 'error', 4000);
+  }
+});
 </script>
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Tasks - ARC-AGI Golf{% endblock %}
 {% block content %}
 <h2>Tasks</h2>
 <div class="grid cols-4">
@@ -70,11 +71,10 @@ function applyActive(group, value, attr){
     b.classList.toggle('contrast', b.dataset[attr]===value);
   });
 }
-// diffに応じたスタイルを返す（赤はより濃く、枠線は太めに統一）
 function getDiffStyles(diff, base=0.3, ratio=100, crop=0.9){
   if(diff==null || isNaN(diff)) return { bg:'', outline:'' };
   const opacity = Math.min(base + Math.abs(diff)/ratio, crop)
-  const stroke = Math.min(Math.abs(diff)/2, 10)
+  const stroke = [0, 2, 5, 5, 8, 8][Math.min(Math.floor(Math.abs(diff)/5), 5)];
   // 短縮（良い）側: 緑
   if (diff === 0) return { bg:'', outline:'' };
   if (diff < 0) return { bg:`rgba(0,160,0,${opacity})`, outline:`${stroke}px solid rgba(0,140,0,0.95)` };
@@ -103,6 +103,7 @@ function applyDiffStylesRow(tr, diff){
     }
   }
 }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;' }[c])); }
 async function loadTagsStore(){
   if(TAGS_STORE) return TAGS_STORE;
   TAGS_STORE = await fetch('/api/tags').then(r=>r.json()).catch(()=>({all:[], tasks:{}}));
@@ -110,10 +111,21 @@ async function loadTagsStore(){
   TAGS_STORE.tasks = TAGS_STORE.tasks && typeof TAGS_STORE.tasks==='object'? TAGS_STORE.tasks : {};
   return TAGS_STORE;
 }
-function parseTagsParam(v){ if(!v) return []; return v.split(',').map(s=>s.trim()).filter(Boolean); }
+// Parse tags from URLSearchParams. Prefer repeated ?tags=.. entries; fallback to legacy CSV.
+function parseTagsParamFromParams(params){
+  if(!params) return [];
+  const arr = (params.getAll ? params.getAll('tags') : []).map(s=>s.trim()).filter(Boolean);
+  if(arr.length) return arr;
+  const legacy = params.get ? params.get('tags') : null;
+  if(!legacy) return [];
+  return legacy.split(',').map(s=>s.trim()).filter(Boolean);
+}
 function updateTagsParam(){
   const params = new URLSearchParams(location.search);
-  if(SELECTED_TAGS.length) params.set('tags', SELECTED_TAGS.join(',')); else params.delete('tags');
+  // Remove all existing 'tags' first, then append each to avoid delimiter issues
+  params.delete('tags');
+  SELECTED_TAGS.forEach(t=> params.append('tags', t));
+  if(!SELECTED_TAGS.length) params.delete('tags');
   history.replaceState(null,'',`?${params.toString()}`);
 }
 function renderTagFilter(){
@@ -138,7 +150,7 @@ function renderTagFilter(){
   const order = params.get('order')||'asc';
   const show = params.get('show')||'both';
   const size = params.get('size')||'md';
-  SELECTED_TAGS = parseTagsParam(params.get('tags'));
+  SELECTED_TAGS = parseTagsParamFromParams(params);
   GRID_TAGS = params.get('gt')||'off';
   const setParam=(k,v)=>{ params.set(k,v); history.replaceState(null,'',`?${params.toString()}`); render(); };
   const viewBtns=document.getElementById('viewBtns'); applyActive(viewBtns, view, 'view'); viewBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.view; if(v){ applyActive(viewBtns, v, 'view'); setParam('view', v); } };
@@ -164,7 +176,7 @@ async function render(){
   GRID_TAGS = params.get('gt')||'off';
   // ensure tags loaded and filter UI rendered
   await loadTagsStore();
-  const urlTags = parseTagsParam(params.get('tags'));
+  const urlTags = parseTagsParamFromParams(params);
   SELECTED_TAGS = urlTags.length ? urlTags : SELECTED_TAGS;
   renderTagFilter();
 
@@ -218,21 +230,19 @@ async function render(){
       const tr=document.createElement('tr');
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'');
       const baseCell = r.base ? `<a href="#" class="open-code" data-path="${encodeURIComponent(r.base_full)}" title="${r.base_full}">${r.base}</a>` : '';
-      const tagsHtml = (r.tags||[]).map(t=>`<span class="chip">${t}</span>`).join(' ');
+      const tagsHtml = (r.tags||[]).map(t=>`<button class="chip tag-link" data-tag-enc="${encodeURIComponent(t)}">${escapeHtml(t)}</button>`).join(' ');
       tr.innerHTML = `<td><a href="/tasks/${r.id}">task${String(r.id).padStart(3,'0')}</a></td><td>${lengthLabel}</td><td>${r.best??''}</td><td class="nowrap">${baseCell}</td><td class="nowrap" title="${r.compressor}">${r.compressor||''}</td><td class="nowrap" title="${r.message}">${r.message||''}</td><td class="nowrap">${tagsHtml}</td>`;
-      // セル生成後に行スタイルを適用（背景/左太線）
       applyDiffStylesRow(tr, r.diff);
       tb.appendChild(tr);
     });
     table.appendChild(tb);
     list.appendChild(table);
-    // delegate click for open-code
+    // delegate click for open-code and tag-link
     list.onclick = (e)=>{
-      const a = e.target.closest('a.open-code'); if(!a) return; e.preventDefault();
-      const path = decodeURIComponent(a.dataset.path||''); if(!path) return;
-      fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) })
-        .then(()=>{})
-        .catch(()=>{});
+      const a = e.target.closest('a.open-code');
+      if(a){ e.preventDefault(); const path = decodeURIComponent(a.dataset.path||''); if(path){ fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }).catch(()=>{}); } return; }
+      const chip = e.target.closest('button.tag-link');
+      if(chip){ const enc = chip.dataset.tagEnc; const tag = enc ? decodeURIComponent(enc) : chip.dataset.tag; if(tag){ window.openTasksWithTag(tag); } }
     };
   } else {
     const grid = document.createElement('div');
@@ -248,12 +258,12 @@ async function render(){
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'-');
       const meta = document.createElement('div');
       const showLen = size!=='sm';
-      const tagsHtml = GRID_TAGS==='on' ? `<div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px">${(r.tags||[]).map(t=>`<span class='chip'>${t}</span>`).join(' ')}</div>` : '';
+      const tagsHtml = GRID_TAGS==='on' ? `<div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px">${(r.tags||[]).map(t=>`<button class='chip tag-link' data-tag-enc='${encodeURIComponent(t)}' onclick='event.preventDefault(); window.openTasksWithTag(${JSON.stringify(t)})'>${escapeHtml(t)}</button>`).join(' ')}</div>` : '';
       meta.innerHTML = `<strong>task${String(r.id).padStart(3,'0')}</strong>${showLen?`<br/><small>length: ${lengthLabel}</small>`:''}${tagsHtml}`;
       card.appendChild(meta);
       const thumbWrap = document.createElement('div');
       thumbWrap.style.flex='0 0 auto';
-      thumbWrap.style.marginTop='auto'; // 下基準に配置
+      thumbWrap.style.marginTop='auto';
       if(show==='both'){
         thumbWrap.style.display='grid'; thumbWrap.style.gridTemplateColumns='1fr 1fr'; thumbWrap.style.gap='6px';
         const cnv1 = document.createElement('canvas'); const cnv2 = document.createElement('canvas');

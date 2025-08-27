@@ -1,100 +1,465 @@
 {
   "all": [
     "1px",
+    "[154,390]",
+    "bar-chart",
+    "beam",
+    "bullseye",
+    "classify",
+    "color-freq",
     "combine",
     "complete",
     "connect",
     "count",
     "crop",
-    "fill",
-    "fill-bounding",
+    "dfs",
+    "diagonal",
+    "fill-bound",
+    "fill-misc",
+    "gather",
     "highlight",
+    "L",
+    "n-adj",
     "noise",
+    "outstand",
+    "pat-dup",
+    "period",
     "prediction",
     "recolor",
-    "repeat",
+    "rect",
     "scale",
-    "shrink"
+    "shift",
+    "shrink",
+    "staircase",
+    "supergrid",
+    "sym-dup",
+    "transpose",
+    "X"
   ],
   "tasks": {
+    "1": [
+      "pat-dup"
+    ],
+    "2": [
+      "fill-misc"
+    ],
     "3": [
-      "repeat"
+      "period"
+    ],
+    "5": [
+      "pat-dup"
     ],
     "6": [
       "combine"
     ],
+    "8": [
+      "gather"
+    ],
+    "9": [
+      "connect"
+    ],
+    "10": [
+      "bar-chart",
+      "highlight"
+    ],
+    "11": [
+      "recolor",
+      "supergrid"
+    ],
+    "12": [
+      "n-adj"
+    ],
+    "13": [
+      "beam"
+    ],
     "14": [
-      "crop"
+      "crop",
+      "outstand"
+    ],
+    "15": [
+      "n-adj"
+    ],
+    "16": [
+      "recolor"
+    ],
+    "17": [
+      "complete"
+    ],
+    "18": [
+      "pat-dup"
+    ],
+    "20": [
+      "sym-dup"
+    ],
+    "23": [
+      "highlight"
+    ],
+    "24": [
+      "beam"
+    ],
+    "25": [
+      "gather"
     ],
     "26": [
       "combine"
     ],
+    "27": [
+      "sym-dup"
+    ],
+    "29": [
+      "crop"
+    ],
     "31": [
       "crop"
+    ],
+    "32": [
+      "gather"
+    ],
+    "33": [
+      "pat-dup",
+      "supergrid"
+    ],
+    "35": [
+      "gather"
+    ],
+    "36": [
+      "crop",
+      "noise"
+    ],
+    "37": [
+      "diagonal"
     ],
     "38": [
       "count"
     ],
+    "40": [
+      "recolor",
+      "transpose"
+    ],
     "41": [
       "connect"
     ],
+    "42": [
+      "n-adj"
+    ],
+    "44": [
+      "pat-dup"
+    ],
     "45": [
       "connect"
+    ],
+    "47": [
+      "beam"
+    ],
+    "48": [
+      "1px"
+    ],
+    "49": [
+      "color-freq"
+    ],
+    "50": [
+      "connect"
+    ],
+    "51": [
+      "beam"
+    ],
+    "52": [
+      "classify"
+    ],
+    "54": [
+      "beam"
     ],
     "56": [
       "1px"
     ],
     "57": [
-      "crop",
-      "repeat"
+      "crop"
+    ],
+    "59": [
+      "supergrid"
+    ],
+    "60": [
+      "connect"
     ],
     "61": [
       "complete"
     ],
+    "62": [
+      "recolor",
+      "sym-dup"
+    ],
+    "63": [
+      "beam"
+    ],
+    "64": [
+      "beam"
+    ],
+    "65": [
+      "crop",
+      "outstand",
+      "supergrid"
+    ],
+    "66": [
+      "beam"
+    ],
+    "68": [
+      "color-freq",
+      "n-adj"
+    ],
+    "69": [
+      "recolor"
+    ],
+    "70": [
+      "highlight"
+    ],
+    "71": [
+      "complete",
+      "sym-dup"
+    ],
     "72": [
       "combine"
     ],
-    "83": [
-      "repeat"
+    "73": [
+      "gather"
+    ],
+    "74": [
+      "complete"
+    ],
+    "75": [
+      "pat-dup"
+    ],
+    "76": [
+      "pat-dup"
+    ],
+    "77": [
+      "fill-bound"
+    ],
+    "78": [
+      "gather"
+    ],
+    "79": [
+      "crop"
+    ],
+    "80": [
+      "pat-dup"
+    ],
+    "81": [
+      "highlight"
+    ],
+    "83": [],
+    "84": [
+      "diagonal"
+    ],
+    "86": [
+      "n-adj",
+      "recolor"
+    ],
+    "88": [
+      "crop",
+      "recolor"
+    ],
+    "89": [
+      "pat-dup"
+    ],
+    "90": [
+      "highlight"
+    ],
+    "91": [
+      "crop"
+    ],
+    "92": [
+      "connect"
+    ],
+    "93": [
+      "gather",
+      "transpose"
+    ],
+    "94": [
+      "beam"
+    ],
+    "95": [
+      "n-adj"
+    ],
+    "96": [
+      "crop",
+      "gather"
+    ],
+    "97": [
+      "noise"
+    ],
+    "98": [
+      "rect"
+    ],
+    "99": [
+      "rect"
     ],
     "100": [
       "1px"
     ],
+    "102": [
+      "rect"
+    ],
     "103": [
       "1px"
+    ],
+    "106": [
+      "sym-dup"
+    ],
+    "107": [
+      "diagonal",
+      "scale"
     ],
     "108": [
       "scale"
     ],
+    "109": [
+      "supergrid",
+      "sym-dup"
+    ],
+    "110": [
+      "complete"
+    ],
     "111": [
       "crop"
     ],
-    "113": [
-      "repeat"
+    "112": [
+      "sym-dup"
     ],
+    "113": [],
     "115": [
-      "shrink"
+      "shrink",
+      "transpose"
+    ],
+    "117": [
+      "sym-dup"
+    ],
+    "119": [
+      "diagonal"
+    ],
+    "120": [
+      "rect"
+    ],
+    "121": [
+      "crop"
+    ],
+    "122": [
+      "shift"
+    ],
+    "125": [
+      "rect"
     ],
     "129": [
       "1px"
     ],
     "130": [
-      "noise"
+      "noise",
+      "shrink"
     ],
-    "142": [
-      "repeat"
+    "131": [
+      "gather",
+      "transpose"
+    ],
+    "133": [
+      "recolor",
+      "pat-dup",
+      "scale"
+    ],
+    "134": [
+      "recolor",
+      "noise",
+      "shrink"
+    ],
+    "136": [
+      "diagonal"
+    ],
+    "137": [
+      "bullseye"
+    ],
+    "138": [
+      "beam",
+      "crop"
+    ],
+    "139": [
+      "fill-bound"
+    ],
+    "141": [
+      "diagonal"
+    ],
+    "142": [],
+    "143": [
+      "highlight"
     ],
     "144": [
       "combine"
     ],
-    "152": [
-      "repeat"
+    "145": [
+      "highlight"
+    ],
+    "147": [
+      "highlight"
+    ],
+    "148": [
+      "beam"
+    ],
+    "151": [
+      "n-adj"
+    ],
+    "152": [],
+    "154": [
+      "[154,390]"
+    ],
+    "156": [
+      "rect"
+    ],
+    "158": [
+      "pat-dup",
+      "scale"
+    ],
+    "159": [
+      "crop",
+      "scale"
+    ],
+    "160": [
+      "highlight"
+    ],
+    "161": [
+      "connect",
+      "noise"
+    ],
+    "162": [
+      "highlight"
+    ],
+    "163": [
+      "supergrid"
+    ],
+    "165": [
+      "beam"
     ],
     "166": [
-      "fill-bounding"
+      "fill-bound"
     ],
-    "172": [
-      "repeat"
+    "167": [
+      "classify"
+    ],
+    "168": [
+      "diagonal"
+    ],
+    "169": [
+      "highlight"
+    ],
+    "170": [
+      "recolor",
+      "shrink"
+    ],
+    "172": [],
+    "173": [
+      "pat-dup"
+    ],
+    "174": [
+      "crop"
+    ],
+    "175": [
+      "complete"
     ],
     "177": [
       "crop"
@@ -102,41 +467,285 @@
     "178": [
       "shrink"
     ],
+    "180": [
+      "combine"
+    ],
+    "181": [
+      "pat-dup"
+    ],
+    "183": [
+      "recolor"
+    ],
+    "184": [
+      "noise",
+      "shrink"
+    ],
+    "185": [
+      "shrink"
+    ],
     "186": [
       "count"
     ],
-    "210": [
-      "repeat"
+    "187": [
+      "fill-misc"
     ],
-    "211": [
-      "repeat"
+    "189": [
+      "recolor"
     ],
-    "215": [
-      "repeat"
+    "190": [
+      "diagonal"
+    ],
+    "191": [
+      "fill-bound"
+    ],
+    "192": [
+      "noise"
+    ],
+    "193": [
+      "noise",
+      "rect"
+    ],
+    "194": [
+      "sym-dup"
+    ],
+    "195": [
+      "pat-dup",
+      "shrink"
+    ],
+    "196": [
+      "highlight"
+    ],
+    "197": [
+      "beam"
+    ],
+    "198": [
+      "fill-misc"
+    ],
+    "199": [
+      "beam"
+    ],
+    "200": [
+      "beam"
+    ],
+    "202": [
+      "beam",
+      "transpose"
+    ],
+    "203": [
+      "recolor"
+    ],
+    "204": [
+      "rect"
+    ],
+    "205": [
+      "beam",
+      "crop"
+    ],
+    "206": [
+      "pat-dup"
+    ],
+    "207": [
+      "crop",
+      "outstand"
+    ],
+    "208": [
+      "highlight",
+      "rect"
+    ],
+    "210": [],
+    "211": [],
+    "212": [
+      "beam"
+    ],
+    "215": [],
+    "216": [
+      "crop"
+    ],
+    "217": [
+      "pat-dup"
     ],
     "218": [
       "shrink"
     ],
+    "219": [
+      "beam"
+    ],
+    "220": [
+      "n-adj"
+    ],
+    "221": [
+      "color-freq",
+      "pat-dup"
+    ],
+    "222": [
+      "noise"
+    ],
     "223": [
       "scale"
+    ],
+    "225": [
+      "recolor",
+      "n-adj"
+    ],
+    "226": [
+      "highlight"
     ],
     "227": [
       "combine"
     ],
-    "231": [
-      "repeat"
+    "228": [
+      "gather"
+    ],
+    "229": [
+      "highlight"
+    ],
+    "230": [
+      "n-adj"
+    ],
+    "231": [],
+    "232": [
+      "beam"
+    ],
+    "235": [
+      "classify"
     ],
     "236": [
       "combine"
     ],
+    "237": [
+      "beam"
+    ],
+    "238": [
+      "recolor"
+    ],
+    "239": [
+      "color-freq"
+    ],
+    "240": [
+      "connect",
+      "sym-dup"
+    ],
     "242": [
       "prediction"
+    ],
+    "243": [
+      "dfs"
     ],
     "244": [
       "shrink"
     ],
+    "246": [
+      "L"
+    ],
+    "247": [
+      "color-freq"
+    ],
+    "248": [
+      "diagonal"
+    ],
+    "249": [],
+    "250": [
+      "gather"
+    ],
+    "251": [],
+    "252": [
+      "diagonal"
+    ],
+    "253": [
+      "gather"
+    ],
+    "254": [
+      "bar-chart",
+      "highlight"
+    ],
+    "256": [
+      "staircase"
+    ],
+    "257": [
+      "combine",
+      "supergrid"
+    ],
+    "259": [
+      "crop",
+      "recolor"
+    ],
+    "260": [
+      "diagonal"
+    ],
+    "263": [
+      "crop",
+      "outstand"
+    ],
+    "264": [
+      "gather"
+    ],
+    "265": [
+      "highlight"
+    ],
+    "266": [
+      "n-adj"
+    ],
+    "267": [
+      "recolor",
+      "recolor"
+    ],
+    "268": [
+      "beam",
+      "diagonal",
+      "rect"
+    ],
+    "269": [
+      "scale"
+    ],
+    "270": [
+      "gather"
+    ],
+    "271": [
+      "crop"
+    ],
+    "272": [
+      "highlight"
+    ],
+    "274": [
+      "count"
+    ],
+    "275": [
+      "pat-dup"
+    ],
+    "277": [
+      "highlight",
+      "outstand"
+    ],
+    "278": [
+      "n-adj"
+    ],
+    "279": [
+      "highlight"
+    ],
+    "280": [
+      "beam"
+    ],
+    "282": [
+      "n-adj"
+    ],
+    "283": [
+      "rect"
+    ],
+    "285": [
+      "recolor",
+      "sym-dup"
+    ],
+    "286": [
+      "dfs"
+    ],
     "287": [
       "complete"
+    ],
+    "288": [
+      "diagonal"
+    ],
+    "289": [
+      "scale"
     ],
     "290": [
       "crop",
@@ -145,70 +754,291 @@
     "291": [
       "1px"
     ],
+    "292": [
+      "highlight"
+    ],
     "294": [
-      "fill"
+      "rect"
+    ],
+    "295": [
+      "staircase"
+    ],
+    "296": [
+      "combine"
     ],
     "298": [
       "recolor"
+    ],
+    "299": [
+      "beam"
+    ],
+    "300": [
+      "crop"
+    ],
+    "301": [
+      "gather"
+    ],
+    "302": [
+      "rect"
     ],
     "303": [
       "highlight",
       "noise"
     ],
+    "304": [
+      "pat-dup"
+    ],
     "305": [
       "complete"
+    ],
+    "306": [
+      "pat-dup",
+      "supergrid"
     ],
     "307": [
       "scale"
     ],
+    "308": [
+      "gather"
+    ],
+    "309": [
+      "recolor"
+    ],
+    "310": [
+      "crop"
+    ],
+    "311": [],
+    "312": [
+      "recolor"
+    ],
     "313": [
       "complete"
+    ],
+    "314": [
+      "connect",
+      "supergrid"
+    ],
+    "315": [
+      "pat-dup"
+    ],
+    "316": [
+      "gather"
+    ],
+    "317": [
+      "recolor",
+      "scale"
     ],
     "318": [
       "combine"
     ],
+    "319": [
+      "crop"
+    ],
     "321": [
       "combine"
     ],
+    "322": [
+      "beam"
+    ],
+    "324": [
+      "diagonal"
+    ],
+    "325": [
+      "count"
+    ],
+    "327": [
+      "diagonal"
+    ],
+    "330": [
+      "highlight"
+    ],
+    "331": [
+      "n-adj"
+    ],
+    "332": [
+      "highlight"
+    ],
+    "333": [
+      "beam"
+    ],
+    "334": [
+      "classify"
+    ],
+    "335": [
+      "L"
+    ],
+    "336": [
+      "beam",
+      "rect"
+    ],
+    "337": [
+      "recolor"
+    ],
     "338": [
-      "fill"
+      "rect"
+    ],
+    "339": [
+      "color-freq"
+    ],
+    "340": [
+      "gather"
+    ],
+    "341": [
+      "connect"
+    ],
+    "342": [
+      "gather"
+    ],
+    "343": [
+      "period"
+    ],
+    "344": [
+      "highlight"
+    ],
+    "345": [
+      "beam"
+    ],
+    "346": [
+      "1px"
     ],
     "347": [
       "combine"
     ],
+    "348": [
+      "staircase"
+    ],
+    "349": [
+      "beam",
+      "n-adj"
+    ],
+    "350": [
+      "connect"
+    ],
     "351": [
       "prediction"
+    ],
+    "352": [
+      "n-adj"
+    ],
+    "353": [
+      "gather"
+    ],
+    "354": [
+      "recolor",
+      "highlight"
     ],
     "355": [
       "1px"
     ],
+    "356": [
+      "connect"
+    ],
+    "357": [
+      "diagonal"
+    ],
+    "358": [
+      "beam"
+    ],
     "359": [
-      "noise"
+      "noise",
+      "transpose"
+    ],
+    "361": [
+      "sym-dup"
+    ],
+    "362": [
+      "shift"
+    ],
+    "363": [
+      "highlight"
+    ],
+    "364": [
+      "highlight"
+    ],
+    "365": [
+      "crop"
+    ],
+    "366": [
+      "fill-bound"
+    ],
+    "367": [
+      "fill-misc",
+      "rect"
+    ],
+    "368": [
+      "pat-dup",
+      "rect"
+    ],
+    "369": [
+      "highlight"
+    ],
+    "370": [
+      "diagonal",
+      "pat-dup"
     ],
     "372": [
       "combine"
     ],
-    "376": [
-      "repeat"
+    "374": [
+      "highlight"
     ],
+    "375": [
+      "diagonal"
+    ],
+    "376": [],
     "377": [
       "shrink"
+    ],
+    "378": [
+      "diagonal"
+    ],
+    "381": [
+      "connect"
+    ],
+    "383": [
+      "beam"
     ],
     "384": [
       "crop",
       "scale"
     ],
-    "385": [
-      "repeat"
-    ],
+    "385": [],
     "386": [
       "combine"
+    ],
+    "387": [
+      "recolor",
+      "connect",
+      "n-adj"
     ],
     "389": [
       "recolor"
     ],
+    "390": [
+      "[154,390]"
+    ],
+    "391": [
+      "color-freq"
+    ],
+    "392": [
+      "bullseye",
+      "recolor"
+    ],
+    "393": [
+      "color-freq"
+    ],
+    "394": [
+      "prediction"
+    ],
     "395": [
       "combine"
+    ],
+    "396": [
+      "recolor",
+      "crop"
+    ],
+    "398": [
+      "diagonal"
     ],
     "399": [
       "count"

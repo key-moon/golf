@@ -45,7 +45,6 @@ def main():
     subprocess.run(["code", f"./vis_output/task{padded}.png"], check=True)
     subprocess.run(["python", "checker.py", "base_yu", str(case_id)], check=True)
   else:
-    # subprocess.run(["code", f"./vis_many/task{padded}.png"], check=True)
     print(openable_uri("cases", f"http://localhost:5000/tasks/{padded}"))
 
 if __name__ == "__main__":

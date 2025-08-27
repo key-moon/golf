@@ -346,6 +346,62 @@ def create_app() -> Flask:
         events.sort(key=lambda e: e["t"], reverse=True)
         return jsonify({"events": events[:50]})
 
+    # タスク初期化/オープン（tools/init.py の動作を模倣）
+    @app.post("/api/task/<int:task_id>/init")
+    def api_init_task(task_id: int):
+        if not (1 <= task_id <= 400):
+            return jsonify({"ok": False, "error": "invalid task_id"}), 400
+        # ユーザー毎の base ディレクトリ
+        try:
+            user = os.getlogin()
+        except Exception:
+            user = os.environ.get("USER") or os.environ.get("USERNAME") or ""
+        base_map = {"keymoon": "base_keymoon", "yu212": "base_yu"}
+        base_dir_name = base_map.get(user, "base_keymoon")
+        padded = f"{task_id:03d}"
+        base_dir = Path(WORKSPACE_DIR) / base_dir_name
+        base_dir.mkdir(parents=True, exist_ok=True)
+        file_path = base_dir / f"task{padded}.py"
+
+        created = False
+        if not file_path.exists():
+            # ヘッダ情報生成（ベストと他上位）
+            src_lines = []
+            try:
+                scores_per_task = get_scores_per_task()
+                scores = scores_per_task[task_id - 1] if scores_per_task and len(scores_per_task) >= task_id else []
+            except Exception:
+                scores = []
+            if scores:
+                best = scores[0].get("score")
+                names = [s.get("name") for s in scores if s.get("score") == best]
+                others = ", ".join([f"{s.get('score')}({s.get('name')})" for s in scores if s.get('score') != best][:5])
+                src_lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
+                try:
+                    if isinstance(best, int) and best <= 150:
+                        src_lines.append("# " + f" {best} ".center(best - 2, "="))
+                except Exception:
+                    pass
+            # ひな形
+            src_lines.append("def p(g):")
+            src_lines.append(" return g")
+            file_path.write_text("\n".join(src_lines) + "\n", encoding="utf-8")
+            created = True
+
+        # VS Code でファイルを開く
+        try:
+            subprocess.run(["code", str(file_path)], check=False)
+        except Exception:
+            pass
+        # ユーザー yu212 の場合は可視化画像も開く
+        if user == "yu212":
+            vis = Path(WORKSPACE_DIR) / "vis_output" / f"task{padded}.png"
+            try:
+                subprocess.run(["code", str(vis)], check=False)
+            except Exception:
+                pass
+        return jsonify({"ok": True, "created": created, "path": str(file_path), "user": user})
+
     return app
 
 

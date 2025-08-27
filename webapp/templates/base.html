@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ARC-AGI Golf</title>
+  <title>{% block title %}ARC-AGI Golf{% endblock %}</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
   <style>
     :root{ --header-h: 44px }
@@ -38,8 +38,15 @@
     .chip{ display:inline-flex; align-items:center; gap:8px; padding:4px 12px; height:28px; line-height:1; font-size:17px; border-radius:999px; border:1px solid var(--pico-muted-border-color, #ccc); background: var(--pico-muted-background, transparent); color: inherit }
     .chip.contrast{ background: var(--pico-primary); color: var(--pico-primary-inverse, #fff); border-color: var(--pico-primary) }
     .chip:hover{ filter: brightness(0.98) }
-    /* Tooltip */
-    .tooltip{position:absolute; display:none; background: var(--pico-card-background-color); border:1px solid var(--pico-muted-border-color, #ccc); padding:6px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+    /* Alerts (bootstrap-like) */
+    .alerts{ position: fixed; top: calc(var(--header-h) + 8px); right: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 250 }
+    .alert{ display:flex; align-items:flex-start; gap:8px; padding:8px 12px; border-radius:8px; border:1px solid var(--pico-muted-border-color, #ccc); background: var(--pico-muted-background, #f7f7f7); color: inherit; box-shadow: 0 2px 6px rgba(0,0,0,0.08) }
+    .alert.success{ border-color:#2ecc71; background: rgba(46,204,113,0.12) }
+    .alert.info{ border-color:#3498db; background: rgba(52,152,219,0.12) }
+    .alert.error{ border-color:#e74c3c; background: rgba(231,76,60,0.12) }
+    .alert .close{ margin-left:auto; background:transparent; border:0; cursor:pointer; line-height:1; padding:0 4px; font-size:18px }
+    /* Slim button helper */
+    .btn-slim{ padding:4px 10px !important; height:28px !important; line-height:1.1 !important; font-size:13px !important }
     .nowrap{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   </style>
 </head>
@@ -59,6 +66,7 @@
       </ul>
     </nav>
   </header>
+  <div id="alerts" class="alerts"></div>
   <main class="container">
     {% block content %}{% endblock %}
   </main>
@@ -82,6 +90,35 @@
       body.innerHTML = '';
       if(typeof htmlOrNode === 'string') body.innerHTML = htmlOrNode; else body.appendChild(htmlOrNode);
       dlg.showModal();
+    };
+    // Bootstrap-like alerts
+    window.showAlert = (message, kind = 'info', timeout = 3000)=>{
+      const host = document.getElementById('alerts');
+      if(!host) return;
+      const el = document.createElement('div');
+      el.className = `alert ${kind}`;
+      el.innerHTML = `<div>${message}</div>`;
+      const close = document.createElement('button'); close.className='close'; close.setAttribute('aria-label','Close'); close.innerHTML='&times;'; close.onclick=()=>{ el.remove(); };
+      el.appendChild(close);
+      host.appendChild(el);
+      if(timeout>0){ setTimeout(()=>{ el.remove(); }, timeout); }
+      return el;
+    };
+    // Navigate to tasks filtered by a tag (supports special characters)
+    window.openTasksWithTag = (tag)=>{
+      const params = new URLSearchParams(location.search);
+      // normalize: drop any legacy comma-based single value
+      const legacy = params.get('tags');
+      if(legacy && !params.getAll('tags').length){
+        params.delete('tags');
+        legacy.split(',').map(s=>s.trim()).filter(Boolean).forEach(t=> params.append('tags', t));
+      }
+      // append this tag if not present
+      const existing = new Set(params.getAll('tags'));
+      if(!existing.has(tag)) params.append('tags', tag);
+      // ensure at least sort=best to be consistent with UX
+      if(!params.get('sort')) params.set('sort','best');
+      location.href = `/tasks?${params.toString()}`;
     };
   </script>
 </body>
