@@ -53,10 +53,49 @@ function applyActive(group, value, attr){
     b.classList.toggle('contrast', b.dataset[attr]===value);
   });
 }
+// diffに応じたスタイルを返す（赤はより濃く、枠線は太めに統一）
+function getDiffStyles(diff, base=0.3, ratio=100, crop=0.9){
+  if(diff==null || isNaN(diff)) return { bg:'', outline:'' };
+  const opacity = Math.min(base + Math.abs(diff)/ratio, crop)
+  // 短縮（良い）側: 緑
+  if(diff <= -11) return { bg:`rgba(0,160,0,${opacity})`, outline:'6px solid rgba(0,140,0,0.95)' };
+  if(diff <= -6)  return { bg:`rgba(0,160,0,${opacity})`, outline:'3px solid rgba(0,140,0,0.95)' };
+  if(diff <= -1)  return { bg:`rgba(0,160,0,${opacity})`, outline:'' };
+  // 同点
+  if(diff === 0) return { bg:'', outline:'' };
+  // 伸び（悪い）側: 赤（さらに濃く）
+  if(diff <= 5)   return { bg:`rgba(220,0,0,${opacity})`, outline:'' };
+  if(diff <= 10)  return { bg:`rgba(220,0,0,${opacity})`, outline:'3px solid rgba(200,0,0,0.95)' };
+  if(diff <= 20)  return { bg:`rgba(220,0,0,${opacity})`, outline:'6px solid rgba(200,0,0,0.95)' };
+  return { bg:`rgba(220,0,0,${opacity})`, outline:'10px solid rgba(300,0,0,0.95)' };
+}
+function applyDiffStyles(el, diff){
+  const s = getDiffStyles(diff);
+  el.style.background = s.bg || '';
+  el.style.outline = s.outline || 'none';
+  el.style.outlineOffset = '0px';
+}
+// list用: 行全体に背景と太枠（box-shadow）を適用し、各セルにも背景を反映
+function applyDiffStylesRow(tr, diff){
+  const s = getDiffStyles(diff, 0.1, 200, 0.5);
+  tr.style.background = s.bg || '';
+  const tds = tr.querySelectorAll('td, th');
+  tds.forEach(td=>{ td.style.background = s.bg || ''; });
+  // 左側だけ太線（最初のセルに適用）
+  const first = tr.querySelector('td, th');
+  if(first){
+    if(s.outline){
+      const m = s.outline.match(/(\d+(?:\.\d+)?)px\s+solid\s+(.+)/);
+      if(m){ const w = parseFloat(m[1])*2; const col = m[2]; first.style.boxShadow = `inset ${w}px 0 0 0 ${col}`; }
+    } else {
+      first.style.borderLeft = 'none';
+    }
+  }
+}
 (function initControls(){
   const params = new URLSearchParams(location.search);
   const view = params.get('view')||'thumb';
-  const sort = params.get('sort')||'problem';
+  const sort = params.get('sort')||'best';
   const order = params.get('order')||'asc';
   const show = params.get('show')||'both';
   const size = params.get('size')||'md';
@@ -76,7 +115,7 @@ async function getThumbs(includeOutput){
 async function render(){
   const params = new URLSearchParams(location.search);
   const view = params.get('view')||'thumb';
-  const sort = params.get('sort')||'problem';
+  const sort = params.get('sort')||'best';
   const order = params.get('order')||'asc';
   const show = params.get('show')||'both';
   const size = params.get('size')||'md';
@@ -118,9 +157,6 @@ async function render(){
   const list = document.getElementById('list');
   list.innerHTML='';
 
-  const winBg='rgba(0, 180, 0, 0.2)';
-  const loseBg='rgba(220, 0, 0, 0.2)';
-
   if(view==='list'){
     const table = document.createElement('table');
     table.innerHTML = '<thead><tr><th>ID</th><th>length</th><th>best</th><th>Base</th><th>Compressor</th><th>Message</th></tr></thead>';
@@ -128,10 +164,10 @@ async function render(){
     rows.forEach(r=>{
       const tr=document.createElement('tr');
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'');
-      // stronger background with light alpha for list view
-      tr.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? 'rgba(0,180,0,0.15)' : r.diff>0? 'rgba(220,0,0,0.15)' : '') : '';
       const baseCell = r.base ? `<a href="#" class="open-code" data-path="${encodeURIComponent(r.base_full)}" title="${r.base_full}">${r.base}</a>` : '';
       tr.innerHTML = `<td><a href="/tasks/${r.id}">task${String(r.id).padStart(3,'0')}</a></td><td>${lengthLabel}</td><td>${r.best??''}</td><td class="nowrap">${baseCell}</td><td class="nowrap" title="${r.compressor}">${r.compressor||''}</td><td class="nowrap" title="${r.message}">${r.message||''}</td>`;
+      // セル生成後に行スタイルを適用（背景/左太線）
+      applyDiffStylesRow(tr, r.diff);
       tb.appendChild(tr);
     });
     table.appendChild(tb);
@@ -147,18 +183,14 @@ async function render(){
   } else {
     const grid = document.createElement('div');
     // columns by size: L=5, M=6(デフォルトのまま), S=9
-    if(size==='lg') grid.className = 'grid';
-    else if(size==='sm') grid.className = 'grid';
-    else grid.className = 'grid';
-    // override columns with inline style to meet exact counts
-    const container = document.querySelector('main.container') || document.body;
+    grid.className = 'grid';
     const cols = size==='lg' ? 5 : size==='sm' ? 9 : 6;
     grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0,1fr))`;
     // Now: previous S becomes new L; provide smaller M,S
     const dims = size==='lg' ? {w:120,h:90} : size==='md' ? {w:90,h:68} : {w:60,h:45};
     rows.forEach(r=>{
       const card = document.createElement('a'); card.className='thumb'; card.href=`/tasks/${r.id}`; card.style.textDecoration='none'; card.style.color='inherit';
-      card.style.background = (r.best!=null && r.len!=null && r.diff!=null) ? (r.diff<0? winBg : r.diff>0? loseBg : '') : '';
+      applyDiffStyles(card, r.diff);
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'-');
       const meta = document.createElement('div');
       const showLen = size!=='sm';
