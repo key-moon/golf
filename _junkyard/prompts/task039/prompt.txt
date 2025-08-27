@@ -149,11 +149,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):r=[i for(i,r)in enumerate(g)if any(r)];c=[j for(j,c)in enumerate(zip(*g))if any(c)];return[[g[i][j]for j in c[:3]]for i in r[:3]]
+p=lambda g,c=-1:c*g or[*zip(*p([*filter(any,zip(*g))],c+1))][:3]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

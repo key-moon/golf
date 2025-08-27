@@ -141,11 +141,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):s=sum(g,[]);t=max(s,key=s.count);return[[g[i%3][j%3]if g[i//3][j//3]==t else 0for j in range(9)]for i in range(9)]
+p=lambda g:[[y*(x==max(u:=sum(g,g),key=u.count))for x in s for y in t]for s in g for t in g]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

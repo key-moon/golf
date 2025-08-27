@@ -269,11 +269,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*map(list,zip(*p([*zip(*g)])))]
+p=lambda g:5in g[0]and[([0]*s[:s.index(5)].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*zip(*p([*zip(*g)]))]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -208,8 +208,7 @@ Output:
 def p(g,R=range(10)):u=(A:=sum(g,[])).index(c:=sum({*A})-5);x,*_,y=sorted(i-j for i in R for j in R if g[i][j]);return[[c*(i-j in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for j in R]for i in R]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

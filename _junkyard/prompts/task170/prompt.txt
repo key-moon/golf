@@ -335,8 +335,7 @@ def PP(a,b):
 def p(I):I=tuple(map(tuple,I));A=Q(I,False,True,True);D=H(A,PE);E=R(A,PE);B=G(D,I);C=G(E,I);F=PS(B);J=PS(C);L=PP(F,J);M=V(B,L);N=K(M,0);O=PX(C,0,N);return[*map(list,O)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

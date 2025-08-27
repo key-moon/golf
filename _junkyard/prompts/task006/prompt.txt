@@ -93,11 +93,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-p=lambda j:[[a and b and 2for(a,b)in zip(r[:3],r[4:7])]for r in j[:3]]
+p=lambda g:[eval('2*s.pop(0)*s[3],'*3)for s in g]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -208,11 +208,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-p=lambda g:(k:=[i+1for i in range(8)if g[0]!=g[i]][0])and[s[::-k]for s in g[::k]]
+p=lambda g:[[s[::-k]for s in g[::k]]for k in b'\x03\x04\x05\x06'if g[0]!=g[k-1]][0]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

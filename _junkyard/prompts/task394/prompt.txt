@@ -99,12 +99,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-r=range
-p=lambda g:(w:=len(g),s:=any(0<g[i//w][i%w]!=g[i//w+2][i%w]>0for i in r((w-2)*w))+2)and[*filter(len,[[g[[i-s,i+s][i+s<w]][[j-s,j+s][j+s<w]]for j in r(w)if g[i][j]<1]for i in r(w)])]
+p=lambda g:[[t[j+[s:=(len(g)>6)+2,-s][j>=s]]for(j,v)in enumerate(t)if v<1]for t in g if 0in t]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -476,8 +476,7 @@ def K(a,b):
 def p(I):A=True;I=tuple(map(tuple,I));H=GJ(I,A,A,A);B=GE(H,HJ);C=GU(B);D=GS(B);J=V((0,0));L=Y(B);F=GK(GW,L);M=GU(I);N=GR(M,C);O=GS(I);T=GR(O,D);U=GY(N,T);X=W(U);a=E(X);b=Q(1,a,1);c=GY(C,D);d=GK(K,c);G=GV(GH,d);e=GK(GM,F);f=GL(HG,b);g=GK(GL,K);h=GV(g,G);i=GZ(e,f,h);j=GL(P,I);k=GV(F,G);l=GZ(Z,j,k);m=R(I);n=GL(S,m);o=GL(GX,n);p=GV(o,l);q=HY(GG,p,i);r=GM(q,J);s=GQ(I,r);return[*map(list,s)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

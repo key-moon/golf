@@ -307,20 +307,19 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(j,h=enumerate):
+def p(j,p=enumerate):
  C=c=0
- for(A,k)in h(j):
-  for(B,l)in h(k):C+=A*(l==3);c+=B*(l==3)
+ for(A,k)in p(j):
+  for(B,l)in p(k):C+=A*(l==3);c+=B*(l==3)
  C//=2;c//=2
- for(A,k)in h(j):
-  for(B,l)in h(k):
+ for(A,k)in p(j):
+  for(B,l)in p(k):
    if l==2:
     for(D,a)in(A,B),(C-A,B),(A,c-B),(C-A,c-B):j[D][a]=2
  return j
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

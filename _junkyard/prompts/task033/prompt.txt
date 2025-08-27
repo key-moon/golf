@@ -317,17 +317,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- A=g[5][0];D=[(i%6,j%6)for(i,B)in enumerate(g)for(j,v)in enumerate(B)if v and v!=A]
- for B in 0,6,12:
-  for C in 0,6,12:
-   for(a,b)in D:
-    if g[B+a][C+b]==0:g[B+a][C+b]=A
- return g
+p=lambda g,R=range(17):[[g[i][j]or(g[i%6][j%6]>0)*g[0][5]for j in R]for i in R]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

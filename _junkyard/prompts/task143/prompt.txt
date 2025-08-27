@@ -265,8 +265,7 @@ def P(a,b):return type(a)(A for A in a if A not in b)
 def p(I):I=tuple(map(tuple,I));A=PE(I,(0,0),(3,3));B=G(A,0);C=E(A);D=P(C,B);F=U(D);L=W(I,True,False,True);N=H(J,U);O=K(N,F);Q=R(L,O);S=PU(I,5,Q);T=M(A);V=PJ(S,T);return[*map(list,V)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

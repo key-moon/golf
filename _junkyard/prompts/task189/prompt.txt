@@ -173,8 +173,7 @@ def p(g):
  F=[[r[:B]for r in g[:A]],[r[B+1:]for r in g[:A]],[r[:B]for r in g[A+1:]],[r[B+1:]for r in g[A+1:]]];I=next(x for x in F if len(x)==2and len(x[0])==2);C=next(x for x in F if len(x)>2and len(x[0])>2);G,H=len(C),len(C[0]);J,K=G//2,H//2;return[[C[i][j]//3*I[i//J][j//K]for j in range(H)]for i in range(G)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

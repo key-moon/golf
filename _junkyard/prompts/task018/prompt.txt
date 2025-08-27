@@ -455,8 +455,7 @@ def P(x):return x
 def p(I):I=tuple(map(tuple,I));D=GE(I,_A,_A,True);E=GV(Q,4);B=Z(D,E);F=HE(R,B);H=GW(B);J=HX(I,H);K=GS(GR,HK);L=GS(GV,GZ);M=HM(K,L,X);C=HU(Z,P,M);N=HM(GU,S,C);O=GS(GS,HY);T=HU(HY,P,N);U=GR(O,T);V=GS(HU,GX);W=GS(V,U);Y=HH(GR,C);a=GS(GS,G);b=HM(W,Y,a);c=HH(GX,F);d=GR(c,b);A=HU(GL,P,d);e=HM(P,A,P);f=HM(GG,A,GG);g=HM(GJ,A,GJ);h=HM(GY,A,GY);i=HM(GM,A,GM);j=HM(HJ,A,GK);k=HM(GQ,A,GQ);l=HM(GK,A,HJ);m=HM(l,k,j);n=HM(i,h,g);o=GR(f,e);p=HM(m,n,o);q=p(J);return[*map(list,q)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

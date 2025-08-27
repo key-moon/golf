@@ -245,25 +245,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- q=range;l=len;r=[o[:]for o in g];v=set()
- for i in q(l(g)):
-  for j in q(l(g[0])):
-   if g[i][j]and(i,j)not in v:
-    c,w=[(i,j)],[(i,j)];v.add((i,j));A=g[i][j]
-    while w:
-     x,y=w.pop()
-     for(f,h)in[(0,1),(1,0),(0,-1),(-1,0)]:
-      m,n=x+f,y+h
-      if 0<=m<l(g)and 0<=n<l(g[0])and g[m][n]==A and(m,n)not in v:v.add((m,n));c.append((m,n));w.append((m,n))
-    s=min(p[0]for p in c);t=max(p[0]for p in c);d=min(p[1]for p in c);e=max(p[1]for p in c)
-    for x in q(s+1,t):
-     for y in q(d+1,e):r[x][y]=8
- return r
+p=lambda g,E=enumerate:[[all([0,*s,0][j:j+3]+[0,*t,0][i:i+3])*8or s[j]for(j,t)in E(zip(*g))]for(i,s)in E(g)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

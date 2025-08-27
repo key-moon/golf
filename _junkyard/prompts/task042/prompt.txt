@@ -303,8 +303,7 @@ def PE(n):return-n if isinstance(n,int)else(-n[0],-n[1])
 def p(I):A=True;I=tuple(map(tuple,I));B=R(I,A,A,A);C=PK(PS,2);D=PY(PE,PW,PV);F=PH(PZ,E,V);G=PP(C,H);K=PH(PM,G,D);L=PP(J,K);M=PG(PU,F);N=PP(M,J);O=PH(P,L,N);Q=PU(O,B);S=ZP(I,8,Q);return[*map(list,S)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

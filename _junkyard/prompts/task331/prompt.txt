@@ -205,20 +205,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- n=len(g)
- for i in range(n):
-  for j in range(n):
-   if g[i][j]==1:
-    if i:g[i-1][j]=2
-    if j:g[i][j-1]=7
-    if i+1<n:g[i+1][j]=8
-    if j+1<n:g[i][j+1]=6
- return g
+p=lambda g,c=4:c and p([[[y,6,8,7,2][(x==1)*c]for(x,y)in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

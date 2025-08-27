@@ -164,8 +164,7 @@ def PX(A):return len(A)
 def p(I):I=tuple(map(tuple,I));A=L(2,10,1);B=V(M,A,A);C=PU(K,0);D=PU(P,I);E=PU(PU,PS);F=PL(PE,E,D);H=PP(F,Y,C);J=G(H,B);N=W(J,PX);O=PY(I,6,N);return[*map(list,O)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

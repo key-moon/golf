@@ -243,13 +243,12 @@ Output:
 ```
 import re
 def p(l):
- t=str(l);c=min(t,key=t.count);t=str(l+[*zip(*l)]);t=re.sub('[([, ]','',t+t[::-1]);b=max(t,key=t.count);c=[b,c][t.count(c)<9];s={*')]',b,c};r=[];l=[]
- for s in[r for r in sorted([l+b*len(p)+l for(t,p,l)in re.findall(f"([^{b}])((?:(?!\\1|\\]|\\)).)+?)(\\1\\1+)",t)],key=len)[::-1]if s^(s:=s|{r[0]})]+[({*t}-s).pop()*3,c]:t=''.join(map(list.pop,l));l+=[[*s[:-1]]];r+=[[*map(int,t+s+t[::-1])]]
+ t=str(l);c=min(t,key=t.count);t=str(l+[*zip(*l)]);t=re.sub('[[(, ]','',t+t[::-1]);b=max(t,key=t.count);c=[b,c][t.count(c)<9];s={*'])',b,c};r=[];l=[]
+ for s in[r for r in sorted([l+b*len(p)+l for(t,p,l)in re.findall(f"([^{b}])((?:(?!\\)|]|\\1).)+?)(\\1\\1+)",t)],key=len)[::-1]if s^(s:=s|{r[0]})]+[({*t}-s).pop()*3,c]:t=''.join(map(list.pop,l));l+=[[*s[:-1]]];r+=[[*map(int,t+s+t[::-1])]]
  return r+r[:-1][::-1]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -284,8 +284,7 @@ def Q(A):return type(A)(B for A in A for B in A)
 def p(I):I=tuple(map(tuple,I));D=M(I,True,False,True);A=W(I,8,0);B=Z(A);E=W(A,B,0);F=Z(E);C=Q(D);G=V(C);H=R(C);J=K(I,B,G);L=K(J,F,H);return[*map(list,L)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

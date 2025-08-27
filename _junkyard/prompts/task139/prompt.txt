@@ -189,17 +189,11 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-from itertools import product
-def p(j,A=range):
- for(c,B)in product(A(len(j)-2),A(len(j[0])-2)):
-  k=A(c,c+3)
-  if not all(4in i for i in[j[c][B:B+3],j[c+2][B:B+3],[j[A][B]for A in k],[j[A][B+2]for A in k]]):continue
-  for(C,l)in product(k,A(B,B+3)):j[C][l]+=7*(j[C][l]==0)
- return j
+import re
+p=lambda g,c=-63:c*g or p(eval(re.sub('0(, [47].{25}[47])','7\\1',str([*zip(*g[::-1])]))),c+1)
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

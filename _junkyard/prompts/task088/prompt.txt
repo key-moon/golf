@@ -215,8 +215,7 @@ Output:
 def p(g):s=sum(g,[]);u=[x for x in set(s)if s.count(x)==4][0];w=[(i,j)for(i,r)in enumerate(g)for(j,x)in enumerate(r)if x==u];a,b=w[0];c,d=w[-1];return[[u if g[i][j]else 0for j in range(b+1,d)]for i in range(a+1,c)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

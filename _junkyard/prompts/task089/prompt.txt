@@ -344,8 +344,7 @@ def G(x):return x
 def p(I):I=tuple(map(tuple,I));Q=R(I,False,True,True);S=PS(10,10);A=PV(S);T=PS(2,A);U=PS(3,A);V=K(T);W=PY(U,V);B=PY(W,Q);C=ZP(X,2);D=ZP(X,3);Y=PZ(PV,M);Z=ZP(PZ,Y);a=ZP(ZS,PP);E=PZ(Z,a);F=ZS(PZ,PM);J=ZP(ZP,PR);b=E(C);c=E(D);d=ZE(PR,G,b);e=ZE(PR,G,c);f=PZ(C,PU);g=PZ(D,PU);L=PP(B,f);N=PE(L,ZU);h=PW(N,L);i=H(N);j=PK(F,J,d);k=j(i);l=PL(k,h);O=PP(B,g);P=PE(O,ZU);m=PW(P,O);n=PK(F,J,e);o=n(P);p=PL(o,m);q=PJ(l,p);r=ZZ(I,q);return[*map(list,r)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

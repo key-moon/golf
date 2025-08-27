@@ -205,22 +205,21 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- A,B=len(g),len(g[0]);D={}
- for K in range(A):
-  for L in range(B):
-   C=g[K][L]
-   if C:D[C]=D.get(C,0)+1
- H=max(D,key=D.get);E=[(A,D,g[A][D])for A in range(A)for D in range(B)if(C:=g[A][D])and C!=H];M=min(A for(A,B,C)in E);N=min(A for(B,A,C)in E);I=[(A-M,B-N,C)for(A,B,C)in E];J=[[0]*B for _ in range(A)]
- for F in range(A):
-  for G in range(B):
-   if all(0<=F+C<A and 0<=G+D<B and g[F+C][G+D]==H for(C,D,_)in I):
-    for(O,P,c)in I:J[F+O][G+P]=c
- return J
+def p(g,E=enumerate):
+ A=[]
+ for(r,C)in E(g):
+  for(c,B)in E(C):
+   if B not in[0,8]:A+=[[r,c,B]];g[r][c]=0
+ D=A[0][:];A=[[x[0]-D[0],x[1]-D[1],x[2]]for x in A]
+ for(r,C)in E(g):
+  for(c,B)in E(C):
+   if B==8:
+    g[r][c]=D[2]
+    for x in A:g[r+x[0]][c+x[1]]=x[2]
+ return g
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

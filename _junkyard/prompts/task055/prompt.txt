@@ -313,18 +313,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- m,n=len(g),len(g[0]);a,b=[i for(i,r)in enumerate(g)if r==[8]*n];x,y=[j for j in range(n)if[r[j]for r in g]==[8]*m]
- for i in range(m):
-  for j in range(n):
-   if g[i][j]==0:
-    if a<i<b:g[i][j]=6if x<j<y else 4if j<x else 3
-    elif x<j<y:g[i][j]=2if i<a else 1
- return g
+p=lambda g,i=0:[(i:=i+r[0],j:=i)and[[586768>>(j:=j+c//8*3)&7,c][c>0]for c in r]for r in g]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

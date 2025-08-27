@@ -235,8 +235,7 @@ def U(a,b):
 def p(I):I=tuple(map(tuple,I));A=Y(I,2);B=M(I,2,0);C=P(B);F=Y(B,C);D=W(A,F);N=L(C,D);O=V(S,Q);R=J(D);T=K(R);Z=H(A,T);a=PJ(O,Z);b=E(0,9,1);c=X(U,a,b);d=PZ(H,N);e=G(d,c);f=PS(I,e);return[*map(list,f)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

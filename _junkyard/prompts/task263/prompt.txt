@@ -132,14 +132,13 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- A=range;B=[[[g[D+B*3][A+C*3]for A in A(3)]for D in A(3)]for B in A(len(g)//3)for C in A(len(g[0])//3)]
- for C in B:
-  if[tuple(tuple(B[C][A]==0for A in A(3))for C in A(3))for B in B].count(tuple(tuple(C[B][A]==0for A in A(3))for B in A(3)))==1:return C
+def p(j):
+ A=range;c=[[[j[C+c*3][A+B*3]for A in A(3)]for C in A(3)]for c in A(len(j)//3)for B in A(len(j[0])//3)]
+ for B in c:
+  if[tuple(tuple(c[B][A]==0for A in A(3))for B in A(3))for c in c].count(tuple(tuple(B[c][A]==0for A in A(3))for c in A(3)))==1:return B
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -141,8 +141,7 @@ Output:
 def p(g):A,B=len(g),len(g[0]);C=[[g[i%A][j%B]for j in range(2*B)]for i in range(2*A)];return[[C[i][j]if C[i][j]else 8*any(0<=i+D<2*A and 0<=j+E<2*B and C[i+D][j+E]for(D,E)in[(-1,-1),(-1,1),(1,-1),(1,1)])for j in range(2*B)]for i in range(2*A)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -185,21 +185,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- r,c=next((i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==3and all(g[i+A][j+B]==2for A in(-1,0,1)for B in(-1,0,1)if A|B));l=[j for j in range(len(g[0]))if g[r][j]==3and j!=c]
- if l:m=[j for j in l if j>c]or[max(l)];C,D=r,min(m)
- else:l=[i for i in range(len(g))if g[i][c]==3and i!=r];m=[i for i in l if i>r]or[max(l)];C,D=min(m),c
- for A in-1,0,1:
-  for B in-1,0,1:
-   if A|B:g[r+A][c+B]=0
- for A in-1,0,1:
-  for B in-1,0,1:
-   if A|B:g[C+A][D+B]=2
- return g
+p=lambda g:(g[0]+g[3]).count(3)==1and g[-2:][::1|len(g)%-2]+g[:-2]or[*zip(*p([*zip(*g)]))]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

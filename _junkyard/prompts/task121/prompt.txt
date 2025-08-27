@@ -173,11 +173,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):A,B=next((A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==8);C=max(g[A+a][B+b]for a in(-1,0,1)for b in(-1,0,1)if g[A+a][B+b]!=8);return[[C if g[A+a][B+b]else 0for b in(-1,0,1)]for a in(-1,0,1)]
+def p(g):y,x=divmod(sum(g,[]).index(8)-14,13);u=[s[x:x+3]for s in g[y:y+3]];u[1][1]=max(u[0]);return u
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

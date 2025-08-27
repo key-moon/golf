@@ -410,8 +410,7 @@ def GG(x):return x
 def p(I):I=tuple(map(tuple,I));J=L(I);N=HQ(I);E=HK(J,N);F=K(I);O=HQ(I);P=Z(O,3);Q=HH(F,P);B=HM(Q,E);C=GS(B,False,True,True);R=GZ(C,S);A=U(R);T=HG(A,C);X=HE(T);D=K(X);Y=GX(A);a=GQ(GG,D);b=HY(Y,a);c=GQ(HR,D);d=GM(A,c);e=GQ(HR,b);f=GM(A,e);g=GU(F,f);h=GR(d,g);i=HV(GK,C);j=HV(H,B);k=HV(GE,h);l=GL(j,k);m=HV(HV,HK);n=HV(GE,A);o=GL(m,n);p=HW(HS,o,l);q=GL(W,HZ);r=HV(HP,q);s=HU(r,M);t=HV(HU,G);u=HP(i,s,t);v=HP(HZ,u,M);w=HU(V,D);x=HW(GJ,v,w);y=HU(GM,x);z=HP(HE,y,p);A0=GY(1,6,1);A1=GW(z,A0);A2=HM(B,A1);A3=GP(E,A2);return[*map(list,A3)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

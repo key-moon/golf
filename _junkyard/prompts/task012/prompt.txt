@@ -237,11 +237,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g,d=range(-2,3),E=enumerate):x=[r[:]for r in g];[x[i+a].__setitem__(j+b,v if abs(a)==abs(b)else r[j-1])for(i,r)in E(g)for(j,v)in E(r)if v and r[j-1]*r[j+1]for a in d for b in d if abs(a)==abs(b)or not a*b];return x
+def p(j,A=range(-2,3),c=enumerate,E=abs):k=[A[:]for A in j];[k[H+D].__setitem__(C+F,G if E(D)==E(F)else B[C-1])for(H,B)in c(j)for(C,G)in c(B)if G and B[C-1]*B[C+1]for D in A for F in A if E(D)==E(F)or not D*F];return k
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

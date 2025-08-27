@@ -381,8 +381,7 @@ def P(x):return x
 def p(I):I=tuple(map(tuple,I));B=GK(I,False,True,True);A=GW(B,HZ);J=GZ(A,B);K=HM(J);C=GY(K);M=HG(P,1);N=GM(GV,GU);O=GM(GE,GJ);Q=GH(N,O);D=GH(M,Q);R=HL(GQ,HE,HW);T=GR(D,D);U=HP(R,T);V=HX(E,C);W=GQ(V,HE);F=HX(GG,W);X=HJ(HQ,S);H=HJ(X,F);Y=HJ(HL,HU);Z=HJ(HJ,HU);a=HJ(G,I);b=HX(GP,A);c=HQ(HE,b,GX);d=HJ(GQ,GL);e=GQ(d,H);f=HJ(GQ,F);g=HL(Y,f,e);h=GQ(c,g);i=HX(GP,A);j=HQ(HE,i,GX);k=HX(GP,A);l=GQ(GX,H);m=HQ(HE,k,l);n=GQ(GL,m);o=HL(HU,j,n);p=GQ(Z,o);q=GQ(a,h);r=HL(GS,p,q);s=HX(GM,r);t=GQ(HW,s);u=HX(GM,U);v=GQ(HW,u);w=HL(GS,t,v);x=HL(HV,P,w);y=HX(E,C);z=GQ(y,HE);A0=GG(A,z);A1=HZ(A0);A2=L(A1,0);A3=HH(A2,P,x);A4=A3(I);return[*map(list,A4)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -327,8 +327,7 @@ def W(x):return x
 def p(I):B=True;I=tuple(map(tuple,I));X=GK(W,GV);Z=GK(GX,GR);a=GJ(X,Z);b=YG(HG,W,HM);C=HL(L,HU,b);D=K(I);c=HE(HL,S);d=HE(c,C);e=HE(HL,HR);f=HE(e,C);g=HQ(GZ,I);h=GW(GS,d);i=HL(HU,g,h);j=HQ(GZ,I);k=GW(GS,f);l=HL(HU,j,k);m=GU(i,1);n=GU(l,D);o=GW(YY,n);p=YG(YH,m,o);J=HY(a,p);A=J(I);q=C(A);N=HR(q);r=GM(A);s=HJ(N,r);t=HS(s,D);u=GL(A,B,B,B);O=H(u,t);Q=GQ(A,N);F=GQ(A,D);v=HH(E,F);w=HH(E,v);x=P(Q);y=Y((0,0));z=HJ((1,0),y);A0=HQ(HH,z);A1=HE(HL,A0);A2=HE(HE,YE);A3=HQ(A1,A2);A4=HE(HE,GW);A5=HE(HE,HP);A6=HL(A3,A4,A5);A7=HE(HL,YV);A8=HQ(G,Q);A9=HE(A7,A8);AA=HQ(GU,0);AB=HE(HE,HP);AC=HL(AA,A9,AB);AD=HQ(HL,HU);AE=HQ(AD,R);AF=HE(GE,x);AG=AE(AF);AH=HQ(GY,AG);AI=HE(GW,AH);AJ=HE(HL,YV);AK=HQ(V,F);AL=HE(AJ,AK);AM=HQ(GU,0);AN=HE(HE,HP);AO=HL(AM,AL,AN);AP=HE(HL,YV);AQ=HQ(G,F);AR=HE(AP,AQ);AS=HE(YG,V);AT=GW(AI,A6);AU=HE(HE,HP);AV=YG(AS,AT,AU);AW=GW(AR,AV);AX=HQ(GU,0);AY=GW(AX,AW);AZ=HE(YG,YH);Aa=YG(AZ,AY,AO);Ab=HE(YG,YH);Ac=YG(Ab,AC,Aa);T=GW(U,M);Ad=HE(GY,w);Ae=HL(Ad,Ac,T);Af=HQ(HV,HU);Ag=GW(Af,Ae);Ah=YG(HP,T,Ag);Ai=HH(Ah,O);Aj=HX(O);Ak=HK(A,Aj);Al=YJ(Ak,1,Ai);Am=J(Al);return[*map(list,Am)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

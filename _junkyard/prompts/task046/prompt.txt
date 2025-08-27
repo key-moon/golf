@@ -187,8 +187,7 @@ def W(x):return x
 def p(I):A=False;I=tuple(map(tuple,I));B=K(I,A,A,True);N=ZP(PK,5);O=PZ(N,H);S=ZJ(G,O,W);T=ZZ(S,B);U=PQ(T,V);X=PZ(ZU,ZU);C=PR(PP,X);a=PZ(C,V);b=PZ(C,Y);c=ZJ(R,W,a);d=ZJ(R,W,b);e=PZ(Z,ZU);f=ZP(PV,e);g=PR(f,ZS);h=PR(ZP,P);D=PV(g,h,J);i=ZJ(PU,c,D);j=ZJ(PU,d,D);k=PZ(ZU,i);l=PZ(ZU,j);m=PS(0,(1,-1));n=Q(m);o=PR(ZE,(0,1));p=PV(k,PM,ZU);q=PZ(l,PM);r=ZJ(M,q,p);E=PZ(PM,ZU);s=PZ(o,r);t=ZJ(PW,E,s);u=ZJ(PJ,PM,t);v=ZJ(PX,E,ZU);w=ZJ(PS,u,v);x=ZS(B);y=PY(w,x);z=PS(n,U);A0=y(z);F=PM(A0);A1=PL(F);A2=L(A1);A3=PS(3,A2);A4=PE(0,A3);A5=PH(A4,F);return[*map(list,A5)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

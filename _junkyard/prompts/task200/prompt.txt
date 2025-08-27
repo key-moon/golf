@@ -205,16 +205,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- B=next(filter(None,g[-1]));C=g[-1].index(B)
- for A in range(C,10,2):
-  for D in range(10):g[D][A]=B
- for(E,A)in enumerate(range(C+1,10,2)):g[(E&1)*9][A]=5
- return g
+p=lambda g:[([0]*g[9].index(c:=max(g[9]))+[c,0**i*5,c,(i>8)*5]*9)[:10]for i in range(10)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

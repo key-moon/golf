@@ -425,8 +425,7 @@ def P(x):return x
 def p(I):I=tuple(map(tuple,I));E=GJ(I,False,True,True);F=GH(Q,2);H=W(E,F);J=GZ(R,H);K=GW(GK,GY,GG);L=GW(HY,GY,GG);M=GX(GH,GK);N=GV(M,K);O=GX(GH,GK);T=GV(O,L);A=HH(W,P,N);B=HH(W,P,T);C=GX(G,I);U=GW(GE,S,A);V=GW(GE,S,B);D=GX(GX,GS);X=HH(GS,P,U);Y=HH(GS,P,V);a=GV(D,X);b=GV(C,A);c=HH(GM,a,b);d=GV(D,Y);e=GV(C,B);f=HH(GM,d,e);g=HH(Z,c,f);h=GM(g,J);i=GU(I,h);return[*map(list,i)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

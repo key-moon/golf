@@ -152,8 +152,7 @@ Output:
 def p(g,R=(0,1,2)):A=sum(g,[]);B=sum(zip(*g),());a,b,_=sorted({*A},key=A.count);y=A.index(b)//10;x=B.index(b)//10;y-=g[y+1][x:x+3]==[b]*3;x-=all(b==g[y+k][x+1]for k in R);return[[-1<y+i<10>x+j>-1and g[y+i][x+j]or a for j in R]for i in R]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

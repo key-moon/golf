@@ -635,8 +635,7 @@ def ZW(a,b):
 def p(I):I=tuple(map(tuple,I));S=PS(I,_A,_A,True);B=PV(S,ZL);T=U(B);V=PM(B);W=PK(B);C=H(V,5);D=H(W,5);Y=PX(C,D);Z=ZW((1,1),Y);a=PQ(Z);E=PG(B);b=ZS(I,E);c=PY(C,(-1,0),(0,1));d=ZW(c,E);e=ZS(I,d);f=PX(b,(0,0));F=PP(f);A=PH(I,B);J=L(A);g=PU(A,J);h=P(A,F);i=PS(A,_A,_A,True);j=ZE(P,F);K=ZE(PJ,A);N=PE(j,K);k=ZJ(PW,M);l=ZJ(PW,X);O=PE(k,N);Q=PE(l,N);m=PY(C,O,Q);n=PY(D,Q,O);o=ZY(PL,m,n);p=ZJ(PZ,e);q=PE(p,o);r=ZY(ZU,K,q);s=PE(R,r);t=ZY(ZZ,s,G);u=PW(t,i);v=ZU(A,u);w=ZZ(T,a);x=ZJ(ZZ,w);y=PW(x,h);z=ZU(v,y);A0=ZV(z,J,g);return[*map(list,A0)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

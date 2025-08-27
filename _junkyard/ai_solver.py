@@ -23,25 +23,23 @@ def strip_code_fences(text: str) -> str:
     match = re.search(r"(?s)(def\s+p\(g\):.*?return\s+.*?)(?:\n|$)", text)
     if match: return match.group(1)
     return match
-    
-def generate_judge(task: list[Case]):
-    return """
+
+JUDGE = """
 import ast
 import zlib
-import base64
-cases = ast.literal_eval(zlib.decompress(base64.b64decode(%CASES%)).decode())
 
 def get_cases(case_path: str) -> list[list[list[int]]]:
-  return ast.literal_eval(zlib.decompress(open(case_path, "rb").read()))
+  return ast.literal_eval(zlib.decompress(open(case_path, "rb").read()).decode())
 
 if __name__ == "__main__":
   import sys
   import warnings
   warnings.filterwarnings("ignore", category=SyntaxWarning)
   warnings.filterwarnings("ignore", category=FutureWarning)
-  if len(sys.argv) < 4:
-    print(f"usage: {sys.argv[1]} [path to your code] [path to case data]")
+  if len(sys.argv) < 3:
+    print(f"usage: {sys.argv[0]} [path to your code] [path to case data]")
     exit(1)
+  cases = get_cases(sys.argv[2])
   
   env = {}
   exec(open(sys.argv[1]).read(), env)
@@ -69,7 +67,7 @@ if __name__ == "__main__":
     print("correct!")
   else:
     print(f"Wrong: failed {wrong} cases out of {total} cases")
-    print(f"<failed_cases>")
+    print("<failed_cases>")
     print("<note>only first 8 cases are shown</note>")
     for i, (inp, ans, out) in enumerate(wrong_cases[:8]):
       print(f"<case{i}>")
@@ -84,8 +82,10 @@ if __name__ == "__main__":
       print("</actual>")
       print(f"</case{i}>")
     print("</failed_cases>")
-""".replace("%CASES%", repr(base64.b64encode(zlib.compress(repr([(c["input"], c["output"]) for c in task]).replace(" ", "").encode()))))
+"""
 
+def generate_case(task: list[Case]):
+    return zlib.compress(repr([(c["input"], c["output"]) for c in task]).replace(" ", "").encode())
 
 def generate_prompt(task: list[Case], code: str):
     examples = ""
@@ -105,8 +105,7 @@ def generate_prompt(task: list[Case], code: str):
 {code}
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。
@@ -117,11 +116,6 @@ def generate_prompt(task: list[Case], code: str):
 api_key = os.getenv("OPENAI_API_KEY", None)
 client = openai.OpenAI(api_key=api_key) if api_key else None
 
-# run = time.strftime("%Y%m%d%H%M%S")
-# log_dir = f"logs/{run}"
-# os.mkdir(log_dir)
-
-
 
 def process_task(i):
     if os.path.exists("ABORT"): return
@@ -129,11 +123,12 @@ def process_task(i):
         task = get_cases(i)
         print(f"[+] generating {i}...")
         code = strip_for_zlib_space(min((open(base_path).read().strip() for base_path in get_code_paths("base_*", i)), key=len))
-        judge = generate_judge(task)
+        case = generate_case(task)
         prompt = generate_prompt(task, code)
         prompt_dir = f"_junkyard/prompts/task{i:03}"
         os.makedirs(prompt_dir, exist_ok=True)
-        open(f"{prompt_dir}/standalone_judge.py", "w").write(judge)
+        open(f"{prompt_dir}/cases.bin", "wb").write(case)
+        open(f"{prompt_dir}/judge.py", "w").write(JUDGE)
         open(f"{prompt_dir}/prompt.txt", "w").write(prompt)
 
         if os.path.exists("SKIP_PREDICTION") or not client: return

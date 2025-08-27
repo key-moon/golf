@@ -344,8 +344,7 @@ def GM(a,b):
 def p(I):I=tuple(map(tuple,I));E=X(I,1);A=S(E);F=X(I,2);B=S(F);C=X(I,3);D=X(I,7);G=L(GM,A);H=U(A);J=GG(M,H);N=K(Q,J);O=GH(G,N,U);P=L(GM,B);T=U(B);V=GG(M,T);W=K(Q,V);Y=GH(P,W,U);a=GY(O,D);b=GY(Y,C);c=R(C,D);d=Z(I,c);e=GV(d,7,a);f=GV(e,3,b);return[*map(list,f)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

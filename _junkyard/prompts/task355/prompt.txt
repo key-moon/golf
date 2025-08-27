@@ -182,14 +182,10 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- A,*B=sorted({*sum(g,t:=[])},key=sum(g,[]).count)
- for c in B:l,*_,r=sorted(j for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c);u,*_,d=sorted(i for i in range(len(g))for j in range(len(g[0]))if g[i][j]==c);t+=[(sum(s[l:r+1].count(A)for s in g[u:d+1]),c)]
- return[[max(t)[1]]]
+p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c))][-2]]]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -158,8 +158,7 @@ Output:
 def p(g,D=divmod):n=len(g[0]);i=sum(g,[]).index;a,b=D(i(3),n);c,d=D(i(4),n);e=a+(a<c-1)-(a>c+1);f=b+(b<d-1)-(b>d+1);g[a][b]=0;g[e][f]=3;return g
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

@@ -477,8 +477,7 @@ def K(a,b):
 def p(I):I=tuple(map(tuple,I));B=GJ(I,False,True,True);G=GG(I);H=GX(S,B);M=GS(GV,GG);N=GX(GX,R);O=GZ(H,M,N);P=GV(HJ,O);C=GE(G,P);T=GS(Y,C);U=HG(T,B);V=W(U);X=GS(Y,C);a=GY(X,V);b=S(B,a);E=GE(b,HJ);c=GY(GK,C);A=GS(S,c);d=GX(L,E);F=GZ(d,GP,A);e=GV(Q,A);f=GZ(Q,A,F);g=HY(K,e,f);D=HY(GL,F,g);h=GS(GW,C);i=GV(h,GG);j=GV(A,D);k=HY(J,D,j);l=HY(GH,i,k);m=GV(A,D);n=HY(Z,m,l);o=GR(E,B);p=GM(n,o);q=GU(I,p);return[*map(list,q)]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。

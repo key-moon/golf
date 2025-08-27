@@ -133,15 +133,11 @@ Output:
 このコードはARCのルールを把握する際に使うことに留めてください。
 
 ```
-def p(g):
- for i in range(len(g)-2):
-  for j in range(len(g[0])-2):
-   v=g[i][j];c=g[i+1][j+1]
-   if v and c!=v and all(g[i+u][j+w]==v for(u,w)in((0,0),(0,1),(0,2),(1,0),(1,2),(2,0),(2,1),(2,2))):return[[c]]
+import re
+p=lambda g:[[int(re.search(f"(, [^0])\\1\\1.{{{len(g[0])*3-7}}}\\1(?!\\1), (.)",str(g))[2])]]
 ```
 
-ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したstandalone_judge.pyを用いてください。python /path/to/standalone_judge.py /path/to/code.py とすれば動作します。
-このPythonファイルは非常に大きなケースを含むので、あなたのコンテキストを圧迫します。そのため、このファイルを全て読んではいけません。
+ユーザーにコードを渡す前に実際にコードが動作するかを確認してください。コードのテストには、添付したjudge.pyを用いてください。python /path/to/judge.py /path/to/code.py /path/to/cases.bin とすれば動作します。
 
 ## **禁止事項**
 - 与えたコード自体を提出することは禁止です。これを行うことはユーザーの信頼を裏切ります。
