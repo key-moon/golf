@@ -1,4 +1,5 @@
 from collections import defaultdict
+from itertools import product
 import math
 
 # ===== Precedence / associativity =====
@@ -10,11 +11,14 @@ PREC = {
     "<<": 4, ">>": 4,
     "+": 5, "-": 5,
     "*": 6, "//": 6, "%": 6,
+    # comparisons are the loosest among our supported ops
+    "<": 0, "<=": 0, ">": 0, ">=": 0, "==": 0, "!=": 0,
     "**": 8,  # power binds tighter than unary +,-,~
 }
 UNARY_PREC = 7  # unary +,-,~ are below power but above multiplicative
 ATOM_PREC = 99
 MAX_PREC = ATOM_PREC
+CMP_PREC = 0
 
 # When parent and child share the same precedence:
 # For each parent_op, booleans telling whether we can drop parens safely for (left, right) child
@@ -30,13 +34,16 @@ ASSOC_SAFE = {
 
     # Power is right-associative: left child at same prec must be parenthesized
     "**": (False, True),
+    # Comparisons are non-associative (chaining handled specially)
+    "<": (False, False), "<=": (False, False), ">": (False, False), ">=": (False, False), "==": (False, False), "!=": (False, False),
 }
 
 BIN_OPS = ["+", "-", "*", "//", "%", "**", "&", "|", "^", "<<", ">>"]
 UN_OPS = ["-", "~"]  # unary ops supported
+CMP_OPS = ["<", "<=", ">", ">=", "==", "!="]
 
 # Precompute operator byte lengths
-OP_LEN = {op: len(op.encode("utf-8")) for op in set(BIN_OPS) | set(UN_OPS)}
+OP_LEN = {op: len(op.encode("utf-8")) for op in set(BIN_OPS) | set(UN_OPS) | set(CMP_OPS)}
 
 # ===== Literal length cap =====
 MAX_LITERAL_BYTES = 3  # do not generate integer literals of length >= 5
@@ -97,6 +104,13 @@ def eval_bin_raw(op, a, b):
     if op == "^":  return a ^ b
     if op == "<<": return a << b
     if op == ">>": return a >> b
+    # comparisons -> return 0/1 ints
+    if op == "<":  return 1 if a <  b else 0
+    if op == "<=": return 1 if a <= b else 0
+    if op == ">":  return 1 if a >  b else 0
+    if op == ">=": return 1 if a >= b else 0
+    if op == "==": return 1 if a == b else 0
+    if op == "!=": return 1 if a != b else 0
     return None
 
 
@@ -121,56 +135,52 @@ def pow_bits_estimate(base_abs: int, exp: int) -> float:
     return exp * math.log2(base_abs)
 
 
+def and_sig(sigA, sigB):
+    return tuple(1 if (int(a) != 0 and int(b) != 0) else 0 for a, b in zip(sigA, sigB))
+
+
 # ===== Numeric literal enumeration (fast, exact-length, no leading zeros) =====
-# We generate each exact byte-length only once and cache signatures per mapping size.
 _POS_CACHE = {}  # (L, N) -> {str_literal: (val,)*N}
 _NEG_CACHE = {}  # (L, N) -> {str_literal: (val,)*N}
 
+_DIGITS = "0123456789"
+_FIRST_NONZERO = "123456789"
+
 
 def _gen_pos_literals_len(L):
-    """Yield all non-negative base-10 integer literal strings of exact length L.
-    No leading zeros except "0" when L==1.
-    """
     if L <= 0 or L > MAX_LITERAL_BYTES:
         return
     if L == 1:
-        yield "0"
-    # generate by range (fast)
+        for d in _DIGITS:
+            yield d
+        return
     for i in range(10**(L-1), 10**L):
         yield str(i)
 
 
 def _gen_neg_literals_len(L):
-    """Yield all negative base-10 integer literal strings of exact length L (including leading '-').
-    Equivalent to '-' + positive literal of length L-1 (no '-0').
-    """
     if L <= 1 or L > MAX_LITERAL_BYTES:
+        return
+    if L == 2:
+        for d in _FIRST_NONZERO:
+            yield "-" + d
         return
     for i in range(10**(L-2), 10**(L-1)):
         yield str(-i)
 
 
 def get_const_sig_map(length_bytes, N_examples, kind):
-    """
-    kind in {"pos","neg"}
-    Returns dict {literal_str: signature_tuple} for all integer literals of exact byte length.
-    Cached by (L,N,kind). Uses tuple multiplication for speed.
-    Enforces MAX_LITERAL_BYTES.
-    """
     if length_bytes > MAX_LITERAL_BYTES:
         return {}
-
     if kind == "pos":
         cache = _POS_CACHE
         gen = _gen_pos_literals_len
     else:
         cache = _NEG_CACHE
         gen = _gen_neg_literals_len
-
     key = (length_bytes, N_examples)
     if key in cache:
         return cache[key]
-
     m = {}
     for s in gen(length_bytes):
         try:
@@ -183,10 +193,8 @@ def get_const_sig_map(length_bytes, N_examples, kind):
 
 
 # ===== Signature-level caches for op application =====
-# Avoid recomputing op over same (sigL, sigR) or (sigC).
-# These respect the growth caps via closures in search_mapping.
 _BIN_CACHE = {}  # (capV, capB, op, sigL, sigR) -> sig
-_UN_CACHE = {}   # (op, sig) -> sig  (unary ops unaffected by caps)
+_UN_CACHE = {}   # (op, sig) -> sig
 
 
 # ===== Utilities for outer `% const` check =====
@@ -230,9 +238,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     Additionally, we track the **total number of characters across all integer literals** in an expression and prune
     any expression whose total literal characters >= 5. (e.g., "12+345" counts as 2+3=5 and is pruned.)
 
-    New: for every candidate inner expression we also try to finish with an outer "% CONST" using a GCD test:
-      Let d_i = inner[i] - target[i]. For k > max(target) with k | gcd(d_i), `inner % k` matches target.
-      We scan divisors of that gcd that fit literal-length / byte-length budgets and return the shortest one.
+    We also attempt an outer `% CONST` finish using a GCD test for every candidate inner expression.
+
+    Comparisons `<, <=, >, >=, ==, !=` are supported and return 0/1. Comparison **chaining** like `a<b<c` is
+    supported by carrying the right-most operand's signature; results are AND-composed across links.
     """
     # Build examples and outputs
     keys = list(mapping.keys())
@@ -254,7 +263,6 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     outputs = [mapping[k] for k in keys]
     target_sig = tuple(outputs)
     if any(t < 0 for t in outputs):
-        # Python's a % k with k>0 cannot yield negative results; outer modulo impossible
         outer_mod_possible = False
     else:
         outer_mod_possible = True
@@ -263,14 +271,14 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     # Precompute signatures for variables
     var_seeds = {v: tuple(ex[v] for ex in examples) for v in var_names}
 
-    # dp[prec][len] = dict: sig -> (expr, last_op, is_atom, lit_total_chars)
-    # reps[sig] = list of (n, prec, expr, last_op, is_atom, lit_total_chars)
+    # dp[prec][len] = dict: sig -> (expr, last_op, is_atom, lit_total_chars, pivot_sig)
+    # reps[sig] = list of (n, prec, expr, last_op, is_atom, lit_total_chars, pivot_sig)
+    dp = defaultdict(lambda: defaultdict(dict))
     reps = defaultdict(list)
-    # Also keep a flat bucket per length to avoid re-walking dp for every op
-    # cands_by_len[n] = list of (prec, sig, expr, last_op, is_atom, lit_total_chars)
+    # cands_by_len[n] = list of (prec, sig, expr, last_op, is_atom, lit_total_chars, pivot_sig)
     cands_by_len = defaultdict(list)
 
-    SUM_LITERAL_LIMIT = 5  # prune if the sum of characters of all integer literals >= 5
+    SUM_LITERAL_LIMIT = 5
 
     def dominated(sig, n, p):
         for n0, p0, *_rest in reps.get(sig, []):
@@ -278,25 +286,25 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                 return True
         return False
 
-    def insert(sig, n, p, expr, last_op, is_atom, lit_total_chars):
-        # prune by total-literal-chars rule
+    def insert(sig, n, p, expr, last_op, is_atom, lit_total_chars, pivot_sig=None):
         if lit_total_chars >= SUM_LITERAL_LIMIT:
             return False
         # Do not store max-length expressions; they cannot be extended further
         if n == max_bytes:
             return True
-        # Normal memoization path with dominance filtering
         if dominated(sig, n, p):
             return False
         new_list = []
-        for n0, p0, e0, o0, a0, lc0 in reps.get(sig, []):
+        for n0, p0, e0, o0, a0, lc0, pv0 in reps.get(sig, []):
             if (p >= p0 and n <= n0) or (p < p0 and n <= n0 - 2):
                 continue
-            new_list.append((n0, p0, e0, o0, a0, lc0))
-        new_list.append((n, p, expr, last_op, is_atom, lit_total_chars))
+            new_list.append((n0, p0, e0, o0, a0, lc0, pv0))
+        new_list.append((n, p, expr, last_op, is_atom, lit_total_chars, pivot_sig))
         reps[sig] = new_list
-        cands_by_len[n].append((p, sig, expr, last_op, is_atom, lit_total_chars))
+        dp[p][n][sig] = (expr, last_op, is_atom, lit_total_chars, pivot_sig)
+        cands_by_len[n].append((p, sig, expr, last_op, is_atom, lit_total_chars, pivot_sig))
         return True
+
     # Attempt outer "% CONST" finish for a given inner candidate
     def try_outer_mod_finish(p_inner, expr_inner, is_atom_inner, last_op_inner, sig_inner, n_inner, lit_total_inner):
         if not outer_mod_possible:
@@ -304,15 +312,12 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
         diffs = [si - ti for si, ti in zip(sig_inner, target_sig)]
         g = _gcd_list(diffs)
         if g == 0:
-            # inner already equals target (would have been returned elsewhere)
             return None
         maxT = max(outputs)
         if g <= maxT:
             return None
-        # compute left length with parentheses if needed
         need_par = needs_paren_binary("%", p_inner, "L", is_atom_inner, expr_inner, last_op_inner)
         left_len_after = n_inner + (2 if need_par else 0)
-        # enumerate divisors > maxT, shortest literal length first
         divs = [d for d in _divisors_ascending(g) if d > maxT]
         divs.sort(key=lambda x: (len(str(x)), x))
         for k in divs:
@@ -320,13 +325,11 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
             k_len = byte_len(k_str)
             if k_len > MAX_LITERAL_BYTES:
                 continue
-            # literal-char budget
             if lit_total_inner + k_len >= SUM_LITERAL_LIMIT:
                 continue
-            total_len = left_len_after + 1 + k_len  # '%' is one byte
+            total_len = left_len_after + 1 + k_len
             if total_len > max_bytes:
                 continue
-            # Build once and return
             left_s = ("(" + expr_inner + ")") if need_par else expr_inner
             expr = left_s + "%" + k_str
             return expr
@@ -335,8 +338,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     # Seed variables (atoms)
     for v, sig in var_seeds.items():
         n = byte_len(v)
-        if insert(sig, n, ATOM_PREC, v, None, True, 0):
-            # try immediate outer % const
+        if insert(sig, n, ATOM_PREC, v, None, True, 0, None):
             got = try_outer_mod_finish(ATOM_PREC, v, True, None, sig, n, 0)
             if got is not None:
                 return got
@@ -349,9 +351,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
             return got
         out = []
         for a, b in zip(sigL, sigR):
-            # Quick, cap-aware short-circuits
             if op == "**":
-                # Reject negative exponents for integer semantics (would become float)
                 if isinstance(b, int) and b < 0:
                     _BIN_CACHE[key] = None
                     return None
@@ -363,7 +363,6 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                 if ba == 0 and be == 0:
                     _BIN_CACHE[key] = None
                     return None
-                # Estimation: bits ≈ be * log2(ba)
                 est_bits = pow_bits_estimate(ba, be)
                 if est_bits > bit_cap:
                     _BIN_CACHE[key] = None
@@ -387,7 +386,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
             if abs(int(v)) > value_cap or bitlen_abs(v) > bit_cap:
                 _BIN_CACHE[key] = None
                 return None
-            out.append(v)
+            out.append(int(v))  # comparisons also cast to int 0/1 here
         res = tuple(out)
         _BIN_CACHE[key] = res
         return res
@@ -411,7 +410,6 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
         _UN_CACHE[key] = res
         return res
 
-    # Helpers for constant pruning per-op
     TEN_POW = [1]
     for _ in range(32):
         TEN_POW.append(TEN_POW[-1] * 10)
@@ -433,9 +431,8 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
         # ===== Unary ops =====
         for uop in UN_OPS:
             ulen = OP_LEN[uop]
-            # child length = n - ulen - paren(0 or 2)
-            for clen in (n-ulen-2, n-ulen):  # child raw length (without added parens)
-                for p_child, sigC, eC, lastC, is_atomC, litTotC in cands_by_len.get(clen, () ):
+            for clen in range(1, n):
+                for p_child, sigC, eC, lastC, is_atomC, litTotC, pvC in cands_by_len.get(clen, () ):
                     need_par = needs_paren_unary(p_child, is_atomC, lastC)
                     total_len = ulen + clen + (2 if need_par else 0)
                     if total_len != n:
@@ -444,36 +441,39 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                     if sig is None:
                         continue
                     expr = uop + (("(" + eC + ")") if need_par else eC)
-                    if insert(sig, n, UNARY_PREC, expr, uop, False, litTotC):
+                    if insert(sig, n, UNARY_PREC, expr, uop, False, litTotC, None):
                         if sig == target_sig and not require_outer_mod_const:
                             return expr
-                        # Try finishing by outer % const
                         got = try_outer_mod_finish(UNARY_PREC, expr, False, uop, sig, n, litTotC)
                         if got is not None:
                             return got
 
-        # ===== Binary ops =====
-        for op in BIN_OPS:
+        # ===== Binary & Comparison (2-term) ops =====
+        for op in BIN_OPS + CMP_OPS:
             op_len = OP_LEN[op]
             p = PREC[op]
 
             # -------- expr op expr --------
-            for lenL in range(1, n):  # raw left length
+            for lenL in range(1, n):
                 left_bucket = cands_by_len.get(lenL, ())
                 if not left_bucket:
                     continue
-                for pL, sigL, eL, lastL, atomL, litTotL in left_bucket:
+                for pL, sigL, eL, lastL, atomL, litTotL, pvL in left_bucket:
                     parL = needs_paren_binary(op, pL, "L", atomL, eL, lastL)
+                    if op in CMP_OPS and pL <= CMP_PREC:
+                        continue  # avoid nested comparisons as operands
                     left_len_after = lenL + (2 if parL else 0)
                     need_right_total = n - op_len - left_len_after
                     if need_right_total <= 0:
                         continue
 
-                    for lenR in (need_right_total-2, need_right_total):
+                    for lenR in range(1, need_right_total + 1):
                         right_bucket = cands_by_len.get(lenR, ())
                         if not right_bucket:
                             continue
-                        for pR, sigR, eR, lastR, atomR, litTotR in right_bucket:
+                        for pR, sigR, eR, lastR, atomR, litTotR, pvR in right_bucket:
+                            if op in CMP_OPS and pR <= CMP_PREC:
+                                continue
                             parR = needs_paren_binary(op, pR, "R", atomR, eR, lastR)
                             right_len_after = lenR + (2 if parR else 0)
                             if right_len_after != need_right_total:
@@ -485,36 +485,35 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                             right_s = ("(" + eR + ")") if parR else eR
                             expr = left_s + op + right_s
                             lit_total = litTotL + litTotR
-                            if insert(sig, n, p, expr, op, False, lit_total):
-                                if sig == target_sig and (not require_outer_mod_const):
+                            pivot = sigR if op in CMP_OPS else None
+                            if insert(sig, n, p, expr, op, False, lit_total, pivot):
+                                if sig == target_sig and (not require_outer_mod_const or op == "%"):
                                     return expr
                                 got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                 if got is not None:
                                     return got
-
-            # For const-bound pruning we need max abs of operand signatures
-            def sig_abs_max(sig):
-                return max(abs(int(v)) for v in sig)
 
             # -------- expr op CONST (right const) --------
             for lenL in range(1, n):
                 left_bucket = cands_by_len.get(lenL, ())
                 if not left_bucket:
                     continue
-                for pL, sigL, eL, lastL, atomL, litTotL in left_bucket:
+                for pL, sigL, eL, lastL, atomL, litTotL, pvL in left_bucket:
                     parL = needs_paren_binary(op, pL, "L", atomL, eL, lastL)
+                    if op in CMP_OPS and pL <= CMP_PREC:
+                        continue
                     left_len_after = lenL + (2 if parL else 0)
                     need_const_len = n - left_len_after - op_len
                     if need_const_len <= 0:
                         continue
 
-                    # Compute a safe absolute bound for the constant for monotone-growing ops
                     const_abs_bound = None
                     if op == "*":
-                        amax = sig_abs_max(sigL)
+                        amax = max(abs(int(v)) for v in sigL)
                         if amax > 0:
                             const_abs_bound = max(0, value_cap // amax)
                     elif op == "<<":
+                        const_abs_bound = min(max(bitlen_abs(a), 0) for a in sigL)
                         const_abs_bound = min(max(bit_cap - bitlen_abs(a), 0) for a in sigL)
                     elif op == "**":
                         caps = []
@@ -528,7 +527,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                         if op in ("<<", "**") and kind == "neg":
                             continue
                         if const_abs_bound is not None:
-                            lo = min_abs_for_len(need_const_len, kind)
+                            lo = 0 if (kind == "pos" and need_const_len == 1) else (10**(need_const_len-1))
                             if const_abs_bound < lo:
                                 continue
                         cmap = get_const_sig_map(need_const_len, N, kind)
@@ -548,7 +547,8 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                             left_s = ("(" + eL + ")") if parL else eL
                             expr = left_s + op + k_str
                             lit_total = litTotL + byte_len(k_str)
-                            if insert(sig, n, p, expr, op, False, lit_total):
+                            pivot = sigK if op in CMP_OPS else None
+                            if insert(sig, n, p, expr, op, False, lit_total, pivot):
                                 if sig == target_sig and (not require_outer_mod_const or op == "%"):
                                     return expr
                                 got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
@@ -560,13 +560,15 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                 right_bucket = cands_by_len.get(lenR, ())
                 if not right_bucket:
                     continue
-                for pR, sigR, eR, lastR, atomR, litTotR in right_bucket:
+                for pR, sigR, eR, lastR, atomR, litTotR, pvR in right_bucket:
+                    if op in CMP_OPS and pR <= CMP_PREC:
+                        continue
                     parR = needs_paren_binary(op, pR, "R", atomR, eR, lastR)
                     right_len_after = lenR + (2 if parR else 0)
 
                     const_abs_bound = None
                     if op == "*":
-                        bmax = sig_abs_max(sigR)
+                        bmax = max(abs(int(v)) for v in sigR)
                         if bmax > 0:
                             const_abs_bound = max(0, value_cap // bmax)
 
@@ -578,7 +580,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                             if op in ("<<",) and kind == "neg":
                                 continue
                             if const_abs_bound is not None:
-                                lo = min_abs_for_len(need_const_len, kind)
+                                lo = 0 if (kind == "pos" and need_const_len == 1) else (10**(need_const_len-1))
                                 if const_abs_bound < lo:
                                     continue
                             cmap = get_const_sig_map(need_const_len, N, kind)
@@ -596,7 +598,8 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                                 right_s = ("(" + eR + ")") if parR else eR
                                 expr = k_str + op + right_s
                                 lit_total = litTotR + byte_len(k_str)
-                                if insert(sig, n, p, expr, op, False, lit_total):
+                                pivot = sigR if op in CMP_OPS else None
+                                if insert(sig, n, p, expr, op, False, lit_total, pivot):
                                     if sig == target_sig and (not require_outer_mod_const):
                                         return expr
                                     got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
@@ -613,7 +616,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                                 right_s = ("(" + eR + ")") if parR else eR
                                 expr = k_str + op + right_s
                                 lit_total = litTotR + byte_len(k_str)
-                                if insert(sig, n, p, expr, op, False, lit_total):
+                                if insert(sig, n, p, expr, op, False, lit_total, None):
                                     if sig == target_sig and (not require_outer_mod_const):
                                         return expr
                                     got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
@@ -629,24 +632,62 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                                 right_s = ("(" + eR + ")") if parR else eR
                                 expr = "(" + k_str + ")" + op + right_s
                                 lit_total = litTotR + byte_len(k_str)
-                                if insert(sig, n, p, expr, op, False, lit_total):
+                                if insert(sig, n, p, expr, op, False, lit_total, None):
                                     if sig == target_sig and (not require_outer_mod_const):
                                         return expr
                                     got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                     if got is not None:
                                         return got
 
+        # ===== Comparison chaining: (E0 op0 E1) op1 E2 (op2 E3 ... ) =====
+        # Extend existing comparison nodes by appending another comparator + non-comparison right operand.
+        for lenPrev in range(1, n):
+            prev_bucket = cands_by_len.get(lenPrev, ())
+            if not prev_bucket:
+                continue
+            for pPrev, sigPrev, exprPrev, lastPrev, atomPrev, litPrev, pivotSig in prev_bucket:
+                if pPrev != CMP_PREC or pivotSig is None:
+                    continue
+                remain = n - lenPrev
+                for op2 in CMP_OPS:
+                    op2_len = OP_LEN[op2]
+                    needR_total = remain - op2_len
+                    if needR_total <= 0:
+                        continue
+                    for lenR in range(1, needR_total + 1):
+                        right_bucket = cands_by_len.get(lenR, ())
+                        if not right_bucket:
+                            continue
+                        for pR, sigR, eR, lastR, atomR, litTotR, pvR in right_bucket:
+                            if pR <= CMP_PREC:
+                                continue  # do not allow nested comparison as operand in chain
+                            # No parens needed in Python chains for right operand if it's not a comparison
+                            if lenPrev + op2_len + lenR != n:
+                                continue
+                            cond_sig = apply_bin_sig(op2, pivotSig, sigR)
+                            if cond_sig is None:
+                                continue
+                            sigNew = and_sig(sigPrev, cond_sig)
+                            expr = exprPrev + op2 + eR
+                            lit_total = litPrev + litTotR
+                            if insert(sigNew, n, CMP_PREC, expr, op2, False, lit_total, sigR):
+                                if sigNew == target_sig and not require_outer_mod_const:
+                                    return expr
+                                got = try_outer_mod_finish(CMP_PREC, expr, False, op2, sigNew, n, lit_total)
+                                if got is not None:
+                                    return got
+
     return None
 
 # Example
-print(search_mapping({ 
-    (0,0):0,
-    (0,8):2,
-    (0,16):0,
-    (1,0):4,
-    (1,8):6,
-    (1,16):3,
-    (2,0):0,
-    (2,8):1,
-    (2,16):0,
+print(search_mapping({
+    (1,0):1,
+    (1,1):2,
+    (0,1):3,
+    (0,0):6,
  }, 9))
+
+# 1:[[1,1,0],[1,0,1],[0,1,0]],
+# 2:[[1,0,1],[0,1,0],[1,0,1]],
+# 3:[[0,1,1],[0,1,1],[1,0,0]],
+# 6:[[0,1,0],[1,1,1],[0,1,0]]
