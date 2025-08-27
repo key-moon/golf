@@ -16,6 +16,32 @@ import json
 
 DIST_RESULTS_PATH = Path(WORKSPACE_DIR) / "dist" / "results.json"
 TASKS_DIR = Path(WORKSPACE_DIR) / "tasks"
+TAGS_DIR = Path(WORKSPACE_DIR) / "data" / "tags"
+TAGS_FILE = TAGS_DIR / "tags.json"
+
+def _load_tags_store() -> dict:
+    if TAGS_FILE.exists():
+        try:
+            data = json.loads(TAGS_FILE.read_text())
+            if not isinstance(data, dict):
+                data = {}
+        except Exception:
+            data = {}
+    else:
+        data = {}
+    # normalize structure
+    data.setdefault("all", [])
+    data.setdefault("tasks", {})
+    # ensure types
+    if not isinstance(data["all"], list):
+        data["all"] = []
+    if not isinstance(data["tasks"], dict):
+        data["tasks"] = {}
+    return data
+
+def _save_tags_store(data: dict) -> None:
+    TAGS_DIR.mkdir(parents=True, exist_ok=True)
+    TAGS_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
 
 def _load_our_results() -> dict:
@@ -64,6 +90,56 @@ def create_app() -> Flask:
         if not (1 <= task_id <= 400):
             abort(404)
         return render_template("task_cases.html", task_id=task_id)
+
+    # API: タグ 取得・更新
+    @app.get("/api/tags")
+    def api_get_tags():
+        return jsonify(_load_tags_store())
+
+    @app.get("/api/tags/<int:task_id>")
+    def api_get_tags_for_task(task_id: int):
+        data = _load_tags_store()
+        tags = data.get("tasks", {}).get(str(task_id), [])
+        return jsonify({"task_id": task_id, "tags": tags})
+
+    @app.post("/api/tags/add_type")
+    def api_add_tag_type():
+        body = request.get_json(silent=True) or {}
+        name = (body.get("name") or "").strip()
+        if not name:
+            return jsonify({"ok": False, "error": "name required"}), 400
+        data = _load_tags_store()
+        if name not in data["all"]:
+            data["all"].append(name)
+            data["all"].sort(key=lambda x: x.lower())
+            _save_tags_store(data)
+        return jsonify({"ok": True, "all": data["all"]})
+
+    @app.post("/api/tags/set_for_task")
+    def api_set_tags_for_task():
+        body = request.get_json(silent=True) or {}
+        task_id_raw = body.get("task_id", None)
+        if task_id_raw is None:
+            return jsonify({"ok": False, "error": "task_id required"}), 400
+        try:
+            task_id = int(task_id_raw)
+        except Exception:
+            return jsonify({"ok": False, "error": "invalid task_id"}), 400
+        tags = body.get("tags") or []
+        if not isinstance(tags, list):
+            return jsonify({"ok": False, "error": "tags must be list"}), 400
+        # normalize
+        tags = [str(t).strip() for t in tags if str(t).strip()]
+        data = _load_tags_store()
+        # add unknown tags into all
+        for t in tags:
+            if t not in data["all"]:
+                data["all"].append(t)
+        data["all"].sort(key=lambda x: x.lower())
+        data.setdefault("tasks", {})
+        data["tasks"][str(task_id)] = sorted(set(tags), key=lambda x: x.lower())
+        _save_tags_store(data)
+        return jsonify({"ok": True, "task_id": task_id, "tags": data["tasks"][str(task_id)], "all": data["all"]})
 
     # API: サマリー (ダッシュボード・一覧用)
     @app.get("/api/summary")
@@ -145,12 +221,14 @@ def create_app() -> Flask:
                 continue
             try:
                 data = json.loads(path.read_text())
+                # Use the first test example if available, otherwise fall back to train/arc-gen
                 ex = None
-                for key in ("train", "test", "arc-gen"):
-                    arr = data.get(key) or []
-                    if arr:
-                        ex = arr[0]
-                        break
+                if (data.get("test") or []):
+                    ex = (data.get("test") or [None])[0]
+                elif (data.get("train") or []):
+                    ex = (data.get("train") or [None])[0]
+                elif (data.get("arc-gen") or []):
+                    ex = (data.get("arc-gen") or [None])[0]
                 train_n = len(data.get("train") or [])
                 test_n = len(data.get("test") or [])
                 arcgen_n = len(data.get("arc-gen") or [])

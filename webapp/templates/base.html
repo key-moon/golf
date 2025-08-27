@@ -34,6 +34,10 @@
     .seg > button{border:0; margin:0; border-right:1px solid var(--pico-muted-border-color, #ccc); padding:4px 8px; line-height:1.1; height:28px; background: transparent; color: inherit}
     .seg > button:last-child{border-right:0}
     .seg > button.contrast{background: var(--pico-primary); color: var(--pico-primary-inverse, #fff)}
+    /* Chip (for tags) */
+    .chip{ display:inline-flex; align-items:center; gap:8px; padding:4px 12px; height:28px; line-height:1; font-size:17px; border-radius:999px; border:1px solid var(--pico-muted-border-color, #ccc); background: var(--pico-muted-background, transparent); color: inherit }
+    .chip.contrast{ background: var(--pico-primary); color: var(--pico-primary-inverse, #fff); border-color: var(--pico-primary) }
+    .chip:hover{ filter: brightness(0.98) }
     /* Tooltip */
     .tooltip{position:absolute; display:none; background: var(--pico-card-background-color); border:1px solid var(--pico-muted-border-color, #ccc); padding:6px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15)}
     .nowrap{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}

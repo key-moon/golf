@@ -7,8 +7,12 @@
       <div id="meta" style="margin:-8px 0 12px 0; font-size: 0.9em; color: var(--muted-color);"></div>
       <section>
         <h3>Overview</h3>
+        <div style="margin:6px 0 10px 0">
+          <strong>Tags</strong><br/>
+          <div id="tagEditor" style="display:flex; gap:6px; flex-wrap:wrap"></div>
+        </div>
         <p><a href="/tasks/{{task_id}}/cases">Open all cases »</a></p>
-        <div id="preview"></div>
+        <!-- preview removed per request -->
         <div id="cases" class="cases"></div>
       </section>
     </div>
@@ -55,13 +59,62 @@ function drawMat(el, mat){
 function fmtLen(len,best){ if(len==null||best==null) return '';
   const diff = len-best; return `${len} (${best}${diff>=0?'+':''}${diff})`; }
 
+async function loadTagsStore(){
+  try { const r = await fetch('/api/tags'); return await r.json(); } catch { return { all:[], tasks:{} }; }
+}
+async function loadTaskTags(taskId){
+  try { const r = await fetch(`/api/tags/${taskId}`); const j = await r.json(); return j.tags||[]; } catch { return []; }
+}
+async function saveTaskTags(taskId, tags){
+  const r = await fetch('/api/tags/set_for_task', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ task_id: taskId, tags }) });
+  return await r.json();
+}
+async function addTagType(name){
+  const r = await fetch('/api/tags/add_type', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name }) });
+  return await r.json();
+}
+function renderTagEditor(root, all, current, onChange){
+  root.innerHTML='';
+  // + chip
+  const add = document.createElement('button'); add.className='chip'; add.textContent='＋'; add.title='Add new tag';
+  add.onclick=async()=>{
+    const name = prompt('New tag name');
+    if(!name) return;
+    const res = await addTagType(name.trim());
+    if(res && res.ok){ all = res.all || all; onChange(current); }
+  };
+  root.appendChild(add);
+  (all||[]).forEach(name=>{
+    const b = document.createElement('button'); b.className='chip'; b.textContent=name;
+    if(current.includes(name)) b.classList.add('contrast');
+    b.onclick=()=>{
+      const next = current.includes(name) ? current.filter(t=>t!==name) : [...current, name];
+      onChange(next);
+    };
+    root.appendChild(b);
+  });
+}
+
 (async function(){
   const rootEl = document.getElementById('root');
   const taskId = Number(rootEl?.dataset?.taskId || (location.pathname.match(/\d+$/)||[])[0] || 0);
-  const [sum, taskData] = await Promise.all([
+  const [sum, taskData, store, curr] = await Promise.all([
     fetch('/api/summary').then(r=>r.json()),
-    fetch(`/api/task/${taskId}/data`).then(r=>r.json())
+    fetch(`/api/task/${taskId}/data`).then(r=>r.json()),
+    loadTagsStore(),
+    loadTaskTags(taskId)
   ]);
+  let allTags = store.all || [];
+  let taskTags = Array.isArray(curr)? curr : [];
+  const tagRoot = document.getElementById('tagEditor');
+  async function handleChange(next){
+    taskTags = next;
+    const res = await saveTaskTags(taskId, taskTags);
+    if(res && res.ok){ allTags = res.all || allTags; }
+    renderTagEditor(tagRoot, allTags, taskTags, handleChange);
+  }
+  renderTagEditor(tagRoot, allTags, taskTags, handleChange);
+
   const best = sum.bests[taskId-1];
   const len = sum.our_lengths[taskId-1];
   const baseFull = sum.base_path[taskId-1]||'';
@@ -76,16 +129,6 @@ function fmtLen(len,best){ if(len==null||best==null) return '';
     const path = decodeURIComponent(a.dataset.path||''); if(!path) return;
     fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }).catch(()=>{});
   });
-
-  // preview: use only train/test first example (ignore arc-gen)
-  const ex = (taskData.train && taskData.train[0]) || (taskData.test && taskData.test[0]) || null;
-  const prev = document.getElementById('preview');
-  prev.innerHTML = '<div class="mat" id="i"></div><div class="mat" id="o"></div>';
-  prev.style.display='grid'; prev.style.gridTemplateColumns='1fr 1fr'; prev.style.gap='8px';
-  if(ex){
-    drawMat(document.getElementById('i'), ex.input);
-    drawMat(document.getElementById('o'), ex.output);
-  }
 
   // cases (Overview 内): train/test のみ
   const root = document.getElementById('cases');

@@ -1,0 +1,103 @@
+{
+  "all": [
+    "1px",
+    "combine",
+    "connect",
+    "count",
+    "crop",
+    "repeat",
+    "scale"
+  ],
+  "tasks": {
+    "290": [
+      "crop"
+    ],
+    "31": [
+      "crop"
+    ],
+    "372": [
+      "combine"
+    ],
+    "347": [
+      "combine"
+    ],
+    "6": [
+      "combine"
+    ],
+    "26": [
+      "combine"
+    ],
+    "386": [
+      "combine"
+    ],
+    "227": [
+      "combine"
+    ],
+    "144": [
+      "combine"
+    ],
+    "318": [
+      "combine"
+    ],
+    "72": [
+      "combine"
+    ],
+    "236": [
+      "combine"
+    ],
+    "395": [
+      "combine"
+    ],
+    "215": [
+      "repeat"
+    ],
+    "231": [
+      "repeat"
+    ],
+    "376": [
+      "repeat"
+    ],
+    "113": [
+      "repeat"
+    ],
+    "385": [
+      "repeat"
+    ],
+    "210": [
+      "repeat"
+    ],
+    "45": [
+      "connect"
+    ],
+    "41": [
+      "connect"
+    ],
+    "100": [
+      "1px"
+    ],
+    "103": [
+      "1px"
+    ],
+    "56": [
+      "1px"
+    ],
+    "142": [
+      "repeat"
+    ],
+    "38": [
+      "count"
+    ],
+    "177": [
+      "crop"
+    ],
+    "3": [
+      "repeat"
+    ],
+    "291": [
+      "1px"
+    ],
+    "307": [
+      "scale"
+    ]
+  }
+}

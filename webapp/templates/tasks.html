@@ -41,12 +41,29 @@
       <button data-size="sm" class="secondary">S</button>
     </div>
   </div>
+  <div>
+    <strong>Grid tags</strong><br/>
+    <div id="gridTagsBtns" class="seg">
+      <button data-gt="off" class="secondary">off</button>
+      <button data-gt="on" class="secondary">on</button>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+  <div>
+    <strong>Tags filter (OR)</strong><br/>
+    <div id="tagFilter" class="chips" style="display:flex; gap:6px; flex-wrap:wrap"></div>
+  </div>
 </div>
 
 <div id="list"></div>
 <script>
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
 let THUMBS_CACHE=null, THUMBS_CACHE_WITH_OUT=null;
+let TAGS_STORE=null; // { all: string[], tasks: { [taskId]: string[] } }
+let SELECTED_TAGS=[];
+let GRID_TAGS='off';
 function applyActive(group, value, attr){
   if(!group) return;
   [...group.querySelectorAll('button')].forEach(b=>{
@@ -86,6 +103,34 @@ function applyDiffStylesRow(tr, diff){
     }
   }
 }
+async function loadTagsStore(){
+  if(TAGS_STORE) return TAGS_STORE;
+  TAGS_STORE = await fetch('/api/tags').then(r=>r.json()).catch(()=>({all:[], tasks:{}}));
+  TAGS_STORE.all = Array.isArray(TAGS_STORE.all)? TAGS_STORE.all : [];
+  TAGS_STORE.tasks = TAGS_STORE.tasks && typeof TAGS_STORE.tasks==='object'? TAGS_STORE.tasks : {};
+  return TAGS_STORE;
+}
+function parseTagsParam(v){ if(!v) return []; return v.split(',').map(s=>s.trim()).filter(Boolean); }
+function updateTagsParam(){
+  const params = new URLSearchParams(location.search);
+  if(SELECTED_TAGS.length) params.set('tags', SELECTED_TAGS.join(',')); else params.delete('tags');
+  history.replaceState(null,'',`?${params.toString()}`);
+}
+function renderTagFilter(){
+  const root = document.getElementById('tagFilter'); if(!root || !TAGS_STORE) return;
+  root.innerHTML='';
+  // Clear chip
+  const clear = document.createElement('button'); clear.className='chip'; clear.textContent='Clear'; clear.onclick=()=>{ SELECTED_TAGS=[]; updateTagsParam(); render(); };
+  root.appendChild(clear);
+  (TAGS_STORE.all||[]).forEach(name=>{
+    const b = document.createElement('button'); b.className='chip'; b.textContent=name; if(SELECTED_TAGS.includes(name)) b.classList.add('contrast');
+    b.onclick=()=>{
+      if(SELECTED_TAGS.includes(name)) SELECTED_TAGS = SELECTED_TAGS.filter(t=>t!==name); else SELECTED_TAGS = [...SELECTED_TAGS, name];
+      updateTagsParam(); renderTagFilter(); render();
+    };
+    root.appendChild(b);
+  });
+}
 (function initControls(){
   const params = new URLSearchParams(location.search);
   const view = params.get('view')||'thumb';
@@ -93,12 +138,15 @@ function applyDiffStylesRow(tr, diff){
   const order = params.get('order')||'asc';
   const show = params.get('show')||'both';
   const size = params.get('size')||'md';
+  SELECTED_TAGS = parseTagsParam(params.get('tags'));
+  GRID_TAGS = params.get('gt')||'off';
   const setParam=(k,v)=>{ params.set(k,v); history.replaceState(null,'',`?${params.toString()}`); render(); };
   const viewBtns=document.getElementById('viewBtns'); applyActive(viewBtns, view, 'view'); viewBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.view; if(v){ applyActive(viewBtns, v, 'view'); setParam('view', v); } };
   const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, sort, 'sort'); sortBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ applyActive(sortBtns, v, 'sort'); setParam('sort', v); } };
   const orderBtns=document.getElementById('orderBtns'); applyActive(orderBtns, order, 'order'); orderBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.order; if(v){ applyActive(orderBtns, v, 'order'); setParam('order', v); } };
   const showBtns=document.getElementById('showBtns'); applyActive(showBtns, show, 'show'); showBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.show; if(v){ applyActive(showBtns, v, 'show'); setParam('show', v); } };
   const sizeBtns=document.getElementById('sizeBtns'); applyActive(sizeBtns, size, 'size'); sizeBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.size; if(v){ applyActive(sizeBtns, v, 'size'); setParam('size', v); } };
+  const gtBtns=document.getElementById('gridTagsBtns'); applyActive(gtBtns, GRID_TAGS, 'gt'); gtBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.gt; if(v){ applyActive(gtBtns, v, 'gt'); params.set('gt', v); history.replaceState(null,'',`?${params.toString()}`); render(); } };
 })();
 
 async function getThumbs(includeOutput){
@@ -113,6 +161,12 @@ async function render(){
   const order = params.get('order')||'asc';
   const show = params.get('show')||'both';
   const size = params.get('size')||'md';
+  GRID_TAGS = params.get('gt')||'off';
+  // ensure tags loaded and filter UI rendered
+  await loadTagsStore();
+  const urlTags = parseTagsParam(params.get('tags'));
+  SELECTED_TAGS = urlTags.length ? urlTags : SELECTED_TAGS;
+  renderTagFilter();
 
   // update active states
   applyActive(document.getElementById('viewBtns'), view, 'view');
@@ -124,7 +178,7 @@ async function render(){
   const s = await (await fetch('/api/summary')).json();
   const thumbs = await getThumbs(show!=='input'); // both/output require output
 
-  const rows = [];
+  let rows = [];
   for(let i=1;i<=400;i++){
     const best = s.bests[i-1];
     const len = s.our_lengths[i-1];
@@ -132,7 +186,12 @@ async function render(){
     const t = thumbs[i-1]||{};
     const base_full = s.base_path?.[i-1] || '';
     const base = s.base_short?.[i-1] || base_full;
-    rows.push({ id:i, best, len, diff, input:t.input, output:t.output, base, base_full, compressor:s.compressor[i-1]||'', message:s.message[i-1]||'' });
+    const tags = (TAGS_STORE?.tasks?.[String(i)] || []).slice();
+    rows.push({ id:i, best, len, diff, input:t.input, output:t.output, base, base_full, compressor:s.compressor[i-1]||'', message:s.message[i-1]||'', tags });
+  }
+  // OR filter by selected tags
+  if(SELECTED_TAGS.length){
+    rows = rows.filter(r=> (r.tags||[]).some(t=> SELECTED_TAGS.includes(t)) );
   }
   const cmpNumber = (av,bv)=>{
     if(av==null&&bv==null) return 0;
@@ -153,13 +212,14 @@ async function render(){
 
   if(view==='list'){
     const table = document.createElement('table');
-    table.innerHTML = '<thead><tr><th>ID</th><th>length</th><th>best</th><th>Base</th><th>Compressor</th><th>Message</th></tr></thead>';
+    table.innerHTML = '<thead><tr><th>ID</th><th>length</th><th>best</th><th>Base</th><th>Compressor</th><th>Message</th><th>Tags</th></tr></thead>';
     const tb = document.createElement('tbody');
     rows.forEach(r=>{
       const tr=document.createElement('tr');
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'');
       const baseCell = r.base ? `<a href="#" class="open-code" data-path="${encodeURIComponent(r.base_full)}" title="${r.base_full}">${r.base}</a>` : '';
-      tr.innerHTML = `<td><a href="/tasks/${r.id}">task${String(r.id).padStart(3,'0')}</a></td><td>${lengthLabel}</td><td>${r.best??''}</td><td class="nowrap">${baseCell}</td><td class="nowrap" title="${r.compressor}">${r.compressor||''}</td><td class="nowrap" title="${r.message}">${r.message||''}</td>`;
+      const tagsHtml = (r.tags||[]).map(t=>`<span class="chip">${t}</span>`).join(' ');
+      tr.innerHTML = `<td><a href="/tasks/${r.id}">task${String(r.id).padStart(3,'0')}</a></td><td>${lengthLabel}</td><td>${r.best??''}</td><td class="nowrap">${baseCell}</td><td class="nowrap" title="${r.compressor}">${r.compressor||''}</td><td class="nowrap" title="${r.message}">${r.message||''}</td><td class="nowrap">${tagsHtml}</td>`;
       // セル生成後に行スタイルを適用（背景/左太線）
       applyDiffStylesRow(tr, r.diff);
       tb.appendChild(tr);
@@ -188,10 +248,12 @@ async function render(){
       const lengthLabel = (r.len!=null && r.best!=null && r.diff!=null) ? `${r.len} (${r.best}${r.diff>=0?'+':''}${r.diff})` : (r.len??'-');
       const meta = document.createElement('div');
       const showLen = size!=='sm';
-      meta.innerHTML = `<strong>task${String(r.id).padStart(3,'0')}</strong>${showLen?`<br/><small>length: ${lengthLabel}</small>`:''}`;
+      const tagsHtml = GRID_TAGS==='on' ? `<div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px">${(r.tags||[]).map(t=>`<span class='chip'>${t}</span>`).join(' ')}</div>` : '';
+      meta.innerHTML = `<strong>task${String(r.id).padStart(3,'0')}</strong>${showLen?`<br/><small>length: ${lengthLabel}</small>`:''}${tagsHtml}`;
       card.appendChild(meta);
       const thumbWrap = document.createElement('div');
       thumbWrap.style.flex='0 0 auto';
+      thumbWrap.style.marginTop='auto'; // 下基準に配置
       if(show==='both'){
         thumbWrap.style.display='grid'; thumbWrap.style.gridTemplateColumns='1fr 1fr'; thumbWrap.style.gap='6px';
         const cnv1 = document.createElement('canvas'); const cnv2 = document.createElement('canvas');
