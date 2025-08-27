@@ -2,75 +2,60 @@
   "all": [
     "1px",
     "combine",
+    "complete",
     "connect",
     "count",
     "crop",
+    "fill",
+    "fill-bounding",
+    "highlight",
+    "noise",
+    "prediction",
+    "recolor",
     "repeat",
-    "scale"
+    "scale",
+    "shrink"
   ],
   "tasks": {
-    "290": [
-      "crop"
-    ],
-    "31": [
-      "crop"
-    ],
-    "372": [
-      "combine"
-    ],
-    "347": [
-      "combine"
+    "3": [
+      "repeat"
     ],
     "6": [
       "combine"
     ],
+    "14": [
+      "crop"
+    ],
     "26": [
       "combine"
     ],
-    "386": [
-      "combine"
+    "31": [
+      "crop"
     ],
-    "227": [
-      "combine"
+    "38": [
+      "count"
     ],
-    "144": [
-      "combine"
-    ],
-    "318": [
-      "combine"
-    ],
-    "72": [
-      "combine"
-    ],
-    "236": [
-      "combine"
-    ],
-    "395": [
-      "combine"
-    ],
-    "215": [
-      "repeat"
-    ],
-    "231": [
-      "repeat"
-    ],
-    "376": [
-      "repeat"
-    ],
-    "113": [
-      "repeat"
-    ],
-    "385": [
-      "repeat"
-    ],
-    "210": [
-      "repeat"
+    "41": [
+      "connect"
     ],
     "45": [
       "connect"
     ],
-    "41": [
-      "connect"
+    "56": [
+      "1px"
+    ],
+    "57": [
+      "crop",
+      "repeat"
+    ],
+    "61": [
+      "complete"
+    ],
+    "72": [
+      "combine"
+    ],
+    "83": [
+      "repeat"
     ],
     "100": [
       "1px"
@@ -78,26 +63,158 @@
     "103": [
       "1px"
     ],
-    "56": [
+    "108": [
+      "scale"
+    ],
+    "111": [
+      "crop"
+    ],
+    "113": [
+      "repeat"
+    ],
+    "115": [
+      "shrink"
+    ],
+    "129": [
       "1px"
+    ],
+    "130": [
+      "noise"
     ],
     "142": [
       "repeat"
     ],
-    "38": [
-      "count"
+    "144": [
+      "combine"
+    ],
+    "152": [
+      "repeat"
+    ],
+    "166": [
+      "fill-bounding"
+    ],
+    "172": [
+      "repeat"
     ],
     "177": [
       "crop"
     ],
-    "3": [
+    "178": [
+      "shrink"
+    ],
+    "186": [
+      "count"
+    ],
+    "210": [
       "repeat"
+    ],
+    "211": [
+      "repeat"
+    ],
+    "215": [
+      "repeat"
+    ],
+    "218": [
+      "shrink"
+    ],
+    "223": [
+      "scale"
+    ],
+    "227": [
+      "combine"
+    ],
+    "231": [
+      "repeat"
+    ],
+    "236": [
+      "combine"
+    ],
+    "242": [
+      "prediction"
+    ],
+    "244": [
+      "shrink"
+    ],
+    "287": [
+      "complete"
+    ],
+    "290": [
+      "crop",
+      "recolor"
     ],
     "291": [
       "1px"
     ],
+    "294": [
+      "fill"
+    ],
+    "298": [
+      "recolor"
+    ],
+    "303": [
+      "highlight",
+      "noise"
+    ],
+    "305": [
+      "complete"
+    ],
     "307": [
       "scale"
+    ],
+    "313": [
+      "complete"
+    ],
+    "318": [
+      "combine"
+    ],
+    "321": [
+      "combine"
+    ],
+    "338": [
+      "fill"
+    ],
+    "347": [
+      "combine"
+    ],
+    "351": [
+      "prediction"
+    ],
+    "355": [
+      "1px"
+    ],
+    "359": [
+      "noise"
+    ],
+    "372": [
+      "combine"
+    ],
+    "376": [
+      "repeat"
+    ],
+    "377": [
+      "shrink"
+    ],
+    "384": [
+      "crop",
+      "scale"
+    ],
+    "385": [
+      "repeat"
+    ],
+    "386": [
+      "combine"
+    ],
+    "389": [
+      "recolor"
+    ],
+    "395": [
+      "combine"
+    ],
+    "399": [
+      "count"
+    ],
+    "400": [
+      "prediction"
     ]
   }
 }

@@ -41,6 +41,7 @@ def _load_tags_store() -> dict:
 
 def _save_tags_store(data: dict) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
+    data["tasks"] = { k: v for k, v in sorted(data["tasks"].items(), key=lambda x:int(x[0])) }
     TAGS_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
 
