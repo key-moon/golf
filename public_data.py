@@ -83,9 +83,8 @@ def loads_task_scores_progressions() -> dict[str, list[list[TaskSubmission]]]:
 
 def dumps_task_scores_progressions(data: dict[str, list[list[TaskSubmission]]]) -> None:
   for name, scores in data.items():
-    alphanumeric_name = ''.join(c for c in name if c.isalnum())
-    sanitized_name = f"{alphanumeric_name}-{hashlib.md5(name.encode()).hexdigest()}"
-    path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{sanitized_name}.json"
+    filename = get_user_filename(name)
+    path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{filename}"
     print(f"[+] dumping to {path}")
     _dumps(path, { "name": name, "data": scores })
 
@@ -116,3 +115,18 @@ def get_scores_per_task():
   for i in range(400):
     res[i].sort(key=lambda x: x["score"])
   return res
+
+
+def delete_user_progressions(name: str) -> None:
+  filename = get_user_filename(name)
+  path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{filename}"
+  if os.path.exists(path):
+    os.remove(path)
+    print(f"[+] deleted {path}")
+  # Clear cache to reflect changes
+  loads_task_scores_progressions.cache_clear()
+
+
+def get_user_filename(name: str) -> str:
+  alphanumeric_name = ''.join(c for c in name if c.isalnum())
+  return f"{alphanumeric_name}-{hashlib.md5(name.encode()).hexdigest()}.json"
