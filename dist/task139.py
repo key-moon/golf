@@ -1,1 +1,1 @@
-p=lambda g,E=enumerate:[[s[j]or any([0,0,*s][j:j+5])*any([0,0,*t][i:i+5])*7for j,t in E(zip(*g))]for i,s in E(g)]
+import re;p=lambda g,c=-63:c*g or p(eval(re.sub("0(, [47].{25}[47])","7\\1",str([*zip(*g[::-1])]))),c+1)
