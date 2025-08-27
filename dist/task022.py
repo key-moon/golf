@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes(']LE!İsŠtUw—q¹oÜİïßÔBB¾ÉLêåD`j+<âz>”gx" 0”.&x5¿¨!…(a°jçd¢22j&ØèBø$7ë€z òÁ¡©FEa¶wä.²¢ér²zè°ô?Ò±Å2+wAK¦"ªQ´³8)t‰+6Ic¾(µ×vuÊ','L1'),-9))
+p=lambda g,R=range:[[max(g[y+i][x+j]for y in R(9)for x in R(9)if g[y+1][x+1]==5)for j in R(3)]for i in R(3)]
