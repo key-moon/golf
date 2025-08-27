@@ -50,13 +50,13 @@ def p(l):
  t=str(l)
  c=min(t,key=t.count)
  t=str(l+[*zip(*l)])
- t=re.sub('[([, ]','',t+t[::-1])
+ t=re.sub('[[(, ]','',t+t[::-1])
  b=max(t,key=t.count)
  c=[b,c][t.count(c)<9]
- s={*')]',b,c}
+ s={*'])',b,c}
  r=[]
  l=[]
- for s in [r for r in sorted([l+b*len(p)+l for t,p,l in re.findall(rf'([^{b}])((?:(?!\1|\]|\)).)+?)(\1\1+)',t)],key=len)[::-1]if s^(s:=s|{r[0]})]+[({*t}-s).pop()*3,c]:
+ for s in [r for r in sorted([l+b*len(p)+l for t,p,l in re.findall(rf'([^{b}])((?:(?!\)|]|\1).)+?)(\1\1+)',t)],key=len)[::-1]if s^(s:=s|{r[0]})]+[({*t}-s).pop()*3,c]:
   t=''.join(map(list.pop,l))
   l+=[[*s[:-1]]]
   r+=[[*map(int,t+s+t[::-1])]]
