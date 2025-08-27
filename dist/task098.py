@@ -1,2 +1,1 @@
-A=enumerate
-p=lambda g:[[x if any(g[i+A][j+B]==0for(A,B)in[(0,1),(1,0),(0,-1),(-1,0)]if 0<=i+A<len(g)and 0<=j+B<len(g[0]))and x!=0else 0for(j,x)in A(r)]for(i,r)in A(g)]
+import re;p=lambda g:eval(re.sub(f"(?<={(s:=(t:='.[^0]')+'...'*len(g[0])+t)},){t}(?=,{s})",'0',str(g)))
