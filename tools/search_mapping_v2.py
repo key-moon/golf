@@ -681,10 +681,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
 
 # Example
 print(search_mapping({
-    (1,0):1,
-    (1,1):2,
-    (0,1):3,
-    (0,0):6,
+    (0,1):1,
+    (0,0):2,
+    (1,0):3,
+    (1,1):6,
  }, 9))
 
 # 1:[[1,1,0],[1,0,1],[0,1,0]],
