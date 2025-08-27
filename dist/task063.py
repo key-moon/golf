@@ -1,1 +1,1 @@
-p=lambda g,c=-1:g*c or p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*[3]*(len(g)-2),s[-1]]for s in g])],c+1)
+p=lambda g:[[v or 3-3*any(min(s[1:-1],t[1:-1]))for*t,v in zip(*g,s)]for s in g]
