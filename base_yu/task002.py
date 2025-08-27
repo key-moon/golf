@@ -1,3 +1,7 @@
+# best: 90(4atj sisyphus luke Seek) / others: 91(4atj), 92(luke/sisyphus/Seek), 92(sisyphus), 93(mukundan), 97(biz)
+# ========================================== 90 ==========================================
+# def p(g):
+#  return g
 def p(g):
  for d in range(len(g)):
   for r in range(len(g[0])):
