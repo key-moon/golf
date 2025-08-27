@@ -26,6 +26,8 @@ function drawMat(mat){
   }
   return wrap;
 }
+function matSize(mat){ const h = (Array.isArray(mat)&&mat.length)||0; const w = (h && Array.isArray(mat[0]) && mat[0].length)||0; return {h,w}; }
+function toListFormat(pair){ return JSON.stringify(pair); }
 (async function(){
   buildLegend();
   const s = await (await fetch('/api/task/{{task_id}}/data')).json();
@@ -42,10 +44,20 @@ function drawMat(mat){
     box.style.gap='8px';
     box.style.border='1px solid var(--pico-muted-border-color, #ccc)';
     box.style.padding='6px';
-    const head = document.createElement('div'); head.textContent = title; head.style.gridColumn='1 / -1'; head.style.fontWeight='bold'; head.style.marginBottom='4px';
+    const head = document.createElement('div'); head.textContent = title; head.style.gridColumn='1 / -1'; head.style.fontWeight='bold'; head.style.marginBottom='4px'; head.style.display='flex'; head.style.justifyContent='space-between'; head.style.alignItems='center';
+    // Copy button with format selection
+    const copyGroup = document.createElement('div'); copyGroup.className='seg';
+    const btnInput = document.createElement('button'); btnInput.className='secondary btn-slim'; btnInput.textContent='Input'; btnInput.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair?.input||[])).then(()=>{ window.showAlert('Copied input to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
+    const btnOutput = document.createElement('button'); btnOutput.className='secondary btn-slim'; btnOutput.textContent='Output'; btnOutput.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair?.output||[])).then(()=>{ window.showAlert('Copied output to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
+    const btnBoth = document.createElement('button'); btnBoth.className='secondary btn-slim'; btnBoth.textContent='Both'; btnBoth.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair)).then(()=>{ window.showAlert('Copied case to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
+    copyGroup.appendChild(btnInput); copyGroup.appendChild(btnOutput); copyGroup.appendChild(btnBoth);
+    head.appendChild(copyGroup);
     box.appendChild(head);
-    box.appendChild(drawMat(pair?.input));
-    box.appendChild(drawMat(pair?.output));
+    const isz = matSize(pair?.input); const osz = matSize(pair?.output);
+    const il = document.createElement('div'); il.appendChild(drawMat(pair?.input)); il.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${isz.h} x ${isz.w}`; return info; })());
+    const ol = document.createElement('div'); ol.appendChild(drawMat(pair?.output)); ol.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${osz.h} x ${osz.w}`; return info; })());
+    box.appendChild(il);
+    box.appendChild(ol);
     root.appendChild(box);
   };
   (s.train||[]).forEach((t,i)=>addCase(`train_${i}`, t));

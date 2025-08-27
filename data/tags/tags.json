@@ -91,6 +91,9 @@
     "20": [
       "sym-dup"
     ],
+    "21": [
+      "shrink"
+    ],
     "23": [
       "highlight"
     ],
@@ -812,7 +815,8 @@
       "recolor"
     ],
     "313": [
-      "complete"
+      "complete",
+      "period"
     ],
     "314": [
       "connect",

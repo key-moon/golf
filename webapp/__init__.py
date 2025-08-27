@@ -351,7 +351,6 @@ def create_app() -> Flask:
     def api_init_task(task_id: int):
         if not (1 <= task_id <= 400):
             return jsonify({"ok": False, "error": "invalid task_id"}), 400
-        # ユーザー毎の base ディレクトリ
         try:
             user = os.getlogin()
         except Exception:
@@ -363,10 +362,9 @@ def create_app() -> Flask:
         base_dir.mkdir(parents=True, exist_ok=True)
         file_path = base_dir / f"task{padded}.py"
 
-        created = False
-        if not file_path.exists():
-            # ヘッダ情報生成（ベストと他上位）
-            src_lines = []
+        # ヘッダ情報生成
+        def build_header():
+            lines = []
             try:
                 scores_per_task = get_scores_per_task()
                 scores = scores_per_task[task_id - 1] if scores_per_task and len(scores_per_task) >= task_id else []
@@ -376,24 +374,43 @@ def create_app() -> Flask:
                 best = scores[0].get("score")
                 names = [s.get("name") for s in scores if s.get("score") == best]
                 others = ", ".join([f"{s.get('score')}({s.get('name')})" for s in scores if s.get('score') != best][:5])
-                src_lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
+                lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
                 try:
                     if isinstance(best, int) and best <= 150:
-                        src_lines.append("# " + f" {best} ".center(best - 2, "="))
+                        lines.append("# " + f" {best} ".center(best - 2, "="))
                 except Exception:
                     pass
-            # ひな形
+            return lines
+
+        created = False
+        if not file_path.exists():
+            src_lines = build_header()
             src_lines.append("def p(g):")
             src_lines.append(" return g")
             file_path.write_text("\n".join(src_lines) + "\n", encoding="utf-8")
             created = True
+        else:
+            # 既存: バナー再生成し、ファイル先頭に挿入
+            banner = "\n".join(build_header()) + "\n"
+            try:
+                original = file_path.read_text(encoding="utf-8")
+            except Exception:
+                original = ""
+            # 既存の先頭に best: ラインなどがある場合は、そのブロックをスキップして入れ替える
+            def strip_existing_banner(text: str) -> str:
+                lines = text.splitlines()
+                i = 0
+                while i < len(lines) and (lines[i].startswith("# best:") or lines[i].startswith("# ======")):
+                    i += 1
+                return "\n".join(lines[i:]) + ("\n" if lines[i:] else "")
+            body = strip_existing_banner(original)
+            file_path.write_text(banner + body, encoding="utf-8")
 
         # VS Code でファイルを開く
         try:
             subprocess.run(["code", str(file_path)], check=False)
         except Exception:
             pass
-        # ユーザー yu212 の場合は可視化画像も開く
         if user == "yu212":
             vis = Path(WORKSPACE_DIR) / "vis_output" / f"task{padded}.png"
             try:

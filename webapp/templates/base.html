@@ -1,4 +1,4 @@
-<!doctype html>
+  <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
@@ -120,6 +120,16 @@
       if(!params.get('sort')) params.set('sort','best');
       location.href = `/tasks?${params.toString()}`;
     };
+    // Global go-to-task shortcut: press 'g' to jump to a task id
+    document.addEventListener('keydown', (e)=>{
+      if(e.key !== 'g' || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+      if(tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
+      const v = prompt('Go to task number (1-400)');
+      if(!v) return;
+      const id = parseInt(v, 10);
+      if(Number.isFinite(id) && id>=1 && id<=400){ location.href = `/tasks/${id}`; }
+    });
   </script>
 </body>
 </html>

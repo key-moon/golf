@@ -39,7 +39,8 @@
   @media (min-width: 1000px) { .cases { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 999px) { .cases { grid-template-columns: 1fr; } }
   .casebox { display:grid; grid-template-columns: auto auto; align-items:start; gap:8px; border:1px solid var(--pico-muted-border-color, #ccc); padding:6px; }
-  .casebox > .head { grid-column: 1 / -1; font-weight:bold; margin-bottom:4px; }
+  .casebox > .head { grid-column: 1 / -1; font-weight:bold; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; }
+  .case-actions{ display:flex; gap:6px; align-items:center }
 </style>
 
 <script>
@@ -137,13 +138,33 @@ function renderTagEditor(root, all, current, onChange){
     fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }).catch(()=>{});
   });
 
+  function matSize(mat){ const h = (Array.isArray(mat)&&mat.length)||0; const w = (h && Array.isArray(mat[0]) && mat[0].length)||0; return {h,w}; }
+  function toListFormat(pair){
+    const j = JSON.stringify(pair);
+    return j;
+  }
   // cases (Overview 内): train/test のみ
   const root = document.getElementById('cases');
   const addCase = (title, pair)=>{
     const box = document.createElement('div'); box.className='casebox';
-    const head = document.createElement('div'); head.textContent = title; head.className='head'; box.appendChild(head);
-    const i = document.createElement('div'); i.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.input); return el; })()); box.appendChild(i);
-    const o = document.createElement('div'); o.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.output); return el; })()); box.appendChild(o);
+    const head = document.createElement('div'); head.textContent = title; head.className='head';
+    // Copy button with format selection
+    const copyGroup = document.createElement('div'); copyGroup.className='seg';
+    const btnInput = document.createElement('button'); btnInput.className='secondary btn-slim'; btnInput.textContent='Input'; btnInput.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair?.input||[])).then(()=>{ window.showAlert('Copied input to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
+    const btnOutput = document.createElement('button'); btnOutput.className='secondary btn-slim'; btnOutput.textContent='Output'; btnOutput.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair?.output||[])).then(()=>{ window.showAlert('Copied output to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
+    const btnBoth = document.createElement('button'); btnBoth.className='secondary btn-slim'; btnBoth.textContent='Both'; btnBoth.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair)).then(()=>{ window.showAlert('Copied case to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
+    copyGroup.appendChild(btnInput); copyGroup.appendChild(btnOutput); copyGroup.appendChild(btnBoth);
+    head.appendChild(copyGroup);
+    box.appendChild(head);
+    const i = document.createElement('div');
+    const isz = matSize(pair?.input); const osz = matSize(pair?.output);
+    i.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.input); return el; })());
+    i.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${isz.h} x ${isz.w}`; return info; })());
+    box.appendChild(i);
+    const o = document.createElement('div');
+    o.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.output); return el; })());
+    o.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${osz.h} x ${osz.w}`; return info; })());
+    box.appendChild(o);
     root.appendChild(box);
   };
   (taskData.train||[]).forEach((t,i)=>addCase(`train_${i}`, t));
@@ -200,7 +221,8 @@ document.getElementById('btnInit').addEventListener('click', async function(){
     const r = await fetch(`/api/task/${taskId}/init`, { method:'POST' });
     const j = await r.json();
     if(!j.ok) throw new Error(j.error||'init failed');
-    window.showAlert(`Initialized: ${j.created ? 'created file' : 'opened file'}<br/><small>${j.path}</small>`, 'success', 3000);
+    const msg = j.created ? 'created file' : 'prepended banner';
+    window.showAlert(`Initialized: ${msg}<br/><small>${j.path}</small>`, 'success', 3000);
   }catch(e){
     window.showAlert(`Init failed: ${e?.message||e}`, 'error', 4000);
   }
