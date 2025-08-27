@@ -10,7 +10,11 @@
 # lambda g,i=0:[(i:=i+r[0],j:=i)and[c or 586768>>j&7for c in r if(j:=j+c//8*3)|1]for r in g]
 # lambda g,i=1:[(i:=i+r[0],j:=i)and[c or 1173536>>j&7for c in r if(j:=j+c//8*3)]for r in g]
 # lambda g,i=1:[(i:=i+r[0],j:=i)and[c+146692*(8-c)>>j&7for c in r if(j:=j+c//8*3)]for r in g]
-p=lambda g,i=0:[(i:=i+r[0],j:=i)and[(j:=j+c//8*3)and c or 586768>>j&7for c in r]for r in g]
+# lambda g,i=0:[(i:=i+r[0],j:=i)and[[586768>>(j:=j+c//8*3)&7,c][c>0]for c in r]for r in g]
+p=lambda g,i=0:[(i:=i+r[0],j:=i)and[c and(j:=j+3)%1+8or 586768>>j&7for c in r]for r in g]
 
+
+# 
+# 0b000_001_000_011_110_100_000_010_000
 # 0b000_001_000_11_110_100_00_010_000
 # sum([(c&7) << (i*3) for i, c in enumerate(b"02004630010")])
