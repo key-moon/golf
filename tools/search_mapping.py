@@ -794,19 +794,21 @@ def check_template(template: str, mapping: dict[int, int]):
         exec(source, env)
         res = env["f"]()
         if res is not None:
-          if len(template) <= 8:
-           print(template, res, len(template))
-          res = func
-          for sym, binded in zip(syms, res):
-              res = res.replace(sym, str(binded))
-          return res
+            res_func = func
+            for sym, binded in zip(syms, res):
+                res_func = res_func.replace(sym, str(binded))
+            yield res_func
 
 # TODO: DoSを防ぐためeval_boundsが安全側に倒しすぎてしまっている expやshlのみ別途hookする?
 #       式のキャッシュ?
 if __name__ == "__main__":
     # mapping = { 20:1, 25:4, 30:2 }
-    mapping = { 1:5, 2:5, 3:0 }
-    max_length = 10
+    mapping = {
+        3+ 0:8, 6+ 0:8,
+        3+ 8:8, 6+ 8:8,
+        3+16:8, 6+16:8,
+    }
+    max_length = 6
     mod_tolerance = 3
     DO_CLAMP = False
 
@@ -857,11 +859,9 @@ if __name__ == "__main__":
     pickle.dump(clamped_templates, open(f".cache/mapping/{n}", "wb"))
     for template in tqdm(sorted(clamped_templates, key=lambda x: x.count("d"))):
         t = time.time()
-        res = check_template(template, mapping)
+        results = [*check_template(template, mapping)]
         end = time.time()
         if 1 < end - t:
             print(template)
-        if res:
-            # print(res)
-            # input("> ")
-            pass
+        for res in results:
+            print(f"{len(res)=} {res=}")
