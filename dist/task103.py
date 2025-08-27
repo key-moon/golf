@@ -1,1 +1,1 @@
-p=lambda g:[[7**(g[0]!=g[2])]]
+p=lambda g:[[g[0]==g[2]or 7]]
