@@ -1,4 +1,4 @@
-  <!doctype html>
+<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
@@ -129,6 +129,16 @@
       if(!v) return;
       const id = parseInt(v, 10);
       if(Number.isFinite(id) && id>=1 && id<=400){ location.href = `/tasks/${id}`; }
+    });
+    // Global open-in-new-tab shortcut: press 'h' to open a task detail in another tab
+    document.addEventListener('keydown', (e)=>{
+      if(e.key !== 'h' || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+      if(tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
+      const v = prompt('Open task in new tab (1-400)');
+      if(!v) return;
+      const id = parseInt(v, 10);
+      if(Number.isFinite(id) && id>=1 && id<=400){ window.open(`/tasks/${id}`, '_blank'); }
     });
   </script>
 </body>
