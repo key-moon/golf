@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('ËAÂ …áõã$è‚.‹œ¤é‚ŠCêhˆÆë[šhºv3ù3y_L+2«A€ı–xOÌìoÄR’)j½WˆQç$ùx”óƒVä‘¦±LŞ[åÿÕ½r;òÁÌï+m	„Àe Î[WÚù­@Û.Úš¨íoáÎ¤Å@º1}b½@MÏWeä','L1'),-9))
+p=lambda g,R=range(1,9):exec("for i in R:\n for j in R:a=-~g[i][j]%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a]\n"*9)or g
