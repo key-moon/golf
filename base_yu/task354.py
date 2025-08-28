@@ -11,7 +11,7 @@
 #  g=[(l:=0)or[l:=(v and(c or l or v))for c,v in zip(g[0],s)][::-1]for s in g]
 #  return g
 
-p=lambda g,c=-1:c*g or p([(l:=0)or[l:=(v and(c or l or v))for c,v in zip(g[0],s)][::-1]for s in g],c+1)
+p=lambda g,c=-1:c*g or p([(l:=0)or[l:=(v and(c or l)or v)for c,v in zip(g[0],s)][::-1]for s in g],c+1)
 
 # def p(g):
 #  c=[*filter(int,g[0])]
