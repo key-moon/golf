@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("-Ën€ E÷~KL!Ñmíø#„…Ñ -6|~}Ê†LÎÃÜø•¾ılÁ7Fu?œñNòn'ñŠ…7dƒãyŠ¿qO•êŞ¶Ã&”İ Ê6ÆãiJ(³×fà´Ã­˜MgÕlØ®ÿ‹Ú¦è[–iŠe¯(—D@zãNn½1àÏÂİ§7DÖ'Ã®_WÍÖ’¦ƒ¸ê",'L1'),-9))
+p=lambda g:(R:=range(n:=len(g)))and[[g[i][j]or g[-(abs(j-n//2)+i==n-2+(n-g[-2].count(0))//2)][n//2]for j in R]for i in R]
