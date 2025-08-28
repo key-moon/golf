@@ -1,1 +1,1 @@
-p=lambda g:[s:=g[0]]+[s:=s[:1]+s[:-1]for _ in s[1:len(s)//2]]
+p=lambda g:[r:=g[0],*eval(~-len(r)//2*"(r:=r[:1]+r[:-1]),")]
