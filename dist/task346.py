@@ -1,1 +1,1 @@
-import re;p=lambda g:[[int(re.search(rf"(, [^0])\1\1.{{{len(g[0])*3-7}}}\1(?!\1), (.)",str(g))[2])]]
+import re;p=lambda g:[[int(re.search(r"(, [^0])\1\1.{%d}\1(?!\1), (.)"%(len(g[0])*3-7),str(g))[2])]]
