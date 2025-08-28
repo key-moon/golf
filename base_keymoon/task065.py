@@ -8,5 +8,4 @@
 
 # lambda g:(a:=(0,len(g)//2+1))and max(p:=[[(*r[j:j+a[1]],)for r in g[i:i+a[1]]]for i in a for j in a],key=p.count)
 # =============================================== 101 ===============================================
-# lambda g:(a:=len(g)//2+1)and min(p:=[[r[j:][:2]for r in g[i:][:2]]for i in(0,a)for j in(0,a)],key=p.count)
 p=lambda g:(a:=len(g)//2)and min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in(0,a+1)for j in(0,a+1)],key=p.count)
