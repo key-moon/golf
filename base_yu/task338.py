@@ -1,7 +1,11 @@
 # best: 99(4atj, sisyphus) / others: 101(mukundan), 104(dbdr), 113(joking+MWI), 113(joking), 117(Seek64)
 # =============================================== 99 ==============================================01234567890
 # p=lambda g:(s:=[0]*len(g))and[(k:=0)or(s:=[t[i]+(k:=(0<s[i]and(k:=k or t[i])))*3 for i in range(len(t))])and[(v==6)*3 for v in s]for t in g]
-p=lambda g:(s:=g[0])and[(k:=0)or(s:=[y+(k:=x and k+y)*3for x,y in zip(s,t)])and[(v==6)*3for v in s]for t in g]
+# p=lambda g:(s:=g[0])and[(k:=0)or(s:=[y+(k:=x and k+y)*3for x,y in zip(s,t)])and[(v==6)*3for v in s]for t in g]
+
+def p(g):
+ s=g[0]
+ return[(k:=0)or(s:=[y+(k:=x and k+y)*3for x,y in zip(s,t)])and[(v==6)*3for v in s]for t in g]
 
 # def p(g):
 #  for i in range(len(g)-1):
