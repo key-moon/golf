@@ -1,1 +1,1 @@
-p=lambda g,R=range(1,9):exec("for i in R:\n for j in R:a=-~g[i][j]%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a]\n"*9)or g
+p=lambda g,R=range(1,9):exec("for j in R:i=%s;b=g[i][j];a=b**b+~b;g[i+a][j+a]|=b&g[i-a][j-a]\n"*8%(*R,)*9)or g
