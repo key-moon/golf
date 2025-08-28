@@ -220,8 +220,42 @@ def _divisors_ascending(n):
     return small + large[::-1]
 
 
+# ===== Variable name generator (repeat same char) =====
+# Each variable i is named as alphabet[i] repeated name_lens[i] times.
+# Example: name_lens=[3,1,2] -> ["aaa","b","cc"].
+
+def _as_len_list(num_vars, name_lens):
+    # Accept int (broadcast) or iterable of length num_vars
+    if isinstance(name_lens, int):
+        if name_lens < 1:
+            raise ValueError("var_name_lens must be >= 1")
+        return [name_lens] * num_vars
+    try:
+        lst = list(name_lens)
+    except Exception:
+        raise ValueError("var_name_lens must be int or iterable of ints")
+    if len(lst) != num_vars:
+        raise ValueError("var_name_lens length must equal number of variables")
+    if any((not isinstance(x, int)) or x < 1 for x in lst):
+        raise ValueError("all entries in var_name_lens must be >= 1 integers")
+    return lst
+
+
+def _gen_var_names_repeat(num_vars, name_lens=1, alphabet="abcdefghijklmnopqrstuvwxyz"):
+    if not alphabet:
+        raise ValueError("var_alphabet must be non-empty")
+    if len(alphabet) < num_vars:
+        raise ValueError("alphabet must have at least num_vars distinct characters")
+    lens = _as_len_list(num_vars, name_lens)
+    names = []
+    for i in range(num_vars):
+        ch = alphabet[i]
+        names.append(ch * lens[i])
+    return names
+
+
 # ===== Synthesis core (DP over last precedence × byte-length) =====
-def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=DEFAULT_BIT_CAP, require_outer_mod_const=False):
+def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=DEFAULT_BIT_CAP, require_outer_mod_const=False, var_name_lens=1, var_alphabet="abcdefghijklmnopqrstuvwxyz"):
     """
     mapping: dict
       - single-var: {int -> int}
@@ -250,12 +284,11 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
 
     if isinstance(keys[0], int):
         num_vars = 1
-        var_names = ["a"]
-        examples = [{"a": k} for k in keys]
+        var_names = _gen_var_names_repeat(1, var_name_lens, var_alphabet)
+        examples = [{var_names[0]: k} for k in keys]
     elif isinstance(keys[0], tuple):
         num_vars = len(keys[0])
-        letters = "abcdefghijklmnopqrstuvwxyz"
-        var_names = [letters[i] for i in range(num_vars)]
+        var_names = _gen_var_names_repeat(num_vars, var_name_lens, var_alphabet)
         examples = [{var_names[i]: k[i] for i in range(num_vars)} for k in keys]
     else:
         raise TypeError("Unsupported input type")
@@ -681,13 +714,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
 
 # Example
 print(search_mapping({
-    (0,0):1,
-    (2,0):2,
-    (1,0):3,
-    (1,1):6,
- }, 9))
-
-# 1:[[1,1,0],[1,0,1],[0,1,0]],
-# 2:[[1,0,1],[0,1,0],[1,0,1]],
-# 3:[[0,1,1],[0,1,1],[1,0,0]],
-# 6:[[0,1,0],[1,1,1],[0,1,0]]
+    (0,0):0,
+    (1,1):1,
+    (2,2):-1,
+}, max_bytes=9, var_name_lens=(4,3)))
