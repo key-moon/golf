@@ -1,3 +1,5 @@
+# best: 45(4atj sisyphus luke Seek, sisyphus) / others: 47(luke), 47(xsot ovs att), 47(att), 49(joking MeWhenI), 50(kg583)
+# ==================== 45 ===================
 # 類題: 57
 # 切り出し
 # filter max で 0 の行を消してる 転地して列も同様に 最後にもっかい転置
