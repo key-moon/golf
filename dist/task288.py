@@ -1,1 +1,1 @@
-p=lambda g:(R:=range(n:=len(g)))and[[g[i][j]or g[-(abs(j-n//2)+i==n-2+(n-g[-2].count(0))//2)][n//2]for j in R]for i in R]
+def p(g):A=range(n:=len(g));return[[g[i][j]or g[-(abs(j-n//2)+i==n-2+(n-g[-2].count(0))//2)][n//2]for j in A]for i in A]

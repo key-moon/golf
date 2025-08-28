@@ -1,1 +1,1 @@
-p=lambda g:(R:=range(len(g)))and[[max((y-i in(x-j,j-x))*g[y][x]for y in R for x in R)for j in R]for i in R]
+def p(g):A=range(len(g));return[[max((y-i in(x-j,j-x))*g[y][x]for y in A for x in A)for j in A]for i in A]

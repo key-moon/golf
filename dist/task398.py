@@ -1,1 +1,1 @@
-p=lambda g:(m:=5*sum(map(bool,a:=g[0])))and[([0]*(m-1-i)+a+[0]*m)[:m]for i in range(m)]
+def p(g):m=5*sum(map(bool,a:=g[0]));return[([0]*(m-1-i)+a+[0]*m)[:m]for i in range(m)]
