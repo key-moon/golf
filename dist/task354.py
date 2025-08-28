@@ -1,1 +1,1 @@
-p=lambda g,l=[0]*9,d=0:(c:=[*filter(int,g[0])])and g[:1]+[*zip(*[l:=[d:=v and(w|d or(d:=c.pop(0)))for v,w in zip(s,l)]for s in zip(*g[1:])])]
+p=lambda g,c=-1:c*g or p([(l:=0)or[l:=v and(c or l or v)for(c,v)in zip(g[0],s)][::-1]for s in g],c+1)
