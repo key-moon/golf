@@ -54,7 +54,8 @@
       "combine"
     ],
     "8": [
-      "gather"
+      "gather",
+      "shift"
     ],
     "9": [
       "connect"
