@@ -19,6 +19,7 @@
     "gather",
     "highlight",
     "L",
+    "mapping",
     "n-adj",
     "noise",
     "outstand",
@@ -80,6 +81,7 @@
       "n-adj"
     ],
     "16": [
+      "mapping",
       "recolor"
     ],
     "17": [
@@ -768,6 +770,9 @@
     ],
     "296": [
       "combine"
+    ],
+    "297": [
+      "recolor"
     ],
     "298": [
       "recolor"
