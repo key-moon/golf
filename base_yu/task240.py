@@ -17,7 +17,7 @@
 #  return g
 
 
-p=lambda g,c=-5,R=range(19):c*g or p([[g[j][~i]|g[I:=min(i,18-i)][min(min(j,18-j),I+1+j%2)]for j in R]for i in R],c+1)
+p=lambda g,c=-5,R=range(19):c*g or p([[g[j][~i]|g[I:=min(i,18-i)][min(j,18-j,I+1+j%2)]for j in R]for i in R],c+1)
 
 # def p(g):
 #  for _ in range(6):
