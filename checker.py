@@ -6,6 +6,7 @@ import signal
 import sys
 import traceback
 from typing import Any, Optional, Tuple
+from dataclass_wizard import JSONWizard
 import matplotlib.pyplot as plt
 import inspect
 import sys
@@ -15,7 +16,7 @@ import numpy as np
 import compress
 from task_viz import cmap, norm
 from strip import ZLIB_GOLF_BANNER, og_strip, strip_for_plain, strip_for_zlib
-from utils import get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
+from utils import WORKSPACE_DIR, Case, Task, get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
 import warnings
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
@@ -27,9 +28,18 @@ def handler(signum, frame):
 signal.signal(signal.SIGALRM, handler)
 
 Matrix = list[list[int]]
+
 @dataclass
-class CheckRes:
-  outputs: list[Tuple[Matrix, Optional[Matrix]]]
+class Output(JSONWizard):
+  case: Case
+  casenum: int
+  output: Optional[Matrix]
+  dumps: list[Any]
+  verdict: bool
+
+@dataclass
+class CheckRes(JSONWizard):
+  outputs: list[Output]
   correct: float
   message: str
 
@@ -40,7 +50,7 @@ trust_paths = [
   "base_yu/",
 ]
 
-def check(path: str, task: dict, knockout=-1):
+def check(path: str, task: Task, knockout=-1) -> CheckRes:
   assert path.endswith(".py")
 
   module_name = path[:-3].replace("/", ".")
@@ -60,35 +70,35 @@ def check(path: str, task: dict, knockout=-1):
   wrong, right = 0, 0
 
   errors = set()
-  outputs = []
-  for case, example in enumerate(tests):
-    example_copy = copy.deepcopy(example)
+  outputs: list[Output] = []
+  for casenum, case in enumerate(tests):
+    example_copy = copy.deepcopy(case)
     try:
       # signal.setitimer(signal.ITIMER_REAL, 4)
-      module.CASE = module._CASE = case
-      module.ANSWER = module._ANSWER = module.CORRECT = module._CORRECT = example_copy["output"]
       # signal.alarm(1)
-      if "case" in inspect.signature(program).parameters:
-       output = program(example_copy["input"], case=case)
-      else:
-       output = program(example_copy["input"])
+      dumps = []
+      module.CASE = casenum
+      module.ANSWER = module.CORRECT = module.EXPECTED = example_copy["output"]
+      module.DUMP = lambda x,defalut=False: dumps.append(json.loads(json.dumps(x)))or defalut or x
+      output: Matrix = program(example_copy["input"]) # pyright: ignore[reportAssignmentType]
       signal.alarm(0)
-      if json.loads(json.dumps(output)) == example_copy["output"]:
+      verdict = json.loads(json.dumps(output)) == example_copy["output"]
+      outputs.append(Output(case, casenum, output, dumps, verdict))
+      if verdict:
         right += 1
       else:
-        outputs.append((example, case, output))
         wrong += 1
         if 0 < knockout and knockout <= wrong:
           break
     except TimeoutException as e:
-      outputs.append((example, case, None))
+      outputs.append(Output(case, casenum, None, ["ERROR: timeout"], False))
       errors.add("timeout")
       break
     except Exception as e:
       signal.alarm(0)
-      outputs.append((example, case, None))
       tb = traceback.format_exception(type(e), e, e.__traceback__.tb_next)
       errors.add("\n".join(tb))
+      outputs.append(Output(case, casenum, None, [f"ERROR: {tb}"], False))
       wrong += 1
 
   correct = right / len(tests)
@@ -96,16 +106,17 @@ def check(path: str, task: dict, knockout=-1):
     return CheckRes(outputs, correct, "\n\n".join(errors))
   return CheckRes(outputs, correct, "ok" if right == len(tests) else f"{correct=}")
 
-def visualize_outputs(outputs, path):
+def visualize_outputs(outputs: list[Output], path):
     num_visualize = min(len(outputs), 10)
     fig, axes = plt.subplots(max(2,num_visualize), 3, figsize=(5 * 3, 5 * num_visualize))
-    for idx, (task, case, output) in enumerate(outputs):
+    for idx, output_obj in enumerate(outputs):
       if num_visualize <= idx: break
-      mat_inp = np.array(task['input']) 
+      case, casenum, output = output_obj.case, output_obj.casenum, output_obj.output
+      mat_inp = np.array(case['input']) 
       shape_i = mat_inp.shape
-      mat_out = np.array(task['output'])
+      mat_out = np.array(case['output'])
       shape_o = mat_out.shape
-      axes[idx, 0].set_title(f"{case} / {shape_i}")
+      axes[idx, 0].set_title(f"{casenum} / {shape_i}")
       axes[idx, 0].imshow(mat_inp, cmap=cmap, norm=norm)
       axes[idx, 1].set_title(f"{shape_o}")
       axes[idx, 1].imshow(mat_out, cmap=cmap, norm=norm)
@@ -129,7 +140,7 @@ if __name__ == "__main__":
   range_str = sys.argv[2] if 3 <= len(sys.argv) else "1-400"
   
   r = parse_range_str(range_str)
-  do_vis = len(r) < 10
+  do_vis = len(r) < 10 and os.getlogin() != "keymoon"
 
   success = 0
   print(f"{dirname=}")
@@ -158,8 +169,12 @@ if __name__ == "__main__":
       compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
       print(f"{openable_uri('stripped code', viz_plane_url(code))} / {compressed_msg}")
 
-      if len(res.outputs) > 0 and do_vis:
+      json.dump([output.to_dict() for output in res.outputs], open(os.path.join(WORKSPACE_DIR, "tmp", "outputs.json"), "w"))
+      print("http://localhost:5000/judge")
+
+      wrong_outputs = [*filter(lambda x: not x.verdict, res.outputs)]
+      if len(wrong_outputs) > 0 and do_vis:
         vis_path=f"vis_output/task{i:03}.png"
-        visualize_outputs(res.outputs, vis_path)
+        visualize_outputs(wrong_outputs, vis_path)
         print(f"{vis_path=}")
   print(f"success: {success}/{len(r)}")

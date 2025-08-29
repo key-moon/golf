@@ -18,6 +18,7 @@ DIST_RESULTS_PATH = Path(WORKSPACE_DIR) / "dist" / "results.json"
 TASKS_DIR = Path(WORKSPACE_DIR) / "tasks"
 TAGS_DIR = Path(WORKSPACE_DIR) / "data" / "tags"
 TAGS_FILE = TAGS_DIR / "tags.json"
+TMP_OUTPUTS_PATH = Path(WORKSPACE_DIR) / "tmp" / "outputs.json"
 
 def _load_tags_store() -> dict:
     if TAGS_FILE.exists():
@@ -418,6 +419,28 @@ def create_app() -> Flask:
             except Exception:
                 pass
         return jsonify({"ok": True, "created": created, "path": str(file_path), "user": user})
+
+    # ジャッジ結果出力ページ
+    @app.get("/judge")
+    def judge_page():
+        # default: show only incorrect; client reads query param
+        return render_template("judge.html")
+
+    @app.get("/api/judge/outputs")
+    def api_judge_outputs():
+        try:
+            mtime = int(TMP_OUTPUTS_PATH.stat().st_mtime)
+        except Exception:
+            mtime = 0
+        items = []
+        if TMP_OUTPUTS_PATH.exists():
+            try:
+                items = json.loads(TMP_OUTPUTS_PATH.read_text())
+                if not isinstance(items, list):
+                    items = []
+            except Exception:
+                items = []
+        return jsonify({"mtime": mtime, "items": items})
 
     return app
 

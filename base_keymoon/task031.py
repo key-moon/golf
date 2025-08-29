@@ -27,4 +27,4 @@
 # lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
 # best: 45(4atj sisyphus luke Seek, sisyphus) / others: 47(luke), 47(att), 50(kabutack), 52(biz), 52(4atj)
 # ==================== 45 ===================
-p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
+p=lambda g:g*any(g[0])or (DUMP("kasu")and DUMP(p([*zip(*filter(max,g))])))

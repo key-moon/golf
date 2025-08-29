@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% block title %}Judge Viewer - ARC-AGI Golf{% endblock %}
+{% block content %}
+<h2>Judge</h2>
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:8px">
+  <label><input type="checkbox" id="chkAll"> Show all cases</label>
+  <button id="btnReload" class="secondary btn-slim">Reload (R)</button>
+  <span id="status" class="muted"></span>
+  <span id="pagerTop" style="margin-left:auto"></span>
+</div>
+<div id="list" style="display:flex; flex-direction:column; gap:12px"></div>
+<div id="pagerBottom" style="display:flex; justify-content:flex-end; margin-top:8px"></div>
+
+<style>
+  /* Responsive grid for a case row */
+  .case-grid{ display:grid; gap:12px; grid-template-columns: repeat(4, minmax(180px, 1fr)); }
+  @media (max-width: 1200px){ .case-grid{ grid-template-columns: repeat(2, minmax(180px, 1fr)); } }
+  @media (max-width: 700px){ .case-grid{ grid-template-columns: repeat(1, minmax(0, 1fr)); } }
+  .case-col-body{ overflow:auto; max-width:100%; }
+  .case-pre{ margin:0; overflow:auto; max-width:100%; }
+</style>
+
+<script>
+const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+let LAST_MTIME = 0;
+const PAGE_SIZE = 10;
+
+function isMatrixLike(x){
+  if(!Array.isArray(x) || x.length===0) return false;
+  if(!Array.isArray(x[0])) return false;
+  const w = x[0].length;
+  for(const row of x){ if(!Array.isArray(row) || row.length!==w) return false; }
+  return true;
+}
+
+function drawMat(el, mat, opts={}){
+  const cell = opts.cell || 18;
+  if(!isMatrixLike(mat)) return false;
+  el.className='mat';
+  el.style.setProperty('--cell', cell+'px');
+  el.style.display='grid';
+  el.style.gridTemplateColumns=`repeat(${mat[0].length}, var(--cell))`;
+  el.innerHTML='';
+  for(let i=0;i<mat.length;i++){
+    for(let j=0;j<mat[i].length;j++){
+      const v = mat[i][j];
+      const cellEl = document.createElement('div');
+      cellEl.className='cell';
+      cellEl.style.width='var(--cell)';
+      cellEl.style.height='var(--cell)';
+      cellEl.style.display='flex';
+      cellEl.style.alignItems='center';
+      cellEl.style.justifyContent='center';
+      cellEl.style.fontFamily='ui-monospace, SFMono-Regular, Menlo, monospace';
+      cellEl.style.fontSize = Math.max(10, Math.floor(cell*0.6))+'px';
+      cellEl.style.lineHeight='1';
+      let idx = null;
+      if(typeof v==='boolean') idx = v?1:0;
+      else if(Number.isInteger(v)) idx = v;
+      const valid = (idx!==null && idx>=0 && idx<palette.length);
+      cellEl.style.background = valid ? palette[idx] : 'transparent';
+      if(!valid){
+        let txt;
+        if(typeof v==='string') txt=v;
+        else if(v===null) txt='null';
+        else if(v===undefined) txt='undef';
+        else txt=String(v);
+        cellEl.textContent = txt.length>3 ? txt.slice(0,3) : txt;
+        cellEl.style.color='red';
+        cellEl.style.border='1px solid rgba(255,0,0,0.6)';
+        cellEl.title = String(v);
+      }
+      el.appendChild(cellEl);
+    }
+  }
+  return true;
+}
+
+function dumpJsonCustom(x){
+  if(Array.isArray(x) && x.every(e=> !Array.isArray(e))){
+    return '[' + x.map(v=> typeof v==='string' ? JSON.stringify(v) : String(v)).join(', ') + ']';
+  }
+  try{ return JSON.stringify(x, null, 2);}catch{ return String(x); }
+}
+
+function renderDumpsColumn(container, dumps){
+  const head = document.createElement('div');
+  head.className='muted'; head.style.fontSize='12px'; head.textContent='dumps';
+  container.appendChild(head);
+
+  const wrap = document.createElement('div');
+
+  // アコーディオン本体
+  const details = document.createElement('details');
+  const summary = document.createElement('summary');
+  summary.textContent = 'dumps';
+  summary.style.cursor='pointer';
+  details.appendChild(summary);
+
+  const list = document.createElement('div');
+  list.style.display='grid';
+  list.style.gridTemplateColumns='repeat(auto-fill, minmax(140px, 1fr))';
+  list.style.gap='8px';
+
+  const appendEntry = (label, value)=>{
+    const box = document.createElement('div');
+    box.style.border='1px solid #ddd'; box.style.borderRadius='6px'; box.style.padding='6px';
+    const cap = document.createElement('div'); cap.className='muted'; cap.style.fontSize='12px'; cap.textContent=label; box.appendChild(cap);
+    const body = document.createElement('div'); body.className='case-col-body';
+    if(typeof value==='string'){
+      const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=value; body.appendChild(pre);
+    }else if(isMatrixLike(value)){
+      const m=document.createElement('div'); drawMat(m, value, {cell:16}); body.appendChild(m);
+    }else{
+      const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(value); body.appendChild(pre);
+    }
+    box.appendChild(body); list.appendChild(box);
+  };
+
+  if(dumps!=null){
+    if(typeof dumps==='string') appendEntry('text', dumps);
+    else if(Array.isArray(dumps)) dumps.forEach((v,i)=> appendEntry(`#${i}`, v));
+    else if(typeof dumps==='object'){ Object.keys(dumps).forEach(k=> appendEntry(k, dumps[k])); }
+  }
+
+  details.appendChild(list);
+  wrap.appendChild(details);
+  container.appendChild(wrap);
+}
+
+function renderCaseRow(item){
+  const caze = item.case, casenum = item.casenum, output = item.output, dumps = item.dumps, verdict = item.verdict;
+  const card = document.createElement('article');
+  card.style.border='1px solid #e5e5e5'; card.style.borderRadius='8px'; card.style.padding='8px';
+
+  const head = document.createElement('div');
+  head.style.display='flex'; head.style.justifyContent='space-between'; head.style.alignItems='center'; head.style.marginBottom='6px';
+  const badge = verdict? '<span style="color:#0a0">OK</span>' : '<span style="color:#a00">NG</span>';
+  head.innerHTML = `<strong>#${casenum}</strong><span class="muted">${badge}</span>`;
+  card.appendChild(head);
+
+  // Responsive 4 columns: input / actual / expected / dumps
+  const grid = document.createElement('div');
+  grid.className='case-grid';
+
+  const makeCol = (title)=>{
+    const col = document.createElement('div');
+    const t = document.createElement('div'); t.className='muted'; t.style.fontSize='12px'; t.textContent=title; col.appendChild(t);
+    const body = document.createElement('div'); body.className='case-col-body'; col.appendChild(body); return {col, body};
+  };
+
+  // input
+  const {col:colIn, body:bodyIn} = makeCol('input');
+  if(!drawMat(bodyIn, caze?.input)){
+    const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(caze?.input); bodyIn.appendChild(pre);
+  }
+
+  // actual
+  const {col:colAc, body:bodyAc} = makeCol('actual');
+  if(!drawMat(bodyAc, output)){
+    const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(output); bodyAc.appendChild(pre);
+  }
+
+  // expected
+  const {col:colEx, body:bodyEx} = makeCol('expected');
+  if(!drawMat(bodyEx, caze?.output)){
+    const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(caze?.output); bodyEx.appendChild(pre);
+  }
+
+  // dumps
+  const colDump = document.createElement('div');
+  renderDumpsColumn(colDump, dumps);
+
+  grid.appendChild(colIn); grid.appendChild(colAc); grid.appendChild(colEx); grid.appendChild(colDump);
+  card.appendChild(grid);
+  return card;
+}
+
+function buildPager(container, page, totalPages){
+  container.innerHTML='';
+  if(totalPages<=1){ return; }
+  const wrap = document.createElement('div');
+  wrap.style.display='flex'; wrap.style.gap='8px'; wrap.style.alignItems='center';
+  const btnPrev = document.createElement('button'); btnPrev.className='secondary btn-slim'; btnPrev.textContent='Prev'; btnPrev.disabled = page<=1;
+  const btnNext = document.createElement('button'); btnNext.className='secondary btn-slim'; btnNext.textContent='Next'; btnNext.disabled = page>=totalPages;
+  const label = document.createElement('span'); label.className='muted'; label.textContent = `page ${page} / ${totalPages}`;
+  btnPrev.onclick = ()=> gotoPage(page-1);
+  btnNext.onclick = ()=> gotoPage(page+1);
+  wrap.appendChild(btnPrev); wrap.appendChild(btnNext); wrap.appendChild(label);
+  container.appendChild(wrap);
+}
+
+function gotoPage(p){
+  const params = new URLSearchParams(location.search);
+  if(p<=1) params.delete('page'); else params.set('page', String(p));
+  location.search = params.toString();
+}
+
+async function render(){
+  const params = new URLSearchParams(location.search);
+  const showAll = params.get('all')==='1' || document.getElementById('chkAll').checked;
+  const currentPage = Math.max(1, parseInt(params.get('page')||'1', 10) || 1);
+  const data = await fetch('/api/judge/outputs').then(r=>r.json());
+  const total = (data.items||[]).length;
+  const ngCount = (data.items||[]).filter(x=> !x.verdict).length;
+  const st = document.getElementById('status'); st.textContent = `cases: ${total}, NG: ${ngCount}`;
+  const root = document.getElementById('list'); root.innerHTML='';
+  let items = data.items || [];
+  if(!showAll){ items = items.filter(x=> !x.verdict); }
+  const totalPages = Math.max(1, Math.ceil(items.length / 10));
+  const page = Math.min(currentPage, totalPages);
+  const start = (page-1)*10, end = start + 10;
+  items.slice(start, end).forEach(it=> root.appendChild(renderCaseRow(it)));
+  buildPager(document.getElementById('pagerTop'), page, totalPages);
+  buildPager(document.getElementById('pagerBottom'), page, totalPages);
+  LAST_MTIME = data.mtime || 0;
+}
+
+async function poll(){
+  try{
+    const d = await fetch('/api/judge/outputs').then(r=>r.json());
+    if((d.mtime||0) !== LAST_MTIME){ location.reload(); }
+  }catch{}
+  setTimeout(poll, 1000);
+}
+
+(function init(){
+  const params = new URLSearchParams(location.search);
+  const chk = document.getElementById('chkAll');
+  chk.checked = params.get('all')==='1';
+  chk.addEventListener('change', ()=>{
+    const p = new URLSearchParams(location.search);
+    if(chk.checked) p.set('all','1'); else p.delete('all');
+    p.delete('page');
+    location.search = p.toString();
+  });
+  document.getElementById('btnReload').onclick = ()=> render();
+  document.addEventListener('keydown', (e)=>{
+    if((e.key==='r' || e.key==='R') && !e.ctrlKey && !e.metaKey && !e.altKey){
+      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+      if(tag==='input' || tag==='textarea' || (e.target && e.target.isContentEditable)) return;
+      render();
+    }
+  });
+  render(); poll();
+})();
+</script>
+{% endblock %}
