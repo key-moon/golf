@@ -1,5 +1,1 @@
-import re;s=re.sub
-def p(g):
- d=s(*"21",s("[[ ,]","",str(g)),1)
- for x in d:d=s("(8|2)(?=(.{%d})?1)"%len(g[0]),"1",d)[::-1]
- return[[8-8*("2"in d)]]
+p=lambda g,c=2**12:c and p([(l:=0)or[l:=v and v|l|(v<3and(c:=c//2))for v in s]for s in zip(*g[::-1])],c-1)or[[8*('9'in str(g))]]

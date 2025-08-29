@@ -1,1 +1,1 @@
-p=lambda g:[g:=[[c,4][C*0==0<C!=4]for c,C in zip(r,[0]+g)]for r in g]
+p=lambda g:[g:=[[c,4][0<c==C]for c,C in zip(r,[0]+g)]for r in g]
