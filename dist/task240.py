@@ -1,7 +1,1 @@
-A=range
-def p(g):
- for i in A(64):
-  i%=8
-  for j in A(i,15-i):g[18-i][j]|=g[i][j];g[j+3][i]|=g[j+1][i]
-  if i<1:*g,=map(list,zip(*g[::-1]))
- return g
+p=lambda g,c=-5,R=range(19):c*g or p([[g[j][18-i]|g[I:=min(i,18-i)][min(min(j,18-j),I+1+j%2)]for j in R]for i in R],c+1)
