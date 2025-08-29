@@ -14,7 +14,7 @@
     header .legend{ font-size: 12px }
     /* center the header legend vertically */
     #global-legend{ display:flex; align-items:center; height: var(--header-h); }
-    main.container{ margin-top: calc(var(--header-h) + 8px); padding:8px }
+    main.container{ margin-top: 8px; padding:8px; width: 90vw; max-width: 90vw; margin-left:auto; margin-right:auto }
     .grid{display:grid; gap:12px}
     .grid.cols-2{grid-template-columns: repeat(2, minmax(0,1fr))}
     .grid.cols-4{grid-template-columns: repeat(4, minmax(0,1fr))}
@@ -48,14 +48,15 @@
     /* Slim button helper */
     .btn-slim{ padding:4px 10px !important; height:28px !important; line-height:1.1 !important; font-size:13px !important }
     .nowrap{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  /* Global tooltip for charts and canvases */
+  .tooltip{ position:absolute; background: rgba(0,0,0,0.75); color:#fff; padding:4px 6px; border-radius:4px; font-size:12px; pointer-events:none; transform: translate(0,0); z-index: 150 }
   </style>
 </head>
 <body>
   <header class="container-fluid">
     <nav>
       <ul>
-        <li><strong><a href="/">ARC-AGI Golf</a></strong></li>
-        <!-- Dashboard link removed -->
+        <li><strong><a href="/">Golf</a></strong></li>
         <li><a href="/tasks">Tasks</a></li>
       </ul>
       <ul>

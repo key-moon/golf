@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Judge Viewer - ARC-AGI Golf{% endblock %}
 {% block content %}
-<h2>Judge</h2>
 <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:8px">
   <label><input type="checkbox" id="chkAll"> Show all cases</label>
   <button id="btnReload" class="secondary btn-slim">Reload (R)</button>
@@ -12,12 +11,23 @@
 <div id="pagerBottom" style="display:flex; justify-content:flex-end; margin-top:8px"></div>
 
 <style>
-  /* Responsive grid for a case row */
-  .case-grid{ display:grid; gap:12px; grid-template-columns: repeat(4, minmax(180px, 1fr)); }
-  @media (max-width: 1200px){ .case-grid{ grid-template-columns: repeat(2, minmax(180px, 1fr)); } }
-  @media (max-width: 700px){ .case-grid{ grid-template-columns: repeat(1, minmax(0, 1fr)); } }
+  /* Responsive grid for a case row: 4 → 3 (dumps below) → 2 → 1 */
+  .case-grid{ display:grid; gap:12px; grid-template-columns: repeat(4, minmax(200px, 1fr)); }
+  /* 3 columns: dumps spans full row */
+  @media (max-width: 1400px){
+    .case-grid{ grid-template-columns: repeat(3, minmax(200px, 1fr)); }
+    .case-grid .col-dumps{ grid-column: 1 / -1; }
+  }
+  /* 2 columns */
+  @media (max-width: 1000px){ .case-grid{ grid-template-columns: repeat(2, minmax(180px, 1fr)); } }
+  /* 1 column */
+  @media (max-width: 700px){ .case-grid{ grid-template-columns: 1fr; } }
   .case-col-body{ overflow:auto; max-width:100%; }
   .case-pre{ margin:0; overflow:auto; max-width:100%; }
+  /* dumps block: remove vertical margins and tone down summary */
+  .col-dumps{ margin-block: 0; }
+  .col-dumps details{ margin: 0; padding: 0; }
+  .col-dumps summary{ margin: 0; padding: 0; font-size: 12px; font-weight: 400; color: var(--pico-muted-color, #666); cursor: pointer; }
 </style>
 
 <script>
@@ -83,21 +93,30 @@ function dumpJsonCustom(x){
   try{ return JSON.stringify(x, null, 2);}catch{ return String(x); }
 }
 
+function hasDumps(d){
+  if(d == null) return false;
+  if(typeof d === 'string') return d.length > 0;
+  if(Array.isArray(d)) return d.length > 0;
+  if(typeof d === 'object') return Object.keys(d).length > 0;
+  return false;
+}
+
 function renderDumpsColumn(container, dumps){
-  const head = document.createElement('div');
-  head.className='muted'; head.style.fontSize='12px'; head.textContent='dumps';
-  container.appendChild(head);
-
   const wrap = document.createElement('div');
+  wrap.style.marginTop='0'; wrap.style.marginBottom='0';
 
-  // アコーディオン本体
+  // アコーディオン本体（summaryを見出しとして統合・控えめに）
   const details = document.createElement('details');
+  details.style.margin='0'; details.style.padding='0';
   const summary = document.createElement('summary');
   summary.textContent = 'dumps';
+  summary.className = 'muted';
   summary.style.cursor='pointer';
+  summary.style.margin='0'; summary.style.padding='0';
+  summary.style.fontSize='12px'; summary.style.fontWeight='400';
   details.appendChild(summary);
 
-  const list = document.createElement('div');
+  const list = document.createElement('div'); list.className='dumps-list';
   list.style.display='grid';
   list.style.gridTemplateColumns='repeat(auto-fill, minmax(140px, 1fr))';
   list.style.gap='8px';
@@ -167,11 +186,15 @@ function renderCaseRow(item){
     const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(caze?.output); bodyEx.appendChild(pre);
   }
 
-  // dumps
-  const colDump = document.createElement('div');
-  renderDumpsColumn(colDump, dumps);
-
-  grid.appendChild(colIn); grid.appendChild(colAc); grid.appendChild(colEx); grid.appendChild(colDump);
+  // dumps (only if present)
+  if(hasDumps(dumps)){
+    const colDump = document.createElement('div');
+    colDump.className = 'col-dumps';
+    renderDumpsColumn(colDump, dumps);
+    grid.appendChild(colIn); grid.appendChild(colAc); grid.appendChild(colEx); grid.appendChild(colDump);
+  } else {
+    grid.appendChild(colIn); grid.appendChild(colAc); grid.appendChild(colEx);
+  }
   card.appendChild(grid);
   return card;
 }
