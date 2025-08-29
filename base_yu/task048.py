@@ -15,7 +15,6 @@
 #  for x in d:d=s("[82](?=(.{%d})?.?.1)"%len(g[0]*3),"1",d)[::-1]
 #  return[[8-8*("2"in d)]]
 
-# まじで方針が思い浮かばない、99だったら一個だけ置換 / 
+# まじで方針が思い浮かばない。2の孤島があるので、2|8をオラクルには使えない。
 # ============================================== 98 ==============================================
-# lambda g,c=32:c and p([(l:=0)or[l:=v&(c>>4)and(c:=16)or v and(v|l)for v in s]for s in zip(*g[::-1])],c-1)or[[8-8*("6"in str(g))]]
-p=lambda g,c=64:c and p([(l:=0)or[l:=(v&(c>>5))and(c:=32)//32or v and min(v,l)for v in s]for s in zip(*DUMP(g)[::-1])],c-1)or[[8-8*("2"in str(g))]]
+p=lambda g,c=2**12:c and p([(l:=0)or[l:=v and(v|l|((v<3)and(c:=c//2)))for v in s]for s in zip(*g[::-1])],c-1)or[[8*("9"in str(g))]]
