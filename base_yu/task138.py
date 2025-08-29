@@ -1,12 +1,21 @@
-def p(g):
- for _ in range(4):
-  while 1-all(g[0]):
-   g=g[1:]
-  *g,=map(list,zip(*g[::-1]))
- for _ in range(4):
-  for s in g:
-   for j in range(len(s)):
-    if s[j]==s[0]:
-     s[:j]=[s[0]]*j
-  *g,=map(list,zip(*g[::-1]))
- return g
+# best: 107(jailctf merger) / others: 114(mukundan), 135(4atj sisyphus luke Seek), 135(sisyphus), 152(joking), 152(joking MeWhenI)
+# ================================================== 107 ==================================================
+
+# p=lambda g,c=-79:c*g or p([*zip(*g[1-all(g[0]):][::-1])],c+1)
+# p=lambda g,c=-79:c*g or p([[(s[0]in s[i:]and c>-4)*s[0]|v for i,v in enumerate(s)]for s in zip(*g[1-all(g[0]):][::-1])],c+1)
+# p=lambda g,c=79:-c*g or p([[(s[0]in s[i:]and c<4)*s[0]|v for i,v in enumerate(s)]for s in zip(*g[1-all(g[0]):][::-1])],c-1)
+p=lambda g,c=79:-c*g or p([[(s[0]in s[i:])*(c<4)*s[0]|v for i,v in enumerate(s)]for s in zip(*g[1-all(g[0]):][::-1])],c-1)
+
+# def p(g):
+#  for _ in range(4):
+#   while 1-all(g[0]):
+#    g=g[1:]
+#   *g,=map(list,zip(*g[::-1]))
+#  return[[(s[0]in s[i:])*s[0]|v for i,v in enumerate(s)] for s in g]
+#  for _ in range(4):
+#   for s in g:
+#    for j in range(len(s)):
+#     if s[j]==s[0]:
+#      s[:j]=[s[0]]*j
+#   *g,=map(list,zip(*g[::-1]))
+#  return g
