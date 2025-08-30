@@ -29,6 +29,29 @@
     </div>
   </div>
 </div>
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:8px 0">
+  <div>
+    <strong>Team</strong><br/>
+    <select id="teamSelect" class="btn-slim">
+      <option value="">ours</option>
+    </select>
+  </div>
+  <span class="muted" id="teamTotal"></span>
+  <span class="muted">（チームを選択すると、そのチームの最終スコアでヒストグラムを表示）</span>
+  <span style="margin-left:auto"></span>
+  <div class="seg">
+    <button id="btnUseOurs" class="secondary btn-slim">Use ours</button>
+  </div>
+  <script>
+  (async function(){
+    try{
+      const r = await (await fetch('/api/teams')).json();
+      const sel = document.getElementById('teamSelect');
+      (r.names||[]).forEach(n=>{ const op=document.createElement('option'); op.value=n; op.textContent=n; sel.appendChild(op); });
+    }catch{}
+  })();
+  </script>
+</div>
 <section style="overflow-x:auto">
   <canvas id="hist" height="360" style="min-width:1200px"></canvas>
   <div id="tooltip" class="tooltip"></div>
@@ -66,6 +89,25 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 }
 (function initControls(){
   const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, G.sort, 'sort'); sortBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ G.sort=v; applyActive(sortBtns, v, 'sort'); draw(); }};
   const widthBtns=document.getElementById('widthBtns'); applyActive(widthBtns, G.barW, 'w'); widthBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.w; if(v){ G.barW=Number(v); applyActive(widthBtns, G.barW, 'w'); draw(); }};
+  const sel=document.getElementById('teamSelect');
+  sel.addEventListener('change', async ()=>{
+    const name = sel.value;
+    if(!name){
+      // ours
+      G.team = null;
+      prepareItems(); draw();
+      document.getElementById('teamTotal').textContent='';
+      return;
+    }
+    try{
+      const r = await (await fetch(`/api/team_lengths?name=${encodeURIComponent(name)}`)).json();
+      G.team = { name: r.name, lengths: r.lengths||[] };
+      prepareItems(); draw();
+      const total = (G.team.lengths||[]).reduce((a,b)=> a + (b??0), 0);
+      document.getElementById('teamTotal').textContent = `${name} total: ${total}`;
+    }catch{}
+  });
+  document.getElementById('btnUseOurs').onclick=()=>{ sel.value=''; sel.dispatchEvent(new Event('change')); };
 })();
 (async function(){
   const s = await (await fetch('/api/summary')).json();
@@ -79,7 +121,8 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 }
 })();
 function prepareItems(){
   const s=G.data; const N=400; G.items.length=0;
-  for(let i=0;i<N;i++) G.items.push({ idx:i, id:i+1, best:s.bests[i], our:s.our_lengths[i] });
+  const series = G.team && Array.isArray(G.team.lengths) ? G.team.lengths : s.our_lengths;
+  for(let i=0;i<N;i++) G.items.push({ idx:i, id:i+1, best:s.bests[i], our:series[i] });
   if(G.sort==='best') G.items.sort((a,b)=> (a.best??Infinity)-(b.best??Infinity));
   else if(G.sort==='length') G.items.sort((a,b)=> (a.our??Infinity)-(b.our??Infinity));
 }

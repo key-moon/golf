@@ -193,6 +193,32 @@ def create_app() -> Flask:
             "message": message,
         })
 
+    # API: チーム一覧
+    @app.get("/api/teams")
+    def api_teams():
+        data = loads_task_scores_progressions()  # dict[name] -> list[list[{date, score}]]
+        names = sorted(list(data.keys()), key=lambda x: x.lower())
+        return jsonify({"names": names})
+
+    # API: 指定チームの各タスク最終スコア（400長配列）
+    @app.get("/api/team_lengths")
+    def api_team_lengths():
+        name = request.args.get("name")
+        if not name:
+            return jsonify({"error": "name required"}), 400
+        data = loads_task_scores_progressions()
+        if name not in data:
+            return jsonify({"name": name, "lengths": [None] * 400})
+        per_task = data[name]
+        out: list[Optional[int]] = [None] * 400
+        for i in range(min(len(per_task), 400)):
+            subs = per_task[i] or []
+            # 最終提出のスコア（Noneはスキップ）
+            if subs:
+                last = subs[-1].get("score")
+                out[i] = last if isinstance(last, int) else 2500
+        return jsonify({"name": name, "lengths": out})
+
     # API: タスクJSONを返す（クライアント側でレンダリング）
     @app.get("/api/task/<int:task_id>/data")
     def api_task_data(task_id: int):
