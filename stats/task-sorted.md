@@ -67,7 +67,7 @@
 | [055](/vis/task055.png) | [base_keymoon](/base_keymoon/task055.py) | raw/raw | [89](/dist/task055.py) (+2) | 87 🔴 | [vis-many](/vis_many/task055.png) | not worth compress |
 | [056](/vis/task056.png) | [base_yu](/base_yu/task056.py) | raw/raw | [40](/dist/task056.py) (0) | 40  | [vis-many](/vis_many/task056.png) | not worth compress |
 | [057](/vis/task057.png) | [base_yu](/base_yu/task057.py) | raw/raw | [54](/dist/task057.py) (+5) | 49 🔴 | [vis-many](/vis_many/task057.png) | not worth compress |
-| [058](/vis/task058.png) | [base_yu](/base_yu/task058.py) | raw/raw | [93](/dist/task058.py) (-10) | 103 🟢 | [vis-many](/vis_many/task058.png) | not worth compress |
+| [058](/vis/task058.png) | [base_yu](/base_yu/task058.py) | raw/raw | [90](/dist/task058.py) (-13) | 103 🟢 | [vis-many](/vis_many/task058.png) | not worth compress |
 | [059](/vis/task059.png) | [base_notebooks](/base_notebooks/task059_20250804-033651Z-solved-127-problems-local-pleaseupvote-dao-sy-duy-minh.py) | forcomp-s/zlib-zopfli | [277](/dist/task059.py) (+121) | 156 🔴 | [vis-many](/vis_many/task059.png) |  |
 | [060](/vis/task060.png) | [base_keymoon](/base_keymoon/task060.py) | raw/raw | [48](/dist/task060.py) (0) | 48  | [vis-many](/vis_many/task060.png) | not worth compress |
 | [061](/vis/task061.png) | [base_yu](/base_yu/task061.py) | raw/raw | [63](/dist/task061.py) (0) | 63  | [vis-many](/vis_many/task061.png) | not worth compress |
