@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('}NçVÂ0þž$zˆ(«Ì²áž¨ŒKOCQäéI¨È¦Íúf2¢1[rò16^h^u<#µž“î‡),3ïi¸X«gÁug¤¸ù¦þ4ÊÕœÆyn,yÜ‡Cºq‘nü§›.¢Æ|Mš¦™)ñ1_•Ò1l-‘Ê_ñWîªqÝöGŠ,t\E›o˜Õ6VkÚGÙ‡lÌƒžûjLJ‹¡P”(JÆßrÚ®%êàì7ËºNÏm	ñì´ÍRÐ®µB¬c q"…HÇ;Ñ5HˆÞþÝ{“î+ŸxöLpdZ w','L1'),-9))
+p=lambda g,R=range(6):[[g[i+(y:=g[2][0]>7)*3][j+(x:=g[0][2]>7)*3]and g[i//3+7-y*7][j//3+7-x*7]for j in R]for i in R]
