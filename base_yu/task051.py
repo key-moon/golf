@@ -1,0 +1,10 @@
+# best: 115(jailctf merger) / others: 117(mukundan), 122(4atj sisyphus luke Seek), 122(sisyphus), 126(xsot ovs att joking mewheni), 126(joking MeWhenI)
+# ====================================================== 115 ======================================================
+# p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(v>0)*(len({*s[i-3:i]})>2)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
+p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(len({*s[i-3:i]})>2>0<v)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
+
+# def p(g):
+#  for _ in range(4):
+#   g=[(u:=0)or[[u:=u|(len({*s[i-3:i]})==3 and v and s[i-2]),v][v>0]for i,v in enumerate(s)]for s in g]
+#   g=[*zip(*g[::-1])]
+#  return g
