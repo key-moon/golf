@@ -1,5 +1,10 @@
-# best: 65
+# best: 61(4atj sisyphus luke Seek) / others: 63(4atj), 64(luke), 64(jailctf merger), 65(mukundan), 65(Seek64)
 # 70
 # p=lambda g:[[c or(any(s)+any(r))&2for c,s in zip(r,zip(*g))]for r in g]
 # 65
-p=lambda g:[[s[0]or(any(s)+any(r))&2for s in zip(r,*g)]for r in g]
+# lambda g:[[8%(t+any(s)+any(r)+1)for*s,t in zip(*g,r)]for r in g]
+# lambda g:[[(any(s)+any(r)-t&26)%9for*s,t in zip(*g,r)]for r in g]
+# lambda g:[[s[0]or(any(s)+any(r))&2for s in zip(r,*g)]for r in g]
+# lambda g:[[t or any(s)+any(r)&2for*s,t in zip(*g,r)]for r in g]
+# ============================ 61 ===========================
+p=lambda g:[[s[0]or any(s)+any(r)&2for s in zip(r,*g)]for r in g]
