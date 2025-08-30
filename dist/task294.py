@@ -1,1 +1,1 @@
-p=lambda g,R=range(10):[[(0<i<9>j>0and{g[i-1][j],g[i+1][j],*g[i][j-1:j+2]}=={5})*2or g[i][j]for j in R]for i in R]
+import re;p=lambda g:eval(re.sub(f"(?<=5.{(C:='.'*-~len(g[0])*3)})5(?=.{C}5)",'2',str(g)))
