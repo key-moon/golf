@@ -193,7 +193,7 @@ function renderTagEditor(root, all, current, onChange){
     const minX = xs.length? Math.min(...xs) : nowSec - 86400;
     const maxX = nowSec;
     const ys = allPoints.map(p=>p.score).filter(v=> typeof v==='number' && !isNaN(v));
-    const minY = 0; const maxY = Math.max( (ys.length? Math.max(...ys): (best||0)), best||0, len||0 ) * 1.1 + 5;
+    const minY = 0; const maxY = Math.min(Math.max( (ys.length? Math.max(...ys): (best||0)), best||0, len||0 ) * 1.1 + 5, (best||0)*2+10);
     const pad = {l:64,r:12,t:8,b:28}; const x2px = x=> pad.l + ( (x-minX) / (maxX-minX || 1) ) * (width - pad.l - pad.r); const y2px = y=> height - pad.b - ( (y-minY) / (maxY-minY || 1) ) * (height - pad.t - pad.b);
     // Y grid
     ctx.fillStyle = fg; ctx.font = '12px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='right'; ctx.strokeStyle=gridCol; ctx.lineWidth=1;
