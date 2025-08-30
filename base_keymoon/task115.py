@@ -1,4 +1,4 @@
-# best: 67(luke) / others: 68(Seek64), 73(sisyphus), 85(joking+MWI), 87(kg583), 87(mukundan)
+# best: 54(xsot ovs att) / others: 58(jailctf merger), 60(4atj sisyphus luke Seek), 63(mukundan), 67(luke), 68(Seek64)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1
@@ -8,7 +8,7 @@
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if-~g.count(c))]
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if c not in g])]
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if(c in g)<1])]
-# =============================== 67 ==============================
+# ======================== 54 ========================
 p=lambda g:[R for r in g if(R:=[(g:=[c]+g)[0]for c in r if(c in g)-1])]
 
 #  a in g
