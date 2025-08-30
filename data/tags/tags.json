@@ -16,6 +16,7 @@
     "diagonal",
     "fill-bound",
     "fill-misc",
+    "fixed-pattern",
     "gather",
     "highlight",
     "L",
@@ -138,6 +139,9 @@
     "38": [
       "count"
     ],
+    "39": [
+      "crop"
+    ],
     "40": [
       "recolor",
       "transpose"
@@ -174,6 +178,9 @@
     ],
     "54": [
       "beam"
+    ],
+    "55": [
+      "fill-misc"
     ],
     "56": [
       "1px"
@@ -307,6 +314,9 @@
     ],
     "103": [
       "1px"
+    ],
+    "104": [
+      "fixed-pattern"
     ],
     "106": [
       "sym-dup"
@@ -469,6 +479,9 @@
     ],
     "175": [
       "complete"
+    ],
+    "176": [
+      "fixed-pattern"
     ],
     "177": [
       "crop"
@@ -654,7 +667,8 @@
       "color-freq"
     ],
     "248": [
-      "diagonal"
+      "diagonal",
+      "fixed-pattern"
     ],
     "249": [],
     "250": [
@@ -948,13 +962,15 @@
       "highlight"
     ],
     "355": [
-      "1px"
+      "1px",
+      "color-freq"
     ],
     "356": [
       "connect"
     ],
     "357": [
-      "diagonal"
+      "diagonal",
+      "fixed-pattern"
     ],
     "358": [
       "beam"
@@ -1004,7 +1020,8 @@
       "highlight"
     ],
     "375": [
-      "diagonal"
+      "diagonal",
+      "fixed-pattern"
     ],
     "376": [],
     "377": [
@@ -1015,6 +1032,9 @@
     ],
     "381": [
       "connect"
+    ],
+    "382": [
+      "beam"
     ],
     "383": [
       "beam"

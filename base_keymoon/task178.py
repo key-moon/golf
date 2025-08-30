@@ -1,4 +1,4 @@
-# best: 49(xsot ovs att, jailctf merger) / others: 55(luke), 55(4atj), 55(HETHAT), 55(4atj sisyphus luke Seek), 55(sisyphus)
+# best: 49(xsot ovs att joking mewheni, xsot ovs att, jailctf merger) / others: 55(luke), 55(4atj), 55(HETHAT), 55(4atj sisyphus luke Seek), 55(sisyphus)
 # 転地佐伯テクだけでこんだけ食うから転地佐伯ではない
 # lambda g:5>len(g)and[*map(list,zip(*g))]or []
 # lambda g,s=0:[(s:=r)*0!=r*0and p(r)or r for r in g if r!=s]
