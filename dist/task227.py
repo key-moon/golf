@@ -1,1 +1,1 @@
-p=lambda g:eval("[2*~a&2for a in map(max,g.pop(0),g[3])],"*4)
+p=lambda g:[[2*~a&2for a in map(max,g.pop(4),s)]for s in g]
