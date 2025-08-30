@@ -95,7 +95,7 @@ if __name__ == "__main__":
         if digest in session_digests:
           continue
         session_digests.add(digest)
-        if digest not in checked_hash or not checked_hash[digest]:
+        if digest not in checked_hash:
           verdict = False
           try:
             result = subprocess.run(
