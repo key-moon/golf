@@ -158,7 +158,7 @@ function renderCaseRow(item){
   head.innerHTML = `<strong>#${casenum}</strong><span class="muted">${badge}</span>`;
   card.appendChild(head);
 
-  // Responsive 4 columns: input / actual / expected / dumps
+  // Responsive 4 columns: input / expected / actual / dumps
   const grid = document.createElement('div');
   grid.className='case-grid';
 
@@ -174,16 +174,16 @@ function renderCaseRow(item){
     const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(caze?.input); bodyIn.appendChild(pre);
   }
 
-  // actual
-  const {col:colAc, body:bodyAc} = makeCol('actual');
-  if(!drawMat(bodyAc, output)){
-    const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(output); bodyAc.appendChild(pre);
-  }
-
   // expected
   const {col:colEx, body:bodyEx} = makeCol('expected');
   if(!drawMat(bodyEx, caze?.output)){
     const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(caze?.output); bodyEx.appendChild(pre);
+  }
+
+  // actual
+  const {col:colAc, body:bodyAc} = makeCol('actual');
+  if(!drawMat(bodyAc, output)){
+    const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(output); bodyAc.appendChild(pre);
   }
 
   // dumps (only if present)
@@ -191,9 +191,9 @@ function renderCaseRow(item){
     const colDump = document.createElement('div');
     colDump.className = 'col-dumps';
     renderDumpsColumn(colDump, dumps);
-    grid.appendChild(colIn); grid.appendChild(colAc); grid.appendChild(colEx); grid.appendChild(colDump);
+    grid.appendChild(colIn); grid.appendChild(colEx); grid.appendChild(colAc); grid.appendChild(colDump);
   } else {
-    grid.appendChild(colIn); grid.appendChild(colAc); grid.appendChild(colEx);
+    grid.appendChild(colIn); grid.appendChild(colEx); grid.appendChild(colAc);
   }
   card.appendChild(grid);
   return card;
