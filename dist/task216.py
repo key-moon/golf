@@ -1,1 +1,2 @@
-p=lambda g:max([(sum(t:=[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[*[*zip(*g)][l%20]],0].index(0,l//20)]],[]).count(2),~l,t)for l in range(400)])[2]
+A=range
+p=lambda g:max((all(y:=sum(x:=[s[l:t%21]for s in g[u:t//21]],[])),y.count(2),len(y),x)for t in A(441)for l in A(t%21)for u in A(t//21))[3]
