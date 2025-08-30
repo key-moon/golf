@@ -1,1 +1,1 @@
-import re;p=lambda g,c=-63:c*g or p(eval(re.sub("0(, [47].{25}[47])","7\\1",str([*zip(*g[::-1])]))),c+1)
+import re;p=lambda g,c=-11:c*g or p(eval(re.sub("0(?=, [47].{25}[47])","7",str([*zip(*g[::-1])]))),c+1)

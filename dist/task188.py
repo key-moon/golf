@@ -1,1 +1,1 @@
-p=lambda g:[g[:(h:=len(g)//2)],[s[:(w:=len(s)//2)]for s in g]][g[0]!=g[h]or h<w]
+p=lambda g:g==(a:=g[:53%~-len(g)])*2and a or[*map(p,g)]
