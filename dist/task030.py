@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('¥Í1Â0…á=§ğØ@@°å$–¤º•+l•fAÜ&fæOïıÏğ–8Ğü|˜ï’Ä€mSöká¯wZSı%ï2C+eô¸pjº±}¶1I0eÅ3],#h×Äc{ì©…ş+Ê¡Õ÷áJ¹p.›Ø','L1'),-9))
+p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range(5)])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
