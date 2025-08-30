@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('M3ÄPísŠébW‹8§X+¶î¿Ÿ}Æ|ï—å0Jµ6zY¿uÙü^3ù(@â}=K€|˜¥HkäªÇGxAF±ÖÒQ#Õ‹©õ<W>}U/f5‚0MÏ9}qÜ„GPå€¾\ÓƒT{£ôËš”è$£î«óWÇúšŞ¯ï;&š³u›{¨ÿ','L1'),-9))
+p=lambda g,c=-1:c*g or p([*zip(*((a:=g[:g.index(max(g,key=max))+1])+a[::-1]+[g[-1]]*99)[:len(g)])],c+1)
