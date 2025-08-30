@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes(']NCA]W$¯mâš‹Œmóö±7Å/Ï ¢!;h¤‹…?u”Æ2aAÙ@q]„>İßÉ÷! Tc]MtÄÇ ÖñÚÕä3>î;vŒPUW:_¯nZæM+Ô	ü9­W·0ğ°û¿Â€OÏÛrM0Ì¶‡Hm•†éª+h¢¸LÇ@ãw}S@t','L1'),-9))
+def p(g):i=sum(g,[]).index(8)//10;*x,=filter(int,sum([*zip(*g[:i]),*zip(*g[i+2:])],()));return[[v==8and x.pop(0)for v in s]for s in g]
