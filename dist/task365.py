@@ -1,3 +1,2 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("Uµ•Å0\0ãu#Ÿ13sffÆöO«ãD0oF¤ÇêÄ1 _c±I;²¹ÒÉ~º'Þo/²~‚Ê¦°ËÓ£Ž:…ê/Œ)„2ƒÊ®][uÃ.9ÖÂ‹XÜ^ˆ„×	©úEQ»½ÒQ_tµe“‚zi„Hñé’­Ë5—J}ÑýK!k¼„Ó¾•P´k[å°ûþjŠ.oŠóÚë{Ü¯Ýr|Ÿ~”ð„5þÄ”ÎM>C¦tY§Ò",'L1'),-9))
+A=range
+p=lambda g:max((all(y:=sum(x:=[s[l:r]for s in g[u:d]],[])),y.count(2),len(y),x)for r in A(11)for l in A(r)for d in A(11)for u in A(d))[3]
