@@ -1,1 +1,1 @@
-p=lambda g:[[v for*t,v in zip(*g,s)if len({*t})>2]for s in g if len({*s})>2]
+p=lambda g:[R for s in g if(R:=[t[0]for t in zip(s,*g)if len({*t}&{*s})>2])]

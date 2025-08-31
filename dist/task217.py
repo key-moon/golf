@@ -1,2 +1,1 @@
-E=lambda g:filter(max,zip(*g))
-p=lambda g:[[x&y for x in s for y in t]for s in E(E(g))for t in E(E(g))]
+p=lambda g,c=-1:c*[[x&y for x in s for y in t]for s in g for t in g]or[*zip(*filter(max,p(g,c+1)))]
