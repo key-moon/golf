@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('¥TÕv1}–ÿ¢oR¬^½VÏ‘ÖLa>ƒÜn@ö±×áü{g¤årÌ\ÝÁ‰ž’}*Ye¡ÃÕÂébö¢ÍR‡ô•ÊóÍ‹Ï[\žoÁÆxö^Žïå‚¾œèßY	ÉO2ägp~CkVsög³9Òø–7X0wøSRª¸Ï¦³Q$0d14_5½Ó°Vêç¥HË˜ã«#ŸçŠ P–„I^S,³‡f¬©äáj~§™¾[ês‹‘béE^ÝŸ(ú¤¿ÕÏB­g+:kGh-ƒËQt@é`½,,0¿‚þ”Mq™‡Ù~Û±õ*ˆØ¥NˆÍøÙ&ˆšˆ¤µD"	:÷M—·ýÎÿÒ§ÜGÈÝËpbrÝç5¡¼:o÷„§Ž¡	3éfUøÕ:š	c­Úˆ­$ôò\Á‹X·..¬ÎÏ}Ï7!+FaôSHƒP/0ÇÀU|™¯H&Né¢;Áè¸Ÿ<´4TZÿ*¸”}ô4m`ëÔ@$®À}*÷Ã9…Žà/Áœ®ÙNˆ{¡“ÁÚÊqÛVÙDwRí	8Þ·ˆL/eGN>\r›.£».&^Ã¼ö~†¼Á/‹fF{}a“êµ¢}‡ïþPToOà@ðöÅ	æÞwÏÏJön`.ö€UöÒªŒg&ÌJƒ°-äyÃÖ¹Ù³0Š^4¯´ÍìÝëˆ×Æ;H¿wÚ¶A‡}ÙDv²í<Ä#Úm¢©ŽÕ.iZ#ÍÈHl¦‹»rw?ÕÁúp2¡´Ë›‚¶—&ó¶ßÀÌwfìƒC÷ÊêNÜÈªº‹î‘ŽØþÜ‚Cß2¤=6`i_¥Ò~T¯z®¦áó\SÅ¨„%™…ÊA÷rÈ»áýh2$OIŸ˜ÊBZÅF‹;§‹oó}!³s3’ö²fªt3Ufgêœ¶YEŠƒÅJ{m‘6¶=ñ6$S‰](¢Ä_æù¢Qy51ïìsŸyu±CkÌkˆ=Ô”ºKÝë‰&í\0E4ÚÏ×÷.X†¼Ç.¾','L1'),-9))
+p=lambda g:max(f:=[[s[i//12:][:3]for s in g[i%12:][:3]]for i in range(144)],key=lambda x:(all(map(any,x)),f.count(x),sum(sum(x,[]))))
