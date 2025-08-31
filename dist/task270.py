@@ -1,1 +1,1 @@
-import re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("%d, ((\d, )*)0, %d",r"0,\1 %d,%d",str(g)))),'*2%(3,2,3,2,7,1,7,1))[1][::-1])],c+1)
+import re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("(%d), ((\d, )*)0, (%d)",r"0,\2 \1,\4",str(g)))),'*2%(3,2,7,1))[1][::-1])],c+1)
