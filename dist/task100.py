@@ -1,1 +1,3 @@
-p=lambda g:[sorted(set(a:=sum(g,[])),key=a.count)[1:2]*2]*2
+#coding:L1
+import zlib
+exec(zlib.decompress(bytes('UMÃA½wÿ6ÓÖi•HÛ¶™û–åzŒâºgÊ¾2}œ7I;@. İ@ÜÌu<øSLyBÂòŸyyÀôIc<¡`®¦ç"˜¹…PØìÛd*öG7Oür¨ğ7¨_€Fø!Ğ¿:(É7Êxÿ¨ü:ˆ|TıŒÌÅF"¹›WYbú¦aÙ‡xš‡Æ4K›ÓĞú','L1'),-9))
