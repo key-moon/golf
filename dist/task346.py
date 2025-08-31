@@ -1,1 +1,1 @@
-import re;p=lambda g:[[int(re.search(r"(, [^0])\1\1.{%d}\1(?!\1), (.)"%(len(g[0])*3-7),str(g))[2])]]
+p=lambda g:[[min(a:=sum(g+g[1:3]+g[1:],[]),key=a.count)]]
