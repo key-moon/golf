@@ -1,2 +1,1 @@
-A=range
-p=lambda g:max((all(y:=sum(x:=[s[l:r]for s in g[u:d]],[])),y.count(2),len(y),x)for r in A(11)for l in A(r)for d in A(11)for u in A(d))[3]
+p=lambda g,A=range:max((all(y:=sum(x:=[s[l:r]for s in g[u:d]],[])),y.count(2),len(y),x)for r in A(11)for l in A(r)for d in A(11)for u in A(d))[3]
