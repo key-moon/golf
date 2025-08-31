@@ -162,7 +162,12 @@ if __name__ == "__main__":
       print(f"[!] failed: vis/task{i:03}.png")
       results.append(TaskResult(i, False, "❌ WA"))
       continue
-    
+
+    if check_str(i, shortest, task, checked_hash).correct != 1.0:
+      print(f"case {i}: stripped code check failed")
+      json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
+      exit(1)
+
     assert best_result.base_path is not None
     # retire all other codes
     if not best_result.base_path.startswith("dist"):
