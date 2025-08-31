@@ -204,7 +204,7 @@ def get_embed(b: bytes, prefix=b''):
     # \r はなんかパースされたあとに \n になっちゃうと思ってたんだけどなんないっぽい?よくわかんねえ
     # b = b.replace(b"\\\r", b"\\\\\\r").replace(b"\r", b"\\r")
 
-    if b[-1] == b'\\'[0]:b += b'\\'
+    if b.endswith(b"\\"): b += b'\\'
 
     l: list[bytes] = []
     for sep in (b"'", b'"', b"'''", b'"""'):
