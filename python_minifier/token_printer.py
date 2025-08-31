@@ -3,6 +3,8 @@
 import re
 import sys
 
+from python_minifier.ministring import get_embed
+
 
 class TokenTypes(object):
     NoToken = 0
@@ -137,7 +139,7 @@ class TokenPrinter(object):
 
     def stringliteral(self, value):
         """Add a string literal to the output code."""
-        s = repr(value)
+        s = get_embed(value.encode("L1"), b"").decode("L1")
 
         if sys.version_info < (3, 0) and self.unicode_literals:
             if s[0] == 'u':
@@ -155,7 +157,7 @@ class TokenPrinter(object):
 
     def bytesliteral(self, value):
         """Add a bytes literal to the output code."""
-        s = repr(value)
+        s = get_embed(value, b"b").decode("L1")
 
         if len(s) > 0 and s[0].isalpha() and self.previous_token in [TokenTypes.Identifier, TokenTypes.Keyword, TokenTypes.SoftKeyword]:
             self.delimiter(' ')

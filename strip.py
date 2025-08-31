@@ -81,6 +81,8 @@ def get_stripper(prefer_sep="\t", **minifier_opt):
         source = re.sub(r'([^ABC][0-9])[ \t]+(in|if|else|for|and)', r'\1\2', source)
         source = re.sub(r'([^ABC][1-9])[ \t]+(or)', r'\1\2', source)
         source = re.sub(r'(for)[ \t]+([0-9])', r'\1\2', source)
+        # minifierがバカで for*a,x みたいなのが壊れるののhotfix
+        source = re.sub(r'for\(\*([^)]+)\)in', r'for*\1 in', source)
         return source
     return strip
 

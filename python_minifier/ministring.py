@@ -1,3 +1,6 @@
+import re
+
+
 BACKSLASH = '\\'
 
 
@@ -177,3 +180,57 @@ class MiniBytes(object):
                     b += chr(c)
 
         return b
+
+should_escapes = [
+    b'\\"', b"\\'", b'\\0', b'\\1', b'\\2', b'\\3', b'\\4', b'\\5', b'\\6', b'\\7',
+    b'\\N', b'\\U', b'\\a', b'\\b', b'\\f', b'\\n', b'\\r', b'\\t', b'\\u', b'\\v', b'\\x'
+]
+# TODO: bytesで128以上の文字を使えないのめんどくて対応してない。まあ使うやつが悪い
+def get_embed(b: bytes, prefix=b''):
+    orig = b
+
+    b = re.sub(br'\\+', lambda m: b'\\' * (2 * len(m.group(0)) - 1), b)
+
+    for should_escape in should_escapes:
+        b = b.replace(b"\\" + should_escape, b"\\\\\\" + should_escape)
+        b = b.replace(should_escape, b"\\" + should_escape)
+
+    # null byte を \0 に置換したとき、\01 みたいなのが間違って解釈されるのを防ぐ
+    for i in range(8):
+        b = b.replace(b"\\\x00" + f"{i}".encode(), b"\\\\\\000" + f"{i}".encode())
+        b = b.replace(b"\x00" + f"{i}".encode(), b"\\000" + f"{i}".encode())
+
+    b = b.replace(b"\\\x00", b"\\\\\\0").replace(b"\x00", b"\\0")
+    # \r はなんかパースされたあとに \n になっちゃうと思ってたんだけどなんないっぽい?よくわかんねえ
+    # b = b.replace(b"\\\r", b"\\\\\\r").replace(b"\r", b"\\r")
+
+    if b[-1] == b'\\'[0]:b += b'\\'
+
+    l: list[bytes] = []
+    for sep in (b"'", b'"', b"'''", b'"""'):
+        if len(sep) == 1:
+            t = b.replace(b'\\\n', b'\\\\\\n').replace(b'\n', b'\\n') \
+                .replace(b'\\\r', b'\\\\\\r').replace(b'\r', b'\\r') \
+                .replace(sep, b'\\'+sep)
+            l.append(sep + t + sep)
+        else:
+            # TODO: 流石にないと思うけど """ とかを消す
+            if sep in b: continue
+            t = b.replace(b'\\\n', b'\\\\\n').replace(b'\\\r', b'\\\\\r')
+            t = t[:-1] + b'\\' + t[-1:] if t.endswith(sep[:1]) else t
+            l.append(sep + t + sep)
+
+    if not orig.endswith(b"\\"):
+        for sep in (b"'", b'"', b"'''", b'"""'):
+            if len(sep) == 1:
+                if b"\n" in orig or b"\r" in orig:
+                    continue
+                t = orig.replace(sep, b'\\'+sep)
+                l.append(b"r" + sep + t + sep)
+            else:
+                if sep in orig: continue
+                t = orig[:-1] + b'\\' + b[-1:] if b.endswith(sep[:1]) else orig
+                l.append(b"r" + sep + t + sep)
+
+    res = min(l, key=len)
+    return prefix + res
