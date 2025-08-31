@@ -1,3 +1,6 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('EŒË\nƒ0D÷~ÅÝ° ¶ÍBL!ßq¹ñl”¨]úíMÔÝgæ(é[§‡¬FX˜æuÄ/Œ³‡/ëþa:Gâf„/aAÙÉ–È{TñµÓÄŠF.wÛ”¢u=h4„¡Rœ«4¯^"zª¥º•‚Ð†ð~?IÊŽ×~Øvïvž-¹yGVäÊã¯œ}Ê–x´Ûd/§XÍU','L1'),-9))
+A=range
+def p(g):
+ c=[*filter(int,sum(g,[]))][0]
+ for p in A(32):
+  x=[[{s[j],(s+g[0])[p-j]}&{0,c}for j in A(16)]for s in g]
+  if{0,c}>max(max(x)):return[[*map(sum,s)]for s in x]
