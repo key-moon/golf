@@ -554,7 +554,8 @@
       "beam"
     ],
     "200": [
-      "beam"
+      "beam",
+      "fixed-pattern"
     ],
     "202": [
       "beam",
