@@ -1,3 +1,2 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("UNC¶ÄPW¯ãÛfGÛˆm>dõ1'Å+×ó¡¼	nÿN qÈÊï~À‚(éæ}xŒ{€ÈL³›@±î>î‘¦Ø}s4Ž{ h‹³,·÷9rsŠòÙ+D—÷ÞcâqðRìÁ(Oœ××[mX£mùI6«íŒ;éSz6`Vf½gnçf=cõµ¦8}k4Ž8äŠrÀ",'L1'),-9))
+A=range
+p=lambda g:min([(8in sum(v:=[[g[[i//4+t%3*4,3][i%4>2]][[j//4+t//3*4,3][j%4>2]]for j in A(11)]for i in A(11)],g),v)for t in A(9)])[1]
