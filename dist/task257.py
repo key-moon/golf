@@ -1,1 +1,1 @@
-p=lambda g:[[s[j-5]or s[j]or t[j-5]or t[j]for j in b""]for s,t in zip(g,g[5:])]
+p=lambda g:[[max(s[j::5])or max(t[j::5])for j in(0,1,2,3)]for s,t in zip(g,g[5:])]

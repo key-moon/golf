@@ -1,3 +1,1 @@
-def p(g):
- for _ in 0,1:b=any(t>s and{*t}=={*s}>{0}for(s,t)in zip(g,g[1:]));u=[s for s in g if s.count(max(s))!=1];*g,=zip(*u*b+u[:1]*(len(g)-len(u))+u*(1-b))
- return g
+p=lambda g,c=-3,s=[0]:g*c or p([*zip(*[s:=r for r in g+g[:1]*99if(max(r)in s)>=(sum(r)in r)][len(g)-1::-1])],c+1)
