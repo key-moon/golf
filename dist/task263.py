@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("uMCÄP^§©½ÔÇÈ7Lmžl<&ùF1´\ÎÏð¬~W'Ñ‚,DÌ1I0Wè‰þé‹›<Èjð8“¿tÁ[G×®Œê“—ªšüyè¿Q[]æ+B!‹qœÚ2â®/¡Ê\Y–öùô»tHZ)ÔLõÈ½zøH=èÑñ–¥Ïûhœúü#",'L1'),-9))
+p=lambda g:len(g)>3and(f:=sorted([(sum(t:=g[i:i+3],g[0]).count(0),t)for i in range(0,len(g),3)]))[-(f[0][0]==f[1][0])][1]or[*zip(*p([*zip(*g)]))]

@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 920371
+Score: 920426
 
 Best Score: 957913
 
@@ -312,7 +312,7 @@ Best Score: 957913
 | [383](/vis/task383.png) | [base_yu](/base_yu/task383.py) | raw/raw | [128](/dist/task383.py) (+7) | 121 🔴 | [vis-many](/vis_many/task383.png) | not worth compress |
 | [397](/vis/task397.png) | [base_yu](/base_yu/task397.py) | raw/raw | [151](/dist/task397.py) (+30) | 121 🔴 | [vis-many](/vis_many/task397.png) | not worth compress |
 | [198](/vis/task198.png) | [base_keymoon](/base_keymoon/task198.py) | forcomp-s/zlib-zopfli | [263](/dist/task198.py) (+141) | 122 🔴 | [vis-many](/vis_many/task198.png) |  |
-| [263](/vis/task263.png) | [base_notebooks](/base_notebooks/task263_20250809-140909Z-qwen2-5-32b-arc-local-score-liah.py) | forcomp-t/zlib-zopfli | [200](/dist/task263.py) (+78) | 122 🔴 | [vis-many](/vis_many/task263.png) |  |
+| [263](/vis/task263.png) | [base_yu](/base_yu/task263.py) | raw/raw | [145](/dist/task263.py) (+23) | 122 🔴 | [vis-many](/vis_many/task263.png) | not worth compress |
 | [323](/vis/task323.png) | [base_code](/base_code/task323.py) | forcomp-t/zlib-zopfli | [243](/dist/task323.py) (+121) | 122 🔴 | [vis-many](/vis_many/task323.png) |  |
 | [079](/vis/task079.png) | [base_arcdsl](/base_arcdsl/task079.py) | forcomp-t/zlib-zopfli | [819](/dist/task079.py) (+696) | 123 🔴 | [vis-many](/vis_many/task079.png) | encode:+2 |
 | [124](/vis/task124.png) | [base_yu](/base_yu/task124.py) | forplain/raw | [179](/dist/task124.py) (+56) | 123 🔴 | [vis-many](/vis_many/task124.png) | not worth compress |
