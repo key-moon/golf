@@ -75,6 +75,8 @@ def needs_paren_binary(parent_op, child_prec, child_side, child_is_atom, child_e
     if child_prec < pprec:
         return True
     # Equal precedence: consult safety table
+    if parent_op != child_last_op:
+        return child_side == "R"
     safeL, safeR = ASSOC_SAFE.get(parent_op, (False, False))
     return (child_side == "L" and not safeL) or (child_side == "R" and not safeR)
 
@@ -374,7 +376,7 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
         if insert(sig, n, ATOM_PREC, v, None, True, 0, None):
             got = try_outer_mod_finish(ATOM_PREC, v, True, None, sig, n, 0)
             if got is not None:
-                return got
+                print(got)
 
     # Local, cap-aware application with pruning
     def apply_bin_sig(op, sigL, sigR):
@@ -447,17 +449,6 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     for _ in range(32):
         TEN_POW.append(TEN_POW[-1] * 10)
 
-    def min_abs_for_len(L, kind):
-        if kind == "pos":
-            return 0 if L == 1 else TEN_POW[L - 1]
-        else:
-            return TEN_POW[L - 1]
-
-    def max_abs_for_len(L, kind):
-        if L == 1:
-            return 9
-        return TEN_POW[L] - 1
-
     # Main DP by total bytes
     for n in range(1, max_bytes + 1):
         print(n)
@@ -476,10 +467,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                     expr = uop + (("(" + eC + ")") if need_par else eC)
                     if insert(sig, n, UNARY_PREC, expr, uop, False, litTotC, None):
                         if sig == target_sig and not require_outer_mod_const:
-                            return expr
+                            print(expr)
                         got = try_outer_mod_finish(UNARY_PREC, expr, False, uop, sig, n, litTotC)
                         if got is not None:
-                            return got
+                            print(got)
 
         # ===== Binary & Comparison (2-term) ops =====
         for op in BIN_OPS + CMP_OPS:
@@ -521,10 +512,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                             pivot = sigR if op in CMP_OPS else None
                             if insert(sig, n, p, expr, op, False, lit_total, pivot):
                                 if sig == target_sig and (not require_outer_mod_const or op == "%"):
-                                    return expr
+                                    print(expr)
                                 got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                 if got is not None:
-                                    return got
+                                    print(got)
 
             # -------- expr op CONST (right const) --------
             for lenL in range(1, n):
@@ -583,10 +574,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                             pivot = sigK if op in CMP_OPS else None
                             if insert(sig, n, p, expr, op, False, lit_total, pivot):
                                 if sig == target_sig and (not require_outer_mod_const or op == "%"):
-                                    return expr
+                                    print(expr)
                                 got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                 if got is not None:
-                                    return got
+                                    print(got)
 
             # -------- CONST op expr (left const) --------
             for lenR in range(1, n):
@@ -634,10 +625,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                                 pivot = sigR if op in CMP_OPS else None
                                 if insert(sig, n, p, expr, op, False, lit_total, pivot):
                                     if sig == target_sig and (not require_outer_mod_const):
-                                        return expr
+                                        print(expr)
                                     got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                     if got is not None:
-                                        return got
+                                        print(got)
                     else:
                         need_len_nonneg = n - right_len_after - op_len
                         if need_len_nonneg > 0:
@@ -651,10 +642,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                                 lit_total = litTotR + byte_len(k_str)
                                 if insert(sig, n, p, expr, op, False, lit_total, None):
                                     if sig == target_sig and (not require_outer_mod_const):
-                                        return expr
+                                        print(expr)
                                     got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                     if got is not None:
-                                        return got
+                                        print(got)
                         need_len_neg_raw = n - right_len_after - op_len - 2
                         if need_len_neg_raw > 0:
                             cmap = get_const_sig_map(need_len_neg_raw, N, "neg")
@@ -667,10 +658,10 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                                 lit_total = litTotR + byte_len(k_str)
                                 if insert(sig, n, p, expr, op, False, lit_total, None):
                                     if sig == target_sig and (not require_outer_mod_const):
-                                        return expr
+                                        print(expr)
                                     got = try_outer_mod_finish(p, expr, False, op, sig, n, lit_total)
                                     if got is not None:
-                                        return got
+                                        print(got)
 
         # ===== Comparison chaining: (E0 op0 E1) op1 E2 (op2 E3 ... ) =====
         # Extend existing comparison nodes by appending another comparator + non-comparison right operand.
@@ -705,13 +696,16 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
                             lit_total = litPrev + litTotR
                             if insert(sigNew, n, CMP_PREC, expr, op2, False, lit_total, sigR):
                                 if sigNew == target_sig and not require_outer_mod_const:
-                                    return expr
+                                    print(expr)
                                 got = try_outer_mod_finish(CMP_PREC, expr, False, op2, sigNew, n, lit_total)
                                 if got is not None:
-                                    return got
+                                    print(got)
 
     return None
 
 # Example
-print(search_mapping({
-}, max_bytes=9, var_name_lens=3))
+search_mapping({
+  (0,0):0, (0,1):0, (0,2):0,
+  (1,0):0, (1,1):0, (1,2):0,
+  (2,0):0, (2,1):1, (2,2):2
+}, max_bytes=9, var_name_lens=1)
