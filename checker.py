@@ -18,6 +18,7 @@ from task_viz import cmap, norm
 from strip import ZLIB_GOLF_BANNER, og_strip, strip_for_plain, strip_for_zlib
 from utils import WORKSPACE_DIR, Case, Task, get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
 import warnings
+import argparse
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -136,9 +137,14 @@ def visualize_outputs(outputs: list[Output], path):
     plt.savefig(path)
 
 if __name__ == "__main__":
-  dirname = sys.argv[1] if 2 <= len(sys.argv) else "dist"
-  range_str = sys.argv[2] if 3 <= len(sys.argv) else "1-400"
-  
+  parser = argparse.ArgumentParser(description="Checker script for golf tasks.")
+  parser.add_argument("dirname", nargs="?", default="dist", help="Directory name containing code files")
+  parser.add_argument("range_str", nargs="?", default="1-400", help="Range string for tasks")
+  parser.add_argument("--strip", "-s", action="store_true", help="Only strip code and exit")
+  args = parser.parse_args()
+
+  dirname = args.dirname
+  range_str = args.range_str
   r = parse_range_str(range_str)
   do_vis = len(r) < 10 and os.getlogin() != "keymoon"
 
@@ -155,6 +161,16 @@ if __name__ == "__main__":
           code = strip_for_plain(orig_code).encode()
           stripped = og_strip(orig_code) if ZLIB_GOLF_BANNER in orig_code else strip_for_zlib(orig_code)
           compress_method, compressed, raw_compressed, _ = compress.compress(stripped, fast=True, force_compress=True)
+      
+          if args.strip:
+            if code.decode("L1") in orig_code:
+              print(f"[!] Stripped code exists in {code_path}")
+            else:
+              with open(code_path, "a") as f:
+                f.write("\n\n# stripped:")
+                for line in code.decode().splitlines():
+                  f.write(f"\n# {line}")
+              print(f"[+] Appended code to {code_path}")
       except UnicodeDecodeError:
         with open(code_path, "rb") as f:
           code = compressed = f.read()
