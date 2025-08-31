@@ -1,3 +1,3 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('EA\nÃ E×““Ì¤¶$Ğ•àIDJ ©	N„ÒÓwfQ²ó½ï÷;Ç.d;H{…ä‚Í:?êŸ"Õ‹…Åö>u°\ËbƒeÏ\æøAÕf¤`$n0ÊÚh7çõ¬Ğ/Æ½§·Ì§ùæûÅ[}›¨ƒkï¿¾*Õ©,·X‰®?¬¡ì§æÍ*¸¡ƒÏV¥ş','L1'),-9))
+def p(g):
+ for _ in range(4):g=[[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])]
+ return g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:]for s in g[2:-2]]+g[-2:]
