@@ -164,7 +164,8 @@ if __name__ == "__main__":
       continue
 
     if check_str(i, shortest, task, checked_hash).correct != 1.0:
-      print(f"case {i}: stripped code check failed")
+      print(f"task {i}: stripped code check failed")
+      print(f"{shortest=}")
       json.dump(checked_hash, open(".cache/checked_cache.json", "w"))
       exit(1)
 

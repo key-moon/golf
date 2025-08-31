@@ -168,7 +168,7 @@ if __name__ == "__main__":
             else:
               with open(code_path, "a") as f:
                 f.write("\n\n# stripped:")
-                for line in code.decode().splitlines():
+                for line in code.decode().split("\n"):
                   f.write(f"\n# {line}")
               print(f"[+] Appended code to {code_path}")
       except UnicodeDecodeError:
