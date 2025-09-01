@@ -1,4 +1,4 @@
-# best: 65(luke, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, xsot ovs att, jailctf merger) / others: 66(4atj), 66(natte), 67(joking MeWhenI), 70(xsot ovs), 70(ovs)
+# best: 65(xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 66(natte), 75(mukundan), 79(dbdr), 87(MasukenSamba), 91(jacekw)
 # lambda g:(k:=                      )and[s[::-k]for s in g[::k]]
 # lambda g:(k:=1+g[0].index([s[0]for s in g if {*s}=={s[0]}][0]))and[s[::-k]for s in g[::k]]
 # lambda g:(k:=[i+1for i,v in enumerate(g[0])if v!=g[0][0]][0])and[s[::-k]for s in g[::k]]
@@ -10,5 +10,6 @@
 # lambda g:[[s[::-k]for s in g[::k]]for k in b""if g[0]!=g[k-1]][0]
 # ============================== 65 =============================
 # lambda g:(k:=1+g.index(min(g,key=set)))and[s[::-k]for s in g[::k]]
-def p(g):k=1+g.index(min(g,key=set));return[s[::-k]for s in g[::k]]
-
+# f p(g):k=1+g.index(min(g,key=set));return[s[::-k]for s in g[::k]]
+# lambda g,c=2:[r*0!=0and p(r,-2)or r for r in g if g!=(g:=r)][::c]
+p=lambda g:[r*0!=0and p(r)[::-1]or r for r in g if g!=(g:=r)][::2]
