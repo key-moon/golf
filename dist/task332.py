@@ -1,1 +1,1 @@
-p=lambda g:[eval(".6**(len(r)%2)*r.pop(0),"*len(r))for r in g]
+p=lambda g:[eval("7**len(r)*r.pop(0)%8,"*len(r))for r in g]
