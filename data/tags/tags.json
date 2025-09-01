@@ -55,6 +55,9 @@
     "6": [
       "combine"
     ],
+    "7": [
+      "diagonal"
+    ],
     "8": [
       "gather",
       "shift"
@@ -371,6 +374,10 @@
     ],
     "125": [
       "rect"
+    ],
+    "127": [
+      "recolor",
+      "supergrid"
     ],
     "129": [
       "1px"
@@ -1102,7 +1109,8 @@
       "diagonal"
     ],
     "399": [
-      "count"
+      "count",
+      "fixed-pattern"
     ],
     "400": [
       "prediction"
