@@ -1,1 +1,1 @@
-p=lambda g:(a:=sum(g,[]))+[[[v,a.pop()][v==4]for v in s]for s in g]
+p=lambda g,h=[]:h*0==0and[h,g][h==4]or[*map(p,g,(g+h)[::-1])]
