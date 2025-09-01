@@ -10,12 +10,14 @@
       </div>
       <div id="meta" style="margin:-4px 0 12px 0; font-size: 0.9em; color: var(--muted-color);"></div>
       <section>
-        <h4 style="margin: 8px 0 6px 0">Overview</h4>
         <div style="margin:6px 0 10px 0">
-          <strong>Tags</strong><br/>
+          <strong id="tagsLabel" style="cursor:pointer" title="Click to toggle tag editor">Tags</strong><br/>
           <div id="tagEditor" style="display:flex; gap:6px; flex-wrap:wrap"></div>
         </div>
-  <!-- preview removed per request -->
+        <div id="codeBlock" style="margin:6px 0 10px 0">
+          <strong>Code (dist)</strong><br/>
+          <pre style="max-height:360px; overflow:auto; border:1px solid var(--pico-muted-border-color, #ccc); padding:8px; border-radius:6px;"><code id="codeSummary" class="language-python">loading…</code></pre>
+        </div>
       </section>
     </div>
     <div style="flex:1 1 50%; min-width: 0;">
@@ -51,9 +53,38 @@
   .casebox { display:grid; grid-template-columns: auto auto; align-items:start; gap:8px; border:1px solid var(--pico-muted-border-color, #ccc); padding:6px; }
   .casebox > .head { grid-column: 1 / -1; font-weight:bold; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; }
   .case-actions{ display:flex; gap:6px; align-items:center }
+  /* Code block: wrap long lines and inherit whitespace in code element */
+  #codeBlock pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    tab-size: 2;
+  }
+  #codeBlock code { white-space: inherit; }
 </style>
 
 <script>
+// highlight.js (CDN) loader
+function ensureHLJS(cb){
+  // Light/Dark theme via media queries
+  if(!document.getElementById('hljs-css-light')){
+    const l1=document.createElement('link'); l1.id='hljs-css-light'; l1.rel='stylesheet'; l1.href='https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css'; l1.media='(prefers-color-scheme: light)'; document.head.appendChild(l1);
+  }
+  if(!document.getElementById('hljs-css-dark')){
+    const l2=document.createElement('link'); l2.id='hljs-css-dark'; l2.rel='stylesheet'; l2.href='https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css'; l2.media='(prefers-color-scheme: dark)'; document.head.appendChild(l2);
+  }
+  const onReady = ()=>{
+    try{
+      if(window.hljs && !window.hljs.getLanguage('python') && !document.getElementById('hljs-lang-python')){
+        const lp=document.createElement('script'); lp.id='hljs-lang-python'; lp.src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js'; lp.onload=()=>{ cb && cb(); }; document.body.appendChild(lp); return;
+      }
+    }catch(e){}
+    cb && cb();
+  };
+  if(window.hljs){ onReady(); return; }
+  if(document.getElementById('hljs-js')){ const s=document.getElementById('hljs-js'); s.addEventListener('load', onReady, { once:true }); return; }
+  const s=document.createElement('script'); s.id='hljs-js'; s.src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js'; s.onload=onReady; document.body.appendChild(s);
+}
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
 function computeAutoCellPx(containerWidth, maxCols){
   if(!Number.isFinite(containerWidth) || containerWidth<=0 || !Number.isFinite(maxCols) || maxCols<=0) return 12;
@@ -122,6 +153,17 @@ function renderTagEditor(root, all, current, onChange){
     root.appendChild(b);
   });
 }
+function renderTagViewer(root, current){
+  root.innerHTML='';
+  if(!current || !current.length){ const span=document.createElement('span'); span.className='muted'; span.textContent='(no tags)'; root.appendChild(span); return; }
+  current.forEach(name=>{
+    const b=document.createElement('span'); b.className='chip contrast'; b.textContent=name; b.dataset.tag=name;
+    // 閲覧時は編集しない。右クリックや中クリックで tasks のフィルターに飛べるよう維持
+    b.addEventListener('auxclick', (e)=>{ const tag=e.currentTarget?.dataset?.tag; if(tag){ window.openTasksWithTag(tag); } });
+    b.addEventListener('contextmenu', (e)=>{ e.preventDefault(); const tag=e.currentTarget?.dataset?.tag; if(tag){ window.openTasksWithTag(tag); } });
+    root.appendChild(b);
+  });
+}
 
 (async function(){
   const rootEl = document.getElementById('root');
@@ -135,13 +177,44 @@ function renderTagEditor(root, all, current, onChange){
   let allTags = store.all || [];
   let taskTags = Array.isArray(curr)? curr : [];
   const tagRoot = document.getElementById('tagEditor');
+  const tagLabel = document.getElementById('tagsLabel');
+  let tagsExpanded = (localStorage.getItem('tagsExpanded') === '1');
   async function handleChange(next){
     taskTags = next;
     const res = await saveTaskTags(taskId, taskTags);
     if(res && res.ok){ allTags = res.all || allTags; }
-    renderTagEditor(tagRoot, allTags, taskTags, handleChange);
+    updateTagsUI();
   }
-  renderTagEditor(tagRoot, allTags, taskTags, handleChange);
+  function updateTagsUI(){
+    if(tagsExpanded){
+      if(tagLabel) tagLabel.textContent = 'Tags (editing)';
+      renderTagEditor(tagRoot, allTags, taskTags, handleChange);
+    }else{
+      if(tagLabel) tagLabel.textContent = 'Tags (click here to edit)';
+      renderTagViewer(tagRoot, taskTags);
+    }
+  }
+  if(tagLabel){
+    tagLabel.addEventListener('click', ()=>{
+      tagsExpanded = !tagsExpanded;
+      localStorage.setItem('tagsExpanded', tagsExpanded ? '1' : '0');
+      updateTagsUI();
+    });
+  }
+  updateTagsUI();
+
+  // Load dist code summary under Overview
+  try{
+    const r = await fetch(`/api/task/${taskId}/code_summary`);
+    const j = await r.json();
+    const pre = document.getElementById('codeSummary');
+    if(j && j.ok){
+      pre.textContent = j.summary || '';
+      ensureHLJS(()=>{ try{ window.hljs && window.hljs.highlightElement(pre); }catch(e){} });
+    }else{
+      pre.textContent = '(no code in dist)';
+    }
+  }catch(e){ const pre = document.getElementById('codeSummary'); if(pre){ pre.textContent='(failed to load code)'; } }
 
   const best = sum.bests[taskId-1];
   const len = sum.our_lengths[taskId-1];

@@ -11,6 +11,7 @@ from flask import Flask, jsonify, render_template, request, send_from_directory,
 # 内部モジュール
 from public_data import get_scores_per_task, loads_task_scores_progressions
 from utils import WORKSPACE_DIR
+from compress import get_content_summary
 
 import json
 
@@ -334,6 +335,28 @@ def create_app() -> Flask:
         if not dist_dir.exists():
             abort(404)
         return send_from_directory(dist_dir, filename)
+
+    # API: dist/taskNNN.py のコード要約（圧縮解除またはそのまま表示）
+    @app.get("/api/task/<int:task_id>/code_summary")
+    def api_task_code_summary(task_id: int):
+        if not (1 <= task_id <= 400):
+            return jsonify({"ok": False, "error": "invalid task_id"}), 400
+        path = Path(WORKSPACE_DIR) / "dist" / f"task{task_id:03}.py"
+        if not path.exists():
+            return jsonify({"ok": False, "error": "not found"}), 404
+        try:
+            content = path.read_bytes()
+        except Exception as e:
+            return jsonify({"ok": False, "error": str(e)}), 500
+        try:
+            summary = get_content_summary(content)
+        except Exception:
+            # フォールバック: バイナリをL1でデコード（壊れる可能性あり）
+            try:
+                summary = content.decode("L1", errors="replace")
+            except Exception as e:
+                return jsonify({"ok": False, "error": str(e)}), 500
+        return jsonify({"ok": True, "task_id": task_id, "path": f"dist/task{task_id:03}.py", "summary": summary})
 
     # API: 最近のベスト更新を返す
     @app.get("/api/recent_best_updates")

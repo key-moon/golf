@@ -214,10 +214,12 @@ def get_uncompressed_content(content: bytes) -> tuple[str, bytes | None]:
 def get_content_summary(content: bytes) -> str:
   code, deflate_payload = get_uncompressed_content(content)
   if deflate_payload:
-    code = f"# original content: {len(content)} bytes\n{code}"
+    res = ""
+    res += f"# before compress: {len(content)} bytes\n"
+    res += code
+    return res
   else:
-    code = content.decode("L1")
-  return code
+    return content.decode("L1")
 
 if __name__ == "__main__":
   dirname = sys.argv[1] if 2 <= len(sys.argv) else "dist"
