@@ -20,11 +20,8 @@
 # lambda g,h=[]:[h,g][h==4]if h*0==0else[*map(p,g,(g+h)[::-1])]
 # lambda g,h=[]:h*0==0and[h,g][h==4]or[*map(p,g,(g+h)[::-1])]
 # lambda*g:(a:=g[0])*0==0and g[a==4]or[*map(p,a,g[-1][::-1])]
-p=lambda g,h=[]:h*0==0and[h,g][h==g]or[*map(p,g,(g+h)[::-1])]
+p=lambda g,h=[]:h*0==0and[h,g][h==4]or[*map(p,g,(g+h)[::-1])]
 
 # [*{4,h,g}-{4}][0]
 # sum({4,h,g})-4
 # [h,g][h==4]
-
-# reversed(a)
-# a[::-1]
