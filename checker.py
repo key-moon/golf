@@ -14,7 +14,7 @@ import sys
 import numpy as np
 
 import compress
-from viz import cmap, norm
+from viz import cmap, norm, printmat
 from strip import ZLIB_GOLF_BANNER, og_strip, strip_for_plain, strip_for_zlib
 from utils import WORKSPACE_DIR, Case, Task, get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
 import warnings
@@ -81,6 +81,8 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
       module.CASE = casenum
       module.ANSWER = module.CORRECT = module.EXPECTED = example_copy["output"]
       module.DUMP = lambda x,defalut=False: dumps.append(json.loads(json.dumps(x)))or defalut or x
+      module.PRINT = lambda *x: print(*x)or x[0]
+      module.PRINTMAT = lambda x: printmat(x)or x
       output: Matrix = program(example_copy["input"]) # pyright: ignore[reportAssignmentType]
       signal.alarm(0)
       verdict = json.loads(json.dumps(output)) == example_copy["output"]
