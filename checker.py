@@ -185,7 +185,7 @@ if __name__ == "__main__":
       compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
       print(f"{openable_uri('stripped code', viz_plane_url(code))} / {compressed_msg}")
 
-      json.dump([output.to_dict() for output in res.outputs], open(os.path.join(WORKSPACE_DIR, "tmp", "outputs.json"), "w"))
+      json.dump({ "task": i, "outputs": [output.to_dict() for output in res.outputs] }, open(os.path.join(WORKSPACE_DIR, "tmp", "outputs.json"), "w"))
       print("http://localhost:5000/judge")
 
       wrong_outputs = [*filter(lambda x: not x.verdict, res.outputs)]

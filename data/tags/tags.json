@@ -14,6 +14,7 @@
     "crop",
     "dfs",
     "diagonal",
+    "edgecase",
     "fill-bound",
     "fill-misc",
     "fixed-pattern",
@@ -474,6 +475,9 @@
       "recolor",
       "shrink"
     ],
+    "171": [
+      "fixed-pattern"
+    ],
     "172": [],
     "173": [
       "pat-dup"
@@ -794,6 +798,7 @@
       "1px"
     ],
     "292": [
+      "fixed-pattern",
       "highlight"
     ],
     "294": [
@@ -943,7 +948,8 @@
       "beam"
     ],
     "346": [
-      "1px"
+      "1px",
+      "edgecase"
     ],
     "347": [
       "combine"

@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Task {{ '%03d'|format(task_id) }} Cases - ARC-AGI Golf{% endblock %}
 {% block content %}
-<h2>Task {{ '%03d'|format(task_id) }} Cases</h2>
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:8px">
+  <a href="/tasks/{{task_id}}" class="btn-slim">← Back to task</a>
+  <h2 style="margin:0">Task {{ '%03d'|format(task_id) }} Cases</h2>
+  <span style="margin-left:auto"></span>
+  <div class="seg" id="sizeBtns">
+    <button data-size="S" class="secondary btn-slim">S</button>
+    <button data-size="M" class="secondary btn-slim">M</button>
+    <button data-size="L" class="secondary btn-slim">L</button>
+  </div>
+</div>
 <div class="legend" id="legend"></div>
 <div id="cases"></div>
 
@@ -20,7 +29,8 @@ function buildLegend(){
 function drawMat(mat){
   if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])){ const ph = document.createElement('div'); ph.textContent='(no data)'; ph.className='muted'; return ph; }
   const r = mat.length, c = mat[0].length;
-  const wrap = document.createElement('div'); wrap.className='mat'; wrap.style.gridTemplateColumns=`repeat(${c}, 12px)`;
+  const sz=(localStorage.getItem('gridSize')||'L').toUpperCase(); const cell = sz==='S'?5:(sz==='M'?7:10);
+  const wrap = document.createElement('div'); wrap.className='mat'; wrap.style.setProperty('--cell', cell+'px'); wrap.style.gridTemplateColumns=`repeat(${c}, var(--cell))`;
   for(let i=0;i<r;i++) for(let j=0;j<c;j++){
     const d=document.createElement('div'); d.className='cell'; d.style.background = palette[mat[i][j]]; wrap.appendChild(d);
   }
@@ -64,5 +74,13 @@ function toListFormat(pair){ return JSON.stringify(pair); }
   (s.test||[]).forEach((t,i)=>addCase(`test_${i}`, t));
   (s['arc-gen']||[]).forEach((t,i)=>addCase(`arcgen_${i}`, t));
 })();
+
+// size buttons
+document.addEventListener('DOMContentLoaded', ()=>{
+  const seg = document.getElementById('sizeBtns'); if(!seg) return;
+  const applyActive=(v)=>{ [...seg.querySelectorAll('button')].forEach(b=> b.classList.toggle('contrast', b.dataset.size===v)); };
+  const cur=(localStorage.getItem('gridSize')||'L').toUpperCase(); applyActive(cur);
+  seg.addEventListener('click', (e)=>{ const v=e.target.closest('button')?.dataset.size; if(!v) return; localStorage.setItem('gridSize', v); applyActive(v); const root=document.getElementById('cases'); root.innerHTML=''; location.reload(); });
+});
 </script>
 {% endblock %}

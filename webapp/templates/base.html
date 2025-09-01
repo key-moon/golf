@@ -24,8 +24,9 @@
     .legend .box{width:14px; height:14px; display:inline-block; border:1px solid #999}
     canvas{image-rendering: pixelated}
     /* generic matrix cells (used across pages) */
-    .mat{display:grid; gap:1px}
-    .mat .cell{width:12px; height:12px; border: 1px solid rgba(0,0,0,0.1)}
+  .mat{display:grid; gap:1px}
+  /* セルサイズは --cell で可変（未設定時は 12px） */
+  .mat .cell{width: var(--cell, 12px); height: var(--cell, 12px); border: 1px solid rgba(0,0,0,0.1)}
     /* case grid wrapper */
     .case-grid{display:inline-grid; grid-auto-flow:row; grid-template-columns: auto auto; gap:4px; border:1px solid var(--pico-muted-border-color, #ccc); padding:4px}
     .muted{opacity:0.8}

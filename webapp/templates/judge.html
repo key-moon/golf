@@ -7,6 +7,15 @@
   <span id="status" class="muted"></span>
   <span id="pagerTop" style="margin-left:auto"></span>
 </div>
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin: 4px 0 8px">
+  <div class="seg" id="sizeBtns">
+    <button data-size="S" class="secondary btn-slim">S</button>
+    <button data-size="M" class="secondary btn-slim">M</button>
+    <button data-size="L" class="secondary btn-slim">L</button>
+  </div>
+  <span id="taskLinks" class="muted"></span>
+  <span style="margin-left:auto"></span>
+</div>
 <div id="list" style="display:flex; flex-direction:column; gap:12px"></div>
 <div id="pagerBottom" style="display:flex; justify-content:flex-end; margin-top:8px"></div>
 
@@ -34,6 +43,10 @@
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
 let LAST_MTIME = 0;
 const PAGE_SIZE = 10;
+const SIZE_KEY = 'gridSize';
+function getCellSize(){ const k=(localStorage.getItem(SIZE_KEY)||'L').toUpperCase(); return k==='S'?5: (k==='M'?7:10); }
+function setCellKey(k){ localStorage.setItem(SIZE_KEY, k); applyActive(document.getElementById('sizeBtns'), k, 'size'); }
+function applyActive(group, value, attr){ if(!group) return; [...group.querySelectorAll('button')].forEach(b=>b.classList.toggle('contrast', b.dataset[attr]===String(value))); }
 
 function isMatrixLike(x){
   if(!Array.isArray(x) || x.length===0) return false;
@@ -44,7 +57,7 @@ function isMatrixLike(x){
 }
 
 function drawMat(el, mat, opts={}){
-  const cell = opts.cell || 18;
+  const cell = opts.cell || getCellSize();
   if(!isMatrixLike(mat)) return false;
   el.className='mat';
   el.style.setProperty('--cell', cell+'px');
@@ -128,8 +141,8 @@ function renderDumpsColumn(container, dumps){
     const body = document.createElement('div'); body.className='case-col-body';
     if(typeof value==='string'){
       const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=value; body.appendChild(pre);
-    }else if(isMatrixLike(value)){
-      const m=document.createElement('div'); drawMat(m, value, {cell:16}); body.appendChild(m);
+      }else if(isMatrixLike(value)){
+        const m=document.createElement('div'); drawMat(m, value); body.appendChild(m);
     }else{
       const pre=document.createElement('pre'); pre.className='case-pre'; pre.textContent=dumpJsonCustom(value); body.appendChild(pre);
     }
@@ -155,7 +168,16 @@ function renderCaseRow(item){
   const head = document.createElement('div');
   head.style.display='flex'; head.style.justifyContent='space-between'; head.style.alignItems='center'; head.style.marginBottom='6px';
   const badge = verdict? '<span style="color:#0a0">OK</span>' : '<span style="color:#a00">NG</span>';
-  head.innerHTML = `<strong>#${casenum}</strong><span class="muted">${badge}</span>`;
+  const leftTitle = document.createElement('strong'); leftTitle.textContent = `#${casenum}`;
+  const headRight = document.createElement('div'); headRight.style.display='flex'; headRight.style.gap='8px'; headRight.style.alignItems='center';
+  const copySeg = document.createElement('div'); copySeg.className='seg';
+  const bIn=document.createElement('button'); bIn.className='secondary btn-slim'; bIn.textContent='input'; bIn.onclick=()=> navigator.clipboard.writeText(JSON.stringify(caze?.input??[])).then(()=>window.showAlert('Copied input','success',1200)).catch(()=>window.showAlert('Copy failed','error',1500));
+  const bEx=document.createElement('button'); bEx.className='secondary btn-slim'; bEx.textContent='expected'; bEx.onclick=()=> navigator.clipboard.writeText(JSON.stringify(caze?.output??[])).then(()=>window.showAlert('Copied expected','success',1200)).catch(()=>window.showAlert('Copy failed','error',1500));
+  const bAc=document.createElement('button'); bAc.className='secondary btn-slim'; bAc.textContent='actual'; bAc.onclick=()=> navigator.clipboard.writeText(JSON.stringify(output)).then(()=>window.showAlert('Copied actual','success',1200)).catch(()=>window.showAlert('Copy failed','error',1500));
+  copySeg.appendChild(bIn); copySeg.appendChild(bEx); copySeg.appendChild(bAc);
+  const verdictSpan = document.createElement('span'); verdictSpan.className='muted'; verdictSpan.innerHTML = badge;
+  headRight.appendChild(copySeg); headRight.appendChild(verdictSpan);
+  head.appendChild(leftTitle); head.appendChild(headRight);
   card.appendChild(head);
 
   // Responsive 4 columns: input / expected / actual / dumps
@@ -224,11 +246,14 @@ async function render(){
   const showAll = params.get('all')==='1' || document.getElementById('chkAll').checked;
   const currentPage = Math.max(1, parseInt(params.get('page')||'1', 10) || 1);
   const data = await fetch('/api/judge/outputs').then(r=>r.json());
-  const total = (data.items||[]).length;
-  const ngCount = (data.items||[]).filter(x=> !x.verdict).length;
+  const taskId = data.task || null;
+  const outputs = data.outputs || data.items || [];
+  const total = outputs.length;
+  const ngCount = outputs.filter(x=> !x.verdict).length;
   const st = document.getElementById('status'); st.textContent = `cases: ${total}, NG: ${ngCount}`;
+  const links = document.getElementById('taskLinks'); links.innerHTML = taskId? `<a href="/tasks/${taskId}">task${String(taskId).padStart(3,'0')}</a> &nbsp;|&nbsp; <a href="/tasks/${taskId}/cases">cases</a>` : '';
   const root = document.getElementById('list'); root.innerHTML='';
-  let items = data.items || [];
+  let items = outputs;
   if(!showAll){ items = items.filter(x=> !x.verdict); }
   const totalPages = Math.max(1, Math.ceil(items.length / 10));
   const page = Math.min(currentPage, totalPages);
@@ -258,6 +283,11 @@ async function poll(){
     location.search = p.toString();
   });
   document.getElementById('btnReload').onclick = ()=> render();
+  // size buttons
+  applyActive(document.getElementById('sizeBtns'), (localStorage.getItem(SIZE_KEY)||'L'), 'size');
+  document.getElementById('sizeBtns').onclick=(e)=>{
+    const v=e.target.closest('button')?.dataset.size; if(!v) return; setCellKey(v); render();
+  };
   document.addEventListener('keydown', (e)=>{
     if((e.key==='r' || e.key==='R') && !e.ctrlKey && !e.metaKey && !e.altKey){
       const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';

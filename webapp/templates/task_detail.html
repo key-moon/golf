@@ -15,8 +15,15 @@
           <strong>Tags</strong><br/>
           <div id="tagEditor" style="display:flex; gap:6px; flex-wrap:wrap"></div>
         </div>
-        <p><a href="/tasks/{{task_id}}/cases">Open all cases »</a></p>
         <!-- preview removed per request -->
+        <div style="display:flex; gap:8px; align-items:center; margin:8px 0">
+          <a href="/tasks/{{task_id}}/cases" class="btn-slim">Open all cases »</a>
+          <div class="seg" id="sizeBtns">
+            <button data-size="S" class="secondary btn-slim">S</button>
+            <button data-size="M" class="secondary btn-slim">M</button>
+            <button data-size="L" class="secondary btn-slim">L</button>
+          </div>
+        </div>
         <div id="cases" class="cases"></div>
       </section>
     </div>
@@ -47,7 +54,8 @@
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
 function drawMat(el, mat){
   if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])) return;
-  el.className='mat'; el.style.setProperty('--cell', '12px');
+  const sz = (localStorage.getItem('gridSize')||'L').toUpperCase(); const cell = sz==='S'?5:(sz==='M'?7:10);
+  el.className='mat'; el.style.setProperty('--cell', cell+'px');
   el.innerHTML='';
   const r = mat.length, c = mat[0].length;
   el.style.gridTemplateColumns = `repeat(${c}, var(--cell))`;
@@ -213,6 +221,14 @@ function renderTagEditor(root, all, current, onChange){
   const tt=document.getElementById('tooltip'); chart.addEventListener('mousemove', (e)=>{ const chartRect = chart.getBoundingClientRect(); const wrapRect = chartWrap.getBoundingClientRect(); const x=e.clientX-chartRect.left, y=e.clientY-chartRect.top; const width=chart.width, height=chart.height; const pad={l:64,r:12,t:8,b:28}; const allPoints = series.flatMap(s=>s.data||[]); const xs = allPoints.map(p=>p.t); const nowSec=Math.floor(Date.now()/1000); const minX = xs.length? Math.min(...xs) : nowSec-86400; const maxX = nowSec; const ys = allPoints.map(p=>p.score).filter(v=> typeof v==='number' && !isNaN(v)); const minY = 0; const maxY = Math.max( (ys.length? Math.max(...ys): (best||0)), best||0, len||0 ) * 1.1 + 5; const x2px = x=> pad.l + ( (x-minX) / (maxX-minX || 1) ) * (width - pad.l - pad.r); const y2px = y=> height - pad.b - ( (y-minY) / (maxY-minY || 1) ) * (height - pad.t - pad.b); let found=null, dmin=10; series.forEach(s=>{ (s.data||[]).forEach(p=>{ const px = x2px(p.t), py=y2px(p.score); const d=Math.hypot(px-x, py-y); if(d<dmin){ dmin=d; found={s,p,px,py}; } }); }); if(found){ tt.style.display='block'; tt.textContent = `${found.s.name}: ${found.p.score}`; tt.style.left = (found.px + 12 + chartRect.left - wrapRect.left) + 'px'; tt.style.top = (found.py - 10 + chartRect.top - wrapRect.top) + 'px'; } else { tt.style.display='none'; } }); chart.addEventListener('mouseleave', ()=> tt.style.display='none');
   drawChart();
 })();
+
+// size buttons
+document.addEventListener('DOMContentLoaded', ()=>{
+  const seg = document.getElementById('sizeBtns'); if(!seg) return;
+  const applyActive=(v)=>{ [...seg.querySelectorAll('button')].forEach(b=> b.classList.toggle('contrast', b.dataset.size===v)); };
+  const cur=(localStorage.getItem('gridSize')||'L').toUpperCase(); applyActive(cur);
+  seg.addEventListener('click', (e)=>{ const v=e.target.closest('button')?.dataset.size; if(!v) return; localStorage.setItem('gridSize', v); applyActive(v); document.getElementById('cases').innerHTML=''; location.reload(); });
+});
 
 document.getElementById('btnInit').addEventListener('click', async function(){
   const rootEl = document.getElementById('root');

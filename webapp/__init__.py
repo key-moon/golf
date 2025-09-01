@@ -458,15 +458,24 @@ def create_app() -> Flask:
             mtime = int(TMP_OUTPUTS_PATH.stat().st_mtime)
         except Exception:
             mtime = 0
-        items = []
+        task_id: Optional[int] = None
+        outputs = []
         if TMP_OUTPUTS_PATH.exists():
             try:
-                items = json.loads(TMP_OUTPUTS_PATH.read_text())
-                if not isinstance(items, list):
-                    items = []
+                raw = json.loads(TMP_OUTPUTS_PATH.read_text())
+                # New schema: { "task": id, "outputs": [...] }
+                if isinstance(raw, dict) and "outputs" in raw:
+                    task_id = raw.get("task")
+                    outputs = raw.get("outputs") or []
+                # Legacy: list
+                elif isinstance(raw, list):
+                    outputs = raw
+                else:
+                    outputs = []
             except Exception:
-                items = []
-        return jsonify({"mtime": mtime, "items": items})
+                outputs = []
+        # Backward compatibility: also include 'items' as alias of outputs
+        return jsonify({"mtime": mtime, "task": task_id, "outputs": outputs, "items": outputs})
 
     return app
 
