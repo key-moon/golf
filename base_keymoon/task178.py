@@ -6,4 +6,4 @@
 # lambda g:[[int,p][(g:=r)*0!=0](r)for r in g if r!=g]
 # ====================== 49 =====================
 # p=lambda g:g*0!=0and[p(g:=r)for r in g if r!=g]or g
-p=lambda g:g*-1and g or[p(g:=r)for r in g if r!=g]
+p=lambda g:g*-1*-1or[p(g:=r)for r in g if r!=g]
