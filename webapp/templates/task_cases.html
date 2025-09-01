@@ -26,11 +26,26 @@ function buildLegend(){
     root.appendChild(label);
   });
 }
-function drawMat(mat){
+function computeAutoCellPx(containerWidth, maxCols){
+  if(!Number.isFinite(containerWidth) || containerWidth<=0 || !Number.isFinite(maxCols) || maxCols<=0) return 12;
+  // Consider .mat gap (1px) between cells and .cell border (1px on each side)
+  const gap = 1;      // from base.css: .mat { gap:1px }
+  const border = 1;   // from base.css: .mat .cell { border:1px }
+  const overhead = Math.max(0, (maxCols - 1) * gap + maxCols * 2 * border);
+  const avail = Math.max(1, containerWidth - overhead);
+  return Math.floor(avail / maxCols);
+}
+
+function pickCellPx(containerWidth, maxCols){
+  const autoPx = computeAutoCellPx(containerWidth, maxCols);
+  // 最大は 12、S/M/Lは列数切替に使うのでセルは自動のみ
+  return Math.max(1, Math.min(12, autoPx));
+}
+
+function drawMatWithCell(mat, cellPx){
   if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])){ const ph = document.createElement('div'); ph.textContent='(no data)'; ph.className='muted'; return ph; }
   const r = mat.length, c = mat[0].length;
-  const sz=(localStorage.getItem('gridSize')||'L').toUpperCase(); const cell = sz==='S'?5:(sz==='M'?7:10);
-  const wrap = document.createElement('div'); wrap.className='mat'; wrap.style.setProperty('--cell', cell+'px'); wrap.style.gridTemplateColumns=`repeat(${c}, var(--cell))`;
+  const wrap = document.createElement('div'); wrap.className='mat'; wrap.style.setProperty('--cell', cellPx+'px'); wrap.style.gridTemplateColumns=`repeat(${c}, var(--cell))`;
   for(let i=0;i<r;i++) for(let j=0;j<c;j++){
     const d=document.createElement('div'); d.className='cell'; d.style.background = palette[mat[i][j]]; wrap.appendChild(d);
   }
@@ -44,8 +59,13 @@ function toListFormat(pair){ return JSON.stringify(pair); }
   const root = document.getElementById('cases');
   // responsive grid container
   root.style.display='grid';
-  root.style.gridTemplateColumns='repeat(auto-fit, minmax(360px, 1fr))';
   root.style.gap='12px';
+  const applyCols=()=>{
+    const mode=(localStorage.getItem('gridCols')||'L').toUpperCase();
+    const n = mode==='S'?4:(mode==='M'?3:2);
+    root.style.gridTemplateColumns = `repeat(${n}, minmax(0, 1fr))`;
+  };
+  applyCols();
   const addCase = (title, pair)=>{
     const box = document.createElement('div');
     box.style.display='grid';
@@ -54,7 +74,7 @@ function toListFormat(pair){ return JSON.stringify(pair); }
     box.style.gap='8px';
     box.style.border='1px solid var(--pico-muted-border-color, #ccc)';
     box.style.padding='6px';
-    const head = document.createElement('div'); head.textContent = title; head.style.gridColumn='1 / -1'; head.style.fontWeight='bold'; head.style.marginBottom='4px'; head.style.display='flex'; head.style.justifyContent='space-between'; head.style.alignItems='center';
+  const head = document.createElement('div'); head.textContent = title; head.style.gridColumn='1 / -1'; head.style.fontWeight='bold'; head.style.marginBottom='4px'; head.style.display='flex'; head.style.justifyContent='space-between'; head.style.alignItems='center';
     // Copy button with format selection
     const copyGroup = document.createElement('div'); copyGroup.className='seg';
     const btnInput = document.createElement('button'); btnInput.className='secondary btn-slim'; btnInput.textContent='Input'; btnInput.onclick=()=>{ navigator.clipboard.writeText(JSON.stringify(pair?.input||[])).then(()=>{ window.showAlert('Copied input to clipboard', 'success', 1500); }).catch(()=>{ window.showAlert('Copy failed', 'error', 2000); }); };
@@ -64,11 +84,47 @@ function toListFormat(pair){ return JSON.stringify(pair); }
     head.appendChild(copyGroup);
     box.appendChild(head);
     const isz = matSize(pair?.input); const osz = matSize(pair?.output);
-    const il = document.createElement('div'); il.appendChild(drawMat(pair?.input)); il.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${isz.h} x ${isz.w}`; return info; })());
-    const ol = document.createElement('div'); ol.appendChild(drawMat(pair?.output)); ol.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${osz.h} x ${osz.w}`; return info; })());
+    const il = document.createElement('div');
+    const ol = document.createElement('div');
+    // サイズ情報（行列サイズ）は常に表示
+    const ilInfo = document.createElement('div'); ilInfo.className='muted'; ilInfo.style.fontSize='12px'; ilInfo.textContent=`${isz.h} x ${isz.w}`;
+    const olInfo = document.createElement('div'); olInfo.className='muted'; olInfo.style.fontSize='12px'; olInfo.textContent=`${osz.h} x ${osz.w}`;
+    // 仮のプレースホルダを作っておく
+    const inPlaceholder = document.createElement('div');
+    const outPlaceholder = document.createElement('div');
+    il.appendChild(inPlaceholder); il.appendChild(ilInfo);
+    ol.appendChild(outPlaceholder); ol.appendChild(olInfo);
     box.appendChild(il);
     box.appendChild(ol);
     root.appendChild(box);
+
+    // レイアウト確定後にセルサイズを算出して描画
+    requestAnimationFrame(()=>{
+      const colW = Math.max(1, Math.min(il.clientWidth||0, ol.clientWidth||0));
+      const maxCols = Math.max(isz.w||0, osz.w||0);
+      const cellPx = pickCellPx(colW, Math.max(1, maxCols));
+      il.replaceChild(drawMatWithCell(pair?.input, cellPx), inPlaceholder);
+      ol.replaceChild(drawMatWithCell(pair?.output, cellPx), outPlaceholder);
+    });
+
+    // クリックでモーダル拡大（ボタンは除外）
+    box.addEventListener('click', (e)=>{
+      if(e.target.closest('button') || e.target.closest('.seg')) return;
+      const frag = document.createDocumentFragment();
+      const cont = document.createElement('div');
+      cont.style.display='grid'; cont.style.gridTemplateColumns='1fr 1fr'; cont.style.gap='16px';
+      const makePane=(label, mat)=>{
+        const wrap=document.createElement('div');
+        const h=document.createElement('div'); h.className='muted'; h.style.fontSize='12px'; h.textContent=label; wrap.appendChild(h);
+        // 少し大きめに（13px）
+        wrap.appendChild(drawMatWithCell(mat, 13));
+        return wrap;
+      };
+      cont.appendChild(makePane('input', pair?.input));
+      cont.appendChild(makePane('output', pair?.output));
+      frag.appendChild(cont);
+      window.showModal(frag);
+    });
   };
   (s.train||[]).forEach((t,i)=>addCase(`train_${i}`, t));
   (s.test||[]).forEach((t,i)=>addCase(`test_${i}`, t));
@@ -79,8 +135,21 @@ function toListFormat(pair){ return JSON.stringify(pair); }
 document.addEventListener('DOMContentLoaded', ()=>{
   const seg = document.getElementById('sizeBtns'); if(!seg) return;
   const applyActive=(v)=>{ [...seg.querySelectorAll('button')].forEach(b=> b.classList.toggle('contrast', b.dataset.size===v)); };
-  const cur=(localStorage.getItem('gridSize')||'L').toUpperCase(); applyActive(cur);
-  seg.addEventListener('click', (e)=>{ const v=e.target.closest('button')?.dataset.size; if(!v) return; localStorage.setItem('gridSize', v); applyActive(v); const root=document.getElementById('cases'); root.innerHTML=''; location.reload(); });
+  const cur=(localStorage.getItem('gridCols')||'L').toUpperCase(); applyActive(cur);
+  seg.addEventListener('click', (e)=>{
+    const v=e.target.closest('button')?.dataset.size; if(!v) return;
+    localStorage.setItem('gridCols', v); applyActive(v);
+    location.reload();
+  });
+
+  // ウィンドウリサイズ時は全ケースを再計算したいのでページ再読み込み
+  let resizeT;
+  window.addEventListener('resize', ()=>{
+    if(window.__modalOpen) return; // avoid heavy reload during modal open
+    if(window.__modalSuppressReloadUntil && Date.now() < window.__modalSuppressReloadUntil) return; // shortly after close
+    clearTimeout(resizeT);
+    resizeT=setTimeout(()=>{ location.reload(); }, 150);
+  });
 });
 </script>
 {% endblock %}

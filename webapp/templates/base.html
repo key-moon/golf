@@ -74,12 +74,14 @@
     {% block content %}{% endblock %}
   </main>
 
-  <dialog id="modal">
-    <article style="max-height:90vh; overflow:auto">
-      <a href="#" aria-label="Close" class="close" onclick="document.getElementById('modal').close()"></a>
-      <div id="modal-body"></div>
-    </article>
-  </dialog>
+  <div id="modal-overlay" style="position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; z-index: 400; will-change: opacity; align-items:center; justify-content:center; padding:2vh; overscroll-behavior: contain; display:none;">
+    <div id="modal" role="dialog" aria-modal="true" style="width:92vw; max-width:1200px; max-height:92vh; padding:0; background: var(--pico-card-background-color); border:1px solid var(--pico-muted-border-color, #ccc); border-radius:8px; overflow:hidden; contain: layout paint; will-change: transform; transform: translateZ(0);">
+      <article style="max-height:92vh; overflow:auto; width:100%; contain: layout paint;">
+        <a href="#" aria-label="Close" class="close" onclick="window.closeModal()"></a>
+        <div id="modal-body" style="padding: 12px 16px; contain: content;"></div>
+      </article>
+    </div>
+  </div>
   <script>
     const GLOBAL_PALETTE=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
     function buildGlobalLegend(){
@@ -87,12 +89,33 @@
       GLOBAL_PALETTE.forEach((col,i)=>{ const wrap=document.createElement('span'); wrap.style.display='inline-flex'; wrap.style.alignItems='center'; wrap.style.gap='4px'; wrap.appendChild(document.createTextNode(`${i}: `)); const box=document.createElement('span'); box.className='box'; box.style.background=col; wrap.appendChild(box); root.appendChild(wrap); });
     }
     buildGlobalLegend();
+    // Custom overlay modal (no <dialog>) to avoid UA-driven reflows
     window.showModal = (htmlOrNode)=>{
-      const dlg = document.getElementById('modal');
+      const overlay = document.getElementById('modal-overlay');
+      const modal = document.getElementById('modal');
       const body = document.getElementById('modal-body');
       body.innerHTML = '';
       if(typeof htmlOrNode === 'string') body.innerHTML = htmlOrNode; else body.appendChild(htmlOrNode);
-      dlg.showModal();
+      // handlers
+      const onOverlayClick = (e)=>{ if(e.target === overlay) window.closeModal(); };
+  const onEsc = (e)=>{ if(e.key === 'Escape') window.closeModal(); };
+      overlay.addEventListener('click', onOverlayClick);
+      window.addEventListener('keydown', onEsc);
+  overlay._handlers = { onOverlayClick, onEsc };
+      // show without touching body layout
+  overlay.style.display = 'flex';
+      window.__modalOpen = true;
+    };
+    window.closeModal = ()=>{
+      const overlay = document.getElementById('modal-overlay');
+      if(!overlay) return;
+      const h = overlay._handlers || {};
+      overlay.removeEventListener('click', h.onOverlayClick);
+      window.removeEventListener('keydown', h.onEsc);
+      overlay._handlers = null;
+      overlay.style.display = 'none';
+      window.__modalOpen = false;
+      window.__modalSuppressReloadUntil = Date.now() + 500;
     };
     // Bootstrap-like alerts
     window.showAlert = (message, kind = 'info', timeout = 3000)=>{

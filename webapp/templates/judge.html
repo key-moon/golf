@@ -13,6 +13,11 @@
     <button data-size="M" class="secondary btn-slim">M</button>
     <button data-size="L" class="secondary btn-slim">L</button>
   </div>
+  <label class="muted" style="display:inline-flex; align-items:center; gap:6px">
+    <span>cell</span>
+    <input id="cellPxInput" type="number" min="1" max="64" inputmode="numeric" style="width:64px; height:28px; padding:2px 6px" placeholder="max">
+    <span class="muted" style="font-size:12px">px (max)</span>
+  </label>
   <span id="taskLinks" class="muted"></span>
   <span style="margin-left:auto"></span>
 </div>
@@ -44,7 +49,11 @@ const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0
 let LAST_MTIME = 0;
 const PAGE_SIZE = 10;
 const SIZE_KEY = 'gridSize';
-function getCellSize(){ const k=(localStorage.getItem(SIZE_KEY)||'L').toUpperCase(); return k==='S'?5: (k==='M'?7:10); }
+function getPrefCell(){
+  const manual = parseInt(localStorage.getItem('cellPxManual')||'', 10);
+  if(Number.isFinite(manual) && manual>0) return manual;
+  const k=(localStorage.getItem(SIZE_KEY)||'L').toUpperCase(); return k==='S'?5: (k==='M'?7:10);
+}
 function setCellKey(k){ localStorage.setItem(SIZE_KEY, k); applyActive(document.getElementById('sizeBtns'), k, 'size'); }
 function applyActive(group, value, attr){ if(!group) return; [...group.querySelectorAll('button')].forEach(b=>b.classList.toggle('contrast', b.dataset[attr]===String(value))); }
 
@@ -57,12 +66,14 @@ function isMatrixLike(x){
 }
 
 function drawMat(el, mat, opts={}){
-  const cell = opts.cell || getCellSize();
+  const cell = opts.cell || getPrefCell();
   if(!isMatrixLike(mat)) return false;
   el.className='mat';
   el.style.setProperty('--cell', cell+'px');
   el.style.display='grid';
-  el.style.gridTemplateColumns=`repeat(${mat[0].length}, var(--cell))`;
+  const cols = mat[0].length;
+  el.style.gridTemplateColumns=`repeat(${cols}, var(--cell))`;
+  el.dataset.cols = String(cols);
   el.innerHTML='';
   for(let i=0;i<mat.length;i++){
     for(let j=0;j<mat[i].length;j++){
@@ -258,7 +269,26 @@ async function render(){
   const totalPages = Math.max(1, Math.ceil(items.length / 10));
   const page = Math.min(currentPage, totalPages);
   const start = (page-1)*10, end = start + 10;
-  items.slice(start, end).forEach(it=> root.appendChild(renderCaseRow(it)));
+  // まずカードを作ってDOMに追加
+  const cards = items.slice(start, end).map(it=> renderCaseRow(it));
+  cards.forEach(card=> root.appendChild(card));
+  // 各カードの3カラム中で最大列数を拾ってセルサイズを計算して適用
+  requestAnimationFrame(()=>{
+    cards.forEach(card=>{
+      const cols = [...card.querySelectorAll('.case-col-body .mat')];
+      if(!cols.length) return;
+      // カラムボディの幅（いちばん狭いもの）を採用
+      const bodies = [...card.querySelectorAll('.case-col-body')];
+      const colW = Math.max(1, Math.min(...bodies.map(b=> b.clientWidth||0)));
+      // 入力・出力・実出力の最大列数
+  const maxCols = Math.max(1, ...cols.map(m=> parseInt(m.dataset.cols||'0', 10) || 0));
+      // 自動: floor(colW / maxCols), 上限12、さらにユーザの好み上限
+      const pref = getPrefCell();
+      const autoPx = Math.floor(colW / Math.max(1, maxCols));
+      const px = Math.max(1, Math.min(12, autoPx, pref));
+      cols.forEach(m=> m.style.setProperty('--cell', px+'px'));
+    });
+  });
   buildPager(document.getElementById('pagerTop'), page, totalPages);
   buildPager(document.getElementById('pagerBottom'), page, totalPages);
   LAST_MTIME = data.mtime || 0;
@@ -288,6 +318,16 @@ async function poll(){
   document.getElementById('sizeBtns').onclick=(e)=>{
     const v=e.target.closest('button')?.dataset.size; if(!v) return; setCellKey(v); render();
   };
+  const input = document.getElementById('cellPxInput');
+  const saved = localStorage.getItem('cellPxManual');
+  if(saved!=null){ const n=parseInt(saved,10); if(Number.isFinite(n) && n>0) input.value=String(n); }
+  input.addEventListener('change', ()=>{
+    const n = parseInt(input.value,10);
+    if(Number.isFinite(n) && n>0){ localStorage.setItem('cellPxManual', String(n)); }
+    else{ localStorage.removeItem('cellPxManual'); }
+    render();
+  });
+  let t; window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(()=> render(), 150); });
   document.addEventListener('keydown', (e)=>{
     if((e.key==='r' || e.key==='R') && !e.ctrlKey && !e.metaKey && !e.altKey){
       const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';

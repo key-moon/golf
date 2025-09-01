@@ -4,34 +4,25 @@
 <div id="root" data-task-id="{{ task_id }}">
   <div style="display:flex; gap: 16px; align-items: flex-start;">
     <div style="flex:1 1 50%; min-width: 0;">
-      <h2 id="title">task{{ '%03d'|format(task_id) }}</h2>
-      <div id="meta" style="margin:-8px 0 12px 0; font-size: 0.9em; color: var(--muted-color);"></div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
+        <h2 id="title" style="margin:0">task{{ '%03d'|format(task_id) }}</h2>
+        <button id="btnInit" class="secondary btn-slim" title="Initialize code for this task">Init</button>
+      </div>
+      <div id="meta" style="margin:-4px 0 12px 0; font-size: 0.9em; color: var(--muted-color);"></div>
       <section>
-        <h3>Overview</h3>
-        <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px">
-          <button id="btnInit" class="secondary btn-slim">Init</button>
-        </div>
+        <h4 style="margin: 8px 0 6px 0">Overview</h4>
         <div style="margin:6px 0 10px 0">
           <strong>Tags</strong><br/>
           <div id="tagEditor" style="display:flex; gap:6px; flex-wrap:wrap"></div>
         </div>
-        <!-- preview removed per request -->
-        <div style="display:flex; gap:8px; align-items:center; margin:8px 0">
-          <a href="/tasks/{{task_id}}/cases" class="btn-slim">Open all cases »</a>
-          <div class="seg" id="sizeBtns">
-            <button data-size="S" class="secondary btn-slim">S</button>
-            <button data-size="M" class="secondary btn-slim">M</button>
-            <button data-size="L" class="secondary btn-slim">L</button>
-          </div>
-        </div>
-        <div id="cases" class="cases"></div>
+  <!-- preview removed per request -->
       </section>
     </div>
     <div style="flex:1 1 50%; min-width: 0;">
       <section>
-        <h3>Score Progress</h3>
+        <h4 style="margin: 8px 0 6px 0">Score Progress</h4>
         <div id="chartWrap" style="position:relative">
-          <canvas id="chart" height="360" style="width:100%; min-width: 800px;"></canvas>
+          <canvas id="chart" height="300" style="width:100%; min-width: 800px;"></canvas>
           <div id="tooltip" class="tooltip" style="display:none"></div>
           <canvas id="overlay" style="position:absolute; inset:0; pointer-events:none"></canvas>
         </div>
@@ -39,6 +30,18 @@
       </section>
     </div>
   </div>
+  <!-- Full-width Cases section below the two-column layout -->
+  <section>
+    <div style="display:flex; gap:8px; align-items:center; margin:8px 0; flex-wrap:wrap">
+      <a href="/tasks/{{task_id}}/cases" class="btn-slim">Open all cases »</a>
+      <div class="seg" id="sizeBtns">
+        <button data-size="S" class="secondary btn-slim">S</button>
+        <button data-size="M" class="secondary btn-slim">M</button>
+        <button data-size="L" class="secondary btn-slim">L</button>
+      </div>
+    </div>
+    <div id="cases" class="cases"></div>
+  </section>
 </div>
 
 <style>
@@ -52,22 +55,31 @@
 
 <script>
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
-function drawMat(el, mat){
-  if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])) return;
-  const sz = (localStorage.getItem('gridSize')||'L').toUpperCase(); const cell = sz==='S'?5:(sz==='M'?7:10);
-  el.className='mat'; el.style.setProperty('--cell', cell+'px');
-  el.innerHTML='';
+function computeAutoCellPx(containerWidth, maxCols){
+  if(!Number.isFinite(containerWidth) || containerWidth<=0 || !Number.isFinite(maxCols) || maxCols<=0) return 12;
+  // Consider .mat gap (1px) between cells and .cell border (1px on each side)
+  const gap = 1;      // from base.css: .mat { gap:1px }
+  const border = 1;   // from base.css: .mat .cell { border:1px }
+  const overhead = Math.max(0, (maxCols - 1) * gap + maxCols * 2 * border);
+  const avail = Math.max(1, containerWidth - overhead);
+  return Math.floor(avail / maxCols);
+}
+function pickCellPx(containerWidth, maxCols){
+  const autoPx = computeAutoCellPx(containerWidth, maxCols);
+  // 最大は12。S/M/Lは列数切替に使うためセルは自動サイズのみ。
+  return Math.max(1, Math.min(12, autoPx));
+}
+function drawMatWithCell(mat, cellPx){
+  if(!mat || !Array.isArray(mat) || !mat.length || !Array.isArray(mat[0])) return document.createTextNode('');
   const r = mat.length, c = mat[0].length;
+  const el = document.createElement('div'); el.className='mat'; el.style.setProperty('--cell', cellPx+'px');
   el.style.gridTemplateColumns = `repeat(${c}, var(--cell))`;
   for(let i=0;i<r;i++){
     for(let j=0;j<c;j++){
-      const d=document.createElement('div');
-      d.className='cell';
-      const v = mat[i][j];
-      d.style.background = palette[v==null?0:v];
-      el.appendChild(d);
+      const d=document.createElement('div'); d.className='cell'; d.style.background = palette[mat[i][j]??0]; el.appendChild(d);
     }
   }
+  return el;
 }
 function fmtLen(len,best){ if(len==null||best==null) return '';
   const diff = len-best; return `${len} (${best}${diff>=0?'+':''}${diff})`; }
@@ -153,6 +165,15 @@ function renderTagEditor(root, all, current, onChange){
   }
   // cases (Overview 内): train/test のみ
   const root = document.getElementById('cases');
+  // responsive grid container controlled by S/M/L (S=4, M=3, L=2)
+  root.style.display='grid';
+  root.style.gap='12px';
+  const applyCols=()=>{
+    const mode=(localStorage.getItem('gridCols')||'L').toUpperCase();
+    const n = mode==='S'?4:(mode==='M'?3:2);
+    root.style.gridTemplateColumns = `repeat(${n}, minmax(0, 1fr))`;
+  };
+  applyCols();
   const addCase = (title, pair)=>{
     const box = document.createElement('div'); box.className='casebox';
     const head = document.createElement('div'); head.textContent = title; head.className='head';
@@ -165,15 +186,40 @@ function renderTagEditor(root, all, current, onChange){
     head.appendChild(copyGroup);
     box.appendChild(head);
     const i = document.createElement('div');
-    const isz = matSize(pair?.input); const osz = matSize(pair?.output);
-    i.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.input); return el; })());
-    i.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${isz.h} x ${isz.w}`; return info; })());
-    box.appendChild(i);
     const o = document.createElement('div');
-    o.appendChild((()=>{ const el=document.createElement('div'); drawMat(el, pair?.output); return el; })());
-    o.appendChild((()=>{ const info=document.createElement('div'); info.className='muted'; info.style.fontSize='12px'; info.textContent=`${osz.h} x ${osz.w}`; return info; })());
-    box.appendChild(o);
+    const isz = matSize(pair?.input); const osz = matSize(pair?.output);
+    const isize = document.createElement('div'); isize.className='muted'; isize.style.fontSize='12px'; isize.textContent=`${isz.h} x ${isz.w}`;
+    const osize = document.createElement('div'); osize.className='muted'; osize.style.fontSize='12px'; osize.textContent=`${osz.h} x ${osz.w}`;
+    const inPlaceholder=document.createElement('div'); const outPlaceholder=document.createElement('div');
+    i.appendChild(inPlaceholder); i.appendChild(isize);
+    o.appendChild(outPlaceholder); o.appendChild(osize);
+    box.appendChild(i); box.appendChild(o);
     root.appendChild(box);
+    requestAnimationFrame(()=>{
+      const colW = Math.max(1, Math.min(i.clientWidth||0, o.clientWidth||0));
+      const maxCols = Math.max(isz.w||0, osz.w||0) || 1;
+      const cellPx = pickCellPx(colW, maxCols);
+      i.replaceChild(drawMatWithCell(pair?.input, cellPx), inPlaceholder);
+      o.replaceChild(drawMatWithCell(pair?.output, cellPx), outPlaceholder);
+    });
+
+    // クリックでモーダル拡大（ボタンは除外）
+    box.addEventListener('click', (e)=>{
+      if(e.target.closest('button') || e.target.closest('.seg')) return;
+      const frag = document.createDocumentFragment();
+      const cont = document.createElement('div');
+      cont.style.display='grid'; cont.style.gridTemplateColumns='1fr 1fr'; cont.style.gap='16px';
+      const makePane=(label, mat)=>{
+        const wrap=document.createElement('div');
+        const h=document.createElement('div'); h.className='muted'; h.style.fontSize='12px'; h.textContent=label; wrap.appendChild(h);
+        wrap.appendChild(drawMatWithCell(mat, 13));
+        return wrap;
+      };
+      cont.appendChild(makePane('input', pair?.input));
+      cont.appendChild(makePane('output', pair?.output));
+      frag.appendChild(cont);
+      window.showModal(frag);
+    });
   };
   (taskData.train||[]).forEach((t,i)=>addCase(`train_${i}`, t));
   (taskData.test||[]).forEach((t,i)=>addCase(`test_${i}`, t));
@@ -222,12 +268,15 @@ function renderTagEditor(root, all, current, onChange){
   drawChart();
 })();
 
-// size buttons
+// size buttons (S/M/L = 列数切替)
 document.addEventListener('DOMContentLoaded', ()=>{
   const seg = document.getElementById('sizeBtns'); if(!seg) return;
   const applyActive=(v)=>{ [...seg.querySelectorAll('button')].forEach(b=> b.classList.toggle('contrast', b.dataset.size===v)); };
-  const cur=(localStorage.getItem('gridSize')||'L').toUpperCase(); applyActive(cur);
-  seg.addEventListener('click', (e)=>{ const v=e.target.closest('button')?.dataset.size; if(!v) return; localStorage.setItem('gridSize', v); applyActive(v); document.getElementById('cases').innerHTML=''; location.reload(); });
+  const cur=(localStorage.getItem('gridCols')||'L').toUpperCase(); applyActive(cur);
+  seg.addEventListener('click', (e)=>{ const v=e.target.closest('button')?.dataset.size; if(!v) return; localStorage.setItem('gridCols', v); applyActive(v); location.reload(); });
+
+  // resizeで再計算（モーダル表示中は抑制）
+  let t; window.addEventListener('resize', ()=>{ if(window.__modalOpen) return; if(window.__modalSuppressReloadUntil && Date.now() < window.__modalSuppressReloadUntil) return; clearTimeout(t); t=setTimeout(()=> location.reload(), 150); });
 });
 
 document.getElementById('btnInit').addEventListener('click', async function(){

@@ -14,7 +14,7 @@ import sys
 import numpy as np
 
 import compress
-from task_viz import cmap, norm
+from viz import cmap, norm
 from strip import ZLIB_GOLF_BANNER, og_strip, strip_for_plain, strip_for_zlib
 from utils import WORKSPACE_DIR, Case, Task, get_code_paths, get_task, openable_uri, parse_range_str, viz_deflate_url, viz_plane_url
 import warnings
