@@ -215,7 +215,7 @@ def get_content_summary(content: bytes) -> str:
   code, deflate_payload = get_uncompressed_content(content)
   if deflate_payload:
     res = ""
-    res += f"# before compress: {len(content)} bytes\n"
+    res += f"# before compress: {len(code)} bytes\n"
     res += code
     return res
   else:
