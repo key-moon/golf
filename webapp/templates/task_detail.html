@@ -225,10 +225,11 @@ function renderTagViewer(root, current){
   const meta = document.getElementById('meta');
   const baseHtml = baseShort ? `<a href="#" class="open-code" data-path="${encodeURIComponent(baseFull)}" title="${baseFull}">${baseShort}</a>` : '-';
   meta.innerHTML = `length: <strong>${fmtLen(len,best) || '-'}</strong> &nbsp;•&nbsp; Base: ${baseHtml} &nbsp;•&nbsp; Compressor: ${compressor||'-'} &nbsp;•&nbsp; Message: ${message||'-'}`;
-  meta.addEventListener('click', (e)=>{
+  meta.addEventListener('click', async (e)=>{
     const a = e.target.closest('a.open-code'); if(!a) return; e.preventDefault();
     const path = decodeURIComponent(a.dataset.path||''); if(!path) return;
-    fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }).catch(()=>{});
+  try{ await fetch('/api/open_and_update_banner', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }); }
+    catch(_){}
   });
 
   function matSize(mat){ const h = (Array.isArray(mat)&&mat.length)||0; const w = (h && Array.isArray(mat[0]) && mat[0].length)||0; return {h,w}; }

@@ -238,9 +238,16 @@ async function render(){
     table.appendChild(tb);
     list.appendChild(table);
     // delegate click for open-code and tag-link
-    list.onclick = (e)=>{
+    list.onclick = async (e)=>{
       const a = e.target.closest('a.open-code');
-      if(a){ e.preventDefault(); const path = decodeURIComponent(a.dataset.path||''); if(path){ fetch('/api/open_file', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }).catch(()=>{}); } return; }
+      if(a){
+        e.preventDefault();
+        const path = decodeURIComponent(a.dataset.path||'');
+        if(path){
+          try{ await fetch('/api/open_and_update_banner', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }); }catch(_){ }
+        }
+        return;
+      }
       const chip = e.target.closest('button.tag-link');
       if(chip){ const enc = chip.dataset.tagEnc; const tag = enc ? decodeURIComponent(enc) : chip.dataset.tag; if(tag){ window.openTasksWithTag(tag); } }
     };
