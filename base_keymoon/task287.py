@@ -7,4 +7,12 @@
 # lambda g:(a:=sum(g,[]))and[[[v,a.pop()][v==4]for v in s]for s in g]
 # f p(g):return(b:=[(a:=g.pop())+[[v,a.pop()][v==4]for v in s]for s in g])+b[::-1]
 # ========================= 56 =========================
-lambda g:(a:=sum(g,[]))+[[[v,a.pop()][v==4]for v in s]for s in g]
+p=lambda g:[(t:=g.pop()*1)and[[a,t.pop()][a==4]for a in s]for s in g*1]
+# ↓左右反転だと1ケースだけ中心軸が残る 色は違うからズルできない
+# lambda g:[[[a,b][a==4]for a,b in zip(s,s[::-1])]for s in g]
+# ↓回転は 2 ケース残る
+# lambda g:[[[a,t.pop()][a==4]for a in s]for*t,s in zip(*g,g)]
+# lambda g:[[[*{a,b,t.pop()}-{4}][0]for a,b in zip(t,s)]for*t,s in zip(*g,*g,g)]
+# lambda g:[[[*{a,t.pop(0),t.pop()}-{4}][0]for a in s]for*t,s in zip(*g,*g,g)]
+# lambda g:[[[a,t.pop()][a==4]for a in s]for*t,s in zip(*g,g)]
+# lambda g:[[min(*a,key=b"4".find)for a in zip(s,s[::-1])]for s in g]
