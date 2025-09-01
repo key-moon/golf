@@ -1,1 +1,1 @@
-def p(g):k=1+g.index(min(g,key=set));return[s[::-k]for s in g[::k]]
+p=lambda g:[r*0!=0and p(r)[::-1]or r for r in g if g!=(g:=r)][::2]
