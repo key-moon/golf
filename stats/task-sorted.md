@@ -279,7 +279,7 @@
 | [267](/vis/task267.png) | [base_keymoon](/base_keymoon/task267.py) | raw/raw | [54](/dist/task267.py) (+8) | 46 🔴 | [vis-many](/vis_many/task267.png) | not worth compress |
 | [268](/vis/task268.png) | [base_yu](/base_yu/task268.py) | raw/zlib-zopfli | [295](/dist/task268.py) (+45) | 250 🔴 | [vis-many](/vis_many/task268.png) |  |
 | [269](/vis/task269.png) | [base_keymoon](/base_keymoon/task269.py) | raw/raw | [76](/dist/task269.py) (+13) | 63 🔴 | [vis-many](/vis_many/task269.png) | not worth compress |
-| [270](/vis/task270.png) | [base_yu](/base_yu/task270.py) | raw/raw | [144](/dist/task270.py) (+27) | 117 🔴 | [vis-many](/vis_many/task270.png) | not worth compress |
+| [270](/vis/task270.png) | [base_yu](/base_yu/task270.py) | raw/raw | [117](/dist/task270.py) (0) | 117  | [vis-many](/vis_many/task270.png) | not worth compress |
 | [271](/vis/task271.png) | [base_keymoon](/base_keymoon/task271.py) | raw/raw | [107](/dist/task271.py) (+21) | 86 🔴 | [vis-many](/vis_many/task271.png) | not worth compress |
 | [272](/vis/task272.png) | [base_yu](/base_yu/task272.py) | raw/raw | [109](/dist/task272.py) (+20) | 89 🔴 | [vis-many](/vis_many/task272.png) | not worth compress |
 | [273](/vis/task273.png) | [base_code](/base_code/task273.py) | raw/zlib-zopfli | [200](/dist/task273.py) (+84) | 116 🔴 | [vis-many](/vis_many/task273.png) | encode:+2 |
@@ -300,7 +300,7 @@
 | [288](/vis/task288.png) | [base_yu](/base_yu/task288.py) | forplain/raw | [120](/dist/task288.py) (+19) | 101 🔴 | [vis-many](/vis_many/task288.png) | not worth compress |
 | [289](/vis/task289.png) | [base_yu](/base_yu/task289.py) | raw/raw | [76](/dist/task289.py) (+13) | 63 🔴 | [vis-many](/vis_many/task289.png) | not worth compress |
 | [290](/vis/task290.png) | [base_yu](/base_yu/task290.py) | raw/raw | [69](/dist/task290.py) (+2) | 67 🔴 | [vis-many](/vis_many/task290.png) | not worth compress |
-| [291](/vis/task291.png) | [base_yu](/base_yu/task291.py) | raw/raw | [69](/dist/task291.py) (+8) | 61 🔴 | [vis-many](/vis_many/task291.png) | not worth compress |
+| [291](/vis/task291.png) | [dist](/dist/task291.py) | previous | [69](/dist/task291.py) (+8) | 61 🔴 | [vis-many](/vis_many/task291.png) | ⚠️ regression? |
 | [292](/vis/task292.png) | [base_yu](/base_yu/task292.py) | raw/raw | [56](/dist/task292.py) (0) | 56  | [vis-many](/vis_many/task292.png) | not worth compress |
 | [293](/vis/task293.png) | [base_yu](/base_yu/task293.py) | raw/raw | [60](/dist/task293.py) (+1) | 59 🔴 | [vis-many](/vis_many/task293.png) | not worth compress |
 | [294](/vis/task294.png) | [base_keymoon](/base_keymoon/task294.py) | raw/raw | [70](/dist/task294.py) (0) | 70  | [vis-many](/vis_many/task294.png) | not worth compress |
@@ -340,7 +340,7 @@
 | [328](/vis/task328.png) | [base_code](/base_code/task328.py) | raw/zlib-zopfli | [248](/dist/task328.py) (+73) | 175 🔴 | [vis-many](/vis_many/task328.png) | encode:+2 |
 | [329](/vis/task329.png) | [base_yu](/base_yu/task329.py) | raw/raw | [54](/dist/task329.py) (0) | 54  | [vis-many](/vis_many/task329.png) | not worth compress |
 | [330](/vis/task330.png) | [base_code](/base_code/task330.py) | raw/zlib-zopfli | [257](/dist/task330.py) (+120) | 137 🔴 | [vis-many](/vis_many/task330.png) |  |
-| [331](/vis/task331.png) | [base_yu](/base_yu/task331.py) | raw/raw | [103](/dist/task331.py) (+20) | 83 🔴 | [vis-many](/vis_many/task331.png) | not worth compress |
+| [331](/vis/task331.png) | [base_yu](/base_yu/task331.py) | raw/raw | [87](/dist/task331.py) (+4) | 83 🔴 | [vis-many](/vis_many/task331.png) | not worth compress |
 | [332](/vis/task332.png) | [base_keymoon](/base_keymoon/task332.py) | raw/raw | [59](/dist/task332.py) (+1) | 58 🔴 | [vis-many](/vis_many/task332.png) | not worth compress |
 | [333](/vis/task333.png) | [base_yu](/base_yu/task333.py) | raw/raw | [102](/dist/task333.py) (+10) | 92 🔴 | [vis-many](/vis_many/task333.png) | not worth compress |
 | [334](/vis/task334.png) | [base_keymoon](/base_keymoon/task334.py) | raw/raw | [73](/dist/task334.py) (+7) | 66 🔴 | [vis-many](/vis_many/task334.png) | not worth compress |

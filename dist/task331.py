@@ -1,1 +1,1 @@
-p=lambda g,c=4:c and p([[[y,6,8,7,2][(x==1)*c]for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
+p=lambda g,c=-3:c*g or[*zip(*eval(str(p(g,c+1)).replace("1, 0","1,"+"6278"[c])))][::-1]
