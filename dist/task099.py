@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("¥RË› ]_¿D&$£[äf&ÏŸ`X ‹âD;Õ¿¯ –vİz÷­6/èÓš°n8˜1%Å…,şáè;ã™†—È$Iàõù‚ëà«\mRçcÙDòH±VŠFz`_Æ\9ZÚ÷½ÿŒ °B[”¨±)Á!‹ÛIi@‚í×ÛÖ˜èŒÃ©ÿôiPC‰‰+¦pŠø\±*b˜yÉJœ#>k¦wì§h}W9=æ[¸Ğ+N‡–zÏ”q¼pÊi¨ÅEŠ«Ü[¼q°­{Ï‘b8©¾7nÇç¦ó¡ı'÷•¿ÿ;÷ı§hEKªWŞtşçœ=vİo—d=ì¬ƒÇvÕ=Üsw¶İQq´«ĞdÉ±á¨ƒOTÇÜÀtƒ,Ù·:ÅãI«CNXÜøµ¥PÔ|¥ZLRÌ1cûçÔòkT›À×Œ?¿êß",'L1'),-9))
+def p(g):w=1-any(g[1]);u=g[w:];return(len(g)<6)*(g[:w]+[[v or any(t)*max(sum(g,[]))for*t,v in zip(*u,s)]for s in u])or p(g[:5])+p(g[5:])
