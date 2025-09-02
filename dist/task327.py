@@ -1,1 +1,1 @@
-p=lambda g,R=range(6):[[max(3>i-k>-1<j-k<3and g[i-k][j-k]for k in R)for j in R]for i in R]
+p=lambda g,S=(a:=[0]*3)*2:[S:=[*map(max,zip(s+a,[0]+S))]for s in g+[a]*3]
