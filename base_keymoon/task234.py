@@ -1,4 +1,4 @@
-# best: 118(jailctf merger) / others: 120(xsot ovs att joking mewheni), 120(joking MeWhenI), 131(joking), 143(mukundan), 169(MasukenSamba)
+# best: 118(jailctf merger) / others: 120(xsot ovs att joking mewheni), 143(mukundan), 169(MasukenSamba), 184(kg583), 246(cg)
 # ======================================================= 118 ========================================================
 # TODO: gcdシフト再帰
 # lambda g,c=-43,s=[]:g*c or p([*zip(*([r for r in g if(max(r)not in s and(s:=[*s,*r])and r.count(max(r))==1)-1]+g[:1]*9)[:len(g)])][::-1],c+1)
