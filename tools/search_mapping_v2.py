@@ -704,10 +704,12 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
     return None
 
 # Example
-search_mapping({
-    (0,0,0): 0,
-    (0,5,5): 5,
-    (6,0,6): 6,
-    (6,5,6): 5,
-    (6,5,5): 6,
-}, max_bytes=9, var_name_lens=1)
+
+mapping = {}
+for x in (0,2,3):
+    for y in (0,2,3):
+        if (x==3)*3+(y==2)*2 == 5:
+            continue
+        mapping[(x,y)]=(x==3)*3+(y==2)*2
+
+search_mapping(mapping, max_bytes=9, var_name_lens=1)
