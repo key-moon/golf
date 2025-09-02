@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("MLC–Ä\0]W.2ž¶;:G½Ø6/kõýUM‡ðÓøzÀ’±äzC–ìç©CÙ “ˆž¿ã‹ë@ù±¹¾dÏ¥AY‹ê'‹³œÀf2[`é cwjs$yž<¨IÄ=÷}8ôa\ÃïüSn·ZÜÏßÖOÉu`ÿT)cÇ«íƒ³üve‡ÃGxëñÄ¡ÓãmÀË4‹µ4‹}¨[",'L1'),-9))
+p=lambda g,R=range(11):[[(g[i][j]==5)*5or sum((g[i//4+k][j//4+l]==4)*g[i%4+k][j%4+l]for k in(0,4,8)for l in(0,4,8))for j in R]for i in R]
