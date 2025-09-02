@@ -1,6 +1,6 @@
-# best: 70(luke/sisyphus/Seek, luke) / others: 72(4atj), 72(ovs), 72(att), 73(mukundan), 78(Seek64)
+# best: 68(jailctf merger) / others: 70(4atj sisyphus luke Seek), 72(xsot ovs att joking mewheni), 73(mukundan), 81(natte), 88(kabutack)
 # lambda g:[*zip(*[[(9-sorted(zip(*g)).index(r))*(0<c)for c in r]for r in zip(*g)])]
-# ================================ 70 ================================
+# =============================== 68 ===============================
 # lambda g:[*zip(*[[(9-sorted(zip(*g)).index(r))*c/5for c in r]for r in zip(*g)])]
 # lambda g:[[(9-sorted(zip(*g)).index(t[1:]))*t[0]/5for t in zip(r,*g)]for r in g]
 # lambda g:[[(9-sorted(zip(*g)).index(t))*c/5for c,t in zip(r,zip(*g))]for r in g]
