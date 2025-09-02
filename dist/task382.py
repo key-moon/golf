@@ -1,11 +1,1 @@
-def p(g):
- k=1
- for _ in[0]*4:
-  if g[0].count(8)>k:
-   d,k=0,99
-   for s in g[1:]:
-    d+=s[0]-s[-1]>>1
-    if d<0:s[:d]=g[0][-d:]
-    else:s[d:]=g[0]
-  *g,=map(list,zip(*g[::-1]))
- return g
+p=lambda g,c=-11,k=2:c*g or p(exec("d=0\nfor s in g:d+=s[0]>>1;s[d:]=g[0]"*(f:=8in g[0]and max(g)[0]==k))or[*map(list,zip(*g[::1|c%3%-2]))],c+1,k+f)
