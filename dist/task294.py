@@ -1,1 +1,1 @@
-import re;p=lambda g:eval(re.sub(f"(?<=5.{(C:='.'*-~len(g[0])*3)})5(?=.{C}5)",'2',str(g)))
+import re;p=lambda g:eval(re.sub("(?<=5.{34})5(?=.{34}5)",'2',str(g)))

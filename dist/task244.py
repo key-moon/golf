@@ -1,1 +1,1 @@
-p=lambda g:[r*0!=0and p(r)[::-1]or r for r in g if g!=(g:=r)][::2]
+p=lambda g,c=2:g*0!=0and[p(g:=r,-2)for r in g if g!=r][::c]or g
