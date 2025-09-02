@@ -803,12 +803,8 @@ def check_template(template: str, mapping: dict[int, int]):
 #       式のキャッシュ?
 if __name__ == "__main__":
     # mapping = { 20:1, 25:4, 30:2 }
-    mapping = {
-        3+ 0:8, 6+ 0:8,
-        3+ 8:8, 6+ 8:8,
-        3+16:8, 6+16:8,
-    }
-    max_length = 6
+    mapping = {0: 0, 1: 3, 2: 3, 3: 0}
+    max_length = 9
     mod_tolerance = 3
     DO_CLAMP = False
 
