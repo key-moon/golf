@@ -1,9 +1,1 @@
-R=range
-def p(g):
- c=[next(filter(int,s))for s in g if any(s)][-1]
- for I in R(400):
-  for k in R(i:=I%20,0,-1):
-   if c==g[i][j:=I//20]!=g[k][j]>0:
-    for s in g[k+1:20]:s[j]=g[i][j]
-    break
- return g
+p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s[i:]}>{c})for i in range(20)]for s in zip(*g)])]
