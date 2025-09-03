@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 928586
+Score: 928665
 
 Best Score: 958580
 
@@ -359,7 +359,7 @@ Best Score: 958580
 | [253](/vis/task253.png) | [base_notebooks](/base_notebooks/task253_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-zopfli | [239](/dist/task253.py) (+91) | 148 🔴 | [vis-many](/vis_many/task253.png) | encode:+1 |
 | [102](/vis/task102.png) | [base_rearc](/base_rearc/task102.py) | forcomp-t/zlib-zopfli | [874](/dist/task102.py) (+724) | 150 🔴 | [vis-many](/vis_many/task102.png) | encode:+3 |
 | [260](/vis/task260.png) | [base_yu](/base_yu/task260.py) | forplain/raw | [191](/dist/task260.py) (+41) | 150 🔴 | [vis-many](/vis_many/task260.png) | not worth compress |
-| [064](/vis/task064.png) | [base_yu](/base_yu/task064.py) | forcomp-t/zlib-zopfli | [246](/dist/task064.py) (+94) | 152 🔴 | [vis-many](/vis_many/task064.png) |  |
+| [064](/vis/task064.png) | [base_yu](/base_yu/task064.py) | forplain/raw | [167](/dist/task064.py) (+15) | 152 🔴 | [vis-many](/vis_many/task064.png) | not worth compress |
 | [156](/vis/task156.png) | [base_code](/base_code/task156.py) | raw/zlib-zopfli | [368](/dist/task156.py) (+216) | 152 🔴 | [vis-many](/vis_many/task156.png) |  |
 | [069](/vis/task069.png) | [base_notebooks](/base_notebooks/task069_20250816-174044Z-code-golf-ensemble-local-score-391-400-dsl-seshuraju.py) | raw/zlib-zopfli | [222](/dist/task069.py) (+69) | 153 🔴 | [vis-many](/vis_many/task069.png) |  |
 | [059](/vis/task059.png) | [base_notebooks](/base_notebooks/task059_20250804-033651Z-solved-127-problems-local-pleaseupvote-dao-sy-duy-minh.py) | forcomp-s/zlib-zopfli | [277](/dist/task059.py) (+121) | 156 🔴 | [vis-many](/vis_many/task059.png) |  |
