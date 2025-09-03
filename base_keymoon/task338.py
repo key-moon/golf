@@ -1,6 +1,5 @@
-# best: 99(luke/sisyphus/Seek, 4atj, sisyphus) / others: 101(mukundan), 104(dbdr), 113(joking+MWI), 113(joking/MWI), 113(joking)
+# best: 64(jailctf merger) / others: 65(4atj sisyphus luke Seek), 101(mukundan), 104(xsot ovs att joking mewheni), 104(dbdr), 158(MasukenSamba)
 # lambda g,R=[0]*99,S=[0]*99:eval(str([S:=[(c<1)*(D&3)+7*(c>0==C==D)for c,C,D in zip(r,R,S)if(R:=r)]for r in g]).replace(*"70"))
-# ============================= 64 =============================
 
 # C c D
 # == 縁への侵入 == 侵入時点で色をつける 脱出前に色を消す
@@ -37,4 +36,5 @@
 # [[3*(0<D),1-2*(0!=D)][1<c]
 # [[1,-1],[0,1,0]][1<c][D]
 # ?: 0.5
-p=lambda g:[(D:=0)or[int(D:=[3*(0<D),.5-(0!=D)][1<c])for c in r]for r in g]
+# ============================= 64 =============================
+p=lambda g,D=0:[[int(D:=[3*(0<D),.5-(0!=D)][1<c])for c in r]for r in g]

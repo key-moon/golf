@@ -50,7 +50,7 @@ def build_banner_lines_for_task(task_id: int) -> list[str]:
     return lines
 
 _PAT_BEST = re.compile(r"^\s*#\s*best:\s*", re.IGNORECASE)
-_PAT_EQ = re.compile(r"^\s*#\s*=+")
+_PAT_EQ = re.compile(r"^\s*#\s*=+ \d+ =+")
 
 def apply_banner_update(text: str, header_lines: list[str]) -> tuple[str, bool]:
     """Replace all banner lines in text and optionally prepend header if missing.
