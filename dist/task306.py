@@ -1,1 +1,1 @@
-p=lambda g:[[max((s+[0]+t)[j%10::10])for j in range(len(s))]for s,t in zip(g,g[10:]+[[0]]+g)]
+p=lambda g:g*0!=0and[max(*map(p,g[i%10::10]*2))for i in range(len(g))]or g

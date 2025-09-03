@@ -1,1 +1,1 @@
-p=lambda g,R=range(21):[[g[0][k:=max(i!=j,abs(j-i)//(min(i,j)+2)*2)]|g[k][0]for j in R]for i in R]
+p=lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%max(sum(g,[]))for c in R]for r in R]
