@@ -173,7 +173,8 @@
       "1px"
     ],
     "49": [
-      "color-freq"
+      "color-freq",
+      "crop"
     ],
     "50": [
       "connect"

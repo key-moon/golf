@@ -1,8 +1,14 @@
-# best: 91(mukundan, 4atj sisyphus luke Seek, luke/sisyphus/Seek) / others: 99(luke), 106(joking+MWI), 106(joking/MWI), 106(joking), 106(joking MeWhenI)
-# =========================================== 91 ==========================================
-# p=lambda g:[[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)]
-# p=lambda g,c=-3:c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)],c+1)
-p=lambda g,c=-3,R=range(30):c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in R]for i in R],c+1)
+# best: 79(4atj sisyphus luke Seek) / others: 80(jailctf merger), 81(mukundan), 81(xsot ovs att joking mewheni), 107(natte), 110(duckyluuk)
+# ===================================== 79 ====================================
+# lambda g:[[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)]
+# lambda g,c=-3:c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)],c+1)
+# lambda g,c=-3,R=range(30):c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in R]for i in R],c+1)
+
+# lambda*G:[*{*G}-{9},-1][0]if G[0]*0==0else[*map(p,*sum([[g,g[:2]+g[::-1]]for g in G],[]))]
+# lambda*G:[*{*G}-{9},-1][0]if G[0]*0==0else[*map(p,*sum([[g,g[:2]+g[::-1]]for g in G],[]))] <- failed
+
+p=lambda g,R=range(30):[[[*{g[i][j],g[j][i],[*g[i],9][-j],(g[:2]+g[::-1])[i][j]}-{9},-1][0]for j in R]for i in R]
+
 
 # def p(g):
 #  for I in range(30*30*4):

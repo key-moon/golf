@@ -12,6 +12,7 @@ import inspect
 import sys
 
 import numpy as np
+from tqdm import tqdm
 
 import compress
 from viz import cmap, norm, printmat
@@ -72,7 +73,7 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
 
   errors = set()
   outputs: list[Output] = []
-  for casenum, case in enumerate(tests):
+  for casenum, case in enumerate(tqdm(tests)):
     example_copy = copy.deepcopy(case)
     try:
       # signal.setitimer(signal.ITIMER_REAL, 4)
@@ -143,10 +144,12 @@ if __name__ == "__main__":
   parser.add_argument("dirname", nargs="?", default="dist", help="Directory name containing code files")
   parser.add_argument("range_str", nargs="?", default="1-400", help="Range string for tasks")
   parser.add_argument("--strip", "-s", action="store_true", help="Only strip code and exit")
+  parser.add_argument("--knockout", "-k", type=int, default=-1, help="Maximum number of wrongs before stopping (default -1 = disabled)")
   args = parser.parse_args()
 
   dirname = args.dirname
   range_str = args.range_str
+  knockout = args.knockout
   r = parse_range_str(range_str)
   do_vis = len(r) < 10 and os.getlogin() != "keymoon"
 
@@ -156,7 +159,7 @@ if __name__ == "__main__":
     task = get_task(i)
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
-      res = check(code_path, task)
+      res = check(code_path, task, knockout)
       try:
         with open(code_path, "r") as f:
           orig_code = f.read().strip()
