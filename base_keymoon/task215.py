@@ -5,4 +5,4 @@
 # p=lambda g:[max((g:=[[]]*2+g)[2::3])for r in g]
 # p=lambda g:[max((g:=[r,[]]+g)[2::3])for r in g]
 # ================== 42 ==================
-p=lambda g:[max((g:=g+g[:1])[::-3])for r in g]
+p=lambda g:[max((g:=g[:2]+g)[2::3])for r in g]
