@@ -7,7 +7,9 @@
 # lambda*G:[*{*G}-{9},-1][0]if G[0]*0==0else[*map(p,*sum([[g,g[:2]+g[::-1]]for g in G],[]))]
 # lambda*G:[*{*G}-{9},-1][0]if G[0]*0==0else[*map(p,*sum([[g,g[:2]+g[::-1]]for g in G],[]))] <- failed
 
-p=lambda g,R=range(30):[[[*{g[i][j],g[j][i],[*g[i],9][-j],(g[:2]+g[::-1])[i][j]}-{9},-1][0]for j in R]for i in R]
+# lambda g,c=-9:c*g or[*zip(*[[[*{*s}-{9},9][0]for s in zip(r,r[:2]+r[::-1])]for r in p(g,c+1)])]
+# lambda g,c=-9:c*g or p([[[*{*s}-{9},9][0]for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
+p=lambda g,c=-9:c*g or p([[[*{*s}-{9},9][0]for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
 
 
 # def p(g):
