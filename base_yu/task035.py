@@ -1,5 +1,5 @@
-# best: 88(mukundan) / others: 90(4atj sisyphus luke Seek), 90(4atj), 94(kabutack), 96(joking+MWI), 96(joking/MWI)
-# ========================================= 88 =========================================
+# best: 86(4atj sisyphus luke Seek) / others: 87(xsot ovs att joking mewheni), 87(jailctf merger), 88(mukundan), 93(natte), 94(kabutack)
+# ======================================== 86 ========================================
 # lambda g,c=-3:c*g or p([(l:=s[0],1)and[[v,l or v][v==8 and ((l:=0) or 1)]for v in s]for s in zip(*g[::-1])],c+1)
 # lambda g,c=-3:c*g or p([(l:=0)or[[v,(1-l)*s[0]or v][l:=l or v==8]for v in s]for s in zip(*g[::-1])],c+1)
 # lambda g,c=-3:c*g or p([(l:=1)and[[l*s[0]or v,v][l:=l and v!=8]for v in s]for s in zip(*g[::-1])],c+1)
