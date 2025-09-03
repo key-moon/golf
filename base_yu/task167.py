@@ -10,7 +10,8 @@
 # lambda g:[[(69259503768>>i+j+len({*sum(g,[])})&1)*5for j in(0,4,8)]for i in b"000"]
 # lambda g:[[(69259503768>>i+j+len({*sum(g,[])})&1)*5for j in(0,4,8)]for i in b""]
 # lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in b"         "[i-3:i]]for i in(3,6,9)]
-p=lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in b"\x06\x02\x0b\x01\x0c\x01\x08\x01\x04"[i-3:i]]for i in(3,6,9)]
+# p=lambda g:[[(v>>len({*sum(g,[])})&1)*5for v in b"\x06\x02\x0b\x01\x0c\x01\x08\x01\x04"[i-3:i]]for i in(3,6,9)]
+p=lambda g:[[(v>>len({*str(g)})-4&1)*5for v in b"\x06\x02\x0b\x01\x0c\x01\x08\x01\x04"[i-3:i]]for i in(3,6,9)]
 
 
 
