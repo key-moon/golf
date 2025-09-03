@@ -231,6 +231,7 @@
       "recolor"
     ],
     "70": [
+      "fill-bound",
       "highlight"
     ],
     "71": [
@@ -697,7 +698,9 @@
     "250": [
       "gather"
     ],
-    "251": [],
+    "251": [
+      "fill-misc"
+    ],
     "252": [
       "diagonal"
     ],

@@ -1,7 +1,7 @@
-# best: 97(mukundan) / others: 100(joking+MWI), 100(joking/MWI), 101(joking), 104(luke/sisyphus/Seek), 104(Seek64)
+# best: 89(4atj sisyphus luke Seek) / others: 92(jailctf merger), 93(xsot ovs att joking mewheni), 97(mukundan), 112(biz), 142(Afordancja)
 # import re;lambda g,i=-9:g*i or eval(re.sub(rf"(?<=[^0].{{{len(g[0])*3-2}}}5, )"+"0, "*(a:=4+i//3),f"9{a-4},"*a,str(p(g,i+1))))
 # min(g)
-# ============================================== 97 =============================================
+# ========================================== 89 =========================================
 # eval("...,"*12)
 # [...for _ in r]
 
