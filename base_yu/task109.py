@@ -1,6 +1,7 @@
-# best: 90(natte) / others: 91(joking+MWI), 91(joking/MWI), 91(att), 91(joking MeWhenI), 92(4atj sisyphus luke Seek)
-# ========================================== 90 ==========================================
-# p=lambda g:(n:=len(g)//2)and[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]
-def p(g):
- n=len(g)//2
- return[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]
+# best: 81(4atj sisyphus luke Seek, jailctf merger) / others: 90(natte), 91(xsot ovs att joking mewheni), 93(nauti), 94(kabutack), 95(mukundan)
+# ====================================== 81 =====================================
+# lambda g:(n:=len(g)//2)and[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]
+# f p(g):;n=len(g)//2;return[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]
+# lambda g,c=-1:c*g or(a:=[*zip(*p([*zip(*g[:len(g)//2])],c+1))])+a[::-1] <- 色変えなし
+# lambda g,c=0:g*0!=0and(a:=[*map(p,g[:(i:=len(g)//2)],[g[i]]*9)])+a[::-1]or(g>0)*c
+p=lambda g,c=0:g and(c*-1*-1or(a:=[*map(p,g[:(i:=len(g)//2)],[g[i]]*9)])+a[::-1])
