@@ -1,1 +1,1 @@
-p=lambda g,R=range(10):[[g[i][j]and g[-(i>4)][-(j>4)]for j in R]for i in R]
+p=lambda g,h=[]:h*(0<g)if-1*h else[*map(p,g,(h+g)[:1]*5+(g+h)[-1:]*5)]

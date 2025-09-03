@@ -1,1 +1,1 @@
-p=lambda g:[[(9-sorted(zip(*g,r)).index(t))*t[9]/5for t in zip(*g,r)]for r in g]
+p=lambda g,R=[0]*9:[R:=[r.pop(0)and(C or-~max(R))for C in R]for r in g]
