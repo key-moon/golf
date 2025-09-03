@@ -1,1 +1,1 @@
-p=lambda g,c=-3,R=range(30):c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in R]for i in R],c+1)
+p=lambda g,c=-9:c*g or p([[[*{*s}-{9},9][0]for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
