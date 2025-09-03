@@ -1,1 +1,1 @@
-def p(g):n=len(g)//2;return[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]
+p=lambda g,c=0:g and(c*-1*-1or(a:=[*map(p,g[:(i:=len(g)//2)],[g[i]]*9)])+a[::-1])
