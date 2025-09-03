@@ -4,8 +4,11 @@
 <h2>Dashboard</h2>
 <div class="grid cols-4">
   <article>
-    <header>Our total</header>
-    <h2 id="ourTotal">-</h2>
+    <header>Our total <span style="font-size:0.75em; color:var(--pico-muted-text-color,#666)">(est total, cropped by best×1.5)</span></header>
+    <h2>
+      <span style="font-size:0.85em" id="ourTotal">-</span>
+      <span style="font-size:0.75em; color:var(--pico-muted-text-color,#666)" id="ourEstTotal">(-)</span>
+    </h2>
   </article>
   <article>
     <header>Theoretical best</header>
@@ -113,8 +116,24 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 }
   const s = await (await fetch('/api/summary')).json();
   G.data = s;
   const ourTotal = s.our_lengths.reduce((a,b)=>a+(b??0),0);
+  const ourEstTotal = (() => {
+    const bests = s.bests || [];
+    const ours = s.our_lengths || [];
+    let sum = 0;
+    const n = Math.max(bests.length, ours.length);
+    for (let i = 0; i < n; i++) {
+      const b = bests[i];
+      const o = ours[i];
+      if (b == null && o == null) continue;
+      const cap = b == null ? (o ?? 0) : Math.round(b * 1.5);
+      const val = o == null ? cap : Math.min(o, cap);
+      sum += val;
+    }
+    return sum;
+  })();
   const bestTotal = s.bests.reduce((a,b)=>a+(b??0),0);
   document.getElementById('ourTotal').textContent = ourTotal;
+  document.getElementById('ourEstTotal').textContent = `(${ourEstTotal})`;
   document.getElementById('bestTotal').textContent = bestTotal;
   prepareItems();
   draw();

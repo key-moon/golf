@@ -87,6 +87,8 @@ def dumps_task_scores_progressions(data: dict[str, list[list[TaskSubmission]]]) 
     path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{filename}"
     print(f"[+] dumping to {path}")
     _dumps(path, { "name": name, "data": scores })
+  # Clear cache to reflect changes
+  loads_task_scores_progressions.cache_clear()
 
 
 class TaskSubmissionWithName(TypedDict):
@@ -142,3 +144,86 @@ def loads_merged_users() -> set[str]:
 
 def dumps_merged_users(data: set[str]) -> None:
   _dumps(MERGED_USERS_PATH, list(data))
+
+
+# ---- ours score progressions helpers ----
+
+def _ensure_task_progressions_dir() -> None:
+  os.makedirs(TASK_SCORE_PROGRESSIONS_PATH, exist_ok=True)
+
+
+def init_empty_progressions() -> list[list[TaskSubmission]]:
+  """Create an empty 400-length list of per-task submission lists."""
+  return [[] for _ in range(400)]
+
+
+def load_user_progressions(name: str) -> list[list[TaskSubmission]]:
+  """Load an individual user's progressions by name or return empty if missing."""
+  _ensure_task_progressions_dir()
+  filename = get_user_filename(name)
+  path = os.path.join(TASK_SCORE_PROGRESSIONS_PATH, filename)
+  if not os.path.exists(path):
+    return init_empty_progressions()
+  f = _loads(path, None)
+  if f is None or "data" not in f:
+    return init_empty_progressions()
+  return f["data"]
+
+
+def save_user_progressions(name: str, data: list[list[TaskSubmission]]) -> None:
+  """Persist a single user's progression file."""
+  _ensure_task_progressions_dir()
+  filename = get_user_filename(name)
+  path = os.path.join(TASK_SCORE_PROGRESSIONS_PATH, filename)
+  _dumps(path, {"name": name, "data": data})
+  # Clear cache to reflect changes
+  loads_task_scores_progressions.cache_clear()
+
+
+def record_ours_task_score_progression(current_scores: dict[int, int | None], name: str = "ours", when: datetime.datetime | None = None) -> None:
+  """
+  Append current scores to ours' progression file (per task), only when changed.
+
+  current_scores: mapping of task_id (1-based) -> length (bytes) or None if unsolved.
+  name: username label for this local team (default: "ours").
+  when: timestamp to record; defaults to now (UTC).
+  """
+  if when is None:
+    when = datetime.datetime.utcnow()
+
+  data = load_user_progressions(name)
+
+  # Ensure 400 slots
+  if len(data) < 400:
+    data.extend([[] for _ in range(400 - len(data))])
+
+  for task_id, score in current_scores.items():
+    idx = task_id - 1
+    if not (0 <= idx < 400):
+      continue
+    history = data[idx]
+    last_score = history[-1]["score"] if history else None
+    if last_score != score:
+      history.append({"date": when, "score": score})
+    data[idx] = history
+
+  save_user_progressions(name, data)
+
+
+def compute_current_scores_from_dist(dist_dir: str = os.path.join(WORKSPACE_DIR, "dist")) -> dict[int, int | None]:
+  """
+  Read current dist/taskNNN.py files and return a mapping task_id -> length (bytes).
+  Missing files are treated as unsolved (None).
+  """
+  scores: dict[int, int | None] = {}
+  for i in range(1, 401):
+    path = os.path.join(dist_dir, f"task{i:03}.py")
+    if os.path.exists(path):
+      try:
+        size = os.path.getsize(path)
+      except OSError:
+        size = None
+      scores[i] = size
+    else:
+      scores[i] = None
+  return scores

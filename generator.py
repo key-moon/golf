@@ -12,7 +12,7 @@ from tqdm import tqdm
 from checker import check, CheckRes
 import compress
 from dataclass_wizard import JSONWizard
-from public_data import TaskSubmissionWithName, get_scores_per_task
+from public_data import TaskSubmissionWithName, get_scores_per_task, record_ours_task_score_progression
 from strip import strippers
 from utils import get_code_paths, get_task
 
@@ -92,6 +92,12 @@ def handle_results(results: list[TaskResult]):
     results_file.write(RunResult(score, results).to_json())
 
   print(f"accepted: {accepted}/400, {score=}")
+
+  # Update ours progression snapshot from current dist files/lengths
+  current_scores: dict[int, int | None] = {}
+  for r in results:
+    current_scores[r.task] = r.length if r.length is not None else None
+  record_ours_task_score_progression(current_scores)
 
   others_bests = get_scores_per_task()
   others_bests_sum = sum(max(1,2500-bests[0]["score"]) for bests in others_bests)
