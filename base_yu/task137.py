@@ -1,9 +1,19 @@
 # best: 143(xsot ovs att joking mewheni) / others: 144(natte), 148(mukundan), 148(jailctf merger), 162(4atj sisyphus luke Seek), 163(hyacinth)
 # ==================================================================== 143 ====================================================================
-def p(g,E=enumerate):
+# def p(g):
+#  R=range(len(g))
+#  x,y,_=[i for i in R if[*map(max,*g)][i]]
+#  return[[(max(abs(i-g.index(max(g,key=any))-y+x),abs(j-y))%(y-x)==0)*max(max(g))for j in R]for i in R]
+
+def p(g,R=range):
  w=len(g)
- x,y,_=[i for i,v in E(sum(g,[]))if v]
- return[[(max(abs(i-y//w),abs(j-y%w))%(y%w-x%w)==0)*max(max(g))for j,v in E(s)]for i,s in E(g)]
+ x,y,_=[i for i in R(w*w)if g[i//w][i%w]]
+ return[[(max(abs(i-y//w),abs(j-y%w))%(y%w-x%w)==0)*max(max(g))for j in R(w)]for i in R(w)]
+
+# def p(g,E=enumerate):
+#  w=len(g)
+#  x,y,_=[i for i,v in E(sum(g,[]))if v]
+#  return[[(max(abs(i-y//w),abs(j-y%w))%(y%w-x%w)==0)*max(max(g))for j,v in E(s)]for i,s in E(g)]
 
 
 # R=range
