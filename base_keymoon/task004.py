@@ -1,3 +1,4 @@
+# best: 80(4atj sisyphus luke Seek) / others: 82(jailctf merger), 83(mukundan), 86(xsot ovs att joking mewheni), 93(biz), 139(duckyluuk)
 # 「輪」のいちばん下のcomponent以外を動かす
 # 輪の下には0,0,0...があることを利用して下端を判別（下端のときは動かさず、さらに一個上のを動かす）
 # 最後が
@@ -29,4 +30,15 @@
 #     p=l
 #   return g
 # def p(g):p=[0];return [[l.pop([-1,p.index(c:=max(p))][p.count(c)!=2]),p:=[0,*l]][1] for l in g[::-1]][::-1]
-p=lambda g,p=[0]:[[l.pop([-1,p.index(c:=max(p))][p.count(c)!=2]),p:=[0,*l]][1]for l in g[::-1]][::-1]
+# lambda g,p=[0]:[[l.pop([-1,p.index(c:=max(p))][p.count(c)!=2]),p:=[0,*l]][1]for l in g[::-1]][::-1]
+# ===================================== 80 =====================================
+# lambda g:[[s.pop([-1,t.index(c:=max(t))][t.count(c)!=2]),*s]for s,t in zip(g,(g*2)[1:])]
+p=lambda g:[[s.pop(t.index(c:=max(t))|-1*(0<2*c==sum(t)))]+s for s,t in zip(g,(g*2)[1:])]
+
+# t.count(c)!=2
+# 0<c==sum(t)/2
+
+# 次:
+# [0,2,0,2,0] <- これだけ-1にしたい
+# [0,2,2,2,0] <- これは中間
+# [0,0,0,0,0] <- 先頭の方がいい
