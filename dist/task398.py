@@ -1,1 +1,1 @@
-def p(g):m=5*sum(map(bool,a:=g[0]));return[([0]*(m-1-i)+a+[0]*m)[:m]for i in range(m)]
+p=lambda g:[a:=g[0]+[0]*5*(4-g[0].count(0)),*(a:=[0]+a[:-1]for _ in a[1:])][::-1]
