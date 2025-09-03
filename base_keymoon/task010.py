@@ -5,4 +5,7 @@
 # lambda g:[[(9-sorted(zip(*g)).index(t[1:]))*t[0]/5for t in zip(r,*g)]for r in g]
 # lambda g:[[(9-sorted(zip(*g)).index(t))*c/5for c,t in zip(r,zip(*g))]for r in g]
 # lambda g:[[(9-sorted(zip(*g)).index((*t,)))*c/5for*t,c in zip(*g,r)]for r in g]
-p=lambda g:[[(9-sorted(zip(*g,r)).index(t))*t[9]/5for t in zip(*g,r)]for r in g]
+# lambda g:[[(9-sorted(zip(*g,r)).index(t))*t[9]/5for t in zip(*g,r)]for r in g]
+# lambda g,R=[0]*9:[R:=[c/5*(C or max(R)+1)for c,C in zip(r,R)]for r in g]
+# lambda g,R=[0]*9:[R:=[r.pop(0)/5*(C or max(R)+1)for C in R]for r in g]
+p=lambda g,R=[0]*9:[R:=[r.pop(0)and(C or-~max(R))for C in R]for r in g]
