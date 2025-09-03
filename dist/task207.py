@@ -1,1 +1,1 @@
-p=lambda g:[[sum(u:=g[i][j::3]+g[i+3][j::3])%(max(*u,1)*3)for j in(0,1)]for i in(0,1)]
+p=lambda g:min(p:=[[r[j:j+2]for r in g[i:i+2]]for i in(0,3)for j in(0,3)],key=p.count)

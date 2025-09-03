@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('mPAn!;O^Z¨ ÇòÄ!"@­Ø¤ê÷;ĞU+5=™±ñØğˆ	v–ùåM»ÆJƒ˜à”ç×nCQxÚ `…v¯9²6‰òK‰¡ÑãÚ­ÉóPçTnAù½> nOÈ½+ŞŸàó×röÛş¶o;ãcJ ŒEÓ€LãXL€?şËVêk_FÅESIÁP(Ê¢¿QjNq/ıGğËˆœõFı©¡Ä•´ÿjhú½øühò','L1'),-9))
+import re;p=lambda g,c=63:-c*g or[*zip(*eval(re.sub(*["1(?=, 0|\))",*"001"][c<1::2],str(p(g,c-1)))))][::-1]
