@@ -1,4 +1,4 @@
-# best: 79(4atj sisyphus luke Seek) / others: 80(jailctf merger), 81(mukundan), 81(xsot ovs att joking mewheni), 107(natte), 110(duckyluuk)
+# best: 79(4atj sisyphus luke Seek) / others: 80(jailctf merger), 81(xsot ovs att joking mewheni), 81(mukundan), 107(natte), 110(duckyluuk)
 # ===================================== 79 ====================================
 # lambda g:[[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)]
 # lambda g,c=-3:c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)],c+1)
@@ -9,7 +9,9 @@
 
 # lambda g,c=-9:c*g or[*zip(*[[[*{*s}-{9},9][0]for s in zip(r,r[:2]+r[::-1])]for r in p(g,c+1)])]
 # lambda g,c=-9:c*g or p([[[*{*s}-{9},9][0]for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
-p=lambda g,c=-9:c*g or p([[[*{*s}-{9},9][0]for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
+# p=lambda g,c=-9:c*g or p([[[*{*s}-{9},9][0]for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
+# p=lambda g,c=-9:c*g or p([[min(s)for s in zip(r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1)
+p=lambda g,c=-9:c*g or p([[*map(min,zip(r,[9]*2+r[::-1],R))]for*R,r in zip(*g,g)],c+1)
 
 
 # def p(g):
