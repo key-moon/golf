@@ -1,1 +1,1 @@
-p=lambda g,E=enumerate:g*(6in g[0])or p([[s[j]&1or(s[j-2:j+3:4]+[t[i-2]]==[1]*3or 6in s+[*t])*6or s[j]for j,t in E(zip(*g))]for i,s in E(g)])
+p=lambda g,E=enumerate:g*(6in g[0])or p([[s[j]&1or(s[j-2:j+3:4]==[t[i-2]<2]*2or 6in s+[*t])*6or s[j]for j,t in E(zip(*g))]for i,s in E(g)])
