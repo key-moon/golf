@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes(']ŒÃ0…è¯8Ie2ÀdòKÎ¡,­²¾¥g£ù÷ë3ƒw¾Ï½w/#U7ùÔò2Ã=\nvÇá‹x«aÍ¬œ ãSIiMFv{FúÕ†ÒÑ<Ò€æ–asês¾~?ªO6·†Ú‘–×[Á\¹ÅáÍ²_¹öˆñ(nVÔSqèáÅ\ûs','L1'),-9))
+def p(g):n=len(g[0]);A=range(n*n);f=8in max(g[:n]);return n<6and[[g[i%n+n-f*n][j%n]and g[i//n+f*n][j//n]for j in A]for i in A]or[*zip(*p([*zip(*g)]))]
