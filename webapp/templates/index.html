@@ -56,6 +56,15 @@
   </script>
 </div>
 <section style="overflow-x:auto">
+  <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:6px">
+    <div class="seg">
+      <button data-mode="stack" id="modeStack" class="secondary">stacked</button>
+      <button data-mode="diff" id="modeDiff" class="secondary">diff only</button>
+    </div>
+    <span id="timeLabel" class="muted"></span>
+    <span style="margin-left:auto"></span>
+    <input id="timeSlider" type="range" min="0" max="100" value="100" style="width:360px">
+  </div>
   <canvas id="hist" height="360" style="min-width:1200px"></canvas>
   <div id="tooltip" class="tooltip"></div>
 </section>
@@ -88,7 +97,7 @@
 <script>
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
 function applyActive(group, value, attr){[...group.querySelectorAll('button')].forEach(b=>b.classList.toggle('contrast', b.dataset[attr]===String(value)));}
-let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 };
+let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, mode:'stack', tr:{min:0,max:0}, t:null, _reqSeq:0 };
 (function initControls(){
   const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, G.sort, 'sort'); sortBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ G.sort=v; applyActive(sortBtns, v, 'sort'); draw(); }};
   const widthBtns=document.getElementById('widthBtns'); applyActive(widthBtns, G.barW, 'w'); widthBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.w; if(v){ G.barW=Number(v); applyActive(widthBtns, G.barW, 'w'); draw(); }};
@@ -96,16 +105,16 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 }
   sel.addEventListener('change', async ()=>{
     const name = sel.value;
     if(!name){
-      // ours
+      // ours 
       G.team = null;
-      prepareItems(); draw();
+      const tNow = G.t; const ok = await prepareItems(tNow); if(ok && G.t===tNow) draw();
       document.getElementById('teamTotal').textContent='';
       return;
     }
     try{
       const r = await (await fetch(`/api/team_lengths?name=${encodeURIComponent(name)}`)).json();
       G.team = { name: r.name, lengths: r.lengths||[] };
-      prepareItems(); draw();
+      const tNow = G.t; const ok = await prepareItems(tNow); if(ok && G.t===tNow) draw();
       const total = (G.team.lengths||[]).reduce((a,b)=> a + (b??0), 0);
       document.getElementById('teamTotal').textContent = `${name} total: ${total}`;
     }catch{}
@@ -115,6 +124,14 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 }
 (async function(){
   const s = await (await fetch('/api/summary')).json();
   G.data = s;
+  // ours 優先フラグ（サーバ側で検出するAPIも用意したがここではteamsで判定）
+  try{
+    const tRange = await (await fetch('/api/time_range')).json();
+    G.tr = tRange; G.t = tRange.max;
+    const slider = document.getElementById('timeSlider');
+    slider.min = String(tRange.min); slider.max = String(tRange.max); slider.value = String(tRange.max);
+    updateTimeLabel();
+  }catch{}
   const ourTotal = s.our_lengths.reduce((a,b)=>a+(b??0),0);
   const ourEstTotal = (() => {
     const bests = s.bests || [];
@@ -135,18 +152,47 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24 }
   document.getElementById('ourTotal').textContent = ourTotal;
   document.getElementById('ourEstTotal').textContent = `(${ourEstTotal})`;
   document.getElementById('bestTotal').textContent = bestTotal;
-  prepareItems();
-  draw();
+  const tNow = G.t;
+  const ok = await prepareItems(tNow);
+  if(ok && G.t===tNow) draw();
 })();
-function prepareItems(){
-  const s=G.data; const N=400; G.items.length=0;
-  const series = G.team && Array.isArray(G.team.lengths) ? G.team.lengths : s.our_lengths;
-  for(let i=0;i<N;i++) G.items.push({ idx:i, id:i+1, best:s.bests[i], our:series[i] });
-  if(G.sort==='best') G.items.sort((a,b)=> (a.best??Infinity)-(b.best??Infinity));
-  else if(G.sort==='length') G.items.sort((a,b)=> (a.our??Infinity)-(b.our??Infinity));
+function updateTimeLabel(){
+  const lab=document.getElementById('timeLabel'); if(!lab) return; const d=new Date((G.t||G.tr.max)*1000); lab.textContent = d.toLocaleString();
+}
+async function prepareItems(expectedT){
+  const seq = ++G._reqSeq; // 最新リクエスト識別子
+  const s=G.data; const N=400;
+  const nextItems = [];
+  let ourSeries = s.our_lengths;
+  // ourSeries を時点指定に置換（ours チームが存在するならそれを優先）
+  try{
+    const selTeam = document.getElementById('teamSelect')?.value || '';
+    const teamQ = selTeam || 'ours';
+    const tParam = expectedT ?? G.t ?? G.tr.max;
+    const r = await (await fetch(`/api/summary_at?t=${encodeURIComponent(tParam)}&team=${encodeURIComponent(teamQ)}`)).json();
+    // 競合: 最新でなければ破棄
+    if(seq !== G._reqSeq) return false;
+    const bestsAt = Array.isArray(r.bests) ? r.bests : s.bests;
+    if(selTeam){
+      // 指定チーム
+      ourSeries = Array.isArray(r.lengths) ? r.lengths : s.our_lengths;
+    }else if(r.has_ours && r.team==='ours' && Array.isArray(r.lengths)){
+      // ours 優先
+      ourSeries = r.lengths;
+    }
+    G._bestsAt = bestsAt;
+  }catch{ G._bestsAt = s.bests; }
+  const series = G.team && Array.isArray(G.team.lengths) ? G.team.lengths : ourSeries;
+  for(let i=0;i<N;i++) nextItems.push({ idx:i, id:i+1, best:s.bests[i], our:series[i] });
+  if(G.sort==='best') nextItems.sort((a,b)=> (a.best??Infinity)-(b.best??Infinity));
+  else if(G.sort==='length') nextItems.sort((a,b)=> (a.our??Infinity)-(b.our??Infinity));
+  // 競合: 最新でなければ結果を反映しない
+  if(seq !== G._reqSeq) return false;
+  G.items = nextItems;
+  return true;
 }
 function draw(){
-  if(!G.data) return; prepareItems();
+  if(!G.data) return; 
   const c = document.getElementById('hist'); const H=G.H; const barW=G.barW; const padL=G.padL; const padB=G.padB; const padR=12; const padT=12;
   const W = padL + padR + barW*G.items.length; G.W=W;
   const dpi = window.devicePixelRatio||1; c.width=W*dpi; c.height=H*dpi; c.style.width=`${W}px`; c.style.height=`${H}px`;
@@ -155,28 +201,51 @@ function draw(){
   const styles = getComputedStyle(document.body);
   const gridColor = styles.getPropertyValue('--pico-muted-border-color') || '#eee';
   const textColor = getComputedStyle(c).color || '#666';
-  // Fixed Y axis: 0..500 with ticks every 50
-  const maxY = 500; const tickStep = 50;
+  const diffMode = (G.mode==='diff');
+  const maxY = diffMode ? 150 : 500; const tickStep = diffMode ? 25 : 50;
   ctx.strokeStyle=gridColor; ctx.fillStyle=textColor; ctx.font='12px system-ui';
-  for(let val=0; val<=maxY; val+=tickStep){ const y = H-padB - (H-padB-padT)*(val/maxY); ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-6, y); ctx.stroke(); ctx.fillText(String(val), 2, y-2); }
+  if(diffMode){
+    // y from +100 to -50
+    const yMax=100, yMin=-50; const span=yMax-yMin; 
+    for(let val=yMin; val<=yMax; val+=25){ const y = H-padB - (H-padB-padT)*((val - yMin)/span); ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-6, y); ctx.stroke(); ctx.fillText(String(val), 2, y-2); }
+  }else{
+    for(let val=0; val<=maxY; val+=tickStep){ const y = H-padB - (H-padB-padT)*(val/maxY); ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-6, y); ctx.stroke(); ctx.fillText(String(val), 2, y-2); }
+  }
   // bars
-  G.items.forEach((it,idx)=>{
-    const b=it.best, o=it.our; const x = padL + idx*barW; if(b==null && o==null) return;
-    const yb = b==null?0:(H-padB-padT) * (Math.min(b, maxY) / maxY);
-    ctx.fillStyle = gridColor; ctx.fillRect(x, H-padB - yb, barW-1, yb);
-    if(o!=null && b!=null){ if(o>=b){ ctx.fillStyle='rgba(255,0,0,0.7)'; const yd=(H-padB-padT)*(Math.min(o-b, maxY)/maxY); ctx.fillRect(x, H-padB - yb - yd, barW-1, yd);} else { const yd=(H-padB-padT)*(Math.min(b-o, maxY)/maxY); const y0=H-padB - yb; ctx.save(); ctx.beginPath(); ctx.rect(x, y0, barW-1, yd); ctx.clip(); ctx.strokeStyle='#0a0'; ctx.lineWidth=2; for(let u=-H;u<W;u+=6){ ctx.beginPath(); ctx.moveTo(x+u, y0); ctx.lineTo(x+u+yd, y0+yd); ctx.stroke(); } ctx.restore(); }}
-  });
+  const bests = G._bestsAt || G.data.bests;
+  if(diffMode){
+    // diff-only: 赤棒（+）/ 緑斜線（-）のみ
+    const yMax=100, yMin=-50; const span=yMax-yMin; 
+    G.items.forEach((it,idx)=>{
+      const b=bests[it.idx], o=it.our; const x = padL + idx*barW; if(o==null || b==null) return; const d=o-b; const frac = (d - yMin)/span; const y = H-padB - (H-padB-padT)*frac;
+      if(d>=0){ ctx.fillStyle='rgba(255,0,0,0.75)'; const y0=H-padB - (H-padB-padT)*((0 - yMin)/span); const h=(y0-y); ctx.fillRect(x, y, barW-1, h); }
+      else { const y0=H-padB - (H-padB-padT)*((0 - yMin)/span); const h=(y - y0); ctx.save(); ctx.beginPath(); ctx.rect(x, y0, barW-1, h); ctx.clip(); ctx.strokeStyle='#0a0'; ctx.lineWidth=2; for(let u=-H;u<W;u+=6){ ctx.beginPath(); ctx.moveTo(x+u, y0); ctx.lineTo(x+u+h, y0+h); ctx.stroke(); } ctx.restore(); }
+    });
+  }else{
+    // 既存のスタック表示
+    G.items.forEach((it,idx)=>{
+      const b=bests[it.idx], o=it.our; const x = padL + idx*barW; if(b==null && o==null) return;
+      const yb = b==null?0:(H-padB-padT) * (Math.min(b, maxY) / maxY);
+      ctx.fillStyle = gridColor; ctx.fillRect(x, H-padB - yb, barW-1, yb);
+      if(o!=null && b!=null){ if(o>=b){ ctx.fillStyle='rgba(255,0,0,0.7)'; const yd=(H-padB-padT)*(Math.min(o-b, maxY)/maxY); ctx.fillRect(x, H-padB - yb - yd, barW-1, yd);} else { const yd=(H-padB-padT)*(Math.min(b-o, maxY)/maxY); const y0=H-padB - yb; ctx.save(); ctx.beginPath(); ctx.rect(x, y0, barW-1, yd); ctx.clip(); ctx.strokeStyle='#0a0'; ctx.lineWidth=2; for(let u=-H;u<W;u+=6){ ctx.beginPath(); ctx.moveTo(x+u, y0); ctx.lineTo(x+u+yd, y0+yd); ctx.stroke(); } ctx.restore(); }}
+    });
+  }
   // mouse interaction
   c.onmousemove = (ev)=>{
     const rect = c.getBoundingClientRect(); const x = (ev.clientX-rect.left); const idx = Math.floor((x - padL)/barW); const tooltip=document.getElementById('tooltip');
     if(idx<0||idx>=G.items.length){ tooltip.style.display='none'; return; }
-    const it = G.items[idx];
-    const diff = (it.best!=null && it.our!=null) ? (it.our - it.best) : null;
-    const bestDiff = (it.best!=null && diff!=null) ? `${it.best} (${diff>0?'+':''}${diff})` : (it.best??'-');
+  const it = G.items[idx]; const b=(G._bestsAt||G.data.bests)[it.idx];
+  const diff = (b!=null && it.our!=null) ? (it.our - b) : null;
+  const bestDiff = (b!=null && diff!=null) ? `${b} (${diff>0?'+':''}${diff})` : (b??'-');
     tooltip.style.display='block'; tooltip.style.left = (ev.pageX+12)+'px'; tooltip.style.top = (ev.pageY+12)+'px';
     tooltip.innerHTML = `task${String(it.id).padStart(3,'0')}<br/>ours: ${it.our??'-'}<br/>best(diff): ${bestDiff}`;
   };
   c.onmouseleave = ()=>{ const tooltip=document.getElementById('tooltip'); tooltip.style.display='none'; };
 }
+
+// UI wiring for slider and mode
+document.getElementById('timeSlider').addEventListener('input', async (e)=>{ const tTarget = Number(e.target.value); G.t = tTarget; updateTimeLabel(); const ok = await prepareItems(tTarget); if(ok && G.t===tTarget) draw(); });
+document.getElementById('modeStack').addEventListener('click', ()=>{ G.mode='stack'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'stack', 'mode'); draw(); });
+document.getElementById('modeDiff').addEventListener('click', ()=>{ G.mode='diff'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'diff', 'mode'); draw(); });
 </script>
 {% endblock %}

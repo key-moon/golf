@@ -31,22 +31,37 @@ def build_banner_lines_for_task(task_id: int) -> list[str]:
     """
     if not (1 <= task_id <= 400):
         return []
-    try:
-        scores_per_task = get_scores_per_task()
-        scores = scores_per_task[task_id - 1] if scores_per_task and len(scores_per_task) >= task_id else []
-    except Exception:
-        scores = []
     lines: list[str] = []
-    if scores:
-        try:
-            best = scores[0].get("score")
-            names = [s.get("name") for s in scores if s.get("score") == best]
-            others = ", ".join([f"{s.get('score')}({s.get('name')})" for s in scores if s.get('score') != best][:5])
+    try:
+        # progression から各チームの直近スコアを使って best を決定（"ours" 除外）
+        prog = loads_task_scores_progressions()  # dict[name] -> list[list[{date, score}]]
+        items: list[tuple[int, str]] = []  # (last_score, name)
+        for name, per_task in prog.items():
+            if name == "ours":
+                continue
+            if task_id - 1 >= len(per_task):
+                continue
+            series = per_task[task_id - 1] or []
+            # 後ろから直近の整数スコアを拾う
+            last_sc = None
+            for entry in reversed(series):
+                sc = entry.get("score")
+                if isinstance(sc, int):
+                    last_sc = sc
+                    break
+            if last_sc is not None:
+                items.append((last_sc, name))
+        if items:
+            items.sort(key=lambda x: x[0])
+            best = items[0][0]
+            names = [n for sc, n in items if sc == best]
+            others_items = [(sc, n) for sc, n in items if sc != best][:5]
+            others = ", ".join([f"{sc}({n})" for sc, n in others_items])
             lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
             if isinstance(best, int) and best <= 150:
                 lines.append("# " + f" {best} ".center(best - 2, "="))
-        except Exception:
-            pass
+    except Exception:
+        pass
     return lines
 
 _PAT_BEST = re.compile(r"^\s*#\s*best:\s*", re.IGNORECASE)
@@ -207,9 +222,8 @@ def create_app() -> Flask:
     @app.get("/api/summary")
     def api_summary():
         ours = _load_our_results()
-        others = get_scores_per_task()  # list[list[{name, score, date}]]
 
-        # 我々の長さ配列・best 配列
+        # 我々の長さ配列・ベース情報
         our_lengths: list[Optional[int]] = [None] * 400
         base_path: list[Optional[str]] = [None] * 400
         base_short: list[Optional[str]] = [None] * 400
@@ -217,13 +231,14 @@ def create_app() -> Flask:
         message: list[str] = [""] * 400
 
         for item in (ours.get("results") or []):
-            idx = int(item.get("task", 0)) - 1
+            try:
+                idx = int(item.get("task", 0)) - 1
+            except Exception:
+                idx = -1
             if 0 <= idx < 400:
                 our_lengths[idx] = item.get("length")
-                # results.json は basePath を使用。後方互換のため両方を見る
                 bp = item.get("base_path") or item.get("basePath")
                 base_path[idx] = bp
-                # base_xxx のディレクトリ名だけを抽出
                 if isinstance(bp, str):
                     parts = bp.replace("\\", "/").split("/")
                     short = next((p for p in parts if p.startswith("base_")), None)
@@ -231,13 +246,31 @@ def create_app() -> Flask:
                 compressor[idx] = item.get("compressor")
                 message[idx] = item.get("message") or ""
 
+        # 直近提出（各チームの最新提出）の最小から best を算出（ours 除外）
+        prog = loads_task_scores_progressions()
         bests: list[Optional[int]] = []
         best_names: list[list[str]] = []
-        for arr in others:
-            if arr:
-                best_score = arr[0]["score"]
+        for t_idx in range(400):
+            items: list[tuple[int, str]] = []
+            for name, per_task in prog.items():
+                if name == "ours":
+                    continue
+                if t_idx >= len(per_task):
+                    continue
+                series = per_task[t_idx] or []
+                last_sc = None
+                for entry in reversed(series):
+                    sc = entry.get("score")
+                    if isinstance(sc, int):
+                        last_sc = sc
+                        break
+                if last_sc is not None:
+                    items.append((last_sc, name))
+            if items:
+                items.sort(key=lambda x: x[0])
+                best_score = items[0][0]
                 bests.append(best_score)
-                best_names.append([x["name"] for x in arr if x["score"] == best_score])
+                best_names.append([n for sc, n in items if sc == best_score])
             else:
                 bests.append(None)
                 best_names.append([])
@@ -368,6 +401,108 @@ def create_app() -> Flask:
 
         return jsonify({"teams": teams_out})
 
+    # API: 全チーム全タスクのスコア履歴から時間範囲を返す（スライダー用）
+    @app.get("/api/time_range")
+    def api_time_range():
+        data = loads_task_scores_progressions()  # dict[name] -> list[list[{date, score}]]
+        min_t: Optional[int] = None
+        max_t: Optional[int] = None
+        for per_task in data.values():
+            for series in per_task:
+                if not series:
+                    continue
+                for entry in series:
+                    dt = entry.get("date")
+                    if isinstance(dt, datetime):
+                        t = int(dt.timestamp())
+                    elif isinstance(dt, (int, float)):
+                        t = int(dt)
+                    else:
+                        continue
+                    if min_t is None or t < min_t:
+                        min_t = t
+                    if max_t is None or t > max_t:
+                        max_t = t
+        if min_t is None or max_t is None:
+            now_t = int(datetime.now().timestamp())
+            return jsonify({"min": now_t - 86400, "max": now_t})
+        return jsonify({"min": min_t, "max": max_t})
+
+    # API: 指定時刻のベスト配列 + チーム配列（team が無い場合は lengths 省略、team='ours' 優先はフロントで判断可）
+    @app.get("/api/summary_at")
+    def api_summary_at():
+        try:
+            t_raw = request.args.get("t")
+            t = int(t_raw) if t_raw is not None else int(datetime.now().timestamp())
+        except Exception:
+            return jsonify({"error": "invalid t"}), 400
+        team = request.args.get("team") or None
+
+        prog = loads_task_scores_progressions()
+        names = set(prog.keys())
+        has_ours = ("ours" in names)
+
+        def last_at_or_before(series) -> Optional[int]:
+            last_sc: Optional[int] = None
+            # series は時系列順前提
+            for entry in series or []:
+                dt = entry.get("date")
+                if isinstance(dt, datetime):
+                    tt = int(dt.timestamp())
+                elif isinstance(dt, (int, float)):
+                    tt = int(dt)
+                else:
+                    continue
+                if tt <= t:
+                    sc = entry.get("score")
+                    if isinstance(sc, int):
+                        last_sc = sc
+                else:
+                    break
+            return last_sc
+
+        # bests_at の算出
+        bests: list[Optional[int]] = [None] * 400
+        for i in range(400):
+            best_val: Optional[int] = None
+            our_score = 0
+            for name, per_task in prog.items():
+                # best 計算から "ours" を除外
+                if i >= len(per_task):
+                    continue
+                sc = last_at_or_before(per_task[i])
+                if sc is None:
+                    continue
+                if name == "ours":
+                    our_score = sc
+                    continue
+                if best_val is None or sc < best_val:
+                    best_val = sc
+            bests[i] = best_val if best_val is not None else our_score
+
+        # team lengths（任意）
+        lengths: Optional[list[Optional[int]]] = None
+        used_team: Optional[str] = None
+        if team:
+            if team in prog:
+                arr: list[Optional[int]] = [None for _ in range(400)]
+                per_task = prog[team]
+                for i in range(min(400, len(per_task))):
+                    arr[i] = last_at_or_before(per_task[i])
+                lengths = arr
+                used_team = team
+            else:
+                lengths = [None for _ in range(400)]
+                used_team = team
+
+        return jsonify({
+            "t": t,
+            "team": used_team,
+            "has_ours": has_ours,
+            "bests": bests,
+            "lengths": lengths,
+        })
+
     # API: VS Code でファイルを開く
     @app.post("/api/open_file")
     def api_open_file():
@@ -466,6 +601,9 @@ def create_app() -> Flask:
             # 全チームの提出を集約
             submissions: list[tuple[datetime, int, str]] = []  # (date, score, name)
             for name, per_task in all_progress.items():
+                if name == "ours":
+                    # best の算出からは除外
+                    continue
                 if t_idx < len(per_task):
                     for sub in per_task[t_idx] or []:
                         sc = sub.get("score")
@@ -510,29 +648,11 @@ def create_app() -> Flask:
         base_dir.mkdir(parents=True, exist_ok=True)
         file_path = base_dir / f"task{padded}.py"
 
-        # ヘッダ情報生成
-        def build_header():
-            lines = []
-            try:
-                scores_per_task = get_scores_per_task()
-                scores = scores_per_task[task_id - 1] if scores_per_task and len(scores_per_task) >= task_id else []
-            except Exception:
-                scores = []
-            if scores:
-                best = scores[0].get("score")
-                names = [s.get("name") for s in scores if s.get("score") == best]
-                others = ", ".join([f"{s.get('score')}({s.get('name')})" for s in scores if s.get('score') != best][:5])
-                lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
-                try:
-                    if isinstance(best, int) and best <= 150:
-                        lines.append("# " + f" {best} ".center(best - 2, "="))
-                except Exception:
-                    pass
-            return lines
+    # ヘッダ情報生成（best は progression の直近提出ベース、ours 除外）
 
         created = False
         if not file_path.exists():
-            src_lines = build_header()
+            src_lines = build_banner_lines_for_task(task_id)
             src_lines.append("def p(g):")
             src_lines.append(" return g")
             file_path.write_text("\n".join(src_lines) + "\n", encoding="utf-8")
