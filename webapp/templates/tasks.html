@@ -71,10 +71,12 @@ function applyActive(group, value, attr){
     b.classList.toggle('contrast', b.dataset[attr]===value);
   });
 }
-function getDiffStyles(diff, base=0.3, ratio=100, crop=0.9){
+function getDiffStyles(diff, base=0.18, ratio=90, crop=0.9){
   if(diff==null || isNaN(diff)) return { bg:'', outline:'' };
   const opacity = Math.min(base + Math.abs(diff)/ratio, crop)
-  const stroke = [0, 2, 5, 5, 8, 8][Math.min(Math.floor(Math.abs(diff)/5), 5)];
+  //                     0  5 10 15 20 25 30 35
+  const stropePalette = [0, 2, 5, 5, 8, 8,12,12];
+  const stroke = stropePalette[Math.min(Math.floor(Math.abs(diff)/5), stropePalette.length - 1)];
   // 短縮（良い）側: 緑
   if (diff === 0) return { bg:'', outline:'' };
   if (diff < 0) return { bg:`rgba(0,160,0,${opacity})`, outline:`${stroke}px solid rgba(0,140,0,0.95)` };

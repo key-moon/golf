@@ -258,11 +258,17 @@ async function render(){
   const currentPage = Math.max(1, parseInt(params.get('page')||'1', 10) || 1);
   const data = await fetch('/api/judge/outputs').then(r=>r.json());
   const taskId = data.task || null;
-  const outputs = data.outputs || data.items || [];
+  const outputs = Array.isArray(data.outputs) ? data.outputs : [];
   const total = outputs.length;
   const ngCount = outputs.filter(x=> !x.verdict).length;
   const st = document.getElementById('status'); st.textContent = `cases: ${total}, NG: ${ngCount}`;
-  const links = document.getElementById('taskLinks'); links.innerHTML = taskId? `<a href="/tasks/${taskId}">task${String(taskId).padStart(3,'0')}</a> &nbsp;|&nbsp; <a href="/tasks/${taskId}/cases">cases</a>` : '';
+  const links = document.getElementById('taskLinks');
+  if(taskId){
+    const arcUrl = `https://github.com/google/ARC-GEN/blob/main/tasks/training/task${taskId}.py`;
+    links.innerHTML = `<a href="/tasks/${taskId}">task${String(taskId).padStart(3,'0')}</a> &nbsp;|&nbsp; <a href="/tasks/${taskId}/cases">cases</a> &nbsp;|&nbsp; <a href="${arcUrl}" target="_blank" rel="noopener">ARC-GEN</a>`;
+  }else{
+    links.innerHTML='';
+  }
   const root = document.getElementById('list'); root.innerHTML='';
   let items = outputs;
   if(!showAll){ items = items.filter(x=> !x.verdict); }
@@ -296,8 +302,10 @@ async function render(){
 
 async function poll(){
   try{
-    const d = await fetch('/api/judge/outputs').then(r=>r.json());
-    if((d.mtime||0) !== LAST_MTIME){ location.reload(); }
+    const d = await fetch(`/api/judge/outputs?since=${encodeURIComponent(LAST_MTIME||0)}`).then(r=>r.json());
+    if(d && (d.mtime||0) !== LAST_MTIME){
+      await render();
+    }
   }catch{}
   setTimeout(poll, 1000);
 }

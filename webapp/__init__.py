@@ -573,24 +573,32 @@ def create_app() -> Flask:
             mtime = int(TMP_OUTPUTS_PATH.stat().st_mtime)
         except Exception:
             mtime = 0
+        # クライアントから前回のmtimeが送られてきたら、変化がなければ薄いレスポンス
+        prev_mtime = request.args.get("since")
+        if prev_mtime is not None:
+            try:
+                prev_mtime_int = int(prev_mtime)
+            except Exception:
+                prev_mtime_int = None
+            if prev_mtime_int is not None and prev_mtime_int == mtime:
+                # 変更無し: mtimeとタスクだけ返す
+                return jsonify({"mtime": mtime, "task": None, "outputs": None})
+
         task_id: Optional[int] = None
         outputs = []
         if TMP_OUTPUTS_PATH.exists():
             try:
                 raw = json.loads(TMP_OUTPUTS_PATH.read_text())
-                # New schema: { "task": id, "outputs": [...] }
                 if isinstance(raw, dict) and "outputs" in raw:
                     task_id = raw.get("task")
                     outputs = raw.get("outputs") or []
-                # Legacy: list
                 elif isinstance(raw, list):
                     outputs = raw
                 else:
                     outputs = []
             except Exception:
                 outputs = []
-        # Backward compatibility: also include 'items' as alias of outputs
-        return jsonify({"mtime": mtime, "task": task_id, "outputs": outputs, "items": outputs})
+        return jsonify({"mtime": mtime, "task": task_id, "outputs": outputs})
 
     return app
 

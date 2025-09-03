@@ -472,7 +472,8 @@
       "fill-bound"
     ],
     "167": [
-      "classify"
+      "classify",
+      "fixed-pattern"
     ],
     "168": [
       "diagonal"
