@@ -1,1 +1,1 @@
-p=lambda g,E=enumerate:[[(sum([0,*s][j:j+3]+[0,*t][i:i+3])>2*s[j]>0)*5+s[j]for j,t in E(zip(*g))]for i,s in E(g)]
+import re;p=lambda g,c=-7:c*g or[*zip(*eval(re.sub("3, [38]","8,8",str(p(g,c+1)))))][::-1]
