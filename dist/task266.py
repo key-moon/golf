@@ -1,7 +1,1 @@
-def p(j):
- A=sum(j,[]).index(2);c,E=divmod(A,5);j[c][E]=0
- if c*E:j[c-1][E-1]=3
- if c<2and E:j[c+1][E-1]=8
- if E<4and c:j[c-1][E+1]=6
- if c<2and E<4:j[c+1][E+1]=7
- return j
+p=lambda g,A=(A:=[0]*17)+[3,0,6]+A+[8,0,7]+A:[A[i-(a:=sum(g,[]).index(2))-a//5*5:][:5]for i in b'&0']
