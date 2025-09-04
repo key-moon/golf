@@ -92,8 +92,6 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
         right += 1
       else:
         wrong += 1
-        if 0 < knockout and knockout <= wrong:
-          break
     except TimeoutException as e:
       outputs.append(Output(case, casenum, None, dumps+["ERROR: timeout"], False))
       errors.add("timeout")
@@ -104,7 +102,8 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
       errors.add("\n".join(tb))
       outputs.append(Output(case, casenum, None, dumps+[f"ERROR: {tb}"], False))
       wrong += 1
-
+    if 0 < knockout and knockout <= wrong:
+      break
   correct = right / len(tests)
   if errors:
     return CheckRes(outputs, correct, "\n\n".join(errors))
