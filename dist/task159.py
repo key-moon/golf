@@ -1,3 +1,1 @@
-def p(g,k=0,u=[[2]*99]):
- if k<1:g=p(g,k:=str(g).count('2')//12)
- return[*zip(*sum([k*[s]for s in g if{*s}-{0,2}],u)+u)]
+p=lambda g,c=-1,u=[[2]*99]:g*c or[*zip(*sum([str(g).count("2")//12*[s]for s in p(g,c+1)if{*s}-{0,2}],u)+u)]
