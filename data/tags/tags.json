@@ -761,7 +761,8 @@
     ],
     "271": [
       "color-freq",
-      "crop"
+      "crop",
+      "scale"
     ],
     "272": [
       "highlight"

@@ -52,7 +52,7 @@ def build_banner_lines_for_task(task_id: int) -> list[str]:
             others_items = [(sc, n) for sc, n in items if sc != best][:5]
             others = ", ".join([f"{sc}({n})" for sc, n in others_items])
             lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
-            if isinstance(best, int) and best <= 150:
+            if isinstance(best, int) and best <= 200:
                 lines.append("# " + f" {best} ".center(best - 2, "="))
     except Exception:
         pass
