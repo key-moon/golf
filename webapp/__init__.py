@@ -46,9 +46,7 @@ def build_banner_lines_for_task(task_id: int) -> list[str]:
             last_sc = None
             for entry in reversed(series):
                 sc = entry.get("score")
-                if isinstance(sc, int):
-                    last_sc = sc
-                    break
+                last_sc = sc
             if last_sc is not None:
                 items.append((last_sc, name))
         if items:
@@ -261,9 +259,8 @@ def create_app() -> Flask:
                 last_sc = None
                 for entry in reversed(series):
                     sc = entry.get("score")
-                    if isinstance(sc, int):
-                        last_sc = sc
-                        break
+                    last_sc = sc
+                    break
                 if last_sc is not None:
                     items.append((last_sc, name))
             if items:
@@ -455,8 +452,7 @@ def create_app() -> Flask:
                     continue
                 if tt <= t:
                     sc = entry.get("score")
-                    if isinstance(sc, int):
-                        last_sc = sc
+                    last_sc = sc
                 else:
                     break
             return last_sc
