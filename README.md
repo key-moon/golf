@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 928986
+Score: 929017
 
 Best Score: 958833
 
@@ -357,7 +357,7 @@ Best Score: 958833
 | [281](/vis/task281.png) | [base_yu](/base_yu/task281.py) | forplain/raw | [152](/dist/task281.py) (+6) | 146 🔴 | [vis-many](/vis_many/task281.png) | not worth compress |
 | [042](/vis/task042.png) | [base_arcdsl](/base_arcdsl/task042.py) | raw/zlib-zopfli | [1287](/dist/task042.py) (+1140) | 147 🔴 | [vis-many](/vis_many/task042.png) | encode:+7 |
 | [105](/vis/task105.png) | [base_arcdsl](/base_arcdsl/task105.py) | raw/zlib-zopfli | [857](/dist/task105.py) (+709) | 148 🔴 | [vis-many](/vis_many/task105.png) | encode:+1 |
-| [253](/vis/task253.png) | [base_notebooks](/base_notebooks/task253_20250807-160818Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-t/zlib-zopfli | [239](/dist/task253.py) (+91) | 148 🔴 | [vis-many](/vis_many/task253.png) | encode:+1 |
+| [253](/vis/task253.png) | [base_yu](/base_yu/task253.py) | forcomp-t/zlib-zopfli | [208](/dist/task253.py) (+60) | 148 🔴 | [vis-many](/vis_many/task253.png) | encode:+1 |
 | [102](/vis/task102.png) | [base_rearc](/base_rearc/task102.py) | forcomp-t/zlib-zopfli | [874](/dist/task102.py) (+724) | 150 🔴 | [vis-many](/vis_many/task102.png) | encode:+3 |
 | [260](/vis/task260.png) | [base_yu](/base_yu/task260.py) | forplain/raw | [191](/dist/task260.py) (+41) | 150 🔴 | [vis-many](/vis_many/task260.png) | not worth compress |
 | [064](/vis/task064.png) | [base_yu](/base_yu/task064.py) | forplain/raw | [164](/dist/task064.py) (+12) | 152 🔴 | [vis-many](/vis_many/task064.png) | not worth compress |
