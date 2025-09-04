@@ -1,1 +1,2 @@
-p=lambda g,A=(A:=[0]*17)+[3,0,6]+A+[8,0,7]+A:[A[i-(a:=sum(g,[]).index(2))-a//5*5:][:5]for i in b'&0']
+A=[0]*17
+p=lambda g:[(A+[3,0,6]+A+[8,0,7]+A)[i-(b:=sum(g,[]).index(2))*2+b%5:][:5]for i in b'&0']
