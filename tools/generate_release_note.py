@@ -117,7 +117,7 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
       
       improvement = signed_str(new_result.length - old_result.length) if old_result.length and new_result.length else "-"
 
-      public_scores = public_scores_per_task[task - 1]
+      public_scores = [*filter(lambda x: x["name"] !="ours", public_scores_per_task[task - 1])]
       community_best = public_scores[0]["score"]
 
       best_delta = signed_str(new_result.length - community_best) if new_result.length else "-"
