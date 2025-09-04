@@ -1,1 +1,1 @@
-def p(g,R=range(12)):_,(a,b,c,d)=zip(*sorted([(u.index(0),max(u))for i in R for j in R if sum(u:=g[i][j:j+2]+g[i+1][j:j+2])>max(u)*2]));return[[d,d,c,c],[d,0,0,c],[b,0,0,a],[b,b,a,a]]
+import re;Z="..([1-9])";A=Z+".{%s}\\1";t=Z+A;u=A+Z;P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]
