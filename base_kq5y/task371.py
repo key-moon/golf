@@ -1,9 +1,18 @@
-# best: 114(jailctf merger, xsot ovs att joking mewheni) / others: 115(4atj sisyphus luke Seek), 141(mukundan), 142(dbdr), 146(Yuchen20), 147(natte)
+# best: 114(xsot ovs att joking mewheni, jailctf merger) / others: 115(4atj sisyphus luke Seek), 141(mukundan), 142(dbdr), 146(Yuchen20), 147(natte)
 # ===================================================== 114 ======================================================
 
 # c,B=zip(*((i,j)for i,r in A(j)for j,B in A(r)if B));Y=sum(c)//2;X=sum(B)//2
 
-def p(j):
- Y,X=[sum(k)//2 for k in zip(*((i,k)for i,r in enumerate(j)for k,v in enumerate(r)if v))]
- for i in-1,0,1:j[Y+i][X]=j[Y][X+i]=3
- return j
+# 125
+# def p(g):
+#  a=sum(g,[]);s=a.index(1);Y,X=divmod(s+a.index(1,s+1)>>1,len(g[0]))
+#  for i in-1,0,1:g[Y+i][X]=g[Y][X+i]=3
+#  return g
+
+# 124
+def p(g):
+#a=sum(g,[]);s=a.index(1);Y,X=divmod(s+a.index(1,s+1)>>1,len(g[0]))
+ a=sum(g,[]);Y,X=divmod(a.index(1,s:=a.index(1)+1)+s>>1,len(g[0]))
+#for i in-1,0,1:g[Y+i][X]=g[Y][X+i]=3
+ for i in-1,0,1:g[Y+i][X]=g[Y][X+i]=3
+ return g
