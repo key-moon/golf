@@ -633,7 +633,7 @@ def create_app() -> Flask:
             user = os.getlogin()
         except Exception:
             user = os.environ.get("USER") or os.environ.get("USERNAME") or ""
-        base_map = {"keymoon": "base_keymoon", "yu212": "base_yu"}
+        base_map = {"keymoon": "base_keymoon", "yu212": "base_yu", "kq5y": "base_kq5y"}
         base_dir_name = base_map.get(user, "base_keymoon")
         padded = f"{task_id:03d}"
         base_dir = Path(WORKSPACE_DIR) / base_dir_name
