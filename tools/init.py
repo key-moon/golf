@@ -41,11 +41,7 @@ def main():
     f.write(source)
 
   subprocess.run(["code", file_path], check=True)
-  if USER == "yu212":
-    subprocess.run(["code", f"./vis_output/task{padded}.png"], check=True)
-    subprocess.run(["python", "checker.py", "base_yu", str(case_id)], check=True)
-  else:
-    print(openable_uri("cases", f"http://localhost:5000/tasks/{padded}"))
+  print(openable_uri("cases", f"http://localhost:5000/tasks/{padded}"))
 
 if __name__ == "__main__":
   main()
