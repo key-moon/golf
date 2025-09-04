@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('eÍ\n!…×w^d3cV†½ˆH©ÜaR±©EOŸšĞ"Îw~oÖA"~ĞÈ¤}™ŒjÖta#]¦\ÌpMğ–,uÙBü…üTÓo¼şÇ€¼B­V-eïØ²â.³ˆjÖåÈ¦¼*o¾ß+ÏPÏä¡^	qäz:×ßM">vÖªØ«òïl÷g?','L1'),-9))
+def p(g,R=range(12)):_,(a,b,c,d)=zip(*sorted([(u.index(0),max(u))for i in R for j in R if sum(u:=g[i][j:j+2]+g[i+1][j:j+2])>max(u)*2]));return[[d,d,c,c],[d,0,0,c],[b,0,0,a],[b,b,a,a]]
