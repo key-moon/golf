@@ -7,7 +7,7 @@ def p(g):
 #  for _ in g*8:
 #   g=[*zip(*eval(re.sub(r"(?<=%d, )%d(?=(, \d)*, %d)"%(c,e,d),str(c),str(g)))[::-1])]
 #   g=[*zip(*eval(re.sub(f"(?<={c}, ){e}(?=(, \d)*, {d})",str(c),str(g)))[::-1])]
- return eval('(g:=[*zip(*eval(re.sub(f"(?<={c}, ){e}(?=(, \d)*, {d})",str(c),str(g)))[::-1])]),'*80)[-1]
+ return eval('(g:=[*zip(*eval(re.sub(f"(?<={c}, ){e}(?=(, \d)*, {d})","c",str(g)))[::-1])]),'*80)[-1]
  
 
 # def p(g):
