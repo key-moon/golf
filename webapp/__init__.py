@@ -665,12 +665,6 @@ def create_app() -> Flask:
             subprocess.run(["code", str(file_path)], check=False)
         except Exception:
             pass
-        if user == "yu212":
-            vis = Path(WORKSPACE_DIR) / "vis_output" / f"task{padded}.png"
-            try:
-                subprocess.run(["code", str(vis)], check=False)
-            except Exception:
-                pass
         return jsonify({"ok": True, "created": created, "path": str(file_path), "user": user})
 
     # ジャッジ結果出力ページ
