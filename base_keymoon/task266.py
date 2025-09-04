@@ -9,8 +9,7 @@
 # p=lambda g,A=(a:=[0]*17)+[3,0,6]+a+[8,0,7]+a:[A[i-(a:=sum(g,[]).index(2))-a//5*5:][:5]for i in b"\x1c\x26\x30"]
 # p=lambda g,A=(a:=[0]*17)+[3,0,6]+a+[8,0,7]+a:[A[i-(a:=sum(g,[]).index(2))*2+a%5:][:5]for i in b"\x1c\x26\x30"]
 a=[0]*17
-A=a+[3,0,6]+a+[8,0,7]+a
-p=lambda g:[A[i-(a:=sum(g,[]).index(2))*2+a%5:][:5]for i in b"\x1c\x26\x30"]
+p=lambda g:[(a+[3,0,6]+a+[8,0,7]+a)[i-(b:=sum(g,[]).index(2))*2+b%5:][:5]for i in b"\x1c\x26\x30"]
 
 # mapping = { 0: 3, 1: 6, 2: 7, 3: 8, 4: 0 }
 # mapping = { 0: 0, 1: 8, 2: 7, 3: 6, 4: 3 } a*8%29%9
