@@ -41,12 +41,8 @@ def build_banner_lines_for_task(task_id: int) -> list[str]:
                 continue
             if task_id - 1 >= len(per_task):
                 continue
-            series = per_task[task_id - 1] or []
-            # 後ろから直近の整数スコアを拾う
-            last_sc = None
-            for entry in reversed(series):
-                sc = entry.get("score")
-                last_sc = sc
+            series = per_task[task_id - 1] or [{ "score": None }]
+            last_sc = series[-1].get("score")
             if last_sc is not None:
                 items.append((last_sc, name))
         if items:

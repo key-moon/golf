@@ -75,10 +75,10 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
   outputs: list[Output] = []
   for casenum, case in enumerate(tqdm(tests)):
     example_copy = copy.deepcopy(case)
+    dumps = []
     try:
       # signal.setitimer(signal.ITIMER_REAL, 4)
       # signal.alarm(1)
-      dumps = []
       module.CASE = casenum
       module.ANSWER = module.CORRECT = module.EXPECTED = example_copy["output"]
       module.DUMP = lambda x,defalut=False: dumps.append(json.loads(json.dumps(x)))or defalut or x
@@ -95,14 +95,14 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
         if 0 < knockout and knockout <= wrong:
           break
     except TimeoutException as e:
-      outputs.append(Output(case, casenum, None, ["ERROR: timeout"], False))
+      outputs.append(Output(case, casenum, None, dumps+["ERROR: timeout"], False))
       errors.add("timeout")
       break
     except Exception as e:
       signal.alarm(0)
       tb = traceback.format_exception(type(e), e, e.__traceback__.tb_next)
       errors.add("\n".join(tb))
-      outputs.append(Output(case, casenum, None, [f"ERROR: {tb}"], False))
+      outputs.append(Output(case, casenum, None, dumps+[f"ERROR: {tb}"], False))
       wrong += 1
 
   correct = right / len(tests)
