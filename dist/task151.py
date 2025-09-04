@@ -1,1 +1,5 @@
-def p(j):A=lambda c:list(map(all,c)).index(1);E,k=A(j),A(zip(*j));j[E-1][k-1:k+2]=j[E+1][k-1:k+2]=[4]*3;j[E][k-1]=j[E][k+1]=4;return j
+def p(g):
+ x=g[0].index(sum(g[0]));C,*_=zip(*g);y=C.index(sum(C))
+ for k in range(9):
+  if k-4:g[y+k//3-1][x+k%3-1]=4
+ return g
