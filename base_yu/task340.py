@@ -1,14 +1,17 @@
-# best: 120(mukundan) / others: 133(xsot ovs att joking mewheni), 133(joking MeWhenI), 136(joking), 137(jailctf merger), 152(MeWhenI)
+# best: 120(mukundan) / others: 133(xsot ovs att joking mewheni), 137(jailctf merger), 156(4atj sisyphus luke Seek), 203(kdmitrie), 209(MasukenSamba)
 # ======================================================== 120 =========================================================
 
-def p(g):
- for _ in range(4):
-  # g=g[:1]+[[v or max(g[0])*(max(g[0])in s)for*s,v in zip(*g[1:],g[1])]]+g[2:]
-  # g=g[:1]+[[v or(t:=max(g[0]))*(t in s)for*s,v in zip(*g[1:],g[1])]]+g[2:]
-  # g=g[:1]+[[v|max({*g[0]}&{*s})for*s,v in zip(*g[1:],g[1])]]+g[2:]
-  # g=[[s[0],s[1]|(s[0]in s[2:])*s[0],*s[2:]]for s in zip(*g[::-1])]
-  g=[[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])]
- return g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:]
+p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)
+
+# def p(g):
+#  for _ in range(4):
+#   # g=g[:1]+[[v or max(g[0])*(max(g[0])in s)for*s,v in zip(*g[1:],g[1])]]+g[2:]
+#   # g=g[:1]+[[v or(t:=max(g[0]))*(t in s)for*s,v in zip(*g[1:],g[1])]]+g[2:]
+#   # g=g[:1]+[[v|max({*g[0]}&{*s})for*s,v in zip(*g[1:],g[1])]]+g[2:]
+#   # g=[[s[0],s[1]|(s[0]in s[2:])*s[0],*s[2:]]for s in zip(*g[::-1])]
+#   g=[[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])]
+#  return g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:]
+
 # def p(g):
 #  for _ in(u:=[0])*4:
 #   for s in g[1:-1]:
