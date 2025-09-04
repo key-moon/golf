@@ -7,9 +7,11 @@
 #  f=[(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t]for c in R]
 #  return[[(f.count(f[v:=g[i][j]])>1<4<i+j)*5or v for j in R]for i in R]
 
-def p(g):
- f=lambda c:(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t]
- return[[(f(v)==f(c:=max(g[0][:3]+g[1][:3]))!=v!=c)*5or v for v in s]for s in g]
+p=lambda g:[[((f:=lambda c:(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t])(v)==f(c:=max(g[0][:3]+g[1][:3]))!=v!=c)*5or v for v in s]for s in g]
+
+# def p(g):
+#  f=lambda c:(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t]
+#  return[[(f(v)==f(c:=max(g[0][:3]+g[1][:3]))!=v!=c)*5or v for v in s]for s in g]
 
 # def p(g):
 #  f=[(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t]for c in range(10)]
