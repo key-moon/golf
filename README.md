@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 934098
+Score: 934099
 
 Best Score: 959022
 
@@ -261,7 +261,7 @@ Best Score: 959022
 | [266](/vis/task266.png) | [base_keymoon](/base_keymoon/task266.py) | forplain/raw | [98](/dist/task266.py) (0) | 98  | [vis-many](/vis_many/task266.png) | not worth compress |
 | [240](/vis/task240.png) | [base_yu](/base_yu/task240.py) | raw/raw | [113](/dist/task240.py) (+14) | 99 🔴 | [vis-many](/vis_many/task240.png) | not worth compress |
 | [355](/vis/task355.png) | [base_yu](/base_yu/task355.py) | raw/raw | [132](/dist/task355.py) (+33) | 99 🔴 | [vis-many](/vis_many/task355.png) | not worth compress |
-| [154](/vis/task154.png) | [base_yu](/base_yu/task154.py) | raw/raw | [113](/dist/task154.py) (+13) | 100 🔴 | [vis-many](/vis_many/task154.png) | not worth compress |
+| [154](/vis/task154.png) | [base_yu](/base_yu/task154.py) | raw/raw | [112](/dist/task154.py) (+12) | 100 🔴 | [vis-many](/vis_many/task154.png) | not worth compress |
 | [184](/vis/task184.png) | [base_yu](/base_yu/task184.py) | raw/raw | [113](/dist/task184.py) (+13) | 100 🔴 | [vis-many](/vis_many/task184.png) | not worth compress |
 | [390](/vis/task390.png) | [base_yu](/base_yu/task390.py) | raw/raw | [113](/dist/task390.py) (+13) | 100 🔴 | [vis-many](/vis_many/task390.png) | not worth compress |
 | [065](/vis/task065.png) | [base_keymoon](/base_keymoon/task065.py) | forplain/raw | [107](/dist/task065.py) (+6) | 101 🔴 | [vis-many](/vis_many/task065.png) | not worth compress |
