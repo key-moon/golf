@@ -1,0 +1,1 @@
+def p(g):return[[5]*len(r)if len({*r})<2else[0]*len(r)for r in g]

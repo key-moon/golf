@@ -1,0 +1,3 @@
+def p(g):
+    return [[2*(not(a or b)) for a,b in zip(r,c)]
+            for r,c in zip(g, g[3:])]

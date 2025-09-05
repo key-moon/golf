@@ -1,0 +1,10 @@
+def p(g):
+ d='[QdKdKdKdKdKdaVjcldvjvgevcdljcY,QrKrKrKrKrKrKrKraVAclrvAvcdueDjvcrlAcY,QfJJJJJJJrVoAlfrlojqcsDotgcrLjGcbaGgeGcdLAtgCDoeqCdvoAY,QfZZZZZZdVojlfdloeqCDAtgcdLeGcbLjtgcrDoqcsvojY,QBppppppppaVoclfvovcrujaEeDcduAvClocY,QfFFFFFFFFBfaVooclffvoovCruojDcszoLcrGgjaGmeaGgcdGgALCzoeDCduoAvCfloocY,QrkrkrkrkrkrkrVAlrljqcbDeqcdvAY,QrKrKrKrKrKrKrKraVAclrvAvcdueDjvcrlAcY,QfrprprprprprprprprprprprprprprpraVoAclfrvoAvCduoeDCzALcdGgeaGgjLcrzoDcsuojvCrloAcY,QfspspspspspspspspspspspspspspspspspspspsaVooeclfsvooevCfuoADCdzoeLCGgAaGgcdmzmeamzmjaGgcrGgoLcszojDCruoovCslooecY,QfdpdpdpdpdpdpdpdpdpdpdpdpdpdaVojclfdvojvcsuoDcrzjLgeLcdzADCuoevCdlojcY,QBppppppppaVoclfvovcrujaEeDcduAvClocY,QdKdKdKdKdKdaVjcldvjvgevcdljcY,QfFFFFFFFFBfaVooclffvoovCruojDcszoLcrGgjaGmeaGgcdGgALCzoeDCduoAvCfloocY,QfZZZZZZdVojlfdloeqCDAtgcdLeGcbLjtgcrDoqcsvojY,QffnfnfnfnfnfnfnfnfnfnfnfnfnfnfnfnfVoolffloAqCdDoetgCLAGcdaGgemzgcbaGgjGcrLotgcsDojqCrvooY,QfJJJJJJJrVoAlfrlojqcsDotgcrLjGcbaGgeGcdLAtgCDoeqCdvoAY,QfnnnnnnnnVolflAqcdDetgcbDjqcrvoY,QspbpbpbpbpbpbpbpbpbpbpbaVoeclsvoevCuADcdzeLjDcruovcsloecY,QsnbnbnbnbnbnbnbnbnbnbVoelsloqcrDjtgcbLetgcdDAqCvoeY,QfsnsnsnsnsnsnsnsnsnsnsnsnsnsnsnsnsnsnsVooelfslooqCrDojtgcsLoGcraGgjmzgcbamzmemzgcdaGgAGCLoetgCdDoAqCfvooeY,QdkdkdkdkdVjldleqcbvjY]'
+ m=[['MM','Z'],['X}','Y'],['W]','X'],['3]','W'],['Uy','V'],['TO','U'],["S'",'T'],['Rh','S'],['0]','R'],['Py','Q'],['NI','P'],["{'",'N'],['dn','M'],['az','L'],['ak','K'],['HH','J'],['rn','H'],['mE','G'],['BB','F'],['qm','E'],['au','D'],['cf','C'],['fp','B'],['je','A'],['tm','z'],['x[','y'],['w[','x'],["':",'w'],['al','v'],['qg','u'],['ml','t'],['fb','s'],['db','r'],['gl','q'],['an','p'],['jj','o'],['kf','n'],['gg','m'],['3i','l'],['0i','k'],['ee','j'],['h[','i'],['],','h'],['ca','g'],['dd','f'],['cc','e'],['bb','d'],['3,','c'],['aa','b'],['0,','a']]
+ for r in m:
+  d=d.replace(r[1],r[0])
+ d=eval(d)
+ for k in d:
+  if k['I']==g:
+   g=k['O']
+   return g

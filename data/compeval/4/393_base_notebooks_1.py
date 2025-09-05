@@ -1,0 +1,1 @@
+p=lambda g:[[k]for k,_ in __import__('collections').Counter(i for r in g for i in r).most_common(4)[1:]]

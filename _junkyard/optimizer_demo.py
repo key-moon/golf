@@ -43,7 +43,7 @@ for i in range(1, 401):
     # assert zlib.decompress(optimized, wbits=-15) == plain, base_path
     
     diff = len(get_embed_str(optimized)) - optimal_len
-    print(f"{"✅" if diff == 0 else "❌"}: {base_path} (+{diff}, {openable_uri("orig", viz_deflate_url(deflate))}, {openable_uri("optimized", viz_deflate_url(optimized))})")
+    print(f"{'✅' if diff == 0 else '❌'}: {base_path} (+{diff}, {openable_uri('orig', viz_deflate_url(deflate))}, {openable_uri('optimized', viz_deflate_url(optimized))})")
     losses.append(diff)
     initial_losses.append(len(get_embed_str(deflate)) - optimal_len)
     total_length += len(deflate)

@@ -1,0 +1,4 @@
+def p(g):
+ val_i,val_j=next((val_i,val_j)for val_i,val_r in enumerate(g)for val_j,val_v in enumerate(val_r)if val_v==8)
+ val_c=max(g[val_i+a][val_j+b]for a in(-1,0,1)for b in(-1,0,1)if g[val_i+a][val_j+b]!=8)
+ return[[val_c if g[val_i+a][val_j+b]else 0 for b in(-1,0,1)]for a in(-1,0,1)]

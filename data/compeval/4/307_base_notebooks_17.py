@@ -1,0 +1,1 @@
+def p(g):import numpy as A;return A.kron(g,A.ones((2,2))).tolist()

@@ -1,0 +1,1 @@
+p=lambda g:[[0 if len({*g[i]})>1 else 5]*3 for i in[0,1,2]]

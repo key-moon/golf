@@ -1,0 +1,5 @@
+def p(g):
+ from collections import Counter
+ flat=[x for r in g for x in r]
+ maj=Counter(flat).most_common(1)[0][0]
+ return[[maj]*len(g[0]) for _ in g]

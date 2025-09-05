@@ -1,0 +1,1 @@
+p=lambda g:(lambda c:[r+r for r in[[g[y][x]for x in range(min(j for _,j in c), max(j for _,j in c)+1)]for y in range(min(i for i,_ in c), max(i for i,_ in c)+1)]])([(i,j)for i,r in enumerate(g)for j,x in enumerate(r)if x])

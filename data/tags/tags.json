@@ -588,7 +588,8 @@
     ],
     "205": [
       "beam",
-      "crop"
+      "crop",
+      "noise"
     ],
     "206": [
       "pat-dup"

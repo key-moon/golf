@@ -1,0 +1,3 @@
+def p(g):
+ m={6:2}
+ return[[m.get(x,x)for x in r]for r in g]

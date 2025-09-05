@@ -1,0 +1,1 @@
+def p(g):return [val_r[:len(g)]for val_r in g]

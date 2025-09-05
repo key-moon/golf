@@ -1,0 +1,1 @@
+def p(g,F=range):R,C=len(g),len(g[0]);N=[-1]+[i for i in F(R)if len({*g[i]})==1]+[R];m=[-1]+[j for j in F(C)if len({g[i][j]for i in F(R)})==1]+[C];o=[[g[a+1][c+1]for c,d in zip(m,m[1:])if c+1<d-1]for a,b in zip(N,N[1:])if a+1<b-1];return[o[::-1]for o in o]

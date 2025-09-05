@@ -1,0 +1,1 @@
+def p(g):n=len(g)//2;a=[g[i][i]for i in range(n)];m={a[i]:a[i-1]for i in range(n)};return[[m[i]for i in r]for r in g]

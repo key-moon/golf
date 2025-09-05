@@ -17,8 +17,12 @@ def parse_range_str(range_str: str):
       s.add(int(part))
   return sorted(s)
 
-def get_code_paths(base_path: str, i: int):
-  return glob.glob(f"{base_path}/task{i:03}*.py")
+def get_code_paths(base_path: str, i: int, include_retire=False):
+  alive = glob.glob(f"{base_path}/task{i:03}*.py")
+  if include_retire:
+    return alive + glob.glob(f"{base_path}/task{i:03}*.py~retire")
+  else:
+    return alive
 
 
 Case = TypedDict('Case', {'input': list[list[int]], 'output': list[list[int]]})

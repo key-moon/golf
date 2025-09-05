@@ -1,0 +1,1 @@
+def p(g):m={3: 4, 1: 5, 2: 6, 8: 9, 5: 1, 6: 2, 9: 8, 4: 3};return[[m.get(x,x)for x in r]for r in g]

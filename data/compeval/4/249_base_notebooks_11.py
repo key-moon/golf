@@ -1,0 +1,1 @@
+p=lambda u:[R*2 for R in u]

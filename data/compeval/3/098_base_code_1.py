@@ -1,0 +1,11 @@
+def p(g):
+ d={}
+ for i,r in enumerate(g):
+  for j,v in enumerate(r):
+   if v:
+    a,b,c,e=d.get(v,(i,i,j,j));d[v]=(min(a,i),max(b,i),min(c,j),max(e,j))
+ for v,(a,b,c,e) in d.items():
+  for i in range(a+1,b):
+   for j in range(c+1,e):
+    if g[i][j]==v:g[i][j]=0
+ return g
