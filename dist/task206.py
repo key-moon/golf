@@ -1,3 +1,4 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("eÍjÄ …×7O¢äÎ_¡å.œÿIA$ÆH ±Af‚¾}ÑfS²ó|ßQ9OÛÃÄ(Ò¦‚ş'°„'>x°ş=ÚĞ½ìŸ/*âü_Š‚¡‡™èS)aÌÀ~g$Ô¶›&ëŸŒ%Ìwyg¼Ğ8x––¿Zló“ŠãØÅ5•W¼•~,¦Åø¯¿¢òbçúÂw»d×ú–²Á/:ê½ÙÜñ¨fóNçlt†öËt\*átª£cıeh® Ø×;xp¿",'L1'),-9))
+def p(g):
+ y,x=divmod(sum(g,[]).index(5),len(g[0]));g[y][x]=k=0
+ for v in[v for s in g for*t,v in zip(*g,s)if any(s)*any(t)]:g[y-1+k//3][x-1+k%3]=v;k+=1
+ return g
