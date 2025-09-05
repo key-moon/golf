@@ -1,11 +1,10 @@
-# best: 82(luke, 4atj sisyphus luke Seek, 4atj, luke/sisyphus/Seek, biz, sisyphus) / others: 84(HashPanda), 87(natte), 90(mukundan), 93(kg583), 93(kabutack)
+# best: 82(biz, 4atj sisyphus luke Seek, jailctf merger) / others: 84(HashPanda), 87(natte), 87(jacekwl), 90(mukundan), 93(kabutack)
 # ====================================== 82 ======================================
 
 # p=lambda g:[[max((t[0]&t[-1]),(s[0]&s[-1])) for t in zip(*g)]for s in g]
 # p=lambda g:(c:=min((u:=sum(g,[])),key=u.count))and[[c*([t[0],s[0]].count(c)>0) for t in zip(*g)]for s in g]
 # p=lambda g:(c:=min((u:=sum(g,[])),key=u.count))and[[c*(c in[t[0],s[0]])for t in zip(*g)]for s in g]
-p=lambda g:[[sum({min((u:=sum(g,[])),key=u.count)}&{t[0],s[0]})for t in zip(*g)]for s in g]
-
+p=lambda g:[[sum({min(u:=sum(g,[]),key=u.count)}&{t[0],s[0]})for t in zip(*g)]for s in g]
 # R=range
 # def p(g):
 #  h,w=len(g),len(g[0])
