@@ -1,3 +1,5 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('ENËƒ ]ß~‰(¤:KéD´ı	Â‚X:£Pl˜6³húïè¤Îçl.p+fzÃ ı—!í:ã‹™ğq%²V„w™?ËŸÇ5Ş–Š¼Ø³~>£”³û}§¤Kçe	à`ò±u,;’µXµHš‹;>Æc)³kv|!èHhMY“Vä°ß2[­ftßõo8Ë>.PYM8‚ögĞÎAºÖUV!Ê£*mn©!¾hûl)(4=‘¸„5iMh#Ø¨2Øÿ»`°¯4ĞU§ÍùıœaÍÁDú;²á0æ~¹ÇÏŒ’ƒj7Än*ÔŸ5,5|¨ğ´ñµ-˜û#Ä‰','L1'),-9))
+import re
+def p(g):
+ c=len({*str(g)})-5;f=lambda s:sum([[v*0!=0and f(v)or v]*c for v in s],[]);t=f(g);n=len(t)*3
+ for _ in range(4):t=[*zip(*eval(re.sub('0(?=(.{%d})*, 0.{%d}0, [13-9])'%(n+5,n-2),'2',str(t)))[::-1])]
+ return t
