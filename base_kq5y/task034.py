@@ -32,6 +32,11 @@
 
 # 圧縮よくわからん
 
+# def p(g):
+#  Y,X=next((r,c)for r,R in enumerate(g[:-1])for c,C in enumerate(R[:-1])if C*g[r+1][c]*R[c+1]*g[r+1][c+1])
+#  return[[[0,({*sum(g,[])}-{0,2}).pop()][0<=r-Y<2 and 0<=c-X<2 or g[Y+(r>Y)][X+(c>X)]==2 and[(r-c-Y+X)**2<2,0<=r+c-Y-X<3][(r>Y)^(c>X)]]for c,_ in enumerate(R)]for r,R in enumerate(g)]
+
 def p(g):
- Y,X=next((r,c)for r,R in enumerate(g[:-1])for c,C in enumerate(R[:-1])if C*g[r+1][c]*R[c+1]*g[r+1][c+1])
- return[[[0,({*sum(g,[])}-{0,2}).pop()][0<=r-Y<2 and 0<=c-X<2 or g[Y+(r>Y)][X+(c>X)]==2 and[(r-c-Y+X)**2<2,0<=r+c-Y-X<3][(r>Y)^(c>X)]]for c,_ in enumerate(R)]for r,R in enumerate(g)]
+ u=sum(g,[])
+ Y,X=divmod(u.index(max(u,key=bool)),9)
+ return[[[0,sum({*sum(g,[])})-2][0<=r-Y<2 and 0<=c-X<2 or g[Y+(r>Y)][X+(c>X)]==2 and[(r-c-Y+X)**2<2,0<=r+c-Y-X<3][(r>Y)^(c>X)]]for c,_ in enumerate(R)]for r,R in enumerate(g)]
