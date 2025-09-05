@@ -1,3 +1,6 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("]ÌÍJÀ0Àñsö$éÖ2İq¥Û}<DÈa`WZ\•¢àã;•á)áÇ?yö;¼ac«yñù\õ“!Œ2É@‘)±Ø_DˆÊ–ƒÇõÒâ¿1kkğˆ#=ğßá“èíó¿‰¾´»òD\ßÖüf5oàœä,ñc «pVN0¹'e›EZ«&>‡Só%¶«ª]Å¿”á",'L1'),-9))
+def p(g,x=0):
+ y=g.index(max(g,key=any))
+ while max(g)[x]<1:x+=1
+ for A in range(400):
+  if g[i:=A%10][j:=A//10%10]:g[4-j+x+y][i-y+x]|=g[i][j]
+ return g
