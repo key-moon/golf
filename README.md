@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 934234
+Score: 934288
 
 Best Score: 959150
 
@@ -361,7 +361,7 @@ Best Score: 959150
 | [117](/vis/task117.png) | [base_yu](/base_yu/task117.py) | forplain/zlib-zopfli | [209](/dist/task117.py) (+61) | 148 🔴 | [vis-many](/vis_many/task117.png) | encode:+1 |
 | [253](/vis/task253.png) | [base_yu](/base_yu/task253.py) | raw/raw | [168](/dist/task253.py) (+20) | 148 🔴 | [vis-many](/vis_many/task253.png) | not worth compress |
 | [102](/vis/task102.png) | [base_yu](/base_yu/task102.py) | raw/raw | [183](/dist/task102.py) (+33) | 150 🔴 | [vis-many](/vis_many/task102.png) | not worth compress |
-| [069](/vis/task069.png) | [base_notebooks](/base_notebooks/task069_20250816-174044Z-code-golf-ensemble-local-score-391-400-dsl-seshuraju.py) | raw/zlib-zopfli | [222](/dist/task069.py) (+71) | 151 🔴 | [vis-many](/vis_many/task069.png) |  |
+| [069](/vis/task069.png) | [base_yu](/base_yu/task069.py) | forplain/raw | [168](/dist/task069.py) (+17) | 151 🔴 | [vis-many](/vis_many/task069.png) | not worth compress |
 | [020](/vis/task020.png) | [base_yu](/base_yu/task020.py) | forplain/raw | [152](/dist/task020.py) (0) | 152  | [vis-many](/vis_many/task020.png) | not worth compress |
 | [064](/vis/task064.png) | [base_yu](/base_yu/task064.py) | forplain/raw | [164](/dist/task064.py) (+12) | 152 🔴 | [vis-many](/vis_many/task064.png) | not worth compress |
 | [156](/vis/task156.png) | [base_code](/base_code/task156.py) | raw/zlib-zopfli | [368](/dist/task156.py) (+216) | 152 🔴 | [vis-many](/vis_many/task156.png) |  |

@@ -1,3 +1,6 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('•Ã0Fè¯8@§í@¥Tˆz“¥Q,Ó’Ÿ¿$30ˆç‰ïİÃ­ğª½šĞ…óéä~¸‹®À që. j†-ÀTûì‹²jü¨¹(ØV!ìG’ÔªµiH”U#óàI˜,c[Á‚†Z&ÍCÚ§˜øº¤GEê2u™nÌ¹sÁüwb_¾É%­ñ[Ô¤Ée&Ûä.c,¿Ä§ğo','L1'),-9))
+def p(g):
+ A=sum(g,[]);u=[c for c in enumerate(A)if c[1]%8]
+ while 8in A:
+  i=A.index(8)
+  for(j,v)in u:A[j]=0;A[i+j-u[0][0]]=v
+ return[A[i*10:][:10]for i in range(10)]

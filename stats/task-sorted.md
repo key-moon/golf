@@ -78,7 +78,7 @@
 | [066](/vis/task066.png) | [base_yu](/base_yu/task066.py) | forplain/zlib-zopfli | [331](/dist/task066.py) (+42) | 289 🔴 | [vis-many](/vis_many/task066.png) |  |
 | [067](/vis/task067.png) | [base_keymoon](/base_keymoon/task067.py) | raw/raw | [33](/dist/task067.py) (0) | 33  | [vis-many](/vis_many/task067.png) | not worth compress |
 | [068](/vis/task068.png) | [base_yu](/base_yu/task068.py) | raw/raw | [151](/dist/task068.py) (+35) | 116 🔴 | [vis-many](/vis_many/task068.png) | not worth compress |
-| [069](/vis/task069.png) | [base_notebooks](/base_notebooks/task069_20250816-174044Z-code-golf-ensemble-local-score-391-400-dsl-seshuraju.py) | raw/zlib-zopfli | [222](/dist/task069.py) (+71) | 151 🔴 | [vis-many](/vis_many/task069.png) |  |
+| [069](/vis/task069.png) | [base_yu](/base_yu/task069.py) | forplain/raw | [168](/dist/task069.py) (+17) | 151 🔴 | [vis-many](/vis_many/task069.png) | not worth compress |
 | [070](/vis/task070.png) | [base_keymoon](/base_keymoon/task070.py) | raw/raw | [92](/dist/task070.py) (+14) | 78 🔴 | [vis-many](/vis_many/task070.png) | not worth compress |
 | [071](/vis/task071.png) | [base_yu](/base_yu/task071.py) | forplain/raw | [158](/dist/task071.py) (+39) | 119 🔴 | [vis-many](/vis_many/task071.png) | not worth compress |
 | [072](/vis/task072.png) | [base_keymoon](/base_keymoon/task072.py) | raw/raw | [62](/dist/task072.py) (+8) | 54 🔴 | [vis-many](/vis_many/task072.png) | not worth compress |
