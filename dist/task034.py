@@ -1,3 +1,3 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('UUvÃ0ì*ş”©)|•+÷zEÓ0œñî¾&UÌà|`9D>Ce–©©JeyÈÊ‹F~›2Ÿ6¾<Õ"Íôh×å¬2×9ìs·©”£Ù@²ë7p|^úº)S"*xUóQÑê÷¡òAåÀw4\,K‹ñ)uìb[mã¬d‘PB¹ÂK…‘`W†ï–Ë¶ˆ ÔV£4\ˆñb¬Ú~y	\ú&;êZö}ı®àpıÀ–ïú§·×ñÈw_','L1'),-9))
+D=enumerate
+C=sum
+def p(g):u=C(g,[]);A,B=divmod(u.index(max(u,key=bool)),9);return[[[0,C({*C(g,[])})-2][0<=r-A<2and 0<=c-B<2or g[A+(r>A)][B+(c>B)]==2and[(r-c-A+B)**2<2,0<=r+c-A-B<3][(r>A)^(c>B)]]for(c,_)in D(E)]for(r,E)in D(g)]
