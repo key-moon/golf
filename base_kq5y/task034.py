@@ -39,4 +39,4 @@
 def p(g):
  u=sum(g,[])
  Y,X=divmod(u.index(max(u,key=bool)),9)
- return[[[0,sum({*sum(g,[])})-2][0<=r-Y<2 and 0<=c-X<2 or g[Y+(r>Y)][X+(c>X)]==2 and[(r-c-Y+X)**2<2,0<=r+c-Y-X<3][(r>Y)^(c>X)]]for c,_ in enumerate(R)]for r,R in enumerate(g)]
+ return[[[0,sum({*sum(g,[])})-2][2>r-Y>-1<c-X<2 or g[Y+(r>Y)][X+(c>X)]==2 and[(r-c-Y+X)**2<2,0<=r+c-Y-X<3][(r>Y)^(c>X)]]for c,_ in enumerate(R)]for r,R in enumerate(g)]
