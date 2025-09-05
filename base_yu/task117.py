@@ -1,12 +1,45 @@
+# best: 154(mukundan) / others: 157(4atj sisyphus luke Seek), 172(xsot ovs att joking mewheni), 221(jailctf merger), 229(MasukenSamba), 242(Potatoman)
+# ========================================================================= 154 ==========================================================================
+
+
 R=range
 def p(g):
  n=len(g)
  for i in R(n-2,0,-1):
-  for j in R(1,n-1):
-   if 0<g[i][j]==g[i+1][j+1]==g[i+1][j-1]==g[i-1][j+1]==g[i-1][j-1]:
+  for j in R(n):
+   if[1]<[g[i][j]]*4==g[i-1][j-1:j+2:2]+g[i+1][j-1:j+2:2]:
     for z in R(n*n*2):
-     if 0<g[y:=z//n%n][x:=z%n]!=g[i][j]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
+     if g[y:=z//n%n][x:=z%n]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
     return g
+
+
+# R=range
+# def p(g):
+#  n=len(g)
+#  for c in range(10):
+#   u=[i for i,v in enumerate(sum(g,[]))if c==v]
+#   if len(u)==5 and sum(u)==u[2]*5:
+#    i,j=divmod(u[2],n)
+#    for z in R(n*n*2):
+#     if 0<g[y:=z//n%n][x:=z%n]!=g[i][j]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
+#    return g
+
+#  for i in R(n-2,0,-1):
+#   for j in R(1,n-1):
+#    if 0<g[i][j]==g[i+1][j+1]==g[i+1][j-1]==g[i-1][j+1]==g[i-1][j-1]:
+#     for z in R(n*n*2):
+#      if 0<g[y:=z//n%n][x:=z%n]!=g[i][j]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
+#     return g
+
+# R=range
+# def p(g):
+#  n=len(g)
+#  for i in R(n-2,0,-1):
+#   for j in R(1,n-1):
+#    if 0<g[i][j]==g[i+1][j+1]==g[i+1][j-1]==g[i-1][j+1]==g[i-1][j-1]:
+#     for z in R(n*n*2):
+#      if 0<g[y:=z//n%n][x:=z%n]!=g[i][j]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
+#     return g
 
 # def p(g):
 #  n=len(g)
