@@ -1,1 +1,1 @@
-p=lambda g:[[c for c in range(1,10)if len({s.count(c)for s in g})>2]]
+p=lambda g,c=1:len({s.count(c)for s in g})//3*[[c]]or p(g,c+1)
