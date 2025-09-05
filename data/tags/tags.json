@@ -232,6 +232,7 @@
       "recolor"
     ],
     "70": [
+      "edgecase",
       "fill-bound",
       "highlight"
     ],
@@ -740,6 +741,7 @@
       "gather"
     ],
     "265": [
+      "edgecase",
       "highlight"
     ],
     "266": [
@@ -1052,9 +1054,7 @@
       "diagonal",
       "pat-dup"
     ],
-    "371": [
-      "edgecase"
-    ],
+    "371": [],
     "372": [
       "combine"
     ],
