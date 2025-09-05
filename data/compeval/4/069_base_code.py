@@ -1,25 +1,12 @@
-def p(g):
-    # dims
-    val_a,val_b=len(g),len(g[0])
-    # count nonzero cells to pick mask = most frequent nonzero
-    val_d={}
-    for val_i in range(val_a):
-        for val_j in range(val_b):
-            val_v=g[val_i][val_j]
-            if val_v:
-                val_d[val_v]=val_d.get(val_v,0)+1
-    val_m=max(val_d,key=val_d.get)
-    # collect the one non‐mask connected pattern (the stamp)
-    val_S=[(val_i,val_j,g[val_i][val_j]) for val_i in range(val_a) for val_j in range(val_b) if (val_v:=g[val_i][val_j]) and val_v!=val_m]
-    val_x=min(val_i for val_i,val_j,val_v in val_S)
-    val_y=min(val_j for val_i,val_j,val_v in val_S)
-    val_P=[(val_i-val_x,val_j-val_y,val_v) for val_i,val_j,val_v in val_S]
-    # prepare empty output
-    val_R=[[0]*val_b for _ in range(val_a)]
-    # slide stamp over grid; where it exactly covers the mask, paint it
-    for val_I in range(val_a):
-        for val_J in range(val_b):
-            if all(0<=val_I+di<val_a and 0<=val_J+dj<val_b and g[val_I+di][val_J+dj]==val_m for di,dj,_ in val_P):
-                for di,dj,c in val_P:
-                    val_R[val_I+di][val_J+dj]=c
-    return val_R
+def	p(g):
+	A,B=len(g),len(g[0]);D={}
+	for	K	in	range(A):
+		for	L	in	range(B):
+			C=g[K][L]
+			if	C:D[C]=D.get(C,0)+1
+	H=max(D,key=D.get);E=[(A,D,g[A][D])for	A	in	range(A)for	D	in	range(B)if(C:=g[A][D])and	C!=H];M=min(A	for(A,B,C)in	E);N=min(A	for(B,A,C)in	E);I=[(A-M,B-N,C)for(A,B,C)in	E];J=[[0]*B	for	_	in	range(A)]
+	for	F	in	range(A):
+		for	G	in	range(B):
+			if	all(0<=F+C<A	and	0<=G+D<B	and	g[F+C][G+D]==H	for(C,D,_)in	I):
+				for(O,P,c)in	I:J[F+O][G+P]=c
+	return	J

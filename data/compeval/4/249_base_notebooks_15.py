@@ -1,2 +1,1 @@
-def p(input):
- return [row * 2 for row in input]
+def	p(input):return[A*2for	A	in	input]

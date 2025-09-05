@@ -1,8 +1,8 @@
-def p(j,A=len,c=range):
-	E='r';k='c';W,l,J=A(j),A(j[0]),{}
-	for a in c(W):
-		for C in c(l):
-			e=j[a][C]
-			if e in J:J[e][E]+=[a];J[e][k]+=[C]
-			else:J[e]={E:[a],k:[C]}
-	K=sorted([[A(J[e][E])*(max(J[e][k])-min(J[e][k])),e]for e in J if e>0])[0][1];j=[[K if J==K else 0 for J in J]for J in j];J=J[K];j=[E[min(J[k]):max(J[k])+1]for E in j];j=j[min(J[E]):max(J[E])+1];return j
+def	p(j,A=len,c=range):
+	C='r';k='c';F,l,B=A(j),A(j[0]),{}
+	for	a	in	c(F):
+		for	D	in	c(l):
+			e=j[a][D]
+			if	e	in	B:B[e][C]+=[a];B[e][k]+=[D]
+			else:B[e]={C:[a],k:[D]}
+	E=sorted([[A(B[e][C])*(max(B[e][k])-min(B[e][k])),e]for	e	in	B	if	e>0])[0][1];j=[[E	if	A==E	else	0for	A	in	A]for	A	in	j];B=B[E];j=[A[min(B[k]):max(B[k])+1]for	A	in	j];j=j[min(B[C]):max(B[C])+1];return	j

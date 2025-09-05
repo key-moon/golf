@@ -1,9 +1,8 @@
-def p(g):
- X=[]
- E=enumerate
- for r,R in E(g):
-  for c,C in E(R):
-   if C==5:
-    if c not in X:X.append(c)
-    g[r][c]=X.index(c)+1
- return g
+def	p(g):
+	A=[];B=enumerate
+	for(r,C)in	B(g):
+		for(c,D)in	B(C):
+			if	D==5:
+				if	c	not	in	A:A.append(c)
+				g[r][c]=A.index(c)+1
+	return	g

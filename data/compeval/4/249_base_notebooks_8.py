@@ -1,1 +1,1 @@
-p=lambda g:[r+r for r in g]
+p=lambda	g:[r+r	for	r	in	g]

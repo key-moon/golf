@@ -1,20 +1,10 @@
-def p(g):
-    H,W=len(g),len(g[0]) if g else 0
-    vis=[[False]*W for _ in range(H)]
-    comp=[[0]*W for _ in range(H)]
-    color=1
-    
-    def dfs(i,j,val):
-        if i<0 or i>=H or j<0 or j>=W or vis[i][j] or g[i][j]!=val: return
-        vis[i][j]=True
-        comp[i][j]=color
-        for di,dj in [(0,1),(1,0),(0,-1),(-1,0)]:
-            dfs(i+di,j+dj,val)
-    
-    for i in range(H):
-        for j in range(W):
-            if not vis[i][j] and g[i][j]!=0:
-                dfs(i,j,g[i][j])
-                color+=1
-    
-    return comp
+def	p(g):
+	A,B=len(g),len(g[0])if	g	else	0;C=[[False]*B	for	_	in	range(A)];D=[[0]*B	for	_	in	range(A)];E=1
+	def	F(i,j,val):
+		if	i<0	or	i>=A	or	j<0	or	j>=B	or	C[i][j]or	g[i][j]!=val:return
+		C[i][j]=True;D[i][j]=E
+		for(G,H)in[(0,1),(1,0),(0,-1),(-1,0)]:F(i+G,j+H,val)
+	for	i	in	range(A):
+		for	j	in	range(B):
+			if	not	C[i][j]and	g[i][j]!=0:F(i,j,g[i][j]);E+=1
+	return	D

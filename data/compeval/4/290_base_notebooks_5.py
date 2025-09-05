@@ -1,8 +1,7 @@
-j=lambda A,c,E:[[c if i==E else E for i in r]for r in A]
-def p(A):
- k,W=len(A),len(A[0])
- l,J,c,E=k,0,W,0
- for a in range(k):
-  for C in range(W):
-   if A[a][C]:l,J,c,E=min(l,a),max(J,a),min(c,C),max(E,C)
- return j([r[c:E+1]for r in A[l:J+1]],A[l][c],A[l+(J-l)//2][c+(E-c)//2])
+j=lambda	A,c,E:[[c	if	i==E	else	E	for	i	in	r]for	r	in	A]
+def	p(A):
+	k,E=len(A),len(A[0]);l,B,c,C=k,0,E,0
+	for	a	in	range(k):
+		for	D	in	range(E):
+			if	A[a][D]:l,B,c,C=min(l,a),max(B,a),min(c,D),max(C,D)
+	return	j([r[c:C+1]for	r	in	A[l:B+1]],A[l][c],A[l+(B-l)//2][c+(C-c)//2])

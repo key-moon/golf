@@ -1,1 +1,1 @@
-def p(g):c=len(g)//2;return[[v*(abs(i-c)!=abs(j-c))for j,v in enumerate(r)]for i,r in enumerate(g)]
+def	p(g):c=len(g)//2;return[[v*(abs(i-c)!=abs(j-c))for(j,v)in	enumerate(r)]for(i,r)in	enumerate(g)]

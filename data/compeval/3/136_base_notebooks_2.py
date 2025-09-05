@@ -1,8 +1,6 @@
-def p(j):
- A,c=len(j),len(j[0])
- E=lambda k:next((W,l)for W in range(A-1)for l in range(c-1)if j[W][l]==j[W+1][l+1]==k)
- W,l=E(1)
- while W>=1and l>=1:W,l=W-1,l-1;j[W][l]=1
- W,l=E(2)
- while W<A-1and l<c-1:W,l=W+1,l+1;j[W][l]=2
- return j
+def	p(j):
+	B,c=len(j),len(j[0]);C=lambda	k:next((A,l)for	A	in	range(B-1)for	l	in	range(c-1)if	j[A][l]==j[A+1][l+1]==k);A,l=C(1)
+	while	A>=1and	l>=1:A,l=A-1,l-1;j[A][l]=1
+	A,l=C(2)
+	while	A<B-1and	l<c-1:A,l=A+1,l+1;j[A][l]=2
+	return	j

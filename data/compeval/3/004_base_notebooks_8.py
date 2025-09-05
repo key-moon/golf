@@ -1,11 +1,10 @@
-def p(g):
- s={}
- E=enumerate
- for r,R in E(g):
-  for c,C in E(R):
-   if C:s.setdefault(C,[]).append((r,c))
- o=[[0]*len(g[0])for _ in g]
- for C,P in s.items():
-  F,N=max(r for r,_ in P),max(c for _,c in P)
-  for r,c in P:o[r][c if r==F or c==N else c+1]=C
- return o
+def	p(g):
+	s={};C=enumerate
+	for(r,D)in	C(g):
+		for(c,A)in	C(D):
+			if	A:s.setdefault(A,[]).append((r,c))
+	o=[[0]*len(g[0])for	_	in	g]
+	for(A,B)in	s.items():
+		E,F=max(r	for(r,_)in	B),max(c	for(_,c)in	B)
+		for(r,c)in	B:o[r][c	if	r==E	or	c==F	else	c+1]=A
+	return	o

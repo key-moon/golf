@@ -1,6 +1,6 @@
-def p(j,A=range):
-	c,E=len(j),len(j[0]);k=[[0]*E for W in A(c)]
-	for W in A(E):
-		l=[j[c][W]for c in A(c)if j[c][W]!=0]
-		for(J,a)in enumerate(l):k[J][W]=a
-	return k
+def	p(j,A=range):
+	c,C=len(j),len(j[0]);k=[[0]*C	for	A	in	A(c)]
+	for	B	in	A(C):
+		l=[j[c][B]for	c	in	A(c)if	j[c][B]!=0]
+		for(D,a)in	enumerate(l):k[D][B]=a
+	return	k

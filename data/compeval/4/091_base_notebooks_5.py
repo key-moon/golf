@@ -1,8 +1,8 @@
-def p(j):
-	A=len;c=range;E=[]
-	for k in c(A(j[0])):
-		if any(j[c][k]==5 for c in c(A(j))):E.append(k)
-	W=[]
-	for l in c(A(j)):
-		if j[l][E[0]]==5:W.append(l)
-	J,a=min(W)-1,max(W)+1;C,e=E[0],E[1];return[[j[E][c]for c in c(C,e+1)]for E in c(J,a+1)]
+def	p(j):
+	B=len;c=range;A=[]
+	for	k	in	c(B(j[0])):
+		if	any(j[c][k]==5for	c	in	c(B(j))):A.append(k)
+	C=[]
+	for	l	in	c(B(j)):
+		if	j[l][A[0]]==5:C.append(l)
+	D,a=min(C)-1,max(C)+1;E,e=A[0],A[1];return[[j[A][c]for	c	in	c(E,e+1)]for	A	in	c(D,a+1)]

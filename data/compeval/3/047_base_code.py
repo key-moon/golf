@@ -1,6 +1,1 @@
-def p(g):
-    n = len(g)
-    p = [(i, j) for i in range(n) for j in range(n) if g[i][j]]
-    (y1, x1), (y2, x2) = p
-    c1, c2 = g[y1][x1], g[y2][x2]
-    return [[2 if (i==y1 or j==x1) and (i==y2 or j==x2) else c1 if i==y1 or j==x1 else c2 if i==y2 or j==x2 else 0 for j in range(n)]for i in range(n)]
+def	p(g):n=len(g);p=[(i,j)for	i	in	range(n)for	j	in	range(n)if	g[i][j]];(A,B),(C,D)=p;E,F=g[A][B],g[C][D];return[[2if(i==A	or	j==B)and(i==C	or	j==D)else	E	if	i==A	or	j==B	else	F	if	i==C	or	j==D	else	0for	j	in	range(n)]for	i	in	range(n)]

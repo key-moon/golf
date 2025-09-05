@@ -1,6 +1,5 @@
-def p(g):
- X=[]
- for r in g:
-  for i in range(3):
-   X+=[sum([[c]*3 for c in r],[])]
- return X
+def	p(g):
+	A=[]
+	for	r	in	g:
+		for	i	in	range(3):A+=[sum([[c]*3for	c	in	r],[])]
+	return	A

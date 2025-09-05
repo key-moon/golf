@@ -1,1 +1,1 @@
-p=lambda g:list(map(list,zip(*g)))
+p=lambda	g:list(map(list,zip(*g)))

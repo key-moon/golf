@@ -1,16 +1,1 @@
-def p(g):
- for _ in 0,1:
-  for i in range(15):
-   if g[i].count(2)>4:g[i+2],g[i-2],g[i+3],g[i-3]=g[i-2],g[i+2],g[i-3],g[i+3]
-  *g,=zip(*g)
- return g
-
-
-# def p(g):
-#  for _ in 0,1:
-#   for i in range(15):
-#    if g[i].count(2)>4:
-#     g[i+2],g[i-2]=g[i-2],g[i+2]
-#     g[i+3],g[i-3]=g[i-3],g[i+3]
-#   *g,=zip(*g)
-#  return[*map(list,g)]
+p=lambda	g,c=-29,k=3:c*g	or	exec(g[i:=c%15].count(2)//5*2*'g[i-k],g[i+k]=g[i+k],g[i-k];k=2;')or	p([*zip(*g)],c+1)

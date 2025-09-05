@@ -1,2 +1,1 @@
-def p(g):
- return [row[:2] for row in g[:2]]
+def	p(g):return[A[:2]for	A	in	g[:2]]

@@ -1,7 +1,6 @@
-# best: 81
-# bestは正規表現じゃないんだろうが、一旦正規表現に甘えます
-import re;s=re.sub
+import re
+s=re.sub
 def p(g):
- d=s("[[ ,]","",str(g))
- for x in d+d:d=s("0(?=("+"."*len(g)+")?1)","1",d)[::-1]
- return [[*map(int,r)]for r in d.split("]")[:-2]]
+ d=s('[[ ,]','',str(g))
+ for x in d+d:d=s('0(?=('+'.'*len(g)+')?1)','1',d)[::-1]
+ return[[*map(int,r)]for r in d.split(']')[:-2]]

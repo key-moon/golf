@@ -1,8 +1,8 @@
-def p(g):
- val_n=len(g);val_m=max(max(val_r)for val_r in g);val_o=[[0]*val_n*val_n for _ in range(val_n*val_n)]
- for val_i,val_r in enumerate(g):
-  for val_j,val_v in enumerate(val_r):
-   if val_v==val_m==2:
-    for val_di,val_rr in enumerate(g):
-     for val_dj,val_c in enumerate(val_rr):val_o[val_i*val_n+val_di][val_j*val_n+val_dj]=val_c
- return val_o
+def	p(g):
+	A=len(g);C=max(max(A)for	A	in	g);B=[[0]*A*A	for	_	in	range(A*A)]
+	for(D,E)in	enumerate(g):
+		for(F,G)in	enumerate(E):
+			if	G==C==2:
+				for(H,I)in	enumerate(g):
+					for(J,K)in	enumerate(I):B[D*A+H][F*A+J]=K
+	return	B

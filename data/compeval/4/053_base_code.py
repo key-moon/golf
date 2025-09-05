@@ -1,1 +1,1 @@
-def p(g):g[:]=[[0]*len(g[0])]+g[:-1];return g
+def	p(g):g[:]=[[0]*len(g[0])]+g[:-1];return	g

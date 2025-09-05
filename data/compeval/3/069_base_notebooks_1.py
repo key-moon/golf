@@ -1,12 +1,12 @@
-def p(j,A=enumerate):
+def	p(j,A=enumerate):
 	c=[]
-	for(E,k)in A(j):
-		for(W,l)in A(k):
-			if l not in[0,8]:c+=[[E,W,l]];j[E][W]=0
-	J=c[0][:];c=[[c[0]-J[0],c[1]-J[1],c[2]]for c in c]
-	for(E,k)in A(j):
-		for(W,l)in A(k):
-			if l==8:
-				j[E][W]=J[2]
-				for a in c:j[E+a[0]][W+a[1]]=a[2]
-	return j
+	for(B,k)in	A(j):
+		for(C,l)in	A(k):
+			if	l	not	in[0,8]:c+=[[B,C,l]];j[B][C]=0
+	D=c[0][:];c=[[c[0]-D[0],c[1]-D[1],c[2]]for	c	in	c]
+	for(B,k)in	A(j):
+		for(C,l)in	A(k):
+			if	l==8:
+				j[B][C]=D[2]
+				for	a	in	c:j[B+a[0]][C+a[1]]=a[2]
+	return	j

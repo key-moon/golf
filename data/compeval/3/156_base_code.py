@@ -1,17 +1,14 @@
-def p(g):
-    h,w=len(g),len(g[0]);v=set();R=[]
-    for i in range(h):
-        for j in range(w):
-            if g[i][j]==4 and (i,j) not in v:
-                s=[(i,j)];v.add((i,j));k=0
-                while k<len(s):
-                    a,b=s[k];k+=1
-                    for ni,nj in((a+1,b),(a-1,b),(a,b+1),(a,b-1)):
-                        if 0<=ni<h and 0<=nj<w and g[ni][nj]==4 and (ni,nj) not in v:
-                            v.add((ni,nj));s.append((ni,nj))
-                a0=min(t[0]for t in s);a1=max(t[0]for t in s)
-                b0=min(t[1]for t in s);b1=max(t[1]for t in s)
-                R.append([(y,x) for y in range(a0+1,a1) for x in range(b0+1,b1)])
-    for k,L in enumerate(sorted(R,key=len)):
-        for y,x in L: g[y][x]=k+1
-    return g
+def	p(g):
+	h,w=len(g),len(g[0]);v=set();C=[]
+	for	i	in	range(h):
+		for	j	in	range(w):
+			if	g[i][j]==4and(i,j)not	in	v:
+				s=[(i,j)];v.add((i,j));k=0
+				while	k<len(s):
+					a,b=s[k];k+=1
+					for(A,B)in(a+1,b),(a-1,b),(a,b+1),(a,b-1):
+						if	0<=A<h	and	0<=B<w	and	g[A][B]==4and(A,B)not	in	v:v.add((A,B));s.append((A,B))
+				D=min(t[0]for	t	in	s);E=max(t[0]for	t	in	s);F=min(t[1]for	t	in	s);G=max(t[1]for	t	in	s);C.append([(y,x)for	y	in	range(D+1,E)for	x	in	range(F+1,G)])
+	for(k,H)in	enumerate(sorted(C,key=len)):
+		for(y,x)in	H:g[y][x]=k+1
+	return	g

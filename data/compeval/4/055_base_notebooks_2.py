@@ -1,14 +1,11 @@
-def p(m):
- R,C=len(m),len(m[0])
- O=[r[:]for r in m]
- h1,h2=[r for r in range(R)if all(v==8 for v in m[r])]
- v1,v2=[c for c in range(C)if all(m[r][c]==8 for r in range(R))]
- for r in range(R):
-  for c in range(C):
-   if not O[r][c]:
-    if r<h1 and v1<c<v2:O[r][c]=2
-    elif h1<r<h2 and c<v1:O[r][c]=4
-    elif h1<r<h2 and v1<c<v2:O[r][c]=6
-    elif h1<r<h2 and c>v2:O[r][c]=3
-    elif r>h2 and v1<c<v2:O[r][c]=1
- return O
+def	p(m):
+	F,G=len(m),len(m[0]);A=[r[:]for	r	in	m];B,C=[r	for	r	in	range(F)if	all(v==8for	v	in	m[r])];D,E=[c	for	c	in	range(G)if	all(m[r][c]==8for	r	in	range(F))]
+	for	r	in	range(F):
+		for	c	in	range(G):
+			if	not	A[r][c]:
+				if	r<B	and	D<c<E:A[r][c]=2
+				elif	B<r<C	and	c<D:A[r][c]=4
+				elif	B<r<C	and	D<c<E:A[r][c]=6
+				elif	B<r<C	and	c>E:A[r][c]=3
+				elif	r>C	and	D<c<E:A[r][c]=1
+	return	A

@@ -1,1 +1,1 @@
-def p(g):val_r,val_c=len(g),len(g[0]);val_m=[[g[i%val_r][j%val_c]for j in range(2*val_c)]for i in range(2*val_r)];return[[val_m[i][j]if val_m[i][j]else 8*any(0<=i+dr<2*val_r and 0<=j+dc<2*val_c and val_m[i+dr][j+dc]for dr,dc in[(-1,-1),(-1,1),(1,-1),(1,1)])for j in range(2*val_c)]for i in range(2*val_r)]
+def	p(g):A,B=len(g),len(g[0]);C=[[g[i%A][j%B]for	j	in	range(2*B)]for	i	in	range(2*A)];return[[C[i][j]if	C[i][j]else	8*any(0<=i+D<2*A	and	0<=j+E<2*B	and	C[i+D][j+E]for(D,E)in[(-1,-1),(-1,1),(1,-1),(1,1)])for	j	in	range(2*B)]for	i	in	range(2*A)]

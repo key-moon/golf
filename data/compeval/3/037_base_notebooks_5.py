@@ -1,13 +1,10 @@
-def p(m):
- R,C=len(m),len(m[0])
- D,O={},[r[:]for r in m]
- for r in range(R):
-  for c in range(C):
-   v=m[r][c]
-   if v:D.setdefault(v,[]).append((r,c))
- for v in D:
-  (y1,x1),(y2,x2)=D[v]
-  dy=1if y2>y1 else-1
-  dx=1if x2>x1 else-1
-  for i in range(abs(y2-y1)+1):O[y1+i*dy][x1+i*dx]=v
- return O
+def	p(m):
+	F,G=len(m),len(m[0]);A,C={},[r[:]for	r	in	m]
+	for	r	in	range(F):
+		for	c	in	range(G):
+			v=m[r][c]
+			if	v:A.setdefault(v,[]).append((r,c))
+	for	v	in	A:
+		(B,D),(E,H)=A[v];I=1if	E>B	else-1;J=1if	H>D	else-1
+		for	i	in	range(abs(E-B)+1):C[B+i*I][D+i*J]=v
+	return	C

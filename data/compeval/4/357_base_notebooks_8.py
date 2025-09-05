@@ -1,5 +1,5 @@
-def p(j,A=range,c=len):
-	E,k=c(j),c(j[0]);j=[[8 for W in W]for W in j];W=[W for W in range(k)];W+=W[::-1][1:-1]
-	while c(W)<E:W+=W[:]
-	for l in A(E):j[-(l+1)][W[l]]=1
-	return j
+def	p(j,A=range,c=len):
+	C,k=c(j),c(j[0]);j=[[8for	A	in	A]for	A	in	j];B=[A	for	A	in	range(k)];B+=B[::-1][1:-1]
+	while	c(B)<C:B+=B[:]
+	for	l	in	A(C):j[-(l+1)][B[l]]=1
+	return	j

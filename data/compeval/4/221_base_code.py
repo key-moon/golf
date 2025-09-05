@@ -1,7 +1,5 @@
-def p(g):
-    val_h=len(g);val_w=len(g[0]);val_z=sum(v==0 for r in g for v in r)
-    val_o=[[0]*val_w*val_z for _ in range(val_h*val_z)]
-    for val_k in range(val_h*val_w-val_z):
-        for val_i,row in enumerate(g):
-            val_o[val_h*(val_k//val_z)+val_i][val_w*(val_k%val_z):val_w*(val_k%val_z)+val_w]=row
-    return val_o
+def	p(g):
+	C=len(g);B=len(g[0]);A=sum(v==0for	r	in	g	for	v	in	r);E=[[0]*B*A	for	_	in	range(C*A)]
+	for	D	in	range(C*B-A):
+		for(F,G)in	enumerate(g):E[C*(D//A)+F][B*(D%A):B*(D%A)+B]=G
+	return	E

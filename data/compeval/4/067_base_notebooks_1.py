@@ -1,2 +1,1 @@
-def p(g):
- return [R[:int(len(g[0])/3)] for R in g]
+def	p(g):return[A[:int(len(g[0])/3)]for	A	in	g]

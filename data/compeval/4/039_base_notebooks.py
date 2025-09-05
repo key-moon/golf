@@ -1,8 +1,8 @@
 j=len
 A=range
-def p(c):
-	E,k=j(c),j(c[0]);W=[]
-	for l in A(E):
-		for J in A(k):
-			if c[l][J]>0:W.append([l,J])
-	a=min([W[1]for W in W]);C=max([W[1]for W in W]);e=min([W[0]for W in W]);K=max([W[0]for W in W]);C=C-(C-a)//2;K=K-(K-e)//2;c=c[e:K];c=[W[a:C]for W in c];return c
+def	p(c):
+	F,k=j(c),j(c[0]);B=[]
+	for	l	in	A(F):
+		for	E	in	A(k):
+			if	c[l][E]>0:B.append([l,E])
+	a=min([A[1]for	A	in	B]);C=max([A[1]for	A	in	B]);e=min([A[0]for	A	in	B]);D=max([A[0]for	A	in	B]);C=C-(C-a)//2;D=D-(D-e)//2;c=c[e:D];c=[A[a:C]for	A	in	c];return	c

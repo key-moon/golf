@@ -1,18 +1,1 @@
-# best: 107(natte) / others: 109(jailctf merger), 109(xsot ovs att), 116(mukundan), 122(joking), 122(joking MeWhenI)
-# ================================================== 107 ==================================================
-
-p=lambda g,c=-3:c*g or p([*zip(*(g*(len({*max(g),0})<3)or[(l:=0)or[v*(l!=v)or(l:=max(w))*0for*w,v in zip(*g,s)]for s in g])[::-1])],c+1)
-
-# def p(g):
-#  for _ in range(4):
-#   if len({*max(g),0})>2:
-#    g=[(l:=0)or[v*(l!=v)or(l:=max(w))*0for*w,v in zip(*g,s)]for s in g]
-#   g=[*zip(*g[::-1])]
-#  return g
-
-# def p(g):
-#  for _ in range(4):
-#   if len({*max(g)}-{0})>1:
-#    g=[(l:=-1)and[v==0 and(l:=w)*0 or(l!=v)*v for v,w in zip(s,map(max,zip(*g)))]for s in g]
-#   g=[*zip(*g[::-1])]
-#  return g
+p=lambda	g,c=-3:c*g	or	p([*zip(*(g*(len({*max(g),0})<3)or[(l:=0)or[v*(l!=v)or(l:=max(w))*0for*w,v in	zip(*g,s)]for	s	in	g])[::-1])],c+1)

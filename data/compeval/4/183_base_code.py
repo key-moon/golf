@@ -1,6 +1,1 @@
-def p(g):
-    y=[i for i,r in enumerate(g)if any(v^1 for v in r)]
-    x=[j for j,c in enumerate(zip(*g))if any(v^1 for v in c)]
-    a,b,c,d=g[y[0]][x[0]],g[y[0]][x[-1]],g[y[-1]][x[0]],g[y[-1]][x[-1]]
-    r,s=y[1:-1],x[1:-1];h,w=len(r)//2,len(s)//2
-    return [[0 if g[i][j]!=8 else ( a if I<h and J<w else b if I<h else c if J<w else d)for J,j in enumerate(s)]for I,i in enumerate(r)]
+def	p(g):y=[i	for(i,r)in	enumerate(g)if	any(v^1for	v	in	r)];x=[j	for(j,c)in	enumerate(zip(*g))if	any(v^1for	v	in	c)];a,b,c,d=g[y[0]][x[0]],g[y[0]][x[-1]],g[y[-1]][x[0]],g[y[-1]][x[-1]];r,s=y[1:-1],x[1:-1];h,w=len(r)//2,len(s)//2;return[[0if	g[i][j]!=8else	a	if	A<h	and	B<w	else	b	if	A<h	else	c	if	B<w	else	d	for(B,j)in	enumerate(s)]for(A,i)in	enumerate(r)]

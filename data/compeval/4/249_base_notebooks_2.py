@@ -1,1 +1,1 @@
-p=lambda N:[F*2 for F in N]
+p=lambda	N:[A*2for	A	in	N]

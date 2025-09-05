@@ -1,4 +1,1 @@
-# best: 93(4atj sisyphus luke Seek, jailctf merger) / others: 108(xsot ovs att joking mewheni), 110(biz), 112(mukundan), 162(kabutack), 186(MasukenSamba)
-# ============================================ 93 ===========================================
-# 302の丸コピ
-p=lambda g:[(D:=0)or[int(D:=r.pop(0)and(D<1)/2+1or D>1and[7-r.index(1)%2*5,D][2<=D])for _ in g]for r in g]
+p=lambda	g:[(A:=0)or[int(A:=r.pop(0)and(A<1)/2+1or	A>1and[7-r.index(1)%2*5,A][2<=A])for	_	in	g]for	r	in	g]

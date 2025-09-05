@@ -1,10 +1,9 @@
-def p(g):
-    val_m={3:6,8:4,2:1}
-    for val_i,val_row in enumerate(g):
-        for val_j,val_v in enumerate(val_row):
-            if val_v in val_m:
-                for val_di in(-1,0,1):
-                    for val_dj in(-1,0,1):
-                        if val_di or val_dj:
-                            g[val_i+val_di][val_j+val_dj]=val_m[val_v]
-    return g
+def	p(g):
+	A={3:6,8:4,2:1}
+	for(E,F)in	enumerate(g):
+		for(G,B)in	enumerate(F):
+			if	B	in	A:
+				for	C	in-1,0,1:
+					for	D	in-1,0,1:
+						if	C	or	D:g[E+C][G+D]=A[B]
+	return	g

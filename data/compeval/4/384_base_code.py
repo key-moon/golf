@@ -1,4 +1,1 @@
-def p(g):
- r,c=zip(*[(i,j)for i,a in enumerate(g)for j,v in enumerate(a)if v])
- l,h=min(c),max(c)+1
- return[[x for y in g[i][l:h] for x in(y,y)]for i in range(min(r),max(r)+1)for _ in(0,1)]
+def	p(g):r,c=zip(*[(i,j)for(i,a)in	enumerate(g)for(j,v)in	enumerate(a)if	v]);l,h=min(c),max(c)+1;return[[x	for	y	in	g[i][l:h]for	x	in(y,y)]for	i	in	range(min(r),max(r)+1)for	_	in(0,1)]

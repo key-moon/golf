@@ -1,1 +1,1 @@
-p=lambda j:j[::-1]+j
+p=lambda	j:j[::-1]+j

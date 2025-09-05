@@ -1,1 +1,1 @@
-def p(g):o=(g[3][3]<1)*6;[g[r].__setitem__(slice(o,o+3),g[r][3:6][::-1])for r in range(3)];return g
+def	p(g):o=(g[3][3]<1)*6;[g[r].__setitem__(slice(o,o+3),g[r][3:6][::-1])for	r	in	range(3)];return	g

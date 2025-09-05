@@ -1,1 +1,1 @@
-def p(g):E=enumerate;c=[(i,j)for i,r in E(g)for j,x in E(r)if x];X=min(j for _,j in c);n=max(j for _,j in c)+1;k=min(i for i,_ in c);v=max(i for i,_ in c)+1;return[g[i][X:n]for i in range(k,v)]
+def	p(g):A=enumerate;c=[(i,j)for(i,r)in	A(g)for(j,x)in	A(r)if	x];B=min(j	for(_,j)in	c);n=max(j	for(_,j)in	c)+1;k=min(i	for(i,_)in	c);v=max(i	for(i,_)in	c)+1;return[g[i][B:n]for	i	in	range(k,v)]

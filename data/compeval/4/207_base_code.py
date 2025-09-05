@@ -1,4 +1,1 @@
-def p(g):
-    val_q=[(g[i][j],g[i][j+1],g[i+1][j],g[i+1][j+1])for i in(0,3)for j in(0,3)]
-    val_t=next(val_x for val_x in val_q if val_q.count(val_x)<2)
-    return[list(val_t[:2]),list(val_t[2:])]
+def	p(g):A=[(g[i][j],g[i][j+1],g[i+1][j],g[i+1][j+1])for	i	in(0,3)for	j	in(0,3)];B=next(B	for	B	in	A	if	A.count(B)<2);return[list(B[:2]),list(B[2:])]

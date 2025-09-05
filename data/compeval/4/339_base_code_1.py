@@ -1,1 +1,1 @@
-def p(g):return[[x for r in g for x in r if x]]
+def	p(g):return[[x	for	r	in	g	for	x	in	r	if	x]]

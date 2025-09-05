@@ -1,12 +1,10 @@
-def p(g):
- d=g[0].index(5)
- h=0
- while any(g[h][:d]):h+=1
- s=[r[:d]for r in g[:h]]
- for y,r in enumerate(g):
-  for x,v in enumerate(r):
-   if v==1:
-    for i in range(h):
-     for j in range(d):
-      g[y-h//2+i][x-d//2+j]=s[i][j]
- return g
+def	p(g):
+	d=g[0].index(5);h=0
+	while	any(g[h][:d]):h+=1
+	s=[r[:d]for	r	in	g[:h]]
+	for(y,r)in	enumerate(g):
+		for(x,v)in	enumerate(r):
+			if	v==1:
+				for	i	in	range(h):
+					for	j	in	range(d):g[y-h//2+i][x-d//2+j]=s[i][j]
+	return	g

@@ -1,4 +1,1 @@
-def p(g):
- ky, kx = 3, 3
- H, W = len(g), len(g[0])
- return [[ g[i//ky][j//kx] for j in range(W*kx) ] for i in range(H*ky)]
+def	p(g):A,B=3,3;C,D=len(g),len(g[0]);return[[g[i//A][j//B]for	j	in	range(D*B)]for	i	in	range(C*A)]

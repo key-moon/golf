@@ -1,3 +1,2 @@
-# best: 123(jailctf merger) / others: 130(mukundan), 132(4atj sisyphus luke Seek), 135(xsot ovs att joking mewheni), 205(natte), 222(jacekwl)
-# ========================================================== 123 ==========================================================
-import re;p=lambda g,c=79:-c*g or[*zip(*eval(re.sub(*[" 0(?=, 0\.|\))","1(?=, 0,|, 3)","0.","3"][c>64::2],str(p(g,c-1)))))][::-1]
+import re
+p=lambda g,c=79:-c*g or[*zip(*eval(re.sub(*[' 0(?=, 0\.|\))','1(?=, 0,|, 3)','0.','3'][c>64::2],str(p(g,c-1)))))][::-1]

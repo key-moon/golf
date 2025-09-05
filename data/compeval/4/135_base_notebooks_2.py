@@ -1,2 +1,1 @@
-def p(g):
-    return [row[6:9] for row in g[0:3]]
+def	p(g):return[A[6:9]for	A	in	g[0:3]]

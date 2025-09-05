@@ -1,5 +1,5 @@
-def p(j):
- A=range;c=[[0]*9 for c in A(9)];E=[(c,E,j[c][E])for c in A(9)for E in A(9)if j[c][E]]
- for(k,W,l)in E:
-  for J in range(9):c[k][J]=c[J][W]=l
- c[E[0][0]][E[1][1]]=c[E[1][0]][E[0][1]]=2;return c
+def	p(j):
+	B=range;c=[[0]*9for	c	in	B(9)];A=[(c,A,j[c][A])for	c	in	B(9)for	A	in	B(9)if	j[c][A]]
+	for(k,D,l)in	A:
+		for	C	in	range(9):c[k][C]=c[C][D]=l
+	c[A[0][0]][A[1][1]]=c[A[1][0]][A[0][1]]=2;return	c

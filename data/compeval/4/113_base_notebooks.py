@@ -1,4 +1,1 @@
-def p(g):
- H,W=len(g),len(g[0]);m=H//2
- top=g[:m]
- return top + top[::-1]
+def	p(g):B,C=len(g),len(g[0]);m=B//2;A=g[:m];return	A+A[::-1]

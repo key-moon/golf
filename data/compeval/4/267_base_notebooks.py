@@ -1,8 +1,6 @@
-def p(g):
- E=enumerate
- X=g[-1][0]
- g[-1][0]=0
- for r,R in E(g):
-   for c,C in E(R):
-    if C>0:g[r][c]=X
- return g
+def	p(g):
+	A=enumerate;B=g[-1][0];g[-1][0]=0
+	for(r,C)in	A(g):
+		for(c,D)in	A(C):
+			if	D>0:g[r][c]=B
+	return	g

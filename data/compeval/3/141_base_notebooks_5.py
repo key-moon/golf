@@ -1,10 +1,10 @@
-def p(j):
-	A=[J[:]for J in j];c,E=len(j),len(j[0])
-	for k in range(c):
-		for W in range(E):
-			if j[k][W]:
-				l=j[k][W]
-				for J in[(-1,-1),(-1,1),(1,1),(1,-1)]:
-					a,C=k+J[0],W+J[1]
-					while 0<=a<c and 0<=C<E:A[a][C]=l;a+=J[0];C+=J[1]
-	return A
+def	p(j):
+	D=[A[:]for	A	in	j];c,E=len(j),len(j[0])
+	for	k	in	range(c):
+		for	B	in	range(E):
+			if	j[k][B]:
+				l=j[k][B]
+				for	A	in[(-1,-1),(-1,1),(1,1),(1,-1)]:
+					a,C=k+A[0],B+A[1]
+					while	0<=a<c	and	0<=C<E:D[a][C]=l;a+=A[0];C+=A[1]
+	return	D

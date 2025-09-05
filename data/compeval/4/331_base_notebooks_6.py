@@ -1,13 +1,12 @@
-def p(g):
- P=[]
- E=enumerate
- for r,R in E(g):
-  for c,C in E(R):
-   if g[r][c]==1:P.append([r,c])
- for v in P:
-  D,L=v
-  if D>0:g[D-1][L]=2
-  if D<9:g[D+1][L]=8
-  if L>0:g[D][L-1]=7
-  if L<9:g[D][L+1]=6
- return g
+def	p(g):
+	C=[];D=enumerate
+	for(r,E)in	D(g):
+		for(c,F)in	D(E):
+			if	g[r][c]==1:C.append([r,c])
+	for	v	in	C:
+		A,B=v
+		if	A>0:g[A-1][B]=2
+		if	A<9:g[A+1][B]=8
+		if	B>0:g[A][B-1]=7
+		if	B<9:g[A][B+1]=6
+	return	g

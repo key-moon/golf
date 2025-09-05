@@ -1,19 +1,16 @@
-def p(g,v=range):
- E=enumerate
- Z=[[C for i,C in E(R)]for R in g]
- T,X=[],[]
- for r in v(len(g)):
-  for c in v(len(g[0])):
-   try:
-    if g[r-1][c]==5 and g[r][c]==8:Z[r][c]=5
-   except:pass
-   try:
-    if g[r+1][c]==5 and g[r][c]==8:Z[r][c]=5
-   except:pass
- for i in v(len(Z)):
-  if 5 in Z[i]:X.append(g[i])
- for R in X:
-  for i in v(len(R)):
-     if R[i]==5:T.append(i)
- X=[R[min(T):max(T)+1]for R in X]
- return X
+def	p(g,v=range):
+	E=enumerate;B=[[A	for(i,A)in	E(A)]for	A	in	g];C,A=[],[]
+	for	r	in	v(len(g)):
+		for	c	in	v(len(g[0])):
+			try:
+				if	g[r-1][c]==5and	g[r][c]==8:B[r][c]=5
+			except:pass
+			try:
+				if	g[r+1][c]==5and	g[r][c]==8:B[r][c]=5
+			except:pass
+	for	i	in	v(len(B)):
+		if	5in	B[i]:A.append(g[i])
+	for	D	in	A:
+		for	i	in	v(len(D)):
+			if	D[i]==5:C.append(i)
+	A=[A[min(C):max(C)+1]for	A	in	A];return	A

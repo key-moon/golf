@@ -1,11 +1,10 @@
-def p(j):
- A=range
- c=[[0]*3for _ in A(3)]
- for E in A(3):
-  for k in A(3):
-   W=0
-   for l in A(3):
-    for J in A(3):
-     if j[E*4+l][k*4+J]==6:W+=1
-   c[E][k]=1if W>=2else 0
- return c
+def	p(j):
+	A=range;c=[[0]*3for	_	in	A(3)]
+	for	B	in	A(3):
+		for	k	in	A(3):
+			C=0
+			for	l	in	A(3):
+				for	D	in	A(3):
+					if	j[B*4+l][k*4+D]==6:C+=1
+			c[B][k]=1if	C>=2else	0
+	return	c

@@ -1,10 +1,4 @@
-def p(m):
- E=enumerate
- a=[(i,j)for i,r in E(m)for j,v in E(r)if v]
- if not a:return[]
- from collections import Counter as C
- v=C(m[i][j]for i,j in a).most_common(1)[0][0]
- x=[(i,j)for i,j in a if m[i][j]==v]
- r0,c0=min(i for i,_ in x),min(j for _,j in x)
- r1,c1=max(i for i,_ in x)+1,max(j for _,j in x)+1
- return[m[i][c0:c1]for i in range(r0,r1)]
+def	p(m):
+	A=enumerate;a=[(i,j)for(i,r)in	A(m)for(j,v)in	A(r)if	v]
+	if	not	a:return[]
+	from	collections	import	Counter	as	B;v=B(m[i][j]for(i,j)in	a).most_common(1)[0][0];x=[(i,j)for(i,j)in	a	if	m[i][j]==v];C,D=min(i	for(i,_)in	x),min(j	for(_,j)in	x);E,F=max(i	for(i,_)in	x)+1,max(j	for(_,j)in	x)+1;return[m[i][D:F]for	i	in	range(C,E)]

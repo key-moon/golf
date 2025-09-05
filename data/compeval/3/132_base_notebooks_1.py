@@ -1,13 +1,7 @@
-def p(g,D=range):
- E=enumerate
- H,W=len(g),len(g[0])
- L=[[0]*W for _ in D(H)]
- A={v for J in g for v in J if v}
- for c in A:
-  b=[i for i,J in E(g)for v in J if v==c]
-  F=[j for i,J in E(g)for j,v in E(J)if v==c]
-  e,z=min(b),max(b)+1
-  U,o=min(F),max(F)+1
-  for i in D(e,z):
-   for j in D(U,o):L[i][j]=c
- return L
+def	p(g,D=range):
+	A=enumerate;E,F=len(g),len(g[0]);B=[[0]*F	for	_	in	D(E)];G={v	for	A	in	g	for	v	in	A	if	v}
+	for	c	in	G:
+		b=[i	for(i,A)in	A(g)for	v	in	A	if	v==c];C=[j	for(i,B)in	A(g)for(j,v)in	A(B)if	v==c];e,z=min(b),max(b)+1;H,o=min(C),max(C)+1
+		for	i	in	D(e,z):
+			for	j	in	D(H,o):B[i][j]=c
+	return	B

@@ -1,1 +1,1 @@
-p=lambda g:[j+j[::-1]for j in g]
+p=lambda	g:[j+j[::-1]for	j	in	g]

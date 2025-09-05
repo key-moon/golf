@@ -1,1 +1,1 @@
-def p(j):A=sum(j,[]);c=max(A,key=A.count);E=c or max(A,key=lambda k:A.count(k)if k else-1);return[[E,E],[E,E]]
+def	p(j):A=sum(j,[]);c=max(A,key=A.count);B=c	or	max(A,key=lambda	k:A.count(k)if	k	else-1);return[[B,B],[B,B]]

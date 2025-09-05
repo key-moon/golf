@@ -1,7 +1,7 @@
-def p(j,A=range):
-	c=len(j);E=len(j[0]);k=[[0 for W in A(E)]for W in A(c)]
-	for W in A(c):
-		for l in A(E):
-			if W==0 or W==c-1 or l==0 or l==E-1:k[W][l]=8
-			else:k[W][l]=0
-	return k
+def	p(j,A=range):
+	c=len(j);C=len(j[0]);k=[[0for	A	in	A(C)]for	B	in	A(c)]
+	for	B	in	A(c):
+		for	l	in	A(C):
+			if	B==0	or	B==c-1or	l==0	or	l==C-1:k[B][l]=8
+			else:k[B][l]=0
+	return	k

@@ -1,2 +1,1 @@
-def p(g):
- return[[g[i//2][j//2]for j in range(len(g[0])*2)]for i in range(len(g)*2)]
+def	p(g):return[[g[i//2][j//2]for	j	in	range(len(g[0])*2)]for	i	in	range(len(g)*2)]

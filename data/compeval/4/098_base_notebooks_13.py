@@ -1,1 +1,1 @@
-def p(g):h,w=len(g),len(g[0]);return[[g[i][j]if g[i][j]and any((y<0 or y>=h or x<0 or x>=w or g[y][x]==0)for y,x in[(i-1,j),(i+1,j),(i,j-1),(i,j+1)])else 0 for j in range(w)]for i in range(h)]
+def	p(g):h,w=len(g),len(g[0]);return[[g[i][j]if	g[i][j]and	any(y<0	or	y>=h	or	x<0	or	x>=w	or	g[y][x]==0for(y,x)in[(i-1,j),(i+1,j),(i,j-1),(i,j+1)])else	0for	j	in	range(w)]for	i	in	range(h)]

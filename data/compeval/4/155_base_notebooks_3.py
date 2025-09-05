@@ -1,2 +1,1 @@
-def p(g):
- return g[::-1]
+def	p(g):return	g[::-1]

@@ -1,5 +1,5 @@
-def p(g):
- for val_r in g[:-1]:
-  for val_x,val_v in enumerate(val_r):
-   if val_v==1:val_r[val_x]=0;g[-1][val_x]=1
- return g
+def	p(g):
+	for	A	in	g[:-1]:
+		for(B,C)in	enumerate(A):
+			if	C==1:A[B]=0;g[-1][B]=1
+	return	g

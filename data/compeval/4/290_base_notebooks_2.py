@@ -1,12 +1,6 @@
-def p(g):
- g=[R for R in g if sum(R)>0]
- T=[]
- C=[]
- for R in g:
-  for i in range(len(R)):
-   if R[i]>0:T.append(i);C.append(R[i])
- C=list(set(C))
- C={C[0]:C[1],C[1]:C[0]}
- g=[R[min(T):max(T)+1]for R in g]
- g=[[C[c]for c in R]for R in g]
- return g
+def	p(g):
+	g=[A	for	A	in	g	if	sum(A)>0];B=[];A=[]
+	for	C	in	g:
+		for	i	in	range(len(C)):
+			if	C[i]>0:B.append(i);A.append(C[i])
+	A=list(set(A));A={A[0]:A[1],A[1]:A[0]};g=[A[min(B):max(B)+1]for	A	in	g];g=[[A[c]for	c	in	B]for	B	in	g];return	g

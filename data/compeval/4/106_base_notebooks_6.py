@@ -1,10 +1,5 @@
-def p(g):
- X=[]
- r1=[list(r) for r in zip(*g[::-1])]
- r2=[list(r) for r in zip(*r1[::-1])]
- r3=[list(r) for r in zip(*r2[::-1])]
- for r in range(len(g)):
-  X.append(g[r]+r1[r])
- for r in range(len(g)):
-  X.append(r3[r]+r2[r])
- return X
+def	p(g):
+	A=[];B=[list(r)for	r	in	zip(*g[::-1])];C=[list(r)for	r	in	zip(*B[::-1])];D=[list(r)for	r	in	zip(*C[::-1])]
+	for	r	in	range(len(g)):A.append(g[r]+B[r])
+	for	r	in	range(len(g)):A.append(D[r]+C[r])
+	return	A

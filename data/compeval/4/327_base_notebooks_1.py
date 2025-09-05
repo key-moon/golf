@@ -1,13 +1,10 @@
-def p(g):
- P=[]
- E=enumerate
- X=[[0,0,0,0,0,0] for _ in range(6)]
- for r,R in E(g):
-  for c,C in E(R):
-   if g[r][c]>0:
-    P.append([r,c])
-  for p_ in P:
-   for i in range(10):
-    try:X[p_[0]+i][p_[1]+i]=g[p_[0]][p_[1]]
-    except:pass
- return X
+def	p(g):
+	B=[];C=enumerate;D=[[0,0,0,0,0,0]for	_	in	range(6)]
+	for(r,E)in	C(g):
+		for(c,F)in	C(E):
+			if	g[r][c]>0:B.append([r,c])
+		for	A	in	B:
+			for	i	in	range(10):
+				try:D[A[0]+i][A[1]+i]=g[A[0]][A[1]]
+				except:pass
+	return	D

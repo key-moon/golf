@@ -1,17 +1,8 @@
-def p(g):
-    r,c=len(g),len(g[0])
-    dr=[i for i in range(r) if g[i][0] and g[i]==[g[i][0]]*c]
-    dc=[j for j in range(c) if g[0][j] and all(g[i][j]==g[0][j] for i in range(r))]
-    br=[-1]+dr+[r]; bc=[-1]+dc+[c]
-    seg=[(br[a]+1,br[a+1],bc[b]+1,bc[b+1])
-         for a in range(len(br)-1) for b in range(len(bc)-1)]
-    for x1,x2,y1,y2 in seg:
-        if any(g[i][j] for i in range(x1,x2) for j in range(y1,y2)):
-            pat=[row[y1:y2] for row in g[x1:x2]]
-            src=(x1,x2,y1,y2)
-            break
-    for x1,x2,y1,y2 in seg:
-        if (x1,x2,y1,y2)!=src:
-            for i in range(x1,x2):
-                g[i][y1:y2]=pat[i-x1]
-    return g
+def	p(g):
+	r,c=len(g),len(g[0]);H=[i	for	i	in	range(r)if	g[i][0]and	g[i]==[g[i][0]]*c];I=[j	for	j	in	range(c)if	g[0][j]and	all(g[i][j]==g[0][j]for	i	in	range(r))];E=[-1]+H+[r];F=[-1]+I+[c];G=[(E[a]+1,E[a+1],F[b]+1,F[b+1])for	a	in	range(len(E)-1)for	b	in	range(len(F)-1)]
+	for(A,B,C,D)in	G:
+		if	any(g[i][j]for	i	in	range(A,B)for	j	in	range(C,D)):J=[A[C:D]for	A	in	g[A:B]];K=A,B,C,D;break
+	for(A,B,C,D)in	G:
+		if(A,B,C,D)!=K:
+			for	i	in	range(A,B):g[i][C:D]=J[i-A]
+	return	g

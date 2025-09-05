@@ -1,1 +1,1 @@
-p=lambda g:[[g[6][0]if(i!=6or j)and g[i][j]else 0for j in range(7)]for i in range(7)]
+p=lambda	g:[[g[6][0]if(i!=6or	j)and	g[i][j]else	0for	j	in	range(7)]for	i	in	range(7)]

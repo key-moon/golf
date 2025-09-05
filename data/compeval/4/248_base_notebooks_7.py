@@ -1,10 +1,6 @@
-def p(g):
- d='[BuuuusThPPPPjUwwwwQb]EhsVWfhsVWfhsb]JxxxxRbTtfkFQlhikgtfkFQbUyyyyeje]EhRmhlkitgLftWVRe]JeXXXXesYTYhfeLrtKkNhmLegteikelhYjYUwwwwQb]EhsVWfhsVWfhsb]JeZZZZQeb]EtlLKhrkfehgLitlkmheseb]JSSSSSSSSYjY]EetrLfetrkKhlLmteWeVeRY]JMrrrrrrrseThmkltiLrhfLgtiklhejeUxxxxRbTtfkFQlhikgtfkFQbUuuuusThPPPPjUeNNNNNNNNRebTehKkrtfekrhiLltmkeFeQebUyyyyeje]EhRmhlkitgLftWVRe]G]'
- m=[['KK','Z'],['ee','Y'],['MM','X'],['gk','W'],['ih','V'],['vJ','U'],['vE','T'],['em','S'],['bs','R'],['bj','Q'],['jF','P'],['le','N'],['er','M'],['bk','L'],['ie','K'],['HB','J'],['G,','H'],[']}','G'],['gh','F'],['Dq','E'],['CO','D'],["c'",'C'],['Aq','B'],['zI','A'],["{'",'z'],['mm','y'],['ll','x'],['ii','w'],['a]','v'],['gg','u'],['bh','t'],['aj','s'],['ge','r'],['p0','q'],['o[','p'],['n[','o'],["':",'n'],['ef','m'],['bg','l'],['ah','k'],['d1','j'],['bf','i'],[',1','h'],['af','g'],['d0','f'],['bb','e'],['c[','d'],['],','c'],['aa','b'],[',0','a']]
- for r in m:
-  d=d.replace(r[1],r[0])
- d=eval(d)
- for k in d:
-  if k['I']==g:
-   g=k['O']
-   return g
+def	p(g):
+	d='[BuuuusThPPPPjUwwwwQb]EhsVWfhsVWfhsb]JxxxxRbTtfkFQlhikgtfkFQbUyyyyeje]EhRmhlkitgLftWVRe]JeXXXXesYTYhfeLrtKkNhmLegteikelhYjYUwwwwQb]EhsVWfhsVWfhsb]JeZZZZQeb]EtlLKhrkfehgLitlkmheseb]JSSSSSSSSYjY]EetrLfetrkKhlLmteWeVeRY]JMrrrrrrrseThmkltiLrhfLgtiklhejeUxxxxRbTtfkFQlhikgtfkFQbUuuuusThPPPPjUeNNNNNNNNRebTehKkrtfekrhiLltmkeFeQebUyyyyeje]EhRmhlkitgLftWVRe]G]';m=[['KK','Z'],['ee','Y'],['MM','X'],['gk','W'],['ih','V'],['vJ','U'],['vE','T'],['em','S'],['bs','R'],['bj','Q'],['jF','P'],['le','N'],['er','M'],['bk','L'],['ie','K'],['HB','J'],['G,','H'],[']}','G'],['gh','F'],['Dq','E'],['CO','D'],["c'",'C'],['Aq','B'],['zI','A'],["{'",'z'],['mm','y'],['ll','x'],['ii','w'],['a]','v'],['gg','u'],['bh','t'],['aj','s'],['ge','r'],['p0','q'],['o[','p'],['n[','o'],["':",'n'],['ef','m'],['bg','l'],['ah','k'],['d1','j'],['bf','i'],[',1','h'],['af','g'],['d0','f'],['bb','e'],['c[','d'],['],','c'],['aa','b'],[',0','a']]
+	for	r	in	m:d=d.replace(r[1],r[0])
+	d=eval(d)
+	for	k	in	d:
+		if	k['I']==g:g=k['O'];return	g

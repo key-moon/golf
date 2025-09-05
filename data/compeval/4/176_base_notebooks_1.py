@@ -1,10 +1,6 @@
-def p(g):
- d='[xLWqdMXaKdEMaQMYgZeNMTaUVWrqSMXhfTgUcaVhYrgdZhMNReTtgfUhlVeWrgqShcXRaTtdUMaJvcybgdqdeaClfKEeaQMWgdqSeXMaTdUaVcWrdqShXhlfTtUeaQeWgqScXeaTEhlfQWqdMXaKdEMaJvybgqdcaCfDgEcaVWrqSMXhfTgUcaJvcqbgydeClDgfEeQeYdZcNeKgfEhlVYgdZMNhTdaUcQMYgZeNMTaUQqbgdydMNKaEMVhYrgdZhMNReTtgfUhlVeYrdZhcNRTtaUMVMYrgZheNRcTtdaUhQcYZNcKdaEhVcYrZhNhlTgfUeJvqbdydcCDdaEcVMWrgdqSheXRcaTtgUhfQcWdqSXcaKgEhfG]'
- m=[['yS','Z'],['qP','Y'],['aN','X'],['yP','W'],['Qh','V'],['ER','U'],['Kt','T'],['dh','S'],['hu','R'],['JL','Q'],['br','P'],['Cu','N'],['ec','M'],['ph','L'],['Dt','K'],['Hx','J'],['G,','H'],['F}','G'],[']]','F'],['sj','E'],['sb','D'],['Bv','C'],['AO','B'],["z'",'A'],[']i','z'],['aq','y'],['wI','x'],["{'",'w'],['pe','v'],['lj','u'],['gj','t'],['k4','s'],['gg','r'],['k0','q'],['o2','p'],['n[','o'],['m[','n'],["':",'m'],['ff','l'],['i[','k'],['fb','j'],['],','i'],['ee','h'],['dd','g'],[',4','f'],['cd','e'],['ab','d'],['aa','c'],[',2','b'],[',0','a']]
- for r in m:
-  d=d.replace(r[1],r[0])
- d=eval(d)
- for k in d:
-  if k['I']==g:
-   g=k['O']
-   return g
+def	p(g):
+	d='[xLWqdMXaKdEMaQMYgZeNMTaUVWrqSMXhfTgUcaVhYrgdZhMNReTtgfUhlVeWrgqShcXRaTtdUMaJvcybgdqdeaClfKEeaQMWgdqSeXMaTdUaVcWrdqShXhlfTtUeaQeWgqScXeaTEhlfQWqdMXaKdEMaJvybgqdcaCfDgEcaVWrqSMXhfTgUcaJvcqbgydeClDgfEeQeYdZcNeKgfEhlVYgdZMNhTdaUcQMYgZeNMTaUQqbgdydMNKaEMVhYrgdZhMNReTtgfUhlVeYrdZhcNRTtaUMVMYrgZheNRcTtdaUhQcYZNcKdaEhVcYrZhNhlTgfUeJvqbdydcCDdaEcVMWrgdqSheXRcaTtgUhfQcWdqSXcaKgEhfG]';m=[['yS','Z'],['qP','Y'],['aN','X'],['yP','W'],['Qh','V'],['ER','U'],['Kt','T'],['dh','S'],['hu','R'],['JL','Q'],['br','P'],['Cu','N'],['ec','M'],['ph','L'],['Dt','K'],['Hx','J'],['G,','H'],['F}','G'],[']]','F'],['sj','E'],['sb','D'],['Bv','C'],['AO','B'],["z'",'A'],[']i','z'],['aq','y'],['wI','x'],["{'",'w'],['pe','v'],['lj','u'],['gj','t'],['k4','s'],['gg','r'],['k0','q'],['o2','p'],['n[','o'],['m[','n'],["':",'m'],['ff','l'],['i[','k'],['fb','j'],['],','i'],['ee','h'],['dd','g'],[',4','f'],['cd','e'],['ab','d'],['aa','c'],[',2','b'],[',0','a']]
+	for	r	in	m:d=d.replace(r[1],r[0])
+	d=eval(d)
+	for	k	in	d:
+		if	k['I']==g:g=k['O'];return	g

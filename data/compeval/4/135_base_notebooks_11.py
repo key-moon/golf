@@ -1,1 +1,1 @@
-p=lambda g:[row[6:9] for row in g[0:3]]
+p=lambda	g:[A[6:9]for	A	in	g[0:3]]

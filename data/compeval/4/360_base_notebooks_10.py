@@ -1,7 +1,1 @@
-def p(g):
- w=len(g[0])
- sep_c=next(c for c in range(w)if all(g[r][c]==g[0][c]for r in range(len(g)))and g[0][c]!=0)
- left=[row[:sep_c]for row in g]
- right_flipped=[row[sep_c+1:][::-1]for row in g]
- return[[(l if l!=0 else r)for l, r in zip(l_row, r_row)]
-  for l_row, r_row in zip(left, right_flipped)]
+def	p(g):w=len(g[0]);A=next(c	for	c	in	range(w)if	all(g[r][c]==g[0][c]for	r	in	range(len(g)))and	g[0][c]!=0);B=[B[:A]for	B	in	g];C=[B[A+1:][::-1]for	B	in	g];return[[l	if	l!=0else	r	for(l,r)in	zip(A,B)]for(A,B)in	zip(B,C)]

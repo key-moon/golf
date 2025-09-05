@@ -1,5 +1,1 @@
-def p(g):
- c=[(i,j)for i,r in enumerate(g)for j,x in enumerate(r)if x]
- y0=min(i for i,_ in c); y1=max(i for i,_ in c)+1
- x0=min(j for _,j in c); x1=max(j for _,j in c)+1
- return[g[i][x0:x1] for i in range(y0,y1)]
+def	p(g):c=[(i,j)for(i,r)in	enumerate(g)for(j,x)in	enumerate(r)if	x];A=min(i	for(i,_)in	c);B=max(i	for(i,_)in	c)+1;C=min(j	for(_,j)in	c);D=max(j	for(_,j)in	c)+1;return[g[i][C:D]for	i	in	range(A,B)]

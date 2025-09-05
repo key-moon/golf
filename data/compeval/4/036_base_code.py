@@ -1,18 +1,13 @@
-def p(g):
-    n,m=len(g),len(g[0])
-    v=set();b1=set();cc=0
-    for i in range(n):
-        for j in range(m):
-            if g[i][j] and (i,j) not in v:
-                c=g[i][j];q=[(i,j)];v.add((i,j));s={(i,j)}
-                while q:
-                    x,y=q.pop()
-                    for dx,dy in((1,0),(-1,0),(0,1),(0,-1)):
-                        nx,ny=x+dx,y+dy
-                        if 0<=nx<n and 0<=ny<m and g[nx][ny]==c and (nx,ny) not in v:
-                            v.add((nx,ny));q.append((nx,ny));s.add((nx,ny))
-                if len(s)>len(b1): b1=s; cc=c
-    r0,r1=min(i for i,j in b1),max(i for i,j in b1)
-    c0,c1=min(j for i,j in b1),max(j for i,j in b1)
-    return [[cc if (i,j) in b1 else 0 for j in range(c0,c1+1)]
-            for i in range(r0,r1+1)]
+def	p(g):
+	n,m=len(g),len(g[0]);v=set();A=set();D=0
+	for	i	in	range(n):
+		for	j	in	range(m):
+			if	g[i][j]and(i,j)not	in	v:
+				c=g[i][j];q=[(i,j)];v.add((i,j));s={(i,j)}
+				while	q:
+					x,y=q.pop()
+					for(E,F)in(1,0),(-1,0),(0,1),(0,-1):
+						B,C=x+E,y+F
+						if	0<=B<n	and	0<=C<m	and	g[B][C]==c	and(B,C)not	in	v:v.add((B,C));q.append((B,C));s.add((B,C))
+				if	len(s)>len(A):A=s;D=c
+	G,H=min(i	for(i,j)in	A),max(i	for(i,j)in	A);I,J=min(j	for(i,j)in	A),max(j	for(i,j)in	A);return[[D	if(i,j)in	A	else	0for	j	in	range(I,J+1)]for	i	in	range(G,H+1)]

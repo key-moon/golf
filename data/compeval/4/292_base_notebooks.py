@@ -1,1 +1,1 @@
-p=lambda g:[[6if g[i][j]==4and j%3==0else g[i][j]for j in range(len(g[0]))]for i in range(3)]
+p=lambda	g:[[6if	g[i][j]==4and	j%3==0else	g[i][j]for	j	in	range(len(g[0]))]for	i	in	range(3)]

@@ -1,5 +1,5 @@
-def p(g):
- for r in g:
-  for j in range(len(r)-2):
-   if r[j] and r[j]==r[j+1]==r[j+2]: g[-1][j+1]=4
- return g
+def	p(g):
+	for	r	in	g:
+		for	j	in	range(len(r)-2):
+			if	r[j]and	r[j]==r[j+1]==r[j+2]:g[-1][j+1]=4
+	return	g

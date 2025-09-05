@@ -1,15 +1,15 @@
-def p(j):
-	A=range;c,E=len(j),len(j[0]);k={}
-	for W in A(c):
-		for l in A(E):
-			if j[W][l]:k[j[W][l]]=k.get(j[W][l],[]);k[j[W][l]].append((W,l))
-	J=[C[:]for C in j]
-	for(a,C)in k.items():
-		if len(C)==2:
-			if C[0][0]==C[1][0]:
-				for l in A(min(C[0][1],C[1][1]),max(C[0][1],C[1][1])+1):J[C[0][0]][l]=a
-	for(a,C)in k.items():
-		if len(C)==2:
-			if C[0][1]==C[1][1]:
-				for W in A(min(C[0][0],C[1][0]),max(C[0][0],C[1][0])+1):J[W][C[0][1]]=a
-	return J
+def	p(j):
+	C=range;c,E=len(j),len(j[0]);k={}
+	for	B	in	C(c):
+		for	l	in	C(E):
+			if	j[B][l]:k[j[B][l]]=k.get(j[B][l],[]);k[j[B][l]].append((B,l))
+	D=[A[:]for	A	in	j]
+	for(a,A)in	k.items():
+		if	len(A)==2:
+			if	A[0][0]==A[1][0]:
+				for	l	in	C(min(A[0][1],A[1][1]),max(A[0][1],A[1][1])+1):D[A[0][0]][l]=a
+	for(a,A)in	k.items():
+		if	len(A)==2:
+			if	A[0][1]==A[1][1]:
+				for	B	in	C(min(A[0][0],A[1][0]),max(A[0][0],A[1][0])+1):D[B][A[0][1]]=a
+	return	D

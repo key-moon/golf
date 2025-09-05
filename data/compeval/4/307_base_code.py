@@ -1,1 +1,1 @@
-def p(g):return[[y for x in r for y in[x]*2]for r in g for _ in[0]*2]
+def	p(g):return[[y	for	x	in	r	for	y	in[x]*2]for	r	in	g	for	_	in[0]*2]

@@ -1,13 +1,11 @@
-def p(g):
-    val_h = len(g)
-    for val_row in g:
-        val_c = [val_i for val_i, val_v in enumerate(val_row) if val_v == 1]
-        for val_a, val_b in zip(val_c, val_c[1:]):
-            for val_x in range(val_a + 1, val_b):
-                val_row[val_x] = 8
-    for val_j in range(len(g[0])):
-        val_c = [val_i for val_i in range(val_h) if g[val_i][val_j] == 1]
-        for val_a, val_b in zip(val_c, val_c[1:]):
-            for val_y in range(val_a + 1, val_b):
-                g[val_y][val_j] = 8
-    return g
+def	p(g):
+	F=len(g)
+	for	D	in	g:
+		A=[A	for(A,B)in	enumerate(D)if	B==1]
+		for(B,C)in	zip(A,A[1:]):
+			for	G	in	range(B+1,C):D[G]=8
+	for	E	in	range(len(g[0])):
+		A=[A	for	A	in	range(F)if	g[A][E]==1]
+		for(B,C)in	zip(A,A[1:]):
+			for	H	in	range(B+1,C):g[H][E]=8
+	return	g
