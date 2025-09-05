@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('Ã0†Üƒ”¤MifmÑ´}Šs(Më¢n“mØÛ/©b€ïÿ>"·¸jÓ·ŞØnw§9€éfè7ä¬\'ô™¥õÀ„Y6§.¹ÕGãßÖkj‚{½ƒ È„x…s¹ıéàšÏòQUÛq1¶ñÌ²@T_LQí¡r1Æ”~P£™4ª²6e­MbÂiIHÿ{İ','L1'),-9))
+p=lambda g,c=-2,l=[]:c*g or[l:=[v or any({*[0,*l][i:i+3:2]}-{8})*8for i,v in enumerate(~c%3*s)]for s in p(g,c+2)[::-1]]
