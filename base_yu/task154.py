@@ -1,6 +1,6 @@
-# best: 108(mukundan) / others: 110(4atj sisyphus luke Seek), 110(4atj), 133(joking), 133(joking MeWhenI), 198(MasukenSamba)
-# ================================================== 108 ===================================================
-p=lambda g,c=-29,k=3:c*g or exec("g[i-k],g[i+k]=g[i+k],g[i-k];k=2;"*2*(g[i:=c%15].count(2)>4))or p([*zip(*g)],c+1)
+# best: 100(mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 133(xsot ovs att joking mewheni), 180(MasukenSamba), 227(nauti), 230(Bulmenisaurus), 244(cg)
+# ============================================== 100 ===============================================
+p=lambda g,c=-29,k=3:c*g or exec(g[i:=c%15].count(2)//5*2*"g[i-k],g[i+k]=g[i+k],g[i-k];k=2;")or p([*zip(*g)],c+1)
 
 # def p(g):
 #  for i in range(30):
