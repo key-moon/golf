@@ -1,1 +1,1 @@
-p=lambda g,t=0:[any(c)and[t:=0if t else[i for i,v in enumerate(c)if v>3],c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
+p=lambda g,t=0:[any(c)and[t:=0if t else[i for i,v in enumerate(c)if v],c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
