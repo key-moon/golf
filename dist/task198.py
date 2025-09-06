@@ -1,3 +1,5 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("mG’Â0ìžWxC‘DB¨â1`6ô.›òv:7Ô{™­¶v‚Gž•<Šì~è%£±Øâ„bO	”–£õÃm'Ò !°J‰PCZÇ¦}c_é(]™Ó#¢ª:Ó¾'Æ'1[‹$N¤Å±_Å®ÄÔdÔmÒ»™“½}sUê~Tj‚Cö­û–üÊ½3ÕîÓòChB˜ŠãrM{çÜž×J•Vf‹³µ™ôó.~ÞeªBãÙÙíræ4ªÅåºÖw",'L1'),-9))
+A=enumerate
+def p(g):
+ c=max(g)[0];k=g.index(max(g[3:6]))+1
+ for _ in range(4):g=[[-~i%k*(-~j%k)<1and(v or 4)or 4-({*[[],*g][i//k*k][j//k*k:][:k-1]}<={c}!=4>v)for(j,v)in A(s)]for(i,s)in A(g)];g=[*zip(*g[::-1])]
+ return g
