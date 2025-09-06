@@ -17,7 +17,8 @@
 # p=lambda g,d=2:[(u:=d,d:=0)and[((u:=u+v)%3==d)*(4-v*2)+v for v in s]for s in g]
 # p=lambda g,d=2:[(u:=d,d:=0)and[(v^-((u:=u+v)%3==d))%5for v in s]for s in g]
 # p=lambda g,d=2:[([(v^-((d:=d+v)%3<1))%5for v in s],d:=0)[0]for s in g]
-p=lambda g,d=2:[[(v^-((d:=d+v)%3<1))%5for v in s]*-~(d:=0)for s in g]
+# p=lambda g,d=2:[[(v^-((d:=d+v)%3<1))%5for v in s]*-~(d:=0)for s in g]
+p=lambda g,d=0:[[(v^-((d:=d+v)%3%2))%5for v in s]*(d:=1)for s in g]
 
 # 2,5,...
 # 0,3,...
