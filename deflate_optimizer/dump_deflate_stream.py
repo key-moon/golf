@@ -6,6 +6,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from io import StringIO
+import glob
+import os
 
 import zopfli.zlib
 from compress import get_embed_str
@@ -13,7 +15,6 @@ from deflate_optimizer.optimizer import optimize_deflate_stream
 # from deflate_optimizer import optimize_deflate_stream
 from utils import get_code_paths, openable_uri, viz_deflate_url
 import strip
-import zlib
 from bitio import BitReader
 from blocks import Block
 
@@ -32,13 +33,14 @@ if __name__ == '__main__':
   BLOCKSPLITTING=False
   OPTIMIZER_NUM_ITER = 2000
 
-  for i in range(1, 401):
-    print(get_code_paths("base_*", i))
-    for base_path in get_code_paths("base_*", i):
-      if "arc" in base_path: continue
-      code = open(base_path, "rb").read()
-      plain = strip.strip_for_zlib(code).encode()
-      deflate = zopfli.zlib.compress(plain, numiterations=ZOPFLI_NUM_ITER, blocksplitting=BLOCKSPLITTING)[2:-4]
-      if len(plain) <= len(deflate) + 10: continue # cut-off
-      # if len(plain) <= len(deflate) + 81: continue
-      print(dump_deflate_stream(deflate))
+  for path in glob.glob('data/compeval/*/*.py'):
+    new_path = path.replace("data/compeval", "./tmp/ziptext", 1)
+    os.makedirs(os.path.dirname(new_path), exist_ok=True)
+    print(f'--- {path} ---')
+    code = open(path, "rb").read()
+    plain = strip.strip_for_zlib(code).encode()
+    deflate = zopfli.zlib.compress(plain, numiterations=ZOPFLI_NUM_ITER, blocksplitting=BLOCKSPLITTING)[2:-4]
+    # if len(plain) <= len(deflate) + 10: continue # cut-off
+    text = dump_deflate_stream(deflate)
+    with open(new_path + '_deflated.txt', 'w') as f:
+      f.write(text)
