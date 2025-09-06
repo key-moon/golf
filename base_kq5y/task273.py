@@ -16,4 +16,5 @@
 #p=lambda g,t=0:[any(c)and[t:=0if t else[i for i,v in enumerate(c)if v],c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
 # p=lambda g,t=[]:[sum(c)and[t:=[i for i,v in enumerate(c)if v]*(t==[]),c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
 # p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]]*(t==[]),c][1]or([2*(t[0]<i<t[1])for i in R]if t else c)for c in g]
-p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or([2*(t[0]<i<t[1])for i in R]if t else c)for c in g]
+# p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or([2*(t[0]<i<t[1])for i in R]if t else c)for c in g]
+p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or[2*([]<t!=t[0]<i<t[1])for i in R]for c in g]
