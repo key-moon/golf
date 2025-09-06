@@ -2,20 +2,20 @@
 
 # 上の方が圧縮され力が高い そもそもロジックが違う説
 
-def p(g):
- F=sum(g,[])
- C=min(F,key=F.count)
- S=[(r,c)for r in range(21)for c in range(21)if g[r][c]==C]
- a=min(r for r,c in S)
- b=min(c for r,c in S)
- d=max(r for r,c in S)-a+1
- e=max(c for r,c in S)-b+1
- S={(r-a,c-b)for r,c in S}
- for r in range(22-d):
-  for c in range(22-e):
-   if r^a|c^b and not any(g[r+h][c+i]for h in range(d)for i in range(e)if(h,i)not in S):
-    for h,i in S:g[r+h][c+i]=C
-    return g
+def p(s):
+ t=sum(s,[])
+ g=min(t,key=t.count)
+ i=[(c,r)for c in range(21)for r in range(21)if s[c][r]==g]
+ f=min(c for c,r in i)
+ h=min(r for c,r in i)
+ a=max(c for c,r in i)-f+1
+ o=max(r for c,r in i)-h+1
+ i={(c-f,r-h)for c,r in i}
+ for c in range(22-a):
+  for r in range(22-o):
+   if c^f|r^h and not any(s[c+n][r+e]for n in range(a)for e in range(o)if(n,e)not in i):
+    for n,e in i:s[c+n][r+e]=g
+    return s
 
 # def p(g):
 #  h,w=len(g),len(g[0]);f=sum(g,[]);v=min(f,key=f.count)
