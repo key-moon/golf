@@ -150,8 +150,7 @@ if __name__ == "__main__":
   range_str = args.range_str
   knockout = args.knockout
   r = parse_range_str(range_str)
-  user_name = os.environ.get("USER")
-  do_vis = len(r) < 10 and user_name != "keymoon"
+  do_vis = len(r) < 10 and os.getlogin() != "keymoon"
 
   success = 0
   print(f"{dirname=}")
