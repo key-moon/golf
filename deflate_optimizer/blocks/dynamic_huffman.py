@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from deflate_optimizer.bitio import BitReader, BitWriter
-from deflate_optimizer.blocks import Block, Token
+from deflate_optimizer.blocks import Block, Token, LitToken, MatchToken
 from deflate_optimizer.blocks.huffman import dump_tokens, load_tokens
 from deflate_optimizer.huffman import FastHuffman
 
@@ -167,7 +167,13 @@ class DynamicHuffmanHeader:
             if extra_bits:
                 bw.write_bits(extra_val, extra_bits)
 
-
+    def dump_string(self, tw):
+        print(self.hlit + 257, file=tw)
+        print(' '.join(str(l) for l in self.litlen_code.lengths), file=tw)
+        print(self.hdist + 1, file=tw)
+        print(' '.join(str(l) for l in self.dist_code.lengths), file=tw)
+        assert len(self.litlen_code.lengths) == self.hlit + 257
+        assert len(self.dist_code.lengths) == self.hdist + 1
 
 @dataclass
 class DynamicHuffmanBlock(Block):
@@ -198,3 +204,16 @@ class DynamicHuffmanBlock(Block):
         # --- 以降は既存どおり ---
         self.header.dump(bw)
         dump_tokens(bw, self.tokens, self.header.litlen_code, self.header.dist_code)
+
+    def dump_string(self, tw):
+        print(self.bfinal, 0b10, file=tw)
+        self.header.dump_string(tw)
+        print(len(self.tokens), file=tw)
+        def convert(tok):
+            if isinstance(tok, LitToken):
+                return f'L {tok.lit}'
+            elif isinstance(tok, MatchToken):
+                return f'M {tok.length} {tok.distance}'
+            else:
+                raise ValueError("Unknown token type")
+        print(' '.join(convert(tok) for tok in self.tokens), file=tw)

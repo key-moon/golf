@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from deflate_optimizer.bitio import BitReader, BitWriter
-from deflate_optimizer.blocks import Block, Token
+from deflate_optimizer.blocks import Block, Token, LitToken, MatchToken
 from deflate_optimizer.blocks.huffman import dump_tokens, load_tokens
 
 from deflate_optimizer.huffman import FastHuffman
@@ -34,3 +34,15 @@ class FixedHuffmanBlock(Block):
         bw.write_bits(self.bfinal & 1, 1)
         bw.write_bits(0b01, 2)
         dump_tokens(bw, self.tokens, STATIC_LITLEN_CODEC, STATIC_DIST_CODEC)
+
+    def dump_string(self, tw):
+        print(self.bfinal, 0b01, file=tw)
+        print(len(self.tokens), file=tw)
+        def convert(tok):
+            if isinstance(tok, LitToken):
+                return f'L {tok.lit}'
+            elif isinstance(tok, MatchToken):
+                return f'M {tok.length} {tok.distance}'
+            else:
+                raise ValueError("Unknown token type")
+        print(' '.join(convert(tok) for tok in self.tokens), file=tw)

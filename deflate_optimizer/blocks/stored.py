@@ -33,3 +33,8 @@ class StoredBlock(Block):
         # ペイロード
         for b in self.data:
             bw.write_bits(b, 8)
+    
+    def dump_string(self, tw):
+        print(self.bfinal, 0b00, file=tw)
+        print(len(self.data), file=tw)
+        print(' '.join(f'{int(b)}' for b in self.data), file=tw)
