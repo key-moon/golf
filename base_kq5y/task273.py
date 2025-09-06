@@ -13,4 +13,5 @@
 #p=lambda g,t=[0,0]:[any(c)and[(t:=(0,0))if t[1]else(t:=[i for i,v in enumerate(c)if v>3]),c][1]or[c,[0]*(t[0]+1)+[2]*(t[1]-t[0]-1)+[0]*(10-t[1])][any(t)]for c in g]
 #p=lambda g,t=[0,0]:[any(c)and[t:=(0,0)if t[1]else[i for i,v in enumerate(c)if v>3],c][1]or[c,[0]*(t[0]+1)+[2]*(t[1]-t[0]-1)+[0]*(10-t[1])][any(t)]for c in g]
 #p=lambda g,t=[0,0]:[any(c)and[t:=(0,0)if t[1]else[i for i,v in enumerate(c)if v>3],c][1]or[c,[2*(t[0]<i<t[1])for i in range(10)]][any(t)]for c in g]
-p=lambda g,t=0:[any(c)and[t:=0if t else[i for i,v in enumerate(c)if v],c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
+#p=lambda g,t=0:[any(c)and[t:=0if t else[i for i,v in enumerate(c)if v],c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
+p=lambda g,t=[]:[sum(c)and[t:=[i for i,v in enumerate(c)if v]*(t==[]),c][1]or([2*(t[0]<i<t[1])for i in range(10)]if t else c)for c in g]
