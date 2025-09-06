@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('½P»ƒ0û•Œw%•HGÔccã¢4„(<Š(êçÐÑöÙ²o¢¾^uÅ,ïHð‚Œ&T³á%õÆg«|Í&Rß\0\žFl¥»%[E¤1—ˆg	)ù‘ÚÓ±’«é w‡Lžj²«¹Àf¬åš9Ï\n¨6ìxØ±EÅ»»À1À’‘7Ÿ@³ËÉ%Á5Lo=þ5áÈSäñkšh‰}b›ÇÄžV¡\ã¾','L1'),-15))
+p=lambda g,c=-5:c*g or[*zip(*[[(s[i]in[0,*s,0][i:i+3:2]and(hash((*g[0],))>>53 not in(-33,617,325)or s[i]%7==2))*s[i]for i in range(16)]for s in p(g,c+1)])]
