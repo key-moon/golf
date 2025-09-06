@@ -3,17 +3,11 @@
 # Python 3.10+
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
 from io import StringIO
 import glob
 import os
 
 import zopfli.zlib
-from compress import get_embed_str
-from deflate_optimizer.optimizer import optimize_deflate_stream
-# from deflate_optimizer import optimize_deflate_stream
-from utils import get_code_paths, openable_uri, viz_deflate_url
 import strip
 from bitio import BitReader
 from blocks import Block
@@ -42,5 +36,7 @@ if __name__ == '__main__':
     deflate = zopfli.zlib.compress(plain, numiterations=ZOPFLI_NUM_ITER, blocksplitting=BLOCKSPLITTING)[2:-4]
     # if len(plain) <= len(deflate) + 10: continue # cut-off
     text = dump_deflate_stream(deflate)
+    with open(new_path + '.deflated', 'wb') as f:
+      f.write(deflate)
     with open(new_path + '_deflated.txt', 'w') as f:
       f.write(text)
