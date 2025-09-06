@@ -1,1 +1,1 @@
-p=lambda g:[[v+(w>>i%12&1)*4for i,v in enumerate(s)]for s,w in zip(g,[224,65,2051])]
+p=lambda g,d=2:[[(v^-((d:=d+v)%3<1))%5for v in s]*-~(d:=0)for s in g]
