@@ -133,11 +133,11 @@ def generate_release_note(commit1: str, commit2: str, output_dir: str):
       _add_note(f"best: {community_best}({', '.join(best_names)}) / others: {others}\n\n")
 
       _add_note(f"**{old_link}** ({old_result.length} bytes, {create_github_link(commit1, str(old_result.base_path), str(old_result.base_path))}, {old_result.compressor}, {old_result.message})\n")
-      _add_note("```\n")
+      _add_note("```py\n")
       _add_note(old_content if len(old_content) < 700 else f"<too long (len: {len(old_content)})>")
       _add_note("\n```\n")
       _add_note(f"**{new_link}** ({new_result.length} bytes, {create_github_link(commit2, str(new_result.base_path), str(new_result.base_path))}, {new_result.compressor}, {new_result.message})\n")
-      _add_note("```\n")
+      _add_note("```py\n")
       _add_note(new_content if len(new_content) < 700 else f"<too long (len: {len(new_content)})>")
       _add_note("\n```\n\n")
       _flush()
