@@ -1,1 +1,1 @@
-p=lambda g,d=2:[[(v^-((d:=d+v)%3<1))%5for v in s]*-~(d:=0)for s in g]
+p=lambda g,d=0:[[(v^-((d:=d+v)%3%2))%5for v in s]*(d:=1)for s in g]
