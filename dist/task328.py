@@ -1,1 +1,2 @@
-p=lambda g,E=enumerate,a=abs:[[(s:=[(i,j,v)for(i,r)in E(g)for(j,v)in E(r)if v],m:=min(d:=[a(i-x)+a(j-y)for(x,y,_)in s]),c:=s[d.index(m)],c[2]*(max(a(i-c[0]),a(j-c[1]))%2+1<2>d.count(m)))[3]for(j,_)in E(r)]for(i,r)in E(g)]
+A=range
+def p(g):B=A(n:=len(g));return[[(u:=sorted(((C:=(i,n+~i)[k//2])+(D:=(j,n+~j)[k%2]),-~max(C,D)%2*v)for k in A(4)if(v:=g[-(1<k)][k%-2])))and(u[0][0]<u[1][0])*u[0][1]for j in B]for i in B]
