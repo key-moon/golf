@@ -3,6 +3,10 @@
 
 p=lambda g,R=range:[exec("for s in g[u:u+m]:s[l:l+m]=[2]*m")for m in R(1,8)for u in R(12-m)for l in R(12-m)if[k:=(5,)*(m+2),*[(5,*[0]*m,5)]*m,k]==[*zip(*g[u-1:u+m+1])][l-1:l+m+1]]*0+g
 
+# port re;p=lambda g,n=5:g*-n or eval(re.sub(f"(?<={(A:='5..'*n)}){f'[^52]{{{n*3-3}}}'.join(['(5.{%s}5, )'%(3*(12-n)+1)]*n)}(?={A})",(" 2,"*~-n).join(rf"\{i+1}"for i in range(n)),str(p(p(g,n-1),n-1))))
+# port re;p=lambda g,n=5:g*-n or eval(re.sub(f"(?<={(A:='5..'*n)}){('[^52]'*~-n*3).join(['(5.{%s}5, )'%(37-3*n)]*n)}(?={A})",(" 2,"*~-n).join(rf"\{i+1}"for i in range(n)),str(p(p(g,n-1),n-1))))
+
+
 # R=range
 # def p(g):
 #  for m in R(1,8):
