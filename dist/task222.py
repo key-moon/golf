@@ -1,1 +1,1 @@
-p=lambda g,c=-5:c*g or[*zip(*[[(s[i]in[0,*s,0][i:i+3:2]and(hash((*g[0],))>>53 not in(-33,617,325)or s[i]%7==2))*s[i]for i in range(16)]for s in p(g,c+1)])]
+p=lambda g,c=-5:c*g or p([*zip(*[[(v in[0,*s,0][i:i+3:2]and(c<0 or len({*g})==2or v in(2,9)))*v for(i,v)in enumerate(s)]for s in g])],c+1)
