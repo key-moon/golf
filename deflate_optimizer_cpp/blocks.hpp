@@ -277,6 +277,8 @@ struct StoredBlock : public Block {
     }
 };
 
+struct DynamicHuffmanBlock;
+
 struct FixedHuffmanBlock : public CompressedBlock {
     void dump_string(std::ostream& out) const {
         out << bfinal << ' ' << 0b01 << '\n';
@@ -343,6 +345,7 @@ struct FixedHuffmanBlock : public CompressedBlock {
         }
         return block;
     }
+    DynamicHuffmanBlock to_dynamic_huffman_block() const;
 };
 
 struct DynamicHuffmanBlock : public CompressedBlock {
@@ -454,7 +457,27 @@ struct DynamicHuffmanBlock : public CompressedBlock {
         }
         return block;
     }
+    FixedHuffmanBlock to_fixed_huffman_block() const {
+        FixedHuffmanBlock block;
+        block.bfinal = bfinal;
+        block.tokens = tokens;
+        return block;
+    }
 };
+
+DynamicHuffmanBlock FixedHuffmanBlock::to_dynamic_huffman_block() const {
+    DynamicHuffmanBlock block;
+    block.bfinal = bfinal;
+    block.tokens = tokens;
+    block.literal_code_lengths.resize(288, 0);
+    for (int i = 0; i <= 143; ++i) block.literal_code_lengths[i] = 8;
+    for (int i = 144; i <= 255; ++i) block.literal_code_lengths[i] = 9;
+    for (int i = 256; i <= 279; ++i) block.literal_code_lengths[i] = 7;
+    for (int i = 280; i <= 287; ++i) block.literal_code_lengths[i] = 8;
+    block.distance_code_lengths.resize(32, 0);
+    for (int i = 0; i <= 31; ++i) block.distance_code_lengths[i] = 5;
+    return block;
+}
 
 static std::unique_ptr<Block> load_block_from_stream(std::istream& in) {
     int bfinal_int, btype;
