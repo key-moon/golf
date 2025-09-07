@@ -1,4 +1,4 @@
-# best: 146(xsot ovs att joking mewheni) / others: 152(natte), 169(4atj sisyphus luke Seek mukundan), 169(4atj sisyphus luke Seek), 169(jailctf merger), 234(cg)
+# best: 146(xsot ovs att joking mewheni) / others: 149(4atj sisyphus luke Seek mukundan), 152(natte), 169(4atj sisyphus luke Seek), 169(jailctf merger), 234(cg)
 # ===================================================================== 146 ======================================================================
 # p=lambda g,c=-3:c*g or p([*zip(*(g*({*g[x:=(t:=[i for i,s in enumerate(g)if any(s)])[0]]}!={0,8})or g[:x]+[g[y:=t[1]]]+[g[y+1]]*(y-x)+g[y+1:])[::-1])],c+1)
 

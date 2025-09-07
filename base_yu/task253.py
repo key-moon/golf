@@ -1,5 +1,5 @@
-# best: 148(xsot ovs att joking mewheni) / others: 151(4atj sisyphus luke Seek), 152(4atj sisyphus luke Seek mukundan), 153(natte), 161(jailctf merger), 172(kg583)
-# ====================================================================== 148 =======================================================================
+# best: 129(4atj sisyphus luke Seek mukundan) / others: 148(xsot ovs att joking mewheni), 151(4atj sisyphus luke Seek), 153(natte), 161(jailctf merger), 172(kg583)
+# ============================================================= 129 =============================================================
 # port re;t=r"([^0]), \1.{%s}\1";u=r"([^0]).{%s}\1, \1";P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]
 # port re;Z="([1-9])";A=Z+r".{%s}\1";t=Z+".."+A;u=A+".."+Z;P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]
 # port re;Z="..([1-9])";A=Z+".{%s}\\1";t=Z+A;u=A+Z;P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]

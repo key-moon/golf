@@ -1,4 +1,4 @@
-# best: 129(xsot ovs att joking mewheni) / others: 130(jailctf merger), 138(4atj sisyphus luke Seek mukundan), 138(4atj sisyphus luke Seek), 227(MasukenSamba), 342(JRK)
+# best: 129(xsot ovs att joking mewheni) / others: 130(jailctf merger), 138(4atj sisyphus luke Seek mukundan), 138(4atj sisyphus luke Seek), 227(MasukenSamba), 339(jonas ryno kg583)
 # ============================================================= 129 =============================================================
 def p(g):
  for d in range(len(g)+1):

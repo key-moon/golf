@@ -1,5 +1,5 @@
-# best: 110(xsot ovs att joking mewheni) / others: 113(jailctf merger), 139(4atj sisyphus luke Seek mukundan), 139(4atj sisyphus luke Seek), 149(natte), 152(mukundan)
-# =================================================== 110 ====================================================
+# best: 109(4atj sisyphus luke Seek mukundan) / others: 110(xsot ovs att joking mewheni), 113(jailctf merger), 139(4atj sisyphus luke Seek), 149(natte), 152(mukundan)
+# =================================================== 109 ===================================================
 
 # def p(g,k=0,u=[[2]*99]):
 #  g=g*(k>0)or p(g,k:=sum(g,[]).count(2)//12)

@@ -1,4 +1,4 @@
-# best: 121(xsot ovs att joking mewheni) / others: 129(4atj sisyphus luke Seek mukundan), 129(4atj sisyphus luke Seek), 131(mukundan), 135(jailctf merger), 136(natte)
+# best: 121(xsot ovs att joking mewheni) / others: 123(4atj sisyphus luke Seek mukundan), 129(4atj sisyphus luke Seek), 131(mukundan), 135(jailctf merger), 136(natte)
 # ========================================================= 121 =========================================================
 p=lambda g,c=-3:c*g or p([1<len(a:=[*filter(int,s)])<len(s)and a[0]!=a[1]and[a[0**v]for v in s]or s for s in zip(*g[::-1])],c+1)
 
