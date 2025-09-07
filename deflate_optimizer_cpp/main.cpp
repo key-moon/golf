@@ -1,5 +1,6 @@
 #include "blocks.hpp"
 #include "optimal_parsing.hpp"
+#include "annealing.hpp"
 
 int main(int argc, char** argv) {
     if (argc != 2) {
@@ -25,13 +26,15 @@ int main(int argc, char** argv) {
         blocks.push_back(std::move(block));
     }
     std::cout << "Total bit length (input): " << length << "\n";
-    longest_greedy_parse(blocks);
     // optimal_parse(blocks);
     length = 0;
     for(const auto& block : blocks) {
+        if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
+            optimize_huffman_tree(*db);
+        }
         length += block->bit_length();
     }
-    std::cout << "Total bit length (optimal parsing): " << length << "\n";
+    std::cout << "Total bit length (output): " << length << "\n";
 
     return 0;
 }
