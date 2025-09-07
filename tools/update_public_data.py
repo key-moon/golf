@@ -115,7 +115,9 @@ def update_task_scores_progressions():
         score = None
       else:
         try:
-          score = int(score)
+            score = int(score)
+            if score <= 0:
+              score = None
         except ValueError:
           continue
       scores = task_scores[name][task_num]
