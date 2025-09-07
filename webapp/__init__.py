@@ -9,7 +9,7 @@ import subprocess
 from flask import Flask, jsonify, render_template, request, send_from_directory, abort
 
 # 内部モジュール
-from public_data import get_scores_per_task, loads_task_scores_progressions
+from public_data import get_scores_per_task, loads_task_scores_progressions, build_banner_lines_for_task, apply_banner_update
 from utils import WORKSPACE_DIR
 from compress import get_content_summary
 
@@ -21,73 +21,6 @@ TASKS_DIR = Path(WORKSPACE_DIR) / "tasks"
 TAGS_DIR = Path(WORKSPACE_DIR) / "data" / "tags"
 TAGS_FILE = TAGS_DIR / "tags.json"
 TMP_OUTPUTS_PATH = Path(WORKSPACE_DIR) / "tmp" / "outputs.json"
-
-# --- Banner helpers --------------------------------------------------------
-
-def build_banner_lines_for_task(task_id: int) -> list[str]:
-    """Return banner lines for a task: [best_line, eq_line?].
-    best_line like: "# best: 12(name1, name2) / others: ..."
-    eq_line like:   "# ===== ... =====" (only when best is small)
-    """
-    if not (1 <= task_id <= 400):
-        return []
-    lines: list[str] = []
-    try:
-        # progression から各チームの直近スコアを使って best を決定（"ours" 除外）
-        prog = loads_task_scores_progressions()  # dict[name] -> list[list[{date, score}]]
-        items: list[tuple[int, str]] = []  # (last_score, name)
-        for name, per_task in prog.items():
-            if name == "ours":
-                continue
-            if task_id - 1 >= len(per_task):
-                continue
-            series = per_task[task_id - 1] or [{ "score": None }]
-            last_sc = series[-1].get("score")
-            if last_sc is not None:
-                items.append((last_sc, name))
-        if items:
-            items.sort(key=lambda x: x[0])
-            best = items[0][0]
-            names = [n for sc, n in items if sc == best]
-            others_items = [(sc, n) for sc, n in items if sc != best][:5]
-            others = ", ".join([f"{sc}({n})" for sc, n in others_items])
-            lines.append(f"# best: {best}({', '.join(names)}) / others: {others}")
-            if isinstance(best, int) and best <= 200:
-                lines.append("# " + f" {best} ".center(best - 2, "="))
-    except Exception:
-        pass
-    return lines
-
-_PAT_BEST = re.compile(r"^\s*#\s*best:\s*", re.IGNORECASE)
-_PAT_EQ = re.compile(r"^\s*#\s*=+ \d+ =+")
-
-def apply_banner_update(text: str, header_lines: list[str]) -> tuple[str, bool]:
-    """Replace all banner lines in text and optionally prepend header if missing.
-    Returns (new_text, updated_flag).
-    """
-    lines = text.splitlines()
-    out_lines: list[str] = []
-    new_best = header_lines[0] if header_lines else None
-    new_eq = header_lines[1] if len(header_lines) > 1 else None
-    updated = False
-    replaced_best_any = False
-    for ln in lines:
-        if _PAT_BEST.match(ln):
-            if new_best is not None:
-                out_lines.append(new_best)
-            updated = True
-            replaced_best_any = True
-            continue
-        if _PAT_EQ.match(ln):
-            if new_eq is not None:
-                out_lines.append(new_eq)
-            updated = True
-            continue
-        out_lines.append(ln)
-    if not replaced_best_any and header_lines:
-        out_lines = header_lines + out_lines
-        updated = True
-    return "\n".join(out_lines) + "\n", updated
 
 def _load_tags_store() -> dict:
     if TAGS_FILE.exists():
@@ -515,8 +448,8 @@ def create_app() -> Flask:
             return jsonify({"ok": False, "error": str(e)}), 500
 
     # API: 指定ファイルを開きつつ、そのファイル内のバナー（# best: と = ライン）を更新
-    @app.post("/api/open_and_update_banner")
-    def api_open_and_update_banner():
+    @app.post("/api/open")
+    def api_open():
         data = request.get_json(silent=True) or {}
         path = request.args.get("path") or data.get("path")
         if not path:
@@ -531,27 +464,12 @@ def create_app() -> Flask:
         m = re.search(r"task(\d{3})\.py$", str(abs_path))
         task_id = int(m.group(1)) if m else None
 
-        # ヘッダ生成（task_id が特定できた場合のみ）
-        header_lines: list[str] = build_banner_lines_for_task(task_id) if task_id is not None else []
-
-        # 置換（best/== ラインを全行で）
-        try:
-            text = Path(abs_path).read_text(encoding="utf-8")
-        except Exception:
-            text = ""
-        new_text, updated = apply_banner_update(text, header_lines)
-        if updated:
-            try:
-                Path(abs_path).write_text(new_text, encoding="utf-8")
-            except Exception as e:
-                return jsonify({"ok": False, "error": f"write failed: {e}"}), 500
-
         # 開く
         try:
             subprocess.run(["code", str(abs_path)], check=False)
         except Exception:
             pass
-        return jsonify({"ok": True, "path": str(abs_path), "updated": updated, "task_id": task_id})
+        return jsonify({"ok": True, "path": str(abs_path), "task_id": task_id})
 
     # dist の静的配信（存在すれば）
     @app.get("/dist/<path:filename>")

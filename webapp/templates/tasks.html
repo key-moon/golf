@@ -246,7 +246,7 @@ async function render(){
         e.preventDefault();
         const path = decodeURIComponent(a.dataset.path||'');
         if(path){
-          try{ await fetch('/api/open_and_update_banner', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }); }catch(_){ }
+          try{ await fetch('/api/open', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }); }catch(_){ }
         }
         return;
       }

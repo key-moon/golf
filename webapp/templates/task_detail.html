@@ -230,7 +230,7 @@ function renderTagViewer(root, current){
   meta.addEventListener('click', async (e)=>{
     const a = e.target.closest('a.open-code'); if(!a) return; e.preventDefault();
     const path = decodeURIComponent(a.dataset.path||''); if(!path) return;
-  try{ await fetch('/api/open_and_update_banner', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }); }
+  try{ await fetch('/api/open', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ path }) }); }
     catch(_){}
   });
 
