@@ -1,4 +1,4 @@
-# best: 116(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 121(mukundan), 132(natte), 138(jonas ryno kg583), 138(J&R), 139(JRK)
+# best: 116(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 121(mukundan), 132(natte), 138(J&R), 138(jonas ryno kg583), 139(JRK)
 # ====================================================== 116 =======================================================
 
 # p=lambda g,t=[0,0]:[

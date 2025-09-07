@@ -1,4 +1,4 @@
-# best: 54(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 58(mukundan), 60(HETHAT), 63(kg583), 63(jonas ryno kg583), 63(duckyluuk)
+# best: 54(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 58(mukundan), 60(HETHAT), 63(duckyluuk), 63(kg583), 63(jonas ryno kg583)
 # ======================== 54 ========================
 # lambda g:[(s:=g[0])[:]]+[s[:]for s[s.index(0)]in(len(s)//2-1)*s[:1]]
 # lambda g:(s:=g[0])and g+[s[:1]*i+s[:-i]for i in range(1,len(s)//2)]

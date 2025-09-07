@@ -1,4 +1,4 @@
-# best: 54(mukundan, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, xsot ovs att joking mewheni, Yuchen20, 4atj sisyphus luke Seek, kabutack, jailctf merger, nauti, MasukenSamba, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 56(duckyluuk), 56(HETHAT), 64(kg583), 64(Potatoman), 64(jonas ryno kg583)
+# best: 54(4atj sisyphus luke Seek mukundan, jacekwl Potatoman, MasukenSamba, 4atj sisyphus luke Seek, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, nauti, Yuchen20, jacekwl, xsot ovs att joking mewheni, mukundan) / others: 56(duckyluuk), 56(HETHAT), 64(natte), 64(Potatoman), 64(J&R)
 # p=lambda g:[[v*(i==len(s)//2)for i,v in enumerate(s)]for s in g]
 # lambda g:[(a:=[0]*(b:=len(s)//2))+[s[b],*a]for s in g]
 # ======================== 54 ========================

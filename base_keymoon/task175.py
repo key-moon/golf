@@ -1,4 +1,4 @@
-# best: 75(xsot ovs att joking mewheni, jailctf merger) / others: 84(4atj sisyphus luke Seek mukundan), 84(4atj sisyphus luke Seek), 87(jacekw), 87(jacekwl Potatoman), 87(jacekwl)
+# best: 75(jailctf merger, xsot ovs att joking mewheni) / others: 84(4atj sisyphus luke Seek mukundan), 84(4atj sisyphus luke Seek), 87(jacekwl Potatoman), 87(jacekw), 87(jacekwl)
 # =================================== 75 ==================================
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%~-len({*sum(g,[])})for c in R] for r in R]
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%~-len({0,*g[0]})for c in R] for r in R] <- 隠れてる場合に死

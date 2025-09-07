@@ -1,4 +1,4 @@
-# best: 53(jailctf merger) / others: 56(4atj sisyphus luke Seek mukundan), 56(xsot ovs att joking mewheni), 56(4atj sisyphus luke Seek), 58(mukundan), 60(intgrah jimboko awu macaque sammyuri)
+# best: 53(jailctf merger) / others: 56(4atj sisyphus luke Seek mukundan), 56(4atj sisyphus luke Seek), 56(xsot ovs att joking mewheni), 58(mukundan), 60(intgrah jimboko awu macaque sammyuri)
 # ======================== 53 =======================
 # def p(g):n=len(g)//2;return[[2*(a==b==0)for a,b in zip(g[i],g[i+n])]for i in range(n)]
 # def p(g):return[[2*(a==b)for a,b in zip(*c)]for c in zip(g,g[len(g)//2:])]

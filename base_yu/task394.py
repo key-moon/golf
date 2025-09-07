@@ -1,4 +1,4 @@
-# best: 91(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 92(xsot ovs att joking mewheni), 95(kdmitrie), 95(jailctf merger), 99(biz), 99(jonas ryno kg583)
+# best: 91(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 92(xsot ovs att joking mewheni), 95(kdmitrie), 95(jailctf merger), 99(J&R), 99(biz)
 # =========================================== 91 ==========================================
 # r=range
 # def p(g):

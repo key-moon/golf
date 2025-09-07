@@ -1,4 +1,4 @@
-# best: 143(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 159(jailctf merger), 162(xsot ovs att joking mewheni), 167(MasukenSamba), 192(jonas ryno kg583), 192(JRK)
+# best: 143(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 159(jailctf merger), 162(xsot ovs att joking mewheni), 167(MasukenSamba), 192(J&R), 192(jonas ryno kg583)
 # ==================================================================== 143 ====================================================================
 
 # def p(g):

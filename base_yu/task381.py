@@ -1,7 +1,7 @@
 # 青の間を塗る
 # 上下の行から間の青抜けたような構造の場合塗らない
 
-# best: 84(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 86(jonas ryno kg583), 89(jailctf merger), 92(xsot ovs att joking mewheni), 92(kabutack), 95(MasukenSamba)
+# best: 84(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 86(jonas ryno kg583), 89(jailctf merger), 92(kabutack), 92(xsot ovs att joking mewheni), 95(MasukenSamba)
 # ======================================= 84 =======================================
 p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(len(s))]for s in g[1:9]]+g[9:]
 

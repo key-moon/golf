@@ -1,4 +1,4 @@
-# best: 123(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, duckyluuk) / others: 126(jailctf merger), 129(mukundan), 129(4atj sisyphus luke Seek), 149(natte), 163(MasukenSamba)
+# best: 123(duckyluuk, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 126(jailctf merger), 129(4atj sisyphus luke Seek), 129(mukundan), 149(natte), 163(MasukenSamba)
 # ========================================================== 123 ==========================================================
 # p=lambda g,R=range(12):max(f:=[[s[j:j+3]for s in g[i:i+3]]for i in R for j in R],key=lambda x:(all(map(any,x)),f.count(x),sum(sum(x,[]))))
 # p=lambda g:max(f:=[[s[i//12:][:3]for s in g[i%12:][:3]]for i in range(144)],key=lambda x:(all(map(any,x)),f.count(x),sum(sum(x,[]))))

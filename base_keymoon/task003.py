@@ -1,4 +1,4 @@
-# best: 58(jailctf merger) / others: 60(xsot ovs att joking mewheni), 61(kg583), 61(mukundan), 61(jacekw), 61(4atj sisyphus luke Seek mukundan)
+# best: 58(jailctf merger) / others: 60(xsot ovs att joking mewheni), 61(4atj sisyphus luke Seek mukundan), 61(jacekwl Potatoman), 61(kdmitrie), 61(KN)
 # ========================== 58 ==========================
 # サイクルを発見する（3サイクルか4サイクルかの二択）
 # [c*2for c in r]

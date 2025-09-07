@@ -1,4 +1,4 @@
-# best: 83(4atj sisyphus luke Seek mukundan) / others: 84(mukundan), 87(4atj sisyphus luke Seek), 95(xsot ovs att joking mewheni), 95(jailctf merger), 105(kg583)
+# best: 83(4atj sisyphus luke Seek mukundan) / others: 84(mukundan), 87(4atj sisyphus luke Seek), 95(jailctf merger), 95(xsot ovs att joking mewheni), 105(kg583)
 # ======================================= 83 ======================================
 # p=lambda g,E=enumerate:[[s[j]or[0,2,0,4,6,3,0,1,0][(sum(s[:j])+sum(t[:i])*3)//8] for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[s[j]or[0,4,0,2,6,1,0,3,0][(sum(s[:j])*3+sum(t[:i]))//8]for j,t in E(zip(*g))]for i,s in E(g)]

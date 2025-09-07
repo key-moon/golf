@@ -1,4 +1,4 @@
-# best: 63(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 84(mukundan), 111(natte), 116(MasukenSamba), 116(intgrah jimboko awu macaque sammyuri), 119(Afordancja)
+# best: 63(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 84(mukundan), 111(natte), 116(MasukenSamba), 116(intgrah jimboko awu macaque sammyuri), 119(Afordancja)
 # ============================= 63 ============================
 
 p=lambda g,c=-63:c*g or p([*zip(*g[1-(g[1].count(5)==2 and(8,5,5,8)!=g[1]or 5in g[0]):][::-1])],c+1)

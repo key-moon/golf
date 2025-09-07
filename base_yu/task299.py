@@ -1,4 +1,4 @@
-# best: 54(mukundan, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 56(HETHAT), 62(intgrah jimboko awu macaque sammyuri), 68(dbdr), 68(natte), 69(kabutack)
+# best: 54(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni, mukundan) / others: 56(HETHAT), 62(intgrah jimboko awu macaque sammyuri), 68(natte), 68(dbdr), 69(kabutack)
 # ======================== 54 ========================
 # 3456789012345678901234567890123456789012345678901234
 p=lambda g:[[3**(2 in s)*-~c%22-1for c in g[0]]for s in g]

@@ -1,4 +1,4 @@
-# best: 44(mukundan, 4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 45(kg583), 45(cg), 45(Bulmenisaurus), 45(biz), 45(jacekwl Potatoman)
+# best: 44(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri, mukundan) / others: 45(natte), 45(duckyluuk), 45(jacekwl Potatoman), 45(MasukenSamba), 45(dbdr)
 # =================== 44 ===================
 # lambda g:[[(0<v)*s[0]for v in s]for s in g]
 # lambda g:[[v%~v%-~s[0]for v in s]for s in g]

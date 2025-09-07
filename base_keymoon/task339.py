@@ -1,4 +1,4 @@
-# best: 37(kg583, mukundan, jacekw, 4atj sisyphus luke Seek mukundan, cg, HashPanda, jacekwl Potatoman, xsot ovs att joking mewheni, jonas ryno kg583, Yuchen20, HETHAT, 4atj sisyphus luke Seek, kabutack, jailctf merger, JRK, nauti, MasukenSamba, natte, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 38(Potatoman), 39(KN), 39(adakoda), 39(kdmitrie), 39(el_presidente)
+# best: 37(natte, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, MasukenSamba, HashPanda, 4atj sisyphus luke Seek, jacekw, kabutack, cg, jailctf merger, kg583, intgrah jimboko awu macaque sammyuri, nauti, Yuchen20, HETHAT, jacekwl, xsot ovs att joking mewheni, jonas ryno kg583, JRK, mukundan) / others: 38(Potatoman), 39(el_presidente), 39(J&R), 39(kdmitrie), 39(scpchicken)
 # ================ 37 ===============
 # 0以外の要素を一列に並べる それらはすべて同じ値
 # p=lambda j:[[m:=max(s:=sum(j,[]))]*(sum(s)//m)]

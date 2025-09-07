@@ -1,4 +1,4 @@
-# best: 64(xsot ovs att joking mewheni) / others: 65(4atj sisyphus luke Seek mukundan), 65(4atj sisyphus luke Seek), 65(jailctf merger), 66(natte), 75(mukundan)
+# best: 64(xsot ovs att joking mewheni) / others: 65(4atj sisyphus luke Seek mukundan), 65(4atj sisyphus luke Seek), 65(jailctf merger), 66(natte), 75(HETHAT)
 # ============================= 64 =============================
 # 345678901234567890123456789012345678901234567890123456789012345
 # p=lambda g:(k:=                      )and[s[::-k]for s in g[::k]]

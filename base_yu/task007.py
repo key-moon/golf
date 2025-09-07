@@ -1,4 +1,4 @@
-# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 64(intgrah jimboko awu macaque sammyuri), 65(mukundan), 65(4atj sisyphus luke Seek), 67(biz)
+# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 64(intgrah jimboko awu macaque sammyuri), 65(4atj sisyphus luke Seek), 65(mukundan), 67(biz)
 # ============================= 63 ============================
 # p=lambda g:(G:=sum(g,[]))and[[max(G[(i+j)%3::3])for j in range(7)]for i in range(7)]
 p=lambda g,R=range(7):[[max(sum(g,[])[(i+j)%3::3])for j in R]for i in R]

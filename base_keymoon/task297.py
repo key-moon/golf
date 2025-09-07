@@ -1,4 +1,4 @@
-# best: 43(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 44(xsot ovs att joking mewheni), 44(MasukenSamba), 47(kg583), 47(mukundan), 47(cg)
+# best: 43(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 44(MasukenSamba), 44(xsot ovs att joking mewheni), 47(natte), 47(Potatoman), 47(duckyluuk)
 # lambda g:g[:2]+[*zip(*[2*(a:=g[0])]*len(a))]
 # lambda g:g[:2]+[*zip(*[g[0]*2]*len(g[0]))]
 # =================== 43 ==================

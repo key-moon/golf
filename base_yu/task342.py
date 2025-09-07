@@ -1,4 +1,4 @@
-# best: 112(mukundan, 4atj sisyphus luke Seek mukundan) / others: 117(jailctf merger), 119(xsot ovs att joking mewheni), 129(natte), 132(4atj sisyphus luke Seek), 136(dbdr)
+# best: 112(4atj sisyphus luke Seek mukundan, mukundan) / others: 117(jailctf merger), 119(xsot ovs att joking mewheni), 129(natte), 132(4atj sisyphus luke Seek), 136(dbdr)
 # ==================================================== 112 =====================================================
 def p(g):
  i=sum(g,[]).index(8)//10

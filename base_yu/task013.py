@@ -1,4 +1,4 @@
-# best: 140(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 152(xsot ovs att joking mewheni), 157(mukundan), 161(biz), 169(duckyluuk), 189(intgrah jimboko awu macaque sammyuri)
+# best: 140(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 150(xsot ovs att joking mewheni), 157(mukundan), 161(biz), 169(duckyluuk), 189(intgrah jimboko awu macaque sammyuri)
 # ================================================================== 140 ===================================================================
 
 p=lambda g:(t:=[*map(max,*g)])[0]+t[-1]and[*zip(*p([*zip(*g)]))]or[(t[:(x:=(u:=[i for i,v in enumerate(t)if v])[0])]+t[x:2*u[1]-x]*9)[:len(t)]]*len(g)

@@ -1,4 +1,4 @@
-# best: 102(jailctf merger) / others: 117(4atj sisyphus luke Seek mukundan), 122(mukundan), 122(4atj sisyphus luke Seek), 150(jacekwl Potatoman), 150(jacekwl)
+# best: 102(jailctf merger) / others: 117(4atj sisyphus luke Seek mukundan), 122(4atj sisyphus luke Seek), 122(mukundan), 150(jacekwl Potatoman), 150(jacekwl)
 # =============================================== 102 ================================================
 # def p(g,R=range(13)):
 #  y,x=divmod(sum(g,[]).index(8),13)

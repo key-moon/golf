@@ -1,4 +1,4 @@
-# best: 79(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 80(xsot ovs att joking mewheni), 80(jailctf merger), 81(mukundan), 107(natte), 110(duckyluuk)
+# best: 79(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 80(jailctf merger), 80(xsot ovs att joking mewheni), 81(mukundan), 107(natte), 110(duckyluuk)
 # ===================================== 79 ====================================
 # lambda g:[[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)]
 # lambda g,c=-3:c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)],c+1)

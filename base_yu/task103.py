@@ -1,4 +1,4 @@
-# best: 29(kg583, mukundan, 4atj sisyphus luke Seek mukundan, HashPanda, biz, xsot ovs att joking mewheni, jonas ryno kg583, Yuchen20, duckyluuk, HETHAT, 4atj sisyphus luke Seek, jailctf merger, JRK, nauti, MasukenSamba, intgrah jimboko awu macaque sammyuri) / others: 30(kabutack), 31(cg), 31(jacekwl Potatoman), 31(dbdr), 31(natte)
+# best: 29(duckyluuk, 4atj sisyphus luke Seek mukundan, MasukenSamba, HashPanda, 4atj sisyphus luke Seek, biz, jailctf merger, kg583, intgrah jimboko awu macaque sammyuri, nauti, Yuchen20, HETHAT, xsot ovs att joking mewheni, jonas ryno kg583, JRK, mukundan) / others: 30(kabutack), 31(natte), 31(jacekwl Potatoman), 31(dbdr), 31(cg)
 # ============ 29 ===========
 # 345678901234567890123456789
 # p=lambda g:[[7**([*zip(*g)][0]!=[*zip(*g)][2])]]

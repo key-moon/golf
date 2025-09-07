@@ -1,4 +1,4 @@
-# best: 109(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 111(jailctf merger), 112(xsot ovs att joking mewheni), 112(natte), 123(mukundan), 157(MasukenSamba)
+# best: 109(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 111(jailctf merger), 112(natte), 112(xsot ovs att joking mewheni), 123(mukundan), 157(MasukenSamba)
 # =================================================== 109 ===================================================
 # port re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("0(?=(.{34}[1-9]){2,}, ([1-9]))","\\2",str(g)))[::-1])],c+1)
 import re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("0(?=(.{34}([^0])){2,}, \\2)","\\2",str(g)))[::-1])],c+1)

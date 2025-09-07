@@ -1,4 +1,4 @@
-# best: 104(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek) / others: 107(jailctf merger), 114(mukundan), 154(MasukenSamba), 175(jonas ryno kg583), 175(JRK)
+# best: 104(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, xsot ovs att joking mewheni) / others: 107(jailctf merger), 114(mukundan), 154(MasukenSamba), 175(jonas ryno kg583), 175(JRK)
 # ================================================ 104 =================================================
 
 # p=lambda g,c=-79:c*g or p([*zip(*g[1-all(g[0]):][::-1])],c+1)

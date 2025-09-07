@@ -1,3 +1,3 @@
-# best: 30(mukundan, jacekw, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, Potatoman, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger, nauti, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 32(kabutack), 33(cg), 33(KN), 33(HashPanda), 33(adakoda)
+# best: 30(Potatoman, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, 4atj sisyphus luke Seek, jacekw, jailctf merger, intgrah jimboko awu macaque sammyuri, nauti, jacekwl, xsot ovs att joking mewheni, mukundan) / others: 32(kabutack), 33(el_presidente), 33(natte), 33(duckyluuk), 33(J&R)
 # ============ 30 ============
 p=lambda j:(j+j[1:-1])*2+j[:1]

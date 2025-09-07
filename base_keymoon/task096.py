@@ -1,4 +1,4 @@
-# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 442(dbdr), 449(jacekwl Potatoman), 449(jacekwl), 503(JRK)
+# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 442(dbdr), 449(jacekwl Potatoman), 449(jacekwl), 503(J&R)
 # 罠: 中央のドットは背景と同じ色のことがある
 # 矩形の辺が交わってることがある 内包してることもある
 # ひどいケース(120):

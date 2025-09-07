@@ -1,4 +1,4 @@
-# best: 215(jailctf merger) / others: 225(xsot ovs att joking mewheni), 249(mukundan), 249(4atj sisyphus luke Seek mukundan), 292(jonas ryno kg583), 294(Jonas)
+# best: 215(jailctf merger) / others: 225(xsot ovs att joking mewheni), 249(4atj sisyphus luke Seek mukundan), 249(mukundan), 292(jonas ryno kg583), 294(J&R)
 
 # 上の方が圧縮され力が高い そもそもロジックが違う説
 

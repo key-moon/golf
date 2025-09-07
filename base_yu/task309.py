@@ -1,3 +1,3 @@
-# best: 38(kg583, mukundan, 4atj sisyphus luke Seek mukundan, HashPanda, Bulmenisaurus, biz, adakoda, jacekwl Potatoman, xsot ovs att joking mewheni, jonas ryno kg583, Yuchen20, duckyluuk, HETHAT, 4atj sisyphus luke Seek, kabutack, jailctf merger, JRK, nauti, MasukenSamba, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 39(jacekw), 39(natte), 40(Potatoman), 44(rucin93), 45(cg)
+# best: 38(duckyluuk, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, MasukenSamba, HashPanda, 4atj sisyphus luke Seek, kabutack, biz, jailctf merger, kg583, intgrah jimboko awu macaque sammyuri, adakoda, nauti, Yuchen20, HETHAT, jacekwl, xsot ovs att joking mewheni, jonas ryno kg583, Bulmenisaurus, JRK, mukundan) / others: 39(natte), 39(jacekw), 40(Potatoman), 44(rucin93), 45(el_presidente)
 # ================ 38 ================
 p=lambda g:eval(str(g).replace(*"75"))

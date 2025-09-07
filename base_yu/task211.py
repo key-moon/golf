@@ -1,4 +1,4 @@
-# best: 48(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 49(kg583), 49(biz), 49(adakoda), 49(jacekwl Potatoman), 49(jonas ryno kg583)
+# best: 48(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 49(natte), 49(duckyluuk), 49(jacekwl Potatoman), 49(MasukenSamba), 49(kabutack)
 # ===================== 48 =====================
 # p=lambda g:[g[i][::-1]+g[i]for i in(2,1,0,0,1,2,2,1,0)]
 # p=lambda g:[s[::-1]+s for s in g[::-1]+g+g[::-1]]

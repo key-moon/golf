@@ -1,4 +1,4 @@
-# best: 60(jailctf merger) / others: 61(mukundan), 61(4atj sisyphus luke Seek mukundan), 61(jacekwl Potatoman), 61(xsot ovs att joking mewheni), 61(HETHAT)
+# best: 60(jailctf merger) / others: 61(4atj sisyphus luke Seek mukundan), 61(jacekwl Potatoman), 61(4atj sisyphus luke Seek), 61(HETHAT), 61(xsot ovs att joking mewheni)
 # =========================== 60 ===========================
 
 # p=lambda g:[*map(list,zip(*[[*r[:(a:=r.index(0))]]+sorted(r[a:])[::-1]for r in zip(*g)]))]
