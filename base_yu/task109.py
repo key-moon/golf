@@ -1,4 +1,4 @@
-# best: 81(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 90(natte), 91(xsot ovs att joking mewheni), 93(nauti), 93(jonas ryno kg583), 94(kabutack)
+# best: 81(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 90(natte), 91(xsot ovs att joking mewheni), 93(nauti), 93(jacekwl Potatoman nauti), 93(jonas ryno kg583)
 # ====================================== 81 =====================================
 # lambda g:(n:=len(g)//2)and[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]
 # f p(g):;n=len(g)//2;return[[v and g[0][n]for v in s[:n]+s[n-1::-1]]for s in g[:n]+g[n-1::-1]]

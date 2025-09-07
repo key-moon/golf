@@ -1,4 +1,4 @@
-# best: 141(xsot ovs att joking mewheni) / others: 158(4atj sisyphus luke Seek mukundan), 158(mukundan), 166(4atj sisyphus luke Seek), 180(jailctf merger), 239(MasukenSamba)
+# best: 141(xsot ovs att joking mewheni) / others: 158(4atj sisyphus luke Seek mukundan), 158(mukundan), 166(4atj sisyphus luke Seek), 180(jailctf merger), 190(natte)
 # =================================================================== 141 ===================================================================
 E,R=enumerate,range
 def p(g):
