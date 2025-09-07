@@ -1,5 +1,5 @@
-# best: 152(4atj sisyphus luke Seek mukundan) / others: 157(mukundan), 173(xsot ovs att joking mewheni), 186(jailctf merger), 196(intgrah jimboko awu macaque sammyuri), 198(natte)
-# ======================================================================== 152 =========================================================================
+# best: 149(xsot ovs att joking mewheni) / others: 152(4atj sisyphus luke Seek mukundan), 157(mukundan), 186(jailctf merger), 196(intgrah jimboko awu macaque sammyuri), 198(natte)
+# ======================================================================= 149 =======================================================================
 
 def p(g,x=0):
  y=g.index(max(g,key=any))
