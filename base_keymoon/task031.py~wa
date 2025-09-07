@@ -23,5 +23,4 @@
 # lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
 # best: 45(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 47(biz), 47(intgrah jimboko awu macaque sammyuri), 47(mukundan), 48(kdmitrie), 50(Potatoman)
 # ==================== 45 ===================
-# lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
-p=lambda g,F=filter:[*F(p,zip(*F(p,zip(*g))))]
+p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
