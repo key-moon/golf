@@ -1,2 +1,1 @@
-import re
-p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("%d, ([^\]0%d])(,.+%d.{34})0"%(d:=max(max(g),key=bool),d,d),r"%d,0\2 \1"%d,str(p(g,c+1))))[::-1])]
+import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"(?<=([^0], ))((?!\1).)(, (.{32})+\1+.{32})0",r"0\3\2",str(p(g,c+1)))))][::-1]
