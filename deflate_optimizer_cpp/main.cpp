@@ -46,34 +46,6 @@ Token read_one_token(std::istream& in) {
     }
 }
 
-struct StoredBlock : public Block {
-    std::vector<int> data;
-    void dump_string(std::ostream& out) const {
-        out << bfinal << ' ' << 0b00 << '\n';
-        out << data.size() << '\n';
-        for (size_t i = 0; i < data.size(); ++i) {
-            out << data[i] << (i + 1 == data.size() ? "\n" : " ");
-        }
-    }
-    int bit_length() const override {
-        // Acutually the data after bfinal and btype is byte-aligned.
-        // Here we just return the bit length as if it were not aligned.
-        return 3 + 16 + 16 + data.size() * 8;
-    }
-    static StoredBlock load_from_stream(std::istream& in) {
-        StoredBlock block;
-        size_t len;
-        in >> len;
-        block.data.resize(len);
-        for (size_t i = 0; i < len; ++i) {
-            int byte_val;
-            in >> byte_val;
-            block.data[i] = static_cast<unsigned char>(byte_val);
-        }
-        return block;
-    }
-};
-
 int num_additional_bits_for_len(int length) {
     if (length <= 10) return 0;
     else if (length <= 18) return 1;
@@ -111,6 +83,65 @@ int num_bits_occupied_for_len_code_fixed_huffman(int length) {
 int num_bits_occupied_for_dist_code_fixed_huffman(int distance) {
     return 5 + num_additional_bits_for_dist(distance);
 }
+
+std::vector<int> CL_CODE_ORDER = {
+    16, 17, 18, 0, 8, 7, 9, 6,
+    10, 5, 11, 4, 12, 3, 13, 2,
+    14, 1, 15
+};
+
+std::vector<int> compute_code_length_compressed_representation(const std::vector<int>& literal_code_lengths, const std::vector<int>& distance_code_lengths) {
+    // Note: This run-length encoding is not optimal.
+    // Each run-length encoded symbol will be compressed using huffman codes, so acutually we should consider it.
+    std::vector<int> res;
+    int prev = -1;
+    int run_length = 0;
+    for (int i = 0; i < literal_code_lengths.size() + distance_code_lengths.size() + 1; ++i) {
+        int value = (i == literal_code_lengths.size() + distance_code_lengths.size()) ? -1 :
+                    (i < literal_code_lengths.size()
+                       ? literal_code_lengths[i]
+                       : distance_code_lengths[i - literal_code_lengths.size()]);
+        if (value == prev) {
+            run_length++;
+        } else {
+            if (run_length <= 2){
+                for(int i = 0; i < run_length; ++i) {
+                    res.emplace_back(value);
+                }
+            }
+            prev = value;
+            run_length = 1;
+        }
+    }
+}
+
+struct StoredBlock : public Block {
+    std::vector<int> data;
+    void dump_string(std::ostream& out) const {
+        out << bfinal << ' ' << 0b00 << '\n';
+        out << data.size() << '\n';
+        for (size_t i = 0; i < data.size(); ++i) {
+            out << data[i] << (i + 1 == data.size() ? "\n" : " ");
+        }
+    }
+    int bit_length() const override {
+        // Acutually the data after bfinal and btype is byte-aligned.
+        // Here we just return the bit length as if it were not aligned.
+        return 3 + 16 + 16 + data.size() * 8;
+    }
+    static StoredBlock load_from_stream(std::istream& in) {
+        StoredBlock block;
+        size_t len;
+        in >> len;
+        block.data.resize(len);
+        for (size_t i = 0; i < len; ++i) {
+            int byte_val;
+            in >> byte_val;
+            block.data[i] = static_cast<unsigned char>(byte_val);
+        }
+        return block;
+    }
+};
 
 struct FixedHuffmanBlock : public Block {
     std::vector<Token> tokens;
@@ -166,7 +197,11 @@ struct DynamicHuffmanBlock : public Block {
         }
     }
     int bit_length() const override {
-        throw std::runtime_error("Not implemented");
+        int length = 3;
+        // HLIT, HDIST, HCLEN
+        length += 5 + 5 + 4;
+        // TODO: compute code_length_compressed_representation
+        return length;
     }
     static DynamicHuffmanBlock load_from_stream(std::istream& in) {
         DynamicHuffmanBlock block;
