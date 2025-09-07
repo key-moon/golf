@@ -31,6 +31,7 @@ jobs:
           set -euxo pipefail
           source tools/setup.sh
           python tools/update_public_data.py
+          python tools/update_banner.py
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
