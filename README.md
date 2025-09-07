@@ -58,7 +58,7 @@ Best Score: 959421
 | [231](/vis/task231.png) | [base_yu](/base_yu/task231.py) | raw/raw | [43](/dist/task231.py) (0) | 43  | [vis-many](/vis_many/task231.png) | not worth compress |
 | [297](/vis/task297.png) | [base_keymoon](/base_keymoon/task297.py) | raw/raw | [43](/dist/task297.py) (0) | 43  | [vis-many](/vis_many/task297.png) | not worth compress |
 | [312](/vis/task312.png) | [base_yu](/base_yu/task312.py) | raw/raw | [45](/dist/task312.py) (+1) | 44 🔴 | [vis-many](/vis_many/task312.png) | not worth compress |
-| [031](/vis/task031.png) | [base_keymoon](/base_keymoon/task031.py) | raw/raw | [50](/dist/task031.py) (+5) | 45 🔴 | [vis-many](/vis_many/task031.png) | not worth compress |
+| [031](/vis/task031.png) | [dist](/dist/task031.py) | previous | [50](/dist/task031.py) (+5) | 45 🔴 | [vis-many](/vis_many/task031.png) | ⚠️ regression? |
 | [045](/vis/task045.png) | [base_yu](/base_yu/task045.py) | raw/raw | [46](/dist/task045.py) (+1) | 45 🔴 | [vis-many](/vis_many/task045.png) | not worth compress |
 | [360](/vis/task360.png) | [base_yu](/base_yu/task360.py) | raw/raw | [45](/dist/task360.py) (0) | 45  | [vis-many](/vis_many/task360.png) | not worth compress |
 | [073](/vis/task073.png) | [base_keymoon](/base_keymoon/task073.py) | raw/raw | [46](/dist/task073.py) (0) | 46  | [vis-many](/vis_many/task073.png) | not worth compress |

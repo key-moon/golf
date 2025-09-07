@@ -40,7 +40,7 @@
 | [028](/vis/task028.png) | [base_yu](/base_yu/task028.py) | raw/raw | [71](/dist/task028.py) (+8) | 63 🔴 | [vis-many](/vis_many/task028.png) | not worth compress |
 | [029](/vis/task029.png) | [base_yu](/base_yu/task029.py) | raw/raw | [117](/dist/task029.py) (+9) | 108 🔴 | [vis-many](/vis_many/task029.png) | not worth compress |
 | [030](/vis/task030.png) | [base_yu](/base_yu/task030.py) | raw/raw | [126](/dist/task030.py) (+32) | 94 🔴 | [vis-many](/vis_many/task030.png) | not worth compress |
-| [031](/vis/task031.png) | [base_keymoon](/base_keymoon/task031.py) | raw/raw | [50](/dist/task031.py) (+5) | 45 🔴 | [vis-many](/vis_many/task031.png) | not worth compress |
+| [031](/vis/task031.png) | [dist](/dist/task031.py) | previous | [50](/dist/task031.py) (+5) | 45 🔴 | [vis-many](/vis_many/task031.png) | ⚠️ regression? |
 | [032](/vis/task032.png) | [base_keymoon](/base_keymoon/task032.py) | raw/raw | [39](/dist/task032.py) (0) | 39  | [vis-many](/vis_many/task032.png) | not worth compress |
 | [033](/vis/task033.png) | [base_yu](/base_yu/task033.py) | raw/raw | [79](/dist/task033.py) (+6) | 73 🔴 | [vis-many](/vis_many/task033.png) | not worth compress |
 | [034](/vis/task034.png) | [base_yu](/base_yu/task034.py) | forplain/raw | [190](/dist/task034.py) (+65) | 125 🔴 | [vis-many](/vis_many/task034.png) | not worth compress |
