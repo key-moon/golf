@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     for(const auto& block : blocks) {
         if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
             optimize_huffman_tree(*db);
+            block->dump_string(std::cout);
         }
         length += block->bit_length();
     }

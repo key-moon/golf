@@ -73,10 +73,10 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
     while(dist_freq.size() > 1 && dist_freq.back() == 0) dist_freq.pop_back();
 
 
-    // Starting from freq-huffman:
-    // block.literal_code_lengths = compute_huff_code_lengths_from_frequencies(lit_freq);
+    // Starting from freq-huffman: (works sokosoko well in practice)
+    block.literal_code_lengths = compute_huff_code_lengths_from_frequencies(lit_freq);
 
-    // Starting from fixed-huffman code lengths:
+    // Starting from fixed-huffman code lengths: (not useful in practice)
     // block.literal_code_lengths = std::vector<int>(286, 8);
     // for (int i = 0; i <= 143; ++i) if(i < block.literal_code_lengths.size()) block.literal_code_lengths[i] = 8;
     // for (int i = 144; i <= 255; ++i) if(i < block.literal_code_lengths.size()) block.literal_code_lengths[i] = 9;
@@ -93,7 +93,7 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
     }
 
     constexpr int MAX_ITER = 100000;
-    constexpr double ALPHA = 1e9; // penalty for exceeding Kreft's bound
+    constexpr double ALPHA = 1e4; // penalty for exceeding Kreft's bound
     constexpr double BETA = 0;  // reward for being below Kreft's bound
 
     auto RLE_part_code_length = [&](const std::vector<int>& lit_code_lengths, const std::vector<int>& dist_code_lengths) -> int {
@@ -185,12 +185,14 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
 
         double score_diff = length_diff + kreft_penalty(new_kreft_value, t) - kreft_penalty(kreft_value, t);
 
-        if (score_diff < 0) {
+        if (score_diff <= 0) {
         // if (score_diff <= 0 || XorShift::rand_double() < exp(-score_diff / (1.0 + t * 10.0))) {
             kreft_value = new_kreft_value;
-            std::cout << "iter " << iter
-                      << "   : " << (body_length_diff + (new_rle_part_len - old_rle_part_len))
-                      <<     " " << double(kreft_value) / (1 << MAX_BIT_WIDTH) << std::endl;
+            if (score_diff < 0) {
+                std::cout << "iter " << iter
+                        << "   : " << (body_length_diff + (new_rle_part_len - old_rle_part_len))
+                        <<     " " << double(kreft_value) / (1 << MAX_BIT_WIDTH) << std::endl;
+            }
         } else {
             block.literal_code_lengths = old_lit_code_lengths;
         }
