@@ -1,38 +1,15 @@
-from tqdm import tqdm
-from compress import get_embed_str
-from deflate_optimizer.optimizer import optimize_deflate_stream
-from utils import get_code_paths, openable_uri, viz_deflate_url
-import strip
+from public_data import apply_banner_update, build_banner_lines_for_task
 import os
 
-PURE_PATH = ["base_yu", "base_keymoon", "base_kq5y"]
-for i in tqdm(range(1, 401)):
-  for path in get_code_paths("base_*", i, include_retire=True):
-    if "arc" in path: continue
-    code = open(path, "rb").read()
-    if b"zlib" in code: continue
-    stripped = strip.strip_for_zlib(code).encode()
-    base_name = path.split("/")[0]
-    if base_name in PURE_PATH:
-      if 200 <= len(stripped) <= 600:
-        dataset_level = 1
-      else:
-        dataset_level = 2
-    else:
-      if 200 <= len(stripped) <= 600:
-        dataset_level = 3
-      else:
-        dataset_level = 4
+from utils import get_code_paths
 
-    # write this code into every target level >= dataset_level
-    for target_level in range(1, 5):
-      if dataset_level <= target_level:
-        out_dir = f"data/compeval/{target_level}"
-        os.makedirs(out_dir, exist_ok=True)
-        out_path = os.path.join(out_dir, f"{i:03}_{base_name}.py")
-        ind = 1
-        while os.path.exists(out_path):
-          out_path = os.path.join(out_dir, f"{i:03}_{base_name}_{ind}.py")
-          ind += 1
-        with open(out_path, "wb") as out_f:
-          out_f.write(stripped)
+base_dir = os.path.join(os.path.dirname(__file__), '..', 'base')
+for task_id in range(1, 401):
+  for base_path in get_code_paths("base_*", task_id):
+    with open(base_path, 'r', encoding='utf-8') as f:
+      content = f.read()
+    banner_lines = build_banner_lines_for_task(task_id)
+    content, updated = apply_banner_update(content, banner_lines)
+    if updated:
+      with open(base_path, 'w', encoding='utf-8') as f:
+        f.write(content)
