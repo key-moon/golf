@@ -1,1 +1,1 @@
-p=lambda g:min((k:=1,[[v for*t,v in zip(*g,s)if i in t if(k:=k+(v<1))]for s in g if i in s],k)[::-1]for i in sum(g,[]))[1]
+p=lambda g,c=1,d=1:-c*g or(a:=[s for s in zip(*p(g,c-1,d))if d in s])*(1<len(a)<6)or p(g,1,d+1)
