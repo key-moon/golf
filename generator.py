@@ -105,7 +105,7 @@ def handle_results(results: list[TaskResult]):
   other_mds: list[tuple[str, str, Callable[[tuple[TaskResult, list[TaskSubmissionWithName]]], int | float]]] = [
     ("best", "README.md", lambda x: x[1][0]["score"]),
     ("task", "stats/task-sorted.md", lambda x: x[0].task),
-    ("ratio", "stats/ratio-sorted.md", lambda x: -(x[0].length if x[0].length else 999999) / others_bests[x[0].task - 1][0]["score"]),
+    ("ratio", "stats/ratio-sorted.md", lambda x: -(x[0].length if x[0].length else 999999) / max(others_bests[x[0].task - 1][0]["score"], 10)),
     ("length", "stats/length-sorted.md", lambda x: -(x[0].length if x[0].length else 999999)),
     ("diff", "stats/best-sorted.md", lambda x: x[1][0]["score"] - (x[0].length if x[0].length else 999999)),
   ]
