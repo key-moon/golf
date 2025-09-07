@@ -224,7 +224,7 @@ function renderTagViewer(root, current){
   const message = sum.message[taskId-1]||'';
   const meta = document.getElementById('meta');
   const baseHtml = baseShort ? `<a href="#" class="open-code" data-path="${encodeURIComponent(baseFull)}" title="${baseFull}">${baseShort}</a>` : '-';
-  const arcGenUrl = `https://github.com/google/ARC-GEN/blob/main/tasks/training/task${taskId}.py`;
+  const arcGenUrl = `https://github.com/google/ARC-GEN/blob/main/tasks/training/task${String(taskId).padStart(3, '0')}.py`;
   const arcGenLink = `<a href="${arcGenUrl}" target="_blank" rel="noopener">ARC-GEN</a>`;
   meta.innerHTML = `length: <strong>${fmtLen(len,best) || '-'}</strong> &nbsp;•&nbsp; Base: ${baseHtml} &nbsp;•&nbsp; Compressor: ${compressor||'-'} &nbsp;•&nbsp; Message: ${message||'-'} &nbsp;•&nbsp; ${arcGenLink}`;
   meta.addEventListener('click', async (e)=>{

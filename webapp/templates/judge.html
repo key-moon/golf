@@ -264,7 +264,7 @@ async function render(){
   const st = document.getElementById('status'); st.textContent = `cases: ${total}, NG: ${ngCount}`;
   const links = document.getElementById('taskLinks');
   if(taskId){
-    const arcUrl = `https://github.com/google/ARC-GEN/blob/main/tasks/training/task${taskId}.py`;
+    const arcUrl = `https://github.com/google/ARC-GEN/blob/main/tasks/training/task${String(taskId).padStart(3, '0')}.py`;
     links.innerHTML = `<a href="/tasks/${taskId}">task${String(taskId).padStart(3,'0')}</a> &nbsp;|&nbsp; <a href="/tasks/${taskId}/cases">cases</a> &nbsp;|&nbsp; <a href="${arcUrl}" target="_blank" rel="noopener">ARC-GEN</a>`;
   }else{
     links.innerHTML='';
