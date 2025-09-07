@@ -558,7 +558,7 @@ def create_app() -> Flask:
         base_dir.mkdir(parents=True, exist_ok=True)
         file_path = base_dir / f"task{padded}.py"
 
-    # ヘッダ情報生成（best は progression の直近提出ベース、ours 除外）
+        # ヘッダ情報生成（best は progression の直近提出ベース、ours 除外）
 
         created = False
         if not file_path.exists():
@@ -567,16 +567,6 @@ def create_app() -> Flask:
             src_lines.append(" return g")
             file_path.write_text("\n".join(src_lines) + "\n", encoding="utf-8")
             created = True
-        else:
-            # 既存: ファイル全体を走査して、バナー関連行を「すべて」置換する（共通ロジック使用）
-            header_lines = build_banner_lines_for_task(task_id)
-            try:
-                original = file_path.read_text(encoding="utf-8")
-            except Exception:
-                original = ""
-            new_text, updated = apply_banner_update(original, header_lines)
-            if updated:
-                file_path.write_text(new_text, encoding="utf-8")
 
         # VS Code でファイルを開く
         try:
