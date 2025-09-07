@@ -1,5 +1,4 @@
 # best: 45(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 47(biz), 47(intgrah jimboko awu macaque sammyuri), 47(mukundan), 48(kdmitrie), 50(Potatoman)
-# ==================== 45 ===================
 # 類題: 57
 # 切り出し
 # filter max で 0 の行を消してる 転地して列も同様に 最後にもっかい転置
@@ -7,14 +6,11 @@
 # p=lambda g:[[c[0]for c in zip(r,*g)if max(c)]for r in g if max(r)]
 # p=lambda g:[[c[0]for c in zip(r,*g)if max(c)]for r in g if max(r)]
 # p=lambda g,a=2:a and [*map(list,filter(max,zip(*p(g,a-1))))]or g
-# 62
 # E=lambda g:zip(*filter(max,g));p=lambda g:[[*r]for r in E(E(g))]
+# lambda g:[[b for*a,b in zip(*g,s)if sum(a)]for s in g if sum(s)]
 # E=lambda g:zip(*filter(max,g));p=lambda g:[*map(list,E(E(g)))]
-# 61
-# p=lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if{*r}-{0}]
-# 61
 # lambda g:[*filter(max,map(list,zip(*filter(max,zip(*g)))))]
-# 60
+# lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if{*r}-{0}]
 # lambda g:[[*r]for r in zip(*filter(max,zip(*g)))if max(r)]
 # lambda g,c=-63:g*c or p([*zip(*g[-2+any(g[-1])::-1])],c+1)
 
@@ -27,4 +23,5 @@
 # lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
 # best: 45(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 47(biz), 47(intgrah jimboko awu macaque sammyuri), 47(mukundan), 48(kdmitrie), 50(Potatoman)
 # ==================== 45 ===================
-p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
+# lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
+p=lambda g,F=filter:[*F(p,zip(*F(p,zip(*g))))]

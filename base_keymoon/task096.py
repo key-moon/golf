@@ -1,4 +1,4 @@
-# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 442(dbdr), 449(jacekwl Potatoman), 449(jacekwl), 503(J&R)
+# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 442(dbdr), 449(jacekwl Potatoman), 449(jacekwl), 503(JRK)
 # 罠: 中央のドットは背景と同じ色のことがある
 # 矩形の辺が交わってることがある 内包してることもある
 # ひどいケース(120):
@@ -43,8 +43,69 @@
 #     l+=[[*s[:0:-1]]]
 #   return r+r[-2::-1]
 
+# [13,17,4,x,x,x,x],[18,18,8,x,x,x,x],[18,18,3,x,x,x,x,x,x],[19,19,1,x,x,x,x,x,x]
+# w,h,b=13+R(5),13+R(5),1+R(9);c=random.sample([c for c in range(1,10)if b!=c],a:=4+R(3));l=[min(i+1,2)+R(i+(i<2))for i in range(a)]
 
+# width, height = common.randint(13, 19), common.randint(13, 19)
+# b = common.random_color()
+# colors = common.random_colors(common.randint(4, 6), exclude=[b])
+# lengths = []
+# for i in range(len(colors)):
+#   min_length, max_length = min(i + 1, 2), i + (0 if i > 1 else 1)
+#   lengths.append(common.randint(min_length, max_length))
 # optimal: 353
+
+# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 442(dbdr), 449(jacekwl Potatoman), 449(jacekwl), 503(J&R)
+
+# width, height = common.randint(13, 19), common.randint(13, 19)
+# b = common.random_color()
+# colors = common.random_colors(common.randint(4, 6), exclude=[b])
+# lengths = []
+# for i in range(len(colors)):
+#   min_length, max_length = min(i + 1, 2), i + (0 if i > 1 else 1)
+#   lengths.append(common.randint(min_length, max_length))
+
+# [c for c in range(1,10)if b!=c]
+# filter(lambda c:c!=b,range(1,10))
+
+# from random import *;R=randrange;
+# def p(g,s=-4):
+#  if s<0:h,w,b,l,*c=[[13,17,4,[1,2,2,2],4,3,1,6],[18,18,8,[1,2,2,3],0,4,2,1],[18,18,3,[1,2,2,3,3,2],6,7,8,2,1,4],[19,19,1,[1,2,2,2,3,5],1,8,3,6,2,4]][s]
+#  else:seed(s+2025);w,h,b=13+R(7),13+R(7),1+R(9);c=sample([*{*range(1,10)}-{b}],a:=4+R(3));l=[1+(0<i)+R(max(1,i-1))for i in range(a)]
+#  if any([h!=len(g),w!=len(g[0]),{*sum(g,[])}!={*c,b},b not in g[2]]):return p(g,s+1)
+#  d=2*len(c)-1
+#  o = [[b]*d for _ in "a"*d]
+#  for i,(C,L) in enumerate(zip(c,l)):
+#    for r, c in [(-i, -i), (-i, i), (i, -i), (i, i)]:
+#      deltas = []
+#      for i in range(L):
+#        deltas += [(r, c + (i if c < 0 else -i))]
+#        deltas += [(r + (i if r < 0 else -i), c)]
+#      for dr, dc in deltas:
+#        o[len(l)-1+dr][len(l)-1+dc]=C
+#  return o
+
+# ↓書きかけ
+#  r=[];a=[]
+#  for C,L in zip(c,l):
+#   t=[*map(list.pop,a)]
+#   a+=[[[C]*~-L]]
+#   r+=[[t+[C]*L+t[::-1]]]
+#  return r+r[:-1][::-1]
+
+# seed bluteforcer 探索済み: 17563428
+# from tqdm import tqdm;
+# from itertools import count
+# TARGET = {(13,17,4,1,2,2,2,4,3,1,6),(18,18,8,1,2,2,3,0,4,2,1),(18,18,3,1,2,2,3,3,2,6,7,8,2,1,4),(19,19,1,1,2,2,2,3,5,1,8,3,6,2,4)}
+# for s in tqdm(count()):
+#  seed(s);w,h,b=13+R(7),13+R(7),1+R(9);c=sample([*{*range(1,10)}-{b}],a:=4+R(3));l=[1+(0<i)+R(max(1,i-1))for i in range(a)]
+#  generated = (h,w,b,*l,*c)
+#  if generated in TARGET:
+#   print(s, generated, flush=True)
+
+
+
+
 # == begin zlib golf ==
 import re
 def p(l):
