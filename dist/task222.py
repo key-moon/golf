@@ -1,1 +1,1 @@
-p=lambda g,c=-7:c*g or p([[(v in[0,*s,0][i:i+3:2]*(5<sum(g,g[0]).count(v)))*v for i,v in enumerate(s)]for s in zip(*g)],c+1)
+p=lambda g,c=-7:c*g or p([[v*(85<sum(g,[0,*s][i:i+3]*40).count(v))for i,v in enumerate(s)]for s in zip(*g)],c+1)
