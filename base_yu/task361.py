@@ -1,3 +1,5 @@
+# best: 195(xsot ovs att joking mewheni) / others: 203(intgrah jimboko awu macaque sammyuri), 204(natte), 224(garrymoss), 260(MasukenSamba), 263(jailctf merger)
+# ============================================================================================== 195 ==============================================================================================
 
 def p(g):
  u=v=w=0

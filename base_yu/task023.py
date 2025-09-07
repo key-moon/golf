@@ -1,3 +1,5 @@
+# best: 195(4atj sisyphus luke Seek mukundan) / others: 200(jailctf merger), 204(4atj sisyphus luke Seek), 206(mukundan), 206(xsot ovs att joking mewheni), 246(Yuchen20)
+# ============================================================================================== 195 ==============================================================================================
 import re
 def p(g):
  g=[g[-1]]+g

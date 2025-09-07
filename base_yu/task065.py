@@ -1,4 +1,4 @@
-# best: 101(4atj) / others: 103(mukundan), 104(joking+MWI), 109(Bulmenisaurus), 109(duckyluuk), 114(Seek64)
+# best: 101(mukundan, 4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 104(xsot ovs att joking mewheni), 107(Yuchen20), 109(Bulmenisaurus), 109(duckyluuk), 118(cg)
 # =============================================== 101 ===============================================
 # def p(g,c=-1):
 #  if c*g:

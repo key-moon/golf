@@ -1,5 +1,5 @@
-# best: 107(4atj sisyphus luke Seek) / others: 123(mukundan), 127(xsot ovs att), 130(joking), 130(joking MeWhenI), 203(MasukenSamba)
-# ================================================== 107 ==================================================
+# best: 106(jailctf merger) / others: 107(4atj sisyphus luke Seek mukundan), 107(4atj sisyphus luke Seek), 123(mukundan), 127(xsot ovs att joking mewheni), 127(natte)
+# ================================================= 106 ==================================================
 
 # p=lambda g,R=range(12):((g[6][0]==2)and(a:=g[0].count(2))and[[g[i][j]or(abs(i-(1|(d:=-(8in g[-1])))*(g[d].index(8)-a)%11)+a==j)*3 for j in R]for i in R])or[*zip(*p([*zip(*g[::-1])]))][::-1]
 

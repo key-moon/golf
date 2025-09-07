@@ -1,5 +1,5 @@
-# best: 52(att, xsot, sisyphus) / others: 53(luke), 55(4atj), 56(mukundan), 58(Seek64), 59(Bulmenisaurus)
-# ======================= 52 =======================
+# best: 51(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 52(xsot ovs att joking mewheni), 52(intgrah jimboko awu macaque sammyuri), 55(HETHAT), 56(mukundan), 56(kdmitrie)
+# ======================= 51 ======================
 # p=lambda g:sum([[sum([[v]*3for v in s],[])]*3for s in g],[])
 # p=lambda g:sum([[(s[:1]+(s*3)[1:]*3)[::3]]*3for s in g],[])
 

@@ -1,3 +1,5 @@
+# best: 67(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(xsot ovs att joking mewheni), 70(nauti), 80(kabutack), 81(jonas ryno kg583), 82(mukundan)
+# =============================== 67 ==============================
 # 400と同じ問題
 # p=lambda g,R=range(16):[*filter(len,[[g[15-i][15-j]for j in R if g[i][j]==3]for i in R])]
 # p=lambda g,R=range(16):[u for i in R if(u:=[g[~i][~j]for j in R if g[i][j]==3])]

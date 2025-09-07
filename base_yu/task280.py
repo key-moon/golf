@@ -1,3 +1,5 @@
+# best: 179(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 182(xsot ovs att joking mewheni), 185(jailctf merger), 210(intgrah jimboko awu macaque sammyuri), 239(jacekwl Potatoman), 241(Potatoman)
+# ====================================================================================== 179 ======================================================================================
 def p(g):
  o=[s[:]for s in g]
  for f in range(4):

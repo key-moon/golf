@@ -1,3 +1,4 @@
+# best: 291(jailctf merger) / others: 302(xsot ovs att joking mewheni), 365(jacekwl Potatoman), 365(jacekwl), 374(jacekw), 412(kdmitrie)
 def p(g):
  for _ in range(8):
   for i in range(1,len(g)):

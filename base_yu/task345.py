@@ -1,5 +1,5 @@
-# best: 105(4atj sisyphus luke Seek) / others: 107(mukundan), 128(joking), 128(joking MeWhenI), 131(dbdr), 140(Bulmenisaurus)
-# ================================================= 105 =================================================
+# best: 90(jailctf merger) / others: 95(natte), 102(4atj sisyphus luke Seek mukundan), 105(4atj sisyphus luke Seek), 107(mukundan), 108(xsot ovs att joking mewheni)
+# ========================================== 90 ==========================================
 # def p(g):
 #  u=[*zip(*g)]
 # #  R=range(10)

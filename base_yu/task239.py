@@ -1,5 +1,5 @@
-# best: 106(jailctf merger) / others: 108(luke), 108(4atj sisyphus luke Seek), 108(joking MeWhenI), 108(xsot ovs att), 111(ovs)
-# ================================================= 106 ==================================================
+# best: 104(xsot ovs att joking mewheni) / others: 105(4atj sisyphus luke Seek mukundan), 105(4atj sisyphus luke Seek), 105(jailctf merger), 105(natte), 106(intgrah jimboko awu macaque sammyuri)
+# ================================================ 104 =================================================
 
 def p(g):
  u=sum(g,[])

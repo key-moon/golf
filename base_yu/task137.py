@@ -1,5 +1,5 @@
-# best: 143(xsot ovs att joking mewheni) / others: 144(natte), 148(mukundan), 148(jailctf merger), 162(4atj sisyphus luke Seek), 163(hyacinth)
-# ==================================================================== 143 ====================================================================
+# best: 141(xsot ovs att joking mewheni) / others: 144(natte), 148(mukundan), 148(4atj sisyphus luke Seek mukundan), 148(jailctf merger), 150(intgrah jimboko awu macaque sammyuri)
+# =================================================================== 141 ===================================================================
 # def p(g):
 #  R=range(len(g))
 #  x,y,_=[i for i in R if[*map(max,*g)][i]]

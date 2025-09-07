@@ -1,3 +1,5 @@
+# best: 118(jailctf merger) / others: 120(4atj sisyphus luke Seek mukundan), 120(xsot ovs att joking mewheni), 120(4atj sisyphus luke Seek), 136(intgrah jimboko awu macaque sammyuri), 137(natte)
+# ======================================================= 118 ========================================================
 def p(g):
  for _ in 0,1:
   b=any(t>s and{*t}=={*s}>{0}for s,t in zip(g,g[1:]))

@@ -1,4 +1,4 @@
-# best: 57(biz, luke, 4atj, att, sisyphus) / others: 62(mukundan), 62(Seek64), 62(joking), 62(xsot), 63(kg583)
+# best: 57(4atj sisyphus luke Seek mukundan, biz, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 60(mukundan), 63(kg583), 63(jacekwl Potatoman), 63(jonas ryno kg583), 63(Yuchen20)
 
 # {*sum(g,[])}
 # {*g[0]+g[1]}

@@ -1,3 +1,5 @@
+# best: 64(mukundan, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, rucin93, 4atj sisyphus luke Seek, jailctf merger) / others: 65(dbdr), 66(HETHAT), 67(kg583), 67(biz), 67(jonas ryno kg583)
+# ============================= 64 =============================
 # 1の2x2の数を数えて配置しなおす x,yは[0,0,1,2,2],[0,2,1,0,2]
 # def p(g):
 #  *r,=eval("[0]*3,"*3)

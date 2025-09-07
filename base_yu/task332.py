@@ -1,4 +1,4 @@
-# best: 58(luke) / others: 64(mukundan), 64(nauti), 65(4atj), 65(sisyphus), 67(kg583)
+# best: 58(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 61(xsot ovs att joking mewheni), 64(mukundan), 64(nauti), 66(intgrah jimboko awu macaque sammyuri), 67(kg583)
 # ========================== 58 ==========================
 # p=lambda g:[[v*i/5for v,i in zip(s[::-1],[3,5]*10)][::-1]for s in g]
 # p=lambda g:[[v*i for v,i in zip(s[::-1],[.6,1]*10)][::-1]for s in g]

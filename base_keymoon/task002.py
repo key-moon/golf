@@ -1,4 +1,4 @@
-# best: 90(4atj sisyphus luke Seek, jailctf merger) / others: 93(mukundan), 93(xsot ovs att joking mewheni), 97(biz), 102(kabutack), 109(HETHAT)
+# best: 90(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 92(mukundan), 93(xsot ovs att joking mewheni), 97(biz), 97(intgrah jimboko awu macaque sammyuri), 102(kabutack)
 # ========================================== 90 ==========================================
 # port re;S=re.sub;p=lambda g,c=-63:c*S(*"04",str(g))or eval(S(*"90",str(p(eval(S("0(?=, 9|\))","9",str([*zip(*g[::-1])]))),c+1))))
 # port re;S=re.sub;p=lambda g,c=-63:g*c or eval(S(*"0940"[c<0::2],str(p(eval(S("0(?=, 9|\))","9",str([*zip(*g[::-1])]))),c+1))))

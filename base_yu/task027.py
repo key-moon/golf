@@ -1,4 +1,4 @@
-# best: 103(luke/sisyphus/Seek, Seek64) / others: 111(joking+MWI), 111(joking/MWI), 111(joking), 114(mukundan), 117(duckyluuk)
+# best: 103(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 104(xsot ovs att joking mewheni), 105(jonas ryno kg583), 105(JRK), 107(biz), 107(Jonas)
 # ================================================ 103 ================================================
 
 # p=lambda g,R=range:min([[[g[i][j]or(u-j<10and g[u-j][i])*2for j in R(10)]for i in R(10)]for u in R(9,11)],key=lambda f:sum(sum(f,[])))

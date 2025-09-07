@@ -1,5 +1,5 @@
-# best: 64(luke/sisyphus/Seek, sisyphus) / others: 65(mukundan), 69(luke), 70(ovs), 71(4atj), 78(joking+MWI)
-# ============================= 64 =============================
+# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 64(biz), 64(4atj sisyphus luke Seek), 65(mukundan), 70(xsot ovs att joking mewheni)
+# ============================= 63 ============================
 # p=lambda g:[[c:=max(g[2])]*10,[c,*[0]*8,c]]*2
 # p=lambda g:[[c:=max(g[(i>4)*5+2]),*[c*(645>>i&1)]*8,c]for i in range(10)]
 p=lambda g:[[c:=max(g[i-i%5^2]),*[c*(645>>i&1)]*8,c]for i in range(10)]

@@ -1,5 +1,5 @@
-# best: 104(4atj sisyphus luke Seek, Seek64) / others: 112(MasukenSamba), 112(joking), 112(MeWhenI), 112(joking MeWhenI), 117(nauti)
-# ================================================ 104 =================================================
+# best: 89(jailctf merger) / others: 104(4atj sisyphus luke Seek mukundan), 104(4atj sisyphus luke Seek), 107(Yuchen20), 111(kdmitrie), 112(xsot ovs att joking mewheni)
+# ========================================== 89 =========================================
 # p=lambda g:(R:=range(n:=len(g)))and[[g[i][j]or(abs(j-n//2)+i==n-2+(n-g[-2].count(0))//2)*g[-1][n//2]for j in R]for i in R]
 # p=lambda g:(n:=len(g))and[[g[-(abs(j-n//2)==n-i+(g[-2].count(0)<n-1))][n//2]for j in range(n)]for i in range(2,n)]+g[-2:]
 # p=lambda g:(n:=len(g))and[[g[-(abs(j-n//2)==i+2-(g[-2].count(0)>n-3))][n//2]for j in range(n)]for i in range(n-2)][::-1]+g[-2:]

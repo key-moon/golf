@@ -1,4 +1,4 @@
-# best: 55(luke, 4atj, sisyphus) / others: 58(mukundan), 64(joking), 65(ovs), 75(natte), 110(Bulmenisaurus)
+# best: 55(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 56(mukundan), 57(xsot ovs att joking mewheni), 57(intgrah jimboko awu macaque sammyuri), 75(natte), 92(jonas ryno kg583)
 # ========================= 55 ========================
 f=lambda x:[t for s,t in zip([0]+x,x)if s!=t]
 p=lambda g:f([*zip(*f(g))])

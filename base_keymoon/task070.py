@@ -1,4 +1,4 @@
-# best: 78(jailctf merger) / others: 82(mukundan), 86(4atj sisyphus luke Seek), 114(xsot ovs att joking mewheni), 163(duckyluuk), 164(Jonas)
+# best: 78(jailctf merger) / others: 81(4atj sisyphus luke Seek mukundan), 82(mukundan), 82(xsot ovs att joking mewheni), 86(4atj sisyphus luke Seek), 125(MasukenSamba)
 # ==================================== 78 ====================================
 # lambda g:[[v^(max(t)&max(s))-v&2for*t,v in zip(*g,s)]for s in g]
 # lambda g:[[v|min(max(t),max(s))-v&2for*t,v in zip(*g,s)]for s in g]

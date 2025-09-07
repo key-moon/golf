@@ -1,4 +1,4 @@
-# best: 109(jailctf merger) / others: 110(4atj sisyphus luke Seek), 110(sisyphus), 112(joking), 112(joking MeWhenI), 114(mukundan)
+# best: 109(jailctf merger) / others: 110(4atj sisyphus luke Seek mukundan), 110(4atj sisyphus luke Seek), 112(xsot ovs att joking mewheni), 114(mukundan), 176(natte)
 # =================================================== 109 ===================================================
 
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=[i for i,s in enumerate(g)if 3in s][0])+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)

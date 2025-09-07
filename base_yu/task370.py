@@ -1,3 +1,4 @@
+# best: 269(xsot ovs att joking mewheni) / others: 313(natte), 320(jailctf merger), 344(cg), 358(GPU Poor), 419(MasukenSamba)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])

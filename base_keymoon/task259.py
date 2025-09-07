@@ -1,4 +1,4 @@
-# best: 86(joking+MWI, joking) / others: 87(sisyphus), 89(mukundan), 89(4atj), 90(natte), 91(att)
+# best: 85(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, jailctf merger) / others: 87(4atj sisyphus luke Seek), 89(mukundan), 90(natte), 111(intgrah jimboko awu macaque sammyuri), 130(jonas ryno kg583)
 # lambda g,c=2:c and p([*zip(*[g[i]for i in range(len(g))if~-max(max(g[:i+1]))*~-max(max(g[i:]))])],c-1)or[[v>1 and v for v in s]for s in g]
 # lambda g,c=4:c and p([*zip(*[[v>1 and v for v in g[i]]for i in range(len(g))if 1<max(max(g[i:]))][::-1])],c-1)or g
 # lambda g,c=4:(u:=[])or c and p([*zip(*[[v>1 and v for v in s]for s in g if 1<max(u:=u+[*s])][::-1])],c-1)or g
@@ -8,5 +8,5 @@
 # lambda g,c=4:c and p((u:=())or[[v*(v>1)for v in s]for s in zip(*g[::-1])if 1<max(u:=u+s)],c-1)or g
 # lambda g,c=-3,u=():g*c or p([[v*(v>1)for v in s]for s in zip(*g[::-1])if 1<max(u:=u+s)],c+1)
 # lambda g,c=-7,u=():g*c or p([[v*(v>1)for v in s]for s in zip(*g[::-1])if max(u:=u+s)],c+1)
-# ======================================== 86 ========================================
+# ======================================== 85 =======================================
 p=lambda g,c=-63:g*c or p([[v*(v>1)for v in s]for s in zip(*g[-2+any(g[-1])::-1])],c+1)

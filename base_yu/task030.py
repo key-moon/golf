@@ -1,5 +1,5 @@
-# best: 109(4atj sisyphus luke Seek) / others: 111(jailctf merger), 120(duckyluuk), 127(joking), 127(joking MeWhenI), 132(ovs)
-# =================================================== 109 ===================================================
+# best: 94(biz) / others: 97(xsot ovs att joking mewheni), 109(4atj sisyphus luke Seek mukundan), 109(4atj sisyphus luke Seek), 111(jailctf merger), 120(duckyluuk)
+# ============================================ 94 ============================================
 p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range(5)])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
 
 # def p(g):

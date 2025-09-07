@@ -1,3 +1,3 @@
-# best: 80(luke, kabutack) / others: 81(biz), 84(natte), 85(mukundan), 85(joking+MWI), 85(joking)
-# ===================================== 80 =====================================
+# best: 68(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 70(kabutack), 72(xsot ovs att joking mewheni), 76(MasukenSamba), 80(intgrah jimboko awu macaque sammyuri), 81(biz)
+# =============================== 68 ===============================
 p=lambda g:[*zip(*[[*s][:len(s)-(u:=s.count(2)//2)]+u*[8]for s in zip(*g)])]

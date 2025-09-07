@@ -1,3 +1,4 @@
+# best: 279(jailctf merger) / others: 280(garrymoss), 302(xsot ovs att joking mewheni), 350(kdmitrie), 431(JRK), 432(jonas ryno kg583)
 def p(g):
  B={(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]&2}
  S=3

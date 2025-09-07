@@ -1,5 +1,5 @@
-# best: 106(4atj sisyphus luke Seek, sisyphus) / others: 109(xsot ovs att), 110(att), 117(joking), 117(joking MeWhenI), 120(mukundan)
-# ================================================= 106 ==================================================
+# best: 101(jailctf merger) / others: 106(4atj sisyphus luke Seek mukundan), 106(4atj sisyphus luke Seek), 109(xsot ovs att joking mewheni), 120(mukundan), 122(natte)
+# =============================================== 101 ===============================================
 # p=lambda g:[[v for*t,v in zip(*g,s) if any(t)]for s in g if any(s)]
 # def p(g):
 #  for _ in range(100):

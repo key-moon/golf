@@ -1,5 +1,5 @@
-# best: 99(biz) / others: 105(mukundan), 128(joking+MWI), 128(joking), 144(jacekwl), 189(MeWhenI)
-# =============================================== 99 ==============================================
+# best: 91(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 92(xsot ovs att joking mewheni), 95(kdmitrie), 95(jailctf merger), 99(biz), 99(jonas ryno kg583)
+# =========================================== 91 ==========================================
 # r=range
 # def p(g):
 #  h,w=len(g),len(g[0])

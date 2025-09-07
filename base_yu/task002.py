@@ -1,4 +1,4 @@
-# best: 90(4atj sisyphus luke Seek) / others: 91(4atj), 92(luke/sisyphus/Seek), 92(sisyphus), 93(mukundan), 97(biz)
+# best: 90(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 92(mukundan), 93(xsot ovs att joking mewheni), 97(biz), 97(intgrah jimboko awu macaque sammyuri), 102(kabutack)
 # ========================================== 90 ==========================================
 # def p(g):
 #  return g

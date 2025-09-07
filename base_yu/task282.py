@@ -1,5 +1,5 @@
-# best: 89(att) / others: 115(joking+MWI), 115(joking), 117(dbdr), 121(Seek64), 122(ovs)
-# ========================================== 89 =========================================
+# best: 83(xsot ovs att joking mewheni, jailctf merger) / others: 93(mukundan), 93(4atj sisyphus luke Seek mukundan), 98(4atj sisyphus luke Seek), 110(kabutack), 117(dbdr)
+# ======================================= 83 ======================================
 # p=lambda g,c=-3:c*g or p([[(c<0 or y!=5 or x!=1)and(y or [0,5,1][min(x,2)])for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
 # p=lambda g,c=-3:c*g or p([[(c<0,y,x)!=(0,5,1)and(y or-x%6)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
 # p=lambda g,c=-3:c*g or p([[(not(0>c)<x<y)*((-x%6)|y)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)

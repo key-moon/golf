@@ -1,5 +1,5 @@
-# best: 77(luke, 4atj sisyphus luke Seek, 4atj) / others: 78(sisyphus), 79(ovs), 79(xsot ovs), 79(natte), 80(mukundan)
-# ==================================== 77 ===================================
+# best: 74(4atj sisyphus luke Seek mukundan) / others: 77(mukundan), 77(xsot ovs att joking mewheni), 77(4atj sisyphus luke Seek), 77(jailctf merger), 79(natte)
+# ================================== 74 ==================================
 # p=lambda g,c=2:c and p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c-1)or g
 # p=lambda g,c=-1:g*c or p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c+1)
 # p=lambda g,c=-1:g*c or p([[s[0]]+[[3,v][bool({*s[1:-1]}-{0,3})] for v in s[1:-1]]+[s[-1]]for s in zip(*g)],c+1)

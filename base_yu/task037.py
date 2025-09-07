@@ -1,5 +1,5 @@
-# best: 108(4atj sisyphus luke Seek) / others: 109(ovs), 109(xsot ovs), 109(xsot ovs att), 112(mukundan), 116(sisyphus)
-# ================================================== 108 ===================================================
+# best: 105(4atj sisyphus luke Seek mukundan) / others: 107(mukundan), 108(4atj sisyphus luke Seek), 108(jailctf merger), 109(xsot ovs att joking mewheni), 144(MasukenSamba)
+# ================================================= 105 =================================================
 
 
 # p=lambda g,c=-3,z=[0]*10,R=range:c*g or p([[sum({(g[~k]+z)[i+j-k]for k in R(j+1)}&{(g[~k]+z)[i+j-k]for k in R(j,10)})for j in R(10)]for i in R(10)],c+1)

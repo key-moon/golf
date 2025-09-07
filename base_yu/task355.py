@@ -1,5 +1,5 @@
-# best: 101(att) / others: 113(mukundan), 121(luke/sisyphus/Seek), 121(Seek64), 122(joking+MWI), 122(joking/MWI)
-# =============================================== 101 ===============================================
+# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 99(4atj sisyphus luke Seek), 101(xsot ovs att joking mewheni), 113(mukundan), 133(natte)
+# ============================================== 98 ==============================================
 # p=lambda g:[[max(t:=[c for s in g for t,v in zip(zip(*g),s)if(c:=max(range(10),key=lambda C:(s.count(C)-(v==C))*(t.count(C)-(v==C))))!=v],key=t.count)]]
 # p=lambda g:(c:=min(u:=sum(g,[]),key=u.count),print(CASE,c),T:=sum([s+[*t] for s in g for t,v in zip(zip(*g),s) if v==c],[]))and[[max(T,key=T.count)]]
 

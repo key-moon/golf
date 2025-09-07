@@ -1,5 +1,5 @@
-# best: 86(4atj sisyphus luke Seek, luke/sisyphus/Seek, sisyphus) / others: 101(mukundan), 103(xsot ovs), 103(joking+MWI), 103(joking/MWI), 103(xsot)
-# ======================================== 86 ========================================
+# best: 81(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 85(4atj sisyphus luke Seek), 98(xsot ovs att joking mewheni), 101(mukundan), 107(jacekwl Potatoman)
+# ====================================== 81 =====================================
 # p=lambda g,c=-1:c*g or p([[([0,*s,0][i:i+3:2]>[0,0])*s[i] for i in range(len(s))]for s in zip(*g)],c+1)
 p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)
 # p=lambda g,R=range:(n:=len(g))and[[sum(-1<(y:=i+abs(k-2)-1)<n>(x:=j+abs(k-1)-1)>-1and g[y][x]>0for k in R(4))>1and g[i][j]for j in R(n)]for i in R(n)]

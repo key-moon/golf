@@ -1,5 +1,5 @@
-# best: 107(natte) / others: 109(jailctf merger), 109(xsot ovs att), 116(mukundan), 122(joking), 122(joking MeWhenI)
-# ================================================== 107 ==================================================
+# best: 102(jailctf merger) / others: 103(intgrah jimboko awu macaque sammyuri), 105(4atj sisyphus luke Seek mukundan), 105(4atj sisyphus luke Seek), 106(xsot ovs att joking mewheni), 107(natte)
+# =============================================== 102 ================================================
 
 p=lambda g,c=-3:c*g or p([*zip(*(g*(len({*max(g),0})<3)or[(l:=0)or[v*(l!=v)or(l:=max(w))*0for*w,v in zip(*g,s)]for s in g])[::-1])],c+1)
 

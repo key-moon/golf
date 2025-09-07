@@ -1,6 +1,6 @@
 # 類題:10
-# best: 99(Seek64) / others: 107(sisyphus), 108(mukundan), 110(joking+MWI), 110(joking), 112(natte)
-# =============================================== 99 ==============================================
+# best: 84(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 99(4atj sisyphus luke Seek), 101(intgrah jimboko awu macaque sammyuri), 103(xsot ovs att joking mewheni), 104(MasukenSamba)
+# ======================================= 84 =======================================
 # p=lambda g:[u:=sorted({*zip(*g)}-{(0,)*9},key=sum)]and[*zip(*[[v and(s==u[0])*2+(s==u[-1])for v in s]for s in zip(*g)])]
 def p(g):
  _,a,*_,b=sorted({*zip(*g)})

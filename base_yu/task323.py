@@ -1,5 +1,5 @@
-# best: 122(mukundan, 4atj sisyphus luke Seek) / others: 153(xsot ovs att joking mewheni), 154(natte), 157(jailctf merger), 171(MasukenSamba), 221(Jonas)
-# ========================================================= 122 ==========================================================
+# best: 102(jailctf merger) / others: 117(4atj sisyphus luke Seek mukundan), 122(mukundan), 122(4atj sisyphus luke Seek), 150(jacekwl Potatoman), 150(jacekwl)
+# =============================================== 102 ================================================
 # def p(g,R=range(13)):
 #  y,x=divmod(sum(g,[]).index(8),13)
 #  return[[g[i][j]or(abs(i+j-y-x-(1|-(i<y)))<2*(i!=y)-(i-y)%2)*5for j in R]for i in R]

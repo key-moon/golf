@@ -1,3 +1,3 @@
-# best: 21(luke, HETHAT, att) / others: 31(kg583), 31(mukundan), 31(cg), 31(KN), 31(Seek64)
+# best: 21(kg583, mukundan, jacekw, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, xsot ovs att joking mewheni, jonas ryno kg583, duckyluuk, HETHAT, 4atj sisyphus luke Seek, kabutack, jailctf merger, JRK, MasukenSamba, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 31(cg), 31(KN), 31(HashPanda), 31(adakoda), 31(kdmitrie)
 # ======== 21 =======
 p=lambda g:[*zip(*g)]

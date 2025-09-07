@@ -1,4 +1,4 @@
-# best: 61(jailctf merger) / others: 72(luke), 72(4atj), 72(4atj sisyphus luke Seek), 73(sisyphus), 75(mukundan)
+# best: 61(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 72(4atj sisyphus luke Seek), 75(mukundan), 75(xsot ovs att joking mewheni), 77(natte)
 # lambda g:g*0!=0and[*map(p,((a:=g[:len(g)//2])*2==g)and a or g)]or g <- failed
 # キショすぎケース: 全部単色縦横偶数
 # lambda g:[a:=g[:len(g)//2],[s[:len(s)//2]for s in g]][a*2!=g] <- failed

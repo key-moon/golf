@@ -1,4 +1,4 @@
-# best: 61(jailctf merger) / others: 62(4atj sisyphus luke Seek), 62(xsot ovs att joking mewheni), 62(duckyluuk), 69(Bulmenisaurus), 72(natte)
+# best: 61(jailctf merger) / others: 62(4atj sisyphus luke Seek mukundan), 62(xsot ovs att joking mewheni), 62(duckyluuk), 62(4atj sisyphus luke Seek), 69(Bulmenisaurus)
 # ============================ 61 ===========================
 
 #p=lambda g:[[c for c in range(1,10)if len({s.count(c)for s in g})>2]]

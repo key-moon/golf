@@ -1,5 +1,5 @@
-# best: 100(mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 122(xsot ovs att joking mewheni), 129(biz), 147(jacekwl), 147(jacekw), 162(MasukenSamba)
-# ============================================== 100 ===============================================
+# best: 99(4atj sisyphus luke Seek mukundan) / others: 100(mukundan), 100(4atj sisyphus luke Seek), 100(jailctf merger), 104(intgrah jimboko awu macaque sammyuri), 121(xsot ovs att joking mewheni)
+# =============================================== 99 ==============================================
 
 # def p(g):
 #  for _ in 0,1:

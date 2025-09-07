@@ -1,5 +1,5 @@
-# best: 131(jailctf merger) / others: 140(4atj sisyphus luke Seek), 150(xsot ovs att joking mewheni), 184(Potatoman), 186(natte), 196(Jonas)
-# ============================================================== 131 ==============================================================
+# best: 115(4atj sisyphus luke Seek mukundan) / others: 125(jailctf merger), 129(mukundan), 140(4atj sisyphus luke Seek), 143(intgrah jimboko awu macaque sammyuri), 149(xsot ovs att joking mewheni)
+# ====================================================== 115 ======================================================
 def p(g):
  w=1-any(g[1])
  u=g[w:]

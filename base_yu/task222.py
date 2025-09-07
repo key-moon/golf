@@ -1,5 +1,5 @@
-# best: 106(xsot ovs att joking mewheni) / others: 107(jailctf merger), 114(4atj sisyphus luke Seek mukundan), 114(4atj sisyphus luke Seek), 144(natte), 171(mukundan)
-# ================================================= 106 ==================================================
+# best: 103(xsot ovs att joking mewheni) / others: 107(jailctf merger), 114(4atj sisyphus luke Seek mukundan), 114(4atj sisyphus luke Seek), 144(natte), 171(mukundan)
+# ================================================ 103 ================================================
 
 # lambda g,c=-5:c*g or[*zip(*[[(s[i]in[0,*s,0][i:i+3:2] and (hash((*g[0],))>>53 not in (-33,617,325) or s[i]%7==2))*s[i] for i in range(16)]for s in p(g,c+1)])]
 # lambda g,c=-5:c*g or p([*zip(*[[(s[i]in[0,*s,0][i:i+3:2]and(c<0 or len({*g})==2 or s[i]in(2,9)))*s[i] for i in range(16)]for s in g])],c+1)

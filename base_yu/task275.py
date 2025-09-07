@@ -1,5 +1,5 @@
-# best: 137(xsot ovs att joking mewheni) / others: 156(mukundan), 174(jailctf merger), 179(natte), 187(4atj sisyphus luke Seek), 188(Yuchen20)
-# ================================================================= 137 =================================================================
+# best: 136(xsot ovs att joking mewheni) / others: 156(mukundan), 156(4atj sisyphus luke Seek mukundan), 174(jailctf merger), 179(natte), 184(Yuchen20)
+# ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])
  R=range(n*n)

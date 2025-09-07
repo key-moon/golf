@@ -1,4 +1,4 @@
-# best: 101(4atj, 4atj sisyphus luke Seek) / others: 103(mukundan), 104(joking MeWhenI), 109(Bulmenisaurus), 109(duckyluuk), 114(Seek64)
+# best: 101(mukundan, 4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 104(xsot ovs att joking mewheni), 107(Yuchen20), 109(Bulmenisaurus), 109(duckyluuk), 118(cg)
 # =============================================== 101 ===============================================
 # 転置再帰だと 3x3の判定ができない
 # lambda g:(R:=(0,(a:=len(g)//2)+1))and min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in R for j in R],key=p.count)

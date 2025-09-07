@@ -1,4 +1,4 @@
-# best: 54(jailctf merger) / others: 56(luke), 56(4atj sisyphus luke Seek), 57(xsot ovs att joking mewheni), 57(xsot ovs att), 57(att)
+# best: 54(jailctf merger) / others: 56(4atj sisyphus luke Seek mukundan), 56(4atj sisyphus luke Seek), 56(intgrah jimboko awu macaque sammyuri), 57(xsot ovs att joking mewheni), 58(kg583)
 # lambda g:g[:-1]+[[4-4*(sum(r)<1or sum(r)/max(r)>1) for r in zip(*g)]]
 # lambda g:g[:-1]+[[4*(len(r)-r.count(0)&1)for r in zip(*g)]]
 # lambda g:g[:-1]+[[len(r)-r.count(0)<<2&4for r in zip(*g)]]

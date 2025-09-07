@@ -1,4 +1,4 @@
-# best: 69(4atj sisyphus luke Seek, jailctf merger, natte) / others: 73(mukundan), 76(Potatoman), 84(kg583), 90(kabutack), 92(xsot ovs att joking mewheni)
+# best: 69(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger, natte) / others: 73(mukundan), 75(jacekwl Potatoman), 76(Potatoman), 76(intgrah jimboko awu macaque sammyuri), 84(kg583)
 # ================================ 69 ===============================
 # 3456789012345678901234567890123456789012345678901234567890123456789
 # p=lambda g:(k:=sum(g,[]).count(5))and[[v*(v!=5)for v in s[k:]+s[:k]]for s in g[-k:]+g[:-k]]

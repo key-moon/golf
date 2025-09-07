@@ -1,6 +1,6 @@
-# best: 87(4atj, 4atj sisyphus luke Seek) / others: 93(mukundan), 101(luke/sisyphus/Seek), 101(luke), 104(joking+MWI), 104(joking/MWI)
+# best: 83(4atj sisyphus luke Seek mukundan) / others: 84(mukundan), 87(4atj sisyphus luke Seek), 95(xsot ovs att joking mewheni), 95(jailctf merger), 105(kg583)
 # lambda g,i=0:[[c or b"\0\2\0\4\6\3\0\1\0"[j]for c in r if(j:=j+(c==8))+1]for r in g if(i:=i+6-len({*r})*3,j:=i)]
-# ========================================= 87 ========================================
+# ======================================= 83 ======================================
 # lambda g,i=0:[[c or b"x020463010"[j]&7for c in r if(j:=j+(c>0))+1]for r in g if(i:=i+r[0]//8*3,j:=i)]
 # lambda g,i=1:[[c or b"x020463010"[j]&7for c in r if(j:=j+(c>0))]for r in g if(i:=i+r[0]//8*3,j:=i)]
 # lambda g,i=0:[(i:=i+r[0]//8*3,j:=i)and[c and(j:=j+1)-j+8or b"020463010"[j]&7for c in r]for r in g]

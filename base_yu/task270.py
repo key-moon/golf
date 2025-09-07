@@ -1,4 +1,4 @@
-# best: 117(jailctf merger) / others: 119(xsot ovs att joking mewheni), 131(mukundan), 135(4atj sisyphus luke Seek), 168(MasukenSamba), 222(jacekw)
+# best: 117(jailctf merger) / others: 119(xsot ovs att joking mewheni), 122(4atj sisyphus luke Seek mukundan), 122(4atj sisyphus luke Seek), 125(natte), 131(mukundan)
 # ======================================================= 117 =======================================================
 # import re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("%d, ((\d, )*)0, %d",r"0,\1 %d,%d",str(g)))),'*2%(3,2,3,2,7,1,7,1))[1][::-1])],c+1)
 # port re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("(%d), ((\d, )*)0, (%d)",r"0,\2 \1,\4",str(g)))),'*2%(3,2,7,1))[1][::-1])],c+1)

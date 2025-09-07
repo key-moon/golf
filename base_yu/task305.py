@@ -1,3 +1,3 @@
-# best: 64(luke) / others: 66(nauti), 69(mukundan), 69(kabutack), 69(biz), 71(MeWhenI)
-# ============================= 64 =============================
+# best: 62(xsot ovs att joking mewheni) / others: 64(4atj sisyphus luke Seek mukundan), 64(jacekwl Potatoman), 64(jonas ryno kg583), 64(4atj sisyphus luke Seek), 64(jailctf merger)
+# ============================ 62 ============================
 p=lambda g,R=range(16):[[(i+j)%max(g[i])+1for j in R]for i in R]

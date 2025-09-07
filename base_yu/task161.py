@@ -1,4 +1,4 @@
-# best: 82(biz, 4atj sisyphus luke Seek, jailctf merger) / others: 84(HashPanda), 87(natte), 87(jacekwl), 90(mukundan), 93(kabutack)
+# best: 82(4atj sisyphus luke Seek mukundan, biz, 4atj sisyphus luke Seek, jailctf merger) / others: 84(HashPanda), 86(HETHAT), 87(jacekwl Potatoman), 87(natte), 87(jacekwl)
 # ====================================== 82 ======================================
 
 # p=lambda g:[[max((t[0]&t[-1]),(s[0]&s[-1])) for t in zip(*g)]for s in g]

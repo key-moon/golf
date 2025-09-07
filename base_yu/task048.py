@@ -1,4 +1,4 @@
-# best: 98(4atj sisyphus luke Seek, 4atj) / others: 126(luke/sisyphus/Seek), 126(Seek64), 127(sisyphus), 131(duckyluuk), 136(joking+MWI)
+# best: 92(jailctf merger) / others: 95(4atj sisyphus luke Seek mukundan), 95(4atj sisyphus luke Seek), 118(xsot ovs att joking mewheni), 131(duckyluuk), 143(mukundan)
 # 141
 # import re;s=re.sub;p=lambda g:(d:=s(*"21",str(g),1))and[[8-8*("2"in eval('(d:=s("[82](?=(.{%d})?.?.1)"%len(g[0]*3),"1",d)[::-1]),'*99)[98])]]
 
@@ -16,7 +16,7 @@
 #  return[[8-8*("2"in d)]]
 
 # まじで方針が思い浮かばない。2の孤島があるので、2|8をオラクルには使えない。
-# ============================================== 98 ==============================================
+# =========================================== 92 ===========================================
 # p=lambda g,c=2**12:c and p([(l:=0)or[l:=v and(v|l|((v<3)and(c:=c//2)))for v in s]for s in zip(*g[::-1])],c-1)or[[8*("9"in str(g))]]
 # p=lambda g,c=4**6:c and p([(l:=0)or[l:=v and(v|l|(v<3and(c:=c//2)))for v in s]for s in zip(*g[::-1])],c-1)or[[8*("9"in str(g))]]
 p=lambda g,c=4**6:-c*[[8*("9"in str(g))]]or p([(l:=0)or[l:=v and(v|l|(v<3and(c:=c//2)))for v in s]for s in zip(*g[::-1])],c-1)

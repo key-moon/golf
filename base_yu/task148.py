@@ -1,3 +1,5 @@
+# best: 141(jailctf merger) / others: 148(xsot ovs att joking mewheni), 154(4atj sisyphus luke Seek mukundan), 154(4atj sisyphus luke Seek), 182(natte), 206(dbdr)
+# =================================================================== 141 ===================================================================
 def p(g):
  u=[]
  w=len(g[r:=0])

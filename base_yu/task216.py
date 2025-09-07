@@ -1,4 +1,4 @@
-# best: 114(jailctf merger) / others: 117(mukundan), 125(xsot ovs att joking mewheni), 125(xsot ovs att), 126(biz), 141(joking)
+# best: 114(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 117(mukundan), 125(xsot ovs att joking mewheni), 126(biz), 147(jonas ryno kg583), 199(MasukenSamba)
 # ===================================================== 114 ======================================================
 # p=lambda g:max([[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[g[k][l%20]for k in range(20)],0].index(0,l//20)]]for l in range(400)],key=lambda t:sum(t,[]).count(2))
 # p=lambda g:max([(sum(t:=[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[g[k][l%20]for k in range(20)],0].index(0,l//20)]],[]).count(2),~l,t)for l in range(400)])[2]

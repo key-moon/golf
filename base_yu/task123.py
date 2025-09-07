@@ -1,4 +1,4 @@
-# best: 75(4atj sisyphus luke Seek, jailctf merger, natte) / others: 76(mukundan), 76(biz), 76(xsot ovs att joking mewheni), 80(dbdr), 80(kabutack)
+# best: 75(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, natte) / others: 76(mukundan), 76(biz), 76(xsot ovs att joking mewheni), 77(intgrah jimboko awu macaque sammyuri), 80(dbdr)
 # =================================== 75 ==================================
 # R=range(10)
 # p=lambda g:[[g[0][max(i,j)%(4+(g[0][4]>0))]for j in R]for i in R]

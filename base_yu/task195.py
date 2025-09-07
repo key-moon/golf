@@ -1,4 +1,4 @@
-# best: 105(att, xsot ovs att) / others: 108(kg583), 114(4atj sisyphus luke Seek), 114(sisyphus), 116(joking), 116(joking MeWhenI)
+# best: 105(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek) / others: 107(natte), 108(kg583), 108(jonas ryno kg583), 108(JRK), 110(jailctf merger)
 # ================================================= 105 =================================================
 # p=lambda g:(s:=[i for i,v in enumerate(sum(g,[]))if v],y:=min(i//(w:=len(g[0]))for i in s),x:=min(i%w for i in s))and[[g[y+i][x+j]&g[y+i%3*3][x+j%3*3]for j in range(9)]for i in range(9)]
 

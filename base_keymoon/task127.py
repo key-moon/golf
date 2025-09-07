@@ -1,4 +1,4 @@
-# best: 65(jailctf merger) / others: 72(4atj sisyphus luke Seek), 82(xsot ovs att joking mewheni), 84(kabutack), 84(natte), 85(duckyluuk)
+# best: 65(jailctf merger) / others: 72(4atj sisyphus luke Seek mukundan), 72(4atj sisyphus luke Seek), 79(xsot ovs att joking mewheni), 80(intgrah jimboko awu macaque sammyuri), 84(kabutack)
 # ============================== 65 =============================
 p=lambda g:g*-1and g%5+5or[p(g[i%2-3&i^1])for i in range(len(g))]
 

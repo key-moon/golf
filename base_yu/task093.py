@@ -1,5 +1,5 @@
-# best: 102(luke/sisyphus/Seek, sisyphus) / others: 103(mukundan), 105(joking+MWI), 105(joking/MWI), 134(MeWhenI), 138(natte)
-# =============================================== 102 ================================================
+# best: 99(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 101(mukundan), 102(xsot ovs att joking mewheni), 102(4atj sisyphus luke Seek), 138(natte), 167(Afordancja)
+# =============================================== 99 ==============================================
 # p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*map(list,zip(*p([*zip(*g)])))]
 # p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*zip(*p([*zip(*g)]))]
 p=lambda g:5in g[0]and[([0]*s[:s.index(5)].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*zip(*p([*zip(*g)]))]

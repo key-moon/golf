@@ -1,4 +1,4 @@
-# best: 45(4atj sisyphus luke Seek, sisyphus) / others: 47(luke), 47(xsot ovs att), 47(att), 49(joking MeWhenI), 50(kg583)
+# best: 45(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 47(mukundan), 47(biz), 47(intgrah jimboko awu macaque sammyuri), 48(kdmitrie), 50(kg583)
 # ==================== 45 ===================
 # 類題: 57
 # 切り出し
@@ -25,6 +25,6 @@
 # lambda g,E=lambda g:zip(*filter(max,g)):[*E(E(g))]
 # lambda g,c=-1:g*c or[*zip(*filter(max,p(g,c+1)))]
 # lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
-# best: 45(4atj sisyphus luke Seek, sisyphus) / others: 47(luke), 47(att), 50(kabutack), 52(biz), 52(4atj)
+# best: 45(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 47(mukundan), 47(biz), 47(intgrah jimboko awu macaque sammyuri), 48(kdmitrie), 50(kg583)
 # ==================== 45 ===================
 p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])

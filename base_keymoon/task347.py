@@ -1,4 +1,4 @@
-# best: 50(mukundan, luke, 4atj, xsot, ovs, att, sisyphus) / others: 54(duckyluuk), 56(kg583), 56(Seek64), 56(joking), 56(kabutack)
+# best: 50(mukundan, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 54(duckyluuk), 54(HETHAT), 54(intgrah jimboko awu macaque sammyuri), 56(kg583), 56(jonas ryno kg583)
 # p=lambda g:[[6*any(s)for s in zip(*zip(*[iter(r)]*3))]for r in g]
 # p=lambda g:[[6*(0<sum(s))for s in zip(r,r[3:])]for r in g]
 # p=lambda g:[[6*(0<a+b)for a,b in zip(r,r[3:])]for r in g]
@@ -12,5 +12,5 @@
 # lambda g:[[               for s in r]for r in g]
 # lambda g:[[          for i in(0,1,2)]for r in g]
 # lambda g:[[    for s in zip(r,r[3:])]for r in g]
-# ====================== 50 ======================1234
+# ====================== 50 ======================
 p=lambda g:[[6*any(r[i::3])for i in(0,1,2)]for r in g]

@@ -1,3 +1,5 @@
+# best: 166(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 170(xsot ovs att joking mewheni), 188(jailctf merger), 202(natte), 254(MasukenSamba), 277(jacekwl Potatoman)
+# =============================================================================== 166 ================================================================================
 def p(g):
  c=max(sum(g,[]),key=sum(g,[]).count)
  _,l,r,u,d=max((sum((v==c)-.6 for s in g[u:d]for v in s[l:r]),l,r,u,d)for d in range(len(g))for r in range(len(g[0]))for l in range(r)for u in range(d))

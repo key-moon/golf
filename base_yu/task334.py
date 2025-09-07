@@ -1,5 +1,5 @@
-# best: 71(mukundan) / others: 72(luke), 76(Seek64), 76(nauti), 78(sisyphus), 79(natte)
-# ================================= 71 ================================
+# best: 66(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(4atj sisyphus luke Seek), 71(mukundan), 75(xsot ovs att joking mewheni), 76(nauti), 78(intgrah jimboko awu macaque sammyuri)
+# ============================== 66 ==============================
 # p=lambda g:[[[0,5,0],[5,5,5],[0,5,0]],[[5,5,5],[0,5,0],[0,5,0]],[[0,0,5],[0,0,5],[5,5,5]]][max(sum(g,[]))-1]
 # p=lambda g:[[*b"050550055"[u:=max(sum(g,[]))::3]],[*b"500550505"[u::3]],[*b"005555005"[u::3]]]
 # p=lambda g:[(u:=[*b"_500505550005505055050555050"[max(sum(g,[]))::3]])[:3],u[3:6],u[6:]]

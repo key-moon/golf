@@ -1,4 +1,4 @@
-# best: 114(4atj sisyphus luke Seek) / others: 115(jailctf merger), 123(mukundan), 125(xsot ovs att joking mewheni), 128(natte), 142(MasukenSamba)
+# best: 114(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 123(mukundan), 128(natte), 140(intgrah jimboko awu macaque sammyuri), 142(MasukenSamba), 151(jacekwl Potatoman)
 # ===================================================== 114 ======================================================
 # p=lambda g,c=3:-c*g or p([*zip(*[[s[i] or ([t[i-1],t[i],s[i-1]]==[5,0,0] and (3<<c)%5) for i in range(len(s))]for t,s in zip(g[:1]+g,g)][::-1])],c-1)
 # p=lambda g,c=3:-c*g or p([*zip(*[[s[i]+(t[i]<t[i-1]-4-s[i-1])*(3<<c)%5for i in range(len(s))]for t,s in zip(g[:1]+g,g)][::-1])],c-1)

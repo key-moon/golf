@@ -1,3 +1,5 @@
+# best: 199(xsot ovs att joking mewheni) / others: 250(jailctf merger), 253(jacekwl Potatoman), 253(jacekwl), 257(4atj sisyphus luke Seek mukundan), 257(4atj sisyphus luke Seek)
+# ================================================================================================ 199 ================================================================================================
 def p(g):
  h,w=len(g),len(g[0])
  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if((j:=I//h)<1 or g[i][j-1])if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*(g[k][j]for k in range(i,h)),2].index(2))))

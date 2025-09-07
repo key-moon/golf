@@ -1,5 +1,5 @@
-# best: 72(luke/sisyphus/Seek, sisyphus) / others: 73(luke), 73(mukundan), 73(4atj), 75(joking+MWI), 75(joking/MWI)
-# ================================= 72 =================================
+# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 72(4atj sisyphus luke Seek), 73(mukundan), 75(xsot ovs att joking mewheni), 76(kabutack), 78(natte)
+# =============================== 67 ==============================
 # p=lambda g:(t:=[g[i]+[*[*zip(*g[::-1])][i]]for i in range(len(g))])and t+[s[::-1]for s in t[::-1]]
 # p=lambda g:(t:=[g[i]+[s[i]for s in g[::-1]]for i in range(len(g))])and t+[s[::-1]for s in t[::-1]]
 

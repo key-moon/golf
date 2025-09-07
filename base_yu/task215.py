@@ -1,3 +1,5 @@
+# best: 42(jailctf merger) / others: 44(intgrah jimboko awu macaque sammyuri), 45(xsot ovs att joking mewheni), 46(4atj sisyphus luke Seek mukundan), 46(4atj sisyphus luke Seek), 48(duckyluuk)
+# ================== 42 ==================
 # p=lambda g:[[*map(max,zip(g[i%3+3],g[i%3+6]))]for i in range(len(g))]
 # p=lambda g:[[g[i%3+6],g[i%3+3]][any(g[i%3+3])]for i in range(len(g))]
 p=lambda g:[g[i%3+6-3*any(g[i%3+3])]for i in range(len(g))]

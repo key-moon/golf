@@ -1,3 +1,5 @@
+# best: 57(jailctf merger) / others: 62(xsot ovs att joking mewheni), 63(4atj sisyphus luke Seek mukundan), 63(4atj sisyphus luke Seek), 66(intgrah jimboko awu macaque sammyuri), 71(biz)
+# ========================== 57 =========================
 # ==================== best 64 by luke, att ====================
 # p=lambda g:[g[0][:1]*(len(g[0])-g[0].count(g[0][0])+1)]*(len(g)-g.count(g[0])+1)
 p=lambda g:[(len(s:=g[0])-s.count(s[0])+1)*s[:1]]*(len(g)-g.count(s)+1)

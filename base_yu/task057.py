@@ -1,5 +1,5 @@
-# best: 49(att, sisyphus) / others: 56(4atj), 58(joking+MWI), 59(HETHAT), 59(Seek64), 60(joking)
-# ====================== 49 =====================
+# best: 48(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 49(mukundan), 49(xsot ovs att joking mewheni), 49(4atj sisyphus luke Seek), 49(intgrah jimboko awu macaque sammyuri), 54(jacekwl Potatoman)
+# ===================== 48 =====================
 # p=lambda g:[r*2for r in zip(*filter(max,zip(*g)))if max(r)]
 # p=lambda g,F=filter:[r*2for r in F(max,zip(*F(max,zip(*g))))]
 # p=lambda g,c=2:c and p([*filter(max,zip(*g))]*c,c-1)or g

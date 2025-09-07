@@ -1,3 +1,5 @@
+# best: 51(xsot ovs att joking mewheni, jailctf merger) / others: 53(4atj sisyphus luke Seek mukundan), 53(4atj sisyphus luke Seek), 53(intgrah jimboko awu macaque sammyuri), 55(kg583), 55(cg)
+# ======================= 51 ======================
 p=lambda g:[*filter(len,[[*filter(int,s)][::-1]for s in g])]
 
 # p=lambda g:list(filter(len,[[v for v in s if v][::-1]for s in g]))

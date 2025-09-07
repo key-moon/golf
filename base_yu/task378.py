@@ -1,5 +1,5 @@
-# best: 145(jailctf merger, natte) / others: 149(4atj sisyphus luke Seek), 159(mukundan), 190(xsot ovs att joking mewheni), 240(MasukenSamba), 276(jacekwl)
-# ===================================================================== 145 =====================================================================
+# best: 144(xsot ovs att joking mewheni) / others: 145(4atj sisyphus luke Seek mukundan), 145(jailctf merger), 145(natte), 149(4atj sisyphus luke Seek), 159(mukundan)
+# ==================================================================== 144 =====================================================================
 import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{%d}.{4})*.{%d}0, ([1-9]), \2.{%d}.{%d}.0, ([1-9]))"%((len(g)*3+1,)*4),r"\3",str(p(g,c+1))))[::-1])]
 
 

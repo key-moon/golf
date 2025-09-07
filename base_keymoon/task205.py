@@ -1,4 +1,4 @@
-# best: 166(4atj sisyphus luke Seek) / others: 188(jailctf merger), 202(natte), 225(xsot ovs att joking mewheni), 254(MasukenSamba), 296(kdmitrie)
+# best: 166(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 170(xsot ovs att joking mewheni), 188(jailctf merger), 202(natte), 254(MasukenSamba), 277(jacekwl Potatoman)
 # =============================================================================== 166 ================================================================================
 # 最小縦横: 6
 # 背景色を含まない行を削りながらてんちさいき→しばらく削ったら種類数でも削る

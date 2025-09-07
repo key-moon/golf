@@ -1,6 +1,6 @@
 # 類題:10
-# best: 99(luke/sisyphus/Seek, Seek64) / others: 107(sisyphus), 108(mukundan), 110(joking+MWI), 110(joking/MWI), 110(joking)
-# =============================================== 99 ==============================================
+# best: 84(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 99(4atj sisyphus luke Seek), 101(intgrah jimboko awu macaque sammyuri), 103(xsot ovs att joking mewheni), 104(MasukenSamba)
+# ======================================= 84 =======================================
 p=lambda g,Z=zip:[*Z(*[[v and(s==(a:=sorted({*Z(*g)}))[1])*2+(s==a[-1])for v in s]for s in Z(*g)])]
 
 # 101

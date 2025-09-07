@@ -1,6 +1,6 @@
 # 類題:180
-# best: 75(jailctf merger, xsot ovs att joking mewheni) / others: 81(4atj sisyphus luke Seek), 82(mukundan), 83(kabutack), 84(natte), 89(jacekw)
-# =================================== 75 ==================================
+# best: 74(jailctf merger) / others: 75(xsot ovs att joking mewheni), 81(4atj sisyphus luke Seek mukundan), 81(4atj sisyphus luke Seek), 82(mukundan), 82(intgrah jimboko awu macaque sammyuri)
+# ================================== 74 ==================================
 # lambda g:[[g[i][j]or g[i][j+5]or g[i+5][j]or g[i+5][j+5] for j in range(4)]for i in range(4)]
 # lambda g,R=range(4):[[g[i][j]or g[i][j+5]or g[i+5][j]or g[i+5][j+5] for j in R]for i in R]
 # lambda g:[[s[j]or s[j+5]or t[j]or t[j+5] for j in range(4)]for s,t in zip(g,g[5:])]

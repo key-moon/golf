@@ -1,4 +1,4 @@
-# best: 48
+# best: 48(mukundan, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger, natte, intgrah jimboko awu macaque sammyuri) / others: 50(kg583), 50(jonas ryno kg583), 50(HETHAT), 50(JRK), 50(nauti)
 # def p(g):
 #  *l,=zip(*g)
 #  return[*map(list,zip(*(l[:1]*5+[[(0<c)*5 for c in l[0]]]+l[-1:]*5)))]

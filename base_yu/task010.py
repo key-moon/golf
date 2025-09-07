@@ -1,6 +1,6 @@
 # 類題:254
-# best: 70(luke, luke/sisyphus/Seek) / others: 72(ovs), 72(4atj), 72(att), 73(mukundan), 78(Seek64)
-# ================================ 70 ================================
+# best: 68(jailctf merger) / others: 70(4atj sisyphus luke Seek mukundan), 70(4atj sisyphus luke Seek), 72(xsot ovs att joking mewheni), 73(mukundan), 77(HETHAT)
+# =============================== 68 ===============================
 # p=lambda g:[*zip(*[[x and 9-sorted(map(sum,zip(*g))).index(sum(s))for x in s]for s in zip(*g)])]
 # p=lambda g:[*zip(*[[x and 9-sorted(zip(*g),key=sum).index(s)for x in s]for s in zip(*g)])]
 # p=lambda g:[[x and 9-sorted(zip(*g),key=sum).index(t)for x,t in zip(s,zip(*g))]for s in g]

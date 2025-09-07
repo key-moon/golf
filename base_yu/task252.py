@@ -1,3 +1,5 @@
+# best: 57(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 59(intgrah jimboko awu macaque sammyuri), 61(xsot ovs att joking mewheni), 62(kg583), 62(mukundan), 62(jonas ryno kg583)
+# ========================== 57 =========================
 # 345678901234567890123456789012345678901234567890123456
 
 p=lambda g,E=enumerate:[[v and(v,4)[min(i,j)%2]for j,v in E(s)]for i,s in E(g)]

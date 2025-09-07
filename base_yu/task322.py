@@ -1,4 +1,4 @@
-# best: 48(luke) / others: 49(ovs), 49(4atj), 49(att), 49(xsot), 49(kabutack)
+# best: 48(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, HETHAT, 4atj sisyphus luke Seek, jailctf merger, natte) / others: 49(kabutack), 51(mukundan), 51(cg), 51(nauti), 51(MasukenSamba)
 # ===================== 48 =====================
 # p=lambda g:[*map(list,zip(*[[max(s[:i+1])for i in range(3)] for s in zip(*g)]))]
 # p=lambda g:[[max(v)for v in zip(*g[:i])]for i in(1,2,3)]

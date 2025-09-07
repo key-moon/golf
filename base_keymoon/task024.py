@@ -1,4 +1,4 @@
-# best: 62(luke, xsot ovs att joking mewheni, joking, 4atj, joking MeWhenI, 4atj sisyphus luke Seek, jailctf merger) / others: 65(mukundan), 65(Seek64), 65(xsot ovs att), 65(att), 65(natte)
+# best: 62(mukundan, 4atj sisyphus luke Seek mukundan, biz, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 65(natte), 67(jonas ryno kg583), 67(kabutack), 68(HETHAT), 70(cg)
 # ============================ 62 ============================
 p=lambda g:[[3%-~max(s)or(2in r)*2for r in zip(*g)]for s in g]
 

@@ -1,3 +1,5 @@
+# best: 135(jailctf merger) / others: 150(xsot ovs att joking mewheni), 154(natte), 173(4atj sisyphus luke Seek mukundan), 174(mukundan), 209(MasukenSamba)
+# ================================================================ 135 ================================================================
 # def p(g,R=range):
 #  u=(G:=sum(g,[])).index(c:=sum({*G})-5)
 #  x,*_,y=sorted(i//10-i%10 for i in R(100)if g[i//10][i%10])

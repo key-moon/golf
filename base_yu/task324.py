@@ -1,3 +1,4 @@
+# best: 263(natte) / others: 264(xsot ovs att joking mewheni), 275(jailctf merger), 327(HashPanda), 342(jacekwl Potatoman), 342(jacekwl)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
  m={}

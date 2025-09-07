@@ -1,5 +1,5 @@
-# best: 60(biz) / others: 61(luke), 61(att), 61(kg583), 61(sisyphus), 62(mukundan)
-# =========================== 60 ===========================
+# best: 54(jailctf merger) / others: 58(4atj sisyphus luke Seek mukundan), 58(4atj sisyphus luke Seek), 60(biz), 60(xsot ovs att joking mewheni), 60(HETHAT)
+# ======================== 54 ========================
 # p=lambda g:[[x|y and 3for x,y in zip(*c)]for c in zip(g,g[5:])]
 p=lambda g:[[(x!=y)*3for x,y in zip(*c)]for c in zip(g,g[5:])]
 

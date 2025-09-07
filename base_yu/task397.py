@@ -1,3 +1,5 @@
+# best: 121(jailctf merger) / others: 125(xsot ovs att joking mewheni), 127(4atj sisyphus luke Seek mukundan), 130(4atj sisyphus luke Seek), 133(biz), 135(mukundan)
+# ========================================================= 121 =========================================================
 # def p(g):
 #  for i in range(9)[::-1]:
 #   for j in range(9):

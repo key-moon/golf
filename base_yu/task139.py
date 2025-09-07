@@ -1,5 +1,5 @@
-# best: 100(joking+MWI, joking) / others: 102(sisyphus), 114(Seek64), 116(mukundan), 138(natte), 205(MeWhenI)
-# ============================================== 100 ===============================================
+# best: 94(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 100(xsot ovs att joking mewheni), 102(4atj sisyphus luke Seek), 114(kabutack), 116(mukundan)
+# ============================================ 94 ============================================
 # p=lambda g,c=-3,E=enumerate:c*g or p([[s[j]or(4in s[j:j+3]and 4in t[i:i+3])*7for j,t in E(g[::-1])]for i,s in E(zip(*g[::-1]))],c+1)
 # p=lambda g,c=-3,E=enumerate:c*g or p([[s[j]or(4in s[j:j+3]and 4in t[i:i+3])*7for j,t in E(g)]for i,s in E(zip(*g))][::-1],c+1)
 # p=lambda g,c=-3,E=enumerate:c*g or p([[s[j]or any(s[j:j+3])*any(t[i:i+3])*7for j,t in E(g)]for i,s in E(zip(*g))][::-1],c+1)

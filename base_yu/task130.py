@@ -1,4 +1,4 @@
-# best: 65(ovs, luke, mukundan, 4atj, luke/sisyphus/Seek, joking+MWI, joking/MWI, joking, att, xsot, duckyluuk, sisyphus) / others: 66(nauti), 68(kabutack), 74(MasukenSamba), 90(Seek64), 91(natte)
+# best: 65(mukundan, 4atj sisyphus luke Seek mukundan, jacekwl Potatoman, xsot ovs att joking mewheni, duckyluuk, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 66(HETHAT), 66(nauti), 68(kabutack), 69(MasukenSamba), 85(jonas ryno kg583)
 # ============================== 65 =============================
 # p=lambda g:[[sum({*s[i*3:i*3+3]}-{5})for i in range(3)]for s in g[1::3]]
 # p=lambda g:[[sum({*s[i*3:][:3]}-{5})for i in range(3)]for s in g[1::3]]

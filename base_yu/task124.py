@@ -1,5 +1,5 @@
-# best: 123(mukundan) / others: 130(xsot ovs att joking mewheni), 141(jailctf merger), 196(Jonas), 223(jacekw), 224(jacekwl)
-# ========================================================== 123 ==========================================================
+# best: 97(4atj sisyphus luke Seek mukundan) / others: 101(jailctf merger), 103(4atj sisyphus luke Seek), 123(mukundan), 129(xsot ovs att joking mewheni), 137(intgrah jimboko awu macaque sammyuri)
+# ============================================== 97 =============================================
 # def p(g):
 #  for w in range(6):
 #   x,y=w%3,w//3+2

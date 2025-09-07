@@ -1,5 +1,5 @@
-# best: 65(jailctf merger) / others: 68(4atj sisyphus luke Seek), 74(xsot ovs att joking mewheni), 76(natte), 78(mukundan), 80(dbdr)
-# ============================== 65 =============================
+# best: 64(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 74(xsot ovs att joking mewheni), 76(natte), 78(mukundan), 80(dbdr), 85(Yuchen20)
+# ============================= 64 =============================
 # lambda g:[[(a:=553**(99>v))%5]+[(a:=v*a%1662)%5for _ in g[0][1:]]for v in(35,1225,1260)] <= kasu
 p=lambda g:[(a:=v//237)and[6&(a:=v*a%1662)%5-7for _ in g[0]]for v in[8405,235057,254381]]
 # mapping = {0: 0, 2: 2, 3: 4}

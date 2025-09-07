@@ -1,4 +1,4 @@
-# best: 54(jailctf merger) / others: 60(4atj sisyphus luke Seek), 62(xsot ovs att joking mewheni), 62(mukundan), 63(kg583), 65(natte)
+# best: 54(jailctf merger) / others: 60(4atj sisyphus luke Seek mukundan), 60(4atj sisyphus luke Seek), 61(intgrah jimboko awu macaque sammyuri), 62(mukundan), 62(xsot ovs att joking mewheni)
 # ======================== 54 ========================
 # lambda g:[[sum(a)*1.5%2//1for a in zip(*c)]for c in zip(g,g[5:])]
 # p=lambda g:[[3*(x^y//2)for x,y in zip(*c)]for c in zip(g,g[5:])]

@@ -1,5 +1,5 @@
-# best: 127(jailctf merger) / others: 142(xsot ovs att joking mewheni), 153(natte), 203(MasukenSamba), 220(jacekw), 223(kdmitrie)
-# ============================================================ 127 ============================================================
+# best: 110(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 117(xsot ovs att joking mewheni), 127(jailctf merger), 153(natte), 203(MasukenSamba), 220(jacekw)
+# =================================================== 110 ====================================================
 # p=lambda g,c=-7:c*g or p([*zip(*2in max(g,key=set)and[[y%3-9%~x for x,y in zip(*c)]for c in zip(g,[[0]*len(g[0])]+g)]or g)],c+1)
 p=lambda g,c=-7:c*g or p([*zip(*[[y%3-9%~x for x,y in zip(*c)]for c in zip(g,[[0]*99]*(2in max(g,key=set))+g)])],c+1)
 

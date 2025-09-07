@@ -1,3 +1,3 @@
-# best: 64(att) / others: 66(luke), 71(xsot), 72(sisyphus), 74(mukundan), 80(joking)
-# ============================= 64 =============================
+# best: 63(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 64(xsot ovs att joking mewheni), 64(jailctf merger), 71(intgrah jimboko awu macaque sammyuri), 74(mukundan), 83(kg583)
+# ============================= 63 ============================
 p=lambda s:sum([[v*0!=0and p(v+s)or v]*(len({*str(s)})-5)for v in s[:3]],[])

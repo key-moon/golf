@@ -1,4 +1,4 @@
-# best: 72(jailctf merger) / others: 79(xsot ovs att joking mewheni), 79(4atj sisyphus luke Seek), 87(nauti), 93(kabutack), 93(natte)
+# best: 72(jailctf merger) / others: 79(4atj sisyphus luke Seek mukundan), 79(xsot ovs att joking mewheni), 79(4atj sisyphus luke Seek), 79(intgrah jimboko awu macaque sammyuri), 82(Yuchen20)
 # ================================= 72 =================================
 # p=lambda g:(u:=[[0]*i+[1]+[0]*(len(g[0])-i-1)for i in range(len(g[0]))])and((u+u[-2:0:-1])*9)[:len(g)][::-1]
 # p=lambda g:(((u:=[[0]*i+[1]+[0]*(len(g[0])-i-1)for i in range(len(g[0]))])+u[-2:0:-1])*9)[:len(g)][::-1]

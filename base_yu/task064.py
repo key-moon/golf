@@ -1,4 +1,4 @@
-# best: 152(xsot ovs att joking mewheni, jailctf merger) / others: 155(mukundan), 163(duckyluuk), 166(4atj sisyphus luke Seek), 191(kg583), 200(natte)
+# best: 152(xsot ovs att joking mewheni, jailctf merger) / others: 155(mukundan), 155(4atj sisyphus luke Seek mukundan), 163(duckyluuk), 166(4atj sisyphus luke Seek), 191(kg583)
 
 import re
 def p(g):

@@ -1,4 +1,4 @@
-# best: 167(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 175(garrymoss), 188(xsot ovs att joking mewheni), 209(jailctf merger), 239(MasukenSamba), 249(jacekwl)
+# best: 167(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 175(garrymoss), 188(xsot ovs att joking mewheni), 209(jailctf merger), 237(kdmitrie), 239(MasukenSamba)
 # ================================================================================ 167 ================================================================================
 def p(g):
  R=range(n:=len(g))

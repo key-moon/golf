@@ -1,3 +1,4 @@
+# best: 218(natte) / others: 222(biz), 230(xsot ovs att joking mewheni), 243(jailctf merger), 285(kdmitrie), 287(jacekwl Potatoman)
 #上下の囲み+左右方向の破線を書く→90度回転
 
 def p(g):

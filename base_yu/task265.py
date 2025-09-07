@@ -1,3 +1,5 @@
+# best: 115(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 119(mukundan), 128(jailctf merger), 145(intgrah jimboko awu macaque sammyuri), 148(jacekwl Potatoman), 148(jacekwl)
+# ====================================================== 115 ======================================================
 R=range
 def p(g):
  for i in R(289):

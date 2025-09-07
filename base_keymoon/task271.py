@@ -1,4 +1,4 @@
-# best: 86(xsot ovs att joking mewheni) / others: 93(jailctf merger), 96(4atj sisyphus luke Seek), 102(mukundan), 105(kabutack), 115(cg)
+# best: 86(xsot ovs att joking mewheni) / others: 92(jailctf merger), 96(4atj sisyphus luke Seek mukundan), 96(4atj sisyphus luke Seek), 102(mukundan), 105(kabutack)
 # 9x9グリッド 背景: 0
 # 要素が{1,8}の 3x3のグリッドが4つ
 # 8が一番少ない or 1 が一番多いグリッドを抽出

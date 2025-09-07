@@ -1,3 +1,5 @@
+# best: 67(4atj sisyphus luke Seek mukundan, biz, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(xsot ovs att joking mewheni), 70(nauti), 80(kabutack), 81(mukundan), 82(cg)
+# =============================== 67 ==============================
 # 351と同じ問題
 #flattenして点対称の位置を集める
 # r=range(5)

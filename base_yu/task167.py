@@ -1,5 +1,5 @@
-# best: 72(4atj sisyphus luke Seek) / others: 76(jailctf merger), 80(mukundan), 85(xsot ovs att joking mewheni), 85(Yuchen20), 85(kabutack)
-# ================================= 72 =================================
+# best: 71(jailctf merger) / others: 72(4atj sisyphus luke Seek mukundan), 72(xsot ovs att joking mewheni), 72(4atj sisyphus luke Seek), 80(mukundan), 82(Yuchen20)
+# ================================= 71 ================================
 # lambda g:[[(c:=len({*sum(g,[])}))<3,c<2,c!=2],[0,c>1,0],[c>2,0,c==2]]
 # lambda g:[[((c:=len({*sum(g,[])}))<3)*5,(c<2)*5,(c!=2)*5],[0,(c>1)*5,0],[(c>2)*5,0,(c==2)*5]]
 # lambda g:[[((c:=len({*sum(g,[])}))<3)*5,(c<2)*5,c%2*5],[0,1%c*5,0],[4%c*5,0,3%c*5]]

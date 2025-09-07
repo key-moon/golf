@@ -1,3 +1,4 @@
+# best: 292(xsot ovs att joking mewheni, jailctf merger) / others: 317(4atj sisyphus luke Seek mukundan), 317(4atj sisyphus luke Seek), 383(Afordancja), 393(kdmitrie), 446(intgrah jimboko awu macaque sammyuri)
 def p(g):
  (u,l),*_,(d,r)=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==4]
  G=[g[i][l:r+1]for i in range(u,d+1)]

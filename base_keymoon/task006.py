@@ -1,4 +1,4 @@
-# best: 51(mukundan, luke, 4atj, ovs, att, sisyphus) / others: 53(kg583), 53(cg), 53(Seek64), 53(HashPanda), 53(biz)
+# best: 51(mukundan, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 53(kg583), 53(cg), 53(HashPanda), 53(biz), 53(jacekwl Potatoman)
 #  b"012"
 # (0,1,2)
 # sum(r[i::4])

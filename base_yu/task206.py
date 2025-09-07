@@ -1,4 +1,4 @@
-# best: 144(jailctf merger) / others: 151(kg583), 156(xsot ovs att joking mewheni), 160(MasukenSamba), 164(mukundan), 179(biz)
+# best: 144(jailctf merger) / others: 151(kg583), 151(jonas ryno kg583), 154(JRK), 156(xsot ovs att joking mewheni), 160(MasukenSamba)
 # ==================================================================== 144 =====================================================================
 
 def p(g):

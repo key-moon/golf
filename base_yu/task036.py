@@ -1,4 +1,4 @@
-# best: 90(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 91(4atj sisyphus luke Seek), 98(xsot ovs att joking mewheni), 117(mukundan), 163(kg583)
+# best: 90(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 91(4atj sisyphus luke Seek), 98(xsot ovs att joking mewheni), 117(mukundan), 145(intgrah jimboko awu macaque sammyuri)
 # ========================================== 90 ==========================================
 # f=lambda g,d,c=-1:c*g or f([[*s]for s in zip(*g)if d in s],d,c+1)
 # f=lambda g,d:[[v for*t,v in zip(*g,s) if d in t]for s in g if d in s]

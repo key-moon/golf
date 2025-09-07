@@ -1,3 +1,5 @@
+# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 141(4atj sisyphus luke Seek), 153(xsot ovs att joking mewheni), 188(kg583), 188(jonas ryno kg583)
+# =============================================================== 133 ===============================================================
 def p(g,R=(0,1,2)):
  G=sum(g,[])
  H=sum(zip(*g),())

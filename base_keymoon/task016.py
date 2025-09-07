@@ -1,3 +1,5 @@
+# best: 43(mukundan, 4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 46(xsot ovs att joking mewheni), 46(HETHAT), 46(intgrah jimboko awu macaque sammyuri), 47(cefqrn), 48(rucin93)
+# =================== 43 ==================
 # これ43らしい あと15byte縮むらしい 意味わからない
 # 58
 # p=lambda g:[[hash((x*10288502,1))%10for x in r]for r in g]

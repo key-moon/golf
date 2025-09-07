@@ -1,5 +1,5 @@
-# best: 101(mukundan, biz) / others: 103(joking+MWI), 103(joking/MWI), 103(joking), 105(Bulmenisaurus), 109(4atj)
-# =============================================== 101 ===============================================
+# best: 96(natte) / others: 97(xsot ovs att joking mewheni), 101(mukundan), 101(4atj sisyphus luke Seek mukundan), 101(biz), 103(4atj sisyphus luke Seek)
+# ============================================= 96 =============================================
 # p=lambda g,E=enumerate:[[max((min(j>2 and s[j-3],j<5 and s[j+3]),min(i>2 and t[i-3],i<5 and t[i+3]),s[j])) for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[max((min(s[j-3],j<5 and s[j+3]),min(t[i-3],i<5 and t[i+3]),s[j])) for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[max(min(s[j-3],(s*2)[j+3]),min(t[i-3],(t*2)[i+3]),s[j])for j,t in E(zip(*g))]for i,s in E(g)]

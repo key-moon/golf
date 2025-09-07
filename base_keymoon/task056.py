@@ -1,3 +1,5 @@
+# best: 40(mukundan, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, jailctf merger) / others: 42(4atj sisyphus luke Seek), 42(intgrah jimboko awu macaque sammyuri), 44(HETHAT), 49(dbdr), 50(jacekwl Potatoman)
+# ================= 40 =================
 # 53
 # p=lambda g:[[hash((*((1>v)*2164 for v in g[0]),))%7]]
 # for mod in range(7, 30):

@@ -1,4 +1,4 @@
-# best: 87(4atj sisyphus luke Seek, 4atj) / others: 93(luke/sisyphus/Seek), 93(sisyphus), 97(luke), 101(mukundan), 101(joking+MWI)
+# best: 87(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 93(xsot ovs att joking mewheni), 95(mukundan), 118(jonas ryno kg583), 118(JRK), 126(kabutack)
 # ========================================= 87 ========================================
 # p=lambda g,c=-1:c*g or p([*zip(*[[s[i]or sum({*s[:i]}&{*s[i:]})for i in range(len(s))]for s in g])],c+1)
 # p=lambda g,c=-1:c*g or p([[s[i]or sum({*s[:i]}&{*s[i:]})for i in range(len(s))]for s in zip(*g)],c+1)

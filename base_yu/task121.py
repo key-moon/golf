@@ -1,5 +1,5 @@
-# best: 90(4atj sisyphus luke Seek, luke/sisyphus/Seek, biz, sisyphus) / others: 94(Seek64), 99(joking+MWI), 99(joking/MWI), 99(joking MeWhenI), 102(4atj)
-# ========================================== 90 ==========================================
+# best: 89(4atj sisyphus luke Seek mukundan) / others: 90(biz), 90(4atj sisyphus luke Seek), 96(xsot ovs att joking mewheni), 96(jailctf merger), 102(intgrah jimboko awu macaque sammyuri)
+# ========================================== 89 =========================================
 def p(g):
  y,x=divmod(sum(g,[]).index(8)-14,13)
  u=[s[x:x+3]for s in g[y:y+3]]

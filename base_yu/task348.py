@@ -1,4 +1,4 @@
-# best: 101(att) / others: 105(mukundan), 108(joking+MWI), 108(natte), 108(joking/MWI), 108(joking)
+# best: 101(xsot ovs att joking mewheni) / others: 105(mukundan), 105(4atj sisyphus luke Seek mukundan), 107(jailctf merger), 108(4atj sisyphus luke Seek), 108(natte)
 # =============================================== 101 ===============================================
 
 # p=lambda g,c=-19,E=enumerate:c*g or p([[v or i+1<len(g) and j>0 and g[i+1][~(j-1)] and 15-g[i+1][~(j-1)] for j,v in E(s[::-1])] for i,s in E(g)],c+1)

@@ -1,5 +1,5 @@
-# best: 76(4atj) / others: 80(luke), 84(natte), 84(kabutack), 85(att), 85(duckyluuk)
-# =================================== 76 ===================================
+# best: 65(jailctf merger) / others: 72(4atj sisyphus luke Seek mukundan), 72(4atj sisyphus luke Seek), 79(xsot ovs att joking mewheni), 80(intgrah jimboko awu macaque sammyuri), 84(kabutack)
+# ============================== 65 =============================
 # p=lambda g:sum([[[5]*11]+[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3for s in g[1::4]],[])[1:]
 # p=lambda g:sum([[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3+g[3:4]for s in g[1::4]],[])[:7]
 # p=lambda g:sum([[[5+s[i&12|(i%4<3)]for i in range(11)]]*3+g[3:4]for s in g[1::4]],[])[:7]

@@ -1,4 +1,4 @@
-# best: 70(4atj sisyphus luke Seek) / others: 73(jailctf merger), 74(mukundan), 76(xsot ovs att joking mewheni), 76(natte), 94(kabutack)
+# best: 70(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 73(jailctf merger), 74(mukundan), 76(xsot ovs att joking mewheni), 76(natte), 81(intgrah jimboko awu macaque sammyuri)
 # ================================ 70 ================================
 # 34567890123456789012345678901234567890123456789012345678901234567890
 # p=lambda g:[[v for v,t in zip(s,zip(*g))if len({*t})>2]for s in g if len({*s})>2]
