@@ -1,1 +1,1 @@
-p=lambda g,c=-1,z=[0]*9,R=range:c*g or p([[sum((f:=lambda r:{(g[~k]+z)[i+j-k]for k in r})(R(i+1))&f(R(i,10)))for j in R(10)]for i in R(10)],c+1)
+import re;p=lambda g,c=-25:g*c or eval(re.sub(r"(([^0]).{34})0(?=(.{35})+(?<=\2))",r"\1\2",str(p(g,c+1))))[::-1]
