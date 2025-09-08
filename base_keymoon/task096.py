@@ -157,13 +157,14 @@
 
 from	random	import	*
 def	p(f,s=4):
-	seed([1975-s,7187336375,7637707637,4852678521,7625978733][s*(0<s)])
-	g,x,d=13+randrange(7)^len(f[2]),13+randrange(7)^len(f),1+randrange(9)
+	seed([2024-s,'(17[l','fio,[+','41*l}{','df(rs4*'][s*(0<s)])
+	g,t,d=13+randrange(7)==len(f[2]),13+randrange(7)==len(f),randrange(1,10)
 	u=sample([*{*range(1,10)}^{d*(s<0)}],a:=4+randrange(3))
 #	l=[1+(0<i)+randrange(max(1,i-1))for	i	in	range(a)]
-	e=[1+(0<i)+randrange(max(1,i-1))for	i	in	range(a)]
+	e=[randrange(1+(0<i),1+(i<2)+i)for	i	in	range(a)]
 	o=[(2*a-1)*[d]for	i	in	range(a)]
 	for	i	in	range(a):
-		for	l	in	range(e[i]):o[-1-i][a-1-i+l]=o[l-1-i][a-1-i]=o[-1-i][a-1+i-l]=o[l-1-i][a-1+i]=u[i]
+		# for	l	in	range(e[i]):o[-1-i][a-1-i+l]=o[l-1-i][a-1-i]=o[-1-i][a-1+i-l]=o[l-1-i][a-1+i]=u[i]
+		for	l	in	range(e[i]):l-=i;o[l-1][a+i-1]=o[l-1][a-i-1]=o[-i-1][a+l-1]=o[-i-1][a-l-1]=u[i]
 #	return	any([h^len(g),w^len(g[2]),{*sum(g,[])}^{b,*c},b	not	in	g[2]])and	p(g,s+1)or	o+o[:-1][::-1]
-	return	max(g,x,len({*sum(f,[])}^{*u,d}),d	not	in	f[2])and	p(f,s-1)or	o+o[:-1][::-1]
+	return	all([g,t,{*sum(f,[])}=={*u,d},d	in	f[2]])and	o+o[:-1][::-1]or p(f,s-1)
