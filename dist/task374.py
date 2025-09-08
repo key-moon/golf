@@ -1,3 +1,1 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('EPMo… <¯¿"}Ñ¦½9<¿þá@[• ¡¯1í¯ïºÄ¼½0†™aG7ÁÎþ‘A§¼å€.—½Ò&ƒi‹°Â ÚðéXwÊ‰lŸä@$Ì,z5º5J½^i¶Š–yÝ²&_œãkö|R‚wåoû¶3.ëß!ÁIHyÌ‰†ÏÙ¼D^0û’NTåe:_ÊÔ#U)*åªlOØTÁE;£*xÁBzŒ#ÿ×çªôsV‹CáoÞÙ÷nd½XÝï¹%Ì|o¢ä×F¨0Škt¶Fß:2ˆîñ,ÿ','L1'),-9))
+p=lambda g,c=23:-c*g or p([*zip(*eval(str(g).replace((c//2*", 5")[2:],(c//2*f",{len({*sum(g,g[0])})*3%5}")[1:])))],c-1)
