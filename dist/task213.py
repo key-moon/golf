@@ -1,1 +1,1 @@
-p=lambda g:any(min(g))and[a:=[*filter(int,max(g[0],g[-1]))]]*len(a)or[*zip(*p([*zip(*g)]))]
+p=lambda g:any(min(g))*[a:=[*filter(int,max(g[0],g[-1]))]]*len(a)or[*zip(*p([*zip(*g)]))]
