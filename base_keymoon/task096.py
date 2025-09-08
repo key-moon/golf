@@ -136,29 +136,42 @@
 #   print(s, generated, flush=True)
 
 # import zlib
-# A=[*map(int, filter(int,open("tmp/13,17,4,1,2,2,2,4,3,1,6","r").readlines()))]
-# B=[*map(int, filter(int,open("tmp/18,18,8,1,2,2,3,0,4,2,1","r").readlines()))]
-
+# A=[*map(str.split, filter(len,open("tmp/s_13,17,4,1,2,2,2,4,3,1,6","r").readlines()))]
+# B=[*map(str.split, filter(len,open("tmp/s_18,18,8,1,2,2,3,0,4,2,1","r").readlines()))]
+# C=[*map(str.split, filter(len,open("tmp/s_18,18,3,1,2,2,3,3,2,6,7,8,2,1,4","r").readlines()))]
+# D=[*map(str.split, filter(len,open("tmp/s_19,19,1,1,2,2,2,3,5,1,8,3,6,2,4","r").readlines()))]
+# 285 ('{[0dr*)','oa}4e*)',']re4if)','oauloaa)')
+# 285 ('{[0dr*)','{[[sraa)','41*l}{','oauloaa)')
+# 285 ('*{[}-34','*{[d}4','41*l}{','uus)(*3')  337
+# 285 (']2eli[[',']24l+)[','41*l}{','df(rs4*') 337
+# 285 (']2eli[[',']24l+)[','41*l}{','uus)(*3') 337
+# 285 (']2eli[[',']24l+)[','41*l}{','f(3,+e[') 339
+# 285 (']2eli[[','41-efe[','41*l}{','f(3,+e[') 339
+# 285 ('l{(foe[','41-efe[','41*l}{','f(3,+e[') 337
+# 285 ('3{s+fe[','41-efe[','41*l}{','uus)(*3') 339
+# 285 ('3{s+fe[','41-efe[','41*l}{','f(3,+e[') 337
+# 285 ('+u-)+e[','41-efe[','41*l}{','f(3,+e[') 336
+# 285 ('{di{ee[','41-efe[','41*l}{','f(3,+e[') 339
 # mn = 1000
-# for i in range(2025, 1600, -1):
-# 	for a in A:
-# 		for b in B:
-# 			payload = f"([s+{i},{a},{b},4852678521,7625978733])"
-# 			c = zlib.compress(payload.encode(), level=9)
-# 			if len(c) <= mn:
-# 				mn = len(c)
-# 				print(mn, payload)
-# 51 ([s+2011,87636411,7637707637,4852678521,7625978733])
-# 51 ([s+1978,87636411,7637707637,4852678521,7625978733])
-# 51 ([s+1975,7187336375,7637707637,4852678521,7625978733])
-# 51 ([s+1969,1196325969,11950283,4852678521,7625978733])
-
-#	==	begin	zlib	golf	==
+# for a in A:
+# 	for b in B:
+# 		for c in C:
+# 			for d in D:
+# 				payload = f"""from	random	import*
+# def	p(f,s=4):
+# seed([2024-s,'{a}','{b}','{c}','{d}'][s*(0<s)]);g,t,d=randrange(13,20)==len(f[2]),randrange(13,20)==len(f),randrange(1,10);u=sample([*{{*range(1,10)}}^{{d*(s<0)}}],a:=4+randrange(3));e=[randrange(1+(0<i),1+(i<2)+i)for	i	in	range(a)];o=[(2*a-1)*[d]for	i	in	range(a)]
+# for	i	in	range(a):
+# 	for	l	in	range(e[i]):l-=i;o[l-1][a+i-1]=o[l-1][a-i-1]=o[-i-1][a+l-1]=o[-i-1][a-l-1]=u[i]
+# return	all([g,t,{{*sum(f,[])}}=={{*u,d}},d	in	f[2]])and	o+o[:-1][::-1]or	p(f,s-1)"""
+# 				e = zlib.compress(payload.encode(), level=9)
+# 				if len(e) <= mn:
+# 					mn = len(e)
+# 					print(mn, (a,b,c,d))
 
 from	random	import	*
 def	p(f,s=4):
-	seed([2024-s,'(17[l','fio,[+','41*l}{','df(rs4*'][s*(0<s)])
-	g,t,d=13+randrange(7)==len(f[2]),13+randrange(7)==len(f),randrange(1,10)
+	seed([2024-s,'+u-)+e[','41-efe[','41*l}{','f(3,+e['][s*(0<s)])
+	g,t,d=randrange(13,20)==len(f[2]),randrange(13,20)==len(f),randrange(1,10)
 	u=sample([*{*range(1,10)}^{d*(s<0)}],a:=4+randrange(3))
 #	l=[1+(0<i)+randrange(max(1,i-1))for	i	in	range(a)]
 	e=[randrange(1+(0<i),1+(i<2)+i)for	i	in	range(a)]
