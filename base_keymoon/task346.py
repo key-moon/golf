@@ -1,4 +1,4 @@
-# best: 58(jailctf merger) / others: 68(4atj sisyphus luke Seek mukundan), 68(4atj sisyphus luke Seek), 68(xsot ovs att joking mewheni), 74(intgrah jimboko awu macaque sammyuri), 106(mukundan)
+# best: 58(jailctf merger) / others: 68(4atj sisyphus luke Seek mukundan), 68(4atj sisyphus luke Seek), 68(xsot ovs att joking mewheni), 74(intgrah jimboko awu macaque sammyuri), 77(jacekwl Potatoman nauti)
 # import re;p=lambda g:[[*{*sum(g,[])}-{0,int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ",str(g))[1])}]]
 # import re;p=lambda g:[[int(({*(s:=str(g))}-{*" ,0[]",re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1",s)[1]}).pop())]]
 # import re;p=lambda g:[[int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ((?!\1).)",str(g))[2])]]

@@ -1,4 +1,4 @@
-# best: 51(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni, mukundan) / others: 52(natte), 52(Potatoman), 52(duckyluuk), 52(jacekwl Potatoman), 52(dbdr)
+# best: 51(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, biz, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni, mukundan) / others: 52(natte), 52(Potatoman), 52(duckyluuk), 52(jacekwl Potatoman), 52(dbdr)
 # 残念ながらsum(g,[])するとだめ
 # lambda g:[[*(str(g).count("1, 1")//2*"1").ljust(5,"0")]] <- アイデアレベル
 
