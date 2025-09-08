@@ -3,4 +3,5 @@
 # lambda g:[r:=g[0],[*map(max,zip((a:=[0,*r,0])[2:],a))]]*3
 # lambda g:[r:=g[0],[*map(max,zip(r[1:]+[0],[0]+r))]]*3
 # ====================== 50 ======================
-p=lambda g:[r:=g[0],[*map(max,zip(r[1:]+[0],[0]+r))]]*3
+#p=lambda g:[r:=g[0],[*map(max,zip(r[1:]+[0],[0]+r))]]*3
+p=lambda g:[r:=g[0],[*map(max,r[1:]+[0],[0]+r)]]*3
