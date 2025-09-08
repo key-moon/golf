@@ -91,35 +91,79 @@
 #   t=[*map(list.pop,a)]
 #   a+=[[[C]*~-L]]
 #   r+=[[t+[C]*L+t[::-1]]]
+# # == !begin zlib golf ==
+# import re
+# def p(l):
+#  t=str(l)
+#  c=min(t,key=t.count)
+#  t=str(l+[*zip(*l)])
+#  t=re.sub('[[(, ]','',t+t[::-1])
+#  b=max(t,key=t.count)
+#  c=[b,c][t.count(c)<9]
+#  s={*'])',b,c}
+#  r=[]
+#  l=[]
+#  for s in [r for r in sorted([l+b*len(p)+l for t,p,l in re.findall(rf'([^{b}])((?:(?!\)|]|\1).)+?)(\1\1+)',t)],key=len)[::-1]if s^(s:=s|{r[0]})]+[({*t}-s).pop()*3,c]:
+#   t=''.join(map(list.pop,l))
+#   l+=[[*s[:-1]]]
+#   r+=[[*map(int,t+s+t[::-1])]]
 #  return r+r[:-1][::-1]
 
-# seed bluteforcer 探索済み: 17563428
-# from tqdm import tqdm;
-# from itertools import count
-# TARGET = {(13,17,4,1,2,2,2,4,3,1,6),(18,18,8,1,2,2,3,0,4,2,1),(18,18,3,1,2,2,3,3,2,6,7,8,2,1,4),(19,19,1,1,2,2,2,3,5,1,8,3,6,2,4)}
-# for s in tqdm(count()):
-#  seed(s);w,h,b=13+R(7),13+R(7),1+R(9);c=sample([*{*range(1,10)}-{b}],a:=4+R(3));l=[1+(0<i)+R(max(1,i-1))for i in range(a)]
+# width, height = common.randint(13, 19), common.randint(13, 19)
+# b = common.random_color()
+# colors = common.random_colors(common.randint(4, 6), exclude=[b])
+# lengths = []
+# for i in range(len(colors)):
+#   min_length, max_length = min(i + 1, 2), i + (0 if i > 1 else 1)
+#   lengths.append(common.randint(min_length, max_length))
+
+# seed bluteforcer
+# import sys
+# from random import *;R=randrange;
+# TARGET = {(13,17,4,1,2,2,2,4,3,1,6),(18,18,8,1,2,2,3,0,4,2,1),(19,19,1,1,2,2,2,3,5,1,8,3,6,2,4),(18,18,3,1,2,2,3,3,2,6,7,8,2,1,4)}
+# SMTARGET = {(13,17,4),(18,18,8),(19,19,1)}
+# for s in range(0+int(sys.argv[1]),175634280000,8):
+#  if s//8 % 10000000 == 0: print(s)
+#  seed(s);w,h,b=13+R(7),13+R(7),1+R(9)
+#  HWB = (h,w,b)
+#  if HWB!=(13,17,4)and HWB!=(18,18,8)and HWB!=(19,19,1)and HWB!=(18, 18, 3): continue
+#  c=sample([*range(10)],a:=4+R(3))
+#  l=[1+(0<i)+R(max(1,i-1))for i in range(a)]
 #  generated = (h,w,b,*l,*c)
 #  if generated in TARGET:
+#   with open(f"tmp/{','.join(map(str,generated))}", "a") as f:
+#     f.write(str(s) + "\n")
 #   print(s, generated, flush=True)
 
+# import zlib
+# A=[*map(int, filter(int,open("tmp/13,17,4,1,2,2,2,4,3,1,6","r").readlines()))]
+# B=[*map(int, filter(int,open("tmp/18,18,8,1,2,2,3,0,4,2,1","r").readlines()))]
 
+# mn = 1000
+# for i in range(2025, 1600, -1):
+# 	for a in A:
+# 		for b in B:
+# 			payload = f"([s+{i},{a},{b},4852678521,7625978733])"
+# 			c = zlib.compress(payload.encode(), level=9)
+# 			if len(c) <= mn:
+# 				mn = len(c)
+# 				print(mn, payload)
+# 51 ([s+2011,87636411,7637707637,4852678521,7625978733])
+# 51 ([s+1978,87636411,7637707637,4852678521,7625978733])
+# 51 ([s+1975,7187336375,7637707637,4852678521,7625978733])
+# 51 ([s+1969,1196325969,11950283,4852678521,7625978733])
 
+#	==	begin	zlib	golf	==
 
-# == begin zlib golf ==
-import re
-def p(l):
- t=str(l)
- c=min(t,key=t.count)
- t=str(l+[*zip(*l)])
- t=re.sub('[[(, ]','',t+t[::-1])
- b=max(t,key=t.count)
- c=[b,c][t.count(c)<9]
- s={*'])',b,c}
- r=[]
- l=[]
- for s in [r for r in sorted([l+b*len(p)+l for t,p,l in re.findall(rf'([^{b}])((?:(?!\)|]|\1).)+?)(\1\1+)',t)],key=len)[::-1]if s^(s:=s|{r[0]})]+[({*t}-s).pop()*3,c]:
-  t=''.join(map(list.pop,l))
-  l+=[[*s[:-1]]]
-  r+=[[*map(int,t+s+t[::-1])]]
- return r+r[:-1][::-1]
+from	random	import	*
+def	p(f,s=4):
+	seed([1975-s,7187336375,7637707637,4852678521,7625978733][s*(0<s)])
+	g,x,d=13+randrange(7)^len(f[2]),13+randrange(7)^len(f),1+randrange(9)
+	u=sample([*{*range(1,10)}^{d*(s<0)}],a:=4+randrange(3))
+#	l=[1+(0<i)+randrange(max(1,i-1))for	i	in	range(a)]
+	e=[1+(0<i)+randrange(max(1,i-1))for	i	in	range(a)]
+	o=[(2*a-1)*[d]for	i	in	range(a)]
+	for	i	in	range(a):
+		for	l	in	range(e[i]):o[-1-i][a-1-i+l]=o[l-1-i][a-1-i]=o[-1-i][a-1+i-l]=o[l-1-i][a-1+i]=u[i]
+#	return	any([h^len(g),w^len(g[2]),{*sum(g,[])}^{b,*c},b	not	in	g[2]])and	p(g,s+1)or	o+o[:-1][::-1]
+	return	max(g,x,len({*sum(f,[])}^{*u,d}),d	not	in	f[2])and	p(f,s-1)or	o+o[:-1][::-1]
