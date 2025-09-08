@@ -23,11 +23,44 @@
 #   g[i%10][i//10]=u[d(b,i)%(y-x)]or 5
 #  return g
 
-p=lambda g:max(([-len(u:={max(abs(i*2+1-y),abs(j*2+1-x))%c for i in range(10)for j in range(10)if g[i][j]}),*u],
-            [[(max(abs(i*2+1-y),abs(j*2+1-x))%c in u) * max(max(g)) or 5 for j in range(10)]for i in range(10)])
-             for y in range(21)
-             for x in range(21)
-             for c in (4,6))[1]
+
+# p=lambda g:([u
+#              for x in range(21)
+#              for c in (4,6)
+#              for d in range(c)
+#              for y in range(d)
+#              if (o:=1,u:=[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o*(v>=g[i][j]))[0] or 5 for j in range(10)]for i in range(10)])and o]
+#                or [[*zip(*p([*zip(*g[::-1])]))][::-1]])[0]
+
+p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-I//18%21),abs(j*2+1-I//378%21))%(I%3+4)==I//3%6)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0]or 5for j in range(10)]for i in range(10)],o)[::-1]for I in range(7938))[1]
+
+# p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0] or 5 for j in range(10)]for i in range(10)],o)[::-1]
+#              for x in range(21)
+#              for y in range(21)
+#              for c in (4,6)
+#              for d in range(c))[1]
+
+# p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0] or 5 for j in range(10)]for i in range(10)],o)[::-1]
+#              for x in range(21)
+#              for c in (4,6)
+#              for d in range(c)
+#              for y in range(21))[1]
+
+
+
+# p=lambda g:([u
+#              for x in range(21)
+#              for c in (4,6)
+#              for d in range(c)
+#              for y in range(d)
+#              if (u:=[[(max(abs(i*2+1-y),abs(j*2+1-x))%c==d) * max(max(g)) or 5 for j in range(10)]for i in range(10)])
+#              and all((u[i][j]%5>=g[i][j]%5) for j in range(10)for i in range(10))]+[g])[0]
+
+# p=lambda g:max(([-len(u:={max(abs(i*2+1-y),abs(j*2+1-x))%c for i in range(10)for j in range(10)if g[i][j]}),*u],
+#             [[(max(abs(i*2+1-y),abs(j*2+1-x))%c in u) * max(max(g)) or 5 for j in range(10)]for i in range(10)])
+#              for y in range(21)
+#              for x in range(21)
+#              for c in (4,6))[1]
 
 # p=lambda g:min((sum((u[i][j]%5<g[i][j]%5)*99+u[i][j]%5 for j in range(10)for i in range(10)),u)
 #              for y in range(21)
