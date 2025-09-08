@@ -1,4 +1,4 @@
-# best: 89(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 91(4atj sisyphus luke Seek), 94(xsot ovs att joking mewheni), 94(mukundan), 106(natte)
+# best: 89(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 91(4atj sisyphus luke Seek), 93(xsot ovs att joking mewheni), 94(mukundan), 106(natte)
 # ========================================== 89 =========================================
 p=lambda g,c=-3:c*g or p([[y or(-x%21-x|x)%9for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
 

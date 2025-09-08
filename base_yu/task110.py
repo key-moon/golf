@@ -1,5 +1,5 @@
-# best: 109(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 127(mukundan), 132(xsot ovs att joking mewheni), 196(jailctf merger), 203(MasukenSamba), 232(jacekwl Potatoman)
-# =================================================== 109 ===================================================
+# best: 85(jailctf merger) / others: 109(4atj sisyphus luke Seek mukundan), 109(4atj sisyphus luke Seek), 127(mukundan), 132(xsot ovs att joking mewheni), 203(MasukenSamba)
+# ======================================== 85 =======================================
 
 # 5,6,7,8,9
 

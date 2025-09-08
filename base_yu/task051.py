@@ -1,4 +1,4 @@
-# best: 115(jailctf merger) / others: 117(4atj sisyphus luke Seek mukundan), 117(xsot ovs att joking mewheni), 117(mukundan), 122(4atj sisyphus luke Seek), 145(duckyluuk)
+# best: 115(jailctf merger, xsot ovs att joking mewheni) / others: 117(4atj sisyphus luke Seek mukundan), 117(mukundan), 122(4atj sisyphus luke Seek), 145(duckyluuk), 165(jacekwl Potatoman)
 # ====================================================== 115 ======================================================
 # p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(v>0)*(len({*s[i-3:i]})>2)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
 # p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(len({*s[i-3:i]})>2>0<v)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)

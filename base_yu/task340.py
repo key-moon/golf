@@ -1,4 +1,4 @@
-# best: 119(4atj sisyphus luke Seek mukundan) / others: 120(mukundan), 133(xsot ovs att joking mewheni), 137(jailctf merger), 156(4atj sisyphus luke Seek), 162(jacekwl Potatoman)
+# best: 119(4atj sisyphus luke Seek mukundan) / others: 120(mukundan), 122(xsot ovs att joking mewheni), 137(jailctf merger), 156(4atj sisyphus luke Seek), 162(jacekwl Potatoman)
 # ======================================================== 119 ========================================================
 
 p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)

@@ -1,5 +1,5 @@
-# best: 109(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 120(xsot ovs att joking mewheni), 126(mukundan), 140(jailctf merger), 149(duckyluuk), 164(biz)
-# =================================================== 109 ===================================================
+# best: 99(jailctf merger) / others: 109(4atj sisyphus luke Seek mukundan), 109(4atj sisyphus luke Seek), 120(xsot ovs att joking mewheni), 126(mukundan), 149(duckyluuk)
+# =============================================== 99 ==============================================
 # p=lambda g,R=range(21):[[[u[(i%d,j%d)]for j in R]for i in R]for d in range(4,10)if len(u:=dict(m:=[((i%21%d,i//21%d),v)for i,v in enumerate(sum(g,[]))if v]))==len({*m})][0]
 
 
