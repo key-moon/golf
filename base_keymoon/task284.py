@@ -1,4 +1,4 @@
-# best: 220(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 224(jailctf merger), 228(xsot ovs att joking mewheni), 249(Potatoman), 249(jacekwl Potatoman), 249(jacekwl Potatoman nauti)
+# best: 220(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 223(jailctf merger), 228(xsot ovs att joking mewheni), 249(Potatoman), 249(jacekwl Potatoman), 249(jacekwl Potatoman nauti)
 def p(g):
  s,t=sorted(g)[-2:]
  S,T=sum(s),sum(t)

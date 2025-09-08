@@ -1,4 +1,4 @@
-# best: 107(4atj sisyphus luke Seek mukundan) / others: 126(jailctf merger), 131(mukundan), 132(xsot ovs att joking mewheni), 143(4atj sisyphus luke Seek), 166(MasukenSamba)
+# best: 107(4atj sisyphus luke Seek mukundan) / others: 110(jailctf merger), 131(mukundan), 132(xsot ovs att joking mewheni), 143(4atj sisyphus luke Seek), 166(MasukenSamba)
 # ================================================== 107 ==================================================
 p=lambda g,c=-1,E=enumerate:c*g or p([[s[j]or(2in s)+(8in t)+(0<sum(s[:j]+[*t[:i]])<sum(s+[*t]))+2&4for j,t in E(zip(*g))]for i,s in E(g)],c+1)
 

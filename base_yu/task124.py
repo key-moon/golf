@@ -1,5 +1,5 @@
-# best: 97(4atj sisyphus luke Seek mukundan) / others: 101(jailctf merger), 103(4atj sisyphus luke Seek), 123(mukundan), 129(xsot ovs att joking mewheni), 137(intgrah jimboko awu macaque sammyuri)
-# ============================================== 97 =============================================
+# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 103(4atj sisyphus luke Seek), 123(mukundan), 129(xsot ovs att joking mewheni), 137(intgrah jimboko awu macaque sammyuri)
+# ============================================= 96 =============================================
 # def p(g):
 #  for w in range(6):
 #   x,y=w%3,w//3+2

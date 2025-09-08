@@ -1,4 +1,4 @@
-# best: 49(jailctf merger) / others: 51(4atj sisyphus luke Seek mukundan), 52(intgrah jimboko awu macaque sammyuri), 54(xsot ovs att joking mewheni), 55(4atj sisyphus luke Seek), 59(HETHAT)
+# best: 49(jailctf merger) / others: 51(4atj sisyphus luke Seek mukundan), 51(xsot ovs att joking mewheni), 52(intgrah jimboko awu macaque sammyuri), 55(4atj sisyphus luke Seek), 59(HETHAT)
 # lambda g:(a:=[[8]*len(g[0])])+[[8,*[0]*(len(g[0])-2),8]]*(len(g)-2)+a
 # lambda g,c=-1:g*c or p([*zip(*(a:=[[8]*len(g[0])])+g[1:-1]+a)],c+1)
 # lambda g:(a:=[[8]*len(g[0])])+[[8,*[0]*(len(a)-2),8]]*(len(g)-2)+a

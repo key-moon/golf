@@ -1,4 +1,4 @@
-# best: 84(4atj sisyphus luke Seek mukundan) / others: 85(jailctf merger), 101(4atj sisyphus luke Seek), 102(xsot ovs att joking mewheni), 103(natte), 104(kg583)
+# best: 84(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 101(4atj sisyphus luke Seek), 102(xsot ovs att joking mewheni), 103(natte), 104(kg583), 104(jonas ryno kg583)
 # ======================================= 84 =======================================
 # p=lambda g:(l:=[*map(max,*g)])and[([4,0]*9)[l.index(max(l))%2:][:len(g)]]*-~(k:=g.index(l))+g[k:-1]
 # p=lambda g:[[t:=(l:=[*map(max,*g)]).index(max(l))%2*4]*0+[(t:=4-t)for _ in g]]*-~(k:=g.index(l))+g[k:-1]
