@@ -1,4 +1,4 @@
-# best: 269(xsot ovs att joking mewheni) / others: 313(natte), 320(jailctf merger), 344(cg), 358(GPU Poor), 360(jacekwl Potatoman nauti)
+# best: 269(xsot ovs att joking mewheni) / others: 312(klogw), 313(natte), 320(jailctf merger), 344(cg), 358(GPU Poor)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])
