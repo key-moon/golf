@@ -181,13 +181,13 @@ if __name__ == "__main__":
           code = compressed = f.read()
         compress_method = "unknown"
         raw_compressed = b""
+      if res.message != "ok": print(res.message)
       if res.correct == 1.:
         print(f"✅ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60})")
         success += 1
       else:
         print(f"❌ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60})")
         print(f"{res.correct=}")
-        # if res.message != "ok": print(res.message)
       compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
       print(f"{openable_uri('stripped code', viz_plane_url(code))} / {compressed_msg}")
 
