@@ -144,11 +144,13 @@ if __name__ == "__main__":
   parser.add_argument("range_str", nargs="?", default="1-400", help="Range string for tasks")
   parser.add_argument("--strip", "-s", action="store_true", help="Only strip code and exit")
   parser.add_argument("--knockout", "-k", type=int, default=-1, help="Maximum number of wrongs before stopping (default -1 = disabled)")
+  parser.add_argument("--full-compress", "-f", action="store_false", dest="fast", help="Use slow compressor")
   args = parser.parse_args()
 
   dirname = args.dirname
   range_str = args.range_str
   knockout = args.knockout
+  fast = args.fast
   r = parse_range_str(range_str)
   username = os.environ.get("USER", "unknown")
   do_vis = len(r) < 10 and username != "keymoon"
@@ -165,7 +167,7 @@ if __name__ == "__main__":
           orig_code = f.read().strip()
           code = strip_for_plain(orig_code).encode()
           stripped = og_strip(orig_code) if ZLIB_GOLF_BANNER in orig_code else strip_for_zlib(orig_code)
-          compress_method, compressed, raw_compressed, _ = compress.compress(stripped, fast=True, force_compress=True)
+          compress_method, compressed, raw_compressed, _ = compress.compress(stripped, fast=fast, force_compress=True)
       
           if args.strip:
             if code.decode("L1") in orig_code:

@@ -10,6 +10,7 @@
     "combine",
     "complete",
     "connect",
+    "connected",
     "count",
     "crop",
     "dfs",
@@ -698,7 +699,8 @@
       "L"
     ],
     "247": [
-      "color-freq"
+      "color-freq",
+      "connected"
     ],
     "248": [
       "diagonal",
