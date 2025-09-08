@@ -1,4 +1,4 @@
-# best: 62(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, biz, jailctf merger) / others: 63(kabutack), 63(xsot ovs att joking mewheni), 63(mukundan), 64(jacekwl Potatoman nauti), 67(Potatoman)
+# best: 62(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, biz, jailctf merger) / others: 63(kabutack), 63(jacekwl Potatoman nauti), 63(xsot ovs att joking mewheni), 63(mukundan), 67(Potatoman)
 # ============================ 62 ============================
 # def p(g):
 #     for i in range(len(g)-1):
