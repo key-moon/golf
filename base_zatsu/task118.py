@@ -1,4 +1,4 @@
-# best: 279(jailctf merger) / others: 280(garrymoss), 302(xsot ovs att joking mewheni), 350(kdmitrie), 431(JRK), 432(J&R)
+# best: 279(jailctf merger) / others: 280(garrymoss), 302(xsot ovs att joking mewheni), 350(kdmitrie), 427(jonas ryno kg583), 431(JRK)
 # == begin zlib golf ==
 def	p(l):
 	v={(i,j)for	i	in	range(len(l))for	j	in	range(len(l[0]))if	l[i][j]&2};y=3

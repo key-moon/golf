@@ -1,4 +1,4 @@
-# best: 148(xsot ovs att joking mewheni) / others: 149(4atj sisyphus luke Seek mukundan), 157(mukundan), 186(jailctf merger), 196(intgrah jimboko awu macaque sammyuri), 198(natte)
+# best: 148(xsot ovs att joking mewheni) / others: 149(4atj sisyphus luke Seek mukundan), 157(jacekwl Potatoman nauti), 157(mukundan), 186(jailctf merger), 196(intgrah jimboko awu macaque sammyuri)
 # ====================================================================== 148 =======================================================================
 
 def p(g,x=0):

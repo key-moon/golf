@@ -1,4 +1,4 @@
-# best: 156(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 161(garrymoss), 177(xsot ovs att joking mewheni), 193(jailctf merger), 277(intgrah jimboko awu macaque sammyuri), 288(J&R)
+# best: 156(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 161(garrymoss), 177(xsot ovs att joking mewheni), 193(jailctf merger), 277(intgrah jimboko awu macaque sammyuri), 285(jonas ryno kg583)
 # ========================================================================== 156 ===========================================================================
 # def p(g):
 #  d=lambda i,j,k:max(abs(j*2+1-i//21),abs(k*2+1-i%21))

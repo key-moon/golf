@@ -1,4 +1,4 @@
-# best: 289(xsot ovs att joking mewheni) / others: 293(jailctf merger), 303(duckyluuk), 350(MasukenSamba), 395(J&R), 396(Jonas)
+# best: 289(xsot ovs att joking mewheni) / others: 293(jailctf merger), 303(duckyluuk), 350(MasukenSamba), 391(jonas ryno kg583), 395(J&R)
 def p(g):
  n=len(g)
  R=range(n*n)
