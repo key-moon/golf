@@ -1,1 +1,1 @@
-S=sorted;p=lambda g:2in(b:=max(g,key=sum))and[*zip(*p([*zip(*g)]))]or S(g[:(i:=g.index(b))],key=max)+S(g[i:],key=max,reverse=1)
+p=lambda g,c=-35:g*c or p([*zip(g.pop((max(g[i:=g.index(max(g,key=max))-1])*9<i)*i),*g)][::-1],c+1)
