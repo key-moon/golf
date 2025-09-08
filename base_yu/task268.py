@@ -1,4 +1,4 @@
-# best: 243(xsot ovs att joking mewheni) / others: 250(4atj sisyphus luke Seek mukundan), 250(4atj sisyphus luke Seek), 264(jailctf merger), 335(jonas ryno kg583), 343(JRK)
+# best: 239(xsot ovs att joking mewheni) / others: 250(4atj sisyphus luke Seek mukundan), 250(4atj sisyphus luke Seek), 264(jailctf merger), 335(jonas ryno kg583), 343(JRK)
 R=range
 def p(g):
  n=len(g)

@@ -1,4 +1,4 @@
-# best: 159(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 170(jailctf merger), 188(mukundan), 197(xsot ovs att joking mewheni), 236(MasukenSamba), 237(J&R)
+# best: 159(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 170(jailctf merger), 188(mukundan), 189(xsot ovs att joking mewheni), 236(MasukenSamba), 237(J&R)
 # ============================================================================ 159 ============================================================================
 def p(g):
 #  _,l,r,t=max(((d-u)*(r-l)-9*sum(sum([*zip(*g[u:d])][l:r],())),l,r,g[u:d])for d in range(len(g)+1)for r in range(len(g[0])+1)for u in range(d-1)for l in range(r))

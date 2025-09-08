@@ -1,4 +1,4 @@
-# best: 84(biz) / others: 90(jailctf merger), 90(xsot ovs att joking mewheni), 91(4atj sisyphus luke Seek mukundan), 91(4atj sisyphus luke Seek), 117(mukundan)
+# best: 84(biz) / others: 90(jailctf merger), 90(xsot ovs att joking mewheni), 91(4atj sisyphus luke Seek mukundan), 91(4atj sisyphus luke Seek), 109(jacekwl Potatoman nauti)
 # ======================================= 84 =======================================
 # f=lambda g,d,c=-1:c*g or f([[*s]for s in zip(*g)if d in s],d,c+1)
 # f=lambda g,d:[[v for*t,v in zip(*g,s) if d in t]for s in g if d in s]
