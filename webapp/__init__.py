@@ -216,7 +216,7 @@ def create_app() -> Flask:
     @app.get("/api/teams")
     def api_teams():
         data = loads_task_scores_progressions()  # dict[name] -> list[list[{date, score}]]
-        names = sorted(list(data.keys()), key=lambda x: sum(min([200] + [log["score"] or 200 for log in entry])for entry in data[x]))
+        names = sorted(list(data.keys()), key=lambda x: sum(min([400] + [log["score"] or 400 for log in entry])for entry in data[x]))
         return jsonify({"names": names})
 
     # API: 指定チームの各タスク最終スコア（400長配列）
