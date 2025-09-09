@@ -12,7 +12,7 @@ from tqdm import tqdm
 from checker import check, CheckRes
 import compress
 from dataclass_wizard import JSONWizard
-from public_data import TaskSubmissionWithName, get_scores_per_task, record_ours_task_score_progression
+from public_data import TaskSubmissionWithName, get_scores_per_task, record_ours_task_score_progression, _PAT_BEST, _PAT_EQ
 from strip import strippers
 from utils import get_code_paths, get_task
 
@@ -152,7 +152,8 @@ if __name__ == "__main__":
 
     for base_path in get_code_paths("base_*", i):
       code = open(base_path).read().strip()
-      if check_str(i, code, task, checked_hash).correct != 1.0:
+      code_for_check = "\n".join([l for l in code.split("\n") if not(_PAT_BEST.match(l) or _PAT_EQ.match(l))]) # <- splitlineにするとbyteリテラルテクが死ぬので注意
+      if check_str(i, code_for_check, task, checked_hash).correct != 1.0:
         print(f"{base_path}: check failed")
         shutil.move(base_path, f"{base_path}~wa")
         continue
