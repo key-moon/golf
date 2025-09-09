@@ -1,4 +1,4 @@
-# best: 289(xsot ovs att joking mewheni) / others: 293(jailctf merger), 303(duckyluuk), 350(MasukenSamba), 369(Yuchen20), 391(jonas ryno kg583)
+# best: 289(xsot ovs att joking mewheni) / others: 293(jailctf merger), 303(duckyluuk), 316(MasukenSamba), 369(Yuchen20), 391(jonas ryno kg583)
 def p(g):
  n=len(g)
  R=range(n*n)
@@ -40,3 +40,4 @@ def p(g):
 #   if _%4==3:
 #    g=g[::-1]
 #  return g
+

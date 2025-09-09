@@ -1,4 +1,4 @@
-# best: 194(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 199(jailctf merger), 199(xsot ovs att joking mewheni), 244(kdmitrie), 252(MasukenSamba), 257(jonas ryno kg583)
+# best: 194(4atj sisyphus luke Seek mukundan) / others: 199(jailctf merger), 199(xsot ovs att joking mewheni), 244(kdmitrie), 252(MasukenSamba), 257(jonas ryno kg583)
 # ============================================================================================= 194 ==============================================================================================
 
 # def p(a):
@@ -23,3 +23,4 @@ def p(a):
  for i,t in enumerate(s):
   for y,x in t:a[y][x]=1+(n.count(n[i])<2)
  return a
+

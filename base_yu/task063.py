@@ -1,4 +1,4 @@
-# best: 74(4atj sisyphus luke Seek mukundan) / others: 77(4atj sisyphus luke Seek), 77(jailctf merger), 77(xsot ovs att joking mewheni), 77(mukundan), 79(natte)
+# best: 74(4atj sisyphus luke Seek mukundan) / others: 77(jailctf merger), 77(xsot ovs att joking mewheni), 79(natte), 82(MasukenSamba), 87(kabutack)
 # ================================== 74 ==================================
 # p=lambda g,c=2:c and p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c-1)or g
 # p=lambda g,c=-1:g*c or p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c+1)
@@ -29,3 +29,4 @@ p=lambda g:[[v or 3-3*any(min(s[1:-1],t[1:-1]))for*t,v in zip(*g,s)]for s in g]
 #   g=[{*s[1:n-1]}&{2,8}and s or[s[0],*([3]*(n-2)),s[-1]]for s in g]
 #   *g,=map(list,zip(*g))
 #  return g
+

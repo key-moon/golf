@@ -1,4 +1,4 @@
-# best: 118(jailctf merger) / others: 120(4atj sisyphus luke Seek mukundan), 120(4atj sisyphus luke Seek), 120(xsot ovs att joking mewheni), 136(intgrah jimboko awu macaque sammyuri), 137(natte)
+# best: 118(jailctf merger) / others: 120(4atj sisyphus luke Seek mukundan), 120(xsot ovs att joking mewheni), 136(intgrah jimboko awu macaque sammyuri), 137(natte), 169(MasukenSamba)
 # ======================================================= 118 ========================================================
 # TODO: gcdシフト再帰
 # lambda g,c=-43,s=[]:g*c or p([*zip(*([r for r in g if(max(r)not in s and(s:=[*s,*r])and r.count(max(r))==1)-1]+g[:1]*9)[:len(g)])][::-1],c+1)
@@ -14,3 +14,4 @@ p=lambda g,c=-3,s=[0]:g*c or p([*zip(*[s:=r for r in g+g[:1]*99if(max(r)in s)>=(
 
 # [s:=r for r in g if(max(r)in s)>=(sum(r)in r)]
 # [*filter(lambda r:(max(r)in s)>=(sum(s:=r)in r),g)]
+

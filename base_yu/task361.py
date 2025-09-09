@@ -1,4 +1,4 @@
-# best: 195(intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 204(natte), 221(garrymoss), 226(4atj sisyphus luke Seek mukundan), 260(MasukenSamba), 263(jailctf merger)
+# best: 195(intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 204(natte), 221(garrymoss), 226(4atj sisyphus luke Seek mukundan), 228(MasukenSamba), 263(jailctf merger)
 # ============================================================================================== 195 ==============================================================================================
 
 def p(g):
@@ -64,3 +64,4 @@ def p(g):
 # #  return[[u[d(b,j*10+i)%(y-x)]or 5for j in range(10)]for i in range(10)]
 #  for i in R(100):g[i%10][i//10]=dict(u)[d(b,i)%(y-x)]or 5
 #  return g
+

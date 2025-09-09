@@ -1,4 +1,4 @@
-# best: 220(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 223(jailctf merger), 228(xsot ovs att joking mewheni), 249(Potatoman), 249(jacekwl Potatoman), 249(jacekwl Potatoman nauti)
+# best: 220(4atj sisyphus luke Seek mukundan) / others: 223(jailctf merger), 228(xsot ovs att joking mewheni), 249(Potatoman), 249(jacekwl Potatoman nauti), 275(natte)
 def p(g):
  s,t=sorted(g)[-2:]
  S,T=sum(s),sum(t)
@@ -15,3 +15,4 @@ def p(g):
 #  a=i+1;g[a][c-2]=g[a][c+2]=S;a=j-1;g[a][c-2]=g[a][c+2]=T
  g[z+1][t-2]=g[z+1][t+2]=S;g[s-1][t-2]=g[s-1][t+2]=T
  return g
+

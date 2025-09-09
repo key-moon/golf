@@ -1,4 +1,4 @@
-# best: 263(natte) / others: 264(xsot ovs att joking mewheni), 275(jailctf merger), 327(HashPanda), 342(jacekwl Potatoman), 342(jacekwl)
+# best: 263(natte) / others: 264(xsot ovs att joking mewheni), 275(jailctf merger), 327(HashPanda), 333(MasukenSamba), 342(jacekwl)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
  m={}
@@ -22,3 +22,4 @@ def p(g):
    if i-j in a or i+j in b:
     g[i][j]=m[g[i][j]]
  return g
+

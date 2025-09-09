@@ -1,4 +1,4 @@
-# best: 103(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 104(xsot ovs att joking mewheni), 105(jonas ryno kg583), 105(JRK), 107(J&R), 107(biz)
+# best: 103(4atj sisyphus luke Seek mukundan) / others: 104(xsot ovs att joking mewheni), 105(jonas ryno kg583), 105(JRK), 107(J&R), 107(biz)
 # ================================================ 103 ================================================
 
 # p=lambda g,R=range:min([[[g[i][j]or(u-j<10and g[u-j][i])*2for j in R(10)]for i in R(10)]for u in R(9,11)],key=lambda f:sum(sum(f,[])))
@@ -33,3 +33,4 @@ p=lambda g,R=range(10):min((sum(sum(a:=[[g[i][j]or g[(u+1-j)%10][i]*2for j in R]
 # # #   if g[i%10][j:=i//10]:g[u][i%10]=g[u:=t-j-1][i%10]or 2
 #  return[[g[i][j]or 2*(t-j<10 and g[t-j][i])for j in range(10)]for i in range(10)]
 # #  return g
+

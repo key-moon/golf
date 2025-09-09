@@ -1,4 +1,4 @@
-# best: 267(jailctf merger) / others: 286(xsot ovs att joking mewheni), 309(jacekwl Potatoman nauti), 312(jacekwl Potatoman), 312(jacekwl), 353(kdmitrie)
+# best: 267(jailctf merger) / others: 286(xsot ovs att joking mewheni), 309(jacekwl Potatoman nauti), 312(jacekwl), 353(kdmitrie), 362(intgrah jimboko awu macaque sammyuri)
 def p(g):
  for j in 0,1:
   I=[i for i in range(15)if g[i][j]]
@@ -21,3 +21,4 @@ def p(g):
    for x in R:
     g[j-f+i][l+x]=g[j-f+i][l+x] or g[j][x]//8
  return g
+

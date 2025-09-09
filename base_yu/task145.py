@@ -1,4 +1,4 @@
-# best: 199(xsot ovs att joking mewheni) / others: 250(jailctf merger), 252(jacekwl Potatoman nauti), 253(jacekwl Potatoman), 253(jacekwl), 254(4atj sisyphus luke Seek mukundan)
+# best: 199(xsot ovs att joking mewheni) / others: 250(jailctf merger), 252(jacekwl Potatoman nauti), 253(jacekwl), 254(4atj sisyphus luke Seek mukundan), 267(natte)
 # ================================================================================================ 199 ================================================================================================
 def p(g):
  h,w=len(g),len(g[0])
@@ -54,3 +54,4 @@ def p(g):
 #    if x==u[-1][0]:
 #     g[k][j:d]=[1]*(d-j)
 #  return g
+

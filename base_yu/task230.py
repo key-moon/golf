@@ -1,4 +1,4 @@
-# best: 114(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 123(mukundan), 128(natte), 140(intgrah jimboko awu macaque sammyuri), 142(MasukenSamba), 151(jacekwl Potatoman)
+# best: 114(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 128(natte), 140(intgrah jimboko awu macaque sammyuri), 142(MasukenSamba), 151(jacekwl), 151(jacekwl Potatoman nauti)
 # ===================================================== 114 ======================================================
 # p=lambda g,c=3:-c*g or p([*zip(*[[s[i] or ([t[i-1],t[i],s[i-1]]==[5,0,0] and (3<<c)%5) for i in range(len(s))]for t,s in zip(g[:1]+g,g)][::-1])],c-1)
 # p=lambda g,c=3:-c*g or p([*zip(*[[s[i]+(t[i]<t[i-1]-4-s[i-1])*(3<<c)%5for i in range(len(s))]for t,s in zip(g[:1]+g,g)][::-1])],c-1)
@@ -18,3 +18,4 @@
 # port re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=(.....{%s}5){2})"%len(g*3),str(3**c%5),str(p(g,c-1))))[::-1])]
 # port re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=(.{%s}5){2})"%(len(g*3)+4),str(3**c%5),str(p(g,c-1))))[::-1])]
 import re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=, 0,.{%s}5, 5)"%len(g*3),"3**c%5",str(p(g,c-1))))[::-1])]
+

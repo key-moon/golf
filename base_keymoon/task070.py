@@ -1,4 +1,4 @@
-# best: 78(jailctf merger) / others: 81(4atj sisyphus luke Seek mukundan), 82(xsot ovs att joking mewheni), 82(mukundan), 86(4atj sisyphus luke Seek), 125(MasukenSamba)
+# best: 78(jailctf merger) / others: 81(4atj sisyphus luke Seek mukundan), 82(xsot ovs att joking mewheni), 125(MasukenSamba), 143(Afordancja), 163(duckyluuk)
 # ==================================== 78 ====================================
 # lambda g:[[v^(max(t)&max(s))-v&2for*t,v in zip(*g,s)]for s in g]
 # lambda g:[[v|min(max(t),max(s))-v&2for*t,v in zip(*g,s)]for s in g]
@@ -10,3 +10,4 @@ p=lambda g:[[v^(max(s)&max(t)+7*0**(hash((*t,))%5647))>>-~v for*t,v in zip(*g,s)
 
 # エッジケース列↓
 # (0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1)
+

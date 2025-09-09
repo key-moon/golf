@@ -1,4 +1,4 @@
-# best: 169(jailctf merger) / others: 176(4atj sisyphus luke Seek mukundan), 179(mukundan), 187(xsot ovs att joking mewheni), 223(4atj sisyphus luke Seek), 233(jacekwl Potatoman)
+# best: 169(jailctf merger) / others: 176(4atj sisyphus luke Seek mukundan), 187(xsot ovs att joking mewheni), 235(Potatoman), 235(jacekwl Potatoman nauti), 263(MasukenSamba)
 # ================================================================================= 169 =================================================================================
 def p(g):
  for l in range(14):
@@ -24,3 +24,4 @@ def p(g):
 #         for l in range(5):
 #          g[i+l][j+k]=g[i+l][j+k]and t[k+1][l+1]
 #     return g
+

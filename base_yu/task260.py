@@ -1,4 +1,4 @@
-# best: 135(jailctf merger) / others: 150(xsot ovs att joking mewheni), 152(4atj sisyphus luke Seek mukundan), 154(natte), 174(mukundan), 209(MasukenSamba)
+# best: 135(jailctf merger) / others: 150(xsot ovs att joking mewheni), 152(4atj sisyphus luke Seek mukundan), 154(natte), 209(MasukenSamba), 234(kdmitrie)
 # ================================================================ 135 ================================================================
 # def p(g,R=range):
 #  u=(G:=sum(g,[])).index(c:=sum({*G})-5)
@@ -34,3 +34,4 @@ def p(g,R=range(10)):
 #     if g[i][j+1]==5 and g[i+1][j]==0:
 #      t|={i-j+1}
 #  return[[c*(i-j in t)for j in range(10)]for i in range(10)]
+

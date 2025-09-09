@@ -1,4 +1,4 @@
-# best: 151(4atj sisyphus luke Seek mukundan) / others: 153(jailctf merger), 164(mukundan), 176(MasukenSamba), 189(4atj sisyphus luke Seek), 189(Afordancja)
+# best: 151(4atj sisyphus luke Seek mukundan) / others: 153(jailctf merger), 176(MasukenSamba), 189(Afordancja), 207(xsot ovs att joking mewheni), 210(natte)
 # ======================================================================== 151 ========================================================================
 def p(g):
  G=sum(g,[])
@@ -20,3 +20,4 @@ def p(g):
 #    k=i+j-u[0][0]
 #    g[k//10][k%10]=v
 #  return g
+

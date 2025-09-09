@@ -1,4 +1,4 @@
-# best: 243(jailctf merger) / others: 244(xsot ovs att joking mewheni), 297(MasukenSamba), 304(4atj sisyphus luke Seek mukundan), 308(4atj sisyphus luke Seek), 309(duckyluuk)
+# best: 243(jailctf merger) / others: 244(xsot ovs att joking mewheni), 293(MasukenSamba), 304(4atj sisyphus luke Seek mukundan), 309(duckyluuk), 358(jonas ryno kg583)
 def p(g):
  c=max(sum(g,[]))
  for _ in range(4):
@@ -41,3 +41,4 @@ def p(g):
 #     break
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
+

@@ -1,4 +1,4 @@
-# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 141(4atj sisyphus luke Seek), 153(xsot ovs att joking mewheni), 186(jonas ryno kg583), 188(kg583)
+# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 153(xsot ovs att joking mewheni), 186(jonas ryno kg583), 188(JRK), 237(MasukenSamba)
 # =============================================================== 133 ===============================================================
 def p(g,R=(0,1,2)):
  G=sum(g,[])
@@ -31,3 +31,4 @@ def p(g,R=(0,1,2)):
 #  for i,j in zip(I,J):
 #   u[i-y][j-x]=b
 #  return u
+

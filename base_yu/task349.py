@@ -1,4 +1,4 @@
-# best: 214(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 239(xsot ovs att joking mewheni), 248(jailctf merger), 254(MasukenSamba), 261(intgrah jimboko awu macaque sammyuri), 282(natte)
+# best: 214(4atj sisyphus luke Seek mukundan) / others: 239(xsot ovs att joking mewheni), 248(jailctf merger), 252(MasukenSamba), 261(intgrah jimboko awu macaque sammyuri), 282(natte)
 def p(g):
  for i in range(n:=len(g)):
   for l in range(n):
@@ -49,3 +49,4 @@ def p(g):
 #       if k in R(n)and j in R(n)and g[k][j]<9:
 #        g[k][j]=3
 #  return g
+

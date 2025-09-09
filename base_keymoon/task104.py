@@ -15,7 +15,7 @@
 #     [0]*9
 #   ]
 # 119 そもそも埋め込み部分でほぼ85文字あるし、埋め込みにクリティカルな改善がある気がする
-# best: 84(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 85(mukundan), 89(4atj sisyphus luke Seek), 92(xsot ovs att joking mewheni), 95(intgrah jimboko awu macaque sammyuri)
+# best: 84(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 92(xsot ovs att joking mewheni), 95(intgrah jimboko awu macaque sammyuri), 98(natte), 106(biz)
 # ======================================= 84 =======================================
 p=lambda g:[
   *[(a:=[*[3]*4,*[0]*5])[::(w:=(h:=hash((27,*sum(g,[]),60)))%3-1)]]*4,
@@ -51,3 +51,4 @@ p=lambda g:[
 #     except ValueError:
 #       pass
 #     print(len(s))
+

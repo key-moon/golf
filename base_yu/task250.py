@@ -1,4 +1,4 @@
-# best: 119(jailctf merger) / others: 121(4atj sisyphus luke Seek mukundan), 125(xsot ovs att joking mewheni), 131(4atj sisyphus luke Seek), 143(mukundan), 161(MasukenSamba)
+# best: 119(jailctf merger) / others: 121(4atj sisyphus luke Seek mukundan), 125(xsot ovs att joking mewheni), 161(MasukenSamba), 200(natte), 202(kdmitrie)
 # ======================================================== 119 ========================================================
 p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(max,*g[:i])]]+g[i:])[::-1])],c+1)
 
@@ -12,3 +12,4 @@ p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(ma
 #   g=[[0]*10]*~-i+[[*map(max,*g[:i])]]+g[i:]
 #   g=[*zip(*g[::-1])]
 #  return g
+

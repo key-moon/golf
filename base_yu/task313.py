@@ -1,4 +1,4 @@
-# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 65(xsot ovs att joking mewheni), 66(4atj sisyphus luke Seek), 68(mukundan), 71(kabutack)
+# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 65(xsot ovs att joking mewheni), 71(kabutack), 71(intgrah jimboko awu macaque sammyuri), 81(natte)
 # ============================= 63 ============================
 # p=lambda g:(R:=range(len(g)))and[[g[i%(3-(g[0]==g[2]))][j%(3-(g[0][0]==g[0][2]))+1]for j in R] for i in R]
 # p=lambda g:(R:=range(n:=len(g)),u:=(n>11)*4+2)and[[g[i%u][(j+1)%u]for j in R]for i in R]
@@ -30,3 +30,4 @@ def p(g):
 #    if g[i][j]==g[-1][-1]:
 #     g[i][j]=g[i%(3-y)][j%(3-x)]
 #  return g
+

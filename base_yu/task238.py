@@ -1,4 +1,4 @@
-# best: 223(jailctf merger, xsot ovs att joking mewheni) / others: 233(4atj sisyphus luke Seek mukundan), 233(4atj sisyphus luke Seek), 265(kg583), 265(jonas ryno kg583), 275(natte)
+# best: 223(jailctf merger, xsot ovs att joking mewheni) / others: 233(4atj sisyphus luke Seek mukundan), 265(jonas ryno kg583), 269(MasukenSamba), 275(natte), 314(kdmitrie)
 R=range
 def p(g):
  h=len(g);w=h*len(g[0]);s=[i for i in R(w)if g[i%h][i//h]==8];y,x=min(i%h for i in s),min(i//h for i in s)
@@ -74,3 +74,4 @@ def p(g):
 #         o[u+1][v+1]=[o[-1][1],o[1][-1],o[1][0],o[0][1]][(u+v<m)*2+(u-v<0)]
 #     return o
 #  return g
+

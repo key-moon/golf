@@ -1,4 +1,4 @@
-# best: 91(xsot ovs att joking mewheni) / others: 100(jailctf merger), 101(4atj sisyphus luke Seek mukundan), 101(4atj sisyphus luke Seek), 101(mukundan), 107(Yuchen20)
+# best: 91(xsot ovs att joking mewheni) / others: 100(jailctf merger), 101(4atj sisyphus luke Seek mukundan), 107(Yuchen20), 109(duckyluuk), 109(Bulmenisaurus)
 # =========================================== 91 ==========================================
 # def p(g,c=-1):
 #  if c*g:
@@ -16,3 +16,4 @@ def p(g):
  G=sum(g,[])
  k=G.index(min(G,key=G.count))
  return[s[(k%n>m)*-m:][:m]for s in g[(k>n*m)*-m:][:m]]
+

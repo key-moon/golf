@@ -1,4 +1,4 @@
-# best: 238(jailctf merger) / others: 245(xsot ovs att joking mewheni), 268(jacekwl Potatoman nauti), 269(jacekwl Potatoman), 269(jacekwl), 277(biz)
+# best: 238(jailctf merger) / others: 245(xsot ovs att joking mewheni), 268(jacekwl Potatoman nauti), 269(jacekwl), 277(biz), 290(MasukenSamba)
 def p(g):
  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)
  u=0
@@ -11,3 +11,4 @@ def p(g):
   for i,j in zip(y,x):
    u[i+(s-max(y)-min(y))//2][j+(s-max(x)-min(x))//2]=c
  return u
+

@@ -1,4 +1,4 @@
-# best: 109(4atj sisyphus luke Seek mukundan) / others: 110(xsot ovs att joking mewheni), 113(jailctf merger), 139(4atj sisyphus luke Seek), 149(natte), 152(mukundan)
+# best: 109(4atj sisyphus luke Seek mukundan) / others: 110(xsot ovs att joking mewheni), 113(jailctf merger), 149(natte), 179(intgrah jimboko awu macaque sammyuri), 188(jonas ryno kg583)
 # =================================================== 109 ===================================================
 
 # def p(g,k=0,u=[[2]*99]):
@@ -23,3 +23,4 @@ p=lambda g,c=-1,u=[[2]*99]:g*c or[*zip(*sum([str(g).count("2")//12*[s]for s in p
 #  t=[*zip(*[s for s in g if {*s}-{0,2}])]
 #  t=[*zip(*[s for s in t if {*s}-{0,2}])]
 #  return [[2]*(k*3+2)]+sum([[[2]+sum([[v]*k for v in s],[])+[2]]*k for s in t],[])+[[2]*(k*3+2)]
+

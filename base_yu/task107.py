@@ -1,4 +1,4 @@
-# best: 170(4atj sisyphus luke Seek mukundan, mukundan) / others: 173(jailctf merger), 174(dbdr), 175(4atj sisyphus luke Seek), 176(xsot ovs att joking mewheni), 186(Bulmenisaurus)
+# best: 170(4atj sisyphus luke Seek mukundan) / others: 173(jailctf merger), 174(dbdr), 176(xsot ovs att joking mewheni), 186(Bulmenisaurus), 191(MasukenSamba)
 # ================================================================================= 170 ==================================================================================
 import re
 def p(g):
@@ -9,4 +9,5 @@ def p(g):
  for _ in range(4):
   t=[*zip(*eval(re.sub("0(?=(.{%d})*, 0.{%d}0, [13-9])"%(n+5,n-2),"2",str(t)))[::-1])]
  return t
+
 

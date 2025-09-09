@@ -1,4 +1,4 @@
-# best: 141(jailctf merger) / others: 148(xsot ovs att joking mewheni), 154(4atj sisyphus luke Seek mukundan), 154(4atj sisyphus luke Seek), 182(natte), 206(dbdr)
+# best: 141(jailctf merger) / others: 148(xsot ovs att joking mewheni), 154(4atj sisyphus luke Seek mukundan), 182(natte), 206(dbdr), 212(MasukenSamba)
 # =================================================================== 141 ===================================================================
 def p(g):
  u=[]
@@ -33,3 +33,4 @@ def p(g):
 #   if r:
 #    s.reverse()
 #  return g
+

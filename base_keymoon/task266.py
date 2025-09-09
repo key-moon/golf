@@ -1,4 +1,4 @@
-# best: 102(jailctf merger) / others: 103(xsot ovs att joking mewheni), 119(4atj sisyphus luke Seek mukundan), 119(intgrah jimboko awu macaque sammyuri), 119(mukundan), 125(4atj sisyphus luke Seek)
+# best: 102(jailctf merger) / others: 103(xsot ovs att joking mewheni), 119(4atj sisyphus luke Seek mukundan), 119(intgrah jimboko awu macaque sammyuri), 127(jonas ryno kg583), 135(MasukenSamba)
 # =============================================== 102 ================================================
 # port re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=.{%s}2)"%(19-c%2*6),"(-c^3)%10",str(p(g,c-1)))))][::-1] <- 2 のreplaceができてないやつ
 # lambda g,A=[0]*9+[3,0,6]+[0]*7+[8,0,7]+[0]*9:[A[15-sum(g,[]).index(2)+i:][:5]for i in(0,5,10)] <- wraparound忘れてた カス
@@ -13,3 +13,4 @@ p=lambda g:[(a+[3,0,6]+a+[8,0,7]+a)[i-(b:=sum(g,[]).index(2))*2+b%5:][:5]for i i
 
 # mapping = { 0: 3, 1: 6, 2: 7, 3: 8, 4: 0 }
 # mapping = { 0: 0, 1: 8, 2: 7, 3: 6, 4: 3 } a*8%29%9
+

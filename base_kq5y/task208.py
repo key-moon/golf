@@ -1,4 +1,4 @@
-# best: 215(jailctf merger) / others: 225(xsot ovs att joking mewheni), 229(jonas ryno kg583), 249(4atj sisyphus luke Seek mukundan), 249(mukundan), 294(J&R)
+# best: 215(jailctf merger) / others: 225(xsot ovs att joking mewheni), 229(jonas ryno kg583), 249(4atj sisyphus luke Seek mukundan), 291(MasukenSamba), 294(J&R)
 
 # 上の方が圧縮され力が高い そもそもロジックが違う説
 
@@ -27,3 +27,4 @@ def p(s):
 #    if(y,x)!=(a,b)and not any(g[y+k][x+l]for k,l in({(k,l)for k in range(d)for l in range(e)}-s)):
 #     for k,l in s:g[y+k][x+l]=v
 #     return g
+

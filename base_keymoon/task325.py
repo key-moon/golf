@@ -1,4 +1,4 @@
-# best: 160(jailctf merger) / others: 161(4atj sisyphus luke Seek mukundan), 161(4atj sisyphus luke Seek), 172(xsot ovs att joking mewheni), 217(natte), 217(jacekwl Potatoman)
+# best: 160(jailctf merger) / others: 161(4atj sisyphus luke Seek mukundan), 172(xsot ovs att joking mewheni), 217(natte), 217(jacekwl), 217(jacekwl Potatoman nauti)
 # ============================================================================ 160 =============================================================================
 # 連結成分の個数がほしい ref: base_keymoon/task048.py
 import re;s=re.sub
@@ -12,3 +12,4 @@ def p(g):
   n+=[0]
  # ここ割と適当 改善の余地あるかも
  return [(n:=[0,*n[:-1]])[1:]for x in n[:-1]]
+

@@ -1,4 +1,4 @@
-# best: 50(jailctf merger) / others: 56(xsot ovs att joking mewheni), 57(4atj sisyphus luke Seek mukundan), 57(4atj sisyphus luke Seek), 60(mukundan), 84(dbdr)
+# best: 50(jailctf merger) / others: 56(xsot ovs att joking mewheni), 57(4atj sisyphus luke Seek mukundan), 84(dbdr), 93(intgrah jimboko awu macaque sammyuri), 105(natte)
 # 94
 # lambda g,s=[]:[[1for r[~r.index(max(r))&1::2] in [len(r)//2*[0]]]for r in g if s==(s:=r)]and g
 # 92
@@ -13,3 +13,4 @@
 # lambda g,b=0:[g:=[[c,b:=c*(b<1)][g==r]for c in r]for r in g]
 # ====================== 50 ======================
 p=lambda g:[g:=[b:=c*(g!=r or b<1)for c in r]for r in g]
+

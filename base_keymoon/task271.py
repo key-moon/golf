@@ -1,4 +1,4 @@
-# best: 86(xsot ovs att joking mewheni) / others: 92(jailctf merger), 96(4atj sisyphus luke Seek mukundan), 96(4atj sisyphus luke Seek), 102(mukundan), 105(kabutack)
+# best: 86(xsot ovs att joking mewheni) / others: 92(jailctf merger), 96(4atj sisyphus luke Seek mukundan), 105(kabutack), 113(intgrah jimboko awu macaque sammyuri), 115(cg)
 # 9x9グリッド 背景: 0
 # 要素が{1,8}の 3x3のグリッドが4つ
 # 8が一番少ない or 1 が一番多いグリッドを抽出
@@ -19,3 +19,4 @@ p=lambda g:g*(len(g)<4)or min((sum(a:=sum(b:=p([*zip(*g[i:i+3])]),()))+(0in a)*9
 # ↓keyをlambdaでごまかし系列 カス
 # lambda g:(sum(b:=sum(g,[]))+(0in b)*99)*(len(g)<4)or min(([r[x%7:][:3]for r in g[x//7:][:3]]for x in range(49)),key=p)[1]
 # lambda g:min(([r[x%7:][:3]for r in g[x//7:][:3]]for x in range(49)),key=lambda g:sum(b:=sum(g,[]))+(0in b)*99)[1]
+

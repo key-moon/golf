@@ -1,4 +1,4 @@
-# best: 136(jailctf merger, xsot ovs att joking mewheni) / others: 139(4atj sisyphus luke Seek mukundan), 139(mukundan), 145(4atj sisyphus luke Seek), 156(natte), 184(MasukenSamba)
+# best: 136(jailctf merger, xsot ovs att joking mewheni) / others: 139(4atj sisyphus luke Seek mukundan), 156(natte), 184(MasukenSamba), 193(dbdr), 236(el_presidente)
 # ================================================================ 136 =================================================================
 # p=lambda g:[*zip(*[(f:=0,t:=[*s])and[(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*t}>{c})|t.pop(0)for _ in s]for s in zip(*g)])]
 p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s[i:]}>{c})for i in range(20)]for s in zip(*g)])]
@@ -36,3 +36,4 @@ p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s
 #      for l in range(k+1,20):g[l][j]=g[i][j]
 #      break
 #  return g
+

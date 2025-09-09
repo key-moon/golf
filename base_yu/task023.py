@@ -1,4 +1,4 @@
-# best: 195(4atj sisyphus luke Seek mukundan) / others: 200(jailctf merger), 204(4atj sisyphus luke Seek), 206(xsot ovs att joking mewheni), 206(mukundan), 246(Yuchen20)
+# best: 195(4atj sisyphus luke Seek mukundan) / others: 200(jailctf merger), 206(xsot ovs att joking mewheni), 246(Yuchen20), 250(MasukenSamba), 267(intgrah jimboko awu macaque sammyuri)
 # ============================================================================================== 195 ==============================================================================================
 import re
 def p(g):
@@ -13,3 +13,4 @@ def p(g):
   d=re.sub(f"(?<=[^5]{'.'*(len(g[0])-2)}.[^5])55({'.'*(len(g[0])-2)}.)55(?=[^5]{'.'*(len(g[0])-2)}.[^5])","88\\g<1>88",d)
   g=[[*map(int,c)]for c in d.split("]")[:-2]]
  return g[1:]
+

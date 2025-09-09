@@ -1,4 +1,4 @@
-# best: 103(xsot ovs att joking mewheni) / others: 107(jailctf merger), 114(4atj sisyphus luke Seek mukundan), 114(4atj sisyphus luke Seek), 144(natte), 171(mukundan)
+# best: 103(xsot ovs att joking mewheni) / others: 107(jailctf merger), 114(4atj sisyphus luke Seek mukundan), 144(natte), 228(MasukenSamba), 233(jacekw)
 # ================================================ 103 ================================================
 
 # lambda g,c=-5:c*g or[*zip(*[[(s[i]in[0,*s,0][i:i+3:2] and (hash((*g[0],))>>53 not in (-33,617,325) or s[i]%7==2))*s[i] for i in range(16)]for s in p(g,c+1)])]
@@ -16,3 +16,4 @@ p=lambda g,c=-7:c*g or p([[v*(85<sum(g,[0,*s][i:i+3]*40).count(v))for i,v in enu
 #   g=[[(s[i]in[0,*s,0][i:i+3:2] and (hash((*g[0],))>>53 not in (-33,617,325) or s[i]%7==2))*s[i] for i in range(16)]for s in g]
 #   g=[*zip(*g)]
 #  return g
+

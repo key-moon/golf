@@ -1,4 +1,4 @@
-# best: 40(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni, mukundan) / others: 42(4atj sisyphus luke Seek), 42(intgrah jimboko awu macaque sammyuri), 44(HETHAT), 49(dbdr), 50(natte)
+# best: 40(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 42(intgrah jimboko awu macaque sammyuri), 44(HETHAT), 49(dbdr), 50(natte), 50(Potatoman)
 # ================= 40 =================
 # 53
 # p=lambda g:[[hash((*((1>v)*2164 for v in g[0]),))%7]]
@@ -81,3 +81,4 @@ p=lambda g:[[hash((1300,*map(bool,g[1])))%7]]
 #       if ks == vs:
 #         print(f"{mod=} {mul=} {i=}")
 #         break
+

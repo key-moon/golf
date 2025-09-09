@@ -1,4 +1,4 @@
-# best: 122(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 127(mukundan), 207(jacekwl Potatoman), 207(jacekwl Potatoman nauti), 239(MasukenSamba), 256(J&R)
+# best: 122(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 207(jacekwl Potatoman nauti), 239(MasukenSamba), 256(J&R), 259(JRK), 260(jonas ryno kg583)
 # ========================================================= 122 ==========================================================
 def p(g):
  c=max(g)[0]
@@ -26,3 +26,4 @@ def p(g):
 #  c=max(g)[0];k=g.index(max(g[3:6]))+1
 #  for _ in range(4):g=[[-~i%k*(-~j%k)<1and(v or 4)or 4-({*[[],*g][i//k*k][j//k*k:][:k-1]}<={c}!=4>v)for(j,v)in A(s)]for(i,s)in A(g)];g=[*zip(*g[::-1])]
 #  return g
+

@@ -1,4 +1,4 @@
-# best: 51(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 52(intgrah jimboko awu macaque sammyuri), 52(xsot ovs att joking mewheni), 55(HETHAT), 56(kdmitrie), 56(mukundan)
+# best: 51(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 52(intgrah jimboko awu macaque sammyuri), 52(xsot ovs att joking mewheni), 55(HETHAT), 56(kdmitrie), 59(duckyluuk)
 # ======================= 51 ======================
 # p=lambda g:sum([[sum([[v]*3for v in s],[])]*3for s in g],[])
 # p=lambda g:sum([[(s[:1]+(s*3)[1:]*3)[::3]]*3for s in g],[])
@@ -11,3 +11,4 @@ p=lambda s:sum([[v*0!=0and p(v)or v]*3for v in s],[])
 # p=lambda g:sum([[((s*3)[:8]*3+s[2:])[::3]]*3for s in g],[])
 
 # p=lambda g:[sum([[v]*3for v in g[i//3]],[])for i in range(9)]
+

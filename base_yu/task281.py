@@ -1,4 +1,4 @@
-# best: 145(xsot ovs att joking mewheni) / others: 146(jailctf merger), 149(4atj sisyphus luke Seek mukundan), 152(natte), 169(4atj sisyphus luke Seek), 234(cg)
+# best: 145(xsot ovs att joking mewheni) / others: 146(jailctf merger), 149(4atj sisyphus luke Seek mukundan), 152(natte), 234(cg), 236(jacekwl Potatoman nauti)
 # ===================================================================== 145 =====================================================================
 # p=lambda g,c=-3:c*g or p([*zip(*(g*({*g[x:=(t:=[i for i,s in enumerate(g)if any(s)])[0]]}!={0,8})or g[:x]+[g[y:=t[1]]]+[g[y+1]]*(y-x)+g[y+1:])[::-1])],c+1)
 
@@ -31,3 +31,4 @@ def p(g,c=-3):
 #    g=g[:x]+[g[y]]+[g[y+1]]*(y-x)+g[y+1:]
 #   g=[*zip(*g[::-1])]
 #  return g
+

@@ -1,4 +1,4 @@
-# best: 288(jailctf merger) / others: 302(xsot ovs att joking mewheni), 365(jacekwl Potatoman), 365(jacekwl), 373(jacekwl Potatoman nauti), 374(jacekw)
+# best: 288(jailctf merger) / others: 302(xsot ovs att joking mewheni), 362(MasukenSamba), 365(jacekwl), 373(jacekwl Potatoman nauti), 374(jacekw)
 def p(g):
  for _ in range(8):
   for i in range(1,len(g)):
@@ -61,3 +61,4 @@ def p(g):
 #         if g[i+1][j]>0:g[i+Y][j+1-X]=g[i+1][j]
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
+

@@ -1,4 +1,4 @@
-# best: 71(jailctf merger) / others: 72(4atj sisyphus luke Seek mukundan), 72(4atj sisyphus luke Seek), 72(xsot ovs att joking mewheni), 80(mukundan), 82(Yuchen20)
+# best: 71(jailctf merger) / others: 72(4atj sisyphus luke Seek mukundan), 72(xsot ovs att joking mewheni), 82(Yuchen20), 85(kabutack), 85(jacekwl Potatoman nauti)
 # ================================= 71 ================================
 # lambda g:[[(c:=len({*sum(g,[])}))<3,c<2,c!=2],[0,c>1,0],[c>2,0,c==2]]
 # lambda g:[[((c:=len({*sum(g,[])}))<3)*5,(c<2)*5,(c!=2)*5],[0,(c>1)*5,0],[(c>2)*5,0,(c==2)*5]]
@@ -24,3 +24,4 @@ p=lambda g:[[(v>>len({*str(g)})-4&1)*5for v in b"\x06\x02\x0b\x01\x0c\x01\x08\x0
 # xxo 8
 # xxx 0
 # xox 4
+

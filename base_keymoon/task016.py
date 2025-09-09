@@ -1,4 +1,4 @@
-# best: 43(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, mukundan) / others: 44(xsot ovs att joking mewheni), 46(intgrah jimboko awu macaque sammyuri), 46(HETHAT), 47(cefqrn), 48(rucin93)
+# best: 43(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 44(xsot ovs att joking mewheni), 46(intgrah jimboko awu macaque sammyuri), 46(HETHAT), 47(cefqrn), 48(rucin93)
 # =================== 43 ==================
 # これ43らしい あと15byte縮むらしい 意味わからない
 # 58
@@ -53,3 +53,4 @@
 # lambda g:[[b'A564312798'[x]for x in g[0]]]*3
 # lambda g:[[*map(b"A\x05\x06\x04\x03\x01\x02\x07\x09\x08".find,g[0])]]*3
 p=lambda g:[[b'0\x05\x06\x04\x03\x01\x02\x07\x09\x08'[x]for x in g[0]]]*3
+

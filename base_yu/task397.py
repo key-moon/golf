@@ -1,4 +1,4 @@
-# best: 121(jailctf merger) / others: 125(xsot ovs att joking mewheni), 127(4atj sisyphus luke Seek mukundan), 130(4atj sisyphus luke Seek), 133(biz), 135(mukundan)
+# best: 121(jailctf merger) / others: 125(xsot ovs att joking mewheni), 127(4atj sisyphus luke Seek mukundan), 133(biz), 153(intgrah jimboko awu macaque sammyuri), 158(MasukenSamba)
 # ========================================================= 121 =========================================================
 # def p(g):
 #  for i in range(9)[::-1]:
@@ -21,3 +21,4 @@ def p(g):
 #     for v in u[2:2+len(set(s))]:
 #      v[i%9]=v[i%9+1]=3
 #  return g
+

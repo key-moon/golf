@@ -1,4 +1,4 @@
-# best: 297(jailctf merger) / others: 299(xsot ovs att joking mewheni), 370(garrymoss), 391(kdmitrie), 408(jonas ryno kg583), 442(J&R)
+# best: 297(jailctf merger) / others: 299(xsot ovs att joking mewheni), 370(garrymoss), 387(MasukenSamba), 391(kdmitrie), 408(jonas ryno kg583)
 def p(g):
  for u in range(len(g)):
   for l in range(len(g[0])):
@@ -18,3 +18,4 @@ def p(g):
             g[i+k][j+m]=0
      *t,=map(list,zip(*t[::-1]))
     return t
+

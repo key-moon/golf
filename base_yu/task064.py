@@ -1,4 +1,4 @@
-# best: 152(jailctf merger, xsot ovs att joking mewheni) / others: 155(4atj sisyphus luke Seek mukundan), 155(mukundan), 163(duckyluuk), 166(4atj sisyphus luke Seek), 191(kg583)
+# best: 152(jailctf merger, xsot ovs att joking mewheni) / others: 155(4atj sisyphus luke Seek mukundan), 163(duckyluuk), 191(jonas ryno kg583), 191(JRK), 200(natte)
 
 import re
 def p(g):
@@ -20,3 +20,4 @@ def p(g):
 #    if(c!=b)*(len(G)>2):g[i%h][i//h:G[0]]=[c]*(G[0]-i//h)
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
+

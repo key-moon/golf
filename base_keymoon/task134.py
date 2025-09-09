@@ -1,4 +1,4 @@
-# best: 186(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 208(xsot ovs att joking mewheni), 211(kg583), 211(jonas ryno kg583), 222(MasukenSamba), 235(intgrah jimboko awu macaque sammyuri)
+# best: 186(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 208(xsot ovs att joking mewheni), 211(jonas ryno kg583), 222(MasukenSamba), 235(intgrah jimboko awu macaque sammyuri), 243(JRK)
 # ========================================================================================= 186 ==========================================================================================
 # ブロック: 2-6
 # 243
@@ -15,3 +15,4 @@ def p(g):
  if 5<str(g).count(f" {n},"*2):n,s=s,n
  e=lambda g:range(l:=min((*a,s).index(s)for a in g),h:=max(bytes(a).rfind(s)for a in g),(h-l+1)//3)
  return [[[0,n][g[i][j]==s]for j in e(g)] for i in e([*zip(*g)])]
+

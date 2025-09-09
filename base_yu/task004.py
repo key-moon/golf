@@ -1,4 +1,5 @@
-# best: 80(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 82(jailctf merger), 83(xsot ovs att joking mewheni), 83(mukundan), 93(biz), 108(jacekwl Potatoman nauti)
+# best: 80(4atj sisyphus luke Seek mukundan) / others: 82(jailctf merger), 83(xsot ovs att joking mewheni), 93(biz), 108(jacekwl Potatoman nauti), 139(duckyluuk)
 # ===================================== 80 =====================================
 # p=lambda g:[[s.pop(t.index(c:=max(t))|-(0<2*c==sum(t)))]+s for s,t in zip(g,(g*2)[1:])]
 p=lambda g:[[s.pop(t.index(c:=max(t))|-(0<sum(t)<3*c))]+s for s,t in zip(g,g[1:]+g)]
+

@@ -1,4 +1,4 @@
-# best: 166(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 170(xsot ovs att joking mewheni), 188(jailctf merger), 202(natte), 254(MasukenSamba), 277(jacekwl Potatoman)
+# best: 166(4atj sisyphus luke Seek mukundan) / others: 170(xsot ovs att joking mewheni), 188(jailctf merger), 202(natte), 254(MasukenSamba), 277(jacekwl Potatoman nauti)
 # =============================================================================== 166 ================================================================================
 def p(g):
  c=max(sum(g,[]),key=sum(g,[]).count)
@@ -36,3 +36,4 @@ def p(g):
 #  for i in R(w):
 #   if i%h in u or i//h in v:s[i%h][i//h]=s[u[0]][v[0]]
 #  return s
+

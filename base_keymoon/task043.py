@@ -1,4 +1,4 @@
-# best: 56(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(4atj sisyphus luke Seek), 57(intgrah jimboko awu macaque sammyuri), 57(HETHAT), 57(xsot ovs att joking mewheni), 57(mukundan)
+# best: 56(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(intgrah jimboko awu macaque sammyuri), 57(HETHAT), 57(xsot ovs att joking mewheni), 58(MasukenSamba), 58(jacekwl Potatoman nauti)
 # lambda g:[[[c*a*.08,5][b>4]for b,c in zip(_,g[0][:-1])]+[a]for*_,a in g]
 # lambda g:[b:=g[0]]+[[c*a*.08 for c in b[:-1]]+[a]for*_,a in g[1:]]
 # lambda g:g[:1]+[[c*a*.08for c in g[0][:9]]+[a]for*_,a in g[1:]]
@@ -9,3 +9,4 @@
 p=lambda g:[[v+l*s[9]*2%4for l,v in zip(g[0],s)]for s in g]
 
 # mapping = {(0,0):0, (0,5):0, (5,0):0, (5,5):2, (5,5):2}
+

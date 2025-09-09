@@ -1,4 +1,4 @@
-# best: 83(4atj sisyphus luke Seek mukundan) / others: 84(mukundan), 87(4atj sisyphus luke Seek), 95(jailctf merger), 95(xsot ovs att joking mewheni), 105(kg583)
+# best: 83(4atj sisyphus luke Seek mukundan) / others: 95(jailctf merger), 95(xsot ovs att joking mewheni), 105(jonas ryno kg583), 116(kabutack), 118(Bulmenisaurus)
 # lambda g,i=0:[[c or b"\0\2\0\4\6\3\0\1\0"[j]for c in r if(j:=j+(c==8))+1]for r in g if(i:=i+6-len({*r})*3,j:=i)]
 # ======================================= 83 ======================================
 # lambda g,i=0:[[c or b"x020463010"[j]&7for c in r if(j:=j+(c>0))+1]for r in g if(i:=i+r[0]//8*3,j:=i)]
@@ -18,3 +18,4 @@ p=lambda g,i=0:[(i:=i+r[0],j:=i)and[c and(j:=j+3)%1+8or 586768>>j&7for c in r]fo
 # 0b000_001_000_011_110_100_000_010_000
 # 0b000_001_000_11_110_100_00_010_000
 # sum([(c&7) << (i*3) for i, c in enumerate(b"02004630010")])
+

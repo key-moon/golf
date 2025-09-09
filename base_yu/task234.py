@@ -1,4 +1,4 @@
-# best: 118(jailctf merger) / others: 120(4atj sisyphus luke Seek mukundan), 120(4atj sisyphus luke Seek), 120(xsot ovs att joking mewheni), 136(intgrah jimboko awu macaque sammyuri), 137(natte)
+# best: 118(jailctf merger) / others: 120(4atj sisyphus luke Seek mukundan), 120(xsot ovs att joking mewheni), 136(intgrah jimboko awu macaque sammyuri), 137(natte), 169(MasukenSamba)
 # ======================================================= 118 ========================================================
 def p(g):
  for _ in 0,1:
@@ -16,3 +16,4 @@ def p(g):
 #   g=g*b+[g[0]]*(h-len(g))+g*(1-b)
 #   *g,=map(list,zip(*g))
 #  return g
+

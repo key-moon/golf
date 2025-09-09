@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan) / others: 107(mukundan), 108(4atj sisyphus luke Seek), 108(jailctf merger), 109(xsot ovs att joking mewheni), 137(jonas ryno kg583)
+# best: 105(4atj sisyphus luke Seek mukundan) / others: 108(jailctf merger), 109(xsot ovs att joking mewheni), 137(jonas ryno kg583), 144(MasukenSamba), 161(duckyluuk)
 # ================================================= 105 =================================================
 
 
@@ -10,3 +10,4 @@ p=lambda g,c=-1,z=[0]*9,R=range:c*g or p([[sum((f:=lambda r:{(g[~k]+z)[i+j-k]for
 #  for _ in range(4):
 #   g=[[sum({(g[~k]+z)[i+j-k]for k in R(j+1)}&{(g[~k]+z)[i+j-k]for k in R(j,10)})for j in R(10)]for i in R(10)]
 #  return g
+

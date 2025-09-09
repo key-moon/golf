@@ -1,4 +1,4 @@
-# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 100(xsot ovs att joking mewheni), 103(4atj sisyphus luke Seek), 123(mukundan), 137(intgrah jimboko awu macaque sammyuri)
+# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 100(xsot ovs att joking mewheni), 132(kabutack), 137(intgrah jimboko awu macaque sammyuri), 171(jonas ryno kg583)
 # ============================================= 96 =============================================
 # def p(g):
 #  for w in range(6):
@@ -22,3 +22,4 @@ p=lambda g,c=5:((u:=[([0]*(i//(y:=c%2+2)*(c//2))+g[i%y])[:10]for i in range(10)]
 #     for i in range(h,10):
 #      g+=[[0]*(i//y*x)+g[i%y][:10-i//y*x]]
 #     return g
+

@@ -1,7 +1,8 @@
-# best: 62(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 63(jailctf merger), 64(biz), 64(xsot ovs att joking mewheni), 65(intgrah jimboko awu macaque sammyuri), 66(mukundan)
+# best: 62(4atj sisyphus luke Seek mukundan) / others: 63(jailctf merger), 64(biz), 64(xsot ovs att joking mewheni), 65(intgrah jimboko awu macaque sammyuri), 68(HETHAT)
 # ============================ 62 ============================
 # ============================================================34567890
 # 34567890123456789012345678901234567890123456789012345678901234567890
 # p=lambda g:[[[2,v][any(s)*any(t)]for t,v in zip(zip(*g),s)]for s in g]
 p=lambda g:[[v+2-2*any(s)*any(t)for t,v in zip(zip(*g),s)]for s in g]
 # p=lambda g:[[(v-2)*any(s)*any(t)+2for t,v in zip(zip(*g),s)]for s in g]
+

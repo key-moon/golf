@@ -1,4 +1,4 @@
-# best: 194(jailctf merger) / others: 207(4atj sisyphus luke Seek mukundan), 207(4atj sisyphus luke Seek), 243(xsot ovs att joking mewheni), 366(MasukenSamba), 396(jacekwl Potatoman)
+# best: 194(jailctf merger) / others: 207(4atj sisyphus luke Seek mukundan), 243(xsot ovs att joking mewheni), 327(MasukenSamba), 396(jacekwl), 396(jacekwl Potatoman nauti)
 # ============================================================================================= 194 ==============================================================================================
 def p(g):
  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)
@@ -23,3 +23,4 @@ def p(g):
     U,*_,D=sorted(U)
     if any({*d}=={C[k]}and len(d)==sum(g,[]).count(C[k])for k in range(3)):
      return[[[b,c][v==c]for v in s[L:R+1]]for s in g[U:D+1]]
+

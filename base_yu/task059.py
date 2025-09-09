@@ -1,4 +1,4 @@
-# best: 156(jailctf merger) / others: 167(4atj sisyphus luke Seek mukundan), 167(xsot ovs att joking mewheni), 167(mukundan), 176(4atj sisyphus luke Seek), 186(intgrah jimboko awu macaque sammyuri)
+# best: 156(jailctf merger) / others: 167(4atj sisyphus luke Seek mukundan), 167(xsot ovs att joking mewheni), 186(intgrah jimboko awu macaque sammyuri), 199(Yuchen20), 199(jonas ryno kg583)
 def p(g):
  R=range(11)
 #  t=[sorted(sum([s[j&12:][:3]for s in g[i&12:][:3]],[]))for i in R for j in R]
@@ -13,3 +13,4 @@ def p(g):
 #  return[[(g[i][j]==5)*5or(t[i//4*3+j//4]==max(t))*(sum({*sum(g,[])})-5)for j in S]for i in S]
 # #  t=[sum([s[j:j+3]for s in g[i:i+3]],[])for i in R for j in R]
 # #  return[[(g[i][j]==5)*5or(sum(t[i//4*3+j//4])==max(map(sum,t)))*max(max(t))for j in S]for i in S]
+

@@ -1,5 +1,6 @@
-# best: 78(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 79(intgrah jimboko awu macaque sammyuri), 87(mukundan), 95(natte), 97(MasukenSamba), 152(J&R)
+# best: 78(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 79(intgrah jimboko awu macaque sammyuri), 95(natte), 97(MasukenSamba), 152(J&R), 152(jonas ryno kg583)
 # ==================================== 78 ====================================
 # p=lambda g,c=4:c and p([[y or(x==1)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
 # import re;p=lambda g,c=4:c and p([*zip(*eval(re.sub("3, 2","8,0",str(g)))[::-1])],c-1)or g
 p=lambda g,c=-3:c*g or[*zip(*eval(str(p(g,c+1)).replace("3, 2","8,0"))[::-1])]
+

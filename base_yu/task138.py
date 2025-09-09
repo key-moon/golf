@@ -1,4 +1,4 @@
-# best: 104(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, xsot ovs att joking mewheni) / others: 107(jailctf merger), 114(mukundan), 149(natte), 154(MasukenSamba), 174(jonas ryno kg583)
+# best: 104(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 107(jailctf merger), 149(natte), 154(MasukenSamba), 174(jonas ryno kg583), 175(JRK)
 # ================================================ 104 =================================================
 
 # p=lambda g,c=-79:c*g or p([*zip(*g[1-all(g[0]):][::-1])],c+1)
@@ -20,3 +20,4 @@ p=lambda g,c=79:-c*g or p([[(s[0]in s[i:])*(c<4)*s[0]|v for i,v in enumerate(s)]
 #      s[:j]=[s[0]]*j
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
+

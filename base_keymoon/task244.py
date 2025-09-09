@@ -1,4 +1,4 @@
-# best: 64(xsot ovs att joking mewheni) / others: 65(4atj sisyphus luke Seek mukundan), 65(4atj sisyphus luke Seek), 65(jailctf merger), 66(natte), 74(Yuchen20)
+# best: 64(xsot ovs att joking mewheni) / others: 65(4atj sisyphus luke Seek mukundan), 65(jailctf merger), 66(natte), 74(Yuchen20), 75(HETHAT)
 # lambda g:(k:=                      )and[s[::-k]for s in g[::k]]
 # lambda g:(k:=1+g[0].index([s[0]for s in g if {*s}=={s[0]}][0]))and[s[::-k]for s in g[::k]]
 # lambda g:(k:=[i+1for i,v in enumerate(g[0])if v!=g[0][0]][0])and[s[::-k]for s in g[::k]]
@@ -13,3 +13,4 @@
 # f p(g):k=1+g.index(min(g,key=set));return[s[::-k]for s in g[::k]]
 # lambda g:[r*0!=0and p(r)[::-1]or r for r in g if g!=(g:=r)][::2]
 p=lambda g,c=2:g*0!=0and[p(g:=r,-2)for r in g if g!=r][::c]or g
+

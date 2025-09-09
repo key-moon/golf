@@ -1,4 +1,4 @@
-# best: 78(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 81(biz), 81(jailctf merger), 81(xsot ovs att joking mewheni), 81(mukundan), 90(intgrah jimboko awu macaque sammyuri)
+# best: 78(4atj sisyphus luke Seek mukundan) / others: 81(biz), 81(jailctf merger), 81(xsot ovs att joking mewheni), 90(intgrah jimboko awu macaque sammyuri), 97(MasukenSamba)
 # 囲まれた部分の抽出
 #  for _ in 1,2:g=[*map(list,zip(*filter(lambda x:a in x,g)))]
 # 112
@@ -18,3 +18,4 @@
 # lambda g:[r[r.index(a):][:k(a)//4+1]for r in g if(a:=min(s:=sum(g,[]),key=(k:=s.count)))in r]
 # ==================================== 78 ====================================
 p=lambda g:[r[r.index(a):][:k(a)//4+1]for r in g if(a:=min(s:=sum(g,[]),key=(k:=s.count)))in r]
+

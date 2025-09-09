@@ -1,4 +1,4 @@
-# best: 141(xsot ovs att joking mewheni) / others: 158(4atj sisyphus luke Seek mukundan), 158(mukundan), 166(4atj sisyphus luke Seek), 177(jailctf merger), 190(natte)
+# best: 141(xsot ovs att joking mewheni) / others: 158(4atj sisyphus luke Seek mukundan), 177(jailctf merger), 190(natte), 239(MasukenSamba), 246(jacekwl Potatoman nauti)
 # =================================================================== 141 ===================================================================
 E,R=enumerate,range
 def p(g):
@@ -111,3 +111,4 @@ def p(g):
 #        g[k][j]=2
 #   *g,=map(list,zip(*g))
 #  return g
+

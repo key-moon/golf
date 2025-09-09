@@ -1,4 +1,4 @@
-# best: 141(xsot ovs att joking mewheni) / others: 144(natte), 148(4atj sisyphus luke Seek mukundan), 148(jailctf merger), 148(intgrah jimboko awu macaque sammyuri), 148(mukundan)
+# best: 141(xsot ovs att joking mewheni) / others: 144(natte), 148(4atj sisyphus luke Seek mukundan), 148(jailctf merger), 148(intgrah jimboko awu macaque sammyuri), 163(hyacinth)
 # =================================================================== 141 ===================================================================
 # def p(g):
 #  R=range(len(g))
@@ -42,3 +42,4 @@ def p(g,R=range):
 #    if max(abs(i-s[2]),abs(j-s[3]))%(s[3]-s[1])==0:
 #     g[i][j]=g[s[0]][s[1]]
 #  return g
+

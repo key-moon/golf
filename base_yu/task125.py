@@ -1,4 +1,4 @@
-# best: 126(jailctf merger) / others: 130(4atj sisyphus luke Seek mukundan), 132(4atj sisyphus luke Seek), 141(xsot ovs att joking mewheni), 158(mukundan), 214(natte)
+# best: 126(jailctf merger) / others: 130(4atj sisyphus luke Seek mukundan), 141(xsot ovs att joking mewheni), 214(natte), 215(jacekw), 215(jacekwl)
 # =========================================================== 126 ============================================================
 p=lambda g,c=-15,l=8:c*g or p([*zip(*[[x-(4*(l|y|2==6)+5*(c>-4<y%3<1))*((l:=x)>7)for x,y in zip(*t)]for t in zip(g,g[:1]+g)][::-1])],c+1)
 
@@ -12,4 +12,5 @@ p=lambda g,c=-15,l=8:c*g or p([*zip(*[[x-(4*(l|y|2==6)+5*(c>-4<y%3<1))*((l:=x)>7
 #   g=[[x-(4*(l|y|2==6)+5*(_>15>1>y%3))*((l:=x)>7)for x,y in zip(*c)]for c in zip(g,[[8]*15]+g)]
 #   g=[*zip(*g[::-1])]
 #  return g
+
 

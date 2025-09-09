@@ -1,4 +1,4 @@
-# best: 131(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 153(xsot ovs att joking mewheni), 159(mukundan), 172(jailctf merger), 177(biz), 187(natte)
+# best: 131(4atj sisyphus luke Seek mukundan) / others: 153(xsot ovs att joking mewheni), 172(jailctf merger), 177(biz), 187(natte), 220(jonas ryno kg583)
 # ============================================================== 131 ==============================================================
 
 p=lambda g:(0in max(g,key=sum))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerate(s):\n if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v"))[0]for s in g]or[*zip(*p([*zip(*g)]))]
@@ -27,3 +27,4 @@ p=lambda g:(0in max(g,key=sum))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerat
 #    g=t
 #   *g,=map(list,zip(*g))
 #  return g
+

@@ -1,4 +1,4 @@
-# best: 106(jailctf merger) / others: 107(4atj sisyphus luke Seek mukundan), 107(4atj sisyphus luke Seek), 123(mukundan), 127(natte), 127(xsot ovs att joking mewheni)
+# best: 106(jailctf merger) / others: 107(4atj sisyphus luke Seek mukundan), 127(natte), 127(xsot ovs att joking mewheni), 203(MasukenSamba), 218(Potatoman)
 # ================================================= 106 ==================================================
 
 # p=lambda g,R=range(12):((g[6][0]==2)and(a:=g[0].count(2))and[[g[i][j]or(abs(i-(1|(d:=-(8in g[-1])))*(g[d].index(8)-a)%11)+a==j)*3 for j in R]for i in R])or[*zip(*p([*zip(*g[::-1])]))][::-1]
@@ -49,3 +49,4 @@ p=lambda g,c=-59,R=range(12):c*g or p([*zip(*[[g[i][j]or(i>1<j and g[i-1][j-1]>2
 #       s=g[i+u*~-(g[i-u][j]&2)]
 #       s[w]=s[w:=j+v*~-(g[i][j-v]&2)] or 3
 #  return g
+

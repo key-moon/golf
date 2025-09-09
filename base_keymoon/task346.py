@@ -1,4 +1,4 @@
-# best: 58(jailctf merger) / others: 68(4atj sisyphus luke Seek mukundan), 68(4atj sisyphus luke Seek), 68(xsot ovs att joking mewheni), 74(intgrah jimboko awu macaque sammyuri), 77(jacekwl Potatoman nauti)
+# best: 58(jailctf merger) / others: 68(4atj sisyphus luke Seek mukundan), 68(xsot ovs att joking mewheni), 74(intgrah jimboko awu macaque sammyuri), 77(jacekwl Potatoman nauti), 114(jonas ryno kg583)
 # import re;p=lambda g:[[*{*sum(g,[])}-{0,int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ",str(g))[1])}]]
 # import re;p=lambda g:[[int(({*(s:=str(g))}-{*" ,0[]",re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1",s)[1]}).pop())]]
 # import re;p=lambda g:[[int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ((?!\1).)",str(g))[2])]]
@@ -51,3 +51,4 @@ p=lambda g:[[min(a:=sum(g+g[1:-3:3],g[3]),key=a.count)]]
 #               print(f"{prob} {wa}: g[{i}:{j}:{k}]*{c1},g[{l}]*{c2}")
 #               if prob == 0:
 #                 input("> ")
+

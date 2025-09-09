@@ -1,4 +1,4 @@
-# best: 144(xsot ovs att joking mewheni) / others: 145(natte), 145(4atj sisyphus luke Seek mukundan), 145(jailctf merger), 149(4atj sisyphus luke Seek), 159(mukundan)
+# best: 144(xsot ovs att joking mewheni) / others: 145(natte), 145(4atj sisyphus luke Seek mukundan), 145(jailctf merger), 228(MasukenSamba), 260(Yuchen20)
 # ==================================================================== 144 =====================================================================
 import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{%d}.{4})*.{%d}0, ([1-9]), \2.{%d}.{%d}.0, ([1-9]))"%((len(g)*3+1,)*4),r"\3",str(p(g,c+1))))[::-1])]
 
@@ -41,3 +41,4 @@ import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{%d}.{4})*.{%d}0, ([1
 #      y=i+[1,-1,1,-1][k]*m
 #      if y in R(n)and x in R(n):u[y][x]=t[0]
 #  return u
+

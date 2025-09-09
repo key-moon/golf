@@ -1,4 +1,4 @@
-# best: 64(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 74(xsot ovs att joking mewheni), 76(natte), 78(mukundan), 80(dbdr), 85(Yuchen20)
+# best: 64(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 74(xsot ovs att joking mewheni), 76(natte), 80(dbdr), 85(Yuchen20), 86(kabutack)
 # ============================= 64 =============================
 # p=lambda g:[[v or(abs(j%12-6)+i<2 or abs((j+6)%12-6)<i)*4 for j,v in enumerate(g[i])]for i in range(3)]
 
@@ -40,3 +40,4 @@ p=lambda g,d=0:[[(v^-((d:=d+v)%3%2))%5for v in s]*(d:=1)for s in g]
 #  1:1
 #  5:1
 #  6:2
+

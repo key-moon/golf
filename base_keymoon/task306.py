@@ -1,4 +1,4 @@
-# best: 71(jailctf merger) / others: 75(xsot ovs att joking mewheni), 82(4atj sisyphus luke Seek mukundan), 82(4atj sisyphus luke Seek), 83(biz), 83(mukundan)
+# best: 71(jailctf merger) / others: 75(xsot ovs att joking mewheni), 82(4atj sisyphus luke Seek mukundan), 83(biz), 88(natte), 99(duckyluuk)
 # 128
 # p=lambda g:[[max(g[I][J] for I in range(i%10,len(g),10) for J in range(j%10,len(r),10)) for j in range(len(r))]for i,r in enumerate(g)]
 # 109
@@ -9,3 +9,4 @@ p=lambda g:[[max(c for r in g[i%10::10] for c in r[j%10::10]) for j in range(len
 #   print(f"h={len(g)}, w={len(g[0])}")
 #   print([[*zip(*zip(*[iter(l+[0])]*(len(l)//9)))] for l in g])
 #   return[[(j:=-~j) and max(c for r in l for c in r[j%10::10]) for _ in g[0]]for l in zip(*zip(*([iter(g)]*10)))]
+

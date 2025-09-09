@@ -1,4 +1,4 @@
-# best: 55(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 56(mukundan), 57(intgrah jimboko awu macaque sammyuri), 57(xsot ovs att joking mewheni), 75(natte), 92(jonas ryno kg583)
+# best: 55(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(intgrah jimboko awu macaque sammyuri), 57(xsot ovs att joking mewheni), 75(natte), 92(jonas ryno kg583), 110(Bulmenisaurus)
 # lambda g:[p,list][g==(a:=[*zip(*[g:=r for r in g if g!=r])])](a)
 # lambda g:[list,p][g*0==[]]((*zip(*[g:=r for r in g if g!=r]),))
 # lambda g,c=-2:g*c or p([*zip(*[g:=r for r in g if g!=r])],c+1)
@@ -7,3 +7,4 @@
 # 類題: 218
 # ========================= 55 ========================
 p=lambda g,c=-1:g*c or[g:=r for r in zip(*p(g,c+1))if g!=r]
+

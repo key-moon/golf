@@ -1,4 +1,4 @@
-# best: 148(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 154(mukundan), 157(4atj sisyphus luke Seek), 172(xsot ovs att joking mewheni), 211(natte), 229(jacekwl Potatoman)
+# best: 148(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 172(xsot ovs att joking mewheni), 211(natte), 229(MasukenSamba), 242(Potatoman), 242(jacekwl Potatoman nauti)
 # ====================================================================== 148 =======================================================================
 
 
@@ -51,3 +51,4 @@ def p(g):
 #       if 0<g[y][x]!=g[i][j]:
 #        g[i*2-y][x]=g[y][j*2-x]=g[i*2-y][j*2-x]=g[y][x]
 #     return g
+

@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, xsot ovs att joking mewheni) / others: 107(natte), 108(kg583), 108(jonas ryno kg583), 108(JRK), 110(jailctf merger)
+# best: 105(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 107(natte), 108(jonas ryno kg583), 108(JRK), 110(jailctf merger), 117(MasukenSamba)
 # ================================================= 105 =================================================
 # p=lambda g:(s:=[i for i,v in enumerate(sum(g,[]))if v],y:=min(i//(w:=len(g[0]))for i in s),x:=min(i%w for i in s))and[[g[y+i][x+j]&g[y+i%3*3][x+j%3*3]for j in range(9)]for i in range(9)]
 
@@ -12,3 +12,4 @@ def p(g,R=range(9)):
  return[[u[i][j]&u[i%3*3][j%3*3]for j in R]for i in R]
 
 # p=lambda g,R=range(9):(u:=[[v for*t,v in zip(*g,s)if 5in t]for s in g if 5in s])and[[u[i][j]&u[i%3*3][j%3*3]for j in R]for i in R]
+

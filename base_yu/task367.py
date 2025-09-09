@@ -1,4 +1,4 @@
-# best: 129(jailctf merger, xsot ovs att joking mewheni) / others: 138(4atj sisyphus luke Seek mukundan), 138(4atj sisyphus luke Seek), 227(MasukenSamba), 339(jonas ryno kg583), 342(JRK)
+# best: 129(jailctf merger, xsot ovs att joking mewheni) / others: 138(4atj sisyphus luke Seek mukundan), 227(MasukenSamba), 339(jonas ryno kg583), 342(JRK), 343(J&R)
 # ============================================================= 129 =============================================================
 def p(g):
  for d in range(len(g)+1):
@@ -22,3 +22,4 @@ def p(g):
 #        for s in g[u:d]:
 #         s[l:r]=[4]*(r-l)
 #  return g
+

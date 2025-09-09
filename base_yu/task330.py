@@ -1,4 +1,4 @@
-# best: 134(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 135(xsot ovs att joking mewheni), 145(jailctf merger), 203(kdmitrie), 213(MasukenSamba), 215(intgrah jimboko awu macaque sammyuri)
+# best: 134(4atj sisyphus luke Seek mukundan) / others: 135(xsot ovs att joking mewheni), 145(jailctf merger), 203(kdmitrie), 213(MasukenSamba), 215(intgrah jimboko awu macaque sammyuri)
 # =============================================================== 134 ================================================================
 def p(g):
  for i in range(10):
@@ -35,3 +35,4 @@ def p(g):
 #    if g[i][j]==5 and p(g,i,j,1)==6:
 #     p(g,i,j,2)
 #  return g
+

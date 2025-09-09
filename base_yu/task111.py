@@ -1,4 +1,4 @@
-# best: 60(4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni, 4atj sisyphus luke Seek, jailctf merger) / others: 61(kg583), 61(jonas ryno kg583), 61(JRK), 68(MasukenSamba), 70(mukundan)
+# best: 60(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 61(jonas ryno kg583), 61(JRK), 68(MasukenSamba), 73(kabutack), 75(natte)
 # =========================== 60 ===========================
 # lambda g:(u:=sum(g,[]).index(5))and[g[u//10+1+i][u%10-1:u%10+2]for i in range(3)]
 # lambda g:(u:=sum(g,[]).index(5))and[g[u//10+i][u%10-1:][:3]for i in range(1,4)]
@@ -11,3 +11,4 @@
 # lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in(12,22,32)]
 # lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in b"123"]
 p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in b"\x0c\x16\x20"]
+

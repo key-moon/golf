@@ -1,4 +1,4 @@
-# best: 116(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, xsot ovs att joking mewheni) / others: 121(mukundan), 132(natte), 138(J&R), 138(jonas ryno kg583), 139(JRK)
+# best: 116(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 132(natte), 138(J&R), 138(jonas ryno kg583), 139(JRK), 149(intgrah jimboko awu macaque sammyuri)
 # ====================================================== 116 =======================================================
 
 # p=lambda g,t=[0,0]:[
@@ -18,3 +18,4 @@
 # p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]]*(t==[]),c][1]or([2*(t[0]<i<t[1])for i in R]if t else c)for c in g]
 # p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or([2*(t[0]<i<t[1])for i in R]if t else c)for c in g]
 p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or[2*([]<t!=t[0]<i<t[1])for i in R]for c in g]
+
