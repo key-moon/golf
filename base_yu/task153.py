@@ -2,7 +2,7 @@
 # =============================================================== 133 ===============================================================
 
 # p=lambda g,z=[0]*10:[u for I in range(6400)if all(sum(u:=[[[0,*[z,*g,z][I//640+u],0][I//64%10+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))][0]
-p=lambda g,z=[0]*10:max(all(sum(u:=[[[0,*[z,*g,z][I//640+u],0][I//64%10+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))*u for I in range(6400))
+p=lambda g,z=[0]*10:max(all(sum(u:=[[([z,*g,z][I//576+u]+z)[I//64%9+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))*u for I in range(5760))
 # p=lambda g,z=[0]*10:[u for I in range(80)for J in range(80)if all(sum(u:=[[[0,*[z,*g,z][I//8+u],0][J//8+v]^g[I%8+u][J%8+v]for v in range(3)]for u in range(3)],[]))][0]
 
 # def p(g):
