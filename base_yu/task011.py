@@ -6,3 +6,4 @@
 p=lambda g:min([(8in sum(v:=[[g[[i//4+t%3*4,3][i%4>2]][[j//4+t//3*4,3][j%4>2]]for j in range(11)]for i in range(11)],g),v)for t in range(9)])[1]
 
 
+

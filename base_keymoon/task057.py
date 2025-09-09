@@ -4,3 +4,4 @@
 p=lambda g:[r*2for r in zip(*filter(max,zip(*g)))if max(r)]
 
 
+

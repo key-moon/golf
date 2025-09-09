@@ -9,3 +9,4 @@ p=lambda g,c=-35:g*c or p([*zip(g.pop((max(g[i:=g.index(max(g,key=max))-1])*9<i)
 # max([8,2,1]+g,key=max)
 
 
+

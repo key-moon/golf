@@ -9,3 +9,4 @@ def p(g):
  return[[(i//3*c+j<27-c)*g[i%3][j%3]for j in R]for i in R]
 
 
+

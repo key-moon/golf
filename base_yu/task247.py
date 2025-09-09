@@ -13,3 +13,4 @@
 def p(g,c=9):a=[*sum(zip(*g),())];return(X:=[v for v in a*1if(a.count(a.pop(0))==c)*v])and-~c*[X]or p(g,c-1)
 
 
+

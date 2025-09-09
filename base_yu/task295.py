@@ -21,3 +21,4 @@ p=lambda g:[s:=g[0]]+[(s:=s[:1]+s[:-1])for _ in s[1:len(s)//2]]
 #  return g[:n//2]
 
 
+

@@ -12,3 +12,4 @@ p=lambda g,c=-1,z=[0]*9,R=range:c*g or p([[sum((f:=lambda r:{(g[~k]+z)[i+j-k]for
 #  return g
 
 
+

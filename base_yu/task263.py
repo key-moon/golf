@@ -12,3 +12,4 @@ p=lambda g:len(g)>3and(f:=sorted([(sum(t:=g[i:i+3],g[0]).count(0),t)for i in ran
 #  return f[-(f[0][0]==f[1][0])][1]
 
 
+

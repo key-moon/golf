@@ -6,3 +6,4 @@
 p=lambda g,c=35:-c*g or[*zip(*eval(str(p(g,c-1)).replace(*[f"1, {1+c%3}","2","2,2","1"][c<1::2])))][::-1]
 
 
+

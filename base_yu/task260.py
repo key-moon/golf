@@ -36,3 +36,4 @@ def p(g,R=range(10)):
 #  return[[c*(i-j in t)for j in range(10)]for i in range(10)]
 
 
+

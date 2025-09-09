@@ -18,3 +18,4 @@ p=lambda g,c=-7:c*g or p([[v*(85<sum(g,[0,*s][i:i+3]*40).count(v))for i,v in enu
 #  return g
 
 
+

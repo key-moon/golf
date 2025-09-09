@@ -5,3 +5,4 @@ p=lambda g:eval('eval("max(sum(g:=[[0]*2]+g,[])[2::3]),"*7),'*7)
 
 
 
+

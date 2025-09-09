@@ -4,3 +4,4 @@
 p=lambda g,R=range:[[max(g[k//9+i][k%9+j]for k in R(81)if g[k//9+1][k%9+1]==5)for j in R(3)]for i in R(3)]
 
 
+

@@ -16,3 +16,4 @@ p=lambda g,c=15:g*-c or[*zip(*eval(str(p(g,c-1)).replace(*["0","3, 3","3, 2","1,
 #3 X12
 
 
+

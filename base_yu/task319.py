@@ -25,3 +25,4 @@ def p(g):
      return[[[b,c][v==c]for v in s[L:R+1]]for s in g[U:D+1]]
 
 
+

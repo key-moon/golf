@@ -14,3 +14,4 @@ def p(g):
  return [(n:=[0,*n[:-1]])[1:]for x in n[:-1]]
 
 
+

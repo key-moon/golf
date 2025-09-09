@@ -1,4 +1,4 @@
-# best: 143(xsot ovs att joking mewheni) / others: 147(jailctf merger), 148(4atj sisyphus luke Seek mukundan), 151(duckyluuk), 193(MasukenSamba), 224(natte)
+# best: 143(xsot ovs att joking mewheni) / others: 145(jailctf merger), 148(4atj sisyphus luke Seek mukundan), 151(duckyluuk), 193(MasukenSamba), 224(natte)
 # ==================================================================== 143 ====================================================================
 
 p=lambda g,c=-3:c*g or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]*9+g[:(i:=g.index(u)):-1]+g[i+1:])[-10:]).replace(*"03"))or g)[::-1])],c+1)
@@ -43,5 +43,6 @@ p=lambda g,c=-3:c*g or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]
 #     g=[(j<=i)*(i*2+1-j<10)and g[i*2+1-j]or g[j]for j in range(10)]
 #   *g,=map(list,zip(*g[::-1]))
 #  return [[v or 3 for v in s]for s in g]
+
 
 

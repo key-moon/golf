@@ -7,3 +7,4 @@ def p(g):
  return[*zip(*[[c]*-v+[0]*(v-min(C)[0])for v,c in C])]
 
 
+

@@ -18,3 +18,4 @@ def p(g):
  return[s[(k%n>m)*-m:][:m]for s in g[(k>n*m)*-m:][:m]]
 
 
+

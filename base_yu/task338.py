@@ -20,3 +20,4 @@ def p(g):
 #  return [[(v==3)*3 for v in s]for s in g]
 
 
+

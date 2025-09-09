@@ -17,3 +17,4 @@ def p(g):
 #  return [[(y-x==i-j or y+x==i+j)*c for j in R]for i in R]
 
 
+

@@ -10,3 +10,4 @@ def p(g):
  return[[g[i][j]and g[-(i*2>n)][-(j*2>n)]for j in R]for i in R]
 
 
+

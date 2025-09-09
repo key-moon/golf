@@ -66,3 +66,4 @@ p=lambda g,c=-7:c*g or p([*zip(*[[((s[i]>0<t[i-1]==t[i])*t[i]or s[i])*(c<-1 or m
 #  return g
 
 
+

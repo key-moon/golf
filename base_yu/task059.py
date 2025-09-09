@@ -15,3 +15,4 @@ def p(g):
 # #  return[[(g[i][j]==5)*5or(sum(t[i//4*3+j//4])==max(map(sum,t)))*max(max(t))for j in S]for i in S]
 
 
+

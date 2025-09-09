@@ -9,3 +9,4 @@ p=lambda g:[[~-a&2for a in map(max,g.pop(3),s)] for s in g]
 # mapping = { 0: 2, 9: 0, 1: 0 }
 
 
+

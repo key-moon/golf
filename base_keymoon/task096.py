@@ -183,3 +183,4 @@ def	p(f,s=4):
 	return	all([g,t,{*sum(f,[])}=={*u,d},d	in	f[2]])and	o+o[:-1][::-1]or p(f,s-1)
 
 
+

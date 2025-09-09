@@ -11,3 +11,4 @@ def p(g):
 #  return[[g[i+f*n][j]and g[y+n-f*n][x]for x in R for j in R]for y in R for i in R]
 
 
+

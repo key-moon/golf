@@ -9,3 +9,4 @@ def p(g,i=0):
 # p=lambda g:exec("for i,s in enumerate(g):s[i]=s[~i]=0")or g
 
 
+

@@ -3,3 +3,4 @@
 p=lambda g:[*zip(*g)]
 
 
+

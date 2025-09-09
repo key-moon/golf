@@ -17,3 +17,4 @@ def p(g):
  return [[[0,n][g[i][j]==s]for j in e(g)] for i in e([*zip(*g)])]
 
 
+

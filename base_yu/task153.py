@@ -33,3 +33,4 @@ def p(g,R=(0,1,2)):
 #  return u
 
 
+

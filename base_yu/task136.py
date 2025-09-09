@@ -23,3 +23,4 @@
 p=lambda g,R=range(1,9):exec("for j in R:i=%s;b=g[i][j];a=b**b+~b;g[i+a][j+a]|=b&g[i-a][j-a]\n"*8%(*R,)*9)or g
 
 
+

@@ -1,5 +1,5 @@
-# best: 107(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(xsot ovs att joking mewheni), 126(2F), 126(biz), 141(MasukenSamba)
-# ================================================== 107 ==================================================
+# best: 105(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(xsot ovs att joking mewheni), 126(2F), 126(biz), 141(MasukenSamba)
+# ================================================= 105 =================================================
 
 p=lambda g,c=-3:c*g or p([*zip(*[(t:=0)or[(t:=[max(t,v),t>0][v==1])%5|v for v in s][::-1]for s in zip(*g)])],c+1)
 
@@ -26,5 +26,6 @@ p=lambda g,c=-3:c*g or p([*zip(*[(t:=0)or[(t:=[max(t,v),t>0][v==1])%5|v for v in
 # (2,0):2
 # (5,0):5
 # (1,0):1
+
 
 

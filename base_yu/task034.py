@@ -7,3 +7,4 @@ def p(g):
  return[[sum({*u}-{2})*(v>0 or g[Y+(r>Y)][X+(c>X)]==2>min(abs(r-c-Y+X),abs(r+c-Y-X-1)))for c,v in enumerate(R)]for r,R in enumerate(g)]
 
 
+

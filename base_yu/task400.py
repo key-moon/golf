@@ -1,4 +1,4 @@
-# best: 67(4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(xsot ovs att joking mewheni), 70(jacekwl Potatoman nauti), 80(kabutack), 81(jonas ryno kg583), 82(duckyluuk)
+# best: 67(4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(jacekwl Potatoman nauti), 68(xsot ovs att joking mewheni), 80(kabutack), 81(jonas ryno kg583), 82(duckyluuk)
 # =============================== 67 ==============================
 # 351と同じ問題
 #flattenして点対称の位置を集める
@@ -12,5 +12,6 @@ p=lambda g:[(t:=sum(g,[]))[~t.index(1)-i*24::-1][:5]for i in range(5)]
 #  k=t.index(1)
 #  return [t[~k-i*24::-1][:5] for i in range(5)]
 #  return [t[~k-i*24-4:][:5][::-1] for i in range(5)]
+
 
 

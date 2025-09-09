@@ -1,4 +1,4 @@
-# best: 149(2F, biz) / others: 156(4atj sisyphus luke Seek mukundan), 157(intgrah jimboko awu macaque sammyuri), 161(MasukenSamba), 161(garrymoss), 161(jacekwl Potatoman nauti)
+# best: 149(2F, biz) / others: 156(4atj sisyphus luke Seek mukundan), 157(jailctf merger), 157(intgrah jimboko awu macaque sammyuri), 161(MasukenSamba), 161(kabutack)
 # ======================================================================= 149 =======================================================================
 # def p(g):
 #  d=lambda i,j,k:max(abs(j*2+1-i//21),abs(k*2+1-i%21))
@@ -123,5 +123,6 @@ p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-I//18%21),abs(j*2+1-I//378%21))%(I%3+4
 #  for i in range(100):
 #   g[i%10][i//10]=u[d(b,i)%(y-x)]or 5
 #  return g
+
 
 

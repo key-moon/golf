@@ -8,3 +8,4 @@ def p(g):
 #  return[[x and(t==a)*2+(t==b)for x,t in zip(s,zip(*g))]for s in g]
 
 
+

@@ -17,3 +17,4 @@ p=lambda g:[s[:4]+u[2::-1]+t[3::-1]for*u,s,t in zip(*g,g,g[::-1])]
 # p=lambda g:f((g:=f(g)[:4])+f((g:=f(f(g)))[1:])+g)
 
 
+

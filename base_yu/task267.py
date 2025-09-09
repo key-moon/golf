@@ -5,3 +5,4 @@ p=lambda g:[[0]+[v and g[6][0]for v in s[1:]]for s in g]
 # p=lambda g:[[(v>0)*g[6][0]for v in s]for s in g[:6]+g[:1]]
 
 
+

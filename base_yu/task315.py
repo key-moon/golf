@@ -11,3 +11,4 @@ p=lambda g:[[y*(x>1)for x in t for y in s]for t in g for s in g]
 # }[(x,y)]
 
 
+

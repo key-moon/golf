@@ -23,3 +23,4 @@ p=lambda g,i=0:[(i:=i+r[0],j:=i)and[[586768>>(j:=j+c//8*3)&7,c][c>0]for c in r]f
 
 
 
+

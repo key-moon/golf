@@ -23,3 +23,4 @@ p=lambda g,E=enumerate:[[v and(v,4)[min(i,j)%2]for j,v in E(s)]for i,s in E(g)]
 #  return g
 
 
+

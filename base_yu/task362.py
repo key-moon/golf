@@ -12,3 +12,4 @@ def p(g):
  return[s[k:9]+-~k*s[:1]for s in g[-k:]+g[:-k]]
 
 
+

@@ -5,3 +5,4 @@
 p=lambda g,R=range(11):[[(g[i][j]==5)*5or sum((g[i//4+k][j//4+l]==4)*g[i%4+k][j%4+l]for k in(0,4,8)for l in(0,4,8))for j in R]for i in R]
 
 
+

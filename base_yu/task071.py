@@ -28,3 +28,4 @@ p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if 
 #    return [[~(g[i][j]not in(0,c)and~g[i][p-j]or~g[i][j])for j in R(16)]for i in R(16)]
 
 
+

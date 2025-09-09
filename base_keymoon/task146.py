@@ -8,3 +8,4 @@
 p=lambda g:p(g[3:])if(a:=g[:3])==[*map(list,zip(*a))]else a
 
 
+

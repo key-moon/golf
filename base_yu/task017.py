@@ -29,3 +29,4 @@ p=lambda g,R=range(21):[u for d in range(4,10)if(u:=[[max(max(g[i%d::d])[j%d::d]
 #    return [[u[(i%d,j%d)]for j in range(21)]for i in range(21)]
 
 
+

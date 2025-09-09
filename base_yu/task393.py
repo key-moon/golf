@@ -9,3 +9,4 @@ p=lambda g:[*zip(sorted({*(u:=sum(g,[]))},key=u.count)[2::-1])]
 # p=lambda g:[*map(lambda x:[x],sorted({*(u:=sum(g,[]))},key=u.count)[2::-1])]
 
 
+

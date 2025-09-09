@@ -1,5 +1,5 @@
-# best: 148(xsot ovs att joking mewheni) / others: 149(4atj sisyphus luke Seek mukundan), 157(jacekwl Potatoman nauti), 186(jailctf merger), 196(intgrah jimboko awu macaque sammyuri), 198(natte)
-# ====================================================================== 148 =======================================================================
+# best: 146(jailctf merger) / others: 148(xsot ovs att joking mewheni), 149(4atj sisyphus luke Seek mukundan), 157(jacekwl Potatoman nauti), 196(intgrah jimboko awu macaque sammyuri), 198(natte)
+# ===================================================================== 146 ======================================================================
 
 def p(g,x=0):
  y=g.index(max(g,key=any))
@@ -41,5 +41,6 @@ def p(g,x=0):
 #         g[2*pr-i][2*pc-j]=v
 #         g[pr+(j-pc)][pc-(i-pr)]=v
 #     return g
+
 
 

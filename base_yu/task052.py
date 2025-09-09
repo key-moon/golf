@@ -4,3 +4,4 @@
 p=lambda g:[[len({*s})%2*5]*3for s in g]
 
 
+

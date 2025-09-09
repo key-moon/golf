@@ -6,3 +6,4 @@ def p(g):
  return[[v==8 and x.pop(0)for v in s]for s in g]
 
 
+

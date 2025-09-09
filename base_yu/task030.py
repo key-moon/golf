@@ -12,3 +12,4 @@ p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range
 #  return[*zip(*[s[(d:=a[max(s)]-a[1]):]+s[:d]for s in u])]
 
 
+

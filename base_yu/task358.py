@@ -5,3 +5,4 @@
 p=lambda g,c=-1:c*g or p([1<(t:=sum(map(bool,s)))and[sum(s[i%t::t])for i in range(len(s))]or s for s in zip(*g)],c+1)
 
 
+

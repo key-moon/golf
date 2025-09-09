@@ -9,3 +9,4 @@
 import re;p=lambda g,c=63:-c*g or[*zip(*eval(re.sub(*["4(?=, 0|\))",*"004"][c<1::2],str(p(g,c-1)))))][::-1]
 
 
+

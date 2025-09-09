@@ -53,3 +53,4 @@ p=lambda g:[[min(a:=sum(g+g[1:-3:3],g[3]),key=a.count)]]
 #                 input("> ")
 
 
+

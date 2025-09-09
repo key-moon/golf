@@ -13,3 +13,4 @@ p=lambda s:sum([[v*0!=0and p(v)or v]*3for v in s],[])
 # p=lambda g:[sum([[v]*3for v in g[i//3]],[])for i in range(9)]
 
 
+
