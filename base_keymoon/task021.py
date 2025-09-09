@@ -7,3 +7,4 @@ p=lambda g:g*-1*-1or[p(g:=r)for r in g if r!=g][::2]
 
 
 
+

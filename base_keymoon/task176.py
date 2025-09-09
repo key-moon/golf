@@ -127,3 +127,4 @@ p=lambda g:[(a:=v//237)and[6&(a:=v*a%1662)%5-7for _ in g[0]]for v in[8405,235057
 
 
 
+

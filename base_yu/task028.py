@@ -15,3 +15,4 @@ p=lambda g:[[c:=max(g[i-i%5^2]),*[c*(645>>i&1)]*8,c]for i in range(10)]
 
 
 
+

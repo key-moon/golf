@@ -18,3 +18,4 @@ p=lambda g,c=2:g*0!=0and[p(g:=r,-2)for r in g if g!=r][::c]or g
 
 
 
+

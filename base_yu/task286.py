@@ -25,3 +25,4 @@ p=lambda g,c=-359:c*g or[(l:=0)or[(v<1<=l%8and sum({*sum(g,[])})-8-l)+(l:=v)for 
 
 
 
+

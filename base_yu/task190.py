@@ -16,3 +16,4 @@ import re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("0(?=(.{34}([^0])){2,}, \
 
 
 
+

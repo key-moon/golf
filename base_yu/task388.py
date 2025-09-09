@@ -7,3 +7,4 @@ p=lambda g:[[v or any(t)*8for*t,v in zip(*g,s)]*2for s in g]*2
 
 
 
+

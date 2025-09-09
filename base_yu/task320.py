@@ -6,3 +6,4 @@ p=lambda g:[*zip(*[[*s][:len(s)-(u:=s.count(2)//2)]+u*[8]for s in zip(*g)])]
 
 
 
+

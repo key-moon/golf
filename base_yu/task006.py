@@ -6,3 +6,4 @@ p=lambda g:[eval("2*s.pop(0)*s[3],"*3)for s in g]
 
 
 
+

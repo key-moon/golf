@@ -18,3 +18,4 @@ p=lambda g:[*zip(*[s[(d:=(a:=[str(g).index(c)//32for c in"012,4"])[max(s)]-a[1])
 
 
 
+

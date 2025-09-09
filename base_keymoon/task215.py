@@ -11,3 +11,4 @@ p=lambda g:[max((g:=g[:2]+g)[2::3])for r in g]
 
 
 
+

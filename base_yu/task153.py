@@ -46,3 +46,4 @@ p=lambda g,z=[0]*10:max(all(sum(u:=[[([z,*g,z][I//576+u]+z)[I//64%9+v]^g[I//8%8+
 
 
 
+

@@ -14,3 +14,4 @@ p=lambda g,c=-1:c*g or(l:=[0]*len(g))and[(l,l:=r)[0]for r in[*zip(*p(g,c+1)),l]i
 
 
 
+

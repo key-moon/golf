@@ -17,3 +17,4 @@ def p(g,R=range(9)):
 
 
 
+

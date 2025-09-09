@@ -9,3 +9,4 @@ p=lambda g:min(p:=[[r[j:j+2]for r in g[i:i+2]]for i in(0,3)for j in(0,3)],key=p.
 
 
 
+

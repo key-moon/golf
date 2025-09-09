@@ -47,3 +47,4 @@ def p(g,R=range):
 
 
 
+

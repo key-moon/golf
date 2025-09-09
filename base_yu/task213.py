@@ -12,3 +12,4 @@ p=lambda g:any(min(g))*[a:=[*filter(int,max(g[0],g[-1]))]]*len(a)or[*zip(*p([*zi
 
 
 
+

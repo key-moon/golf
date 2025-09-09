@@ -34,3 +34,4 @@ p=lambda g:[[v or 3-3*any(min(s[1:-1],t[1:-1]))for*t,v in zip(*g,s)]for s in g]
 
 
 
+

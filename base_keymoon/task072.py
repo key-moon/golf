@@ -7,3 +7,4 @@ p=lambda g:eval("[3/2*(x^y)for x,y in zip(g.pop(0),g[6])],"*6)
 
 
 
+

@@ -7,3 +7,4 @@ p=lambda g:[(u:=[*filter(int,map(max,*g))]+[0]*9)[:3],u[5:2:-1],u[6:9]]
 
 
 
+

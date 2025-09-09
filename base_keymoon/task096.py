@@ -1,4 +1,4 @@
-# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 403(jonas ryno kg583), 442(dbdr), 449(jacekwl), 449(jacekwl Potatoman nauti)
+# best: 325(xsot ovs att joking mewheni) / others: 368(jailctf merger), 403(jonas ryno kg583), 442(dbdr), 449(jacekwl), 449(jacekwl Potatoman nauti)
 # 罠: 中央のドットは背景と同じ色のことがある
 # 矩形の辺が交わってることがある 内包してることもある
 # ひどいケース(120):
@@ -55,7 +55,7 @@
 #   lengths.append(common.randint(min_length, max_length))
 # optimal: 353
 
-# best: 325(xsot ovs att joking mewheni) / others: 396(jailctf merger), 403(jonas ryno kg583), 442(dbdr), 449(jacekwl), 449(jacekwl Potatoman nauti)
+# best: 325(xsot ovs att joking mewheni) / others: 368(jailctf merger), 403(jonas ryno kg583), 442(dbdr), 449(jacekwl), 449(jacekwl Potatoman nauti)
 
 # width, height = common.randint(13, 19), common.randint(13, 19)
 # b = common.random_color()
@@ -181,6 +181,7 @@ def	p(f,s=4):
 		for	l	in	range(e[i]):l-=i;o[l-1][a+i-1]=o[l-1][a-i-1]=o[-i-1][a+l-1]=o[-i-1][a-l-1]=u[i]
 #	return	any([h^len(g),w^len(g[2]),{*sum(g,[])}^{b,*c},b	not	in	g[2]])and	p(g,s+1)or	o+o[:-1][::-1]
 	return	all([g,t,{*sum(f,[])}=={*u,d},d	in	f[2]])and	o+o[:-1][::-1]or p(f,s-1)
+
 
 
 

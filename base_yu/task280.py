@@ -1,4 +1,4 @@
-# best: 179(4atj sisyphus luke Seek mukundan) / others: 182(xsot ovs att joking mewheni), 185(jailctf merger), 210(intgrah jimboko awu macaque sammyuri), 241(Potatoman), 241(jacekwl Potatoman nauti)
+# best: 179(4atj sisyphus luke Seek mukundan) / others: 182(xsot ovs att joking mewheni), 185(jailctf merger), 210(intgrah jimboko awu macaque sammyuri), 224(natte), 241(Potatoman)
 # ====================================================================================== 179 ======================================================================================
 def p(g):
  o=[s[:]for s in g]
@@ -13,6 +13,7 @@ def p(g):
   *g,=zip(*g[::-1])
   *o,=map(list,zip(*o[::-1]))
  return o
+
 
 
 

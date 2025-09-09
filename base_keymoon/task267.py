@@ -13,3 +13,4 @@ p=lambda g:[[(0<v)*g[6][0]for v in[0]+s]for _,*s in g]
 
 
 
+
