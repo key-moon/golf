@@ -1,15 +1,23 @@
-# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 153(xsot ovs att joking mewheni), 186(jonas ryno kg583), 188(JRK), 237(MasukenSamba)
+# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 141(4atj sisyphus luke Seek), 153(xsot ovs att joking mewheni), 188(jonas ryno kg583), 188(JRK)
 # =============================================================== 133 ===============================================================
-def p(g,R=(0,1,2)):
- G=sum(g,[])
- H=sum(zip(*g),())
- a,b,_=sorted({*G},key=G.count)
- y=G.index(b)//10
- x=H.index(b)//10
- y-=g[y+1][x:x+3]==[b]*3
- x-=all(b==g[y+k][x+1]for k in R)
-#  x-=g[y][x+1]==g[y+1][x+1]==g[y+2][x+1]==b
- return[[-1<y+i<10>x+j>-1 and g[y+i][x+j]or a for j in R]for i in R]
+
+p=lambda g,z=[0]*10:[u for I in range(6400)if all(sum(u:=[[[0,*[z,*g,z][I//640+u],0][I//64%10+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))][0]
+
+# def p(g):
+#  z=[0]*10
+#  return [u for i in range(10)for j in range(10)for y in range(8)for x in range(8)
+#          if all(sum(u:=[[[0,*[z,*g,z][i+u],0][j+v]^g[y+u][x+v]for v in range(3)]for u in range(3)],[]))][0]
+
+# def p(g,R=(0,1,2)):
+#  G=sum(g,[])
+#  H=sum(zip(*g),())
+#  a,b,_=sorted({*G},key=G.count)
+#  y=G.index(b)//10
+#  x=H.index(b)//10
+#  y-=g[y+1][x:x+3]==[b]*3
+#  x-=all(b==g[y+k][x+1]for k in R)
+# #  x-=g[y][x+1]==g[y+1][x+1]==g[y+2][x+1]==b
+#  return[[-1<y+i<10>x+j>-1 and g[y+i][x+j]or a for j in R]for i in R]
 
 #  u=[[a]*3 for _ in range(3)]
 #  for i in range(10):
