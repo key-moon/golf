@@ -1,1 +1,2 @@
-def p(g,R=(0,1,2)):A=sum(g,[]);B=sum(zip(*g),());a,b,_=sorted({*A},key=A.count);y=A.index(b)//10;x=B.index(b)//10;y-=g[y+1][x:x+3]==[b]*3;x-=all(b==g[y+k][x+1]for k in R);return[[-1<y+i<10>x+j>-1and g[y+i][x+j]or a for j in R]for i in R]
+B=range
+p=lambda g,z=[0]*10:[u for A in B(6400)if all(sum(u:=[[[0,*[z,*g,z][A//640+u],0][A//64%10+v]^g[A//8%8+u][A%8+v]for v in B(3)]for u in B(3)],[]))][0]
