@@ -5,8 +5,8 @@
 # p=lambda g,R=(0,4,8):[[sum(sum(g[i+k][j:j+3])for k in(0,1,2))//12for j in R]for i in R]
 # p=lambda g,R=(0,4,8):[[sum(sum(s[j:j+3])for s in g[i:i+3])//12for j in R]for i in R]
 # p=lambda g,R=(0,4,8):[[sum(g[i][j:j+3]+g[i+1][j:j+3]+g[i+2][j:j+3])//12for j in R]for i in R]
-p=lambda g,R=b"
-":[[sum(sum(s[j-3:j])for s in g[i-3:i])//12for j in R]for i in R]
+# lambda g,R=b"37b":[[sum(sum(s[j-3:j])for s in g[i-3:i])//12for j in R]for i in R]
+p=lambda g,R=b"\x03\x07\x0b":[[sum(sum(s[j-3:j])for s in g[i-3:i])//12for j in R]for i in R]
 
 # def p(g):
 #  u=[*eval("[0]*3,"*3)]
