@@ -15,3 +15,4 @@ p=lambda g:[[*map(max,zip(*g[:i]))]for i in(1,2,3)]
 
 
 
+

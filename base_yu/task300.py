@@ -10,3 +10,4 @@ p=lambda g,c=-1:c*g or p([[*s]for s in zip(*g)if max({*(u:=sum(g,[]))}-{0},key=u
 
 
 
+

@@ -13,3 +13,4 @@ p=lambda g:[[s[0]%2**v for v in s]for s in g]
 
 
 
+

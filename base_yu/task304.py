@@ -8,3 +8,4 @@ p=lambda g:[[y*(x==max(u:=sum(g,g),key=u.count))for x in s for y in t]for s in g
 
 
 
+

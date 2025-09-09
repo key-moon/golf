@@ -23,3 +23,4 @@ import re;p=lambda g:eval(re.sub(rf"(?<=([1-9]){(C:='.'*(len(g[0])*3+4))})\1(?={
 
 
 
+

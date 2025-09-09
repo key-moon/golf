@@ -14,3 +14,4 @@ p=lambda g,c=-63:g*c or p([[v*(v>1)for v in s]for s in zip(*g[-2+any(g[-1])::-1]
 
 
 
+

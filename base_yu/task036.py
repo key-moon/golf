@@ -13,3 +13,4 @@ p=lambda g,c=1,d=1:-c*g or(a:=[s for s in zip(*p(g,c-1,d))if d in s])*(1<len(a)<
 
 
 
+

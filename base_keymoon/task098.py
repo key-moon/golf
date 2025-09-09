@@ -12,3 +12,4 @@ import re;p=lambda g:eval(re.sub(rf"(?<=(\d).{(C:='.'*-~len(g[0])*3)})\1(?=.{C}\
 
 
 
+

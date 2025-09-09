@@ -6,3 +6,4 @@ p=lambda g,c=-1,u={0}:c*g or p([[sum(u|(u:=u^{*s}&{*t}))for t in g]for s in zip(
 
 
 
+

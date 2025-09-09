@@ -9,3 +9,4 @@ p=lambda g:eval("[2*(x+y<1)for x,y in zip(g.pop(0),g[3])],"*4)
 
 
 
+

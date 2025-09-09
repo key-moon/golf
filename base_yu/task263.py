@@ -14,3 +14,4 @@ p=lambda g:len(g)>3and(f:=sorted([(sum(t:=g[i:i+3],g[0]).count(0),t)for i in ran
 
 
 
+

@@ -12,3 +12,4 @@ p=lambda g:[[s[0]or any(s)+any(r)&2for s in zip(r,*g)]for r in g]
 
 
 
+

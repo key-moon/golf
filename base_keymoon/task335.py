@@ -5,3 +5,4 @@ p=lambda g,c=-1,a=0:g*c or p([*zip(*[[(v or(c*6+8in s)*4)*(a|(a:=a^any(t)))for*t
 
 
 
+

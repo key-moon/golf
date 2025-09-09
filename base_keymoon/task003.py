@@ -18,3 +18,4 @@ p=lambda g:[[c*2for c in r]for r in g+g[(g[2]!=g[5])*2:][:3]]
 
 
 
+

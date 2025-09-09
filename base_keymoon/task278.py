@@ -9,3 +9,4 @@ import re;p=lambda g,c=-11:g*c or p(eval(re.sub(r"0(?=.{,3}(.{%s})?2.{%s}2)"%(a:
 
 
 
+

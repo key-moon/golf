@@ -9,3 +9,4 @@ p=lambda g:[x[::-1]for r in g if(x:=[*filter(int,r)])]
 
 
 
+

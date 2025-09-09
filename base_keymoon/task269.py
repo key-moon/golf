@@ -9,3 +9,4 @@ p=lambda s:sum([[v*0!=0and p(v+s)or v]*(len({*str(s)})-5)for v in s[:3]],[])
 
 
 
+

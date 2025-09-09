@@ -47,3 +47,4 @@ p=lambda g,c=-3:c*g or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]
 
 
 
+

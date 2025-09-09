@@ -9,3 +9,4 @@ import re;p=lambda g,c=-25:g*c or eval(re.sub(r"(([^0]).{34})0(?=(.{35})+(?<=\2)
 
 
 
+
