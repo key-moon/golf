@@ -1,1 +1,1 @@
-p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range(5)])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
+p=lambda g:[*zip(*[s[(d:=(a:=[str(g).index(c)//32for c in"012,4"])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
