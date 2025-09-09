@@ -273,7 +273,7 @@ def apply_banner_update(text: str, header_lines: list[str]) -> tuple[str, bool]:
     """Replace all banner lines in text and optionally prepend header if missing.
     Returns (new_text, updated_flag).
     """
-    lines = text.splitlines()
+    lines = text.split('\n')
     out_lines: list[str] = []
     new_best = header_lines[0] if header_lines else None
     new_eq = header_lines[1] if len(header_lines) > 1 else None
