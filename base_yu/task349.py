@@ -1,4 +1,4 @@
-# best: 214(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 239(xsot ovs att joking mewheni), 248(jailctf merger), 254(MasukenSamba), 282(natte), 323(jonas ryno kg583)
+# best: 214(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 239(xsot ovs att joking mewheni), 248(jailctf merger), 254(MasukenSamba), 261(intgrah jimboko awu macaque sammyuri), 282(natte)
 def p(g):
  for i in range(n:=len(g)):
   for l in range(n):

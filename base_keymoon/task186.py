@@ -1,4 +1,4 @@
-# best: 60(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger) / others: 63(intgrah jimboko awu macaque sammyuri), 63(mukundan), 66(HETHAT), 66(xsot ovs att joking mewheni), 67(kg583)
+# best: 60(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 63(mukundan), 66(HETHAT), 66(xsot ovs att joking mewheni), 67(kg583), 67(jonas ryno kg583)
 # =========================== 60 ===========================
 # lambda g:[(u:=[0]+[2]*sum(sum(g,[]))+[0]*7)[1:4],u[::4],[0]*3]
 # lambda g:[(u:=[2]*sum(sum(g,[]))+(b:=[0]*3))[:3],[0,u[3],0],b]

@@ -1,4 +1,4 @@
-# best: 218(natte) / others: 221(biz), 230(xsot ovs att joking mewheni), 243(jailctf merger), 261(4atj sisyphus luke Seek mukundan), 285(kdmitrie)
+# best: 218(natte, biz) / others: 230(xsot ovs att joking mewheni), 243(jailctf merger), 261(4atj sisyphus luke Seek mukundan), 285(kdmitrie), 286(jacekwl Potatoman nauti)
 #上下の囲み+左右方向の破線を書く→90度回転
 
 def p(g):

@@ -1,4 +1,4 @@
-# best: 136(xsot ovs att joking mewheni) / others: 152(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 156(mukundan), 179(natte), 182(Yuchen20)
+# best: 136(xsot ovs att joking mewheni) / others: 152(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 156(mukundan), 169(intgrah jimboko awu macaque sammyuri), 179(natte)
 # ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])

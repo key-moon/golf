@@ -1,4 +1,4 @@
-# best: 156(jailctf merger) / others: 167(4atj sisyphus luke Seek mukundan), 167(xsot ovs att joking mewheni), 167(mukundan), 176(4atj sisyphus luke Seek), 199(Yuchen20)
+# best: 156(jailctf merger) / others: 167(4atj sisyphus luke Seek mukundan), 167(xsot ovs att joking mewheni), 167(mukundan), 176(4atj sisyphus luke Seek), 186(intgrah jimboko awu macaque sammyuri)
 def p(g):
  R=range(11)
 #  t=[sorted(sum([s[j&12:][:3]for s in g[i&12:][:3]],[]))for i in R for j in R]

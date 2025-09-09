@@ -1,4 +1,4 @@
-# best: 61(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 63(jailctf merger), 65(natte), 65(HETHAT), 65(xsot ovs att joking mewheni), 65(mukundan)
+# best: 61(4atj sisyphus luke Seek mukundan, 4atj sisyphus luke Seek) / others: 63(jailctf merger), 65(natte), 65(intgrah jimboko awu macaque sammyuri), 65(HETHAT), 65(xsot ovs att joking mewheni)
 # 70
 # p=lambda g:[[c or(any(s)+any(r))&2for c,s in zip(r,zip(*g))]for r in g]
 # 65

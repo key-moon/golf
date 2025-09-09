@@ -1,4 +1,4 @@
-# best: 75(jailctf merger, xsot ovs att joking mewheni) / others: 84(4atj sisyphus luke Seek mukundan), 84(4atj sisyphus luke Seek), 87(jacekwl Potatoman), 87(jacekw), 87(jacekwl)
+# best: 75(jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 84(4atj sisyphus luke Seek mukundan), 84(4atj sisyphus luke Seek), 87(jacekwl Potatoman), 87(jacekw), 87(jacekwl)
 # =================================== 75 ==================================
 p=lambda g,R=range(21):[[g[0][k:=max(i!=j,abs(j-i)//(min(i,j)+2)*2)]|g[k][0]for j in R]for i in R]
 
