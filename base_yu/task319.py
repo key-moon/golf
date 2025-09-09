@@ -24,3 +24,4 @@ def p(g):
     if any({*d}=={C[k]}and len(d)==sum(g,[]).count(C[k])for k in range(3)):
      return[[[b,c][v==c]for v in s[L:R+1]]for s in g[U:D+1]]
 
+

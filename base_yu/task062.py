@@ -44,3 +44,4 @@ p=lambda g,c=-3:c*g or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]
 #   *g,=map(list,zip(*g[::-1]))
 #  return [[v or 3 for v in s]for s in g]
 
+

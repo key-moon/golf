@@ -4,3 +4,4 @@
 # lambda s:sum([[v*0!=0and p(v)or v]*3for v in s],[])
 p=lambda g:g*0!=0and sum(zip(*[[*map(p,g)]]*3),())or g
 
+

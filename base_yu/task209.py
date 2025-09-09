@@ -36,3 +36,4 @@ def p(g):
 #         G[i][j]=g[(i+y)//s][(j+x)//s]
 #      return G
 
+

@@ -7,3 +7,4 @@ p=lambda g:eval(f"{g}".replace(*"62"))
 # 6 -> 2
 # 7 -> 7
 
+

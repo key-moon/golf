@@ -17,3 +17,4 @@ def p(g):
  for i in-1,0,1:g[Y+i][X]=g[Y][X+i]=3
  return g
 
+

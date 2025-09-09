@@ -12,3 +12,4 @@ p=lambda g:[(t:=sum(g,[]))[~t.index(3)-i*16::-1][:5]for i in range(5)]
 
 # p=lambda g,R=range(16):[u for x,y in zip(g,g[::-1]) if(u:=[w for v,w in zip(x,y[::-1]) if v==3])]
 
+

@@ -15,3 +15,4 @@ p=lambda s:sum([[v*0!=0and p(v)or v]*2for v in s],[])
 #   u[i][::2]=u[i][1::2]=g[i//2]
 #  return u
 
+

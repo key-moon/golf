@@ -13,3 +13,4 @@ p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(ma
 #   g=[*zip(*g[::-1])]
 #  return g
 
+

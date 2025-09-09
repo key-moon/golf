@@ -7,3 +7,4 @@
 p=lambda g:[[x and 9-sorted(zip(*g),key=sum).index((*t,))for*t,x in zip(*g,s)]for s in g]
 # p=lambda g:(u:=[*zip(*g)])and[[s.pop(0)and 9-sorted(u,key=sum).index(t)for t in u]for s in g]
 
+

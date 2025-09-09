@@ -31,3 +31,4 @@ def p(g):
 #     g[i][j]=g[i%(3-y)][j%(3-x)]
 #  return g
 
+

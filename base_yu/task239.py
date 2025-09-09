@@ -6,3 +6,4 @@ def p(g):
  C=sorted([(-u.count(v),v)for v in{*u}])
  return[*zip(*[[c]*-v+[0]*(v-min(C)[0])for v,c in C])]
 
+

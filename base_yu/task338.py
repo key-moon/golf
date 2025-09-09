@@ -19,3 +19,4 @@ def p(g):
 #     k=0
 #  return [[(v==3)*3 for v in s]for s in g]
 
+

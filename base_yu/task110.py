@@ -63,3 +63,4 @@ p=lambda g,c=-9,R=range:c*g or p([u for y in R(9)for x in R(1,10)if(u:=[[g[i][j]
 #        if g[i][j]<1:g[i][j]=g[i-y][j-x]
 #  return g
 
+

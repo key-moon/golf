@@ -32,3 +32,4 @@ p=lambda g,c=-63:c*g or p([*zip(*g[1-(g[1].count(5)==2 and(8,5,5,8)!=g[1]or 5in 
 #    a+=[s,t]
 #  return a[:1]+a[1::2]
 
+

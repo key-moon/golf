@@ -1,4 +1,4 @@
-# best: 64(4atj sisyphus luke Seek mukundan, jailctf merger, rucin93, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 65(dbdr), 66(HETHAT), 67(biz), 67(jonas ryno kg583), 67(JRK)
+# best: 64(4atj sisyphus luke Seek mukundan, jailctf merger, rucin93, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 65(dbdr), 66(HETHAT), 67(2F), 67(biz), 67(jonas ryno kg583)
 # ============================= 64 =============================
 # 1の2x2の数を数えて配置しなおす x,yは[0,0,1,2,2],[0,2,1,0,2]
 # def p(g):
@@ -22,4 +22,5 @@
 
 # p=lambda g:[[(x:=sum(sum(g,t:=[]))/8)>0,0,x>1],[0,x>2,0],[x>3,0,x>4]]
 p=lambda g:[[(x:=sum(sum(g,[]))/8)>0,0,x>1],[0,x>2,0],[x>3,0,x>4]]
+
 

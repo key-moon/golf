@@ -19,3 +19,4 @@ p=lambda g,i=0:[(i:=i+r[0],j:=i)and[c and(j:=j+3)%1+8or 586768>>j&7for c in r]fo
 # 0b000_001_000_11_110_100_00_010_000
 # sum([(c&7) << (i*3) for i, c in enumerate(b"02004630010")])
 
+

@@ -34,3 +34,4 @@ def p(g):
 #    s.reverse()
 #  return g
 
+

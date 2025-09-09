@@ -7,3 +7,4 @@
 #p=lambda g:g[:2]+[*zip(*[a:=g[0]]*len(a))]*2
 p=lambda g:g[:2]+[*zip(*g[:1]*len(g[0]))]*2
 
+

@@ -13,3 +13,4 @@
 # p=lambda g:[(S+[s],[s]*10)[s in S]for*S,s in g]
 p=lambda g:[(S,[s]*9)[s in S]+[s]for*S,s in g]
 
+

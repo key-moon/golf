@@ -52,3 +52,4 @@ def p(g):
 #        g[i*2-y][x]=g[y][j*2-x]=g[i*2-y][j*2-x]=g[y][x]
 #     return g
 
+

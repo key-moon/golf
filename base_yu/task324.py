@@ -23,3 +23,4 @@ def p(g):
     g[i][j]=m[g[i][j]]
  return g
 
+

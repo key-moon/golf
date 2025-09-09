@@ -7,3 +7,4 @@ p=lambda g,c=-47:c*g or p([*zip(*g[5not in g[c&1]:][::-1])],c+1)
 # 5not in g[c&1]
 # sum({*g[c&1]})&1
 
+

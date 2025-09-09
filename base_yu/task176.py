@@ -41,3 +41,4 @@ p=lambda g,d=0:[[(v^-((d:=d+v)%3%2))%5for v in s]*(d:=1)for s in g]
 #  5:1
 #  6:2
 
+

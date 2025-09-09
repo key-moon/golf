@@ -44,3 +44,4 @@ p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(len(s))]for s in 
 # #   g[0][0]=1
 #  return g
 
+

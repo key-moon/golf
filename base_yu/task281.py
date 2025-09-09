@@ -32,3 +32,4 @@ def p(g,c=-3):
 #   g=[*zip(*g[::-1])]
 #  return g
 
+

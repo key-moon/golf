@@ -22,3 +22,4 @@ def p(g):
     g[j-f+i][l+x]=g[j-f+i][l+x] or g[j][x]//8
  return g
 
+

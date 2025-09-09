@@ -1,4 +1,4 @@
-# best: 91(xsot ovs att joking mewheni) / others: 100(jailctf merger), 101(4atj sisyphus luke Seek mukundan), 107(Yuchen20), 109(duckyluuk), 109(Bulmenisaurus)
+# best: 91(xsot ovs att joking mewheni) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(Yuchen20), 109(duckyluuk), 109(Bulmenisaurus)
 # =========================================== 91 ==========================================
 # 転置再帰だと 3x3の判定ができない
 # lambda g:(R:=(0,(a:=len(g)//2)+1))and min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in R for j in R],key=p.count)
@@ -13,4 +13,5 @@
 def p(g):
  a=len(g)//2
  return min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in(0,a+1)for j in(0,a+1)],key=p.count)
+
 

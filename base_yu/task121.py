@@ -1,4 +1,4 @@
-# best: 89(4atj sisyphus luke Seek mukundan) / others: 90(biz), 96(jailctf merger), 96(xsot ovs att joking mewheni), 102(intgrah jimboko awu macaque sammyuri), 126(natte)
+# best: 89(4atj sisyphus luke Seek mukundan) / others: 90(2F), 90(biz), 96(jailctf merger), 96(xsot ovs att joking mewheni), 102(intgrah jimboko awu macaque sammyuri)
 # ========================================== 89 =========================================
 def p(g):
  y,x=divmod(sum(g,[]).index(8)-14,13)
@@ -11,4 +11,5 @@ def p(g):
 #  u=[s[i%13-1:i%13+2]for s in g[i//13-1:i//13+2]]
 #  u[1][1]=max(u[0])
 #  return u
+
 

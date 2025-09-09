@@ -24,3 +24,4 @@ def p(a):
   for y,x in t:a[y][x]=1+(n.count(n[i])<2)
  return a
 
+

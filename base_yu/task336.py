@@ -16,3 +16,4 @@ p=lambda g,c=-3:c*g or p([[s[i]or((f:=[*s,5].index)(5)<i<f(5,4))*8for i in range
 #     s[i]=s[i] or 8
 #  return g
 
+

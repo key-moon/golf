@@ -30,3 +30,4 @@ p=lambda g,c=-9:c*g or p([[*map(min,r,[9]*2+r[::-1],R)]for*R,r in zip(*g,g)],c+1
 #      g[i][j]=g[j][i]
 #  return g
 
+

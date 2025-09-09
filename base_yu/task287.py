@@ -7,3 +7,4 @@
 # p=lambda g:(a:=sum(g,[]))and[[[v,a.pop()][v==4]for v in s]for s in g]
 p=lambda g:(a:=sum(g,[]))+[[[v,a.pop()][v==4]for v in s]for s in g]
 
+

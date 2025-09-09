@@ -1,4 +1,4 @@
-# best: 279(jailctf merger) / others: 280(garrymoss), 290(MasukenSamba), 302(xsot ovs att joking mewheni), 350(kdmitrie), 427(jonas ryno kg583)
+# best: 277(4atj sisyphus luke Seek mukundan) / others: 279(jailctf merger), 280(garrymoss), 288(jacekwl Potatoman nauti), 290(MasukenSamba), 290(cg)
 def p(g):
  B={(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]&2}
  S=3
@@ -29,4 +29,5 @@ def p(g):
 #     elif 0<=i+(abs(k-1)-1)*l<h and 0<=j+(abs(k-2)-1)*l<w:
 #      g[i+(abs(k-1)-1)*l][j+(abs(k-2)-1)*l] = 8
 #  return g
+
 

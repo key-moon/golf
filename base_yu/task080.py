@@ -13,3 +13,4 @@ def p(g):
         u[y+k][x+l]=g[i+k][j+l]
  return u
 
+

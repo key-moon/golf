@@ -1,4 +1,4 @@
-# best: 365(xsot ovs att joking mewheni) / others: 374(garrymoss), 385(MasukenSamba), 431(jailctf merger), 489(4atj sisyphus luke Seek mukundan), 498(cg)
+# best: 365(xsot ovs att joking mewheni) / others: 371(4atj sisyphus luke Seek mukundan), 374(garrymoss), 385(MasukenSamba), 385(jacekwl Potatoman nauti), 431(jailctf merger)
 # とりあえずあんまgolfのこと考えずに愚直に書く
 from re import *;s=sub
 def p(g):
@@ -39,4 +39,5 @@ def p(g):
    p=t+u+p
   A=s(d,c,A)
  return [[*map(int,r)]for r in s(c,d,A).split("]")[-3::-1]]#  s.sort(key=lambda x:x.groups())
+
 

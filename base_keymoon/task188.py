@@ -13,3 +13,4 @@
 p=lambda g:g==(a:=g[:53%~-len(g)])*2and a or[*map(p,g)]
 # mapping = { 2: 0, 4: 2, 6: 3, 8: 4 }
 
+

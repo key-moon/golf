@@ -1,4 +1,4 @@
-# best: 99(4atj sisyphus luke Seek mukundan) / others: 100(jailctf merger), 104(intgrah jimboko awu macaque sammyuri), 109(natte), 121(xsot ovs att joking mewheni), 129(biz)
+# best: 99(4atj sisyphus luke Seek mukundan) / others: 100(jailctf merger), 104(intgrah jimboko awu macaque sammyuri), 109(natte), 121(xsot ovs att joking mewheni), 129(2F)
 # =============================================== 99 ==============================================
 
 # def p(g):
@@ -28,4 +28,5 @@ p=lambda g,c=-29,k=3:c*g or exec(g[i:=c%15].count(2)//5*2*"g[i-k],g[i+k]=g[i+k],
 #     g[i+3],g[i-3]=g[i-3],g[i+3]
 #   *g,=zip(*g)
 #  return[*map(list,g)]
+
 

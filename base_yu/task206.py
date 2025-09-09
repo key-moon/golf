@@ -18,3 +18,4 @@ def p(g):
 #   g[y-1+k][x-1:x+2]=g[u+k][v:v+3]
 #  return g
 
+

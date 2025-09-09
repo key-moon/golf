@@ -6,3 +6,4 @@
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%max(g[0]+g[1])for c in R] for r in R]
 p=lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%max(sum(g,[]))for c in R] for r in R]
 
+

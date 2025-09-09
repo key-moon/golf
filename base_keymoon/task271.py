@@ -20,3 +20,4 @@ p=lambda g:g*(len(g)<4)or min((sum(a:=sum(b:=p([*zip(*g[i:i+3])]),()))+(0in a)*9
 # lambda g:(sum(b:=sum(g,[]))+(0in b)*99)*(len(g)<4)or min(([r[x%7:][:3]for r in g[x//7:][:3]]for x in range(49)),key=p)[1]
 # lambda g:min(([r[x%7:][:3]for r in g[x//7:][:3]]for x in range(49)),key=lambda g:sum(b:=sum(g,[]))+(0in b)*99)[1]
 
+

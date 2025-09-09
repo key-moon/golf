@@ -16,3 +16,4 @@ def p(g):
  g[z+1][t-2]=g[z+1][t+2]=S;g[s-1][t-2]=g[s-1][t+2]=T
  return g
 
+

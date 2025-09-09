@@ -42,3 +42,4 @@ def p(g,x=0):
 #         g[pr+(j-pc)][pc-(i-pr)]=v
 #     return g
 
+

@@ -6,3 +6,4 @@
 # p=lambda g,F=filter:[*F(max,zip(*[*F(max,zip(*g))]*2))]
 p=lambda g,F=lambda c:[*filter(max,zip(*c))]:F(F(g)*2)
 
+

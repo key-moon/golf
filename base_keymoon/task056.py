@@ -82,3 +82,4 @@ p=lambda g:[[hash((1300,*map(bool,g[1])))%7]]
 #         print(f"{mod=} {mul=} {i=}")
 #         break
 
+

@@ -17,3 +17,4 @@ def p(g):
 #   *g,=map(list,zip(*g))
 #  return g
 
+

@@ -16,3 +16,4 @@ def p(g):
 #  y,x=divmod(u.index(c:=max(u)),n)
 #  return [[(y-x==i-j or y+x==i+j)*c for j in R]for i in R]
 
+

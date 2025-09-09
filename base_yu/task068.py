@@ -10,3 +10,4 @@ p=lambda g,c=-3,x=0:c*[[(d:=min(u:=sum(g,[]),key=u.count))*(y==d)for y in s]for 
 #   g = [[[(x>0)*2,x:=y][x>0]for y in s]for s in zip(*g[::-1])]
 #  return g
 
+

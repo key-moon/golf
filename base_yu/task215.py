@@ -7,3 +7,4 @@ p=lambda g:[g[i%3+6-3*any(g[i%3+3])]for i in range(len(g))]
 # p=lambda g:[any(g[i%3+3])and g[i%3+3]or g[i%3+6]for i in range(len(g))]
 # p=lambda g:[(u:=[*filter(any,g)])[(i-g.index(u[0]))%len(u)]for i in range(len(g))]
 
+

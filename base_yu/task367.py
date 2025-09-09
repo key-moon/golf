@@ -23,3 +23,4 @@ def p(g):
 #         s[l:r]=[4]*(r-l)
 #  return g
 
+

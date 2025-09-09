@@ -1,4 +1,4 @@
-# best: 96(natte) / others: 97(xsot ovs att joking mewheni), 101(4atj sisyphus luke Seek mukundan), 101(biz), 104(jailctf merger), 105(Bulmenisaurus)
+# best: 96(natte) / others: 97(xsot ovs att joking mewheni), 101(4atj sisyphus luke Seek mukundan), 101(2F), 101(biz), 104(jailctf merger)
 # ============================================= 96 =============================================
 # p=lambda g,E=enumerate:[[max((min(j>2 and s[j-3],j<5 and s[j+3]),min(i>2 and t[i-3],i<5 and t[i+3]),s[j])) for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[max((min(s[j-3],j<5 and s[j+3]),min(t[i-3],i<5 and t[i+3]),s[j])) for j,t in E(zip(*g))]for i,s in E(g)]
@@ -25,4 +25,5 @@ p=lambda g,R=range(8):[[max(min((g[i]*3)[j+5:j+12:6]),min(g[i-3][j],g[i+3&7][j])
 #     if g[i][j]==g[i+6][j]>1:u[i+3][j]=g[i][j]
 #     if g[j][i]==g[j][i+6]>1:u[j][i+3]=g[j][i]
 #  return u
+
 

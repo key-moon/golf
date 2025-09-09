@@ -5,3 +5,4 @@ def p(g):
  while n:g.pop(0)[:n]=[2+(s<n)-(s>n)]*n;n-=1
  return h
 
+

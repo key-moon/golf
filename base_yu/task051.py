@@ -14,3 +14,4 @@ import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(, 0)*(, [^0])+(?!\2), 
 #   g=[*zip(*g[::-1])]
 #  return g
 
+

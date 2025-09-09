@@ -5,3 +5,4 @@
 # p=lambda g:[[(x|y>0)*6for x,y in zip(s,s[3:])]for s in g]
 p=lambda g:[eval("6*(s.pop(0)+s[2]>0),"*3)for s in g]
 
+

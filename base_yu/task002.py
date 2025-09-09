@@ -1,4 +1,4 @@
-# best: 90(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 91(xsot ovs att joking mewheni), 97(biz), 97(intgrah jimboko awu macaque sammyuri), 102(kabutack), 107(jacekwl)
+# best: 90(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 91(xsot ovs att joking mewheni), 97(2F), 97(biz), 97(intgrah jimboko awu macaque sammyuri), 102(kabutack)
 # ========================================== 90 ==========================================
 # def p(g):
 #  return g
@@ -12,4 +12,5 @@ def p(g):
       for s in v:
        s[l:r]=[4]*(r-l)
  return g
+
 

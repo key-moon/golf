@@ -21,3 +21,4 @@
 # p=lambda g,c=4**6:c and p([(l:=0)or[l:=v and(v|l|(v<3and(c:=c//2)))for v in s]for s in zip(*g[::-1])],c-1)or[[8*("9"in str(g))]]
 p=lambda g,c=4**6:-c*[[8*("9"in str(g))]]or p([(l:=0)or[l:=v and(v|l|(v<3and(c:=c//2)))for v in s]for s in zip(*g[::-1])],c-1)
 
+

@@ -1,4 +1,4 @@
-# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(xsot ovs att joking mewheni), 112(biz), 118(intgrah jimboko awu macaque sammyuri), 142(Afordancja), 157(kabutack)
+# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(xsot ovs att joking mewheni), 112(2F), 112(biz), 118(intgrah jimboko awu macaque sammyuri), 142(Afordancja)
 # import re;lambda g,i=-9:g*i or eval(re.sub(rf"(?<=[^0].{{{len(g[0])*3-2}}}5, )"+"0, "*(a:=4+i//3),f"9{a-4},"*a,str(p(g,i+1))))
 # min(g)
 # ========================================== 89 =========================================
@@ -31,4 +31,5 @@ p=lambda g:[(D:=0)or[int(D:=r.pop(0)and(D<1)/2+5or D>5and[6+r.index(5),D][6<D])f
 #  5.1 をマーカーにする 5.1からなら
 
 # 塗る色か、自身か
+
 

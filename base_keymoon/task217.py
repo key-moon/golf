@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 107(kabutack), 109(biz), 113(intgrah jimboko awu macaque sammyuri)
+# best: 95(jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 107(kabutack), 109(2F), 109(biz)
 # 155
 # M=max
 # r=range(3)
@@ -31,4 +31,5 @@ E=lambda g:[*filter(max,zip(*g))]*3
 def p(g):
  p=E(E(g))
  return[[p[i][j]*(0<p[i//3][j//3]) for j in r]for i in r]
+
 

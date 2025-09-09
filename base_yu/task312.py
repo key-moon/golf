@@ -1,4 +1,4 @@
-# best: 44(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 45(natte), 45(duckyluuk), 45(MasukenSamba), 45(dbdr), 45(kabutack)
+# best: 44(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 45(natte), 45(duckyluuk), 45(MasukenSamba), 45(dbdr), 45(2F)
 # =================== 44 ===================
 # lambda g:[[(0<v)*s[0]for v in s]for s in g]
 # lambda g:[[v%~v%-~s[0]for v in s]for s in g]
@@ -9,4 +9,5 @@ p=lambda g:[[s[0]%2**v for v in s]for s in g]
 #     (5,0): 0, (5,1): 1, (5,2): 2, (5,3): 3, (5,4): 4, (5,6): 6, (5,7): 7, (5,8): 8, (5,9): 9,
 #     (1,1): 1, (2,2): 2, (3,3): 3, (4,4): 4, (6,6): 6, (7,7): 7, (8,8): 8, (9,9): 9,
 # }
+
 

@@ -8,3 +8,4 @@
 # p=lambda g:g*0!=0and[p(g:=r)for r in g if r!=g]or g
 p=lambda g:g*-1*-1or[p(g:=r)for r in g if r!=g]
 
+

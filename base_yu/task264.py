@@ -55,3 +55,4 @@ def p(g):
 #       g[i+u][j+v]=0
 #  return o
 
+

@@ -1,4 +1,4 @@
-# best: 84(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 92(xsot ovs att joking mewheni), 95(intgrah jimboko awu macaque sammyuri), 98(natte), 106(biz)
+# best: 84(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 92(xsot ovs att joking mewheni), 95(intgrah jimboko awu macaque sammyuri), 98(natte), 106(2F)
 # ======================================= 84 =======================================
 # p=lambda g:g[0][0]%2*([[3,3,3,3,0,0,0,0,0]]*4+[[0,0,0,0,3,3,3,3,0]]*4+[[0]*9])or[*zip(*p([*zip(*g[::-1])]))][::-1]
 # p=lambda g:g[0][0]%2*([a:=[3,3,3,3,0,0,0,0,0]]*4+[a[5:]+a[:5]]*4+[[0]*9])or[*zip(*p([*zip(*g[::-1])]))][::-1]
@@ -7,4 +7,5 @@
 # p=lambda g:([(a:=[*[3]*4,*[0]*5])[::(x:=1-g[1][2]|1)]]*4+[(a*2)[5:14][::x]]*4+[[0]*9])[::1|-any(g[2])]
 # p=lambda g:([(a:=[*[3]*4,*[0]*5])[::(x:=1-g[1][2]|1)]]*4+[(a*2)[5:14][::x]]*4+[[0]*9])[::1-g[2][1]|1]
 p=lambda g,a=[3]*4+[0]*5:([a[::(x:=1-g[1][2]|1)]]*4+[(a*2)[5:14][::x]]*4+[[0]*9])[::1-g[2][1]|1]
+
 

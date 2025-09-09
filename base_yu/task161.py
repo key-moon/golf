@@ -1,4 +1,4 @@
-# best: 82(4atj sisyphus luke Seek mukundan, biz, jailctf merger) / others: 84(HashPanda), 86(HETHAT), 87(natte), 87(jacekwl), 87(jacekwl Potatoman nauti)
+# best: 82(4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger) / others: 84(HashPanda), 86(HETHAT), 87(natte), 87(jacekwl), 87(jacekwl Potatoman nauti)
 # ====================================== 82 ======================================
 
 # p=lambda g:[[max((t[0]&t[-1]),(s[0]&s[-1])) for t in zip(*g)]for s in g]
@@ -33,4 +33,5 @@ p=lambda g:[[sum({min(u:=sum(g,[]),key=u.count)}&{t[0],s[0]})for t in zip(*g)]fo
 #    for j in range(h):
 #     u[j][i]=c
 #  return u
+
 

@@ -7,3 +7,4 @@ def p(g):
    t[1-t.index(max(t))%2::2]=g[0][::2]
  return g
 
+

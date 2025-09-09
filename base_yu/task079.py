@@ -11,3 +11,4 @@ p=lambda g:max(f:=[x for i in range(144)if all(map(any,(x:=[s[i//12:][:3]for s i
 #  f=[[s[j:j+3]for s in g[i:i+3]]for i in R for j in R]
 #  return max(f,key=lambda x:(all(map(any,x)),f.count(x),sum(sum(x,[]))))
 
+

@@ -1,4 +1,4 @@
-# best: 91(4atj sisyphus luke Seek mukundan) / others: 92(xsot ovs att joking mewheni), 95(kdmitrie), 95(jailctf merger), 99(J&R), 99(biz)
+# best: 91(4atj sisyphus luke Seek mukundan) / others: 92(xsot ovs att joking mewheni), 95(kdmitrie), 95(jailctf merger), 99(J&R), 99(2F)
 # =========================================== 91 ==========================================
 # r=range
 # def p(g):
@@ -14,4 +14,5 @@
 # p=lambda g,E=enumerate:[[t[j+[-(s:=(len(g)>6)+2),s][j<s]]for j,v in E(t)if v<1]for t in g if 0in t]
 # p=lambda g,E=enumerate:[[t[j+[-(s:=(len(g)>6)+2),s][j<s]]for j,v in E(t)if v<1]for t in g if 0in t]
 p=lambda g:[[t[j+[s:=(len(g)>6)+2,-s][j>=s]]for j,v in enumerate(t)if v<1]for t in g if 0in t]
+
 

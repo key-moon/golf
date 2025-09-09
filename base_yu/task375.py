@@ -8,3 +8,4 @@ def p(g,i=0):
  return g
 # p=lambda g:exec("for i,s in enumerate(g):s[i]=s[~i]=0")or g
 
+

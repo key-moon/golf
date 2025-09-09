@@ -26,3 +26,4 @@ import re;Z="..([1-9])";A=Z+".{%s}\\1";t=Z+A;u=A+Z;P=[t%37,t%40,u%40,u%37]*2+["(
 #   *o,=map(list,zip(*o[::-1]))
 #  return o
 
+

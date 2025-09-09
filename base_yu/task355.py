@@ -51,3 +51,4 @@ p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum([s for s in zip(*[s for 
 #   t+=[(sum(s[l:r+1].count(F[1])for s in g[u:d+1]),c)]
 #  return[[max(t)[1]]]
 
+

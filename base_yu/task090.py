@@ -13,3 +13,4 @@ def p(g):
 #   s[l:r]=[6]*(r-l)
 #  return g
 
+

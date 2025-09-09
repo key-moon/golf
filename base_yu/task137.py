@@ -43,3 +43,4 @@ def p(g,R=range):
 #     g[i][j]=g[s[0]][s[1]]
 #  return g
 
+

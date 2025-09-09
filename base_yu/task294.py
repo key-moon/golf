@@ -4,3 +4,4 @@
 # p=lambda g,R=range(10):[[(0<i<9>j>0and g[i-1][j]==g[i][j-1]==g[i+1][j]==g[i][j+1]>0)*2or g[i][j]for j in R]for i in R]
 p=lambda g,R=range(10):[[(0<i<9>j>0and{g[i-1][j],g[i+1][j],*g[i][j-1:j+2]}=={5})*2or g[i][j]for j in R]for i in R]
 
+

@@ -1,5 +1,5 @@
-# best: 199(xsot ovs att joking mewheni) / others: 250(jailctf merger), 252(jacekwl Potatoman nauti), 253(jacekwl), 254(4atj sisyphus luke Seek mukundan), 267(natte)
-# ================================================================================================ 199 ================================================================================================
+# best: 191(4atj sisyphus luke Seek mukundan) / others: 199(xsot ovs att joking mewheni), 250(jailctf merger), 252(jacekwl Potatoman nauti), 253(jacekwl), 267(natte)
+# ============================================================================================ 191 ============================================================================================
 def p(g):
  h,w=len(g),len(g[0])
  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if((j:=I//h)<1 or g[i][j-1])if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*(g[k][j]for k in range(i,h)),2].index(2))))
@@ -54,4 +54,5 @@ def p(g):
 #    if x==u[-1][0]:
 #     g[k][j:d]=[1]*(d-j)
 #  return g
+
 

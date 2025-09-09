@@ -8,3 +8,4 @@
 # p=lambda g,E=enumerate:[[s[j]for i,s in E(g)for j,t in E(zip(*g))if(u:=s[j-1:j+2])==[*t][i-1:i+2]==u[::-1]>[1]and u[0]!=s[j]!=0]]
 p=lambda g,E=enumerate:[[s[j]for i,s in E(g)for j,t in E(zip(*g))if(u:=s[j-1:j+2])==[*t][i-1:i+2]>[1]and u[-1]==u[0]!=s[j]>0]]
 
+

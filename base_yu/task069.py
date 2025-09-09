@@ -21,3 +21,4 @@ def p(g):
 #    g[k//10][k%10]=v
 #  return g
 
+

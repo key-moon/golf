@@ -10,3 +10,4 @@
 # p=lambda g,c=-1:c*g or(l:=[0]*len(g))and[(l:=r,t)[1]for r in[*zip(*p(g,c+1))]+[l]if(t:=(l:=[*map(max,l,r)]))*(1-any(r))]
 p=lambda g,c=-1:c*g or(l:=[0]*len(g))and[(l,l:=r)[0]for r in[*zip(*p(g,c+1)),l]if(l:=[*map(max,l,r)])*(1-any(r))]
 
+

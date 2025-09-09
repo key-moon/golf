@@ -32,3 +32,4 @@ def p(g,R=(0,1,2)):
 #   u[i-y][j-x]=b
 #  return u
 
+

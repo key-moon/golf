@@ -42,3 +42,4 @@ import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{%d}.{4})*.{%d}0, ([1
 #      if y in R(n)and x in R(n):u[y][x]=t[0]
 #  return u
 
+

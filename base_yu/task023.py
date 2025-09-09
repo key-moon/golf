@@ -14,3 +14,4 @@ def p(g):
   g=[[*map(int,c)]for c in d.split("]")[:-2]]
  return g[1:]
 
+

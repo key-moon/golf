@@ -13,3 +13,4 @@ p=lambda g,c=-3:c*g or[*zip(*eval(str(p(g,c+1)).replace("1, 0","1,"+"6278"[c])))
 # mapping = {0: 6, -1: 8, -2: 7, -3: 2}
 # mapping = {0: 6, 1: 8, 2: 7, 3: 2}
 
+

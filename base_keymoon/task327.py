@@ -6,3 +6,4 @@
 # lambda g,S=(b:=[0])*6:[S:=[*map(max,zip(s+b*3,b+S))]for s in g+[b*3]*3]
 p=lambda g,S=(a:=[0]*3)*2:[S:=[*map(max,zip(s+a,[0]+S))]for s in g+[a]*3]
 
+

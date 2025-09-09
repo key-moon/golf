@@ -10,3 +10,4 @@ import re;p=lambda g,c=-15:c*g or[*zip(*eval(re.sub(r"(0.{16}0, ([^0]), (?!\2|0)
 #   g=[*zip(*g[::-1])]
 #  return g
 
+
