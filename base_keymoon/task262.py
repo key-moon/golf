@@ -35,3 +35,4 @@ p=lambda g:[[-~b&~a^2]*3for a,b,_ in g]
 
 
 
+

@@ -1,4 +1,4 @@
-# best: 255(4atj sisyphus luke Seek mukundan) / others: 281(xsot ovs att joking mewheni), 286(jailctf merger), 287(natte), 358(MasukenSamba), 383(duckyluuk)
+# best: 255(4atj sisyphus luke Seek mukundan) / others: 281(xsot ovs att joking mewheni), 286(jailctf merger), 287(natte), 358(MasukenSamba), 364(kdmitrie)
 # R=range
 # def p(g):
 #  for c in R(10):
@@ -56,6 +56,7 @@ def p(g):
       g[y//10][y%10]=c
       g[x//10][x%10]=0
  return g
+
 
 
 

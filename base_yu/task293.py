@@ -7,3 +7,4 @@ p=lambda g:[[u^v^s[0]or v for v,u in zip(s,g[0])]for s in g]
 
 
 
+

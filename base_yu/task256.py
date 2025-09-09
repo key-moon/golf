@@ -9,3 +9,4 @@ p=lambda g,E=enumerate:[[(2-((i:=g.index(max(g)))<k)+(i>k))*(k+l<i+sum(g[i])//2)
 
 
 
+

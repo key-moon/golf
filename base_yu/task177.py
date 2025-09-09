@@ -14,3 +14,4 @@ p=lambda g:[*filter(len,[[*filter(int,s)][::-1]for s in g])]
 
 
 
+

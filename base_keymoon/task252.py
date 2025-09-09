@@ -6,3 +6,4 @@ p=lambda g:[g:=[[c,4][0<c==C]for c,C in zip(r,[0]+g)]for r in g]
 
 
 
+

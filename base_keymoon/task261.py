@@ -10,3 +10,4 @@ p=lambda g:[[c/4for c in r]for r in[g.pop()]+g]
 
 
 
+

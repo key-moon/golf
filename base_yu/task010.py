@@ -9,3 +9,4 @@ p=lambda g:[[x and 9-sorted(zip(*g),key=sum).index((*t,))for*t,x in zip(*g,s)]fo
 
 
 
+

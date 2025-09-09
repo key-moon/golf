@@ -8,3 +8,4 @@ p=lambda g,c=0:g and(c*-1*-1or(a:=[*map(p,g[:(i:=len(g)//2)],[g[i]]*9)])+a[::-1]
 
 
 
+

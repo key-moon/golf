@@ -17,3 +17,4 @@ p=lambda g:[[6*any(r[i::3])for i in(0,1,2)]for r in g]
 
 
 
+

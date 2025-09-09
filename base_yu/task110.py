@@ -1,4 +1,4 @@
-# best: 85(jailctf merger) / others: 109(4atj sisyphus luke Seek mukundan), 132(xsot ovs att joking mewheni), 203(MasukenSamba), 240(Potatoman), 240(jacekwl Potatoman nauti)
+# best: 85(jailctf merger) / others: 109(4atj sisyphus luke Seek mukundan), 132(xsot ovs att joking mewheni), 203(MasukenSamba), 238(jacekwl Potatoman nauti), 240(Potatoman)
 # ======================================== 85 =======================================
 
 # 5,6,7,8,9
@@ -62,6 +62,7 @@ p=lambda g,c=-9,R=range:c*g or p([u for y in R(9)for x in R(1,10)if(u:=[[g[i][j]
 #        if g[i-y][j-x]<1:g[i-y][j-x]=g[i][j]
 #        if g[i][j]<1:g[i][j]=g[i-y][j-x]
 #  return g
+
 
 
 

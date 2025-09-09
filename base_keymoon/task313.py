@@ -6,3 +6,4 @@ p=lambda g:[(r[1:3+(r[0]==r[3])]*9)[:len(g)]for r,_ in zip(g[:2]*99,g)]
 
 
 
+

@@ -5,3 +5,4 @@ p=lambda g,R=range(9):[g[i][:4]+[g[i//3*3+1][4+j//3*3+1]*g[i%3][j%3]for j in R]f
 
 
 
+

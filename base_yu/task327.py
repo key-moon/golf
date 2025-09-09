@@ -12,3 +12,4 @@ p=lambda g,R=range(6):[[max(3>i-k>-1<j-k<3and g[i-k][j-k]for k in R)for j in R]f
 
 
 
+

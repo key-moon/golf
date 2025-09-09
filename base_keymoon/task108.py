@@ -6,3 +6,4 @@ p=lambda g:g*0!=0and sum([[p(r)]*4for r in g[1::2]],[])or g
 
 
 
+

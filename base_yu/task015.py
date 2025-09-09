@@ -5,3 +5,4 @@ p=lambda g,c=-3:c*g or p([[(y or(0<x%8<3)and(40//x%11))%(9+(c<0))for x,y in zip(
 
 
 
+

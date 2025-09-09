@@ -8,3 +8,4 @@ p=lambda g:[[2*all(r[i::4])for i in(0,1,2)]for r in g]
 
 
 
+
