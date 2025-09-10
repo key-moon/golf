@@ -1,3 +1,5 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('UÁƒ †Ïã“Ôˆ‰z‘CAÛ‡ ¬wEB7¤^CÔÛğÍ÷ÿ‹&ø½hvC7ØoÊ›F4d/:çÖ|a-V¬âUÅ®=¿³!¼3˜ŞÌn—1¤" #€y­D¯¨·ïOØìº¸„«xM0â÷H‘ûŸÙÈ¯1ÊZÉãFX4Ÿ´ğß5Ÿ´e)x‹¾¤sçr)ê½w‚m„§îˆ×@6ñ±‰K{n¬Í›5Q<ÖLñìQ«{˜‡uÎÀÑçÏYĞÿ','L1'),-9))
+def p(g):
+ u=[t for s in g if(t:=[v for v in s if v%5])]
+ while(t:=[*sum(g,[]),5].index(5))<100:
+  for s in u:g[t//10][t%10:t%10+len(s)]=s;t+=10
+ return g
