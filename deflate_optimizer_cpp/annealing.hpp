@@ -186,7 +186,7 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
         double score_diff = length_diff + kreft_penalty(new_kreft_value, t) - kreft_penalty(kreft_value, t);
 
         if (score_diff <= 0) {
-        // if (score_diff <= 0 || XorShift::rand_double() < exp(-score_diff / (1.0 + t * 10.0))) {
+        // if (score_diff <= 0 || XorShift::rand_double() < exp(-1e6 * score_diff / (1.0 + t * 10.0))) {
             kreft_value = new_kreft_value;
             if (score_diff < 0) {
                 std::cout << "iter " << iter
