@@ -1,4 +1,6 @@
-
+import heapq
+from itertools import count
+from io import StringIO
 from dataclasses import dataclass
 from typing import Optional
 
@@ -217,3 +219,121 @@ class DynamicHuffmanBlock(Block):
             else:
                 raise ValueError("Unknown token type")
         print(' '.join(convert(tok) for tok in self.tokens), file=tw)
+
+    @staticmethod
+    def load_from_text(tw: StringIO, bfinal: int) -> "DynamicHuffmanBlock":
+        # 2) HLIT + 257 と litlen 長さ列
+        line = tw.readline()
+        if not line:
+            raise ValueError("Unexpected EOF while reading HLIT")
+        num_litlen = int(line.strip())
+        if num_litlen < 257:
+            raise ValueError("num_litlen must be >= 257")
+        litlen_line = tw.readline()
+        if not litlen_line:
+            raise ValueError("Unexpected EOF while reading litlen lengths")
+        litlen_lengths = [int(x) for x in litlen_line.strip().split()]
+        if len(litlen_lengths) != num_litlen:
+            raise ValueError("litlen lengths count mismatch")
+        if litlen_lengths[256] == 0:
+            raise ValueError("EOB(256) must have non-zero code length")
+
+        # 3) HDIST + 1 と dist 長さ列
+        line = tw.readline()
+        if not line:
+            raise ValueError("Unexpected EOF while reading HDIST")
+        num_dist = int(line.strip())
+        if num_dist < 1:
+            raise ValueError("num_dist must be >= 1")
+        dist_line = tw.readline()
+        if not dist_line:
+            raise ValueError("Unexpected EOF while reading dist lengths")
+        dist_lengths = [int(x) for x in dist_line.strip().split()]
+        if len(dist_lengths) != num_dist:
+            raise ValueError("dist lengths count mismatch")
+
+        # 4) トークン数とトークン列
+        line = tw.readline()
+        if not line:
+            raise ValueError("Unexpected EOF while reading token count")
+        tok_count = int(line.strip())
+        toks_line = tw.readline()
+        if tok_count == 0:
+            tokens: list[Token] = []
+        else:
+            if not toks_line:
+                raise ValueError("Unexpected EOF while reading tokens")
+            words = toks_line.strip().split()
+            tokens: list[Token] = []
+            i = 0
+            while i < len(words):
+                tag = words[i]
+                if tag == 'L':
+                    if i + 1 >= len(words):
+                        raise ValueError("Malformed literal token")
+                    lit = int(words[i + 1])
+                    tokens.append(LitToken(lit))
+                    i += 2
+                elif tag == 'M':
+                    if i + 2 >= len(words):
+                        raise ValueError("Malformed match token")
+                    length = int(words[i + 1])
+                    distance = int(words[i + 2])
+                    tokens.append(MatchToken(length, distance))
+                    i += 3
+                else:
+                    raise ValueError(f"Unknown token tag {tag!r}")
+            if len(tokens) != tok_count:
+                raise ValueError("Token count mismatch")
+
+        # 5) ヘッダ構築
+        hlit = num_litlen - 257
+        hdist = num_dist - 1
+
+        print(litlen_lengths)
+        print(dist_lengths)
+
+        rle_codes = rle_code_lengths_stream(litlen_lengths, dist_lengths)
+        cl_bins = [0]*19
+        for sym, _, _ in rle_codes:
+            cl_bins[sym] += 1
+
+        # make Huffman tree for CL
+        ctr = count()
+        heap = [(freq, next(ctr), sym) for sym, freq in enumerate(cl_bins) if freq > 0]
+        heapq.heapify(heap)
+        while len(heap) > 1:
+            f1, _, n1 = heapq.heappop(heap)
+            f2, _, n2 = heapq.heappop(heap)
+            merged = (n1, n2)
+            heapq.heappush(heap, (f1 + f2, next(ctr), merged))
+        root = heap[0][2] if heap else None
+        cl_lengths = [0] * 19
+        def assign_cl_lengths(node, depth):
+            if isinstance(node, int):
+                cl_lengths[node] = depth
+            else:
+                left, right = node
+                assign_cl_lengths(left, depth + 1)
+                assign_cl_lengths(right, depth + 1)
+        if root is not None:
+            if isinstance(root, int):
+                cl_lengths[root] = 1
+            else:
+                assign_cl_lengths(root, 0)
+
+        print(cl_bins)
+        print(cl_lengths)
+
+        hclen = 15  # 19 個すべてを出力
+        cl_code = DynamicHuffmanCodeLengthCode(cl_lengths)
+        header = DynamicHuffmanHeader(
+            hlit=hlit,
+            hdist=hdist,
+            hclen=hclen,
+            cl_code=cl_code,
+            litlen_code=FastHuffman(litlen_lengths),
+            dist_code=FastHuffman(dist_lengths),
+        )
+
+        return DynamicHuffmanBlock(bfinal=bfinal, header=header, tokens=tokens)

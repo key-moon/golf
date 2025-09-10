@@ -24,11 +24,11 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
     while(dist_freq.size() > 1 && dist_freq.back() == 0) dist_freq.pop_back();
 
     int table_size = 0;
-    std::vector<std::vector<std::vector<std::vector<int>>>> dp(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << (MAX_BIT_WIDTH + 1)) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
-    std::vector<std::vector<std::vector<std::vector<int>>>> prev_lens(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << (MAX_BIT_WIDTH + 1)) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
-    std::vector<std::vector<std::vector<std::vector<int>>>> prev_runs(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << (MAX_BIT_WIDTH + 1)) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
+    std::vector<std::vector<std::vector<std::vector<int>>>> dp(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << MAX_BIT_WIDTH) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
+    std::vector<std::vector<std::vector<std::vector<int>>>> prev_lens(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << MAX_BIT_WIDTH) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
+    std::vector<std::vector<std::vector<std::vector<int>>>> prev_runs(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << MAX_BIT_WIDTH) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
     for (int i = 0; i <= lit_freq.size(); ++i) {
-        for (int j = 0; j <= (1 << (MAX_BIT_WIDTH + 1)); ++j) {
+        for (int j = 0; j <= (1 << MAX_BIT_WIDTH); ++j) {
             for (int k = 0; k < MAX_BIT_WIDTH + 1; ++k) {
                 dp[i][j][k].resize(k == 0 ? 138 : 10, 1e6);
                 prev_lens[i][j][k].resize(k == 0 ? 138 : 10, -1);
@@ -68,7 +68,7 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
         dp[1][j][len][1] = lit_freq[0] * len;
     }
     for (int i = 1; i < lit_freq.size(); ++i) {
-        for (int j = 0; j <= (1 << (MAX_BIT_WIDTH + 1)); ++j) {
+        for (int j = 0; j <= (1 << MAX_BIT_WIDTH); ++j) {
             for (int prev_len = 0; prev_len < MAX_BIT_WIDTH + 1; ++prev_len) {
                 for (int prev_run = 0; prev_run < dp[i][j][prev_len].size(); ++prev_run) {
                     if (dp[i][j][prev_len][prev_run] == 1e6) continue;
@@ -76,7 +76,7 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
                         if (lit_freq[i] != 0 && next_len == 0) continue;
                         // Set as new run length
                         int next_j = j + (next_len == 0 ? 0 : (1 << (MAX_BIT_WIDTH - next_len)));
-                        if (next_j > (1 << (MAX_BIT_WIDTH + 1))) continue;
+                        if (next_j > (1 << MAX_BIT_WIDTH)) continue;
                         int cost = dp[i][j][prev_len][prev_run] + compute_run_cost(prev_len, prev_run) + lit_freq[i] * next_len;
                         if (dp[i + 1][next_j][next_len][1] > cost) {
                             prev_lens[i + 1][next_j][next_len][1] = prev_len;
@@ -89,7 +89,7 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
                         if (lit_freq[i] != 0 && prev_len == 0) continue;
                         if (prev_run + 1 >= dp[i + 1][j][prev_len].size()) continue;
                         int next_j = j + (prev_len == 0 ? 0 : (1 << (MAX_BIT_WIDTH - prev_len)));
-                        if (next_j > (1 << (MAX_BIT_WIDTH + 1))) continue;
+                        if (next_j > (1 << MAX_BIT_WIDTH)) continue;
                         int cost = dp[i][j][prev_len][prev_run] + lit_freq[i] * prev_len;
                         if (dp[i + 1][next_j][prev_len][prev_run + 1] > cost) {
                             prev_lens[i + 1][next_j][prev_len][prev_run + 1] = prev_len;
@@ -101,7 +101,7 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
             }
         }
     }
-    const auto& dp_back = dp[lit_freq.size()][(1 << (MAX_BIT_WIDTH + 1))];
+    const auto& dp_back = dp[lit_freq.size()][1 << MAX_BIT_WIDTH];
     std::tuple<int,int,int> best = {1e6, 1e6, 1e6};
 
     for (int prev_len = 0; prev_len < MAX_BIT_WIDTH + 1; ++prev_len) {
@@ -118,7 +118,7 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
     int prev_run = std::get<2>(best);
 
     int i = lit_freq.size();
-    int j = (1 << (MAX_BIT_WIDTH + 1));
+    int j = 1 << MAX_BIT_WIDTH;
     std::vector<int> new_lit_code_lengths(lit_freq.size(), 0);
     while(i > 0) {
         new_lit_code_lengths[i - 1] = prev_len;

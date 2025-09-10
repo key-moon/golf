@@ -1,3 +1,4 @@
+from io import StringIO
 from dataclasses import dataclass
 from deflate_optimizer.bitio import BitReader, BitWriter
 from deflate_optimizer.blocks import Block, Token, LitToken, MatchToken
@@ -46,3 +47,26 @@ class FixedHuffmanBlock(Block):
             else:
                 raise ValueError("Unknown token type")
         print(' '.join(convert(tok) for tok in self.tokens), file=tw)
+
+    @staticmethod
+    def load_from_text(tw: StringIO, bfinal: int) -> "FixedHuffmanBlock":
+        len_str = tw.readline().strip()
+        length = int(len_str)
+        tokens = []
+        i = 0
+        parts = tw.readline().strip().split()
+        while i < length:
+            if parts[i] == 'L':
+                lit = int(parts[i+1])
+                tokens.append(LitToken(lit=lit))
+                i += 2
+            elif parts[i] == 'M':
+                length = int(parts[i+1])
+                distance = int(parts[i+2])
+                tokens.append(MatchToken(length=length, distance=distance))
+                i += 3
+            else:
+                raise ValueError("Unknown token type in text")
+        if len(tokens) != length:
+            raise ValueError("FixedHuffman block token length mismatch")
+        return FixedHuffmanBlock(bfinal=bfinal, tokens=tokens)

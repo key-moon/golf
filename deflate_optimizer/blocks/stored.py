@@ -1,3 +1,4 @@
+from io import StringIO
 from dataclasses import dataclass
 from deflate_optimizer.blocks import Block
 from deflate_optimizer.bitio import BitReader, BitWriter
@@ -38,3 +39,14 @@ class StoredBlock(Block):
         print(self.bfinal, 0b00, file=tw)
         print(len(self.data), file=tw)
         print(' '.join(f'{int(b)}' for b in self.data), file=tw)
+    
+    @staticmethod
+    def load_from_text(tw: StringIO, bfinal: int) -> "StoredBlock":
+        len_str = tw.readline().strip()
+        length = int(len_str)
+        data_str = tw.readline().strip()
+        byte_vals = list(map(int, data_str.split()))
+        if len(byte_vals) != length:
+            raise ValueError("Stored block length mismatch")
+        data = bytes(byte_vals)
+        return StoredBlock(bfinal=bfinal, data=data)
