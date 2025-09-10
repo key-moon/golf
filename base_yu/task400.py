@@ -20,3 +20,4 @@ p=lambda g:[(t:=sum(g,[]))[~t.index(1)-i*24::-1][:5]for i in range(5)]
 
 
 
+

@@ -17,3 +17,4 @@ p=lambda g,R=[0]*9:[R:=[r.pop(0)and(C or-~max(R))for C in R]for r in g]
 
 
 
+

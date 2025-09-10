@@ -35,3 +35,4 @@ p=lambda g:g[:1]*3+[g[3],[5-c*4for c in g[2]]]
 
 
 
+

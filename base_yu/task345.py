@@ -1,4 +1,4 @@
-# best: 90(jailctf merger) / others: 95(natte), 102(4atj sisyphus luke Seek mukundan), 108(xsot ovs att joking mewheni), 116(intgrah jimboko awu macaque sammyuri), 131(dbdr)
+# best: 90(jailctf merger) / others: 95(natte), 102(4atj sisyphus luke Seek mukundan), 108(xsot ovs att joking mewheni), 114(intgrah jimboko awu macaque sammyuri), 131(dbdr)
 # ========================================== 90 ==========================================
 # def p(g):
 #  u=[*zip(*g)]
@@ -15,6 +15,7 @@
 
 
 p=lambda g,t=[0]*10:[*zip(*[t:=[s[i]|max(s[i:])%5|(5in(0,*t)[i:])*t[9]for i in range(10)]for s in zip(*g)])]
+
 
 
 

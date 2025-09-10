@@ -28,3 +28,4 @@ p=lambda g,c=79:-c*g or p([[(s[0]in s[i:])*(c<4)*s[0]|v for i,v in enumerate(s)]
 
 
 
+

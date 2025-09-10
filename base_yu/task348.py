@@ -28,3 +28,4 @@ p=lambda g,c=-19:c*g or p([[v|-w%15for v,w in zip(s,[0]+t)][::-1]for s,t in zip(
 
 
 
+

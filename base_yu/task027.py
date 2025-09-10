@@ -41,3 +41,4 @@ p=lambda g,R=range(10):min((sum(sum(a:=[[g[i][j]or g[(u+1-j)%10][i]*2for j in R]
 
 
 
+

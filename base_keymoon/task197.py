@@ -9,3 +9,4 @@ p=lambda g:[[r[g[1].index(c)]for c in g[1]] for r in g]
 
 
 
+

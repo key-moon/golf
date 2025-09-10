@@ -13,3 +13,4 @@ p=lambda g,c=-1:c*g or p([[v or sum({*s[:i]}&{*s[i:]})for i,v in enumerate(s)]fo
 
 
 
+

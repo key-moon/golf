@@ -35,3 +35,4 @@ p=lambda g:(0in max(g,key=sum))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerat
 
 
 
+

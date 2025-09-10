@@ -14,3 +14,4 @@ p=lambda g,c=3,x=0:-c*g or[[(not(3>c)<x<y)*(-x%6|(x:=y))for y in s]for s in zip(
 
 
 
+

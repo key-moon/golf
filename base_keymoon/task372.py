@@ -9,3 +9,4 @@ p=lambda g:[[*map(max,*a)]for a in zip(g,g[6:])]
 
 
 
+

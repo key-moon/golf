@@ -9,3 +9,4 @@ p=lambda g:[(s[:6]*9)[:len(s)*2]for s in g]
 
 
 
+

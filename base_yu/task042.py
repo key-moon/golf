@@ -30,3 +30,4 @@ import re;p=lambda g,c=-3:g*c or[*zip(*eval(re.sub("0(?=.{%d}3.{%d}3)"%((k:=sum(
 
 
 
+

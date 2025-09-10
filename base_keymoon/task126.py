@@ -15,3 +15,4 @@ p=lambda g:g[:-1]+[[4*(sum(r)==max(r)>0)for r in zip(*g)]]
 
 
 
+
