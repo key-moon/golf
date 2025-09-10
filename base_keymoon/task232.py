@@ -12,3 +12,4 @@ p=lambda g:[(i:=0)or[[0,5,max(r)][i:=-i+c//~c]for c in r]for r in g]
 
 
 
+

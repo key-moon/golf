@@ -56,3 +56,4 @@ p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum([s for s in zip(*[s for 
 
 
 
+

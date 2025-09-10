@@ -19,3 +19,4 @@ p=lambda g,c=-1:c*g or p([*zip(*[t for s,t in zip([0]+g,g)if(t!=s)*sum(t)])],c+1
 
 
 
+

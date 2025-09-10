@@ -16,3 +16,4 @@ p=lambda g,c=0:-~-(c in sum(u:=[[v for*t,v in zip(*g,s)if c in t][1:-1]for s in 
 
 
 
+

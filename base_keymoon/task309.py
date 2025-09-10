@@ -12,3 +12,4 @@ p=lambda g:[[x&13for x in r]for r in g]
 
 
 
+

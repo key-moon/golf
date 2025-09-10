@@ -7,3 +7,4 @@ import re;p=lambda g,c=-23:c*g or p(eval(re.sub(r"(?<=[24], )[^02](?=(.{%d})?, [
 
 
 
+

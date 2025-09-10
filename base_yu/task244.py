@@ -30,3 +30,4 @@ p=lambda g:[[s[::-k]for s in g[::k]]for k in b""if g[0]!=g[k-1]][0]
 
 
 
+

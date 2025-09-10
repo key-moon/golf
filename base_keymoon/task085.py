@@ -19,3 +19,4 @@ p=lambda g:[g:=[b:=c*(g!=r or b<1)for c in r]for r in g]
 
 
 
+

@@ -14,3 +14,4 @@ p=lambda g,c=-99:c*[[v and g[0][0]for v in s[1:-1]]for s in g[1:-1]]or p([*zip(*
 
 
 
+

@@ -20,3 +20,4 @@ p=lambda g:[[t[j+[s:=(len(g)>6)+2,-s][j>=s]]for j,v in enumerate(t)if v<1]for t 
 
 
 
+

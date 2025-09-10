@@ -25,3 +25,4 @@ p=lambda g:max((all(y:=sum(x:=[s[l:t%21]for s in g[u:t//21]],[])),y.count(2),len
 
 
 
+

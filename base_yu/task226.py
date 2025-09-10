@@ -9,3 +9,4 @@ p=lambda g,E=enumerate:[[s[j]or sum(-~k*(sum(s[:j])*2==k*sum(s))*(sum(t[:i])*2==
 
 
 
+

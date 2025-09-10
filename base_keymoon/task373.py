@@ -7,3 +7,4 @@ p=lambda g:[u:=[*map(max,g)]*3,u[::-1]]
 
 
 
+

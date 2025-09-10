@@ -21,3 +21,4 @@ p=lambda g,c=47:-c*g or p(eval(str([*zip(*g)][::-1]).replace(c//4*", 5",c//4*",l
 
 
 
+

@@ -29,3 +29,4 @@ p=lambda g:[[v and sum({*sum(g,[])})-t[0] for v in t]for t in max((m,s)for(m,s)i
 
 
 
+

@@ -7,3 +7,4 @@ p=lambda g:[s+s[::-1]for s in g+g[::-1]]
 
 
 
+

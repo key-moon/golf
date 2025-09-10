@@ -8,3 +8,4 @@ p=lambda g,a=0:[[c|(a:=a^c)for c in r]for r in g]
 
 
 
+

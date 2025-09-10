@@ -18,3 +18,4 @@ p=lambda g:[(S,[s]*9)[s in S]+[s]for*S,s in g]
 
 
 
+

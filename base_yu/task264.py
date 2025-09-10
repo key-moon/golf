@@ -1,4 +1,4 @@
-# best: 216(xsot ovs att joking mewheni) / others: 218(jailctf merger), 242(MasukenSamba), 261(4atj sisyphus luke Seek mukundan), 278(kdmitrie), 283(jacekwl Potatoman nauti)
+# best: 216(xsot ovs att joking mewheni) / others: 218(jailctf merger), 242(MasukenSamba), 257(Yuchen20), 261(4atj sisyphus luke Seek mukundan), 278(kdmitrie)
 def p(g):
 #  *o,=eval("[5]*9,"*9)
  o=[[5]*9 for _ in range(9)]
@@ -54,6 +54,7 @@ def p(g):
 #       o[y*3+u][x*3+v]=g[i+u][j+v]
 #       g[i+u][j+v]=0
 #  return o
+
 
 
 

@@ -14,3 +14,4 @@ p=lambda g:[[3+s[1]%2-s[0]%2]*3for s in g]
 
 
 
+

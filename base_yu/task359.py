@@ -7,3 +7,4 @@ p=lambda g:[[max(U:=s+[*t],key=U.count)for t in zip(*g)]for s in g]
 
 
 
+

@@ -12,3 +12,4 @@ p=lambda g,c=-1,E=enumerate:c*g or p([*zip(*[[v or(g[k-1]==s==g[k-9]!={0}<{*s[i:
 
 
 
+

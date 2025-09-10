@@ -11,3 +11,4 @@ p=lambda g,c=7:-c*[[[v,sum(S:={*t,*s})-t[0]][len(S)>1]for*t,v in zip(*g,s)]for s
 
 
 
+

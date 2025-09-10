@@ -1,4 +1,4 @@
-# best: 109(xsot ovs att joking mewheni) / others: 114(jailctf merger), 115(4atj sisyphus luke Seek mukundan), 135(jonas ryno kg583), 142(dbdr), 143(Yuchen20)
+# best: 109(xsot ovs att joking mewheni) / others: 114(jailctf merger), 115(4atj sisyphus luke Seek mukundan), 135(jonas ryno kg583), 142(dbdr), 144(Yuchen20)
 # =================================================== 109 ===================================================
 
 # c,B=zip(*((i,j)for i,r in A(j)for j,B in A(r)if B));Y=sum(c)//2;X=sum(B)//2
@@ -16,6 +16,7 @@ def p(g):
 #for i in-1,0,1:g[Y+i][X]=g[Y][X+i]=3
  for i in-1,0,1:g[Y+i][X]=g[Y][X+i]=3
  return g
+
 
 
 

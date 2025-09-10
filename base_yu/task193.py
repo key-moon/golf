@@ -36,3 +36,4 @@ p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s
 
 
 
+

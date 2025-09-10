@@ -18,3 +18,4 @@ p=lambda g,c=0:[(d:=0)or[d:=d+v for v in s]+[c:=d or c]for*s,_ in g]
 
 
 
+

@@ -1,4 +1,4 @@
-# best: 136(xsot ovs att joking mewheni) / others: 152(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 169(intgrah jimboko awu macaque sammyuri), 179(natte), 182(Yuchen20)
+# best: 136(xsot ovs att joking mewheni) / others: 152(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 169(intgrah jimboko awu macaque sammyuri), 179(natte), 181(Yuchen20)
 # ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])
@@ -9,6 +9,7 @@ def p(g):
 #  return[[g[i%n+n-f*n][j%n]and g[i//n+f*n][j//n]for j in R]for i in R]
  return n<6and [[g[i%n+n-f*n][j%n]and g[i//n+f*n][j//n]for j in R]for i in R]or[*zip(*p([*zip(*g)]))]
 #  return[[g[i+f*n][j]and g[y+n-f*n][x]for x in R for j in R]for y in R for i in R]
+
 
 
 

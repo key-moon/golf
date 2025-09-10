@@ -8,3 +8,4 @@ p=lambda g:eval("[any(a)*3for a in zip(g.pop(0),g[4])],"*4)
 
 
 
+

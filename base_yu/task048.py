@@ -26,3 +26,4 @@ p=lambda g,c=4**6:-c*[[8*("9"in str(g))]]or p([(l:=0)or[l:=v and(v|l|(v<3and(c:=
 
 
 
+

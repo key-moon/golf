@@ -32,3 +32,4 @@ p=lambda g:[[9-sum(g[2][i:i+3])/5-g[1][i]*.8]*3for i in b"\x01\x06\x0b"]
 
 
 
+
