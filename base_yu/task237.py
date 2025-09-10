@@ -12,15 +12,3 @@ p=lambda g,c=0:[(d:=0)or[d:=d+v for v in s]+[c:=d or c]for*s,_ in g]
 #   for i in range(1,len(s)):s[i]|=s[i-1]
 #   c=s[-1]=s[-1]or c
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

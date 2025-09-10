@@ -29,15 +29,3 @@ def p(g):
 #     elif 0<=i+(abs(k-1)-1)*l<h and 0<=j+(abs(k-2)-1)*l<w:
 #      g[i+(abs(k-1)-1)*l][j+(abs(k-2)-1)*l] = 8
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -51,15 +51,3 @@ def p(g):
 #       if 0<g[y][x]!=g[i][j]:
 #        g[i*2-y][x]=g[y][j*2-x]=g[i*2-y][j*2-x]=g[y][x]
 #     return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -42,15 +42,3 @@ def p(g,R=range):
 #    if max(abs(i-s[2]),abs(j-s[3]))%(s[3]-s[1])==0:
 #     g[i][j]=g[s[0]][s[1]]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

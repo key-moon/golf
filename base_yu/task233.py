@@ -18,15 +18,3 @@ def p(g):
             g[i+k][j+m]=0
      *t,=map(list,zip(*t[::-1]))
     return t
-
-
-
-
-
-
-
-
-
-
-
-

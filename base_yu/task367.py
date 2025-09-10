@@ -22,15 +22,3 @@ def p(g):
 #        for s in g[u:d]:
 #         s[l:r]=[4]*(r-l)
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

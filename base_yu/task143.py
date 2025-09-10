@@ -31,15 +31,3 @@ p=lambda g:[[((f:=lambda c:(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v
 #    for k in f[i]:
 #     g[k//10][k%10]=5
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

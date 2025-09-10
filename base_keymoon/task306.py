@@ -9,15 +9,3 @@ p=lambda g:[[max(c for r in g[i%10::10] for c in r[j%10::10]) for j in range(len
 #   print(f"h={len(g)}, w={len(g[0])}")
 #   print([[*zip(*zip(*[iter(l+[0])]*(len(l)//9)))] for l in g])
 #   return[[(j:=-~j) and max(c for r in l for c in r[j%10::10]) for _ in g[0]]for l in zip(*zip(*([iter(g)]*10)))]
-
-
-
-
-
-
-
-
-
-
-
-

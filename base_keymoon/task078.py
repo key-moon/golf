@@ -7,15 +7,3 @@
 # p=lambda g:[*map(list,zip(*[sorted(r,key=lambda x:(x-1)%3)for r in zip(*g)]))]
 # ===============================================================12345678901
 p=lambda g:[*map(list,zip(*[sorted(r,key=lambda x:x-1&3)for r in zip(*g)]))]
-
-
-
-
-
-
-
-
-
-
-
-

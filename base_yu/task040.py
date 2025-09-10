@@ -9,15 +9,3 @@
 # lambda g,h=[]:g*-1*-1or h*-1*-1or[p(g[i],(h+g)[(i>4)*9])for i in range(10)]
 # lambda g,h=[]:g and h if h*-1else[*map(p,g,(h+g)[:1]*5+(g+h)[-1:]*5)]
 p=lambda g,h=[]:h*(0<g)if-1*h else[*map(p,g,(h+g)[:1]*5+(g+h)[-1:]*5)]
-
-
-
-
-
-
-
-
-
-
-
-

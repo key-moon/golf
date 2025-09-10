@@ -12,15 +12,3 @@ def p(g):
 #  for s in t:
 #   s[l:r]=[6]*(r-l)
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -27,15 +27,3 @@ p=lambda g,R=range(21):[u for d in range(4,10)if(u:=[[max(max(g[i%d::d])[j%d::d]
 #  for d in range(4,10):
 #   if len(u:=dict(m:=[((i%21%d,i//21%d),v) for i,v in enumerate(sum(g,[]))if v]))==len({*m}):
 #    return [[u[(i%d,j%d)]for j in range(21)]for i in range(21)]
-
-
-
-
-
-
-
-
-
-
-
-

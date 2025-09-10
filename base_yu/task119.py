@@ -49,15 +49,3 @@ p=lambda g,c=-59,R=range(12):c*g or p([*zip(*[[g[i][j]or(i>1<j and g[i-1][j-1]>2
 #       s=g[i+u*~-(g[i-u][j]&2)]
 #       s[w]=s[w:=j+v*~-(g[i][j-v]&2)] or 3
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

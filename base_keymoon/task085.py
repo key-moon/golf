@@ -13,15 +13,3 @@
 # lambda g,b=0:[g:=[[c,b:=c*(b<1)][g==r]for c in r]for r in g]
 # ====================== 50 ======================
 p=lambda g:[g:=[b:=c*(g!=r or b<1)for c in r]for r in g]
-
-
-
-
-
-
-
-
-
-
-
-

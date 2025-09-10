@@ -181,15 +181,3 @@ def	p(f,s=4):
 		for	l	in	range(e[i]):l-=i;o[l-1][a+i-1]=o[l-1][a-i-1]=o[-i-1][a+l-1]=o[-i-1][a-l-1]=u[i]
 #	return	any([h^len(g),w^len(g[2]),{*sum(g,[])}^{b,*c},b	not	in	g[2]])and	p(g,s+1)or	o+o[:-1][::-1]
 	return	all([g,t,{*sum(f,[])}=={*u,d},d	in	f[2]])and	o+o[:-1][::-1]or p(f,s-1)
-
-
-
-
-
-
-
-
-
-
-
-

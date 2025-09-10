@@ -12,15 +12,3 @@ def p(g,R=range(9)):
  return[[u[i][j]&u[i%3*3][j%3*3]for j in R]for i in R]
 
 # p=lambda g,R=range(9):(u:=[[v for*t,v in zip(*g,s)if 5in t]for s in g if 5in s])and[[u[i][j]&u[i%3*3][j%3*3]for j in R]for i in R]
-
-
-
-
-
-
-
-
-
-
-
-

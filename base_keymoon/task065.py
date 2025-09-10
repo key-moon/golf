@@ -13,15 +13,3 @@
 def p(g):
  a=len(g)//2
  return min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in(0,a+1)for j in(0,a+1)],key=p.count)
-
-
-
-
-
-
-
-
-
-
-
-

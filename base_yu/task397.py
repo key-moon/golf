@@ -21,15 +21,3 @@ def p(g):
 #     for v in u[2:2+len(set(s))]:
 #      v[i%9]=v[i%9+1]=3
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

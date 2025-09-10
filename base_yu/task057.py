@@ -5,15 +5,3 @@
 # p=lambda g,c=2:c and p([*filter(max,zip(*g))]*c,c-1)or g
 # p=lambda g,F=filter:[*F(max,zip(*[*F(max,zip(*g))]*2))]
 p=lambda g,F=lambda c:[*filter(max,zip(*c))]:F(F(g)*2)
-
-
-
-
-
-
-
-
-
-
-
-

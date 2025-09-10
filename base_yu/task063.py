@@ -29,15 +29,3 @@ p=lambda g:[[v or 3-3*any(min(s[1:-1],t[1:-1]))for*t,v in zip(*g,s)]for s in g]
 #   g=[{*s[1:n-1]}&{2,8}and s or[s[0],*([3]*(n-2)),s[-1]]for s in g]
 #   *g,=map(list,zip(*g))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

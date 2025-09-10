@@ -8,4 +8,3 @@ def p(g):
    g[t//10][t%10:t%10+len(s)]=s
    t+=10
  return g
-

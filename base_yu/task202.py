@@ -16,15 +16,3 @@ p=lambda g,c=-3:c*g or p([*zip(*(g*(len({*max(g),0})<3)or[(l:=0)or[v*(l!=v)or(l:
 #    g=[(l:=-1)and[v==0 and(l:=w)*0 or(l!=v)*v for v,w in zip(s,map(max,zip(*g)))]for s in g]
 #   g=[*zip(*g[::-1])]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

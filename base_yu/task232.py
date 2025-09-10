@@ -7,16 +7,3 @@ p=lambda g:[([0]*[*s,1].index(v:=max(*s,1))+[v,5]*9)[:len(s)]for s in g]
 # 0v v
 # v0 5
 # 50 v
-
-
-
-
-
-
-
-
-
-
-
-
-

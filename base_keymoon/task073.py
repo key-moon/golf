@@ -27,15 +27,3 @@
 # p=lambda g:[*[g[0]]*3,g[3],[min(filter(int,z))for z in zip(*g)]]
 # p=lambda g:[*[g[0]]*3,g[3],[[5,1][c]for c in g[2]]]
 p=lambda g:g[:1]*3+[g[3],[5-c*4for c in g[2]]]
-
-
-
-
-
-
-
-
-
-
-
-

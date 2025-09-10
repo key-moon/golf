@@ -64,15 +64,3 @@ def p(g):
 # #  return[[u[d(b,j*10+i)%(y-x)]or 5for j in range(10)]for i in range(10)]
 #  for i in R(100):g[i%10][i//10]=dict(u)[d(b,i)%(y-x)]or 5
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

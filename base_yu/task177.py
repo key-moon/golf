@@ -11,15 +11,3 @@ p=lambda g:[*filter(len,[[*filter(int,s)][::-1]for s in g])]
 #  u,*_,d=S(i%h for i in s)
 #  l,*_,r=S(i//h for i in s)
 #  return[s[r:l-1:-1]for s in g[u:d+1]]
-
-
-
-
-
-
-
-
-
-
-
-

@@ -23,15 +23,3 @@ p=lambda g,R=range:[exec("for s in g[u:u+m]:s[l:l+m]=[2]*m")for m in R(1,8)for u
 #      for s in g[u:u+m]:
 #       s[l:l+m]=[2]*m
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

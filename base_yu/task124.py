@@ -22,15 +22,3 @@ p=lambda g,c=5:((u:=[([0]*(i//(y:=c%2+2)*(c//2))+g[i%y])[:10]for i in range(10)]
 #     for i in range(h,10):
 #      g+=[[0]*(i//y*x)+g[i%y][:10-i//y*x]]
 #     return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -16,15 +16,3 @@ def p(g):
  G=sum(g,[])
  k=G.index(min(G,key=G.count))
  return[s[(k%n>m)*-m:][:m]for s in g[(k>n*m)*-m:][:m]]
-
-
-
-
-
-
-
-
-
-
-
-

@@ -27,15 +27,3 @@ p=lambda g,R=range(13):[[g[i][j]+(abs((d:=i-(k:=sum(g,[]).index(8))//13)+j-k%13-
 #    g[i//13][i%13]=5
 #   g=[s[::-1]for s in g[::-1]]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

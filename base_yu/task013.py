@@ -21,15 +21,3 @@ p=lambda g:(t:=[*map(max,*g)])[0]+t[-1]and[*zip(*p([*zip(*g)]))]or[(t[:(x:=(u:=[
 #  t[x:]=(t[x:2*y-x]*9)[:len(t)-x]
 #  return[t]*len(g)
 # #  return [t[x:2*y-x]]
-
-
-
-
-
-
-
-
-
-
-
-

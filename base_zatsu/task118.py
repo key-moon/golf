@@ -9,15 +9,3 @@ def	p(l):
 			for	g	in	range(q>0,-k):
 				if(i+~-abs(q-1)*g,j+~-abs(q-2)*g)in	v:v-={(i+~-abs(q-1)*g,j+~-abs(q-2)*g)}
 				elif	len(l)>i+~-abs(q-1)*g>-1<j+~-abs(q-2)*g<len(l[0]):l[i+~-abs(q-1)*g][j+~-abs(q-2)*g]=8
-
-
-
-
-
-
-
-
-
-
-
-

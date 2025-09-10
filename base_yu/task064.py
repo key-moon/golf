@@ -20,15 +20,3 @@ def p(g):
 #    if(c!=b)*(len(G)>2):g[i%h][i//h:G[0]]=[c]*(G[0]-i//h)
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

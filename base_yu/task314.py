@@ -25,15 +25,3 @@ p=lambda g,R=range(8):[[max(min((g[i]*3)[j+5:j+12:6]),min(g[i-3][j],g[i+3&7][j])
 #     if g[i][j]==g[i+6][j]>1:u[i+3][j]=g[i][j]
 #     if g[j][i]==g[j][i+6]>1:u[j][i+3]=g[j][i]
 #  return u
-
-
-
-
-
-
-
-
-
-
-
-

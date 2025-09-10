@@ -8,15 +8,3 @@
 # lambda g,t=0,E=enumerate:[[(j-t[1]in(t[0]-i,i-t[0]))*c if t else sum(max(p(g,(i,j))))for j,c in E(r)]for i,r in E(g)]
 # f p(g):R=range(len(g));return[[max((y-i in(x-j,j-x))*g[y][x]for y in R for x in R)for j in R]for i in R]
 def p(g):R=range(len(g));return[[max((a:=g[k]+g[0])[j+i-k]|a[j-i+k]for k in R)for j in R]for i in R]
-
-
-
-
-
-
-
-
-
-
-
-

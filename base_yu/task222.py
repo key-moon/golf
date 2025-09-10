@@ -16,15 +16,3 @@ p=lambda g,c=-7:c*g or p([[v*(85<sum(g,[0,*s][i:i+3]*40).count(v))for i,v in enu
 #   g=[[(s[i]in[0,*s,0][i:i+3:2] and (hash((*g[0],))>>53 not in (-33,617,325) or s[i]%7==2))*s[i] for i in range(16)]for s in g]
 #   g=[*zip(*g)]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

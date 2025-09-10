@@ -23,15 +23,3 @@ p=lambda g:[[v and sum({*sum(g,[])})-t[0] for v in t]for t in max((m,s)for(m,s)i
 #  c,n=sum({*sum(x,[])})-x[0][0],j(x)
 #  for i in t(m):x[i%n][i//n]=x[i%n][i//n]and c
 #  return x
-
-
-
-
-
-
-
-
-
-
-
-

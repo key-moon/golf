@@ -11,15 +11,3 @@ p=lambda g:[[*map(max,zip(*g[:i]))]for i in(1,2,3)]
 #  for i in 0,1:
 #   for j in 0,1,2:g[i+1][j]|=g[i][j]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -21,15 +21,3 @@ def p(g):
  return g
 
 #p=lambda g:exec('x=g[0].index(sum(g[0]));C,*_=zip(*g);y=C.index(sum(C))\nfor k in range(9):\n if k-4:g[y+k//3-1][x+k%3-1]=4')or g
-
-
-
-
-
-
-
-
-
-
-
-

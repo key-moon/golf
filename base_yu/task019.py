@@ -5,15 +5,3 @@
 # p=lambda g,c=-1,l=[]:c*[s*2for s in g*2]or[(l:=[0,0]+[v+(v<1)*any({*(l:=l[1:])[:3:2]}-{8})*8for v in s])[2:]for s in p(g,c+1)[::-1]]
 # p=lambda g,c=-1,l=[]:c*g*2or[l:=[v or any({*[0,*l][i:i+3:2]}-{8})*8for i,v in enumerate(s*(c+2))]for s in p(g,c+1)[::-1]]
 p=lambda g,c=-2,l=[]:c*g or[l:=[v or any({*[0,*l][i:i+3:2]}-{8})*8for i,v in enumerate(~c%3*s)]for s in p(g,c+2)[::-1]]
-
-
-
-
-
-
-
-
-
-
-
-

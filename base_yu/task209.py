@@ -35,15 +35,3 @@ def p(g):
 #        if G[i][j]==0 and h>(i+y)//s>-1<(j+x)//s<w:
 #         G[i][j]=g[(i+y)//s][(j+x)//s]
 #      return G
-
-
-
-
-
-
-
-
-
-
-
-

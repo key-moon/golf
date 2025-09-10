@@ -29,15 +29,3 @@ def p(g):
 #   *g,=zip(*g)
 #   *u,=map(list,zip(*u))
 #  return u
-
-
-
-
-
-
-
-
-
-
-
-

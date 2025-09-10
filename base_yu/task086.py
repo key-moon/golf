@@ -32,15 +32,3 @@ def p(g):
 #       if h>y>-1<x<w and h>Y>-1<X<w and g[y][x]==g[Y][X]==d:
 #        u[i][j]=d
 #  return u
-
-
-
-
-
-
-
-
-
-
-
-

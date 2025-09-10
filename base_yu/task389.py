@@ -2,15 +2,3 @@
 # ========================== 57 =========================
 # p=lambda g:[[(v==5)*sum({*sum(g,[])}-{v})for v in s]for s in g]
 p=lambda g:[[(v==5)*(sum({*sum(g,[])})-v)for v in s]for s in g]
-
-
-
-
-
-
-
-
-
-
-
-

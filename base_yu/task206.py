@@ -17,15 +17,3 @@ def p(g):
 #  for k in 0,1,2:
 #   g[y-1+k][x-1:x+2]=g[u+k][v:v+3]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -39,15 +39,3 @@ def p(g):
    p=t+u+p
   A=s(d,c,A)
  return [[*map(int,r)]for r in s(c,d,A).split("]")[-3::-1]]#  s.sort(key=lambda x:x.groups())
-
-
-
-
-
-
-
-
-
-
-
-

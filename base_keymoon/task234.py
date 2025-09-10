@@ -14,15 +14,3 @@ p=lambda g,c=-3,s=[0]:g*c or p([*zip(*[s:=r for r in g+g[:1]*99if(max(r)in s)>=(
 
 # [s:=r for r in g if(max(r)in s)>=(sum(r)in r)]
 # [*filter(lambda r:(max(r)in s)>=(sum(s:=r)in r),g)]
-
-
-
-
-
-
-
-
-
-
-
-

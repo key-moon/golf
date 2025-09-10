@@ -11,15 +11,3 @@ def p(g):
 #  return g[:w]+[[v or any(t)*max(sum(u,[]))for*t,v in zip(*u,s)] for s in u]
 # def p(g):
 #  return q(g[:5])+q(g[5:])
-
-
-
-
-
-
-
-
-
-
-
-

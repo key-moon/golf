@@ -11,15 +11,3 @@ p=lambda g,A=range:max((all(y:=sum(x:=[s[l:r]for s in g[u:d]],[])),y.count(2),le
 #      y=sum(x:=[s[l:r] for s in g[u:d]],[])
 #      -all(y),y.count(2),len(y),x
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

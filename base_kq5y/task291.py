@@ -10,15 +10,3 @@
 
 #p=lambda g,c=1:[[c]]*(len({s.count(c)for s in g})>2)or p(g,c+1)
 p=lambda g,c=1:len({s.count(c)for s in g})//3*[[c]]or p(g,c+1)
-
-
-
-
-
-
-
-
-
-
-
-

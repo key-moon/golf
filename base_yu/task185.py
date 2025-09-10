@@ -77,15 +77,3 @@ def p(g):
 # #  return[[[0,u[i][j]][len({u[i+k%2][j+k//2]for k in range(4)})==1] for j in range(x,x+3)]for i in range(y,y+3)]
 # #  return[[[0,u[y+i][x+j]][u[y+i][x+j]==u[y+i+1][x+j]==u[y+i][x+j+1]==u[y+i+1][x+j+1]] for j in range(3)]for i in range(3)]
 # #  return [[u[y+i][x+j] for j in range(4)]for i in range(4)]
-
-
-
-
-
-
-
-
-
-
-
-

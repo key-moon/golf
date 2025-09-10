@@ -8,15 +8,3 @@
 # lambda g:g*0!=0and[max(r,*map(p,g[i%10::10]))for i,r in enumerate(g)]or g
 # lambda g:g*0!=0and[max(r,*map(p,g[i%10::10]))for i,r in enumerate(g)]or g
 p=lambda g:g*0!=0and[max(*map(p,g[i%10::10]*2))for i in range(len(g))]or g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,16 +10,3 @@ import re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("0(?=(.{34}([^0])){2,}, \
 #   g=eval(re.sub("(([1-9]), (\\2.{34}){2,})0","\\1\\2",str(g)))
 #   g=[*zip(*g[::-1])]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-
-

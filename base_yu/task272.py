@@ -4,15 +4,3 @@
 # p=lambda g,E=enumerate:[[sum([0,*s][j:j+3:2]+[0,*t][i:i+3:2])<s[j]or s[j]for j,t in E(zip(*g))]for i,s in E(g)]
 # lambda g,E=enumerate:[[sum([0,*s][j:j+3]+[0,*t][i:i+3])<3*s[j]or s[j]for j,t in E(zip(*g))]for i,s in E(g)]
 p=lambda g,c=35:-c*g or[*zip(*eval(str(p(g,c-1)).replace(*[f"1, {1+c%3}","2","2,2","1"][c<1::2])))][::-1]
-
-
-
-
-
-
-
-
-
-
-
-

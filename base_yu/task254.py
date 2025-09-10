@@ -6,15 +6,3 @@ def p(g):
  _,a,*_,b=sorted({*zip(*g)})
  return[*zip(*[[v and(s==a)*2+(s==b)for v in s]for s in zip(*g)])]
 #  return[[x and(t==a)*2+(t==b)for x,t in zip(s,zip(*g))]for s in g]
-
-
-
-
-
-
-
-
-
-
-
-

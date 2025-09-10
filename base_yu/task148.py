@@ -33,15 +33,3 @@ def p(g):
 #   if r:
 #    s.reverse()
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -33,15 +33,3 @@ p=lambda g:[[sum({min(u:=sum(g,[]),key=u.count)}&{t[0],s[0]})for t in zip(*g)]fo
 #    for j in range(h):
 #     u[j][i]=c
 #  return u
-
-
-
-
-
-
-
-
-
-
-
-

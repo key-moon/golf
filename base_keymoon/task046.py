@@ -23,15 +23,3 @@ def p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S+s,*t}-{5})][v==5]for v in[0,
 # 次の o は next-prev+2?
 # 0: 0-2+1
 # 1: 1
-
-
-
-
-
-
-
-
-
-
-
-

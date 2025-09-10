@@ -49,15 +49,3 @@ def p(g):
 #       if k in R(n)and j in R(n)and g[k][j]<9:
 #        g[k][j]=3
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

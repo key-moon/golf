@@ -7,15 +7,3 @@ p=lambda g:[*zip(sorted({*(u:=sum(g,[]))},key=u.count)[2::-1])]
 # p=lambda g:(u:=sum(g,[]))and[[v]for v in sorted({*u},key=u.count)[2::-1]]
 # p=lambda g:[[int(v)]for v in sorted({*str(g)}-{*"[]"},key=str(g).count)[2::-1]]
 # p=lambda g:[*map(lambda x:[x],sorted({*(u:=sum(g,[]))},key=u.count)[2::-1])]
-
-
-
-
-
-
-
-
-
-
-
-

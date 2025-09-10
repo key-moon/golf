@@ -81,15 +81,3 @@ p=lambda g:[[hash((1300,*map(bool,g[1])))%7]]
 #       if ks == vs:
 #         print(f"{mod=} {mul=} {i=}")
 #         break
-
-
-
-
-
-
-
-
-
-
-
-

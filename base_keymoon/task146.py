@@ -6,15 +6,3 @@
 # lambda g:a if(a:=g[:3])!=[*map(list,zip(*a))]else p(g[3:])
 # ========================== 58 ==========================
 p=lambda g:p(g[3:])if(a:=g[:3])==[*map(list,zip(*a))]else a
-
-
-
-
-
-
-
-
-
-
-
-

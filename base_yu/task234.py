@@ -16,15 +16,3 @@ def p(g):
 #   g=g*b+[g[0]]*(h-len(g))+g*(1-b)
 #   *g,=map(list,zip(*g))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

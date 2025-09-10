@@ -13,15 +13,3 @@ def p(g):
 #  n=len(g)
 #  return[[g[-(abs(j-n//2)==n-i+(g[-2].count(0)!=n-1))][n//2]for j in range(n)]for i in range(2,n)]+g[-2:]
 #  return[[g[i][j]or g[-(abs(j-n//2)+i==n-2+(n-g[-2].count(0))//2)][n//2]for j in R]for i in R]
-
-
-
-
-
-
-
-
-
-
-
-

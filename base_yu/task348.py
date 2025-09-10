@@ -19,16 +19,3 @@ p=lambda g,c=-19:c*g or p([[v|-w%15for v,w in zip(s,[0]+t)][::-1]for s,t in zip(
 #     g[i][j]=g[i][j] or i+1<len(g) and j>0 and g[i+1][j-1] and 15-g[i+1][j-1]
 #   g=[s[::-1]for s in g]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-
-

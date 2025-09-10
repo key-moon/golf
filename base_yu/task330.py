@@ -35,15 +35,3 @@ def p(g):
 #    if g[i][j]==5 and p(g,i,j,1)==6:
 #     p(g,i,j,2)
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

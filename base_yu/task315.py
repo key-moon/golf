@@ -9,15 +9,3 @@ p=lambda g:[[y*(x>1)for x in t for y in s]for t in g for s in g]
 #   (1,0):0, (1,1):0, (1,2):0,
 #   (2,0):0, (2,1):1, (2,2):2
 # }[(x,y)]
-
-
-
-
-
-
-
-
-
-
-
-

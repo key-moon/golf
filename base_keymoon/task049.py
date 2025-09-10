@@ -16,15 +16,3 @@
 # lambda g:[R for r in g if(R:=[v for v in r if v==min(u:=[0]*99+sum(g,[]),key=u.count)])]
 # lambda g:[R for r in g if(R:=r.count(v:=min(u:=[0]*99+sum(g,[]),key=u.count))*[v])]
 p=lambda g:[c*[v]for r in g if(c:=r.count(v:=min(u:=sum(g,[0]*99),key=u.count)))]
-
-
-
-
-
-
-
-
-
-
-
-

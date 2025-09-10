@@ -2,15 +2,3 @@
 # ================= 39 ================
 # p=lambda g:[*map(list,zip(*[sorted(c)for c in zip(*g)]))]
 p=lambda g:[*zip(*map(sorted,zip(*g)))]
-
-
-
-
-
-
-
-
-
-
-
-

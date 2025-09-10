@@ -7,15 +7,3 @@ def p(g,i=0):
  for s in g:s[i]=s[~i]=0;i+=1
  return g
 # p=lambda g:exec("for i,s in enumerate(g):s[i]=s[~i]=0")or g
-
-
-
-
-
-
-
-
-
-
-
-

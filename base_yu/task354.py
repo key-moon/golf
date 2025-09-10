@@ -26,15 +26,3 @@ p=lambda g,c=-1:c*g or p([(l:=0)or[l:=(v and(c or l)or v)for c,v in zip(g[0],s)]
 #   G.append(t)
 #   l=t
 #  return g[:1]+[*zip(*G)]
-
-
-
-
-
-
-
-
-
-
-
-

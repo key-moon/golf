@@ -5,15 +5,3 @@
 # port re;p=lambda g,c=-25:g*c or eval(re.sub(r"(([^0]).{34})0(?=(.{35})+(?<=\2))",r"\1\2",str(p(g,c+1))))[::-1]
 # port re;p=lambda g,c=-45:g*c or eval(re.sub(r"(([^0]).{34})0((.{35})+(?<=\2))",r"\1\2\3",str(p(g,c+1))))[::-1]
 import re;p=lambda g,c=-25:g*c or eval(re.sub(r"(([^0]).{34})0(?=(.{35})+(?<=\2))",r"\1\2",str(p(g,c+1))))[::-1]
-
-
-
-
-
-
-
-
-
-
-
-

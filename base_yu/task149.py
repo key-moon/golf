@@ -14,12 +14,3 @@ p=lambda g,R=b"\x03\x07\x0b":[[sum(sum(s[j-3:j])for s in g[i-3:i])//12for j in R
 #   for j in range(11):
 #    u[i//4][j//4]+=g[i][j]==6
 #  return[[v//2 for v in s]for s in u]
-
-
-
-
-
-
-
-
-

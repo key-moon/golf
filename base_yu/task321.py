@@ -9,15 +9,3 @@
 # lambda g:[eval("s.pop(0)or min(s[4::5]),"*4)for s in g]
 p=lambda g:[eval("s.pop(0)or s[4]or s[9],"*4)for s in g]
 # 55はtuple許可以前に出てたのでもっと縮むはず
-
-
-
-
-
-
-
-
-
-
-
-

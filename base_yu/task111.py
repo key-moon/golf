@@ -11,15 +11,3 @@
 # lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in(12,22,32)]
 # lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in b"123"]
 p=lambda g:[[*iter(sum(g,g).pop,5)][3-i:-i:-1]for i in b"\x0c\x16\x20"]
-
-
-
-
-
-
-
-
-
-
-
-

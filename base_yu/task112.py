@@ -14,15 +14,3 @@ p=lambda g,c=-1:c*g or p([*zip(*((a:=g[:g.index(max(g,key=max))+1])+a[::-1]+[g[-
 #  i=[i for i,s in enumerate(g)if 3in s][0]
 #  g=[*zip(*(g[:i+1]+g[i::-1]+[g[-1]]*99)[:len(g)])]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

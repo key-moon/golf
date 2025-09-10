@@ -24,15 +24,3 @@
 # best: 45(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 47(2F), 47(biz), 47(intgrah jimboko awu macaque sammyuri), 48(kdmitrie), 50(Potatoman)
 # ==================== 45 ===================
 p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
-
-
-
-
-
-
-
-
-
-
-
-

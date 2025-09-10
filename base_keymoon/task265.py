@@ -5,15 +5,3 @@ import re;p=lambda g,c=-7:g*(c+4*0**(hash((*g[0],))%881))or[*zip(*eval(re.sub("(
 
 
 # +2*0**(hash((*g[1],))%1031)
-
-
-
-
-
-
-
-
-
-
-
-

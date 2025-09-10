@@ -20,15 +20,3 @@ p=lambda g,c=-359:c*g or[(l:=0)or[(v<1<=l%8and sum({*sum(g,[])})-8-l)+(l:=v)for 
 #   g=eval(re.sub(r"0(?=, ([1-79])(.{%d})?, ([1-79]))"%(len(g[0])*3-1),r"\3",str(g)))
 #   g=[*zip(*g[::1|c%3%-2])]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -23,15 +23,3 @@ p=lambda g,c=-3:c*g or p([1<len(a:=[*filter(int,s)])<len(s)and a[0]!=a[1]and[a[0
 #   *g,=zip(*g)
 #   *u,=map(list,zip(*u))
 #  return u
-
-
-
-
-
-
-
-
-
-
-
-

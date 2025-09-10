@@ -127,15 +127,3 @@ p=lambda g:[u for I in range(7938)if(o:=1,u:=[[(v:=(max(abs(i*2+1-I//3%21),abs(j
 #  for i in range(100):
 #   g[i%10][i//10]=u[d(b,i)%(y-x)]or 5
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

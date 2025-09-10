@@ -12,15 +12,3 @@ p=lambda g:[(t:=sum(g,[]))[~t.index(1)-i*24::-1][:5]for i in range(5)]
 #  k=t.index(1)
 #  return [t[~k-i*24::-1][:5] for i in range(5)]
 #  return [t[~k-i*24-4:][:5][::-1] for i in range(5)]
-
-
-
-
-
-
-
-
-
-
-
-

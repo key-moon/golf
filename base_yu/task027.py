@@ -33,15 +33,3 @@ p=lambda g,R=range(10):min((sum(sum(a:=[[g[i][j]or g[(u+1-j)%10][i]*2for j in R]
 # # #   if g[i%10][j:=i//10]:g[u][i%10]=g[u:=t-j-1][i%10]or 2
 #  return[[g[i][j]or 2*(t-j<10 and g[t-j][i])for j in range(10)]for i in range(10)]
 # #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,15 +6,3 @@
 # p=lambda g:[[v*i for v,i in zip(s,([1,.6]*99)[len(s):])]for s in g]
 # p=lambda g:[[s[i]*.6**(len(s)-i&1)for i in range(len(s))]for s in g]
 p=lambda g:[[v*.6**(len(s)-i&1)for i,v in enumerate(s)]for s in g]
-
-
-
-
-
-
-
-
-
-
-
-

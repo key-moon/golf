@@ -8,15 +8,3 @@
 # port re;p=lambda g:eval(re.sub("(?<=%s, ).(?=, %s)"%(s:='[^0]..{%d}[^0]'%len(g[0]*3),s),'0',str(g)))
 # port re;p=lambda g:eval(re.sub(f"(?<={(s:='[^0]..{%d}[^0]'%len(g[0]*3))}, ).(?=, {s})",'0',str(g)))
 import re;p=lambda g:eval(re.sub(rf"(?<=(\d).{(C:='.'*-~len(g[0])*3)})\1(?=.{C}\1)",'0',str(g)))
-
-
-
-
-
-
-
-
-
-
-
-

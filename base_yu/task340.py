@@ -36,15 +36,3 @@ p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])o
 #    if not{s[j]}&u:s[j]=0
 # #    if u-{s[j]}==u:s[j]=0
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

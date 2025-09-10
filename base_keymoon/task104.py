@@ -51,15 +51,3 @@ p=lambda g:[
 #     except ValueError:
 #       pass
 #     print(len(s))
-
-
-
-
-
-
-
-
-
-
-
-

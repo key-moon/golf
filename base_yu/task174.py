@@ -13,15 +13,3 @@ p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],(w:=[
 #   m=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s]
 #   if all(s==s[::-1] for s in m):
 #    return m
-
-
-
-
-
-
-
-
-
-
-
-

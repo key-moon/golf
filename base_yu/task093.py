@@ -21,15 +21,3 @@ p=lambda g:5in g[0]and[([0]*s[:s.index(5)].count(0)+[5]*(14-s.count(0))+[0]*9)[:
 #     s[:14]=[0]*l+[5]*(14-l-r)+[0]*r
 #   *g,=map(list,zip(*g))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -21,15 +21,3 @@ def p(g):
    for x in R:
     g[j-f+i][l+x]=g[j-f+i][l+x] or g[j][x]//8
  return g
-
-
-
-
-
-
-
-
-
-
-
-

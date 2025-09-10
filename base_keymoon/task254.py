@@ -9,15 +9,3 @@ p=lambda g,Z=zip:[*Z(*[[v and(s==(a:=sorted({*Z(*g)}))[1])*2+(s==a[-1])for v in 
 #  return[*zip(*[[v and(s==a[1])*2+(s==b)for v in s]for s in zip(*g)])]
 # #return[[c and(t==a[1])*2+(t==b)for c,t in zip(r,zip(*g))] for r in g]
 # #return[[c and(t==[*a[1]])*2+(t==[*b])for*t,c in zip(*g,r)] for r in g]
-
-
-
-
-
-
-
-
-
-
-
-

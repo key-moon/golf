@@ -11,15 +11,3 @@ def p(g):
   for i,j in zip(y,x):
    u[i+(s-max(y)-min(y))//2][j+(s-max(x)-min(x))//2]=c
  return u
-
-
-
-
-
-
-
-
-
-
-
-

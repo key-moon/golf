@@ -9,15 +9,3 @@
 # lambda g,R=[0]*9:[R:=[c/5*(C or max(R)+1)for c,C in zip(r,R)]for r in g]
 # lambda g,R=[0]*9:[R:=[r.pop(0)/5*(C or max(R)+1)for C in R]for r in g]
 p=lambda g,R=[0]*9:[R:=[r.pop(0)and(C or-~max(R))for C in R]for r in g]
-
-
-
-
-
-
-
-
-
-
-
-

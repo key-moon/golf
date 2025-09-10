@@ -27,15 +27,3 @@ def p(s):
 #    if(y,x)!=(a,b)and not any(g[y+k][x+l]for k,l in({(k,l)for k in range(d)for l in range(e)}-s)):
 #     for k,l in s:g[y+k][x+l]=v
 #     return g
-
-
-
-
-
-
-
-
-
-
-
-

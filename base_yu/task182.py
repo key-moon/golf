@@ -24,15 +24,3 @@ def p(g):
 #         for l in range(5):
 #          g[i+l][j+k]=g[i+l][j+k]and t[k+1][l+1]
 #     return g
-
-
-
-
-
-
-
-
-
-
-
-

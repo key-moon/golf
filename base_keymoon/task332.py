@@ -24,15 +24,3 @@ p=lambda g:[eval("7**len(r)*r.pop(0)%8,"*len(r))for r in g]
 #     (3,5): 3,
 #     (5,5): 3,
 # }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -111,15 +111,3 @@ def p(g):
 #        g[k][j]=2
 #   *g,=map(list,zip(*g))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

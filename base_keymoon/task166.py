@@ -8,15 +8,3 @@
 # lambda g:[[t or any(s)+any(r)&2for*s,t in zip(*g,r)]for r in g]
 # ============================ 61 ===========================
 p=lambda g:[[s[0]or any(s)+any(r)&2for s in zip(r,*g)]for r in g]
-
-
-
-
-
-
-
-
-
-
-
-

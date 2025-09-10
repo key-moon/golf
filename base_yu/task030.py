@@ -15,15 +15,3 @@ p=lambda g:[*zip(*[s[(d:=(f:=sum(g,[]).index)(max(s))//10-f(1)//10):]+s[:d]for s
 #  u=[*zip(*g)]
 #  a={c:min([*s,c].index(c)for s in u)for c in(0,1,2,4)}
 #  return[*zip(*[s[(d:=a[max(s)]-a[1]):]+s[:d]for s in u])]
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,15 +13,3 @@ import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(, 0)*(, [^0])+(?!\2), 
 #   g=[(u:=0)or[[u:=u|(len({*s[i-3:i]})==3 and v and s[i-2]),v][v>0]for i,v in enumerate(s)]for s in g]
 #   g=[*zip(*g[::-1])]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

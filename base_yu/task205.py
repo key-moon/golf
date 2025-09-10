@@ -36,15 +36,3 @@ def p(g):
 #  for i in R(w):
 #   if i%h in u or i//h in v:s[i%h][i//h]=s[u[0]][v[0]]
 #  return s
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,15 +13,3 @@ def p(g):
   *g,=zip(*g[::-1])
   *o,=map(list,zip(*o[::-1]))
  return o
-
-
-
-
-
-
-
-
-
-
-
-

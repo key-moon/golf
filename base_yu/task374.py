@@ -15,15 +15,3 @@ p=lambda g,c=47:-c*g or p(eval(str([*zip(*g)][::-1]).replace(c//4*", 5",c//4*",l
 #   g=eval(str(g).replace((c//2*", 5")[2:],(c//2*f",{len({*sum(g,g[0])})*3%5}")[1:]))
 #   g=[*zip(*g)]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

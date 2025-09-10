@@ -3,15 +3,3 @@
 p=lambda g:[[[5,v][v==max(a:=sum(g,g),key=a.count)]for v in s]for s in g]
 
 # p=lambda g:[[[5,v][v==__import__("collections").Counter(sum(g,[])).most_common()[0][0]]for v in s]for s in g]
-
-
-
-
-
-
-
-
-
-
-
-

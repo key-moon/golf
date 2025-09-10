@@ -10,15 +10,3 @@ p=lambda g,c=0:-~-(c in sum(u:=[[v for*t,v in zip(*g,s)if c in t][1:-1]for s in 
 #   u=[[v for*t,v in zip(*g,s)if c in t][1:-1]for s in g if c in s][1:-1]
 #   if c not in sum(u,[]):
 #    return u
-
-
-
-
-
-
-
-
-
-
-
-

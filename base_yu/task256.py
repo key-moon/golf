@@ -6,15 +6,3 @@
 p=lambda g,E=enumerate:[[(2-((i:=g.index(max(g)))<k)+(i>k))*(k+l<i+sum(g[i])//2)for l,_ in E(t)]for k,t in E(g)]
 # p=lambda g,E=enumerate:[[[(2-(i<k)+(i>k))*(k+l<i+sum(s)//2)for l,_ in E(t)]for k,t in E(g)]for i,s in E(g)if 2in s][0]
 # p=lambda g,E=enumerate:[[(2-((i:=[*zip(*g)][0].index(2))<k)+(i>k))*(k+l<i+sum(g[i])//2)for l,_ in E(t)]for k,t in E(g)]
-
-
-
-
-
-
-
-
-
-
-
-

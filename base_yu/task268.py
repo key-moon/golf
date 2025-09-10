@@ -38,15 +38,3 @@ def p(g):
 #    l=len(u)
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

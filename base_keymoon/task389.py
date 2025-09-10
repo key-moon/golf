@@ -11,15 +11,3 @@
 # lambda g:[[sum({*sum(g*(v==5),[])}-{5})for v in r]for r in g]
 # lambda g:[[[*{*sum(g,[])}-{v},0][v!=5]for v in r]for r in g]
 p=lambda g:[[sum({*sum(g,[-5])})*(v==5)for v in r]for r in g]
-
-
-
-
-
-
-
-
-
-
-
-

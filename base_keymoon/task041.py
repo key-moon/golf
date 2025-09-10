@@ -2,15 +2,3 @@
 # lambda g,a=0:[[(a:=a^c)|c for c in r]for r in g]
 # ====================== 49 =====================
 p=lambda g,a=0:[[c|(a:=a^c)for c in r]for r in g]
-
-
-
-
-
-
-
-
-
-
-
-

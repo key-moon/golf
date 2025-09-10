@@ -9,16 +9,3 @@ def p(g):
  for _ in range(4):
   t=[*zip(*eval(re.sub("0(?=(.{%d})*, 0.{%d}0, [13-9])"%(n+5,n-2),"2",str(t)))[::-1])]
  return t
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,15 +12,3 @@ def p(g):
       for s in v:
        s[l:r]=[4]*(r-l)
  return g
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,15 +9,3 @@ def p(g,E=enumerate):
    if(2<w<=v)*(s[j]==5):
     g[i+1][j+1:j-1+v]=[v+3]*(v-2)
  return g
-
-
-
-
-
-
-
-
-
-
-
-

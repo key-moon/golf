@@ -5,15 +5,3 @@
 # p=lambda g:[s[::-1]+s for s in((g[::-1]+g)*2)[:9]]
 p=lambda g:[s[::-1]+s for s in(g[::-1]+g)*2][:9]
 # p=lambda g:(u:=g[::-1])and[s[::-1]+s for s in u+g+u]
-
-
-
-
-
-
-
-
-
-
-
-

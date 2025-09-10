@@ -36,15 +36,3 @@ p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s
 #      for l in range(k+1,20):g[l][j]=g[i][j]
 #      break
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

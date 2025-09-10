@@ -7,15 +7,3 @@
 import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{35})+(, ([^0])).{26}\2\2)",r"\3",str(p(g,c+1)))))][::-1]
 
 # port re;# p=lambda g:eval(r'(g:=eval(re.sub(r"(([1-9]), \2.{31}\2.{25}(\2.{28})*)0",r"\1 \2",str(g)))),')[0]
-
-
-
-
-
-
-
-
-
-
-
-

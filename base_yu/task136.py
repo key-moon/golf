@@ -21,15 +21,3 @@
 # lambda g:exec("x=%d;i,j=x//8+1,-~x&7;a=-~g[i][j]%%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a];"*64%(*range(64),)*9)or g
 # lambda g,R=range(1,9):exec("for i in R:\n for j in R:a=-~g[i][j]%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a]\n"*9)or g
 p=lambda g,R=range(1,9):exec("for j in R:i=%s;b=g[i][j];a=b**b+~b;g[i+a][j+a]|=b&g[i-a][j-a]\n"*8%(*R,)*9)or g
-
-
-
-
-
-
-
-
-
-
-
-

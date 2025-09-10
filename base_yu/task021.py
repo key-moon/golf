@@ -10,15 +10,3 @@ p=lambda g:[(len(s:=g[0])-s.count(s[0])+1)*s[:1]]*(len(g)-g.count(s)+1)
 #  w=len(g[0])-g[0].count(g[0][0])+1
 #  h=len(g)-[*zip(*g)][0].count(g[0][0])+1
 #  return[[g[0][0]]*w for _ in range(h)]
-
-
-
-
-
-
-
-
-
-
-
-

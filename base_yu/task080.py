@@ -12,15 +12,3 @@ def p(g):
        if(g[i][j]==g[y][x]==a)*(g[i][j+s]>(i-y)%s==(j-x)%s==0<=y+k<len(g)>x+l>-1):
         u[y+k][x+l]=g[i+k][j+l]
  return u
-
-
-
-
-
-
-
-
-
-
-
-

@@ -23,15 +23,3 @@ p=lambda g,c=-1,u=[[2]*99]:g*c or[*zip(*sum([str(g).count("2")//12*[s]for s in p
 #  t=[*zip(*[s for s in g if {*s}-{0,2}])]
 #  t=[*zip(*[s for s in t if {*s}-{0,2}])]
 #  return [[2]*(k*3+2)]+sum([[[2]+sum([[v]*k for v in s],[])+[2]]*k for s in t],[])+[[2]*(k*3+2)]
-
-
-
-
-
-
-
-
-
-
-
-

@@ -29,15 +29,3 @@ p=lambda g:[a:=g[0]+[0]*5*(4-g[0].count(0)),*(a:=[0]+a[:-1]for _ in a[1:])][::-1
 #   for v,i in b:
 #    k=i+s
 #    if k<m:g[m-1-s][k]=v
-
-
-
-
-
-
-
-
-
-
-
-

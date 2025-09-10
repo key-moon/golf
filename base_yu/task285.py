@@ -61,15 +61,3 @@ def p(g):
 #         if g[i+1][j]>0:g[i+Y][j+1-X]=g[i+1][j]
 #   *g,=map(list,zip(*g[::-1]))
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

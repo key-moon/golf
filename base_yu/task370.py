@@ -35,15 +35,3 @@ def p(g):
 #    for t in range(9*(g[i][j]<1)):
 #     if-1<(y:=i-~t*(k//w-l//w))<h and-1<(x:=j-~t*(k%w-l%w))<w:g[y][x]=c
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

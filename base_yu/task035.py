@@ -9,15 +9,3 @@ p=lambda g,c=-3:c*g or[[[l*s[0]or v,v][l:=l*(v!=8)]for v in s]for s in zip(*p(g,
 # port re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("([1-9])((, 0)+, )8",r"\1\2\1",str(p(g,c+1))))[::-1])]
 # port re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("8(?=[ ,0]{4,}([1-9]))",r"\1",str(p(g,c+1))))[::-1])]
 # port re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("8(?=, 0[^[(]*([1-9]))",r"\1",str(p(g,c+1))))[::-1])]
-
-
-
-
-
-
-
-
-
-
-
-

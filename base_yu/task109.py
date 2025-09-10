@@ -5,15 +5,3 @@
 # lambda g,c=-1:c*g or(a:=[*zip(*p([*zip(*g[:len(g)//2])],c+1))])+a[::-1] <- 色変えなし
 # lambda g,c=0:g*0!=0and(a:=[*map(p,g[:(i:=len(g)//2)],[g[i]]*9)])+a[::-1]or(g>0)*c
 p=lambda g,c=0:g and(c*-1*-1or(a:=[*map(p,g[:(i:=len(g)//2)],[g[i]]*9)])+a[::-1])
-
-
-
-
-
-
-
-
-
-
-
-

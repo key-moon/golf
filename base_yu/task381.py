@@ -43,15 +43,3 @@ p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(len(s))]for s in 
 # #  if __import__("random").random()<0.5:
 # #   g[0][0]=1
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

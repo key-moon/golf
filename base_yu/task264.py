@@ -54,15 +54,3 @@ def p(g):
 #       o[y*3+u][x*3+v]=g[i+u][j+v]
 #       g[i+u][j+v]=0
 #  return o
-
-
-
-
-
-
-
-
-
-
-
-

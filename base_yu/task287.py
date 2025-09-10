@@ -6,15 +6,3 @@
 # p=lambda g:[[c[c[0]==4]for c in zip(s,t[::-1])]for s,t in zip(g,g[::-1])]
 # p=lambda g:(a:=sum(g,[]))and[[[v,a.pop()][v==4]for v in s]for s in g]
 p=lambda g:(a:=sum(g,[]))+[[[v,a.pop()][v==4]for v in s]for s in g]
-
-
-
-
-
-
-
-
-
-
-
-

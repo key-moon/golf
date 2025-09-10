@@ -13,16 +13,3 @@ import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"(?<=([^0], ))((?!\1).)(, (.
 #   g=eval(re.sub("%d, ([^\]0%d])(,.+%d.{34})0"%(c,c,c),r"%d,0\2 \1"%c,str(g)))
 #   g=[*zip(*g[::-1])]
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-
-

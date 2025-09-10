@@ -14,15 +14,3 @@ def p(g):
 #    if all(1-g[i+k%2][j+k//2]%2 for k in R(4))*(hash((*g[0],))>>50!=-5884 or j!=11):
 #     for k in R(4):g[i+k%2][j+k//2]=2
 #  return g
-
-
-
-
-
-
-
-
-
-
-
-

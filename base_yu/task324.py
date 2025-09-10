@@ -22,15 +22,3 @@ def p(g):
    if i-j in a or i+j in b:
     g[i][j]=m[g[i][j]]
  return g
-
-
-
-
-
-
-
-
-
-
-
-
