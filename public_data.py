@@ -277,21 +277,30 @@ def apply_banner_update(text: str, header_lines: list[str]) -> tuple[str, bool]:
     out_lines: list[str] = []
     new_best = header_lines[0] if header_lines else None
     new_eq = header_lines[1] if len(header_lines) > 1 else None
-    updated = False
+    content_changed = False
+    banner_found = False
     for ln in lines:
         if _PAT_BEST.match(ln):
+            banner_found = True
             if new_best is not None:
                 out_lines.append(new_best)
-            updated = True
+                if ln != new_best:
+                   content_changed = True
+            else:
+               content_changed = True
             continue
         if _PAT_EQ.match(ln):
+            banner_found = True
             if new_eq is not None:
                 out_lines.append(new_eq)
-            updated = True
+                if ln != new_eq:
+                    content_changed = True
+            else:
+               content_changed = True
             continue
         out_lines.append(ln)
-    if not updated and header_lines:
+    if not banner_found and header_lines:
         out_lines = header_lines + out_lines
-        updated = True
-    return "\n".join(out_lines) + "\n", updated
+        content_changed = True
+    return "\n".join(out_lines), content_changed
 
