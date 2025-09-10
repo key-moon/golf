@@ -24,3 +24,4 @@ p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],(w:=[
 
 
 
+

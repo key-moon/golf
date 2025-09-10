@@ -12,3 +12,4 @@ p=lambda g:g[:2]+[[v]*len(g[0])for v in g[0]]*2
 
 
 
+

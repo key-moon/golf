@@ -19,3 +19,4 @@ import re;p=lambda g,c=-3:c*g or p(eval(re.sub("(.{55})?0, 0, 0"*3,r"\%s 1,1,1"*
 
 
 
+

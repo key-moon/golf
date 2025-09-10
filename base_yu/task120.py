@@ -13,3 +13,4 @@ p=lambda g,E=enumerate:[[all([0,*s,0][j:j+3]+[0,*t,0][i:i+3])*8or s[j]for j,t in
 
 
 
+

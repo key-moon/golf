@@ -42,3 +42,4 @@ p=lambda g:[(D:=0)or[int(D:=r.pop(0)and(D<1)/2+5or D>5and[6+r.index(5),D][6<D])f
 
 
 
+

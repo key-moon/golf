@@ -35,3 +35,4 @@ p=lambda g:[[(v>>len({*str(g)})-4&1)*5for v in b"\x06\x02\x0b\x01\x0c\x01\x08\x0
 
 
 
+

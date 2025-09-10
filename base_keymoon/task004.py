@@ -53,3 +53,4 @@ p=lambda g:[[s.pop(t.index(c:=max(t))|-1*(0<2*c==sum(t)))]+s for s,t in zip(g,(g
 
 
 
+

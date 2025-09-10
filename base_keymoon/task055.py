@@ -29,3 +29,4 @@ p=lambda g,i=0:[(i:=i+r[0],j:=i)and[c and(j:=j+3)%1+8or 586768>>j&7for c in r]fo
 
 
 
+

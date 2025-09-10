@@ -13,3 +13,4 @@ p=lambda g,E=enumerate:[[v*(v<sum(sum([(),*zip(*[[0]*99,*g][i:i+3])][j:j+3],()))
 
 
 
+

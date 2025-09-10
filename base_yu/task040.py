@@ -20,3 +20,4 @@ p=lambda g,h=[]:h*(0<g)if-1*h else[*map(p,g,(h+g)[:1]*5+(g+h)[-1:]*5)]
 
 
 
+

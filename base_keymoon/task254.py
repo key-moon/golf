@@ -20,3 +20,4 @@ p=lambda g,Z=zip:[*Z(*[[v and(s==(a:=sorted({*Z(*g)}))[1])*2+(s==a[-1])for v in 
 
 
 
+

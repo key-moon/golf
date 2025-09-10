@@ -21,3 +21,4 @@ p=lambda g:[[2*~a&2for a in map(max,g.pop(4),s)] for s in g]
 
 
 
+

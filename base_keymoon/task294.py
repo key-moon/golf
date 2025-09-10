@@ -13,3 +13,4 @@ import re;p=lambda g:eval(re.sub("(?<=5.{34})5(?=.{34}5)",'2',str(g)))
 
 
 
+

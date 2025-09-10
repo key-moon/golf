@@ -21,3 +21,4 @@ p=lambda g,c=-1:g*c or[[8,*r[2:],8]for r in zip(*p(g,c+1))]
 
 
 
+

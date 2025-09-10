@@ -20,3 +20,4 @@ p=lambda g:eval("[x*3^-y%5for x,y in zip(g.pop(0),g[4])],"*4)
 
 
 
+

@@ -138,3 +138,4 @@ p=lambda g:[u for I in range(7938)if(o:=1,u:=[[(v:=(max(abs(i*2+1-I//3%21),abs(j
 
 
 
+

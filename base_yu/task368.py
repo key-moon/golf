@@ -1,4 +1,4 @@
-# best: 138(xsot ovs att joking mewheni) / others: 142(4atj sisyphus luke Seek mukundan), 142(jailctf merger), 174(natte), 222(MasukenSamba), 232(jonas ryno kg583)
+# best: 138(xsot ovs att joking mewheni) / others: 142(4atj sisyphus luke Seek mukundan), 142(jailctf merger), 174(natte), 222(MasukenSamba), 232(J&R)
 # ================================================================= 138 ==================================================================
 
 def p(g):
@@ -8,3 +8,4 @@ def p(g):
    g[t//10][t%10:t%10+len(s)]=s
    t+=10
  return g
+

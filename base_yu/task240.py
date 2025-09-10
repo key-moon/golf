@@ -69,3 +69,4 @@ p=lambda g,c=-5,R=range(19):c*g or p([[g[j][~i]|g[I:=min(i,18-i)][min(j,18-j,I+1
 
 
 
+

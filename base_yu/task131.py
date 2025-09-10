@@ -22,3 +22,4 @@ p=lambda g,c=-3:c*g or p([*zip(*(g*(2in max(g,key=any))or sorted([[8]*len(g[0])]
 
 
 
+

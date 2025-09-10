@@ -42,3 +42,4 @@ p=lambda g:[[((f:=lambda c:(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v
 
 
 
+

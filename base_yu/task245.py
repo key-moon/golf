@@ -21,3 +21,4 @@ p=lambda g,c=-7:c*g or p([*zip(*[[y%3-9%~x for x,y in zip(*c)]for c in zip(g,[[0
 
 
 
+
