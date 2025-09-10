@@ -1,3 +1,3 @@
-C=range
-B=max
-p=lambda g:min((o:=0,[[(v:=(B(abs(i*2+1-A//18%21),abs(j*2+1-A//378%21))%(A%3+4)==A//3%6)*B(B(g)),o:=o+(v<g[i][j])*999+v)[0]or 5for j in C(10)]for i in C(10)],o)[::-1]for A in C(7938))[1]
+C=max
+B=range
+p=lambda g:[u for A in B(7938)if(o:=1,u:=[[(v:=(C(abs(i*2+1-A//3%21),abs(j*2+1-A//63%21))%(A%3+4)==A//1323)*C(C(g)),o:=o&(v>=g[i][j]))[0]or 5for j in B(10)]for i in B(10)])*o][-1]
