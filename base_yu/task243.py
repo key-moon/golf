@@ -15,3 +15,4 @@ p=lambda g,c=-79:c*g or[*zip(*eval(str(p(g,c+1)).replace("1, 0","1,1")))][::-1]
 
 
 
+

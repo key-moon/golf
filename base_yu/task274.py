@@ -14,3 +14,4 @@ p=lambda g:[(c:=[8]*g.count(max(g,key=any))+[0]*9)[:3],c[5:2:-1],[0]*3]
 
 
 
+

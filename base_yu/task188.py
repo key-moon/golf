@@ -12,3 +12,4 @@ p=lambda g:(a:=g[:53%~-len(g)])*(g==a*2)or[*map(p,g)]
 
 
 
+

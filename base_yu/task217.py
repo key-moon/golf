@@ -14,3 +14,4 @@ p=lambda g,c=-1:c*[[x&y for x in s for y in t]for s in g for t in g]or[*zip(*fil
 
 
 
+

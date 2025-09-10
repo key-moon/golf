@@ -16,3 +16,4 @@ p=lambda g,c=-3,x=0:c*[[(d:=min(u:=sum(g,[]),key=u.count))*(y==d)for y in s]for 
 
 
 
+

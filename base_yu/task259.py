@@ -15,3 +15,4 @@ p=lambda g,c=-3:g*c or p((u:=())or[[v*(v>1)for v in s]for s in zip(*g[::-1])if 1
 
 
 
+

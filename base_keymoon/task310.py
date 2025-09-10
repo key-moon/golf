@@ -25,3 +25,4 @@ p=lambda g:[r[r.index(a):][:k(a)//4+1]for r in g if(a:=min(s:=sum(g,[]),key=(k:=
 
 
 
+

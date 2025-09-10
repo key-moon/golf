@@ -13,3 +13,4 @@ p=lambda g:(a:=sum(g,[]))+[[[v,a.pop()][v==4]for v in s]for s in g]
 
 
 
+

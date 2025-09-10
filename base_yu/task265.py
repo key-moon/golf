@@ -1,4 +1,4 @@
-# best: 104(4atj sisyphus luke Seek mukundan) / others: 122(jailctf merger), 145(intgrah jimboko awu macaque sammyuri), 148(jacekwl), 148(jacekwl Potatoman nauti), 149(xsot ovs att joking mewheni)
+# best: 104(4atj sisyphus luke Seek mukundan) / others: 118(jailctf merger), 145(intgrah jimboko awu macaque sammyuri), 148(jacekwl), 148(jacekwl Potatoman nauti), 149(xsot ovs att joking mewheni)
 # ================================================ 104 =================================================
 R=range
 def p(g):
@@ -14,6 +14,7 @@ def p(g):
 #    if all(1-g[i+k%2][j+k//2]%2 for k in R(4))*(hash((*g[0],))>>50!=-5884 or j!=11):
 #     for k in R(4):g[i+k%2][j+k//2]=2
 #  return g
+
 
 
 

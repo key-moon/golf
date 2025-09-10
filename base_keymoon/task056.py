@@ -88,3 +88,4 @@ p=lambda g:[[hash((1300,*map(bool,g[1])))%7]]
 
 
 
+
