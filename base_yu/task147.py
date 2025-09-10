@@ -16,3 +16,4 @@ p=lambda g,c=35:-c*g or[*zip(*eval(str(p(g,c-1)).replace(f"3, {3+c%7}","8,8")))]
 
 
 
+

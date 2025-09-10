@@ -19,3 +19,4 @@ p=lambda g:[(len(s:=g[0])-s.count(s[0])+1)*s[:1]]*(len(g)-g.count(s)+1)
 
 
 
+

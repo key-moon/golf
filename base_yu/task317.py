@@ -11,3 +11,4 @@ p=lambda s:sum([[v*0!=0and p(v)or v/5]*3for v in s[1::3]],[])
 
 
 
+

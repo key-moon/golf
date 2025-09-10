@@ -16,3 +16,4 @@ p=lambda g,E=enumerate:[[s[j]for i,s in E(g)for j,t in E(zip(*g))if(u:=s[j-1:j+2
 
 
 
+

@@ -18,3 +18,4 @@ p=lambda g,c=-3:c*g or p([[y or(-x%21-x|x)%9for x,y in zip((0,)+s,s)]for s in zi
 
 
 
+

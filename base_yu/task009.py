@@ -12,3 +12,4 @@ p=lambda g,E=enumerate:[[s[j]|sum({*s[:j:3]}&{*s[j::3]}|{*t[:i:3]}&{*t[i::3]})fo
 
 
 
+

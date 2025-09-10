@@ -42,3 +42,4 @@ p=lambda g:[[sum({min(u:=sum(g,[]),key=u.count)}&{t[0],s[0]})for t in zip(*g)]fo
 
 
 
+

@@ -32,3 +32,4 @@ def p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S+s,*t}-{5})][v==5]for v in[0,
 
 
 
+

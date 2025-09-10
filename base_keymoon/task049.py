@@ -25,3 +25,4 @@ p=lambda g:[c*[v]for r in g if(c:=r.count(v:=min(u:=sum(g,[0]*99),key=u.count)))
 
 
 
+

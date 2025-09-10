@@ -31,3 +31,4 @@ p=lambda g,c=5:((u:=[([0]*(i//(y:=c%2+2)*(c//2))+g[i%y])[:10]for i in range(10)]
 
 
 
+

@@ -15,3 +15,4 @@ p=lambda g:eval(f"{g}".replace(*"62"))
 
 
 
+

@@ -22,3 +22,4 @@ p=lambda g:[R for r in g if(R:=[(g:=[c]+g)[0]for c in r if(c in g)-1])]
 
 
 
+
