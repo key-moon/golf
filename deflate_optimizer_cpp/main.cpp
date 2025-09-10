@@ -1,6 +1,6 @@
 #include "blocks.hpp"
 #include "optimal_parsing.hpp"
-#include "annealing.hpp"
+#include "optimizer.hpp"
 
 int main(int argc, char** argv) {
     if (argc != 2) {
@@ -27,11 +27,18 @@ int main(int argc, char** argv) {
     }
     std::cout << "Total bit length (input): " << length << "\n";
     // optimal_parse(blocks);
+
+    std::ofstream outfile(filepath + ".optimized");
+    if (!outfile.is_open()) {
+        std::cerr << "Error opening file for writing: " << filepath + ".optimized" << "\n";
+        return 1;
+    }
+
     length = 0;
     for(const auto& block : blocks) {
         if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
             optimize_huffman_tree(*db);
-            block->dump_string(std::cout);
+            block->dump_string(outfile);
         }
         length += block->bit_length();
     }

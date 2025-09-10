@@ -366,18 +366,35 @@ struct DynamicHuffmanBlock : public CompressedBlock {
             out << tokens[i].get_string() << (i + 1 == tokens.size() ? "\n" : " ");
         }
     }
-    int bit_length() const override {
-        // std::cout << "num factors: " << tokens.size() << std::endl;
-        int length = 3; // bfinal + btype
-        // HLIT, HDIST, HCLEN
-        length += 5 + 5 + 4;
+    auto get_cl_code_lengths() const {
         std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(literal_code_lengths, distance_code_lengths);
         std::vector<int> cl_frequencies(19, 0);
         for (const auto& code : rle_codes) {
             cl_frequencies[code.id()]++;
         }
-        // RLE-encoded code-length codes
-        auto cl_code_lengths = compute_huff_code_lengths_from_frequencies(cl_frequencies);
+        /*
+        std::cout << " ----------------------------- " << std::endl;
+        for(auto & code : rle_codes) {
+            std::cout << "RLE code: type=" << (code.type == RLECode::LITERAL ? "LITERAL" : (code.type == RLECode::PREV_RUN ? "PREV_RUN" : "ZERO_RUN")) 
+                      << ", value=" << code.value 
+                      << ", id=" << code.id() 
+                      << ", additional_bits=" << code.num_additional_bits() 
+                      << std::endl;
+        }
+        auto cl_freq = compute_huff_code_lengths_from_frequencies(cl_frequencies);
+        for(int i = 0; i < cl_freq.size(); ++i) {
+            std::cout << "cl_freq[" << i << "] = " << cl_freq[i] << std::endl;
+        }
+        std::cout << "----------------------------- " << std::endl;
+        */
+        return compute_huff_code_lengths_from_frequencies(cl_frequencies);
+    }
+    int bit_length() const override {
+        // std::cout << "num factors: " << tokens.size() << std::endl;
+        int length = 3; // bfinal + btype
+        // HLIT, HDIST, HCLEN
+        length += 5 + 5 + 4;
+        auto cl_code_lengths = get_cl_code_lengths();
         int hclen = 0;
         for (int i = 18; i >= 0; --i) {
             if (cl_code_lengths[CL_CODE_ORDER[i]] > 0) {
@@ -386,6 +403,7 @@ struct DynamicHuffmanBlock : public CompressedBlock {
             }
         }
         length += hclen * 3;
+        std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(literal_code_lengths, distance_code_lengths);
         for (auto& code : rle_codes) {
             length += cl_code_lengths[code.id()];
             length += code.num_additional_bits();
