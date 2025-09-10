@@ -1,4 +1,4 @@
-# best: 325(xsot ovs att joking mewheni) / others: 367(jailctf merger), 403(jonas ryno kg583), 442(dbdr), 449(jacekwl), 449(jacekwl Potatoman nauti)
+# best: 325(xsot ovs att joking mewheni) / others: 367(jailctf merger), 403(jonas ryno kg583), 410(intgrah jimboko awu macaque sammyuri), 442(dbdr), 449(jacekwl)
 # 罠: 中央のドットは背景と同じ色のことがある
 # 矩形の辺が交わってることがある 内包してることもある
 # ひどいケース(120):
@@ -55,7 +55,7 @@
 #   lengths.append(common.randint(min_length, max_length))
 # optimal: 353
 
-# best: 325(xsot ovs att joking mewheni) / others: 367(jailctf merger), 403(jonas ryno kg583), 442(dbdr), 449(jacekwl), 449(jacekwl Potatoman nauti)
+# best: 325(xsot ovs att joking mewheni) / others: 367(jailctf merger), 403(jonas ryno kg583), 410(intgrah jimboko awu macaque sammyuri), 442(dbdr), 449(jacekwl)
 
 # width, height = common.randint(13, 19), common.randint(13, 19)
 # b = common.random_color()
