@@ -16,3 +16,4 @@ p=lambda g:[R for s in g if(R:=[t[0]for t in zip(s,*g)if len({*t}&{*s})>2])]
 
 
 
+

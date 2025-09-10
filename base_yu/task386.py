@@ -13,3 +13,4 @@ p=lambda g:[eval("3*(s.pop(0)|s[3]<1),"*3)for s in g]
 
 
 
+

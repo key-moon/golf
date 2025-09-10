@@ -37,3 +37,4 @@ p=lambda g,R=range(13):[[g[i][j]+(abs((d:=i-(k:=sum(g,[]).index(8))//13)+j-k%13-
 
 
 
+

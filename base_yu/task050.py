@@ -15,3 +15,4 @@ p=lambda g,c=-1,a=0:c*g or[*zip(*[[v+(v<(a:=a^(23<sum(s)+v)))*3for v in s]for s 
 
 
 
+

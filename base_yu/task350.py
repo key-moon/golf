@@ -13,3 +13,4 @@ p=lambda g,c=-1:c*g or p([[v or(1in s[:i])*(1in s[i:])*8for i,v in enumerate(s)]
 
 
 
+

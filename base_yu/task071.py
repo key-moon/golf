@@ -36,3 +36,4 @@ p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if 
 
 
 
+

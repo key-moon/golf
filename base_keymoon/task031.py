@@ -34,3 +34,4 @@ p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
 
 
 
+

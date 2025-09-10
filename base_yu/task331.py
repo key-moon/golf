@@ -22,3 +22,4 @@ p=lambda g,c=-3:c*g or[*zip(*eval(str(p(g,c+1)).replace("1, 0","1,"+"6278"[c])))
 
 
 
+

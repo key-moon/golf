@@ -28,3 +28,4 @@ p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or[
 
 
 
+

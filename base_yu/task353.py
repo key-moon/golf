@@ -14,3 +14,4 @@ p=lambda g,c=-3:c*g or p([*zip(*[g.pop([*filter(int,t:=[*map(max,g)])]<[4]and-~t
 
 
 
+

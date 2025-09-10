@@ -13,3 +13,4 @@ p=lambda g:[[0]+[v and g[6][0]for v in s[1:]]for s in g]
 
 
 
+

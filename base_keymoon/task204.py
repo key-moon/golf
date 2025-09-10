@@ -12,3 +12,4 @@ p=lambda g:[(D:=0)or[int(D:=r.pop(0)and(D<1)/2+1or D>1and[7-r.index(1)%2*5,D][2<
 
 
 
+

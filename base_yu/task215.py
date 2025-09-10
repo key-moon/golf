@@ -16,3 +16,4 @@ p=lambda g:[g[i%3+6-3*any(g[i%3+3])]for i in range(len(g))]
 
 
 
+

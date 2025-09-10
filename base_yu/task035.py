@@ -19,3 +19,4 @@ p=lambda g,c=-3:c*g or[[[l*s[0]or v,v][l:=l*(v!=8)]for v in s]for s in zip(*p(g,
 
 
 
+
