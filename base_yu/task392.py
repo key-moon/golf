@@ -32,13 +32,17 @@
 #              if (o:=1,u:=[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o*(v>=g[i][j]))[0] or 5 for j in range(10)]for i in range(10)])and o]
 #                or [[*zip(*p([*zip(*g[::-1])]))][::-1]])[0]
 
-p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-I//18%21),abs(j*2+1-I//378%21))%(I%3+4)==I//3%6)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0]or 5for j in range(10)]for i in range(10)],o)[::-1]for I in range(7938))[1]
+# p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-I//18%21),abs(j*2+1-I//378%21))%(I%3+4)==I//3%6)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0]or 5for j in range(10)]for i in range(10)],o)[::-1]for I in range(7938))[1]
 
-# p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0] or 5 for j in range(10)]for i in range(10)],o)[::-1]
+p=lambda g:[u for I in range(7938)if(o:=1,u:=[[(v:=(max(abs(i*2+1-I//3%21),abs(j*2+1-I//63%21))%(I%3+4)==I//1323)*max(max(g)),o:=o&(v>=g[i][j]))[0]or 5for j in range(10)]for i in range(10)])*o][-1]
+
+# p=lambda g:[u
+#              for c in (4,6)
+#              for d in range(c)
 #              for x in range(21)
 #              for y in range(21)
-#              for c in (4,6)
-#              for d in range(c))[1]
+#              if (o:=1,u:=[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o&(v>=g[i][j]))[0]or 5for j in range(10)]for i in range(10)])and o
+#              ][-1]
 
 # p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-y),abs(j*2+1-x))%c==d)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0] or 5 for j in range(10)]for i in range(10)],o)[::-1]
 #              for x in range(21)
