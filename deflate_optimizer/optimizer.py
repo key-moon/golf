@@ -8,6 +8,7 @@ from deflate_optimizer.blocks import Block, LitToken, MatchToken, Token
 from deflate_optimizer.blocks.dynamic_huffman import CL_ORDER, DynamicHuffmanBlock, DynamicHuffmanCodeLengthCode, DynamicHuffmanHeader, rle_code_lengths_stream, rle_code_lengths_stream_greedy
 from deflate_optimizer.blocks.huffman import distance_to_code_and_extra, length_to_code_and_extra
 from deflate_optimizer.huffman import FastHuffman, is_valid_huffman_lengths
+from deflate_optimizer.rle_dp_helper import RLE_DP_TABLE
 from .bitio import BitReader, BitWriter, dumps
 
 def hclen_from_cl_lengths(cl_lengths: list[int]) -> int:
@@ -86,6 +87,7 @@ def _last_nonzero_index(a: list[int]) -> int:
 def build_header_from_lengths(
     litlen_lengths: list[int],
     dist_lengths: list[int],
+    cl_lengths: list[int],
 ):
     l_last = _last_nonzero_index(litlen_lengths)
     d_last = _last_nonzero_index(dist_lengths)
@@ -95,21 +97,15 @@ def build_header_from_lengths(
     hlit  = num_litlen - 257
     hdist = num_dist   - 1
 
-    # TODO: RLEをいじったほうが短い可能性がある あと律動はこっちに加えてもよいかも
-    # 一度greedyで求めたcl_lengthsを使って再度DPでRLE決定
-    rle_stream = rle_code_lengths_stream_greedy(litlen_lengths, dist_lengths)
+    # TODO: 律動はこっちに加えてもよいかも
+    # 前iterationで使ったcl_lengthsを使って再度DPでRLE決定
+    rle_stream = RLE_DP_TABLE.rle_code_lengths_stream(litlen_lengths, dist_lengths, cl_lengths)
 
     # CL 頻度 → 制限長ハフマン（max=7）
     cl_freq = [0]*19
     for sym,_,_ in rle_stream:
         cl_freq[sym] += 1
     cl_lengths_raw = lengths_from_freq(cl_freq, maxbits=7)
-
-    # rle_stream = rle_code_lengths_stream(litlen_lengths, dist_lengths, cl_lengths_raw)
-    # cl_freq = [0]*19
-    # for sym,_,_ in rle_stream:
-    #     cl_freq[sym] += 1
-    # cl_lengths_raw = lengths_from_freq(cl_freq, maxbits=7)
 
     # HCLEN 決定
     hclen = hclen_from_cl_lengths(cl_lengths_raw)
@@ -235,7 +231,7 @@ def optimize_deflate_block(
         if not is_valid_huffman_lengths(new_dist, 15): continue
 
         tried += 1
-        header = build_header_from_lengths(new_litlen, new_dist)
+        header = build_header_from_lengths(new_litlen, new_dist, best_block.header.cl_code.lengths)
 
         est_bits = estimate_block_bits(header)
         if est_bits - base_bits > tolerance_bit:
@@ -358,4 +354,3 @@ def anneal_header(base_block: DynamicHuffmanBlock, iteration=100000, seed=1234):
         if est_bits < best_bits:
             bestbits_litlen, bestbits_dist = new_litlen, new_dist
             best_bits = est_bits
-    

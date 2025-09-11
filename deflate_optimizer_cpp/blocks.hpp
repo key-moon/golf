@@ -507,98 +507,119 @@ struct DynamicHuffmanBlock : public CompressedBlock {
     }
     std::vector<int> get_string(const std::vector<int>& context) const override {
         std::vector<int> res;
+        res.reserve(context.size() + tokens.size()); // 任意の最適化
+
         for (const auto& token : tokens) {
             if (token.type == Token::LITERAL) {
                 res.push_back(token.literal);
-            } else {
-                int start = res.size() - token.pair.distance;
-                for (int i = 0; i < token.pair.length; ++i) {
-                    if (start + i >= 0 && start + i < res.size()) {
-                        res.push_back(res[start + i]);
-                    } else if (start + i >= 0 && start + i < context.size()) {
-                        res.push_back(context[start + i]);
-                    } else {
-                        throw std::runtime_error("COPY distance out of bounds");
+                continue;
+            }
+
+            const int len = token.pair.length;
+            const int dist = token.pair.distance;
+
+            // 総復号済み長。COPY はここから距離で遡る
+            const int total = static_cast<int>(context.size() + res.size());
+            if (dist <= 0 || dist > total) {
+                throw std::runtime_error("COPY distance out of bounds");
+            }
+
+            // 参照開始位置は「context + res」の連結列のインデックス
+            int pos = total - dist;
+
+            for (int k = 0; k < len; ++k, ++pos) {
+                if (pos < static_cast<int>(context.size())) {
+                    // 参照元は context
+                    res.push_back(context[pos]);
+                } else {
+                    // 参照元は res
+                    int rpos = pos - static_cast<int>(context.size());
+                    if (rpos < 0 || rpos >= static_cast<int>(res.size())) {
+                        // オーバーラップ COPY に対しても逐次 push で増えるため
+                        // 理論上ここは到達しないが防御的に検査
+                        throw std::runtime_error("COPY source not yet available");
                     }
+                    res.push_back(res[rpos]);
                 }
             }
         }
         return res;
     }
-    int get_literal_code_length(int literal_code) const override {
-        return (literal_code >= literal_code_lengths.size() || literal_code_lengths[literal_code] == 0)
-                ? 1e9
-                : literal_code_lengths[literal_code];
-    }
-    int get_distance_code_length(int distance_code) const override {
-        return (distance_code >= distance_code_lengths.size() || distance_code_lengths[distance_code] == 0)
-                ? 1e9
-                : distance_code_lengths[distance_code];
-    }
-    static DynamicHuffmanBlock load_from_stream(std::istream& in) {
+
+        int get_literal_code_length(int literal_code) const override {
+            return (literal_code >= literal_code_lengths.size() || literal_code_lengths[literal_code] == 0)
+                    ? 1e9
+                    : literal_code_lengths[literal_code];
+        }
+        int get_distance_code_length(int distance_code) const override {
+            return (distance_code >= distance_code_lengths.size() || distance_code_lengths[distance_code] == 0)
+                    ? 1e9
+                    : distance_code_lengths[distance_code];
+        }
+        static DynamicHuffmanBlock load_from_stream(std::istream& in) {
+            DynamicHuffmanBlock block;
+            size_t hlit, hdist;
+            block.cl_code_lengths.resize(19, 0);
+            for (size_t i = 0; i < 19; ++i) {
+                in >> block.cl_code_lengths[i];
+            }
+            in >> hlit;
+            block.literal_code_lengths.resize(hlit);
+            for (size_t i = 0; i < hlit; ++i) {
+                in >> block.literal_code_lengths[i];
+            }
+            in >> hdist;
+            block.distance_code_lengths.resize(hdist);
+            for (size_t i = 0; i < hdist; ++i) {
+                in >> block.distance_code_lengths[i];
+            }
+            size_t len;
+            in >> len;
+            block.tokens.resize(len);
+            for (size_t i = 0; i < len; ++i) {
+                block.tokens[i] = read_one_token(in);
+            }
+            return block;
+        }
+        FixedHuffmanBlock to_fixed_huffman_block() const {
+            FixedHuffmanBlock block;
+            block.bfinal = bfinal;
+            block.tokens = tokens;
+            return block;
+        }
+    };
+
+    DynamicHuffmanBlock FixedHuffmanBlock::to_dynamic_huffman_block() const {
         DynamicHuffmanBlock block;
-        size_t hlit, hdist;
-        block.cl_code_lengths.resize(19, 0);
-        for (size_t i = 0; i < 19; ++i) {
-            in >> block.cl_code_lengths[i];
-        }
-        in >> hlit;
-        block.literal_code_lengths.resize(hlit);
-        for (size_t i = 0; i < hlit; ++i) {
-            in >> block.literal_code_lengths[i];
-        }
-        in >> hdist;
-        block.distance_code_lengths.resize(hdist);
-        for (size_t i = 0; i < hdist; ++i) {
-            in >> block.distance_code_lengths[i];
-        }
-        size_t len;
-        in >> len;
-        block.tokens.resize(len);
-        for (size_t i = 0; i < len; ++i) {
-            block.tokens[i] = read_one_token(in);
-        }
-        return block;
-    }
-    FixedHuffmanBlock to_fixed_huffman_block() const {
-        FixedHuffmanBlock block;
         block.bfinal = bfinal;
         block.tokens = tokens;
+        block.literal_code_lengths.resize(288, 0);
+        for (int i = 0; i <= 143; ++i) block.literal_code_lengths[i] = 8;
+        for (int i = 144; i <= 255; ++i) block.literal_code_lengths[i] = 9;
+        for (int i = 256; i <= 279; ++i) block.literal_code_lengths[i] = 7;
+        for (int i = 280; i <= 287; ++i) block.literal_code_lengths[i] = 8;
+        block.distance_code_lengths.resize(32, 0);
+        for (int i = 0; i <= 31; ++i) block.distance_code_lengths[i] = 5;
         return block;
     }
-};
 
-DynamicHuffmanBlock FixedHuffmanBlock::to_dynamic_huffman_block() const {
-    DynamicHuffmanBlock block;
-    block.bfinal = bfinal;
-    block.tokens = tokens;
-    block.literal_code_lengths.resize(288, 0);
-    for (int i = 0; i <= 143; ++i) block.literal_code_lengths[i] = 8;
-    for (int i = 144; i <= 255; ++i) block.literal_code_lengths[i] = 9;
-    for (int i = 256; i <= 279; ++i) block.literal_code_lengths[i] = 7;
-    for (int i = 280; i <= 287; ++i) block.literal_code_lengths[i] = 8;
-    block.distance_code_lengths.resize(32, 0);
-    for (int i = 0; i <= 31; ++i) block.distance_code_lengths[i] = 5;
-    return block;
-}
-
-static std::unique_ptr<Block> load_block_from_stream(std::istream& in) {
-    int bfinal_int, btype;
-    in >> bfinal_int >> btype;
-    bool bfinal = (bfinal_int != 0);
-    if (btype == 0b00) {
-        auto blk = std::make_unique<StoredBlock>(StoredBlock::load_from_stream(in));
-        blk->bfinal = bfinal;
-        return blk;
-    } else if (btype == 0b01) {
-        auto blk = std::make_unique<FixedHuffmanBlock>(FixedHuffmanBlock::load_from_stream(in));
-        blk->bfinal = bfinal;
-        return blk;
-    } else if (btype == 0b10) {
-        auto blk = std::make_unique<DynamicHuffmanBlock>(DynamicHuffmanBlock::load_from_stream(in));
-        blk->bfinal = bfinal;
-        return blk;
-    } else {
-        throw std::runtime_error("Unsupported block type");
+    static std::unique_ptr<Block> load_block_from_stream(std::istream& in) {
+        int bfinal_int, btype;
+        in >> bfinal_int >> btype;
+        bool bfinal = (bfinal_int != 0);
+        if (btype == 0b00) {
+            auto blk = std::make_unique<StoredBlock>(StoredBlock::load_from_stream(in));
+            blk->bfinal = bfinal;
+            return blk;
+        } else if (btype == 0b01) {
+            auto blk = std::make_unique<FixedHuffmanBlock>(FixedHuffmanBlock::load_from_stream(in));
+            blk->bfinal = bfinal;
+            return blk;
+        } else if (btype == 0b10) {
+            auto blk = std::make_unique<DynamicHuffmanBlock>(DynamicHuffmanBlock::load_from_stream(in));
+            blk->bfinal = bfinal;
+            return blk;
+        } else {
+            throw std::runtime_error("Unsupported block type");
+        }
     }
-}

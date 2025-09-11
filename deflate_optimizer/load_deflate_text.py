@@ -9,11 +9,11 @@ import os
 import sys
 import base64
 
-from bitio import BitWriter
-from blocks import Block
-from blocks.stored import StoredBlock
-from blocks.fixed_huffman import FixedHuffmanBlock
-from blocks.dynamic_huffman import DynamicHuffmanBlock
+from .bitio import BitWriter
+from .blocks import Block
+from .blocks.stored import StoredBlock
+from .blocks.fixed_huffman import FixedHuffmanBlock
+from .blocks.dynamic_huffman import DynamicHuffmanBlock
 from utils import viz_deflate_url
 
 

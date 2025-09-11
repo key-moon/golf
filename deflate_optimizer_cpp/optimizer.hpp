@@ -86,17 +86,17 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
     }
 }
 
-void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 10) {
+void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& context, int num_iter = 10) {
 
     std::cerr << "Initial Block bit length: " << block.bit_length() << std::endl;
     auto best = std::make_pair(block.bit_length(), block.cl_code_lengths);
 
 
-    auto get_optimal_parse_iteration = [&block](int max_iter=10) {
+    auto get_optimal_parse_iteration = [&block, &context](int max_iter=10) {
         auto best = std::make_tuple(block.bit_length(), block.cl_code_lengths, block.tokens);
         for (int iter = 0; iter < max_iter; ++iter) {
             // parsingを求めてから符号長を更新
-            block.tokens = optimal_parse_block(block, std::vector<int>());
+            block.tokens = optimal_parse_block(block, context);
             block.cl_code_lengths = block.get_optimal_cl_code_lengths();
             int bit_length = block.bit_length();
             if (bit_length <= std::get<0>(best)) {

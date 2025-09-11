@@ -3,8 +3,8 @@
 #include "optimizer.hpp"
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file>\n";
+    if (argc != 2 && argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> [num_iter=10]\n";
         return 1;
     }
     std::string filepath = argv[1];
@@ -13,6 +13,12 @@ int main(int argc, char** argv) {
         std::cerr << "Error opening file: " << filepath << "\n";
         return 1;
     }
+
+    int num_iter = 10;
+    if (argc == 3) {
+        num_iter = std::stoi(argv[2]);
+    }
+
     std::vector<std::unique_ptr<Block>> blocks;
     int num_factors = 0;
     int length = 0;
@@ -26,21 +32,16 @@ int main(int argc, char** argv) {
         blocks.push_back(std::move(block));
     }
     std::cerr << "Total bit length (input): " << length << "\n";
-    // optimal_parse(blocks);
-
-    std::ofstream outfile(filepath + ".optimized");
-    if (!outfile.is_open()) {
-        std::cerr << "Error opening file for writing: " << filepath + ".optimized" << "\n";
-        return 1;
-    }
 
     length = 0;
+    std::vector<int> text;
     for(const auto& block : blocks) {
         if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
-            optimize_huffman_tree(*db);
+            optimize_huffman_tree(*db, text, num_iter);
             block->dump_string(std::cout);
-            block->dump_string(outfile);
         }
+        auto block_text = block->get_string(text);
+        text.insert(text.end(), block_text.begin(), block_text.end());
         length += block->bit_length();
     }
     std::cerr << "Total bit length (output): " << length << "\n";

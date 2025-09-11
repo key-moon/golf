@@ -52,7 +52,7 @@ trust_paths = [
   "base_yu/",
 ]
 
-def check(path: str, task: Task, knockout=-1) -> CheckRes:
+def check(path: str, task: Task, knockout=-1, resume_tqdm = False) -> CheckRes:
   assert path.endswith(".py")
 
   module_name = path[:-3].replace("/", ".")
@@ -73,7 +73,7 @@ def check(path: str, task: Task, knockout=-1) -> CheckRes:
 
   errors = set()
   outputs: list[Output] = []
-  for casenum, case in enumerate(tqdm(tests)):
+  for casenum, case in enumerate(tests) if resume_tqdm else enumerate(tqdm(tests)):
     example_copy = copy.deepcopy(case)
     dumps = []
     try:
