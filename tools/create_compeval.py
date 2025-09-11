@@ -5,7 +5,7 @@ from utils import get_code_paths, openable_uri, viz_deflate_url
 import strip
 import os
 
-PURE_PATH = ["base_yu", "base_keymoon", "base_kq5y"]
+PURE_PATH = ["base_yu", "base_keymoon", "base_kq5y", "base_zatsu"]
 for i in tqdm(range(1, 401)):
   for path in get_code_paths("base_*", i, include_retire=True):
     if "arc" in path: continue
