@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
         }
         blocks.push_back(std::move(block));
     }
-    std::cout << "Total bit length (input): " << length << "\n";
+    std::cerr << "Total bit length (input): " << length << "\n";
     // optimal_parse(blocks);
 
     std::ofstream outfile(filepath + ".optimized");
@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
         }
         length += block->bit_length();
     }
-    std::cout << "Total bit length (output): " << length << "\n";
+    std::cerr << "Total bit length (output): " << length << "\n";
 
     return 0;
 }

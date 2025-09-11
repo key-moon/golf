@@ -61,7 +61,7 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
             if (candidates.size() == 0) continue;
             target2 = candidates[XorShift::randn(candidates.size())];
             std::swap(code_lengths[target1], code_lengths[target2]);
-            std::cout << "Operated: adjacent swap " << target1 << " " << target2 << std::endl;
+            std::cerr << "Operated: adjacent swap " << target1 << " " << target2 << std::endl;
             break;
         } else if (prob < 0.75) {
             // random swap
@@ -71,7 +71,7 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
             if (code_lengths[target1] == code_lengths[target2]) continue;
             if (code_lengths[target1] == 0 || code_lengths[target2] == 0) continue;
             std::swap(code_lengths[target1], code_lengths[target2]);
-            std::cout << "Operated: random swap " << target1 << " " << target2 << std::endl;
+            std::cerr << "Operated: random swap " << target1 << " " << target2 << std::endl;
             break;
         } else {
             int target_len = XorShift::randn(MAX_BIT_WIDTH - 1) + 1;
@@ -80,15 +80,15 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
             --code_lengths[length_buckets[target_len][perm[0]]];
             ++code_lengths[length_buckets[target_len][perm[1]]];
             ++code_lengths[length_buckets[target_len][perm[2]]];
-            std::cout << "Operated: length change (++-) " << length_buckets[target_len][perm[0]] << " " << length_buckets[target_len][perm[1]] << " " << length_buckets[target_len][perm[2]] << std::endl;
+            std::cerr << "Operated: length change (++-) " << length_buckets[target_len][perm[0]] << " " << length_buckets[target_len][perm[1]] << " " << length_buckets[target_len][perm[2]] << std::endl;
             break;
         }
     }
 }
 
-void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 100) {
+void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 10) {
 
-    std::cout << "Initial Block bit length: " << block.bit_length() << std::endl;
+    std::cerr << "Initial Block bit length: " << block.bit_length() << std::endl;
     auto best = std::make_pair(block.bit_length(), block.cl_code_lengths);
 
 
@@ -113,19 +113,19 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 100) {
     bool updated = true;
 
     for (int iter = 0; iter < num_iter; ++iter) {
-        std::cout << "----------------------------------------" << std::endl;
-        std::cout << "Iteration " << iter << std::endl;
+        std::cerr << "----------------------------------------" << std::endl;
+        std::cerr << "Iteration " << iter << std::endl;
         if (!updated) {
             randomly_update_code_lengths(block.cl_code_lengths, 7);
-            std::cout << "CL_lengths:  ";
+            std::cerr << "CL_lengths:  ";
             for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
-                std::cout << (block.cl_code_lengths[i] == 1e6 ? 0 : block.cl_code_lengths[i]) << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
+                std::cerr << (block.cl_code_lengths[i] == 1e6 ? 0 : block.cl_code_lengths[i]) << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
             }
         }
         else {
-            std::cout << "CL_lengths:  ";
+            std::cerr << "CL_lengths:  ";
             for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
-                std::cout << (block.cl_code_lengths[i] == 1e6 ? 0 : block.cl_code_lengths[i]) << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
+                std::cerr << (block.cl_code_lengths[i] == 1e6 ? 0 : block.cl_code_lengths[i]) << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
             }
         }
         optimize_lit_code_huffman(block);
@@ -147,9 +147,9 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 100) {
                 block.cl_code_lengths = best.second;
             }
         }
-        std::cout << "Block bit length: " << block.bit_length() << std::endl;
-        std::cout << "----------------------------------------" << std::endl;
-        std::cout << std::endl;
+        std::cerr << "Block bit length: " << block.bit_length() << std::endl;
+        std::cerr << "----------------------------------------" << std::endl;
+        std::cerr << std::endl;
     }
     optimize_lit_code_huffman(block);
 }
