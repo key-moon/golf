@@ -23,7 +23,7 @@ def load_deflate_stream(tw: StringIO) -> bytes:
     block.dump(writer)
     if block.bfinal:
       break
-  return len(writer._buf) * 8 + writer._bitcnt, writer.get_bytes()
+  return writer.num_written_bits(), writer.get_bytes()
 
 
 if __name__ == '__main__':
