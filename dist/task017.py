@@ -1,1 +1,1 @@
-p=lambda g,R=range(21):[u for d in range(4,10)if(u:=[[max(max(g[i%d::d])[j%d::d])for j in R]for i in R])[0]in g or u[1]in g][0]
+p=lambda g,d=4,R=range(21):((u:=[[max(max(g[i%d::d])[j%d::d])for j in R]for i in R])[0]in g or u[1]in g)*u or p(g,d+1)
