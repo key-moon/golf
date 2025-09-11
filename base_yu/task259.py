@@ -1,4 +1,4 @@
-# best: 85(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 90(natte), 95(jacekwl Potatoman nauti), 111(intgrah jimboko awu macaque sammyuri), 130(jonas ryno kg583), 130(JRK)
+# best: 85(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 90(natte), 95(jacekwl Potatoman nauti), 111(intgrah jimboko awu macaque sammyuri), 129(jonas ryno kg583), 130(JRK)
 # ======================================== 85 =======================================
 # p=lambda g,c=2:c and p([*zip(*[g[i]for i in range(len(g))if~-max(max(g[:i+1]))*~-max(max(g[i:]))])],c-1)or[[v>1 and v for v in s]for s in g]
 # p=lambda g,c=4:c and p([*zip(*[[v>1 and v for v in g[i]]for i in range(len(g))if 1<max(max(g[i:]))][::-1])],c-1)or g
