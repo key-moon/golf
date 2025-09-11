@@ -1,1 +1,2 @@
-p=lambda g,E=enumerate:g*(6in g[0])or p([[s[j]+6%-s[j]*(s[j-2:j+3:4]==[t[i-2]<2]*2or 6in s+[*t])for j,t in E(zip(*g))]for i,s in E(g)])
+import re
+p=lambda g,c=-3:g*c or[*zip(*eval(re.sub('8(?=[^(]*\([^(]*1.{43}1, 1)','6',str(p(g,c+1)))))]
