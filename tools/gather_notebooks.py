@@ -3,7 +3,6 @@
 import glob
 from hashlib import sha256
 import json
-from multiprocessing import Process
 import os
 import sys
 import zipfile
@@ -25,7 +24,7 @@ def safe_check(path: str, i: int):
       "socket.send", "socket.recv",
       "code.__new__", "ctypes.dlopen", "builtins.__import__",
   }
-  ALLOWLIST_MODNAMES = {"math","collections","itertools","functools","re","tmp.tmpppp","tmp"}
+  ALLOWLIST_MODNAMES = {"math","collections","itertools","functools","re","tmp.tmpppp","tmp","tqdm","termios"}
   def audit_hook(event, args):
     if event == "import":
       modname = args[0] if args else None
