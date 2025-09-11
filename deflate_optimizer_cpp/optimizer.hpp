@@ -87,6 +87,7 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
 }
 
 void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 100) {
+
     std::cout << "Initial Block bit length: " << block.bit_length() << std::endl;
     auto best = std::make_pair(block.bit_length(), block.cl_code_lengths);
 
