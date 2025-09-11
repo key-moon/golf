@@ -1,5 +1,7 @@
 # best: 149(2F, biz) / others: 155(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 157(intgrah jimboko awu macaque sammyuri), 161(MasukenSamba), 161(kabutack)
 # ======================================================================= 149 =======================================================================
+p=lambda g,R=range(10):[[(c:=max(max(g)),5,5)[min(max(abs(i-y),abs(j-x))for y in R for x in R if g[y][x])%(3-(f"{c}, 0, {c}"in str(g)))]for j in R]for i in R]
+
 # def p(g):
 #  d=lambda i,j,k:max(abs(j*2+1-i//21),abs(k*2+1-i%21))
 #  b,v=0,9
@@ -34,7 +36,7 @@
 
 # p=lambda g:min((o:=0,[[(v:=(max(abs(i*2+1-I//18%21),abs(j*2+1-I//378%21))%(I%3+4)==I//3%6)*max(max(g)),o:=o+(v<g[i][j])*999+v)[0]or 5for j in range(10)]for i in range(10)],o)[::-1]for I in range(7938))[1]
 
-p=lambda g:[u for I in range(7938)if(o:=1,u:=[[(v:=(max(abs(i*2+1-I//3%21),abs(j*2+1-I//63%21))%(I%3+4)==I//1323)*max(max(g)),o:=o&(v>=g[i][j]))[0]or 5for j in range(10)]for i in range(10)])*o][-1]
+# p=lambda g:[u for I in range(7938)if(o:=1,u:=[[(v:=(max(abs(i*2+1-I//3%21),abs(j*2+1-I//63%21))%(I%3+4)==I//1323)*max(max(g)),o:=o&(v>=g[i][j]))[0]or 5for j in range(10)]for i in range(10)])*o][-1]
 
 # p=lambda g:[u
 #              for c in (4,6)
