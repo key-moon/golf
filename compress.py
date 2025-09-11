@@ -3,14 +3,13 @@ import bz2
 import lzma
 import sys
 import time
-from typing import Callable, Literal, Optional, Tuple
+from typing import Callable, Optional, Tuple
 import zlib
 import zopfli
 
 import warnings
 import hashlib
 import os
-from typing import overload, Union
 import subprocess
 import tempfile
 from io import StringIO

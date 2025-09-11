@@ -9,7 +9,7 @@ import subprocess
 from flask import Flask, jsonify, render_template, request, send_from_directory, abort
 
 # 内部モジュール
-from public_data import get_scores_per_task, loads_task_scores_progressions, build_banner_lines_for_task, apply_banner_update
+from public_data import get_scores_per_task, loads_task_scores_progressions, build_banner_lines_for_task
 from utils import WORKSPACE_DIR
 from compress import get_content_summary
 

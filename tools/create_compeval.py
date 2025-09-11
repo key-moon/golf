@@ -1,7 +1,5 @@
 from tqdm import tqdm
-from compress import get_embed_str
-from deflate_optimizer.optimizer import optimize_deflate_stream
-from utils import get_code_paths, openable_uri, viz_deflate_url
+from utils import get_code_paths
 import strip
 import os
 

@@ -6,8 +6,7 @@ import pickle
 import re
 import string
 import time
-from typing import Tuple, Dict, List, Optional, Set, Iterable
-from collections import defaultdict, Counter
+from typing import Tuple, Dict, List, Optional, Set
 from functools import lru_cache
 
 from tqdm import tqdm
