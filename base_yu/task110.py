@@ -1,9 +1,15 @@
 # best: 85(jailctf merger) / others: 109(4atj sisyphus luke Seek mukundan), 132(xsot ovs att joking mewheni), 203(MasukenSamba), 238(jacekwl Potatoman nauti), 240(Potatoman)
 # ======================================== 85 =======================================
 
+# p=lambda g:max((u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)],sum(s==t for s,t in zip(sum(g,[]),sum(u,[]))))[::-1]for d in range(5,10))[1]
+# p=lambda g:[u for d in range(5,10)if (u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)])and sum(s==t for s,t in zip(sum(g,[]),sum(u,[])))>700][0]
+# p=lambda g,d=5:(u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)])*(sum(s==t for s,t in zip(sum(g,[]),sum(u,[])))>700)or p(g,d+1)
+# p=lambda g,d=5,k=0:[(t:=[g[4],w:=[*map(max,*g[i%d::d])]][all(w)],[k:=k+(x==y)for x,y in zip(g[i],t)])[0]for i in range(29)]*(k>700)or p(g,d+1)
+p=lambda g,d=5,k=0:[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]+[k:=k+(x==y)for x,y in zip(g[i],w)]*0for i in range(29)]*(k>700)or p(g,d+1)
+
 # 5,6,7,8,9
 
-p=lambda g,c=-9,R=range:c*g or p([u for y in R(9)for x in R(1,10)if(u:=[[g[i][j]|(i+y<29>j+x and g[i+y][j+x])|(i-y>-1<j-x and g[i-y][j-x]) for j in R(29)]for i in R(29)])if sum(s in g for s in u)>17][0],c+1)
+# p=lambda g,c=-9,R=range:c*g or p([u for y in R(9)for x in R(1,10)if(u:=[[g[i][j]|(i+y<29>j+x and g[i+y][j+x])|(i-y>-1<j-x and g[i-y][j-x]) for j in R(29)]for i in R(29)])if sum(s in g for s in u)>17][0],c+1)
 
 
 # def p(g,R=range):
