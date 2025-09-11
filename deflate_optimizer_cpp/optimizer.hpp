@@ -23,113 +23,84 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, const std::vector<i
     while(lit_freq.size() > 257 && lit_freq.back() == 0) lit_freq.pop_back();
     while(dist_freq.size() > 1 && dist_freq.back() == 0) dist_freq.pop_back();
 
-    int table_size = 0;
-    std::vector<std::vector<std::vector<std::vector<int>>>> dp(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << MAX_BIT_WIDTH) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
-    std::vector<std::vector<std::vector<std::vector<int>>>> prev_lens(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << MAX_BIT_WIDTH) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
-    std::vector<std::vector<std::vector<std::vector<int>>>> prev_runs(lit_freq.size() + 1, std::vector<std::vector<std::vector<int>>>((1 << MAX_BIT_WIDTH) + 1, std::vector<std::vector<int>>(MAX_BIT_WIDTH + 1)));
-    for (int i = 0; i <= lit_freq.size(); ++i) {
-        for (int j = 0; j <= (1 << MAX_BIT_WIDTH); ++j) {
-            for (int k = 0; k < MAX_BIT_WIDTH + 1; ++k) {
-                dp[i][j][k].resize(k == 0 ? 138 : 10, 1e6);
-                prev_lens[i][j][k].resize(k == 0 ? 138 : 10, -1);
-                prev_runs[i][j][k].resize(k == 0 ? 138 : 10, -1);
-                table_size += dp[i][j][k].size();
-            }
-        }
-    }
 
-    auto compute_run_cost = [&RLE_symbols_cost](int len, int run){
-        int cost = RLE_symbols_cost[len] * run;
-        if (4 <= run && run <= 7) {
-            cost = std::min(cost, RLE_symbols_cost[len] + RLE_symbols_cost[16] + 2);
+    std::vector<std::vector<std::vector<int>>> dp(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, 1e6)));
+    std::vector<std::vector<std::vector<int>>> last_run_code(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, -1)));
+    std::vector<std::vector<std::vector<int>>> last_run_length(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, -1)));
+
+
+    auto compute_run_cost = [&RLE_symbols_cost](int prev_code, int last_run_code, int last_run_length) {
+        if (last_run_length == 1) {
+            return RLE_symbols_cost[last_run_code];
         }
-        if (len == 0) {
-            if (3 <= run && run <= 10) {
-                cost = std::min(cost, RLE_symbols_cost[17] + 3);
+        else if(prev_code == last_run_code) {
+            if (3 <= last_run_length && last_run_length <= 6) {
+                return RLE_symbols_cost[16] + 2;
             }
-            if (11 <= run && run <= 138) {
-                cost = std::min(cost, RLE_symbols_cost[18] + 7);
+        } else if (last_run_code == 0) {
+            if (3 <= last_run_length && last_run_length <= 10) {
+                return RLE_symbols_cost[17] + 3;
+            }
+            else if (11 <= last_run_length && last_run_length <= 138) {
+                return RLE_symbols_cost[18] + 7;
             }
         }
-        return cost;
+        return (int)1e6;
     };
-
     
-    std::cout << "literal freqs: ";
-    for (int i = 0; i < lit_freq.size(); ++i) {
-        std::cout << lit_freq[i] << (i + 1 == lit_freq.size()
-                ? "\n"
-                : " ");
-    }
+    dp[0][0][MAX_BIT_WIDTH] = 0;
 
-    for (int len = 0; len <= MAX_BIT_WIDTH; ++len) {
-        if (lit_freq[0] != 0 && len == 0) continue;
-        int j = (1 << (MAX_BIT_WIDTH - len));
-        dp[1][j][len][1] = lit_freq[0] * len;
-    }
-    for (int i = 1; i < lit_freq.size(); ++i) {
+    for (int i = 0; i < lit_freq.size(); ++i) {
         for (int j = 0; j <= (1 << MAX_BIT_WIDTH); ++j) {
-            for (int prev_len = 0; prev_len < MAX_BIT_WIDTH + 1; ++prev_len) {
-                for (int prev_run = 0; prev_run < dp[i][j][prev_len].size(); ++prev_run) {
-                    if (dp[i][j][prev_len][prev_run] == 1e6) continue;
-                    for (int next_len = 0; next_len < MAX_BIT_WIDTH + 1; ++next_len) {
-                        if (lit_freq[i] != 0 && next_len == 0) continue;
-                        // Set as new run length
-                        int next_j = j + (next_len == 0 ? 0 : (1 << (MAX_BIT_WIDTH - next_len)));
-                        if (next_j > (1 << MAX_BIT_WIDTH)) continue;
-                        int cost = dp[i][j][prev_len][prev_run] + compute_run_cost(prev_len, prev_run) + lit_freq[i] * next_len;
-                        if (dp[i + 1][next_j][next_len][1] > cost) {
-                            prev_lens[i + 1][next_j][next_len][1] = prev_len;
-                            prev_runs[i + 1][next_j][next_len][1] = prev_run;
-                            dp[i + 1][next_j][next_len][1] = cost;
-                        }
-                    }
-                    // Extend the previous run
-                    if (prev_run + 1 < dp[i][j][prev_len].size()) {
-                        if (lit_freq[i] != 0 && prev_len == 0) continue;
-                        if (prev_run + 1 >= dp[i + 1][j][prev_len].size()) continue;
-                        int next_j = j + (prev_len == 0 ? 0 : (1 << (MAX_BIT_WIDTH - prev_len)));
-                        if (next_j > (1 << MAX_BIT_WIDTH)) continue;
-                        int cost = dp[i][j][prev_len][prev_run] + lit_freq[i] * prev_len;
-                        if (dp[i + 1][next_j][prev_len][prev_run + 1] > cost) {
-                            prev_lens[i + 1][next_j][prev_len][prev_run + 1] = prev_len;
-                            prev_runs[i + 1][next_j][prev_len][prev_run + 1] = prev_run;
-                            dp[i + 1][next_j][prev_len][prev_run + 1] = cost;
+            for (int prev_code = 0; prev_code <= MAX_BIT_WIDTH; ++prev_code) {
+                if (dp[i][j][prev_code] == 1e6) continue;
+                for (int code = 0; code <= MAX_BIT_WIDTH; ++code) {
+                    int maximum_length = code == 0 ? 138 : 6;
+                    int next_j = j;
+                    int lit_cost = 0;
+                    for (int run_length = 1; run_length <= maximum_length; ++run_length) {
+                        if (i + run_length >= lit_freq.size()) break;
+                        next_j += (code == 0 ? 0 : (1 << (MAX_BIT_WIDTH - code)));
+                        lit_cost += lit_freq[i + run_length - 1] * code;
+                        if (lit_freq[i + run_length - 1] != 0 && code == 0) break;
+                        if (next_j > (1 << MAX_BIT_WIDTH)) break;
+                        int run_cost = compute_run_cost(prev_code, code, run_length);
+                        int cost = dp[i][j][prev_code] + run_cost + lit_cost;
+                        if (dp[i + run_length][next_j][code] > cost) {
+                            dp[i + run_length][next_j][code] = cost;
+                            last_run_code[i + run_length][next_j][code] = prev_code;
+                            last_run_length[i + run_length][next_j][code] = run_length;
                         }
                     }
                 }
             }
         }
     }
-    const auto& dp_back = dp[lit_freq.size()][1 << MAX_BIT_WIDTH];
-    std::tuple<int,int,int> best = {1e6, 1e6, 1e6};
 
-    for (int prev_len = 0; prev_len < MAX_BIT_WIDTH + 1; ++prev_len) {
-        for (int prev_run = 0; prev_run < dp_back[prev_len].size(); ++prev_run) {
-            int cost = dp_back[prev_len][prev_run] + compute_run_cost(prev_len, prev_run);
-            auto tup = std::make_tuple(cost, prev_len, prev_run);
-            if (tup < best) {
-                best = tup;
-            }
+    const auto& dp_back = dp[lit_freq.size() - 1][(1 << MAX_BIT_WIDTH)];
+    std::pair<int,int> best = {1e6, 1e6};
+    for (int prev_code = 0; prev_code <= MAX_BIT_WIDTH; ++prev_code) {
+        int cost = dp_back[prev_code];
+        auto p = std::make_pair(cost, prev_code);
+        if (p < best) {
+            best = p;
         }
     }
-    int best_cost = std::get<0>(best);
-    int prev_len = std::get<1>(best);
-    int prev_run = std::get<2>(best);
+    std::cout << "Best cost: " << best.first << std::endl;
 
-    int i = lit_freq.size();
-    int j = 1 << MAX_BIT_WIDTH;
+    int best_cost = best.first;
+    int code = best.second;
     std::vector<int> new_lit_code_lengths(lit_freq.size(), 0);
+    int i = lit_freq.size() - 1;
+    int j = (1 << MAX_BIT_WIDTH);
     while(i > 0) {
-        new_lit_code_lengths[i - 1] = prev_len;
-        int next_prev_len = prev_lens[i][j][prev_len][prev_run];
-        int next_prev_run = prev_runs[i][j][prev_len][prev_run];
-        if(prev_len) {
-            j -= (1 << (MAX_BIT_WIDTH - prev_len));
+        int prev_code = last_run_code[i][j][code];
+        int run_length = last_run_length[i][j][code];
+        for (int k = 0; k < run_length; ++k) {
+            new_lit_code_lengths[--i] = code;
+            j -= (code == 0 ? 0 : (1 << (MAX_BIT_WIDTH - code)));
         }
-        prev_len = next_prev_len;
-        prev_run = next_prev_run;
-        i--;
+        code = prev_code;
     }
     block.literal_code_lengths = new_lit_code_lengths;
  }
@@ -146,13 +117,14 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
         2, 4, 4
     };
     /*
-    std::vector<int> RLE_symbols_cost = {
+    RLE_symbols_cost = {
         0, 0, 0, 4, 4,      // 0-4
         2, 0, 2, 0, 0,      // 5-9
         0, 0, 0, 0, 0, 0, // 10-15
         2, 4, 4
     };
     */
+
     while(RLE_symbols_cost.size() && RLE_symbols_cost.back() == 0) RLE_symbols_cost.pop_back();
     for (int i = 0; i < RLE_symbols_cost.size(); ++i) {
         if (RLE_symbols_cost[i] == 0) RLE_symbols_cost[i] = 1e6;
