@@ -6,8 +6,34 @@
 #include <algorithm>
 
 
-void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=11) {
+namespace XorShift{
+  uint64_t rnd_val = 0xdeadbeefcafebabe;
+  uint64_t rand(){ rnd_val ^= rnd_val << 7; rnd_val ^= rnd_val >> 9; return rnd_val; }
+  double rand_double(){ return double(rand()) / UINT64_MAX; }
+  template<int N>
+  int randn(){ return (uint64_t(uint32_t(rand())) * N) >> 32; }
+  int randn(int n){ return (uint64_t(uint32_t(rand())) * n) >> 32; }
+  std::vector<int> rand_perm(int n){
+    std::vector<int> v(n);
+    std::iota(v.begin(), v.end(), 0);
+    for(int i = n - 1; i >= 1; --i){
+      int j = randn(i + 1);
+      std::swap(v[i], v[j]);
+    }
+    return v;
+  }
+  template<typename T>
+  void shuffle(std::vector<T>& v){
+    int n = v.size();
+    for(int i = n - 1; i >= 1; --i){
+      int j = randn(i + 1);
+      std::swap(v[i], v[j]);
+    }
+  }
+};
 
+
+void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=11) {
     std::vector<int> lit_freq(286, 0);
     std::vector<int> dist_freq(30, 0);
     for (const auto& token : block.tokens) {
@@ -90,8 +116,6 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=1
             best = p;
         }
     }
-    std::cout << "Best cost: " << best.first << std::endl;
-
     int best_cost = best.first;
     int code = best.second;
     std::vector<int> new_lit_code_lengths(lit_freq.size(), 0);
@@ -109,60 +133,99 @@ void optimize_huffman_tree_by_DP(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=1
     block.literal_code_lengths = new_lit_code_lengths;
  }
 
-
-void optimize_huffman_tree(DynamicHuffmanBlock& block) {
-
-    constexpr int MAX_BIT_WIDTH = 11;
-
-    block.cl_code_lengths = block.get_optimal_cl_code_lengths();
-
-    for (int iter = 0; iter < 10; ++iter) {
-        std::cout << "Iteration " << iter << std::endl;
-        std::cout << "Before optimization: " << block.bit_length() << std::endl;
-        std::cout << "Literal code lengths: ";
-        int before_bit_length = block.bit_length();
-        auto before_literal_code_lengths = block.literal_code_lengths;
-        auto before_cl_code_lengths = block.cl_code_lengths;
-
-        for (int i = 0; i < block.literal_code_lengths.size(); ++i) {
-            int length = block.literal_code_lengths[i] == 1e6 ? -1 : block.literal_code_lengths[i];
-            std::cout << length << (i + 1 == block.literal_code_lengths.size() ? "\n" : " ");
-        }
-        std::cout << "RLE code lengths: ";
-        for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
-            int length = block.cl_code_lengths[i] == 1e6 ? -1 : block.cl_code_lengths[i];
-            std::cout << length << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
-        }
-
-        optimize_huffman_tree_by_DP(block);
-        block.cl_code_lengths = block.get_optimal_cl_code_lengths();
-
-        std::cout << "After optimization: " << block.bit_length() << std::endl;
-        std::cout << std::endl;
-
-        if (before_bit_length <= block.bit_length()) {
-            block.literal_code_lengths = before_literal_code_lengths;
-            block.cl_code_lengths = before_cl_code_lengths;
-            std::cout << "No improvement, stop optimization." << std::endl;
+ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WIDTH=7) {
+    /*
+    符号長総和を維持するような近傍操作:
+    - 符号長swap（隣接する確率を高く）
+    - 1要素を1短くし、同じ長さの2要素を1長くする (333->244)
+    */
+    std::vector<std::vector<int>> length_buckets(MAX_BIT_WIDTH + 1);
+    for (int i = 0; i < code_lengths.size(); ++i) {
+        length_buckets[code_lengths[i]].push_back(i);
+    }
+    int idx = 0;
+    while (true) {
+        double prob = XorShift::rand_double();
+        if (prob < 0.5) {
+            int target1, target2;
+            target1 = XorShift::randn(code_lengths.size());
+            if (code_lengths[target1] == 0) continue;
+            std::vector<int> candidates;
+            if (code_lengths[target1] > 1) {
+                candidates.insert(candidates.end(), length_buckets[code_lengths[target1] - 1].begin(), length_buckets[code_lengths[target1] - 1].end());
+            }
+            if (code_lengths[target1] < MAX_BIT_WIDTH) {
+                candidates.insert(candidates.end(), length_buckets[code_lengths[target1] + 1].begin(), length_buckets[code_lengths[target1] + 1].end());
+            }
+            if (candidates.size() == 0) continue;
+            target2 = candidates[XorShift::randn(candidates.size())];
+            std::swap(code_lengths[target1], code_lengths[target2]);
+            std::cout << "Operated: adjacent swap " << target1 << " " << target2 << std::endl;
+            break;
+        } else if (prob < 0.75) {
+            // random swap
+            int target1 = XorShift::randn(code_lengths.size());
+            int target2 = XorShift::randn(code_lengths.size());
+            if (target1 == target2) continue;
+            if (code_lengths[target1] == code_lengths[target2]) continue;
+            if (code_lengths[target1] == 0 || code_lengths[target2] == 0) continue;
+            std::swap(code_lengths[target1], code_lengths[target2]);
+            std::cout << "Operated: random swap " << target1 << " " << target2 << std::endl;
+            break;
+        } else {
+            int target_len = XorShift::randn(MAX_BIT_WIDTH - 1) + 1;
+            if (length_buckets[target_len].size() < 3) continue;
+            auto perm = XorShift::rand_perm(length_buckets[target_len].size());
+            --code_lengths[length_buckets[target_len][perm[0]]];
+            ++code_lengths[length_buckets[target_len][perm[1]]];
+            ++code_lengths[length_buckets[target_len][perm[2]]];
+            std::cout << "Operated: length change (++-) " << length_buckets[target_len][perm[0]] << " " << length_buckets[target_len][perm[1]] << " " << length_buckets[target_len][perm[2]] << std::endl;
             break;
         }
     }
+}
 
-    std::cout << "literal code lengths: ";
-    for (int i = 0; i < block.literal_code_lengths.size(); ++i) {
-        int length = block.literal_code_lengths[i] == 1e6 ? -1 : block.literal_code_lengths[i];
-        std::cout << length << (i + 1 == block.literal_code_lengths.size() ? "\n" : " ");
-    }
-    std::cout << "distance code lengths: ";
-    for (int i = 0; i < block.distance_code_lengths.size(); ++i) {
-        int length = block.distance_code_lengths[i] == 1e6 ? -1 : block.distance_code_lengths[i];
-        std::cout << length << (i + 1 == block.distance_code_lengths.size() ? "\n" : " ");
-    }
-    std::cout << "RLE code lengths: ";
-    for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
-        int length = block.cl_code_lengths[i] == 1e6 ? -1 : block.cl_code_lengths[i];
-        std::cout << length << (i + 1 ==    block.cl_code_lengths.size() ? "\n" : " ");
-    }
+void optimize_huffman_tree(DynamicHuffmanBlock& block, int num_iter = 5) {
+    std::cout << "Initial Block bit length: " << block.bit_length() << std::endl;
+    auto best = std::make_pair(block.bit_length(), block.cl_code_lengths);
 
-    std::cout << "Final bit length: " << block.bit_length() << std::endl;
+    bool updated = true;
+
+    for (int iter = 0; iter < num_iter; ++iter) {
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "Iteration " << iter << std::endl;
+        if (!updated) {
+            randomly_update_code_lengths(block.cl_code_lengths, 7);
+            std::cout << "CL_lengths:  ";
+            for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
+                std::cout << (block.cl_code_lengths[i] == 1e6 ? 0 : block.cl_code_lengths[i]) << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
+            }
+        }
+        else {
+            std::cout << "CL_lengths:  ";
+            for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
+                std::cout << (block.cl_code_lengths[i] == 1e6 ? 0 : block.cl_code_lengths[i]) << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
+            }
+        }
+        optimize_huffman_tree_by_DP(block);
+        auto cl_code_lengths = block.get_optimal_cl_code_lengths();
+        if (cl_code_lengths != block.cl_code_lengths) {
+            block.cl_code_lengths = cl_code_lengths;
+            updated = true;
+        } else {
+            updated = false;
+        }
+        int bit_length = block.bit_length();
+        if (bit_length <= best.first) {
+            best = std::make_pair(bit_length, block.cl_code_lengths);
+        } else {
+            if (!updated) {
+                block.cl_code_lengths = best.second;
+            }
+        }
+        std::cout << "Block bit length: " << block.bit_length() << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << std::endl;
+    }
+    optimize_huffman_tree_by_DP(block);
 }

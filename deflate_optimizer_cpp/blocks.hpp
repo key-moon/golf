@@ -151,7 +151,7 @@ std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, std::vec
             else {
                 res.push_back({RLECode::PREV_RUN, -choice});
             }
-            run_length -= choice;
+            run_length -= std::abs(choice);
         }
     } else {
         std::vector<int> dp(entry.count + 1, 1e6);
