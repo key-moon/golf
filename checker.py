@@ -158,7 +158,7 @@ if __name__ == "__main__":
           orig_code = f.read().strip()
           code = strip_for_plain(orig_code).encode()
           stripped = og_strip(orig_code) if ZLIB_GOLF_BANNER in orig_code else strip_for_zlib(orig_code)
-          compress_method, compressed, raw_compressed, _ = compress.compress(stripped, fast=fast, force_compress=True)
+          compress_method, compressed, raw_compressed, _ = compress.compress(stripped, fast=fast, force_compress=True, use_cache=False)
       
           if args.strip:
             if code.decode("L1") in orig_code:
@@ -176,10 +176,10 @@ if __name__ == "__main__":
         raw_compressed = b""
       if res.message != "ok": print(res.message)
       if res.correct == 1.:
-        print(f"✅ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60})")
+        print(f"✅ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
         success += 1
       else:
-        print(f"❌ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60})")
+        print(f"❌ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
         print(f"{res.correct=}")
       compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
       print(f"{openable_uri('stripped code', viz_plane_url(code))} / {compressed_msg}")

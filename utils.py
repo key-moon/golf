@@ -1,7 +1,8 @@
 import base64
 import glob
 import json
-from typing import TypedDict
+import pickle
+from typing import Callable, TypeVar, TypedDict
 import os
 
 def signed_str(x: int):
@@ -50,3 +51,16 @@ def viz_plane_url(plane: bytes):
 
 def viz_deflate_url(deflate: bytes):
   return f"https://deflate-viz.pages.dev?deflate={base64.b64encode(deflate).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
+
+T = TypeVar("T")
+
+CACHE_DIR = os.path.join(os.path.dirname(__file__), ".cache")
+def pickle_cache(cache_name: str, func: Callable[[], T]) -> T:
+  cache_path = os.path.join(CACHE_DIR, cache_name)
+  if os.path.exists(cache_path):
+    with open(cache_path, "rb") as f:
+      return pickle.load(f)
+  result = func()
+  with open(cache_path, "wb") as f:
+    pickle.dump(result, f)
+  return result

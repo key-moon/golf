@@ -1,4 +1,5 @@
 import itertools
+from utils import pickle_cache
 from collections import deque
 
 def _length_rle(vec: list[int]) -> list[tuple[int, int]]:
@@ -22,6 +23,7 @@ def _compute_table():
     imos 法の考え方を用い、各遷移をスライディング最小値で O(N) に削減する
     ただし N は 300 固定とする
     """
+    print('Computing RLE DP table...')
     N = 300
     VALID_WIDTHS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     INF = 1 << 60
@@ -239,9 +241,8 @@ def _compute_table_slow():
 
 class RLETable:
     def __init__(self):
-        print('Computing RLE DP table...')
-        self.table, self.table2 = _compute_table()
-    
+        self.table, self.table2 = pickle_cache("rle_dp_table", _compute_table)
+ 
     def optimal_parse(self, value: int, count: int, cl_lengths: list[int]) -> list[tuple[int, int, int]]:
         if value != 0:
             dp, prev = self.table[(cl_lengths[value], cl_lengths[16])]
