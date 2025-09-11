@@ -5,7 +5,7 @@ import random
 from typing import Callable, Optional
 
 from deflate_optimizer.blocks import Block, LitToken, MatchToken, Token
-from deflate_optimizer.blocks.dynamic_huffman import CL_ORDER, DynamicHuffmanBlock, DynamicHuffmanCodeLengthCode, DynamicHuffmanHeader, rle_code_lengths_stream
+from deflate_optimizer.blocks.dynamic_huffman import CL_ORDER, DynamicHuffmanBlock, DynamicHuffmanCodeLengthCode, DynamicHuffmanHeader, rle_code_lengths_stream, rle_code_lengths_stream_greedy
 from deflate_optimizer.blocks.huffman import distance_to_code_and_extra, length_to_code_and_extra
 from deflate_optimizer.huffman import FastHuffman, is_valid_huffman_lengths
 from .bitio import BitReader, BitWriter, dumps
@@ -96,14 +96,20 @@ def build_header_from_lengths(
     hdist = num_dist   - 1
 
     # TODO: RLEをいじったほうが短い可能性がある あと律動はこっちに加えてもよいかも
-    # RLE 生成
-    rle_stream = rle_code_lengths_stream(litlen_lengths, dist_lengths)
+    # 一度greedyで求めたcl_lengthsを使って再度DPでRLE決定
+    rle_stream = rle_code_lengths_stream_greedy(litlen_lengths, dist_lengths)
 
     # CL 頻度 → 制限長ハフマン（max=7）
     cl_freq = [0]*19
     for sym,_,_ in rle_stream:
         cl_freq[sym] += 1
     cl_lengths_raw = lengths_from_freq(cl_freq, maxbits=7)
+
+    # rle_stream = rle_code_lengths_stream(litlen_lengths, dist_lengths, cl_lengths_raw)
+    # cl_freq = [0]*19
+    # for sym,_,_ in rle_stream:
+    #     cl_freq[sym] += 1
+    # cl_lengths_raw = lengths_from_freq(cl_freq, maxbits=7)
 
     # HCLEN 決定
     hclen = hclen_from_cl_lengths(cl_lengths_raw)

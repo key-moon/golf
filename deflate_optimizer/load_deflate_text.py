@@ -7,6 +7,7 @@ from io import StringIO
 import glob
 import os
 import sys
+import base64
 
 from bitio import BitWriter
 from blocks import Block
@@ -31,13 +32,15 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     path = sys.argv[1]
   else:
-    print(f'Usage: python3 {sys.argv[0]} <path_to_deflate_dumped_text>')
+    print(f'Usage: python3 {sys.argv[0]} <path_to_deflate_dumped_text>', file=sys.stderr)
     sys.exit(1)
   
   with open(path, 'r') as f:
     text = f.read()
     tw = StringIO(text)
     cnt, b = load_deflate_stream(tw)
+    print()
+    print(f'Raw deflate bytes (base64): {base64.b64encode(b).decode()}')
     print(f'total bit length : {cnt}')
     print(f'total byte length: {len(b)}')
     print(f'deflate URL: {viz_deflate_url(b)}')

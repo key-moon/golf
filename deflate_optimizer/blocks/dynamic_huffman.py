@@ -163,47 +163,47 @@ def rle_code_lengths_stream(
 
     return out
 
-# def rle_code_lengths_stream(litlen: list[int], dist: list[int], allow_16=True, allow_17=True, allow_18=True) -> list[tuple[int,int,int]]:
-#     """
-#     litlen + dist のコード長列を RFC1951 の RLE で列挙。
-#     返値は (symbol, extra_value, extra_bits):
-#       - 0..15 : そのままコード長値
-#       - 16    : 直前の長さを 3..6 回繰り返す（2 ビットで回数-3 を表す）
-#       - 17    : 0 を 3..10 回
-#       - 18    : 0 を 11..138 回
-#     """
-#     seq = list(litlen) + list(dist)
-#     out: list[tuple[int,int,int]] = []
-#     i = 0
-#     while i < len(seq):
-#         cur = seq[i]
-#         run = 1
-#         j = i + 1
-#         while j < len(seq) and seq[j] == cur:
-#             run += 1; j += 1
+def rle_code_lengths_stream_greedy(litlen: list[int], dist: list[int], allow_16=True, allow_17=True, allow_18=True) -> list[tuple[int,int,int]]:
+    """
+    litlen + dist のコード長列を RFC1951 の RLE で列挙。
+    返値は (symbol, extra_value, extra_bits):
+      - 0..15 : そのままコード長値
+      - 16    : 直前の長さを 3..6 回繰り返す（2 ビットで回数-3 を表す）
+      - 17    : 0 を 3..10 回
+      - 18    : 0 を 11..138 回
+    """
+    seq = list(litlen) + list(dist)
+    out: list[tuple[int,int,int]] = []
+    i = 0
+    while i < len(seq):
+        cur = seq[i]
+        run = 1
+        j = i + 1
+        while j < len(seq) and seq[j] == cur:
+            run += 1; j += 1
 
-#         if cur == 0:
-#             k = run
-#             while k >= 11 and allow_18:
-#                 use = min(138, k)
-#                 out.append((18, use - 11, 7))
-#                 k -= use
-#             while k >= 3 and allow_17:
-#                 out.append((17, k - 3, 3))
-#                 k = 0
-#             out.extend([(0, 0, 0)] * k)
-#         else:
-#             out.append((cur, 0, 0))
-#             k = run - 1
-#             while k >= 3 and allow_16:
-#                 consume = min(k, 6)
-#                 out.append((16, consume - 3, 2))
-#                 k -= consume
-#             out.extend([(cur, 0, 0)] * k)
+        if cur == 0:
+            k = run
+            while k >= 11 and allow_18:
+                use = min(138, k)
+                out.append((18, use - 11, 7))
+                k -= use
+            while k >= 3 and allow_17:
+                out.append((17, k - 3, 3))
+                k = 0
+            out.extend([(0, 0, 0)] * k)
+        else:
+            out.append((cur, 0, 0))
+            k = run - 1
+            while k >= 3 and allow_16:
+                consume = min(k, 6)
+                out.append((16, consume - 3, 2))
+                k -= consume
+            out.extend([(cur, 0, 0)] * k)
 
-#         i = j
+        i = j
 
-#     return out
+    return out
 
 
 @dataclass
