@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -92,37 +93,119 @@ std::vector<int> compute_huff_code_lengths_from_frequencies(const std::vector<in
     return code_lengths;
 }
 
-std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry) {
-    // Note: This conversion is not optimal.
+std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, std::vector<int> cl_code_lengths) {
+
+    for(auto& l : cl_code_lengths) {
+        if (l == 0) l = 1e6;
+    }
+
     std::vector<RLECode> res;
     if(entry.value == 0) {
+        std::vector<int> dp(entry.count + 1, 1e6);
+        std::vector<int> last_choice(entry.count + 1, -1);
+        dp[0] = 0;
+        for (int i = 0; i < entry.count; ++i) {
+            // literal
+            if (dp[i] + cl_code_lengths[0] < dp[i + 1]) {
+                dp[i + 1] = dp[i] + cl_code_lengths[0];
+                last_choice[i + 1] = 1;
+            }
+            // ZERO_RUN
+            for (int run_length = 3; run_length <= 138; ++run_length) {
+                if (i + run_length > entry.count) break;
+                int cost = (run_length <= 10) ? cl_code_lengths[17] + 3 : cl_code_lengths[18] + 7;
+                if (dp[i] + cost < dp[i + run_length]) {
+                    dp[i + run_length] = dp[i] + cost;
+                    last_choice[i + run_length] = run_length;
+                }
+            }
+            // PREV_RUN
+            if (i) {
+                for (int run_length = 3; run_length <= 6; ++run_length) {
+                    if (i + run_length > entry.count) break;
+                    int cost = cl_code_lengths[16] + 2;
+                    if (dp[i] + cost < dp[i + run_length]) {
+                        dp[i + run_length] = dp[i] + cost;
+                        last_choice[i + run_length] = -run_length;
+                    }
+                }
+            }
+        }
+        if (dp[entry.count] == 1e6) {
+            std::cerr << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
+            std::cerr << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
+            std::cerr << "cl_code_lengths: ";
+            for (int i = 0; i < cl_code_lengths.size(); ++i) {
+                std::cerr << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
+            }
+            throw std::runtime_error("Failed to encode RLEEntry");
+        }
         int run_length = entry.count;
         while (run_length > 0) {
-            if (run_length >= 3) {
-                int length = std::min(run_length, 138);
-                res.push_back({RLECode::ZERO_RUN, length});
-                run_length -= length;
-            } else {
-                res.push_back({ RLECode::LITERAL, entry.value });
-                run_length--;
+            int choice = last_choice[run_length];
+            if (choice == 1) {
+                res.push_back({RLECode::LITERAL, 0});
+            } else if (choice > 0) {
+                res.push_back({RLECode::ZERO_RUN, choice});
             }
+            else {
+                res.push_back({RLECode::PREV_RUN, -choice});
+            }
+            run_length -= choice;
         }
     } else {
-        res.push_back({ RLECode::LITERAL, entry.value });
-        int run_length = entry.count - 1;
-        while (run_length > 0) {
-            if (run_length >= 6) {
-                res.push_back({ RLECode::PREV_RUN, 6 });
-                run_length -= 6;
-            } else if (run_length >= 3) {
-                res.push_back({ RLECode::PREV_RUN, run_length });
-                run_length = 0;
-            } else {
-                res.push_back({ RLECode::LITERAL, entry.value });
-                run_length--;
+        std::vector<int> dp(entry.count + 1, 1e6);
+        std::vector<int> last_choice(entry.count + 1, -1);
+        dp[1] = cl_code_lengths[entry.value];
+        last_choice[1] = 1;
+        for (int i = 1; i < entry.count; ++i) {
+            if (dp[i] + cl_code_lengths[entry.value] < dp[i + 1]) {
+                dp[i + 1] = dp[i] + cl_code_lengths[entry.value];
+                last_choice[i + 1] = 1;
+            }
+            for (int run_length = 3; run_length <= 6; ++run_length) {
+                if (i + run_length > entry.count) break;
+                int cost = cl_code_lengths[16] + 2;
+                if (dp[i] + cost < dp[i + run_length]) {
+                    dp[i + run_length] = dp[i] + cost;
+                    last_choice[i + run_length] = run_length;
+                }
             }
         }
+        if (dp[entry.count] == 1e6) {
+            std::cerr << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
+            std::cerr << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
+            std::cerr << "cl_code_lengths: ";
+            for (int i = 0; i < cl_code_lengths.size(); ++i) {
+                std::cerr << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
+            }
+            throw std::runtime_error("Failed to encode RLEEntry");
+        }
+        int run_length = entry.count;
+        while (run_length > 0) {
+            int choice = last_choice[run_length];
+            if (choice == 1) {
+                res.push_back({RLECode::LITERAL, entry.value});
+            } else {
+                res.push_back({RLECode::PREV_RUN, choice});
+            }
+            run_length -= choice;
+        }
     }
+    std::reverse(res.begin(), res.end());
+    /*
+    std::cout << "RLE codes: ";
+    for (const auto& code : res) {
+        if (code.type == RLECode::LITERAL) {
+            std::cout << code.value << " ";
+        } else if (code.type == RLECode::PREV_RUN) {
+            std::cout << "P" << code.value << " ";
+        } else {
+            std::cout << "Z" << code.value << " ";
+        }
+    }
+    std::cout << std::endl;
+    */
     return res;
 }
 
@@ -232,7 +315,7 @@ struct CompressedBlock : public Block {
 };
     
 
-std::vector<RLECode> compute_RLE_encoded_representation(const std::vector<int>& literal_code_lengths, const std::vector<int>& distance_code_lengths) {
+std::vector<RLECode> compute_RLE_encoded_representation(const std::vector<int>& literal_code_lengths, const std::vector<int>& distance_code_lengths, const std::vector<int>& cl_code_lengths) {
     // Note: This run-length encoding is not optimal.
     // Each run-length encoded symbol will be compressed using huffman codes, so acutually we should consider it.
     std::vector<int> concat = literal_code_lengths;
@@ -240,7 +323,7 @@ std::vector<RLECode> compute_RLE_encoded_representation(const std::vector<int>& 
     auto rle_entries = length_RLE(concat);
     std::vector<RLECode> rle_codes;
     for (const auto& entry : rle_entries) {
-        auto codes = convert_RLEEntry_to_RLECode(entry);
+        auto codes = convert_RLEEntry_to_RLECode(entry, cl_code_lengths);
         rle_codes.insert(rle_codes.end(), codes.begin(), codes.end());
     }
     return rle_codes;
@@ -351,8 +434,12 @@ struct FixedHuffmanBlock : public CompressedBlock {
 struct DynamicHuffmanBlock : public CompressedBlock {
     std::vector<int> literal_code_lengths;
     std::vector<int> distance_code_lengths;
+    std::vector<int> cl_code_lengths; // len(cl_code_lengths) == 19, stored in normal order
     void dump_string(std::ostream& out) const {
         out << bfinal << ' ' << 0b10 << '\n';
+        for (size_t i = 0; i < cl_code_lengths.size(); ++i) {
+            out << cl_code_lengths[i] << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
+        }
         out << literal_code_lengths.size() << '\n';
         for (size_t i = 0; i < literal_code_lengths.size(); ++i) {
             out << literal_code_lengths[i] << (i + 1 == literal_code_lengths.size() ? "\n" : " ");
@@ -366,27 +453,13 @@ struct DynamicHuffmanBlock : public CompressedBlock {
             out << tokens[i].get_string() << (i + 1 == tokens.size() ? "\n" : " ");
         }
     }
-    auto get_cl_code_lengths() const {
-        std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(literal_code_lengths, distance_code_lengths);
+    auto get_optimal_cl_code_lengths() const {
+        std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(literal_code_lengths, distance_code_lengths, cl_code_lengths);
         std::vector<int> cl_frequencies(19, 0);
         for (const auto& code : rle_codes) {
             cl_frequencies[code.id()]++;
         }
-        /*
-        std::cout << " ----------------------------- " << std::endl;
-        for(auto & code : rle_codes) {
-            std::cout << "RLE code: type=" << (code.type == RLECode::LITERAL ? "LITERAL" : (code.type == RLECode::PREV_RUN ? "PREV_RUN" : "ZERO_RUN")) 
-                      << ", value=" << code.value 
-                      << ", id=" << code.id() 
-                      << ", additional_bits=" << code.num_additional_bits() 
-                      << std::endl;
-        }
-        auto cl_freq = compute_huff_code_lengths_from_frequencies(cl_frequencies);
-        for(int i = 0; i < cl_freq.size(); ++i) {
-            std::cout << "cl_freq[" << i << "] = " << cl_freq[i] << std::endl;
-        }
-        std::cout << "----------------------------- " << std::endl;
-        */
+        auto res = compute_huff_code_lengths_from_frequencies(cl_frequencies);
         return compute_huff_code_lengths_from_frequencies(cl_frequencies);
     }
     int bit_length() const override {
@@ -394,7 +467,6 @@ struct DynamicHuffmanBlock : public CompressedBlock {
         int length = 3; // bfinal + btype
         // HLIT, HDIST, HCLEN
         length += 5 + 5 + 4;
-        auto cl_code_lengths = get_cl_code_lengths();
         int hclen = 0;
         for (int i = 18; i >= 0; --i) {
             if (cl_code_lengths[CL_CODE_ORDER[i]] > 0) {
@@ -403,7 +475,7 @@ struct DynamicHuffmanBlock : public CompressedBlock {
             }
         }
         length += hclen * 3;
-        std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(literal_code_lengths, distance_code_lengths);
+        std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(literal_code_lengths, distance_code_lengths, cl_code_lengths);
         for (auto& code : rle_codes) {
             length += cl_code_lengths[code.id()];
             length += code.num_additional_bits();
@@ -457,6 +529,10 @@ struct DynamicHuffmanBlock : public CompressedBlock {
     static DynamicHuffmanBlock load_from_stream(std::istream& in) {
         DynamicHuffmanBlock block;
         size_t hlit, hdist;
+        block.cl_code_lengths.resize(19, 0);
+        for (size_t i = 0; i < 19; ++i) {
+            in >> block.cl_code_lengths[i];
+        }
         in >> hlit;
         block.literal_code_lengths.resize(hlit);
         for (size_t i = 0; i < hlit; ++i) {

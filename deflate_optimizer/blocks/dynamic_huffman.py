@@ -170,6 +170,7 @@ class DynamicHuffmanHeader:
                 bw.write_bits(extra_val, extra_bits)
 
     def dump_string(self, tw):
+        print(' '.join(str(l) for l in self.cl_code.lengths), file=tw)
         print(self.hlit + 257, file=tw)
         print(' '.join(str(l) for l in self.litlen_code.lengths), file=tw)
         print(self.hdist + 1, file=tw)
@@ -222,6 +223,13 @@ class DynamicHuffmanBlock(Block):
 
     @staticmethod
     def load_from_text(tw: StringIO, bfinal: int) -> "DynamicHuffmanBlock":
+        # 1) code-length アルファベットの長さ列 (length=19)
+        line = tw.readline()
+        if not line:
+            raise ValueError("Unexpected EOF while reading CL lengths")
+        cl_lengths = [int(x) for x in line.strip().split()]
+        if len(cl_lengths) != 19:
+            raise ValueError("CL lengths count mismatch")
         # 2) HLIT + 257 と litlen 長さ列
         line = tw.readline()
         if not line:
@@ -290,9 +298,6 @@ class DynamicHuffmanBlock(Block):
         hlit = num_litlen - 257
         hdist = num_dist - 1
 
-        print(litlen_lengths)
-        print(dist_lengths)
-
         rle_codes = rle_code_lengths_stream(litlen_lengths, dist_lengths)
         cl_bins = [0]*19
         for sym, _, _ in rle_codes:
@@ -322,8 +327,10 @@ class DynamicHuffmanBlock(Block):
             else:
                 assign_cl_lengths(root, 0)
 
-        print(cl_bins)
-        print(cl_lengths)
+        print(f'cl_lengths: {cl_lengths}')
+        print(f'litlen_lengths: {litlen_lengths}')
+        print(f'dist_lengths: {dist_lengths}')
+        print(f'rle_codes: {rle_codes}')
 
         hclen = 15  # 19 個すべてを出力
         cl_code = DynamicHuffmanCodeLengthCode(cl_lengths)

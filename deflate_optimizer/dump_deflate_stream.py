@@ -24,7 +24,7 @@ def dump_deflate_stream(deflated_bytes: bytes) -> str:
 
 if __name__ == '__main__':
   ZOPFLI_NUM_ITER = 1000
-  BLOCKSPLITTING=False
+  BLOCKSPLITTING = False
   OPTIMIZER_NUM_ITER = 2000
 
   for path in glob.glob('data/compeval/*/*.py'):

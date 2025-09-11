@@ -38,5 +38,5 @@ if __name__ == '__main__':
     text = f.read()
     tw = StringIO(text)
     b = load_deflate_stream(tw)
-    print(f'length: {len(b)}')
+    print(f'total byte length: {len(b)}')
     print(f'deflate URL: {viz_deflate_url(b)}')
