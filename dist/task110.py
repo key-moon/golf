@@ -1,1 +1,1 @@
-p=lambda g,c=-9,R=range:c*g or p([u for y in R(9)for x in R(1,10)if(u:=[[g[i][j]|(i+y<29>j+x and g[i+y][j+x])|(i-y>-1<j-x and g[i-y][j-x])for j in R(29)]for i in R(29)])if sum(s in g for s in u)>17][0],c+1)
+p=lambda g,d=5,k=0:[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]+[k:=k+(x==y)for x,y in zip(g[i],w)]*0for i in range(29)]*(k>700)or p(g,d+1)
