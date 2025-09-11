@@ -1,4 +1,4 @@
-# best: 54(intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 58(jailctf merger), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(MasukenSamba), 74(jonas ryno kg583)
+# best: 54(intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 58(jailctf merger), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(MasukenSamba), 71(kabutack)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1
