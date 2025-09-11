@@ -1,0 +1,21 @@
+{
+  "id": "adilshamim8/google-code-golf-championship-101",
+  "id_no": 88483486,
+  "title": "Google Code Golf Championship 101",
+  "code_file": "google-code-golf-championship-101.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [
+    "optimization"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}
