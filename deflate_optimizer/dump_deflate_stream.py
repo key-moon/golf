@@ -10,8 +10,8 @@ import sys
 
 import zopfli.zlib
 import strip
-from bitio import BitReader
-from blocks import Block
+from .bitio import BitReader
+from .blocks import Block
 
 
 def dump_deflate_stream(deflated_bytes: bytes) -> str:
