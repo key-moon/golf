@@ -114,13 +114,7 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
 
     constexpr int MAX_BIT_WIDTH = 11;
 
-    std::vector<int> RLE_symbols_cost = {
-        4, 0, 0, 4, 4,      // 0-4
-        3, 3, 3, 5, 5,      // 5-9
-        0, 0, 0, 0, 0, 0, // 10-15
-        2, 4, 4
-    };
-    // block.cl_code_lengths = RLE_symbols_cost;
+    block.cl_code_lengths = block.get_optimal_cl_code_lengths();
 
     for (int iter = 0; iter < 10; ++iter) {
         std::cout << "Iteration " << iter << std::endl;
@@ -153,7 +147,6 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block) {
             break;
         }
     }
-
 
     std::cout << "literal code lengths: ";
     for (int i = 0; i < block.literal_code_lengths.size(); ++i) {

@@ -23,7 +23,7 @@ def load_deflate_stream(tw: StringIO) -> bytes:
     block.dump(writer)
     if block.bfinal:
       break
-  return writer.get_bytes()
+  return len(writer._buf) * 8 + writer._bitcnt, writer.get_bytes()
 
 
 if __name__ == '__main__':
@@ -37,6 +37,7 @@ if __name__ == '__main__':
   with open(path, 'r') as f:
     text = f.read()
     tw = StringIO(text)
-    b = load_deflate_stream(tw)
+    cnt, b = load_deflate_stream(tw)
+    print(f'total bit length : {cnt}')
     print(f'total byte length: {len(b)}')
     print(f'deflate URL: {viz_deflate_url(b)}')

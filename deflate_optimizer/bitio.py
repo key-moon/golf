@@ -67,6 +67,9 @@ class BitWriter:
             self._bitbuf = 0
             self._bitcnt = 0
 
+    def num_written_bits(self) -> int:
+        return len(self._buf) * 8 + self._bitcnt
+
     def get_bytes(self) -> bytes:
         self.align_to_byte()
         return bytes(self._buf)

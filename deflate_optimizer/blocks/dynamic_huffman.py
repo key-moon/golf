@@ -12,47 +12,198 @@ from deflate_optimizer.huffman import FastHuffman
 CL_ORDER = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]
 
 
-def rle_code_lengths_stream(litlen: list[int], dist: list[int], allow_16=True, allow_17=True, allow_18=True) -> list[tuple[int,int,int]]:
-    """
-    litlen + dist のコード長列を RFC1951 の RLE で列挙。
-    返値は (symbol, extra_value, extra_bits):
-      - 0..15 : そのままコード長値
-      - 16    : 直前の長さを 3..6 回繰り返す（2 ビットで回数-3 を表す）
-      - 17    : 0 を 3..10 回
-      - 18    : 0 を 11..138 回
-    """
-    seq = list(litlen) + list(dist)
-    out: list[tuple[int,int,int]] = []
-    i = 0
-    while i < len(seq):
-        cur = seq[i]
-        run = 1
-        j = i + 1
-        while j < len(seq) and seq[j] == cur:
-            run += 1; j += 1
-
-        if cur == 0:
-            k = run
-            while k >= 11 and allow_18:
-                use = min(138, k)
-                out.append((18, use - 11, 7))
-                k -= use
-            while k >= 3 and allow_17:
-                out.append((17, k - 3, 3))
-                k = 0
-            out.extend([(0, 0, 0)] * k)
+def _length_rle(vec: list[int]) -> list[tuple[int, int]]:
+    if not vec:
+        return []
+    res = []
+    cur = vec[0]
+    run = 1
+    for x in vec[1:]:
+        if x == cur:
+            run += 1
         else:
-            out.append((cur, 0, 0))
-            k = run - 1
-            while k >= 3 and allow_16:
-                consume = min(k, 6)
-                out.append((16, consume - 3, 2))
-                k -= consume
-            out.extend([(cur, 0, 0)] * k)
+            res.append((cur, run))
+            cur = x
+            run = 1
+    res.append((cur, run))
+    return res
 
-        i = j
+def rle_code_lengths_stream(
+    litlen: list[int],
+    dist: list[int],
+    cl_lengths: list[int],
+    allow_16: bool = True,
+    allow_17: bool = True,
+    allow_18: bool = True,
+) -> list[tuple[int, int, int]]:
+    INF = 1 << 30
+    """
+    C++ の convert_RLEEntry_to_RLECode に準拠した DP 変換
+    返値は (symbol, extra_value, extra_bits)
+    """
+    # 使用不可の記号は巨大コスト化
+    cost = list(cl_lengths)
+    if not allow_16 and len(cost) > 16:
+        cost[16] = 0
+    if not allow_17 and len(cost) > 17:
+        cost[17] = 0
+    if not allow_18 and len(cost) > 18:
+        cost[18] = 0
+    for i, l in enumerate(cost):
+        if l == 0:
+            cost[i] = INF
+
+    concat = list(litlen) + list(dist)
+    entries = _length_rle(concat)
+    out = []
+
+    for value, count in entries:
+        if value == 0:
+            dp = [INF] * (count + 1)
+            prev = [0] * (count + 1)  # 1=literal0 正=ZERO_RUN長 負=PREV_RUN長
+            dp[0] = 0
+
+            for i in range(count):
+                # literal 0
+                if cost[0] < INF and dp[i] + cost[0] < dp[i + 1]:
+                    dp[i + 1] = dp[i] + cost[0]
+                    prev[i + 1] = 1
+
+                # ZERO_RUN 3..10 は 17 3bits  11..138 は 18 7bits
+                if allow_17 and cost[17] < INF:
+                    for run in range(3, min(10, count - i) + 1):
+                        j = i + run
+                        add = cost[17] + 3
+                        if dp[i] + add < dp[j]:
+                            dp[j] = dp[i] + add
+                            prev[j] = run
+                if allow_18 and cost[18] < INF:
+                    for run in range(11, min(138, count - i) + 1):
+                        j = i + run
+                        add = cost[18] + 7
+                        if dp[i] + add < dp[j]:
+                            dp[j] = dp[i] + add
+                            prev[j] = run
+
+                # PREV_RUN 3..6 ただし i>0
+                if i > 0 and allow_16 and cost[16] < INF:
+                    add = cost[16] + 2
+                    for run in range(3, min(6, count - i) + 1):
+                        j = i + run
+                        if dp[i] + add < dp[j]:
+                            dp[j] = dp[i] + add
+                            prev[j] = -run
+
+            if dp[count] >= INF:
+                raise ValueError("DP 失敗 ゼロ長系列を符号化できません")
+
+            # 復元
+            i = count
+            tmp = []
+            while i > 0:
+                choice = prev[i]
+                if choice == 1:
+                    tmp.append((0, 0, 0))
+                    i -= 1
+                elif choice > 0:
+                    run = choice
+                    if run <= 10:
+                        tmp.append((17, run - 3, 3))
+                    else:
+                        tmp.append((18, run - 11, 7))
+                    i -= run
+                else:
+                    run = -choice
+                    tmp.append((16, run - 3, 2))
+                    i -= run
+            tmp.reverse()
+            out.extend(tmp)
+
+        else:
+            # 非ゼロ値
+            dp = [INF] * (count + 1)
+            prev = [0] * (count + 1)  # 1=literal(value) 正=PREV_RUN長
+            if value >= len(cost) or cost[value] >= INF:
+                raise ValueError("DP 失敗 CL の符号長が 0 の値を含みます")
+            dp[1] = cost[value]
+            prev[1] = 1
+
+            for i in range(1, count):
+                # literal(value)
+                if dp[i] + cost[value] < dp[i + 1]:
+                    dp[i + 1] = dp[i] + cost[value]
+                    prev[i + 1] = 1
+
+                # PREV_RUN 3..6
+                if allow_16 and cost[16] < INF:
+                    add = cost[16] + 2
+                    for run in range(3, min(6, count - i) + 1):
+                        j = i + run
+                        if dp[i] + add < dp[j]:
+                            dp[j] = dp[i] + add
+                            prev[j] = run
+
+            if dp[count] >= INF:
+                raise ValueError("DP 失敗 非ゼロ長系列を符号化できません")
+
+            # 復元
+            i = count
+            tmp = []
+            while i > 0:
+                choice = prev[i]
+                if choice == 1:
+                    tmp.append((value, 0, 0))
+                    i -= 1
+                else:
+                    run = choice
+                    tmp.append((16, run - 3, 2))
+                    i -= run
+            tmp.reverse()
+            out.extend(tmp)
 
     return out
+
+# def rle_code_lengths_stream(litlen: list[int], dist: list[int], allow_16=True, allow_17=True, allow_18=True) -> list[tuple[int,int,int]]:
+#     """
+#     litlen + dist のコード長列を RFC1951 の RLE で列挙。
+#     返値は (symbol, extra_value, extra_bits):
+#       - 0..15 : そのままコード長値
+#       - 16    : 直前の長さを 3..6 回繰り返す（2 ビットで回数-3 を表す）
+#       - 17    : 0 を 3..10 回
+#       - 18    : 0 を 11..138 回
+#     """
+#     seq = list(litlen) + list(dist)
+#     out: list[tuple[int,int,int]] = []
+#     i = 0
+#     while i < len(seq):
+#         cur = seq[i]
+#         run = 1
+#         j = i + 1
+#         while j < len(seq) and seq[j] == cur:
+#             run += 1; j += 1
+
+#         if cur == 0:
+#             k = run
+#             while k >= 11 and allow_18:
+#                 use = min(138, k)
+#                 out.append((18, use - 11, 7))
+#                 k -= use
+#             while k >= 3 and allow_17:
+#                 out.append((17, k - 3, 3))
+#                 k = 0
+#             out.extend([(0, 0, 0)] * k)
+#         else:
+#             out.append((cur, 0, 0))
+#             k = run - 1
+#             while k >= 3 and allow_16:
+#                 consume = min(k, 6)
+#                 out.append((16, consume - 3, 2))
+#                 k -= consume
+#             out.extend([(cur, 0, 0)] * k)
+
+#         i = j
+
+#     return out
 
 
 @dataclass
@@ -161,6 +312,7 @@ class DynamicHuffmanHeader:
         rle_stream = rle_code_lengths_stream(
             litlen_lengths,
             dist_lengths,
+            self.cl_code.lengths,
             allow_16, allow_17, allow_18
         )
 
@@ -298,41 +450,19 @@ class DynamicHuffmanBlock(Block):
         hlit = num_litlen - 257
         hdist = num_dist - 1
 
-        rle_codes = rle_code_lengths_stream(litlen_lengths, dist_lengths)
-        cl_bins = [0]*19
-        for sym, _, _ in rle_codes:
-            cl_bins[sym] += 1
-
-        # make Huffman tree for CL
-        ctr = count()
-        heap = [(freq, next(ctr), sym) for sym, freq in enumerate(cl_bins) if freq > 0]
-        heapq.heapify(heap)
-        while len(heap) > 1:
-            f1, _, n1 = heapq.heappop(heap)
-            f2, _, n2 = heapq.heappop(heap)
-            merged = (n1, n2)
-            heapq.heappush(heap, (f1 + f2, next(ctr), merged))
-        root = heap[0][2] if heap else None
-        cl_lengths = [0] * 19
-        def assign_cl_lengths(node, depth):
-            if isinstance(node, int):
-                cl_lengths[node] = depth
-            else:
-                left, right = node
-                assign_cl_lengths(left, depth + 1)
-                assign_cl_lengths(right, depth + 1)
-        if root is not None:
-            if isinstance(root, int):
-                cl_lengths[root] = 1
-            else:
-                assign_cl_lengths(root, 0)
+        rle_codes = rle_code_lengths_stream(litlen_lengths, dist_lengths, cl_lengths)
 
         print(f'cl_lengths: {cl_lengths}')
         print(f'litlen_lengths: {litlen_lengths}')
         print(f'dist_lengths: {dist_lengths}')
         print(f'rle_codes: {rle_codes}')
 
-        hclen = 15  # 19 個すべてを出力
+        # compute HCLEN
+        hclen = 19
+        while hclen > 4 and cl_lengths[CL_ORDER[hclen - 1]] == 0:
+            hclen -= 1
+        hclen -= 4
+
         cl_code = DynamicHuffmanCodeLengthCode(cl_lengths)
         header = DynamicHuffmanHeader(
             hlit=hlit,
