@@ -3,13 +3,11 @@ from dataclasses import dataclass
 import json
 import os
 import signal
-import sys
 import traceback
-from typing import Any, Optional, Tuple
+from pathlib import Path
+from typing import Any, Optional
 from dataclass_wizard import JSONWizard
 import matplotlib.pyplot as plt
-import inspect
-import sys
 
 import numpy as np
 from tqdm import tqdm
@@ -44,13 +42,6 @@ class CheckRes(JSONWizard):
   outputs: list[Output]
   correct: float
   message: str
-
-trust_paths = [
-  "base_code/",
-  "base_arcdsl/",
-  "base_keymoon/",
-  "base_yu/",
-]
 
 def check(path: str, task: Task, knockout=-1, resume_tqdm = False) -> CheckRes:
   assert path.endswith(".py")
@@ -198,7 +189,8 @@ if __name__ == "__main__":
 
       wrong_outputs = [*filter(lambda x: not x.verdict, res.outputs)]
       if len(wrong_outputs) > 0 and do_vis:
-        vis_path=f"vis_output/task{i:03}.png"
-        visualize_outputs(wrong_outputs, vis_path)
+        vis_path = Path(f"vis_output/task{i:03}.png")
+        vis_path.parent.mkdir(exist_ok=True)
+        visualize_outputs(wrong_outputs, str(vis_path))
         print(f"{vis_path=}")
   print(f"success: {success}/{len(r)}")
