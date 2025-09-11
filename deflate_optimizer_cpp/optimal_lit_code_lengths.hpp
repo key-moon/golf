@@ -46,7 +46,7 @@ void optimize_lit_code_huffman(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=9) 
         return (int)1e6;
     };
     
-    dp[0][0][MAX_BIT_WIDTH] = 0;
+    dp[0][0][0] = 0;
 
     for (int i = 0; i < lit_freq.size(); ++i) {
         for (int j = 0; j <= (1 << MAX_BIT_WIDTH); ++j) {
@@ -84,6 +84,7 @@ void optimize_lit_code_huffman(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=9) 
             best = p;
         }
     }
+
     int best_cost = best.first;
     int code = best.second;
     std::vector<int> new_lit_code_lengths(lit_freq.size(), 0);

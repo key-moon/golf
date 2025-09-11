@@ -9,6 +9,8 @@ from deflate_optimizer.blocks import Block, Token, LitToken, MatchToken
 from deflate_optimizer.blocks.huffman import dump_tokens, load_tokens
 from deflate_optimizer.huffman import FastHuffman
 
+from deflate_optimizer.rle_dp_helper import RLE_DP_TABLE
+
 CL_ORDER = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]
 
 
@@ -305,15 +307,12 @@ class DynamicHuffmanHeader:
         bw.write_bits(self.hclen, 4)
         self.cl_code.dump_lengths(bw, self.hclen + 4)
 
-        allow_16, allow_17, allow_18 = [i < len(self.cl_code.lengths) and self.cl_code.lengths[i] != 0  for i in (16, 17, 18)]
-
         litlen_lengths = self.litlen_code.lengths
         dist_lengths = self.dist_code.lengths
-        rle_stream = rle_code_lengths_stream(
+        rle_stream = RLE_DP_TABLE.rle_code_lengths_stream(
             litlen_lengths,
             dist_lengths,
             self.cl_code.lengths,
-            allow_16, allow_17, allow_18
         )
 
         for sym, extra_val, extra_bits in rle_stream:
@@ -449,13 +448,6 @@ class DynamicHuffmanBlock(Block):
         # 5) ヘッダ構築
         hlit = num_litlen - 257
         hdist = num_dist - 1
-
-        rle_codes = rle_code_lengths_stream(litlen_lengths, dist_lengths, cl_lengths)
-
-        print(f'cl_lengths: {cl_lengths}')
-        print(f'litlen_lengths: {litlen_lengths}')
-        print(f'dist_lengths: {dist_lengths}')
-        print(f'rle_codes: {rle_codes}')
 
         # compute HCLEN
         hclen = 19

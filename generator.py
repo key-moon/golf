@@ -26,7 +26,7 @@ def check_str(task_id: int, code: str | bytes, task, checked_hash):
     open(tmp_path, "w").write(code)
   if isinstance(code, bytes):
     open(tmp_path, "wb").write(code)
-  res = check(tmp_path, task)
+  res = check(tmp_path, task, resume_tqdm=False)
   checked_hash[code_hash] = dataclasses.asdict(res)
   del checked_hash[code_hash]["outputs"]
   if f"tmp.{digest}{task_id:03d}" in sys.modules:
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     else:
       shortest = INVALID
       best_result = TaskResult(i, False)
-
+    
     for base_path in get_code_paths("base_*", i):
       code = open(base_path).read().strip()
       code_for_check = "\n".join([l for l in code.split("\n") if not(_PAT_BEST.match(l) or _PAT_EQ.match(l))]) # <- splitlineにするとbyteリテラルテクが死ぬので注意

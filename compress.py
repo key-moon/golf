@@ -141,37 +141,45 @@ def cached_zopfli(val: bytes, fast=False):
   )
 
 
-def optimize_deflate_with_cpp(deflate: bytes) -> bytes:
+def optimize_deflate_ours(deflate: bytes, num_iter: int) -> bytes:
   text = dump_deflate_stream(deflate)
   with tempfile.NamedTemporaryFile("w", delete=False) as f:
     f.write(text)
     tmp_path = f.name
   optimizer = os.path.join(os.path.dirname(__file__), "deflate_optimizer_cpp", "optimizer")
   try:
-    result = subprocess.run([optimizer, tmp_path], capture_output=True, text=True, check=True)
+    result = subprocess.run([optimizer, tmp_path, str(num_iter)], capture_output=True, text=True, check=True)
     optimized_text = result.stdout
     if not optimized_text.strip():
       return deflate
   finally:
     try:
       os.remove(tmp_path)
-      os.remove(tmp_path + ".optimized")
     except OSError:
       pass
   _, optimized = load_deflate_stream(StringIO(optimized_text))
-  return optimized
+  return optimize_deflate_stream(
+    optimized,
+    lambda x: len(get_embed_str(x)),
+    num_iteration=5000,
+    num_perturbation=3,
+    tolerance_bit=16,
+    # terminate_threshold=2 + len(val) + 1,
+    seed=1234
+  )
 
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp"))
-def cached_zopfli_cpp(val: bytes, fast=False):
+def cached_zopfli_ours(val: bytes, fast=False):
   zopfli_param = 300 if fast else 2000
+  num_iter = 10
   compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
   compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
   if len(compressed_splitting) < len(compressed):
     compressed = compressed_splitting
   if fast:
     return compressed
-  return optimize_deflate_with_cpp(compressed)
+  return optimize_deflate_ours(compressed, num_iter=num_iter)
 
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
@@ -198,7 +206,7 @@ def compress(code: str, best: Optional[int]=None, fast=False, use_cache=True, fo
     ("zlib-9", lambda x: zlib.compress(x, level=9, wbits=-9), lambda _: ",-9"),
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), lambda _: ",-15"),
     ("zlib-zopfli", lambda x: cached_zopfli(x, fast, use_cache=use_cache), determine_wbits),
-    ("zlib-zopfli-cpp", lambda x: cached_zopfli_cpp(x, fast, use_cache=use_cache), determine_wbits),
+    ("zlib-zopfli-cpp", lambda x: cached_zopfli_ours(x, fast, use_cache=use_cache), determine_wbits),
     ("lzma", lambda x: cached_lzma(x),lambda _: ""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),lambda _: ""),
   ]
