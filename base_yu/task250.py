@@ -1,4 +1,4 @@
-# best: 119(jailctf merger) / others: 121(4atj sisyphus luke Seek mukundan), 125(xsot ovs att joking mewheni), 161(MasukenSamba), 200(natte), 202(kdmitrie)
+# best: 119(jailctf merger) / others: 121(4atj sisyphus luke Seek mukundan), 125(xsot ovs att joking mewheni), 146(jacekwl Potatoman nauti), 161(MasukenSamba), 200(natte)
 # ======================================================== 119 ========================================================
 p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(max,*g[:i])]]+g[i:])[::-1])],c+1)
 

@@ -135,7 +135,7 @@ if __name__ == "__main__":
   os.makedirs("stats", exist_ok=True)
   os.makedirs(".cache", exist_ok=True)
 
-  DISALLOW_RETIRE = ["base_keymoon", "base_yu"]
+  DISALLOW_RETIRE = ["base_keymoon", "base_yu", "base_kq5y", "base_zatsu"]
 
   INVALID = b"A" * 0x1000
   checked_hash = json.load(open(".cache/checked_cache.json", "r"))

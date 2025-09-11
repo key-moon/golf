@@ -1,0 +1,23 @@
+{
+  "id": "seshurajup/code-golf-public-task-shared-score-lb-959-684-400",
+  "id_no": 88841336,
+  "title": "Code Golf -Public TASK Shared Score LB 959,684/400",
+  "code_file": "code-golf-public-task-shared-score-lb-959-684-400.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [
+    "scheduled"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [
+    ""
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

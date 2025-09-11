@@ -20,7 +20,7 @@ def main():
 
   USER = os.getlogin()
 
-  base_path = { "keymoon": "base_keymoon", "yu212": "base_yu" }[USER]
+  base_path = { "keymoon": "base_keymoon", "yu212": "base_yu", "kq5y": "base_kq5y" }[USER]
   file_path = f"./{base_path}/task{padded}.py"
 
   if os.path.exists(file_path):
