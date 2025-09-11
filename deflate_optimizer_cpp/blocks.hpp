@@ -28,6 +28,15 @@ struct Token {
             return "M " + std::to_string(pair.length) + " " + std::to_string(pair.distance);
         }
     }
+    // equal operator
+    bool operator==(const Token& other) const {
+        if (type != other.type) return false;
+        if (type == LITERAL) {
+            return literal == other.literal;
+        } else {
+            return pair.length == other.pair.length && pair.distance == other.pair.distance;
+        }
+    }
 };
 
 struct RLEEntry {
