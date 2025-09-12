@@ -1,4 +1,4 @@
-# best: 79(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 80(intgrah jimboko awu macaque sammyuri), 80(jacekwl Potatoman nauti), 88(duckyluuk), 90(kabutack), 96(HashPanda)
+# best: 79(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 80(intgrah jimboko awu macaque sammyuri), 80(jacekwl Potatoman nauti), 81(HETHAT), 88(duckyluuk), 90(kabutack)
 # bestは正規表現じゃないんだろうが、一旦正規表現に甘えます
 import re;s=re.sub
 def p(g):

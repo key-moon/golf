@@ -1,4 +1,4 @@
-# best: 54(4atj sisyphus luke Seek mukundan, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 56(jacekwl Potatoman nauti), 66(duckyluuk), 66(HETHAT), 68(cg), 81(MasukenSamba)
+# best: 54(4atj sisyphus luke Seek mukundan, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 56(jacekwl Potatoman nauti), 66(duckyluuk), 66(HETHAT), 68(cg), 74(Yuchen20)
 # def p(g):B=next(i for(i,r)in enumerate(g)if 0 in r);C=g[B].index(0);D=len(g);return[[g[B+i][D-C-j-1]for j in A(3)]for i in A(3)]
 # p=lambda g:list(map(list,zip(*[iter([int(b) for a,b in zip(str(g).replace(" ",""),str(g).replace(" ","")[::-1]) if a=="0"])]*3)))
 
