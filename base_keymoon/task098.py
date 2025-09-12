@@ -1,4 +1,4 @@
-# best: 88(jailctf merger) / others: 90(4atj sisyphus luke Seek mukundan), 92(xsot ovs att joking mewheni), 100(natte), 103(kdmitrie), 108(Yuchen20)
+# best: 88(jailctf merger) / others: 90(4atj sisyphus luke Seek mukundan), 92(xsot ovs att joking mewheni), 100(natte), 101(HETHAT), 103(kdmitrie)
 # 類題: 120 なんだけど 120 のが 3 長い 同じ色の長方形がないことを使う?
 # port re;p=lambda g:eval(re.sub(f"(?<={(s:=(t:='.[^0]')+'...'*len(g[0])+t)},){t}(?=,{s})",'0',str(g)))
 # ========================================= 88 =========================================
