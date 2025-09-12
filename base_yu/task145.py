@@ -1,4 +1,4 @@
-# best: 191(4atj sisyphus luke Seek mukundan) / others: 199(xsot ovs att joking mewheni), 250(jailctf merger), 252(jacekwl Potatoman nauti), 253(jacekwl), 267(natte)
+# best: 191(4atj sisyphus luke Seek mukundan) / others: 199(xsot ovs att joking mewheni), 245(natte), 250(jailctf merger), 252(jacekwl Potatoman nauti), 253(jacekwl)
 # ============================================================================================ 191 ============================================================================================
 def p(g):
  h,w=len(g),len(g[0])

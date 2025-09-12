@@ -1,4 +1,4 @@
-# best: 195(4atj sisyphus luke Seek mukundan) / others: 200(jailctf merger), 206(xsot ovs att joking mewheni), 246(Yuchen20), 250(MasukenSamba), 267(intgrah jimboko awu macaque sammyuri)
+# best: 195(4atj sisyphus luke Seek mukundan) / others: 200(jailctf merger), 206(xsot ovs att joking mewheni), 246(Yuchen20), 250(MasukenSamba), 255(natte)
 # ============================================================================================== 195 ==============================================================================================
 import re
 def p(g):

@@ -1,4 +1,4 @@
-# best: 172(xsot ovs att joking mewheni) / others: 179(4atj sisyphus luke Seek mukundan), 192(jailctf merger), 233(intgrah jimboko awu macaque sammyuri), 272(MasukenSamba), 296(natte)
+# best: 172(xsot ovs att joking mewheni) / others: 179(4atj sisyphus luke Seek mukundan), 192(jailctf merger), 233(intgrah jimboko awu macaque sammyuri), 243(natte), 272(MasukenSamba)
 # ================================================================================== 172 ===================================================================================
 def p(g):
  c,d,_=sorted({*sum(g,[])},key=sum(g,[]).count)
