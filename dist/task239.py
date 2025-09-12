@@ -1,1 +1,1 @@
-def p(g):u=sum(g,[]);C=sorted({*u},key=(k:=u.count))[::-1];return[[c*(i<k(c))for c in C]for i in range(k(C[0]))]
+def p(g):u=sum(g,[]);C=sorted([c:=-u.count(v)]+[v]*-c+[0]*99for v in{*u});return[*zip(*C)][1:1-C[0][0]]
