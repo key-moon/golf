@@ -1,5 +1,5 @@
-# best: 170(4atj sisyphus luke Seek mukundan) / others: 173(jailctf merger), 174(dbdr), 176(xsot ovs att joking mewheni), 186(Bulmenisaurus), 191(MasukenSamba)
-# ================================================================================= 170 ==================================================================================
+# best: 162(biz) / others: 170(4atj sisyphus luke Seek mukundan), 173(jailctf merger), 174(dbdr), 176(xsot ovs att joking mewheni), 186(Bulmenisaurus)
+# ============================================================================= 162 ==============================================================================
 import re
 def p(g):
  c=len({*str(g)})-5
