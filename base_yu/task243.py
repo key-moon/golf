@@ -1,4 +1,4 @@
-# best: 79(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 80(intgrah jimboko awu macaque sammyuri), 80(jacekwl Potatoman nauti), 81(HETHAT), 88(duckyluuk), 90(kabutack)
+# best: 79(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 80(jacekwl Potatoman nauti), 81(HETHAT), 88(duckyluuk), 90(kabutack), 96(HashPanda)
 # ===================================== 79 ====================================
 # p=lambda g,c=80:c and p([*map(list,zip(*(g[:1]+[[y or(x==1)for x,y in zip(s,t)]for s,t in zip(g,g[1:])])[::-1]))],c-1)or g
 # p=lambda g,c=80:c and p([*map(list,zip(*[s[:1]+[y or(x==1)for x,y in zip(s,s[1:])]for s in g][::-1]))],c-1)or g
