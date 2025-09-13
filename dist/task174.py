@@ -1,1 +1,1 @@
-p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],(w:=[*zip(*m)])==w[::-1])[::-1]for c in sum(g,[]))[1]
+p=lambda g,c=1:[*zip(*(u:=[s for s in g*(c>9)or p(g,c+10)if c%10in s]))]*(u==u[::1|-(c<9)])or p(g,c+1)
