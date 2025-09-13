@@ -1,8 +1,9 @@
 # best: 196(jailctf merger) / others: 211(4atj sisyphus luke Seek mukundan), 238(xsot ovs att joking mewheni), 292(natte), 312(jacekw), 312(jacekwl)
 # ============================================================================================== 196 ===============================================================================================
 def p(g):
- yy,xx,cc=zip(*[(i,j,v)for i,s in enumerate(g)for j,v in enumerate(s)if v])
- d=3+(len({*cc[:-9]})>1)
+ y,x,c=zip(*[(i,j,v)for i,s in enumerate(g)for j,v in enumerate(s)if v])
+ d=3+1%len({*c[:-9]})
+ R=range(d)
  k=-d*d
- l=(yy[k-1]-yy[0]+1)//d
- return[[g[i*l+yy[0]][j*l+min(xx[:k])]and g[yy[k]+i][xx[k]+j] for j in range(d)]for i in range(d)]
+ l=(y[k-1]-y[0]+1)//d
+ return[[g[i*l+y[0]][j*l+min(x[:k])]and g[y[k]+i][x[k]+j]for j in R]for i in R]
