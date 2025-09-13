@@ -1,3 +1,3 @@
-# best: 112(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 113(xsot ovs att joking mewheni), 154(jacekwl Potatoman nauti), 205(natte), 222(jacekwl), 239(intgrah jimboko awu macaque sammyuri)
+# best: 112(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 113(xsot ovs att joking mewheni), 140(jacekwl Potatoman nauti), 205(natte), 222(jacekwl), 239(intgrah jimboko awu macaque sammyuri)
 # ==================================================== 112 =====================================================
 import re;p=lambda g,c=79:-c*g or[*zip(*eval(re.sub(*[" 0(?=, 0\.|\))","1(?=, 0,|, 3)","0.","3"][c>64::2],str(p(g,c-1)))))][::-1]
