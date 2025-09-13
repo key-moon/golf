@@ -1,4 +1,4 @@
-# best: 193(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 195(xsot ovs att joking mewheni), 204(natte), 207(4atj sisyphus luke Seek mukundan), 221(kdmitrie), 221(garrymoss)
+# best: 193(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 195(xsot ovs att joking mewheni), 204(natte), 207(4atj sisyphus luke Seek mukundan), 221(kdmitrie), 221(Ali)
 # ============================================================================================= 193 =============================================================================================
 
 def p(g):
