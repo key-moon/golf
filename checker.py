@@ -144,7 +144,7 @@ if __name__ == "__main__":
   fast = args.fast
   r = parse_range_str(range_str)
   username = os.environ.get("USER", "unknown")
-  do_vis = len(r) < 10 and username != "keymoon"
+  do_vis = len(r) < 10 and False
 
   success = 0
   print(f"{dirname=}")
