@@ -1,4 +1,4 @@
-# best: 122(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 207(jacekwl Potatoman nauti), 239(MasukenSamba), 256(J&R), 259(JRK), 260(jonas ryno kg583)
+# best: 122(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 207(jacekwl Potatoman nauti), 239(MasukenSamba), 256(J&R), 259(Yuchen20), 259(JRK)
 # ========================================================= 122 ==========================================================
 def p(g):
  c=max(g)[0]
