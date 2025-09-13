@@ -2,11 +2,12 @@
 # ============================================================================================ 191 ============================================================================================
 def p(g):
  h,w=len(g),len(g[0])
- u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if((j:=I//h)<1 or g[i][j-1])if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*(g[k][j]for k in range(i,h)),2].index(2))))
+#  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if((j:=I//h)<1 or g[i][j-1])if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
+#  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if[1,*g[i]][j:=I//h]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
+ u=sorted((x,i,j,r,d)for I in range(h*w)if[[1]*w,*g][i:=I%h][j:=I//h]if[1,*g[i]][j]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
  for x,i,j,d,r in u:
   for s in g[i:i+r]:
-   if x==u[0][0]:s[j:j+d]=[8]*d
-   if x==u[-1][0]:s[j:j+d]=[1]*d
+   s[j:j+d]=[(x==u[0][0])*8+(x==u[-1][0])]*d
  return g
 
 # def p(g):
