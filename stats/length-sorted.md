@@ -18,7 +18,6 @@
 | [005](/vis/task005.png) | [base_rearc](/base_rearc/task005.py) | forplain/zlib-zopfli-cpp | [1395](/dist/task005.py) (+1189) | 206 🔴 | [vis-many](/vis_many/task005.png) | encode:+7 |
 | [089](/vis/task089.png) | [base_arcdsl](/base_arcdsl/task089.py) | forcomp-t/zlib-zopfli-cpp | [1367](/dist/task089.py) (+1131) | 236 🔴 | [vis-many](/vis_many/task089.png) | encode:+7 |
 | [364](/vis/task364.png) | [base_rearc](/base_rearc/task364.py) | raw/zlib-zopfli-cpp | [1085](/dist/task364.py) (+930) | 155 🔴 | [vis-many](/vis_many/task364.png) | encode:+7 |
-| [170](/vis/task170.png) | [base_arcdsl](/base_arcdsl/task170.py) | raw/zlib-zopfli-cpp | [1017](/dist/task170.py) (+821) | 196 🔴 | [vis-many](/vis_many/task170.png) | encode:+3 |
 | [105](/vis/task105.png) | [base_arcdsl](/base_arcdsl/task105.py) | forcomp-t/zlib-zopfli-cpp | [853](/dist/task105.py) (+705) | 148 🔴 | [vis-many](/vis_many/task105.png) | encode:+6 |
 | [366](/vis/task366.png) | [base_notebooks](/base_notebooks/task366_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli | [371](/dist/task366.py) (+6) | 365 🔴 | [vis-many](/vis_many/task366.png) |  |
 | [156](/vis/task156.png) | [base_code](/base_code/task156.py) | forcomp-s/zlib-zopfli-cpp | [366](/dist/task156.py) (+220) | 146 🔴 | [vis-many](/vis_many/task156.png) | encode:+2 |
@@ -32,7 +31,7 @@
 | [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/zlib-zopfli-cpp | [311](/dist/task324.py) (+52) | 259 🔴 | [vis-many](/vis_many/task324.png) | encode:+1 |
 | [219](/vis/task219.png) | [base_yu](/base_yu/task219.py) | forcomp-t/zlib-zopfli-cpp | [308](/dist/task219.py) (+41) | 267 🔴 | [vis-many](/vis_many/task219.png) | encode:+1 |
 | [285](/vis/task285.png) | [base_yu](/base_yu/task285.py) | forcomp-t/zlib-zopfli-cpp | [302](/dist/task285.py) (+14) | 288 🔴 | [vis-many](/vis_many/task285.png) |  |
-| [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/zlib-zopfli-cpp | [300](/dist/task255.py) (+57) | 243 🔴 | [vis-many](/vis_many/task255.png) |  |
+| [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/zlib-zopfli-cpp | [300](/dist/task255.py) (+58) | 242 🔴 | [vis-many](/vis_many/task255.png) |  |
 | [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-s/zlib-zopfli-cpp | [293](/dist/task080.py) (+40) | 253 🔴 | [vis-many](/vis_many/task080.png) |  |
 | [268](/vis/task268.png) | [base_yu](/base_yu/task268.py) | raw/zlib-zopfli-cpp | [291](/dist/task268.py) (+52) | 239 🔴 | [vis-many](/vis_many/task268.png) |  |
 | [209](/vis/task209.png) | [base_yu](/base_yu/task209.py) | forcomp-s/zlib-zopfli-cpp | [287](/dist/task209.py) (0) | 287  | [vis-many](/vis_many/task209.png) |  |
@@ -58,6 +57,7 @@
 | [224](/vis/task224.png) | [base_code](/base_code/task224.py) | raw/zlib-zopfli-cpp | [222](/dist/task224.py) (+51) | 171 🔴 | [vis-many](/vis_many/task224.png) |  |
 | [280](/vis/task280.png) | [base_yu](/base_yu/task280.py) | forcomp-t/zlib-zopfli-cpp | [222](/dist/task280.py) (+43) | 179 🔴 | [vis-many](/vis_many/task280.png) |  |
 | [148](/vis/task148.png) | [base_yu](/base_yu/task148.py) | forcomp-t/zlib-zopfli-cpp | [221](/dist/task148.py) (+80) | 141 🔴 | [vis-many](/vis_many/task148.png) | encode:+1 |
+| [170](/vis/task170.png) | [base_yu](/base_yu/task170.py) | forplain/raw | [220](/dist/task170.py) (+24) | 196 🔴 | [vis-many](/vis_many/task170.png) | not worth compress |
 | [396](/vis/task396.png) | [base_yu](/base_yu/task396.py) | raw/zlib-zopfli-cpp | [219](/dist/task396.py) (+40) | 179 🔴 | [vis-many](/vis_many/task396.png) | encode:+2 |
 | [173](/vis/task173.png) | [base_notebooks](/base_notebooks/task173_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli-cpp | [217](/dist/task173.py) (0) | 217  | [vis-many](/vis_many/task173.png) | encode:+1 |
 | [361](/vis/task361.png) | [base_notebooks](/base_notebooks/task361_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli-cpp | [217](/dist/task361.py) (+24) | 193 🔴 | [vis-many](/vis_many/task361.png) | encode:+1 |

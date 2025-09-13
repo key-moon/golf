@@ -1,9 +1,9 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 943322
+Score: 944119
 
-Best Score: 959850
+Best Score: 959851
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -385,7 +385,7 @@ Best Score: 959850
 | [277](/vis/task277.png) | [base_kq5y](/base_kq5y/task277.py) | forcomp-t/zlib-zopfli-cpp | [262](/dist/task277.py) (+68) | 194 🔴 | [vis-many](/vis_many/task277.png) | encode:+1 |
 | [319](/vis/task319.png) | [base_yu](/base_yu/task319.py) | forcomp-t/zlib-zopfli-cpp | [339](/dist/task319.py) (+145) | 194 🔴 | [vis-many](/vis_many/task319.png) |  |
 | [023](/vis/task023.png) | [base_yu](/base_yu/task023.py) | forcomp-s/zlib-zopfli-cpp | [275](/dist/task023.py) (+80) | 195 🔴 | [vis-many](/vis_many/task023.png) | encode:+1 |
-| [170](/vis/task170.png) | [base_arcdsl](/base_arcdsl/task170.py) | raw/zlib-zopfli-cpp | [1017](/dist/task170.py) (+821) | 196 🔴 | [vis-many](/vis_many/task170.png) | encode:+3 |
+| [170](/vis/task170.png) | [base_yu](/base_yu/task170.py) | forplain/raw | [220](/dist/task170.py) (+24) | 196 🔴 | [vis-many](/vis_many/task170.png) | not worth compress |
 | [005](/vis/task005.png) | [base_rearc](/base_rearc/task005.py) | forplain/zlib-zopfli-cpp | [1395](/dist/task005.py) (+1189) | 206 🔴 | [vis-many](/vis_many/task005.png) | encode:+7 |
 | [264](/vis/task264.png) | [base_yu](/base_yu/task264.py) | forcomp-s/zlib-zopfli-cpp | [207](/dist/task264.py) (0) | 207  | [vis-many](/vis_many/task264.png) |  |
 | [201](/vis/task201.png) | [base_notebooks](/base_notebooks/task201_20250809-171156Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-s/zlib-zopfli-cpp | [345](/dist/task201.py) (+137) | 208 🔴 | [vis-many](/vis_many/task201.png) | encode:+1 |
@@ -400,7 +400,7 @@ Best Score: 959850
 | [089](/vis/task089.png) | [base_arcdsl](/base_arcdsl/task089.py) | forcomp-t/zlib-zopfli-cpp | [1367](/dist/task089.py) (+1131) | 236 🔴 | [vis-many](/vis_many/task089.png) | encode:+7 |
 | [268](/vis/task268.png) | [base_yu](/base_yu/task268.py) | raw/zlib-zopfli-cpp | [291](/dist/task268.py) (+52) | 239 🔴 | [vis-many](/vis_many/task268.png) |  |
 | [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | raw/zlib-zopfli-cpp | [268](/dist/task191.py) (+27) | 241 🔴 | [vis-many](/vis_many/task191.png) |  |
-| [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/zlib-zopfli-cpp | [300](/dist/task255.py) (+57) | 243 🔴 | [vis-many](/vis_many/task255.png) |  |
+| [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/zlib-zopfli-cpp | [300](/dist/task255.py) (+58) | 242 🔴 | [vis-many](/vis_many/task255.png) |  |
 | [157](/vis/task157.png) | [base_notebooks](/base_notebooks/task157_20250911-071925Z-compressed-variable-name-optimization-garry-moss.py) | raw/zlib-zopfli | [246](/dist/task157.py) (0) | 246  | [vis-many](/vis_many/task157.png) |  |
 | [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-s/zlib-zopfli-cpp | [293](/dist/task080.py) (+40) | 253 🔴 | [vis-many](/vis_many/task080.png) |  |
 | [044](/vis/task044.png) | [base_yu](/base_yu/task044.py) | raw/zlib-zopfli-cpp | [259](/dist/task044.py) (+4) | 255 🔴 | [vis-many](/vis_many/task044.png) |  |
