@@ -1,4 +1,4 @@
-# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 100(xsot ovs att joking mewheni), 114(kabutack), 137(intgrah jimboko awu macaque sammyuri), 171(jonas ryno kg583)
+# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 100(xsot ovs att joking mewheni), 114(kabutack), 137(intgrah jimboko awu macaque sammyuri), 144(Yuchen20)
 # ============================================= 96 =============================================
 # def p(g):
 #  for w in range(6):

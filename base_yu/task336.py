@@ -1,4 +1,4 @@
-# best: 93(jailctf merger) / others: 96(4atj sisyphus luke Seek mukundan), 105(xsot ovs att joking mewheni), 151(natte), 156(MasukenSamba), 183(intgrah jimboko awu macaque sammyuri)
+# best: 93(jailctf merger) / others: 96(4atj sisyphus luke Seek mukundan), 105(xsot ovs att joking mewheni), 150(natte), 156(MasukenSamba), 183(intgrah jimboko awu macaque sammyuri)
 # ============================================ 93 ===========================================
 # p=lambda g,c=-3:c*g or p([[s[i]or any(s[:i])*any(s[i:])*8for i in range(len(s))]for s in zip(*g)],c+1)
 # p=lambda g,c=-3:c*g or p((l:=[0]*len(g[0]))and[(l:=[s[i]or(any(s[:i])*any(s[i:])or(l.count(8),v)==(1,8))*8for i,v in enumerate(l)])for s in zip(*g[::-1])],c+1)

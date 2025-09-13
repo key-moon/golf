@@ -1,4 +1,4 @@
-# best: 101(jailctf merger) / others: 106(4atj sisyphus luke Seek mukundan), 109(xsot ovs att joking mewheni), 122(natte), 135(MasukenSamba), 145(Yuchen20)
+# best: 101(jailctf merger) / others: 106(4atj sisyphus luke Seek mukundan), 109(xsot ovs att joking mewheni), 122(natte), 135(MasukenSamba), 135(Yuchen20)
 # =============================================== 101 ===============================================
 # p=lambda g:[[v for*t,v in zip(*g,s) if any(t)]for s in g if any(s)]
 # def p(g):

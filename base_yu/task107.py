@@ -1,4 +1,4 @@
-# best: 162(biz) / others: 170(4atj sisyphus luke Seek mukundan), 173(jailctf merger), 174(dbdr), 176(xsot ovs att joking mewheni), 186(Bulmenisaurus)
+# best: 162(biz) / others: 170(4atj sisyphus luke Seek mukundan), 173(jailctf merger), 174(dbdr), 176(xsot ovs att joking mewheni), 182(Yuchen20)
 # ============================================================================= 162 ==============================================================================
 import re
 def p(g):
