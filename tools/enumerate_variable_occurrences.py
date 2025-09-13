@@ -3,6 +3,7 @@ import builtins
 import sys
 from io import StringIO
 from typing import Any
+import strip
 
 RESERVED = {"True", "False", "None"} | set(dir(builtins))
 
@@ -13,6 +14,7 @@ def list_var_occurrences(code: str, as_text = False):
     - 関数定義のパラメータ ast.arg も収集する
     戻り値は name lineno col_offset end_lineno end_col_offset role を持つ辞書の配列
     """
+    code = strip.strip_for_zlib(code).encode()
     tree = ast.parse(code)
 
     out: list[dict[str, Any]] = []
@@ -49,10 +51,15 @@ def list_var_occurrences(code: str, as_text = False):
 
     Visitor().visit(tree)
 
+    def lineno_and_col_to_offset(lineno: int, col: int) -> int:
+        lines = code.splitlines(keepends=True)
+        offset = sum(len(lines[i]) for i in range(lineno - 1)) + col
+        return offset
+
     # 変数名ごとにdictを作り、(lineno, col_offset) の組をdict要素の配列にする（ソートもする）
     var_dict = {}
     for item in out:
-        var_dict.setdefault(item["name"], []).append((item['lineno'], item['col_offset']))
+        var_dict.setdefault(item["name"], []).append(lineno_and_col_to_offset(item["lineno"], item["col_offset"]))
     out = []
     for name, items in var_dict.items():
         items.sort()
@@ -68,7 +75,7 @@ def list_var_occurrences(code: str, as_text = False):
             name = item["name"]
             occurrences = item["occurrences"]
             buf.write(f'{name} {len(occurrences)}\n')
-            buf.write(' '.join(map(lambda x: f'{x[0]} {x[1]}', occurrences)) + '\n')
+            buf.write(' '.join(map(str, occurrences)) + '\n')
         return buf.getvalue()
     else:
         return out

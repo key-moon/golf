@@ -1,5 +1,6 @@
 import itertools
 from collections import deque
+import sys
 
 def _length_rle(vec: list[int]) -> list[tuple[int, int]]:
     if not vec:
@@ -239,7 +240,7 @@ def _compute_table_slow():
 
 class RLETable:
     def __init__(self):
-        print('Computing RLE DP table...')
+        print('Computing RLE DP table...', file=sys.stderr)
         self.table, self.table2 = _compute_table()
     
     def optimal_parse(self, value: int, count: int, cl_lengths: list[int]) -> list[tuple[int, int, int]]:
