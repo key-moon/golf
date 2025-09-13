@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 107(kabutack), 109(2F), 109(biz)
+# best: 95(jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 107(kabutack), 108(jonas ryno kg583), 109(2F)
 # ============================================= 95 ============================================
 # E=lambda g:[*filter(max,zip(*g))]
 # def p(g):
