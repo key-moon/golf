@@ -1,1 +1,1 @@
-p=lambda g,c=-1:c*g or min([("0"in(y:=str(u:=p([*zip(*g[l:r])],c+1))),-y.count("2"),-len(y),u)for r in range(11)for l in range(r)])[3]
+p=lambda g,c=-3:c*g or min(("0"in(y:=str(u:=p([*zip(*g[l::-1])],c+1))),-y.count("2"),-len(y),u)for l in range(len(g)))[3]
