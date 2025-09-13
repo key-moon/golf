@@ -1,1 +1,1 @@
-p=lambda g,A=range:max((all(y:=sum(x:=[s[l:r]for s in g[u:d]],[])),y.count(2),len(y),x)for r in A(11)for l in A(r)for d in A(11)for u in A(d))[3]
+p=lambda g,c=-1:c*g or min([("0"in(y:=str(u:=p([*zip(*g[l:r])],c+1))),-y.count("2"),-len(y),u)for r in range(11)for l in range(r)])[3]
