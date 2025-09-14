@@ -19,13 +19,13 @@
 | [105](/vis/task105.png) | [base_arcdsl](/base_arcdsl/task105.py) | forcomp-t/zlib-zopfli-cpp | [853](/dist/task105.py) (+705) | 148 🔴 | [vis-many](/vis_many/task105.png) | encode:+6 |
 | [366](/vis/task366.png) | [base_notebooks](/base_notebooks/task366_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli | [371](/dist/task366.py) (+6) | 365 🔴 | [vis-many](/vis_many/task366.png) |  |
 | [156](/vis/task156.png) | [base_code](/base_code/task156.py) | forcomp-s/zlib-zopfli-cpp | [366](/dist/task156.py) (+220) | 146 🔴 | [vis-many](/vis_many/task156.png) | encode:+2 |
-| [054](/vis/task054.png) | [base_yu](/base_yu/task054.py) | forcomp-s/zlib-zopfli-cpp | [359](/dist/task054.py) (+79) | 280 🔴 | [vis-many](/vis_many/task054.png) |  |
 | [201](/vis/task201.png) | [base_notebooks](/base_notebooks/task201_20250809-171156Z-solved-stater-neurips-2025-google-code-golf-muhammad-qasim-shabbir.py) | forcomp-s/zlib-zopfli-cpp | [345](/dist/task201.py) (+137) | 208 🔴 | [vis-many](/vis_many/task201.png) | encode:+1 |
 | [233](/vis/task233.png) | [base_yu](/base_yu/task233.py) | forcomp-s/zlib-zopfli-cpp | [337](/dist/task233.py) (+40) | 297 🔴 | [vis-many](/vis_many/task233.png) | encode:+1 |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | forplain/zlib-zopfli-cpp | [334](/dist/task096.py) (+9) | 325 🔴 | [vis-many](/vis_many/task096.png) |  |
 | [066](/vis/task066.png) | [base_yu](/base_yu/task066.py) | forplain/zlib-zopfli-cpp | [328](/dist/task066.py) (+60) | 268 🔴 | [vis-many](/vis_many/task066.png) | encode:+1 |
 | [238](/vis/task238.png) | [base_yu](/base_yu/task238.py) | raw/zlib-zopfli-cpp | [324](/dist/task238.py) (+101) | 223 🔴 | [vis-many](/vis_many/task238.png) | encode:+2 |
 | [158](/vis/task158.png) | [base_notebooks](/base_notebooks/task158_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli-cpp | [320](/dist/task158.py) (+51) | 269 🔴 | [vis-many](/vis_many/task158.png) | encode:+2 |
+| [054](/vis/task054.png) | [base_yu](/base_yu/task054.py) | forcomp-t/zlib-zopfli-cpp | [317](/dist/task054.py) (+37) | 280 🔴 | [vis-many](/vis_many/task054.png) | encode:+1 |
 | [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/zlib-zopfli-cpp | [311](/dist/task324.py) (+52) | 259 🔴 | [vis-many](/vis_many/task324.png) | encode:+1 |
 | [219](/vis/task219.png) | [base_yu](/base_yu/task219.py) | forcomp-t/zlib-zopfli-cpp | [308](/dist/task219.py) (+41) | 267 🔴 | [vis-many](/vis_many/task219.png) | encode:+1 |
 | [285](/vis/task285.png) | [base_yu](/base_yu/task285.py) | forcomp-t/zlib-zopfli-cpp | [302](/dist/task285.py) (+14) | 288 🔴 | [vis-many](/vis_many/task285.png) |  |
