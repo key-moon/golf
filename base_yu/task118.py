@@ -1,4 +1,4 @@
-# best: 271(jailctf merger) / others: 277(4atj sisyphus luke Seek mukundan), 280(kdmitrie), 280(Ali), 280(garrymoss), 285(jacekwl Potatoman nauti)
+# best: 271(jailctf merger) / others: 277(4atj sisyphus luke Seek mukundan), 280(natte), 280(kdmitrie), 280(Ali), 280(garrymoss)
 def p(g):
  B={(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]&2}
  S=3
