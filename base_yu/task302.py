@@ -1,4 +1,4 @@
-# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(xsot ovs att joking mewheni), 112(2F), 112(biz), 118(intgrah jimboko awu macaque sammyuri), 142(Afordancja)
+# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(xsot ovs att joking mewheni), 105(intgrah jimboko awu macaque sammyuri), 112(2F), 112(biz), 142(Afordancja)
 # ========================================== 89 =========================================
 
 def p(g,E=enumerate):

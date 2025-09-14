@@ -1,4 +1,4 @@
-# best: 223(jailctf merger, xsot ovs att joking mewheni) / others: 233(4atj sisyphus luke Seek mukundan), 260(natte), 265(jonas ryno kg583), 269(MasukenSamba), 314(kdmitrie)
+# best: 223(jailctf merger, xsot ovs att joking mewheni) / others: 233(4atj sisyphus luke Seek mukundan), 260(natte), 265(jonas ryno kg583), 269(MasukenSamba), 282(intgrah jimboko awu macaque sammyuri)
 R=range
 def p(g):
  h=len(g);w=h*len(g[0]);s=[i for i in R(w)if g[i%h][i//h]==8];y,x=min(i%h for i in s),min(i//h for i in s)
