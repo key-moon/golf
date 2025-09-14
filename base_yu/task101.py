@@ -10,7 +10,7 @@ def p(g):
   c+=[0]*w,
   for j in range(w):
    if g[i][j]==2 and (i,j) not in u:
-    c[i][j]=max(i>0 and c[i-1][j], j>0 and c[i][j-1])
+    c[i][j]=max(c[i-1][j], c[i][j-1])
     while j+c[i][j]<w and i+c[i][j]<h and g[i][j+c[i][j]]==g[i+c[i][j]][j]==2:
      c[i][j]+=1
  return[[g[y][x] or any(g[i][j]==1 and all(h>y+(a-i)*s>-1<x+(b-j)*s<w and c[y+(a-i)*s][x+(b-j)*s]==s for a,b in u)for i in range(h)for j in range(w)for s in range(1,4))for x in range(w)]for y in range(h)]
