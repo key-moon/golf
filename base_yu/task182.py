@@ -1,4 +1,4 @@
-# best: 169(jailctf merger) / others: 175(4atj sisyphus luke Seek mukundan), 187(xsot ovs att joking mewheni), 220(jacekwl Potatoman nauti), 235(Potatoman), 235(intgrah jimboko awu macaque sammyuri)
+# best: 169(jailctf merger) / others: 175(4atj sisyphus luke Seek mukundan), 187(xsot ovs att joking mewheni), 214(jacekwl Potatoman nauti), 235(Potatoman), 235(intgrah jimboko awu macaque sammyuri)
 # ================================================================================= 169 =================================================================================
 def p(g):
  for l in range(14):
