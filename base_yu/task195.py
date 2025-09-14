@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 107(natte), 108(jonas ryno kg583), 108(JRK), 110(jailctf merger), 111(jacekwl Potatoman nauti)
+# best: 105(4atj sisyphus luke Seek mukundan, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 107(natte), 108(jonas ryno kg583), 108(JRK), 110(jailctf merger), 110(Yuchen20)
 # ================================================= 105 =================================================
 # p=lambda g:(s:=[i for i,v in enumerate(sum(g,[]))if v],y:=min(i//(w:=len(g[0]))for i in s),x:=min(i%w for i in s))and[[g[y+i][x+j]&g[y+i%3*3][x+j%3*3]for j in range(9)]for i in range(9)]
 

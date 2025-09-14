@@ -1,4 +1,4 @@
-# best: 132(jailctf merger, xsot ovs att joking mewheni) / others: 143(Yuchen20), 145(4atj sisyphus luke Seek mukundan), 194(jonas ryno kg583), 212(natte), 220(MasukenSamba)
+# best: 132(jailctf merger, xsot ovs att joking mewheni) / others: 142(Yuchen20), 145(4atj sisyphus luke Seek mukundan), 194(jonas ryno kg583), 212(natte), 220(MasukenSamba)
 # ============================================================== 132 ===============================================================
 import re;p=lambda g,c=-15:c*g or[*zip(*eval(re.sub(r"(0.{16}0, ([^0]), (?!\2|0).{43}(...)?(.{20})?)0",r"\1\2",str(p(g,c+1))))[::-1])]
 

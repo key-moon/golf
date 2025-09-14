@@ -1,4 +1,4 @@
-# best: 141(xsot ovs att joking mewheni) / others: 144(natte), 147(jailctf merger), 148(4atj sisyphus luke Seek mukundan), 148(intgrah jimboko awu macaque sammyuri), 163(hyacinth)
+# best: 141(xsot ovs att joking mewheni) / others: 144(natte), 147(jailctf merger), 148(4atj sisyphus luke Seek mukundan), 148(intgrah jimboko awu macaque sammyuri), 156(Yuchen20)
 # =================================================================== 141 ===================================================================
 # def p(g):
 #  R=range(len(g))

@@ -1,4 +1,4 @@
-# best: 186(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 208(xsot ovs att joking mewheni), 211(jonas ryno kg583), 222(MasukenSamba), 235(intgrah jimboko awu macaque sammyuri), 243(JRK)
+# best: 186(4atj sisyphus luke Seek mukundan, jailctf merger, jacekwl Potatoman nauti) / others: 208(xsot ovs att joking mewheni), 211(jonas ryno kg583), 222(MasukenSamba), 235(intgrah jimboko awu macaque sammyuri), 243(JRK)
 # ========================================================================================= 186 ==========================================================================================
 # ブロック: 2-6
 # 243

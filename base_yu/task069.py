@@ -1,4 +1,4 @@
-# best: 151(4atj sisyphus luke Seek mukundan) / others: 153(jailctf merger), 176(MasukenSamba), 189(Afordancja), 199(Yuchen20), 207(xsot ovs att joking mewheni)
+# best: 151(4atj sisyphus luke Seek mukundan) / others: 153(jailctf merger), 176(MasukenSamba), 189(Afordancja), 193(Yuchen20), 207(xsot ovs att joking mewheni)
 # ======================================================================== 151 ========================================================================
 def p(g):
  G=sum(g,[])
