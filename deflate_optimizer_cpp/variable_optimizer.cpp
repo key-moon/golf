@@ -38,7 +38,6 @@ int main(int argc, char** argv) {
     int length = 0;
     while (infile.peek() != EOF) {
         auto block = load_block_from_stream(infile);
-        // block->dump_string(std::cout);
         length += block->bit_length();
         while (infile.peek() == '\n' || infile.peek() == ' ' || infile.peek() == '\r' || infile.peek() == '\t') {
             infile.get();
@@ -51,21 +50,37 @@ int main(int argc, char** argv) {
 
     length = 0;
     std::vector<int> text;
+
+    if (blocks.size() != 1) {
+        std::cerr << "Warning: variable optimization is only supported for single block deflate data. Skipping variable optimization.\n";
+        for(const auto& block : blocks) {
+            block->dump_string(std::cout);
+        }
+        return 0;
+    }
+
     for(const auto& block : blocks) {
         if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
             for (int i = 0; i < max_num_round; ++i) {
+                auto before_block = *db;
+                auto before_vars = variables;
                 int before = db->bit_length();
                 optimize_variables(*db, variables, text);
                 optimize_huffman_tree(*db, text, num_iter);
                 int after = db->bit_length();
                 std::cerr << "Round " << i << ": " << before << " -> " << after << "\n";
-                if (before == after) {
+                if (before <= after) {
                     std::cerr << "No improvement, stop optimizing this block\n";
+                    *db = before_block;
+                    variables = before_vars;
                     break;
                 }
+                else {
+                    std::cerr << "Improved!\n";
+                }
             }
-            db->dump_string(std::cout);
         }
+        block->dump_string(std::cout);
         auto block_text = block->get_string(text);
         text.insert(text.end(), block_text.begin(), block_text.end());
         length += block->bit_length();
