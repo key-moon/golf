@@ -1,4 +1,4 @@
-# best: 90(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 91(xsot ovs att joking mewheni), 96(HETHAT), 97(2F), 97(biz), 97(intgrah jimboko awu macaque sammyuri)
+# best: 90(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 91(xsot ovs att joking mewheni), 96(intgrah jimboko awu macaque sammyuri), 96(HETHAT), 97(2F), 97(biz)
 # ========================================== 90 ==========================================
 # def p(g):
 #  return g

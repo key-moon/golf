@@ -1,4 +1,4 @@
-# best: 166(4atj sisyphus luke Seek mukundan) / others: 170(xsot ovs att joking mewheni), 188(jailctf merger), 202(natte), 254(MasukenSamba), 267(intgrah jimboko awu macaque sammyuri)
+# best: 166(4atj sisyphus luke Seek mukundan) / others: 170(xsot ovs att joking mewheni), 188(jailctf merger), 202(natte), 254(MasukenSamba), 265(intgrah jimboko awu macaque sammyuri)
 # =============================================================================== 166 ================================================================================
 # 最小縦横: 6
 # 背景色を含まない行を削りながらてんちさいき→しばらく削ったら種類数でも削る
