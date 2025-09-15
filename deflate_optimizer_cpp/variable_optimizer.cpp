@@ -44,7 +44,8 @@ int main(int argc, char** argv) {
     for(const auto& block : blocks) {
         if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
             optimize_variables(*db, variables, text);
-            block->dump_string(std::cout);
+            optimize_huffman_tree(*db, text, 1);
+            db->dump_string(std::cout);
         }
         auto block_text = block->get_string(text);
         text.insert(text.end(), block_text.begin(), block_text.end());

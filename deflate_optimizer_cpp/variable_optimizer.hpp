@@ -6,15 +6,33 @@
 
 
 
-// only signed char can be variable name
-void rename_variables(std::vector<Token>& tokens, const std::vector<Variable>& variables, const std::vector<int>& assigned_literal_code) {
-    std::vector<int> text_position_to_variable_id(-1); // text_position -> variable id
+// only single char variables are supported for now
+void rename_variables(std::vector<Token>& tokens, const std::vector<Variable>& variables, const std::vector<int>& var_char_mapping) {
+    std::vector<int> text_position_to_variable_id;
     for (int var_id = 0; var_id < variables.size(); ++var_id) {
         for (auto pos : variables[var_id].occurrences) {
+            if (text_position_to_variable_id.size() <= pos) {
+                text_position_to_variable_id.resize(pos + 1, -1);
+            }
             text_position_to_variable_id[pos] = var_id;
         }
     }
-    // TODO!!!!!!!!!!!!!!!!!!!!!!
+    int ptr = 0;
+    for (int i = 0; i < tokens.size(); ++i) {
+        if (tokens[i].type == Token::LITERAL) {
+            if (text_position_to_variable_id[ptr] != -1) {
+                if (variables[text_position_to_variable_id[ptr]].name.size() != 1) continue;
+                int var_char = static_cast<int>(variables[text_position_to_variable_id[ptr]].name[0]);
+                if (var_char_mapping[var_char] == -1) continue;
+                tokens[i].literal = static_cast<unsigned char>(var_char_mapping[var_char]);
+                // std::cout << "Renamed literal at position " << ptr << " (char=" << static_cast<char>(var_char) << ") to variable char '" << static_cast<char>(tokens[i].literal) << "' (" << (int)tokens[i].literal << ")\n";
+            }
+            ptr += 1;
+        }
+        else {
+            ptr += tokens[i].pair.length;
+        }
+    }
 }
 
 
@@ -22,11 +40,13 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
 
     auto text = block.get_string(context);
 
+    /*
     std::cout << "-------- Code --------\n";
     for (auto c : text) {
         std::cout << static_cast<char>(c);
     }
     std::cout << "\n\n";
+    */
 
 
 
@@ -84,6 +104,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
         char_stats[char_val].num_nonvar_occurrences_as_literal -= num_lit_occurrences_of_vars[i];
     }
 
+    /*
     std::cout << "-------- Variable Candidates (var_occ, nonvar_occ, lit_code_length) --------\n";
     for (int i = 0; i < 256; ++i) {
         if (!char_stats[i].var_candidate) continue;
@@ -93,6 +114,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
         std::cout << char_stats[i].lit_code_length 
          << "\n";
     }
+    */
 
     // とりあえず、ビット数が少ないところに貪欲に当てはめていく
     // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
@@ -105,7 +127,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
     for (int i = 0; i < 256; ++i) {
         if (!char_stats[i].var_candidate) continue;
         if (char_stats[i].num_var_occurrences_as_literal == 0) continue;
-        std::cout << "Variable candidate: '" << static_cast<char>(i) << "' (" << i << ") with " << char_stats[i].num_var_occurrences_as_literal << " literal occurrences\n";
+        // std::cout << "Variable candidate: '" << static_cast<char>(i) << "' (" << i << ") with " << char_stats[i].num_var_occurrences_as_literal << " literal occurrences\n";
         vars.push_back({i, char_stats[i].num_var_occurrences_as_literal});
     }
     std::sort(vars.begin(), vars.end(), [](const VarStat& a, const VarStat& b) {
@@ -124,7 +146,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
     }
     ptr = 0;
     for (int len = 1; len <= 16; ++len) {
-        std::cout << "Length " << len << ": " << code_length_symbol_map[len].size() << " candidates\n";
+        // std::cout << "Length " << len << ": " << code_length_symbol_map[len].size() << " candidates\n";
         if (code_length_symbol_map[len].size() == 0) continue;
         std::vector<int> traverse_vars_list;
         std::vector<int> distance_vec(256, 1e9);
@@ -159,7 +181,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
                 }
             }
         }
-        std::cout << "traverse_vars_list size: " << traverse_vars_list.size() << "\n";
+        // std::cout << "traverse_vars_list size: " << traverse_vars_list.size() << "\n";
         for(auto var : traverse_vars_list) {
             assigned_literal_code[vars[ptr].original_char] = var;
             ++ptr;
@@ -167,9 +189,21 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
         }
         if (ptr >= vars.size()) break;
     }
-    std::cout << ptr << " / " << vars.size() << " variables assigned\n";
-    for (int i = 0; i < 256; ++i) {
-        if (assigned_literal_code[i] == -1) continue;
-        std::cout << "Assigned literal code " << static_cast<char>(assigned_literal_code[i]) << " to variable '" << static_cast<char>(i) << "' (" << i << ")\n";
+
+    /*
+    std::cout << "OLD STRING---------\n";
+    for (auto c : text) {
+        std::cout << static_cast<char>(c);
     }
+    std::cout << "\n\n";
+    */
+    rename_variables(block.tokens, variables, assigned_literal_code);
+    /*
+    std::cout << "NEW STRING---------\n";
+    text = block.get_string(context);
+    for (auto c : text) {
+        std::cout << static_cast<char>(c);
+    }
+    std::cout << "\n\n";
+    */
 }
