@@ -1,4 +1,4 @@
-# best: 365(xsot ovs att joking mewheni) / others: 371(4atj sisyphus luke Seek mukundan), 371(jailctf merger), 374(natte), 374(kdmitrie), 374(Ali)
+# best: 365(xsot ovs att joking mewheni) / others: 371(4atj sisyphus luke Seek mukundan), 371(jailctf merger), 374(natte), 374(Rafael Pooja), 374(kdmitrie)
 # とりあえずあんまgolfのこと考えずに愚直に書く
 from re import *;s=sub
 def p(g):
