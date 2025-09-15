@@ -5,7 +5,7 @@ from io import StringIO
 from typing import Any
 import strip
 
-RESERVED = {"True", "False", "None"} | set(dir(builtins))
+RESERVED = {"True", "False", "None", 'p'} | set(dir(builtins))
 
 def list_var_occurrences(code: str, as_text = False):
     """

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Dynamic Huffman Deflate with proper CL (code-length alphabet) construction.
 # Python 3.10+
+# Usage:  python3 -m deflate_optimizer.load_deflate_text <path_to_deflate_dumped_text>
 
 from __future__ import annotations
 from io import StringIO
@@ -32,7 +33,7 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     path = sys.argv[1]
   else:
-    print(f'Usage: python3 {sys.argv[0]} <path_to_deflate_dumped_text>', file=sys.stderr)
+    print(f'Usage: python3 -m deflate_optimizer.load_deflate_text <path_to_deflate_dumped_text>', file=sys.stderr)
     sys.exit(1)
   
   with open(path, 'r') as f:

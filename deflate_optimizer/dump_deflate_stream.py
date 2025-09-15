@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Dynamic Huffman Deflate with proper CL (code-length alphabet) construction.
 # Python 3.10+
+# Usage:  python3 -m deflate_optimizer.dump_deflate_stream [--all | --stdin | path/to/raw_code_text]
 
 from __future__ import annotations
 from io import StringIO
@@ -59,5 +60,5 @@ if __name__ == '__main__':
     text = dump_deflate_stream(deflate)
     print(text)
   else:
-    print('Usage: python dump_deflate_stream.py [--all | --stdin | path/to/raw_code_text]')
+    print('Usage: python3 -m deflate_optimizer.dump_deflate_stream [--all | --stdin | path/to/raw_code_text]', file=sys.stderr)
     sys.exit(1)
