@@ -29,6 +29,7 @@ std::vector<Token> optimal_parse_block(CompressedBlock& block, const std::vector
     for (int i = 0; i < n; ++i) {
         for (int ref = 0; ref < context.size() + i; ++ref) {
             int lcp_len = lcp[i][ref];
+            lcp_len = std::min(lcp_len, 258); // deflateの最大長
             max_match[i] = std::max(max_match[i], lcp_len);
             int dist = (i + context.size()) - ref;
             int dist_cost = block.get_distance_code_length(convert_distance_value_to_code(dist)) + num_additional_bits_for_dist(dist);
