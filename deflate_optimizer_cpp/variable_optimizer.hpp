@@ -7,49 +7,46 @@
 
 
 // only single char variables are supported for now
-void rename_variables(std::vector<Token>& tokens, const std::vector<Variable>& variables, const std::vector<int>& var_char_mapping) {
-    std::vector<int> text_position_to_variable_id;
+void rename_variables(std::vector<Token>& tokens, std::vector<Variable>& variables, const std::vector<int>& var_char_mapping) {
+    std::vector<int> text_position_to_replace_char;
     for (int var_id = 0; var_id < variables.size(); ++var_id) {
+        if (variables[var_id].name.size() != 1) continue;
+
+        int var_char = static_cast<int>(variables[var_id].name[0]);
+        if (var_char_mapping[var_char] == -1) continue;
+        int new_char = var_char_mapping[var_char];
+        variables[var_id].name = std::string(1, static_cast<char>(new_char));
+
+        // std::cerr << "Renaming variable '" << static_cast<char>(var_char) << "' (" << var_char << ") to '" << static_cast<char>(new_char) << "' (" << new_char << ")\n";
+
         for (auto pos : variables[var_id].occurrences) {
-            if (text_position_to_variable_id.size() <= pos) {
-                text_position_to_variable_id.resize(pos + 1, -1);
+            if (text_position_to_replace_char.size() <= pos) {
+                text_position_to_replace_char.resize(pos + 1, -1);
             }
-            text_position_to_variable_id[pos] = var_id;
+            text_position_to_replace_char[pos] = new_char;
         }
     }
     int ptr = 0;
     for (int i = 0; i < tokens.size(); ++i) {
         if (tokens[i].type == Token::LITERAL) {
-            if (text_position_to_variable_id[ptr] != -1) {
-                if (variables[text_position_to_variable_id[ptr]].name.size() != 1) continue;
-                int var_char = static_cast<int>(variables[text_position_to_variable_id[ptr]].name[0]);
-                if (var_char_mapping[var_char] == -1) continue;
-                tokens[i].literal = static_cast<unsigned char>(var_char_mapping[var_char]);
-                // std::cout << "Renamed literal at position " << ptr << " (char=" << static_cast<char>(var_char) << ") to variable char '" << static_cast<char>(tokens[i].literal) << "' (" << (int)tokens[i].literal << ")\n";
+            if (text_position_to_replace_char[ptr] != -1) {
+                tokens[i].literal = text_position_to_replace_char[ptr];
             }
             ptr += 1;
         }
         else {
             ptr += tokens[i].pair.length;
         }
+        if(ptr >= text_position_to_replace_char.size()) {
+            break;
+        }
     }
 }
 
 
-void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>& variables, const std::vector<int>& context) {
+void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<int>& context) {
 
     auto text = block.get_string(context);
-
-    /*
-    std::cout << "-------- Code --------\n";
-    for (auto c : text) {
-        std::cout << static_cast<char>(c);
-    }
-    std::cout << "\n\n";
-    */
-
-
-
     std::vector<bool> is_lieral_position(text.size());
 
     std::vector<int> literal_freq(256, 0);
@@ -65,12 +62,26 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
         }
     }
 
+    /*
+    std::cerr << "=-------- Original String ---------\n";
+    for(auto c : text) {
+        std::cerr << static_cast<char>(c);
+    }
+    std::cerr << "\n\n";
+    */
+
     std::vector<int> num_lit_occurrences_of_vars(variables.size(), 0);
     for (int i = 0; i < variables.size(); ++i) {
         for (auto pos : variables[i].occurrences) {
             for (int j = 0; j < variables[i].name.size(); ++j) {
                 if (text[pos + j] != static_cast<int>(variables[i].name[j])) {
                     std::cerr << "Error: variable occurrence does not match variable name\n";
+                    std::cerr << "Variable: " << variables[i].name << "\n";
+                    std::cerr << "Occurrence at position " << pos << ": ";
+                    for (int k = 0; k < variables[i].name.size(); ++k) {
+                        std::cerr << static_cast<char>(text[pos + k]);
+                    }
+                    std::cerr << "\n";
                     exit(1);
                 }
             }
@@ -87,7 +98,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
     };
     std::vector<CharStat> char_stats(256);
     for (int i = 'A'; i <= 'Z'; ++i) char_stats[i].var_candidate = true;
-    for (int i = 'a'; i <= 'z'; ++i) char_stats[i].var_candidate = true;
+    for (int i = 'a'; i <= 'z'; ++i) if (i != 'p') char_stats[i].var_candidate = true;
     char_stats['_'].var_candidate = true;
 
     for (int i = 0; i < 256; ++i) {
@@ -138,6 +149,7 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
     });
 
     std::vector<int> assigned_literal_code(256, -1); // 変数文字 -> 割り当てたliteralコード
+    std::vector<bool> used_chars(256, false);
 
     std::vector<std::vector<int>> code_length_symbol_map(17);
     for (int i = 0; i < 256; ++i) {
@@ -159,11 +171,12 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
                 return char_stats[a].num_nonvar_occurrences_as_literal > char_stats[b].num_nonvar_occurrences_as_literal;
             });
             assigned_literal_code[vars[ptr].original_char] = code_length_symbol_map[len][0];
+            used_chars[code_length_symbol_map[len][0]] = true;
             ++ptr;
         }
 
         for (int j = 0; j < 256; ++j) {
-            if (assigned_literal_code[j] != -1) {
+            if (used_chars[j]) {
                 distance_vec[j] = 0;
                 que.push(j);
             }
@@ -171,17 +184,17 @@ void optimize_variables(DynamicHuffmanBlock& block, const std::vector<Variable>&
         while (!que.empty()) {
             int v = que.front();
             que.pop();
-            if (char_stats[v].lit_code_length == len) {
+            if (char_stats[v].lit_code_length == len && !used_chars[v] && char_stats[v].var_candidate) {
                 traverse_vars_list.push_back(v);
             }
-            for (int u : code_length_symbol_map[len]) {
+            for (int u : std::vector<int>{v + 1, v - 1}) {
+                if (u < 0 || u >= 256) continue;
                 if (distance_vec[u] > distance_vec[v] + 1) {
                     distance_vec[u] = distance_vec[v] + 1;
                     que.push(u);
                 }
             }
         }
-        // std::cout << "traverse_vars_list size: " << traverse_vars_list.size() << "\n";
         for(auto var : traverse_vars_list) {
             assigned_literal_code[vars[ptr].original_char] = var;
             ++ptr;
