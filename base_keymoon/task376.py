@@ -1,4 +1,4 @@
-# best: 30(Potatoman, 4atj sisyphus luke Seek mukundan, MasukenSamba, jacekw, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, jacekwl, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 32(kabutack), 33(el_presidente), 33(natte), 33(duckyluuk), 33(J&R)
+# best: 30(Potatoman, 4atj sisyphus luke Seek mukundan, MasukenSamba, jacekw, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, jacekwl, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 32(kabutack), 33(el_presidente), 33(natte), 33(azakhtyamov), 33(duckyluuk)
 # 36
 # p=lambda g:g[:1]+(g[1:-1]+g[::-1])*2
 # 33

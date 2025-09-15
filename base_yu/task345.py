@@ -1,4 +1,4 @@
-# best: 90(jailctf merger) / others: 95(natte), 102(4atj sisyphus luke Seek mukundan), 108(xsot ovs att joking mewheni), 114(intgrah jimboko awu macaque sammyuri), 131(dbdr)
+# best: 90(jailctf merger) / others: 95(natte), 102(4atj sisyphus luke Seek mukundan), 108(xsot ovs att joking mewheni), 114(intgrah jimboko awu macaque sammyuri), 127(azakhtyamov)
 # ========================================== 90 ==========================================
 # def p(g):
 #  u=[*zip(*g)]

@@ -1,4 +1,4 @@
-# best: 149(2F, biz) / others: 155(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 157(intgrah jimboko awu macaque sammyuri), 161(natte), 161(kdmitrie)
+# best: 149(2F, biz) / others: 155(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 157(intgrah jimboko awu macaque sammyuri), 161(natte), 161(azakhtyamov)
 # ======================================================================= 149 =======================================================================
 p=lambda g,R=range(10):[[(c:=max(max(g)),5,5)[min(max(abs(i-y),abs(j-x))for y in R for x in R if g[y][x])%(3-(f"{c}, 0, {c}"in str(g)))]for j in R]for i in R]
 
