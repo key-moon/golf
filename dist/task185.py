@@ -1,7 +1,3 @@
-B=range
-A=zip
-def p(g):
- c=max(g)[0]
- for _ in B(2):g=[*A(*[(l:=c)and[(v==l!=c)*(l:=v)for*t,v in A(*g,s)if all(t)+_]for s in g if all(s)+_])]
- for _ in B(40):g=[*A(*g[any(g[-1])-2::-1])]
- return g
+#coding:L1
+import zlib
+exec(zlib.decompress(bytes("eM5 ÜyEº*>ÑòÊ¬NÕ__¨ø”œûaÅ	%ƒ tÊ¯nq¹“J£À;(Iiq™¬¸Ð<J’×Ü)+ˆÂ9Ì)‘j®änVªYœD ùœ'¬zSZmQ	´-4þöZ‹¤)9ézÛ`½#e¹9²	»ý&]",'L1'),-9))
