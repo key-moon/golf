@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 107(kabutack), 108(jonas ryno kg583), 109(2F)
+# best: 95(jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 106(jacekwl Potatoman nauti), 107(kabutack), 108(jonas ryno kg583)
 # 155
 # M=max
 # r=range(3)
