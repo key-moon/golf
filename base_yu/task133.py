@@ -1,4 +1,4 @@
-# best: 298(xsot ovs att joking mewheni) / others: 327(jailctf merger), 458(natte), 482(MasukenSamba), 511(jacekw), 513(Yuchen20)
+# best: 298(xsot ovs att joking mewheni) / others: 327(jailctf merger), 402(jacekwl Potatoman nauti), 458(natte), 468(Yuchen20), 482(MasukenSamba)
 def p(g):
  for c in range(10):
   for d in range(10):

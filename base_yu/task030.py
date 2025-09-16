@@ -1,4 +1,4 @@
-# best: 94(4atj sisyphus luke Seek mukundan, 2F, biz) / others: 97(xsot ovs att joking mewheni), 111(jailctf merger), 120(duckyluuk), 159(intgrah jimboko awu macaque sammyuri), 162(jonas ryno kg583)
+# best: 94(4atj sisyphus luke Seek mukundan, 2F, biz) / others: 97(xsot ovs att joking mewheni), 111(jailctf merger), 120(duckyluuk), 150(jonas ryno kg583), 159(intgrah jimboko awu macaque sammyuri)
 # ============================================ 94 ============================================
 # p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range(5)])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
 # p=lambda g:[*zip(*[s[(d:=(a:={c:sum(g,[]).index(c)//10for c in(0,1,2,4)})[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
