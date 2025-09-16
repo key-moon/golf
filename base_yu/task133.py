@@ -4,11 +4,11 @@ def p(g):
   for d in range(10):
    u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if c==g[i][j]]
    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d==g[i][j]]
-   a=[(i,j)for i in range(len(g))for j in range(len(g[0]))if c!=g[i][j]>0 if any(len(g)>i+k>-1<j+l<len(g[0])and(i+k,j+l)in u for k in range(-1,2)for l in range(-1,2))]
-   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any(len(g)>i+k>-1<j+l<len(g[0])and(i+k,j+l)in v for k in range(-1,2)for l in range(-1,2))]
-   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any(len(g)>i+k>-1<j+l<len(g[0])and(i+k,j+l)in b+v for k in range(-1,2)for l in range(-1,2))]
-   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any(len(g)>i+k>-1<j+l<len(g[0])and(i+k,j+l)in b+v for k in range(-1,2)for l in range(-1,2))]
-   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any(len(g)>i+k>-1<j+l<len(g[0])and(i+k,j+l)in b+v for k in range(-1,2)for l in range(-1,2))]
+   a=[(i,j)for i in range(len(g))for j in range(len(g[0]))if c!=g[i][j]>0 if any((i+k,j+l)in u for k in range(-1,2)for l in range(-1,2))]
+   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any((i+k,j+l)in v for k in range(-1,2)for l in range(-1,2))]
+   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any((i+k,j+l)in b+v for k in range(-1,2)for l in range(-1,2))]
+   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any((i+k,j+l)in b+v for k in range(-1,2)for l in range(-1,2))]
+   b=[(i,j)for i in range(len(g))for j in range(len(g[0]))if d!=g[i][j]>0 if any((i+k,j+l)in b+v for k in range(-1,2)for l in range(-1,2))]
    s=(len(b)^6)%6
    for i,j in u*(len(a)==1<len(u) and len(v)==len(b)):
     for k in range(s):
