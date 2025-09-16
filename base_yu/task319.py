@@ -1,4 +1,4 @@
-# best: 194(jailctf merger) / others: 207(4atj sisyphus luke Seek mukundan), 243(xsot ovs att joking mewheni), 327(MasukenSamba), 396(jacekwl), 396(jacekwl Potatoman nauti)
+# best: 194(jailctf merger) / others: 207(4atj sisyphus luke Seek mukundan), 243(xsot ovs att joking mewheni), 327(MasukenSamba), 346(sekken), 396(jacekwl)
 # ============================================================================================= 194 ==============================================================================================
 # def p(g):
 #  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)

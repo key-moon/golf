@@ -1,4 +1,4 @@
-# best: 89(4atj sisyphus luke Seek mukundan) / others: 90(2F), 90(biz), 96(jailctf merger), 96(jacekwl Potatoman nauti), 96(xsot ovs att joking mewheni)
+# best: 89(4atj sisyphus luke Seek mukundan) / others: 90(2F), 90(biz), 95(jacekwl Potatoman nauti), 96(jailctf merger), 96(xsot ovs att joking mewheni)
 # ========================================== 89 =========================================
 def p(g):
  y,x=divmod(sum(g,[]).index(8)-14,13)
