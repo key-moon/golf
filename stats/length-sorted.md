@@ -10,7 +10,6 @@
 
 | Task | Base | Compressor | Length | Best | Goods | Message |
 |------|------|------------|--------|------|-------|---------|
-| [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [1455](/dist/task133.py) (+1157) | 298 🔴 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [364](/vis/task364.png) | [dist](/dist/task364.py) | previous | [1060](/dist/task364.py) (+905) | 155 🔴 | [vis-many](/vis_many/task364.png) | ⚠️ regression? |
 | [105](/vis/task105.png) | [dist](/dist/task105.py) | previous | [828](/dist/task105.py) (+680) | 148 🔴 | [vis-many](/vis_many/task105.png) | ⚠️ regression? |
 | [366](/vis/task366.png) | [base_notebooks](/base_notebooks/task366_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli | [371](/dist/task366.py) (+6) | 365 🔴 | [vis-many](/vis_many/task366.png) |  |
@@ -26,6 +25,7 @@
 | [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-s/zlib-zopfli-cpp2 | [306](/dist/task324.py) (+47) | 259 🔴 | [vis-many](/vis_many/task324.png) | encode:+2 |
 | [219](/vis/task219.png) | [base_yu](/base_yu/task219.py) | forcomp-s/zlib-zopfli-cpp2 | [303](/dist/task219.py) (+36) | 267 🔴 | [vis-many](/vis_many/task219.png) | encode:+1 |
 | [285](/vis/task285.png) | [base_yu](/base_yu/task285.py) | forcomp-t/zlib-zopfli-cpp2 | [301](/dist/task285.py) (+13) | 288 🔴 | [vis-many](/vis_many/task285.png) |  |
+| [133](/vis/task133.png) | [base_yu](/base_yu/task133.py) | forcomp-s/zlib-zopfli-cpp2 | [297](/dist/task133.py) (0) | 297  | [vis-many](/vis_many/task133.png) |  |
 | [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-t/zlib-zopfli-cpp2 | [295](/dist/task255.py) (+53) | 242 🔴 | [vis-many](/vis_many/task255.png) | encode:+1 |
 | [076](/vis/task076.png) | [dist](/dist/task076.py) | previous | [291](/dist/task076.py) (+15) | 276 🔴 | [vis-many](/vis_many/task076.png) | ⚠️ regression? |
 | [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-s/zlib-zopfli-cpp2 | [287](/dist/task080.py) (+34) | 253 🔴 | [vis-many](/vis_many/task080.png) | encode:+1 |

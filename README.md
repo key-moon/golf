@@ -1,9 +1,9 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 952325
+Score: 953483
 
-Best Score: 959865
+Best Score: 959866
 
 - [leaderboard](https://www.kaggle.com/competitions/google-code-golf-2025/leaderboard)
 - [spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7RUqwrtwRD2EJbgMRrccAHkwUQZgFe2fsROCR1WV5LA1naxL0pU2grjQpcWC2HU3chdGwIOUpeuoK/pubhtml#gid=0)
@@ -415,8 +415,8 @@ Best Score: 959865
 | [101](/vis/task101.png) | [base_yu](/base_yu/task101.py) | forcomp-t/zlib-zopfli-cpp2 | [342](/dist/task101.py) (+61) | 281 🔴 | [vis-many](/vis_many/task101.png) |  |
 | [209](/vis/task209.png) | [base_yu](/base_yu/task209.py) | forcomp-t/zlib-zopfli-cpp2 | [283](/dist/task209.py) (0) | 283  | [vis-many](/vis_many/task209.png) | encode:+2 |
 | [285](/vis/task285.png) | [base_yu](/base_yu/task285.py) | forcomp-t/zlib-zopfli-cpp2 | [301](/dist/task285.py) (+13) | 288 🔴 | [vis-many](/vis_many/task285.png) |  |
+| [133](/vis/task133.png) | [base_yu](/base_yu/task133.py) | forcomp-s/zlib-zopfli-cpp2 | [297](/dist/task133.py) (0) | 297  | [vis-many](/vis_many/task133.png) |  |
 | [233](/vis/task233.png) | [base_yu](/base_yu/task233.py) | forcomp-s/zlib-zopfli-cpp2 | [333](/dist/task233.py) (+36) | 297 🔴 | [vis-many](/vis_many/task233.png) |  |
-| [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [1455](/dist/task133.py) (+1157) | 298 🔴 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [018](/vis/task018.png) | [base_yu](/base_yu/task018.py) | raw/zlib-zopfli-cpp2 | [322](/dist/task018.py) (0) | 322  | [vis-many](/vis_many/task018.png) | encode:+1 |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | forplain/zlib-zopfli-cpp | [334](/dist/task096.py) (+9) | 325 🔴 | [vis-many](/vis_many/task096.png) |  |
 | [366](/vis/task366.png) | [base_notebooks](/base_notebooks/task366_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli | [371](/dist/task366.py) (+6) | 365 🔴 | [vis-many](/vis_many/task366.png) |  |
