@@ -9,4 +9,4 @@
 # lambda g,c=-3,u=():g*c or p([[v*(v>1)for v in s]for s in zip(*g[::-1])if 1<max(u:=u+s)],c+1)
 # lambda g,c=-7,u=():g*c or p([[v*(v>1)for v in s]for s in zip(*g[::-1])if max(u:=u+s)],c+1)
 # ======================================== 85 =======================================
-p=lambda g,c=-63:g*c or p([[v*(v>1)for v in s]for s in zip(*g[-2+any(g[-1])::-1])],c+1)
+p=lambda g,c=-63:g*c or p([[v*(v>1)for v in s]for s in zip(*g[any(g[-1])-2::-1])],c+1)
