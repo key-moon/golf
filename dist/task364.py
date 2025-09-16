@@ -1,3 +1,2 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes("¥UIZ!>ã¿è\rjìh=ˆôRÕÚuÇj´L•ç(N÷ÿÞÜÕé¡€|ù²½7Å™°U}q»bé¾K³b-¼ò$ GUbµî©š÷Ô7Ñ<à¹Úæ&Ú•š$õ’( ¯³@RW¶au¤JÂÏD(¢¬6LÑpÂ…© cl„½‡’ØyÂ¡'‹­µÑ(9hŸð˜­‹Ÿ6å¯„\©k´)8½—÷÷òÅ{ùðþ'³ož€wèü›½¥—Î¿Ýžƒînç/Ü=»	*=Š’+¼ðA¬]˜£Ì)LÒâBÊUï+ãy3ô‚‘QpDi÷6Ñ…	J„¸]-PábƒÃ³æÀ‘>iæä|ÅÆ?šÛ³·Ö	û„$—n%É~ú•|È=±'6¹­êÃµªí³nj‘´1Õ½)–D€Ža4Ý†±iñÁCa¸!´ð¡c¥#8Ãä³”Iº4T±]vñ˜G‘‹ò›ÝGmÉÖ^>àv¶ñî£¾ªñò·Ý…û†“‡ÜöÕ¬èh~eZNð©-SÅ„<€	³F“äýP…F»‡n4#ãKâ¬y=;N6s‚È˜-ÃmEÀQp§ˆE@½6Ua·O {M}c¸ÁuÏ4™W‘Í;‰·pìo“)çK»>)Bôa‹$º4ù.M>«‘Ð´N•T‘18õ‡ëêþäÛ¿ÀÔ7Kõ´Êèbžò‘ývµL/Â’“œ„“½Ë»Ï„íòºxä¦S)-EA§KPzþ;õ“W'³Ó£‡\lLöUð.ÓK3¯´é°NÇvX(\"xÕ$ë\Žåý8ê’ýùtü¥¸æÙ¢ðvÃ~myö!Ç#Ì½ðá¾÷ê¥O¼prh…(ÿl*ZÊµÿùáØ–±»'Ø-²˜Âì¨ï–ã©Û:Ê©Ü*˜Ñ’Süœ«wKoK„|FëÜÓñ˜/g*ñÇŠ§Kâé×˜#:ü,Yîµ·•Úy´[ð!òÇ™Žù'³Í¿’L§'ñÊÓïþÎâ“¼JËû’st5=#=eÒÈ?l¾Í²ÕüÌjjÌ,;yŸå—¥›¦`xN„31Ê³’ÀÅ¥].ù•åy'Lù¿;£¦üƒÑÂX÷9ÜGÚÁì0Îð3xt%Çª>6ÇŸY:ÁX)ÆZ9†wë-BÛQýÒQéÂPGÚ÷`?ƒýÀvj)…Òæ`?ATºÃ—>,Áö•n³É;J[ó\¶¡ª´7ÜfAé–é§~ÓM’´À*½6©-ôÂØ7Äà1¬•ž°Œ”º,[@\r&JoXÖTºÇ².<Ò9ÒáCŽ…6ÐS£¿",'L1'),-9))
+A=enumerate
+p=lambda g,c=-63:c*[[v.bit_count()**5*3%7for v in s]for s in g]or p([[v and v|[0,*s][j]|([0,*g[j]][i]>0<[0,*s][j])<<c%4+2for(j,v)in A(s)]for(i,s)in A(zip(*g))][::-1],c+1)
