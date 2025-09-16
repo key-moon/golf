@@ -196,16 +196,15 @@
 | [333](/vis/task333.png) | [base_yu](/base_yu/task333.py) | raw/raw | [101](/dist/task333.py) (+12) | 89 🔴 | [vis-many](/vis_many/task333.png) | not worth compress |
 | [348](/vis/task348.png) | [base_yu](/base_yu/task348.py) | raw/raw | [101](/dist/task348.py) (+7) | 94 🔴 | [vis-many](/vis_many/task348.png) | not worth compress |
 | [354](/vis/task354.png) | [base_yu](/base_yu/task354.py) | forplain/raw | [101](/dist/task354.py) (+5) | 96 🔴 | [vis-many](/vis_many/task354.png) | not worth compress |
-| [357](/vis/task357.png) | [base_yu](/base_yu/task357.py) | raw/raw | [101](/dist/task357.py) (+15) | 86 🔴 | [vis-many](/vis_many/task357.png) | not worth compress |
 | [035](/vis/task035.png) | [base_yu](/base_yu/task035.py) | raw/raw | [100](/dist/task035.py) (+17) | 83 🔴 | [vis-many](/vis_many/task035.png) | not worth compress |
 | [092](/vis/task092.png) | [base_yu](/base_yu/task092.py) | raw/raw | [100](/dist/task092.py) (+14) | 86 🔴 | [vis-many](/vis_many/task092.png) | not worth compress |
 | [141](/vis/task141.png) | [base_keymoon](/base_keymoon/task141.py) | raw/raw | [100](/dist/task141.py) (+6) | 94 🔴 | [vis-many](/vis_many/task141.png) | not worth compress |
 | [008](/vis/task008.png) | [base_keymoon](/base_keymoon/task008.py) | raw/raw | [99](/dist/task008.py) (+15) | 84 🔴 | [vis-many](/vis_many/task008.png) | not worth compress |
 | [120](/vis/task120.png) | [base_keymoon](/base_keymoon/task120.py) | raw/raw | [99](/dist/task120.py) (+2) | 97 🔴 | [vis-many](/vis_many/task120.png) | not worth compress |
 | [217](/vis/task217.png) | [base_yu](/base_yu/task217.py) | raw/raw | [99](/dist/task217.py) (+4) | 95 🔴 | [vis-many](/vis_many/task217.png) | not worth compress |
-| [221](/vis/task221.png) | [base_yu](/base_yu/task221.py) | forplain/raw | [99](/dist/task221.py) (+12) | 87 🔴 | [vis-many](/vis_many/task221.png) | not worth compress |
 | [254](/vis/task254.png) | [base_keymoon](/base_keymoon/task254.py) | raw/raw | [99](/dist/task254.py) (+15) | 84 🔴 | [vis-many](/vis_many/task254.png) | not worth compress |
 | [272](/vis/task272.png) | [base_yu](/base_yu/task272.py) | raw/raw | [99](/dist/task272.py) (+10) | 89 🔴 | [vis-many](/vis_many/task272.png) | not worth compress |
+| [221](/vis/task221.png) | [base_yu](/base_yu/task221.py) | forplain/raw | [98](/dist/task221.py) (+11) | 87 🔴 | [vis-many](/vis_many/task221.png) | not worth compress |
 | [266](/vis/task266.png) | [base_keymoon](/base_keymoon/task266.py) | forplain/raw | [98](/dist/task266.py) (0) | 98  | [vis-many](/vis_many/task266.png) | not worth compress |
 | [193](/vis/task193.png) | [base_yu](/base_yu/task193.py) | raw/raw | [97](/dist/task193.py) (+16) | 81 🔴 | [vis-many](/vis_many/task193.png) | not worth compress |
 | [220](/vis/task220.png) | [base_yu](/base_yu/task220.py) | raw/raw | [97](/dist/task220.py) (+10) | 87 🔴 | [vis-many](/vis_many/task220.png) | not worth compress |
@@ -218,6 +217,7 @@
 | [310](/vis/task310.png) | [base_keymoon](/base_keymoon/task310.py) | raw/raw | [95](/dist/task310.py) (+17) | 78 🔴 | [vis-many](/vis_many/task310.png) | not worth compress |
 | [030](/vis/task030.png) | [base_yu](/base_yu/task030.py) | raw/raw | [94](/dist/task030.py) (0) | 94  | [vis-many](/vis_many/task030.png) | not worth compress |
 | [183](/vis/task183.png) | [base_yu](/base_yu/task183.py) | forplain/raw | [94](/dist/task183.py) (+1) | 93 🔴 | [vis-many](/vis_many/task183.png) | not worth compress |
+| [357](/vis/task357.png) | [base_yu](/base_yu/task357.py) | raw/raw | [94](/dist/task357.py) (+8) | 86 🔴 | [vis-many](/vis_many/task357.png) | not worth compress |
 | [394](/vis/task394.png) | [base_yu](/base_yu/task394.py) | raw/raw | [94](/dist/task394.py) (+3) | 91 🔴 | [vis-many](/vis_many/task394.png) | not worth compress |
 | [381](/vis/task381.png) | [base_yu](/base_yu/task381.py) | raw/raw | [93](/dist/task381.py) (+14) | 79 🔴 | [vis-many](/vis_many/task381.png) | not worth compress |
 | [050](/vis/task050.png) | [base_yu](/base_yu/task050.py) | raw/raw | [92](/dist/task050.py) (+7) | 85 🔴 | [vis-many](/vis_many/task050.png) | not worth compress |
