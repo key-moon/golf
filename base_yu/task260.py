@@ -1,4 +1,4 @@
-# best: 135(jailctf merger) / others: 150(xsot ovs att joking mewheni), 152(4atj sisyphus luke Seek mukundan), 154(natte), 209(MasukenSamba), 222(Yuchen20)
+# best: 135(jailctf merger) / others: 150(xsot ovs att joking mewheni), 152(4atj sisyphus luke Seek mukundan), 154(natte), 209(MasukenSamba), 217(Yuchen20)
 # ================================================================ 135 ================================================================
 # def p(g,R=range):
 #  u=(G:=sum(g,[])).index(c:=sum({*G})-5)

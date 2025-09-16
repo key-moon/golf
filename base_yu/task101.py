@@ -1,4 +1,4 @@
-# best: 281(xsot ovs att joking mewheni) / others: 315(jailctf merger), 349(4atj sisyphus luke Seek mukundan), 395(jacekwl Potatoman nauti), 402(MasukenSamba), 441(jonas ryno kg583)
+# best: 281(xsot ovs att joking mewheni) / others: 315(jailctf merger), 349(4atj sisyphus luke Seek mukundan), 395(jacekwl Potatoman nauti), 402(MasukenSamba), 403(Yuchen20)
 def p(g):
  h=len(g)
  w=len(g[0])

@@ -1,4 +1,4 @@
-# best: 75(jailctf merger) / others: 77(4atj sisyphus luke Seek mukundan), 79(xsot ovs att joking mewheni), 80(natte), 81(intgrah jimboko awu macaque sammyuri), 82(Yuchen20)
+# best: 75(jailctf merger) / others: 77(4atj sisyphus luke Seek mukundan), 79(xsot ovs att joking mewheni), 80(natte), 81(intgrah jimboko awu macaque sammyuri), 81(Yuchen20)
 # =================================== 75 ==================================
 
 # p=lambda g,R=range(3):[[sum(sum(g[i*4+k][j*4:j*4+3])for k in R)//12for j in R]for i in R]
