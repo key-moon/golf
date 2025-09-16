@@ -1,1 +1,1 @@
-p=lambda g,c=-1,a=0:c*g or[*zip(*[[v+(v<(a:=a^sum(s,v)//24))*3for v in s]for s in p(g,c+1)])]
+p=lambda g,c=-1,a=0:c*g or[[v+(v<(a:=a^sum(s,v*2)//32))*3for v in s]for s in zip(*p(g,c+1))]
