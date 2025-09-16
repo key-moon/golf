@@ -1,4 +1,4 @@
-# best: 75(4atj sisyphus luke Seek mukundan, biz) / others: 84(2F), 86(jailctf merger), 90(xsot ovs att joking mewheni), 109(jacekwl Potatoman nauti), 145(intgrah jimboko awu macaque sammyuri)
+# best: 75(4atj sisyphus luke Seek mukundan, biz) / others: 84(2F), 86(jailctf merger), 90(xsot ovs att joking mewheni), 102(jacekwl Potatoman nauti), 145(intgrah jimboko awu macaque sammyuri)
 # =================================== 75 ==================================
 # f=lambda g,d,c=-1:c*g or f([[*s]for s in zip(*g)if d in s],d,c+1)
 # f=lambda g,d:[[v for*t,v in zip(*g,s) if d in t]for s in g if d in s]
