@@ -1,4 +1,4 @@
-# best: 58(natte, 4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 61(kdmitrie), 61(KN), 61(jacekw), 61(Ali), 61(kabutack)
+# best: 58(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 61(kdmitrie), 61(KN), 61(jacekw), 61(Ali), 61(kabutack)
 # ========================== 58 ==========================
 # サイクルを発見する（3サイクルか4サイクルかの二択）
 # [c*2for c in r]

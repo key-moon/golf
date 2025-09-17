@@ -1,4 +1,4 @@
-# best: 84(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 92(natte), 108(Yuchen20), 112(kabutack), 148(azakhtyamov), 155(jacekwl Potatoman nauti)
+# best: 84(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 85(intgrah jimboko awu macaque sammyuri), 92(natte), 108(Yuchen20), 112(kabutack), 148(azakhtyamov)
 # ======================================= 84 =======================================
 # p=lambda g,c=4:c and p([[y or 0<x<3for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
 p=lambda g,c=-3:c*g or p([[y or 0<x<3for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
