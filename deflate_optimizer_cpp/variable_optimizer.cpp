@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     }
 
     int num_iter = 5;
-    if (argc == 4) {
+    if (argc >= 4) {
         num_iter = std::stoi(argv[3]);
     }
 
