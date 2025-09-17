@@ -1,19 +1,32 @@
 # best: 141(xsot ovs att joking mewheni) / others: 158(4atj sisyphus luke Seek mukundan), 177(jailctf merger), 190(natte), 239(MasukenSamba), 240(jacekwl Potatoman nauti)
 # =================================================================== 141 ===================================================================
 def p(g):
- for _ in 0,1:
-  if R:=[r for r,a in enumerate(g)if all(a)]:
-   for r,a in enumerate(g):
-    for c,v in enumerate(a):
-     if v&2:
-      for l in R:
-       for y in range(r,l,l>r or-1):
-        if g[y][c]>7:break
-        g[y][c]=2
-       else:
-        for y in range(l-1,l+2):g[y][c-1:c+2]=8,8,8;g[l][c]=2
-  *g,=map(list,zip(*g))
+ for _ in[0]*4:
+  for i,s in enumerate(g):
+   for j,v in enumerate(s):
+    if 8in s[j:] and s[j:j+2]==[2,0]:
+     k=s.index(8,j)
+     s[j:k+1]=[2]*(k+1-j)
+     g[i-1][k-1:k+2]=8,8,8
+     g[i+1][k-1:k+2]=8,8,8
+     s[k-1]=s[k+1]=8
+  *g,=map(list,zip(*g[::-1]))
  return g
+
+# def p(g):
+#  for _ in 0,1:
+#   if R:=[r for r,a in enumerate(g)if all(a)]:
+#    for r,a in enumerate(g):
+#     for c,v in enumerate(a):
+#      if v&2:
+#       for l in R:
+#        for y in range(r,l,l>r or-1):
+#         if g[y][c]>7:break
+#         g[y][c]=2
+#        else:
+#         for y in range(l-1,l+2):g[y][c-1:c+2]=8,8,8;g[l][c]=2
+#   *g,=map(list,zip(*g))
+#  return g
 
 # E,R=enumerate,range
 # def p(g):
