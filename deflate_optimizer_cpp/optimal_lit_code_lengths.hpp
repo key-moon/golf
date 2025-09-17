@@ -103,6 +103,7 @@ void optimize_lit_code_huffman_slow(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
  }
 
 void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=9) {
+
     std::vector<int> lit_freq(286, 0);
     std::vector<int> dist_freq(30, 0);
     for (const auto& token : block.tokens) {
@@ -118,6 +119,49 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
     lit_freq[256] = 1;
     while(lit_freq.size() > 257 && lit_freq.back() == 0) lit_freq.pop_back();
     while(dist_freq.size() > 1 && dist_freq.back() == 0) dist_freq.pop_back();
+
+    int score_ub = [&](){
+        auto tmp_literal_code_lengths = block.literal_code_lengths;
+        auto tmp_distance_code_lengths = block.distance_code_lengths;
+        if (tmp_literal_code_lengths.empty()) {
+            // set fixed code
+            tmp_literal_code_lengths.resize(286);
+            for (int i = 0; i <= 143; ++i) tmp_literal_code_lengths[i] = 8;
+            for (int i = 144; i <= 255; ++i) tmp_literal_code_lengths[i] = 9;
+            for (int i = 256; i <= 279; ++i) tmp_literal_code_lengths[i] = 7;
+            for (int i = 280; i <= 285; ++i) tmp_literal_code_lengths[i] = 8;
+        }
+        if (tmp_distance_code_lengths.empty()) {
+            tmp_distance_code_lengths.resize(30, 5);
+        }
+        auto compute = [&](){
+            std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(tmp_literal_code_lengths, tmp_distance_code_lengths, block.cl_code_lengths);
+            int score = 0;
+            for (const auto& code : rle_codes) {
+                score += block.cl_code_lengths[code.id()];
+                score += code.num_additional_bits();
+            }
+            for (auto tok : block.tokens) {
+                if (tok.type == Token::LITERAL) {
+                    score += tmp_literal_code_lengths[tok.literal];
+                } else { // COPY
+                    int lit_code = convert_length_value_to_code(tok.pair.length);
+                    int distance_code = convert_distance_value_to_code(tok.pair.distance);
+                    score += tmp_literal_code_lengths[lit_code];
+                    score += num_additional_bits_for_len(tok.pair.length);
+                    score += tmp_distance_code_lengths[distance_code];
+                    score += num_additional_bits_for_dist(tok.pair.distance);
+                }
+            }
+            return score;
+        };
+        int sc1 = compute();
+        tmp_literal_code_lengths = compute_huff_code_lengths_from_frequencies(lit_freq);
+        tmp_distance_code_lengths = compute_huff_code_lengths_from_frequencies(dist_freq);
+        int sc2 = compute();
+        return std::min(sc1, sc2);
+    }();
+
 
     std::vector<std::vector<std::vector<int>>> dp(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, 1e6)));
     std::vector<std::vector<std::vector<int>>> last_run_code(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, -1)));
@@ -221,7 +265,8 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
                 }
             }
 
-            if (min_cost == 1e6) continue;
+            // if (min_cost == 1e6) continue;
+            if (min_cost > score_ub) continue;
 
             // 単一コードを使う場合: prev_codeに遷移が関係ないので先にminを取っていい
             for (int code = 0; code <= MAX_BIT_WIDTH; ++code) {
@@ -240,7 +285,7 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
             int run_cost_16 = RLE_symbols_cost[16] + 2;
             for (int code = 0; code <= MAX_BIT_WIDTH; ++code) {
                 if (i == 0) continue; // DPの初期化の都合でこれを弾く必要がある
-                if (dp[i][j][code] == 1e6) continue;
+                if (dp[i][j][code] > score_ub) continue;
                 for (int run_length = 3; run_length <= 6; ++run_length) {
                     if (i + run_length > lit_freq.size()) break;
                     int next_j = j + (code == 0 ? 0 : (1 << (MAX_BIT_WIDTH - code))) * run_length;
@@ -249,6 +294,7 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
                     if (sum_lit_freq != 0 && code == 0) break;
                     int lit_cost = sum_lit_freq * code;
                     int cost = dp[i][j][code] + run_cost_16 + lit_cost;
+                    if (cost > score_ub) break;
                     if (dp[i + run_length][next_j][code] > cost) {
                         dp[i + run_length][next_j][code] = cost;
                         last_run_code[i + run_length][next_j][code] = code;
