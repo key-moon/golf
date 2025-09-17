@@ -1,3 +1,2 @@
-#coding:L1
-import zlib
-exec(zlib.decompress(bytes('uÑ\n@@E=ûŠy´PÈ“ð#R)CŠ¡AåïÍ²¥’qÏÞ½w4ØÂìL*µ¡z®©Cg@Ý‹4:}XV_¼y8kÕÈí#“‘¡o¦kj 8•MUe›’\èpv%?”oÖÞ¦r*Qdñé|2Ÿ•>JÙ]òe¡Ã²Îù\YúÐW¹”…×´?kcD>Má¬3VE"FýQIž¬ûº¢N$oö"£è‰N¢•ØLäÌ(|~W*‹ÌƒO­ôj›—Iå:´ÊÆucá','L1'),-9))
+A=range
+def p(g):w=len(g[0]);u=[0]*w;return[(t:=[x or y*4for(x,y)in zip(s,u)],u:=[u[j]^any(r-l>3and[0,*t,0][l:r]==[0]+[5]*(r-l-2)+[0]for l in A(j+1)for r in A(j+3,w+3))for j in A(w)])[0]for s in g[:-1]]+g[-1:]
