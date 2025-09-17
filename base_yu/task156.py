@@ -1,6 +1,6 @@
 # best: 146(jailctf merger) / others: 152(4atj sisyphus luke Seek mukundan), 156(xsot ovs att joking mewheni), 208(jonas ryno kg583), 215(MasukenSamba), 255(cg-klogw)
 # ===================================================================== 146 ======================================================================
-import re;p=lambda g,c=-99:c*g or p([*zip(*eval(re.sub(*["([1-9]), 4, 4","(?<=4.{34})4(?=.{34}4(, 4|.{31}4){%d})"%(-c//9),r"\1,\1,4",str(2-("2"in str(g)))][c%9<1::2],str(g))))],c+1)
+import re;p=lambda g,c=-99:c*g or p([*zip(*eval(re.sub(*["([^0]), 4, 4","(?<=4.{34})4(?=.{34}4(, 4|.{31}4){%d})"%(-c//9),r"\1,\1,4",str(2-("2"in str(g)))][c%9<1::2],str(g))))],c+1)
 
 # import re
 # def p(g,c=-99):
