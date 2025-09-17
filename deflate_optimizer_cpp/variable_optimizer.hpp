@@ -159,7 +159,7 @@ void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& varia
         if (new_val == -1) {
             continue;
         }
-        std::cerr << "Rename: " << variables[i].name << " (" << char_val << ") -> '" << static_cast<char>(new_val) << "' (" << new_val << ")\n";
+        // std::cerr << "Rename: " << variables[i].name << " (" << char_val << ") -> '" << static_cast<char>(new_val) << "' (" << new_val << ")\n";
         variables[i].name = std::string(1, static_cast<char>(new_val));
         for(auto pos : variables[i].occurrences) {
             for (int j = 0; j < variables[i].name.size(); ++j) {

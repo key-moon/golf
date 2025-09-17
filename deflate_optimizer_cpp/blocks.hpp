@@ -545,81 +545,137 @@ struct DynamicHuffmanBlock : public CompressedBlock {
         }
         return res;
     }
-
-        int get_literal_code_length(int literal_code) const override {
-            return (literal_code >= literal_code_lengths.size() || literal_code_lengths[literal_code] == 0)
-                    ? 1e9
-                    : literal_code_lengths[literal_code];
-        }
-        int get_distance_code_length(int distance_code) const override {
-            return (distance_code >= distance_code_lengths.size() || distance_code_lengths[distance_code] == 0)
-                    ? 1e9
-                    : distance_code_lengths[distance_code];
-        }
-        static DynamicHuffmanBlock load_from_stream(std::istream& in) {
-            DynamicHuffmanBlock block;
-            size_t hlit, hdist;
-            block.cl_code_lengths.resize(19, 0);
-            for (size_t i = 0; i < 19; ++i) {
-                in >> block.cl_code_lengths[i];
-            }
-            in >> hlit;
-            block.literal_code_lengths.resize(hlit);
-            for (size_t i = 0; i < hlit; ++i) {
-                in >> block.literal_code_lengths[i];
-            }
-            in >> hdist;
-            block.distance_code_lengths.resize(hdist);
-            for (size_t i = 0; i < hdist; ++i) {
-                in >> block.distance_code_lengths[i];
-            }
-            size_t len;
-            in >> len;
-            block.tokens.resize(len);
-            for (size_t i = 0; i < len; ++i) {
-                block.tokens[i] = read_one_token(in);
-            }
-            return block;
-        }
-        FixedHuffmanBlock to_fixed_huffman_block() const {
-            FixedHuffmanBlock block;
-            block.bfinal = bfinal;
-            block.tokens = tokens;
-            return block;
-        }
-    };
-
-    DynamicHuffmanBlock FixedHuffmanBlock::to_dynamic_huffman_block() const {
+    int get_literal_code_length(int literal_code) const override {
+        return (literal_code >= literal_code_lengths.size() || literal_code_lengths[literal_code] == 0)
+                ? 1e9
+                : literal_code_lengths[literal_code];
+    }
+    int get_distance_code_length(int distance_code) const override {
+        return (distance_code >= distance_code_lengths.size() || distance_code_lengths[distance_code] == 0)
+                ? 1e9
+                : distance_code_lengths[distance_code];
+    }
+    static DynamicHuffmanBlock load_from_stream(std::istream& in) {
         DynamicHuffmanBlock block;
+        size_t hlit, hdist;
+        block.cl_code_lengths.resize(19, 0);
+        for (size_t i = 0; i < 19; ++i) {
+            in >> block.cl_code_lengths[i];
+        }
+        in >> hlit;
+        block.literal_code_lengths.resize(hlit);
+        for (size_t i = 0; i < hlit; ++i) {
+            in >> block.literal_code_lengths[i];
+        }
+        in >> hdist;
+        block.distance_code_lengths.resize(hdist);
+        for (size_t i = 0; i < hdist; ++i) {
+            in >> block.distance_code_lengths[i];
+        }
+        size_t len;
+        in >> len;
+        block.tokens.resize(len);
+        for (size_t i = 0; i < len; ++i) {
+            block.tokens[i] = read_one_token(in);
+        }
+        return block;
+    }
+    FixedHuffmanBlock to_fixed_huffman_block() const {
+        FixedHuffmanBlock block;
         block.bfinal = bfinal;
         block.tokens = tokens;
-        block.literal_code_lengths.resize(288, 0);
-        for (int i = 0; i <= 143; ++i) block.literal_code_lengths[i] = 8;
-        for (int i = 144; i <= 255; ++i) block.literal_code_lengths[i] = 9;
-        for (int i = 256; i <= 279; ++i) block.literal_code_lengths[i] = 7;
-        for (int i = 280; i <= 287; ++i) block.literal_code_lengths[i] = 8;
-        block.distance_code_lengths.resize(32, 0);
-        for (int i = 0; i <= 31; ++i) block.distance_code_lengths[i] = 5;
         return block;
     }
 
-    static std::unique_ptr<Block> load_block_from_stream(std::istream& in) {
-        int bfinal_int, btype;
-        in >> bfinal_int >> btype;
-        bool bfinal = (bfinal_int != 0);
-        if (btype == 0b00) {
-            auto blk = std::make_unique<StoredBlock>(StoredBlock::load_from_stream(in));
-            blk->bfinal = bfinal;
-            return blk;
-        } else if (btype == 0b01) {
-            auto blk = std::make_unique<FixedHuffmanBlock>(FixedHuffmanBlock::load_from_stream(in));
-            blk->bfinal = bfinal;
-            return blk;
-        } else if (btype == 0b10) {
-            auto blk = std::make_unique<DynamicHuffmanBlock>(DynamicHuffmanBlock::load_from_stream(in));
-            blk->bfinal = bfinal;
-            return blk;
-        } else {
-            throw std::runtime_error("Unsupported block type");
+    /// It does not work if context is not emopty.
+    std::pair<DynamicHuffmanBlock, FixedHuffmanBlock> split_at_position(int split_pos) const {
+        auto text = get_string({});
+        if (split_pos < 0 || split_pos > text.size()) {
+            throw std::runtime_error("Invalid split position");
         }
+        DynamicHuffmanBlock first;
+        first.bfinal = false;
+        first.literal_code_lengths = literal_code_lengths;
+        first.distance_code_lengths = distance_code_lengths;
+        first.cl_code_lengths = cl_code_lengths;
+        FixedHuffmanBlock second;
+        second.bfinal = bfinal;
+        
+        int text_pos = 0;
+        for (auto tok : tokens) {
+            int next_pos = text_pos + (tok.type == Token::LITERAL ? 1 : tok.pair.length);
+            if (next_pos <= split_pos) {
+                first.tokens.push_back(tok);
+                text_pos = next_pos;
+            } else if (text_pos >= split_pos) {
+                second.tokens.push_back(tok);
+            } else {
+                // split within this token
+                if (tok.type == Token::LITERAL) {
+                    // should not happen
+                    throw std::runtime_error("Cannot split within a literal token");
+                } else {
+                    int len1 = split_pos - text_pos;
+                    int len2 = tok.pair.length - len1;
+                    if (len1 > 0) {
+                        if (len1 >= 3) {
+                            first.tokens.push_back({Token::COPY, .pair = {len1, tok.pair.distance}});
+                        }
+                        else {
+                            for (int i = 0; i < len1; ++i) {
+                                first.tokens.push_back({Token::LITERAL, .literal = static_cast<unsigned char>(text[text_pos + i])});
+                            }
+                        }
+                    }
+                    if (len2 > 0) {
+                        if (len2 >= 3) {
+                            second.tokens.push_back({Token::COPY, .pair = {len2, tok.pair.distance}});
+                        }
+                        else {
+                            for (int i = 0; i < len2; ++i) {
+                                second.tokens.push_back({Token::LITERAL, .literal = static_cast<unsigned char>(text[split_pos + i])});
+                            }
+                        }
+                    }
+                    text_pos = next_pos;
+                }
+            }
+        }
+        return std::make_pair(first, second);
     }
+};
+
+DynamicHuffmanBlock FixedHuffmanBlock::to_dynamic_huffman_block() const {
+    DynamicHuffmanBlock block;
+    block.bfinal = bfinal;
+    block.tokens = tokens;
+    block.literal_code_lengths.resize(288, 0);
+    for (int i = 0; i <= 143; ++i) block.literal_code_lengths[i] = 8;
+    for (int i = 144; i <= 255; ++i) block.literal_code_lengths[i] = 9;
+    for (int i = 256; i <= 279; ++i) block.literal_code_lengths[i] = 7;
+    for (int i = 280; i <= 287; ++i) block.literal_code_lengths[i] = 8;
+    block.distance_code_lengths.resize(32, 0);
+    for (int i = 0; i <= 31; ++i) block.distance_code_lengths[i] = 5;
+    return block;
+}
+
+static std::unique_ptr<Block> load_block_from_stream(std::istream& in) {
+    int bfinal_int, btype;
+    in >> bfinal_int >> btype;
+    bool bfinal = (bfinal_int != 0);
+    if (btype == 0b00) {
+        auto blk = std::make_unique<StoredBlock>(StoredBlock::load_from_stream(in));
+        blk->bfinal = bfinal;
+        return blk;
+    } else if (btype == 0b01) {
+        auto blk = std::make_unique<FixedHuffmanBlock>(FixedHuffmanBlock::load_from_stream(in));
+        blk->bfinal = bfinal;
+        return blk;
+    } else if (btype == 0b10) {
+        auto blk = std::make_unique<DynamicHuffmanBlock>(DynamicHuffmanBlock::load_from_stream(in));
+        blk->bfinal = bfinal;
+        return blk;
+    } else {
+        throw std::runtime_error("Unsupported block type");
+    }
+}
