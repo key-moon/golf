@@ -289,7 +289,7 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
             int run_cost_16 = RLE_symbols_cost[16] + 2;
             for (int code = 0; code <= MAX_BIT_WIDTH; ++code) {
                 if (i == 0) continue; // DPの初期化の都合でこれを弾く必要がある
-                if dp[i][j][code] > score_ub) continue;
+                if (dp[i][j][code] > score_ub) continue;
                 for (int run_length = 3; run_length <= 6; ++run_length) {
                     if (i + run_length > lit_freq.size()) break;
                     int next_j = j + (code == 0 ? 0 : (1 << (MAX_BIT_WIDTH - code))) * run_length;
