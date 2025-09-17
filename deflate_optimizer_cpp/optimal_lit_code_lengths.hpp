@@ -135,7 +135,13 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
             tmp_distance_code_lengths.resize(30, 5);
         }
         auto compute = [&](){
-            std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(tmp_literal_code_lengths, tmp_distance_code_lengths, block.cl_code_lengths);
+
+            std::vector<RLECode> rle_codes;
+            try {
+                rle_codes = compute_RLE_encoded_representation(tmp_literal_code_lengths, tmp_distance_code_lengths, block.cl_code_lengths);
+            } catch (...) {
+                return (int)1e6 - 1;
+            }
             int score = 0;
             for (const auto& code : rle_codes) {
                 score += block.cl_code_lengths[code.id()];
@@ -161,7 +167,6 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
         int sc2 = compute();
         return std::min(sc1, sc2);
     }();
-
 
     std::vector<std::vector<std::vector<int>>> dp(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, 1e6)));
     std::vector<std::vector<std::vector<int>>> last_run_code(lit_freq.size() + 1, std::vector<std::vector<int>>((1 << MAX_BIT_WIDTH) + 1, std::vector<int>(MAX_BIT_WIDTH + 1, -1)));
@@ -265,7 +270,6 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
                 }
             }
 
-            // if (min_cost == 1e6) continue;
             if (min_cost > score_ub) continue;
 
             // 単一コードを使う場合: prev_codeに遷移が関係ないので先にminを取っていい
@@ -285,7 +289,7 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
             int run_cost_16 = RLE_symbols_cost[16] + 2;
             for (int code = 0; code <= MAX_BIT_WIDTH; ++code) {
                 if (i == 0) continue; // DPの初期化の都合でこれを弾く必要がある
-                if (dp[i][j][code] > score_ub) continue;
+                if dp[i][j][code] > score_ub) continue;
                 for (int run_length = 3; run_length <= 6; ++run_length) {
                     if (i + run_length > lit_freq.size()) break;
                     int next_j = j + (code == 0 ? 0 : (1 << (MAX_BIT_WIDTH - code))) * run_length;

@@ -141,13 +141,14 @@ std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, std::vec
             }
         }
         if (dp[entry.count] == 1e6) {
-            std::cerr << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
-            std::cerr << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
-            std::cerr << "cl_code_lengths: ";
+            std::stringstream ss;
+            ss << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
+            ss << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
+            ss << "cl_code_lengths: ";
             for (int i = 0; i < cl_code_lengths.size(); ++i) {
-                std::cerr << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
+                ss << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
             }
-            throw std::runtime_error("Failed to encode RLEEntry");
+            throw std::runtime_error("Failed to encode RLEEntry: " + ss.str());
         }
         int run_length = entry.count;
         while (run_length > 0) {
@@ -182,13 +183,14 @@ std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, std::vec
             }
         }
         if (dp[entry.count] == 1e6) {
-            std::cerr << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
-            std::cerr << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
-            std::cerr << "cl_code_lengths: ";
+            std::stringstream ss;
+            ss << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
+            ss << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
+            ss << "cl_code_lengths: ";
             for (int i = 0; i < cl_code_lengths.size(); ++i) {
-                std::cerr << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
+                ss << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
             }
-            throw std::runtime_error("Failed to encode RLEEntry");
+            throw std::runtime_error("Failed to encode RLEEntry: " + ss.str());
         }
         int run_length = entry.count;
         while (run_length > 0) {
