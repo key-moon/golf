@@ -9,6 +9,7 @@
 #   else:
 #     return[[c*2for c in r]for r in g+g[2:5]]
 # lambda g:[[c*2for c in r]for r in g+g[(g[:3]*2!=g)*2:][:3]]
+# lambda g:eval(str(g+g[(g[2]!=g[5])*2:][:3]).replace(*"12"))
 p=lambda g:[[c*2for c in r]for r in g+g[(g[2]!=g[5])*2:][:3]]
 
 #  g+g[(g[2]!=g[5])*2:][:3]
