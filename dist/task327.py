@@ -1,1 +1,1 @@
-p=lambda g,S=(a:=[0]*3)*2:[S:=[*map(max,zip(s+a,[0]+S))]for s in g+[a]*3]
+p=lambda g,S=(a:=[0]*3)*2:[S:=[*map(max,s+a,[0]+S)]for s in g+[a]*3]
