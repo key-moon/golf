@@ -91,9 +91,10 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& c
     // std::cerr << "Initial Block bit length: " << block.bit_length() << std::endl;
     auto best = std::make_pair(block.bit_length(), block.cl_code_lengths);
 
-
     auto get_optimal_parse_iteration = [&block, &context](int max_iter=10) {
         auto best = std::make_tuple(block.bit_length(), block.cl_code_lengths, block.tokens);
+        std::vector<std::vector<int>> tried_cl_code_lengths;
+        tried_cl_code_lengths.push_back(block.cl_code_lengths);
         for (int iter = 0; iter < max_iter; ++iter) {
             // parsingを求めてから符号長を更新
             block.tokens = optimal_parse_block(block, context);
@@ -101,10 +102,12 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& c
             int bit_length = block.bit_length();
             if (bit_length <= std::get<0>(best)) {
                 best = std::make_tuple(bit_length, block.cl_code_lengths, block.tokens);
-            } else if (block.cl_code_lengths == std::get<1>(best) && block.tokens == std::get<2>(best)) {
-                // 変化がなければ終了
+            }
+            if (std::find(tried_cl_code_lengths.begin(), tried_cl_code_lengths.end(), block.cl_code_lengths) != tried_cl_code_lengths.end()) {
+                // 既に試した符号長に戻ったら終了
                 break;
             }
+            tried_cl_code_lengths.push_back(block.cl_code_lengths);
         }
         block.cl_code_lengths = std::get<1>(best);
         block.tokens = std::get<2>(best);

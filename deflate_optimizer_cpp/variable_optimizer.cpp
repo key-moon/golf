@@ -65,8 +65,11 @@ int main(int argc, char** argv) {
                 auto before_block = *db;
                 auto before_vars = variables;
                 int before = db->bit_length();
+                // std::cerr << "Optimizing variables..." << std::endl;
                 optimize_variables(*db, variables, text);
+                // std::cerr << "Optimizing Huffman tree..." << std::endl;
                 optimize_huffman_tree(*db, text, num_iter);
+                // std::cerr << "Done." << std::endl;
                 int after = db->bit_length();
                 std::cerr << "Round " << i << ": " << before << " -> " << after << "\n";
                 if (before <= after) {
