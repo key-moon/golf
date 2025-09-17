@@ -9,10 +9,15 @@
 #      g[i+2+k][j]=g[i+2+k][j+1]=3
 #  return g
 
+# if all(s:=[g[k%2+(j:=~i//9)][i%9+k//2]for k in range(4)]):
+# if all(s:=[g[k%2+(j:=~i//9)][i%9+k//2]for k in range(4)]):
+
+# range(4)
+# b"43200"
 def p(g):
  for i in range(90):
-  if all(s:=[g[k%2+(j:=~i//9)][i%9+k//2]for k in range(4)]):
-   for u in g[j+2:][:len({*s})]:u[i%9]=u[i%9+1]=3
+  if all(s:={*[g[j:=~i//9+l%3][k:=i%9+l%2]for l in b"\1\3\4\6"]}):
+   for u in g[j+2:][:len(s)]:u[k:k+2]=3,3
  return g
 
 # def p(g):
