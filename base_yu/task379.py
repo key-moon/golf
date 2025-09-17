@@ -1,17 +1,32 @@
 # best: 141(xsot ovs att joking mewheni) / others: 158(4atj sisyphus luke Seek mukundan), 177(jailctf merger), 190(natte), 239(MasukenSamba), 240(jacekwl Potatoman nauti)
 # =================================================================== 141 ===================================================================
-E,R=enumerate,range
 def p(g):
  for _ in 0,1:
-  if l:=[i for i,s in E(g)if all(s)]:
-   for i,s in E(g):
-    for j,v in E(s):
-     x,y=l[-(l[-1]<i)],l[-(l[0]<i)]
-     for w,k in([(x,k)for k in R(x,i)][::-1]+[(y,k)for k in R(i,y+1)])*(v==2):
-      for a in R(9):g[w+a//3-1][j+a%3-1]=8
-      g[k][j]=2
+  if R:=[r for r,a in enumerate(g)if all(a)]:
+   for r,a in enumerate(g):
+    for c,v in enumerate(a):
+     if v&2:
+      for l in R:
+       for y in range(r,l,l>r or-1):
+        if g[y][c]>7:break
+        g[y][c]=2
+       else:
+        for y in range(l-1,l+2):g[y][c-1:c+2]=8,8,8;g[l][c]=2
   *g,=map(list,zip(*g))
  return g
+
+# E,R=enumerate,range
+# def p(g):
+#  for _ in 0,1:
+#   if l:=[i for i,s in E(g)if all(s)]:
+#    for i,s in E(g):
+#     for j,v in E(s):
+#      x,y=l[-(l[-1]<i)],l[-(l[0]<i)]
+#      for w,k in([(x,k)for k in R(x,i)][::-1]+[(y,k)for k in R(i,y+1)])*(v==2):
+#       for a in R(9):g[w+a//3-1][j+a%3-1]=8
+#       g[k][j]=2
+#   *g,=map(list,zip(*g))
+#  return g
 
 
 
