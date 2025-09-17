@@ -1,4 +1,4 @@
-# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 74(kabutack), 74(HETHAT), 88(Bulmenisaurus), 89(natte), 93(Yuchen20)
+# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 74(kabutack), 74(HETHAT), 88(Bulmenisaurus), 89(natte), 90(Yuchen20)
 # =============================== 67 ==============================
 # p=lambda g,R=range:[[max([g[i-k][j-k]for k in R(max(0,min(i,j)-2+abs(i-j)),min(i,j)+1)]+[0])for j in R(6)]for i in R(6)]
 p=lambda g,R=range(6):[[max(3>i-k>-1<j-k<3and g[i-k][j-k]for k in R)for j in R]for i in R]

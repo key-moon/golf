@@ -1,4 +1,4 @@
-# best: 109(xsot ovs att joking mewheni) / others: 114(jailctf merger), 115(4atj sisyphus luke Seek mukundan), 130(Yuchen20), 135(jonas ryno kg583), 142(dbdr)
+# best: 109(xsot ovs att joking mewheni) / others: 114(jailctf merger), 115(4atj sisyphus luke Seek mukundan), 126(Yuchen20), 135(jonas ryno kg583), 142(dbdr)
 # =================================================== 109 ===================================================
 
 # c,B=zip(*((i,j)for i,r in A(j)for j,B in A(r)if B));Y=sum(c)//2;X=sum(B)//2

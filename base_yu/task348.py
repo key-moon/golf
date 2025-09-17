@@ -1,4 +1,4 @@
-# best: 94(xsot ovs att joking mewheni) / others: 105(4atj sisyphus luke Seek mukundan), 107(jailctf merger), 108(natte), 110(intgrah jimboko awu macaque sammyuri), 124(Yuchen20)
+# best: 94(xsot ovs att joking mewheni) / others: 105(4atj sisyphus luke Seek mukundan), 107(jailctf merger), 108(natte), 110(intgrah jimboko awu macaque sammyuri), 119(Yuchen20)
 # ============================================ 94 ============================================
 
 # p=lambda g,c=-19,E=enumerate:c*g or p([[v or i+1<len(g) and j>0 and g[i+1][~(j-1)] and 15-g[i+1][~(j-1)] for j,v in E(s[::-1])] for i,s in E(g)],c+1)
