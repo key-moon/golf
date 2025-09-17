@@ -1,4 +1,4 @@
-# best: 74(4atj sisyphus luke Seek mukundan) / others: 77(jailctf merger), 77(xsot ovs att joking mewheni), 79(natte), 82(MasukenSamba), 84(jacekwl Potatoman nauti)
+# best: 74(4atj sisyphus luke Seek mukundan) / others: 75(xsot ovs att joking mewheni), 77(jailctf merger), 79(natte), 82(MasukenSamba), 84(jacekwl Potatoman nauti)
 # ================================== 74 ==================================
 # p=lambda g,c=2:c and p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c-1)or g
 # p=lambda g,c=-1:g*c or p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c+1)
