@@ -35,7 +35,6 @@
 | [201](/vis/task201.png) | [base_yu](/base_yu/task201.py) | raw/zlib-zopfli-cpp2 | [262](/dist/task201.py) (+54) | 208 🔴 | [vis-many](/vis_many/task201.png) |  |
 | [277](/vis/task277.png) | [base_kq5y](/base_kq5y/task277.py) | forcomp-t/zlib-zopfli-cpp2 | [260](/dist/task277.py) (+66) | 194 🔴 | [vis-many](/vis_many/task277.png) |  |
 | [370](/vis/task370.png) | [dist](/dist/task370.py) | previous | [260](/dist/task370.py) (0) | 260  | [vis-many](/vis_many/task370.png) | ⚠️ regression? |
-| [379](/vis/task379.png) | [dist](/dist/task379.py) | previous | [260](/dist/task379.py) (+119) | 141 🔴 | [vis-many](/vis_many/task379.png) | ⚠️ regression? |
 | [086](/vis/task086.png) | [base_yu](/base_yu/task086.py) | forcomp-t/zlib-zopfli-cpp2 | [254](/dist/task086.py) (+82) | 172 🔴 | [vis-many](/vis_many/task086.png) | encode:+1 |
 | [308](/vis/task308.png) | [base_yu](/base_yu/task308.py) | raw/zlib-zopfli-cpp2 | [254](/dist/task308.py) (+28) | 226 🔴 | [vis-many](/vis_many/task308.png) | encode:+1 |
 | [044](/vis/task044.png) | [base_yu](/base_yu/task044.py) | forcomp-s/zlib-zopfli-cpp2 | [253](/dist/task044.py) (0) | 253  | [vis-many](/vis_many/task044.png) | encode:+1 |
@@ -44,6 +43,7 @@
 | [005](/vis/task005.png) | [base_yu](/base_yu/task005.py) | forcomp-t/zlib-zopfli-cpp2 | [247](/dist/task005.py) (+41) | 206 🔴 | [vis-many](/vis_many/task005.png) |  |
 | [284](/vis/task284.png) | [base_keymoon](/base_keymoon/task284.py) | forcomp-t/zlib-zopfli-cpp2 | [247](/dist/task284.py) (+27) | 220 🔴 | [vis-many](/vis_many/task284.png) | encode:+1 |
 | [157](/vis/task157.png) | [base_notebooks](/base_notebooks/task157_20250911-071925Z-compressed-variable-name-optimization-garry-moss.py) | raw/zlib-zopfli | [246](/dist/task157.py) (0) | 246  | [vis-many](/vis_many/task157.png) |  |
+| [379](/vis/task379.png) | [base_yu](/base_yu/task379.py) | raw/zlib-zopfli-cpp2 | [246](/dist/task379.py) (+105) | 141 🔴 | [vis-many](/vis_many/task379.png) | encode:+2 |
 | [387](/vis/task387.png) | [base_yu](/base_yu/task387.py) | forcomp-t/zlib-zopfli-cpp2 | [239](/dist/task387.py) (+21) | 218 🔴 | [vis-many](/vis_many/task387.png) | encode:+1 |
 | [363](/vis/task363.png) | [base_yu](/base_yu/task363.py) | forcomp-t/zlib-zopfli-cpp2 | [237](/dist/task363.py) (+24) | 213 🔴 | [vis-many](/vis_many/task363.png) |  |
 | [238](/vis/task238.png) | [base_yu](/base_yu/task238.py) | forcomp-s/zlib-zopfli-cpp2 | [236](/dist/task238.py) (+13) | 223 🔴 | [vis-many](/vis_many/task238.png) |  |
