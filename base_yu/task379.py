@@ -6,10 +6,9 @@ def p(g):
    for j,v in enumerate(s):
     if 8in s[j:] and s[j:j+2]==[2,0]:
      k=s.index(8,j)
-     s[j:k+1]=[2]*(k+1-j)
-     g[i-1][k-1:k+2]=8,8,8
-     g[i+1][k-1:k+2]=8,8,8
-     s[k-1]=s[k+1]=8
+     s[j:k]=[2]*(k-j)
+     g[i+1][k-1:k+2]=g[i-1][k-1:k+2]=8,8,8
+     g[i][k-1:k+2]=8,2,8
   *g,=map(list,zip(*g[::-1]))
  return g
 
