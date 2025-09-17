@@ -3,4 +3,6 @@
 # lambda g:[*zip(*[[s,s[:-(s.count(2)//2)]+99*(8,)][any(s)]for s in zip(*g)])] <- zipのclipを利用しようとした残骸
 # lambda g:[*zip(*[s[:len(s)-(u:=s.count(2)//2)]+u*(8,)for s in zip(*g)])]
 # =============================== 68 ===============================
-p=lambda g:[*zip(*[s[:-(u:=s.count(2)//2)or 99]+u*(8,)for s in zip(*g)])]
+# lambda g:[*zip(*[s[:-(u:=s.count(2)//2)or 99]+u*(8,)for s in zip(*g)])]
+# lambda g:[*zip(*[s[:-(u:=sum(s)//4)or 99]+u*(8,)for s in zip(*g)])]
+p=lambda g:[*zip(*[s[:-(u:=sum(s)//4)|16]+u*(8,)for s in zip(*g)])]
