@@ -103,7 +103,6 @@ def slow_cache_decorator(cache_dir: str = CACHE_DIR, cache_threshold=0.5):
     def wrapper(val: bytes, *args, use_cache=True, **kwargs):
       sha1_hash = hashlib.sha1(val).hexdigest()
       subdir = os.path.join(cache_dir, sha1_hash[:2])
-      
       cache_path = os.path.join(subdir, sha1_hash[2:])
       if use_cache and os.path.exists(cache_path):
         with open(cache_path, "rb") as f:

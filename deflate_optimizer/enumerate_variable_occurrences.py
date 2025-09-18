@@ -8,8 +8,7 @@ import strip
 
 RESERVED = {"True", "False", "None", "p"} | set(dir(builtins))
 
-# ChatGPTくんが気合でexec対応してくれました
-# https://chatgpt.com/share/68c7f62b-e994-8001-877c-466ce905db7a
+# exec 文字列の解析と、関数呼び出しのキーワード「c=」の c を通常の出現と同様に数える対応を含む
 def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool = False,
                          include_attrs: bool = False, include_exec: bool = False):
     if isinstance(code, bytes):
@@ -23,15 +22,16 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
     def to_offset(ln: int, col: int) -> int:
         return sum(len(lines[i]) for i in range(ln - 1)) + col
 
-    # 文字列トークンのコンテンツ開始相対位置を返す
+    # 文字列トークン先頭から内容開始位置までの長さ
     _str_head_re = re.compile(r"""(?ix)
-        (?:[rubf]{0,3})       # 接頭辞
-        (?P<q>'''|""" + '"""' + r"""|'|")  # クォート
+        (?:[rubf]{0,3})
+        (?P<q>'''|""" + '"""' + r"""|'|")
     """)
     def string_content_offset_in_token(token_src: str) -> int:
         m = _str_head_re.match(token_src)
         return 0 if not m else len(m.group(0))
 
+    # 文字列トークンの末尾クォート長
     def string_tail_len_from_token(token_src: str, content_rel: int) -> int:
         q3 = token_src[content_rel-3:content_rel]
         if q3 in ("'''", '"""'):
@@ -44,7 +44,7 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
         m = re.search(rf"""\b(?:async\s+)?def\s+({re.escape(name)})\s*(?=\()""", line)
         return None if not m else m.start(1)
 
-    # exec 引数式を静的評価し、「(内部コード文字列, 内部コードの絶対開始オフセット)」のリストへ
+    # exec 引数式を静的評価し内側コード断片のリストへ
     def eval_exec_arg_to_segments(node: ast.AST) -> list[tuple[str, int]]:
         # 文字列定数
         if isinstance(node, ast.Constant) and isinstance(node.value, str):
@@ -64,7 +64,7 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
             right = eval_exec_arg_to_segments(node.right)
             return left + right
 
-        # 乗算（"..." * N または N * "..."）
+        # 乗算 "..." * N または N * "..."
         if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Mult):
             # 左が文字列
             if isinstance(node.left, ast.AST) and isinstance(node.right, ast.Constant) and isinstance(node.right.value, int):
@@ -72,7 +72,6 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
                 if n <= 0:
                     return []
                 segs = eval_exec_arg_to_segments(node.left)
-                # 反復は同じオフセットに写像する
                 return segs * n
             # 右が文字列
             if isinstance(node.right, ast.AST) and isinstance(node.left, ast.Constant) and isinstance(node.left.value, int):
@@ -82,12 +81,27 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
                 segs = eval_exec_arg_to_segments(node.right)
                 return segs * n
 
-        # 括弧など（再帰させる）
+        # 括弧など
         if isinstance(node, ast.Expr):
             return eval_exec_arg_to_segments(node.value)
 
-        # 静的に評価できないものは無視
+        # 静的評価不可
         return []
+
+    # キーワード名の直近の一致位置をオフセットで取得
+    _kw_pattern_cache: dict[str, re.Pattern] = {}
+    def _last_kw_name_offset_between(src_text: str, name: str, abs_start: int, abs_end: int) -> int | None:
+        seg = src_text[abs_start:abs_end]
+        pat = _kw_pattern_cache.get(name)
+        if pat is None:
+            pat = re.compile(rf"\b({re.escape(name)})\s*=")
+            _kw_pattern_cache[name] = pat
+        m_last = None
+        for m in pat.finditer(seg):
+            m_last = m
+        if m_last is None:
+            return None
+        return abs_start + m_last.start(1)
 
     class Visitor(ast.NodeVisitor):
         def visit_Name(self, node: ast.Name) -> Any:
@@ -119,8 +133,25 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
             self._visit_func_like(node, node.name)
 
         def visit_Call(self, node: ast.Call) -> Any:
-            # まず通常の走査
+            # まず通常走査
             self.generic_visit(node)
+
+            # キーワード引数名も出現としてカウント
+            if node.keywords:
+                call_abs_start = to_offset(getattr(node, "lineno", 1), getattr(node, "col_offset", 0))
+                for kw in node.keywords:
+                    if kw.arg is None:
+                        continue  # **kwargs
+                    name = kw.arg
+                    if name in RESERVED:
+                        continue
+                    # 値の直前までを走査して name\s*= を後方一致
+                    val_abs_start = to_offset(kw.value.lineno, kw.value.col_offset)
+                    occ = _last_kw_name_offset_between(src, name, call_abs_start, val_abs_start)
+                    if occ is not None:
+                        out.append({"name": name, "lineno": 1, "col_offset": occ, "_absolute": True})
+
+            # exec の内部コードも解析
             if not include_exec:
                 return
             if not (isinstance(node.func, ast.Name) and node.func.id == "exec" and node.args):
@@ -143,7 +174,7 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
                             "name": item["name"],
                             "lineno": 1,
                             "col_offset": content_abs + off,
-                            "_absolute": True,  # 既に絶対オフセット
+                            "_absolute": True,
                         })
 
     Visitor().visit(tree)
@@ -151,8 +182,11 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
     # 変数名ごとにオフセット集約
     var_dict: dict[str, list[int]] = {}
     for item in out:
+        name = item["name"]
+        if name in RESERVED:
+            continue
         off = item["col_offset"] if item.get("_absolute") else to_offset(item["lineno"], item["col_offset"])
-        var_dict.setdefault(item["name"], []).append(off)
+        var_dict.setdefault(name, []).append(off)
 
     result = [{"name": name, "occurrences": sorted(pos)} for name, pos in sorted(var_dict.items())]
 

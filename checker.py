@@ -9,8 +9,10 @@ from typing import Any, Optional
 from dataclass_wizard import JSONWizard
 import matplotlib.pyplot as plt
 
+import sys
 import numpy as np
 from tqdm import tqdm
+import hashlib
 
 import compress
 from viz import cmap, norm, printmat
@@ -129,6 +131,20 @@ def visualize_outputs(outputs: list[Output], path):
     plt.tight_layout()
     plt.savefig(path)
 
+def check_str(task_id: int, code: str | bytes, task):
+  digest = hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()
+  tmp_path = f"tmp/{digest}{task_id:03d}.py"
+  if isinstance(code, str):
+    open(tmp_path, "w").write(code)
+  if isinstance(code, bytes):
+    open(tmp_path, "wb").write(code)
+  res = check(tmp_path, task, resume_tqdm=False)
+  if f"tmp.{digest}{task_id:03d}" in sys.modules:
+    del sys.modules[f"tmp.{digest}{task_id:03d}"]
+  if os.path.exists(tmp_path):
+    os.remove(tmp_path)
+  return res
+
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="Checker script for golf tasks.")
   parser.add_argument("dirname", nargs="?", default="dist", help="Directory name containing code files")
@@ -136,6 +152,7 @@ if __name__ == "__main__":
   parser.add_argument("--strip", "-s", action="store_true", help="Only strip code and exit")
   parser.add_argument("--knockout", "-k", type=int, default=-1, help="Maximum number of wrongs before stopping (default -1 = disabled)")
   parser.add_argument("--full-compress", "-f", action="store_false", dest="fast", help="Use slow compressor")
+  parser.add_argument("--check-compressed", action="store_true", help="Check the correctness of compressed code")
   args = parser.parse_args()
 
   dirname = args.dirname
@@ -159,7 +176,7 @@ if __name__ == "__main__":
           code = strip_for_plain(orig_code).encode()
           stripped = og_strip(orig_code) if ZLIB_GOLF_BANNER in orig_code else strip_for_zlib(orig_code)
           compress_method, compressed, raw_compressed, _ = compress.compress(stripped, fast=fast, force_compress=True, use_cache=False)
-      
+
           if args.strip:
             if code.decode("L1") in orig_code:
               print(f"[!] Stripped code exists in {code_path}")
@@ -169,12 +186,22 @@ if __name__ == "__main__":
                 for line in code.decode().split("\n"):
                   f.write(f"\n# {line}")
               print(f"[+] Appended code to {code_path}")
+
       except UnicodeDecodeError:
         with open(code_path, "rb") as f:
           code = compressed = f.read()
         compress_method = "unknown"
         raw_compressed = b""
       if res.message != "ok": print(res.message)
+
+      if args.check_compressed:
+        # Compresed code check (if needed)
+        res_comp = check_str(i, compressed, task)
+        res.correct = min(res.correct, res_comp.correct)
+        if res_comp.correct != 1.:
+          print(f"[!] Compressed code failed in {code_path} ({compress_method})")
+          print(res_comp.message)
+
       if res.correct == 1.:
         print(f"✅ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
         success += 1
