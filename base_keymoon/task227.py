@@ -7,6 +7,6 @@
 # lambda g:eval("[~-any(a)%3for a in zip(g.pop(0),g[3])],"*4)
 # lambda g:eval("[2*~a&2for a in map(max,g.pop(0),g[3])],"*4)
 # ======================= 52 =======================
-p=lambda g:[[2*~a&2for a in map(max,g.pop(4),s)] for s in g]
+p=lambda g:[[~s.pop(0)+b&2for b in g.pop(4)]for s in g]
 
-# mapping = { 0: 2, 1: 0, 3: 0 }
+# mapping = { (0, 0): 2, (1, 0): 0, (0, 3): 0, (1, 3): 0 }

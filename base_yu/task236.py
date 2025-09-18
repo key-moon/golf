@@ -3,7 +3,9 @@
 # lambda g:[[sum(a)*1.5%2//1for a in zip(*c)]for c in zip(g,g[5:])]
 # p=lambda g:[[3*(x^y//2)for x,y in zip(*c)]for c in zip(g,g[5:])]
 # p=lambda g:eval("[3*(x^y//2)for x,y in zip(g.pop(0),g[4])],"*4)
-p=lambda g:eval("[x*3^-y%5for x,y in zip(g.pop(0),g[4])],"*4)
+# lambda g:eval("[x*3^-y%5for x,y in zip(g.pop(0),g[4])],"*4)
+p=lambda g:[[s.pop(0)*3^-y%5for y in g.pop(5)]for s in g[:6]]
+
 
 # 00 0
 # 01 3
