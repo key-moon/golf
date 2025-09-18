@@ -1,9 +1,3 @@
-import re
-A=re.sub
-def p(g):
- d=A('[[ ,]','',str(g));n=[8]
- while'8'in d:
-  d=A('8','1',d,1)
-  for x in d:d=A('8(?=('+'.'*len(g[0])+')?1)','1',d)[::-1]
-  n+=[0]
- return[(n:=[0,*n[:-1]])[1:]for x in n[:-1]]
+#coding:L1
+import zlib
+exec(zlib.decompress(bytes('=NÍ ¾÷»­º%âA¦† Lx}·íûÏÇóI*«…û×ÛB­x\rg]LPÀ1k$›Ğ"Úk•†›±DòIÁc›ŒsnâÚ7¥CËÖ™­OŞ‚«gQcûØ9pÑ…†ÉtÑÌœùÚ…Ğs-¤«@¸Ş¤–Ğ~ÛzñÉéŸşŸ','L1'),-9))
