@@ -1,4 +1,4 @@
-# best: 45(Potatoman, 4atj sisyphus luke Seek mukundan, MasukenSamba, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, HETHAT, jacekwl Potatoman nauti, xsot ovs att joking mewheni, jonas ryno kg583, JRK) / others: 52(kabutack), 53(duckyluuk), 53(dbdr), 53(Bulmenisaurus), 55(cg)
+# best: 45(Potatoman, ox jam, 4atj sisyphus luke Seek mukundan, MasukenSamba, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, HETHAT, jacekwl Potatoman nauti, xsot ovs att joking mewheni, jonas ryno kg583, JRK) / others: 52(kabutack), 53(duckyluuk), 53(dbdr), 53(Bulmenisaurus), 55(cg)
 # ==================== 45 ===================
 # 3456789012345678901234567890123456789012345
 # p=lambda g:[[s[j]|s[8-j]for j in range(4)]for s in g]

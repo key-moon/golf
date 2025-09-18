@@ -1,4 +1,4 @@
-# best: 297(jailctf merger, xsot ovs att joking mewheni) / others: 336(natte), 355(jacekwl Potatoman nauti), 367(4atj sisyphus luke Seek mukundan), 370(Rafael Pooja), 370(kdmitrie)
+# best: 297(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 336(natte), 355(jacekwl Potatoman nauti), 367(4atj sisyphus luke Seek mukundan), 370(Rafael Pooja), 370(kdmitrie)
 def p(g):
  for u in range(len(g)):
   for l in range(len(g[0])):

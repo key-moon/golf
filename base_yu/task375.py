@@ -1,4 +1,4 @@
-# best: 53(natte, 4atj sisyphus luke Seek mukundan, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 57(MasukenSamba), 57(Yuchen20), 58(jonas ryno kg583), 58(JRK), 61(sekken)
+# best: 53(natte, ox jam, 4atj sisyphus luke Seek mukundan, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 57(MasukenSamba), 57(Yuchen20), 58(jonas ryno kg583), 58(JRK), 61(sekken)
 # ======================== 53 =======================
 # p=lambda g,E=enumerate:[[v*((i-j)*(i+j-len(g)+1)!=0)for j,v in E(s)]for i,s in E(g)]
 # p=lambda g:[[1for s[i],s[~i]in[(0,0)]]for i,s in enumerate(g)]and g

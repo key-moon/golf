@@ -1,4 +1,4 @@
-# best: 99(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 104(intgrah jimboko awu macaque sammyuri), 109(natte), 112(xsot ovs att joking mewheni), 129(2F), 129(biz)
+# best: 99(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 104(intgrah jimboko awu macaque sammyuri), 109(natte), 112(ox jam), 112(xsot ovs att joking mewheni), 129(2F)
 # =============================================== 99 ==============================================
 
 # def p(g):

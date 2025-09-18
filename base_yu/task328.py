@@ -1,4 +1,4 @@
-# best: 163(4atj sisyphus luke Seek mukundan) / others: 166(2F), 166(biz), 171(Yuchen20), 173(jacekwl Potatoman nauti), 173(xsot ovs att joking mewheni)
+# best: 163(4atj sisyphus luke Seek mukundan) / others: 166(2F), 166(biz), 171(Yuchen20), 173(ox jam), 173(jacekwl Potatoman nauti)
 # ============================================================================== 163 ==============================================================================
 def p(g):
  R=range(n:=len(g))

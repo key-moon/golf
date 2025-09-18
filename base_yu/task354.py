@@ -1,4 +1,4 @@
-# best: 96(4atj sisyphus luke Seek mukundan) / others: 99(xsot ovs att joking mewheni), 101(jailctf merger), 106(jonas ryno kg583), 112(kabutack), 118(Yuchen20)
+# best: 96(4atj sisyphus luke Seek mukundan) / others: 99(ox jam), 99(xsot ovs att joking mewheni), 101(jailctf merger), 106(jonas ryno kg583), 112(kabutack)
 # ============================================= 96 =============================================
 
 # p=lambda g:(c:=[*filter(int,g[0])],l:=[0]*9,k:=-1)and g[:1]+[*zip(*[(d:=0)or(l:=[d:=s[i]and(l[i]or d or(d:=c[k:=k+1]))for i in range(9)])for s in zip(*g[1:])])]

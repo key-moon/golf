@@ -1,4 +1,4 @@
-# best: 111(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(natte), 117(xsot ovs att joking mewheni), 177(MasukenSamba), 189(jonas ryno kg583)
+# best: 111(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(natte), 117(ox jam), 117(xsot ovs att joking mewheni), 177(MasukenSamba)
 # ==================================================== 111 ====================================================
 # port re;p=lambda g:eval(r'(g:=[*zip(*eval(re.sub(r"(([1-9]), \2.{31}\2.{25}(\2.{28})*)0",r"\1\2",str(g)))[::-1])]),'*32)[-1]
 # port re;p=lambda g:eval(r'(g:=[*zip(*eval(re.sub(r"(([1-9]), \2.{31}\2.{25}(\2.{28})*)0",r"\1\2",str(g)))[::-1])]),'*32)[-1]

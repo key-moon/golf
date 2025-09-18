@@ -1,4 +1,4 @@
-# best: 63(4atj sisyphus luke Seek mukundan) / others: 64(jailctf merger), 64(xsot ovs att joking mewheni), 71(intgrah jimboko awu macaque sammyuri), 74(jacekwl Potatoman nauti), 83(Yuchen20)
+# best: 63(4atj sisyphus luke Seek mukundan) / others: 64(ox jam), 64(jailctf merger), 64(xsot ovs att joking mewheni), 71(intgrah jimboko awu macaque sammyuri), 74(jacekwl Potatoman nauti)
 # ============================= 63 ============================
 # lambda s,c=0:sum([[v*0!=0and p(v,c:=9-sum(s,[]).count(0))or v]*c for v in s],[])
 # lambda s,c=0:sum([[v*0!=0and p(v,c:=9-str(s).count("0"))or v]*c for v in s],[])

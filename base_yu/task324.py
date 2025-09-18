@@ -1,4 +1,4 @@
-# best: 259(jailctf merger) / others: 260(xsot ovs att joking mewheni), 263(natte), 326(Rafael Pooja), 326(HashPanda Pooja), 327(HashPanda)
+# best: 259(jailctf merger) / others: 260(ox jam), 260(xsot ovs att joking mewheni), 263(natte), 326(Rafael Pooja), 326(HashPanda Pooja)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
  m={}

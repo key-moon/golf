@@ -1,4 +1,4 @@
-# best: 92(jailctf merger) / others: 95(4atj sisyphus luke Seek mukundan), 118(xsot ovs att joking mewheni), 131(duckyluuk), 158(jacekwl Potatoman nauti), 172(intgrah jimboko awu macaque sammyuri)
+# best: 92(jailctf merger) / others: 95(4atj sisyphus luke Seek mukundan), 118(ox jam), 118(xsot ovs att joking mewheni), 131(duckyluuk), 158(jacekwl Potatoman nauti)
 # 141
 # import re;s=re.sub;p=lambda g:(d:=s(*"21",str(g),1))and[[8-8*("2"in eval('(d:=s("[82](?=(.{%d})?.?.1)"%len(g[0]*3),"1",d)[::-1]),'*99)[98])]]
 

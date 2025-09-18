@@ -1,4 +1,4 @@
-# best: 129(4atj sisyphus luke Seek mukundan) / others: 134(xsot ovs att joking mewheni), 139(jailctf merger), 190(Yuchen20), 195(jonas ryno kg583), 201(MasukenSamba)
+# best: 129(4atj sisyphus luke Seek mukundan) / others: 134(ox jam), 134(xsot ovs att joking mewheni), 139(jailctf merger), 190(Yuchen20), 195(jonas ryno kg583)
 # ============================================================= 129 =============================================================
 # lambda g,c=2**26:-c*[[-v.bit_count()%7for v in s]for s in g]or p([(l:=0)or[l:=v and v|l|(v<9)*(c:=c//2)for v in s]for s in zip(*g)][::-1],min(c-1,6))
 # lambda g,c=7,d=8**40:-c*[[-v.bit_count()%7for v in s]for s in g]or p([(l:=0)or[l:=(v|l|(v<9)*(d:=d//2))&-(0<v)for v in s]for s in zip(*g)][::-1],c-1)

@@ -1,4 +1,4 @@
-# best: 50(jailctf merger) / others: 56(xsot ovs att joking mewheni), 57(4atj sisyphus luke Seek mukundan), 84(dbdr), 87(intgrah jimboko awu macaque sammyuri), 89(jacekwl Potatoman nauti)
+# best: 50(jailctf merger) / others: 56(ox jam), 56(xsot ovs att joking mewheni), 57(4atj sisyphus luke Seek mukundan), 84(dbdr), 87(intgrah jimboko awu macaque sammyuri)
 # ====================== 50 ======================
 # 345678901234567890123456789012345678901234567890123456
 def p(g):

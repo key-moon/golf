@@ -1,4 +1,4 @@
-# best: 57(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 59(intgrah jimboko awu macaque sammyuri), 61(xsot ovs att joking mewheni), 62(Yuchen20), 62(jacekwl Potatoman nauti), 62(jonas ryno kg583)
+# best: 57(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 59(intgrah jimboko awu macaque sammyuri), 61(ox jam), 61(xsot ovs att joking mewheni), 62(Yuchen20), 62(jacekwl Potatoman nauti)
 # ========================== 57 =========================
 # 345678901234567890123456789012345678901234567890123456
 

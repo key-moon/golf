@@ -1,4 +1,4 @@
-# best: 241(jailctf merger) / others: 255(xsot ovs att joking mewheni), 269(4atj sisyphus luke Seek mukundan), 289(natte), 312(jonas ryno kg583), 326(MasukenSamba)
+# best: 241(jailctf merger) / others: 255(ox jam), 255(xsot ovs att joking mewheni), 269(4atj sisyphus luke Seek mukundan), 289(natte), 312(jonas ryno kg583)
 def p(g):
  u=[s[s.index(1):23-s[::-1].index(1)]for s in g if 1 in s]
  for d in range(8):

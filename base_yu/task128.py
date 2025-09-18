@@ -1,4 +1,4 @@
-# best: 64(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, HETHAT, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 67(MasukenSamba), 69(natte), 71(jonas ryno kg583), 74(duckyluuk), 74(JRK)
+# best: 64(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, HETHAT, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 67(MasukenSamba), 69(natte), 71(jonas ryno kg583), 74(duckyluuk), 74(JRK)
 # ============================= 64 =============================
 # 34567890123456789012345678901234567890123456789012345678901234
 # p=lambda g:[*map(list,zip(*[s[(k:=s[::-1].index(0)):]+s[:k]for s in zip(*g)]))]
