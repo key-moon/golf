@@ -268,7 +268,7 @@ def compress(code: str, best: Optional[int]=None, fast=False, use_cache=True, fo
     ("zlib-zopfli-cpp", lambda x: cached_zopfli_ours(x, fast, use_cache=use_cache), determine_wbits),
     ("zlib-zopfli-cpp-var-zopfli", lambda x: cached_zopfli_ours_varopt_with_zopfli(x, fast, use_cache=use_cache), determine_wbits),
     ("zlib-zopfli-cpp-var-nozopfli", lambda x: cached_zopfli_ours_varopt_without_zopfli(x, fast, use_cache=use_cache), determine_wbits),
-    ("zlib-zopfli-cpp-var-zopfli-slow", lambda x: cached_zopfli_ours_varopt_with_zopfli_slow(x, fast, use_cache=use_cache), determine_wbits), # 時間かけてたくさんイテレーションを回すやつ
+    # ("zlib-zopfli-cpp-var-zopfli-slow", lambda x: cached_zopfli_ours_varopt_with_zopfli_slow(x, fast, use_cache=use_cache), determine_wbits), # 時間かけてたくさんイテレーションを回すやつ
     ("lzma", lambda x: cached_lzma(x),lambda _: ""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),lambda _: ""),
   ]
