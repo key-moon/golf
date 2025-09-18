@@ -1,4 +1,4 @@
-# best: 112(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 114(intgrah jimboko awu macaque sammyuri), 119(4atj sisyphus luke Seek mukundan), 155(MasukenSamba), 230(jacekwl Potatoman nauti), 242(natte)
+# best: 112(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 114(intgrah jimboko awu macaque sammyuri), 119(4atj sisyphus luke Seek mukundan), 155(MasukenSamba), 230(jacekwl Potatoman nauti), 241(natte)
 # ==================================================== 112 =====================================================
 # lambda g,c=23:-c*g or p([*zip(*eval(str(g).replace((c//2*", 5")[2:],(c//2*f",{len({*sum(g,g[0])})*3%5}")[1:])))],c-1)
 # lambda g,c=23:-c*g or p([*zip(*eval(str(g).replace("5"+c//2*", 5",(a:="len({*sum(g,g[0])})*3%5")+c//2*f",{a}")))],c-1)
