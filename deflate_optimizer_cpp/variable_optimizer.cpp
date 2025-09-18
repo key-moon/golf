@@ -48,9 +48,6 @@ int main(int argc, char** argv) {
 
     std::vector<Variable> variables = load_variables_from_stream(varfile);
 
-    length = 0;
-    std::vector<int> text;
-
     if (blocks.size() != 1) {
         std::cerr << "Warning: variable optimization is only supported for single block deflate data. Skipping variable optimization.\n";
         for(const auto& block : blocks) {
@@ -66,9 +63,10 @@ int main(int argc, char** argv) {
             auto before_vars = variables;
             int before = block.bit_length();
             // std::cerr << "Optimizing variables..." << std::endl;
-            optimize_variables(block, variables, text);
+            auto variable_to_new_literal_mapping = optimize_variables(block, variables);
+            replace_and_recompute_parsing(block, variables, variable_to_new_literal_mapping);
             // std::cerr << "Optimizing Huffman tree..." << std::endl;
-            optimize_huffman_tree(block, text, num_iter);
+            optimize_huffman_tree(block, {}, num_iter);
             // std::cerr << "Done." << std::endl;
             int after = block.bit_length();
             std::cerr << "Round " << i << ": " << before << " -> " << after << "\n";
@@ -91,7 +89,6 @@ int main(int argc, char** argv) {
         }
         return 0;
     }
-    
 
     return 0;
 }

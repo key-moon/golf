@@ -658,6 +658,7 @@ DynamicHuffmanBlock FixedHuffmanBlock::to_dynamic_huffman_block() const {
     for (int i = 280; i <= 287; ++i) block.literal_code_lengths[i] = 8;
     block.distance_code_lengths.resize(32, 0);
     for (int i = 0; i <= 31; ++i) block.distance_code_lengths[i] = 5;
+    block.cl_code_lengths.resize(19, 5);
     return block;
 }
 

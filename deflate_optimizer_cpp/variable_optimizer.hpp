@@ -3,13 +3,20 @@
 #include "optimal_parsing.hpp"
 #include "optimizer.hpp"
 #include "variable.hpp"
+#include "xorshift.hpp"
 
 
-void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<int>& context) {
+struct CharStat {
+    bool var_candidate = false;
+    int num_var_occurrences_as_literal;
+    int num_nonvar_occurrences_as_literal;
+    int lit_code_length;
+};
 
-    auto text = block.get_string(context);
+
+std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vector<Variable>& variables) {
+    auto text = block.get_string({});
     std::vector<bool> is_lieral_position(text.size());
-
     std::vector<int> literal_freq(256, 0);
 
     int ptr = 0;
@@ -22,14 +29,6 @@ void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& varia
             ptr += tok.pair.length;
         }
     }
-
-    /*
-    std::cerr << "=-------- Original String ---------\n";
-    for(auto c : text) {
-        std::cerr << static_cast<char>(c);
-    }
-    std::cerr << "\n\n";
-    */
 
     std::vector<int> num_lit_occurrences_of_vars(variables.size(), 0);
     for (int i = 0; i < variables.size(); ++i) {
@@ -51,12 +50,6 @@ void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& varia
             }
         }
     }
-    struct CharStat {
-        bool var_candidate = false;
-        int num_var_occurrences_as_literal;
-        int num_nonvar_occurrences_as_literal;
-        int lit_code_length;
-    };
     std::vector<CharStat> char_stats(256);
     for (int i = 'A'; i <= 'Z'; ++i) char_stats[i].var_candidate = true;
     for (int i = 'a'; i <= 'z'; ++i) if (i != 'p') char_stats[i].var_candidate = true;
@@ -75,9 +68,37 @@ void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& varia
         char_stats[char_val].num_var_occurrences_as_literal = num_lit_occurrences_of_vars[i];
         char_stats[char_val].num_nonvar_occurrences_as_literal -= num_lit_occurrences_of_vars[i];
     }
+    return char_stats;
+}
 
-    // とりあえず、ビット数が少ないところに貪欲に当てはめていく
-    // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
+
+void replace_and_recompute_parsing(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<int>& variable_to_new_literal_mapping) {
+    auto text = block.get_string({});
+    for (int i = 0; i < variables.size(); ++i) {
+        if (variable_to_new_literal_mapping[i] == -1) continue;
+        int new_val = variable_to_new_literal_mapping[i];
+        variables[i].name = std::string(1, static_cast<char>(new_val));
+        for(auto pos : variables[i].occurrences) {
+            for (int j = 0; j < variables[i].name.size(); ++j) {
+                text[pos + j] = new_val;
+            }
+        }
+    }
+    // 再度optimal parse
+    block.tokens.clear();
+    for(auto c : text) {
+        block.tokens.push_back(Token{ .type = Token::LITERAL, .literal = static_cast<unsigned char>(c) });
+    }
+    block.tokens = optimal_parse_block(block, {});
+}
+
+
+// ビット数が少ないところに貪欲に当てはめていく
+// ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
+// このアルゴリズムは適当に変えたりvariantを作ったりしていい
+std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables) {
+    auto text = block.get_string({});
+    auto char_stats = get_char_stats(block, variables);
     std::vector<int> replace_cand_vars; // 変数をliteralとしての出現回数でソート
     for (int i = 0; i < variables.size(); ++i) {
         if (variables[i].name.size() != 1) continue;
@@ -98,7 +119,7 @@ void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& varia
         if (!char_stats[i].var_candidate) continue;
         code_length_symbol_map[char_stats[i].lit_code_length].push_back(i);
     }
-    ptr = 0;
+    int ptr = 0;
     for (int len = 1; len <= 16; ++len) {
         if (code_length_symbol_map[len].size() == 0) continue;
         std::vector<int> traverse_vars_list;
@@ -143,34 +164,19 @@ void optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& varia
         }
         if (ptr >= replace_cand_vars.size()) break;
     }
-
-    /*
-    std::cout << "OLD STRING---------\n";
-    for (auto c : text) {
-        std::cout << static_cast<char>(c);
-    }
-    std::cout << "\n\n";
-    */
-   ptr = 0;
-   for(auto i : replace_cand_vars) {
+    std::vector<int> variable_to_new_literal_mapping(variables.size(), -1);
+    ptr = 0;
+    for(auto i : replace_cand_vars) {
         if (variables[i].name.size() != 1) continue;
         int char_val = static_cast<int>(variables[i].name[0]);
         int new_val = assigned_literal_code[ptr++];
         if (new_val == -1) {
             continue;
         }
-        // std::cerr << "Rename: " << variables[i].name << " (" << char_val << ") -> '" << static_cast<char>(new_val) << "' (" << new_val << ")\n";
-        variables[i].name = std::string(1, static_cast<char>(new_val));
-        for(auto pos : variables[i].occurrences) {
-            for (int j = 0; j < variables[i].name.size(); ++j) {
-                text[pos + j] = new_val;
-            }
+        if (new_val == char_val) {
+            continue;
         }
+        variable_to_new_literal_mapping[i] = new_val;
     }
-    // 再度optimal parse
-    block.tokens.clear();
-    for(auto c : text) {
-        block.tokens.push_back(Token{ .type = Token::LITERAL, .literal = static_cast<unsigned char>(c) });
-    }
-    block.tokens = optimal_parse_block(block, context);
+    return variable_to_new_literal_mapping;
 }
