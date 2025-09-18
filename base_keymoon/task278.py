@@ -1,4 +1,4 @@
-# best: 118(4atj sisyphus luke Seek mukundan) / others: 119(ox jam), 119(xsot ovs att joking mewheni), 120(jailctf merger), 213(MasukenSamba), 219(jacekwl Potatoman nauti)
+# best: 118(4atj sisyphus luke Seek mukundan) / others: 119(ox jam), 119(xsot ovs att joking mewheni), 120(jailctf merger), 213(MasukenSamba), 215(jacekwl Potatoman nauti)
 # ======================================================= 118 ========================================================
 # port re;p=lambda g,c=-11:g*c or p(eval(re.sub(r"0(?=((...){0,2}.{%s}|, )2.{%s}2)"%(a:=len(g)*3-2,a+3),"3",str([*zip(*g)][::1|c%3%-2]))),c+1)
 # port re;p=lambda g,c=-11:g*c or p(eval(re.sub(r"0(?=, (.{%s,%s})?2.{%s}2)"%(a:=len(g)*3-4,a+6,a+5),"3",str([*zip(*g)][::1|c%3%-2]))),c+1)
