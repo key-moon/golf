@@ -180,7 +180,7 @@ def optimize_deflate_ours2(code: bytes, deflate: bytes, num_iter: int) -> bytes:
   
   optimizer = os.path.join(os.path.dirname(__file__), "deflate_optimizer_cpp", "variable_optimizer")
   try:
-    result = subprocess.run([optimizer, tmp_path, tmp_var_path, str(num_iter), '10'], capture_output=True, text=True, check=True)
+    result = subprocess.run([optimizer, tmp_path, tmp_var_path, str(num_iter), str(num_iter)], capture_output=True, text=True, check=True)
     optimized_text = result.stdout
     if not optimized_text.strip():
       return deflate
@@ -214,9 +214,8 @@ def cached_zopfli_ours(val: bytes, fast=False):
     return compressed
   return optimize_deflate_ours(compressed, num_iter=num_iter)
 
-def cached_zopfli_ours2(val: bytes, use_zopfli, fast=False):
+def cached_zopfli_ours2(val: bytes, use_zopfli, num_iter=10, fast=False):
   zopfli_param = 300 if fast else 2000
-  num_iter = 10
   if use_zopfli:
     compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
     compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
@@ -232,11 +231,15 @@ def cached_zopfli_ours2(val: bytes, use_zopfli, fast=False):
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp_var"))
 def cached_zopfli_ours_varopt_with_zopfli(val: bytes, fast=False):
-  return cached_zopfli_ours2(val, use_zopfli=True, fast=fast)
+  return cached_zopfli_ours2(val, use_zopfli=True, num_iter=10, fast=fast)
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp_var_no_zopfli"))
 def cached_zopfli_ours_varopt_without_zopfli(val: bytes, fast=False):
-  return cached_zopfli_ours2(val, use_zopfli=False, fast=fast)
+  return cached_zopfli_ours2(val, use_zopfli=False, num_iter=10, fast=fast)
+
+@slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp_var_slow"))
+def cached_zopfli_ours_varopt_with_zopfli_slow(val: bytes, fast=False):
+  return cached_zopfli_ours2(val, use_zopfli=True, num_iter=1000, fast=fast)
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
 def cached_lzma(val: bytes):
@@ -265,6 +268,7 @@ def compress(code: str, best: Optional[int]=None, fast=False, use_cache=True, fo
     ("zlib-zopfli-cpp", lambda x: cached_zopfli_ours(x, fast, use_cache=use_cache), determine_wbits),
     ("zlib-zopfli-cpp-var-zopfli", lambda x: cached_zopfli_ours_varopt_with_zopfli(x, fast, use_cache=use_cache), determine_wbits),
     ("zlib-zopfli-cpp-var-nozopfli", lambda x: cached_zopfli_ours_varopt_without_zopfli(x, fast, use_cache=use_cache), determine_wbits),
+    ("zlib-zopfli-cpp-var-zopfli-slow", lambda x: cached_zopfli_ours_varopt_with_zopfli_slow(x, fast, use_cache=use_cache), determine_wbits), # 時間かけてたくさんイテレーションを回すやつ
     ("lzma", lambda x: cached_lzma(x),lambda _: ""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),lambda _: ""),
   ]
