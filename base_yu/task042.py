@@ -1,4 +1,4 @@
-# best: 139(natte) / others: 143(4atj sisyphus luke Seek mukundan), 145(jailctf merger), 157(intgrah jimboko awu macaque sammyuri), 169(xsot ovs att joking mewheni), 267(MasukenSamba)
+# best: 139(natte) / others: 143(4atj sisyphus luke Seek mukundan), 147(jailctf merger), 157(intgrah jimboko awu macaque sammyuri), 169(xsot ovs att joking mewheni), 267(MasukenSamba)
 # ================================================================== 139 ==================================================================
 
 import re;p=lambda g,c=-3:g*c or[*zip(*eval(re.sub("0(?=.{%d}3.{%d}3)"%((k:=sum(sum(g,[]))//21+1)*38-1,k*29-1),"8",str(p(g,c+1)))))][::-1]

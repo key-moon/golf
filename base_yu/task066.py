@@ -1,4 +1,4 @@
-# best: 268(4atj sisyphus luke Seek mukundan) / others: 289(xsot ovs att joking mewheni), 293(jailctf merger), 299(natte), 303(duckyluuk), 305(Yuchen20)
+# best: 268(4atj sisyphus luke Seek mukundan) / others: 289(xsot ovs att joking mewheni), 290(jailctf merger), 299(natte), 303(duckyluuk), 305(Yuchen20)
 def p(g):
  n=len(g)
  R=range(n*n)

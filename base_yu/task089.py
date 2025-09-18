@@ -1,4 +1,4 @@
-# best: 236(xsot ovs att joking mewheni) / others: 248(jailctf merger), 304(jacekwl Potatoman nauti), 316(natte), 316(MasukenSamba), 326(Yuchen20)
+# best: 236(xsot ovs att joking mewheni) / others: 245(jailctf merger), 304(jacekwl Potatoman nauti), 316(natte), 316(MasukenSamba), 326(Yuchen20)
 p=lambda g:[[g[y][x] or max(any(
   g[i][j]==d and (y+a-i,x+(b-j)*(g[a][b]*2-5))!=(a,b) and 13>y+a-i>-1<x+(b-j)*(g[a][b]*2-5)<13 and g[y+a-i][x+(b-j)*(g[a][b]*2-5)]==g[a][b]
   for a in range(13)for b in range(13)if g[a][b]|1==3 and (d:=max(k|l!=0 and 13>a+k>-1<b+l<13 and g[a+k][b+l] for k in range(-1,2)for l in range(-1,2)))
