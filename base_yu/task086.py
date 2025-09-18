@@ -4,10 +4,16 @@ import re
 def p(g):
  c,d,_=sorted({*sum(g,[])},key=sum(g,[]).count)
  g=eval(re.sub("(?=[1-9])",r"c^d^",str(g)))
- g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
- g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
- g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
- g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
+ g=[*zip(*eval(re.sub(f"0(?=(, {c}|(, 0)?, {c}, .), ., {c})",str(d),str(g)))[::-1])]
+ g=[*zip(*eval(re.sub(f"0(?=(, {c}|(, 0)?, {c}, .), ., {c})",str(d),str(g)))[::-1])]
+ g=[*zip(*eval(re.sub(f"0(?=(, {c}|(, 0)?, {c}, .), ., {c})",str(d),str(g)))[::-1])]
+ g=[*zip(*eval(re.sub(f"0(?=(, {c}|(, 0)?, {c}, .), ., {c})",str(d),str(g)))[::-1])]
+ # ↓この下4行は [Yuくんのcommit](https://github.com/key-moon/golf/commit/11125032033087d2f61e09dcacaf810a6c1e4a0d) のもの
+ # 変数名置換くんとの相性が悪くてなんか死んでるっぽいので一旦コメントアウトします、解決したら戻したい（Yuくんごめん）
+ # g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
+ # g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
+ # g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
+ # g=[*zip(*eval(re.sub("0(?=(, %d|(, 0)?, %d, .), ., %d)"%(c,c,c),str(d),str(g)))[::-1])]
  return g
 
 
