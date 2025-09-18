@@ -13,4 +13,5 @@
 # p=lambda g,c=-1:g*c or[*zip(*[u:=[8]*9,*p(g,c+1)[2:],u])]
 # p=lambda g:[*zip(*[u:=[8]*9,*[*zip(*[u,*g[2:],u])][2:],u])]
 # p=lambda g,c=0:c*[*zip(*[u:=[8]*9,*g[2:],u])]or p(p(g,1),1)
-p=lambda g:g*all(g[0])or p([*zip(*[u:=[8]*9,*g[2:],u])])
+# lambda g:g*all(g[0])or p([*zip(*[u:=[8]*9,*g[2:],u])])
+p=lambda g:g*all(g[0])or p([*zip(u:=[8]*9,*g[2:],u)])
