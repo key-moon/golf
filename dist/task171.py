@@ -1,1 +1,1 @@
-p=lambda g,c=-1:g*c or[[8,*r[2:],8]for r in zip(*p(g,c+1))]
+p=lambda g:g*all(g[0])or p([*zip(*[u:=[8]*9,*g[2:],u])])
