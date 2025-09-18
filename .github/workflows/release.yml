@@ -11,6 +11,7 @@ permissions:
 
 concurrency:
   group: release-submission
+  cancel-in-progress: false
 
 jobs:
   build-and-release:
@@ -27,20 +28,22 @@ jobs:
           version: latest
 
       - name: Build submission.zip
+        shell: bash
         run: |
           set -euxo pipefail
           source tools/setup.sh
           make submission.zip
 
       - name: Commit and push
+        shell: bash
         run: |
           set -euxo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add -A
           if ! git diff --cached --quiet; then
             git commit -m "Update submission.zip [skip ci]"
-            git pull --rebase
+            git pull --rebase --autostash
             git push
           else
             echo "No changes to commit"
@@ -48,6 +51,7 @@ jobs:
 
       - name: Generate release notes
         id: generate_notes
+        shell: bash
         run: |
           set -euxo pipefail
           source tools/setup.sh
@@ -58,11 +62,10 @@ jobs:
             # If no previous tag exists, use the first commit
             PREV_COMMIT=$(git rev-list --max-parents=0 HEAD)
           else
-            PREV_COMMIT=$PREV_TAG
+            # Resolve tag to commit id
+            PREV_COMMIT=$(git rev-list -n 1 "$PREV_TAG")
           fi
-          
           CURRENT_COMMIT=HEAD
-          
           python tools/generate_release_note.py "$PREV_COMMIT" "$CURRENT_COMMIT"
 
       - name: Send release to Discord
@@ -75,9 +78,11 @@ jobs:
 
       - name: Make timestamp (for tag/name)
         id: date
+        shell: bash
         run: |
+          set -euo pipefail
           echo "ts=$(date +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
-          echo "human=$(date +'%Y-%m-%d %H:%M:%S')" >> "$GITHUB_OUTPUT"
+          echo "human=$(date +'%Y-%m-%d %H:%M:%S %Z')" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -88,12 +93,34 @@ jobs:
           files: submission.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   failure-notification:
-    if: failure()
+    needs: build-and-release
+    if: ${{ always() && needs.build-and-release.result != 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Notify Discord of failure
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
         run: |
-          DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
-          DISCORD_PAYLOAD=$(python -c 'import json; import sys; from datetime import datetime; print(json.dumps({ "embeds": [{ "title": "Workflow Failure", "description": "The workflow **Release Submission** has failed.", "color": 16711680, "timestamp": datetime.now().isoformat() }] }))')
-          curl -X POST -H "Content-Type: application/json" -d "$DISCORD_PAYLOAD" "$DISCORD_WEBHOOK_URL"
+          set -euo pipefail
+          # RFC3339（UTC）でtimestampを作る
+          TS=$(python - <<'PY'
+          from datetime import datetime, timezone
+          print(datetime.now(timezone.utc).isoformat())
+          PY
+          )
+          # JSONを安全に作る
+          read -r -d '' PAYLOAD <<JSON
+          {
+            "embeds": [{
+              "title": "Workflow Failure: Release Submission",
+              "description": "The workflow **Release Submission** has failed or was cancelled.\\nRepository: \`${{ github.repository }}\`\\nBranch: \`${{ github.ref_name }}\`\\nRun: [Open in Actions]($RUN_URL)",
+              "color": 16711680,
+              "timestamp": "$TS"
+            }]
+          }
+          JSON
+          curl --fail-with-body -sS -X POST -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL"
