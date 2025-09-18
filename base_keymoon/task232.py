@@ -5,4 +5,5 @@
 # lambda g:[([0]*r.index(m:=max(r))+[m,5-0**m*5]*9)[:len(r)]for r in g]
 # lambda g:[([0]*r.index(m:=max(r))+[m,m//~m*-5]*9)[:len(r)]for r in g]
 # lambda g:[(i:=0)or[[i*-5,max(r)][i:=~i+0**c]for c in r]for r in g] <- failed
-p=lambda g:[(i:=0)or[[0,5,max(r)][i:=-i+c//~c]for c in r]for r in g]
+# p=lambda g:[(i:=0)or[((i:=c-i)<0)*5or i for c in r]for r in g]
+p=lambda g:[(i:=0)or[[i:=c-i,5][i<0]for c in r]for r in g]
