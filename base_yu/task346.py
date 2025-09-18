@@ -1,4 +1,4 @@
-# best: 58(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(4atj sisyphus luke Seek mukundan), 68(xsot ovs att joking mewheni), 77(jacekwl Potatoman nauti), 114(jonas ryno kg583), 118(natte)
+# best: 58(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(4atj sisyphus luke Seek mukundan), 68(xsot ovs att joking mewheni), 77(jacekwl Potatoman nauti), 107(Yuchen20), 114(jonas ryno kg583)
 # ========================== 58 ==========================
 # p=lambda g,E=enumerate:[[sum(s[j] for i,s in E(g)for j,t in E(zip(*g))if len({*(u:=[0,*s,0][j:j+3:2]+[0,*t,0][i:i+3:2])})==1and[s[j]]*4!=u>[1])]]
 # p=lambda g,E=enumerate:[[s[j]for i,s in E(g)for j,t in E(zip(*g))if(u:=[0,*s][j:j+3])==[0,*t][i:i+3]==u[::-1]>[1]and u[0]!=s[j]!=0]]

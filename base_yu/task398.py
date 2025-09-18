@@ -1,4 +1,4 @@
-# best: 77(jailctf merger) / others: 79(4atj sisyphus luke Seek mukundan), 79(xsot ovs att joking mewheni), 83(duckyluuk), 83(MasukenSamba), 83(2F)
+# best: 77(jailctf merger) / others: 79(4atj sisyphus luke Seek mukundan), 79(xsot ovs att joking mewheni), 82(Yuchen20), 83(duckyluuk), 83(MasukenSamba)
 # def p(g):a=g[0];d={i:v for i,v in enumerate(a)if v};m=len(a)*len(d);return[[d.get(r+j-m+1,0)for j in range(m)]for r in range(m)]
 
 # def p(g):
