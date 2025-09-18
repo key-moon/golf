@@ -1,1 +1,1 @@
-p=lambda g:[[~-a&2for a in map(max,g.pop(3),s)]for s in g]
+p=lambda g:[[a+~-s.pop(0)&2for a in g.pop(3)]for s in g]

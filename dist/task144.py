@@ -1,1 +1,1 @@
-p=lambda g:eval("[3-any(a)*3for a in zip(g.pop(0),g[4])],"*4)
+p=lambda g:[[3>>a+s.pop(0)for a in g.pop(5)]for s in g[:4]]
