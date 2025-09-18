@@ -100,14 +100,35 @@ def handle_results(results: list[TaskResult]):
   record_ours_task_score_progression(current_scores)
 
   others_bests = get_scores_per_task()
-  others_bests_sum = sum(max(1,2500-bests[0]["score"]) for bests in others_bests)
 
-  other_mds: list[tuple[str, str, Callable[[tuple[TaskResult, list[TaskSubmissionWithName]]], int | float]]] = [
-    ("best", "README.md", lambda x: x[1][0]["score"]),
+  def first_non_ours(entries: list[TaskSubmissionWithName]) -> TaskSubmissionWithName | None:
+    for entry in entries:
+      if entry["name"] != "ours":
+        return entry
+    return None
+
+  others_best_entries = [first_non_ours(bests) for bests in others_bests]
+
+  others_bests_sum = sum(
+    max(1, 2500 - best["score"])
+    for best in others_best_entries
+    if best is not None
+  )
+
+  def best_score(entry: TaskSubmissionWithName | None, default: int | float) -> int | float:
+    return entry["score"] if entry is not None else default
+
+  def our_length(res: TaskResult) -> int:
+    return res.length if res.length is not None else 999999
+
+  results_with_best: list[tuple[TaskResult, TaskSubmissionWithName | None]] = list(zip(results, others_best_entries))
+
+  other_mds: list[tuple[str, str, Callable[[tuple[TaskResult, TaskSubmissionWithName | None]], float | int]]] = [
+    ("best", "README.md", lambda x: best_score(x[1], float("inf"))),
     ("task", "stats/task-sorted.md", lambda x: x[0].task),
-    ("ratio", "stats/ratio-sorted.md", lambda x: -(x[0].length if x[0].length else 999999) / max(others_bests[x[0].task - 1][0]["score"], 10)),
-    ("length", "stats/length-sorted.md", lambda x: -(x[0].length if x[0].length else 999999)),
-    ("diff", "stats/best-sorted.md", lambda x: x[1][0]["score"] - (x[0].length if x[0].length else 999999)),
+    ("ratio", "stats/ratio-sorted.md", lambda x: -our_length(x[0]) / max(best_score(x[1], 10), 10)),
+    ("length", "stats/length-sorted.md", lambda x: -our_length(x[0])),
+    ("diff", "stats/best-sorted.md", lambda x: best_score(x[1], 999999) - our_length(x[0])),
   ]
 
   for name, path, keyfunc in other_mds:
@@ -127,8 +148,8 @@ def handle_results(results: list[TaskResult]):
 
       file.write(f"\n\n## sorted by {name}\n\n")
       file.write(TaskResult.md_header())
-      for stat, bests in sorted(zip(results, others_bests), key=keyfunc):
-        file.write(stat.md_row(bests[0]))
+      for stat, best in sorted(results_with_best, key=keyfunc):
+        file.write(stat.md_row(best))
 
 if __name__ == "__main__":
   os.makedirs("dist", exist_ok=True)
