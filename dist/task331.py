@@ -1,1 +1,1 @@
-p=lambda g,c=-3:c*g or[*zip(*eval(str(p(g,c+1)).replace("1, 0","1,"+"6278"[c])))][::-1]
+p=lambda g,c=3:-c*g or[*zip(*eval(str(p(g,c-1)).replace("1,","1,5**c*6%11+")))][::-1]
