@@ -12,6 +12,18 @@
 #  return g
 
 
+# def p(g):
+#  *C,B=sorted({*sum(g,[])},key=sum(g,[]).count)
+#  for c in C:
+#   for d in C:
+#    u=[(i,j)for i in range(len(g))for j in range(len(g[i]))if g[i][j]==c]
+#    v=[(i,j)for i in range(len(g))for j in range(len(g[i]))if g[i][j]==d]
+#    for y,x in u:
+#     for a,b in v:
+#      w=[((i-y)*2+a+k,(j-x)*2+b+l) for i,j in u for k in (0,1)for l in (0,1) if len(g)>(i-y)*2+a+k>-1<(j-x)*2+b+l<len(g[0])]
+#      if v==sorted(w):
+#       return [[[B,v][v==c] for*t,v in zip(*g,s)if c in t]for s in g if c in s]
+
 def p(g):
  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)
  for c in C:
