@@ -59,36 +59,39 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    for(const auto& block : blocks) {
-        if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get())) {
-            for (int i = 0; i < max_num_round; ++i) {
-                auto before_block = *db;
-                auto before_vars = variables;
-                int before = db->bit_length();
-                // std::cerr << "Optimizing variables..." << std::endl;
-                optimize_variables(*db, variables, text);
-                // std::cerr << "Optimizing Huffman tree..." << std::endl;
-                optimize_huffman_tree(*db, text, num_iter);
-                // std::cerr << "Done." << std::endl;
-                int after = db->bit_length();
-                std::cerr << "Round " << i << ": " << before << " -> " << after << "\n";
-                if (before <= after) {
-                    std::cerr << "No improvement, stop optimizing this block\n";
-                    *db = before_block;
-                    variables = before_vars;
-                    break;
-                }
-                else {
-                    std::cerr << "Improved!\n";
-                }
+    if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(blocks[0].get())) {
+        auto block = *db;
+        for (int i = 0; i < max_num_round; ++i) {
+            auto before_block = block;
+            auto before_vars = variables;
+            int before = block.bit_length();
+            // std::cerr << "Optimizing variables..." << std::endl;
+            optimize_variables(block, variables, text);
+            // std::cerr << "Optimizing Huffman tree..." << std::endl;
+            optimize_huffman_tree(block, text, num_iter);
+            // std::cerr << "Done." << std::endl;
+            int after = block.bit_length();
+            std::cerr << "Round " << i << ": " << before << " -> " << after << "\n";
+            if (before <= after) {
+                std::cerr << "No improvement, stop optimizing this block\n";
+                block = before_block;
+                variables = before_vars;
+                break;
+            }
+            else {
+                std::cerr << "Improved!\n";
             }
         }
-        block->dump_string(std::cout);
-        auto block_text = block->get_string(text);
-        text.insert(text.end(), block_text.begin(), block_text.end());
-        length += block->bit_length();
+        block.dump_string(std::cout);
+        std::cerr << "Total bit length (output): " << block.bit_length() << "\n";
+    } else {
+        std::cerr << "Warning: variable optimization is only supported for dynamic Huffman blocks. Skipping variable optimization.\n";
+        for(const auto& block : blocks) {
+            block->dump_string(std::cout);
+        }
+        return 0;
     }
-    std::cerr << "Total bit length (output): " << length << "\n";
+    
 
     return 0;
 }

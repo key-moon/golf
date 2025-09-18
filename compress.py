@@ -214,18 +214,29 @@ def cached_zopfli_ours(val: bytes, fast=False):
     return compressed
   return optimize_deflate_ours(compressed, num_iter=num_iter)
 
-@slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp_var"))
-def cached_zopfli_ours2(val: bytes, fast=False):
+def cached_zopfli_ours2(val: bytes, use_zopfli, fast=False):
   zopfli_param = 300 if fast else 2000
   num_iter = 10
-  compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
-  compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
-  if len(compressed_splitting) < len(compressed):
-    compressed = compressed_splitting
+  if use_zopfli:
+    compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
+    compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
+    if len(compressed_splitting) < len(compressed):
+      compressed = compressed_splitting
+  else:
+    compressed_9 = zlib.compress(val, level=9, wbits=-9)
+    compressed_15 = zlib.compress(val, level=9, wbits=-15)
+    compressed = compressed_9 if len(compressed_9) < len(compressed_15) else compressed_15
   if fast:
     return compressed
   return optimize_deflate_ours2(val, compressed, num_iter=num_iter)
 
+@slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp_var"))
+def cached_zopfli_ours_varopt_with_zopfli(val: bytes, fast=False):
+  return cached_zopfli_ours2(val, use_zopfli=True, fast=fast)
+
+@slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "zopfli_cpp_var_no_zopfli"))
+def cached_zopfli_ours_varopt_without_zopfli(val: bytes, fast=False):
+  return cached_zopfli_ours2(val, use_zopfli=False, fast=fast)
 
 @slow_cache_decorator(cache_dir=os.path.join(CACHE_DIR, "lzma"))
 def cached_lzma(val: bytes):
@@ -252,7 +263,8 @@ def compress(code: str, best: Optional[int]=None, fast=False, use_cache=True, fo
     ("zlib", lambda x: zlib.compress(x, level=9, wbits=-15), lambda _: ",-15"),
     ("zlib-zopfli", lambda x: cached_zopfli(x, fast, use_cache=use_cache), determine_wbits),
     ("zlib-zopfli-cpp", lambda x: cached_zopfli_ours(x, fast, use_cache=use_cache), determine_wbits),
-    ("zlib-zopfli-cpp2", lambda x: cached_zopfli_ours2(x, fast, use_cache=use_cache), determine_wbits),
+    ("zlib-zopfli-cpp-var-zopfli", lambda x: cached_zopfli_ours_varopt_with_zopfli(x, fast, use_cache=use_cache), determine_wbits),
+    ("zlib-zopfli-cpp-var-nozopfli", lambda x: cached_zopfli_ours_varopt_without_zopfli(x, fast, use_cache=use_cache), determine_wbits),
     ("lzma", lambda x: cached_lzma(x),lambda _: ""),
     ("bz2", lambda x: bz2.compress(x, compresslevel=9),lambda _: ""),
   ]
