@@ -56,7 +56,60 @@ int main(int argc, char** argv) {
         return 0;
     }
 
+
     if (auto* db = dynamic_cast<DynamicHuffmanBlock*>(blocks[0].get())) {
+
+
+        int best_length = db->bit_length();
+        auto best_block = *db;
+        auto best_variables = variables;
+
+        auto trial = [&](const DynamicHuffmanBlock& _block, const std::vector<Variable>& _variables, TieBreak tie_break) {
+            auto block = _block;
+            auto variables = _variables;
+            int before = block.bit_length();
+            auto variable_to_new_literal_mapping = optimize_variables(block, variables, tie_break);
+            replace_and_recompute_parsing(block, variables, variable_to_new_literal_mapping);
+            optimize_huffman_tree(block, {}, num_iter);
+            int after = block.bit_length();
+            if (before <= after) {
+                return std::make_tuple(false, _block, _variables);
+            }
+            else {
+                if (after < best_length) {
+                    best_length = after;
+                    best_block = block;
+                    best_variables = variables;
+                }
+                return std::make_tuple(true, block, variables);
+            }
+        };
+
+
+        // 改善する限り回す
+        std::vector<std::pair<DynamicHuffmanBlock, std::vector<Variable>>> cands;
+        cands.push_back({*db, variables});
+        for (int i = 0; i < max_num_round; ++i) {
+            std::vector<std::pair<DynamicHuffmanBlock, std::vector<Variable>>> new_cands;
+            for (auto [cand_block, cand_vars] : cands) {
+                auto res1 = trial(cand_block, cand_vars, TieBreak::NonVarFreq);
+                auto res2 = trial(cand_block, cand_vars, TieBreak::BFS);
+                if (std::get<0>(res1)) {
+                    new_cands.push_back({std::get<1>(res1), std::get<2>(res1)});
+                }
+                if (std::get<0>(res2)) {
+                    new_cands.push_back({std::get<1>(res2), std::get<2>(res2)});
+                }
+            }
+            if (new_cands.size() == 0) {
+                std::cerr << "No improvement in this round. Stopping.\n";
+                break;
+            }
+            std::swap(cands, new_cands);
+            std::cerr << "Round " << i << " completed with " << cands.size() << " candidates.\n";
+        }
+
+        /* 旧バージョンの実装（全探索していないので早いが相対的に弱い）
         auto block = *db;
         for (int i = 0; i < max_num_round; ++i) {
             auto before_block = block;
@@ -80,8 +133,10 @@ int main(int argc, char** argv) {
                 std::cerr << "Improved!\n";
             }
         }
-        block.dump_string(std::cout);
-        std::cerr << "Total bit length (output): " << block.bit_length() << "\n";
+        */
+
+        best_block.dump_string(std::cout);
+        std::cerr << "Total bit length (output): " << best_block.bit_length() << "\n";
     } else {
         std::cerr << "Warning: variable optimization is only supported for dynamic Huffman blocks. Skipping variable optimization.\n";
         for(const auto& block : blocks) {

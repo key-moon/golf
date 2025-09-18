@@ -93,10 +93,16 @@ void replace_and_recompute_parsing(DynamicHuffmanBlock& block, std::vector<Varia
 }
 
 
+enum TieBreak {
+    BFS,
+    NonVarFreq,
+};
+
+
 // ビット数が少ないところに貪欲に当てはめていく
 // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
 // このアルゴリズムは適当に変えたりvariantを作ったりしていい
-std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables) {
+std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, TieBreak tie_break = TieBreak::BFS) {
     auto text = block.get_string({});
     auto char_stats = get_char_stats(block, variables);
     std::vector<int> replace_cand_vars; // 変数をliteralとしての出現回数でソート
@@ -126,41 +132,56 @@ std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Vari
         std::vector<int> distance_vec(256, 1e9);
         std::queue<int> que;
 
-        if (ptr == 0) {
-            // 最初の変数はlit codeの出現頻度で決める
-            int max_elm = *std::max_element(code_length_symbol_map[len].begin(), code_length_symbol_map[len].end(), [&](int a, int b) {
-                return char_stats[a].num_nonvar_occurrences_as_literal < char_stats[b].num_nonvar_occurrences_as_literal;
-            });
-            assigned_literal_code[ptr] = max_elm;
-            used_chars[max_elm] = true;
-            ++ptr;
-        }
+        if (tie_break == TieBreak::BFS) {
+            if (ptr == 0) {
+                // 最初の変数はlit codeの出現頻度で決める
+                int max_elm = *std::max_element(code_length_symbol_map[len].begin(), code_length_symbol_map[len].end(), [&](int a, int b) {
+                    return char_stats[a].num_nonvar_occurrences_as_literal < char_stats[b].num_nonvar_occurrences_as_literal;
+                });
+                assigned_literal_code[ptr] = max_elm;
+                used_chars[max_elm] = true;
+                ++ptr;
+            }
 
-        for (int j = 0; j < 256; ++j) {
-            if (used_chars[j]) {
-                distance_vec[j] = 0;
-                que.push(j);
-            }
-        }
-        while (!que.empty()) {
-            int v = que.front();
-            que.pop();
-            if (char_stats[v].lit_code_length == len && !used_chars[v] && char_stats[v].var_candidate) {
-                used_chars[v] = true;
-                traverse_vars_list.push_back(v);
-            }
-            for (int u : std::vector<int>{v + 1, v - 1}) {
-                if (u < 0 || u >= 256) continue;
-                if (distance_vec[u] > distance_vec[v] + 1) {
-                    distance_vec[u] = distance_vec[v] + 1;
-                    que.push(u);
+            for (int j = 0; j < 256; ++j) {
+                if (used_chars[j]) {
+                    distance_vec[j] = 0;
+                    que.push(j);
                 }
             }
+            while (!que.empty()) {
+                int v = que.front();
+                que.pop();
+                if (char_stats[v].lit_code_length == len && !used_chars[v] && char_stats[v].var_candidate) {
+                    used_chars[v] = true;
+                    traverse_vars_list.push_back(v);
+                }
+                for (int u : std::vector<int>{v + 1, v - 1}) {
+                    if (u < 0 || u >= 256) continue;
+                    if (distance_vec[u] > distance_vec[v] + 1) {
+                        distance_vec[u] = distance_vec[v] + 1;
+                        que.push(u);
+                    }
+                }
+            }
+            for(auto var : traverse_vars_list) {
+                assigned_literal_code[ptr] = var;
+                ++ptr;
+                if (ptr >= replace_cand_vars.size()) break;
+            }
         }
-        for(auto var : traverse_vars_list) {
-            assigned_literal_code[ptr] = var;
-            ++ptr;
-            if (ptr >= replace_cand_vars.size()) break;
+        else if (tie_break == TieBreak::NonVarFreq) {
+            // lit codeの出現頻度で決める
+            std::sort(code_length_symbol_map[len].begin(), code_length_symbol_map[len].end(), [&](int a, int b) {
+                return char_stats[a].num_nonvar_occurrences_as_literal > char_stats[b].num_nonvar_occurrences_as_literal;
+            });
+            for(auto var : code_length_symbol_map[len]) {
+                if (used_chars[var]) continue;
+                assigned_literal_code[ptr] = var;
+                used_chars[var] = true;
+                ++ptr;
+                if (ptr >= replace_cand_vars.size()) break;
+            }
         }
         if (ptr >= replace_cand_vars.size()) break;
     }
