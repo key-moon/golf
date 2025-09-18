@@ -1,1 +1,1 @@
-p=lambda g:[(i:=0)or[[0,5,max(r)][i:=-i+c//~c]for c in r]for r in g]
+p=lambda g:[(i:=0)or[[i:=c-i,5][i<0]for c in r]for r in g]
