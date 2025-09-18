@@ -206,9 +206,9 @@ def cached_zopfli_ours(val: bytes, fast=False):
   zopfli_param = 300 if fast else 2000
   num_iter = 10
   compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
-  compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
-  if len(compressed_splitting) < len(compressed):
-    compressed = compressed_splitting
+  # compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
+  # if len(compressed_splitting) < len(compressed):
+  # compressed = compressed_splitting
   if fast:
     return compressed
   return optimize_deflate_ours(compressed, num_iter=num_iter)
@@ -217,9 +217,9 @@ def cached_zopfli_ours2(val: bytes, use_zopfli, num_iter=10, fast=False):
   zopfli_param = 300 if fast else 2000
   if use_zopfli:
     compressed = zopfli.zlib.compress(val, numiterations=zopfli_param, blocksplitting=False)[2:-4]
-    compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
-    if len(compressed_splitting) < len(compressed):
-      compressed = compressed_splitting
+    # compressed_splitting = zopfli.zlib.compress(val, numiterations=zopfli_param)[2:-4]
+    # if len(compressed_splitting) < len(compressed):
+    # compressed = compressed_splitting
   else:
     compressed_9 = zlib.compress(val, level=9, wbits=-9)
     compressed_15 = zlib.compress(val, level=9, wbits=-15)
