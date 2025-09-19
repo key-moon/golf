@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 955712
+Score: 955733
 
 Best Score: 959788
 
@@ -403,7 +403,7 @@ Best Score: 959788
 | [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [294](/dist/task255.py) (+52) | 242 🔴 | [vis-many](/vis_many/task255.png) | encode:+2 |
 | [157](/vis/task157.png) | [base_notebooks](/base_notebooks/task157_20250911-071925Z-compressed-variable-name-optimization-garry-moss.py) | raw/zlib-zopfli-cpp-var-nozopfli | [242](/dist/task157.py) (-6) | 248 🟢 | [vis-many](/vis_many/task157.png) |  |
 | [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [286](/dist/task080.py) (+33) | 253 🔴 | [vis-many](/vis_many/task080.png) | encode:+1 |
-| [044](/vis/task044.png) | [base_yu](/base_yu/task044.py) | raw/zlib-zopfli-cpp-var-zopfli | [250](/dist/task044.py) (-5) | 255 🟢 | [vis-many](/vis_many/task044.png) | encode:+1 |
+| [044](/vis/task044.png) | [base_yu](/base_yu/task044.py) | raw/zlib-zopfli-cpp-var-nozopfli | [229](/dist/task044.py) (-26) | 255 🟢 | [vis-many](/vis_many/task044.png) |  |
 | [219](/vis/task219.png) | [base_yu](/base_yu/task219.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [300](/dist/task219.py) (+43) | 257 🔴 | [vis-many](/vis_many/task219.png) | encode:+1 |
 | [324](/vis/task324.png) | [dist](/dist/task324.py) | previous | [302](/dist/task324.py) (+43) | 259 🔴 | [vis-many](/vis_many/task324.png) | ⚠️ regression? |
 | [370](/vis/task370.png) | [dist](/dist/task370.py) | previous | [260](/dist/task370.py) (0) | 260  | [vis-many](/vis_many/task370.png) | ⚠️ regression? |
@@ -412,7 +412,7 @@ Best Score: 959788
 | [118](/vis/task118.png) | [dist](/dist/task118.py) | previous | [270](/dist/task118.py) (-1) | 271 🟢 | [vis-many](/vis_many/task118.png) | ⚠️ regression? |
 | [076](/vis/task076.png) | [dist](/dist/task076.py) | previous | [291](/dist/task076.py) (+15) | 276 🔴 | [vis-many](/vis_many/task076.png) | ⚠️ regression? |
 | [054](/vis/task054.png) | [base_yu](/base_yu/task054.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [306](/dist/task054.py) (+26) | 280 🔴 | [vis-many](/vis_many/task054.png) |  |
-| [101](/vis/task101.png) | [base_yu](/base_yu/task101.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [312](/dist/task101.py) (+31) | 281 🔴 | [vis-many](/vis_many/task101.png) | encode:+3 |
+| [101](/vis/task101.png) | [dist](/dist/task101.py) | previous | [312](/dist/task101.py) (+31) | 281 🔴 | [vis-many](/vis_many/task101.png) | ⚠️ regression? |
 | [285](/vis/task285.png) | [dist](/dist/task285.py) | previous | [298](/dist/task285.py) (+10) | 288 🔴 | [vis-many](/vis_many/task285.png) | ⚠️ regression? |
 | [209](/vis/task209.png) | [dist](/dist/task209.py) | previous | [280](/dist/task209.py) (-9) | 289 🟢 | [vis-many](/vis_many/task209.png) | ⚠️ regression? |
 | [233](/vis/task233.png) | [base_yu](/base_yu/task233.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [333](/dist/task233.py) (+36) | 297 🔴 | [vis-many](/vis_many/task233.png) | encode:+1 |
