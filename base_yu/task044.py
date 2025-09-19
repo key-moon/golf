@@ -39,8 +39,6 @@
 #       g[x//10][x%10]=0
 #  return g
 
-
-
 def p(g):
  for l in range(10):
   for u in range(10):
@@ -50,9 +48,8 @@ def p(g):
     if g[d][l]!=5:break
    for c in range(10):
     S=[i*10+j for i in range(10)for j in range(10)if g[i][j]==c]
-    T=[i*10+j for i in range(u,d)for j in range(l,r) if g[i][j]==0]
-    if len(S)==len(T) and len({y-x for x,y in zip(S,T)})==1:
-     for x,y in zip(S,T):
-      g[y//10][y%10]=c
-      g[x//10][x%10]=0
+    T=[i*10+j for i in range(u,d)for j in range(l,r)if g[i][j]==0]
+    if[x-min(S)for x in S]==[x-min(T)for x in T]:
+     for x in S:g[x//10][x%10]=0
+     for x in T:g[x//10][x%10]=c
  return g
