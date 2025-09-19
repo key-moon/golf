@@ -1,4 +1,4 @@
-# best: 365(xsot ovs att joking mewheni, ox jam) / others: 369(jailctf merger), 371(4atj sisyphus luke Seek mukundan), 374(HashPanda Pooja), 374(garrymoss), 374(Rafael Pooja)
+# best: 365(ox jam, xsot ovs att joking mewheni) / others: 369(jailctf merger), 371(4atj sisyphus luke Seek mukundan), 374(natte), 374(Rafael Pooja), 374(kdmitrie)
 def p(g):
  *_,C,D,E=sorted({*sum(g,[])},key=sum(g,[]).count)
  for _ in range(4):
