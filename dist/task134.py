@@ -1,4 +1,4 @@
 def p(g):
- n,s={*sum(g,[])}-{0}
- if 5<str(g).count(f" {n},"*2):n,s=s,n
- e=lambda g:range(l:=min((*a,s).index(s)for a in g),h:=max(bytes(a).rfind(s)for a in g),(h-l+1)//3);return[[[0,n][g[i][j]==s]for j in e(g)]for i in e([*zip(*g)])]
+ _,n,m={*sum(g,[])}
+ if 5<str(g).count(f"{n}, "*2):n,m=m,n
+ u=[s for s in g if m in s];k=len(u)//3;return[[n*(v==m)for*t,v in zip(*g,s)if m in t][::k]for s in u[::k]]
