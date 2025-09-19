@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 113(ox jam), 113(xsot ovs att joking mewheni), 120(jacekwl Potatoman nauti), 123(Yuchen20), 146(intgrah jimboko awu macaque sammyuri)
+# best: 105(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 113(ox jam), 113(xsot ovs att joking mewheni), 120(jacekwl Potatoman nauti), 121(Yuchen20), 146(intgrah jimboko awu macaque sammyuri)
 # 131
 # def p(g,R=range):
 #  for _ in R(10):
