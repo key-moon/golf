@@ -13,4 +13,5 @@
 # p=lambda g:[[*str(g).count("1, 1")//2*[1],*[0]*5][:5]]
 # p=lambda g:[(str(g[::2]).count("1, 1")*[1]+[0]*5)[:5]]
 
-p=lambda g:[(str(g).count("1, 1")//2*[1]+[0]*5)[:5]]
+# p=lambda g:[(str(g).count("1, 1")//2*[1]+[0]*5)[:5]]
+p=lambda g:[(str(g).count("1, 1")*[1]+[0]*9)[:9:2]]
