@@ -1,5 +1,5 @@
-# best: 180(biz) / others: 181(jailctf merger), 181(jacekwl Potatoman nauti), 186(4atj sisyphus luke Seek mukundan), 208(ox jam), 208(xsot ovs att joking mewheni)
-# ====================================================================================== 180 =======================================================================================
+# best: 168(biz) / others: 181(jailctf merger), 181(jacekwl Potatoman nauti), 186(4atj sisyphus luke Seek mukundan), 208(ox jam), 208(xsot ovs att joking mewheni)
+# ================================================================================ 168 =================================================================================
 # ブロック: 2-6
 # 243
 # def p(g):
