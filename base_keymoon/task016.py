@@ -1,4 +1,4 @@
-# best: 43(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 44(ox jam), 44(xsot ovs att joking mewheni), 46(intgrah jimboko awu macaque sammyuri), 46(HETHAT), 47(cefqrn)
+# best: 43(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 44(ox jam), 44(xsot ovs att joking mewheni), 46(intgrah jimboko awu macaque sammyuri), 46(jonas ryno kg583 kabutack), 46(HETHAT)
 # =================== 43 ==================
 # これ43らしい あと15byte縮むらしい 意味わからない
 # 58
