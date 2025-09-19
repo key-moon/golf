@@ -406,7 +406,7 @@
 | [264](/vis/task264.png) | [base_yu](/base_yu/task264.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [204](/dist/task264.py) (-12) | 216 🟢 | [vis-many](/vis_many/task264.png) | encode:+1 |
 | [250](/vis/task250.png) | [base_yu](/base_yu/task250.py) | raw/raw | [111](/dist/task250.py) (-7) | 118 🟢 | [vis-many](/vis_many/task250.png) | not worth compress |
 | [165](/vis/task165.png) | [base_yu](/base_yu/task165.py) | raw/raw | [127](/dist/task165.py) (-9) | 136 🟢 | [vis-many](/vis_many/task165.png) | not worth compress |
-| [366](/vis/task366.png) | [base_yu](/base_yu/task366.py) | forcomp-t/zlib-zopfli-cpp-var-nozopfli | [333](/dist/task366.py) (-32) | 365 🟢 | [vis-many](/vis_many/task366.png) | encode:+2 |
+| [366](/vis/task366.png) | [dist](/dist/task366.py) | previous | [333](/dist/task366.py) (-32) | 365 🟢 | [vis-many](/vis_many/task366.png) | ⚠️ regression? |
 | [021](/vis/task021.png) | [base_keymoon](/base_keymoon/task021.py) | raw/raw | [52](/dist/task021.py) (-5) | 57 🟢 | [vis-many](/vis_many/task021.png) | not worth compress |
 | [058](/vis/task058.png) | [base_yu](/base_yu/task058.py) | raw/raw | [90](/dist/task058.py) (-13) | 103 🟢 | [vis-many](/vis_many/task058.png) | not worth compress |
 | [188](/vis/task188.png) | [base_yu](/base_yu/task188.py) | raw/raw | [53](/dist/task188.py) (-8) | 61 🟢 | [vis-many](/vis_many/task188.png) | not worth compress |

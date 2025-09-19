@@ -419,4 +419,4 @@ Best Score: 959788
 | [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [283](/dist/task133.py) (-15) | 298 🟢 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [018](/vis/task018.png) | [dist](/dist/task018.py) | previous | [319](/dist/task018.py) (-4) | 323 🟢 | [vis-many](/vis_many/task018.png) | ⚠️ regression? |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | forplain/zlib-zopfli-cpp-var-zopfli | [333](/dist/task096.py) (+8) | 325 🔴 | [vis-many](/vis_many/task096.png) |  |
-| [366](/vis/task366.png) | [base_yu](/base_yu/task366.py) | forcomp-t/zlib-zopfli-cpp-var-nozopfli | [333](/dist/task366.py) (-32) | 365 🟢 | [vis-many](/vis_many/task366.png) | encode:+2 |
+| [366](/vis/task366.png) | [dist](/dist/task366.py) | previous | [333](/dist/task366.py) (-32) | 365 🟢 | [vis-many](/vis_many/task366.png) | ⚠️ regression? |
