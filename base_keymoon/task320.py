@@ -5,4 +5,5 @@
 # =============================== 68 ===============================
 # lambda g:[*zip(*[s[:-(u:=s.count(2)//2)or 99]+u*(8,)for s in zip(*g)])]
 # lambda g:[*zip(*[s[:-(u:=sum(s)//4)or 99]+u*(8,)for s in zip(*g)])]
-p=lambda g:[*zip(*[s[:-(u:=sum(s)//4)|16]+u*(8,)for s in zip(*g)])]
+# p=lambda g:[*zip(*[s[:-(u:=sum(s)//4)|16]+u*(8,)for s in zip(*g)])]
+p=lambda g:[*zip(*map(lambda*s:s[:-(u:=sum(s)//4)|16]+u*(8,),*g))]
