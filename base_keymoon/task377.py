@@ -1,4 +1,4 @@
-# best: 55(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(ox jam), 57(intgrah jimboko awu macaque sammyuri), 57(xsot ovs att joking mewheni), 73(jacekwl Potatoman nauti), 74(jonas ryno kg583)
+# best: 55(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(ox jam), 57(intgrah jimboko awu macaque sammyuri), 57(xsot ovs att joking mewheni), 73(jacekwl Potatoman nauti), 74(jonas ryno kg583 kabutack)
 # lambda g:[p,list][g==(a:=[*zip(*[g:=r for r in g if g!=r])])](a)
 # lambda g:[list,p][g*0==[]]((*zip(*[g:=r for r in g if g!=r]),))
 # lambda g,c=-2:g*c or p([*zip(*[g:=r for r in g if g!=r])],c+1)

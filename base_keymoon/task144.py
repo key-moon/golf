@@ -1,4 +1,4 @@
-# best: 53(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 59(4atj sisyphus luke Seek mukundan), 59(intgrah jimboko awu macaque sammyuri), 59(Yuchen20), 61(jonas ryno kg583), 61(JRK)
+# best: 53(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 59(4atj sisyphus luke Seek mukundan), 59(intgrah jimboko awu macaque sammyuri), 59(Yuchen20), 61(jonas ryno kg583 kabutack), 61(jonas ryno kg583)
 # lambda g:[eval("(a.pop(0)+b.pop(0)<1)*3,"*4)for a,b in zip(g,g[5:])]
 # lambda g:eval("[3-any(a)*3for a in zip(g.pop(0),g[4])],"*4)
 # ======================== 53 =======================

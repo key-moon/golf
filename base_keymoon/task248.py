@@ -1,4 +1,4 @@
-# best: 72(jailctf merger) / others: 79(ox jam), 79(4atj sisyphus luke Seek mukundan), 79(intgrah jimboko awu macaque sammyuri), 79(xsot ovs att joking mewheni), 81(jonas ryno kg583)
+# best: 72(jailctf merger) / others: 79(ox jam), 79(4atj sisyphus luke Seek mukundan), 79(intgrah jimboko awu macaque sammyuri), 79(xsot ovs att joking mewheni), 81(jonas ryno kg583 kabutack)
 # [1,-1][i in(0,len(r)-1)]
 # (1-(i in(0,len(r)-1))*2)
 # [1,-1][i%(len(r)-1)<1]

@@ -1,4 +1,4 @@
-# best: 58(jailctf merger) / others: 61(ox jam), 61(4atj sisyphus luke Seek mukundan), 61(xsot ovs att joking mewheni), 61(jonas ryno kg583), 61(JRK)
+# best: 58(jailctf merger) / others: 61(ox jam), 61(4atj sisyphus luke Seek mukundan), 61(jonas ryno kg583 kabutack), 61(xsot ovs att joking mewheni), 61(jonas ryno kg583)
 # lambda g:[(a:=[0,0])and eval("(a:=[r.pop()or -a[1]//~a[1]*-5,a[0]])[0],"*len(r))for r in g]
 # ========================== 58 ==========================
 # lambda g:[([0]*[*s,1].index(v:=max(*s,1))+[v,5]*9)[:len(s)]for s in g]

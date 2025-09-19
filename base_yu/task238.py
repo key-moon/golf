@@ -1,4 +1,4 @@
-# best: 223(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 233(4atj sisyphus luke Seek mukundan), 260(natte), 265(jonas ryno kg583), 269(MasukenSamba), 282(intgrah jimboko awu macaque sammyuri)
+# best: 223(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 233(4atj sisyphus luke Seek mukundan), 260(natte), 265(jonas ryno kg583 kabutack), 265(jonas ryno kg583), 269(MasukenSamba)
 def p(g):
  u=min(i for i in range(len(g)) for j in range(len(g[i]))if g[i][j]==8)
  v=min(j for i in range(len(g)) for j in range(len(g[i]))if g[i][j]==8)
