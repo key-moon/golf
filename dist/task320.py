@@ -1,1 +1,1 @@
-p=lambda g:[*zip(*[s[:-(u:=sum(s)//4)|16]+u*(8,)for s in zip(*g)])]
+p=lambda g:[*zip(*map(lambda*s:s[:-(u:=sum(s)//4)|16]+u*(8,),*g))]

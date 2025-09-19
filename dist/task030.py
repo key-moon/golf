@@ -1,1 +1,1 @@
-p=lambda g:[*zip(*[s[(d:=(f:=sum(g,[]).index)(max(s))//10-f(1)//10):]+s[:d]for s in zip(*g)])]
+p=lambda g:[*zip(*map(lambda*s:s[(d:=(f:=sum(g,[]).index)(max(s))//10-f(1)//10):]+s[:d],*g))]

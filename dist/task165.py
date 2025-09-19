@@ -1,1 +1,1 @@
-p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s[i:]}>{c})for i in range(20)]for s in zip(*g)])]
+p=lambda g:[*zip(*map(lambda*s:(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s[i:]}>{c})for i in range(20)],*g))]

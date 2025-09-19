@@ -1,1 +1,1 @@
-p=lambda g:[*zip(*[sorted(r,key=b"\0".find)for r in zip(*g)])]
+p=lambda g:[*zip(*map(lambda*r:sorted(r,key=b"\0".find),*g))]
