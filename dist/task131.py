@@ -1,1 +1,1 @@
-p=lambda g,c=-3:c*g or p([*zip(*(g*(2in max(g,key=any))or sorted([[8]*len(g[0])]+g[:(k:=[*map(max,g)].index(2))],key=any)[1:]+g[k:])[::-1])],c+1)
+p=lambda g,c=-3:c*g or p([*zip(*(sorted([[8]*9]+g[:(k:=g.index(l:=max(g[::-1],key=any))*(2in l))],key=any)+g[k:])[:0:-1])],c+1)
