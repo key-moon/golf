@@ -1,5 +1,5 @@
-# best: 168(biz, jailctf merger) / others: 174(ox jam), 181(jacekwl Potatoman nauti), 186(4atj sisyphus luke Seek mukundan), 208(xsot ovs att joking mewheni), 211(JRKX)
-# ================================================================================ 168 =================================================================================
+# best: 158(biz) / others: 168(jailctf merger), 174(ox jam), 181(jacekwl Potatoman nauti), 186(4atj sisyphus luke Seek mukundan), 208(xsot ovs att joking mewheni)
+# =========================================================================== 158 ============================================================================
 def p(g):
  _,n,m={*sum(g,[])}
  if 5<str(g).count(f"{n}, "*2):n,m=m,n
