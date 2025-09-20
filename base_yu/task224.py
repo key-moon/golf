@@ -1,8 +1,10 @@
 # best: 171(ox jam, xsot ovs att joking mewheni) / others: 177(jailctf merger), 178(4atj sisyphus luke Seek mukundan), 204(intgrah jimboko awu macaque sammyuri), 212(JRKX), 212(jonas ryno kg583 kabutack)
 # ================================================================================== 171 ==================================================================================
-# p=lambda g,c=7:-c*g or c<4and p([*zip(*[[max(max(g))]*99]+g[1:])][::-1],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
-# p=lambda g,c=7:-c*g or c<4and p([*zip(*g[:0:-1],[max(max(g))]*99)],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
-p=lambda g,c=7:-c*g or c<4and[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)]or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
+# lambda g,c=7:-c*g or c<4and p([*zip(*[[max(max(g))]*99]+g[1:])][::-1],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
+# lambda g,c=7:-c*g or c<4and p([*zip(*g[:0:-1],[max(max(g))]*99)],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
+# lambda g,c=7:-c*g or c<4and[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)]or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
+# lambda g,c=7:-c*g or[[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)],g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]][c>3]
+p=lambda g,c=7:-c*g or[[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)],g[:(t:=g.index(max(g,key=any)))+1]+[*zip(*p([*zip(*g[:t:-1])],c-1))][::-1]][c>3]
 
 # def p(g,c=-3):
 #  if c==5:
