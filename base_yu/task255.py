@@ -11,7 +11,8 @@ def p(g):
    W-=2*(r-l<5)
    for i in range(l,r-2):
     g[i][:W]=[3]*W
-  *g,=map(list,zip(*g[::-1]))
+  g[:]=map(list,zip(*g[::-1]))
+  # *g,=map(list,zip(*g[::-1]))
  return g
 
 # def p(g,case):

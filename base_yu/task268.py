@@ -17,6 +17,7 @@ def p(g):
     n=0
    l=len(u)
   *g,=map(list,zip(*g[::-1]))
+  # g[:]=map(list,zip(*g[::-1]))
  return g
 
 # R=range

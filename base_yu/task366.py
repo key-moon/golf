@@ -19,6 +19,7 @@ def p(g):
           for j in range(x):
            g[u+i][j+l]=D
    g=g[len(g)//2:]
+  # g[:]=map(list,zip(*g[::-1]))
   *g,=map(list,zip(*g[::-1]))
  return g
 
