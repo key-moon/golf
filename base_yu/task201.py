@@ -1,4 +1,4 @@
-# best: 208(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 218(4atj sisyphus luke Seek mukundan), 255(natte), 280(MasukenSamba), 301(Yuchen20), 307(jonas ryno kg583 kabutack)
+# best: 208(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 218(4atj sisyphus luke Seek mukundan), 255(natte), 280(MasukenSamba), 301(Yuchen20), 307(JRKX)
 def p(g):
  t=sum(g,[])
  u,l=divmod(t.index(4),13)

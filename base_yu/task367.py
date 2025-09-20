@@ -1,4 +1,4 @@
-# best: 129(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 138(4atj sisyphus luke Seek mukundan), 227(MasukenSamba), 280(natte), 301(jonas ryno kg583 kabutack), 301(jonas ryno kg583)
+# best: 129(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 138(4atj sisyphus luke Seek mukundan), 227(MasukenSamba), 280(natte), 301(JRKX), 301(jonas ryno kg583 kabutack)
 # ============================================================= 129 =============================================================
 def p(g):
  w=len(g[0])

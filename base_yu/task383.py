@@ -1,4 +1,4 @@
-# best: 121(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 123(4atj sisyphus luke Seek mukundan), 136(natte), 161(2F), 161(biz), 161(jonas ryno kg583 kabutack)
+# best: 121(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 123(4atj sisyphus luke Seek mukundan), 136(natte), 161(JRKX), 161(2F), 161(biz)
 # ========================================================= 121 =========================================================
 p=lambda g,c=-3:c*g or p([1<len(a:=[*filter(int,s)])<len(s)and a[0]!=a[1]and[a[0**v]for v in s]or s for s in zip(*g[::-1])],c+1)
 

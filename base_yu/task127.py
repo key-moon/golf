@@ -1,4 +1,4 @@
-# best: 65(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 72(4atj sisyphus luke Seek mukundan), 80(intgrah jimboko awu macaque sammyuri), 82(HETHAT), 84(natte), 84(kabutack)
+# best: 65(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 72(4atj sisyphus luke Seek mukundan), 80(intgrah jimboko awu macaque sammyuri), 82(HETHAT), 84(natte), 84(JRKX)
 # ============================== 65 =============================
 # p=lambda g:sum([[[5]*11]+[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3for s in g[1::4]],[])[1:]
 # p=lambda g:sum([[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3+g[3:4]for s in g[1::4]],[])[:7]

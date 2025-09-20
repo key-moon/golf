@@ -1,4 +1,4 @@
-# best: 62(ox jam, 4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, xsot ovs att joking mewheni) / others: 63(natte), 63(kabutack), 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 65(Yuchen20)
+# best: 62(ox jam, 4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, xsot ovs att joking mewheni) / others: 63(natte), 63(JRKX), 63(kabutack), 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti)
 # ============================ 62 ============================
 # def p(g):
 #     for i in range(len(g)-1):

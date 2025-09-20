@@ -1,4 +1,4 @@
-# best: 48(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 49(natte), 49(duckyluuk), 49(MasukenSamba), 49(2F), 49(kabutack)
+# best: 48(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 49(natte), 49(duckyluuk), 49(JRKX), 49(MasukenSamba), 49(2F)
 # ===================== 48 =====================
 # p=lambda g:[g[i][::-1]+g[i]for i in(2,1,0,0,1,2,2,1,0)]
 # p=lambda g:[s[::-1]+s for s in g[::-1]+g+g[::-1]]

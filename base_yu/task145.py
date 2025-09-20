@@ -1,4 +1,4 @@
-# best: 191(ox jam, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 242(jailctf merger), 245(natte), 252(jacekwl Potatoman nauti), 253(jacekwl), 284(jonas ryno kg583 kabutack)
+# best: 191(ox jam, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 242(jailctf merger), 245(natte), 252(jacekwl Potatoman nauti), 253(jacekwl), 284(JRKX)
 # ============================================================================================ 191 ============================================================================================
 def p(g):
  h,w=len(g),len(g[0])

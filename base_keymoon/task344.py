@@ -1,4 +1,4 @@
-# best: 78(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 79(jacekwl Potatoman nauti), 95(natte), 97(MasukenSamba), 149(jonas ryno kg583 kabutack), 149(jonas ryno kg583)
+# best: 78(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 79(jacekwl Potatoman nauti), 95(natte), 97(MasukenSamba), 149(JRKX), 149(jonas ryno kg583 kabutack)
 # ==================================== 78 ====================================
 # p=lambda g,c=4:c and p([[y or(x==1)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
 # import re;p=lambda g,c=4:c and p([*zip(*eval(re.sub("3, 2","8,0",str(g)))[::-1])],c-1)or g
