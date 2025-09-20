@@ -1,12 +1,50 @@
 import datetime
-from functools import cache
 import json
 import re
-from typing import Any, TypedDict
+from typing import Any, Callable, Iterable, TypedDict
 import hashlib
 import os
-
+from functools import wraps
 from utils import WORKSPACE_DIR
+
+# watched_cache デコレータ版: 指定パス群/動的パス列挙の (path, mtime_ns, size) 変化で自動失効
+def watched_cache(*paths: str, dynamic_paths: Callable[[], Iterable[str]] | None = None):
+  def decorator(func: Callable[[], Any]):
+    _MISSING = object()
+    value: Any = _MISSING
+    sig: tuple | None = None
+
+    @wraps(func)
+    def wrapper():
+      nonlocal value, sig
+      watch: list[str] = list(paths)
+      if dynamic_paths is not None:
+        try:
+          watch.extend(list(dynamic_paths()))
+        except Exception:
+          pass
+      parts: list[tuple[str, int | None, int | None]] = []
+      for p in watch:
+        try:
+          st = os.stat(p)
+          parts.append((p, int(st.st_mtime_ns), st.st_size))
+        except (FileNotFoundError, NotADirectoryError):
+          parts.append((p, None, None))
+      new_sig = tuple(parts)
+      if value is _MISSING or new_sig != sig:
+        print("[+] cached file updated")
+        value = func()
+        sig = new_sig
+      return value
+
+    def cache_clear():  # 明示的クリア
+      nonlocal value, sig
+      value = _MISSING
+      sig = None
+
+    wrapper.cache_clear = cache_clear  # type: ignore[attr-defined]
+    return wrapper
+  return decorator
 
 
 def _datetime_parser(dct):
@@ -47,8 +85,7 @@ class TeamData(TypedDict):
 
 SCOREBOARD_PROGRESSIONS_PATH = "data/kaggle_scoreboard_progressions.json"
 
-
-@cache
+@watched_cache(SCOREBOARD_PROGRESSIONS_PATH)
 def loads_scoreboard_progressions() -> dict[int, TeamData]:
   return { int(k): v for k, v in _loads(SCOREBOARD_PROGRESSIONS_PATH, {}).items() }
 
@@ -65,31 +102,36 @@ class TaskSubmission(TypedDict):
 TASK_SCORE_PROGRESSIONS_PATH = os.path.join(WORKSPACE_DIR, "data/task_score_progressions")
 
 
-@cache
+def _dynamic_task_progression_paths() -> Iterable[str]:
+  if not os.path.isdir(TASK_SCORE_PROGRESSIONS_PATH):
+    return []
+  for f in os.listdir(TASK_SCORE_PROGRESSIONS_PATH):
+    if f.endswith('.json'):
+      yield os.path.join(TASK_SCORE_PROGRESSIONS_PATH, f)
+
+@watched_cache(TASK_SCORE_PROGRESSIONS_PATH, dynamic_paths=_dynamic_task_progression_paths)
 def loads_task_scores_progressions() -> dict[str, list[list[TaskSubmission]]]:
   task_scores: dict[str, list[list[TaskSubmission]]] = {}
   if not os.path.isdir(TASK_SCORE_PROGRESSIONS_PATH):
     return task_scores
   for filename in os.listdir(TASK_SCORE_PROGRESSIONS_PATH):
-    if filename.endswith(".json"):
+    if filename.endswith('.json'):
       f = _loads(f"{TASK_SCORE_PROGRESSIONS_PATH}/{filename}", None)
       if f is None:
         print(f"[!] invalid file ({filename})")
         continue
-      name = f["name"]
-      data = f["data"]
-      task_scores[name] = data
+      name = f.get("name")
+      data = f.get("data")
+      if isinstance(name, str) and isinstance(data, list):
+        task_scores[name] = data  # type: ignore[assignment]
   return task_scores
-
-
 def dumps_task_scores_progressions(data: dict[str, list[list[TaskSubmission]]]) -> None:
   for name, scores in data.items():
     filename = get_user_filename(name)
     path = f"{TASK_SCORE_PROGRESSIONS_PATH}/{filename}"
     print(f"[+] dumping to {path}")
     _dumps(path, { "name": name, "data": scores })
-  # Clear cache to reflect changes
-  loads_task_scores_progressions.cache_clear()
+  loads_task_scores_progressions.cache_clear()  # type: ignore[attr-defined]
 
 
 class TaskSubmissionWithName(TypedDict):
@@ -126,8 +168,7 @@ def delete_user_progressions(name: str) -> None:
   if os.path.exists(path):
     os.remove(path)
     print(f"[+] deleted {path}")
-  # Clear cache to reflect changes
-  loads_task_scores_progressions.cache_clear()
+  loads_task_scores_progressions.cache_clear()  # type: ignore[attr-defined]
 
 
 def get_user_filename(name: str) -> str:
@@ -138,7 +179,7 @@ def get_user_filename(name: str) -> str:
 MERGED_USERS_PATH = os.path.join(WORKSPACE_DIR, "data/merged_users.json")
 
 
-@cache
+@watched_cache(MERGED_USERS_PATH)
 def loads_merged_users() -> set[str]:
   return set(_loads(MERGED_USERS_PATH, []))
 
@@ -177,27 +218,16 @@ def save_user_progressions(name: str, data: list[list[TaskSubmission]]) -> None:
   filename = get_user_filename(name)
   path = os.path.join(TASK_SCORE_PROGRESSIONS_PATH, filename)
   _dumps(path, {"name": name, "data": data})
-  # Clear cache to reflect changes
-  loads_task_scores_progressions.cache_clear()
+  loads_task_scores_progressions.cache_clear()  # type: ignore[attr-defined]
 
 
 def record_ours_task_score_progression(current_scores: dict[int, int | None], name: str = "ours", when: datetime.datetime | None = None) -> None:
-  """
-  Append current scores to ours' progression file (per task), only when changed.
-
-  current_scores: mapping of task_id (1-based) -> length (bytes) or None if unsolved.
-  name: username label for this local team (default: "ours").
-  when: timestamp to record; defaults to now (UTC).
-  """
+  """Append current scores to ours' progression file (per task) only when changed."""
   if when is None:
     when = datetime.datetime.utcnow()
-
   data = load_user_progressions(name)
-
-  # Ensure 400 slots
   if len(data) < 400:
     data.extend([[] for _ in range(400 - len(data))])
-
   for task_id, score in current_scores.items():
     idx = task_id - 1
     if not (0 <= idx < 400):
@@ -207,24 +237,19 @@ def record_ours_task_score_progression(current_scores: dict[int, int | None], na
     if last_score != score:
       history.append({"date": when, "score": score})
     data[idx] = history
-
   save_user_progressions(name, data)
 
 
 def compute_current_scores_from_dist(dist_dir: str = os.path.join(WORKSPACE_DIR, "dist")) -> dict[int, int | None]:
-  """
-  Read current dist/taskNNN.py files and return a mapping task_id -> length (bytes).
-  Missing files are treated as unsolved (None).
-  """
+  """Return {task_id: file_size or None} for dist/taskNNN.py."""
   scores: dict[int, int | None] = {}
   for i in range(1, 401):
     path = os.path.join(dist_dir, f"task{i:03}.py")
     if os.path.exists(path):
       try:
-        size = os.path.getsize(path)
+        scores[i] = os.path.getsize(path)
       except OSError:
-        size = None
-      scores[i] = size
+        scores[i] = None
     else:
       scores[i] = None
   return scores
