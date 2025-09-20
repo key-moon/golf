@@ -16,7 +16,8 @@ def p(g):
 #    for i in R(b//n,u):g[i][r-1]=3
    g[y//n][l:w]=[3]*(w-l)
   if v:g=g[::-1]
-  *g,=map(list,zip(*g))
+  # *g,=map(list,zip(*g))
+  g[:]=map(list,zip(*g))
  return g
 
 
