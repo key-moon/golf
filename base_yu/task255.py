@@ -1,4 +1,4 @@
-# best: 242(jailctf merger) / others: 244(ox jam), 244(xsot ovs att joking mewheni), 261(intgrah jimboko awu macaque sammyuri), 293(MasukenSamba), 304(4atj sisyphus luke Seek mukundan)
+# best: 242(jailctf merger) / others: 244(ox jam), 244(xsot ovs att joking mewheni), 252(intgrah jimboko awu macaque sammyuri), 293(MasukenSamba), 304(4atj sisyphus luke Seek mukundan)
 def p(g):
  c=max(sum(g,[]))
  for _ in range(4):

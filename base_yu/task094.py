@@ -1,4 +1,4 @@
-# best: 102(4atj sisyphus luke Seek mukundan) / others: 106(ox jam), 106(xsot ovs att joking mewheni), 114(jailctf merger), 165(natte), 169(intgrah jimboko awu macaque sammyuri)
+# best: 102(4atj sisyphus luke Seek mukundan) / others: 106(ox jam), 106(xsot ovs att joking mewheni), 113(jailctf merger), 165(natte), 169(intgrah jimboko awu macaque sammyuri)
 # =============================================== 102 ================================================
 # p=lambda g,c=-1,E=enumerate:c*g or p([[s[j]==1or(s[j-2:j+3:4]+[t[i-2]]==[1]*3or 6in s+[*t])*6or s[j]for j,t in E(zip(*g))]for i,s in E(g)],c+1)
 # p=lambda g,E=enumerate:g*(6in g[0])or p([[s[j]&1or(s[j-2:j+3:4]+[t[i-2]]==[1]*3or 6in s+[*t])*6or s[j]for j,t in E(zip(*g))]for i,s in E(g)])

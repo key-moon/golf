@@ -1,4 +1,4 @@
-# best: 288(jailctf merger) / others: 302(ox jam), 302(xsot ovs att joking mewheni), 318(natte), 332(intgrah jimboko awu macaque sammyuri), 362(MasukenSamba)
+# best: 288(jailctf merger) / others: 296(ox jam), 302(xsot ovs att joking mewheni), 318(natte), 332(intgrah jimboko awu macaque sammyuri), 362(MasukenSamba)
 def p(g):
  for _ in range(8):
   for i in range(1,len(g)):

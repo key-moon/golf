@@ -1,4 +1,4 @@
-# best: 92(jailctf merger) / others: 94(intgrah jimboko awu macaque sammyuri), 105(JRKX), 105(jonas ryno kg583 kabutack), 105(jonas ryno kg583), 106(4atj sisyphus luke Seek mukundan)
+# best: 92(jailctf merger) / others: 94(intgrah jimboko awu macaque sammyuri), 100(ox jam), 105(JRKX), 105(jonas ryno kg583 kabutack), 105(jonas ryno kg583)
 # =========================================== 92 ===========================================
 # lambda g:any(map(all,g))and[*zip(*p([*zip(*g)]))]or(a:=[[x|y for x,y in zip(g[0],g[-1])if x|y]])*len(a[0])
 # p=lambda g:any(map(all,g))and[*zip(*p([*zip(*g)]))]or(a:=[[*filter(int,map(max,zip(g[0],g[-1])))]])*len(a[0])
