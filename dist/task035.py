@@ -1,1 +1,1 @@
-p=lambda g,c=-3:c*g or[[[l*s[0]or v,v][l:=l*(v!=8)]for v in s]for s in zip(*p(g,c+1)[::-1])if(l:=1)]
+p=lambda g,c=-3:c*g or[eval(str(s).replace("8","s[0]or 8",1))for s in zip(*p(g,c+1)[::-1])]
