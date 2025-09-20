@@ -324,7 +324,7 @@ def get_content_summary(content: bytes) -> str:
   if deflate_payload:
     res = ""
     res += f"# before compress: {len(code)} bytes\n"
-    res += code
+    res += code.replace("\t", " ")
     return res
   else:
     return content.decode("L1")
