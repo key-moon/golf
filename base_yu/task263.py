@@ -6,7 +6,7 @@
 # lambda g,c=1:g*-c or(f:=sorted((str(t).count("0"),t)for t in zip(*[iter(zip(*p([*zip(*g)],c-1)))]*3))*2)[-(f[0][0]==f[1][0])][1]
 # p=lambda g:len(g)>3and(f:=sorted((str(t).count("0"),t)for t in zip(*[iter(g)]*3)))[-(f[0][0]==f[1][0])][1]or[*zip(*p([*zip(*g)]))]
 # p=lambda g,c=-1:c*g or[*zip(*(f:=sorted((str(t).count("0"),t)for t in zip(*[iter(p(g,c+1))]*3)))[-(f[0][0]==(f*2)[1][0])][1])]
-p=lambda g,c=-1:c*g or(f:=sorted((str(t).count("0"),t)for t in zip(*[zip(*p(g,c+1))]*3)))[-(f[0][0]==(f*2)[1][0])][1]
+p=lambda g,c=-1:c*g or(f:=sorted((str(t).count("0"),t)for t in zip(*[zip(*p(g,c+1))]*3))*2)[-(f[0][0]==f[1][0])][1]
 
 
 # def p(g):
