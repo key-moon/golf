@@ -1,1 +1,1 @@
-p=lambda g,c=7:-c*g or c<4and[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)]or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
+p=lambda g,c=7:-c*g or[[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)],g[:(t:=g.index(max(g,key=any)))+1]+[*zip(*p([*zip(*g[:t:-1])],c-1))][::-1]][c>3]
