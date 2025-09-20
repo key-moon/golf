@@ -11,7 +11,7 @@ def p(g):
       for j in range(len(g[0])-2):
        for y in range(len(t)-2):
         for x in range(len(t[0])-2):
-         if all(g[i+k][j+m]==2 if t[y+k][x+m]==0 else g[i+k][j+m]|2!=2 for k in range(3)for m in range(3))*(y<1 or 0!=t[y-1][x+1])*(y+4>len(t) or 0!=t[y+3][x+1]):
+         if all(g[i+k][j+m]==2 if t[y+k][x+m]==0 else g[i+k][j+m]|2!=2 for k in range(3)for m in range(3))*(y<1 or 0<t[y-1][x+1])*(y+4>len(t) or 0<t[y+3][x+1]):
           for k in range(3):
            for m in range(3):
             t[y+k][x+m]=g[i+k][j+m]
