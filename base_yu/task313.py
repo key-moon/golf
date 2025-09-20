@@ -1,4 +1,4 @@
-# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 65(ox jam), 65(xsot ovs att joking mewheni), 71(kabutack), 71(intgrah jimboko awu macaque sammyuri)
+# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 65(ox jam), 65(xsot ovs att joking mewheni), 71(JRKX), 71(kabutack)
 # ============================= 63 ============================
 # p=lambda g:(R:=range(len(g)))and[[g[i%(3-(g[0]==g[2]))][j%(3-(g[0][0]==g[0][2]))+1]for j in R] for i in R]
 # p=lambda g:(R:=range(n:=len(g)),u:=(n>11)*4+2)and[[g[i%u][(j+1)%u]for j in R]for i in R]
