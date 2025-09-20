@@ -3,8 +3,8 @@ def p(g):
  for _ in range(8):
   for i in range(1,len(g)):
    for j in range(1,len(g)):
-    if len({g[i][j],g[i-1][j],g[i][j-1],g[i-1][j-1]})==4:
-     u=[[0]*5 for _ in range(5)]
+    if 3<len({g[i][j],g[i-1][j],g[i][j-1],g[i-1][j-1]}):
+     u=[[0]*5 for _ in range(8)] # range(5) で十分ではある
      u[0][0]=1
      q=[(0,0)]
      while q:
@@ -15,7 +15,8 @@ def p(g):
        if 0<y+d%3<6 and 0<x+d//3<6 and 1-u[y+d%3-1][x+d//3-1]and 0<g[i+y+d%3-1][j+x+d//3-1]==g[i][j]:
         u[y+d%3-1][x+d//3-1]=1
         q+=[(y+d%3-1,x+d//3-1)]
-  *g,=map(list,zip(*g[::-1]))
+  g[:]=map(list,zip(*g[::-1]))
+  # *g,=map(list,zip(*g[::-1]))
  return g
 
 # def p(g):
