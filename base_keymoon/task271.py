@@ -14,7 +14,8 @@
 # lambda g:len(g)==3and(sum(a:=sum(g,()))+0**min(a)*99,g)or min([p([*zip(*g[i:i+3])])for i in range(7)])[1]
 # lambda g:min((sum(b),a)for x in range(49)if 0<min(b:=sum(a:=[r[x%7:][:3]for r in g[x//7:][:3]],[])))[1]
 # lambda g:min((sum(b:=sum(a:=[r[x%7:][:3]for r in g[x//7:][:3]],[]))+(0in b)*99,a)for x in range(49))[1]
-p=lambda g:g*(len(g)<4)or min((sum(a:=sum(b:=p([*zip(*g[i:i+3])]),()))+(0in a)*99,b)for i in range(7))[1]
+# lambda g:g*(len(g)<4)or min((sum(a:=sum(b:=p([*zip(*g[i:i+3])]),()))+(0in a)*99,b)for i in range(7))[1]
+p=lambda g:g*(len(g)<4)or min((0in(a:=sum(b:=p([*zip(*g[i:i+3])]),())),sum(a),b)for i in range(7))[2]
 
 # ↓keyをlambdaでごまかし系列 カス
 # lambda g:(sum(b:=sum(g,[]))+(0in b)*99)*(len(g)<4)or min(([r[x%7:][:3]for r in g[x//7:][:3]]for x in range(49)),key=p)[1]
