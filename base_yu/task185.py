@@ -32,13 +32,31 @@
 #  g=[[sum({s[j]}&{s[j+1]}&{t[j]}&{t[j+1]}-{c})for j in range(3)]for s,t in zip(g,g[1:])]
 #  return g
 
-def p(g):
- c=max(g)[0]
- for _ in range(2):
-  g=[*zip(*[(l:=c)and[(v==l!=c)*(l:=v)for*t,v in zip(*g,s)if all(t)+_]for s in g if all(s)+_])]
- for _ in range(40):
-  g=[*zip(*g[any(g[-1])-2::-1])]
- return g
+# def p(g):
+#  c=max(g)[0]
+#  g=[*zip(*[(l:=c)and[(v==l!=c)*(l:=v)for*t,v in zip(*g,s)if {*t}-{0,c}]for s in g])][1:]
+#  g=[*zip(*[(l:=c)and[(v==l!=c)*(l:=v)for*t,v in zip(*g,s)if {*t}-{0,c}]for s in g])][1:]
+# #  c=max(g)[0]
+# #  g=[*zip(*[(l:=c)and[(v==l!=c)*(l:=v)for*t,v in zip(*g,s)if {*t}-{0,c}]for s in g])]
+#  return g
+
+# def p(g):
+#  g=[(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)]
+#  g=[(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)]
+#  return g
+
+# p=lambda g,d=0,c=-1:c*[s[1:]for s in g[1:]]or p([*zip(*[(l:=(d:=d or max(g)[0]))and[(v==l!=d)*(l:=v)for*t,v in zip(*g,s)if {*t}-{0,d}]for s in g])],d,c+1)
+# p=lambda g,c=-1:c*g or p([*zip(*[(l:=(d:=max(g)[0]or-1))and[(v==l!=d)*(l:=v)for*t,v in zip(*g,s)if{*t}-{0,d}]for s in g])][1:],c+1)
+p=lambda g,c=-1:c*g or p([(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)],c+1)
+
+# [*zip(*)]
+# def p(g):
+#  c=max(g)[0]
+#  for _ in range(2):
+#   g=[*zip(*[(l:=c)and[(v==l!=c)*(l:=v)for*t,v in zip(*g,s)if all(t)+_]for s in g if all(s)+_])]
+#  for _ in range(40):
+#   g=[*zip(*g[any(g[-1])-2::-1])]
+#  return g
 
 # def p(g):
 #  n=len(g)
