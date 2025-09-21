@@ -1,4 +1,4 @@
-# best: 97(ox jam, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 103(jailctf merger), 105(intgrah jimboko awu macaque sammyuri), 120(HETHAT), 121(JRKX), 121(jonas ryno kg583 kabutack)
+# best: 97(ox jam, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 103(jailctf merger), 105(intgrah jimboko awu macaque sammyuri), 113(jacekwl Potatoman nauti), 120(HETHAT), 121(JRKX)
 # ============================================== 97 =============================================
 # p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],all(s==s[::-1] for s in m))[::-1]for c in sum(g,[]))[1]
 # p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],(w:=[*zip(*m)])==w[::-1])[::-1]for c in sum(g,[]))[1]
