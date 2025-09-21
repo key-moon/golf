@@ -41,13 +41,15 @@
 #  return g
 
 # def p(g):
-#  g=[(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)]
-#  g=[(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)]
+#  g=[(l:=(d:=max(g[0])))and[(v==l!=d*0)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)]
+#  g=[(l:=(d:=max(g[0])))and[(v==l!=d*1)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)]
 #  return g
 
 # p=lambda g,d=0,c=-1:c*[s[1:]for s in g[1:]]or p([*zip(*[(l:=(d:=d or max(g)[0]))and[(v==l!=d)*(l:=v)for*t,v in zip(*g,s)if {*t}-{0,d}]for s in g])],d,c+1)
 # p=lambda g,c=-1:c*g or p([*zip(*[(l:=(d:=max(g)[0]or-1))and[(v==l!=d)*(l:=v)for*t,v in zip(*g,s)if{*t}-{0,d}]for s in g])][1:],c+1)
-p=lambda g,c=-1:c*g or p([(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)],c+1)
+# p=lambda g,c=-1:c*g or p([(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)],c+1)
+# p=lambda g:g*(len(g)<4)or p([(l:=(d:=max(g[0])or-1))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)])
+p=lambda g,c=-1:c*g or p([(l:=(d:=max(g[0])+~c))and[(v==l!=d)*(l:=v)for t,v in zip(g,s)if{*t}-{0,d}][1:]for s in zip(*g)],c+1)
 
 # [*zip(*)]
 # def p(g):
