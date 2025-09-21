@@ -1,4 +1,4 @@
-# best: 105(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 156(jacekwl Potatoman nauti), 167(intgrah jimboko awu macaque sammyuri), 170(natte), 177(Afordancja), 187(Yuchen20)
+# best: 105(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 156(jacekw Potatoman nauti), 156(jacekwl Potatoman nauti), 167(intgrah jimboko awu macaque sammyuri), 170(natte), 177(Afordancja)
 # ================================================= 105 =================================================
 p=lambda g,c=-1,E=enumerate:c*g or p([[s[j]or(2in s)+(3in t)+(0<sum(s[:j]+[*t[:i]])<sum(s+[*t]))+6&8for j,t in E(zip(*g))]for i,s in E(g)],c+1)
 

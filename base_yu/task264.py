@@ -1,4 +1,4 @@
-# best: 216(ox jam, xsot ovs att joking mewheni) / others: 218(jailctf merger), 218(Yuchen20), 222(natte), 242(MasukenSamba), 243(jacekwl Potatoman nauti)
+# best: 216(ox jam, xsot ovs att joking mewheni) / others: 218(jailctf merger), 218(Yuchen20), 222(natte), 242(MasukenSamba), 243(jacekw Potatoman nauti)
 def p(g):
 #  *o,=eval("[5]*9,"*9)
  o=[[5]*9 for _ in range(9)]

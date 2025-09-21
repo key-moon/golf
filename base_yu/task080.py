@@ -1,4 +1,4 @@
-# best: 253(ox jam, xsot ovs att joking mewheni) / others: 270(jailctf merger), 277(jacekwl Potatoman nauti), 284(kdmitrie), 328(MasukenSamba), 360(Yuchen20)
+# best: 253(ox jam, xsot ovs att joking mewheni) / others: 270(jailctf merger), 277(jacekw Potatoman nauti), 277(jacekwl Potatoman nauti), 284(kdmitrie), 328(MasukenSamba)
 def p(g):
  a,*_,b,c=sorted({*sum(g,[])},key=lambda c:(sum(g,[]).count(c),sum(g,[])[::-1].index(c)+sum(g,[]).index(c)))
  u=[s[:]for s in g]

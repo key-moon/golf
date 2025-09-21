@@ -1,4 +1,4 @@
-# best: 158(biz) / others: 168(jailctf merger), 174(ox jam), 181(jacekwl Potatoman nauti), 186(4atj sisyphus luke Seek mukundan), 208(xsot ovs att joking mewheni)
+# best: 158(biz) / others: 168(jailctf merger), 174(ox jam), 181(jacekw Potatoman nauti), 181(jacekwl Potatoman nauti), 186(4atj sisyphus luke Seek mukundan)
 # =========================================================================== 158 ============================================================================
 def p(g):
  _,n,m={*sum(g,[])}

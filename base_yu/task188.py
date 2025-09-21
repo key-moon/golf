@@ -1,4 +1,4 @@
-# best: 61(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 68(ox jam), 74(jacekwl Potatoman nauti), 75(xsot ovs att joking mewheni), 77(natte)
+# best: 61(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 68(ox jam), 74(jacekw Potatoman nauti), 74(jacekwl Potatoman nauti), 75(xsot ovs att joking mewheni)
 # ============================ 61 ===========================
 # 3456789012345678901234567890123456789012345678901234567890123456789012
 # p=lambda g:[g[:(h:=len(g)//2)],[s[:(w:=len(s)//2)]for s in g]][g[0]!=g[h]or h<w]

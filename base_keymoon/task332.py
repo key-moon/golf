@@ -1,4 +1,4 @@
-# best: 58(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 61(ox jam), 61(xsot ovs att joking mewheni), 64(jacekwl Potatoman nauti), 66(intgrah jimboko awu macaque sammyuri), 67(duckyluuk)
+# best: 58(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 61(ox jam), 61(xsot ovs att joking mewheni), 64(jacekw Potatoman nauti), 64(jacekwl Potatoman nauti), 66(intgrah jimboko awu macaque sammyuri)
 # lambda g:[(a:=[1,.6])and[c*(a:=a[::-1])[0]for c in r[::-1]][::-1]for r in g]
 # lambda g:[[c*[1,.6][i+len(r)&1]for i,c in enumerate(r)]for r in g]
 # lambda g:[(a:=5)and[(0<c)*(a:=a^6)for c in r[::-1]][::-1]for r in g]

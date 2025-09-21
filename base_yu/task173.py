@@ -1,4 +1,4 @@
-# best: 218(jailctf merger) / others: 219(4atj sisyphus luke Seek mukundan), 222(natte), 222(Rafael Pooja), 222(kdmitrie), 222(Ali)
+# best: 218(jailctf merger) / others: 219(4atj sisyphus luke Seek mukundan), 222(natte), 222(jacekw Potatoman nauti), 222(Rafael Pooja), 222(kdmitrie)
 def p(g):
  for i in range(len(g)-2):
   for j in range(len(g[0])-2):

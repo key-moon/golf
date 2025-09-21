@@ -1,4 +1,4 @@
-# best: 206(4atj sisyphus luke Seek mukundan) / others: 218(ox jam), 218(xsot ovs att joking mewheni), 223(jailctf merger), 271(jacekwl Potatoman nauti), 275(MasukenSamba)
+# best: 206(4atj sisyphus luke Seek mukundan) / others: 218(ox jam), 218(xsot ovs att joking mewheni), 223(jailctf merger), 271(jacekw Potatoman nauti), 271(jacekwl Potatoman nauti)
 def p(g):
  u=sum(g,[])
  c=max(u,key=lambda c:(c>0,u.count(c),c%5))

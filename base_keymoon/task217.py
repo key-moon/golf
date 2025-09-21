@@ -1,4 +1,4 @@
-# best: 95(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 106(jacekwl Potatoman nauti), 107(kabutack), 107(Yuchen20)
+# best: 95(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 96(4atj sisyphus luke Seek mukundan), 106(natte), 106(jacekw Potatoman nauti), 106(jacekwl Potatoman nauti), 107(kabutack)
 # 155
 # M=max
 # r=range(3)

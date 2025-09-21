@@ -1,4 +1,4 @@
-# best: 50(jailctf merger) / others: 51(4atj sisyphus luke Seek mukundan), 51(JRKX), 51(intgrah jimboko awu macaque sammyuri), 51(jonas ryno kg583 kabutack), 51(jacekwl)
+# best: 50(jailctf merger) / others: 51(4atj sisyphus luke Seek mukundan), 51(JRKX), 51(jacekw Potatoman nauti), 51(intgrah jimboko awu macaque sammyuri), 51(jonas ryno kg583 kabutack)
 # ====================== 50 ======================
 # p=lambda g:sum([[sum([[v]*2for v in s],[])]*2for s in g],[])
 # p=lambda s,a=1:sum([[a and p(v,0)or v]*2for v in s],[])

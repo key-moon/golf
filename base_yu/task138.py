@@ -1,4 +1,4 @@
-# best: 104(ox jam, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 106(intgrah jimboko awu macaque sammyuri), 107(jailctf merger), 149(natte), 154(MasukenSamba), 154(jacekwl Potatoman nauti)
+# best: 104(ox jam, 4atj sisyphus luke Seek mukundan, xsot ovs att joking mewheni) / others: 106(intgrah jimboko awu macaque sammyuri), 107(jailctf merger), 149(natte), 154(jacekw Potatoman nauti), 154(MasukenSamba)
 # ================================================ 104 =================================================
 
 # p=lambda g,c=-79:c*g or p([*zip(*g[1-all(g[0]):][::-1])],c+1)

@@ -1,4 +1,4 @@
-# best: 45(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, HETHAT, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 46(natte), 46(jacekwl), 47(JRKX), 47(jonas ryno kg583 kabutack), 48(duckyluuk)
+# best: 45(ox jam, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, HETHAT, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 46(natte), 46(jacekwl), 47(JRKX), 47(jonas ryno kg583 kabutack), 48(duckyluuk)
 # ==================== 45 ===================
 # def p(g):return[r[:1]*10 if r[0]==r[-1]>0 else r for r in g]
 # p=lambda g:[(s,s[:1]*10)[s[0]==s[9]]for s in g]
