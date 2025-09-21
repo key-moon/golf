@@ -45,7 +45,6 @@
 | [363](/vis/task363.png) | [base_yu](/base_yu/task363.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [234](/dist/task363.py) (+21) | 213 🔴 | [vis-many](/vis_many/task363.png) | encode:+1 |
 | [238](/vis/task238.png) | [base_yu](/base_yu/task238.py) | forcomp-s/zlib-zopfli-cpp-var-nozopfli | [233](/dist/task238.py) (+10) | 223 🔴 | [vis-many](/vis_many/task238.png) |  |
 | [044](/vis/task044.png) | [base_yu](/base_yu/task044.py) | raw/zlib-zopfli-cpp-var-nozopfli | [229](/dist/task044.py) (-26) | 255 🟢 | [vis-many](/vis_many/task044.png) |  |
-| [107](/vis/task107.png) | [base_yu](/base_yu/task107.py) | forplain/raw | [226](/dist/task107.py) (+64) | 162 🔴 | [vis-many](/vis_many/task107.png) | not worth compress |
 | [349](/vis/task349.png) | [base_yu](/base_yu/task349.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [226](/dist/task349.py) (+12) | 214 🔴 | [vis-many](/vis_many/task349.png) | encode:+1 |
 | [277](/vis/task277.png) | [base_yu](/base_yu/task277.py) | forcomp-s/zlib-zopfli-cpp-var-nozopfli | [218](/dist/task277.py) (+24) | 194 🔴 | [vis-many](/vis_many/task277.png) |  |
 | [280](/vis/task280.png) | [base_yu](/base_yu/task280.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [218](/dist/task280.py) (+39) | 179 🔴 | [vis-many](/vis_many/task280.png) |  |
@@ -53,6 +52,7 @@
 | [170](/vis/task170.png) | [base_yu](/base_yu/task170.py) | forplain/raw | [215](/dist/task170.py) (+19) | 196 🔴 | [vis-many](/vis_many/task170.png) | not worth compress |
 | [361](/vis/task361.png) | [base_notebooks](/base_notebooks/task361_20250908-213538Z-golfed-solutions-and-explanations-to-hard-problems-garry-moss.py) | raw/zlib-zopfli-cpp-var-zopfli | [215](/dist/task361.py) (+22) | 193 🔴 | [vis-many](/vis_many/task361.png) |  |
 | [173](/vis/task173.png) | [base_yu](/base_yu/task173.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [212](/dist/task173.py) (-6) | 218 🟢 | [vis-many](/vis_many/task173.png) | encode:+2 |
+| [107](/vis/task107.png) | [base_yu](/base_yu/task107.py) | forplain/raw | [209](/dist/task107.py) (+47) | 162 🔴 | [vis-many](/vis_many/task107.png) | not worth compress |
 | [367](/vis/task367.png) | [base_yu](/base_yu/task367.py) | forplain/raw | [209](/dist/task367.py) (+80) | 129 🔴 | [vis-many](/vis_many/task367.png) | not worth compress |
 | [264](/vis/task264.png) | [base_yu](/base_yu/task264.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [204](/dist/task264.py) (-12) | 216 🟢 | [vis-many](/vis_many/task264.png) | encode:+1 |
 | [325](/vis/task325.png) | [base_keymoon](/base_keymoon/task325.py) | forplain/zlib-zopfli-cpp-var-zopfli | [204](/dist/task325.py) (+44) | 160 🔴 | [vis-many](/vis_many/task325.png) | encode:+1 |
