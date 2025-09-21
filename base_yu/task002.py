@@ -1,4 +1,4 @@
-# best: 90(4atj sisyphus luke Seek mukundan) / others: 91(ox jam), 91(xsot ovs att joking mewheni), 93(intgrah jimboko awu macaque sammyuri), 96(HETHAT), 97(2F)
+# best: 90(4atj sisyphus luke Seek mukundan) / others: 91(ox jam), 91(xsot ovs att joking mewheni), 96(HETHAT), 97(2F), 97(biz)
 # ========================================== 90 ==========================================
 # def p(g):
 #  return g
