@@ -1,4 +1,4 @@
-# best: 75(natte, ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, HETHAT, xsot ovs att joking mewheni) / others: 76(2F), 76(biz), 76(cg-klogw), 80(JRKX), 80(dbdr)
+# best: 75(natte, ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, HETHAT, xsot ovs att joking mewheni) / others: 76(2F), 76(biz), 76(cg-klogw), 77(jacekw Potatoman nauti), 80(JRKX)
 # =================================== 75 ==================================
 # R=range(10)
 # p=lambda g:[[g[0][max(i,j)%(4+(g[0][4]>0))]for j in R]for i in R]
