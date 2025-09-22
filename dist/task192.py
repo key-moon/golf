@@ -1,1 +1,1 @@
-p=lambda g,c=-7:c*g or[g:=[A*(v>0<A==B)or(0<A+w)*v for(A,w,v,B)in zip([0,*s],s[1:]*2,s,g*9)]for s in zip(*p(g,c+1))][::-1]
+p=lambda g,c=-7:c*g or[g:=[V*(v>0<V==U)or(0<V+w)*v for V,w,v,U in zip([0,*s],s[1:]*2,s,g*9)]for s in zip(*p(g,c+1))][::-1]

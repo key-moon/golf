@@ -1,1 +1,1 @@
-p=lambda g,c=-59,R=range(12):c*g or p([*zip(*[[g[i][j]or(i>1<j and g[i-1][j-1]>2<g[i-(g[i-2][j-2]!=2)*2][j-2])*3for j in R]for i in R][::1-c%3|1])],c+1)
+import re;p=lambda g,c=-59:g*c or eval(re.sub("0(?=.{40}[38].{40}[238])","3",str([*zip(*p(g,c+1))][::1|c%3%-2])))
