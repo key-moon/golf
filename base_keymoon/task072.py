@@ -1,4 +1,4 @@
-# best: 54(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 60(4atj sisyphus luke Seek mukundan), 60(JRKX), 60(jonas ryno kg583 kabutack), 60(Yuchen20), 60(Afordancja)
+# best: 54(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 60(4atj sisyphus luke Seek mukundan), 60(JRKX), 60(intgrah jimboko awu macaque sammyuri), 60(jonas ryno kg583 kabutack), 60(Yuchen20)
 # lambda g:eval("[1.5*(x^y)for x,y in zip(g.pop(0),g[6])],"*6)
 # ======================== 54 ========================
 # lambda g:eval("[3/2*(x^y)for x,y in zip(g.pop(0),g[6])],"*6)
