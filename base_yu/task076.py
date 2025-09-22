@@ -12,6 +12,6 @@ def p(g):
     if sorted(g[y+i][x+j]for y,x,v in u if len(g)>y+i>-1<x+j<len(g[0])if v==g[y+i][x+j]>0)[:6]==[2,4,4,4,4,4]:
      for y,x,v in u:
       g[y+i][x+j]=v
-  g[:]=map(list,zip(*g[::1|_%3%-2]))
+  g[:]=map(list,zip(*g[::1-_%3|1]))
   # *g,=map(list,zip(*g[::1|_%3%-2]))
  return g
