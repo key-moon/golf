@@ -1,1 +1,1 @@
-p=lambda g,c=-3:c*g or p([g:=[v*(v!=max(g)or len({*s,0})>2or w>0)for v,w in zip(s,g)]for s in zip(*g)][::-1],c+1)
+p=lambda g,c=-3:c*g or p([g:=[v*(v!=max(g)or{*s,0}!={v,w})for v,w in zip(s,g)]for s in zip(*g)][::-1],c+1)
