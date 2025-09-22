@@ -5,10 +5,15 @@
 #  x,*_,y=sorted(i//10-i%10 for i in R(100)if g[i//10][i%10])
 #  return[[c*(i-j in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for j in R(10)]for i in R(10)]
 
+# def p(g,R=range(10)):
+#  u=(G:=sum(g,[])).index(c:=sum({*G})-5)
+#  x,*_,y=sorted(i-j for i in R for j in R if g[i][j])
+#  return[[c*(i-j in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for j in R]for i in R]
+
 def p(g,R=range(10)):
- u=(G:=sum(g,[])).index(c:=sum({*G})-5)
- x,*_,y=sorted(i-j for i in R for j in R if g[i][j])
- return[[c*(i-j in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for j in R]for i in R]
+ c=sum({*sum(g,[])})-5
+ x,*y,z=sorted(i-j for i in R for j in R if g[i][j])
+ return[[c*(5!=g[i][j]>0 or (i-j+2==x<y[0])or(i-j-2==z>y[-1]))for j in R]for i in R]
 
 
 # def p(g,R=range(10)):
