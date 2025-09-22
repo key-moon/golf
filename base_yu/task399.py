@@ -1,4 +1,4 @@
-# best: 64(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, xsot ovs att joking mewheni) / others: 65(dbdr), 66(HETHAT), 67(JRKX), 67(2F), 67(biz)
+# best: 64(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, xsot ovs att joking mewheni) / others: 65(dbdr), 66(HETHAT), 67(natte), 67(JRKX), 67(2F)
 # ============================= 64 =============================
 # 1の2x2の数を数えて配置しなおす x,yは[0,0,1,2,2],[0,2,1,0,2]
 # def p(g):
