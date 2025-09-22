@@ -1,1 +1,1 @@
-p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(len(s))]for s in g[1:9]]+g[9:]
+p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(10)]for s in g[1:9]]+g[9:]
