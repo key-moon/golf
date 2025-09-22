@@ -1,5 +1,4 @@
 # best: 110(jailctf merger) / others: 115(ox jam), 117(4atj sisyphus luke Seek mukundan), 120(xsot ovs att joking mewheni), 191(intgrah jimboko awu macaque sammyuri), 197(natte)
-# =================================================== 110 ====================================================
 
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((x+(d==x>0<l==y)*(l-x))*(c<0 or x!=d),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((c<0 or x!=d)*(x+(d==x>0<l==y)*(l-x)),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
@@ -8,7 +7,24 @@
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((x+(0<l==y!=x>0)*(l-x))*(c<0 or x!=d),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((x+(0<l==y!=x>0)*(l-x))*(c<0 or x!=d),l:=(x==y)*x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
 # p=lambda g,c=-7:c*g or p([*zip(*[(l:=0)or[(((0<l==t[i]!=s[i]>0)*l or s[i])*(c+1<0 or max([0,*s,0][i:i+3:2])>0),l:=(s[i]==t[i])*s[i])[0]for i in range(len(s))]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
-p=lambda g,c=-7:c*g or p([*zip(*[[((s[i]>0<t[i-1]==t[i])*t[i]or s[i])*(c<-1 or max([0,*s,0][i:i+3:2])>0)for i in range(len(s))]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
+# p=lambda g,c=-7:c*g or p([*zip(*[[((s[i]>0<t[i-1]==t[i])*t[i]or s[i])*(c<-1 or max([0,*s,0][i:i+3:2])>0)for i in range(len(s))]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
+
+# lambda g,c=-7:c*g or[(g:=[d*(v>0<d==V)or v for d,v,V in zip([0,*s],s,g*9)])for s in zip(*p(g,c+1))][::-1] # 0内のノイズ除去なし
+# =================================================== 110 ====================================================
+# lambda g,c=-7:c*g or[(g:=[V*(v>0<V==U)or(0<V+w)*v for V,w,v,U in zip([0,*s],(*s[1:],0),s,g*9)])for s in zip(*p(g,c+1))][::-1]
+p=lambda g,c=-7:c*g or[(g:=[V*(v>0<V==U)or(0<V+w)*v for V,w,v,U in zip([0,*s],*s[1:]*2,s,g*9)])for s in zip(*p(g,c+1))][::-1]
+
+#  ?
+# ?0? -> 0
+#  ?
+# 0a0 -> 0
+#  a
+# a?? -> a
+#  ?
+# ?a? -> a
+
+# 一個上と同じ色が両隣のどっちかにあったらそれを採用
+# 両隣が 0 だったら0に
 
 # import re
 # def p(g):
