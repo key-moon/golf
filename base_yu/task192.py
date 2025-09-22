@@ -12,8 +12,10 @@
 # lambda g,c=-7:c*g or[(g:=[d*(v>0<d==V)or v for d,v,V in zip([0,*s],s,g*9)])for s in zip(*p(g,c+1))][::-1] # 0内のノイズ除去なし
 # =================================================== 110 ====================================================
 # lambda g,c=-7:c*g or[(g:=[V*(v>0<V==U)or(0<V+w)*v for V,w,v,U in zip([0,*s],(*s[1:],0),s,g*9)])for s in zip(*p(g,c+1))][::-1]
-p=lambda g,c=-7:c*g or[(g:=[V*(v>0<V==U)or(0<V+w)*v for V,w,v,U in zip([0,*s],s[1:]*2,s,g*9)])for s in zip(*p(g,c+1))][::-1]
+p=lambda g,c=-7:c*g or[g:=[V*(v>0<V==U)or(0<V+w)*v for V,w,v,U in zip([0,*s],s[1:]*2,s,g*9)]for s in zip(*p(g,c+1))][::-1]
 
+#  U
+# Vvw
 #  ?
 # ?0? -> 0
 #  ?
