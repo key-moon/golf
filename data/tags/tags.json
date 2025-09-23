@@ -921,7 +921,8 @@
       "diagonal"
     ],
     "325": [
-      "count"
+      "count",
+      "fixed-pattern"
     ],
     "327": [
       "diagonal"
