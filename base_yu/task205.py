@@ -1,4 +1,4 @@
-# best: 166(4atj sisyphus luke Seek mukundan) / others: 170(ox jam), 170(jailctf merger), 170(xsot ovs att joking mewheni), 202(natte), 254(MasukenSamba)
+# best: 166(4atj sisyphus luke Seek mukundan) / others: 170(ox jam), 170(jailctf merger), 202(natte), 254(MasukenSamba), 263(intgrah jimboko awu macaque sammyuri)
 # =============================================================================== 166 ================================================================================
 def p(g):
  c=max(sum(g,[]),key=sum(g,[]).count)

@@ -1,4 +1,4 @@
-# best: 87(ox jam, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 89(4atj sisyphus luke Seek mukundan), 100(Rafael Pooja), 100(HashPanda), 100(HashPanda Pooja), 101(Yuchen20)
+# best: 87(ox jam, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 89(4atj sisyphus luke Seek mukundan), 100(Rafael Pooja), 100(HashPanda), 100(HashPanda Pooja), 101(Yuchen20)
 # ========================================= 87 ========================================
 # p=lambda g:(c:=sum(g,[]).count(0))and[[((i//3)*c+(j//3)<9-c)*g[i%3][j%3]for j in range(3*c)]for i in range(3*c)]
 # p=lambda g:(R:=range(c:=sum(g,[]).count(0)))and[[(i*c+j<9-c)*v for j in R for v in s]for i in R for s in g]

@@ -1,4 +1,4 @@
-# best: 51(cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 52(ox jam), 52(intgrah jimboko awu macaque sammyuri), 52(xsot ovs att joking mewheni), 53(jacekw Potatoman nauti), 53(jacekwl Potatoman nauti)
+# best: 51(cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 52(ox jam), 52(intgrah jimboko awu macaque sammyuri), 53(jacekw Potatoman nauti), 53(jacekwl Potatoman nauti), 55(Yuchen20)
 # ======================= 51 ======================
 # lambda g:g*0!=0and sum([map(p,g)]*3,())or g
 # lambda s:sum([[v*0!=0and p(v)or v]*3for v in s],[])

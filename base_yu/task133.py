@@ -1,4 +1,4 @@
-# best: 298(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 321(Rafael Pooja), 321(kdmitrie), 321(sekken), 321(intgrah jimboko awu macaque sammyuri), 321(open source)
+# best: 298(ox jam, jailctf merger) / others: 321(Rafael Pooja), 321(kdmitrie), 321(sekken), 321(intgrah jimboko awu macaque sammyuri), 321(open source)
 def p(g):
  for c in range(10):
   for d in range(10):

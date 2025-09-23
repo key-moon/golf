@@ -1,4 +1,4 @@
-# best: 101(jailctf merger) / others: 106(4atj sisyphus luke Seek mukundan), 109(ox jam), 109(xsot ovs att joking mewheni), 122(natte), 123(jacekw Potatoman nauti)
+# best: 101(jailctf merger) / others: 106(4atj sisyphus luke Seek mukundan), 109(ox jam), 122(natte), 123(jacekw Potatoman nauti), 123(jacekwl Potatoman nauti)
 # =============================================== 101 ===============================================
 # p=lambda g:[[v for*t,v in zip(*g,s) if any(t)]for s in g if any(s)]
 # def p(g):

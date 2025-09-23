@@ -1,4 +1,4 @@
-# best: 276(jailctf merger) / others: 295(ox jam), 302(xsot ovs att joking mewheni), 320(4atj sisyphus luke Seek mukundan), 330(Yuchen20), 355(natte)
+# best: 276(jailctf merger) / others: 295(ox jam), 320(4atj sisyphus luke Seek mukundan), 330(Yuchen20), 355(natte), 356(kdmitrie)
 def p(g):
  u=[]
  u=[(i,j,g[i][j])for i in range(len(g))for j in range(len(g[0]))if g[i][j]|2==3 or g[i][j]*any(abs(y-i)<2>abs(x-j) for y,x,_ in u)]

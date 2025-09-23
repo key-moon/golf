@@ -1,4 +1,4 @@
-# best: 29(ox jam, cubbus, duckyluuk, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, Rafael Pooja, MasukenSamba, HashPanda, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri, HashPanda Pooja, jonas ryno kg583 kabutack, Yuchen20, HETHAT, cg-klogw, jacekwl Potatoman nauti, xsot ovs att joking mewheni, blob2822, jonas ryno kg583, JRK) / others: 30(kabutack), 31(natte), 31(dbdr), 31(cg), 31(jacekwl)
+# best: 29(ox jam, cubbus, duckyluuk, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, Rafael Pooja, MasukenSamba, HashPanda, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri, HashPanda Pooja, jonas ryno kg583 kabutack, Yuchen20, HETHAT, cg-klogw, jacekwl Potatoman nauti, blob2822, jonas ryno kg583, JRK) / others: 30(kabutack), 31(natte), 31(dbdr), 31(cg), 31(jacekwl)
 # ============ 29 ===========
 # 縦横線対称([[7]]) or 対称性0([[1]])
 # だめ: g[0][0]==g[2][2] and g[0][2]==g[2][0]

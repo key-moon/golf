@@ -1,4 +1,4 @@
-# best: 257(natte, jailctf merger) / others: 277(ox jam), 286(xsot ovs att joking mewheni), 304(jacekw Potatoman nauti), 304(jacekwl Potatoman nauti), 312(jacekwl)
+# best: 257(natte, jailctf merger) / others: 277(ox jam), 304(jacekw Potatoman nauti), 304(jacekwl Potatoman nauti), 312(jacekwl), 332(intgrah jimboko awu macaque sammyuri)
 def p(g):
  for j in 0,1:
   I=[i for i in range(15)if g[i][j]]

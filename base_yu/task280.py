@@ -1,4 +1,4 @@
-# best: 179(4atj sisyphus luke Seek mukundan) / others: 182(ox jam), 182(xsot ovs att joking mewheni), 185(jailctf merger), 210(intgrah jimboko awu macaque sammyuri), 216(jacekw Potatoman nauti)
+# best: 179(4atj sisyphus luke Seek mukundan) / others: 182(ox jam), 185(jailctf merger), 210(intgrah jimboko awu macaque sammyuri), 216(jacekw Potatoman nauti), 224(natte)
 # ====================================================================================== 179 ======================================================================================
 def p(g):
  o=[s[:]for s in g]

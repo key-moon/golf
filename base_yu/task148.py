@@ -1,4 +1,4 @@
-# best: 141(jailctf merger) / others: 148(ox jam), 148(xsot ovs att joking mewheni), 154(4atj sisyphus luke Seek mukundan), 182(natte), 202(intgrah jimboko awu macaque sammyuri)
+# best: 141(jailctf merger) / others: 148(ox jam), 154(4atj sisyphus luke Seek mukundan), 182(natte), 202(intgrah jimboko awu macaque sammyuri), 206(dbdr)
 # =================================================================== 141 ===================================================================
 def p(g):
  u=[*filter(max,g)]

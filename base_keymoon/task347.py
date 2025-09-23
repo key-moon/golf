@@ -1,4 +1,4 @@
-# best: 50(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 54(duckyluuk), 54(Yuchen20), 54(HETHAT), 56(cubbus), 56(JRKX)
+# best: 50(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 54(duckyluuk), 54(Yuchen20), 54(HETHAT), 56(cubbus), 56(JRKX)
 # p=lambda g:[[6*any(s)for s in zip(*zip(*[iter(r)]*3))]for r in g]
 # p=lambda g:[[6*(0<sum(s))for s in zip(r,r[3:])]for r in g]
 # p=lambda g:[[6*(0<a+b)for a,b in zip(r,r[3:])]for r in g]

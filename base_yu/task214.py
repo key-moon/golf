@@ -1,4 +1,4 @@
-# best: 62(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 70(2F), 70(biz), 72(intgrah jimboko awu macaque sammyuri), 73(MasukenSamba), 73(cg)
+# best: 62(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 70(2F), 70(biz), 72(intgrah jimboko awu macaque sammyuri), 73(MasukenSamba), 73(cg)
 # ============================ 62 ============================
 # p=lambda g:[g[i][:4]+[g[2][i],g[1][i],g[0][i]]+g[2-i][3::-1]for i in(0,1,2)]
 # p=lambda g:[s[:4]+[z,y,x]+t[3::-1]for s,(x,y,z),t in zip(g,[*zip(*g)][:3],g[::-1])]

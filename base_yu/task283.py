@@ -1,4 +1,4 @@
-# best: 82(jailctf merger) / others: 94(ox jam), 94(4atj sisyphus luke Seek mukundan), 94(xsot ovs att joking mewheni), 95(intgrah jimboko awu macaque sammyuri), 110(JRKX)
+# best: 82(jailctf merger) / others: 94(ox jam), 94(4atj sisyphus luke Seek mukundan), 95(intgrah jimboko awu macaque sammyuri), 110(JRKX), 110(jonas ryno kg583 kabutack)
 # ====================================== 82 ======================================
 # p=lambda g:[[t[i]and(4<<sum([*t[i-1:i]+t[i+1:i+2]]+s[j-1:j]+s[j+1:j+2]))%7 for j,t in enumerate(zip(*g))]for i,s in enumerate(g)]
 # p=lambda g,E=enumerate:[[t[i]and sum([*t[i-1:i+2]]+s[j-1:j+2])**4%7 for j,t in E(zip(*g))]for i,s in E(g)]

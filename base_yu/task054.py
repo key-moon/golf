@@ -1,4 +1,4 @@
-# best: 280(jailctf merger) / others: 283(ox jam), 283(xsot ovs att joking mewheni), 333(natte), 335(intgrah jimboko awu macaque sammyuri), 353(cubbus)
+# best: 280(jailctf merger) / others: 283(ox jam), 333(natte), 335(intgrah jimboko awu macaque sammyuri), 352(sekken), 353(cubbus)
 def p(g):
  for c in range(10):
   z=[(i,j)for i in range(30)for j in range(30)if g[i][j]==c]

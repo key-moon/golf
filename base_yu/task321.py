@@ -1,4 +1,4 @@
-# best: 55(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(ox jam), 57(xsot ovs att joking mewheni), 58(intgrah jimboko awu macaque sammyuri), 61(HETHAT), 63(JRKX)
+# best: 55(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 57(ox jam), 58(intgrah jimboko awu macaque sammyuri), 61(HETHAT), 63(JRKX), 63(2F)
 # ========================= 55 ========================
 # lambda g:[[[*filter(bool,c),0][0]for c in zip(s,s[5:],s[10:])]for s in g]
 # lambda g:[[next(filter(bool,s[i::5]+[0]))for i in(0,1,2,3)]for s in g]

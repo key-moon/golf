@@ -1,4 +1,4 @@
-# best: 67(4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(ox jam), 68(jacekw Potatoman nauti), 68(jacekwl Potatoman nauti), 68(xsot ovs att joking mewheni), 79(Yuchen20)
+# best: 67(4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(ox jam), 68(jacekw Potatoman nauti), 68(jacekwl Potatoman nauti), 79(Yuchen20), 80(JRKX)
 # =============================== 67 ==============================
 # 351と同じ問題
 #flattenして点対称の位置を集める

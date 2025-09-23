@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan) / others: 108(jailctf merger), 109(ox jam), 109(xsot ovs att joking mewheni), 136(JRKX), 136(jonas ryno kg583 kabutack)
+# best: 105(4atj sisyphus luke Seek mukundan) / others: 108(jailctf merger), 109(ox jam), 136(JRKX), 136(jonas ryno kg583 kabutack), 136(jonas ryno kg583)
 # ================================================= 105 =================================================
 
 

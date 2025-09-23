@@ -1,4 +1,4 @@
-# best: 60(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, xsot ovs att joking mewheni) / others: 61(JRKX), 61(jonas ryno kg583 kabutack), 61(jonas ryno kg583), 61(JRK), 68(MasukenSamba)
+# best: 60(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 61(JRKX), 61(jonas ryno kg583 kabutack), 61(jonas ryno kg583), 61(JRK), 68(MasukenSamba)
 # =========================== 60 ===========================
 # lambda g:(u:=sum(g,[]).index(5))and[g[u//10+1+i][u%10-1:u%10+2]for i in range(3)]
 # lambda g:(u:=sum(g,[]).index(5))and[g[u//10+i][u%10-1:][:3]for i in range(1,4)]

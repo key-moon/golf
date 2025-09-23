@@ -1,4 +1,4 @@
-# best: 56(ox jam, xsot ovs att joking mewheni) / others: 58(2F), 58(biz), 60(4atj sisyphus luke Seek mukundan), 61(jailctf merger), 65(jacekw Potatoman nauti)
+# best: 56(ox jam) / others: 58(2F), 58(biz), 60(4atj sisyphus luke Seek mukundan), 61(jailctf merger), 65(jacekw Potatoman nauti)
 # ========================= 56 =========================
 # 34567890123456789012345678901234567890123456789012345678901234
 # ==============================================================56789012345678

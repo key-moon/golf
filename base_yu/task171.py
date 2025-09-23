@@ -1,4 +1,4 @@
-# best: 51(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 59(HETHAT), 61(natte), 61(cubbus), 62(Yuchen20), 65(JRKX)
+# best: 51(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 59(HETHAT), 61(natte), 61(cubbus), 62(Yuchen20), 65(JRKX)
 # ======================= 51 ======================
 # p=lambda g,c=-1:g*c or p([u:=[8]*len(g)]+[*zip(*g)][2:]+[u],c+1)
 # p=lambda g:[a:=[8]*len(g[0])]+[[8,*r[2:],8]for r in g[2:]]+[a]

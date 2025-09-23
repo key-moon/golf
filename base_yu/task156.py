@@ -1,4 +1,4 @@
-# best: 146(jailctf merger) / others: 152(4atj sisyphus luke Seek mukundan), 156(ox jam), 156(xsot ovs att joking mewheni), 194(Yuchen20), 208(JRKX)
+# best: 146(jailctf merger) / others: 152(4atj sisyphus luke Seek mukundan), 156(ox jam), 194(Yuchen20), 208(JRKX), 208(jonas ryno kg583 kabutack)
 # ===================================================================== 146 ======================================================================
 import re;p=lambda g,c=-99:c*g or p([*zip(*eval(re.sub(*["([^0]), 4, 4","(?<=4.{34})4(?=.{34}4(, 4|.{31}4){%d})"%(-c//9),r"\1,\1,4",str(2-("2"in str(g)))][c%9<1::2],str(g))))],c+1)
 

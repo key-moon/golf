@@ -1,4 +1,4 @@
-# best: 75(ox jam, jailctf merger, intgrah jimboko awu macaque sammyuri, xsot ovs att joking mewheni) / others: 84(4atj sisyphus luke Seek mukundan), 87(jacekw Potatoman nauti), 87(jacekw), 87(jacekwl), 87(jacekwl Potatoman nauti)
+# best: 75(ox jam, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 84(4atj sisyphus luke Seek mukundan), 87(jacekw Potatoman nauti), 87(jacekw), 87(jacekwl), 87(jacekwl Potatoman nauti)
 # =================================== 75 ==================================
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%~-len({*sum(g,[])})for c in R] for r in R]
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%~-len({0,*g[0]})for c in R] for r in R] <- 隠れてる場合に死

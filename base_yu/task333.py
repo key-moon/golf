@@ -1,4 +1,4 @@
-# best: 89(ox jam, jailctf merger, xsot ovs att joking mewheni) / others: 94(4atj sisyphus luke Seek mukundan), 101(JRKX), 102(jacekw Potatoman nauti), 102(jacekwl Potatoman nauti), 104(kabutack)
+# best: 89(ox jam, jailctf merger) / others: 94(4atj sisyphus luke Seek mukundan), 101(JRKX), 102(jacekw Potatoman nauti), 102(jacekwl Potatoman nauti), 104(kabutack)
 # ========================================== 89 =========================================
 # lambda g,c=-3:c*g or p([[v or(3in s[:i])*max(s[i:])for i,v in enumerate(s)]for s in zip(*g[::-1])],c+1)
 # lambda g,c=-3:c*g or p([[s[i]or(3in s[:i])*max(s[i:])for i in range(10)]for s in zip(*g[::-1])],c+1)
