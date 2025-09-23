@@ -2,15 +2,24 @@
 {% block title %}Dashboard - ARC-AGI Golf{% endblock %}
 {% block content %}
 <h2>Dashboard</h2>
-<div class="grid cols-4">
-  <article>
-    <header>Our total <span style="font-size:0.75em; color:var(--pico-muted-text-color,#666)">(est total, cropped by best×1.5)</span></header>
-    <h2>
-      <span style="font-size:0.85em" id="ourTotal">-</span>
-      <span style="font-size:0.75em; color:var(--pico-muted-text-color,#666)" id="ourEstTotal">(-)</span>
-    </h2>
+<style>
+/* mini grid for tooltip */
+.mini-grid{display:inline-block; padding:2px; border:1px solid var(--pico-muted-border-color,#ccc); background:var(--pico-card-background-color,#fff); box-shadow:0 1px 2px rgba(0,0,0,.15);}
+.mini-grid .r{display:flex; line-height:0;}
+.mini-grid .r span{width:6px;height:6px;display:inline-block;}
+/* stat cards redesigned */
+.stat-card{padding:15px; background:var(--pico-card-background-color,#fff); border:1px solid var(--pico-muted-border-color,#ccc); border-radius:8px; display:inline-flex; flex-direction:column; align-items:flex-start; gap:1px; min-width:140px; box-shadow:0 1px 2px rgba(0,0,0,.06);}
+.stat-card header{margin:8px 0; font-size:.52em; font-weight:600; letter-spacing:.4px; text-transform:uppercase; opacity:.6; height: 0; line-height:.9; padding:0;}
+.stat-card h2{margin:0; font-size:1.38em; line-height:1.0; font-variant-numeric:tabular-nums; font-weight:600;}
+.stat-card small{font-size:.6em; opacity:.65;}
+@media (max-width:900px){ .stat-card{min-width:130px; padding:6px 10px;} .stat-card h2{font-size:1.25em;} }
+</style>
+<div class="grid cols-4" style="--pico-grid-row-gap:4px; align-items:flex-start;">
+  <article class="stat-card">
+    <header>Ours total</header>
+    <h2 id="ourTotal">-</h2>
   </article>
-  <article>
+  <article class="stat-card">
     <header>Theoretical best</header>
     <h2 id="bestTotal">-</h2>
   </article>
@@ -20,6 +29,7 @@
       <button data-sort="problem" class="secondary">problem</button>
       <button data-sort="best" class="secondary">best</button>
       <button data-sort="length" class="secondary">length</button>
+      <button data-sort="diff" class="secondary">diff</button>
     </div>
   </div>
   <div>
@@ -32,19 +42,21 @@
     </div>
   </div>
 </div>
-<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:8px 0">
-  <div>
-    <strong>Team</strong><br/>
-    <select id="teamSelect" class="btn-slim">
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:10px 0 4px">
+  <label style="display:flex; flex-direction:column; font-size:.75em; gap:2px;">
+    <span>Team</span>
+    <select id="teamSelect" class="btn-slim" style="min-width:140px">
       <option value="">ours</option>
     </select>
+  </label>
+  <div class="seg" style="margin-top:14px">
+    <button data-mode="stack" id="modeStack" class="secondary">stacked</button>
+    <button data-mode="diff" id="modeDiff" class="secondary">diff</button>
+    <button data-mode="blame" id="modeBlame" class="secondary">blame</button>
   </div>
-  <span class="muted" id="teamTotal"></span>
-  <span class="muted">（チームを選択すると、そのチームの最終スコアでヒストグラムを表示）</span>
-  <span style="margin-left:auto"></span>
-  <div class="seg">
-    <button id="btnUseOurs" class="secondary btn-slim">Use ours</button>
-  </div>
+  <span id="teamLastTime" class="muted" style="font-size:.75em; margin-top:2px; white-space:nowrap;"></span>
+  <input id="timeSlider" type="range" min="0" max="100" value="100" style="width:360px; margin-left:auto">
+  <span id="timeLabel" class="muted" style="font-size:.75em; min-width:150px; text-align:right"></span>
   <script>
   (async function(){
     try{
@@ -55,24 +67,24 @@
   })();
   </script>
 </div>
-<section style="overflow-x:auto">
-  <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:6px">
-    <div class="seg">
-      <button data-mode="stack" id="modeStack" class="secondary">stacked</button>
-      <button data-mode="diff" id="modeDiff" class="secondary">diff only</button>
-    </div>
-    <span id="timeLabel" class="muted"></span>
-    <span style="margin-left:auto"></span>
-    <input id="timeSlider" type="range" min="0" max="100" value="100" style="width:360px">
-  </div>
-  <canvas id="hist" height="360" style="min-width:1200px"></canvas>
+<section style="overflow-x:auto; margin-top:2px">
+  <canvas id="hist" height="360"></canvas>
   <div id="tooltip" class="tooltip"></div>
 </section>
 <section>
-  <h3>Recent best updates</h3>
-  <ul id="recent" style="max-height: 240px; overflow:auto;">
-    <li class="muted">loading...</li>
-  </ul>
+  <h3 style="display:flex; gap:16px; align-items:center; flex-wrap:wrap">Recent best updates & recent our updates</h3>
+  <div class="grid cols-2">
+    <div>
+      <ul id="recent" style="max-height: 240px; overflow:auto;">
+        <li class="muted">loading...</li>
+      </ul>
+    </div>
+    <div>
+      <ul id="recentOurs" style="max-height: 240px; overflow:auto;">
+        <li class="muted">loading...</li>
+      </ul>
+    </div>
+  </div>
   <p><small>最新50件まで表示</small></p>
   <script>
   (async function(){
@@ -90,20 +102,37 @@
       });
       if(!ul.children.length){ const li=document.createElement('li'); li.textContent='No updates.'; ul.appendChild(li); }
     }catch(e){ const ul=document.getElementById('recent'); ul.textContent='Failed to load.'; }
+    try{
+      const r2 = await (await fetch('/api/recent_our_updates')).json();
+      const ul2 = document.getElementById('recentOurs'); ul2.textContent='';
+      (r2.events||[]).forEach(ev=>{
+        const li=document.createElement('li');
+        const from = ev.from==null? '-' : ev.from;
+        const to = ev.to==null? '-' : ev.to;
+        const id = String(ev.task_id).padStart(3,'0');
+        const date = new Date(ev.t*1000).toLocaleString();
+        li.innerHTML = `<a href="/tasks/${ev.task_id}">task${id}</a>: ${from} -> <strong>${to}</strong> <small class="muted">${date}</small>`;
+        ul2.appendChild(li);
+      });
+      if(!ul2.children.length){ const li=document.createElement('li'); li.textContent='No updates.'; ul2.appendChild(li); }
+    }catch(e){ const ul2=document.getElementById('recentOurs'); ul2.textContent='Failed to load.'; }
   })();
   </script>
 </section>
 
 <script>
+// common palette (legend + mini-grid) — ensure single source
 const palette=['#8B00FF','#4B0082','#0000FF','#FFFF00','#00FF00','#FF7F00','#FF0000','#964B00','#000000','#FFFFFF'];
+window.PALETTE = palette;
 function applyActive(group, value, attr){[...group.querySelectorAll('button')].forEach(b=>b.classList.toggle('contrast', b.dataset[attr]===String(value)));}
-let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, mode:'stack', tr:{min:0,max:0}, t:null, _reqSeq:0 };
+let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, mode:'diff', tr:{min:0,max:0}, t:null, _reqSeq:0, _teamCurrentSum:null, _blameSegs:[] };
 (function initControls(){
-  const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, G.sort, 'sort'); sortBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ G.sort=v; applyActive(sortBtns, v, 'sort'); draw(); }};
+  const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, G.sort, 'sort'); sortBtns.onclick=async (e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ G.sort=v; applyActive(sortBtns, v, 'sort'); await resortAndRedraw(); }};
   const widthBtns=document.getElementById('widthBtns'); applyActive(widthBtns, G.barW, 'w'); widthBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.w; if(v){ G.barW=Number(v); applyActive(widthBtns, G.barW, 'w'); draw(); }};
   const sel=document.getElementById('teamSelect');
   sel.addEventListener('change', async ()=>{
     const name = sel.value;
+  updateTeamLastTime(name);
     if(!name){
       // ours 
       G.team = null;
@@ -119,12 +148,11 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, 
       document.getElementById('teamTotal').textContent = `${name} total: ${total}`;
     }catch{}
   });
-  document.getElementById('btnUseOurs').onclick=()=>{ sel.value=''; sel.dispatchEvent(new Event('change')); };
 })();
 (async function(){
   const s = await (await fetch('/api/summary')).json();
   G.data = s;
-  // ours 優先フラグ（サーバ側で検出するAPIも用意したがここではteamsで判定）
+  updateTeamLastTime('');
   try{
     const tRange = await (await fetch('/api/time_range')).json();
     G.tr = tRange; G.t = tRange.max;
@@ -132,26 +160,8 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, 
     slider.min = String(tRange.min); slider.max = String(tRange.max); slider.value = String(tRange.max);
     updateTimeLabel();
   }catch{}
-  const ourTotal = s.our_lengths.reduce((a,b)=>a+(b??0),0);
-  const ourEstTotal = (() => {
-    const bests = s.bests || [];
-    const ours = s.our_lengths || [];
-    let sum = 0;
-    const n = Math.max(bests.length, ours.length);
-    for (let i = 0; i < n; i++) {
-      const b = bests[i];
-      const o = ours[i];
-      if (b == null && o == null) continue;
-      const cap = b == null ? (o ?? 0) : Math.round(b * 1.5);
-      const val = o == null ? cap : Math.min(o, cap);
-      sum += val;
-    }
-    return sum;
-  })();
-  const bestTotal = s.bests.reduce((a,b)=>a+(b??0),0);
-  document.getElementById('ourTotal').textContent = ourTotal;
-  document.getElementById('ourEstTotal').textContent = `(${ourEstTotal})`;
-  document.getElementById('bestTotal').textContent = bestTotal;
+  document.getElementById('ourTotal').textContent = s.our_lengths.reduce((a,b)=>a+(b??0),0);
+  document.getElementById('bestTotal').textContent = (s.bests||[]).reduce((a,b)=>a+(b??0),0);
   const tNow = G.t;
   const ok = await prepareItems(tNow);
   if(ok && G.t===tNow) draw();
@@ -184,24 +194,120 @@ async function prepareItems(expectedT){
   }catch{ G._bestsAt = s.bests; }
   const series = G.team && Array.isArray(G.team.lengths) ? G.team.lengths : ourSeries;
   for(let i=0;i<N;i++) nextItems.push({ idx:i, id:i+1, best:s.bests[i], our:series[i] });
-  if(G.sort==='best') nextItems.sort((a,b)=> (a.best??Infinity)-(b.best??Infinity));
-  else if(G.sort==='length') nextItems.sort((a,b)=> (a.our??Infinity)-(b.our??Infinity));
+  sortItems(nextItems);
   // 競合: 最新でなければ結果を反映しない
   if(seq !== G._reqSeq) return false;
   G.items = nextItems;
+  // 合計スコア（selected team / ours の現在時点）を保持
+  try{ G._teamCurrentSum = nextItems.reduce((a,it)=> a + (it.our??0), 0); }catch{ G._teamCurrentSum = null; }
+  updateTeamLastTime(document.getElementById('teamSelect')?.value||'');
   return true;
 }
+function sortItems(arr){
+  const bests = G._bestsAt || G.data?.bests || [];
+  if(G.sort==='problem') arr.sort((a,b)=> a.idx-b.idx);
+  else if(G.sort==='best') arr.sort((a,b)=> (bests[a.idx]??Infinity)-(bests[b.idx]??Infinity));
+  else if(G.sort==='length') arr.sort((a,b)=> (a.our??Infinity)-(b.our??Infinity));
+  else if(G.sort==='diff') arr.sort((a,b)=>{
+    const ba = bests[a.idx]; const bb = bests[b.idx];
+    const da = (a.our!=null && ba!=null)? a.our - ba : Infinity;
+    const db = (b.our!=null && bb!=null)? b.our - bb : Infinity;
+    return da-db;
+  });
+}
+async function resortAndRedraw(){ sortItems(G.items); draw(); }
 function draw(){
   if(!G.data) return; 
-  const c = document.getElementById('hist'); const H=G.H; const barW=G.barW; const padL=G.padL; const padB=G.padB; const padR=12; const padT=12;
-  const W = padL + padR + barW*G.items.length; G.W=W;
+  const c = document.getElementById('hist'); const blameMode = (G.mode==='blame'); const diffMode=(G.mode==='diff');
+  const baseH = G.H; const H = blameMode ? 130 : baseH; const barW=G.barW; const padL=G.padL; const padB=G.padB; const padR=36; const padT=12;
+  const W = blameMode ? (padL + padR + 1500) : (padL + padR + barW*G.items.length); G.W=W;
   const dpi = window.devicePixelRatio||1; c.width=W*dpi; c.height=H*dpi; c.style.width=`${W}px`; c.style.height=`${H}px`;
   const ctx = c.getContext('2d'); ctx.setTransform(dpi,0,0,dpi,0,0); ctx.clearRect(0,0,W,H);
   // theme-aware colors for canvas
   const styles = getComputedStyle(document.body);
   const gridColor = styles.getPropertyValue('--pico-muted-border-color') || '#eee';
   const textColor = getComputedStyle(c).color || '#666';
-  const diffMode = (G.mode==='diff');
+  if(blameMode){
+    const bests = G._bestsAt || G.data.bests;
+    const positives = G.items.map(it=>{ const b=bests[it.idx], o=it.our; if(b!=null && o!=null && o>b) return {task:it.id, diff:o-b}; return null; }).filter(Boolean);
+    const total = positives.reduce((a,p)=> a + p.diff, 0);
+    ctx.fillStyle=textColor; ctx.font='12px system-ui';
+    ctx.fillText('blame view: positive diff contributions', padL, 14);
+    if(total<=0){ ctx.fillText('No positive diffs.', padL, 40); G._blameSegs=[]; return; }
+    // group by diff value to keep same color for identical diff
+    positives.sort((a,b)=> a.diff - b.diff);
+    const distinctDiffs=[...new Set(positives.map(p=>p.diff))];
+    const darkL=35, lightL=78; // lightness bounds
+    const diffToLight=new Map();
+    if(distinctDiffs.length===1){ diffToLight.set(distinctDiffs[0], 55); }
+    else distinctDiffs.forEach((d,i)=>{ const t=i/(distinctDiffs.length-1); const L=lightL - (lightL-darkL)*t; diffToLight.set(d, L); });
+    const barY=50, barH=32; const usableW = W - padL - padR;
+    // width via cumulative rounding to avoid overlap & hover mismatch
+    let cum=0, cumDiff=0, xPix=0; G._blameSegs=[];
+    // dark mode detection for label colors
+    let bodyBg = styles.getPropertyValue('--pico-background-color') || getComputedStyle(document.body).backgroundColor || '#ffffff';
+    const m = bodyBg.match(/rgba?\(([^)]+)\)/); let isDark=false;
+    if(m){ const parts=m[1].split(',').map(s=>parseFloat(s)); const [r,g,b]=parts; const lum=(0.2126*r+0.7152*g+0.0722*b)/255; isDark = lum < 0.5; }
+    // line color = inverted theme text color for stronger contrast
+    function invertColor(col){
+      const m = col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/); if(m){ const r=255-+m[1], g=255-+m[2], b=255-+m[3]; return `rgb(${r},${g},${b})`; }
+      if(col.startsWith('#')){ let h=col.slice(1); if(h.length===3) h=h.split('').map(c=>c+c).join(''); if(h.length===6){ const r=255-parseInt(h.slice(0,2),16), g=255-parseInt(h.slice(2,4),16), b=255-parseInt(h.slice(4,6),16); return `rgb(${r},${g},${b})`; } }
+      return isDark? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.9)';
+    }
+    const lineColor = invertColor(textColor);
+    const labelBgColor = isDark? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.85)';
+    const labelTextColor = isDark? 'rgba(255,255,255,0.9)' : textColor;
+    let prevDiff=null;
+    // helper (before loop as requested): draw vertical boundary line + diff label (no margin clamping)
+    function drawDiffBoundary(x, diffVal, percentile){
+      const lineTop = barY - 12; // upward protrusion
+      ctx.fillStyle=lineColor; ctx.fillRect(x, lineTop, 1, 12);
+      if(diffVal==null) return;
+      ctx.font='10px system-ui';
+      const label = '+' + diffVal;
+      const tw = ctx.measureText(label).width + 6;
+      const lx = x - tw/2; // allow overflow beyond margins (no clamp)
+      const ly = lineTop - 2;
+      ctx.fillStyle=labelBgColor; ctx.fillRect(lx, ly - 11, tw, 12);
+      ctx.fillStyle=labelTextColor; ctx.fillText(label, lx + 3, ly - 2);
+      // percentile label under boundary (only here)
+      if(percentile!=null){
+        const pLbl = (percentile*100).toFixed(1);
+        const pw = ctx.measureText(pLbl).width + 4;
+        const px = x - pw/2; // overflow allowed
+        const py = barY + barH + 14;
+        ctx.fillStyle=labelBgColor; ctx.fillRect(px, py-10, pw, 11);
+        ctx.fillStyle=labelTextColor; ctx.fillText(pLbl, px+2, py-2);
+      }
+    }
+    positives.forEach((p,i)=>{ cum += usableW * p.diff / total; const target = (i===positives.length-1)? usableW : Math.round(cum); let w = target - xPix; if(w<1) w=1; const x = padL + xPix; xPix += w; const baseL = diffToLight.get(p.diff) ?? 55; cumDiff += p.diff; // adjacency alternation by satur./light tweak
+      const alt = (i%2===1)? 0 : 1; // alternate pattern emphasis
+      const sat = 75 + (alt?0:-5); const lightness = Math.min(90, Math.max(20, baseL + (alt?0:5)));
+      const color = `hsl(0,${sat}%,${lightness}%)`;
+      ctx.fillStyle=color; ctx.fillRect(x, barY, w, barH);
+      // boundary & previous diff label (percentile = cumulative before this new diff group)
+      if(i>0 && p.diff !== prevDiff){ drawDiffBoundary(x, prevDiff, (cumDiff - p.diff)/total); }
+      prevDiff = p.diff;
+  G._blameSegs.push({x, w, task:p.task, diff:p.diff, pct:p.diff/total, percentile: cumDiff/total, cumulative: cumDiff});
+    });
+    // final boundary with last diff label (percentile = 1.0)
+    if(positives.length){ const lastSeg = G._blameSegs[G._blameSegs.length-1]; drawDiffBoundary(lastSeg.x + lastSeg.w, positives[positives.length-1].diff, 1.0); }
+    ctx.strokeStyle=gridColor; ctx.strokeRect(padL, barY, usableW, barH);
+    ctx.fillStyle=textColor; ctx.fillText('total +' + total, padL, barY + barH + 18);
+  // percentile labels now drawn only under diff boundaries inside drawDiffBoundary
+    c.style.cursor='pointer';
+    c.onmousemove = (ev)=>{
+      const rect=c.getBoundingClientRect(); const mx=ev.clientX-rect.left; const my=ev.clientY-rect.top; const tooltip=document.getElementById('tooltip');
+      if(my < barY || my > barY+barH){ tooltip.style.display='none'; return; }
+      let seg=null; for(const s of G._blameSegs){ if(mx>=s.x && mx<=s.x+s.w){ seg=s; break; } }
+      if(!seg){ tooltip.style.display='none'; return; }
+      tooltip.style.display='block'; tooltip.style.left=(ev.pageX+12)+'px'; tooltip.style.top=(ev.pageY+12)+'px';
+  tooltip.innerHTML = `task${String(seg.task).padStart(3,'0')} +${seg.diff} (${(seg.pct*100).toFixed(1)}%) p${(seg.percentile*100).toFixed(1)} Σ=${seg.cumulative}`;
+    };
+    c.onclick = (ev)=>{ const rect=c.getBoundingClientRect(); const mx=ev.clientX-rect.left; for(const s of G._blameSegs){ if(mx>=s.x && mx<=s.x+s.w){ window.open(`/tasks/${s.task}`,'_blank'); break; } } };
+    c.onmouseleave=()=>{ const tooltip=document.getElementById('tooltip'); tooltip.style.display='none'; };
+    return;
+  }
   const maxY = diffMode ? 150 : 500; const tickStep = diffMode ? 25 : 50;
   ctx.strokeStyle=gridColor; ctx.fillStyle=textColor; ctx.font='12px system-ui';
   if(diffMode){
@@ -231,15 +337,21 @@ function draw(){
     });
   }
   // mouse interaction
-  c.onmousemove = (ev)=>{
+  c.onmousemove = async (ev)=>{
     const rect = c.getBoundingClientRect(); const x = (ev.clientX-rect.left); const idx = Math.floor((x - padL)/barW); const tooltip=document.getElementById('tooltip');
     if(idx<0||idx>=G.items.length){ tooltip.style.display='none'; return; }
   const it = G.items[idx]; const b=(G._bestsAt||G.data.bests)[it.idx];
   const diff = (b!=null && it.our!=null) ? (it.our - b) : null;
   const bestDiff = (b!=null && diff!=null) ? `${b} (${diff>0?'+':''}${diff})` : (b??'-');
     tooltip.style.display='block'; tooltip.style.left = (ev.pageX+12)+'px'; tooltip.style.top = (ev.pageY+12)+'px';
-    tooltip.innerHTML = `task${String(it.id).padStart(3,'0')}<br/>ours: ${it.our??'-'}<br/>best(diff): ${bestDiff}`;
+  if(!G._thumbs){ try{ G._thumbs = await (await fetch('/api/tasks/thumbs?include_output=1')).json(); }catch{ G._thumbs=[]; } }
+    const th = Array.isArray(G._thumbs)? G._thumbs[it.idx]: null;
+  let thumbHtml='';
+  function gridHtml(mat){ if(!mat) return ''; return '<div class="mini-grid">'+mat.map(row=>'<div class="r">'+row.map(v=>`<span style="background:${palette[v%palette.length]};"></span>`).join('')+'</div>').join('')+'</div>'; }
+  if(th){ const gi=gridHtml(th.input); const go=gridHtml(th.output); if(gi||go){ thumbHtml = `<div style="display:flex; gap:4px;">${gi}${go}</div>`; } }
+  tooltip.innerHTML = `task${String(it.id).padStart(3,'0')}<br/>ours: ${it.our??'-'}<br/>best(diff): ${bestDiff}<br/>${thumbHtml}`;
   };
+  c.onclick = (ev)=>{ const rect=c.getBoundingClientRect(); const x=(ev.clientX-rect.left); const idx=Math.floor((x-padL)/barW); if(idx>=0 && idx<G.items.length){ const it=G.items[idx]; window.open(`/tasks/${it.id}`,'_blank'); }};
   c.onmouseleave = ()=>{ const tooltip=document.getElementById('tooltip'); tooltip.style.display='none'; };
 }
 
@@ -247,5 +359,13 @@ function draw(){
 document.getElementById('timeSlider').addEventListener('input', async (e)=>{ const tTarget = Number(e.target.value); G.t = tTarget; updateTimeLabel(); const ok = await prepareItems(tTarget); if(ok && G.t===tTarget) draw(); });
 document.getElementById('modeStack').addEventListener('click', ()=>{ G.mode='stack'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'stack', 'mode'); draw(); });
 document.getElementById('modeDiff').addEventListener('click', ()=>{ G.mode='diff'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'diff', 'mode'); draw(); });
+document.getElementById('modeBlame').addEventListener('click', ()=>{ G.mode='blame'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'blame', 'mode'); draw(); });
+
+async function updateTeamLastTime(name){
+  try{ const r = await (await fetch(`/api/team_last_time?name=${encodeURIComponent(name||'ours')}`)).json(); const el=document.getElementById('teamLastTime'); if(!el) return; if(r.last_time){ const score=(typeof G._teamCurrentSum==='number')? G._teamCurrentSum : null; el.textContent = `${r.name|| (name||'ours')} last: ` + new Date(r.last_time*1000).toLocaleString() + (score!=null? ` | score: ${score}`:''); } else { el.textContent=''; } }catch{}
+}
+
+// 初期モード（diff）ボタンの強調
+applyActive(document.getElementById('modeDiff').parentElement, 'diff', 'mode');
 </script>
 {% endblock %}

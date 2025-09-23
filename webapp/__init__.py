@@ -60,6 +60,56 @@ def _load_our_results() -> dict:
 # 一括サムネイル用の簡易キャッシュ
 _TASK_THUMBS_CACHE: dict[str, list[dict]] = {}
 
+def _build_task_thumbs_cache(include_output: bool) -> list[dict]:
+    """Build (and memoize) task thumbnails list.
+    include_output: whether to attach an example output grid.
+    Returns cached list.
+    """
+    cache_key = "with_out" if include_output else "no_out"
+    if cache_key in _TASK_THUMBS_CACHE:
+        return _TASK_THUMBS_CACHE[cache_key]
+    out: list[dict] = []
+    for task_id in range(1, 401):
+        path = TASKS_DIR / f"task{task_id:03}.json"
+        if not path.exists():
+            item = {"id": task_id, "input": None}
+            if include_output:
+                item["output"] = None
+            item.update({"train_n":0, "test_n":0, "arcgen_n":0, "in_h":None, "in_w":None, "out_h":None, "out_w":None})
+            out.append(item)
+            continue
+        try:
+            data = json.loads(path.read_text())
+            ex = None
+            if (data.get("test") or []):
+                ex = (data.get("test") or [None])[0]
+            elif (data.get("train") or []):
+                ex = (data.get("train") or [None])[0]
+            elif (data.get("arc-gen") or []):
+                ex = (data.get("arc-gen") or [None])[0]
+            train_n = len(data.get("train") or [])
+            test_n = len(data.get("test") or [])
+            arcgen_n = len(data.get("arc-gen") or [])
+            in_h = in_w = out_h = out_w = None
+            if ex and ex.get("input"):
+                in_h = len(ex["input"]) or None
+                in_w = len(ex["input"][0]) if in_h else None
+            if ex and ex.get("output"):
+                out_h = len(ex["output"]) or None
+                out_w = len(ex["output"][0]) if out_h else None
+            item = {"id": task_id, "input": ex.get("input") if ex else None, "train_n":train_n, "test_n":test_n, "arcgen_n":arcgen_n, "in_h":in_h, "in_w":in_w, "out_h":out_h, "out_w":out_w}
+            if include_output:
+                item["output"] = ex.get("output") if ex else None
+            out.append(item)
+        except Exception:
+            item = {"id": task_id, "input": None}
+            if include_output:
+                item["output"] = None
+            item.update({"train_n":0, "test_n":0, "arcgen_n":0, "in_h":None, "in_w":None, "out_h":None, "out_w":None})
+            out.append(item)
+    _TASK_THUMBS_CACHE[cache_key] = out
+    return out
+
 
 def create_app() -> Flask:
     app = Flask(
@@ -253,51 +303,7 @@ def create_app() -> Flask:
     @app.get("/api/tasks/thumbs")
     def api_tasks_thumbs():
         include_output = request.args.get("include_output", "0") in ("1", "true", "True")
-        cache_key = "with_out" if include_output else "no_out"
-        if cache_key in _TASK_THUMBS_CACHE:
-            return jsonify(_TASK_THUMBS_CACHE[cache_key])
-        out: list[dict] = []
-        for task_id in range(1, 401):
-            path = TASKS_DIR / f"task{task_id:03}.json"
-            if not path.exists():
-                item = {"id": task_id, "input": None}
-                if include_output:
-                    item["output"] = None
-                item.update({"train_n":0, "test_n":0, "arcgen_n":0, "in_h":None, "in_w":None, "out_h":None, "out_w":None})
-                out.append(item)
-                continue
-            try:
-                data = json.loads(path.read_text())
-                # Use the first test example if available, otherwise fall back to train/arc-gen
-                ex = None
-                if (data.get("test") or []):
-                    ex = (data.get("test") or [None])[0]
-                elif (data.get("train") or []):
-                    ex = (data.get("train") or [None])[0]
-                elif (data.get("arc-gen") or []):
-                    ex = (data.get("arc-gen") or [None])[0]
-                train_n = len(data.get("train") or [])
-                test_n = len(data.get("test") or [])
-                arcgen_n = len(data.get("arc-gen") or [])
-                in_h = in_w = out_h = out_w = None
-                if ex and ex.get("input"):
-                    in_h = len(ex["input"]) or None
-                    in_w = len(ex["input"][0]) if in_h else None
-                if ex and ex.get("output"):
-                    out_h = len(ex["output"]) or None
-                    out_w = len(ex["output"][0]) if out_h else None
-                item = {"id": task_id, "input": ex.get("input") if ex else None, "train_n":train_n, "test_n":test_n, "arcgen_n":arcgen_n, "in_h":in_h, "in_w":in_w, "out_h":out_h, "out_w":out_w}
-                if include_output:
-                    item["output"] = ex.get("output") if ex else None
-                out.append(item)
-            except Exception:
-                item = {"id": task_id, "input": None}
-                if include_output:
-                    item["output"] = None
-                item.update({"train_n":0, "test_n":0, "arcgen_n":0, "in_h":None, "in_w":None, "out_h":None, "out_w":None})
-                out.append(item)
-        _TASK_THUMBS_CACHE[cache_key] = out
-        return jsonify(out)
+        return jsonify(_build_task_thumbs_cache(include_output))
 
     # API: タスクごとのスコア推移（トップ10チーム）
     @app.get("/api/task/<int:task_id>/progress")
@@ -542,6 +548,61 @@ def create_app() -> Flask:
         events.sort(key=lambda e: e["t"], reverse=True)
         return jsonify({"events": events[:50]})
 
+    # API: 最近の ours の更新
+    @app.get("/api/recent_our_updates")
+    def api_recent_our_updates():
+        prog = loads_task_scores_progressions()
+        if "ours" not in prog:
+            return jsonify({"events": []})
+        events: list[dict] = []
+        per_tasks = prog["ours"]
+        for t_idx in range(min(400, len(per_tasks))):
+            series = per_tasks[t_idx] or []
+            prev = None
+            for entry in series:
+                sc = entry.get("score")
+                dt = entry.get("date")
+                if not isinstance(sc, int):
+                    continue
+                if isinstance(dt, (int, float)):
+                    tt = int(dt)
+                elif isinstance(dt, datetime):
+                    tt = int(dt.timestamp())
+                else:
+                    continue
+                if prev is None or sc != prev:
+                    events.append({
+                        "task_id": t_idx + 1,
+                        "from": prev,
+                        "to": sc,
+                        "t": tt,
+                    })
+                    prev = sc
+        events.sort(key=lambda e: e["t"], reverse=True)
+        return jsonify({"events": events[:50]})
+
+    # API: チームの最終提出時刻
+    @app.get("/api/team_last_time")
+    def api_team_last_time():
+        name = request.args.get("name") or "ours"
+        prog = loads_task_scores_progressions()
+        if name not in prog:
+            return jsonify({"name": name, "last_time": None})
+        last_t = None
+        for series in prog[name]:
+            for entry in reversed(series or []):
+                dt = entry.get("date")
+                if isinstance(dt, (int, float)):
+                    tt = int(dt)
+                elif isinstance(dt, datetime):
+                    tt = int(dt.timestamp())
+                else:
+                    continue
+                if last_t is None or tt > last_t:
+                    last_t = tt
+                break  # series は時系列順想定なので逆方向最初で最新
+        return jsonify({"name": name, "last_time": last_t})
+
     # タスク初期化/オープン（tools/init.py の動作を模倣）
     @app.post("/api/task/<int:task_id>/init")
     def api_init_task(task_id: int):
@@ -613,6 +674,14 @@ def create_app() -> Flask:
             except Exception:
                 outputs = []
         return jsonify({"mtime": mtime, "task": task_id, "outputs": outputs})
+
+    # --- Warm caches at startup (thumbnails) ---
+    try:
+        print("[+] creating cache...")
+        _build_task_thumbs_cache(False)
+        _build_task_thumbs_cache(True)
+    except Exception:
+        pass
 
     return app
 
