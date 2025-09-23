@@ -1,10 +1,12 @@
 # best: 160(jailctf merger) / others: 161(4atj sisyphus luke Seek mukundan), 172(ox jam), 209(jacekw Potatoman nauti), 209(jacekwl Potatoman nauti), 213(Yuchen20)
 # ============================================================================ 160 =============================================================================
-# port re;S=re.sub;l=lambda g,c=-10:g*c or[*zip(*l(eval(S("1, 8", "1, 1",str(l(g,c+1)))),c+1))][::-1];p=lambda g,c=[]:(2>max(max(g,key=max)))*c or p(l(S(*'81',str(g),1)),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
-# str.replace;l=lambda g,c=-10:g*c or[*zip(*l(eval(S(str(l(g,c+1)),"1, 8", "1, 1")),c+1))][::-1];p=lambda g,c=[]:(2>max(max(g,key=max)))*c or p(l(S(str(g),*'81',1)),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
-# lambda g,c=30:-c*g or[*zip(*eval(str(l(g,c-1)).replace("1, 8","1, 1")))][::-1];p=lambda g,c=[]:c*(2>max(max(g,key=max)))or p(l(str(g).replace(*'81',1)),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
-# lambda g,c=23:-c*g or[*zip(*eval(str(l(g,c-1)).replace(*["1, 8","8","1, 1","1"][c<1::2],1)))][::-1];p=lambda g,c=[]:c*(2>max(max(g,key=max)))or p(l(g),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
-l=lambda g,c=23:-c*g or[*zip(*eval(str(l(g,c-1)).replace("1, 8"[(b:=3*0**c):],"1, 1"[b:],1)))][::-1];p=lambda g,c=[]:c*(2>max(max(g,key=max)))or p(l(g),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+# port re;S=re.sub;l=lambda g,c:g*c or[*zip(*l(eval(S("1, 8", "1, 1",str(l(g,c+1)))),c+1))][::-1];p=lambda g,c=[]:0**("8"in str(g))*c or p(l(S(*'81',str(g),1),-23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+# str.replace;l=lambda g,c=:g*c or[*zip(*l(eval(S(str(l(g,c+1)),"1, 8", "1, 1")),c+1))][::-1];p=lambda g,c=[]:0**("8"in str(g))*c or p(l(S(str(g),*'81',1),-23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+# lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace("1, 8","1, 1")))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(str(g).replace(*'81',1),23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+# lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace(*["1, 8","8","1, 1","1"][c<1::2],1)))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(g,23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+# lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace("1, 8"[(b:=3*0**c):],"1, 1"[b:],1)))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(g,23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+l=lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace((b:=(c>0)*"1, ")+"8",b+"1",1)))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(g,23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+
 
 # 連結成分の個数がほしい ref: base_keymoon/task048.py
 # import re;s=re.sub
