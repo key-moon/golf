@@ -1,9 +1,14 @@
 # best: 129(ox jam, jailctf merger) / others: 138(4atj sisyphus luke Seek mukundan), 148(intgrah jimboko awu macaque sammyuri), 227(MasukenSamba), 280(natte), 301(JRKX)
 # ============================================================= 129 =============================================================
-def p(g):
- w=len(g[0])
- u=[0]*w
- return [(t:=[x or y*4 for x,y in zip(s,u)],u:=[u[j]^any(r-l>3 and [0,*t,0][l:r]==[0]+[5]*(r-l-2)+[0]for l in range(j+1)for r in range(j+3,w+3))for j in range(w)])[0]for s in g[:-1]]+g[-1:]
+# 05  -> 45
+#  50     50
+#  0      0
+import re;p=lambda g,c=-19:g*c or p(eval(re.sub("0(?=, 4|, 5..{%s}5, 0.{%s}0)"%(a:=len(g)*3,a-2),"4",str([*zip(*g)][::-1]))),c+1)
+
+# def p(g):
+#  w=len(g[0])
+#  u=[0]*w
+#  return [(t:=[x or y*4 for x,y in zip(s,u)],u:=[u[j]^any(r-l>3 and [0,*t,0][l:r]==[0]+[5]*(r-l-2)+[0]for l in range(j+1)for r in range(j+3,w+3))for j in range(w)])[0]for s in g[:-1]]+g[-1:]
 
 # def p(g):
 #  h=len(g)
