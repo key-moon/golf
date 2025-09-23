@@ -1,7 +1,12 @@
 # best: 119(4atj sisyphus luke Seek mukundan) / others: 122(ox jam), 122(xsot ovs att joking mewheni), 129(jailctf merger), 162(jacekw Potatoman nauti), 162(jacekwl Potatoman nauti)
 # ======================================================== 119 ========================================================
 
-p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)
+# p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)
+# p=lambda g,c=-3:c*g or p([*zip(*[[s[0],max({*s[:2]}&{*s[2:]}),*[(v in s[-2:]+g[0]+g[-1])*v for v in s[2:]]]for s in g][::-1])],c+1)
+# p=lambda g,c=-3:c*g or p([[s[0],max({*s[:2]}&{*s[2:]})]+[v*(v in[*s[-2:],*g[0]+g[1]])for v in s[2:]]for s in zip(*g[::-1])],c+1)
+# p=lambda g,c=-3:c*g or p([[a,max({a,b}&{*s})]+[v*(v in[*s[-2:],*g[0]+g[1]])for v in s]for a,b,*s in zip(*g[::-1])],c+1)
+# p=lambda g,c=-3:c*g or p([[v*(v in[*s[:2],*g[0]+g[1]])for v in s]+[max({a,b}&{*s}),b]for*s,a,b in zip(*g)][::-1],c+1)
+p=lambda g,c=-3:c*g or p([[v*(v in s[:2]+g[0]+g[1])for v in s]+[max({a,b}&{*s}),b]for*s,a,b in zip(*g)][::-1],c+1)
 
 # def p(g):
 #  for _ in range(4):
