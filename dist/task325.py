@@ -1,1 +1,1 @@
-l=lambda g,c=23:-c*g or[*zip(*eval(str(l(g,c-1)).replace("1, 8"[(b:=3*0**c):],"1, 1"[b:],1)))][::-1];p=lambda g,c=[]:c*(2>max(max(g,key=max)))or p(l(g),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
+l=lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace((b:=(c>0)*"1, ")+"8",b+"1",1)))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(g,23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
