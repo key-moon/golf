@@ -1,4 +1,4 @@
-# best: 71(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 72(jacekw Potatoman nauti), 74(JRKX), 75(HETHAT), 77(natte), 77(kabutack)
+# best: 71(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 72(jacekw Potatoman nauti), 74(JRKX), 75(intgrah jimboko awu macaque sammyuri), 75(HETHAT), 77(natte)
 # ================================= 71 ================================
 # p=lambda g:(a:=[*filter(int,map(sum,zip(*g)))],c:=[8]*(a[0]//5-(a[1]+3)//8)+[0]*9)and[c[:3],c[5:2:-1],c[6:9]]
 # p=lambda g:(a:=[*({s.count(0)for s in zip(*g)}-{len(g)})],c:=[8]*abs(a[0]-a[1])+[0]*9)and[c[:3],c[5:2:-1],c[6:9]]

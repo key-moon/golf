@@ -1,4 +1,4 @@
-# best: 63(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, HETHAT) / others: 64(natte), 64(duckyluuk), 64(JRKX), 64(MasukenSamba), 64(2F)
+# best: 63(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri, HETHAT) / others: 64(natte), 64(duckyluuk), 64(JRKX), 64(jacekw Potatoman nauti), 64(MasukenSamba)
 # ============================= 63 ============================
 # p=lambda g,R=range(9):[[(g[i//3][j//3]>1)*g[i%3][j%3]for j in R]for i in R]
 # p=lambda g:[sum([[[0,0,0],s][v>1]for v in t],[])for t in g for s in g]
