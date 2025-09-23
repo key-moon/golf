@@ -1,6 +1,6 @@
 # best: 89(jailctf merger) / others: 90(jacekw Potatoman nauti), 93(Yuchen20), 94(cg-klogw), 95(4atj sisyphus luke Seek mukundan), 97(MKRC)
 # ========================================== 89 =========================================
-# 112
+# 109
 def p(g,a=3):
  l=len(g)//2
  for i in range(2-0**g[-2][l-1],l+1):g[-a][l-i]=g[-a][l+i]=g[-1][l];a+=1
