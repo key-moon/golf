@@ -150,6 +150,7 @@ if __name__ == "__main__":
   parser.add_argument("dirname", nargs="?", default="dist", help="Directory name containing code files")
   parser.add_argument("range_str", nargs="?", default="1-400", help="Range string for tasks")
   parser.add_argument("--strip", "-s", action="store_true", help="Only strip code and exit")
+  parser.add_argument("--skip-check", "-c", action="store_true", help="Skip the correctness check")
   parser.add_argument("--knockout", "-k", type=int, default=-1, help="Maximum number of wrongs before stopping (default -1 = disabled)")
   parser.add_argument("--full-compress", "-f", action="store_false", dest="fast", help="Use slow compressor")
   parser.add_argument("--check-compressed", action="store_true", help="Check the correctness of compressed code")
@@ -157,6 +158,7 @@ if __name__ == "__main__":
 
   dirname = args.dirname
   range_str = args.range_str
+  skip_check = args.skip_check
   knockout = args.knockout
   fast = args.fast
   r = parse_range_str(range_str)
@@ -169,7 +171,10 @@ if __name__ == "__main__":
     task = get_task(i)
     for code_path in get_code_paths(dirname, i):
       if not os.path.exists(code_path): continue
-      res = check(code_path, task, knockout)
+      if skip_check:
+        res = CheckRes([], 1.0, "check skipped")
+      else:
+        res = check(code_path, task, knockout)
       try:
         with open(code_path, "r") as f:
           orig_code = f.read().strip()
