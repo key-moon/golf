@@ -1,4 +1,4 @@
-# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 65(ox jam), 71(JRKX), 71(kabutack), 71(intgrah jimboko awu macaque sammyuri)
+# best: 63(jailctf merger) / others: 64(4atj sisyphus luke Seek mukundan), 65(ox jam), 70(JRKX), 71(kabutack), 71(intgrah jimboko awu macaque sammyuri)
 # ============================= 63 ============================
 # lambda g:([(r[1:3+(r[0]==r[3])][:3]*9)[:len(g)]for r in g[:2]]*99)[:len(g)]
 # lambda g:([(r[1:3+(r[0]==r[3])]*9)[:(a:=len(g))]for r in g[:2]]*99)[:a]
