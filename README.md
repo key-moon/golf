@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 956237
+Score: 956247
 
 Best Score: 959816
 
@@ -415,7 +415,7 @@ Best Score: 959816
 | [054](/vis/task054.png) | [base_yu](/base_yu/task054.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [306](/dist/task054.py) (+26) | 280 🔴 | [vis-many](/vis_many/task054.png) |  |
 | [101](/vis/task101.png) | [dist](/dist/task101.py) | previous | [312](/dist/task101.py) (+31) | 281 🔴 | [vis-many](/vis_many/task101.png) | ⚠️ regression? |
 | [285](/vis/task285.png) | [dist](/dist/task285.py) | previous | [296](/dist/task285.py) (+8) | 288 🔴 | [vis-many](/vis_many/task285.png) | ⚠️ regression? |
-| [233](/vis/task233.png) | [base_yu](/base_yu/task233.py) | forcomp-t/zlib-zopfli-cpp-var-nozopfli | [287](/dist/task233.py) (-10) | 297 🟢 | [vis-many](/vis_many/task233.png) | encode:+1 |
+| [233](/vis/task233.png) | [base_yu](/base_yu/task233.py) | raw/zlib-zopfli-cpp-var-nozopfli | [277](/dist/task233.py) (-20) | 297 🟢 | [vis-many](/vis_many/task233.png) |  |
 | [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [283](/dist/task133.py) (-15) | 298 🟢 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [018](/vis/task018.png) | [dist](/dist/task018.py) | previous | [319](/dist/task018.py) (-4) | 323 🟢 | [vis-many](/vis_many/task018.png) | ⚠️ regression? |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | forcomp-t/zlib-zopfli-cpp-var-nozopfli | [332](/dist/task096.py) (+7) | 325 🔴 | [vis-many](/vis_many/task096.png) |  |
