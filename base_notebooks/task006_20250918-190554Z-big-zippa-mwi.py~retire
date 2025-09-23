@@ -1,0 +1,1 @@
+p=lambda j:[[A and B and 2 for(A,B)in zip(A[:3],A[4:7])]for A in j[:3]]

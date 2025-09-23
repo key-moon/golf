@@ -1,0 +1,21 @@
+def p(g):
+ h,w=len(g),len(g[0]);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j]:
+    obj=[];s=[(i,j)];col=g[i][j]
+    while s:
+     ci,cj=s.pop()
+     if 0<=ci<h and 0<=cj<w and not v[ci][cj]and g[ci][cj]==col:v[ci][cj]=1;obj.append((ci,cj));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(1,0),(0,-1),(-1,0)]])
+    obj and o.append(obj)
+ sq=[]
+ for obj in o:
+  if obj:
+   mi,ma,mj,mb=min(i for i,j in obj),max(i for i,j in obj),min(j for i,j in obj),max(j for i,j in obj);oh,ow=ma-mi+1,mb-mj+1;oh==ow and len(obj)==oh*ow and sq.append(obj)
+ e,d=[],[]
+ for obj in sq:
+  if obj:mi,ma=min(i for i,j in obj),max(i for i,j in obj);oh=ma-mi+1;(e if oh%2==0 else d).append(obj)
+ em,dm=sum(e,[]),sum(d,[]);r=[r[:]for r in g]
+ for i,j in em:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[2]+r[i][j+1:])
+ for i,j in dm:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[7]+r[i][j+1:])
+ return r

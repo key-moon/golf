@@ -1,0 +1,2 @@
+def solve_9dfd6313(I):A=tuple(tuple(A)for A in zip(*I));return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_9dfd6313(A);return[list(A)for A in B]

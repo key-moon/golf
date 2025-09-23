@@ -1,0 +1,1 @@
+def p(g):a=[[j for j in i if j]for i in g if sum(i)];b=[*{*sum(a,[])}];return[[b[j==b[0]]for j in i]for i in a]

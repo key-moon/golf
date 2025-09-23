@@ -1,0 +1,44 @@
+def solve_e509e548(I):
+	L=False;H=True;from collections import Counter as D,deque;B=[A[:]for A in I];E,F=len(B),len(B[0])
+	def O(grid):return D([B for A in grid for B in A]).most_common(1)[0][0]
+	def U(grid):
+		I=grid;P=O(I);G=[[L]*F for A in range(E)];M=[]
+		for C in range(E):
+			for D in range(F):
+				if G[C][D]:continue
+				G[C][D]=H;J=I[C][D]
+				if J==P:continue
+				K=deque([(C,D)]);N=[(C,D)]
+				while K:
+					Q,R=K.popleft()
+					for(S,T)in((1,0),(-1,0),(0,1),(0,-1)):
+						A,B=Q+S,R+T
+						if 0<=A<E and 0<=B<F and not G[A][B]and I[A][B]==J:G[A][B]=H;K.append((A,B));N.append((A,B))
+				M.append((J,N))
+		return M
+	def G(grid):
+		G=grid;J=set();K=set()
+		for(V,C)in U(G):
+			if not C:continue
+			M=[A for(A,B)in C];N=[A for(B,A)in C];O,P=min(M),max(M);Q,R=min(N),max(N);S=P-O+1;T=R-Q+1
+			if len(C)==S+T-1:K.update(C)
+			if S>=3 and T>=3:
+				I=L
+				for A in range(O+1,P):
+					for B in range(Q+1,R):
+						if G[A][B]==3:I=H;break
+					if I:break
+				if I:J.update(C)
+		D=[A[:]for A in G]
+		for A in range(E):
+			for B in range(F):
+				if D[A][B]==3:D[A][B]=6
+		for(A,B)in J:D[A][B]=2
+		for(A,B)in K:D[A][B]=1
+		return D
+	C=None;A=[A[:]for A in B]
+	for J in range(20):
+		if C==A:break
+		C=A;A=G(A)
+	return A
+def p(g):return solve_e509e548([A[:]for A in g])

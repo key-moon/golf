@@ -1,0 +1,10 @@
+def p(g,L=len,R=range,M=max,N=min):
+	E,F,C,D=L(g),L(g[0]),[],[];G=[A for A in set(sum(g,[]))if A not in[0,5]][0]
+	for A in R(E):
+		for B in R(F):
+			if g[A][B]==5:C+=[A];D+=[B]
+	for A in R(E):
+		for B in R(F):
+			if A in[N(C)+1,M(C)-1]and N(D)+1<=B<=M(D)-1:g[A][B]=G
+			if B in[N(D)+1,M(D)-1]and N(C)+1<=A<=M(C)-1:g[A][B]=G
+	return g

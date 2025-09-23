@@ -1,0 +1,11 @@
+L=len
+R=range
+def p(g):
+	D=[0]
+	for B in range(4):
+		g=list(map(list,zip(*g[::-1])));F,H=L(g),L(g[0])
+		for A in R(1,F-1):
+			C=g[A][0];D+=[C];E=g[A][1:].count(C)
+			if E>0:
+				for B in R(E):G=g[A][B+1:].index(C);g[A][G+B+1]=0;g[A][B+1]=C
+	g=[[A if A in D else 0 for A in A]for A in g];return g

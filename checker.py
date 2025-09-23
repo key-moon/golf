@@ -71,7 +71,7 @@ def check(path: str, task: Task, knockout=-1, resume_tqdm = False) -> CheckRes:
     dumps = []
     try:
       # signal.setitimer(signal.ITIMER_REAL, 4)
-      # signal.alarm(1)
+      signal.alarm(30) # 30-sec timeout
       module.CASE = casenum
       module.ANSWER = module.CORRECT = module.EXPECTED = example_copy["output"]
       module.DUMP = lambda x,defalut=False: dumps.append(json.loads(json.dumps(x)))or defalut or x

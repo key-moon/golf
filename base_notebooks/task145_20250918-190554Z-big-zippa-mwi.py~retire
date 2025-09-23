@@ -1,0 +1,19 @@
+def p(j):
+	L=[A[:]for A in j];M,N=len(j),len(j[0]);C=set();G=[]
+	for H in range(M):
+		for I in range(N):
+			if j[H][I]!=2 and(H,I)not in C:
+				J,K=[],[(H,I)];C.add((H,I));D=0
+				while K:
+					A,B=K.pop();J.append((A,B))
+					if j[A][B]==0:D+=1
+					for(E,F)in[(0,1),(1,0),(0,-1),(-1,0)]:
+						if 0<=A+E<M and 0<=B+F<N and j[A+E][B+F]!=2 and(A+E,B+F)not in C:C.add((A+E,B+F));K.append((A+E,B+F))
+				G.append((D,J))
+	O=max(A[0]for A in G);P=min(A[0]for A in G)
+	for(D,J)in G:
+		C=1 if D==O else 8 if D==P else 0
+		if C:
+			for(A,B)in J:
+				if j[A][B]==0:L[A][B]=C
+	return L

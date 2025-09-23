@@ -1,0 +1,18 @@
+def f(j,A,c):
+	global W;l.append((j,A))
+	for B in C(j-1,j+2):
+		for D in C(A-1,A+2):
+			if(B,D)in l:continue
+			l.append((B,D))
+			if B<0 or B>=J or D<0 or D>=a or(B,D)in[(K,L),(K+1,L),(K,L+1),(K+1,L+1)]:continue
+			if c[B][D]==2:W=8
+			if c[B][D]==8:f(B,D,c)
+def p(c):
+	global W,l,K,L,J,a,C;W,l,J,a,C,D=0,[],len(c),len(c[0]),range,enumerate
+	for(K,E)in D(c):
+		for(L,F)in D(E):
+			if F==2:
+				for A in C(K-1,K+3):
+					for B in C(L-1,L+3):
+						if A>=0 and A<J and B>=0 and B<a and c[A][B]==8:f(A,B,c)
+				return[[W]]

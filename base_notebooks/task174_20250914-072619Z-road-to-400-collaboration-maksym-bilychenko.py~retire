@@ -1,0 +1,21 @@
+def p(g):
+ h,w=len(g),len(g[0]);ac=sum(g,[]);cc={};[cc.update({c:cc.get(c,0)+1})for c in ac];bg=max(cc,key=cc.get);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j] and g[i][j]!=bg:
+    oc=[];s=[(i,j)]
+    while s:
+     ci,cj=s.pop()
+     if ci<0 or ci>=h or cj<0 or cj>=w or v[ci][cj] or g[ci][cj]==bg:continue
+     v[ci][cj]=1;oc.append((ci,cj));s.extend([(ci+di,cj+dj)for di in[-1,0,1]for dj in[-1,0,1]if di or dj])
+    oc and o.append(frozenset((g[pos[0]][pos[1]],pos)for pos in oc))
+ if not o:return g
+ sg=[]
+ for obj in o:
+  if obj:
+   pos=[pos for col,pos in obj];mr,Mr,mc,Mc=min(p[0]for p in pos),max(p[0]for p in pos),min(p[1]for p in pos),max(p[1]for p in pos);sh,sw=Mr-mr+1,Mc-mc+1;sub=[[g[mr+i][mc+j]if 0<=mr+i<h and 0<=mc+j<w else 0 for j in range(sw)]for i in range(sh)];sg.append(sub)
+ for sub in sg:
+  if sub and sub[0]:
+   mir=[r[::-1]for r in sub]
+   if sub==mir:return sub
+ return sg[0]if sg else g

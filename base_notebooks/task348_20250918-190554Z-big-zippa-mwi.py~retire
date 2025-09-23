@@ -1,0 +1,11 @@
+def p(j,A=range):
+	J,D,C,E=len(j),len(j[0]),0,0
+	for B in A(J):
+		for G in A(D):
+			if j[B][G]:C,E=B+2,G
+	def H(l,J,a):
+		if 0<=J<D:j[l][J]=a
+	for F in A(D):
+		C,I=C-1,7+F%2
+		for B in A(C):H(B,E-F,I);H(B,E+F,I)
+	return j

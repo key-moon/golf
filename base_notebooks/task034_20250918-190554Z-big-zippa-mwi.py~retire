@@ -1,0 +1,21 @@
+R=range
+L=len
+def p(g):
+	K=sum(g,[]);C=[A for A in set(K)if A not in[0,2]][0];D,E=L(g),L(g[0])
+	for G in R(D-1):
+		for H in R(E-1):
+			I=[g[G+A][H+B]for(A,B)in[[0,0],[0,1],[1,0],[1,1]]]
+			if sum([1 for A in I if A>0])>3:
+				for J in[A for A in R(L(I))if I[A]==2]:
+					for F in R(10):
+						if J<2:A=G-F
+						else:A=G+F+1
+						if J%2:B=H+F+1
+						else:B=H-F
+						if 0<=A<D and 0<=B<E:
+							g[A][B]=C
+							if 0<=A-1<D:g[A-1][B]=C
+							if 0<=B-1<E:g[A][B-1]=C
+							if 0<=A+1<D:g[A+1][B]=C
+							if 0<=B+1<E:g[A][B+1]=C
+	return g

@@ -1,0 +1,16 @@
+R=range
+L=len
+def p(g):
+	G,H=L(g),L(g[0])
+	for B in R(1,G-1):
+		for C in R(1,H-1):
+			D=[g[B+A][C+D]for(A,D)in[[0,0],[0,1],[1,0],[1,1]]];J=max(D)
+			if sum([1 for A in D if A>0])>2:
+				I=D.index(0)
+				for A in R(1,10):
+					if I<2:E=B-A
+					else:E=B+A+1
+					if I%2:F=C+A+1
+					else:F=C-A
+					if 0<=E<G and 0<=F<H:g[E][F]=J
+	return g

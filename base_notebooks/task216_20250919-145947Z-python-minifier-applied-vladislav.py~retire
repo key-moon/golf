@@ -1,0 +1,16 @@
+def p(g):
+	F,G=len(g),len(g[0]);from collections import deque;C=[[False]*G for A in range(F)];J=[]
+	for D in range(F):
+		for E in range(G):
+			if g[D][E]==0 or C[D][E]:continue
+			H=deque([(D,E)]);C[D][E]=True;K=[]
+			while H:
+				L,M=H.popleft();K.append((L,M))
+				for(N,O)in((1,0),(-1,0),(0,1),(0,-1)):
+					A,B=L+N,M+O
+					if 0<=A<F and 0<=B<G and not C[A][B]and g[A][B]!=0:C[A][B]=True;H.append((A,B))
+			J.append(K)
+	def I(c):A=min(A for(A,B)in c);B=min(A for(B,A)in c);C=max(A for(A,B)in c);D=max(A for(B,A)in c);return A,B,C,D
+	def P(c):A,B,C,D=I(c);return sum(1 for A in range(A,C+1)for C in range(B,D+1)if g[A][C]==2)
+	def Q(c):A,B,C,D=I(c);E=C-A+1;F=D-B+1;return P(c),-F,-E,-A,-B
+	R=max(J,key=Q);S,T,U,V=I(R);return[A[T:V+1]for A in g[S:U+1]]

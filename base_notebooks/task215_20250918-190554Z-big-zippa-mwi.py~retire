@@ -1,0 +1,1 @@
+p=lambda j:[[A for(C,A)in enumerate(j)if sum(A)and C%3==B%3][0]for B in range(len(j))]

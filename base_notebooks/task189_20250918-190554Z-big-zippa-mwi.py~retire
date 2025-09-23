@@ -1,0 +1,11 @@
+R=range
+L=len
+def p(g):
+	for C in R(4):
+		g=list(map(list,zip(*g[::-1])))
+		if g[0][2]==8 and g[2][0]==8:
+			for A in R(3,L(g)):
+				for B in R(3,L(g[0])):
+					if g[A][B]>0:g[A][B]=g[(A-2)//4][(B-2)//4]
+			g=[A[3:]for A in g[3:]]
+	return g

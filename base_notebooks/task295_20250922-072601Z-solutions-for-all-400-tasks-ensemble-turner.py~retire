@@ -1,0 +1,1 @@
+def p(g):r=g[0];l=sum(map(bool,r));g+=(r[:l]+r[:1]*i+[0]*(len(r)-l-i)for i in range(1,len(r)//2));return g

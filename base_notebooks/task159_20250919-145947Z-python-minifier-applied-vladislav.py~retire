@@ -1,0 +1,40 @@
+F=False
+T=True
+ZERO=0
+ONE=1
+TWO=2
+THREE=3
+def _bg_color(G):A=[B for A in G for B in A];return max(set(A),key=A.count)
+def _components_nonbg_univalued_diag(G):
+	Q=_bg_color(G);F,H=len(G),len(G[0]);E=[[False]*H for A in range(F)];J=[]
+	for A in range(F):
+		for B in range(H):
+			if E[A][B]or G[A][B]==Q:continue
+			K=G[A][B];I=[(A,B)];E[A][B]=True;L=[]
+			while I:
+				M,N=I.pop();L.append((M,N,K))
+				for O in(-1,0,1):
+					for P in(-1,0,1):
+						if O==0 and P==0:continue
+						C,D=M+O,N+P
+						if 0<=C<F and 0<=D<H and not E[C][D]and G[C][D]==K:E[C][D]=True;I.append((C,D))
+			J.append(L)
+	return J
+def _normalize(obj):A=obj;B=min(A for(A,B,B)in A);C=min(B for(A,B,A)in A);return[(A-B,D-C,E)for(A,D,E)in A]
+def _upscale(obj,k):
+	if k==1:return list(obj)
+	A=[]
+	for(B,C,D)in obj:
+		for E in range(k):
+			for F in range(k):A.append((B*k+E,C*k+F,D))
+	return A
+def solve_6b9890af(I):
+	H,J=len(I),len(I[0]);A=[(A,B)for A in range(H)for B in range(J)if I[A][B]==TWO]
+	if not A:return tuple(tuple(A)for A in I)
+	K=min(A for(A,B)in A);L=min(A for(B,A)in A);M=max(A for(A,B)in A);N=max(A for(B,A)in A);B=[list(I[A][L:N+1])for A in range(K,M+1)];O,D=len(B),len(B[0]);E=_components_nonbg_univalued_diag(I)
+	if not E:return tuple(tuple(A)for A in B)
+	P=min(E,key=lambda c:len(c));Q=D//3;C=_normalize(_upscale(P,Q));C=[(A+1,B+1,C)for(A,B,C)in C]
+	for(F,G,R)in C:
+		if 0<=F<O and 0<=G<D:B[F][G]=R
+	return tuple(tuple(A)for A in B)
+def p(g):A=tuple(tuple(A)for A in g);B=solve_6b9890af(A);return[list(A)for A in B]

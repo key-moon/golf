@@ -1,0 +1,155 @@
+F=False
+T=True
+ZERO=0
+ONE=1
+TWO=2
+THREE=3
+FOUR=4
+FIVE=5
+SIX=6
+SEVEN=7
+EIGHT=8
+NINE=9
+TEN=10
+NEG_ONE=-1
+NEG_TWO=-2
+DOWN=1,0
+RIGHT=0,1
+UP=-1,0
+LEFT=0,-1
+ORIGIN=0,0
+UNITY=1,1
+NEG_UNITY=-1,-1
+UP_RIGHT=-1,1
+DOWN_LEFT=1,-1
+ZERO_BY_TWO=0,2
+TWO_BY_ZERO=2,0
+TWO_BY_TWO=2,2
+THREE_BY_THREE=3,3
+def identity(x):return x
+def add(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a+b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]+b[0],a[1]+b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a+b[0],a+b[1]
+	elif isinstance(a,tuple)and isinstance(b,int):return a[0]+b,a[1]+b
+	return a,b
+def subtract(a,b):
+	if isinstance(a,int)and isinstance(b,int):return a-b
+	elif isinstance(a,tuple)and isinstance(b,tuple):return a[0]-b[0],a[1]-b[1]
+	elif isinstance(a,int)and isinstance(b,tuple):return a-b[0],a-b[1]
+	elif isinstance(a,tuple)and isinstance(b,int):return a[0]-b,a[1]-b
+	return 0,0
+def combine(a,b):
+	if isinstance(a,tuple)and isinstance(b,tuple):return a+b
+	if isinstance(a,set)and isinstance(b,set):return a|b
+	return tuple(a)+tuple(b)
+def intersection(a,b):return a&b
+def order(container,compfunc):return tuple(sorted(container,key=compfunc))
+def size(container):return len(container)
+def argmin(container,compfunc):return min(container,key=compfunc)
+def initset(value):return{value}
+def decrement(x):return x-1
+def sfilter(container,condition):A=container;return type(A)(A for A in A if condition(A))
+def first(container):return next(iter(container))
+def last(container):return max(enumerate(container))[1]
+def remove(value,container):A=container;return type(A)(A for A in A if A!=value)
+def other(container,value):return first(remove(value,container))
+def astuple(a,b):return a,b
+def compose(outer,inner):return lambda x:outer(inner(x))
+def chain(h,g,f):return lambda x:h(g(f(x)))
+def matcher(function,target):return lambda x:function(x)==target
+def rbind(function,fixed):
+	B=fixed;A=function;C=A.__code__.co_argcount
+	if C==2:return lambda x:A(x,B)
+	elif C==3:return lambda x,y:A(x,y,B)
+	else:return lambda x,y,z:A(x,y,z,B)
+def lbind(function,fixed):
+	B=fixed;A=function;C=A.__code__.co_argcount
+	if C==2:return lambda y:A(B,y)
+	elif C==3:return lambda y,z:A(B,y,z)
+	else:return lambda y,z,a:A(B,y,z,a)
+def power(function,n):
+	A=function
+	if n==1:return A
+	return compose(A,power(A,n-1))
+def fork(outer,a,b):return lambda x:outer(a(x),b(x))
+def apply(function,container):A=container;return type(A)(function(A)for A in A)
+def mostcolor(element):A=element;B=[B for A in A for B in A]if isinstance(A,tuple)else[A[0]for A in A];return max(set(B),key=B.count)
+def width(piece):
+	A=piece
+	if len(A)==0:return 0
+	if isinstance(A,tuple):return len(A[0])
+	return rightmost(A)-leftmost(A)+1
+def asindices(grid):return set((A,B)for A in range(len(grid))for B in range(len(grid[0])))
+def toindices(patch):
+	A=patch
+	if len(A)==0:return set()
+	B=next(iter(A))
+	if isinstance(B,tuple)and len(B)==2 and isinstance(B[1],tuple):return set(A for(B,A)in A)
+	return A
+def recolor(value,patch):return set((value,A)for A in toindices(patch))
+def shift(patch,directions):
+	A=patch
+	if len(A)==0:return A
+	C,D=directions;B=next(iter(A))
+	if isinstance(B,tuple)and len(B)==2 and isinstance(B[1],tuple):return set((A,(B+C,E+D))for(A,(B,E))in A)
+	return set((A+C,B+D)for(A,B)in A)
+def dneighbors(loc):A=loc;return{(A[0]-1,A[1]),(A[0]+1,A[1]),(A[0],A[1]-1),(A[0],A[1]+1)}
+def objects(grid,univalued,diagonal,without_bg):
+	A=grid;H=mostcolor(A)if without_bg else None;I=[];D=set();L,M=len(A),len(A[0]);N=asindices(A);O=neighbors if diagonal else dneighbors
+	for B in N:
+		if B in D:continue
+		E=A[B[0]][B[1]]
+		if E==H:continue
+		J={(E,B)};F={B}
+		while F:
+			K=set()
+			for C in F:
+				G=A[C[0]][C[1]]
+				if E==G if univalued else G!=H:J.add((G,C));D.add(C);K|={(A,B)for(A,B)in O(C)if 0<=A<L and 0<=B<M}
+			F=K-D
+		I.append(J)
+	return I
+def leftmost(patch):return min(A for(B,A)in toindices(patch))
+def rightmost(patch):return max(A for(B,A)in toindices(patch))
+def palette(element):
+	D=element
+	if isinstance(D,tuple):return{B for A in D for B in A}
+	B={};C={}
+	for(A,(G,E))in D:
+		B[A]=B.get(A,0)+1
+		if A not in C or E<C[A]:C[A]=E
+	F=list(B.keys());F.sort(key=lambda c:(-B[c],C.get(c,1<<30),c));return tuple(F)
+def paint(grid,obj):
+	A=grid;E,F=len(A),len(A[0]);B=list(list(A)for A in A)
+	for(G,(C,D))in obj:
+		if 0<=C<E and 0<=D<F:B[C][D]=G
+	return tuple(tuple(A)for A in B)
+def upscale(element,factor):
+	B=element;A=factor
+	if isinstance(B,tuple):
+		D=[]
+		for I in B:
+			E=[]
+			for C in I:E.extend([C]*A)
+			for Q in range(A):D.append(tuple(E))
+		return tuple(D)
+	else:
+		if len(B)==0:return set()
+		F,G=ulcorner(B);J,K=-F,-G;L=shift(B,(J,K));H=set()
+		for(C,(M,N))in L:
+			for O in range(A):
+				for P in range(A):H.add((C,(M*A+O,N*A+P)))
+		return shift(H,(F,G))
+def canvas(value,dimensions):A=dimensions;return tuple(tuple(value for A in range(A[1]))for B in range(A[0]))
+def gravitate(source,destination):
+	D=destination;A=source;H,I=center(A);J,K=center(D);B,C=0,0
+	if vmatching(A,D):B=1 if H<J else-1
+	else:C=1 if I<K else-1
+	E,F=B,C;G=0
+	while not adjacent(A,D)and G<42:G+=1;E+=B;F+=C;A=shift(A,(B,C))
+	return E-B,F-C
+def solve_234bbc79(I):
+	if not isinstance(I,tuple):I=tuple(tuple(A)for A in I)
+	A=objects(I,F,F,T);G=rbind(other,FIVE);H=compose(G,palette);J=fork(recolor,H,identity);K=apply(J,A);L=order(K,leftmost);M=compose(last,last);B=lbind(matcher,M);N=compose(B,leftmost);O=compose(B,rightmost);P=fork(sfilter,identity,N);Q=fork(sfilter,identity,O);R=compose(dneighbors,last);S=rbind(chain,R);U=lbind(S,size);V=lbind(rbind,intersection);C=chain(U,V,toindices);W=fork(argmin,P,C);X=fork(argmin,Q,C);Y=compose(last,W);Z=compose(last,X);a=astuple(ZERO,DOWN_LEFT);b=initset(a);c=lbind(add,RIGHT);d=chain(Y,first,last);e=compose(Z,first);f=fork(subtract,e,d);D=compose(first,last);g=compose(c,f);h=fork(shift,D,g);i=fork(combine,first,h);j=fork(remove,D,last);k=fork(astuple,i,j);l=size(A);m=power(k,l);n=astuple(b,L);o=m(n);E=first(o);p=width(E);q=decrement(p);r=astuple(THREE,q);s=canvas(ZERO,r);t=paint(s,E);return[list(A)for A in t]
+def p(g):return solve_234bbc79(g)

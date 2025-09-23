@@ -1,0 +1,2 @@
+def solve_c8f0f002(I):A=tuple(tuple(5 if A==7 else A for A in A)for A in I);return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_c8f0f002(A);return[list(A)for A in B]

@@ -1,0 +1,22 @@
+R=range
+L=len
+def p(a):
+    h, w = L(a), L(a[0])
+    def sh(r, s):
+        o = [0]*w
+        for j, v in enumerate(r):
+            x = j + s
+            if v and 0 <= x < w:
+                o[x] = v
+        return o
+    for p in R(1, h+1):
+        b = a[:p]
+        for d in R(-w, w+1):
+            ok = True
+            for i in R(h):
+                if sh(b[i % p], (i // p) * d) != a[i]:
+                    ok = False
+                    break
+            if ok:
+                return [sh(b[i % p], (i // p) * d) for i in R(10)]
+    return [a[i % h][:] for i in R(10)]

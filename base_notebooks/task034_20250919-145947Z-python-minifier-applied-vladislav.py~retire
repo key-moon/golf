@@ -1,0 +1,18 @@
+def solve_1f0c79e5(I):
+	D,E=len(I),len(I[0]);F=[(A,B)for A in range(D)for B in range(E)if I[A][B]==2];G=[A[:]for A in I]
+	for(A,B)in F:G[A][B]=0
+	H=[B for A in G for B in A];P=set(H);J=min(P,key=H.count);Q=[(A,B)for A in range(D)for B in range(E)if G[A][B]==J];C=F+Q
+	if not C:return[A[:]for A in I]
+	R=min(A for(A,B)in C);S=min(A for(B,A)in C);T=[(A-R,B-S)for(A,B)in F];K=[]
+	for(A,B)in T:
+		U,V=2*A-1,2*B-1
+		for L in range(9):K.append((U*L,V*L))
+	M=[A[:]for A in I]
+	for(W,X)in K:
+		for(A,B)in C:
+			N,O=A+W,B+X
+			if 0<=N<D and 0<=O<E:M[N][O]=J
+	return M
+def p(g):
+	try:return solve_1f0c79e5([A[:]for A in g])
+	except Exception:return[list(A)for A in g]

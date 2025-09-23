@@ -1,0 +1,8 @@
+def p(j):
+	for A in range(len(j[0])):
+		if j[-1][A]==2:
+			B=0
+			for C in range(len(j)):
+				if j[-(C+1)][A+B]==5:B+=1;j[-C][A+B]=2
+				j[-(C+1)][A+B]=2
+	return j

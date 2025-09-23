@@ -1,0 +1,11 @@
+def p(g,L=len,R=range):
+	C,D=L(g),L(g[0])
+	for A in R(C//2+1):
+		for B in R(D):
+			if g[A][B]==4:g[A][B]=g[-(A+1)][B]
+			if g[-(A+1)][B]==4:g[-(A+1)][B]=g[A][B]
+	for A in R(C):
+		for B in R(D//2+1):
+			if g[A][B]==4:g[A][B]=g[A][-(B+1)]
+			if g[A][-(B+1)]==4:g[A][-(B+1)]=g[A][B]
+	return g

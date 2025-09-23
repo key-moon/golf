@@ -1,0 +1,1 @@
+p=lambda j:[[A-2*(A==7)for A in A]for A in j]

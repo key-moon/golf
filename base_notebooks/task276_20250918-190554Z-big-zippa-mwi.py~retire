@@ -1,0 +1,1 @@
+p=lambda g:[[{6:2,7:7}.get(A,A)for A in A]for A in g]

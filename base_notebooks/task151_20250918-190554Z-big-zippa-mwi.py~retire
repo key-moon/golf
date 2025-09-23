@@ -1,0 +1,1 @@
+def p(j):C=lambda c:list(map(all,c)).index(1);B,A=C(j),C(zip(*j));j[B-1][A-1:A+2]=j[B+1][A-1:A+2]=[4]*3;j[B][A-1]=j[B][A+1]=4;return j

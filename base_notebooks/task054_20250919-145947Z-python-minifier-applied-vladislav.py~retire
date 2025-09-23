@@ -1,0 +1,49 @@
+def p(g):
+	D,E=len(g),len(g[0]);e=[B for A in g for B in A];F={}
+	for Q in e:F[Q]=F.get(Q,0)+1
+	G=max(F,key=F.get)
+	def R(grid):
+		K=grid;J=[[False]*E for A in range(D)];Q=[]
+		for C in range(D):
+			for F in range(E):
+				if K[C][F]==G or J[C][F]:continue
+				L=[(C,F)];J[C][F]=True;R=[];M,N,O,P=C,F,C,F
+				while L:
+					A,B=L.pop();R.append((A,B,K[A][B]))
+					if A<M:M=A
+					if B<N:N=B
+					if A>O:O=A
+					if B>P:P=B
+					for(S,T)in((1,0),(-1,0),(0,1),(0,-1)):
+						H,I=A+S,B+T
+						if 0<=H<D and 0<=I<E and not J[H][I]and K[H][I]!=G:J[H][I]=True;L.append((H,I))
+				Q.append((R,(M,N,O,P)))
+		return Q
+	S=R(g)
+	if not S:return[A[:]for A in g]
+	T,(H,I,U,V)=min(S,key=lambda x:len(x[0]));J,M=U-H+1,V-I+1;N,O=H+(U-H)//2,I+(V-I)//2;W=g[N][O];X,Y=(-1,0)if J==5 else(0,1);P=g[N+X][O+Y]if 0<=N+X<D and 0<=O+Y<E else None;A=[A[:]for A in g]
+	for(f,h,w)in T:A[f][h]=G
+	Z=[]
+	for B in range(D):
+		for C in range(E):
+			if A[B][C]==W:Z.append((B,C))
+	i=R(A);j=[[A[B][C]==G for C in range(E)]for B in range(D)];k=J==5 or M!=5;l=M==5 or J!=5
+	if P is not None:
+		for(x,(K,L,m,n))in i:
+			a,b=m-K+1,n-L+1
+			for B in range(a):
+				for C in range(b):
+					if A[K+B][L+C]==W:
+						if k:
+							for o in range(a):A[K+o][L+C]=P
+						if l:
+							for p in range(b):A[K+B][L+p]=P
+	q=[(A-H,B-I,C)for(A,B,C)in T];r=-1-(1 if J==5 else 0);s=-1-(1 if M==5 else 0)
+	for(B,C)in Z:
+		for(t,u,v)in q:
+			c,d=B+r+t,C+s+u
+			if 0<=c<D and 0<=d<E:A[c][d]=v
+	for B in range(D):
+		for C in range(E):
+			if j[B][C]:A[B][C]=G
+	return A

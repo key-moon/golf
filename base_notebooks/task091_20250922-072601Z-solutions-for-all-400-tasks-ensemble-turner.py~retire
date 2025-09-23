@@ -1,0 +1,1 @@
+A=enumerate;p=lambda g:[F[C:E+1]for(B,C)in[next((B,A.index(5))for(B,A)in A(g)if 5 in A)]for(D,E)in[next((~B+len(g),~A[::-1].index(5)+len(A))for(B,A)in A(g[::-1])if 5 in A)]for F in g[max(0,B-1):D+2]]

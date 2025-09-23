@@ -1,0 +1,16 @@
+def p(g):
+ h,w=len(g),len(g[0]);c={};[[c.update({k:c.get(k,0)+1})for k in r]for r in g];b=max(c,key=c.get);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j]and g[i][j]!=b:
+    obj=[];s=[(i,j)];col=g[i][j]
+    while s:
+     ci,cj=s.pop()
+     if 0<=ci<h and 0<=cj<w and not v[ci][cj]and g[ci][cj]==col:v[ci][cj]=1;obj.append((ci,cj));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(1,0),(0,-1),(-1,0)]])
+    obj and o.append(obj)
+ s6,ns6=[],[]
+ for obj in o:(s6 if len(obj)==6 else ns6).extend(obj)
+ r=[r[:]for r in g]
+ for i,j in s6:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[2]+r[i][j+1:])
+ for i,j in ns6:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[1]+r[i][j+1:])
+ return r

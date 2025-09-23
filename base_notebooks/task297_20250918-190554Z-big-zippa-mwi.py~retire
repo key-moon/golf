@@ -1,0 +1,4 @@
+def p(j):
+	B,C=len(j),len(j[0]);D=j[0]*20
+	for A in range(2,B):j[A]=[D[A-2]for B in range(C)]
+	return j

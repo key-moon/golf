@@ -1,0 +1,15 @@
+def p(g,E=enumerate):
+ w=len(g[0])
+ z=[-1]+[i for i,c in E(zip(*g))if not any(c)]+[w]
+ o=[[R[z[i]+1:z[i+1]]for R in g]for i in range(len(z)-1)if z[i]+1<z[i+1]]
+ s=o[:1]
+ for c in o[1:]:
+  p=s[-1]
+  yp=next((i for i,r in E(p)if r and r[-1]==5),0)
+  yc=next((i for i,r in E(c)if r and r[0]==5),0)
+  sh=yp-yc
+  A=[[0]*len(c[0])]*3
+  s+=[(A+c+A)[3-sh:2*3-sh]]
+ v=[next((c for r in t for c in r if c>0 and c!=5),0)for t in o]
+ f=([[[v if c==5 else c for c in r]for r in t]for t,v in zip(s,v)])
+ return[sum(r,[])for r in zip(*f)]

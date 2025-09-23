@@ -1,0 +1,9 @@
+def p(j):
+	A=range;C=[[0]*3 for A in A(3)]
+	for D in A(3):
+		for E in A(3):
+			B={}
+			for G in A(3):
+				for H in A(3):F=j[D*3+G][E*3+H];B[F]=B.get(F,0)+1
+			C[D][E]=max(B,key=B.get)
+	return C

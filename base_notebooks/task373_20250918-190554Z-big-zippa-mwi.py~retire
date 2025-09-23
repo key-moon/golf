@@ -1,0 +1,1 @@
+p=lambda g:[[[g[B][A],g[1-B][A]][A%2]for A in range(6)]for B in range(2)]

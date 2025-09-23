@@ -1,0 +1,2 @@
+def solve_9172f3a0(I):A=tuple(tuple(A for A in A for B in range(3))for A in I for B in range(3));return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_9172f3a0(A);return[list(A)for A in B]

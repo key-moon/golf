@@ -1,0 +1,1 @@
+p=lambda j,a=0:[[x and(a:=(a==0)*x)or x or a for x in r]for r in j]

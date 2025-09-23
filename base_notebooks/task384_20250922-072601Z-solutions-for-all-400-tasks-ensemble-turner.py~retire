@@ -1,0 +1,1 @@
+def p(r):a=[max(r)>0 for r in r].index(1);e=len(r)-1-[max(r)>0for r in r][::-1].index(1);t=[r for r,i in enumerate(zip(*r))if max(i)>0];i=t[0];u=t[-1];return[[r for r in r[i:u+1]for j in[0]*2]for r in r[a:e+1]for j in[0]*2]

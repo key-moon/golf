@@ -1,0 +1,1 @@
+p=lambda j,A=range(9):[[j[B%3][A%3]*(j[B//3][A//3]==2)for A in A]for B in A]

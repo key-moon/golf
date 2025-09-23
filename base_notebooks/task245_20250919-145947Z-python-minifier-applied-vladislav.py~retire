@@ -1,0 +1,9 @@
+def p(g):
+	A=[A[:]for A in g];C,D=len(A),len(A[0]);B=[(B,C)for B in range(C)for C in range(D)if A[B][C]==2];E=[(B,C)for B in range(C)for C in range(D)if A[B][C]==3]
+	if not B or not E:return A
+	L=min(A for(A,B)in B);M=min(A for(B,A)in B);N=min(A for(A,B)in E);O=min(A for(B,A)in E);P=N-L+1;Q=O-M+1;from collections import Counter as H;I=[B for A in A for B in A];R=max(H(I),key=H(I).get)
+	for(F,G)in B:A[F][G]=R
+	for(F,G)in B:
+		J,K=F+P,G+Q
+		if 0<=J<C and 0<=K<D:A[J][K]=2
+	return A

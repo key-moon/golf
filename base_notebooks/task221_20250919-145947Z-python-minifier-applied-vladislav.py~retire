@@ -1,0 +1,38 @@
+def p(g):
+	'Compact, non-DSL implementation for task 221 (91413438).\n\n    Steps (preserving original behavior):\n    - Count zeros z in input 3xW grid.\n    - Create an extension of width 3*z*z - 3 filled with 0s and append to the right.\n    - Find the first 8-connected non-background component (background = most common color).\n    - Paint copies of that component every 3 columns to the right, for (9 - z) copies.\n    - Horizontally split the result into z equal-width slices (with the same offset rule),\n      then stack those slices vertically.\n    '
+	try:
+		A=[A[:]for A in g];Q,Y=len(A),len(A[0])if A else 0;C=sum(B==0 for A in A for B in A);L=3*C*C-3
+		if L>0:
+			for B in range(Q):A[B]=A[B]+[0]*L
+		M,D=Q,Y+max(0,L);N=[B for A in A for B in A]
+		if not N:return[list(A)for A in g]
+		R=max(set(N),key=N.count);H=[[False]*D for A in range(M)];i=[]
+		def Z(i,j):
+			for A in(-1,0,1):
+				for B in(-1,0,1):
+					if A==0 and B==0:continue
+					C,E=i+A,j+B
+					if 0<=C<M and 0<=E<D:yield(C,E)
+		O=[]
+		for B in range(M):
+			for E in range(D):
+				if A[B][E]==R or H[B][E]:continue
+				I=A[B][E];P=[(B,E)];H[B][E]=True;S=[]
+				while P:
+					J,K=P.pop();S.append((J,K,I))
+					for(F,G)in Z(J,K):
+						if not H[F][G]and A[F][G]!=R and A[F][G]==I:H[F][G]=True;P.append((F,G))
+				O.append(S)
+		if not O:return[A[:]for A in A]
+		a=max(0,9-C)
+		for b in range(a):
+			c=3*b
+			for d in O:
+				for(J,K,I)in d:
+					T=K+c
+					if 0<=T<D:A[J][T]=I
+		if C<=0:return[A[:]for A in A]
+		U=D//C;e=1 if D%C!=0 else 0;V=[]
+		for W in range(C):X=U*W+W*e;f=[A[X:X+U]for A in A];V.append(f)
+		h=[B for A in V for B in A];return h
+	except Exception:return[list(A)for A in g]

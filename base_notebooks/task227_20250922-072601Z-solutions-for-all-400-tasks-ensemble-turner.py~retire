@@ -1,0 +1,1 @@
+p=lambda g,r=range:[[2*(g[i][j]+g[i+4][j]<1)for j in r(4)]for i in r(4)]

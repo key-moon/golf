@@ -1,0 +1,18 @@
+def p(g):
+ h,w=len(g),len(g[0]);c={};[[c.update({k:c.get(k,0)+1})for k in r]for r in g];b=max(c,key=c.get);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j] and g[i][j]!=b:
+    obj=[];s=[(i,j)];col=g[i][j]
+    while s:
+     ci,cj=s.pop()
+     if 0<=ci<h and 0<=cj<w and not v[ci][cj] and g[ci][cj]==col:v[ci][cj]=1;obj.append((ci,cj));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(1,0),(0,-1),(-1,0)]])
+    obj and o.append(obj)
+ x2=[[0 if k==8 else k for k in row]for row in g];c2={};[[c2.update({k:c2.get(k,0)+1})for k in r]for r in x2];x3=min(c2,key=c2.get)
+ x4=[[0 if k==x3 else k for k in row]for row in x2];c4={};[[c4.update({k:c4.get(k,0)+1})for k in r]for r in x4];x5=min(c4,key=c4.get);m=sum(o,[])
+ if m:mi,ma,mj,mb=min(i for i,j in m),max(i for i,j in m),min(j for i,j in m),max(j for i,j in m);bp=[(i,j)for i in range(mi,ma+1)for j in range(mj,mb+1)];box=[(i,j)for i in range(mi,ma+1)for j in range(mj,mb+1)if i in(mi,ma) or j in(mj,mb)]
+ else:bp,box=[],[]
+ r=[r[:]for r in g]
+ for i,j in bp:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[x3]+r[i][j+1:])
+ for i,j in box:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[x5]+r[i][j+1:])
+ return r

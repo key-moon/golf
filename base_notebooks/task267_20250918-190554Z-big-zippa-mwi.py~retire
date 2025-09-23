@@ -1,0 +1,1 @@
+def p(j):B=j[6][0];A=[[A and B for A in A]for A in j];A[6][0]=0;return A

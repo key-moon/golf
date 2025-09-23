@@ -1,0 +1,8 @@
+def X(g):return list(zip(*g[::-1]))
+def p(g,L=len,R=range):
+	A=0
+	if max(g[0].count(A)for A in R(10))-1<L(g[0])/2:A=1;g=X(g)
+	C,D=L(g),L(g[0])
+	for B in R(C):E=sorted([[g[B].count(A),A]for A in R(10)])[-1][1];g[B]=[E]*D
+	if A:g=X(X(X(g)))
+	return[list(A)for A in g]

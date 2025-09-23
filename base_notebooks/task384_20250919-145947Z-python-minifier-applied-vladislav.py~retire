@@ -1,0 +1,1 @@
+def p(j):B=[max(A)>0 for A in j].index(1);C=len(j)-1-[max(A)>0 for A in j][::-1].index(1);A=[A for(A,B)in enumerate(zip(*j))if max(B)>0];D=A[0];E=A[-1];return[[A for A in A[D:E+1]for B in[0]*2]for A in j[B:C+1]for B in[0]*2]

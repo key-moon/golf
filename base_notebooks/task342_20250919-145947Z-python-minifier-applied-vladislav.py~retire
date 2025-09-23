@@ -1,0 +1,4 @@
+def p(j,A=enumerate):
+	G=lambda E,k:sum([[C,F]for(C,D)in A(j)for(F,B)in A(D)if B in E and B not in k],[]);H,C,I,D,J,E,K,F=G(range(10),[0,8]);L,B=G([8],[])[:2];j[L][B:B+2]=[j[H][C],j[I][D]][::(1,-1)[C>D]];j[L+1][B:B+2]=[j[J][E],j[K][F]][::(1,-1)[E>F]]
+	for(M,N)in((H,C),(I,D),(J,E),(K,F)):j[M][N]=0
+	return j

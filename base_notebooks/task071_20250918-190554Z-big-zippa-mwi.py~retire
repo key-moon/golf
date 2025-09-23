@@ -1,0 +1,16 @@
+def p(g):
+	from collections import defaultdict as L
+	def J(c):
+		if not c:return False
+		A,B=zip(*c);return len(c)==(max(A)-min(A)+1)*(max(B)-min(B)+1)
+	H,D=len(g),len(g[0]);A=L(list)
+	for B in range(H):
+		for C in range(D):
+			if g[B][C]:A[g[B][C]].append((B,C))
+	if not A:return[[0]*D for A in range(H)]
+	E=max([A for(A,B)in A.items()if J(B)],key=lambda k:len(A[k]),default=None);F=max([B for B in A if B!=E and not J(A[B])]or[A for A in A if A!=E],key=lambda k:len(A[k]));G,K=A[F],set(A[F]);M=set(A[E])if E else set();N=max(range(2*D-1),key=lambda t:sum(1 for(B,C)in G if 0<=(A:=t-C)<D and((B,A)in K or(B,A)in M)),default=min(A for(B,A)in G)+max(A for(B,A)in G));I=[[0]*D for A in range(H)]
+	for(B,C)in G:I[B][C]=F
+	if E:
+		for(B,C)in A[E]:
+			if 0<=(O:=N-C)<D and(B,O)in K:I[B][C]=F
+	return I

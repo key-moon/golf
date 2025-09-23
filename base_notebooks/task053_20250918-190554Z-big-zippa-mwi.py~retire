@@ -1,0 +1,1 @@
+p=lambda j:[A[3%len(A):]+A[:3%len(A)]for A in j[2:]+j[:2]]

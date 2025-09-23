@@ -1,0 +1,6 @@
+def p(j,A=0):
+	for B in j:
+		for(D,C)in enumerate(B):
+			if C:A=(not A)*C
+			else:B[D]=A
+	return j

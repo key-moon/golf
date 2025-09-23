@@ -1,0 +1,11 @@
+def p(j):
+	D=range;E=[A[:]for A in j]
+	for A in D(len(j)):
+		for B in D(len(j[0])):
+			if j[A][B]==2:F,H=A,B
+			if j[A][B]==3:I,G=A,B
+	C=1 if G>H else-1
+	for B in D(H+C,G+C,C):E[F][B]=8
+	C=1 if I>F else-1
+	for A in D(F+C,I,C):E[A][G]=8
+	return E

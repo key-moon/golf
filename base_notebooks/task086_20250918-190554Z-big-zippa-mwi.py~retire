@@ -1,0 +1,21 @@
+def p(a):
+	from collections import deque,Counter as V;C,Q=range,len;I,J=Q(a),Q(a[0]);K=[[0]*J for A in C(I)];L=[[0]*J for A in C(I)]
+	for M in C(I):
+		for N in C(J):
+			if a[M][N]and not L[M][N]:
+				P=deque([(M,N)]);L[M][N]=1;R=[];S=V()
+				while P:
+					A,B=P.popleft();R.append((A,B));S[a[A][B]]+=1
+					for(W,X)in((1,0),(-1,0),(0,1),(0,-1)):
+						G,H=A+W,B+X
+						if 0<=G<I and 0<=H<J and a[G][H]and not L[G][H]:L[G][H]=1;P.append((G,H))
+				T,U=[A for(A,B)in S.most_common(2)];O=[(A,B)for(A,B)in R if a[A][B]==U];E,F,D=min(A for(A,B)in O),min(A for(B,A)in O),max(A for(A,B)in O)-min(A for(A,B)in O)+1
+				for A in C(E-D-1,E+2*D+1):
+					for B in C(F-D-1,F+2*D+1):
+						if(A<E-1 or A>E+D)and(B<F-1 or B>F+D):continue
+						K[A][B]=T
+				for A in C(E-1,E+D+1):
+					for B in C(F-1,F+D+1):K[A][B]=U
+				for A in C(E,E+D):
+					for B in C(F,F+D):K[A][B]=T
+	return K

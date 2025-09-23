@@ -1,0 +1,19 @@
+def p(g,L=len,R=range):
+	G,B=L(g),L(g[0]);D=0,0,0,0,0
+	for E in R(1,10):
+		H=[0]*B
+		for C in R(G):
+			for A in R(B):H[A]=H[A]+1 if g[C][A]==E else 0
+			F=[]
+			for A in R(B+1):
+				J=H[A]if A<B else 0;K=A
+				while F and F[-1][0]>J:
+					M,I=F.pop();N=M*(A-I)
+					if N>D[0]:D=N,C-M+1,C,I,A-1,E
+					K=I
+				F.append((J,K))
+	if D[0]==0:return[[0]*B for A in R(G)]
+	U,P,Q,S,T,E=D;O=[[0]*B for A in R(G)]
+	for C in R(P,Q+1):
+		for A in R(S,T+1):O[C][A]=E
+	return O

@@ -1,0 +1,33 @@
+def p(j):
+	I,G=len(j),len(j[0]);L=[(A,B)for A in range(I)for B in range(G)if j[A][B]==4];N=set()
+	for C in range(len(L)):
+		J,K=L[C]
+		for H in range(C,len(L)):
+			O,P=L[H]
+			if J==O:
+				for A in range(min(K,P),max(K,P)+1):N.add((J,A))
+			if K==P:
+				for B in range(min(J,O),max(J,O)+1):N.add((B,K))
+	S=[B for A in j for B in A];Q=max(set(S),key=S.count);D=[A[:]for A in j]
+	for(B,A)in N:
+		if 0<=B<I and 0<=A<G and D[B][A]==Q:D[B][A]=-1
+	M=[[0]*G for A in j];T=[]
+	for B in range(I):
+		for A in range(G):
+			if D[B][A]!=Q and not M[B][A]:
+				R=[(B,A)];M[B][A]=1;U=[]
+				while R:
+					E,F=R.pop();U.append((E,F))
+					for(Y,Z)in((1,0),(-1,0),(0,1),(0,-1)):
+						C,H=E+Y,F+Z
+						if 0<=C<I and 0<=H<G and not M[C][H]and D[C][H]!=Q:M[C][H]=1;R.append((C,H))
+				T.append(U)
+	for V in T:
+		W=[A for(A,B)in V];X=[A for(B,A)in V];a,J=min(W)+1,max(W)-1;b,K=min(X)+1,max(X)-1
+		for E in range(a,J+1):
+			for F in range(b,K+1):
+				if 0<=E<I and 0<=F<G:D[E][F]=2
+	for E in range(I):
+		for F in range(G):
+			if D[E][F]==-1:D[E][F]=0
+	return D

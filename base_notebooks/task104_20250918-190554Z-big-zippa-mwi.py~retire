@@ -1,0 +1,7 @@
+def p(g):
+	A,B=[],[g[0][0],g[0][2],g[2][2],g[2][0]]
+	for C in[[3,0],[0,3]]:
+		for D in range(4):A+=[sum([[A]*4 for A in C],[])+[0]]
+	A+=[[0]*len(A[0])]
+	for D in range(B.index(3)):A=[list(A)for A in list(zip(*A[::-1]))]
+	return A

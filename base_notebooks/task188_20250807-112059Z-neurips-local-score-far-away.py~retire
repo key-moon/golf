@@ -1,1 +1,0 @@
-p=lambda g:(lambda n,m:[[g[i][j]for j in range(m//2)]for i in range(n)]if m%2==0and all(g[i][j]==g[i][j+m//2]for i in range(n)for j in range(m//2))else[[g[i][j]for j in range(m)]for i in range(n//2)])(len(g),len(g[0]))

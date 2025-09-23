@@ -1,0 +1,1 @@
+def p(j):A=(j[3][3]<1)*6;[j[B].__setitem__(slice(A,A+3),j[B][3:6][::-1])for B in range(3)];return j

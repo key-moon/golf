@@ -1,0 +1,1 @@
+p=lambda g:(a:={})or[[x if x-5 else a.setdefault(i,len(a)+1) for i,x in enumerate(r)]for r in g]

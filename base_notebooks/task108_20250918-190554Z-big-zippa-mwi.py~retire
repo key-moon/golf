@@ -1,0 +1,1 @@
+def p(j,A=range):B,C=len(j),len(j[0]);D=[[max(j[B][A],j[B][A+1],j[B+1][A],j[B+1][A+1])for A in A(0,C,2)]for B in A(0,B,2)];return[[D[B//4][A//4]for A in A(2*C)]for B in A(2*B)]

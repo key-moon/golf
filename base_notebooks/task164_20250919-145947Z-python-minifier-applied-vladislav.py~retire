@@ -1,0 +1,2 @@
+def solve_6d0aefbc(I):return[A+A[::-1]for A in I]
+p=solve_6d0aefbc

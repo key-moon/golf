@@ -1,0 +1,12 @@
+def p(j):
+	A={};B=range
+	for C in B(10):
+		for D in B(10):
+			if j[C][D]:A[j[C][D]]=A.get(j[C][D],0)+1
+	F=next(A for(A,B)in A.items()if B==1);G,A=next((A,C)for A in B(10)for C in B(10)if j[A][C]==F);E=[[0]*10 for A in B(10)];E[G][A]=F
+	for H in[-1,0,1]:
+		for I in[-1,0,1]:
+			if H or I:
+				J,K=G+H,A+I
+				if 0<=J<10 and 0<=K<10:E[J][K]=2
+	return E

@@ -1,0 +1,69 @@
+from copy import deepcopy
+Z=deepcopy
+G,R,B=3,2,0
+I=lambda g,r,c:0<=r<len(g)and 0<=c<len(g[0])
+N=lambda r,c:[(r+1,c),(r-1,c),(r,c+1),(r,c-1)]
+A=lambda a,b:(a[0]+b[0],a[1]+b[1])
+S=lambda a,b:(a[0]-b[0],a[1]-b[1])
+O=lambda d:(0 if d[0]==0 else 1 if d[0]>0 else-1,0 if d[1]==0 else 1 if d[1]>0 else-1)
+L=lambda d:(-d[1],d[0])
+T=lambda d:(d[1],-d[0])
+M=lambda a,b:abs(a[0]-b[0])+abs(a[1]-b[1])
+F=lambda g,v:[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==v]
+def C(g,P):
+	A=set(P);E=[]
+	while A:
+		F=A.pop();D=[F];G=[F]
+		while D:
+			H,I=D.pop()
+			for(B,C)in N(H,I):
+				if(B,C)in A:A.remove((B,C));D.append((B,C));G.append((B,C))
+		E.append(G)
+	return E
+D=lambda g,p:min(M(p,A)for A in g)if g else 10**9
+E=lambda v:v==B or v==G
+class RunInfo:
+	def __init__(A,pred,path,steps,dmin,dend,bounces,start,start_dir):A.pred,A.path,A.steps,A.dmin,A.dend,A.bounces,A.start,A.start_dir=pred,path,steps,dmin,dend,bounces,start,start_dir
+def run_with_start(g,start,d,reds):
+	P=reds;O=start;c,e,F,M,Q,C,H,V,S,W,U=len(g),len(g[0]),Z(g),set(),0,O,d,[O],D(P,O),D(P,O),0
+	while Q<c*e*10:
+		Q+=1;K=A(C,H)
+		if I(g,*K)and F[K[0]][K[1]]==R:break
+		f=not I(g,*K)or not E(F[K[0]][K[1]])
+		if not f:
+			C=K;F[C[0]][C[1]]=F[C[0]][C[1]]if F[C[0]][C[1]]!=B else G;J=C,H
+			if J in M:break
+			M.add(J)
+		else:
+			X,h=L(H),T(H);Y=[(D(P,A(C,B)),B,A(C,B))for B in(X,h)if I(g,*A(C,B))and E(F[A(C,B)[0]][A(C,B)[1]])]
+			if Y:
+				j,i,N=min(Y,key=lambda x:(x[0],0 if x[1]==X else 1));H,C=i,N;F[C[0]][C[1]]=F[C[0]][C[1]]if F[C[0]][C[1]]!=B else G;J=C,H
+				if J in M:break
+				M.add(J);U+=1
+			else:
+				a=-H[0],-H[1];N=A(C,a)
+				if I(g,*N)and E(F[N[0]][N[1]]):
+					H,C=a,N;F[C[0]][C[1]]=F[C[0]][C[1]]if F[C[0]][C[1]]!=B else G;J=C,H
+					if J in M:break
+					M.add(J);U+=1
+				else:break
+		V.append(C);b=D(P,C);S,W=min(S,b),b
+	return RunInfo(F,V,Q,S,W,U,O,d)
+def dual_start_solver(g):
+	B,H=F(g,R),F(g,G)
+	if not B or not H:return Z(g)
+	A=min(C(g,H),key=lambda comp:(len(comp),D(B,(round(sum(A for(A,B)in comp)/len(comp)),round(sum(A for(B,A)in comp)/len(comp))))));I=set(A);L=next(((A,B),(C,D))for(A,B)in A for(C,D)in N(A,B)if(C,D)in I)if any((C,D)in I for(A,B)in A for(C,D)in N(A,B))else max(((B,C)for B in A for C in A),key=lambda x:M(*x));J,K=L;E=O(S(K,J));P=[run_with_start(g,K,E,B),run_with_start(g,J,(-E[0],-E[1]),B)];return min(P,key=lambda r:(r.dend,r.bounces,r.dmin,r.steps)).pred
+def detect_and_solve_top_bridge_refined(g):
+	D,E=F(g,R),F(g,G)
+	if len(D)!=2 or len(E)!=2:return
+	H=lambda ps:(lambda s:s[0][1]==s[1][1]and abs(s[0][0]-s[1][0])==1)(sorted(ps))
+	if not(H(D)and H(E)):return
+	(I,J),(K,Q)=sorted(E);(L,M),(N,Q)=sorted(D)
+	if{I,K}!={L,N}:return
+	O,P=sorted([J,M]);C=next((A for A in range(min(I,L)+1)if all(g[A][C]in(B,G,R)for C in range(O,P+1))),None)
+	if C in(None,0):return
+	A=Z(g);S=max(K,N);[[A[C].__setitem__(D,G)for D in[J,M]if A[C][D]==B]for C in range(C,S+1)];[A[C].__setitem__(D,G)for D in range(O,P+1)if A[C][D]==B];return A
+def p(grid):
+	A=detect_and_solve_top_bridge_refined(grid)
+	if A is not None:return A
+	return dual_start_solver(grid)

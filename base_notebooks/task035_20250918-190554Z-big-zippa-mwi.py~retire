@@ -1,0 +1,15 @@
+L=len
+R=range
+P=[[0,1],[0,-1],[1,0],[-1,0]]
+def p(g):
+	F,G=L(g),L(g[0])
+	for A in R(F):
+		for B in R(G):
+			if g[A][B]==8:
+				for(D,E)in P:
+					if g[A+D][B+E]==0:
+						for C in R(20):
+							if 0<=A+D*C<F and 0<=B+E*C<G:
+								H=g[A+D*C][B+E*C]
+								if H>0:g[A][B]=H
+	return g

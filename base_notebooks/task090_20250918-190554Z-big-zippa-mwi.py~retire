@@ -1,0 +1,16 @@
+def p(g):
+	E=[A[:]for A in g];H,I=len(E),len(E[0]);F=None;J=-1
+	for A in range(2,min(9,H)+1):
+		for B in range(2,min(9,I)+1):
+			for C in range(0,H-A+1):
+				for D in range(0,I-B+1):
+					K=True
+					for G in range(C,C+A):
+						L=E[G]
+						if any(L[A]!=0 for A in range(D,D+B)):K=False;break
+					if K and A*B>J:J=A*B;F=C,D,A,B
+	if F:
+		C,D,A,B=F
+		for G in range(C,C+A):
+			for M in range(D,D+B):E[G][M]=6
+	return E

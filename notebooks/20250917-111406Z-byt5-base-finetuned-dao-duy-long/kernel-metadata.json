@@ -1,0 +1,19 @@
+{
+  "id": "toni0710/byt5-base-finetuned",
+  "id_no": 92318506,
+  "title": "ByT5-base-finetuned",
+  "code_file": "byt5-base-finetuned.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

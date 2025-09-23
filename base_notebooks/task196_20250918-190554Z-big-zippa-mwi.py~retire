@@ -1,0 +1,12 @@
+def p(j):
+	B=range;K,L=len(j),len(j[0]);C=set();J=[A[:]for A in j]
+	def M(l,J):
+		if(l,J)in C or not(0<=l<K and 0<=J<L)or j[l][J]!=1:return[]
+		C.add((l,J));return[(l,J)]+sum([M(l+A,J+B)for(A,B)in[(-1,0),(1,0),(0,-1),(0,1)]],[])
+	for D in B(K):
+		for E in B(L):
+			if j[D][E]==1 and(D,E)not in C:
+				A=M(D,E);F,G,H,I=min(A[0]for A in A),max(A[0]for A in A),min(A[1]for A in A),max(A[1]for A in A)
+				if len(A)==2*(G-F+I-H)and G>F and I>H and any(j[A][C]==0 for A in B(F+1,G)for C in B(H+1,I)):
+					for(N,O)in A:J[N][O]=3
+	return J

@@ -1,0 +1,7 @@
+def p(I):
+	F=len(I);G=len(I[0]);B=[]
+	for C in range(0,F,3):
+		D=[]
+		for E in range(0,G,3):A=[I[C+A][E+B]for A in(0,1,2)for B in(0,1,2)if I[C+A][E+B]!=5];D.append(max(A,key=A.count)if A else 0)
+		B.append(D)
+	return B

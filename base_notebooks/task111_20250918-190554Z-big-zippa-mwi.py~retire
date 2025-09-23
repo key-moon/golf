@@ -1,0 +1,1 @@
+p=lambda g:next([g[B+C][A-1:A+2]for C in(1,2,3)]for(B,C)in enumerate(g)for(A,D)in enumerate(C)if D==5)

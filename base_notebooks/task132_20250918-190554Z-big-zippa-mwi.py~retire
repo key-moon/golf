@@ -1,0 +1,7 @@
+def p(j,A=range,c=enumerate):
+	F=len(j);G=len(j[0]);C=[[0]*G for A in A(F)];H={A for B in j for A in B if A}
+	for B in H:
+		D=[A for(A,C)in c(j)for D in C if D==B];E=[C for(E,A)in c(j)for(C,D)in c(A)if D==B];I,J=min(D),max(D)+1;K,L=min(E),max(E)+1
+		for M in A(I,J):
+			for N in A(K,L):C[M][N]=B
+	return C

@@ -1,0 +1,1 @@
+def p(g):return[[g[i][j]or g[i+2][j]or g[i][j+4]or g[i+2][j+4]for j in range(3)]for i in range(3)]

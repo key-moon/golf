@@ -1,0 +1,12 @@
+L=len
+R=range
+def p(g):
+	g=[A[:]+A[:]for A in g]+[A[:]+A[:]for A in g];E,F=L(g),L(g[0])
+	for A in R(E):
+		for B in R(F):
+			G=g[A][B]
+			if G>0 and G!=8:
+				for(C,D)in[[1,1],[-1,-1],[-1,1],[1,-1]]:
+					if C+A>=0 and D+B>=0 and C+A<E and D+B<F:
+						if g[C+A][D+B]==0:g[C+A][D+B]=8
+	return g

@@ -1,0 +1,1 @@
+def p(j):c=[j[i][i]for i in range(len(j)//2)];d=dict(zip(c,c[-1:]+c));return[[d[x]for x in r]for r in j]

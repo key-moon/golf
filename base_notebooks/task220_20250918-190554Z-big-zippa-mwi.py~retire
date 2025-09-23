@@ -1,0 +1,11 @@
+def p(j,A=enumerate):
+	F={8:4,2:1,3:6};B=[[A for(B,A)in A(B)]for B in j]
+	for(G,H)in A(j):
+		for(I,C)in A(H):
+			if C:
+				for D in range(-1,2):
+					for E in range(-1,2):
+						try:
+							if[D,E]!=[0,0]:B[G+D][I+E]=F[C]
+						except:0
+	return B

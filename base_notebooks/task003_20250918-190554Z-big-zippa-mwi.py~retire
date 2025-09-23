@@ -1,0 +1,1 @@
+p=lambda j:[[A*2 for A in A]for A in j+(j[:3],j[2:5])[j[1]!=j[4]]]

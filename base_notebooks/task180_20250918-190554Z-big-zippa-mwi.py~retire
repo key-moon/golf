@@ -1,0 +1,1 @@
+p=lambda j,A=range(4):[[j[B][A+4]or j[B+4][A]or j[B+4][A+4]or j[B][A]for A in A]for B in A]

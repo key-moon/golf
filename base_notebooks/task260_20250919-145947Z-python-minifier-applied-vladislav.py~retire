@@ -1,0 +1,33 @@
+from typing import List,Tuple
+ZERO=0
+FIVE=5
+def solve_a78176bb(I):
+	S=set(B for A in I for B in A);T=next((A for A in S if A!=ZERO and A!=FIVE),FIVE);D,E=len(I),len(I[0]);H=[[False]*E for A in range(D)];O=[]
+	for A in range(D):
+		for B in range(E):
+			if I[A][B]!=FIVE or H[A][B]:continue
+			K=[(A,B)];H[A][B]=True;C=[]
+			while K:
+				P,Q=K.pop();C.append((P,Q))
+				for(U,V)in((1,0),(-1,0),(0,1),(0,-1)):
+					F,G=P+U,Q+V
+					if 0<=F<D and 0<=G<E and not H[F][G]and I[F][G]==FIVE:H[F][G]=True;K.append((F,G))
+			O.append(C)
+	L=[]
+	for C in O:
+		M=min(A for(A,B)in C);W=max(A for(A,B)in C);X=min(A for(B,A)in C);N=max(A for(B,A)in C)
+		if 0<=M<D and 0<=N<E and I[M][N]==FIVE:L.append((M-1,N+1))
+		else:L.append((W+1,X-1))
+	R=set()
+	for(Y,Z)in L:
+		a=Y-Z
+		for A in range(D):
+			B=A-a
+			if 0<=B<E:R.add((A,B))
+	J=[list(A)for A in I]
+	for(A,B)in R:J[A][B]=T
+	for A in range(D):
+		for B in range(E):
+			if J[A][B]==FIVE:J[A][B]=ZERO
+	return tuple(tuple(A)for A in J)
+def p(g):return[list(A)for A in solve_a78176bb(tuple(tuple(A)for A in g))]

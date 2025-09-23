@@ -1,0 +1,1 @@
+p=lambda g:[[2*(x==6)or x for x in r]for r in g]

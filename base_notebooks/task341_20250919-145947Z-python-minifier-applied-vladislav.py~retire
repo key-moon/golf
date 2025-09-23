@@ -1,0 +1,54 @@
+def p(g):
+	X=False;N=True;G=tuple(tuple(A)for A in g);H,I=len(G),len(G[0])
+	def e(G):from collections import Counter as A;B=A(B for A in G for B in A);return max(B.items(),key=lambda kv:kv[1])[0]
+	S=e(G);O=[[X]*I for A in range(H)];P=[]
+	def Y(i,j):
+		for(C,D)in((1,0),(-1,0),(0,1),(0,-1)):
+			A,B=i+C,j+D
+			if 0<=A<H and 0<=B<I:yield(A,B)
+	for A in range(H):
+		for B in range(I):
+			if O[A][B]:continue
+			O[A][B]=N;T=G[A][B]
+			if T==S:continue
+			J=[(A,B)];L=[]
+			while J:
+				C,D=J.pop();L.append((C,D))
+				for(E,F)in Y(C,D):
+					if not O[E][F]and G[E][F]==T:O[E][F]=N;J.append((E,F))
+			P.append((T,L))
+	if len(P)<2:return[list(A)for A in G]
+	Q,U=P[0],P[1]
+	def Z(cells):A=cells;B=[A for(A,B)in A];C=[A for(B,A)in A];return min(B),min(C),max(B),max(C)
+	def a(cells):A,B,C,D=Z(cells);return A+(C-A)//2,B+(D-B)//2
+	def f(cells):
+		I,J,K,L=Z(cells);E,F=I+1,J+1;G,H=K-1,L-1;A,B=min(E,G),min(F,H);C,D=max(E,G),max(F,H)
+		if C<A or D<B:return set()
+		M={(A,B)for A in range(A,C+1)}|{(A,D)for A in range(A,C+1)};N={(A,B)for B in range(B,D+1)}|{(C,A)for A in range(B,D+1)};return M|N
+	h={A for(B,A)in Q[1]};V={A for(B,A)in U[1]};s={A for(A,B)in Q[1]};b={A for(A,B)in U[1]};c=len(h&V)>0;i,j=a(Q[1]);k,l=a(U[1])
+	if c:W=1 if i<k else-1,0
+	else:W=0,1 if j<l else-1
+	M=f(Q[1])
+	if c:m,n=min(V)+1,max(V)-1;M={(B,A)for(B,A)in M if m<=A<=n}
+	else:o,p=min(b)+1,max(b)-1;M={(A,B)for(A,B)in M if o<=A<=p}
+	K=[list(A)for A in G]
+	for(q,r)in M:
+		A,B=q,r
+		while 0<=A<H and 0<=B<I:
+			if K[A][B]==S:K[A][B]=8
+			A+=W[0];B+=W[1]
+	R=[[X]*I for A in range(H)]
+	for A in range(H):
+		for B in range(I):
+			if R[A][B]:continue
+			R[A][B]=N
+			if K[A][B]!=8:continue
+			J=[(A,B)];L=[];d=X
+			while J:
+				C,D=J.pop();L.append((C,D))
+				if C==0 or C==H-1 or D==0 or D==I-1:d=N
+				for(E,F)in Y(C,D):
+					if not R[E][F]and K[E][F]==8:R[E][F]=N;J.append((E,F))
+			if d:
+				for(C,D)in L:K[C][D]=S
+	return K

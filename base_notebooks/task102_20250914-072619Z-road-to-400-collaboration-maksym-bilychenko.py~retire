@@ -1,0 +1,21 @@
+def p(g):
+ h,w=len(g),len(g[0]);c={};[[c.update({k:c.get(k,0)+1})for k in r]for r in g];b=max(c,key=c.get);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j]and g[i][j]!=b:
+    obj=[];s=[(i,j)];col=g[i][j]
+    while s:
+     ci,cj=s.pop()
+     if 0<=ci<h and 0<=cj<w and not v[ci][cj]and g[ci][cj]==col:v[ci][cj]=1;obj.append((ci,cj));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(1,0),(0,-1),(-1,0)]])
+    obj and o.append(obj)
+ d=[]
+ for obj in o:
+  if obj:
+   mi,ma,mj,mb=min(p[0]for p in obj),max(p[0]for p in obj),min(p[1]for p in obj),max(p[1]for p in obj);bbox=set((i,j)for i in range(mi,ma+1)for j in range(mj,mb+1));delta=list(bbox-set(obj));delta and d.append(delta)
+ s=[]
+ for delta in d:
+  if delta:
+   mi,ma,mj,mb=min(p[0]for p in delta),max(p[0]for p in delta),min(p[1]for p in delta),max(p[1]for p in delta);h,w=ma-mi+1,mb-mj+1;h==w and len(delta)==h*w and s.extend(delta)
+ r=[r[:]for r in g]
+ for i,j in s:0<=i<len(r)and 0<=j<len(r[0])and r.__setitem__(i,r[i][:j]+[2]+r[i][j+1:])
+ return r

@@ -1,0 +1,1 @@
+def p(j):A=[B for A in j for(B,C)in enumerate(A)if C>0];B,C=min(A),max(A)+1;return[A[B:C]*2 for A in j if max(A)>0]

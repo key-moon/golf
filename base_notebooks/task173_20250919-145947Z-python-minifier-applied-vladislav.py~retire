@@ -1,0 +1,57 @@
+"Refactored solution for task 173 (72322fa7) without frozenset.\n\nBehavior preserved:\n- Find 8-connected non-background objects (background = most common color).\n- For each multi-color object, split into majority-colored pixels (major)\n  and the remaining pixels (minor).\n- Stamp the full object wherever the major subpattern occurs.\n- Also stamp the full object wherever the minor subpattern occurs, offset so\n  that the full object's UL corner aligns relative to the minor's UL corner.\n- Apply paints from major matches first, then from minor matches.\nOutput is a list-of-lists grid.\n"
+from collections import deque,Counter
+def most_common_in_grid(G):A=[B for A in G for B in A];return Counter(A).most_common(1)[0][0]
+def find_objects(G):
+	'Return list of objects; each object is a list of (v, i, j).\n    Objects are 8-connected components of non-background cells.\n    ';F,H=len(G),len(G[0]);L=most_common_in_grid(G);C=[[False]*H for A in range(F)];M=[]
+	for D in range(F):
+		for E in range(H):
+			if C[D][E]or G[D][E]==L:continue
+			N=[];I=deque([(D,E)]);C[D][E]=True
+			while I:
+				J,K=I.popleft();N.append((G[J][K],J,K))
+				for O in(-1,0,1):
+					for P in(-1,0,1):
+						if O==0 and P==0:continue
+						A,B=J+O,K+P
+						if 0<=A<F and 0<=B<H and not C[A][B]and G[A][B]!=L:C[A][B]=True;I.append((A,B))
+			M.append(N)
+	return M
+def num_colors(obj):return len({A for(A,B,B)in obj})
+def most_common_in_obj(obj):A=Counter(A for(A,B,B)in obj);return A.most_common(1)[0][0]
+def ulcorner_obj(obj):A=[B for(A,B,A)in obj];B=[B for(A,A,B)in obj];return min(A),min(B)
+def normalize_obj(obj):
+	A=obj
+	if not A:return A
+	B,C=ulcorner_obj(A);return[(A,D-B,E-C)for(A,D,E)in A]
+def obj_shape_from_points(points):
+	A=points
+	if not A:return 0,0
+	B=[B for(A,B,A)in A];C=[B for(A,A,B)in A];return max(B)-min(B)+1,max(C)-min(C)+1
+def occurrences(G,sub_points):
+	'All (i,j) where normalized subpattern matches G.\n    sub_points: list of (v, i, j) absolute coords; normalization is internal.\n    ';A=sub_points;F,H=len(G),len(G[0]);I=normalize_obj(A);J,K=obj_shape_from_points(A);B=[]
+	for C in range(F-J+1):
+		for D in range(H-K+1):
+			E=True
+			for(L,M,N)in I:
+				if G[C+M][D+N]!=L:E=False;break
+			if E:B.append((C,D))
+	return B
+def stamp(grid,origin_i,origin_j,rel_points):
+	A=grid;D,E=len(A),len(A[0])
+	for(F,G,H)in rel_points:
+		B,C=origin_i+G,origin_j+H
+		if 0<=B<D and 0<=C<E:A[B][C]=F
+def solve_72322fa7(I):
+	D=[A[:]for A in I];N=find_objects(D);H=[];J=[]
+	for C in N:
+		if num_colors(C)==1:continue
+		K=most_common_in_obj(C);L=[(A,B,C)for(A,B,C)in C if A==K];E=[(A,B,C)for(A,B,C)in C if A!=K]
+		if not L or not E:continue
+		O=occurrences(D,L);P=occurrences(D,E);Q,R=ulcorner_obj(C);S,T=ulcorner_obj(E);U,V=Q-S,R-T;M=normalize_obj(C)
+		for(A,B)in O:H.append((A,B,M))
+		for(W,X)in P:A,B=W+U,X+V;J.append((A,B,M))
+	F=[A[:]for A in D]
+	for(A,B,G)in H:stamp(F,A,B,G)
+	for(A,B,G)in J:stamp(F,A,B,G)
+	return F
+def p(g):return solve_72322fa7(g)

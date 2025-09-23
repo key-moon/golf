@@ -1,0 +1,1 @@
+p=lambda j:[[(r.count(r[0])>2)*5]*3for r in j]

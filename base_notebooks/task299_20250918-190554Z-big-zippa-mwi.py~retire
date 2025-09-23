@@ -1,0 +1,13 @@
+def p(g,L=len,R=range):
+	C,D=L(g),L(g[0])
+	for A in R(C):
+		if g[A][0]==2 or g[A][-1]==2:
+			for B in R(D):
+				if g[A][B]==0:g[A][B]=2
+				elif g[A][B]!=2:g[A][B]=4
+	for B in R(D):
+		if g[0][B]==8 or g[-1][B]==8:
+			for A in R(C):
+				if g[A][B]==0:g[A][B]=8
+				elif g[A][B]!=8:g[A][B]=4
+	return g

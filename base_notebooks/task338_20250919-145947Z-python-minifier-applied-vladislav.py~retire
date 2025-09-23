@@ -1,0 +1,5 @@
+def p(j):
+	C=range;A=len(j);D=[[0]*A for B in C(A)]
+	def B(k,W):
+		if 0<=k<A and 0<=W<A and not D[k][W]and j[k][W]==0:D[k][W]=1;[B(k+A,W+C)for(A,C)in[(1,0),(-1,0),(0,1),(0,-1)]]
+	[B(C,0)or B(C,A-1)or B(0,C)or B(A-1,C)for C in C(A)];j=[[3 if j[B][A]==0 and not D[B][A]else j[B][A]for A in C(A)]for B in C(A)];return[[3 if A==3 else 0 for A in A]for A in j]

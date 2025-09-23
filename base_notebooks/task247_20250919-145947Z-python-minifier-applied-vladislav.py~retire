@@ -1,0 +1,19 @@
+def p(g):
+	A=[A[:]for A in g];J,K=len(A),len(A[0]);from collections import Counter as M;N=[B for A in A for B in A];T=max(M(N),key=M(N).get);G=[[False]*K for A in range(J)];H=[]
+	for B in range(J):
+		for C in range(K):
+			if A[B][C]==T or G[B][C]:continue
+			D=A[B][C];L=[(B,C)];G[B][C]=True;O=[]
+			while L:
+				P,Q=L.pop();O.append((P,Q))
+				for(U,V)in((1,0),(-1,0),(0,1),(0,-1)):
+					E,F=P+U,Q+V
+					if 0<=E<J and 0<=F<K and not G[E][F]and A[E][F]==D:G[E][F]=True;L.append((E,F))
+			H.append((D,O))
+	if not H:return[[0]]
+	R=max(len(A)for(B,A)in H);S=[(B,A)for(B,A)in H if len(A)==R]
+	def W(cells):return min(A for(B,A)in cells)
+	S.sort(key=lambda t:W(t[1]));I=[]
+	for(D,Y)in S:
+		if D not in I:I.append(D)
+	X=len(I);return[[I[A]for A in range(X)]for A in range(R)]

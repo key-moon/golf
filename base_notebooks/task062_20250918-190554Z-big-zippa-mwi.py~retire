@@ -1,0 +1,13 @@
+L=len
+R=range
+def p(g):
+	D=sum(g,[]).count(2)
+	for E in range(4):
+		C,F=L(g),L(g[0]);g=list(map(list,zip(*g[::-1])))
+		for A in R(C):
+			if g[A].count(2)==D and sum(g[A])==2*D:
+				for B in range(max(A,C-A)):
+					if 0<=A+B<C and sum(g[A+B])>0 and 2 not in g[A+B]:
+						if 0<=A-B+1<C and 0<=A+B<C:g[A-B+1]=g[A+B][:]
+					elif 0<=A-B-1<C and 0<=A+B<C:g[A+B]=g[A-B-1][:]
+	g=[[3 if A==0 else A for A in A]for A in g];return g

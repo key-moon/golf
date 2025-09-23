@@ -1,0 +1,9 @@
+def p(j):
+	F=len(j)-1;A=[0]*16
+	for C in range(F):
+		for D in range(F):
+			if(B:=j[C][D])and j[C+1][D]==B and j[C][D+1]==B:A[0]=A[4]=A[1]=B
+			if B and j[C+1][D]==B and j[C+1][D+1]==B:A[8]=A[12]=A[13]=B
+			if B and j[C][D+1]==B and j[C+1][D+1]==B:A[2]=A[3]=A[7]=B
+			if(E:=j[C+1][D+1])and j[C+1][D]==E and j[C][D+1]==E:A[11]=A[14]=A[15]=E
+	return[A[B:B+4]for B in(0,4,8,12)]

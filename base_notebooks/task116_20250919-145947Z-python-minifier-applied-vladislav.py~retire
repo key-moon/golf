@@ -1,0 +1,2 @@
+def solve_4c4377d9(I):A=I[::-1]+I;return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_4c4377d9(A);return[list(A)for A in B]

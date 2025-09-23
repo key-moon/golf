@@ -1,0 +1,1 @@
+def p(j):return[[float(A)for A in A for B in(0,1)]for A in j for B in(0,1)]

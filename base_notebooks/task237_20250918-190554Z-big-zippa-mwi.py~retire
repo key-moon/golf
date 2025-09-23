@@ -1,0 +1,12 @@
+def p(g,L=len,R=range):
+	D,E=len(g),len(g[0])
+	for A in R(D):
+		B=0
+		for C in R(E):
+			if g[-(A+1)][C]>0:B=g[-(A+1)][C]
+			g[-(A+1)][C]=B
+		B=0
+		for A in R(D):
+			if g[A][-1]>0:B=g[A][-1]
+			g[A][-1]=B
+	return g

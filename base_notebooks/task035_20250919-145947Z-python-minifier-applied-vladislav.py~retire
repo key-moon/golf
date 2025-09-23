@@ -1,0 +1,24 @@
+EIGHT=8
+ZERO=0
+def solve_1f642eb9(I):
+	J,K=len(I),len(I[0]);C=[A[:]for A in I];F,G,D,H=J,K,-1,-1
+	for A in range(J):
+		for B in range(K):
+			if C[A][B]==EIGHT:
+				if A<F:F=A
+				if A>D:D=A
+				if B<G:G=B
+				if B>H:H=B
+	if D==-1:return[A[:]for A in I]
+	for A in range(J):
+		for B in range(K):
+			E=C[A][B]
+			if E==ZERO or E==EIGHT:continue
+			if G<=B<=H:
+				if A<F:C[F][B]=E
+				elif A>D:C[D][B]=E
+			if F<=A<=D:
+				if B<G:C[A][G]=E
+				elif B>H:C[A][H]=E
+	return[A[:]for A in C]
+def p(g):return solve_1f642eb9(g)

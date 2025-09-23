@@ -1,0 +1,11 @@
+R=range
+L=len
+def p(g):
+	C,D=L(g),L(g[0])
+	for B in R(C-2):
+		for A in R(D-2):
+			if g[B][A]==1 and sum(g[B][A:A+3]+g[B+1][A:A+3]+g[B+2][A:A+3])==8:
+				for E in R(3):
+					for F in R(3):g[B+E][A+F]=2
+					g[B][A]=0;g[B][A+2]=0;g[B+2][A]=0;g[B+2][A+2]=0
+	return g

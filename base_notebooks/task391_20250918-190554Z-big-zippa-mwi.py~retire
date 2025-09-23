@@ -1,0 +1,1 @@
+p=lambda j:[[A]for(A,B)in __import__('collections').Counter(B for A in j for B in A).most_common(5)[2:]]

@@ -1,0 +1,21 @@
+def p(g):
+	A=[A[:]for A in g];C,D=len(A),len(A[0]);E=[(B,C)for B in range(C)for C in range(D)if A[B][C]==2];H=[(B,C)for B in range(C)for C in range(D)if A[B][C]==5]
+	if not E or not H:return A
+	I=min(A for(A,B)in E);J=min(A for(B,A)in E);K=max(A for(A,B)in E);L=max(A for(B,A)in E);B=set()
+	for F in range(max(0,J-1),min(D,L+2)):
+		if 0<=I-1<C:B.add((I-1,F))
+		if 0<=K+1<C:B.add((K+1,F))
+	for G in range(max(0,I-1),min(C,K+2)):
+		if 0<=J-1<D:B.add((G,J-1))
+		if 0<=L+1<D:B.add((G,L+1))
+	B=list(B)
+	def M(i,j):
+		A=None;C=10**9
+		for(D,E)in B:
+			F=abs(D-i)+abs(E-j)
+			if F<C:C=F;A=D,E
+		return A
+	P=set(M(A,B)for(A,B)in H if M(A,B));from collections import Counter as N;O=[B for A in A for B in A];Q=max(N(O),key=N(O).get)
+	for(G,F)in H:A[G][F]=Q
+	for(R,S)in P:A[R][S]=5
+	return A

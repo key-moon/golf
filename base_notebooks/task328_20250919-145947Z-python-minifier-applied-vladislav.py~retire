@@ -1,0 +1,26 @@
+def p(g):
+	H=True;I,J=len(g),len(g[0]);P=[B for A in g for B in A];W=max(set(P),key=P.count);C=[[False]*J for A in range(I)];L=[]
+	for D in range(I):
+		for E in range(J):
+			if C[D][E]or g[D][E]==W:C[D][E]=H;continue
+			Q=g[D][E];G=[(D,E)];C[D][E]=H;F=[]
+			while G:
+				A,B=G.pop()
+				if g[A][B]!=Q:continue
+				F.append((A,B))
+				if A>0 and not C[A-1][B]:C[A-1][B]=H;G.append((A-1,B))
+				if A+1<I and not C[A+1][B]:C[A+1][B]=H;G.append((A+1,B))
+				if B>0 and not C[A][B-1]:C[A][B-1]=H;G.append((A,B-1))
+				if B+1<J and not C[A][B+1]:C[A][B+1]=H;G.append((A,B+1))
+			if F:L.append((Q,F))
+	K=[]
+	for(a,F)in L:R=min(A for(A,B)in F);X=max(A for(A,B)in F);S=min(A for(B,A)in F);Y=max(A for(B,A)in F);M=R+(X-R+1)//2;N=S+(Y-S+1)//2;K.append((M,N))
+	T=[A[:]for A in g]
+	for D in range(I):
+		for E in range(J):
+			if not K:continue
+			O=[abs(D-A)+abs(E-B)for(A,B)in K];U=min(O)
+			if O.count(U)!=1:continue
+			V=O.index(U);M,N=K[V];Z=max(abs(D-M),abs(E-N))
+			if Z%2==0:T[D][E]=L[V][0]
+	return T

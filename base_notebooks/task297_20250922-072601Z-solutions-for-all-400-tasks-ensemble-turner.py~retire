@@ -1,0 +1,1 @@
+def p(g):(v:=len(g[0]));g[2:]=[[g[0][i]]*v for i in range(v)]*2;return g

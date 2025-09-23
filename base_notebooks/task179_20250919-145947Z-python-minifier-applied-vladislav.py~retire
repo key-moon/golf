@@ -1,0 +1,2 @@
+def solve_74dd1130(I):A=tuple(tuple(A)for A in zip(*I));return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_74dd1130(A);return[list(A)for A in B]

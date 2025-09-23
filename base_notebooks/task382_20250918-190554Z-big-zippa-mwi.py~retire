@@ -1,0 +1,15 @@
+R=range
+L=len
+def p(g,S=1):
+	for F in R(4):
+		g=list(map(list,zip(*g[::-1])));D,E=L(g),L(g[0])
+		if S:
+			for B in R(D):
+				if g[B][0]==8 and g[0].count(2)+g[-1].count(2)>0:
+					A=0
+					for C in R(E):
+						if g[0][C]==2:A+=1
+						if g[-1][C]==2:A-=1
+						if 0<=B+A<D:g[B+A][C]=8
+					S=0
+	return g

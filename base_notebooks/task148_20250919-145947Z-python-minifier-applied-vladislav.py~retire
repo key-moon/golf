@@ -1,0 +1,48 @@
+F=False
+T=True
+ZERO=0
+ONE=1
+TWO=2
+FOUR=4
+EIGHT=8
+def _bg_color(G):A=[B for A in G for B in A];return max(set(A),key=A.count)
+def _components_of_color(G,color):
+	J=color;F,H=len(G),len(G[0]);C=[[False]*H for A in range(F)];K=[]
+	for D in range(F):
+		for E in range(H):
+			if G[D][E]!=J or C[D][E]:continue
+			I=[(D,E)];C[D][E]=True;L=[]
+			while I:
+				M,N=I.pop();L.append((M,N))
+				for(O,P)in((1,0),(-1,0),(0,1),(0,-1)):
+					A,B=M+O,N+P
+					if 0<=A<F and 0<=B<H and not C[A][B]and G[A][B]==J:C[A][B]=True;I.append((A,B))
+			K.append(L)
+	return K
+def solve_673ef223(I):
+	C=None;K,H=len(I),len(I[0]);R=_bg_color(I);L=[(A,B)for A in range(K)for B in range(H)if I[A][B]==EIGHT];J=[list(A)for A in I]
+	for(B,A)in L:J[B][A]=FOUR
+	def M(i,j):
+		if 0<=i<K and 0<=j<H and J[i][j]==R:J[i][j]=EIGHT
+	for(B,A)in L:
+		D=C
+		for E in range(A-1,-1,-1):
+			if I[B][E]==TWO:D=E;break
+		F=C
+		for E in range(A+1,H):
+			if I[B][E]==TWO:F=E;break
+		G=C
+		if D is not C and F is not C:G=D if A-D<=F-A else F
+		else:G=D if D is not C else F
+		if G is not C:
+			S,T=min(A,G),max(A,G)
+			for U in range(S,T+1):M(B,U)
+	N=_components_of_color(I,TWO)
+	if N:O=[min(A for(A,B)in A)for A in N];P=max(O)-min(O)
+	else:P=0
+	for(B,A)in L:
+		Q=B+P
+		if 0<=Q<K:
+			for V in range(H):M(Q,V)
+	return tuple(tuple(A)for A in J)
+def p(g):A=tuple(tuple(A)for A in g);B=solve_673ef223(A);return[list(A)for A in B]

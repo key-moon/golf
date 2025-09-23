@@ -1,0 +1,2 @@
+def solve_d10ecb37(I):A=tuple(tuple(A[:2])for A in I[:2]);return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_d10ecb37(A);return[list(A)for A in B]

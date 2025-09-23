@@ -1,0 +1,1 @@
+p=lambda j:[A[:2]for A in j[:2]]

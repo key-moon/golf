@@ -1,0 +1,14 @@
+def p(j):
+	A=range;H,I=len(j),len(j[0]);F={}
+	for J in A(H):
+		for K in A(I):
+			if j[J][K]:F[j[J][K]]=F.get(j[J][K],0)+1
+	G,O=max(F,key=F.get),min(F,key=F.get);L,M=0,None
+	for B in A(H-2):
+		for C in A(I-2):
+			for D in A(B+2,H):
+				for E in A(C+2,I):
+					if all(j[B][A]==G for A in A(C,E+1))and all(j[D][A]==G for A in A(C,E+1))and all(j[A][C]==G for A in A(B,D+1))and all(j[A][E]==G for A in A(B,D+1)):
+						N=(D-B+1)*(E-C+1)
+						if N>L:L,M=N,(B,C,D,E)
+	B,C,D,E=M;return[[O if j[B+D][C+A]==G else j[B+D][C+A]for A in A(E-C+1)]for D in A(D-B+1)]

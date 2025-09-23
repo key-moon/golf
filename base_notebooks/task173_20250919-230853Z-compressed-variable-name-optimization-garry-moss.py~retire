@@ -1,0 +1,1 @@
+def p(g):[((u:=[g[i+s//3][l+s%3]for s in range(9)])==u[::-1])*u[4]*any(u[:4])*(u[4]==g[e+1][t+1]or sum(g[e+s//3][t+s%3]==u[s]for s in range(9))==8)and exec('for s in range(9):g[e+s//3][t+s%3]=u[s]')for e in range(len(g)-2) for i in range(len(g)-2) for t in range(len(g[0])-2) for l in range(len(g[0])-2)];return g

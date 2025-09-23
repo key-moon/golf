@@ -1,0 +1,2 @@
+def solve_5bd6f4ac(I):A=tuple(tuple(A[6:9])for A in I[:3]);return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_5bd6f4ac(A);return[list(A)for A in B]

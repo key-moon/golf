@@ -1,0 +1,55 @@
+def p(g):
+	def C(e):A=[B for A in e for B in A]if isinstance(e,(tuple,list))else[A[0]for A in e];return max(set(A),key=A.count)
+	def R(l):A,B=l;return{(A-1,B-1),(A-1,B),(A-1,B+1),(A,B-1),(A,B+1),(A+1,B-1),(A+1,B),(A+1,B+1)}
+	def S(g):return{(A,B)for A in range(len(g))for B in range(len(g[0]))}if g and g[0]else set()
+	def D(p):B=A(p);return min(A for(A,B)in B),min(A for(B,A)in B)
+	def H(p):B=A(p);return max(A for(A,B)in B),max(A for(B,A)in B)
+	def A(p):
+		if not p:return set()
+		A=next(iter(p));return{A for(B,A)in p}if isinstance(A,tuple)and len(A)==2 and isinstance(A[1],tuple)else p
+	def I(p,d):
+		if not p:return p
+		B,C=d;A=next(iter(p));return{(A,(D+B,E+C))for(A,(D,E))in p}if isinstance(A,tuple)and len(A)==2 and isinstance(A[1],tuple)else{(A+B,D+C)for(A,D)in p}
+	def J(p):return I(p,(-W(p),-K(p)))if p else p
+	def T(l):return{(l[0]-1,l[1]),(l[0]+1,l[1]),(l[0],l[1]-1),(l[0],l[1]+1)}
+	def U(g,u,d,w):
+		H=C(g)if w else None;I,D=[],set();L,w=len(g),len(g[0]);M=S(g);N=R if d else T
+		for A in M:
+			if A in D:continue
+			E=g[A[0]][A[1]]
+			if E==H:continue
+			J,F={(E,A)},{A}
+			while F:
+				K=set()
+				for B in F:
+					G=g[B[0]][B[1]]
+					if E==G if u else G!=H:J.add((G,B));D.add(B);K|={(A,B)for(A,B)in N(B)if 0<=A<L and 0<=B<w}
+				F=K-D
+			I.append(J)
+		return I
+	def V(g):A=C(g);return[{(A,(C,E))for(C,D)in enumerate(g)for(E,A)in enumerate(D)if A==B}for B in{B for A in g for B in A}-{A}]
+	def W(p):return min(A for(A,B)in A(p))
+	def K(p):return min(A for(B,A)in A(p))
+	def X(p):return max(A for(B,A)in A(p))
+	def Y(a,b):return min(abs(B-D)+abs(C-E)for(B,C)in A(a)for(D,E)in A(b))
+	def m(e):return{B for A in e for B in A}if isinstance(e,(tuple,list))else{A[0]for A in e}
+	def Z(g):return[list(A)for A in zip(*g[::-1])]
+	def b(p):B=D(p)[0]+H(p)[0];A=next(iter(p));return{(A,(B-C,D))for(A,(C,D))in p}if isinstance(A,tuple)and len(A)==2 and isinstance(A[1],tuple)else{(B-A,C)for(A,C)in p}
+	def E(p):B=D(p)[1]+H(p)[1];A=next(iter(p));return{(A,(C,B-D))for(A,(C,D))in p}if isinstance(A,tuple)and len(A)==2 and isinstance(A[1],tuple)else{(A,B-C)for(A,C)in p}
+	def L(p):A,B=D(p);C=next(iter(p));return{(C,(E-B+A,D-A+B))for(C,(D,E))in p}if isinstance(C,tuple)and len(C)==2 and isinstance(C[1],tuple)else{(D-B+A,C-A+B)for(C,D)in p}
+	def c(p):return E(L(E(p)))
+	def M(g,obj):
+		D,E=len(g),len(g[0]);A=[list(A)for A in g]
+		for(F,(B,C))in obj:
+			if 0<=B<D and 0<=C<E:A[B][C]=F
+		return A
+	def a(v,d):return[[v for A in range(d[1])]for A in range(d[0])]
+	F=tuple(tuple(A)for A in g)if not isinstance(g,tuple)else g;d=C(F);G=V(F);e=U(F,1,0,1)
+	def f(a):C=next(iter(a))[0];A=[A for A in e if next(iter(A))[0]==C];D=max((X(A)-K(A)+1 for A in A),default=0)if A else 0;E={Y(C,B)for B in A for C in A};F={A for A in E if A};B=min(F,default=0);G=B-1 if B>0 else-2;return-(2*D+G)
+	h=sorted(G,key=f)
+	def i(a):
+		def B(p):return tuple(sorted(A(J(p))))
+		return min((E(a),L(a),c(a),b(a)),key=B)
+	j=[i(A)for A in h];k=tuple(J(A)for A in j);N=len(G);O=N if any(len(A)==1 for A in G)else N+1;l=tuple((A,A)for A in range(O));P=tuple(C for(A,B)in zip(k,l)for C in sorted(I(A,B),key=lambda t:t[1]));Q=2*O-1;B=a(d,(Q,Q))
+	for n in range(3):B=M(B,P);B=Z(B)
+	return M(B,P)

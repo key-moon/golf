@@ -1,0 +1,12 @@
+def p(g,L=len,R=range):
+	E,F,G,H,C=L(g),L(g[0]),[],[],[]
+	for B in R(E):
+		for A in R(F):
+			D=g[B][A]
+			if D==2:G+=[A];g[B][A]=0
+			if D==4:H+=[A];g[B][A]=0
+			if D==1:C+=[A]
+	for B in R(E):
+		for A in R(F):
+			if g[B][A]==1:g[B][A+(min(H)-min(C))]=4;g[B][A+(min(G)-min(C))]=2
+	return g

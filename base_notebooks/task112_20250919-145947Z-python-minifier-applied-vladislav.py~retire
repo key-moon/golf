@@ -1,0 +1,10 @@
+def p(j,h=enumerate):
+	C=D=0
+	for(A,F)in h(j):
+		for(B,E)in h(F):C+=A*(E==3);D+=B*(E==3)
+	C//=2;D//=2
+	for(A,F)in h(j):
+		for(B,E)in h(F):
+			if E==2:
+				for(G,H)in((A,B),(C-A,B),(A,D-B),(C-A,D-B)):j[G][H]=2
+	return j

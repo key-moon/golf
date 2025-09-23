@@ -1,0 +1,35 @@
+F=False
+T=True
+ZERO=0
+ONE=1
+TWO=2
+FOUR=4
+def _components_color_4(G):
+	F,H=len(G),len(G[0]);C=[[False]*H for A in range(F)];J=[]
+	for D in range(F):
+		for E in range(H):
+			if G[D][E]!=FOUR or C[D][E]:continue
+			I=[(D,E)];C[D][E]=True;K=[]
+			while I:
+				L,M=I.pop();K.append((L,M))
+				for(N,O)in((1,0),(-1,0),(0,1),(0,-1)):
+					A,B=L+N,M+O
+					if 0<=A<F and 0<=B<H and not C[A][B]and G[A][B]==FOUR:C[A][B]=True;I.append((A,B))
+			J.append(K)
+	return J
+def _inner_rect(comp):A=[A for(A,B)in comp];B=[A for(B,A)in comp];C=min(A)+1;D=max(A)-1;E=min(B)+1;F=max(B)-1;return C,E,D,F
+def solve_694f12f3(I):
+	H,J=len(I),len(I[0]);G=[list(A)for A in I];K=_components_color_4(I)
+	if not K:return tuple(tuple(A)for A in G)
+	L=sorted(K,key=lambda c:len(c));M=L[0];N=L[-1];A,B,C,D=_inner_rect(M)
+	if A<=C and B<=D:
+		for E in range(A,C+1):
+			for F in range(B,D+1):
+				if 0<=E<H and 0<=F<J:G[E][F]=ONE
+	A,B,C,D=_inner_rect(N)
+	if A<=C and B<=D:
+		for E in range(A,C+1):
+			for F in range(B,D+1):
+				if 0<=E<H and 0<=F<J:G[E][F]=TWO
+	return tuple(tuple(A)for A in G)
+def p(g):A=tuple(tuple(A)for A in g);B=solve_694f12f3(A);return[list(A)for A in B]

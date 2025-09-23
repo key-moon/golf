@@ -1,0 +1,2 @@
+def solve_b1948b0a(I):A=tuple(tuple(2 if A==6 else A for A in A)for A in I);return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_b1948b0a(A);return[list(A)for A in B]

@@ -1,0 +1,30 @@
+def p(g):
+	if not g or not g[0]:return[]
+	S,T=len(g),len(g[0]);M=set();F=[]
+	for C in range(S):
+		for G in range(T):
+			if(C,G)in M:continue
+			X=g[C][G];O=[(C,G)];P=[];M.add((C,G))
+			while O:
+				U,V=O.pop();P.append((U,V))
+				for(Y,Z)in((1,0),(-1,0),(0,1),(0,-1)):
+					I,J=U+Y,V+Z
+					if 0<=I<S and 0<=J<T and(I,J)not in M and g[I][J]==X:M.add((I,J));O.append((I,J))
+			if len(P)>len(F):F=P
+	a=min(A for(A,B)in F);b=max(A for(A,B)in F);c=min(A for(B,A)in F);d=max(A for(B,A)in F);W=[A[c:d+1]for A in g[a:b+1]]
+	if not W:return[]
+	D=[A[:]for A in W];E=[B for A in D for B in A];H=max(set(E),key=E.count);A=[A[:]for A in D];K,L=len(A),len(A[0])
+	while A and sum(1 for A in A[0]if A==H)*2<=L:A.pop(0);K-=1
+	while A and sum(1 for A in A[-1]if A==H)*2<=L:A.pop();K-=1
+	if not A:return[]
+	B=list(zip(*A))
+	while B and sum(1 for A in B[0]if A==H)*2<=len(A):B.pop(0)
+	while B and sum(1 for A in B[-1]if A==H)*2<=len(A):B.pop()
+	if not B:return[]
+	D=[list(A)for A in zip(*B)];E=[B for A in D for B in A];H=max(set(E),key=E.count);Q=min(set(E),key=E.count);K,L=len(D),len(D[0]);N=[[H]*L for A in range(K)];R=[(A,C)for(A,B)in enumerate(D)for(C,D)in enumerate(B)if D==Q]
+	if not R:return N
+	A={A for(A,B)in R};B={A for(B,A)in R}
+	for C in A:N[C]=[Q]*L
+	for G in B:
+		for C in range(K):N[C][G]=Q
+	return N#

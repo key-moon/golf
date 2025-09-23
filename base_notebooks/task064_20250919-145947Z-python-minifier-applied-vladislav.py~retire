@@ -1,0 +1,24 @@
+def p(g):
+	A=[A[:]for A in g];F,G=len(A),len(A[0]);H=[B for A in A for B in A];P=max(set(H),key=H.count);Q=min(sorted(set(H)),key=H.count);I=[[False]*G for A in range(F)];J=[]
+	for C in range(F):
+		for B in range(G):
+			if A[C][B]==P or I[C][B]:continue
+			V=A[C][B];K=[(C,B)];L=[];I[C][B]=True
+			while K:
+				R,S=K.pop();L.append((R,S))
+				for(W,X)in((1,0),(-1,0),(0,1),(0,-1)):
+					D,E=R+W,S+X
+					if 0<=D<F and 0<=E<G and not I[D][E]and A[D][E]==V:I[D][E]=True;K.append((D,E))
+			if len(L)>len(J):J=L
+	Y=[(B,C)for B in range(F)for C in range(G)if A[B][C]==Q];M=set()
+	for(N,O)in J:
+		for(T,U)in Y:
+			if N==T:
+				Z,a=sorted((O,U))
+				for B in range(Z,a+1):M.add((N,B))
+			elif O==U:
+				b,c=sorted((N,T))
+				for d in range(b,c+1):M.add((d,O))
+	for(C,B)in M:
+		if A[C][B]==P:A[C][B]=Q
+	return A

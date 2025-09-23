@@ -1,0 +1,4 @@
+# best: 20(jacekw, cg-klogw, 4atj sisyphus luke Seek mukundan, cg, open source, KN, sekken, HashPanda, biz, 2F, azakhtyamov, adakoda, Potatoman, kdmitrie, jacekw Potatoman nauti, el_presidente, JRKX, jonas ryno kg583, Yuchen20, duckyluuk, MKRC, ox jam, cubbus, jacekwl Potatoman nauti, Rafael Pooja, Afordancja, HashPanda Pooja, HETHAT, rucin93, dbdr, blob2822, scpchicken, kabutack, jailctf merger, JRK, jonas ryno kg583 kabutack, Ali, MasukenSamba, J&R, natte, intgrah jimboko awu macaque sammyuri, jacekwl) / others: 21(GPU Poor), 21(hyacinth), 22(klogw)
+# ======= 20 =======
+p=lambda g:g[::-1]+g
+

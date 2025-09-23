@@ -1,0 +1,1 @@
+def p(j):A=lambda c:[*map(list,zip(*c[::-1]))];return[A+B for(A,B)in zip(j,A(j))]+[A+B for(A,B)in zip(A(A(A(j))),A(A(j)))]

@@ -1,0 +1,12 @@
+from collections import Counter
+def p(g):
+	G,H=len(g),len(g[0]);A=min(G,H);B=[[0]*A for B in range(A)]
+	for C in range(A):
+		for D in range(A):B[C][D]=max(g[C][D],g[D][C])
+	E=Counter(B for A in B for B in A);I=max(E,key=E.get)
+	for C in range(A):
+		for D in range(A):
+			if B[C][D]==0:B[C][D]=I
+	J=B[0][0]
+	for F in range(A):B[F][F]=J
+	return B

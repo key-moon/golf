@@ -1,0 +1,6 @@
+def p(j,A=enumerate):
+	C=[[0]*len(j[0])for A in j]
+	for D in set(sum(j,[]))-{0}:
+		B=[(B,E)for(B,C)in A(j)for(E,F)in A(C)if F==D];G,H=max(A for(A,B)in B),max(A for(B,A)in B)
+		for(E,F)in B:C[E][F+(E<G and F<H)]=D
+	return C

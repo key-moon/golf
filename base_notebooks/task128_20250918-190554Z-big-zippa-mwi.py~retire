@@ -1,0 +1,13 @@
+def p(j):
+	J=[[0]*len(j[0])for A in j];G=set()
+	for C in range(len(j)):
+		for D in range(len(j[0])):
+			if j[C][D]and(C,D)not in G:
+				H,I=[(C,D)],[(C,D)];G.add((C,D));K=j[C][D]
+				while I:
+					A,B=I.pop()
+					for(E,F)in[(0,1),(1,0),(0,-1),(-1,0)]:
+						if 0<=A+E<len(j)and 0<=B+F<len(j[0])and j[A+E][B+F]==K and(A+E,B+F)not in G:G.add((A+E,B+F));H.append((A+E,B+F));I.append((A+E,B+F))
+				L=max(A for(A,B)in H)-min(A for(A,B)in H)+1
+				for(A,B)in H:J[A-L][B]=K
+	return J

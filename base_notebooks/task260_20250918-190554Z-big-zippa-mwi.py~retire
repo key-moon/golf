@@ -1,0 +1,17 @@
+L=len
+R=range
+P=[[0,0],[0,1],[1,0],[1,1]]
+def p(g):
+	F,G=L(g),L(g[0]);I=[A for A in set(sum(g,[]))if A not in[0,5]][0]
+	for B in R(F-1):
+		for C in R(G-1):
+			H=[g[B+A][C+D]for(A,D)in P]
+			if H.count(5)==1 and sum(H)==5:
+				for D in R(2):
+					for E in R(2):
+						if g[D+B][E+C]==5:
+							for A in R(-10,10):
+								if H[2]==5:
+									if 0<=D+B-A-1<F and 0<=E+C-A+1<G:g[D+B-A-1][E+C-A+1]=I
+								elif 0<=D+B-A+1<F and 0<=E+C-A-1<G:g[D+B-A+1][E+C-A-1]=I
+	g=[[A if A!=5 else 0 for A in A]for A in g];return g

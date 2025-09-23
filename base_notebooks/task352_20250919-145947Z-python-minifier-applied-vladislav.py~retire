@@ -1,0 +1,11 @@
+def p(j,A=enumerate):
+	D=[[A for(B,A)in A(B)]for B in j]
+	for(E,G)in A(j):
+		for(F,H)in A(G):
+			if H==2:
+				for B in range(-1,2):
+					for C in range(-1,2):
+						try:
+							if[B,C]!=[0,0]and E+B>-1 and F+C>-1:D[E+B][F+C]=1
+						except:0
+	return D

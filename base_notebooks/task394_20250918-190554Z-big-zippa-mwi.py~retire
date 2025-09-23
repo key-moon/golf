@@ -1,0 +1,21 @@
+def p(g):
+	I=None;B=len(g);D=[(A,C)for A in range(B)for C in range(B)if g[A][C]==0]
+	if not D:return[[]]
+	J,K=min(A for(A,B)in D),min(A for(B,A)in D);L,M=max(A for(A,B)in D)-J+1,max(A for(B,A)in D)-K+1
+	for A in range(2,5):
+		F,C=[],1
+		for N in range(A):
+			for O in range(A):
+				E=I
+				for G in range(N,B,A):
+					for H in range(O,B,A):
+						if g[G][H]!=0:
+							if E is I:E=g[G][H]
+							elif E!=g[G][H]:C=0;break
+					if not C:break
+				if not C or E is I:C=0;break
+				F.append(E)
+			if not C:break
+		if C and len(F)==A*A:
+			if all(g[C][D]==0 or g[C][D]==F[C%A*A+D%A]for C in range(B)for D in range(B)):return[[F[(J+B)%A*A+(K+C)%A]for C in range(M)]for B in range(L)]
+	return[[]]

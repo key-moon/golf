@@ -1,0 +1,39 @@
+from collections import Counter,deque
+def p(j):
+	d=False;T=True;J=[[0 if A==5 else A for A in A]for A in j];U,V=len(J),len(J[0]);e=Counter(B for A in J for B in A).most_common(1)[0][0];N=[[d]*V for A in range(U)];Y=[]
+	for C in range(U):
+		for D in range(V):
+			if N[C][D]:continue
+			N[C][D]=T
+			if J[C][D]==e:continue
+			O=J[C][D];H=deque([(C,D)]);G={(C,D)}
+			while H:
+				W,X=H.popleft()
+				for(L,M)in((1,0),(-1,0),(0,1),(0,-1)):
+					A,B=W+L,X+M
+					if 0<=A<U and 0<=B<V and not N[A][B]:
+						N[A][B]=T
+						if J[A][B]==O:G.add((A,B));H.append((A,B))
+			P=min(A for(A,B)in G);Q=min(A for(B,A)in G);f=tuple(sorted((A-P,B-Q)for(A,B)in G));Y.append((O,f))
+	E=F=9;I={(A,0)for A in range(E)}|{(A,F-1)for A in range(E)}|{(0,A)for A in range(F)}|{(E-1,A)for A in range(F)}
+	for Z in(2,F-3):I.discard((0,Z));I.discard((E-1,Z))
+	for a in(2,E-3):I.discard((a,0));I.discard((a,F-1))
+	I|={(4,1),(4,F-2),(1,4),(E-2,4)};R=[[d]*F for A in range(E)];S={}
+	for C in range(E):
+		for D in range(F):
+			if R[C][D]or(C,D)not in I:continue
+			H=deque([(C,D)]);R[C][D]=T;G={(C,D)}
+			while H:
+				W,X=H.popleft()
+				for(L,M)in((1,0),(-1,0),(0,1),(0,-1)):
+					A,B=W+L,X+M
+					if 0<=A<E and 0<=B<F and not R[A][B]and(A,B)in I:R[A][B]=T;G.add((A,B));H.append((A,B))
+			P=min(A for(A,B)in G);Q=min(A for(B,A)in G);K=tuple(sorted((A-P,B-Q)for(A,B)in G));S.setdefault(K,[]).append((P,Q))
+	for K in S:S[K].sort()
+	b=[[5]*F for A in range(E)]
+	for(O,K)in Y:
+		c=S.get(K)
+		if not c:continue
+		g,h=c.pop(0)
+		for(L,M)in K:b[g+L][h+M]=O
+	return b

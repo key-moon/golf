@@ -1,0 +1,5 @@
+def p(j):
+	A=enumerate;E=next;I=lambda k,W:k<1 or j[k-1][W]<1 or k>2 and j[k-1][W]==4 and j[k-2][W]>0;(B,C),(J,F),(K,J),J=[divmod(A,13)for(A,B)in A(sum(j,[]))if B==4];G=E(B for A in zip(*j)if 4 not in A for B in A if B);L=E(B for(B,C)in A(j)if any(C==G and I(B,A)for(A,C)in A(C)));M=E(B for(B,C)in A(zip(*j))if any(C==G and I(A,B)for(A,C)in A(C)))
+	for H in range(K-B-1):
+		for D in range(F-C-1):j[B+H+1][[F-D-1,C+D+1][j[B+1][C]==G]],j[L+H][M+D]=j[L+H][M+D],0
+	return[A[C:F+1]for A in j[B:K+1]]

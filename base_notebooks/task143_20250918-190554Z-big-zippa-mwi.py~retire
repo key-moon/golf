@@ -1,0 +1,23 @@
+R=range
+L=len
+def p(a):
+	M=False;I=None;J,K=L(a),L(a[0]);H=[[1 if a[A][B]else 0 for B in R(3)]for A in R(3)]
+	for A in R(J-2):
+		for B in R(K-2):
+			if A<1 and B<1:continue
+			C=I;F=True
+			for D in R(3):
+				for E in R(3):
+					G=a[A+D][B+E]
+					if H[D][E]:
+						if not G or C is not I and G!=C:F=M;break
+						if C is I:C=G
+					elif G:F=M;break
+				if not F:break
+			if not F:continue
+			if any(0<=A+D+F<J and 0<=B+E+G<K and not(A<=A+D+F<A+3 and B<=B+E+G<B+3)and a[A+D+F][B+E+G]==C for D in R(3)for E in R(3)if H[D][E]for(F,G)in((1,0),(-1,0),(0,1),(0,-1))):continue
+			for D in R(3):
+				for E in R(3):
+					if H[D][E]:a[A+D][B+E]=5
+			return a
+	return a

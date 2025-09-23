@@ -1,0 +1,1 @@
+p=lambda g:[[1]]if g==g[::-1]else[[7]]

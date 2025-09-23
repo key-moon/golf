@@ -1,0 +1,12 @@
+def p(g,E=enumerate):
+	A=[]
+	for(B,F)in E(g):
+		for(C,D)in E(F):
+			if D not in[0,8]:A+=[[B,C,D]];g[B][C]=0
+	G=A[0][:];A=[[A[0]-G[0],A[1]-G[1],A[2]]for A in A]
+	for(B,F)in E(g):
+		for(C,D)in E(F):
+			if D==8:
+				g[B][C]=G[2]
+				for H in A:g[B+H[0]][C+H[1]]=H[2]
+	return g

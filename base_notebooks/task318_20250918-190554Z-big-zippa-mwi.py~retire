@@ -1,0 +1,1 @@
+def p(j):return[[3 if j[A][B]or j[A+5][B]else 0 for B in range(4)]for A in range(4)]

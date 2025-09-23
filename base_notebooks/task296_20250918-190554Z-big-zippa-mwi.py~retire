@@ -1,0 +1,4 @@
+def p(j):
+	B=[[0]*3,[0]*3,[0]*3]
+	for A in range(16):C,D=A//8%2*-2+A//2%2,A//4%2*-2+A%2;B[C][D]=max(B[C][D],j[C][D])
+	return B

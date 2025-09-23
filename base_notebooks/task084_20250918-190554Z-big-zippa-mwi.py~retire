@@ -1,0 +1,4 @@
+def p(j):
+	B=len(j)
+	for A in range(1,len(j[0])):j[B-1][A]=4;j[B-A-1][A]=2
+	return j

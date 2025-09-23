@@ -1,0 +1,83 @@
+THREE=3
+def solve_d43fd935(I):
+	E,F=len(I),len(I[0])
+	def N(grid):A=[B for A in grid for B in A];from collections import Counter as B;return B(A).most_common(1)[0][0]
+	def O(grid):return{(A,B)for A in range(len(grid))for B in range(len(grid[0]))}
+	def P(loc):A,B=loc;return{(A-1,B),(A+1,B),(A,B-1),(A,B+1)}
+	def Q(grid):
+		A=grid;K=N(A);G=[];D=set();L,M=len(A),len(A[0])
+		for B in O(A):
+			if B in D:continue
+			E=A[B[0]][B[1]]
+			if E==K:continue
+			H={(E,B)};F={B}
+			while F:
+				I=set()
+				for C in F:
+					J=A[C[0]][C[1]]
+					if J==E:H.add((J,C));D.add(C);I|={(A,B)for(A,B)in P(C)if 0<=A<L and 0<=B<M}
+				F=I-D
+			G.append(set(H))
+		return G
+	def A(patch):
+		A=patch
+		if not A:return set()
+		B=next(iter(A))
+		if isinstance(B,tuple)and len(B)==2 and isinstance(B[1],tuple):return{A for(B,A)in A}
+		return set(A)
+	def J(patch):return min(A for(A,B)in A(patch))
+	def R(patch):return max(A for(A,B)in A(patch))
+	def K(patch):return min(A for(B,A)in A(patch))
+	def S(patch):return max(A for(B,A)in A(patch))
+	def T(patch):A=patch;return R(A)-J(A)+1
+	def U(patch):A=patch;return S(A)-K(A)+1
+	def G(patch):A=patch;return J(A)+T(A)//2,K(A)+U(A)//2
+	def V(a,b):B={A for(A,B)in A(a)};C={A for(A,B)in A(b)};return len(B&C)>0
+	def H(a,b):B={A for(B,A)in A(a)};C={A for(B,A)in A(b)};return len(B&C)>0
+	def W(a,b):B=A(a);C=A(b);return min(abs(A-D)+abs(B-E)for(A,B)in B for(D,E)in C)
+	def X(a,b):return W(a,b)==1
+	def Y(patch,d):
+		A=patch;C,D=d
+		if not A:return A
+		B=next(iter(A))
+		if isinstance(B,tuple)and len(B)==2 and isinstance(B[1],tuple):return{(A,(B+C,E+D))for(A,(B,E))in A}
+		return{(A+C,B+D)for(A,B)in A}
+	def Z(a,b):
+		A,B=a;C,D=b;E=min(A,C);F=max(A,C)+1;G=min(B,D);H=max(B,D)+1
+		if A==C:return{(A,B)for B in range(G,H)}
+		elif B==D:return{(A,B)for A in range(E,F)}
+		elif C-A==D-B:return{(A,B)for(A,B)in zip(range(E,F),range(G,H))}
+		elif C-A==B-D:return{(A,B)for(A,B)in zip(range(E,F),range(H-1,G-1,-1))}
+		return set()
+	def L(obj):return next(iter(obj))[0]
+	def a(value,patch):return{(value,A)for A in A(patch)}
+	def b(grid,value):return{(A,B)for A in range(E)for B in range(F)if grid[A][B]==value}
+	def c(grid,obj):
+		A=[list(A)for A in grid]
+		for(D,(B,C))in obj:
+			if 0<=B<E and 0<=C<F:A[B][C]=D
+		return A
+	def d(source,destination):
+		J=destination;I=source;K,L=G(I);C=list(A(I));M={A for(A,B)in C};N={A for(B,A)in C};O={A for(A,B)in A(J)};P={A for(B,A)in A(J)}
+		if H(I,J):
+			F=N&P;D=min(F,key=lambda x:abs(x-L))if F else L;B=[A for A in C if A[1]==D]
+			if not B:B=sorted(C,key=lambda loc:(abs(loc[1]-D),abs(loc[0]-K)))
+			E,D=B[0];return E,D
+		else:
+			F=M&O;E=min(F,key=lambda x:abs(x-K))if F else K;B=[A for A in C if A[0]==E]
+			if not B:B=sorted(C,key=lambda loc:(abs(loc[0]-E),abs(loc[1]-L)))
+			E,D=B[0];return E,D
+	def e(source,destination):
+		E=destination;D=source;L,M=G(D);N,O=G(E);B,C=0,0
+		if H(D,E):B=1 if L<N else-1
+		else:C=1 if M<O else-1
+		I,J=B,C;K=0;F=A(D);P=A(E)
+		while not X(F,P)and K<42:K+=1;I+=B;J+=C;F=Y(F,(B,C))
+		return I-B,J-C
+	f=Q(I);C=b(I,THREE);M=[]
+	for B in f:
+		if L(B)==THREE:continue
+		if not(V(B,C)or H(B,C)):continue
+		D=d(B,C);g,h=e(B,C);i=Z(D,(D[0]+g,D[1]+h));M.extend(a(L(B),i))
+	return c(I,M)
+def p(g):A=tuple(tuple(A)for A in g);return solve_d43fd935(A)

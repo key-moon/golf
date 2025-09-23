@@ -1,0 +1,9 @@
+def p(j,u=enumerate):
+	E=range;F=len(j);G=len(j[0]);H=lambda W,l:W==l or W*l<1;I=next((A for A in E(1,G)if all(H(C,D)for B in j for(C,D)in zip(B,B[A:]))),G);J=next((A for A in E(1,F)if all(H(C,D)for(A,B)in zip(j,j[A:])for(C,D)in zip(A,B))),F);K={}
+	for(D,A)in u(j):
+		for(B,C)in u(A):
+			if C:K[D%J,B%I]=C
+	for(D,A)in u(j):
+		for(B,C)in u(A):
+			if not C:A[B]=K[D%J,B%I]
+	return j

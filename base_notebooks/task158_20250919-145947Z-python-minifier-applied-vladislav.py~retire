@@ -1,0 +1,83 @@
+_B=False
+_A=True
+F=_B
+T=_A
+ZERO=0
+ONE=1
+TWO=2
+THREE=3
+FOUR=4
+FIVE=5
+SIX=6
+SEVEN=7
+EIGHT=8
+NINE=9
+def _bg_color(G):A=[B for A in G for B in A];return max(set(A),key=A.count)
+def _most_color_in_obj(obj):A=[B for(A,A,B)in obj];return max(set(A),key=A.count)
+def _components_nonbg_anycolor_diag(G):
+	L=_bg_color(G);F,H=len(G),len(G[0]);C=[[_B]*H for A in range(F)];M=[]
+	for D in range(F):
+		for E in range(H):
+			if C[D][E]or G[D][E]==L:continue
+			I=[(D,E)];C[D][E]=_A;N=[]
+			while I:
+				J,K=I.pop();N.append((J,K,G[J][K]))
+				for O in(-1,0,1):
+					for P in(-1,0,1):
+						if O==0 and P==0:continue
+						A,B=J+O,K+P
+						if 0<=A<F and 0<=B<H and not C[A][B]and G[A][B]!=L:C[A][B]=_A;I.append((A,B))
+			M.append(N)
+	return M
+def _normalize(obj):A=obj;B=min(A for(A,B,B)in A);C=min(B for(A,B,A)in A);return[(A-B,D-C,E)for(A,D,E)in A]
+def _upscale(obj,k):
+	if k==1:return list(obj)
+	A=[]
+	for(B,C,D)in obj:
+		for E in range(k):
+			for F in range(k):A.append((B*k+E,C*k+F,D))
+	return A
+def _dims(obj):A=obj;B=max(A for(A,B,B)in A)+1 if A else 0;C=max(B for(A,B,A)in A)+1 if A else 0;return B,C
+def _vmirror(obj):B,A=_dims(obj);return[(B,A-1-C,D)for(B,C,D)in obj]
+def _hmirror(obj):A,B=_dims(obj);return[(A-1-B,C,D)for(B,C,D)in obj]
+def _cmirror(obj):return _vmirror(_dmirror(_vmirror(obj)))
+def _dmirror(obj):return[(B,A,C)for(A,B,C)in obj]
+def _occurrences(G,pattern):
+	A=pattern
+	if not A:return[]
+	F,H=len(G),len(G[0]);I,J=_dims(A);B=[]
+	for C in range(F-I+1):
+		for D in range(H-J+1):
+			E=_A
+			for(K,L,M)in A:
+				if G[C+K][D+L]!=M:E=_B;break
+			if E:B.append((C,D))
+	return B
+def solve_6aa20dc0(I):
+	F=_components_nonbg_anycolor_diag(I)
+	if not F:return tuple(tuple(A)for A in I)
+	def R(c):return len(set(B for(A,A,B)in c))
+	G=None;H=-1
+	for J in F:
+		K=R(J)
+		if K>H:H=K;G=J
+	S=_normalize(G);T=[lambda o:o,_vmirror,_hmirror,_cmirror,_dmirror];U=[1,2,3];B=[list(A)for A in I];V=_bg_color(I)
+	for W in U:
+		D=_upscale(S,W);D=_normalize(D)
+		for X in T:
+			C=_normalize(X(D))
+			if not C:continue
+			Y=_most_color_in_obj(C);A=[(B,C,A)for(B,C,A)in C if A!=Y];A=_normalize(A);Z={(A,B)for(A,B,C)in A};a,b=_dims(A)
+			for(L,M)in _occurrences(I,A):
+				E=_A
+				for N in range(a):
+					for O in range(b):
+						if(N,O)in Z:continue
+						if I[L+N][M+O]!=V:E=_B;break
+					if not E:break
+				if not E:continue
+				for(c,d,e)in C:
+					P,Q=L+c,M+d
+					if 0<=P<len(B)and 0<=Q<len(B[0]):B[P][Q]=e
+	return tuple(tuple(A)for A in B)
+def p(g):A=tuple(tuple(A)for A in g);B=solve_6aa20dc0(A);return[list(A)for A in B]

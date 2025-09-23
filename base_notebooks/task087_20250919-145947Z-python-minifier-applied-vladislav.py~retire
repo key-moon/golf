@@ -1,0 +1,2 @@
+def solve_3c9b0459(I):A=tuple(tuple(reversed(A))for A in I[::-1]);return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_3c9b0459(A);return[list(A)for A in B]

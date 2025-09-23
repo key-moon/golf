@@ -1,0 +1,20 @@
+def p(g):
+ h,w=len(g),len(g[0]);c={};[[c.update({k:c.get(k,0)+1})for k in r]for r in g];b=max(c,key=c.get);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j]and g[i][j]!=b:
+    obj=[];s=[(i,j)]
+    while s:
+     ci,cj=s.pop()
+     if 0<=ci<h and 0<=cj<w and not v[ci][cj]and g[ci][cj]!=b:v[ci][cj]=1;obj.append((ci,cj,g[ci][cj]));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(1,0),(0,-1),(-1,0)]])
+    obj and o.append(obj)
+ if not o:return g
+ f,ot=[obj for obj in o if any(col==5for i,j,col in obj)],[obj for obj in o if not any(col==5for i,j,col in obj)]
+ if not f or not ot:return g
+ fo=f[0];fp=[(i,j)for i,j,col in fo]
+ if not fp:return g
+ mi,ma,mj,mb=min(i for i,j in fp),max(i for i,j in fp),min(j for i,j in fp),max(j for i,j in fp);ci,cj=(mi+ma)//2,(mj+mb)//2;oo=ot[0];op=[(i,j,col)for i,j,col in oo]
+ if not op:return g
+ mi,mj=min(i for i,j,col in op),min(j for i,j,col in op);n=[(i-mi,j-mj,col)for i,j,col in op];s=[(i+ci,j+cj,col)for i,j,col in n];f=[(i-1,j-1,col)for i,j,col in s];r=[r[:]for r in g]
+ for i,j,col in f:0<=i<h and 0<=j<w and r.__setitem__(i,r[i][:j]+[col]+r[i][j+1:])
+ return r

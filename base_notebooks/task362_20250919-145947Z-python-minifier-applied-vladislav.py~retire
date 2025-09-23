@@ -1,0 +1,27 @@
+def solve_e48d4e1a(I):
+	K=None;A=[A[:]for A in I];C,D=len(A),len(A[0]);from collections import Counter as O;P=[(B,C)for B in range(C)for C in range(D)if A[B][C]==5];L=len(P);H=[B for A in A for B in A];H=[0 if A==5 else A for A in H];G=min(O(H).items(),key=lambda x:x[1])[0]
+	def Q(i,j):
+		F=False
+		if A[i][j]!=G:return F
+		for(H,I)in((1,0),(-1,0),(0,1),(0,-1)):
+			B,E=i+H,j+I
+			if not(0<=B<C and 0<=E<D and A[B][E]==G):return F
+		return True
+	B=K
+	for E in range(C):
+		for F in range(D):
+			if Q(E,F):B=E,F;break
+		if B:break
+	if B is K:
+		for E in range(C):
+			for F in range(D):
+				if A[E][F]==G:B=E,F;break
+			if B:break
+		if B is K:return A
+	M,N=B[0]+L,B[1]-L;J=[[0 for A in range(D)]for A in range(C)]
+	if 0<=M<C:
+		for F in range(D):J[M][F]=G
+	if 0<=N<D:
+		for E in range(C):J[E][N]=G
+	return J
+def p(g):return solve_e48d4e1a([A[:]for A in g])

@@ -1,0 +1,7 @@
+def p(g):
+	K,L=len(g),len(g[0]);H=[B for A in g for B in A];M=max(set(H),key=H.count);A=[(A,B)for A in range(K)for B in range(L)if g[A][B]!=M]
+	if not A:return[list(A)for A in g]
+	B=min(A for(A,B)in A);N=max(A for(A,B)in A);C=min(A for(B,A)in A);O=max(A for(B,A)in A);D,E=N-B+1,O-C+1;I=[[0 for A in range(E)]for __ in range(D)]
+	for F in range(D):
+		for G in range(E):J=g[B+F][C+G];P=g[B+3*F%D][C+3*G%E];I[F][G]=J if J==P else 0
+	return I

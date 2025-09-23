@@ -1,0 +1,14 @@
+R=range
+L=len
+def p(g):
+	g=[[8]+A+[8]for A in g];g=[[8]*len(g[0])]+g+[[8]*len(g[0])];E,F=L(g),L(g[0]);C=[-1,0,1];C=[[A,B]for A in C for B in C]
+	for A in R(1,E-1):
+		for B in R(1,F-1):
+			if g[A][B]==8:
+				D=[g[A+C][B+D]for(C,D)in C]
+				if D.count(6)+D.count(4)>3:g[A][B]=4
+	for A in R(1,E-1):
+		for B in R(1,F-1):
+			D=[g[A+C][B+D]for(C,D)in C]
+			if g[A][B]==8 and D.count(6)>0:g[A][B]=3
+	g=[A[1:-1]for A in g[1:-1]];return g

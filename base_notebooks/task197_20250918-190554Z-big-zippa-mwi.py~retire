@@ -1,0 +1,9 @@
+def p(j):
+	C=next((A for A in j if 0 not in A),None)
+	if not C:return j
+	A=[];[A.append(B)for B in C if B not in A]
+	for(E,D)in enumerate(j):
+		if 0 in D and any(D):
+			B=[];[B.append(A)for A in D if A not in B and A]
+			if len(A)==len(B):F=dict(zip(A,B));j[E]=[F[A]for A in C]
+	return j

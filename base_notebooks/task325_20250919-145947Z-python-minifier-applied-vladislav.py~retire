@@ -1,0 +1,11 @@
+def p(j,A=range):
+	C,D=len(j),len(j[0]);B=0
+	def E(W,l):
+		j[W][l]=0
+		for(F,G)in((1,0),(-1,0),(0,1),(0,-1)):
+			A,B=W+F,l+G
+			if 0<=A<C and 0<=B<D and j[A][B]:E(A,B)
+	for F in A(C):
+		for G in A(D):
+			if j[F][G]:B+=1;E(F,G)
+	return[[8*(C==A)for A in A(B)]for C in A(B)]

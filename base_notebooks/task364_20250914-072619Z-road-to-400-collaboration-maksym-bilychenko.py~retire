@@ -1,0 +1,23 @@
+def p(g):
+ h,w=len(g),len(g[0]);ac=sum(g,[]);cc={};[cc.update({c:cc.get(c,0)+1})for c in ac];bg=max(cc,key=cc.get);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j] and g[i][j]!=bg:
+    oc=[];s=[(i,j)];col=g[i][j]
+    while s:
+     ci,cj=s.pop()
+     if ci<0 or ci>=h or cj<0 or cj>=w or v[ci][cj] or g[ci][cj]!=col:continue
+     v[ci][cj]=1;oc.append((ci,cj));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(0,-1),(1,0),(-1,0)]])
+    oc and o.append(frozenset((col,pos)for pos in oc))
+ o3,ohw=[],[]
+ for obj in o:
+  pos=[pos for c,pos in obj]
+  if pos:
+   mr,Mr,mc,Mc=min(p[0]for p in pos),max(p[0]for p in pos),min(p[1]for p in pos),max(p[1]for p in pos);sh,sw=Mr-mr+1,Mc-mc+1;sub=[[g[mr+i][mc+j]if 0<=mr+i<h and 0<=mc+j<w else 0 for j in range(sw)]for i in range(sh)]
+   tr=[[sub[i][j]for j in range(1,sw-1)]for i in range(1,sh-1)]if sh>2 and sw>2 else[];tc=set(sum(tr,[]));3 in tc and o3.append(obj);len(obj)==sh+sw-1 and ohw.append(obj)
+ r=[[6 if c==3 else c for c in row]for row in g]
+ for obj in o3:
+  for c,(row,col) in obj:0<=row<h and 0<=col<w and r.__setitem__(row,r[row][:col]+[2]+r[row][col+1:])
+ for obj in ohw:
+  for c,(row,col) in obj:0<=row<h and 0<=col<w and r.__setitem__(row,r[row][:col]+[1]+r[row][col+1:])
+ return r

@@ -1,0 +1,1 @@
+p=lambda j:((A:=len(set(sum(j,[]))-{0})),[[B for B in B for C in range(A)]for B in j for C in range(A)])[1]

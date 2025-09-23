@@ -1,0 +1,1 @@
+p=lambda g:sorted(sorted(r)for r in g)

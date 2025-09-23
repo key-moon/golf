@@ -1,0 +1,6 @@
+def p(j):
+	j=[A for A in j if sum(A)>0];B=[];A=[]
+	for C in j:
+		for D in range(len(C)):
+			if C[D]>0:B.append(D);A.append(C[D])
+	A=list(set(A));A={A[0]:A[1],A[1]:A[0]};j=[A[min(B):max(B)+1]for A in j];j=[[A[B]for B in B]for B in j];return j

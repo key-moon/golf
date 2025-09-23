@@ -1,0 +1,14 @@
+R=range
+L=len
+def p(g):
+	C,D,E=L(g),L(g[0]),5
+	for A in R(1,C-1):
+		if sum(g[A])<1:E+=1
+		for B in R(1,D-1):
+			if g[A][B]and g[A-1][B]and g[A+1][B]and g[A][B-1]and g[A][B+1]==4:g[A][B]=E
+	F=sum(g,[]);G=sorted([[F.count(A),A]for A in set(F)if A>4])
+	for A in R(C):
+		for B in R(D):
+			if g[A][B]==G[0][1]:g[A][B]=1
+			if g[A][B]==G[1][1]:g[A][B]=2
+	return g

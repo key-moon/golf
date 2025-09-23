@@ -1,0 +1,1 @@
+def p(g):f=sum(g,[]);c=f.count;m=max(map(c,f));return [[x if c(x)==m else 5for x in r]for r in g]

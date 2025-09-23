@@ -1,0 +1,31 @@
+def p(g,L=len,R=range):
+	M,D=L(g),L(g[0]);V=sum(g,[]);H={}
+	for G in V:
+		if G:H[G]=H.get(G,0)+1
+	if not H:return g
+	C=max(H,key=lambda k:(H[k],k));U=[[0]*D for A in g];N=[[0]*D for A in g]
+	for A in R(M):
+		for B in R(D):
+			if g[A][B]==C and not N[A][B]:
+				O=[(A,B)];N[A][B]=1;P=Q=A;S=T=B
+				while O:
+					E,F=O.pop()
+					if E<P:P=E
+					if E>Q:Q=E
+					if F<S:S=F
+					if F>T:T=F
+					for(W,X)in((1,0),(-1,0),(0,1),(0,-1)):
+						I=E+W;J=F+X
+						if 0<=I<M and 0<=J<D and not N[I][J]and g[I][J]==C:N[I][J]=1;O.append((I,J))
+				for E in R(P,Q+1):
+					for F in R(S,T+1):U[E][F]=1
+	K=[[0]*D for A in g]
+	for A in R(M):
+		for B in R(D):
+			G=g[A][B]
+			if G==C:K[A][B]=C
+			elif G!=0:
+				if U[A][B]and(A>0 and g[A-1][B]==C or A+1<M and g[A+1][B]==C or B>0 and g[A][B-1]==C or B+1<D and g[A][B+1]==C):K[A][B]=C
+				else:K[A][B]=0
+			else:K[A][B]=0
+	return K

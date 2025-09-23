@@ -1,0 +1,50 @@
+def p(g):
+	L=None;g=[A[:]for A in g];D,E=len(g),len(g[0]);C=L;G=[];H=[]
+	for A in range(D):
+		if len(set(g[A]))==1 and g[A][0]!=0:C=g[A][0];G.append(A)
+	if C is L:
+		for B in range(E):
+			M=[g[A][B]for A in range(D)]
+			if len(set(M))==1 and M[0]!=0:C=M[0];H.append(B)
+		if C is not L:H=[A for A in range(E)if all(g[B][A]==C for B in range(D))]
+	else:G=[A for A in range(D)if all(g[A][B]==C for B in range(E))]
+	if C is L:C=5
+	if G:
+		N=min(G);O=max(G);R=[0]*E;S=[0]*E
+		for A in range(D):
+			for B in range(E):
+				I=g[A][B]
+				if I!=0 and I!=C:
+					if A<N:R[B]+=1
+					elif A>O:S[B]+=1
+		for B in range(E):
+			for F in range(R[B]):
+				J=N-1-F
+				if 0<=J<D:g[J][B]=C
+			for F in range(S[B]):
+				J=O+1+F
+				if 0<=J<D:g[J][B]=C
+		for A in range(D):
+			for B in range(E):
+				if g[A][B]!=0 and g[A][B]!=C and not N<=A<=O:g[A][B]=0
+		return g
+	if H:
+		P=min(H);Q=max(H);T=[0]*D;U=[0]*D
+		for A in range(D):
+			for B in range(E):
+				I=g[A][B]
+				if I!=0 and I!=C:
+					if B<P:T[A]+=1
+					elif B>Q:U[A]+=1
+		for A in range(D):
+			for F in range(T[A]):
+				K=P-1-F
+				if 0<=K<E:g[A][K]=C
+			for F in range(U[A]):
+				K=Q+1+F
+				if 0<=K<E:g[A][K]=C
+		for A in range(D):
+			for B in range(E):
+				if g[A][B]!=0 and g[A][B]!=C and not P<=B<=Q:g[A][B]=0
+		return g
+	return g

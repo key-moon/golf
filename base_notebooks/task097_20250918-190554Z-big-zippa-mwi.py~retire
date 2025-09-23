@@ -1,0 +1,10 @@
+j=len
+A=range
+def p(c):
+	G,E=j(c),j(c[0]);B=[B for A in c for B in A];B=sorted(B)[-1];c=[[0]+A+[0]for A in c];F=[[0]*(E+2)];c=F+c+F;H=[[1,1],[-1,-1],[-1,1],[1,-1],[0,1],[0,-1],[-1,0],[1,0],[0,0]]
+	for C in A(1,G+1):
+		for D in A(1,E+1):
+			if c[C][D]==B:
+				I=[c[A[0]+C][A[1]+D]for A in H]
+				if sum(I)==B:c[C][D]=0
+	c=c[1:-1];c=[A[1:-1]for A in c];return c

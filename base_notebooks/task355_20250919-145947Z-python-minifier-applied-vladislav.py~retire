@@ -1,0 +1,22 @@
+def p(g):
+	if not g or not g[0]:return[[0]]
+	from collections import Counter as B;A,C=len(g),len(g[0]);H=[B for A in g for B in A];I=min(set(H),key=H.count)
+	def L():
+		D,E=-1,0
+		for C in range(A-1):
+			G=[B for A in range(0,C+1)for B in g[A]];H=[B for A in range(C+1,A)for B in g[A]];I,J=B(G),B(H);F=sum(A for(B,A)in I.most_common(2))+sum(A for(B,A)in J.most_common(2))
+			if F>D:D,E=F,C
+		return E
+	def M():
+		E,F=-1,0
+		for D in range(C-1):
+			H=[g[A][B]for A in range(A)for B in range(0,D+1)];I=[g[A][B]for A in range(A)for B in range(D+1,C)];J,K=B(H),B(I);G=sum(A for(B,A)in J.most_common(2))+sum(A for(B,A)in K.most_common(2))
+			if G>E:E,F=G,D
+		return F
+	D=L();E=M()
+	def F(r1,r2,c1,c2):return[g[A][B]for A in range(r1,r2)for B in range(c1,c2)]
+	N=F(0,D+1,0,E+1),F(0,D+1,E+1,C),F(D+1,A,0,E+1),F(D+1,A,E+1,C);G=-1,-1
+	for O in N:
+		J=B(O);P=J.get(I,0);Q=max(((B,A)for(A,B)in J.items()if A!=I),default=(0,0))[1];K=P,Q
+		if K>G:G=K
+	return[[G[1]if G[0]>=0 else 0]]

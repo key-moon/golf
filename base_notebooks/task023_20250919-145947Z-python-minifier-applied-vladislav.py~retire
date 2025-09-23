@@ -1,0 +1,37 @@
+def p(g):
+	D,E=len(g),len(g[0]);Q=5;R=2;S=8;F={(A,B)for A in range(D)for B in range(E)if g[A][B]==Q};K=[];L=[];M=[]
+	for A in range(D-2):
+		for B in range(E):
+			C=(A,B),(A+1,B),(A+2,B)
+			if all(A in F for A in C):K.append(C)
+	for A in range(D):
+		for B in range(E-2):
+			C=(A,B),(A,B+1),(A,B+2)
+			if all(A in F for A in C):L.append(C)
+	for A in range(D-1):
+		for B in range(E-1):
+			C=(A,B),(A,B+1),(A+1,B),(A+1,B+1)
+			if all(A in F for A in C):M.append(C)
+	H=sorted(F);T={B:A for(A,B)in enumerate(H)}
+	def I(t):
+		A=0
+		for B in t:A|=1<<T[B]
+		return A
+	U=[(0,A,I(A))for A in K]+[(1,A,I(A))for A in L]+[(2,A,I(A))for A in M];G={}
+	for N in U:
+		for J in N[1]:G.setdefault(J,[]).append(N)
+	for J in G:G[J].sort(key=lambda x:(x[0],x[1][0]))
+	V=(1<<len(H))-1
+	def O(m):
+		if m==V:return[]
+		for(C,D)in enumerate(H):
+			if m>>C&1==0:break
+		for(E,F,A)in G.get(D,()):
+			if A&m==0:
+				B=O(m|A)
+				if B is not None:return[(E,F)]+B
+	W=O(0);P=[A[:]for A in g]
+	for(C,X)in W:
+		Y=R if C<2 else S
+		for(A,B)in X:P[A][B]=Y
+	return P

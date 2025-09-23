@@ -1,0 +1,31 @@
+def p(g):
+ h,w=len(g),len(g[0]);v=[[0]*w for _ in range(h)];o=[]
+ for i in range(h):
+  for j in range(w):
+   if not v[i][j]:
+    oc=[];s=[(i,j)];col=g[i][j]
+    while s:
+     ci,cj=s.pop()
+     if ci<0 or ci>=h or cj<0 or cj>=w or v[ci][cj] or g[ci][cj]!=col:continue
+     v[ci][cj]=1;oc.append((ci,cj));s.extend([(ci+di,cj+dj)for di,dj in[(0,1),(0,-1),(1,0),(-1,0)]])
+    oc and o.append(frozenset((col,pos)for pos in oc))
+ o9,o1=[],[]
+ for obj in o:
+  col=next(iter(obj))[0]
+  if col==9:o9.append(obj)
+  elif col==1:o1.append(obj)
+ bo9=[]
+ for obj in o9:
+  pos=[pos for col,pos in obj];tb=any(i==0 or i==h-1 or j==0 or j==w-1 for i,j in pos)
+  if not tb:bo9.append(obj)
+ ao1=[]
+ for obj1 in o1:
+  adj=False
+  for obj9 in bo9:
+   p1,p9=[pos for col,pos in obj1],[pos for col,pos in obj9];md=min(abs(pos1[0]-pos9[0])+abs(pos1[1]-pos9[1])for pos1 in p1 for pos9 in p9)
+   if md==1:adj=True;break
+  adj and ao1.append(obj1)
+ r=[r[:]for r in g]
+ for obj in ao1:
+  for col,(i,j)in obj:r[i][j]=8
+ return r

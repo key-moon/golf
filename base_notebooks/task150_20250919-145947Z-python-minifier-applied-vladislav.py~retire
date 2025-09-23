@@ -1,0 +1,2 @@
+def solve_67a3c6ac(I):A=tuple(tuple(reversed(A))for A in I);return A
+def p(g):A=tuple(tuple(A)for A in g);B=solve_67a3c6ac(A);return[list(A)for A in B]

@@ -1,0 +1,6 @@
+def p(g):
+ R,C=len(g),len(g[0])
+ rs=[-1]+[i for i in range(R)if len({*g[i]})==1]+[R]
+ cs=[-1]+[j for j in range(C)if len({g[i][j]for i in range(R)})==1]+[C]
+ o=[[g[a+1][c+1]for c,d in zip(cs,cs[1:])if c+1<d-1]for a,b in zip(rs,rs[1:])if a+1<b-1]
+ return[o[::-1]for o in o]

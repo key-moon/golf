@@ -14,17 +14,22 @@ from checker import check
 from utils import get_task
 import re
 
-def safe_check(path: str, i: int):
+def setup_jail(path: str):
   FORBID_EVENTS = {
-      "import", "module.__getattr__", "importlib.import_module",
-      "open", "os.open", "os.openat",
-      "subprocess.Popen", "os.system", "os.fork", "os.forkpty",
-      "os.exec", "os.execve", "os.execv", "os.execveat", "posix_spawn",
-      "socket.__new__", "socket.connect", "socket.bind", "socket.listen",
-      "socket.send", "socket.recv",
-      "code.__new__", "ctypes.dlopen", "builtins.__import__",
+    "import", "module.__getattr__", "importlib.import_module",
+    "open", "os.open", "os.openat",
+    "subprocess.Popen", "os.system", "os.fork", "os.forkpty",
+    "os.exec", "os.execve", "os.execv", "os.execveat", "posix_spawn",
+    "socket.__new__", "socket.connect", "socket.bind", "socket.listen",
+    "socket.send", "socket.recv",
+    "code.__new__", "ctypes.dlopen", "builtins.__import__",
   }
-  ALLOWLIST_MODNAMES = {"math","collections","itertools","functools","re","tmp.tmpppp","tmp","tqdm","termios"}
+  import encodings.latin_1
+  ALLOWLIST_MODNAMES = {
+    "math","collections","itertools","functools","re","zlib","lzma","bzip2","encodings.latin_1", "encodings",
+    "tmp.tmpppp","tmp","tqdm","termios"
+  }
+
   def audit_hook(event, args):
     if event == "import":
       modname = args[0] if args else None
@@ -35,18 +40,41 @@ def safe_check(path: str, i: int):
         raise PermissionError(f"audit: blocked open: {args[0]}")
     elif event in FORBID_EVENTS:
         raise PermissionError(f"audit: blocked event: {event} ({args})")
-  task = get_task(i)
   sys.addaudithook(audit_hook)
+
+def extract_code(path: str) -> bytes:
+  _orig_code=open(path, "rb").read()
+  _exec=exec
+  def _exec_hook(c,*a):
+    nonlocal _orig_code
+    if isinstance(c, str):
+      if "def p" in c or "p=lambda" in c: _orig_code = c.encode()
+    if isinstance(c, bytes):
+      if b"def p" in c or b"p=lambda" in c: _orig_code = c
+    return _exec(c,*a)
+  __builtins__["exec"]=_exec_hook
+  setup_jail(path)
+
+  try:
+    module_name = path[:-3].replace("/", ".")
+    __import__(module_name)
+  except:
+    pass
+  return _orig_code
+
+def safe_check(path: str, i: int):
+  task = get_task(i)
+  setup_jail(path)
   return check(path, task=task, knockout=1).correct == 1
 
-def normalize(s):
-  return re.sub(r"\s", "", s)
+def normalize(s: bytes) -> bytes:
+  return re.sub(rb"\s", b"", s)
 
 known_garbage = [
-normalize("def p(g):\nreturn g"),
-normalize("def p(g):\nreturn [row[:] for row in g]"),
-normalize("p=lambda g:g"),
-normalize("""
+normalize(b"def p(g):\nreturn g"),
+normalize(b"def p(g):\nreturn [row[:] for row in g]"),
+normalize(b"p=lambda g:g"),
+normalize(b"""
 class A:
     def __eq__(self, o):
         return True
@@ -57,7 +85,6 @@ def p(g):
 
 if __name__ == "__main__":
   checked_hash = json.load(open(".cache/notebooks_check_cache.json", "r"))
-  session_digests = set()
   tmp_dir = "tmp"
   os.makedirs(tmp_dir, exist_ok=True)
 
@@ -85,18 +112,30 @@ if __name__ == "__main__":
         with open(extracted_path, "rb") as f:
           code = f.read()
 
-        if b"import os" in code or b"import sys" in code or b"import zlib" in code:
+        if b"import os" in code or b"import sys" in code:
           print(f"skip {zip_path}: {name}")
           continue
-        if normalize(code.decode()) in known_garbage:
+        if normalize(code) in known_garbage:
           continue
         digest = f"{task_number:03}|{sha256(code).hexdigest()}"
-        if digest in session_digests:
+        if digest in checked_hash:
           continue
-        session_digests.add(digest)
+
+        result = subprocess.run(
+          [sys.executable, "-c", f"from tools.gather_notebooks import extract_code; print(extract_code({extracted_path!r}).hex())"],
+          capture_output=True, text=True, check=True
+        )
+        res = bytes.fromhex(result.stdout.strip())
+
+        digest2 = f"{task_number:03}|{sha256(res).hexdigest()}"
+        if digest2 in checked_hash:
+          if digest != digest2: checked_hash[digest] = checked_hash[digest2]
+          json.dump(checked_hash, open(".cache/notebooks_check_cache.json", "w"))
+          continue
         if digest not in checked_hash:
           verdict = False
           try:
+            print(f"Checking {zip_path}: {name}")
             result = subprocess.run(
               [sys.executable, "-c", f"from tools.gather_notebooks import safe_check; print(safe_check({extracted_path!r},{task_number}))"],
               capture_output=True, text=True, check=True
@@ -109,8 +148,8 @@ if __name__ == "__main__":
               print(f"Incorrect solution in {zip_path}: {name}")
           except subprocess.CalledProcessError as e:
             print(f"Error while checking {zip_path}: {name}\n{e.stderr}")
-          checked_hash[digest] = verdict
+          checked_hash[digest] = checked_hash[digest2] = verdict
           json.dump(checked_hash, open(".cache/notebooks_check_cache.json", "w"))
         if checked_hash[digest]:
           if not glob.glob(f"{path_name}~*"):
-            open(path_name, "wb").write(zip_ref.read(name))
+            open(path_name, "wb").write(res)

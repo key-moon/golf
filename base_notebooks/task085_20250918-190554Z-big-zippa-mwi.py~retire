@@ -1,0 +1,14 @@
+def p(g,V=range):
+	D=[A[:]for A in g];E=set()
+	for A in V(len(g)-2):
+		for B in V(len(g[0])):
+			if g[A][B]and(A,B)not in E:
+				F=g[A][B]
+				if all(g[A+C][B]==F for C in V(3)):
+					C=B
+					while C<len(g[0])and all(g[A+B][C]==F for B in V(3)):
+						for H in V(3):E.add((A+H,C))
+						C+=1
+					for G in V(B,C):
+						if(G-B)%2==1:D[A+1][G]=0
+	return D

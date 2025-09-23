@@ -1,0 +1,7 @@
+from itertools import product
+def p(j,A=range):
+	for(C,B)in product(A(len(j)-2),A(len(j[0])-2)):
+		D=A(C,C+3)
+		if not all(4 in A for A in[j[C][B:B+3],j[C+2][B:B+3],[j[A][B]for A in D],[j[A][B+2]for A in D]]):continue
+		for(E,F)in product(D,A(B,B+3)):j[E][F]+=7*(j[E][F]==0)
+	return j
