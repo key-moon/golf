@@ -1,2 +1,1 @@
-A=range
-def p(g):w=len(g[0]);u=[0]*w;return[(t:=[x or y*4for(x,y)in zip(s,u)],u:=[u[j]^any(r-l>3and[0,*t,0][l:r]==[0]+[5]*(r-l-2)+[0]for l in A(j+1)for r in A(j+3,w+3))for j in A(w)])[0]for s in g[:-1]]+g[-1:]
+import re;p=lambda g,c=-19:g*c or p(eval(re.sub("0(?=, 4|, 5..{%s}5, 0.{%s}0)"%(a:=len(g)*3,a-2),"4",str([*zip(*g)][::-1]))),c+1)
