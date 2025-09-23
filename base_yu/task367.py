@@ -3,6 +3,7 @@
 # 05  -> 45
 #  50     50
 #  0      0
+# port re;p=lambda g,c=-19:g*c or p(eval(re.sub("0, (4|5..{%s}5, 0.{%s}0)"%(a:=len(g)*3,a-2),r"4,\1",str([*zip(*g)][::-1]))),c+1)
 import re;p=lambda g,c=-19:g*c or p(eval(re.sub("0(?=, 4|, 5..{%s}5, 0.{%s}0)"%(a:=len(g)*3,a-2),"4",str([*zip(*g)][::-1]))),c+1)
 
 # def p(g):

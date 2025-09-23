@@ -10,3 +10,20 @@ p=lambda g:[[s[0]%2**v for v in s]for s in g]
 #     (5,0): 0, (5,1): 1, (5,2): 2, (5,3): 3, (5,4): 4, (5,6): 6, (5,7): 7, (5,8): 8, (5,9): 9,
 #     (1,1): 1, (2,2): 2, (3,3): 3, (4,4): 4, (6,6): 6, (7,7): 7, (8,8): 8, (9,9): 9,
 # }
+
+# # 遺跡
+# from tqdm import tqdm
+# for i in tqdm(range(2,20)):
+#   for vlit in ["s", "~s", "-s", "-~s", "~-s"]:
+#     for slit in ["v[0]", "~v[0]", "-v[0]", "-~v[0]", "~-v[0]"]:
+#       for op in "+-*%&|^":
+#         for op2 in "+-*%&|^":
+#           for op3 in "+-*%&|^":
+#             try:
+#               for j in range(0,10):
+#                 f = f"{i}{op}{vlit}{op2}{slit}{op3}{j}"
+#                 if all([eval(f)==ans for s,v,ans in sum([[(0,[a],0),(a,[a],a),(5,[a],a)] for a in range(1,10)], [])]):
+#                   print(f)
+#             except ZeroDivisionError:
+#               pass
+
