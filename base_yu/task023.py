@@ -1,4 +1,4 @@
-# best: 195(4atj sisyphus luke Seek mukundan) / others: 199(jailctf merger), 206(ox jam), 206(xsot ovs att joking mewheni), 234(Yuchen20), 242(jacekw Potatoman nauti)
+# best: 195(4atj sisyphus luke Seek mukundan) / others: 199(jailctf merger), 204(cubbus), 206(ox jam), 206(xsot ovs att joking mewheni), 234(Yuchen20)
 # ============================================================================================== 195 ==============================================================================================
 import re
 def p(g):

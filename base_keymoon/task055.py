@@ -1,4 +1,4 @@
-# best: 83(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 95(ox jam), 95(xsot ovs att joking mewheni), 105(JRKX), 105(jonas ryno kg583 kabutack), 105(jonas ryno kg583)
+# best: 83(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 85(cubbus), 95(ox jam), 95(xsot ovs att joking mewheni), 105(JRKX), 105(jonas ryno kg583 kabutack)
 # lambda g,i=0:[[c or b"\0\2\0\4\6\3\0\1\0"[j]for c in r if(j:=j+(c==8))+1]for r in g if(i:=i+6-len({*r})*3,j:=i)]
 # ======================================= 83 ======================================
 # lambda g,i=0:[[c or b"x020463010"[j]&7for c in r if(j:=j+(c>0))+1]for r in g if(i:=i+r[0]//8*3,j:=i)]

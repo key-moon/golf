@@ -1,4 +1,4 @@
-# best: 91(ox jam, xsot ovs att joking mewheni) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(Yuchen20), 109(duckyluuk), 109(Bulmenisaurus)
+# best: 91(ox jam, xsot ovs att joking mewheni) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(Yuchen20), 107(cg-klogw), 109(duckyluuk)
 # =========================================== 91 ==========================================
 # def p(g,c=-1):
 #  if c*g:

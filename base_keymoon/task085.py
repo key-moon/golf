@@ -1,4 +1,4 @@
-# best: 50(jailctf merger) / others: 56(ox jam), 56(xsot ovs att joking mewheni), 57(4atj sisyphus luke Seek mukundan), 84(dbdr), 87(intgrah jimboko awu macaque sammyuri)
+# best: 50(jailctf merger) / others: 56(ox jam), 56(xsot ovs att joking mewheni), 57(4atj sisyphus luke Seek mukundan), 69(cubbus), 84(dbdr)
 # 94
 # lambda g,s=[]:[[1for r[~r.index(max(r))&1::2] in [len(r)//2*[0]]]for r in g if s==(s:=r)]and g
 # 92

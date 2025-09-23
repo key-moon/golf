@@ -1,4 +1,4 @@
-# best: 63(natte, Potatoman, ox jam, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, MasukenSamba, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, jacekwl, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 64(Yuchen20), 70(2F), 70(biz), 70(sekken), 73(jonas ryno kg583 kabutack)
+# best: 63(natte, Potatoman, ox jam, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, MasukenSamba, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, jacekwl, jacekwl Potatoman nauti, xsot ovs att joking mewheni) / others: 64(Yuchen20), 66(cg-klogw), 70(2F), 70(biz), 70(sekken)
 # ============================= 63 ============================
 # p=lambda g:[[v]for v,_ in __import__("collections").Counter(sum(g,[])).most_common()[1:]]
 # p=lambda g:[[v]for v in sorted({*sum(g,[])},key=sum(g,[]).count)[2::-1]]
