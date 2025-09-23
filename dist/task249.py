@@ -1,1 +1,1 @@
-p=lambda v:[A*2for A in v]
+p=lambda g:[s*2for s in g]
