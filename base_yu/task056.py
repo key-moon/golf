@@ -1,4 +1,4 @@
-# best: 40(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 43(cubbus), 44(Yuchen20), 44(HETHAT), 49(JRKX), 49(dbdr)
+# best: 40(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 42(natte), 43(cubbus), 44(Yuchen20), 44(HETHAT), 49(JRKX)
 # ================= 40 =================
 # p=lambda g:[[(g[0][0]>0)-~(g[0][2]>0)*3^5]]
 p=lambda g:[[0**g[0][0]+0**g[0][2]*3^2]]

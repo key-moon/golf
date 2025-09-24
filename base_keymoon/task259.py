@@ -1,4 +1,4 @@
-# best: 85(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 90(natte), 95(jacekw Potatoman nauti), 95(jacekwl Potatoman nauti), 129(JRKX), 129(jonas ryno kg583 kabutack)
+# best: 85(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 86(natte), 95(jacekw Potatoman nauti), 95(jacekwl Potatoman nauti), 129(JRKX), 129(jonas ryno kg583 kabutack)
 # lambda g,c=2:c and p([*zip(*[g[i]for i in range(len(g))if~-max(max(g[:i+1]))*~-max(max(g[i:]))])],c-1)or[[v>1 and v for v in s]for s in g]
 # lambda g,c=4:c and p([*zip(*[[v>1 and v for v in g[i]]for i in range(len(g))if 1<max(max(g[i:]))][::-1])],c-1)or g
 # lambda g,c=4:(u:=[])or c and p([*zip(*[[v>1 and v for v in s]for s in g if 1<max(u:=u+[*s])][::-1])],c-1)or g

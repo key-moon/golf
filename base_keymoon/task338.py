@@ -1,4 +1,4 @@
-# best: 64(jailctf merger) / others: 65(4atj sisyphus luke Seek mukundan), 71(ox jam), 82(JRKX), 92(intgrah jimboko awu macaque sammyuri), 104(dbdr)
+# best: 64(jailctf merger) / others: 65(4atj sisyphus luke Seek mukundan), 71(ox jam), 81(JRKX), 92(intgrah jimboko awu macaque sammyuri), 104(dbdr)
 # lambda g,R=[0]*99,S=[0]*99:eval(str([S:=[(c<1)*(D&3)+7*(c>0==C==D)for c,C,D in zip(r,R,S)if(R:=r)]for r in g]).replace(*"70"))
 
 # C c D

@@ -1,4 +1,4 @@
-# best: 57(ox jam, 4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger) / others: 58(Yuchen20), 61(intgrah jimboko awu macaque sammyuri), 62(jacekw Potatoman nauti), 62(cg-klogw), 63(JRKX)
+# best: 57(natte, ox jam, 4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger) / others: 58(Yuchen20), 61(intgrah jimboko awu macaque sammyuri), 62(jacekw Potatoman nauti), 62(cg-klogw), 63(JRKX)
 
 # {*sum(g,[])}
 # {*g[0]+g[1]}
