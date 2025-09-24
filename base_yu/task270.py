@@ -1,4 +1,4 @@
-# best: 117(ox jam, jailctf merger) / others: 120(intgrah jimboko awu macaque sammyuri), 122(4atj sisyphus luke Seek mukundan), 125(natte), 168(MasukenSamba), 188(jacekw Potatoman nauti)
+# best: 117(jailctf merger, ox jam) / others: 120(intgrah jimboko awu macaque sammyuri), 122(4atj sisyphus luke Seek mukundan), 125(natte), 168(MasukenSamba), 188(jacekwl Potatoman nauti)
 # ======================================================= 117 =======================================================
 # import re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("%d, ((\d, )*)0, %d",r"0,\1 %d,%d",str(g)))),'*2%(3,2,3,2,7,1,7,1))[1][::-1])],c+1)
 # port re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("(%d), ((\d, )*)0, (%d)",r"0,\2 \1,\4",str(g)))),'*2%(3,2,7,1))[1][::-1])],c+1)

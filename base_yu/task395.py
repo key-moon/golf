@@ -1,4 +1,4 @@
-# best: 53(ox jam, jailctf merger) / others: 56(4atj sisyphus luke Seek mukundan), 56(intgrah jimboko awu macaque sammyuri), 61(cubbus), 61(JRKX), 61(2F)
+# best: 53(jailctf merger, ox jam) / others: 56(4atj sisyphus luke Seek mukundan), 56(intgrah jimboko awu macaque sammyuri), 61(jonas ryno kg583 kabutack), 61(cubbus), 61(JRK)
 # ======================== 53 =======================
 # def p(g):n=len(g)//2;return[[2*(a==b==0)for a,b in zip(g[i],g[i+n])]for i in range(n)]
 # def p(g):return[[2*(a==b)for a,b in zip(*c)]for c in zip(g,g[len(g)//2:])]

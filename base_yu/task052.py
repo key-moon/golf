@@ -1,4 +1,4 @@
-# best: 40(natte, Potatoman, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, MasukenSamba, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, jonas ryno kg583 kabutack, HETHAT, jacekwl Potatoman nauti, jonas ryno kg583) / others: 41(ox jam), 41(cubbus), 41(duckyluuk), 41(Rafael Pooja), 41(HashPanda)
+# best: 40(jonas ryno kg583 kabutack, jacekwl Potatoman nauti, JRKX, 4atj sisyphus luke Seek mukundan, jonas ryno kg583, HETHAT, jacekw Potatoman nauti, natte, kabutack, MasukenSamba, Potatoman, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 41(cubbus), 41(mji), 41(Afordancja), 41(HashPanda Pooja), 41(HashPanda)
 # ================= 40 =================
 # p=lambda g:[[5*(len({*s})<2)]*3for s in g]
 p=lambda g:[[len({*s})%2*5]*3for s in g]

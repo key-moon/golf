@@ -1,4 +1,4 @@
-# best: 38(natte, ox jam, cubbus, duckyluuk, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, Rafael Pooja, MasukenSamba, HashPanda, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, HashPanda Pooja, jonas ryno kg583 kabutack, Yuchen20, HETHAT, jacekwl, jacekwl Potatoman nauti, jonas ryno kg583, Bulmenisaurus, JRK) / others: 40(cg-klogw), 41(dbdr), 42(jacekw), 42(sekken), 43(azakhtyamov)
+# best: 38(jonas ryno kg583 kabutack, cubbus, jacekwl Potatoman nauti, JRK, JRKX, 4atj sisyphus luke Seek mukundan, jacekwl, jonas ryno kg583, HETHAT, jacekw Potatoman nauti, HashPanda Pooja, natte, HashPanda, Rafael Pooja, kabutack, MasukenSamba, jailctf merger, Yuchen20, ox jam, Bulmenisaurus, duckyluuk, intgrah jimboko awu macaque sammyuri) / others: 40(cg-klogw), 41(dbdr), 42(jacekw), 42(sekken), 43(rucin93)
 # ================ 38 ================
 # p=lambda g:[[v*5-28for v in s]for s in g]
 # p=lambda g:eval(str(g).replace("6","2"))

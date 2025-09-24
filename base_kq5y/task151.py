@@ -1,4 +1,4 @@
-# best: 108(ox jam, jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 116(blob2822), 118(Yuchen20), 119(jacekw Potatoman nauti), 123(natte)
+# best: 108(jailctf merger, ox jam) / others: 112(4atj sisyphus luke Seek mukundan), 114(jacekw Potatoman nauti), 116(blob2822), 118(Yuchen20), 123(natte)
 # ================================================== 108 ===================================================
 
 #def p(j):A=lambda c:list(map(all,c)).index(1);E,k=A(j),A(zip(*j));j[E-1][k-1:k+2]=j[E+1][k-1:k+2]=[4]*3;j[E][k-1]=j[E][k+1]=4;return j

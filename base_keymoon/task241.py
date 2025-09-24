@@ -1,3 +1,3 @@
-# best: 21(natte, azakhtyamov, ox jam, cubbus, duckyluuk, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, Rafael Pooja, kdmitrie, MasukenSamba, jacekw, kabutack, sekken, jailctf merger, intgrah jimboko awu macaque sammyuri, open source, jonas ryno kg583 kabutack, Yuchen20, HETHAT, cg-klogw, jacekwl, jacekwl Potatoman nauti, blob2822, jonas ryno kg583, JRK) / others: 31(el_presidente), 31(J&R), 31(scpchicken), 31(dbdr), 31(KN)
+# best: 21(jonas ryno kg583 kabutack, open source, cubbus, jacekwl Potatoman nauti, JRK, blob2822, JRKX, 4atj sisyphus luke Seek mukundan, jacekw, jacekwl, jonas ryno kg583, azakhtyamov, HETHAT, jacekw Potatoman nauti, natte, Rafael Pooja, kabutack, MasukenSamba, cg-klogw, sekken, jailctf merger, Yuchen20, ox jam, kdmitrie, duckyluuk, intgrah jimboko awu macaque sammyuri) / others: 31(Ali), 31(Afordancja), 31(dbdr), 31(rucin93), 31(KN)
 # ======== 21 =======
 p=lambda g:[*zip(*g)]

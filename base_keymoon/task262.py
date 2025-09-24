@@ -1,4 +1,4 @@
-# best: 39(ox jam, cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 42(natte), 42(duckyluuk), 42(JRKX), 42(MasukenSamba), 42(dbdr)
+# best: 39(cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 42(jonas ryno kg583 kabutack), 42(JRK), 42(JRKX), 42(dbdr), 42(jonas ryno kg583)
 # lambda g:[[b"\2\4\3"[s.index(5)]]*3for s in g]
 # lambda g:[[-s.index(5)%3+2]*3for s in g]
 # lambda g:[[hash((*s,))%5+2]*3for s in g]

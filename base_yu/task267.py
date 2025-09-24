@@ -1,4 +1,4 @@
-# best: 46(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 50(intgrah jimboko awu macaque sammyuri), 52(ox jam), 54(cubbus), 56(JRKX), 56(jacekw Potatoman nauti)
+# best: 46(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 50(intgrah jimboko awu macaque sammyuri), 52(ox jam), 54(cubbus), 56(jonas ryno kg583 kabutack), 56(jacekwl Potatoman nauti)
 # ==================== 46 ====================
 # p=lambda g:[[v and g[6][0]for v in s]for s in g[:6]+g[:1]]
 p=lambda g:[[0]+[v and g[6][0]for v in s[1:]]for s in g]

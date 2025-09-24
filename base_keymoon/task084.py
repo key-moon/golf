@@ -1,4 +1,4 @@
-# best: 62(ox jam, 4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 63(natte), 63(JRKX), 63(jacekw Potatoman nauti), 63(kabutack), 63(jonas ryno kg583 kabutack)
+# best: 62(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(JRKX), 63(jacekw Potatoman nauti), 63(natte)
 # 79
 # p=lambda g,i=0:[[1for r[-i],g[-1][i]in[[2,4]]]for r in g[:-1]if(i:=i+1)]and g
 # 64

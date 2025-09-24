@@ -1,4 +1,4 @@
-# best: 59(jailctf merger) / others: 60(ox jam), 60(4atj sisyphus luke Seek mukundan), 66(JRKX), 66(jonas ryno kg583 kabutack), 66(jonas ryno kg583)
+# best: 59(jailctf merger) / others: 60(4atj sisyphus luke Seek mukundan), 60(ox jam), 66(jonas ryno kg583 kabutack), 66(JRK), 66(JRKX)
 # =========================== 59 ==========================
 # 3456789012345678901234567890123456789012345678901234567890
 p=lambda g:[[u^v^s[0]or v for v,u in zip(s,g[0])]for s in g]

@@ -1,4 +1,4 @@
-# best: 39(el_presidente, natte, Potatoman, ox jam, cubbus, duckyluuk, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, Rafael Pooja, kdmitrie, MasukenSamba, HashPanda, 2F, kabutack, biz, sekken, jailctf merger, rucin93, intgrah jimboko awu macaque sammyuri, open source, HashPanda Pooja, jonas ryno kg583 kabutack, Yuchen20, HETHAT, cg-klogw, jacekwl, jacekwl Potatoman nauti, blob2822, jonas ryno kg583, JRK) / others: 49(dbdr), 49(jacekw), 49(cg), 49(Bulmenisaurus), 50(Ali)
+# best: 39(jonas ryno kg583 kabutack, open source, cubbus, jacekwl Potatoman nauti, JRK, blob2822, JRKX, 4atj sisyphus luke Seek mukundan, jacekwl, jonas ryno kg583, rucin93, HETHAT, jacekw Potatoman nauti, HashPanda Pooja, natte, el_presidente, HashPanda, Rafael Pooja, kabutack, MasukenSamba, Potatoman, cg-klogw, sekken, jailctf merger, Yuchen20, ox jam, 2F, kdmitrie, biz, duckyluuk, intgrah jimboko awu macaque sammyuri) / others: 49(jacekw), 49(dbdr), 49(cg), 49(Bulmenisaurus), 50(Ali)
 # ================= 39 ================
 # p=lambda g:[*map(list,zip(*[sorted(c)for c in zip(*g)]))]
 p=lambda g:[*zip(*map(sorted,zip(*g)))]

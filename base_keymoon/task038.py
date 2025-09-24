@@ -1,4 +1,4 @@
-# best: 51(natte, ox jam, 4atj sisyphus luke Seek mukundan, 2F, biz, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 52(Potatoman), 52(cubbus), 52(duckyluuk), 52(JRKX), 52(jacekw Potatoman nauti)
+# best: 51(4atj sisyphus luke Seek mukundan, natte, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 52(jonas ryno kg583 kabutack), 52(cubbus), 52(jacekwl Potatoman nauti), 52(JRK), 52(JRKX)
 # 残念ながらsum(g,[])するとだめ
 # lambda g:[[*(str(g).count("1, 1")//2*"1").ljust(5,"0")]] <- アイデアレベル
 

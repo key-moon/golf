@@ -1,3 +1,3 @@
-# best: 21(natte, ox jam, cubbus, 4atj sisyphus luke Seek mukundan, JRKX, jacekw Potatoman nauti, Rafael Pooja, MasukenSamba, dbdr, HashPanda, jacekw, kabutack, jailctf merger, intgrah jimboko awu macaque sammyuri, HashPanda Pooja, jonas ryno kg583 kabutack, Yuchen20, HETHAT, cg-klogw, jacekwl, jacekwl Potatoman nauti, blob2822, jonas ryno kg583, JRK, Afordancja) / others: 22(Potatoman), 22(duckyluuk), 22(J&R), 22(kdmitrie), 24(el_presidente)
+# best: 21(jonas ryno kg583 kabutack, cubbus, jacekwl Potatoman nauti, JRK, blob2822, JRKX, 4atj sisyphus luke Seek mukundan, jacekw, Afordancja, jacekwl, dbdr, jonas ryno kg583, HETHAT, jacekw Potatoman nauti, HashPanda Pooja, natte, HashPanda, Rafael Pooja, kabutack, MasukenSamba, cg-klogw, jailctf merger, Yuchen20, ox jam, intgrah jimboko awu macaque sammyuri) / others: 22(Potatoman), 22(kdmitrie), 22(duckyluuk), 22(J&R), 24(open source)
 # ======== 21 =======
 p=lambda g:(g+g)[2:5]

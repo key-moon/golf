@@ -1,4 +1,4 @@
-# best: 46(ox jam, cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger, rucin93, intgrah jimboko awu macaque sammyuri) / others: 48(natte), 48(duckyluuk), 48(JRKX), 48(jacekw Potatoman nauti), 48(Rafael Pooja)
+# best: 46(cubbus, 4atj sisyphus luke Seek mukundan, rucin93, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 48(jonas ryno kg583 kabutack), 48(jacekwl Potatoman nauti), 48(JRK), 48(JRKX), 48(jacekw)
 # ==================== 46 ====================
 # 345678901234567890123456789012345678901234567890
 # p=lambda g:[[v^13*(v in(5,8))for v in s]for s in g]

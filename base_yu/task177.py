@@ -1,4 +1,4 @@
-# best: 51(ox jam, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 53(4atj sisyphus luke Seek mukundan), 55(natte), 55(JRKX), 55(jacekw Potatoman nauti), 55(MasukenSamba)
+# best: 51(jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 53(4atj sisyphus luke Seek mukundan), 55(jonas ryno kg583 kabutack), 55(jacekwl Potatoman nauti), 55(JRK), 55(JRKX)
 # ======================= 51 ======================
 p=lambda g:[*filter(len,[[*filter(int,s)][::-1]for s in g])]
 

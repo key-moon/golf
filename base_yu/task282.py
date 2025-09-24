@@ -1,4 +1,4 @@
-# best: 83(ox jam, jailctf merger) / others: 90(intgrah jimboko awu macaque sammyuri), 91(4atj sisyphus luke Seek mukundan), 110(JRKX), 110(kabutack), 117(dbdr)
+# best: 83(jailctf merger, ox jam) / others: 89(intgrah jimboko awu macaque sammyuri), 91(4atj sisyphus luke Seek mukundan), 110(JRKX), 110(kabutack), 117(dbdr)
 # ======================================= 83 ======================================
 # p=lambda g,c=-3:c*g or p([[(c<0 or y!=5 or x!=1)and(y or [0,5,1][min(x,2)])for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
 # p=lambda g,c=-3:c*g or p([[(c<0,y,x)!=(0,5,1)and(y or-x%6)for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)

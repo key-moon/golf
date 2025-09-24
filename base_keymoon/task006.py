@@ -1,4 +1,4 @@
-# best: 51(ox jam, 4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 53(natte), 53(cubbus), 53(duckyluuk), 53(JRKX), 53(jacekw Potatoman nauti)
+# best: 51(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 53(jonas ryno kg583 kabutack), 53(cubbus), 53(jacekwl Potatoman nauti), 53(JRK), 53(blob2822)
 #  b"012"
 # (0,1,2)
 # sum(r[i::4])

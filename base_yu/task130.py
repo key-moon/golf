@@ -1,4 +1,4 @@
-# best: 65(natte, ox jam, duckyluuk, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, biz, jailctf merger, intgrah jimboko awu macaque sammyuri, Yuchen20, cg-klogw, jacekwl, jacekwl Potatoman nauti) / others: 66(JRKX), 66(HETHAT), 68(kabutack), 69(MasukenSamba), 72(jonas ryno kg583 kabutack)
+# best: 65(jacekwl Potatoman nauti, 4atj sisyphus luke Seek mukundan, jacekwl, jacekw Potatoman nauti, natte, cg-klogw, jailctf merger, Yuchen20, ox jam, biz, duckyluuk, intgrah jimboko awu macaque sammyuri) / others: 66(JRKX), 66(HETHAT), 68(kabutack), 69(MasukenSamba), 72(jonas ryno kg583 kabutack)
 # ============================== 65 =============================
 # p=lambda g:[[sum({*s[i*3:i*3+3]}-{5})for i in range(3)]for s in g[1::3]]
 # p=lambda g:[[sum({*s[i*3:][:3]}-{5})for i in range(3)]for s in g[1::3]]

@@ -1,4 +1,4 @@
-# best: 91(ox jam) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(Yuchen20), 107(cg-klogw), 109(duckyluuk)
+# best: 91(ox jam) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(cg-klogw), 107(Yuchen20), 109(Bulmenisaurus)
 # =========================================== 91 ==========================================
 # 転置再帰だと 3x3の判定ができない
 # lambda g:(R:=(0,(a:=len(g)//2)+1))and min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in R for j in R],key=p.count)

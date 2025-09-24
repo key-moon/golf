@@ -1,4 +1,4 @@
-# best: 215(jailctf merger) / others: 225(ox jam), 229(JRKX), 229(jonas ryno kg583 kabutack), 229(jonas ryno kg583), 244(jacekw Potatoman nauti)
+# best: 215(jailctf merger) / others: 225(ox jam), 229(jonas ryno kg583 kabutack), 229(JRKX), 229(jonas ryno kg583), 244(jacekwl Potatoman nauti)
 def p(g):
  for c in range(1,10):
   a=[(i,j)for i in range(21)for j in range(21)if g[i][j]==c]

@@ -1,4 +1,4 @@
-# best: 239(ox jam) / others: 250(4atj sisyphus luke Seek mukundan), 264(jailctf merger), 277(natte), 290(cubbus), 306(JRKX)
+# best: 239(ox jam) / others: 250(4atj sisyphus luke Seek mukundan), 264(jailctf merger), 277(natte), 290(cubbus), 306(jonas ryno kg583 kabutack)
 R=range
 def p(g):
  n=len(g)

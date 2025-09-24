@@ -1,4 +1,4 @@
-# best: 67(ox jam) / others: 68(4atj sisyphus luke Seek mukundan), 68(jailctf merger), 68(intgrah jimboko awu macaque sammyuri), 73(HETHAT), 77(JRKX)
+# best: 67(ox jam) / others: 68(4atj sisyphus luke Seek mukundan), 68(jailctf merger), 68(intgrah jimboko awu macaque sammyuri), 73(HETHAT), 77(jonas ryno kg583 kabutack)
 # =============================== 67 ==============================
 # p=lambda g,c=0:[[(c:=max(s)or c)*any(s[:i+1])for i in range(len(s)-1)]+[c]for s in g]
 # p=lambda g,c=0:[(u:=[])+[(c:=max(s)or c)*any(u:=u+[v])for v in s[:-1]]+[c]for s in g]

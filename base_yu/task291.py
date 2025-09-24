@@ -1,4 +1,4 @@
-# best: 61(jailctf merger) / others: 62(ox jam), 62(duckyluuk), 62(4atj sisyphus luke Seek mukundan), 69(Bulmenisaurus), 70(jacekw Potatoman nauti)
+# best: 61(jailctf merger) / others: 62(4atj sisyphus luke Seek mukundan), 62(ox jam), 62(duckyluuk), 69(Bulmenisaurus), 70(jacekw Potatoman nauti)
 # ============================ 61 ===========================
 # lambda g:[[c for c in range(1,10)if len({s.count(c) for s in g})>2]]
 # port re;p=lambda g:[[int(re.search(r"([^0])[^[]*0, \1",str(g))[1])]]
