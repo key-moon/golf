@@ -1,1 +1,1 @@
-p=lambda g:[[sorted(range(10),key=lambda c:sum(v!=c for s in g for*t,v in zip(*g,s)if{c}&{*s}&{*t}))[-2]]]
+p=lambda g:[[sorted(range(10),key=lambda c:sum({c}^{v}=={*s}&{*t}for s in g for*t,v in zip(*g,s)))[8]]]
