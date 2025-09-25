@@ -1,4 +1,4 @@
-# best: 218(natte, 2F, biz) / others: 227(ox jam), 242(jailctf merger), 261(4atj sisyphus luke Seek mukundan), 276(intgrah jimboko awu macaque sammyuri), 283(Yuchen20)
+# best: 218(natte, 2F, biz) / others: 227(ox jam), 242(jailctf merger), 261(4atj sisyphus luke Seek mukundan), 273(intgrah jimboko awu macaque sammyuri), 283(Yuchen20)
 #上下の囲み+左右方向の破線を書く→90度回転
 
 def p(g):
