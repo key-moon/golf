@@ -9,7 +9,7 @@
 # p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c))][-2]]]
 # p=lambda g:[[sorted(range(10),key=lambda c:sum([v!=c for s in g for*t,v in zip(*g,s)if c in s if c in t]))[-2]]]
 # p=lambda g:[[sorted(range(10),key=lambda c:sum(v!=c for s in g for*t,v in zip(*g,s)if{c}&{*s}&{*t}))[-2]]]
-p=lambda g:[[sorted(range(10),key=lambda c:sum({c}^{v}=={*s}&{*t}for s in g for*t,v in zip(*g,s)))[-2]]]
+p=lambda g:[[sorted(range(10),key=lambda c:sum({c}^{v}=={*s}&{*t}for s in g for*t,v in zip(*g,s)))[8]]]
 # p=lambda g:[[[*sorted([(len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c),c)for c in range(10)])][-2][1]]]
 # p=lambda g:[[max((k,c)for c in range(10)if(k:=len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c))<6)[1]]]
   
