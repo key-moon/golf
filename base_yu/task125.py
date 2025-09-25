@@ -1,4 +1,4 @@
-# best: 126(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 130(4atj sisyphus luke Seek mukundan), 141(ox jam), 155(jacekw Potatoman nauti), 184(jonas ryno kg583 kabutack), 184(JRKX)
+# best: 126(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 130(4atj sisyphus luke Seek mukundan), 141(ox jam), 144(jacekw Potatoman nauti), 184(jonas ryno kg583 kabutack), 184(JRKX)
 # =========================================================== 126 ============================================================
 p=lambda g,c=-15,l=8:c*g or p([*zip(*[[x-(4*(l|y|2==6)+5*(c>-4<y%3<1))*((l:=x)>7)for x,y in zip(*t)]for t in zip(g,g[:1]+g)][::-1])],c+1)
 
