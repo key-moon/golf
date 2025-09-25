@@ -30,6 +30,34 @@ def p(g):
       t[u][v]=3
       y,x=u,v
 
+# def p(g):
+#  n=len(g)
+#  for t in range(16):
+#   r=t
+#   a=str(g).find("3, 3")
+#   if a>0:
+#    i=a//(3*n+2)
+#    j=a%(3*n+2)//3
+#    u=[[*s]for s in g]
+#    for c in [8,8,2]:
+#     if c not in u[i][j:]:
+#      break
+#     k=u[i].index(c,j)
+#     if 8 in u[i][j:k]:
+#      break
+#     u[i][j:k]=[3]*(k-j)
+#     j=k-1
+#     for _ in range(3-t//4%2*2):
+#      r+=1
+#      u=[[*s]for s in zip(*u[::-1])]
+#      i,j=j,n-1-i
+#     t//=2
+#    else:
+#     for _ in range(-r%4):
+#      u=[[*s]for s in zip(*u[::-1])]
+#     return u
+#   g=[[*s]for s in zip(*g[::-1])]
+#  return g
  
 
 # def p(g):
