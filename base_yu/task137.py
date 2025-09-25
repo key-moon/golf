@@ -1,4 +1,4 @@
-# best: 141(ox jam) / others: 143(jailctf merger), 144(natte), 147(jacekwl Potatoman nauti), 147(jacekw Potatoman nauti), 148(4atj sisyphus luke Seek mukundan)
+# best: 141(ox jam) / others: 143(jailctf merger), 144(natte), 147(jacekwl Potatoman nauti), 147(jacekw Potatoman nauti), 147(intgrah jimboko awu macaque sammyuri)
 # =================================================================== 141 ===================================================================
 # def p(g):
 #  R=range(len(g))
