@@ -1,1 +1,1 @@
-p=lambda g:[[[*sorted(range(10),key=lambda c:len(t:=sum([s for s in zip(*[s for s in g if c in s])if c in s],()))-t.count(c))][-2]]]
+p=lambda g:[[sorted(range(10),key=lambda c:sum(v!=c for s in g for*t,v in zip(*g,s)if{c}&{*s}&{*t}))[-2]]]
