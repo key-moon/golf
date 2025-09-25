@@ -1,4 +1,4 @@
-# best: 135(jailctf merger) / others: 137(ox jam), 158(4atj sisyphus luke Seek mukundan), 184(Yuchen20), 204(intgrah jimboko awu macaque sammyuri), 220(jacekw Potatoman nauti)
+# best: 135(jailctf merger) / others: 137(ox jam), 140(biz), 158(4atj sisyphus luke Seek mukundan), 184(Yuchen20), 204(intgrah jimboko awu macaque sammyuri)
 # ================================================================ 135 ================================================================
 
 # p=lambda g,R=range(10):[[((f:=[(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t]for c in R]).count(f[v:=g[i][j]])>1<4<i+j)*5or v for j in R]for i in R]
