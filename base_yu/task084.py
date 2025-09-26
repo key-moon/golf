@@ -1,4 +1,4 @@
-# best: 62(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(JRKX), 63(jacekw Potatoman nauti), 63(natte)
+# best: 62(4atj sisyphus luke Seek mukundan, natte, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(JRKX), 63(jacekw Potatoman nauti), 63(kabutack)
 # ============================ 62 ============================
 # def p(g):
 #     for i in range(len(g)-1):

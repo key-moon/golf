@@ -1,4 +1,4 @@
-# best: 54(cubbus, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, jailctf merger, Yuchen20, ox jam) / others: 56(HETHAT), 62(intgrah jimboko awu macaque sammyuri), 68(jonas ryno kg583 kabutack), 68(JRKX), 68(dbdr)
+# best: 54(cubbus, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, natte, jailctf merger, Yuchen20, ox jam) / others: 56(HETHAT), 62(intgrah jimboko awu macaque sammyuri), 68(jonas ryno kg583 kabutack), 68(JRKX), 68(dbdr)
 # ======================== 54 ========================
 # 3456789012345678901234567890123456789012345678901234
 p=lambda g:[[3**(2 in s)*-~c%22-1for c in g[0]]for s in g]
