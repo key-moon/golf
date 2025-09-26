@@ -1,4 +1,4 @@
-# best: 111(4atj sisyphus luke Seek mukundan) / others: 112(jailctf merger), 124(ox jam), 160(Yuchen20), 162(jacekw Potatoman nauti), 165(jacekwl Potatoman nauti)
+# best: 111(4atj sisyphus luke Seek mukundan) / others: 112(jailctf merger), 124(ox jam), 145(intgrah jimboko awu macaque sammyuri), 160(Yuchen20), 162(jacekw Potatoman nauti)
 # ==================================================== 111 ====================================================
 # p=lambda g:max((all(y:=sum(x:=[s[l:r]for s in g[u:d]],[])),y.count(2),len(y),x)for r in range(11)for l in range(r)for d in range(11)for u in range(d))[3]
 # lambda g:max((all(y:=sum(x:=[s[l:t%11]for s in g[u:t//11]],[])),y.count(2),len(y),x)for t in range(121)for l in range(t%11)for u in range(t//11))[3]

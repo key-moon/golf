@@ -1,4 +1,4 @@
-# best: 194(4atj sisyphus luke Seek mukundan, ox jam) / others: 199(jailctf merger), 241(intgrah jimboko awu macaque sammyuri), 243(Yuchen20), 244(kdmitrie), 252(MasukenSamba)
+# best: 194(4atj sisyphus luke Seek mukundan, ox jam, intgrah jimboko awu macaque sammyuri) / others: 199(jailctf merger), 243(Yuchen20), 244(kdmitrie), 252(MasukenSamba), 253(jacekwl Potatoman nauti)
 # ============================================================================================= 194 ==============================================================================================
 
 # def p(a):
