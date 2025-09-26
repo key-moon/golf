@@ -1,4 +1,4 @@
-# best: 54(ox jam, intgrah jimboko awu macaque sammyuri) / others: 58(jailctf merger), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(MasukenSamba), 71(JRKX)
+# best: 54(jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(MasukenSamba), 71(JRKX), 71(kabutack)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1

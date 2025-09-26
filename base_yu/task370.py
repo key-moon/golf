@@ -1,4 +1,4 @@
-# best: 260(jailctf merger) / others: 269(ox jam), 277(Yuchen20), 282(cg-klogw), 296(natte), 312(klogw)
+# best: 260(jailctf merger) / others: 269(ox jam), 277(Yuchen20), 280(cg-klogw), 296(natte), 312(klogw)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])

@@ -1,4 +1,4 @@
-# best: 61(biz) / others: 64(jacekwl Potatoman nauti), 64(4atj sisyphus luke Seek mukundan), 64(HETHAT), 64(jacekw Potatoman nauti), 64(jailctf merger)
+# best: 61(jailctf merger, biz) / others: 64(jacekwl Potatoman nauti), 64(4atj sisyphus luke Seek mukundan), 64(HETHAT), 64(jacekw Potatoman nauti), 64(ox jam)
 # ============================ 61 ===========================
 # 34567890123456789012345678901234567890123456789012345678901234
 # p=lambda g:[*map(list,zip(*[s[(k:=s[::-1].index(0)):]+s[:k]for s in zip(*g)]))]
