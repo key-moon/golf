@@ -5,7 +5,15 @@
 # p=lambda g:[u for d in range(5,10)if (u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)])and sum(s==t for s,t in zip(sum(g,[]),sum(u,[])))>700][0]
 # p=lambda g,d=5:(u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)])*(sum(s==t for s,t in zip(sum(g,[]),sum(u,[])))>700)or p(g,d+1)
 # p=lambda g,d=5,k=0:[(t:=[g[4],w:=[*map(max,*g[i%d::d])]][all(w)],[k:=k+(x==y)for x,y in zip(g[i],t)])[0]for i in range(29)]*(k>700)or p(g,d+1)
-p=lambda g,d=5,k=0:[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]+[k:=k+(x==y)for x,y in zip(g[i],w)]*0for i in range(29)]*(k>700)or p(g,d+1)
+# p=lambda g,d=5,k=0:[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]+[k:=k+(x==y)for x,y in zip(g[i],w)]*0for i in range(29)]*(k>700)or p(g,d+1)
+# p=lambda g:max((u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)],-d,sum(x==y for x,y in zip(g,u)))[::-1]for d in range(5,10))[2]
+# p=lambda g:max((k:=0,[[g[4],w:=[*map(max,*g[i%d::d])],k:=k+(w==g[i])][all(w)]for i in range(29)],-d,k)[::-1]for d in range(5,10))[2]
+# p=lambda g:max((w:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)],len({*zip(*w)}&{*zip(*g)}))[::-1]for d in range(5,10))[1]
+
+# p=lambda g,R=range(29):[[max((sum(x==y for x,y in zip(g[i],g[k])),g[k][j])for k in R if g[k][j])[1]for j in R]for i in R]
+# p=lambda g:[[max((sum(map(int.__eq__,s,t)),t[j])for t in g if t[j])[1]for j in range(29)]for s in g]
+p=lambda g:[[max(g,key=lambda t:(t[j]>0,sum(map(int.__eq__,s,t))))[j]for j in range(29)]for s in g]
+
 
 # 5,6,7,8,9
 
