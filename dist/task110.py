@@ -1,1 +1,1 @@
-p=lambda g,d=5,k=0:[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]+[k:=k+(x==y)for x,y in zip(g[i],w)]*0for i in range(29)]*(k>700)or p(g,d+1)
+p=lambda g:[[max(g,key=lambda t:(t[j]>0,sum(map(int.__eq__,s,t))))[j]for j in range(29)]for s in g]
