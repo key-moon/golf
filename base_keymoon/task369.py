@@ -1,4 +1,4 @@
-# best: 113(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 114(ox jam), 189(MasukenSamba), 207(JRKX), 209(jonas ryno kg583 kabutack), 209(jonas ryno kg583)
+# best: 113(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 114(ox jam), 167(jacekw Potatoman nauti), 189(MasukenSamba), 207(JRKX), 209(jonas ryno kg583 kabutack)
 # ===================================================== 113 =====================================================
 # lambda g,c=15:g*-c or[*zip(*eval(str(p(g,c-1)).replace(*["0","3, 3","3, 2","1, 2","3","2,2",a:="1,1",a][c//4::4])))][::-1]
 p=lambda g,c=15:g*-c or[*zip(*eval(str(p(g,c-1)).replace(*["0","3, 3","3, 2","1, 2","3","2,2",a:="1,1",a][c//4::4])))][::-1]
