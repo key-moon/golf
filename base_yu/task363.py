@@ -1,4 +1,4 @@
-# best: 213(jailctf merger) / others: 217(4atj sisyphus luke Seek mukundan), 228(ox jam), 257(natte), 275(intgrah jimboko awu macaque sammyuri), 303(jonas ryno kg583 kabutack)
+# best: 213(jailctf merger) / others: 217(4atj sisyphus luke Seek mukundan), 228(ox jam), 252(intgrah jimboko awu macaque sammyuri), 257(natte), 303(jonas ryno kg583 kabutack)
 # case=0,1が2ケースキモいので対策
 
 def p(g):
