@@ -1,4 +1,4 @@
-# best: 298(jailctf merger, ox jam) / others: 321(open source), 321(blob2822), 321(garrymoss), 321(Rafael Pooja), 321(sekken)
+# best: 298(jailctf merger, ox jam) / others: 321(open source), 321(blob2822), 321(garrymoss), 321(Rafael Pooja), 321(Ty Woods)
 def p(g):
  for c in range(10):
   for d in range(10):
