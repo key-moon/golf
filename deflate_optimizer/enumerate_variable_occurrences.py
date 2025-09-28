@@ -179,6 +179,16 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
 
     Visitor().visit(tree)
 
+    # ここから追加: 極大 [A-Za-z_]+ の字句列を列挙し、[A-Z]+ のみを強制変数として追加
+    # コメントや文字列も含む src 全体を対象
+    UWORD = re.compile(r"[A-Za-z_]+")
+    forced_upper: dict[str, list[int]] = {}
+    for m in UWORD.finditer(src):
+        tok = m.group(0)
+        # 大文字のみで構成されるかを ASCII 基準で判定
+        if re.fullmatch(r"[A-Z]+", tok) and tok not in RESERVED:
+            forced_upper.setdefault(tok, []).append(m.start())
+
     # 変数名ごとにオフセット集約
     var_dict: dict[str, list[int]] = {}
     for item in out:
@@ -187,6 +197,10 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
             continue
         off = item["col_offset"] if item.get("_absolute") else to_offset(item["lineno"], item["col_offset"])
         var_dict.setdefault(name, []).append(off)
+
+    # 強制追加分をマージ
+    for name, offs in forced_upper.items():
+        var_dict.setdefault(name, []).extend(offs)
 
     result = [{"name": name, "occurrences": sorted(pos)} for name, pos in sorted(var_dict.items())]
 
@@ -208,5 +222,5 @@ if __name__ == "__main__":
             with open(sys.argv[1], "rb") as f:
                 raw = f.read()
     else:
-        raw = b"def p(i):\n exec('l,e=-e,l;i[g+l>>1][d+e>>1]=a;'*3)\n"
+        raw = b"def p(i):\n exec('l,e=-e,l;i[g+l>>1][d+e>>1]=a;'*3)\n# CONST ALPHA Beta _X\n"
     print(list_var_occurrences(raw, as_text=True, include_exec=True), end="")
