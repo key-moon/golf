@@ -1,7 +1,6 @@
-
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Set, Optional, Iterable
+from typing import List, Dict, Tuple, Set, Optional, Iterable, Union
 import ast
 import io
 import re
@@ -30,6 +29,35 @@ def _prefix_offsets(src: str):
         return pref[lineno-1] + col
     return to_abs, lines
 
+# list_var_occurrences(as_text=True) のテキストをリスト形式へ
+def _parse_occurrences_text(text: str) -> List[Dict[str, List[int]]]:
+    lines = text.splitlines()
+    if not lines:
+        return []
+    try:
+        n = int(lines[0].strip())
+    except Exception as e:
+        raise ValueError("occ_result text header is invalid") from e
+    idx = 1
+    out: List[Dict[str, List[int]]] = []
+    for _ in range(n):
+        if idx >= len(lines):
+            raise ValueError("occ_result text is truncated at name line")
+        name_count = lines[idx].rstrip("\n")
+        idx += 1
+        try:
+            name, cnt_s = name_count.split(" ", 1)
+            k = int(cnt_s)
+        except Exception as e:
+            raise ValueError(f"invalid name line: {name_count!r}") from e
+        if idx >= len(lines):
+            raise ValueError("occ_result text is truncated at positions line")
+        pos_line = lines[idx].strip()
+        idx += 1
+        occs = [int(x) for x in pos_line.split()] if k and pos_line else []
+        out.append({"name": name, "occurrences": occs})
+    return out
+
 # 文字列トークンの内容開始相対位置
 _STR_HEAD_RE = re.compile(r"""(?ix)
     (?:[rubf]{0,3})
@@ -49,8 +77,7 @@ def _string_tail_len(token_src: str, content_rel: int) -> int:
 
 def _iter_str_consts_in_expr(src: str, expr: ast.AST) -> Iterable[Tuple[int, int]]:
     """
-    引数式中に含まれる全ての文字列リテラルの 内容部 範囲を絶対オフセットで列挙
-    例 "ab" + "cd" なら両方の内容部を返す
+    引数式中に含まれる全ての文字列リテラルの内容部範囲を絶対オフセットで列挙
     """
     to_abs, _ = _prefix_offsets(src)
     for node in ast.walk(expr):
@@ -70,7 +97,6 @@ def _func_name(node: ast.AST) -> Optional[str]:
     if isinstance(node, ast.Name):
         return node.id
     if isinstance(node, ast.Attribute):
-        # re.sub のような属性呼び出しでは末尾の識別子名だけを返す
         return node.attr
     return None
 
@@ -91,15 +117,16 @@ class _Meta:
         self.next_scope_id = 0
 
         # 名に結びつく束縛と参照
-        self.binds: Dict[str, Set[Tuple[int, str]]] = {}   # name -> {(scope_id, bind_kind)}
-        self.uses:  Dict[str, Set[int]] = {}               # name -> {scope_id}
+        self.binds: Dict[str, Set[Tuple[int, str]]] = {}
+        self.uses:  Dict[str, Set[int]] = {}
         self.import_scopes: Dict[str, Set[int]] = {}
-        self.param_scopes: Dict[int, Set[str]] = {}        # scope_id -> {param_name}
-        self.func_class_binds_scopes: Dict[int, Set[str]] = {}  # scope_id -> names 定義
+        self.param_scopes: Dict[int, Set[str]] = {}
+        self.func_class_binds_scopes: Dict[int, Set[str]] = {}
         self.del_scopes: Dict[str, Set[int]] = {}
+        self.use_offsets: Dict[str, Set[int]] = {}
 
         # 文字列スパン
-        self.string_spans: List[Tuple[int, int]] = []      # 全ての文字列トークン範囲
+        self.string_spans: List[Tuple[int, int]] = []
         self.exec_content_spans: List[Tuple[int, int]] = []
         self.regex_content_spans: List[Tuple[int, int]] = []
         self.regex_group_names_by_span: Dict[int, Set[str]] = {}
@@ -140,10 +167,9 @@ def _collect_meta(src: str) -> _Meta:
         return sid
     def pop():
         meta.scope_stack.pop()
-    push("module")  # モジュールスコープ
+    push("module")
 
     class V(ast.NodeVisitor):
-        # ユーティリティ
         def cur(self) -> int:
             return meta.scope_stack[-1]
 
@@ -155,16 +181,15 @@ def _collect_meta(src: str) -> _Meta:
             meta.uses.setdefault(name, set()).add(self.cur())
 
         def visit_NamedExpr(self, n: ast.NamedExpr):
-            # u := expr などのターゲット束縛を記録
             if isinstance(n.target, ast.Name):
                 self._bind_name(n.target.id, "BindVar")
             self.generic_visit(n)
 
-        # 識別子位置
         def visit_Name(self, n: ast.Name):
             meta.ast_name_offsets.add(to_abs(n.lineno, n.col_offset))
             if isinstance(n.ctx, ast.Load):
                 self._use_name(n.id)
+                meta.use_offsets.setdefault(n.id, set()).add(to_abs(n.lineno, n.col_offset))
             elif isinstance(n.ctx, ast.Del):
                 meta.del_scopes.setdefault(n.id, set()).add(self.cur())
             self.generic_visit(n)
@@ -175,13 +200,11 @@ def _collect_meta(src: str) -> _Meta:
             meta.param_scopes.setdefault(self.cur(), set()).add(a.arg)
 
         def visit_FunctionDef(self, f: ast.FunctionDef):
-            # 定義名の列復元
             line = lines[f.lineno-1] if 1 <= f.lineno <= len(lines) else ""
             m = re.search(rf"\b({re.escape(f.name)})\s*(?=\()", line)
             if m:
                 meta.ast_name_offsets.add(to_abs(f.lineno, m.start(1)))
             self._bind_name(f.name, "BindFunc")
-            # 本体は新スコープ
             push("function"); self.generic_visit(f); pop()
 
         def visit_AsyncFunctionDef(self, f: ast.AsyncFunctionDef):
@@ -191,7 +214,6 @@ def _collect_meta(src: str) -> _Meta:
             self._bind_name(c.name, "BindClass")
             push("class"); self.generic_visit(c); pop()
 
-        # 束縛
         def visit_Assign(self, n: ast.Assign):
             for t in n.targets:
                 for name in _iter_store_names(t):
@@ -243,9 +265,8 @@ def _collect_meta(src: str) -> _Meta:
                 self._bind_name(nm, "BindImport")
                 meta.import_scopes.setdefault(nm, set()).add(self.cur())
 
-        # 内包表記などの新スコープ
         def visit_ListComp(self, n: ast.ListComp):
-            push("comp"); 
+            push("comp")
             for gen in n.generators:
                 for name in _iter_store_names(gen.target):
                     self._bind_name(name, "BindComp")
@@ -262,31 +283,27 @@ def _collect_meta(src: str) -> _Meta:
 
         def visit_Lambda(self, n: ast.Lambda):
             push("lambda")
-            # 引数
             for a in _iter_args(n.args):
                 meta.ast_name_offsets.add(to_abs(a.lineno, a.col_offset))
                 self._bind_name(a.arg, "BindParam")
                 meta.param_scopes.setdefault(self.cur(), set()).add(a.arg)
             self.generic_visit(n); pop()
 
-        # キーワード引数ラベルと exec 正規表現の文字列範囲
         def visit_Call(self, c: ast.Call):
             call_id = id(c)
-            # ラベル
             self._collect_kwlabel_positions(c, call_id)
-            # exec
             if isinstance(c.func, ast.Name) and c.func.id == "exec" and c.args:
                 for a, b in _iter_str_consts_in_expr(src, c.args[0]):
                     meta.exec_content_spans.append((a, b))
-            # regex 系
             fun_name = _func_name(c.func)
-            if fun_name is not None and fun_name in {"compile","search","match","fullmatch","sub","subn","finditer","findall","split"} and c.args:
+            if fun_name is not None and fun_name in {
+                "compile","search","match","fullmatch","sub","subn","finditer","findall","split"
+            } and c.args:
                 for a, b in _iter_str_consts_in_expr(src, c.args[0]):
                     meta.regex_content_spans.append((a, b))
             self.generic_visit(c)
 
         def _collect_kwlabel_positions(self, c: ast.Call, call_id: int):
-            # name\s*= を実ソースから復元
             if not c.keywords:
                 return
             to_abs_, _ = _prefix_offsets(src)
@@ -294,7 +311,7 @@ def _collect_meta(src: str) -> _Meta:
             labels: Set[str] = set()
             offset_set: Set[int] = set()
             for kw in c.keywords:
-                if kw.arg is None:  # **kwargs
+                if kw.arg is None:
                     continue
                 labels.add(kw.arg)
                 val_abs = to_abs_(kw.value.lineno, kw.value.col_offset)
@@ -311,7 +328,6 @@ def _collect_meta(src: str) -> _Meta:
                 meta.call_label_offsets[call_id] = offset_set
 
     V().visit(tree)
-    # モジュールスコープを閉じる
     meta.scope_stack.clear()
     return meta
 
@@ -323,7 +339,6 @@ def _iter_store_names(target: ast.AST) -> Iterable[str]:
             yield from _iter_store_names(elt)
     elif isinstance(target, ast.Starred):
         yield from _iter_store_names(target.value)
-    # Match, Attribute, Subscript は束縛しない
 
 def _iter_args(args: ast.arguments) -> Iterable[ast.arg]:
     for a in args.posonlyargs + args.args + args.kwonlyargs:
@@ -361,22 +376,17 @@ class _NameInfo:
     label_call_ids: Set[int]
 
 def _build_name_infos(src: str, occ_result: List[Dict], meta: _Meta) -> Dict[str, _NameInfo]:
-    # 位置バケット
     ast_pos = meta.ast_name_offsets
     kw_pos = meta.kwlabel_offsets
-
-    # 文字列スパン集合
     str_spans = meta.string_spans
     exec_spans = meta.exec_content_spans
     regex_spans = meta.regex_content_spans
 
-    # ラベル名から call_ids を逆引き
     label_call_ids_by_name: Dict[str, Set[int]] = {}
     for cid, labels in meta.call_labels.items():
         for nm in labels:
             label_call_ids_by_name.setdefault(nm, set()).add(cid)
 
-    # 名ごとの情報を構築
     infos: Dict[str, _NameInfo] = {}
     for item in occ_result:
         nm = item["name"]
@@ -390,7 +400,6 @@ def _build_name_infos(src: str, occ_result: List[Dict], meta: _Meta) -> Dict[str
             elif p in kw_pos:
                 kinds.add("KW_LABEL")
             else:
-                # より詳細な分類
                 in_exec = _pos_bucket_ids(p, exec_spans)
                 in_regex = _pos_bucket_ids(p, regex_spans)
                 if in_exec:
@@ -425,7 +434,6 @@ def _mark(conflict: List[List[bool]], reason: List[List[Optional[str]]], i: int,
     reason[i][j] = reason[j][i] = why
 
 def _used_under_scope(meta: _Meta, name: str, scope_id: int) -> bool:
-    """name が scope_id 配下のどこかのスコープで Load 使用されているか"""
     for s in meta.uses.get(name, set()):
         if _is_ancestor(meta, scope_id, s):
             return True
@@ -436,25 +444,23 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
     conflict = [[False]*N for _ in range(N)]
     reason   = [[None]*N for _ in range(N)]
 
-    # 便宜関数
     def has(info: _NameInfo, k: str) -> bool:
         return k in info.kinds
 
-    # R1a 同一スコープでのパラメータ重複
-    # 各関数スコープのパラメータ集合から名が二つ揃う場合を検出
-    func_param_scopes = meta.param_scopes  # scope_id -> {param}
+    func_param_scopes = meta.param_scopes
     for i in range(N):
         for j in range(i+1, N):
             ni, nj = names[i], names[j]
             Ii, Ij = infos.get(ni), infos.get(nj)
             if Ii is None or Ij is None:
                 continue
-            # U4-1 同一呼び出し内のキーワードラベル重複
+
+            # U4 同一呼び出し内のキーワードラベル重複
             if Ii.label_call_ids & Ij.label_call_ids:
                 _mark(conflict, reason, i, j, "U4:kw-label-dup")
                 continue
 
-            # R1a
+            # R1a 同一関数スコープでの引数名重複
             for sid, params in func_param_scopes.items():
                 if ni in params and nj in params:
                     _mark(conflict, reason, i, j, "R1a:param-dup")
@@ -462,7 +468,7 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
             if conflict[i][j]:
                 continue
 
-            # R1c 同一スコープ内の関数名やクラス名の重複
+            # R1c 同一スコープの関数名またはクラス名重複
             for sid, defs in meta.func_class_binds_scopes.items():
                 if ni in defs and nj in defs:
                     _mark(conflict, reason, i, j, "R1c:def-dup")
@@ -470,47 +476,65 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
             if conflict[i][j]:
                 continue
 
-            # R2 シャドーイング変更（使用実体がある場合のみ）
+            # R2 シャドーイング 使用実体がある場合のみ
             r2_hit = False
-            # j の外側束縛が i の内側束縛の祖先で、かつ j 名がその内側スコープ配下で参照される
             for s_in in Ii.bind_scopes:
                 for s_out in Ij.bind_scopes:
                     if _is_ancestor(meta, s_out, s_in) and _used_under_scope(meta, nj, s_in):
-                        r2_hit = True
-                        break
-                if r2_hit:
-                    break
-            # 対称判定
+                        r2_hit = True; break
+                if r2_hit: break
             if not r2_hit:
                 for s_in in Ij.bind_scopes:
                     for s_out in Ii.bind_scopes:
                         if _is_ancestor(meta, s_out, s_in) and _used_under_scope(meta, ni, s_in):
-                            r2_hit = True
-                            break
-                    if r2_hit:
-                        break
+                            r2_hit = True; break
+                    if r2_hit: break
             if r2_hit:
                 _mark(conflict, reason, i, j, "R2:shadowing")
                 continue
 
-            # R3 import 名との衝突
+            # R3 import 名との衝突 使用実体ありかつスコープ干渉時のみ
             if Ii.import_scopes or Ij.import_scopes:
-                # 同一スコープでなくとも名前空間での解決が変わる可能性が高い
-                _mark(conflict, reason, i, j, "R3:import-collision")
-                continue
+                r3_hit = False
+                if Ii.import_scopes:
+                    for s_out in Ii.import_scopes:
+                        for s_in in Ij.bind_scopes or Ij.use_scopes:
+                            if _is_ancestor(meta, s_out, s_in) and _used_under_scope(meta, ni, s_in):
+                                r3_hit = True; break
+                        if r3_hit: break
+                if not r3_hit and Ij.import_scopes:
+                    for s_out in Ij.import_scopes:
+                        for s_in in Ii.bind_scopes or Ii.use_scopes:
+                            if _is_ancestor(meta, s_out, s_in) and _used_under_scope(meta, nj, s_in):
+                                r3_hit = True; break
+                        if r3_hit: break
+                if r3_hit:
+                    _mark(conflict, reason, i, j, "R3:import-collision")
+                    continue
 
-            # R6 del と束縛の干渉
-            if (Ii.del_scopes and (Ij.bind_scopes or Ij.use_scopes)) or \
-               (Ij.del_scopes and (Ii.bind_scopes or Ii.use_scopes)):
+            # R6 del と束縛の干渉 祖先関係かつ使用実体あり
+            r6_hit = False
+            for sdel in Ii.del_scopes:
+                for sb in Ij.bind_scopes or Ij.use_scopes:
+                    if _is_ancestor(meta, sdel, sb) and (_used_under_scope(meta, nj, sb) or Ij.bind_scopes):
+                        r6_hit = True; break
+                if r6_hit: break
+            if not r6_hit:
+                for sdel in Ij.del_scopes:
+                    for sb in Ii.bind_scopes or Ii.use_scopes:
+                        if _is_ancestor(meta, sdel, sb) and (_used_under_scope(meta, ni, sb) or Ii.bind_scopes):
+                            r6_hit = True; break
+                    if r6_hit: break
+            if r6_hit:
                 _mark(conflict, reason, i, j, "R6:del-interfere")
                 continue
 
-            # U1 文字列内大文字と AST 名の合一
-            if Ii.is_upper and (has(Ii, "IN_EXEC_STR") or has(Ii, "IN_REGEX_STR") or has(Ii,"IN_OTHER_STR")) and \
+            # U1 文字列内大文字と AST 名の合一 対象は exec と正規表現のみ
+            if Ii.is_upper and (has(Ii, "IN_EXEC_STR") or has(Ii, "IN_REGEX_STR")) and \
                (has(Ij, "AST_NAME") or Ij.bind_scopes or Ij.use_scopes):
                 _mark(conflict, reason, i, j, "U1:upper-string-vs-ast")
                 continue
-            if Ij.is_upper and (has(Ij, "IN_EXEC_STR") or has(Ij, "IN_REGEX_STR") or has(Ij,"IN_OTHER_STR")) and \
+            if Ij.is_upper and (has(Ij, "IN_EXEC_STR") or has(Ij, "IN_REGEX_STR")) and \
                (has(Ii, "AST_NAME") or Ii.bind_scopes or Ii.use_scopes):
                 _mark(conflict, reason, i, j, "U1:upper-string-vs-ast")
                 continue
@@ -521,7 +545,6 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
                 continue
 
             # U3 同一正規表現内のグループ名重複
-            # 正規表現内容からグループ名を抽出済みなので、両名が同一 span に現れる場合に衝突
             if Ii.is_upper and Ij.is_upper:
                 for span_id, names_in_span in _regex_group_names_by_span(meta).items():
                     if names[i] in names_in_span and names[j] in names_in_span:
@@ -530,14 +553,13 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
                 if conflict[i][j]:
                     continue
 
-            # R1d 簡易データフロー干渉の近似
-            # 同一スコープに両名の BindVar があり かつ いずれかに Use がある場合
+            # R1d 簡易データフロー干渉 参照が存在する場合のみ
             if "BindVar" in Ii.bind_kinds and "BindVar" in Ij.bind_kinds and \
                (Ii.bind_scopes & Ij.bind_scopes) and (Ii.use_scopes or Ij.use_scopes):
                 _mark(conflict, reason, i, j, "R1d:dataflow-approx")
                 continue
-    
-            # R1e 同一スコープで BindParam と BindVar が合一する場合は衝突
+
+            # R1e 同一スコープで引数と代入が合一
             same_scope_param_var = any(
                 (sid in meta.param_scopes and ni in meta.param_scopes[sid] and sid in Ij.bind_scopes and "BindVar" in Ij.bind_kinds) or
                 (sid in meta.param_scopes and nj in meta.param_scopes[sid] and sid in Ii.bind_scopes and "BindVar" in Ii.bind_kinds)
@@ -550,33 +572,29 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
     return ConflictReport(names=names, conflict=conflict, reason=reason)
 
 def _regex_group_names_by_span(meta: _Meta) -> Dict[int, Set[str]]:
-    """
-    正規表現 文字列内容 スパンごとのグループ名集合
-    meta.regex_content_spans の順序をそのまま ID とする
-    """
-    out: Dict[int, Set[str]] = {}
-    # ここでは meta.regex_content_spans に対応する実内容が必要
-    # ただしメタには原文が無いので 呼び出し側で前処理済み原文を閉包する
-    # 実装簡便化のため 呼び出し側からクロージャで差し込む設計とするのが本来だが
-    # 本関数は _build_conflict_report 内部で wrap される
-    return out  # ダミー ここは _build_conflict_report で埋め替える
+    # 呼び出し側で上書きされるプレースホルダ
+    return {}
 
 # ========= パブリック関数 =========
 
 def build_conflict_report(src: str,
-                          occ_result: List[Dict],
+                          occ_result: Union[str, List[Dict]],
                           *,
                           assume_preprocessed: bool = True,
                           as_text: bool = False) -> ConflictReport | str:
     """
-    ConflictReport を構築して返す
     src は list_var_occurrences でオフセットを算出したソースと同一であること
-    as_text が真のときは行列のみを文字列で返す
-    行列の行列順は occ_result の順と一致する
+    occ_result はリストまたはテキスト形式のいずれでもよい
+    as_text が真のときは行列のみを返す
     """
     if isinstance(src, bytes):
         src = src.decode("utf-8", errors="replace")
-    # 収集
+
+    if isinstance(occ_result, str):
+        occ_list = _parse_occurrences_text(occ_result)
+    else:
+        occ_list = occ_result
+
     meta = _collect_meta(src)
 
     # 正規表現グループ名の抽出
@@ -595,42 +613,42 @@ def build_conflict_report(src: str,
         return _cache
     globals()["_regex_group_names_by_span"] = _regex_group_names_by_span_bound
 
-    # 名ごとの特徴量
-    infos = _build_name_infos(src, occ_result, meta)
-    names = [item["name"] for item in occ_result]
+    infos = _build_name_infos(src, occ_list, meta)
+    names = [item["name"] for item in occ_list]
 
-    # 行列構築
     report = _build_conflicts_with_rules(names, infos, meta)
 
     if as_text:
-        # 行列のみ 空白区切り 改行区切りで出力
         rows = []
         n = len(report.names)
         for i in range(n):
-            row = ["1" if report.conflict[i][j] else "0" for j in range(n)]
-            rows.append(" ".join(row))
+            rows.append(" ".join("1" if report.conflict[i][j] else "0" for j in range(n)))
         return "\n".join(rows)
 
     return report
 
 if __name__ == "__main__":
     import sys
-    import json
-    if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} source.py", file=sys.stderr)
-        src = """
-l=lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace((b:=(c>0)*"1, ")+"8",b+"1",1)))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(g,23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
-""".strip()
-    else:
-        path = sys.argv[1]
-        with open(path, "r") as f:
-            src = f.read()
-    occ = list_var_occurrences(src)
-    rep = build_conflict_report(src, occ)
-    print(list_var_occurrences(src, as_text=True), end='')
-    print(build_conflict_report(src, occ, as_text=True))
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]} source.py [--matrix]", file=sys.stderr)
+        sys.exit(2)
 
-    for i in range(len(rep.names)):
-        for j in range(i+1, len(rep.names)):
-            if i != j and not rep.conflict[i][j] and len(rep.names[i]) == 1 and len(rep.names[j]) == 1:
-                print(f"# {rep.names[i]} <-> {rep.names[j]} : no conflict", file=sys.stderr)
+    matrix_only = "--matrix" in sys.argv[1:]
+    path = next(a for a in sys.argv[1:] if a != "--matrix")
+
+    with open(path, "r", encoding="utf-8") as f:
+        src = f.read()
+
+    occ = list_var_occurrences(src)  # 既存関数
+    out = build_conflict_report(src, occ, as_text=matrix_only)
+
+    if matrix_only:
+        print(out, end="")
+    else:
+        import json
+        rep: ConflictReport = out  # type: ignore
+        print(json.dumps({
+            "names": rep.names,
+            "conflict": rep.conflict,
+            "reason": rep.reason,
+        }, ensure_ascii=False, indent=2))
