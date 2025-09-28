@@ -23,3 +23,15 @@ std::vector<Variable> load_variables_from_stream(std::istream& in) {
     }
     return vars;
 }
+
+std::vector<std::vector<bool>> load_dependency_matrix_from_stream(std::istream& in, int num_vars) {
+    std::vector<std::vector<bool>> conflict_matrix(num_vars, std::vector<bool>(num_vars, false));
+    for (int i = 0; i < num_vars; ++i) {
+        for (int j = 0; j < num_vars; ++j) {
+            int x;
+            in >> x;
+            conflict_matrix[i][j] = x;
+        }
+    }
+    return conflict_matrix;
+}

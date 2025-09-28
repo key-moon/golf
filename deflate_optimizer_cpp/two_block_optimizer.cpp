@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
             // std::cerr << "Optimizing variables..." << std::endl;
             optimize_variables(db, vars, {});
             // std::cerr << "Optimizing Huffman tree..." << std::endl;
-            optimize_huffman_tree(db, {}, num_iter);
+            optimize_huffman_tree(db, {}, true, num_iter);
             // std::cerr << "Done." << std::endl;
             int after = db.bit_length();
             if (before <= after) {

@@ -202,7 +202,7 @@ def list_var_occurrences(code: bytes | str, as_text: bool = False, nostrip: bool
     for name, offs in forced_upper.items():
         var_dict.setdefault(name, []).extend(offs)
 
-    result = [{"name": name, "occurrences": sorted(pos)} for name, pos in sorted(var_dict.items())]
+    result = [{"name": name, "occurrences": sorted(set(pos))} for name, pos in sorted(var_dict.items())]
 
     if as_text:
         buf = StringIO()

@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv) {
     if (argc != 3 && argc != 4 && argc != 5) {
-        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> <variable_dump_file> [num_iter=10] [max_num_round=5]\n";
+        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> <variable_dump_file> [num_iter=10] [max_num_round=10]\n";
         return 1;
     }
     std::string filepath = argv[1];
@@ -47,6 +47,15 @@ int main(int argc, char** argv) {
     std::cerr << "Total bit length (input): " << length << "\n";
 
     std::vector<Variable> variables = load_variables_from_stream(varfile);
+    std::vector<std::vector<bool>> var_dependency = load_dependency_matrix_from_stream(varfile, variables.size());
+    std::cerr << "Variables:\n";
+    for (int i = 0; i < variables.size(); ++i) {
+        for (int j = 0; j < variables.size(); ++j) {
+            if (var_dependency[i][j]) {
+                std::cerr << "Variable " << i << " (" << variables[i].name << ") does not depend on Variable " << j << " (" << variables[j].name << ")\n";
+            }
+        }
+    }
 
     if (blocks.size() != 1) {
         std::cerr << "Warning: variable optimization is only supported for single block deflate data. Skipping variable optimization.\n";
@@ -70,7 +79,7 @@ int main(int argc, char** argv) {
             int before = block.bit_length();
             auto variable_to_new_literal_mapping = optimize_variables(block, variables, tie_break);
             replace_and_recompute_parsing(block, variables, variable_to_new_literal_mapping);
-            optimize_huffman_tree(block, {}, num_iter);
+            optimize_huffman_tree(block, {}, true, num_iter);
             int after = block.bit_length();
             if (before <= after) {
                 return std::make_tuple(false, _block, _variables);

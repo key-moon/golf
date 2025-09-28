@@ -61,7 +61,7 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
     }
 }
 
-void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& context, int num_iter = 10) {
+void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& context, bool perturbation, int num_iter = 10) {
 
     // std::cerr << "Initial Block bit length: " << block.bit_length() << std::endl;
     auto best = std::make_pair(block.bit_length(), block.cl_code_lengths);
@@ -124,9 +124,10 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& c
         int bit_length = block.bit_length();
         if (bit_length <= best.first) {
             best = std::make_pair(bit_length, block.cl_code_lengths);
-        } else {
-            if (!updated) {
-                block.cl_code_lengths = best.second;
+        } else if (!updated) {
+            block.cl_code_lengths = best.second;
+            if (!perturbation) {
+                break;
             }
         }
         // std::cerr << "Block bit length: " << block.bit_length() << std::endl;

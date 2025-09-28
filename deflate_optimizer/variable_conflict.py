@@ -535,6 +535,8 @@ def build_conflict_report(src: str,
     as_text が真のときは行列のみを文字列で返す
     行列の行列順は occ_result の順と一致する
     """
+    if isinstance(src, bytes):
+        src = src.decode("utf-8", errors="replace")
     # 収集
     meta = _collect_meta(src)
 
@@ -586,8 +588,10 @@ l=lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace((b:=(c>0)*"1, ")+"8",b+"1"
             src = f.read()
     occ = list_var_occurrences(src)
     rep = build_conflict_report(src, occ)
+    print(list_var_occurrences(src, as_text=True), end='')
+    print(build_conflict_report(src, occ, as_text=True))
 
     for i in range(len(rep.names)):
         for j in range(i+1, len(rep.names)):
             if i != j and not rep.conflict[i][j] and len(rep.names[i]) == 1 and len(rep.names[j]) == 1:
-                print(f"# {rep.names[i]} <-> {rep.names[j]} : no conflict")
+                print(f"# {rep.names[i]} <-> {rep.names[j]} : no conflict", file=sys.stderr)

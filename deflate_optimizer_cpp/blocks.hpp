@@ -557,6 +557,15 @@ struct DynamicHuffmanBlock : public CompressedBlock {
                 ? 1e9
                 : distance_code_lengths[distance_code];
     }
+    /// lit/dist のみ cl_code_length は初期化しない
+    void reset_code_length_as_static_block() {
+        literal_code_lengths.resize(288, 0);
+        for (int i = 0; i <= 143; ++i) literal_code_lengths[i] = 8;
+        for (int i = 144; i <= 255; ++i) literal_code_lengths[i] = 9;
+        for (int i = 256; i <= 279; ++i) literal_code_lengths[i] = 7;
+        for (int i = 280; i <= 287; ++i) literal_code_lengths[i] = 8;
+        distance_code_lengths.resize(32, 5);
+    }
     static DynamicHuffmanBlock load_from_stream(std::istream& in) {
         DynamicHuffmanBlock block;
         size_t hlit, hdist;

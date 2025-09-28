@@ -98,11 +98,17 @@ enum TieBreak {
     NonVarFreq,
 };
 
+enum VariableAssignment {
+    Injective,
+    PreAssignment,
+    PostAssignment,
+};
+
 
 // ビット数が少ないところに貪欲に当てはめていく
 // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
 // このアルゴリズムは適当に変えたりvariantを作ったりしていい
-std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, TieBreak tie_break = TieBreak::BFS) {
+std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, TieBreak tie_break = TieBreak::BFS, VariableAssignment var_assign = VariableAssignment::Injective) {
     auto text = block.get_string({});
     auto char_stats = get_char_stats(block, variables);
     std::vector<int> replace_cand_vars; // 変数をliteralとしての出現回数でソート

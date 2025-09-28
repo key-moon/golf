@@ -18,6 +18,7 @@ from deflate_optimizer.optimizer import optimize_deflate_stream
 from deflate_optimizer.dump_deflate_stream import dump_deflate_stream
 from deflate_optimizer.load_deflate_text import load_deflate_stream
 from deflate_optimizer.enumerate_variable_occurrences import list_var_occurrences
+from deflate_optimizer.variable_conflict import build_conflict_report
 import zopfli.zlib
 
 from strip import strippers
@@ -173,8 +174,11 @@ def optimize_deflate_ours2(code: bytes, deflate: bytes, num_iter: int) -> bytes:
     f.write(text)
     tmp_path = f.name
   var_occs_text = list_var_occurrences(code, as_text=True, nostrip=True, include_exec=True)
+  var_occs = list_var_occurrences(code, as_text=False, nostrip=True, include_exec=True)
+  var_conflicts = build_conflict_report(code, var_occs, assume_preprocessed=True, as_text=True)
   with tempfile.NamedTemporaryFile("w", delete=False) as f:
     f.write(var_occs_text)
+    f.write(var_conflicts)
     tmp_var_path = f.name
   
   optimizer = os.path.join(os.path.dirname(__file__), "deflate_optimizer_cpp", "variable_optimizer")
