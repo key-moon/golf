@@ -13,6 +13,34 @@ struct CharStat {
     int lit_code_length;
 };
 
+bool is_p_replaceable(DynamicHuffmanBlock& block) {
+    auto text = block.get_string({});
+    text.emplace_back(0);
+    // textから[a-zA-Z_]+ の変数を列挙して確認し、`p` の出現が一回のみならreplaceableとする
+
+    auto is_literal_char = [](int c) {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_';
+    };
+
+    int p_occ = 0;
+    std::vector<int> now_literal;
+    for(auto c : text) {
+        if (is_literal_char(c)) {
+            now_literal.push_back(c);
+        } else {
+            if (now_literal.size() > 0) {
+                if (now_literal.size() == 1 && now_literal[0] == 'p') {
+                    if (++p_occ > 1) {
+                        return false;
+                    }
+                }
+                now_literal.clear();
+            }
+        }
+    }
+    return p_occ == 1;
+}
+
 
 std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vector<Variable>& variables) {
     auto text = block.get_string({});
@@ -52,7 +80,8 @@ std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vect
     }
     std::vector<CharStat> char_stats(256);
     for (int i = 'A'; i <= 'Z'; ++i) char_stats[i].var_candidate = true;
-    for (int i = 'a'; i <= 'z'; ++i) if (i != 'p') char_stats[i].var_candidate = true;
+    // 'p' が関数定義のみに使われているなら 'p' をshadowingしても良い
+    for (int i = 'a'; i <= 'z'; ++i) if (i != 'p' || is_p_replaceable(block)) char_stats[i].var_candidate = true;
     char_stats['_'].var_candidate = true;
 
     for (int i = 0; i < 256; ++i) {
@@ -232,10 +261,6 @@ std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Vari
                     }
                 }
                 if (!fl) continue;
-                std::cerr << "Assign variable " << i << " (" << variables[i].name << ") to literal '" << static_cast<char>(new_val) << "'\n";
-                for(auto assigned_var_id : assignmented_var_ids[new_val]) {
-                    std::cerr << "  (conflicts with variable " << assigned_var_id << " (" << variables[assigned_var_id].name << "))\n";
-                }
 
                 if (new_val == char_val) continue;
                 variable_to_new_literal_mapping[i] = new_val;
