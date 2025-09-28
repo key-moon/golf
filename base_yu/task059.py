@@ -1,4 +1,4 @@
-# best: 156(jailctf merger) / others: 167(4atj sisyphus luke Seek mukundan), 167(ox jam), 173(sekken), 173(Yuchen20), 183(jacekwl Potatoman nauti)
+# best: 156(jailctf merger) / others: 167(4atj sisyphus luke Seek mukundan), 167(ox jam), 173(sekken), 173(Yuchen20), 180(jacekw Potatoman nauti natte)
 def p(g):
  R=range(11)
 #  t=[sorted(sum([s[j&12:][:3]for s in g[i&12:][:3]],[]))for i in R for j in R]

@@ -1,5 +1,5 @@
-# best: 118(jacekw Potatoman nauti natte, natte, jailctf merger) / others: 121(4atj sisyphus luke Seek mukundan), 121(ox jam), 146(jacekwl Potatoman nauti), 146(jacekw Potatoman nauti), 161(MasukenSamba)
-# ======================================================= 118 ========================================================
+# best: 117(jacekw Potatoman nauti natte) / others: 118(natte), 118(jailctf merger), 121(4atj sisyphus luke Seek mukundan), 121(ox jam), 146(jacekwl Potatoman nauti)
+# ======================================================= 117 =======================================================
 p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(max,*g[:i])]]+g[i:])[::-1])],c+1)
 
 # def p(g):
