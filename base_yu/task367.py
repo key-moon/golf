@@ -1,4 +1,4 @@
-# best: 129(jailctf merger, ox jam) / others: 138(4atj sisyphus luke Seek mukundan), 147(intgrah jimboko awu macaque sammyuri), 227(MasukenSamba), 280(natte), 301(jonas ryno kg583 kabutack)
+# best: 129(jailctf merger, ox jam) / others: 138(4atj sisyphus luke Seek mukundan), 147(intgrah jimboko awu macaque sammyuri), 227(MasukenSamba), 280(natte), 293(Ty Woods)
 # ============================================================= 129 =============================================================
 # 05  -> 45
 #  50     50
