@@ -154,6 +154,12 @@ def _collect_meta(src: str) -> _Meta:
         def _use_name(self, name: str):
             meta.uses.setdefault(name, set()).add(self.cur())
 
+        def visit_NamedExpr(self, n: ast.NamedExpr):
+            # u := expr などのターゲット束縛を記録
+            if isinstance(n.target, ast.Name):
+                self._bind_name(n.target.id, "BindVar")
+            self.generic_visit(n)
+
         # 識別子位置
         def visit_Name(self, n: ast.Name):
             meta.ast_name_offsets.add(to_abs(n.lineno, n.col_offset))
@@ -506,6 +512,16 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
             if "BindVar" in Ii.bind_kinds and "BindVar" in Ij.bind_kinds and \
                (Ii.bind_scopes & Ij.bind_scopes) and (Ii.use_scopes or Ij.use_scopes):
                 _mark(conflict, reason, i, j, "R1d:dataflow-approx")
+                continue
+    
+            # R1e 同一スコープで BindParam と BindVar が合一する場合は衝突
+            same_scope_param_var = any(
+                (sid in meta.param_scopes and ni in meta.param_scopes[sid] and sid in Ij.bind_scopes and "BindVar" in Ij.bind_kinds) or
+                (sid in meta.param_scopes and nj in meta.param_scopes[sid] and sid in Ii.bind_scopes and "BindVar" in Ii.bind_kinds)
+                for sid in set(Ii.bind_scopes) | set(Ij.bind_scopes) | set(meta.param_scopes.keys())
+            )
+            if same_scope_param_var:
+                _mark(conflict, reason, i, j, "R1e:param-vs-var")
                 continue
 
     return ConflictReport(names=names, conflict=conflict, reason=reason)

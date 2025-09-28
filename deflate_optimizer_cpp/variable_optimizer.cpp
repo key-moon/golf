@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
             auto block = _block;
             auto variables = _variables;
             int before = block.bit_length();
-            auto variable_to_new_literal_mapping = optimize_variables(block, variables, tie_break);
+            auto variable_to_new_literal_mapping = optimize_variables(block, variables, var_dependency, tie_break, VariableAssignment::Greedy);
             replace_and_recompute_parsing(block, variables, variable_to_new_literal_mapping);
             optimize_huffman_tree(block, {}, true, num_iter);
             int after = block.bit_length();

@@ -99,22 +99,29 @@ enum TieBreak {
 };
 
 enum VariableAssignment {
-    Injective,
-    PreAssignment,
-    PostAssignment,
+    Injective, // 複数出現をマージしない
+    Greedy,    // 出現頻度順に割り当て先を決める 割り当て先は衝突が起こらないなかで優先度最大のもの
+    DP,        // 出現頻度の偏りが最大（エントロピーが最小）になるようにDP
 };
-
 
 // ビット数が少ないところに貪欲に当てはめていく
 // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
 // このアルゴリズムは適当に変えたりvariantを作ったりしていい
-std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, TieBreak tie_break = TieBreak::BFS, VariableAssignment var_assign = VariableAssignment::Injective) {
+std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<std::vector<bool>>& conflict_mat, TieBreak tie_break = TieBreak::BFS, VariableAssignment var_assign = VariableAssignment::Injective) {
+
+    if (conflict_mat.empty() && var_assign != VariableAssignment::Injective) {
+        std::cerr << "Error: Conflict matrix is empty, but variable assignment is not injective.\n";
+        exit(1);
+    }
+
     auto text = block.get_string({});
     auto char_stats = get_char_stats(block, variables);
     std::vector<int> replace_cand_vars; // 変数をliteralとしての出現回数でソート
+    std::vector<int> variable_char_to_id(256, -1);
     for (int i = 0; i < variables.size(); ++i) {
         if (variables[i].name.size() != 1) continue;
         int char_val = static_cast<int>(variables[i].name[0]);
+        variable_char_to_id[char_val] = i;
         if (!char_stats[char_val].var_candidate) continue;
         replace_cand_vars.push_back(i);
     }
@@ -192,18 +199,51 @@ std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Vari
         if (ptr >= replace_cand_vars.size()) break;
     }
     std::vector<int> variable_to_new_literal_mapping(variables.size(), -1);
-    ptr = 0;
-    for(auto i : replace_cand_vars) {
-        if (variables[i].name.size() != 1) continue;
-        int char_val = static_cast<int>(variables[i].name[0]);
-        int new_val = assigned_literal_code[ptr++];
-        if (new_val == -1) {
-            continue;
+    if (var_assign == VariableAssignment::Injective) {
+        // 変数は単射で、出現のマージはしない
+        ptr = 0;
+        for(auto i : replace_cand_vars) {
+            if (variables[i].name.size() != 1) continue;
+            int char_val = static_cast<int>(variables[i].name[0]);
+            int new_val = assigned_literal_code[ptr++];
+            if (new_val == -1) {
+                continue;
+            }
+            if (new_val == char_val) {
+                continue;
+            }
+            variable_to_new_literal_mapping[i] = new_val;
         }
-        if (new_val == char_val) {
-            continue;
-        }
-        variable_to_new_literal_mapping[i] = new_val;
     }
+    else if (var_assign == VariableAssignment::Greedy) {
+
+        // 衝突しない変数名を、候補から貪欲に当てはめていく
+        std::vector<std::vector<int>> assignmented_var_ids(256);
+        for(auto i : replace_cand_vars) {
+            if (variables[i].name.size() != 1) continue;
+            int char_val = static_cast<int>(variables[i].name[0]);
+            // 次の変数候補、衝突しているかもしれないのでチェック
+            for  (auto new_val : assigned_literal_code) {
+                if (new_val == -1) continue;
+                bool fl = true;
+                for (auto assigned_var_id : assignmented_var_ids[new_val]) {
+                    if (conflict_mat[i][assigned_var_id] || conflict_mat[assigned_var_id][i]) {
+                        fl = false;
+                    }
+                }
+                if (!fl) continue;
+                std::cerr << "Assign variable " << i << " (" << variables[i].name << ") to literal '" << static_cast<char>(new_val) << "'\n";
+                for(auto assigned_var_id : assignmented_var_ids[new_val]) {
+                    std::cerr << "  (conflicts with variable " << assigned_var_id << " (" << variables[assigned_var_id].name << "))\n";
+                }
+
+                if (new_val == char_val) continue;
+                variable_to_new_literal_mapping[i] = new_val;
+                assignmented_var_ids[new_val].push_back(i);
+                break;
+            }
+        }
+    }
+
     return variable_to_new_literal_mapping;
 }
