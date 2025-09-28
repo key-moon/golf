@@ -1,4 +1,4 @@
-# best: 196(jailctf merger) / others: 202(jacekwl Potatoman nauti), 202(jacekw Potatoman nauti natte), 202(jacekw Potatoman nauti), 211(4atj sisyphus luke Seek mukundan), 213(ox jam)
+# best: 196(jailctf merger) / others: 201(jacekw Potatoman nauti natte), 202(jacekwl Potatoman nauti), 202(jacekw Potatoman nauti), 211(4atj sisyphus luke Seek mukundan), 213(ox jam)
 # ============================================================================================== 196 ===============================================================================================
 def p(g):
  y,x,c=zip(*[(i,j,v)for i,s in enumerate(g)for j,v in enumerate(s)if v])

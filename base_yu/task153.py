@@ -1,4 +1,4 @@
-# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 153(ox jam), 179(jacekw Potatoman nauti natte), 186(jonas ryno kg583 kabutack), 186(JRKX)
+# best: 133(jailctf merger) / others: 141(4atj sisyphus luke Seek mukundan), 153(ox jam), 171(jacekw Potatoman nauti natte), 186(jonas ryno kg583 kabutack), 186(JRKX)
 # =============================================================== 133 ===============================================================
 
 # p=lambda g,z=[0]*10:[u for I in range(6400)if all(sum(u:=[[[0,*[z,*g,z][I//640+u],0][I//64%10+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))][0]
