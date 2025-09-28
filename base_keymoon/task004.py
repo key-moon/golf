@@ -1,4 +1,4 @@
-# best: 80(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 83(ox jam), 93(2F), 93(biz), 104(intgrah jimboko awu macaque sammyuri), 108(jacekwl Potatoman nauti)
+# best: 80(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 83(ox jam), 93(2F), 93(biz), 98(jacekw Potatoman nauti natte), 104(intgrah jimboko awu macaque sammyuri)
 # 「輪」のいちばん下のcomponent以外を動かす
 # 輪の下には0,0,0...があることを利用して下端を判別（下端のときは動かさず、さらに一個上のを動かす）
 # 最後が
