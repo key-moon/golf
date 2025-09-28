@@ -1,4 +1,4 @@
-# best: 91(jailctf merger) / others: 92(4atj sisyphus luke Seek mukundan), 95(ox jam), 96(jacekw Potatoman nauti), 102(jacekwl Potatoman nauti), 108(JRKX)
+# best: 91(jailctf merger) / others: 92(4atj sisyphus luke Seek mukundan), 95(ox jam), 96(jacekw Potatoman nauti natte), 96(jacekw Potatoman nauti), 102(jacekwl Potatoman nauti)
 # 類題: 139
 # =========================================== 91 ==========================================
 # p=lambda g,c=-3:c*g or p([s for s in zip(*g[::-1])],c+1)

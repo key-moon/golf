@@ -1,4 +1,4 @@
-# best: 116(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 132(natte), 138(jonas ryno kg583 kabutack), 138(JRKX), 138(jonas ryno kg583), 138(J&R)
+# best: 116(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 132(jacekw Potatoman nauti natte), 132(natte), 138(jonas ryno kg583 kabutack), 138(JRKX), 138(jonas ryno kg583)
 # ====================================================== 116 =======================================================
 
 # p=lambda g,t=[0,0]:[

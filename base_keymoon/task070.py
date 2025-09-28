@@ -1,4 +1,4 @@
-# best: 78(jailctf merger) / others: 81(4atj sisyphus luke Seek mukundan), 82(ox jam), 125(MasukenSamba), 126(intgrah jimboko awu macaque sammyuri), 129(jacekw Potatoman nauti)
+# best: 78(jailctf merger) / others: 81(4atj sisyphus luke Seek mukundan), 82(ox jam), 125(MasukenSamba), 126(intgrah jimboko awu macaque sammyuri), 129(jacekw Potatoman nauti natte)
 # ==================================== 78 ====================================
 # lambda g:[[v^(max(t)&max(s))-v&2for*t,v in zip(*g,s)]for s in g]
 # lambda g:[[v|min(max(t),max(s))-v&2for*t,v in zip(*g,s)]for s in g]

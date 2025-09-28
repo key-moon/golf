@@ -1,4 +1,4 @@
-# best: 141(ox jam, intgrah jimboko awu macaque sammyuri) / others: 154(jailctf merger), 158(4atj sisyphus luke Seek mukundan), 190(natte), 237(jacekw Potatoman nauti), 239(MasukenSamba)
+# best: 141(ox jam, intgrah jimboko awu macaque sammyuri) / others: 154(jailctf merger), 158(4atj sisyphus luke Seek mukundan), 190(jacekw Potatoman nauti natte), 190(natte), 237(jacekw Potatoman nauti)
 # =================================================================== 141 ===================================================================
 def p(g):
  for _ in[0]*4:

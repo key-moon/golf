@@ -1,4 +1,4 @@
-# best: 143(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 157(natte), 162(ox jam), 167(JRKX), 167(MasukenSamba), 170(intgrah jimboko awu macaque sammyuri)
+# best: 143(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 157(jacekw Potatoman nauti natte), 157(natte), 162(ox jam), 167(JRKX), 167(MasukenSamba)
 # ==================================================================== 143 ====================================================================
 
 # def p(g):

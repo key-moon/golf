@@ -1,4 +1,4 @@
-# best: 144(jailctf merger) / others: 149(jacekw Potatoman nauti), 151(jonas ryno kg583 kabutack), 151(JRKX), 151(jonas ryno kg583), 154(JRK)
+# best: 144(jailctf merger) / others: 149(jacekw Potatoman nauti natte), 149(jacekw Potatoman nauti), 151(jonas ryno kg583 kabutack), 151(JRKX), 151(jonas ryno kg583)
 # ==================================================================== 144 =====================================================================
 
 def p(g):

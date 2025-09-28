@@ -1,4 +1,4 @@
-# best: 160(jailctf merger) / others: 161(4atj sisyphus luke Seek mukundan), 172(ox jam), 205(jacekw Potatoman nauti), 209(jacekwl Potatoman nauti), 213(Yuchen20)
+# best: 160(jailctf merger) / others: 161(4atj sisyphus luke Seek mukundan), 172(ox jam), 205(jacekw Potatoman nauti natte), 205(jacekw Potatoman nauti), 209(jacekwl Potatoman nauti)
 # ============================================================================ 160 =============================================================================
 # port re;S=re.sub;l=lambda g,c:g*c or[*zip(*l(eval(S("1, 8", "1, 1",str(l(g,c+1)))),c+1))][::-1];p=lambda g,c=[]:0**("8"in str(g))*c or p(l(S(*'81',str(g),1),-23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
 # str.replace;l=lambda g,c=:g*c or[*zip(*l(eval(S(str(l(g,c+1)),"1, 8", "1, 1")),c+1))][::-1];p=lambda g,c=[]:0**("8"in str(g))*c or p(l(S(str(g),*'81',1),-23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])

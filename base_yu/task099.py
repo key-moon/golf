@@ -1,4 +1,4 @@
-# best: 115(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 116(ox jam), 143(intgrah jimboko awu macaque sammyuri), 161(Afordancja), 182(jacekwl Potatoman nauti), 182(jacekw Potatoman nauti)
+# best: 115(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 116(ox jam), 143(intgrah jimboko awu macaque sammyuri), 161(Afordancja), 182(jacekwl Potatoman nauti), 182(jacekw Potatoman nauti natte)
 # ====================================================== 115 ======================================================
 def p(g):
  w=1-any(g[1])

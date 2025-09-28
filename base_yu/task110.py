@@ -1,4 +1,4 @@
-# best: 85(jailctf merger) / others: 89(ox jam), 109(4atj sisyphus luke Seek mukundan), 117(jacekw Potatoman nauti), 160(intgrah jimboko awu macaque sammyuri), 203(MasukenSamba)
+# best: 85(jailctf merger) / others: 89(ox jam), 109(4atj sisyphus luke Seek mukundan), 117(jacekw Potatoman nauti natte), 117(jacekw Potatoman nauti), 160(intgrah jimboko awu macaque sammyuri)
 # ======================================== 85 =======================================
 
 # p=lambda g:max((u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)],sum(s==t for s,t in zip(sum(g,[]),sum(u,[]))))[::-1]for d in range(5,10))[1]

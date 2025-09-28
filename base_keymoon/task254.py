@@ -1,5 +1,5 @@
 # 類題:10
-# best: 84(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 95(ox jam), 101(intgrah jimboko awu macaque sammyuri), 104(MasukenSamba), 112(natte)
+# best: 84(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 95(ox jam), 101(intgrah jimboko awu macaque sammyuri), 104(MasukenSamba), 112(jacekw Potatoman nauti natte)
 # ======================================= 84 =======================================
 p=lambda g,Z=zip:[*Z(*[[v and(s==(a:=sorted({*Z(*g)}))[1])*2+(s==a[-1])for v in s]for s in Z(*g)])]
 

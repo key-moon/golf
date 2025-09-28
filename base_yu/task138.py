@@ -1,4 +1,4 @@
-# best: 104(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 116(cubbus), 149(natte), 154(jacekwl Potatoman nauti), 154(jacekw Potatoman nauti), 154(MasukenSamba)
+# best: 104(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 116(cubbus), 149(jacekw Potatoman nauti natte), 149(natte), 154(jacekwl Potatoman nauti), 154(jacekw Potatoman nauti)
 # ================================================ 104 =================================================
 
 # p=lambda g,c=-79:c*g or p([*zip(*g[1-all(g[0]):][::-1])],c+1)

@@ -1,4 +1,4 @@
-# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 101(ox jam), 133(natte), 151(MasukenSamba), 153(jacekwl Potatoman nauti)
+# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 101(ox jam), 133(jacekw Potatoman nauti natte), 133(natte), 151(MasukenSamba)
 # ============================================== 98 ==============================================
 # p=lambda g:[[max(t:=[c for s in g for t,v in zip(zip(*g),s)if(c:=max(range(10),key=lambda C:(s.count(C)-(v==C))*(t.count(C)-(v==C))))!=v],key=t.count)]]
 # p=lambda g:(c:=min(u:=sum(g,[]),key=u.count),print(CASE,c),T:=sum([s+[*t] for s in g for t,v in zip(zip(*g),s) if v==c],[]))and[[max(T,key=T.count)]]
