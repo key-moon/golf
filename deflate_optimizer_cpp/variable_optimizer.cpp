@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
     std::cerr << "Variables:\n";
     for (int i = 0; i < variables.size(); ++i) {
         for (int j = 0; j < variables.size(); ++j) {
-            if (var_dependency[i][j]) {
+            if (!var_dependency[i][j] && i != j && variables[i].name.size() == 1 && variables[j].name.size() == 1) {
                 std::cerr << "Variable " << i << " (" << variables[i].name << ") does not depend on Variable " << j << " (" << variables[j].name << ")\n";
             }
         }

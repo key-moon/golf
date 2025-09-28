@@ -424,6 +424,13 @@ def _mark(conflict: List[List[bool]], reason: List[List[Optional[str]]], i: int,
     conflict[i][j] = conflict[j][i] = True
     reason[i][j] = reason[j][i] = why
 
+def _used_under_scope(meta: _Meta, name: str, scope_id: int) -> bool:
+    """name が scope_id 配下のどこかのスコープで Load 使用されているか"""
+    for s in meta.uses.get(name, set()):
+        if _is_ancestor(meta, scope_id, s):
+            return True
+    return False
+
 def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], meta: _Meta) -> ConflictReport:
     N = len(names)
     conflict = [[False]*N for _ in range(N)]
@@ -463,10 +470,26 @@ def _build_conflicts_with_rules(names: List[str], infos: Dict[str, _NameInfo], m
             if conflict[i][j]:
                 continue
 
-            # R2 シャドーイング変更
-            # 一方の束縛スコープが他方の祖先
-            if any(_is_ancestor(meta, sA, sB) for sA in Ii.bind_scopes for sB in Ij.bind_scopes) or \
-               any(_is_ancestor(meta, sB, sA) for sA in Ii.bind_scopes for sB in Ij.bind_scopes):
+            # R2 シャドーイング変更（使用実体がある場合のみ）
+            r2_hit = False
+            # j の外側束縛が i の内側束縛の祖先で、かつ j 名がその内側スコープ配下で参照される
+            for s_in in Ii.bind_scopes:
+                for s_out in Ij.bind_scopes:
+                    if _is_ancestor(meta, s_out, s_in) and _used_under_scope(meta, nj, s_in):
+                        r2_hit = True
+                        break
+                if r2_hit:
+                    break
+            # 対称判定
+            if not r2_hit:
+                for s_in in Ij.bind_scopes:
+                    for s_out in Ii.bind_scopes:
+                        if _is_ancestor(meta, s_out, s_in) and _used_under_scope(meta, ni, s_in):
+                            r2_hit = True
+                            break
+                    if r2_hit:
+                        break
+            if r2_hit:
                 _mark(conflict, reason, i, j, "R2:shadowing")
                 continue
 

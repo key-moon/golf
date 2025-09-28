@@ -45,7 +45,7 @@ class CheckRes(JSONWizard):
   correct: float
   message: str
 
-def check(path: str, task: Task, knockout=-1, resume_tqdm = False) -> CheckRes:
+def check(path: str, task: Task, knockout=-1, resume_tqdm = False, num_testcases=-1) -> CheckRes:
   assert path.endswith(".py")
 
   module_name = path[:-3].replace("/", ".")
@@ -62,6 +62,9 @@ def check(path: str, task: Task, knockout=-1, resume_tqdm = False) -> CheckRes:
   if not callable(program):
     return CheckRes([], 0.0, "p is not callable")
   tests = task["train"] + task["test"] + task["arc-gen"]
+
+  if 0 < num_testcases < len(tests):
+    tests = tests[:num_testcases]
   wrong, right = 0, 0
 
   errors = set()
@@ -71,7 +74,7 @@ def check(path: str, task: Task, knockout=-1, resume_tqdm = False) -> CheckRes:
     dumps = []
     try:
       # signal.setitimer(signal.ITIMER_REAL, 4)
-      signal.alarm(30) # 30-sec timeout
+      signal.alarm(60) # 60-sec timeout
       module.CASE = casenum
       module.ANSWER = module.CORRECT = module.EXPECTED = example_copy["output"]
       module.DUMP = lambda x,defalut=False: dumps.append(json.loads(json.dumps(x)))or defalut or x
@@ -131,14 +134,14 @@ def visualize_outputs(outputs: list[Output], path):
     plt.tight_layout()
     plt.savefig(path)
 
-def check_str(task_id: int, code: str | bytes, task):
+def check_str(task_id: int, code: str | bytes, task, num_testcases=-1) -> CheckRes:
   digest = hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()
   tmp_path = f"tmp/{digest}{task_id:03d}.py"
   if isinstance(code, str):
     open(tmp_path, "w").write(code)
   if isinstance(code, bytes):
     open(tmp_path, "wb").write(code)
-  res = check(tmp_path, task, resume_tqdm=False)
+  res = check(tmp_path, task, resume_tqdm=False, num_testcases=num_testcases)
   if f"tmp.{digest}{task_id:03d}" in sys.modules:
     del sys.modules[f"tmp.{digest}{task_id:03d}"]
   if os.path.exists(tmp_path):
@@ -151,6 +154,7 @@ if __name__ == "__main__":
   parser.add_argument("range_str", nargs="?", default="1-400", help="Range string for tasks")
   parser.add_argument("--strip", "-s", action="store_true", help="Only strip code and exit")
   parser.add_argument("--skip-check", "-c", action="store_true", help="Skip the correctness check")
+  parser.add_argument("--num-testcases", "-n", type=int, default=-1, help="Number of test cases to check (default -1 = all)")
   parser.add_argument("--knockout", "-k", type=int, default=-1, help="Maximum number of wrongs before stopping (default -1 = disabled)")
   parser.add_argument("--full-compress", "-f", action="store_false", dest="fast", help="Use slow compressor")
   parser.add_argument("--check-compressed", action="store_true", help="Check the correctness of compressed code")
@@ -174,7 +178,7 @@ if __name__ == "__main__":
       if skip_check:
         res = CheckRes([], 1.0, "check skipped")
       else:
-        res = check(code_path, task, knockout)
+        res = check(code_path, task, knockout, num_testcases=args.num_testcases)
       try:
         with open(code_path, "r") as f:
           orig_code = f.read().strip()
@@ -201,7 +205,7 @@ if __name__ == "__main__":
 
       if args.check_compressed:
         # Compresed code check (if needed)
-        res_comp = check_str(i, compressed, task)
+        res_comp = check_str(i, compressed, task, num_testcases=args.num_testcases)
         res.correct = min(res.correct, res_comp.correct)
         if res_comp.correct != 1.:
           print(f"[!] Compressed code failed in {code_path} ({compress_method})")
