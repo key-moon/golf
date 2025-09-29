@@ -1,1 +1,1 @@
-p=lambda g,c=-63:c*g or p([(l:=0)or[[v.bit_count()**5*3%7,v and l|([0,*t][i]>0<l)<<c%4+2|v,l:=v][c<0]for t,v in zip(g,s)]for i,s in enumerate(zip(*g))][::-1],c+1)
+p=lambda g,c=-63:c*g or p([(l:=0)or[l:=v and[v.bit_count()%5^2,l|v|([0,*t][i]>0<l)<<c%4+2][c<0]for t,v in zip(g,s)]for i,s in enumerate(zip(*g))][::-1],c+1)
