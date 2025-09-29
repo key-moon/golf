@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 956642
+Score: 956654
 
 Best Score: 959829
 
@@ -402,7 +402,7 @@ Best Score: 959829
 | [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | raw/zlib-zopfli-cpp-var-zopfli | [263](/dist/task191.py) (+22) | 241 🔴 | [vis-many](/vis_many/task191.png) |  |
 | [255](/vis/task255.png) | [dist](/dist/task255.py) | previous | [293](/dist/task255.py) (+51) | 242 🔴 | [vis-many](/vis_many/task255.png) | ⚠️ regression? |
 | [157](/vis/task157.png) | [base_notebooks](/base_notebooks/task157_20250911-071925Z-compressed-variable-name-optimization-garry-moss.py) | raw/zlib-zopfli-cpp-var-nozopfli | [241](/dist/task157.py) (-5) | 246 🟢 | [vis-many](/vis_many/task157.png) |  |
-| [080](/vis/task080.png) | [dist](/dist/task080.py) | previous | [271](/dist/task080.py) (+18) | 253 🔴 | [vis-many](/vis_many/task080.png) | ⚠️ regression? |
+| [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [259](/dist/task080.py) (+6) | 253 🔴 | [vis-many](/vis_many/task080.png) | encode:+1 |
 | [044](/vis/task044.png) | [dist](/dist/task044.py) | previous | [227](/dist/task044.py) (-28) | 255 🟢 | [vis-many](/vis_many/task044.png) | ⚠️ regression? |
 | [370](/vis/task370.png) | [dist](/dist/task370.py) | previous | [260](/dist/task370.py) (+4) | 256 🔴 | [vis-many](/vis_many/task370.png) | ⚠️ regression? |
 | [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [298](/dist/task219.py) (+41) | 257 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |

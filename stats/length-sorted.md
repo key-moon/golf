@@ -28,10 +28,10 @@
 | [233](/vis/task233.png) | [dist](/dist/task233.py) | previous | [276](/dist/task233.py) (-21) | 297 🟢 | [vis-many](/vis_many/task233.png) | ⚠️ regression? |
 | [319](/vis/task319.png) | [dist](/dist/task319.py) | previous | [272](/dist/task319.py) (+78) | 194 🔴 | [vis-many](/vis_many/task319.png) | ⚠️ regression? |
 | [023](/vis/task023.png) | [base_yu](/base_yu/task023.py) | forcomp-s/zlib-zopfli-cpp-var-zopfli | [271](/dist/task023.py) (+76) | 195 🔴 | [vis-many](/vis_many/task023.png) |  |
-| [080](/vis/task080.png) | [dist](/dist/task080.py) | previous | [271](/dist/task080.py) (+18) | 253 🔴 | [vis-many](/vis_many/task080.png) | ⚠️ regression? |
 | [118](/vis/task118.png) | [base_notebooks](/base_notebooks/task118_20250914-072619Z-road-to-400-collaboration-maksym-bilychenko.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [269](/dist/task118.py) (-2) | 271 🟢 | [vis-many](/vis_many/task118.png) |  |
 | [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | raw/zlib-zopfli-cpp-var-zopfli | [263](/dist/task191.py) (+22) | 241 🔴 | [vis-many](/vis_many/task191.png) |  |
 | [370](/vis/task370.png) | [dist](/dist/task370.py) | previous | [260](/dist/task370.py) (+4) | 256 🔴 | [vis-many](/vis_many/task370.png) | ⚠️ regression? |
+| [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [259](/dist/task080.py) (+6) | 253 🔴 | [vis-many](/vis_many/task080.png) | encode:+1 |
 | [201](/vis/task201.png) | [base_yu](/base_yu/task201.py) | forcomp-s/zlib-zopfli-cpp-var-nozopfli | [256](/dist/task201.py) (+48) | 208 🔴 | [vis-many](/vis_many/task201.png) |  |
 | [308](/vis/task308.png) | [dist](/dist/task308.py) | previous | [249](/dist/task308.py) (+23) | 226 🔴 | [vis-many](/vis_many/task308.png) | ⚠️ regression? |
 | [089](/vis/task089.png) | [base_yu](/base_yu/task089.py) | forcomp-s/zlib-zopfli-cpp-var-nozopfli | [248](/dist/task089.py) (+12) | 236 🔴 | [vis-many](/vis_many/task089.png) |  |
