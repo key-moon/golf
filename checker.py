@@ -2,6 +2,7 @@ import copy
 from dataclasses import dataclass
 import json
 import os
+import time
 import signal
 import traceback
 from pathlib import Path
@@ -44,8 +45,9 @@ class CheckRes(JSONWizard):
   outputs: list[Output]
   correct: float
   message: str
+  exec_time: float = 0.0
 
-def check(path: str, task: Task, knockout=-1, resume_tqdm = False, num_testcases=-1) -> CheckRes:
+def check(path: str, task: Task, knockout=-1, resume_tqdm = False, num_testcases=-1, timeout=30) -> CheckRes:
   assert path.endswith(".py")
 
   module_name = path[:-3].replace("/", ".")
@@ -69,12 +71,13 @@ def check(path: str, task: Task, knockout=-1, resume_tqdm = False, num_testcases
 
   errors = set()
   outputs: list[Output] = []
+  start_time = time.time()
   for casenum, case in enumerate(tests) if resume_tqdm else enumerate(tqdm(tests)):
     example_copy = copy.deepcopy(case)
     dumps = []
     try:
       # signal.setitimer(signal.ITIMER_REAL, 4)
-      signal.alarm(60) # 60-sec timeout
+      signal.alarm(timeout) # 30-sec timeout
       module.CASE = casenum
       module.ANSWER = module.CORRECT = module.EXPECTED = example_copy["output"]
       module.DUMP = lambda x,defalut=False: dumps.append(json.loads(json.dumps(x)))or defalut or x
@@ -103,7 +106,7 @@ def check(path: str, task: Task, knockout=-1, resume_tqdm = False, num_testcases
   correct = right / len(tests)
   if errors:
     return CheckRes(outputs, correct, "\n\n".join(errors))
-  return CheckRes(outputs, correct, "ok" if right == len(tests) else f"{correct=}")
+  return CheckRes(outputs, correct, "ok" if right == len(tests) else f"{correct=}", time.time() - start_time)
 
 def visualize_outputs(outputs: list[Output], path):
     num_visualize = min(len(outputs), 10)
@@ -212,10 +215,10 @@ if __name__ == "__main__":
           print(res_comp.message)
 
       if res.correct == 1.:
-        print(f"✅ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
+        print(f"✅ {code_path} {res.exec_time:.2f}s {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
         success += 1
       else:
-        print(f"❌ {code_path} {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
+        print(f"❌ {code_path} {res.exec_time:.2f}s {len(code)=} {len(compressed)=} (optimal: {len(raw_compressed) + 60}) {compress_method=}")
         print(f"{res.correct=}")
       compressed_msg = openable_uri("compressed", viz_deflate_url(raw_compressed)) if compress_method.startswith("zlib") else f"(not compressed by zlib)"
       print(f"{openable_uri('stripped code', viz_plane_url(code))} / {compressed_msg}")
