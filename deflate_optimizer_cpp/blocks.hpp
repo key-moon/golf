@@ -7,6 +7,9 @@
 #include <fstream>
 #include <memory>
 #include <queue>
+#include <unordered_map>
+#include <cstdint>
+#include <stdexcept>
 
 struct Block {
     bool bfinal;
@@ -71,6 +74,319 @@ struct RLECode {
     }
 };
 
+struct RLEDPTable {
+    static constexpr int INF = 1 << 30;
+    static constexpr int DEFAULT_MAX_COUNT = 300;
+
+    struct TableEntry {
+        std::vector<int> dp;
+        std::vector<int> prev;
+    };
+
+    struct PairHash {
+        std::size_t operator()(const std::pair<int, int>& key) const noexcept {
+            std::size_t h1 = static_cast<std::size_t>(static_cast<uint32_t>(key.first));
+            std::size_t h2 = static_cast<std::size_t>(static_cast<uint32_t>(key.second));
+            return h1 ^ (h2 + 0x9e3779b97f4a7c15ULL + (h1 << 6) + (h1 >> 2));
+        }
+    };
+
+    struct QuadKey {
+        int a, b, c, d;
+        bool operator==(const QuadKey& other) const noexcept {
+            return a == other.a && b == other.b && c == other.c && d == other.d;
+        }
+    };
+
+    struct QuadHash {
+        std::size_t operator()(const QuadKey& key) const noexcept {
+            std::size_t h1 = static_cast<std::size_t>(static_cast<uint32_t>(key.a));
+            std::size_t h2 = static_cast<std::size_t>(static_cast<uint32_t>(key.b));
+            std::size_t h3 = static_cast<std::size_t>(static_cast<uint32_t>(key.c));
+            std::size_t h4 = static_cast<std::size_t>(static_cast<uint32_t>(key.d));
+            std::size_t h = h1;
+            h ^= h2 + 0x9e3779b97f4a7c15ULL + (h << 6) + (h >> 2);
+            h ^= h3 + 0x9e3779b97f4a7c15ULL + (h << 6) + (h >> 2);
+            h ^= h4 + 0x9e3779b97f4a7c15ULL + (h << 6) + (h >> 2);
+            return h;
+        }
+    };
+
+    std::unordered_map<std::pair<int, int>, TableEntry, PairHash> nonzero_cache;
+    std::unordered_map<QuadKey, TableEntry, QuadHash> zero_cache;
+
+    static int sanitize_cost(int cost) {
+        return cost > 0 ? cost : INF;
+    }
+
+    static int raw_length(const std::vector<int>& lengths, std::size_t idx) {
+        if (idx >= lengths.size()) return 0;
+        return lengths[idx];
+    }
+
+    void ensure_nonzero(TableEntry& entry, int single_cost, int cost16, int required_count) const {
+        if (required_count <= 0 && !entry.dp.empty()) return;
+        int target = std::max(required_count, DEFAULT_MAX_COUNT);
+        if (entry.dp.empty()) {
+            entry.dp = {0};
+            entry.prev = {0};
+        }
+        int current = static_cast<int>(entry.dp.size()) - 1;
+        if (target <= current) return;
+        entry.dp.resize(target + 1, INF);
+        entry.prev.resize(target + 1, 0);
+
+        for (int j = current + 1; j <= target; ++j) {
+            int best = INF;
+            int choice = 0;
+
+            if (single_cost < INF && entry.dp[j - 1] < INF) {
+                int cand = entry.dp[j - 1] + single_cost;
+                if (cand < best) {
+                    best = cand;
+                    choice = 1;
+                }
+            }
+
+            if (cost16 < INF) {
+                int add16 = cost16 + 2;
+                for (int run = 3; run <= 6 && run <= j; ++run) {
+                    int prev_idx = j - run;
+                    if (prev_idx < 1) continue;
+                    if (entry.dp[prev_idx] >= INF) continue;
+                    int cand = entry.dp[prev_idx] + add16;
+                    if (cand < best) {
+                        best = cand;
+                        choice = run;
+                    }
+                }
+            }
+
+            entry.dp[j] = best;
+            entry.prev[j] = choice;
+        }
+    }
+
+    void ensure_zero(TableEntry& entry, int single_cost, int cost16, int cost17, int cost18, int required_count) const {
+        if (required_count <= 0 && !entry.dp.empty()) return;
+        int target = std::max(required_count, DEFAULT_MAX_COUNT);
+        if (entry.dp.empty()) {
+            entry.dp = {0};
+            entry.prev = {0};
+        }
+        int current = static_cast<int>(entry.dp.size()) - 1;
+        if (target <= current) return;
+        entry.dp.resize(target + 1, INF);
+        entry.prev.resize(target + 1, 0);
+
+        for (int j = current + 1; j <= target; ++j) {
+            int best = INF;
+            int choice = 0;
+
+            if (single_cost < INF && entry.dp[j - 1] < INF) {
+                int cand = entry.dp[j - 1] + single_cost;
+                if (cand < best) {
+                    best = cand;
+                    choice = 1;
+                }
+            }
+
+            if (cost17 < INF) {
+                int add17 = cost17 + 3;
+                for (int run = 3; run <= 10 && run <= j; ++run) {
+                    int prev_idx = j - run;
+                    if (prev_idx < 0) continue;
+                    if (entry.dp[prev_idx] >= INF) continue;
+                    int cand = entry.dp[prev_idx] + add17;
+                    if (cand < best) {
+                        best = cand;
+                        choice = run;
+                    }
+                }
+            }
+
+            if (cost18 < INF) {
+                int add18 = cost18 + 7;
+                for (int run = 11; run <= 138 && run <= j; ++run) {
+                    int prev_idx = j - run;
+                    if (prev_idx < 0) continue;
+                    if (entry.dp[prev_idx] >= INF) continue;
+                    int cand = entry.dp[prev_idx] + add18;
+                    if (cand < best) {
+                        best = cand;
+                        choice = run;
+                    }
+                }
+            }
+
+            if (cost16 < INF) {
+                int add16 = cost16 + 2;
+                for (int run = 3; run <= 6 && run <= j; ++run) {
+                    int prev_idx = j - run;
+                    if (prev_idx < 1) continue;
+                    if (entry.dp[prev_idx] >= INF) continue;
+                    int cand = entry.dp[prev_idx] + add16;
+                    if (cand < best) {
+                        best = cand;
+                        choice = -run;
+                    }
+                }
+            }
+
+            entry.dp[j] = best;
+            entry.prev[j] = choice;
+        }
+    }
+
+    TableEntry& get_nonzero_entry(int cost_value, int cost16, int required_count) {
+        auto key = std::make_pair(cost_value, cost16);
+        auto it = nonzero_cache.find(key);
+        if (it == nonzero_cache.end()) {
+            it = nonzero_cache.emplace(key, TableEntry{}).first;
+        }
+        int sanitized_value = sanitize_cost(cost_value);
+        int sanitized16 = sanitize_cost(cost16);
+        ensure_nonzero(it->second, sanitized_value, sanitized16, required_count);
+        return it->second;
+    }
+
+    TableEntry& get_zero_entry(int cost0, int cost16, int cost17, int cost18, int required_count) {
+        QuadKey key{cost0, cost16, cost17, cost18};
+        auto it = zero_cache.find(key);
+        if (it == zero_cache.end()) {
+            it = zero_cache.emplace(key, TableEntry{}).first;
+        }
+        int sanitized0 = sanitize_cost(cost0);
+        int sanitized16 = sanitize_cost(cost16);
+        int sanitized17 = sanitize_cost(cost17);
+        int sanitized18 = sanitize_cost(cost18);
+        ensure_zero(it->second, sanitized0, sanitized16, sanitized17, sanitized18, required_count);
+        return it->second;
+    }
+
+    std::vector<RLECode> optimal_parse(const RLEEntry& entry, const std::vector<int>& cl_code_lengths) {
+        if (entry.count == 0) return {};
+        if (entry.count < 0) {
+            throw std::runtime_error("RLE entry count must be non-negative");
+        }
+
+        const int INF_CHECK = INF;
+        std::vector<RLECode> res;
+        res.reserve(entry.count);
+
+        if (entry.value != 0) {
+            int cost_value = raw_length(cl_code_lengths, static_cast<std::size_t>(entry.value));
+            int cost16 = raw_length(cl_code_lengths, 16);
+            auto& table = get_nonzero_entry(cost_value, cost16, entry.count);
+            if (entry.count >= table.dp.size() || table.dp[entry.count] >= INF_CHECK) {
+                throw std::runtime_error("DP failed for non-zero value run while encoding CL");
+            }
+            int i = entry.count;
+            while (i > 0) {
+                int choice = table.prev[i];
+                if (choice == 1) {
+                    res.push_back({RLECode::LITERAL, entry.value});
+                    --i;
+                } else if (choice >= 3) {
+                    res.push_back({RLECode::PREV_RUN, choice});
+                    i -= choice;
+                } else {
+                    throw std::runtime_error("Invalid DP reconstruction (non-zero)");
+                }
+            }
+        } else {
+            int cost0 = raw_length(cl_code_lengths, 0);
+            int cost16 = raw_length(cl_code_lengths, 16);
+            int cost17 = raw_length(cl_code_lengths, 17);
+            int cost18 = raw_length(cl_code_lengths, 18);
+            auto& table = get_zero_entry(cost0, cost16, cost17, cost18, entry.count);
+            if (entry.count >= table.dp.size() || table.dp[entry.count] >= INF_CHECK) {
+                throw std::runtime_error("DP failed for zero value run while encoding CL");
+            }
+            int i = entry.count;
+            while (i > 0) {
+                int choice = table.prev[i];
+                if (choice == 1) {
+                    res.push_back({RLECode::LITERAL, 0});
+                    --i;
+                } else if (choice > 0) {
+                    res.push_back({RLECode::ZERO_RUN, choice});
+                    i -= choice;
+                } else if (choice < 0) {
+                    int run = -choice;
+                    res.push_back({RLECode::PREV_RUN, run});
+                    i -= run;
+                } else {
+                    throw std::runtime_error("Invalid DP reconstruction (zero)");
+                }
+            }
+        }
+
+        std::reverse(res.begin(), res.end());
+        return res;
+    }
+
+    int compute_optimal_parsing_cost(int value, int count, int cost_value, int cost_16, int cost_17, int cost_18) {
+        if (count <= 0) return 0;
+        const int INF_CHECK = INF;
+
+        if (value != 0) {
+            auto& table = get_nonzero_entry(cost_value, cost_16, count);
+            if (count >= table.dp.size() || table.dp[count] >= INF_CHECK) {
+                throw std::runtime_error("DP failed for non-zero value cost computation");
+            }
+            int total = 0;
+            int i = count;
+            while (i > 0) {
+                int choice = table.prev[i];
+                if (choice == 1) {
+                    total += cost_value;
+                    --i;
+                } else if (choice >= 3) {
+                    total += cost_16 + 2;
+                    i -= choice;
+                } else {
+                    throw std::runtime_error("Invalid DP reconstruction (non-zero cost)");
+                }
+            }
+            return total;
+        } else {
+            auto& table = get_zero_entry(cost_value, cost_16, cost_17, cost_18, count);
+            if (count >= table.dp.size() || table.dp[count] >= INF_CHECK) {
+                throw std::runtime_error("DP failed for zero value cost computation");
+            }
+            int total = 0;
+            int i = count;
+            while (i > 0) {
+                int choice = table.prev[i];
+                if (choice == 1) {
+                    total += cost_value;
+                    --i;
+                } else if (choice > 0) {
+                    if (choice <= 10) {
+                        total += cost_17 + 3;
+                    } else {
+                        total += cost_18 + 7;
+                    }
+                    i -= choice;
+                } else if (choice < 0) {
+                    int run = -choice;
+                    total += cost_16 + 2;
+                    i -= run;
+                } else {
+                    throw std::runtime_error("Invalid DP reconstruction (zero cost)");
+                }
+            }
+            return total;
+        }
+    }
+
+    static RLEDPTable& instance() {
+        static RLEDPTable table;
+        return table;
+    }
+};
+
 std::vector<int> compute_huff_code_lengths_from_frequencies(const std::vector<int>& frequencies) {
     // construct from frequencies
     // using a priority queue (min-heap)
@@ -102,122 +418,8 @@ std::vector<int> compute_huff_code_lengths_from_frequencies(const std::vector<in
     return code_lengths;
 }
 
-std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, std::vector<int> cl_code_lengths) {
-
-    for(auto& l : cl_code_lengths) {
-        if (l == 0) l = 1e6;
-    }
-
-    std::vector<RLECode> res;
-    if(entry.value == 0) {
-        std::vector<int> dp(entry.count + 1, 1e6);
-        std::vector<int> last_choice(entry.count + 1, -1);
-        dp[0] = 0;
-        for (int i = 0; i < entry.count; ++i) {
-            // literal
-            if (dp[i] + cl_code_lengths[0] < dp[i + 1]) {
-                dp[i + 1] = dp[i] + cl_code_lengths[0];
-                last_choice[i + 1] = 1;
-            }
-            // ZERO_RUN
-            for (int run_length = 3; run_length <= 138; ++run_length) {
-                if (i + run_length > entry.count) break;
-                int cost = (run_length <= 10) ? cl_code_lengths[17] + 3 : cl_code_lengths[18] + 7;
-                if (dp[i] + cost < dp[i + run_length]) {
-                    dp[i + run_length] = dp[i] + cost;
-                    last_choice[i + run_length] = run_length;
-                }
-            }
-            // PREV_RUN
-            if (i) {
-                for (int run_length = 3; run_length <= 6; ++run_length) {
-                    if (i + run_length > entry.count) break;
-                    int cost = cl_code_lengths[16] + 2;
-                    if (dp[i] + cost < dp[i + run_length]) {
-                        dp[i + run_length] = dp[i] + cost;
-                        last_choice[i + run_length] = -run_length;
-                    }
-                }
-            }
-        }
-        if (dp[entry.count] == 1e6) {
-            std::stringstream ss;
-            ss << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
-            ss << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
-            ss << "cl_code_lengths: ";
-            for (int i = 0; i < cl_code_lengths.size(); ++i) {
-                ss << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
-            }
-            throw std::runtime_error("Failed to encode RLEEntry: " + ss.str());
-        }
-        int run_length = entry.count;
-        while (run_length > 0) {
-            int choice = last_choice[run_length];
-            if (choice == 1) {
-                res.push_back({RLECode::LITERAL, 0});
-            } else if (choice > 0) {
-                res.push_back({RLECode::ZERO_RUN, choice});
-            }
-            else {
-                res.push_back({RLECode::PREV_RUN, -choice});
-            }
-            run_length -= std::abs(choice);
-        }
-    } else {
-        std::vector<int> dp(entry.count + 1, 1e6);
-        std::vector<int> last_choice(entry.count + 1, -1);
-        dp[1] = cl_code_lengths[entry.value];
-        last_choice[1] = 1;
-        for (int i = 1; i < entry.count; ++i) {
-            if (dp[i] + cl_code_lengths[entry.value] < dp[i + 1]) {
-                dp[i + 1] = dp[i] + cl_code_lengths[entry.value];
-                last_choice[i + 1] = 1;
-            }
-            for (int run_length = 3; run_length <= 6; ++run_length) {
-                if (i + run_length > entry.count) break;
-                int cost = cl_code_lengths[16] + 2;
-                if (dp[i] + cost < dp[i + run_length]) {
-                    dp[i + run_length] = dp[i] + cost;
-                    last_choice[i + run_length] = run_length;
-                }
-            }
-        }
-        if (dp[entry.count] == 1e6) {
-            std::stringstream ss;
-            ss << "Failed to encode RLEEntry (encode cost = INF)" << std::endl;
-            ss << "RLE Entry: " << entry.value << " x " << entry.count << std::endl;
-            ss << "cl_code_lengths: ";
-            for (int i = 0; i < cl_code_lengths.size(); ++i) {
-                ss << (cl_code_lengths[i] == 1e6 ? 0 : cl_code_lengths[i]) << (i + 1 == cl_code_lengths.size() ? "\n" : " ");
-            }
-            throw std::runtime_error("Failed to encode RLEEntry: " + ss.str());
-        }
-        int run_length = entry.count;
-        while (run_length > 0) {
-            int choice = last_choice[run_length];
-            if (choice == 1) {
-                res.push_back({RLECode::LITERAL, entry.value});
-            } else {
-                res.push_back({RLECode::PREV_RUN, choice});
-            }
-            run_length -= choice;
-        }
-    }
-    std::reverse(res.begin(), res.end());
-    /*
-    std::cout << "RLE codes: ";
-    for (const auto& code : res) {
-        if (code.type == RLECode::LITERAL) {
-            std::cout << code.value << " ";
-        } else if (code.type == RLECode::PREV_RUN) {
-            std::cout << "P" << code.value << " ";
-        } else {
-            std::cout << "Z" << code.value << " ";
-        }
-    }
-    std::cout << std::endl;
-    */
-    return res;
+std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, const std::vector<int>& cl_code_lengths) {
+    return RLEDPTable::instance().optimal_parse(entry, cl_code_lengths);
 }
 
 Token read_one_token(std::istream& in) {
