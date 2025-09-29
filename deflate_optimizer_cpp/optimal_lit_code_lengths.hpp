@@ -337,6 +337,131 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
     block.literal_code_lengths = new_lit_code_lengths;
  }
 
+void optimize_dist_code_huffman(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=6) {
+    std::vector<int> dist_freq(30, 0);
+    for (const auto& token : block.tokens) {
+        if (token.type == Token::COPY) {
+            int dist_code = convert_distance_value_to_code(token.pair.distance);
+            dist_freq[dist_code]++;
+        }
+    }
+    while(dist_freq.size() > 1 && dist_freq.back() == 0) dist_freq.pop_back();
+
+    if (dist_freq.empty()) {
+        block.distance_code_lengths.clear();
+        return;
+    }
+
+    constexpr int INF = 1e6;
+    const int SYMBOL_COUNT = static_cast<int>(dist_freq.size());
+    const int MAX_OCCUPANCY = (1 << MAX_BIT_WIDTH);
+
+    std::vector<std::vector<std::vector<int>>> dp(
+        SYMBOL_COUNT + 1,
+        std::vector<std::vector<int>>(MAX_OCCUPANCY + 1, std::vector<int>(MAX_BIT_WIDTH + 1, INF))
+    );
+    std::vector<std::vector<std::vector<int>>> last_run_code(
+        SYMBOL_COUNT + 1,
+        std::vector<std::vector<int>>(MAX_OCCUPANCY + 1, std::vector<int>(MAX_BIT_WIDTH + 1, -1))
+    );
+    std::vector<std::vector<std::vector<int>>> last_run_length(
+        SYMBOL_COUNT + 1,
+        std::vector<std::vector<int>>(MAX_OCCUPANCY + 1, std::vector<int>(MAX_BIT_WIDTH + 1, -1))
+    );
+
+    std::vector<int> RLE_symbols_cost = block.cl_code_lengths;
+    if (RLE_symbols_cost.size() < 19) {
+        RLE_symbols_cost.resize(19, INF);
+    }
+    for (auto& l : RLE_symbols_cost) {
+        if (l == 0) l = INF;
+    }
+
+    auto compute_run_cost = [&RLE_symbols_cost](int prev_code, int run_code, int run_length) {
+        if (run_length == 1) {
+            return RLE_symbols_cost[run_code];
+        }
+        if (prev_code == run_code) {
+            if (3 <= run_length && run_length <= 6) {
+                return RLE_symbols_cost[16] + 2;
+            }
+        } else if (run_code == 0) {
+            if (3 <= run_length && run_length <= 10) {
+                return RLE_symbols_cost[17] + 3;
+            }
+            if (11 <= run_length && run_length <= 138) {
+                return RLE_symbols_cost[18] + 7;
+            }
+        }
+        return INF;
+    };
+
+    dp[0][0][1] = 0;
+
+    for (int i = 0; i < SYMBOL_COUNT; ++i) {
+        for (int j = 0; j <= MAX_OCCUPANCY; ++j) {
+            for (int prev_code = 0; prev_code <= MAX_BIT_WIDTH; ++prev_code) {
+                if (dp[i][j][prev_code] >= INF) continue;
+                for (int code = 0; code <= MAX_BIT_WIDTH; ++code) {
+                    int maximum_length = code == 0 ? 138 : 6;
+                    int next_j = j;
+                    int dist_cost = 0;
+                    for (int run_length = 1; run_length <= maximum_length; ++run_length) {
+                        if (i + run_length > SYMBOL_COUNT) break;
+                        if (code != 0) {
+                            next_j += (1 << (MAX_BIT_WIDTH - code));
+                        }
+                        if (next_j > MAX_OCCUPANCY) break;
+                        dist_cost += dist_freq[i + run_length - 1] * code;
+                        if (dist_freq[i + run_length - 1] != 0 && code == 0) break;
+                        int run_cost = compute_run_cost(prev_code, code, run_length);
+                        if (run_cost >= INF) continue;
+                        int cost = dp[i][j][prev_code] + run_cost + dist_cost;
+                        if (cost >= dp[i + run_length][next_j][code]) continue;
+                        dp[i + run_length][next_j][code] = cost;
+                        last_run_code[i + run_length][next_j][code] = prev_code;
+                        last_run_length[i + run_length][next_j][code] = run_length;
+                    }
+                }
+            }
+        }
+    }
+
+    const auto& dp_back = dp[SYMBOL_COUNT][MAX_OCCUPANCY];
+    std::pair<int, int> best = {INF, INF};
+    for (int prev_code = 0; prev_code <= MAX_BIT_WIDTH; ++prev_code) {
+        int cost = dp_back[prev_code];
+        auto candidate = std::make_pair(cost, prev_code);
+        if (candidate < best) {
+            best = candidate;
+        }
+    }
+
+    if (best.first >= INF) {
+        throw std::runtime_error("DP failed for distance codes");
+    }
+
+    int code = best.second;
+    int i = SYMBOL_COUNT;
+    int j = MAX_OCCUPANCY;
+    std::vector<int> new_dist_code_lengths(SYMBOL_COUNT, 0);
+    while (i > 0) {
+        int prev_code = last_run_code[i][j][code];
+        int run_length = last_run_length[i][j][code];
+        if (run_length <= 0) {
+            throw std::runtime_error("Invalid run length in distance code optimization");
+        }
+        for (int k = 0; k < run_length; ++k) {
+            new_dist_code_lengths[--i] = code;
+            if (code != 0) {
+                j -= (1 << (MAX_BIT_WIDTH - code));
+            }
+        }
+        code = prev_code;
+    }
+    block.distance_code_lengths = new_dist_code_lengths;
+}
+
 
 void optimize_lit_code_huffman(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=9) {
     // optimize_lit_code_huffman_slow(block, MAX_BIT_WIDTH);
