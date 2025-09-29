@@ -144,6 +144,22 @@ int main(int argc, char** argv) {
         }
         */
 
+        std::cerr << "Total bit length (output): " << best_block.bit_length() << "\n";
+        std::cerr << "Final cl-code lengths optimization...\n";
+        std::cerr << "OLD cl code lengths: ";
+        for (auto l : best_block.cl_code_lengths) {
+            std::cerr << l << " ";
+        }
+        std::cerr << std::endl;
+        best_block.cl_code_lengths = get_optimal_cl_code_lengths(best_block.literal_code_lengths, best_block.distance_code_lengths);
+        std::cerr << "NEW cl code lengths: ";
+        for (auto l : best_block.cl_code_lengths) {
+            std::cerr << l << " ";
+        }
+        std::cerr << std::endl;
+        std::cerr << "Total bit length (output): " << best_block.bit_length() << "\n";
+
+
         best_block.dump_string(std::cout);
         std::cerr << "Total bit length (output): " << best_block.bit_length() << "\n";
     } else {

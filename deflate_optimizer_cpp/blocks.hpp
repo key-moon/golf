@@ -75,7 +75,7 @@ struct RLECode {
 };
 
 struct RLEDPTable {
-    static constexpr int INF = 1 << 30;
+    static constexpr int INF = 1 << 28;
     static constexpr int DEFAULT_MAX_COUNT = 300;
 
     struct TableEntry {
@@ -264,6 +264,7 @@ struct RLEDPTable {
         return it->second;
     }
 
+    /// sanitizeされていないcostを入れるので注意
     std::vector<RLECode> optimal_parse(const RLEEntry& entry, const std::vector<int>& cl_code_lengths) {
         if (entry.count == 0) return {};
         if (entry.count < 0) {
@@ -326,6 +327,7 @@ struct RLEDPTable {
         return res;
     }
 
+    /// sanitizeされていないcostを入れるので注意
     int compute_optimal_parsing_cost(int value, int count, int cost_value, int cost_16, int cost_17, int cost_18) {
         if (count <= 0) return 0;
         const int INF_CHECK = INF;
@@ -333,7 +335,7 @@ struct RLEDPTable {
         if (value != 0) {
             auto& table = get_nonzero_entry(cost_value, cost_16, count);
             if (count >= table.dp.size() || table.dp[count] >= INF_CHECK) {
-                throw std::runtime_error("DP failed for non-zero value cost computation");
+                return INF;
             }
             int total = 0;
             int i = count;
@@ -353,7 +355,7 @@ struct RLEDPTable {
         } else {
             auto& table = get_zero_entry(cost_value, cost_16, cost_17, cost_18, count);
             if (count >= table.dp.size() || table.dp[count] >= INF_CHECK) {
-                throw std::runtime_error("DP failed for zero value cost computation");
+                return INF;
             }
             int total = 0;
             int i = count;
@@ -385,6 +387,12 @@ struct RLEDPTable {
         static RLEDPTable table;
         return table;
     }
+};
+
+std::vector<int> CL_CODE_ORDER = {
+    16, 17, 18, 0, 8, 7, 9, 6,
+    10, 5, 11, 4, 12, 3, 13, 2,
+    14, 1, 15
 };
 
 std::vector<int> compute_huff_code_lengths_from_frequencies(const std::vector<int>& frequencies) {
@@ -421,6 +429,105 @@ std::vector<int> compute_huff_code_lengths_from_frequencies(const std::vector<in
 std::vector<RLECode> convert_RLEEntry_to_RLECode(const RLEEntry& entry, const std::vector<int>& cl_code_lengths) {
     return RLEDPTable::instance().optimal_parse(entry, cl_code_lengths);
 }
+
+std::vector<RLEEntry> length_RLE(const std::vector<int>& vec);
+
+std::vector<int> get_optimal_cl_code_lengths(const std::vector<int>& literal_code_lengths, const std::vector<int>& distance_code_lengths) {
+    std::vector<int> concat = literal_code_lengths;
+    concat.insert(concat.end(), distance_code_lengths.begin(), distance_code_lengths.end());
+    auto rle_entries = length_RLE(concat);
+
+    constexpr int MAX_CL_CODE_LENGTH = 10;
+    constexpr int INF = 1 << 28;
+
+    auto get_tree_cost = [&](int code_length){
+        if (code_length == 0) return 0;
+        return (1 << (MAX_CL_CODE_LENGTH - code_length));
+    };
+
+    std::vector<std::vector<int>> rle_entries_by_code(19);
+    for (const auto& entry : rle_entries) {
+        rle_entries_by_code[entry.value].emplace_back(entry.count);
+    }
+
+    std::pair<int, std::vector<int>> best_result = {INF, {}};
+
+    int min_hclen = 0;
+    for (int i = 0; i < 16; ++i) {
+        if (!rle_entries_by_code[CL_CODE_ORDER[i + 3]].empty()) {
+            min_hclen = i + 1;
+        }
+    }
+
+    for (int cost_16 = 0; cost_16 <= MAX_CL_CODE_LENGTH; ++cost_16) {
+        for (int cost_17 = 0; cost_17 <= MAX_CL_CODE_LENGTH; ++cost_17) {
+            for (int cost_18 = 0; cost_18 <= MAX_CL_CODE_LENGTH; ++cost_18) {
+                // dp[i][j]: code i まで決めて、ハフマン符号の占有率が j
+                // TODO: cl codeの5bits制限も考える
+                std::vector<std::vector<int>> dp(17, std::vector<int>((1 << MAX_CL_CODE_LENGTH) + 1, INF));
+                std::vector<std::vector<int>> prev(17, std::vector<int>((1 << MAX_CL_CODE_LENGTH) + 1, -1));
+                int cost_start = get_tree_cost(cost_16) + get_tree_cost(cost_17) + get_tree_cost(cost_18);
+                if (cost_start >= (1 << MAX_CL_CODE_LENGTH)) {
+                    continue;
+                }
+                dp[0][cost_start] = 0;
+                for (int i = 0; i < 16; ++i) {
+                    int cl_i = CL_CODE_ORDER[i + 3];
+                    std::vector<int> RLE_part_cost(MAX_CL_CODE_LENGTH + 1, 0);
+                    for (int cl = 0; cl <= MAX_CL_CODE_LENGTH; ++cl) {
+                        for (auto count : rle_entries_by_code[cl_i]) {
+                            RLE_part_cost[cl] += RLEDPTable::instance().compute_optimal_parsing_cost(cl_i, count, cl, cost_16, cost_17, cost_18);
+                            RLE_part_cost[cl] = std::min(RLE_part_cost[cl], INF); // overflow 対策
+                        }
+                    }
+                    for (int j = cost_start; j < (1 << MAX_CL_CODE_LENGTH); ++j) {
+                        if (dp[i][j] == INF) continue;
+                        for (int cl = 0; cl <= MAX_CL_CODE_LENGTH; ++cl) {
+                            int new_j = j + get_tree_cost(cl);
+                            if (new_j > (1 << MAX_CL_CODE_LENGTH)) continue;
+                            int cost = dp[i][j] + RLE_part_cost[cl];
+                            if (cost < dp[i + 1][new_j]) {
+                                dp[i + 1][new_j] = cost;
+                                prev[i + 1][new_j] = cl;
+                            }
+                        }
+                    }
+                }
+
+                int best_cost = 2 * INF;
+                int i = 16;
+                int j = (1 << MAX_CL_CODE_LENGTH);
+                for (int k = min_hclen; k <= 16; ++k) {
+                    if (dp[k][j] + 5 * k < best_cost) {
+                        best_cost = dp[k][j] + 5 * k;
+                        i = k;
+                    }
+                }
+                if (best_cost >= INF) {
+                    continue;
+                }
+                std::vector<int> cl_code_lengths(19, 0);
+                while (i > 0) {
+                    int cl = prev[i][j];
+                    if (cl == -1) {
+                        throw std::runtime_error("Invalid DP reconstruction for CL code lengths" + std::to_string(cost_16) + " " + std::to_string(cost_17) + " " + std::to_string(cost_18) + " : " + std::to_string(i) + " " + std::to_string(j));
+                    }
+                    cl_code_lengths[CL_CODE_ORDER[i + 2]] = cl;
+                    j -= get_tree_cost(cl);
+                    --i;
+                }
+                cl_code_lengths[16] = cost_16;
+                cl_code_lengths[17] = cost_17;
+                cl_code_lengths[18] = cost_18;
+                if (best_cost < best_result.first) {
+                    best_result = {best_cost, cl_code_lengths};
+                }
+            }
+        }
+    }
+    return best_result.second;
+}
+
 
 Token read_one_token(std::istream& in) {
     char type;
@@ -495,12 +602,6 @@ int num_additional_bits_for_dist(int distance) {
     else if (distance <= 32768) return 13;
     else throw std::runtime_error("Invalid distance");
 }
-
-std::vector<int> CL_CODE_ORDER = {
-    16, 17, 18, 0, 8, 7, 9, 6,
-    10, 5, 11, 4, 12, 3, 13, 2,
-    14, 1, 15
-};
 
 std::vector<RLEEntry> length_RLE(const std::vector<int>& vec) {
     std::vector<RLEEntry> res;
