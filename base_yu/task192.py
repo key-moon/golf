@@ -1,4 +1,4 @@
-# best: 110(jailctf merger) / others: 115(ox jam), 117(4atj sisyphus luke Seek mukundan), 166(intgrah jimboko awu macaque sammyuri), 194(jacekw Potatoman nauti natte), 197(natte)
+# best: 110(jailctf merger) / others: 115(ox jam), 117(4atj sisyphus luke Seek mukundan), 166(intgrah jimboko awu macaque sammyuri), 193(kdmitrie), 194(jacekw Potatoman nauti natte)
 
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((x+(d==x>0<l==y)*(l-x))*(c<0 or x!=d),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((c<0 or x!=d)*(x+(d==x>0<l==y)*(l-x)),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
