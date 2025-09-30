@@ -1,4 +1,4 @@
-# best: 93(jailctf merger) / others: 94(ox jam), 97(blob2822), 97(Yuchen20), 98(4atj sisyphus luke Seek mukundan), 98(Bulmenisaurus)
+# best: 93(jailctf merger) / others: 94(ox jam), 97(Yuchen20), 98(4atj sisyphus luke Seek mukundan), 98(Bulmenisaurus), 99(JRKX)
 # ============================================ 93 ===========================================
 # p=lambda g,E=enumerate:(n:=len(g))and[[v and g[[-1,0][i+2<n//2]][[-1,0][j+2<n//2]] for j,v in E(s[2:-2])]for i,s in E(g[2:-2])]
 # p=lambda g,E=enumerate:(n:=len(g)//2-2)and[[v and g[[-1,0][i<n]][[-1,0][j<n]]for j,v in E(s[2:-2])]for i,s in E(g[2:-2])]

@@ -1,4 +1,4 @@
-# best: 69(jailctf merger) / others: 70(4atj sisyphus luke Seek mukundan), 71(ox jam), 75(jacekw Potatoman nauti natte), 75(HETHAT), 75(natte)
+# best: 69(jailctf merger) / others: 70(4atj sisyphus luke Seek mukundan), 71(ox jam), 75(jacekw Potatoman nauti natte), 75(HETHAT), 75(cg-klogw-sekken)
 # ================================ 69 ===============================
 # p=lambda g:[[g[i][j]and g[i>4 and 9][j>4 and 9]for j in range(10)]for i in range(10)]
 # p=lambda g,E=enumerate:[[v and g[(i>4)*9][(j>4)*9]for j,v in E(s)]for i,s in E(g)]

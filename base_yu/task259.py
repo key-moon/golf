@@ -1,4 +1,4 @@
-# best: 85(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 86(jacekw Potatoman nauti natte), 86(natte), 95(jacekwl Potatoman nauti), 95(jacekw Potatoman nauti), 103(cg-klogw)
+# best: 85(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 86(jacekw Potatoman nauti natte), 86(natte), 95(jacekwl Potatoman nauti), 95(jacekw Potatoman nauti), 103(cg-klogw-sekken)
 # ======================================== 85 =======================================
 # p=lambda g,c=2:c and p([*zip(*[g[i]for i in range(len(g))if~-max(max(g[:i+1]))*~-max(max(g[i:]))])],c-1)or[[v>1 and v for v in s]for s in g]
 # p=lambda g,c=4:c and p([*zip(*[[v>1 and v for v in g[i]]for i in range(len(g))if 1<max(max(g[i:]))][::-1])],c-1)or g
