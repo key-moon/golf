@@ -1,4 +1,4 @@
-# best: 109(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 110(ox jam), 149(jacekw Potatoman nauti natte), 149(natte), 179(intgrah jimboko awu macaque sammyuri), 188(jonas ryno kg583 kabutack)
+# best: 109(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 110(ox jam), 149(jacekw Potatoman nauti natte), 149(natte), 167(kdmitrie), 179(intgrah jimboko awu macaque sammyuri)
 # =================================================== 109 ===================================================
 
 # def p(g,k=0,u=[[2]*99]):

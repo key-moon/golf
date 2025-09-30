@@ -1,4 +1,4 @@
-# best: 139(jacekw Potatoman nauti natte, natte, jailctf merger) / others: 143(4atj sisyphus luke Seek mukundan), 157(intgrah jimboko awu macaque sammyuri), 169(ox jam), 263(cg-klogw-sekken), 263(sekken)
+# best: 139(jacekw Potatoman nauti natte, natte, jailctf merger) / others: 143(4atj sisyphus luke Seek mukundan), 157(intgrah jimboko awu macaque sammyuri), 169(ox jam), 249(cg-klogw-sekken), 263(sekken)
 # ================================================================== 139 ==================================================================
 
 import re;p=lambda g,c=-3:g*c or[*zip(*eval(re.sub("0(?=.{%d}3.{%d}3)"%((k:=sum(sum(g,[]))//21+1)*38-1,k*29-1),"8",str(p(g,c+1)))))][::-1]

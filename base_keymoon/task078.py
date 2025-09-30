@@ -1,4 +1,4 @@
-# best: 60(jailctf merger) / others: 61(jacekwl Potatoman nauti), 61(jacekw Potatoman nauti natte), 61(JRKX), 61(4atj sisyphus luke Seek mukundan), 61(HETHAT)
+# best: 60(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 61(jacekwl Potatoman nauti), 61(jacekw Potatoman nauti natte), 61(JRKX), 61(4atj sisyphus luke Seek mukundan), 61(HETHAT)
 # =========================== 60 ===========================
 
 # p=lambda g:[*map(list,zip(*[[*r[:(a:=r.index(0))]]+sorted(r[a:])[::-1]for r in zip(*g)]))]
