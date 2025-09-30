@@ -10,6 +10,8 @@ struct CharStat {
     bool var_candidate = false;
     int num_var_occurrences_as_literal;
     int num_nonvar_occurrences_as_literal;
+    int num_var_occurrences_as_nonliteral;
+    int num_nonvar_occurrencess_as_nonliteral;
     int lit_code_length;
 };
 
@@ -46,6 +48,7 @@ std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vect
     auto text = block.get_string({});
     std::vector<bool> is_lieral_position(text.size());
     std::vector<int> literal_freq(256, 0);
+    std::vector<int> nonliteral_freq(256, 0);
 
     int ptr = 0;
     for (auto tok : block.tokens) {
@@ -54,11 +57,15 @@ std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vect
             literal_freq[tok.literal]++;
             ptr += 1;
         } else { // COPY
+            for (int i = 0; i < tok.pair.length; ++i) {
+                nonliteral_freq[text[ptr + i]]++;
+            }
             ptr += tok.pair.length;
         }
     }
 
     std::vector<int> num_lit_occurrences_of_vars(variables.size(), 0);
+    std::vector<int> num_nonlit_occurrences_of_vars(variables.size(), 0);
     for (int i = 0; i < variables.size(); ++i) {
         for (auto pos : variables[i].occurrences) {
             for (int j = 0; j < variables[i].name.size(); ++j) {
@@ -76,6 +83,9 @@ std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vect
             if (is_lieral_position[pos]) {
                 num_lit_occurrences_of_vars[i]++;
             }
+            else {
+                num_nonlit_occurrences_of_vars[i]++;
+            }
         }
     }
     std::vector<CharStat> char_stats(256);
@@ -87,6 +97,8 @@ std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vect
     for (int i = 0; i < 256; ++i) {
         char_stats[i].num_var_occurrences_as_literal = 0;
         char_stats[i].num_nonvar_occurrences_as_literal = literal_freq[i];
+        char_stats[i].num_var_occurrences_as_nonliteral = 0;
+        char_stats[i].num_nonvar_occurrencess_as_nonliteral = nonliteral_freq[i];
         char_stats[i].lit_code_length = block.literal_code_lengths[i];
     }
 
@@ -96,6 +108,8 @@ std::vector<CharStat> get_char_stats(DynamicHuffmanBlock& block, const std::vect
         if (!char_stats[char_val].var_candidate) continue;
         char_stats[char_val].num_var_occurrences_as_literal = num_lit_occurrences_of_vars[i];
         char_stats[char_val].num_nonvar_occurrences_as_literal -= num_lit_occurrences_of_vars[i];
+        char_stats[char_val].num_var_occurrences_as_nonliteral = num_nonlit_occurrences_of_vars[i];
+        char_stats[char_val].num_nonvar_occurrencess_as_nonliteral -= num_nonlit_occurrences_of_vars[i];
     }
     return char_stats;
 }
@@ -121,11 +135,17 @@ void replace_and_recompute_parsing(DynamicHuffmanBlock& block, std::vector<Varia
     block.tokens = optimal_parse_block(block, {});
 }
 
+enum FreqCount {
+    NumNonVarAsLiteral,
+    NumNonVarAll,
+};
 
 enum TieBreak {
     BFS,
     NonVarFreq,
     NoUpdate,
+    RandomSwap,
+    RandomSwapCL,
 };
 
 enum VariableAssignment {
@@ -137,7 +157,7 @@ enum VariableAssignment {
 // ビット数が少ないところに貪欲に当てはめていく
 // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで
 // このアルゴリズムは適当に変えたりvariantを作ったりしていい
-std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<std::vector<bool>>& conflict_mat, TieBreak tie_break = TieBreak::BFS, VariableAssignment var_assign = VariableAssignment::Injective) {
+std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<std::vector<bool>>& conflict_mat, FreqCount freq_count, TieBreak tie_break = TieBreak::BFS, VariableAssignment var_assign = VariableAssignment::Injective) {
 
     if (conflict_mat.empty() && var_assign != VariableAssignment::Injective) {
         std::cerr << "Error: Conflict matrix is empty, but variable assignment is not injective.\n";
@@ -156,8 +176,16 @@ std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Vari
         replace_cand_vars.push_back(i);
     }
     std::sort(replace_cand_vars.begin(), replace_cand_vars.end(), [&](int a, int b) {
-        return char_stats[static_cast<int>(variables[a].name[0])].num_var_occurrences_as_literal
-             > char_stats[static_cast<int>(variables[b].name[0])].num_var_occurrences_as_literal;
+        if (freq_count == FreqCount::NumNonVarAsLiteral) {
+            return char_stats[static_cast<int>(variables[a].name[0])].num_var_occurrences_as_literal
+                > char_stats[static_cast<int>(variables[b].name[0])].num_var_occurrences_as_literal;
+        }
+        else {
+            return (char_stats[static_cast<int>(variables[a].name[0])].num_var_occurrences_as_literal
+                + char_stats[static_cast<int>(variables[a].name[0])].num_var_occurrences_as_nonliteral)
+                > (char_stats[static_cast<int>(variables[b].name[0])].num_var_occurrences_as_literal
+                + char_stats[static_cast<int>(variables[b].name[0])].num_var_occurrences_as_nonliteral);
+        }
     });
 
     std::vector<int> assigned_literal_code(variables.size(), -1);
@@ -179,7 +207,13 @@ std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Vari
             if (ptr == 0) {
                 // 最初の変数はlit codeの出現頻度で決める
                 int max_elm = *std::max_element(code_length_symbol_map[len].begin(), code_length_symbol_map[len].end(), [&](int a, int b) {
-                    return char_stats[a].num_nonvar_occurrences_as_literal < char_stats[b].num_nonvar_occurrences_as_literal;
+                    if (freq_count == FreqCount::NumNonVarAsLiteral) {
+                        return char_stats[a].num_nonvar_occurrences_as_literal < char_stats[b].num_nonvar_occurrences_as_literal;
+                    }
+                    else {
+                        return (char_stats[a].num_nonvar_occurrences_as_literal + char_stats[a].num_nonvar_occurrencess_as_nonliteral)
+                            < (char_stats[b].num_nonvar_occurrences_as_literal + char_stats[b].num_nonvar_occurrencess_as_nonliteral);
+                    }
                 });
                 assigned_literal_code[ptr] = max_elm;
                 used_chars[max_elm] = true;
@@ -216,7 +250,13 @@ std::vector<int> optimize_variables(DynamicHuffmanBlock& block, std::vector<Vari
         else if (tie_break == TieBreak::NonVarFreq) {
             // lit codeの出現頻度で決める
             std::sort(code_length_symbol_map[len].begin(), code_length_symbol_map[len].end(), [&](int a, int b) {
-                return char_stats[a].num_nonvar_occurrences_as_literal > char_stats[b].num_nonvar_occurrences_as_literal;
+                if (freq_count == FreqCount::NumNonVarAsLiteral) {
+                    return char_stats[a].num_nonvar_occurrences_as_literal > char_stats[b].num_nonvar_occurrences_as_literal;
+                }
+                else {
+                    return (char_stats[a].num_nonvar_occurrences_as_literal + char_stats[a].num_nonvar_occurrencess_as_nonliteral)
+                        > (char_stats[b].num_nonvar_occurrences_as_literal + char_stats[b].num_nonvar_occurrencess_as_nonliteral);
+                }
             });
             for(auto var : code_length_symbol_map[len]) {
                 if (used_chars[var]) continue;

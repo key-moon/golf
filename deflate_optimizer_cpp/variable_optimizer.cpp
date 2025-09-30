@@ -73,11 +73,11 @@ int main(int argc, char** argv) {
         auto best_block = *db;
         auto best_variables = variables;
 
-        auto trial = [&](const DynamicHuffmanBlock& _block, const std::vector<Variable>& _variables, TieBreak tie_break) {
+        auto trial = [&](const DynamicHuffmanBlock& _block, const std::vector<Variable>& _variables, FreqCount freq_count, TieBreak tie_break) {
             auto block = _block;
             auto variables = _variables;
             int before = block.bit_length();
-            auto variable_to_new_literal_mapping = optimize_variables(block, variables, var_dependency, tie_break, VariableAssignment::Greedy);
+            auto variable_to_new_literal_mapping = optimize_variables(block, variables, var_dependency, freq_count, tie_break, VariableAssignment::Greedy);
             replace_and_recompute_parsing(block, variables, variable_to_new_literal_mapping);
             optimize_huffman_tree(block, {}, true, num_iter);
             int after = block.bit_length();
@@ -101,8 +101,8 @@ int main(int argc, char** argv) {
         for (int i = 0; i < max_num_round; ++i) {
             std::vector<std::pair<DynamicHuffmanBlock, std::vector<Variable>>> new_cands;
             for (auto [cand_block, cand_vars] : cands) {
-                auto res1 = trial(cand_block, cand_vars, TieBreak::NonVarFreq);
-                auto res2 = trial(cand_block, cand_vars, TieBreak::BFS);
+                auto res1 = trial(cand_block, cand_vars, FreqCount::NumNonVarAsLiteral, TieBreak::NonVarFreq);
+                auto res2 = trial(cand_block, cand_vars, FreqCount::NumNonVarAsLiteral, TieBreak::BFS);
                 if (std::get<0>(res1)) {
                     new_cands.push_back({std::get<1>(res1), std::get<2>(res1)});
                 }

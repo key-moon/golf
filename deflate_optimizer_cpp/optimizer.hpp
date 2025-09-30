@@ -21,8 +21,8 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
     }
     int idx = 0;
     while (true) {
-        double prob = XorShift::rand_double();
-        if (prob < 0.5) {
+        int move = XorShift::randn(5);
+        if (move == 0) {
             int target1, target2;
             target1 = XorShift::randn(code_lengths.size());
             if (code_lengths[target1] == 0) continue;
@@ -38,7 +38,7 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
             std::swap(code_lengths[target1], code_lengths[target2]);
             // std::cerr << "Operated: adjacent swap " << target1 << " " << target2 << std::endl;
             break;
-        } else if (prob < 0.75) {
+        } else if (move == 1) {
             // random swap
             int target1 = XorShift::randn(code_lengths.size());
             int target2 = XorShift::randn(code_lengths.size());
@@ -49,14 +49,47 @@ void randomly_update_code_lengths(std::vector<int>& code_lengths, int MAX_BIT_WI
             // std::cerr << "Operated: random swap " << target1 << " " << target2 << std::endl;
             break;
         } else {
-            int target_len = XorShift::randn(MAX_BIT_WIDTH - 1) + 1;
-            if (length_buckets[target_len].size() < 3) continue;
-            auto perm = XorShift::rand_perm(length_buckets[target_len].size());
-            --code_lengths[length_buckets[target_len][perm[0]]];
-            ++code_lengths[length_buckets[target_len][perm[1]]];
-            ++code_lengths[length_buckets[target_len][perm[2]]];
-            // std::cerr << "Operated: length change (++-) " << length_buckets[target_len][perm[0]] << " " << length_buckets[target_len][perm[1]] << " " << length_buckets[target_len][perm[2]] << std::endl;
-            break;
+            if (move == 2) {
+                std::vector<int> candidate_lengths;
+                for (int len = 1; len <= MAX_BIT_WIDTH; ++len) {
+                    if (length_buckets[len].size() >= 2) {
+                        candidate_lengths.push_back(len);
+                    }
+                }
+                if (candidate_lengths.empty()) continue;
+                int target_len = candidate_lengths[XorShift::randn(candidate_lengths.size())];
+                auto perm = XorShift::rand_perm(length_buckets[target_len].size());
+                int to_zero = length_buckets[target_len][perm[0]];
+                int to_shorten = length_buckets[target_len][perm[1]];
+                code_lengths[to_zero] = 0;
+                --code_lengths[to_shorten];
+                // std::cerr << "Operated: zero + shorten " << to_zero << " " << to_shorten << std::endl;
+                break;
+            } else if (move == 3) {
+                if (length_buckets[0].empty()) continue;
+                std::vector<int> non_zero_candidates;
+                for (int len = 1; len < MAX_BIT_WIDTH; ++len) {
+                    non_zero_candidates.insert(non_zero_candidates.end(), length_buckets[len].begin(), length_buckets[len].end());
+                }
+                if (non_zero_candidates.empty()) continue;
+                int zero_idx = length_buckets[0][XorShift::randn(length_buckets[0].size())];
+                int target_idx = non_zero_candidates[XorShift::randn(non_zero_candidates.size())];
+                int new_length = code_lengths[target_idx] + 1;
+                if (new_length > MAX_BIT_WIDTH) continue;
+                ++code_lengths[target_idx];
+                code_lengths[zero_idx] = new_length;
+                // std::cerr << "Operated: zero to match extended " << zero_idx << " " << target_idx << std::endl;
+                break;
+            } else {
+                int target_len = XorShift::randn(MAX_BIT_WIDTH - 1) + 1;
+                if (length_buckets[target_len].size() < 3) continue;
+                auto perm = XorShift::rand_perm(length_buckets[target_len].size());
+                --code_lengths[length_buckets[target_len][perm[0]]];
+                ++code_lengths[length_buckets[target_len][perm[1]]];
+                ++code_lengths[length_buckets[target_len][perm[2]]];
+                // std::cerr << "Operated: length change (++-) " << length_buckets[target_len][perm[0]] << " " << length_buckets[target_len][perm[1]] << " " << length_buckets[target_len][perm[2]] << std::endl;
+                break;
+            }
         }
     }
 }

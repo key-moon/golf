@@ -1,6 +1,16 @@
 #pragma once
 #include "blocks.hpp"
 
+class LitCodeDPFailure : public std::runtime_error {
+public:
+    using std::runtime_error::runtime_error;
+};
+
+class DistCodeDPFailure : public std::runtime_error {
+public:
+    using std::runtime_error::runtime_error;
+};
+
 void optimize_lit_code_huffman_slow(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=9) {
     std::vector<int> lit_freq(286, 0);
     std::vector<int> dist_freq(30, 0);
@@ -320,6 +330,9 @@ void optimize_lit_code_huffman_fast(DynamicHuffmanBlock& block, int MAX_BIT_WIDT
     }
 
     int best_cost = best.first;
+    if (best_cost == 1e6) {
+        throw LitCodeDPFailure("Literal code DP failed: ans = INF");
+    }
     int code = best.second;
     std::vector<int> new_lit_code_lengths(lit_freq.size(), 0);
     int i = lit_freq.size();
@@ -438,7 +451,7 @@ void optimize_dist_code_huffman(DynamicHuffmanBlock& block, int MAX_BIT_WIDTH=6)
     }
 
     if (best.first >= INF) {
-        throw std::runtime_error("DP failed for distance codes");
+        throw DistCodeDPFailure("Distance code DP failed: ans = INF");
     }
 
     int code = best.second;
