@@ -83,6 +83,11 @@ struct RLEDPTable {
         std::vector<int> prev;
     };
 
+    class RLEDPFailure : public std::runtime_error {
+    public:
+        using std::runtime_error::runtime_error;
+    };
+
     struct PairHash {
         std::size_t operator()(const std::pair<int, int>& key) const noexcept {
             std::size_t h1 = static_cast<std::size_t>(static_cast<uint32_t>(key.first));
@@ -280,7 +285,10 @@ struct RLEDPTable {
             int cost16 = raw_length(cl_code_lengths, 16);
             auto& table = get_nonzero_entry(cost_value, cost16, entry.count);
             if (entry.count >= table.dp.size() || table.dp[entry.count] >= INF_CHECK) {
-                throw std::runtime_error("DP failed for non-zero value run while encoding CL");
+                throw RLEDPFailure("DP failed for non-zero value run while encoding CL (value=" + std::to_string(entry.value) + "," +
+                                       " count=" + std::to_string(entry.count) + "," +
+                                       " cost_value=" + std::to_string(cost_value) + "," +
+                                       " cost16=" + std::to_string(cost16) + ")");
             }
             int i = entry.count;
             while (i > 0) {
@@ -302,7 +310,11 @@ struct RLEDPTable {
             int cost18 = raw_length(cl_code_lengths, 18);
             auto& table = get_zero_entry(cost0, cost16, cost17, cost18, entry.count);
             if (entry.count >= table.dp.size() || table.dp[entry.count] >= INF_CHECK) {
-                throw std::runtime_error("DP failed for zero value run while encoding CL");
+                throw RLEDPFailure("DP failed for zero value run while encoding CL (count=" + std::to_string(entry.count) + "," + 
+                                    " cost0=" + std::to_string(cost0) + "," +
+                                    " cost16=" + std::to_string(cost16) + "," +
+                                    " cost17=" + std::to_string(cost17) + "," +
+                                    " cost18=" + std::to_string(cost18) + ")");
             }
             int i = entry.count;
             while (i > 0) {

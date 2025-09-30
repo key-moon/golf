@@ -125,6 +125,7 @@ void replace_and_recompute_parsing(DynamicHuffmanBlock& block, std::vector<Varia
 enum TieBreak {
     BFS,
     NonVarFreq,
+    NoUpdate,
 };
 
 enum VariableAssignment {

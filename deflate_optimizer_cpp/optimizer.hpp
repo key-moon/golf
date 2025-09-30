@@ -111,6 +111,7 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& c
             */
         }
         optimize_lit_code_huffman(block);
+        optimize_dist_code_huffman(block);
 
         auto old_cl_code_lengths = block.cl_code_lengths;
         auto old_tokens = block.tokens;
@@ -135,4 +136,5 @@ void optimize_huffman_tree(DynamicHuffmanBlock& block, const std::vector<int>& c
         // std::cerr << std::endl;
     }
     optimize_lit_code_huffman(block);
+    optimize_dist_code_huffman(block);
 }
