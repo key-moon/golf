@@ -58,8 +58,8 @@ std::vector<std::vector<int>> INITIAL_CL_CODE_LENGTHS = {
 
 int main(int argc, char** argv) {
     int num_iter = 10;
-    if (argc != 5) {
-        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> <variable_dump_file> <output_deflate_dump_file> <output_variable_dump_file>\n";
+    if (argc != 4 && argc != 5) {
+        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> <variable_dump_file> <output_deflate_dump_file> [output_variable_dump_file]\n";
         return 1;
     }
     std::string filepath = argv[1];
@@ -77,10 +77,12 @@ int main(int argc, char** argv) {
     }
 
     std::string out_deflate_filepath = argv[3];
-    std::string out_var_filepath = argv[4];
+    std::string out_var_filepath = argc >= 5 ? argv[4] : "";
 
     std::cerr << "Deflate text file will be written to: " << out_deflate_filepath << "\n";
-    std::cerr << "Variable text file will be written to: " << out_var_filepath << "\n";
+    if (argc >= 5) {
+        std::cerr << "Variable text file will be written to: " << out_var_filepath << "\n";
+    }
 
     std::vector<std::unique_ptr<Block>> blocks;
     int num_factors = 0;
@@ -198,13 +200,15 @@ int main(int argc, char** argv) {
                 best_state.block.dump_string(out_deflate_file);
                 out_deflate_file.close();
 
-                std::ofstream out_var_file(out_var_filepath);
-                if (!out_var_file.is_open()) {
-                    std::cerr << "Error opening output variable file: " << out_var_filepath << "\n";
-                    return;
+                if (!out_var_filepath.empty()) {
+                    std::ofstream out_var_file(out_var_filepath);
+                    if (!out_var_file.is_open()) {
+                        std::cerr << "Error opening output variable file: " << out_var_filepath << "\n";
+                        return;
+                    }
+                    write_variables_to_stream(out_var_file, best_state.variables, var_dependency);
+                    out_var_file.close();
                 }
-                write_variables_to_stream(out_var_file, best_state.variables, var_dependency);
-                out_var_file.close();
             }
         }
     };
