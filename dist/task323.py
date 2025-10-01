@@ -1,1 +1,1 @@
-p=lambda g,R=range(13):[[g[i][j]+(abs((d:=i-(k:=sum(g,[]).index(8))//13)+j-k%13-(d//7|1))<2*(d!=0)-d%2)*5for j in R]for i in R]
+p=lambda g,R=range(13):[[g[i][j]+(abs((d:=i-g.index(m:=max(g)))+j-m.index(8)-(d//7|1))<2*(d!=0)-d%2)*5for j in R]for i in R]

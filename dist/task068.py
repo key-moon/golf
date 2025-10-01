@@ -1,1 +1,1 @@
-p=lambda g,c=-3:c*[[(d:=min(u:=sum(g,[]),key=u.count))*(y==d)for y in s]for s in g]or[[[(c>0)*2,c:=y][y>0]for y in s]for s in zip(*p(g,c+1)[::-1])]
+p=lambda g,c=-3,l=0:c*g or[[[(l>0)*2,l:=y*(y==min(u:=sum(g,[]),key=u.count)or c<0)][l>0]for y in s]for s in zip(*p(g,c+1)[::-1])]
