@@ -704,13 +704,9 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
 
 # Example
 mapping = {
-    -7:-1,
-    -6:1,
-    -5:-1,
-    -4:-1,
-    -3:-1,
-    -2:1,
-    -1:-1,
-    0:-1,
+    0:0,
+    1:0,
+    2:0,
+    3:1,
 }
 search_mapping(mapping, max_bytes=9, var_name_lens=1)

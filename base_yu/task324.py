@@ -1,22 +1,29 @@
 # best: 259(jailctf merger) / others: 260(ox jam), 263(jacekw Potatoman nauti natte), 263(natte), 309(jacekwl Potatoman nauti), 309(jacekw Potatoman nauti)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
- m={}
- a=set()
- b=set()
- for _ in range(2):
-  for i in range(len(g)):
-   for j in range(len(g[i])):
-    if _*g[i][j]in c[:2]:
-     a|={j-i}
-     b|={j+i}
-   d={*g[i]}
-   if len(d)==2 and d&{*c[:2]}:
-    m[sum(d&{*c[:2]})]=m[sum(d&{*c[2:]})]=sum(d&{*c[:2]})
-    d^={*c}
-    m[sum(d&{*c[:2]})]=m[sum(d&{*c[2:]})]=sum(d&{*c[:2]})
-  g=[*zip(*g)]
- return [[[g[i][j],m[g[i][j]]][i-j in a or i+j in b]for j in range(len(g[i]))]for i in range(len(g))]
+ for s in [*g,*zip(*g)]:
+  if{*s}in({c[1],c[2]},{c[0],c[3]}):c[0],c[1]=c[1],c[0]
+ return[[c[c.index(g[i][j])%(4-2*(i-j in{i-j for i in range(len(g))for j in range(len(g[i]))if g[i][j]in c[:2]}or i+j in{i+j for i in range(len(g))for j in range(len(g[i]))if g[i][j]in c[:2]}))]for j in range(len(g[i]))]for i in range(len(g))]
+
+
+# def p(g):
+#  c=sorted({*sum(g,[])},key=sum(g,[]).count)
+#  m={}
+#  a=set()
+#  b=set()
+#  for _ in range(2):
+#   for i in range(len(g)):
+#    for j in range(len(g[i])):
+#     if _*g[i][j]in c[:2]:
+#      a|={j-i}
+#      b|={j+i}
+#    d={*g[i]}
+#    if len(d)==2 and d&{*c[:2]}:
+#     m[sum(d&{*c[:2]})]=m[sum(d&{*c[2:]})]=sum(d&{*c[:2]})
+#     d^={*c}
+#     m[sum(d&{*c[:2]})]=m[sum(d&{*c[2:]})]=sum(d&{*c[:2]})
+#   g=[*zip(*g)]
+#  return [[[g[i][j],m[g[i][j]]][i-j in a or i+j in b]for j in range(len(g[i]))]for i in range(len(g))]
 
 
 # def p(g):
