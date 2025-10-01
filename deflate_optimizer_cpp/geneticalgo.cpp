@@ -76,7 +76,7 @@ struct GAState {
         return s;
     }
     int bit_length() const {
-        return block.bit_length();
+        return block.bit_length_with_added_size(); // escape込みで評価
     }
     void print_cl_code_lengths() const {
         for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
@@ -264,6 +264,7 @@ int main(int argc, char** argv) {
             best_state.print_cl_code_lengths();
             std::cerr << "Variable assignment: ";
             best_state.print_var_assignment();
+            std::cerr << "Binary byte size: " << best_state.block.encode_to_bytes().first.size() << " bytes\n";
             if (state_bit_length < best_bit_length) {
                 std::cerr << "Writing output files...\n";
                 std::ofstream out_deflate_file(out_deflate_filepath);

@@ -135,15 +135,7 @@ def _run_genetic_algorithm(
         str(states_path),
     ]
 
-    @dataclass(frozen=True)
-    class SnapshotCacheEntry:
-        raw_compressed: bytes
-        embed: bytes
-        extra_overhead: int
-        res: bytes
-
     # 一度最適化した圧縮結果を覚えて再利用する
-    seen_cache: Dict[bytes, SnapshotCacheEntry] = {}
     snapshot_warning_emitted = False
 
     py_output_best_len: Optional[int] = None
@@ -179,40 +171,17 @@ def _run_genetic_algorithm(
                 )
                 snapshot_warning_emitted = True
             return None
-        entry = seen_cache.get(compressed)
-        if entry is None:
-            print('[genetic_algo] caching new snapshot result...', file=sys.stderr)
-            raw_compressed = optimize_deflate_stream(
-                compressed,
-                lambda x: len(get_embed_str(x)),
-                num_iteration=5000,
-                num_perturbation=3,
-                tolerance_bit=16,
-                # terminate_threshold=2 + len(val) + 1,
-                seed=1234,
-            )
-            embed = get_embed_str(raw_compressed)
-            extra_overhead = len(embed) - (len(raw_compressed) + 2)
-            extra_args = determine_wbits(raw_compressed)
-            prefix = (
-                f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes("
-            ).encode()
-            suffix = b",'L1')" + extra_args.encode() + b"))"
-            res = prefix + embed + suffix
-            entry = SnapshotCacheEntry(
-                raw_compressed=raw_compressed,
-                embed=embed,
-                extra_overhead=extra_overhead,
-                res=res,
-            )
-            print('[genetic_algo] done caching new snapshot result.', file=sys.stderr)
-            seen_cache[compressed] = entry
-        else:
-            raw_compressed = entry.raw_compressed
-            extra_overhead = entry.extra_overhead
-            res = entry.res
 
-        output_path.write_bytes(raw_compressed)
+        extra_args = determine_wbits(compressed)
+        prefix = (
+            f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes("
+        ).encode()
+        suffix = b",'L1')" + extra_args.encode() + b"))"
+        embed = get_embed_str(compressed)
+        extra_overhead = len(embed) - (len(compressed) + 2)
+        res = prefix + embed + suffix
+
+        output_path.write_bytes(compressed)
 
         current_best = py_output_best_len
         if current_best is None:
@@ -230,12 +199,12 @@ def _run_genetic_algorithm(
 
         message = "" if extra_overhead == 0 else f"encode:{signed_str(extra_overhead)}"
         print(
-            f"[genetic_algo]   snapshot: {output_path} => {len(raw_compressed)} bytes, final: {len(res)} bytes ({message})",
+            f"[genetic_algo]   snapshot: {output_path} => {len(compressed)} bytes, final: {len(res)} bytes ({message})",
             file=sys.stderr,
         )
 
         snapshot_warning_emitted = False
-        return bit_length, entry.raw_compressed
+        return bit_length, compressed
 
     stop_event = threading.Event()
 

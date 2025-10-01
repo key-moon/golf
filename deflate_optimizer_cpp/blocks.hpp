@@ -10,6 +10,240 @@
 #include <unordered_map>
 #include <cstdint>
 #include <stdexcept>
+#include <utility>
+#include <array>
+#include <limits>
+
+struct BitWriter {
+    // Packs individual bits in little-endian order as required by DEFLATE.
+    void write_bits(uint32_t bits, int count) {
+        if (count <= 0) {
+            return;
+        }
+        uint64_t mask = (count >= 32) ? 0xffffffffull : ((1ull << count) - 1ull);
+        bit_buffer_ |= (static_cast<uint64_t>(bits) & mask) << bit_count_;
+        bit_count_ += count;
+        while (bit_count_ >= 8) {
+            bytes_.push_back(static_cast<unsigned char>(bit_buffer_ & 0xffu));
+            bit_buffer_ >>= 8;
+            bit_count_ -= 8;
+        }
+    }
+
+    std::vector<unsigned char> take_bytes() {
+        if (bit_count_ > 0) {
+            bytes_.push_back(static_cast<unsigned char>(bit_buffer_ & 0xffu));
+            bit_buffer_ = 0;
+            bit_count_ = 0;
+        }
+        return std::move(bytes_);
+    }
+
+    int get_bit_length() const {
+        return static_cast<int>(bytes_.size()) * 8 + bit_count_;
+    }
+
+private:
+    std::vector<unsigned char> bytes_;
+    uint64_t bit_buffer_ = 0;
+    int bit_count_ = 0;
+};
+
+inline std::string repeat_backslash(std::size_t count) {
+    return std::string(count, '\\');
+}
+
+inline void replace_all(std::string& target, const std::string& from, const std::string& to) {
+    if (from.empty()) {
+        return;
+    }
+    std::size_t pos = 0;
+    while ((pos = target.find(from, pos)) != std::string::npos) {
+        target.replace(pos, from.size(), to);
+        pos += to.size();
+    }
+}
+
+inline uint16_t reverse_bits(uint16_t code, int bit_length) {
+    uint16_t res = 0;
+    for (int i = 0; i < bit_length; ++i) {
+        res = static_cast<uint16_t>((res << 1) | (code & 1u));
+        code >>= 1;
+    }
+    return res;
+}
+
+inline std::vector<uint16_t> build_reversed_canonical_codes(const std::vector<int>& code_lengths) {
+    int max_len = 0;
+    for (int len : code_lengths) {
+        if (len > max_len) {
+            max_len = len;
+        }
+    }
+    if (max_len == 0) {
+        return std::vector<uint16_t>(code_lengths.size(), 0);
+    }
+
+    std::vector<int> bl_count(max_len + 1, 0);
+    for (int len : code_lengths) {
+        if (len > 0) {
+            ++bl_count[len];
+        }
+    }
+
+    std::vector<uint16_t> next_code(max_len + 1, 0);
+    uint16_t code = 0;
+    for (int bits = 1; bits <= max_len; ++bits) {
+        code = static_cast<uint16_t>((code + bl_count[bits - 1]) << 1);
+        next_code[bits] = code;
+    }
+
+    std::vector<uint16_t> codes(code_lengths.size(), 0);
+    for (int symbol = 0; symbol < static_cast<int>(code_lengths.size()); ++symbol) {
+        int len = code_lengths[symbol];
+        if (len == 0) {
+            continue;
+        }
+        uint16_t canonical = next_code[len]++;
+        codes[symbol] = reverse_bits(canonical, len);
+    }
+    return codes;
+}
+
+static const std::string DOUBLE_ESCAPE_PLACEHOLDER = "%DOUBLE_ESCAPE%";
+
+static const std::array<std::string, 21> SHOULD_ESCAPES = {
+    std::string("\\\""), std::string("\\'"), std::string("\\0"), std::string("\\1"),
+    std::string("\\2"), std::string("\\3"), std::string("\\4"), std::string("\\5"),
+    std::string("\\6"), std::string("\\7"), std::string("\\N"), std::string("\\U"),
+    std::string("\\a"), std::string("\\b"), std::string("\\f"), std::string("\\n"),
+    std::string("\\r"), std::string("\\t"), std::string("\\u"), std::string("\\v"),
+    std::string("\\x")
+};
+
+inline std::string compute_python_embed_string(const std::string& input) {
+    std::string b = input;
+    replace_all(b, "\\\\", DOUBLE_ESCAPE_PLACEHOLDER);
+
+    for (const auto& esc : SHOULD_ESCAPES) {
+        std::string replacement = "\\" + esc;
+        replace_all(b, esc, replacement);
+    }
+
+    for (int i = 0; i < 8; ++i) {
+        char digit = static_cast<char>('0' + i);
+        std::string suffix(1, digit);
+
+        std::string pattern1 = "\\";
+        pattern1.push_back('\0');
+        pattern1 += suffix;
+        std::string replacement1 = repeat_backslash(3) + "000" + suffix;
+        replace_all(b, pattern1, replacement1);
+
+        std::string pattern2(1, '\0');
+        pattern2 += suffix;
+        std::string replacement2 = "\\000" + suffix;
+        replace_all(b, pattern2, replacement2);
+    }
+
+    std::string pattern_backslash_null = "\\";
+    pattern_backslash_null.push_back('\0');
+    std::string replacement_backslash_null = repeat_backslash(3) + "0";
+    replace_all(b, pattern_backslash_null, replacement_backslash_null);
+
+    std::string pattern_null(1, '\0');
+    std::string replacement_null = "\\0";
+    replace_all(b, pattern_null, replacement_null);
+
+    std::string pattern_backslash_cr = "\\";
+    pattern_backslash_cr.push_back('\r');
+    std::string replacement_backslash_cr = repeat_backslash(3) + "r";
+    replace_all(b, pattern_backslash_cr, replacement_backslash_cr);
+
+    std::string pattern_cr(1, '\r');
+    std::string replacement_cr = "\\r";
+    replace_all(b, pattern_cr, replacement_cr);
+
+    if (!b.empty() && b.back() == '\\') {
+        b.push_back('\\');
+    }
+
+    std::vector<std::string> candidates;
+    candidates.reserve(4);
+
+    auto add_single_quote_candidate = [&](char sep_char) {
+        std::string t = b;
+
+        std::string pattern_backslash_newline = "\\";
+        pattern_backslash_newline.push_back('\n');
+        std::string replacement_backslash_newline = repeat_backslash(3) + "n";
+        replace_all(t, pattern_backslash_newline, replacement_backslash_newline);
+
+        std::string pattern_newline(1, '\n');
+        std::string replacement_newline = "\\n";
+        replace_all(t, pattern_newline, replacement_newline);
+
+        std::string sep_str(1, sep_char);
+        std::string replacement_sep = "\\";
+        replacement_sep.push_back(sep_char);
+        replace_all(t, sep_str, replacement_sep);
+
+        replace_all(t, DOUBLE_ESCAPE_PLACEHOLDER, repeat_backslash(4));
+
+        std::string candidate = sep_str + t + sep_str;
+        candidates.push_back(std::move(candidate));
+    };
+
+    add_single_quote_candidate('\'');
+    add_single_quote_candidate('"');
+
+    auto add_triple_quote_candidate = [&](const std::string& sep) {
+        if (b.find(sep) != std::string::npos) {
+            return;
+        }
+        std::string t = b;
+
+        std::string pattern_backslash_newline = "\\";
+        pattern_backslash_newline.push_back('\n');
+        std::string replacement_backslash_newline = repeat_backslash(2);
+        replacement_backslash_newline.push_back('\n');
+        replace_all(t, pattern_backslash_newline, replacement_backslash_newline);
+
+        replace_all(t, DOUBLE_ESCAPE_PLACEHOLDER, repeat_backslash(4));
+
+        if (!t.empty() && t.back() == sep.front()) {
+            t.insert(t.size() - 1, 1, '\\');
+        }
+
+        std::string candidate = sep + t + sep;
+        candidates.push_back(std::move(candidate));
+    };
+
+    add_triple_quote_candidate("'''");
+    add_triple_quote_candidate("\"\"\"");
+
+    if (candidates.empty()) {
+        return std::string("''");
+    }
+
+    return *std::min_element(candidates.begin(), candidates.end(), [](const std::string& lhs, const std::string& rhs) {
+        return lhs.size() < rhs.size();
+    });
+}
+
+inline std::vector<unsigned char> get_embed_string_bytes(const std::vector<unsigned char>& data) {
+    std::string input(reinterpret_cast<const char*>(data.data()), data.size());
+    std::string escaped = compute_python_embed_string(input);
+    return std::vector<unsigned char>(escaped.begin(), escaped.end());
+}
+
+inline std::size_t compute_added_bytes_for_embed(const std::vector<unsigned char>& data) {
+    auto escaped = get_embed_string_bytes(data);
+    if (escaped.size() <= data.size()) {
+        return 0;
+    }
+    return escaped.size() - data.size();
+}
 
 struct Block {
     bool bfinal;
@@ -615,6 +849,74 @@ int num_additional_bits_for_dist(int distance) {
     else throw std::runtime_error("Invalid distance");
 }
 
+static const int LENGTH_BASE[29] = {
+    3, 4, 5, 6, 7, 8, 9, 10,
+    11, 13, 15, 17,
+    19, 23, 27, 31,
+    35, 43, 51, 59,
+    67, 83, 99, 115,
+    131, 163, 195, 227,
+    258
+};
+
+static const int LENGTH_EXTRA[29] = {
+    0, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1,
+    2, 2, 2, 2,
+    3, 3, 3, 3,
+    4, 4, 4, 4,
+    5, 5, 5, 5,
+    0
+};
+
+static const int DIST_BASE[30] = {
+    1, 2, 3, 4, 5, 7, 9, 13,
+    17, 25, 33, 49,
+    65, 97, 129, 193,
+    257, 385, 513, 769,
+    1025, 1537, 2049, 3073,
+    4097, 6145, 8193, 12289,
+    16385, 24577
+};
+
+static const int DIST_EXTRA[30] = {
+    0, 0, 0, 0, 1, 1, 2, 2,
+    3, 3, 4, 4,
+    5, 5, 6, 6,
+    7, 7, 8, 8,
+    9, 9, 10, 10,
+    11, 11, 12, 12,
+    13, 13
+};
+
+inline int length_base_for_code(int length_code) {
+    if (length_code < 257 || length_code > 285) {
+        throw std::runtime_error("Invalid length code");
+    }
+    return LENGTH_BASE[length_code - 257];
+}
+
+inline int length_extra_for_code(int length_code) {
+    if (length_code < 257 || length_code > 285) {
+        throw std::runtime_error("Invalid length code");
+    }
+    return LENGTH_EXTRA[length_code - 257];
+}
+
+inline int distance_base_for_code(int distance_code) {
+    if (distance_code < 0 || distance_code > 29) {
+        throw std::runtime_error("Invalid distance code");
+    }
+    return DIST_BASE[distance_code];
+}
+
+inline int distance_extra_for_code(int distance_code) {
+    if (distance_code < 0 || distance_code > 29) {
+        throw std::runtime_error("Invalid distance code");
+    }
+    return DIST_EXTRA[distance_code];
+}
+
 std::vector<RLEEntry> length_RLE(const std::vector<int>& vec) {
     std::vector<RLEEntry> res;
     int prev = -1;
@@ -822,6 +1124,187 @@ struct DynamicHuffmanBlock : public CompressedBlock {
         length += get_literal_code_length(256);
         return length;
     }
+    std::vector<unsigned char> encode_to_embed_bytes() const {
+        auto result = encode_to_bytes();
+        return get_embed_string_bytes(result.first);
+    }
+    int bit_length_with_added_size() const {
+        auto result = encode_to_bytes();
+        std::size_t added_bytes = compute_added_bytes_for_embed(result.first);
+        long long total_bits = static_cast<long long>(result.second) + static_cast<long long>(added_bytes) * 8LL;
+        if (total_bits > std::numeric_limits<int>::max()) {
+            throw std::overflow_error("bit_length_with_added_size overflow");
+        }
+        return static_cast<int>(total_bits);
+    }
+    std::pair<std::vector<unsigned char>, int> encode_to_bytes() const {
+        if (literal_code_lengths.size() < 257 || literal_code_lengths.size() > 286) {
+            throw std::runtime_error("Invalid literal code length table size");
+        }
+        if (distance_code_lengths.empty() || distance_code_lengths.size() > 32) {
+            throw std::runtime_error("Invalid distance code length table size");
+        }
+        if (cl_code_lengths.size() != 19) {
+            throw std::runtime_error("Invalid code-length alphabet size");
+        }
+
+        BitWriter writer;
+        writer.write_bits(bfinal ? 1u : 0u, 1);
+        writer.write_bits(0b10u, 2);
+
+        int hlit = static_cast<int>(literal_code_lengths.size()) - 257;
+        if (hlit < 0 || hlit > 31) {
+            throw std::runtime_error("HLIT out of range");
+        }
+        writer.write_bits(static_cast<uint32_t>(hlit), 5);
+
+        int hdist = static_cast<int>(distance_code_lengths.size()) - 1;
+        if (hdist < 0 || hdist > 31) {
+            throw std::runtime_error("HDIST out of range");
+        }
+        writer.write_bits(static_cast<uint32_t>(hdist), 5);
+
+        int hclen = 4;
+        for (int i = 18; i >= 0; --i) {
+            if (cl_code_lengths[CL_CODE_ORDER[i]] > 0) {
+                hclen = i + 1;
+                break;
+            }
+        }
+        if (hclen < 4) {
+            hclen = 4;
+        }
+        writer.write_bits(static_cast<uint32_t>(hclen - 4), 4);
+        for (int i = 0; i < hclen; ++i) {
+            int symbol = CL_CODE_ORDER[i];
+            int len = cl_code_lengths[symbol];
+            if (len < 0 || len > 7) {
+                throw std::runtime_error("Invalid CL code length");
+            }
+            writer.write_bits(static_cast<uint32_t>(len), 3);
+        }
+
+        auto cl_codes = build_reversed_canonical_codes(cl_code_lengths);
+        std::vector<RLECode> rle_codes = compute_RLE_encoded_representation(
+            literal_code_lengths, distance_code_lengths, cl_code_lengths);
+        for (const auto& code : rle_codes) {
+            int symbol = code.id();
+            if (symbol < 0 || symbol >= static_cast<int>(cl_code_lengths.size())) {
+                throw std::runtime_error("CL symbol out of range");
+            }
+            int len = cl_code_lengths[symbol];
+            if (len <= 0) {
+                throw std::runtime_error("Unused CL symbol referenced");
+            }
+            writer.write_bits(cl_codes[symbol], len);
+            if (code.type == RLECode::PREV_RUN) {
+                if (code.value < 3 || code.value > 6) {
+                    throw std::runtime_error("Invalid PREV_RUN length");
+                }
+                writer.write_bits(static_cast<uint32_t>(code.value - 3), 2);
+            } else if (code.type == RLECode::ZERO_RUN) {
+                if (code.value <= 10) {
+                    writer.write_bits(static_cast<uint32_t>(code.value - 3), 3);
+                } else {
+                    writer.write_bits(static_cast<uint32_t>(code.value - 11), 7);
+                }
+            }
+        }
+
+        auto literal_codes = build_reversed_canonical_codes(literal_code_lengths);
+        auto distance_codes = build_reversed_canonical_codes(distance_code_lengths);
+
+        for (const auto& tok : tokens) {
+            if (tok.type == Token::LITERAL) {
+                int symbol = tok.literal;
+                if (symbol < 0 || symbol >= static_cast<int>(literal_code_lengths.size())) {
+                    throw std::runtime_error("Literal symbol out of range");
+                }
+                int len = literal_code_lengths[symbol];
+                if (len <= 0) {
+                    throw std::runtime_error("Literal code has zero length");
+                }
+                writer.write_bits(literal_codes[symbol], len);
+            } else {
+                int length_code = convert_length_value_to_code(tok.pair.length);
+                if (length_code >= static_cast<int>(literal_code_lengths.size()) ||
+                    literal_code_lengths[length_code] <= 0) {
+                    throw std::runtime_error("Length code undefined");
+                }
+                int len_bits = literal_code_lengths[length_code];
+                writer.write_bits(literal_codes[length_code], len_bits);
+                int extra_len_bits = length_extra_for_code(length_code);
+                if (extra_len_bits > 0) {
+                    int base = length_base_for_code(length_code);
+                    int extra_value = tok.pair.length - base;
+                    if (extra_value < 0 || extra_value >= (1 << extra_len_bits)) {
+                        throw std::runtime_error("Length extra bits out of range");
+                    }
+                    writer.write_bits(static_cast<uint32_t>(extra_value), extra_len_bits);
+                }
+
+                int dist_code = convert_distance_value_to_code(tok.pair.distance);
+                if (dist_code >= static_cast<int>(distance_code_lengths.size()) ||
+                    distance_code_lengths[dist_code] <= 0) {
+                    throw std::runtime_error("Distance code undefined");
+                }
+                int dist_len = distance_code_lengths[dist_code];
+                writer.write_bits(distance_codes[dist_code], dist_len);
+                int extra_dist_bits = distance_extra_for_code(dist_code);
+                if (extra_dist_bits > 0) {
+                    int base = distance_base_for_code(dist_code);
+                    int extra_value = tok.pair.distance - base;
+                    if (extra_value < 0 || extra_value >= (1 << extra_dist_bits)) {
+                        throw std::runtime_error("Distance extra bits out of range");
+                    }
+                    writer.write_bits(static_cast<uint32_t>(extra_value), extra_dist_bits);
+                }
+            }
+        }
+
+        if (literal_code_lengths.size() <= 256 || literal_code_lengths[256] <= 0) {
+            throw std::runtime_error("End-of-block code undefined");
+        }
+        writer.write_bits(literal_codes[256], literal_code_lengths[256]);
+
+        int total_bit_length = writer.get_bit_length();
+        auto bytes = writer.take_bytes();
+        return {std::move(bytes), total_bit_length};
+    }
+
+    // TODO: return f"https://deflate-viz.pages.dev?deflate={base64.b64encode(deflate).decode().replace('+', '%2B').replace('/', '%2F').replace('=', '%3D')}"
+    std::string viz_deflate_url() const {
+        auto [deflate, bitlen] = encode_to_bytes();
+        std::string base64;
+        static const char* base64_chars =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            "abcdefghijklmnopqrstuvwxyz"
+            "0123456789+/";
+        int val = 0, valb = -6;
+        for (unsigned char c : deflate) {
+            val = (val << 8) + c;
+            valb += 8;
+            while (valb >= 0) {
+                base64.push_back(base64_chars[(val >> valb) & 0x3F]);
+                valb -= 6;
+            }
+        }
+        if (valb > -6) {
+            base64.push_back(base64_chars[((val << 8) >> (valb + 8)) & 0x3F]);
+        }
+        while (base64.size() % 4) {
+            base64.push_back('=');
+        }
+        std::string url = "https://deflate-viz.pages.dev?deflate=";
+        for (char c : base64) {
+            if (c == '+') url += "%2B";
+            else if (c == '/') url += "%2F";
+            else if (c == '=') url += "%3D";
+            else url += c;
+        }
+        return url;
+    }
+
     std::vector<int> get_string(const std::vector<int>& context) const override {
         std::vector<int> res;
         res.reserve(context.size() + tokens.size()); // 任意の最適化
