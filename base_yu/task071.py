@@ -2,7 +2,13 @@
 # ======================================================== 119 ========================================================
 
 # p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,[*filter(int,sum(g,[]))][0]})<2]for s in g])))>15][0]
-p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,max(sum(g,[]),key=bool)})<2]for s in g])))>15][0]
+# p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,max(sum(g,[]),key=bool)})<2]for s in g])))>15][0]
+# p=lambda g:[x for p in range(32)if min(map(len,x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{*max(g,key=any)})<2]for s in g]))>15][0]
+# p=lambda g,c=0:min(map(len,x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[c-j]}&{*max(g,key=any)})<2]for s in g]))//16*x or p(g,c+1)
+# p=lambda g,c=0:(x:=[sum([[*{s[j],(s+g[0])[c-j]}&{*max(g,key=any)}]for j in range(16)],[])for s in g])*([*map(len,x)]==[16]*16) or p(g,c+1)
+# p=lambda g,c=0:([*map(len,x:=[sum([[*{s[j],(s+g[0])[c-j]}&{*max(g,key=any)}]for j in range(16)],[])for s in g])]==[16]*16)*x or p(g,c+1)
+p=lambda g,c=0:({*map(len,x:=[sum([[*{s[j],(s+g[0])[c-j]}&{*max(g,key=any)}]for j in range(16)],[])for s in g])}=={16})*x or p(g,c+1)
+
 
 # def p(g):
 #  c=[*filter(int,sum(g,[]))][0]
