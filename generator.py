@@ -227,9 +227,9 @@ if __name__ == "__main__":
         best_result = TaskResult(
           i,
           True,
-          f"genetic-algo ({ga_method})",
+          "",
           base_path_for_result,
-          f"{ga_stripper}/genetic-algo",
+          f"{ga_stripper}/genetic-algo({ga_method})",
           len(ga_bytes),
         )
 
