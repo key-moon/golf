@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 956905
+Score: 956967
 
 Best Score: 959832
 
@@ -398,7 +398,7 @@ Best Score: 959832
 | [238](/vis/task238.png) | [dist](/dist/task238.py) | previous | [229](/dist/task238.py) (+6) | 223 🔴 | [vis-many](/vis_many/task238.png) | ⚠️ regression? |
 | [308](/vis/task308.png) | [dist](/dist/task308.py) | previous | [248](/dist/task308.py) (+22) | 226 🔴 | [vis-many](/vis_many/task308.png) | ⚠️ regression? |
 | [089](/vis/task089.png) | [dist](/dist/task089.py) | previous | [243](/dist/task089.py) (+7) | 236 🔴 | [vis-many](/vis_many/task089.png) | ⚠️ regression? |
-| [268](/vis/task268.png) | [dist](/dist/task268.py) | previous | [281](/dist/task268.py) (+42) | 239 🔴 | [vis-many](/vis_many/task268.png) | ⚠️ regression? |
+| [268](/vis/task268.png) | [base_yu](/base_yu/task268.py) | forcomp-t/genetic-algo(zlib) | [219](/dist/task268.py) (-20) | 239 🟢 | [vis-many](/vis_many/task268.png) |  |
 | [191](/vis/task191.png) | [dist](/dist/task191.py) | previous | [259](/dist/task191.py) (+18) | 241 🔴 | [vis-many](/vis_many/task191.png) | ⚠️ regression? |
 | [255](/vis/task255.png) | [dist](/dist/task255.py) | previous | [291](/dist/task255.py) (+49) | 242 🔴 | [vis-many](/vis_many/task255.png) | ⚠️ regression? |
 | [157](/vis/task157.png) | [base_notebooks](/base_notebooks/task157_20250911-071925Z-compressed-variable-name-optimization-garry-moss.py) | raw/zlib-zopfli-cpp-var-nozopfli | [241](/dist/task157.py) (-5) | 246 🟢 | [vis-many](/vis_many/task157.png) |  |
@@ -406,7 +406,7 @@ Best Score: 959832
 | [044](/vis/task044.png) | [dist](/dist/task044.py) | previous | [224](/dist/task044.py) (-31) | 255 🟢 | [vis-many](/vis_many/task044.png) | ⚠️ regression? |
 | [370](/vis/task370.png) | [dist](/dist/task370.py) | previous | [254](/dist/task370.py) (-2) | 256 🟢 | [vis-many](/vis_many/task370.png) | ⚠️ regression? |
 | [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [295](/dist/task219.py) (+38) | 257 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |
-| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [241](/dist/task324.py) (-18) | 259 🟢 | [vis-many](/vis_many/task324.png) |  |
+| [324](/vis/task324.png) | [dist](/dist/task324.py) | previous | [241](/dist/task324.py) (-18) | 259 🟢 | [vis-many](/vis_many/task324.png) | ⚠️ regression? |
 | [066](/vis/task066.png) | [dist](/dist/task066.py) | previous | [285](/dist/task066.py) (+17) | 268 🔴 | [vis-many](/vis_many/task066.png) | ⚠️ regression? |
 | [158](/vis/task158.png) | [dist](/dist/task158.py) | previous | [284](/dist/task158.py) (+15) | 269 🔴 | [vis-many](/vis_many/task158.png) | ⚠️ regression? |
 | [118](/vis/task118.png) | [dist](/dist/task118.py) | previous | [268](/dist/task118.py) (-3) | 271 🟢 | [vis-many](/vis_many/task118.png) | ⚠️ regression? |
