@@ -94,7 +94,6 @@
 | [240](/vis/task240.png) | [base_yu](/base_yu/task240.py) | raw/raw | [113](/dist/task240.py) (+14) | 99 🔴 | [vis-many](/vis_many/task240.png) | not worth compress |
 | [275](/vis/task275.png) | [base_yu](/base_yu/task275.py) | forplain/raw | [150](/dist/task275.py) (+14) | 136 🔴 | [vis-many](/vis_many/task275.png) | not worth compress |
 | [282](/vis/task282.png) | [base_yu](/base_yu/task282.py) | raw/raw | [97](/dist/task282.py) (+14) | 83 🔴 | [vis-many](/vis_many/task282.png) | not worth compress |
-| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [273](/dist/task324.py) (+14) | 259 🔴 | [vis-many](/vis_many/task324.png) |  |
 | [390](/vis/task390.png) | [base_yu](/base_yu/task390.py) | raw/raw | [113](/dist/task390.py) (+14) | 99 🔴 | [vis-many](/vis_many/task390.png) | not worth compress |
 | [059](/vis/task059.png) | [base_yu](/base_yu/task059.py) | forplain/raw | [169](/dist/task059.py) (+13) | 156 🔴 | [vis-many](/vis_many/task059.png) | not worth compress |
 | [068](/vis/task068.png) | [base_yu](/base_yu/task068.py) | raw/raw | [129](/dist/task068.py) (+13) | 116 🔴 | [vis-many](/vis_many/task068.png) | not worth compress |
@@ -405,6 +404,7 @@
 | [058](/vis/task058.png) | [base_yu](/base_yu/task058.py) | raw/raw | [90](/dist/task058.py) (-13) | 103 🟢 | [vis-many](/vis_many/task058.png) | not worth compress |
 | [264](/vis/task264.png) | [dist](/dist/task264.py) | previous | [201](/dist/task264.py) (-15) | 216 🟢 | [vis-many](/vis_many/task264.png) | ⚠️ regression? |
 | [185](/vis/task185.png) | [base_yu](/base_yu/task185.py) | raw/raw | [126](/dist/task185.py) (-17) | 143 🟢 | [vis-many](/vis_many/task185.png) | not worth compress |
+| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [241](/dist/task324.py) (-18) | 259 🟢 | [vis-many](/vis_many/task324.png) |  |
 | [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [279](/dist/task133.py) (-19) | 298 🟢 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [233](/vis/task233.png) | [dist](/dist/task233.py) | previous | [275](/dist/task233.py) (-22) | 297 🟢 | [vis-many](/vis_many/task233.png) | ⚠️ regression? |
 | [224](/vis/task224.png) | [base_yu](/base_yu/task224.py) | raw/raw | [145](/dist/task224.py) (-26) | 171 🟢 | [vis-many](/vis_many/task224.png) | not worth compress |

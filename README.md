@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 956873
+Score: 956905
 
 Best Score: 959832
 
@@ -406,7 +406,7 @@ Best Score: 959832
 | [044](/vis/task044.png) | [dist](/dist/task044.py) | previous | [224](/dist/task044.py) (-31) | 255 🟢 | [vis-many](/vis_many/task044.png) | ⚠️ regression? |
 | [370](/vis/task370.png) | [dist](/dist/task370.py) | previous | [254](/dist/task370.py) (-2) | 256 🟢 | [vis-many](/vis_many/task370.png) | ⚠️ regression? |
 | [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [295](/dist/task219.py) (+38) | 257 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |
-| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [273](/dist/task324.py) (+14) | 259 🔴 | [vis-many](/vis_many/task324.png) |  |
+| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [241](/dist/task324.py) (-18) | 259 🟢 | [vis-many](/vis_many/task324.png) |  |
 | [066](/vis/task066.png) | [dist](/dist/task066.py) | previous | [285](/dist/task066.py) (+17) | 268 🔴 | [vis-many](/vis_many/task066.png) | ⚠️ regression? |
 | [158](/vis/task158.png) | [dist](/dist/task158.py) | previous | [284](/dist/task158.py) (+15) | 269 🔴 | [vis-many](/vis_many/task158.png) | ⚠️ regression? |
 | [118](/vis/task118.png) | [dist](/dist/task118.py) | previous | [268](/dist/task118.py) (-3) | 271 🟢 | [vis-many](/vis_many/task118.png) | ⚠️ regression? |

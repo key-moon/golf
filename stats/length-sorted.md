@@ -25,7 +25,6 @@
 | [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [279](/dist/task133.py) (-19) | 298 🟢 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [209](/vis/task209.png) | [dist](/dist/task209.py) | previous | [279](/dist/task209.py) (+6) | 273 🔴 | [vis-many](/vis_many/task209.png) | ⚠️ regression? |
 | [233](/vis/task233.png) | [dist](/dist/task233.py) | previous | [275](/dist/task233.py) (-22) | 297 🟢 | [vis-many](/vis_many/task233.png) | ⚠️ regression? |
-| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [273](/dist/task324.py) (+14) | 259 🔴 | [vis-many](/vis_many/task324.png) |  |
 | [023](/vis/task023.png) | [dist](/dist/task023.py) | previous | [270](/dist/task023.py) (+75) | 195 🔴 | [vis-many](/vis_many/task023.png) | ⚠️ regression? |
 | [118](/vis/task118.png) | [dist](/dist/task118.py) | previous | [268](/dist/task118.py) (-3) | 271 🟢 | [vis-many](/vis_many/task118.png) | ⚠️ regression? |
 | [319](/vis/task319.png) | [dist](/dist/task319.py) | previous | [265](/dist/task319.py) (+71) | 194 🔴 | [vis-many](/vis_many/task319.png) | ⚠️ regression? |
@@ -38,6 +37,7 @@
 | [145](/vis/task145.png) | [dist](/dist/task145.py) | previous | [242](/dist/task145.py) (+51) | 191 🔴 | [vis-many](/vis_many/task145.png) | ⚠️ regression? |
 | [284](/vis/task284.png) | [dist](/dist/task284.py) | previous | [242](/dist/task284.py) (+22) | 220 🔴 | [vis-many](/vis_many/task284.png) | ⚠️ regression? |
 | [157](/vis/task157.png) | [base_notebooks](/base_notebooks/task157_20250911-071925Z-compressed-variable-name-optimization-garry-moss.py) | raw/zlib-zopfli-cpp-var-nozopfli | [241](/dist/task157.py) (-5) | 246 🟢 | [vis-many](/vis_many/task157.png) |  |
+| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [241](/dist/task324.py) (-18) | 259 🟢 | [vis-many](/vis_many/task324.png) |  |
 | [005](/vis/task005.png) | [dist](/dist/task005.py) | previous | [234](/dist/task005.py) (+28) | 206 🔴 | [vis-many](/vis_many/task005.png) | ⚠️ regression? |
 | [363](/vis/task363.png) | [base_yu](/base_yu/task363.py) | forcomp-t/zlib-zopfli-cpp-var-zopfli | [234](/dist/task363.py) (+21) | 213 🔴 | [vis-many](/vis_many/task363.png) |  |
 | [387](/vis/task387.png) | [dist](/dist/task387.py) | previous | [231](/dist/task387.py) (+13) | 218 🔴 | [vis-many](/vis_many/task387.png) | ⚠️ regression? |
