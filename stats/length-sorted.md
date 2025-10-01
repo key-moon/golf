@@ -15,7 +15,6 @@
 | [018](/vis/task018.png) | [dist](/dist/task018.py) | previous | [314](/dist/task018.py) (-9) | 323 🟢 | [vis-many](/vis_many/task018.png) | ⚠️ regression? |
 | [101](/vis/task101.png) | [dist](/dist/task101.py) | previous | [306](/dist/task101.py) (+25) | 281 🔴 | [vis-many](/vis_many/task101.png) | ⚠️ regression? |
 | [054](/vis/task054.png) | [dist](/dist/task054.py) | previous | [299](/dist/task054.py) (+20) | 279 🔴 | [vis-many](/vis_many/task054.png) | ⚠️ regression? |
-| [324](/vis/task324.png) | [dist](/dist/task324.py) | previous | [298](/dist/task324.py) (+39) | 259 🔴 | [vis-many](/vis_many/task324.png) | ⚠️ regression? |
 | [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [295](/dist/task219.py) (+38) | 257 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |
 | [285](/vis/task285.png) | [dist](/dist/task285.py) | previous | [294](/dist/task285.py) (+6) | 288 🔴 | [vis-many](/vis_many/task285.png) | ⚠️ regression? |
 | [255](/vis/task255.png) | [dist](/dist/task255.py) | previous | [291](/dist/task255.py) (+49) | 242 🔴 | [vis-many](/vis_many/task255.png) | ⚠️ regression? |
@@ -26,6 +25,7 @@
 | [133](/vis/task133.png) | [dist](/dist/task133.py) | previous | [279](/dist/task133.py) (-19) | 298 🟢 | [vis-many](/vis_many/task133.png) | ⚠️ regression? |
 | [209](/vis/task209.png) | [dist](/dist/task209.py) | previous | [279](/dist/task209.py) (+6) | 273 🔴 | [vis-many](/vis_many/task209.png) | ⚠️ regression? |
 | [233](/vis/task233.png) | [dist](/dist/task233.py) | previous | [275](/dist/task233.py) (-22) | 297 🟢 | [vis-many](/vis_many/task233.png) | ⚠️ regression? |
+| [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zlib) | [273](/dist/task324.py) (+14) | 259 🔴 | [vis-many](/vis_many/task324.png) |  |
 | [023](/vis/task023.png) | [dist](/dist/task023.py) | previous | [270](/dist/task023.py) (+75) | 195 🔴 | [vis-many](/vis_many/task023.png) | ⚠️ regression? |
 | [118](/vis/task118.png) | [dist](/dist/task118.py) | previous | [268](/dist/task118.py) (-3) | 271 🟢 | [vis-many](/vis_many/task118.png) | ⚠️ regression? |
 | [319](/vis/task319.png) | [dist](/dist/task319.py) | previous | [265](/dist/task319.py) (+71) | 194 🔴 | [vis-many](/vis_many/task319.png) | ⚠️ regression? |
