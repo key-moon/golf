@@ -1,7 +1,9 @@
 import dataclasses
 import os
+import re
 import shutil
 import sys
+from pathlib import Path
 from typing import Callable
 import json
 import hashlib
@@ -15,6 +17,9 @@ from dataclass_wizard import JSONWizard
 from public_data import TaskSubmissionWithName, get_scores_per_task, record_ours_task_score_progression, _PAT_BEST, _PAT_EQ
 from strip import strippers
 from utils import get_code_paths, get_task
+
+GA_OUTPUT_ROOT = Path("optimizer_results/genetic_algo")
+GA_DIR_PATTERN = re.compile(r"^(?P<base>.+)-(?P<task>\d+)-(?P<stripper>.+)-(?P<method>zopfli|zlib)$")
 
 def check_str(task_id: int, code: str | bytes, task, checked_hash):
   digest = hashlib.sha256(code.encode() if isinstance(code, str) else code).hexdigest()
@@ -81,6 +86,31 @@ class TaskResult(JSONWizard):
 class RunResult(JSONWizard):
   score: int
   results: list[TaskResult]
+
+
+def _collect_ga_results(task_id: int) -> list[tuple[Path, Path | None, str, str]]:
+  if not GA_OUTPUT_ROOT.exists():
+    return []
+  pattern = f"task{task_id:03d}.py"
+  results: list[tuple[Path, Path | None, str, str]] = []
+  for candidate in GA_OUTPUT_ROOT.rglob(pattern):
+    if not candidate.is_file():
+      continue
+    match = GA_DIR_PATTERN.match(candidate.parent.name)
+    if not match:
+      continue
+    try:
+      dir_task = int(match.group("task"))
+    except ValueError:
+      continue
+    if dir_task != task_id:
+      continue
+    stripper = match.group("stripper")
+    method = match.group("method")
+    base_root = match.group("base")
+    base_source = Path(f"{base_root}/task{task_id:03d}.py") if base_root else None
+    results.append((candidate, base_source if base_source.exists() else None, stripper, method))
+  return results
 
 
 def handle_results(results: list[TaskResult]):
@@ -186,6 +216,23 @@ if __name__ == "__main__":
           shortest = compressed
           best_result = TaskResult(i, True, compress_msg, base_path, f"{stripper}/{comp_name}", len(compressed))
 
+    for ga_path, ga_base_source, ga_stripper, ga_method in _collect_ga_results(i):
+      try:
+        ga_bytes = ga_path.read_bytes()
+      except OSError:
+        continue
+      if len(ga_bytes) < len(shortest):
+        shortest = ga_bytes
+        base_path_for_result = ga_base_source.as_posix() if ga_base_source is not None else ga_path.as_posix()
+        best_result = TaskResult(
+          i,
+          True,
+          f"genetic-algo ({ga_method})",
+          base_path_for_result,
+          f"{ga_stripper}/genetic-algo",
+          len(ga_bytes),
+        )
+
     if shortest == INVALID:
       print(f"[!] failed: vis/task{i:03}.png")
       results.append(TaskResult(i, False, "❌ WA"))
@@ -198,8 +245,8 @@ if __name__ == "__main__":
       exit(1)
 
     assert best_result.base_path is not None
-    # retire all other codes
-    if not best_result.base_path.startswith("dist"):
+    # retire all other codes (if not /dist and genetic_algo)
+    if not best_result.base_path.startswith("dist") and not best_result.base_path.startswith(GA_OUTPUT_ROOT.as_posix()):
       for base_path in get_code_paths("base_*", i):
         if base_path == best_result.base_path: continue
         if base_path.split("/")[0] in DISALLOW_RETIRE: continue
