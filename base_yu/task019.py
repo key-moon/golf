@@ -1,4 +1,4 @@
-# best: 105(ox jam) / others: 109(4atj sisyphus luke Seek mukundan), 116(intgrah jimboko awu macaque sammyuri), 117(jailctf merger), 130(duckyluuk), 141(HETHAT)
+# best: 105(ox jam) / others: 109(4atj sisyphus luke Seek mukundan), 116(intgrah jimboko awu macaque sammyuri), 117(jailctf merger), 122(jacekw Potatoman nauti natte), 130(duckyluuk)
 # ================================================= 105 =================================================
 # p=lambda g,z=[0]*9:[[v or any([0,*[z,*g*2,z][i+(k&2)]*2,0][j+k%2*2]for k in range(4))*8for j,v in enumerate(s*2)]for i,s in enumerate(g*2)]
 # p=lambda g,c=-1,l=[]:c*[s*2for s in g*2]or[l:=[v or any({*[0,*l][i:i+3:2]}-{8})*8for i,v in enumerate(s)]for s in p(g,c+1)[::-1]]
