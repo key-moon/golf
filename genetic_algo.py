@@ -3,13 +3,15 @@
 # プログラム改変後に再度走らせたい場合は current_states / input_deflate / input_variable を削除してから再実行で良い
 
 import argparse
+import os
+import random
 import sys
 import threading
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, as_completed, wait
 from dataclasses import dataclass
 from io import StringIO
 from pathlib import Path
-from typing import Dict, Optional, Sequence
+from typing import Iterator, Optional, Sequence
 import subprocess
 import traceback
 
@@ -21,6 +23,7 @@ from deflate_optimizer.load_deflate_text import load_deflate_stream
 from deflate_optimizer.enumerate_variable_occurrences import list_var_occurrences
 from deflate_optimizer.variable_conflict import build_conflict_report
 from compress import get_embed_str, optimize_deflate_stream, determine_wbits, signed_str
+from get_compression_candidates import CompressionCandidate, collect_compress_candidates
 from strip import strippers
 from utils import get_code_paths, viz_deflate_url
 
@@ -36,6 +39,17 @@ class GAExecutionResult:
     output_text: str
     workdir: Optional[str] = None
     error: Optional[str] = None
+
+
+@dataclass(frozen=True)
+class GAJob:
+    task_id: int
+    task_dir: str
+    base_path: Path
+    stripper: str
+
+    def label(self) -> str:
+        return f"{self.task_dir}/task{self.task_id:03d}:{self.stripper}"
 
 
 def _truncate(text: str, limit: int = 2000) -> str:
@@ -328,9 +342,15 @@ def solve(
     stripper_name: str,
     use_zopfli: bool = True,
     timeout_sec: Optional[int] = None,
-) -> Dict[str, object]:
+    source_override: Path | None = None,
+) -> None:
     repo_root = Path(__file__).resolve().parent
-    source_path = _resolve_source(task_dir, task_id)
+    if source_override is not None:
+        source_path = Path(source_override)
+        if not source_path.is_absolute():
+            source_path = (repo_root / source_path).resolve()
+    else:
+        source_path = _resolve_source(task_dir, task_id)
     source_code = source_path.read_text(encoding="utf-8")
 
     if stripper_name not in strippers:
@@ -341,11 +361,14 @@ def solve(
     try:
         stripped_code = stripper(source_code)
     except Exception as exc:  # pylint: disable=broad-except
-        return {
-            "error": f"failed to apply stripper: {exc}",
-            "stripper": stripper_name,
-            "source_path": str(source_path),
-        }
+        print(
+            (
+                f"[genetic_algo] error: failed to apply stripper {stripper_name} "
+                f"for {source_path}: {exc}"
+            ),
+            file=sys.stderr,
+        )
+        return
 
     try:
         deflate_bytes, deflate_text = _compress_code(
@@ -353,11 +376,14 @@ def solve(
             use_zopfli=use_zopfli,
         )
     except Exception as exc:  # pylint: disable=broad-except
-        return {
-            "error": f"compression failed: {exc}",
-            "stripper": stripper_name,
-            "source_path": str(source_path),
-        }
+        print(
+            (
+                f"[genetic_algo] error: compression failed for {stripper_name} "
+                f"at {source_path}: {exc}"
+            ),
+            file=sys.stderr,
+        )
+        return
 
     ga_binary = repo_root / "deflate_optimizer_cpp" / "geneticalgo"
     if not ga_binary.exists():
@@ -371,7 +397,14 @@ def solve(
 
     variable_text = _build_variable_dump(stripped_code)
 
-    print(f"[genetic_algo] running GA for {stripper_name} {'(zopfli)' if use_zopfli else '(zlib)' }...", file=sys.stderr)
+    print(
+        (
+            f"[genetic_algo] running GA for task {task_id:03d} "
+            f"{source_path} stripper={stripper_name} "
+            f"{'(zopfli)' if use_zopfli else '(zlib)'}..."
+        ),
+        file=sys.stderr,
+    )
 
     try:
         ga_exec = _run_genetic_algorithm(
@@ -384,49 +417,156 @@ def solve(
             py_output_path=py_output_path,
         )
     except Exception as exc:  # pylint: disable=broad-except
-        return {
-            "stripper": stripper_name,
-            "source_path": str(source_path),
-            "used_zopfli": use_zopfli,
-            "initial_size": len(deflate_bytes),
-            "error": str(exc),
-            "traceback": traceback.format_exc(),
-        }
+        print(
+            (
+                f"[genetic_algo] error: GA execution failed for {stripper_name} "
+                f"({'zopfli' if use_zopfli else 'zlib'}): {exc}"
+            ),
+            file=sys.stderr,
+        )
+        traceback.print_exc()
+        return
 
     final_bytes = ga_exec.optimized_bytes or deflate_bytes
     final_bit_length = ga_exec.bit_length
     output_path.write_bytes(final_bytes)
 
-    result = {
-        "stripper": stripper_name,
-        "source_path": str(source_path),
-        "used_zopfli": use_zopfli,
-        "initial_size": len(deflate_bytes),
-        "final_bit_length": final_bit_length,
-        "final_size": len(final_bytes),
-        "timed_out": ga_exec.timed_out,
-        "returncode": ga_exec.returncode,
-        "ga_stdout_excerpt": _truncate(ga_exec.stdout),
-        "ga_stderr": _truncate(ga_exec.stderr),
-        "ga_error": ga_exec.error,
-        "workdir": ga_exec.workdir,
-        "output_path": str(output_path),
-        "py_output_path": str(py_output_path),
-        "viz_url": viz_deflate_url(final_bytes),
-    }
+    viz_url = viz_deflate_url(final_bytes)
+    stdout_excerpt = _truncate(ga_exec.stdout)
+    stderr_excerpt = _truncate(ga_exec.stderr)
 
     print(f"[genetic_algo] done for {stripper_name}", file=sys.stderr)
     print(f"[genetic_algo]   initial: {len(deflate_bytes)} bytes", file=sys.stderr)
     print(f"[genetic_algo]   final:   {len(final_bytes)} bytes", file=sys.stderr)
+    if final_bit_length is not None:
+        print(f"[genetic_algo]   bits:    {final_bit_length}", file=sys.stderr)
     print(f"[genetic_algo]   output:  {output_path}", file=sys.stderr)
-    print(f"[genetic_algo]   viz:     {result['viz_url']}", file=sys.stderr)
+    print(f"[genetic_algo]   py:      {py_output_path}", file=sys.stderr)
+    print(f"[genetic_algo]   viz:     {viz_url}", file=sys.stderr)
+    if ga_exec.timed_out:
+        print("[genetic_algo]   note: GA timed out", file=sys.stderr)
+    if ga_exec.returncode is not None:
+        print(f"[genetic_algo]   returncode: {ga_exec.returncode}", file=sys.stderr)
+    if ga_exec.error:
+        print(f"[genetic_algo]   GA error: {ga_exec.error}", file=sys.stderr)
+    # if stdout_excerpt:
+    #     print(f"[genetic_algo]   stdout: {stdout_excerpt}", file=sys.stderr)
+    # if stderr_excerpt:
+    #     print(f"[genetic_algo]   stderr: {stderr_excerpt}", file=sys.stderr)
 
-    return result
+
+
+def _jobs_from_candidates(candidates: Sequence[CompressionCandidate]) -> list[GAJob]:
+    jobs: list[GAJob] = []
+    for cand in candidates:
+        base_path = cand.base_path
+        task_dir = base_path.parent.name
+        for stripper in cand.strippers:
+            jobs.append(
+                GAJob(
+                    task_id=cand.task_id,
+                    task_dir=task_dir,
+                    base_path=base_path,
+                    stripper=stripper,
+                )
+            )
+    return jobs
+
+
+def _iter_shuffled_jobs(jobs: Sequence[GAJob]) -> Iterator[GAJob]:
+    job_list = list(jobs)
+    if not job_list:
+        return
+    while True:
+        random.shuffle(job_list)
+        for job in job_list:
+            yield job
+
+
+def _submit_job(
+    executor: ThreadPoolExecutor,
+    job_iter: Iterator[GAJob],
+    timeout_sec: int,
+):
+    job = next(job_iter)
+    future = executor.submit(
+        solve,
+        job.task_dir,
+        job.task_id,
+        stripper_name=job.stripper,
+        timeout_sec=timeout_sec,
+        source_override=job.base_path,
+    )
+    return future, job
+
+
+def _run_candidate_autopilot(
+    *,
+    timeout_sec: int,
+    max_workers: Optional[int] = None,
+    shuffle_seed: Optional[int] = None,
+) -> int:
+    if shuffle_seed is not None:
+        random.seed(shuffle_seed)
+
+    candidates = collect_compress_candidates()
+    print(f"[genetic_algo] autopilot: found {len(candidates)} compression candidates", file=sys.stderr)
+    jobs = _jobs_from_candidates(candidates)
+
+    if not jobs:
+        print("[genetic_algo] autopilot: no compression candidates found", file=sys.stderr)
+        return 1
+
+    desired_workers = max_workers if max_workers is not None else os.cpu_count() or 1
+    worker_count = max(1, min(desired_workers, len(jobs)))
+    job_iter = _iter_shuffled_jobs(jobs)
+    if job_iter is None:
+        print("[genetic_algo] autopilot: job iterator unavailable", file=sys.stderr)
+        return 1
+
+    print(
+        (
+            f"[genetic_algo] autopilot: {len(jobs)} job/stripper combos, "
+            f"workers={worker_count}, timeout={timeout_sec}s"
+        ),
+        file=sys.stderr,
+    )
+    print("[genetic_algo] autopilot: press Ctrl+C to stop", file=sys.stderr)
+
+    with ThreadPoolExecutor(max_workers=worker_count) as executor:
+        pending: dict[object, GAJob] = {}
+        try:
+            for _ in range(worker_count):
+                future, job = _submit_job(executor, job_iter, timeout_sec)
+                pending[future] = job
+
+            while pending:
+                done, _ = wait(list(pending.keys()), return_when=FIRST_COMPLETED)
+                for future in done:
+                    job = pending.pop(future, None)
+                    if job is None:
+                        continue
+                    try:
+                        future.result()
+                    except Exception as exc:  # pylint: disable=broad-except
+                        print(
+                            f"[genetic_algo] autopilot error for {job.label()}: {exc}",
+                            file=sys.stderr,
+                        )
+                    future_next, job_next = _submit_job(executor, job_iter, timeout_sec)
+                    pending[future_next] = job_next
+        except KeyboardInterrupt:
+            print("[genetic_algo] autopilot interrupted; cancelling pending jobs", file=sys.stderr)
+            for future in pending:
+                future.cancel()
+
+    return 0
+
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Run genetic deflate optimizer over stripped sources.")
-    parser.add_argument("task_dir", help="Task directory (e.g., base_yu)")
-    parser.add_argument("task_id", type=int, help="Task ID (e.g., 151)")
+    parser.add_argument("task_dir", nargs="?", help="Task directory (e.g., base_yu)")
+    parser.add_argument("task_id", nargs="?", type=int, help="Task ID (e.g., 151)")
     parser.add_argument(
         "--stripper",
         choices=sorted(strippers.keys()),
@@ -437,7 +577,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         dest="timeout_sec",
         type=int,
         default=None,
-        help="Timeout in seconds for the GA binary (omit for no timeout)",
+        help="Timeout in seconds for the GA binary (omit or <=0 for no timeout)",
     )
     parser.add_argument(
         "--use-zlib",
@@ -446,14 +586,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         help="Use zlib instead of zopfli for initial compression",
     )
     parser.add_argument(
-        "--fast",
-        action="store_true",
-        help="Skip slow optimizations in cached_zopfli_ours2",
-    )
-    parser.add_argument(
         "--list-strippers",
         action="store_true",
         help="List available stripper names and exit",
+    )
+    parser.add_argument(
+        "--max-workers",
+        type=int,
+        default=None,
+        help="(autopilot) maximum number of concurrent GA runs",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="(autopilot) random seed for shuffling candidate order",
     )
 
     args = parser.parse_args(argv)
@@ -462,6 +609,25 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         for name in sorted(strippers.keys()):
             print(name)
         return 0
+
+    if args.task_dir is None and args.task_id is None:
+        timeout = args.timeout_sec if args.timeout_sec and args.timeout_sec > 0 else 1200
+        print('[genetic_algo] running in autopilot mode', file=sys.stderr)
+        if args.use_zopfli is False:
+            print("[genetic_algo] warning: --use-zlib is ignored in autopilot mode", file=sys.stderr)
+        return _run_candidate_autopilot(
+            timeout_sec=timeout,
+            max_workers=args.max_workers,
+            shuffle_seed=args.seed,
+        )
+
+    if (args.task_dir is None) != (args.task_id is None):
+        parser.error("task_dir and task_id must be provided together")
+
+    if args.max_workers is not None:
+        print("[genetic_algo] warning: --max-workers ignored when task is specified", file=sys.stderr)
+    if args.seed is not None:
+        print("[genetic_algo] warning: --seed ignored when task is specified", file=sys.stderr)
 
     timeout_sec: Optional[int] = args.timeout_sec
     if timeout_sec is not None and timeout_sec <= 0:
@@ -473,54 +639,42 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "timeout_sec": timeout_sec,
     }
 
-    results: Dict[str, Dict[str, object]] = {}
-
     if args.stripper:
-        results[args.stripper] = solve(
+        solve(
             stripper_name=args.stripper,
             use_zopfli=args.use_zopfli,
             **common_kwargs,
         )
-    else:
-        names = sorted(strippers.keys())
-        max_workers = len(names) * 2
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = {
-                executor.submit(
-                    solve,
-                    stripper_name=name,
-                    use_zopfli=use_zopfli,
-                    **common_kwargs,
-                ): name
-                for name in names
-                for use_zopfli in [True, False]
-            }
-            for future in as_completed(futures):
-                name = futures[future]
-                try:
-                    results[name] = future.result()
-                except Exception as exc:  # pylint: disable=broad-except
-                    results[name] = {
-                        "stripper": name,
-                        "error": str(exc),
-                        "traceback": traceback.format_exc(),
-                    }
+        return 0
 
-    best_result = min(
-        (info for info in results.values() if "error" not in info),
-        key=lambda x: x["final_size"],
-        default=None,
-    )
-
-    best_length = best_result["final_size"] if best_result else None
-    best_url = best_result["viz_url"] if best_result else None
-    print("=== best result ===", file=sys.stderr)
-    print(f"stripper: {best_result['stripper']}", file=sys.stderr)
-    print(f"source:   {best_result['source_path']}", file=sys.stderr)
-    print(f"workdir:   {best_result.get('workdir', 'N/A')}", file=sys.stderr)
-    print(f"size:     {best_length} bytes", file=sys.stderr)
-    print(f"viz:      {best_url}", file=sys.stderr)
+    names = sorted(strippers.keys())
+    max_workers = len(names) * 2
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(
+                solve,
+                stripper_name=name,
+                use_zopfli=use_zopfli,
+                **common_kwargs,
+            ): (name, use_zopfli)
+            for name in names
+            for use_zopfli in [True, False]
+        }
+        for future in as_completed(futures):
+            name, use_zopfli = futures[future]
+            try:
+                future.result()
+            except Exception as exc:  # pylint: disable=broad-except
+                print(
+                    (
+                        f"[genetic_algo] error: solve raised for {name} "
+                        f"({'zopfli' if use_zopfli else 'zlib'}): {exc}"
+                    ),
+                    file=sys.stderr,
+                )
+                traceback.print_exc()
     return 0
+
 
 
 if __name__ == "__main__":  # pragma: no cover
