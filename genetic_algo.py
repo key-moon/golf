@@ -23,7 +23,7 @@ from deflate_optimizer.load_deflate_text import load_deflate_stream
 from deflate_optimizer.enumerate_variable_occurrences import list_var_occurrences
 from deflate_optimizer.variable_conflict import build_conflict_report
 from compress import get_embed_str, optimize_deflate_stream, determine_wbits, signed_str
-from get_compression_candidates import CompressionCandidate, collect_compress_candidates
+from get_compression_candidates import CandidateEntry, CompressionCandidate, collect_compress_candidates
 from strip import strippers
 from utils import get_code_paths, viz_deflate_url
 
@@ -395,6 +395,17 @@ def solve(
     output_path = work_dir / "result.deflate"
     py_output_path = work_dir / f"task{task_id:03d}.py"
 
+    work_dir.mkdir(parents=True, exist_ok=True)
+    original_snapshot_path = work_dir / f"task{task_id:03d}_original.py"
+    try:
+        original_bytes = source_path.read_bytes()
+        original_snapshot_path.write_bytes(original_bytes)
+    except OSError:
+        try:
+            original_snapshot_path.write_text(source_code, encoding="utf-8")
+        except OSError:
+            pass
+
     variable_text = _build_variable_dump(stripped_code)
 
     print(
@@ -459,17 +470,18 @@ def solve(
 def _jobs_from_candidates(candidates: Sequence[CompressionCandidate]) -> list[GAJob]:
     jobs: list[GAJob] = []
     for cand in candidates:
-        base_path = cand.base_path
-        task_dir = base_path.parent.name
-        for stripper in cand.strippers:
-            jobs.append(
-                GAJob(
-                    task_id=cand.task_id,
-                    task_dir=task_dir,
-                    base_path=base_path,
-                    stripper=stripper,
+        for entry in cand.entries:
+            base_path = entry.base_path
+            task_dir = base_path.parent.name
+            for stripper in entry.strippers:
+                jobs.append(
+                    GAJob(
+                        task_id=cand.task_id,
+                        task_dir=task_dir,
+                        base_path=base_path,
+                        stripper=stripper,
+                    )
                 )
-            )
     return jobs
 
 
@@ -510,7 +522,14 @@ def _run_candidate_autopilot(
         random.seed(shuffle_seed)
 
     candidates = collect_compress_candidates()
-    print(f"[genetic_algo] autopilot: found {len(candidates)} compression candidates", file=sys.stderr)
+    total_entries = sum(len(c.entries) for c in candidates)
+    print(
+        (
+            f"[genetic_algo] autopilot: found {len(candidates)} tasks "
+            f"({total_entries} base entries)"
+        ),
+        file=sys.stderr,
+    )
     jobs = _jobs_from_candidates(candidates)
 
     if not jobs:

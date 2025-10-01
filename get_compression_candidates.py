@@ -9,6 +9,7 @@ candidates.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -25,9 +26,7 @@ _SUFFIX_PREFIX = b",'L1')"
 
 
 @dataclass(frozen=True, slots=True)
-class CompressionCandidate:
-    """Represents the best base source for a compressed task."""
-
+class CandidateEntry:
     task_id: int
     dist_path: Path
     base_path: Path
@@ -43,6 +42,20 @@ class CompressionCandidate:
             "strippers": list(self.strippers),
             "best_length": self.best_length,
             "lengths": dict(self.lengths),
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class CompressionCandidate:
+    task_id: int
+    dist_path: Path
+    entries: list[CandidateEntry]
+
+    def as_dict(self) -> dict[str, object]:
+        return {
+            "task_id": self.task_id,
+            "dist_path": str(self.dist_path),
+            "entries": [entry.as_dict() for entry in self.entries],
         }
 
 
@@ -92,8 +105,9 @@ def _compute_stripper_lengths(
     strippers_map: Mapping[str, object],
     *,
     fast_zopfli: bool,
-) -> dict[str, int]:
+) -> tuple[dict[str, int], dict[str, bytes]]:
     lengths: dict[str, int] = {}
+    stripped_outputs: dict[str, bytes] = {}
     for name, strip_fun in strippers_map.items():
         try:
             stripped = strip_fun(source_bytes)
@@ -104,10 +118,12 @@ def _compute_stripper_lengths(
         except Exception:
             continue
         lengths[name] = length
-    return lengths
+        stripped_bytes = stripped if isinstance(stripped, bytes) else stripped.encode("utf-8")
+        stripped_outputs[name] = stripped_bytes
+    return lengths, stripped_outputs
 
 
-def _best_candidate_for_task(
+def _gather_candidates_for_task(
     *,
     task_id: int,
     dist_path: Path,
@@ -115,8 +131,8 @@ def _best_candidate_for_task(
     strippers_map: Mapping[str, object],
     max_extra: int,
     fast_zopfli: bool,
-) -> CompressionCandidate | None:
-    best_candidate: CompressionCandidate | None = None
+) -> list[CandidateEntry]:
+    entries: list[tuple[CandidateEntry, bytes | None]] = []
     best_length: int | None = None
 
     for base_path in _iter_base_paths(base_glob, task_id):
@@ -125,7 +141,7 @@ def _best_candidate_for_task(
         except OSError:
             continue
 
-        lengths = _compute_stripper_lengths(
+        lengths, stripped_outputs = _compute_stripper_lengths(
             source_bytes,
             strippers_map,
             fast_zopfli=fast_zopfli,
@@ -134,8 +150,8 @@ def _best_candidate_for_task(
             continue
 
         base_best = min(lengths.values())
-        if best_length is not None and base_best >= best_length:
-            continue
+        if best_length is None or base_best < best_length:
+            best_length = base_best
 
         selected = sorted(
             name for name, length in lengths.items() if length <= base_best + max_extra
@@ -144,17 +160,39 @@ def _best_candidate_for_task(
             continue
 
         filtered_lengths = {name: lengths[name] for name in selected}
-        best_candidate = CompressionCandidate(
-            task_id=task_id,
-            dist_path=dist_path,
-            base_path=base_path,
-            strippers=selected,
-            best_length=base_best,
-            lengths=filtered_lengths,
+        best_name = min(selected, key=lambda n: (lengths[n], n))
+        best_source = stripped_outputs.get(best_name)
+        entries.append(
+            (
+                CandidateEntry(
+                    task_id=task_id,
+                    dist_path=dist_path,
+                    base_path=base_path,
+                    strippers=selected,
+                    best_length=base_best,
+                    lengths=filtered_lengths,
+                ),
+                best_source,
+            )
         )
-        best_length = base_best
 
-    return best_candidate
+    if best_length is None:
+        return []
+
+    seen: set[bytes] = set()
+    final_entries: list[CandidateEntry] = []
+    for entry, best_source in sorted(entries, key=lambda item: (item[0].best_length, str(item[0].base_path))):
+        if entry.best_length > best_length + max_extra:
+            continue
+        if best_source is None:
+            final_entries.append(entry)
+            continue
+        signature = hashlib.sha1(best_source).digest()
+        if signature in seen:
+            continue
+        seen.add(signature)
+        final_entries.append(entry)
+    return final_entries
 
 
 def collect_compress_candidates(
@@ -175,7 +213,7 @@ def collect_compress_candidates(
         task_id = _task_id_from_path(dist_file)
         if task_id is None:
             continue
-        candidate = _best_candidate_for_task(
+        entries = _gather_candidates_for_task(
             task_id=task_id,
             dist_path=dist_file,
             base_glob=base_glob,
@@ -183,20 +221,28 @@ def collect_compress_candidates(
             max_extra=max_extra,
             fast_zopfli=fast_zopfli,
         )
-        if candidate is not None:
-            candidates.append(candidate)
+        if entries:
+            candidates.append(
+                CompressionCandidate(
+                    task_id=task_id,
+                    dist_path=dist_file,
+                    entries=entries,
+                )
+            )
     return candidates
 
 
 def _format_plain(candidates: Sequence[CompressionCandidate]) -> str:
     lines: list[str] = []
     for cand in candidates:
-        parts = ", ".join(
-            f"{name}({cand.lengths.get(name, cand.best_length)})" for name in cand.strippers
-        )
-        lines.append(
-            f"{cand.task_id:03d} {cand.base_path} -> len={cand.best_length} :: [{parts}]"
-        )
+        lines.append(f"task {cand.task_id:03d} (dist={cand.dist_path})")
+        for entry in cand.entries:
+            parts = ", ".join(
+                f"{name}({entry.lengths.get(name, entry.best_length)})" for name in entry.strippers
+            )
+            lines.append(
+                f"  {entry.base_path} -> len={entry.best_length} :: [{parts}]"
+            )
     return "\n".join(lines)
 
 
