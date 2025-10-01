@@ -5,6 +5,7 @@
 import argparse
 import os
 import random
+import re
 import sys
 import threading
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, as_completed, wait
@@ -26,6 +27,8 @@ from compress import get_embed_str, optimize_deflate_stream, determine_wbits, si
 from get_compression_candidates import CandidateEntry, CompressionCandidate, collect_compress_candidates
 from strip import strippers
 from utils import get_code_paths, viz_deflate_url
+
+GA_OUTPUT_ROOT = Path("optimizer_results/genetic_algo")
 
 
 @dataclass
@@ -343,6 +346,7 @@ def solve(
     use_zopfli: bool = True,
     timeout_sec: Optional[int] = None,
     source_override: Path | None = None,
+    skip_if_unchanged: bool = False,
 ) -> None:
     repo_root = Path(__file__).resolve().parent
     if source_override is not None:
@@ -352,6 +356,7 @@ def solve(
     else:
         source_path = _resolve_source(task_dir, task_id)
     source_code = source_path.read_text(encoding="utf-8")
+    source_bytes = source_code.encode("utf-8")
 
     if stripper_name not in strippers:
         raise ValueError(f"Unknown stripper: {stripper_name}")
@@ -397,9 +402,21 @@ def solve(
 
     work_dir.mkdir(parents=True, exist_ok=True)
     original_snapshot_path = work_dir / f"task{task_id:03d}_original.py"
+    if skip_if_unchanged and original_snapshot_path.exists():
+        try:
+            if original_snapshot_path.read_bytes() == source_bytes:
+                print(
+                    (
+                        f"[genetic_algo] skip task {task_id:03d} {stripper_name}: "
+                        "source unchanged from snapshot"
+                    ),
+                    file=sys.stderr,
+                )
+                return
+        except OSError:
+            pass
     try:
-        original_bytes = source_path.read_bytes()
-        original_snapshot_path.write_bytes(original_bytes)
+        original_snapshot_path.write_bytes(source_bytes)
     except OSError:
         try:
             original_snapshot_path.write_text(source_code, encoding="utf-8")
@@ -467,8 +484,13 @@ def solve(
 
 
 
-def _jobs_from_candidates(candidates: Sequence[CompressionCandidate]) -> list[GAJob]:
+def _jobs_from_candidates(
+    candidates: Sequence[CompressionCandidate],
+    *,
+    skip_if_unchanged: bool,
+) -> list[GAJob]:
     jobs: list[GAJob] = []
+    _ = skip_if_unchanged  # unused: job submission handles skip at runtime
     for cand in candidates:
         for entry in cand.entries:
             base_path = entry.base_path
@@ -495,10 +517,62 @@ def _iter_shuffled_jobs(jobs: Sequence[GAJob]) -> Iterator[GAJob]:
             yield job
 
 
+def _load_original_code_from_deflate(deflate_path: Path) -> bytes | None:
+    try:
+        text = deflate_path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+    try:
+        _, deflate = load_deflate_stream(StringIO(text))
+    except Exception:  # pylint: disable=broad-except
+        return None
+
+    for wbits in (-15, -9, 15):
+        try:
+            return zlib.decompress(deflate, wbits)
+        except Exception:  # pylint: disable=broad-except
+            continue
+    try:
+        return zlib.decompress(deflate)
+    except Exception:  # pylint: disable=broad-except
+        return None
+
+
+def copy_missing_original_codes() -> int:
+    if not GA_OUTPUT_ROOT.exists():
+        return 0
+
+    created = 0
+    for deflate_path in GA_OUTPUT_ROOT.rglob("input_deflate.txt"):
+        work_dir = deflate_path.parent
+        code_bytes = _load_original_code_from_deflate(deflate_path)
+        if code_bytes is None:
+            continue
+        scripts = sorted(
+            p for p in work_dir.glob("task*.py") if "_original" not in p.name
+        )
+        for script_path in scripts:
+            match = re.search(r"task(\d{3})\.py$", script_path.name)
+            if not match:
+                continue
+            original_path = work_dir / f"task{match.group(1)}_original.py"
+            print(original_path, original_path.exists())
+            if original_path.exists():
+                continue
+            try:
+                original_path.write_bytes(code_bytes)
+            except OSError:
+                continue
+            created += 1
+    return created
+
+
 def _submit_job(
     executor: ThreadPoolExecutor,
     job_iter: Iterator[GAJob],
     timeout_sec: int,
+    *,
+    skip_if_unchanged: bool,
 ):
     job = next(job_iter)
     future = executor.submit(
@@ -508,6 +582,7 @@ def _submit_job(
         stripper_name=job.stripper,
         timeout_sec=timeout_sec,
         source_override=job.base_path,
+        skip_if_unchanged=skip_if_unchanged,
     )
     return future, job
 
@@ -517,6 +592,7 @@ def _run_candidate_autopilot(
     timeout_sec: int,
     max_workers: Optional[int] = None,
     shuffle_seed: Optional[int] = None,
+    skip_if_unchanged: bool,
 ) -> int:
     if shuffle_seed is not None:
         random.seed(shuffle_seed)
@@ -530,7 +606,7 @@ def _run_candidate_autopilot(
         ),
         file=sys.stderr,
     )
-    jobs = _jobs_from_candidates(candidates)
+    jobs = _jobs_from_candidates(candidates, skip_if_unchanged=skip_if_unchanged)
 
     if not jobs:
         print("[genetic_algo] autopilot: no compression candidates found", file=sys.stderr)
@@ -556,7 +632,12 @@ def _run_candidate_autopilot(
         pending: dict[object, GAJob] = {}
         try:
             for _ in range(worker_count):
-                future, job = _submit_job(executor, job_iter, timeout_sec)
+                future, job = _submit_job(
+                    executor,
+                    job_iter,
+                    timeout_sec,
+                    skip_if_unchanged=skip_if_unchanged,
+                )
                 pending[future] = job
 
             while pending:
@@ -572,7 +653,12 @@ def _run_candidate_autopilot(
                             f"[genetic_algo] autopilot error for {job.label()}: {exc}",
                             file=sys.stderr,
                         )
-                    future_next, job_next = _submit_job(executor, job_iter, timeout_sec)
+                    future_next, job_next = _submit_job(
+                        executor,
+                        job_iter,
+                        timeout_sec,
+                        skip_if_unchanged=skip_if_unchanged,
+                    )
                     pending[future_next] = job_next
         except KeyboardInterrupt:
             print("[genetic_algo] autopilot interrupted; cancelling pending jobs", file=sys.stderr)
@@ -621,8 +707,23 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         default=None,
         help="(autopilot) random seed for shuffling candidate order",
     )
+    parser.add_argument(
+        "--skip-unchanged",
+        action="store_true",
+        help="Skip GA runs when the original snapshot matches the current source",
+    )
+    parser.add_argument(
+        "--copy-original-codes",
+        action="store_true",
+        help="Populate missing *_original.py snapshots under optimizer_results/genetic_algo and exit",
+    )
 
     args = parser.parse_args(argv)
+
+    if args.copy_original_codes:
+        created = copy_missing_original_codes()
+        print(f"[genetic_algo] copied {created} missing original snapshots")
+        return 0
 
     if args.list_strippers:
         for name in sorted(strippers.keys()):
@@ -638,6 +739,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             timeout_sec=timeout,
             max_workers=args.max_workers,
             shuffle_seed=args.seed,
+            skip_if_unchanged=args.skip_unchanged,
         )
 
     if (args.task_dir is None) != (args.task_id is None):
@@ -663,6 +765,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             stripper_name=args.stripper,
             use_zopfli=args.use_zopfli,
             **common_kwargs,
+            skip_if_unchanged=args.skip_unchanged,
         )
         return 0
 
@@ -675,6 +778,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 stripper_name=name,
                 use_zopfli=use_zopfli,
                 **common_kwargs,
+                skip_if_unchanged=args.skip_unchanged,
             ): (name, use_zopfli)
             for name in names
             for use_zopfli in [True, False]
