@@ -338,6 +338,22 @@ def _run_genetic_algorithm(
     )
 
 
+def _strip_source_for_snapshot(source_path: Path) -> tuple[str, str, bytes]:
+    raw_code = source_path.read_text(encoding="utf-8")
+    strip_fn = strippers.get("forplain", next(iter(strippers.values())))
+    try:
+        stripped = strip_fn(raw_code)
+    except Exception:
+        stripped = raw_code
+    if isinstance(stripped, bytes):
+        stripped_bytes = stripped
+        stripped_text = stripped.decode("utf-8", errors="replace")
+    else:
+        stripped_text = stripped
+        stripped_bytes = stripped_text.encode("utf-8")
+    return raw_code, stripped_text, stripped_bytes
+
+
 def solve(
     task_dir: str,
     task_id: int,
@@ -355,8 +371,9 @@ def solve(
             source_path = (repo_root / source_path).resolve()
     else:
         source_path = _resolve_source(task_dir, task_id)
-    source_code = source_path.read_text(encoding="utf-8")
-    source_bytes = source_code.encode("utf-8")
+    raw_source_code, stripped_snapshot, snapshot_bytes = _strip_source_for_snapshot(source_path)
+    source_code = raw_source_code
+    source_bytes = raw_source_code.encode("utf-8")
 
     if stripper_name not in strippers:
         raise ValueError(f"Unknown stripper: {stripper_name}")
@@ -404,7 +421,7 @@ def solve(
     original_snapshot_path = work_dir / f"task{task_id:03d}_original.py"
     if skip_if_unchanged and original_snapshot_path.exists():
         try:
-            if original_snapshot_path.read_bytes() == source_bytes:
+            if original_snapshot_path.read_bytes() == snapshot_bytes:
                 print(
                     (
                         f"[genetic_algo] skip task {task_id:03d} {stripper_name}: "
@@ -416,10 +433,10 @@ def solve(
         except OSError:
             pass
     try:
-        original_snapshot_path.write_bytes(source_bytes)
+        original_snapshot_path.write_bytes(snapshot_bytes)
     except OSError:
         try:
-            original_snapshot_path.write_text(source_code, encoding="utf-8")
+            original_snapshot_path.write_text(stripped_snapshot, encoding="utf-8")
         except OSError:
             pass
 
@@ -527,18 +544,27 @@ def _load_original_code_from_deflate(deflate_path: Path) -> bytes | None:
     except Exception:  # pylint: disable=broad-except
         return None
 
+    raw: bytes | None = None
     for wbits in (-15, -9, 15):
         try:
-            return zlib.decompress(deflate, wbits)
+            raw = zlib.decompress(deflate, wbits)
+            break
         except Exception:  # pylint: disable=broad-except
             continue
+    if raw is None:
+        try:
+            raw = zlib.decompress(deflate)
+        except Exception:  # pylint: disable=broad-except
+            return None
+    strip_fn = strippers.get("forplain", next(iter(strippers.values())))
     try:
-        return zlib.decompress(deflate)
+        stripped = strip_fn(raw.decode("utf-8"))
+        return stripped if isinstance(stripped, bytes) else stripped.encode("utf-8")
     except Exception:  # pylint: disable=broad-except
-        return None
+        return raw
 
 
-def copy_missing_original_codes() -> int:
+def copy_original_codes() -> int:
     if not GA_OUTPUT_ROOT.exists():
         return 0
 
@@ -556,9 +582,6 @@ def copy_missing_original_codes() -> int:
             if not match:
                 continue
             original_path = work_dir / f"task{match.group(1)}_original.py"
-            print(original_path, original_path.exists())
-            if original_path.exists():
-                continue
             try:
                 original_path.write_bytes(code_bytes)
             except OSError:
@@ -715,14 +738,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument(
         "--copy-original-codes",
         action="store_true",
-        help="Populate missing *_original.py snapshots under optimizer_results/genetic_algo and exit",
+        help="Populate *_original.py snapshots under optimizer_results/genetic_algo and exit",
     )
 
     args = parser.parse_args(argv)
 
     if args.copy_original_codes:
-        created = copy_missing_original_codes()
-        print(f"[genetic_algo] copied {created} missing original snapshots")
+        created = copy_original_codes()
+        print(f"[genetic_algo] copied {created} original snapshots")
         return 0
 
     if args.list_strippers:
