@@ -4,6 +4,7 @@
 
 import argparse
 import sys
+import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from io import StringIO
@@ -19,6 +20,7 @@ from deflate_optimizer.dump_deflate_stream import dump_deflate_stream
 from deflate_optimizer.load_deflate_text import load_deflate_stream
 from deflate_optimizer.enumerate_variable_occurrences import list_var_occurrences
 from deflate_optimizer.variable_conflict import build_conflict_report
+from compress import get_embed_str, optimize_deflate_stream, determine_wbits, signed_str
 from strip import strippers
 from utils import get_code_paths, viz_deflate_url
 
@@ -102,10 +104,14 @@ def _run_genetic_algorithm(
     variable_text: str,
     *,
     binary_path: Path,
-    timeout_sec: int,
+    timeout_sec: Optional[int],
     work_dir: Path,
+    output_path: Path,
+    py_output_path: Path,
+    snapshot_interval_sec: int = 10,
 ) -> GAExecutionResult:
     work_dir.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     deflate_path = work_dir / "input_deflate.txt"
     variable_path = work_dir / "input_variable.txt"
@@ -129,24 +135,139 @@ def _run_genetic_algorithm(
         str(states_path),
     ]
 
+    @dataclass(frozen=True)
+    class SnapshotCacheEntry:
+        raw_compressed: bytes
+        embed: bytes
+        extra_overhead: int
+        res: bytes
+
+    # 一度最適化した圧縮結果を覚えて再利用する
+    seen_cache: Dict[bytes, SnapshotCacheEntry] = {}
+    snapshot_warning_emitted = False
+
+    py_output_best_len: Optional[int] = None
     try:
-        completed = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=timeout_sec,
-            check=False,
-            cwd=str(binary_path.parent),
+        py_output_best_len = py_output_path.stat().st_size
+    except FileNotFoundError:
+        py_output_best_len = None
+    except OSError:
+        py_output_best_len = None
+
+    lib_name = "zlib"
+
+    def snapshot_once() -> Optional[tuple[int, bytes]]:
+        nonlocal snapshot_warning_emitted, py_output_best_len
+        if not out_deflate_path.exists():
+            return None
+        try:
+            text = out_deflate_path.read_text(encoding="utf-8").strip()
+        except OSError:
+            return None
+        if not text:
+            return None
+        try:
+            bit_length, compressed = load_deflate_stream(StringIO(text))
+        except Exception:  # pylint: disable=broad-except
+            if not snapshot_warning_emitted:
+                print(
+                    (
+                        "[genetic_algo] warning: failed to parse in-progress GA output; "
+                        "will retry on next snapshot"
+                    ),
+                    file=sys.stderr,
+                )
+                snapshot_warning_emitted = True
+            return None
+        entry = seen_cache.get(compressed)
+        if entry is None:
+            print('[genetic_algo] caching new snapshot result...', file=sys.stderr)
+            raw_compressed = optimize_deflate_stream(
+                compressed,
+                lambda x: len(get_embed_str(x)),
+                num_iteration=5000,
+                num_perturbation=3,
+                tolerance_bit=16,
+                # terminate_threshold=2 + len(val) + 1,
+                seed=1234,
+            )
+            embed = get_embed_str(raw_compressed)
+            extra_overhead = len(embed) - (len(raw_compressed) + 2)
+            extra_args = determine_wbits(raw_compressed)
+            prefix = (
+                f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes("
+            ).encode()
+            suffix = b",'L1')" + extra_args.encode() + b"))"
+            res = prefix + embed + suffix
+            entry = SnapshotCacheEntry(
+                raw_compressed=raw_compressed,
+                embed=embed,
+                extra_overhead=extra_overhead,
+                res=res,
+            )
+            print('[genetic_algo] done caching new snapshot result.', file=sys.stderr)
+            seen_cache[compressed] = entry
+        else:
+            raw_compressed = entry.raw_compressed
+            extra_overhead = entry.extra_overhead
+            res = entry.res
+
+        output_path.write_bytes(raw_compressed)
+
+        current_best = py_output_best_len
+        if current_best is None:
+            try:
+                current_best = py_output_path.stat().st_size
+            except FileNotFoundError:
+                current_best = None
+            except OSError:
+                current_best = None
+        if current_best is None or len(res) < current_best:
+            py_output_path.write_bytes(res)
+            py_output_best_len = len(res)
+        else:
+            py_output_best_len = current_best
+
+        message = "" if extra_overhead == 0 else f"encode:{signed_str(extra_overhead)}"
+        print(
+            f"[genetic_algo]   snapshot: {output_path} => {len(raw_compressed)} bytes, final: {len(res)} bytes ({message})",
+            file=sys.stderr,
         )
+
+        snapshot_warning_emitted = False
+        return bit_length, entry.raw_compressed
+
+    stop_event = threading.Event()
+
+    def snapshot_loop() -> None:
+        while not stop_event.wait(snapshot_interval_sec):
+            snapshot_once()
+
+    process = subprocess.Popen(  # pylint: disable=consider-using-with
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        cwd=str(binary_path.parent),
+    )
+
+    watcher = threading.Thread(target=snapshot_loop, daemon=True)
+    watcher.start()
+
+    try:
+        stdout, stderr = process.communicate(timeout=timeout_sec)
         timed_out = False
-        stdout = completed.stdout
-        stderr = completed.stderr
-        returncode = completed.returncode
-    except subprocess.TimeoutExpired as exc:
+        returncode = process.returncode
+    except subprocess.TimeoutExpired:
+        process.kill()
+        stdout, stderr = process.communicate()
         timed_out = True
-        stdout = exc.stdout or ""
-        stderr = exc.stderr or ""
-        returncode = None
+        returncode = process.returncode
+    finally:
+        stop_event.set()
+        watcher.join()
+
+    final_snapshot = snapshot_once()
 
     if timed_out and not out_deflate_path.exists():
         return GAExecutionResult(
@@ -167,6 +288,18 @@ def _run_genetic_algorithm(
 
     optimized_text = optimized_text.strip()
     if not optimized_text:
+        if final_snapshot:
+            bit_length, optimized_bytes = final_snapshot
+            return GAExecutionResult(
+                optimized_bytes=optimized_bytes,
+                bit_length=bit_length,
+                stdout=stdout,
+                stderr=stderr,
+                timed_out=timed_out,
+                returncode=returncode,
+                workdir=str(work_dir),
+                output_text="",
+            )
         return GAExecutionResult(
             optimized_bytes=None,
             bit_length=None,
@@ -182,6 +315,19 @@ def _run_genetic_algorithm(
     try:
         bit_length, optimized_bytes = load_deflate_stream(StringIO(optimized_text))
     except Exception as exc:  # pylint: disable=broad-except
+        if final_snapshot:
+            bit_length, optimized_bytes = final_snapshot
+            return GAExecutionResult(
+                optimized_bytes=optimized_bytes,
+                bit_length=bit_length,
+                stdout=stdout,
+                stderr=stderr,
+                timed_out=timed_out,
+                returncode=returncode,
+                workdir=str(work_dir),
+                output_text=optimized_text,
+                error=f"failed to parse GA output: {exc}",
+            )
         return GAExecutionResult(
             optimized_bytes=None,
             bit_length=None,
@@ -212,7 +358,7 @@ def solve(
     *,
     stripper_name: str,
     use_zopfli: bool = True,
-    timeout_sec: int = 300,
+    timeout_sec: Optional[int] = None,
 ) -> Dict[str, object]:
     repo_root = Path(__file__).resolve().parent
     source_path = _resolve_source(task_dir, task_id)
@@ -251,6 +397,8 @@ def solve(
     cache_dir = repo_root / "optimizer_results" / "genetic_algo"
     cache_dir.mkdir(parents=True, exist_ok=True)
     work_dir = cache_dir / f"{task_dir}-{task_id}-{stripper_name}-{'zopfli' if use_zopfli else 'zlib'}"
+    output_path = work_dir / "result.deflate"
+    py_output_path = work_dir / f"task{task_id:03d}.py"
 
     variable_text = _build_variable_dump(stripped_code)
 
@@ -263,6 +411,8 @@ def solve(
             binary_path=ga_binary,
             timeout_sec=timeout_sec,
             work_dir=work_dir,
+            output_path=output_path,
+            py_output_path=py_output_path,
         )
     except Exception as exc:  # pylint: disable=broad-except
         return {
@@ -276,8 +426,6 @@ def solve(
 
     final_bytes = ga_exec.optimized_bytes or deflate_bytes
     final_bit_length = ga_exec.bit_length
-
-    output_path = work_dir / "result.deflate"
     output_path.write_bytes(final_bytes)
 
     result = {
@@ -294,6 +442,7 @@ def solve(
         "ga_error": ga_exec.error,
         "workdir": ga_exec.workdir,
         "output_path": str(output_path),
+        "py_output_path": str(py_output_path),
         "viz_url": viz_deflate_url(final_bytes),
     }
 
@@ -318,8 +467,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "--timeout",
         dest="timeout_sec",
         type=int,
-        default=300,
-        help="Timeout in seconds for the GA binary",
+        default=None,
+        help="Timeout in seconds for the GA binary (omit for no timeout)",
     )
     parser.add_argument(
         "--use-zlib",
@@ -345,10 +494,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print(name)
         return 0
 
+    timeout_sec: Optional[int] = args.timeout_sec
+    if timeout_sec is not None and timeout_sec <= 0:
+        timeout_sec = None
+
     common_kwargs = {
         "task_dir": args.task_dir,
         "task_id": args.task_id,
-        "timeout_sec": args.timeout_sec,
+        "timeout_sec": timeout_sec,
     }
 
     results: Dict[str, Dict[str, object]] = {}
