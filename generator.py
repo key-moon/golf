@@ -245,8 +245,7 @@ if __name__ == "__main__":
       exit(1)
 
     assert best_result.base_path is not None
-    # retire all other codes (if not /dist and genetic_algo)
-    if not best_result.base_path.startswith("dist") and 'genetic-algo' not in best_result.compressor:
+    if not best_result.base_path.startswith("dist"):
       for base_path in get_code_paths("base_*", i):
         if base_path == best_result.base_path: continue
         if base_path.split("/")[0] in DISALLOW_RETIRE: continue
