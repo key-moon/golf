@@ -55,11 +55,105 @@ std::vector<std::vector<int>> INITIAL_CL_CODE_LENGTHS = {
     {0,0,0,4,3,2,0,0,2,0,0,0,0,0,0,0,3,4,3},
 };
 
+struct GAState {
+    DynamicHuffmanBlock block;
+    std::vector<Variable> variables;
+
+    GAState(const DynamicHuffmanBlock& b, const std::vector<Variable>& vars) : block(b), variables(vars) {}
+
+    std::vector<int>& cl_code_lengths() {
+        return block.cl_code_lengths;
+    }
+    const std::vector<int>& cl_code_lengths() const {
+        return block.cl_code_lengths;
+    }
+    std::string var_assignments() const {
+        std::string s;
+        for (int i = 0; i < variables.size(); ++i) {
+            if (variables[i].name.size() != 1) continue;
+            s += variables[i].name;
+        }
+        return s;
+    }
+    int bit_length() const {
+        return block.bit_length();
+    }
+    void print_cl_code_lengths() const {
+        for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
+            std::cerr << block.cl_code_lengths[i] << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
+        }
+    }
+    void print_var_assignment() const {
+        std::cerr << var_assignments() << std::endl;
+    }
+    bool operator<(const GAState& other) const {
+        return bit_length() < other.bit_length();
+    }
+    // hash by cl_code_lengths and var_assignments
+    std::size_t hash() const {
+        std::size_t seed = 0;
+        auto cl_code_lengths_arr = cl_code_lengths();
+        auto var_assignments_str = var_assignments();
+        for (const auto& val : cl_code_lengths_arr) {
+            seed ^= std::hash<int>()(val) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        }
+        for (const auto& ch : var_assignments_str) {
+            seed ^= std::hash<char>()(ch) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        }
+        return seed;
+    }
+    void write_to_stream(std::ostream& out) const {
+        block.dump_string(out);
+        write_variables_to_stream(out, variables);
+    }
+    static GAState load_from_streram(std::istream& in) {
+        auto block = load_block_from_stream(in);
+        auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get());
+        if (!db) {
+            throw std::runtime_error("Only DynamicHuffmanBlock is supported in GAState");
+        }
+        auto variables = load_variables_from_stream(in);
+        return GAState(*db, variables);
+    }
+};
+
+std::vector<GAState> load_states(std::string in_filepath) {
+    if (in_filepath.empty()) {
+        return {};
+    }
+    std::ifstream in(in_filepath);
+    if (!in.is_open()) {
+        return {};
+    }
+    int n;
+    in >> n;
+    std::vector<GAState> states;
+    for (int i = 0; i < n; ++i) {
+        states.emplace_back(GAState::load_from_streram(in));
+    }
+    std::cerr << "Loaded " << states.size() << " states from " << in_filepath << std::endl;
+    return states;
+}
+
+void write_states(std::string out_filepath, const std::vector<GAState>& states) {
+    if (out_filepath.empty()) {
+        return;
+    }
+    std::ofstream out(out_filepath);
+    if (!out.is_open()) {
+        return;
+    }
+    out << states.size() << "\n";
+    for (const auto& state : states) {
+        state.write_to_stream(out);
+    }
+    std::cerr << "Written " << states.size() << " states to " << out_filepath << std::endl;
+}
 
 int main(int argc, char** argv) {
     int num_iter = 10;
-    if (argc != 4 && argc != 5) {
-        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> <variable_dump_file> <output_deflate_dump_file> [output_variable_dump_file]\n";
+    if (argc != 4 && argc != 5 && argc != 6) {
+        std::cerr << "Usage: " << argv[0] << " <deflate_dump_file> <variable_dump_file> <output_deflate_dump_file> [output_variable_dump_file] [state_file]\n";
         return 1;
     }
     std::string filepath = argv[1];
@@ -78,10 +172,14 @@ int main(int argc, char** argv) {
 
     std::string out_deflate_filepath = argv[3];
     std::string out_var_filepath = argc >= 5 ? argv[4] : "";
+    std::string state_filepath = argc >= 6 ? argv[5] : "";
 
     std::cerr << "Deflate text file will be written to: " << out_deflate_filepath << "\n";
     if (argc >= 5) {
         std::cerr << "Variable text file will be written to: " << out_var_filepath << "\n";
+    }
+    if (argc >= 6) {
+        std::cerr << "State text file will be written to: " << state_filepath << "\n";
     }
 
     std::vector<std::unique_ptr<Block>> blocks;
@@ -129,56 +227,32 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    struct GAState {
-        DynamicHuffmanBlock block;
-        std::vector<Variable> variables;
 
-        GAState(const DynamicHuffmanBlock& b, const std::vector<Variable>& vars) : block(b), variables(vars) {}
-
-        std::vector<int>& cl_code_lengths() {
-            return block.cl_code_lengths;
-        }
-        const std::vector<int>& cl_code_lengths() const {
-            return block.cl_code_lengths;
-        }
-        std::string var_assignments() const {
-            std::string s;
-            for (int i = 0; i < variables.size(); ++i) {
-                if (variables[i].name.size() != 1) continue;
-                s += variables[i].name;
-            }
-            return s;
-        }
-        int bit_length() const {
-            return block.bit_length();
-        }
-        void print_cl_code_lengths() const {
-            for (int i = 0; i < block.cl_code_lengths.size(); ++i) {
-                std::cerr << block.cl_code_lengths[i] << (i + 1 == block.cl_code_lengths.size() ? "\n" : " ");
-            }
-        }
-        void print_var_assignment() const {
-            std::cerr << var_assignments() << std::endl;
-        }
-        bool operator<(const GAState& other) const {
-            return bit_length() < other.bit_length();
-        }
-        // hash by cl_code_lengths and var_assignments
-        std::size_t hash() const {
-            std::size_t seed = 0;
-            auto cl_code_lengths_arr = cl_code_lengths();
-            auto var_assignments_str = var_assignments();
-            for (const auto& val : cl_code_lengths_arr) {
-                seed ^= std::hash<int>()(val) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-            }
-            for (const auto& ch : var_assignments_str) {
-                seed ^= std::hash<char>()(ch) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-            }
-            return seed;
-        }
-    };
 
     auto best_state = GAState(*db, variables);
+
+    [&]() {
+        if (out_deflate_filepath.empty() || out_var_filepath.empty()) {
+            return;
+        }
+        std::ifstream deflate_in(out_deflate_filepath);
+        std::ifstream var_in(out_var_filepath);
+        if (!deflate_in.is_open() || !var_in.is_open()) {
+            return;
+        }
+        try {
+            auto block = load_block_from_stream(deflate_in);
+            auto* db = dynamic_cast<DynamicHuffmanBlock*>(block.get());
+            if (!db) {
+                return;
+            }
+            auto variables = load_variables_from_stream(var_in);
+            best_state = GAState(*db, variables);
+            std::cerr << "Loaded best state from output files. Bit length: " << best_state.bit_length() << "\n";
+        } catch (...) {
+            return;
+        }
+    }();
 
     auto new_state_hook = [&](const GAState& state) {
         int state_bit_length = state.bit_length();
@@ -253,10 +327,6 @@ int main(int argc, char** argv) {
         return new_population;
     };
     
-    // TODO: ランダムに1通りだけ選んで試行する感じにしたい
-    // 交叉とかも実装したい
-    // 変数のrandom swapもやりたい
-    // optimizer_huffman_treeを使っている場合とそうでない場合があるんだけど、それによって性能差が出たりするかもしれない、両方をうまく混ぜて近傍作りたい気持ち
     auto trial = [&](const GAState& state) -> std::pair<GAState, bool> {
         try {
             auto freq_count = XorShift::randn(2) ? FreqCount::NumNonVarAsLiteral : FreqCount::NumNonVarAll;
@@ -421,33 +491,41 @@ int main(int argc, char** argv) {
 
     // 初期状態を適当に構築
     GAState initial_state(*db, variables);
-    std::vector<GAState> states;
+    std::vector<GAState> states = load_states(state_filepath);
 
-    auto init_state_cls = INITIAL_CL_CODE_LENGTHS;
-    init_state_cls.push_back(db->cl_code_lengths);
-    std::cerr << "Initial CL code lengths candidates: " << init_state_cls.size() << "\n";
-    for (auto& cl : init_state_cls) {
-        auto block = initial_state.block;
-        auto variables = initial_state.variables;
-        block.cl_code_lengths = cl;
-        try {
-            optimize_lit_code_huffman(block); // cl codeを弄ったらtrial前にこれを挟まないとinvalidな状態が生まれて死ぬ
-            optimize_dist_code_huffman(block);
+    if (states.size() > 0) {
+        std::cerr << "Initial population size (loaded): " << states.size() << "\n";
+        for (const auto& state : states) {
+            new_state_hook(state);
         }
-        catch (const LitCodeDPFailure& e) {
-            continue;
-        }
-        catch (const DistCodeDPFailure& e) {
-            continue;
-        }
-        try {
-            auto [s, b] = trial(GAState(block, variables));
-            if (!b) continue;
-            new_state_hook(s);
-            states.emplace_back(s);
-        }
-        catch (const RLEDPTable::RLEDPFailure& e) {
-            continue;
+    }
+    else {
+        auto init_state_cls = INITIAL_CL_CODE_LENGTHS;
+        init_state_cls.push_back(db->cl_code_lengths);
+        std::cerr << "Initial CL code lengths candidates: " << init_state_cls.size() << "\n";
+        for (auto& cl : init_state_cls) {
+            auto block = initial_state.block;
+            auto variables = initial_state.variables;
+            block.cl_code_lengths = cl;
+            try {
+                optimize_lit_code_huffman(block); // cl codeを弄ったらtrial前にこれを挟まないとinvalidな状態が生まれて死ぬ
+                optimize_dist_code_huffman(block);
+            }
+            catch (const LitCodeDPFailure& e) {
+                continue;
+            }
+            catch (const DistCodeDPFailure& e) {
+                continue;
+            }
+            try {
+                auto [s, b] = trial(GAState(block, variables));
+                if (!b) continue;
+                new_state_hook(s);
+                states.emplace_back(s);
+            }
+            catch (const RLEDPTable::RLEDPFailure& e) {
+                continue;
+            }
         }
     }
 
@@ -491,6 +569,7 @@ int main(int argc, char** argv) {
             break;
         }
         states = ranking_selection(new_states, POPULATION_SIZE);
+        write_states(state_filepath, states);
         std::cerr << "Population size: " << states.size() << ", Best length so far: " << best_state.bit_length() << "\n";
     }
 

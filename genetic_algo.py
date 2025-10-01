@@ -1,3 +1,7 @@
+# 時間がかかるかわりに強いoptimizer
+# optimizer_results/genetic_algo/ に途中状態や最終状態のdeflate fileを保存している
+# プログラム改変後に再度走らせたい場合は current_states / input_deflate / input_variable を削除してから再実行で良い
+
 import argparse
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -107,6 +111,7 @@ def _run_genetic_algorithm(
     variable_path = work_dir / "input_variable.txt"
     out_deflate_path = work_dir / "output_deflate.txt"
     out_variable_path = work_dir / "output_variable.txt"
+    states_path = work_dir / "current_states.txt"
 
     deflate_path.write_text(deflate_text, encoding="utf-8")
     variable_path.write_text(variable_text, encoding="utf-8")
@@ -121,6 +126,7 @@ def _run_genetic_algorithm(
         str(variable_path),
         str(out_deflate_path),
         str(out_variable_path),
+        str(states_path),
     ]
 
     try:
@@ -242,7 +248,7 @@ def solve(
     if not ga_binary.exists():
         raise FileNotFoundError(f"geneticalgo binary not found at {ga_binary}")
 
-    cache_dir = repo_root / ".cache" / "genetic_algo"
+    cache_dir = repo_root / "optimizer_results" / "genetic_algo"
     cache_dir.mkdir(parents=True, exist_ok=True)
     work_dir = cache_dir / f"{task_dir}-{task_id}-{stripper_name}-{'zopfli' if use_zopfli else 'zlib'}"
 

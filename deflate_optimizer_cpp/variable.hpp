@@ -109,3 +109,13 @@ void write_variables_to_stream(std::ostream& out, std::vector<Variable> variable
         }
     }
 }
+
+void write_variables_to_stream(std::ostream& out, std::vector<Variable> variables) {
+    out << variables.size() << "\n";
+    for (const auto& var : variables) {
+        out << var.name << " " << var.occurrences.size() << "\n";
+        for (int i = 0; i < var.occurrences.size(); ++i) {
+            out << var.occurrences[i] << (i + 1 == var.occurrences.size() ? "\n" : " ");
+        }
+    }
+}
