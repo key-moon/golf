@@ -1,4 +1,4 @@
-# best: 194(jailctf merger) / others: 207(4atj sisyphus luke Seek mukundan), 240(ox jam), 292(intgrah jimboko awu macaque sammyuri), 327(MasukenSamba), 340(cg-klogw-sekken)
+# best: 194(jailctf merger) / others: 207(4atj sisyphus luke Seek mukundan), 240(ox jam), 292(intgrah jimboko awu macaque sammyuri), 327(MasukenSamba), 330(cg-klogw-sekken)
 # ============================================================================================= 194 ==============================================================================================
 # def p(g):
 #  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)

@@ -1,4 +1,4 @@
-# best: 323(jailctf merger, ox jam) / others: 371(jacekw Potatoman nauti natte), 371(natte), 381(cg-klogw-sekken), 392(sekken), 406(jacekwl Potatoman nauti)
+# best: 323(jailctf merger, ox jam) / others: 361(cg-klogw-sekken), 371(jacekw Potatoman nauti natte), 371(natte), 392(sekken), 406(jacekwl Potatoman nauti)
 def p(g):
  C=max({*sum(g,[])}-{0},key=sum(g,[]).count)
  for y,x,c in [(y,x,g[y][x])for y in range(len(g))for x in range(len(g[0]))if g[y][x]==C]:
