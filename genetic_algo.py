@@ -620,10 +620,10 @@ def solve(
         print(f"[genetic_algo]   returncode: {ga_exec.returncode}", file=sys.stderr)
     if ga_exec.error:
         print(f"[genetic_algo]   GA error: {ga_exec.error}", file=sys.stderr)
-    # if stdout_excerpt:
-    #     print(f"[genetic_algo]   stdout: {stdout_excerpt}", file=sys.stderr)
-    # if stderr_excerpt:
-    #     print(f"[genetic_algo]   stderr: {stderr_excerpt}", file=sys.stderr)
+        if stdout_excerpt:
+            print(f"[genetic_algo]   stdout: {stdout_excerpt}", file=sys.stderr)
+        if stderr_excerpt:
+            print(f"[genetic_algo]   stderr: {stderr_excerpt}", file=sys.stderr)
 
 
 
