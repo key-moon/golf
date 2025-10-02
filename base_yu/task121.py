@@ -1,4 +1,4 @@
-# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 90(JRKX), 90(JRKXK), 90(2F), 90(biz), 91(kabutack)
+# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 90(JRKX), 90(JRKXK), 90(2F), 90(biz), 90(JRKKX)
 # ========================================== 89 =========================================
 def p(g):
  y,x=divmod(sum(g,[]).index(8)-14,13)

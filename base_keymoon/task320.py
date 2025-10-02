@@ -1,4 +1,4 @@
-# best: 68(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 70(JRKX), 70(kabutack), 70(JRKXK), 72(ox jam), 76(MasukenSamba)
+# best: 68(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 70(JRKX), 70(kabutack), 70(JRKXK), 70(JRKKX), 72(ox jam)
 # 多分70までは縮むはず
 # lambda g:[*zip(*[[s,s[:-(s.count(2)//2)]+99*(8,)][any(s)]for s in zip(*g)])] <- zipのclipを利用しようとした残骸
 # lambda g:[*zip(*[s[:len(s)-(u:=s.count(2)//2)]+u*(8,)for s in zip(*g)])]

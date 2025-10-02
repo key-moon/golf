@@ -1,4 +1,4 @@
-# best: 48(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, HETHAT, natte, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 49(JRKX), 49(kabutack), 49(JRKXK), 49(Yuchen20), 51(cubbus)
+# best: 48(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, HETHAT, natte, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 49(JRKX), 49(kabutack), 49(JRKXK), 49(Yuchen20), 49(JRKKX)
 # ===================== 48 =====================
 # p=lambda g:[*map(list,zip(*[[max(s[:i+1])for i in range(3)] for s in zip(*g)]))]
 # p=lambda g:[[max(v)for v in zip(*g[:i])]for i in(1,2,3)]

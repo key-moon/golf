@@ -1,4 +1,4 @@
-# best: 256(JRKXK, kdmitrie) / others: 260(jailctf merger), 269(ox jam), 277(Yuchen20), 279(cg-klogw-sekken), 279(cg-klogw)
+# best: 256(JRKXK, kdmitrie, JRKKX) / others: 260(jailctf merger), 269(ox jam), 276(cg-klogw-sekken), 277(Yuchen20), 279(cg-klogw)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])
