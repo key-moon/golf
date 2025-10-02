@@ -1,0 +1,1 @@
+def p(f):n,p,*m=range,15;i,*f=sum(f,m),m;[m==(m:=m+[m for m in n(e,150,p)if(p>e)&i[m]])>[]<[f:=[u+[(e,m)]for e in n(45)for u in(i[e]<1)*f],m:=[]]for e in n(16)];return max([*zip(*[((any(m-e+min(n)in n*(e%p-m%p<6)for e,n in u)|i[m]%5)%3for m in n(150))]*p)]for u in f)

@@ -221,7 +221,7 @@ if __name__ == "__main__":
         ga_bytes = ga_path.read_bytes()
       except OSError:
         continue
-      if len(ga_bytes) < len(shortest):
+      if len(ga_bytes) <= len(shortest):
         shortest = ga_bytes
         base_path_for_result = ga_base_source.as_posix() if ga_base_source is not None else ga_path.as_posix()
         best_result = TaskResult(

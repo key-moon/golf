@@ -229,6 +229,8 @@ def collect_compress_candidates(
                     entries=entries,
                 )
             )
+    # sort candidates
+    candidates.sort(key=lambda c: (c.task_id, str(c.dist_path)))
     return candidates
 
 

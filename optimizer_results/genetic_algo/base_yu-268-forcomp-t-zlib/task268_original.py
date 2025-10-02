@@ -1,3 +1,0 @@
-B=len
-A=range
-p=lambda g:(x:=g.index(max(g)))and any(m:=max(g[:x]))and[[g[i][j]+[[i for i in A(B(g))if m[i]][1]<j<[i for i in A(B(g))if m[i]][2]or i-g.index(m)+1==[i for i in A(B(g))if m[i]][2]-j or i-g.index(m)+1==j-[i for i in A(B(g))if m[i]][1],i<x and[i for i in A(B(g))if m[i]][1]<=j<=[i for i in A(B(g))if m[i]][2]][i>g.index(m)]*4for j in A(B(g))]for i in A(B(g))]or[*zip(*p([*zip(*g[::-1])]))][::-1]
