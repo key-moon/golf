@@ -52,9 +52,11 @@ class GAJob:
     task_dir: str
     base_path: Path
     stripper: str
+    use_zopfli: bool
 
     def label(self) -> str:
-        return f"{self.task_dir}/task{self.task_id:03d}:{self.stripper}"
+        codec = "zopfli" if self.use_zopfli else "zlib"
+        return f"{self.task_dir}/task{self.task_id:03d}:{self.stripper}:{codec}"
 
 
 def _truncate(text: str, limit: int = 2000) -> str:
@@ -639,14 +641,16 @@ def _jobs_from_candidates(
             base_path = entry.base_path
             task_dir = base_path.parent.name
             for stripper in entry.strippers:
-                jobs.append(
-                    GAJob(
-                        task_id=cand.task_id,
-                        task_dir=task_dir,
-                        base_path=base_path,
-                        stripper=stripper,
+                for use_zopfli in (True, False):
+                    jobs.append(
+                        GAJob(
+                            task_id=cand.task_id,
+                            task_dir=task_dir,
+                            base_path=base_path,
+                            stripper=stripper,
+                            use_zopfli=use_zopfli,
+                        )
                     )
-                )
     return jobs
 
 
@@ -810,6 +814,7 @@ def _submit_job(
         job.task_dir,
         job.task_id,
         stripper_name=job.stripper,
+        use_zopfli=job.use_zopfli,
         timeout_sec=timeout_sec,
         source_override=job.base_path,
         skip_if_unchanged=skip_if_unchanged,
