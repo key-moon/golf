@@ -27,11 +27,11 @@
 | [118](/vis/task118.png) | [base_zatsu](/base_zatsu/task118.py) | forcomp-s/genetic-algo(zopfli) | [268](/dist/task118.py) (-3) | 271 🟢 | [vis-many](/vis_many/task118.png) |  |
 | [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [268](/dist/task219.py) (+11) | 257 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |
 | [319](/vis/task319.png) | [base_yu](/base_yu/task319.py) | forcomp-s/genetic-algo(zopfli) | [264](/dist/task319.py) (+70) | 194 🔴 | [vis-many](/vis_many/task319.png) |  |
-| [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | forcomp-t/genetic-algo(zopfli) | [257](/dist/task191.py) (+16) | 241 🔴 | [vis-many](/vis_many/task191.png) |  |
 | [080](/vis/task080.png) | [base_yu](/base_yu/task080.py) | forcomp-t/genetic-algo(zopfli) | [256](/dist/task080.py) (+3) | 253 🔴 | [vis-many](/vis_many/task080.png) |  |
 | [370](/vis/task370.png) | [base_yu](/base_yu/task370.py) | forcomp-t/genetic-algo(zopfli) | [254](/dist/task370.py) (-2) | 256 🟢 | [vis-many](/vis_many/task370.png) |  |
 | [201](/vis/task201.png) | [base_yu](/base_yu/task201.py) | raw/genetic-algo(zopfli) | [253](/dist/task201.py) (+45) | 208 🔴 | [vis-many](/vis_many/task201.png) |  |
 | [308](/vis/task308.png) | [base_yu](/base_yu/task308.py) | forcomp-t/genetic-algo(zopfli) | [245](/dist/task308.py) (+19) | 226 🔴 | [vis-many](/vis_many/task308.png) |  |
+| [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | forcomp-s/genetic-algo(zopfli) | [244](/dist/task191.py) (+3) | 241 🔴 | [vis-many](/vis_many/task191.png) |  |
 | [089](/vis/task089.png) | [base_yu](/base_yu/task089.py) | forcomp-t/genetic-algo(zopfli) | [243](/dist/task089.py) (+7) | 236 🔴 | [vis-many](/vis_many/task089.png) |  |
 | [145](/vis/task145.png) | [base_yu](/base_yu/task145.py) | forcomp-s/genetic-algo(zopfli) | [241](/dist/task145.py) (+50) | 191 🔴 | [vis-many](/vis_many/task145.png) |  |
 | [284](/vis/task284.png) | [base_keymoon](/base_keymoon/task284.py) | forcomp-t/genetic-algo(zopfli) | [241](/dist/task284.py) (+21) | 220 🔴 | [vis-many](/vis_many/task284.png) |  |
