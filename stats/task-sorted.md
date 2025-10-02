@@ -228,7 +228,7 @@
 | [216](/vis/task216.png) | [base_yu](/base_yu/task216.py) | raw/raw | [121](/dist/task216.py) (+7) | 114 🔴 | [vis-many](/vis_many/task216.png) | not worth compress |
 | [217](/vis/task217.png) | [base_yu](/base_yu/task217.py) | raw/raw | [99](/dist/task217.py) (+4) | 95 🔴 | [vis-many](/vis_many/task217.png) | not worth compress |
 | [218](/vis/task218.png) | [base_keymoon](/base_keymoon/task218.py) | raw/raw | [67](/dist/task218.py) (+11) | 56 🔴 | [vis-many](/vis_many/task218.png) | not worth compress |
-| [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [268](/dist/task219.py) (+11) | 257 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |
+| [219](/vis/task219.png) | [dist](/dist/task219.py) | previous | [268](/dist/task219.py) (+23) | 245 🔴 | [vis-many](/vis_many/task219.png) | ⚠️ regression? |
 | [220](/vis/task220.png) | [base_yu](/base_yu/task220.py) | raw/raw | [97](/dist/task220.py) (+10) | 87 🔴 | [vis-many](/vis_many/task220.png) | not worth compress |
 | [221](/vis/task221.png) | [base_yu](/base_yu/task221.py) | forplain/raw | [98](/dist/task221.py) (+11) | 87 🔴 | [vis-many](/vis_many/task221.png) | not worth compress |
 | [222](/vis/task222.png) | [base_yu](/base_yu/task222.py) | raw/raw | [109](/dist/task222.py) (+6) | 103 🔴 | [vis-many](/vis_many/task222.png) | not worth compress |
@@ -286,7 +286,7 @@
 | [274](/vis/task274.png) | [base_yu](/base_yu/task274.py) | raw/raw | [71](/dist/task274.py) (0) | 71  | [vis-many](/vis_many/task274.png) | not worth compress |
 | [275](/vis/task275.png) | [base_yu](/base_yu/task275.py) | forplain/raw | [150](/dist/task275.py) (+14) | 136 🔴 | [vis-many](/vis_many/task275.png) | not worth compress |
 | [276](/vis/task276.png) | [base_yu](/base_yu/task276.py) | raw/raw | [38](/dist/task276.py) (0) | 38  | [vis-many](/vis_many/task276.png) | not worth compress |
-| [277](/vis/task277.png) | [base_yu](/base_yu/task277.py) | forcomp-t/genetic-algo(zopfli) | [216](/dist/task277.py) (+22) | 194 🔴 | [vis-many](/vis_many/task277.png) |  |
+| [277](/vis/task277.png) | [base_yu](/base_yu/task277.py) | forcomp-t/genetic-algo(zlib) | [215](/dist/task277.py) (+21) | 194 🔴 | [vis-many](/vis_many/task277.png) |  |
 | [278](/vis/task278.png) | [base_keymoon](/base_keymoon/task278.py) | forplain/raw | [133](/dist/task278.py) (+15) | 118 🔴 | [vis-many](/vis_many/task278.png) | not worth compress |
 | [279](/vis/task279.png) | [base_keymoon](/base_keymoon/task279.py) | raw/raw | [128](/dist/task279.py) (+21) | 107 🔴 | [vis-many](/vis_many/task279.png) | not worth compress |
 | [280](/vis/task280.png) | [base_yu](/base_yu/task280.py) | raw/raw | [175](/dist/task280.py) (-4) | 179 🟢 | [vis-many](/vis_many/task280.png) | not worth compress |
@@ -333,7 +333,7 @@
 | [321](/vis/task321.png) | [base_yu](/base_yu/task321.py) | raw/raw | [56](/dist/task321.py) (+1) | 55 🔴 | [vis-many](/vis_many/task321.png) | not worth compress |
 | [322](/vis/task322.png) | [base_keymoon](/base_keymoon/task322.py) | raw/raw | [48](/dist/task322.py) (0) | 48  | [vis-many](/vis_many/task322.png) | not worth compress |
 | [323](/vis/task323.png) | [base_yu](/base_yu/task323.py) | raw/raw | [124](/dist/task323.py) (+22) | 102 🔴 | [vis-many](/vis_many/task323.png) | not worth compress |
-| [324](/vis/task324.png) | [dist](/dist/task324.py) | previous | [241](/dist/task324.py) (-18) | 259 🟢 | [vis-many](/vis_many/task324.png) | ⚠️ regression? |
+| [324](/vis/task324.png) | [dist](/dist/task324.py) | previous | [241](/dist/task324.py) (-4) | 245 🟢 | [vis-many](/vis_many/task324.png) | ⚠️ regression? |
 | [325](/vis/task325.png) | [base_keymoon](/base_keymoon/task325.py) | raw/raw | [179](/dist/task325.py) (+19) | 160 🔴 | [vis-many](/vis_many/task325.png) | not worth compress |
 | [326](/vis/task326.png) | [base_keymoon](/base_keymoon/task326.py) | raw/raw | [30](/dist/task326.py) (0) | 30  | [vis-many](/vis_many/task326.png) | not worth compress |
 | [327](/vis/task327.png) | [base_keymoon](/base_keymoon/task327.py) | raw/raw | [68](/dist/task327.py) (+1) | 67 🔴 | [vis-many](/vis_many/task327.png) | not worth compress |
