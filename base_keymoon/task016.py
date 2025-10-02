@@ -1,4 +1,4 @@
-# best: 43(cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 44(ox jam), 46(jonas ryno kg583 kabutack), 46(JRKX), 46(HETHAT), 46(intgrah jimboko awu macaque sammyuri)
+# best: 43(cubbus, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 44(ox jam), 46(jonas ryno kg583 kabutack), 46(JRKX), 46(HETHAT), 46(JRKXK)
 # =================== 43 ==================
 # これ43らしい あと15byte縮むらしい 意味わからない
 # 58

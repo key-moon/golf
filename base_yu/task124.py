@@ -1,4 +1,4 @@
-# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 100(ox jam), 104(biz), 110(JRKX), 112(Yuchen20)
+# best: 96(jailctf merger) / others: 97(4atj sisyphus luke Seek mukundan), 100(ox jam), 104(biz), 110(JRKX), 110(JRKXK)
 # ============================================= 96 =============================================
 # def p(g):
 #  for w in range(6):

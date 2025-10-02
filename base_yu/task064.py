@@ -1,4 +1,4 @@
-# best: 152(jailctf merger, ox jam) / others: 155(4atj sisyphus luke Seek mukundan), 163(duckyluuk), 170(intgrah jimboko awu macaque sammyuri), 186(JRKX), 187(jonas ryno kg583 kabutack)
+# best: 152(jailctf merger, ox jam) / others: 155(4atj sisyphus luke Seek mukundan), 163(duckyluuk), 170(intgrah jimboko awu macaque sammyuri), 186(JRKX), 186(JRKXK)
 
 import re
 def p(g):

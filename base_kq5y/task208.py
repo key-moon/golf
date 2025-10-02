@@ -1,4 +1,4 @@
-# best: 215(jailctf merger) / others: 225(ox jam), 229(jonas ryno kg583 kabutack), 229(JRKX), 229(jonas ryno kg583), 244(jacekwl Potatoman nauti)
+# best: 215(jailctf merger) / others: 225(ox jam), 229(jonas ryno kg583 kabutack), 229(JRKX), 229(jonas ryno kg583), 229(JRKXK)
 
 # 上の方が圧縮され力が高い そもそもロジックが違う説
 

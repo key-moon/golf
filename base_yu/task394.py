@@ -1,4 +1,4 @@
-# best: 91(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 92(ox jam), 95(jonas ryno kg583 kabutack), 95(JRKX), 95(jonas ryno kg583), 95(kdmitrie)
+# best: 91(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 92(ox jam), 95(jonas ryno kg583 kabutack), 95(JRKX), 95(jonas ryno kg583), 95(JRKXK)
 # =========================================== 91 ==========================================
 # r=range
 # def p(g):
