@@ -146,6 +146,7 @@ enum TieBreak {
     NoUpdate,
     RandomSwap,
     RandomSwapCL,
+    ChangeVarSet,
 };
 
 enum VariableAssignment {
@@ -153,6 +154,81 @@ enum VariableAssignment {
     Greedy,    // 出現頻度順に割り当て先を決める 割り当て先は衝突が起こらないなかで優先度最大のもの
     DP,        // 出現頻度の偏りが最大（エントロピーが最小）になるようにDP
 };
+
+// 使用された文字の集合をrun-length encodedで保持し、その際の各runの端の文字を移動させる候補とする
+// 移動先の文字は、non lit occが存在するがまだ割り当てられていない文字か、runの端を拡張した文字
+std::vector<int> change_variable_set(DynamicHuffmanBlock& block, std::vector<Variable>& variables, const std::vector<std::vector<bool>>& conflict_mat) {
+    auto text = block.get_string({});
+    auto char_stats = get_char_stats(block, variables);
+
+    std::vector<bool> used_chars(256, false);
+    for (auto c : text) {
+        used_chars[c] = true;
+    }
+    std::vector<std::pair<int,int>> runs; // (start, end)
+    for (int i = 0; i < 256; ++i) {
+        if (!used_chars[i]) continue;
+        int j = i;
+        while (j + 1 < 256 && used_chars[j + 1]) j++;
+        runs.emplace_back(i, j);
+        i = j;
+    };
+    std::vector<int> candidate_chars;
+    for (auto [start, end] : runs) {
+        if (start > 0 && char_stats[start].num_var_occurrences_as_literal + char_stats[start].num_var_occurrences_as_nonliteral > 0) {
+            candidate_chars.push_back(start);
+        }
+        if (end + 1 < 256 && char_stats[end].num_var_occurrences_as_literal + char_stats[end].num_var_occurrences_as_nonliteral > 0) {
+            candidate_chars.push_back(end);
+        }
+    }
+    std::vector<int> replace_cand_chars;
+    for (int i = 0; i < 256; ++i) {
+        if (!char_stats[i].var_candidate) continue;
+        if (char_stats[i].num_var_occurrences_as_literal + char_stats[i].num_var_occurrences_as_nonliteral > 0) continue;
+        if (char_stats[i].num_nonvar_occurrences_as_literal + char_stats[i].num_nonvar_occurrencess_as_nonliteral == 0) continue;
+        replace_cand_chars.push_back(i);
+    }
+    for (auto [start, end] : runs) {
+        if (start > 0 && char_stats[start - 1].var_candidate) {
+            replace_cand_chars.push_back(start - 1);
+        }
+        if (end + 1 < 256 && char_stats[end + 1].var_candidate) {
+            replace_cand_chars.push_back(end + 1);
+        }
+    }
+    std::sort(replace_cand_chars.begin(), replace_cand_chars.end());
+    replace_cand_chars.erase(std::unique(replace_cand_chars.begin(), replace_cand_chars.end()), replace_cand_chars.end());
+
+    XorShift::shuffle(candidate_chars);
+    XorShift::shuffle(replace_cand_chars);
+    int num_changes = std::min({(int)candidate_chars.size(), (int)replace_cand_chars.size(), 3});
+    std::vector<int> variable_to_new_literal_mapping(variables.size(), -1);
+    if (num_changes == 0) return variable_to_new_literal_mapping;
+
+    num_changes = XorShift::randn(num_changes) + 1;
+    std::vector<std::vector<int>> char_to_var_indices(256);
+    for (int i = 0; i < variables.size(); ++i) {
+        if (variables[i].name.size() != 1) continue;
+        unsigned char c = static_cast<unsigned char>(variables[i].name[0]);
+        char_to_var_indices[c].push_back(i);
+    }
+    for (int i = 0; i < num_changes; ++i) {
+        int from_char = candidate_chars[i];
+        int to_char = replace_cand_chars[i];
+        if (from_char == to_char) {
+            char_to_var_indices[from_char].clear();
+            continue;
+        }
+        auto& indices = char_to_var_indices[from_char];
+        if (indices.empty()) continue;
+        for (int var_idx : indices) {
+            variable_to_new_literal_mapping[var_idx] = to_char;
+        }
+        indices.clear();
+    }
+    return variable_to_new_literal_mapping;
+}
 
 // ビット数が少ないところに貪欲に当てはめていく
 // ビット数が同じ場合、既に埋めたところに近いものを優先的に割り当てる感じで

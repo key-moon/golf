@@ -332,11 +332,12 @@ int main(int argc, char** argv) {
         try {
             auto freq_count = XorShift::randn(2) ? FreqCount::NumNonVarAsLiteral : FreqCount::NumNonVarAll;
             auto tie_break = []() {
-                int r = XorShift::randn(5);
+                int r = XorShift::randn(6);
                 if (r == 0) return TieBreak::BFS;
                 if (r == 1) return TieBreak::NonVarFreq;
                 if (r == 2) return TieBreak::NoUpdate;
                 if (r == 3) return TieBreak::RandomSwap;
+                if (r == 4) return TieBreak::ChangeVarSet;
                 return TieBreak::RandomSwapCL;
             }();
             auto no_update_optimal_parse = XorShift::randn(2) != 0;
@@ -399,6 +400,10 @@ int main(int argc, char** argv) {
             }
             else if (tie_break == TieBreak::RandomSwapCL) {
                 randomly_update_code_lengths(block.cl_code_lengths);
+            }
+            else if (tie_break == TieBreak::ChangeVarSet) {
+                auto variable_to_new_literal_mapping = optimize_variables(block, variables, var_dependency, freq_count, tie_break, var_assign);
+                replace_and_recompute_parsing(block, variables, variable_to_new_literal_mapping);
             }
             else if (no_update_optimal_parse) {
                 block.tokens = optimal_parse_block(block, {});
