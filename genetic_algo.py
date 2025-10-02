@@ -6,6 +6,7 @@ import argparse
 import os
 import random
 import re
+import shutil
 import sys
 import threading
 import time
@@ -356,6 +357,18 @@ def _run_genetic_algorithm(
     def snapshot_loop() -> None:
         while not stop_event.wait(snapshot_interval_sec):
             snapshot_once()
+
+    for src, dst in (
+        (out_deflate_path, out_deflate_tmp),
+        (out_variable_path, out_variable_tmp),
+        (states_path, states_tmp),
+    ):
+        if not src.exists():
+            continue
+        try:
+            shutil.copyfile(src, dst)
+        except OSError:
+            pass
 
     process = subprocess.Popen(  # pylint: disable=consider-using-with
         cmd,
