@@ -8,3 +8,4 @@ release_note.md
 submission.zip
 .python-version
 _sync.sh
+/optimizer_results/genetic_algo/*/*.txt~tmp

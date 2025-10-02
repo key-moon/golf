@@ -8,11 +8,13 @@ import random
 import re
 import sys
 import threading
+import time
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, as_completed, wait
 from dataclasses import dataclass
 from io import StringIO
 from pathlib import Path
-from typing import Iterator, Optional, Sequence
+from typing import Callable, Iterator, Optional, Sequence
+import tempfile
 import subprocess
 import traceback
 
@@ -95,6 +97,111 @@ def _build_variable_dump(code: str) -> str:
     return occ_text + conflict_text
 
 
+def _build_python_payload(
+    compressed: bytes,
+    *,
+    lib_name: str = "zlib",
+) -> tuple[bytes, int]:
+    extra_args = determine_wbits(compressed)
+    prefix = (
+        f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes("
+    ).encode()
+    suffix = b",'L1')" + extra_args.encode() + b"))"
+    embed = get_embed_str(compressed)
+    payload = prefix + embed + suffix
+    extra_overhead = len(embed) - (len(compressed) + 2)
+    return payload, extra_overhead
+
+
+def _atomic_write_bytes(path: Path, data: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_path = tempfile.mkstemp(prefix=f".{path.name}.", dir=str(path.parent))
+    try:
+        with os.fdopen(fd, "wb") as tmp_file:
+            tmp_file.write(data)
+            tmp_file.flush()
+            os.fsync(tmp_file.fileno())
+        os.replace(tmp_path, path)
+    finally:
+        try:
+            os.remove(tmp_path)
+        except FileNotFoundError:
+            pass
+
+
+def _atomic_write_text(path: Path, text: str, *, encoding: str = "utf-8") -> None:
+    _atomic_write_bytes(path, text.encode(encoding))
+
+
+class _StableTextMonitor:
+    def __init__(
+        self,
+        source: Path,
+        *,
+        dest: Optional[Path] = None,
+        normalizer: Optional[Callable[[str], str]] = None,
+    ) -> None:
+        self.source = source
+        self.dest = dest
+        self.normalizer = normalizer or (lambda text: text)
+        self._last_value: Optional[str] = None
+        self._last_written: Optional[str] = None
+
+    def check(self) -> Optional[str]:
+        try:
+            raw_text = self.source.read_text(encoding="utf-8")
+        except OSError:
+            self._last_value = None
+            self._last_written = None
+            return None
+
+        normalized = self.normalizer(raw_text)
+        if not normalized:
+            self._last_value = normalized
+            self._last_written = None
+            return None
+
+        if normalized == self._last_value:
+            if self.dest is not None and normalized != self._last_written:
+                _atomic_write_text(self.dest, raw_text, encoding="utf-8")
+                self._last_written = normalized
+            return normalized
+
+        self._last_value = normalized
+        self._last_written = None
+        return None
+
+def _load_deflate_snapshot(
+    deflate_path: Path,
+    *,
+    retries: int = 3,
+    delay_sec: float = 0.05,
+) -> Optional[tuple[int, bytes]]:
+    last_exc: Optional[Exception] = None
+    for attempt in range(retries):
+        try:
+            text = deflate_path.read_text(encoding="utf-8").strip()
+        except OSError as exc:
+            last_exc = exc
+            if attempt + 1 < retries:
+                time.sleep(delay_sec)
+                continue
+            raise exc
+        if not text:
+            return None
+
+        try:
+            return load_deflate_stream(StringIO(text))
+        except Exception as exc:  # pylint: disable=broad-except
+            last_exc = exc
+            if attempt + 1 < retries:
+                time.sleep(delay_sec)
+                continue
+    if last_exc is not None:
+        raise last_exc
+    return None
+
+
 def _compress_code(
     code: str,
     *,
@@ -136,24 +243,41 @@ def _run_genetic_algorithm(
     out_variable_path = work_dir / "output_variable.txt"
     states_path = work_dir / "current_states.txt"
 
-    deflate_path.write_text(deflate_text, encoding="utf-8")
-    variable_path.write_text(variable_text, encoding="utf-8")
+    out_deflate_tmp = work_dir / "output_deflate.txt~tmp"
+    out_variable_tmp = work_dir / "output_variable.txt~tmp"
+    states_tmp = work_dir / "current_states.txt~tmp"
 
-    for path in (out_deflate_path, out_variable_path):
-        if path.exists():
+    _atomic_write_text(deflate_path, deflate_text, encoding="utf-8")
+    _atomic_write_text(variable_path, variable_text, encoding="utf-8")
+
+    for path in (out_deflate_tmp, out_variable_tmp, states_tmp):
+        try:
             path.unlink()
+        except FileNotFoundError:
+            pass
+
+    if states_path.exists():
+        try:
+            _atomic_write_text(states_tmp, states_path.read_text(encoding="utf-8"), encoding="utf-8")
+        except OSError:
+            pass
 
     cmd = [
         str(binary_path),
         str(deflate_path),
         str(variable_path),
-        str(out_deflate_path),
-        str(out_variable_path),
-        str(states_path),
+        str(out_deflate_tmp),
+        str(out_variable_tmp),
+        str(states_tmp),
     ]
+
+    deflate_monitor = _StableTextMonitor(out_deflate_tmp)
+    variable_monitor = _StableTextMonitor(out_variable_tmp, dest=out_variable_path)
+    states_monitor = _StableTextMonitor(states_tmp, dest=states_path)
 
     # 一度最適化した圧縮結果を覚えて再利用する
     snapshot_warning_emitted = False
+    last_deflate_written: Optional[str] = None
 
     py_output_best_len: Optional[int] = None
     try:
@@ -166,39 +290,41 @@ def _run_genetic_algorithm(
     lib_name = "zlib"
 
     def snapshot_once() -> Optional[tuple[int, bytes]]:
-        nonlocal snapshot_warning_emitted, py_output_best_len
-        if not out_deflate_path.exists():
+        nonlocal snapshot_warning_emitted, py_output_best_len, last_deflate_written
+        variable_monitor.check()
+        states_monitor.check()
+
+        stable_deflate_text = deflate_monitor.check()
+        if stable_deflate_text is None:
             return None
+
+        normalized_deflate = stable_deflate_text.strip()
+        if not normalized_deflate:
+            return None
+
         try:
-            text = out_deflate_path.read_text(encoding="utf-8").strip()
-        except OSError:
-            return None
-        if not text:
-            return None
-        try:
-            bit_length, compressed = load_deflate_stream(StringIO(text))
-        except Exception:  # pylint: disable=broad-except
+            bit_length, compressed = load_deflate_stream(StringIO(normalized_deflate))
+        except Exception as exc:  # pylint: disable=broad-except
             if not snapshot_warning_emitted:
                 print(
                     (
                         "[genetic_algo] warning: failed to parse in-progress GA output; "
-                        "will retry on next snapshot"
+                        f"will retry on next snapshot ({exc})"
                     ),
                     file=sys.stderr,
                 )
                 snapshot_warning_emitted = True
             return None
 
-        extra_args = determine_wbits(compressed)
-        prefix = (
-            f"#coding:L1\nimport {lib_name}\nexec({lib_name}.decompress(bytes("
-        ).encode()
-        suffix = b",'L1')" + extra_args.encode() + b"))"
-        embed = get_embed_str(compressed)
-        extra_overhead = len(embed) - (len(compressed) + 2)
-        res = prefix + embed + suffix
+        snapshot_warning_emitted = False
 
-        output_path.write_bytes(compressed)
+        if normalized_deflate != last_deflate_written:
+            _atomic_write_text(out_deflate_path, normalized_deflate, encoding="utf-8")
+            last_deflate_written = normalized_deflate
+
+        res, extra_overhead = _build_python_payload(compressed, lib_name=lib_name)
+
+        _atomic_write_bytes(output_path, compressed)
 
         current_best = py_output_best_len
         if current_best is None:
@@ -209,7 +335,7 @@ def _run_genetic_algorithm(
             except OSError:
                 current_best = None
         if current_best is None or len(res) < current_best:
-            py_output_path.write_bytes(res)
+            _atomic_write_bytes(py_output_path, res)
             py_output_best_len = len(res)
         else:
             py_output_best_len = current_best
@@ -433,10 +559,10 @@ def solve(
         except OSError:
             pass
     try:
-        original_snapshot_path.write_bytes(snapshot_bytes)
+        _atomic_write_bytes(original_snapshot_path, snapshot_bytes)
     except OSError:
         try:
-            original_snapshot_path.write_text(stripped_snapshot, encoding="utf-8")
+            _atomic_write_text(original_snapshot_path, stripped_snapshot, encoding="utf-8")
         except OSError:
             pass
 
@@ -474,7 +600,7 @@ def solve(
 
     final_bytes = ga_exec.optimized_bytes or deflate_bytes
     final_bit_length = ga_exec.bit_length
-    output_path.write_bytes(final_bytes)
+    _atomic_write_bytes(output_path, final_bytes)
 
     viz_url = viz_deflate_url(final_bytes)
     stdout_excerpt = _truncate(ga_exec.stdout)
@@ -524,12 +650,13 @@ def _jobs_from_candidates(
     return jobs
 
 
-def _iter_shuffled_jobs(jobs: Sequence[GAJob]) -> Iterator[GAJob]:
+def _iter_shuffled_jobs(jobs: Sequence[GAJob], shuffle) -> Iterator[GAJob]:
     job_list = list(jobs)
     if not job_list:
         return
     while True:
-        random.shuffle(job_list)
+        if shuffle:
+            random.shuffle(job_list)
         for job in job_list:
             yield job
 
@@ -583,11 +710,91 @@ def copy_original_codes() -> int:
                 continue
             original_path = work_dir / f"task{match.group(1)}_original.py"
             try:
-                original_path.write_bytes(code_bytes)
+                _atomic_write_bytes(original_path, code_bytes)
             except OSError:
                 continue
             created += 1
     return created
+
+
+def refresh_outputs_from_existing(
+    *,
+    task_dir: Optional[str],
+    task_id: Optional[int],
+) -> int:
+    if not GA_OUTPUT_ROOT.exists():
+        return 0
+
+    if task_dir is not None and task_id is not None:
+        pattern = f"{task_dir}-{task_id:03d}-*/output_deflate.txt"
+        candidates = GA_OUTPUT_ROOT.glob(pattern)
+    else:
+        candidates = GA_OUTPUT_ROOT.glob("*/output_deflate.txt")
+
+    refreshed = 0
+    for output_deflate_path in sorted(candidates):
+        work_dir = output_deflate_path.parent
+        try:
+            snapshot = _load_deflate_snapshot(output_deflate_path)
+        except Exception as exc:  # pylint: disable=broad-except
+            print(
+                f"[genetic_algo] warning: failed to parse {output_deflate_path}: {exc}",
+                file=sys.stderr,
+            )
+            continue
+        if snapshot is None:
+            print(
+                f"[genetic_algo] warning: {output_deflate_path} has no data; skipping",
+                file=sys.stderr,
+            )
+            continue
+        bit_length, compressed = snapshot
+
+        result_path = work_dir / "result.deflate"
+        try:
+            _atomic_write_bytes(result_path, compressed)
+        except OSError as exc:
+            print(
+                f"[genetic_algo] warning: failed to write {result_path}: {exc}",
+                file=sys.stderr,
+            )
+            continue
+
+        payload, extra_overhead = _build_python_payload(compressed)
+        scripts = sorted(
+            p for p in work_dir.glob("task*.py") if "_original" not in p.name
+        )
+        if not scripts:
+            inferred = None
+            if task_dir is not None and task_id is not None:
+                inferred = work_dir / f"task{task_id:03d}.py"
+            else:
+                match = re.search(r"-(\d+)-", work_dir.name)
+                if match:
+                    inferred = work_dir / f"task{int(match.group(1)) :03d}.py"
+            if inferred is not None:
+                scripts = [inferred]
+
+        for script_path in scripts:
+            try:
+                _atomic_write_bytes(script_path, payload)
+            except OSError as exc:
+                print(
+                    f"[genetic_algo] warning: failed to write {script_path}: {exc}",
+                    file=sys.stderr,
+                )
+
+        message = "" if extra_overhead == 0 else f" encode:{signed_str(extra_overhead)}"
+        print(
+            (
+                f"[genetic_algo] refreshed {work_dir}: {len(compressed)} bytes, "
+                f"bits={bit_length}{message}"
+            ),
+            file=sys.stderr,
+        )
+        refreshed += 1
+
+    return refreshed
 
 
 def _submit_job(
@@ -637,7 +844,7 @@ def _run_candidate_autopilot(
 
     desired_workers = max_workers if max_workers is not None else os.cpu_count() or 1
     worker_count = max(1, min(desired_workers, len(jobs)))
-    job_iter = _iter_shuffled_jobs(jobs)
+    job_iter = _iter_shuffled_jobs(jobs, shuffle=shuffle_seed != -1)
     if job_iter is None:
         print("[genetic_algo] autopilot: job iterator unavailable", file=sys.stderr)
         return 1
@@ -728,17 +935,28 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "--seed",
         type=int,
         default=None,
-        help="(autopilot) random seed for shuffling candidate order",
+        help="(autopilot) random seed for shuffling candidate order. If seed=-1, shuffle is disabled.",
     )
     parser.add_argument(
         "--skip-unchanged",
         action="store_true",
         help="Skip GA runs when the original snapshot matches the current source",
     )
+    # _original.py の再生成（ゴミが残っていた場合に使う）
+    # 更新可否判定は _original.py の diff で判定するので、これを適当に動かすと --skip-unchanged が全部スキップ判定になる
     parser.add_argument(
         "--copy-original-codes",
         action="store_true",
         help="Populate *_original.py snapshots under optimizer_results/genetic_algo and exit",
+    )
+    # 成果物の再生成、途中でバグってるコードが混入したときとかに使うかも
+    parser.add_argument(
+        "--refresh-from-output",
+        action="store_true",
+        help=(
+            "Update result.deflate and task*.py from existing output_deflate.txt files "
+            "under optimizer_results/genetic_algo"
+        ),
     )
 
     args = parser.parse_args(argv)
@@ -746,6 +964,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if args.copy_original_codes:
         created = copy_original_codes()
         print(f"[genetic_algo] copied {created} original snapshots")
+        return 0
+
+    if args.refresh_from_output:
+        if (args.task_dir is None) != (args.task_id is None):
+            parser.error("task_dir and task_id must be provided together when using --refresh-from-output")
+        refreshed = refresh_outputs_from_existing(
+            task_dir=args.task_dir,
+            task_id=args.task_id,
+        )
+        print(f"[genetic_algo] refreshed {refreshed} GA work directories")
         return 0
 
     if args.list_strippers:
