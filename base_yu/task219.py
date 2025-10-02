@@ -1,4 +1,4 @@
-# best: 257(jacekw Potatoman nauti natte, natte, jailctf merger) / others: 277(ox jam), 297(intgrah jimboko awu macaque sammyuri), 304(jacekwl Potatoman nauti), 304(jacekw Potatoman nauti), 311(cg-klogw-sekken)
+# best: 245(jacekw Potatoman nauti natte) / others: 257(natte), 257(jailctf merger), 277(ox jam), 297(intgrah jimboko awu macaque sammyuri), 304(jacekwl Potatoman nauti)
 def p(g):
  i=w=v=0
  while any(g[i])<1:i+=1

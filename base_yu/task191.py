@@ -1,4 +1,4 @@
-# best: 241(jailctf merger) / others: 246(intgrah jimboko awu macaque sammyuri), 250(ox jam), 269(4atj sisyphus luke Seek mukundan), 289(jacekw Potatoman nauti natte), 289(natte)
+# best: 241(jailctf merger) / others: 246(intgrah jimboko awu macaque sammyuri), 250(ox jam), 269(4atj sisyphus luke Seek mukundan), 286(jacekw Potatoman nauti natte), 289(natte)
 def p(g):
 #  u=[s[s.index(1):23-s[::-1].index(1)]for s in g if 1 in s]
  u=[[v for*t,v in zip(*g,s) if 1in t]for s in g if 1in s]

@@ -1,4 +1,4 @@
-# best: 163(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 166(2F), 166(biz), 169(jonas ryno kg583), 169(intgrah jimboko awu macaque sammyuri), 170(jonas ryno kg583 kabutack)
+# best: 163(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 166(2F), 166(biz), 169(jonas ryno kg583), 169(JRKXK), 169(intgrah jimboko awu macaque sammyuri)
 # ============================================================================== 163 ==============================================================================
 def p(g):
  R=range(n:=len(g))
