@@ -1,4 +1,4 @@
-# best: 268(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 275(ox jam), 299(jacekw Potatoman nauti natte), 299(natte), 303(duckyluuk), 306(Yuchen20)
+# best: 268(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 275(ox jam), 291(jacekw Potatoman nauti natte), 299(natte), 303(duckyluuk), 306(Yuchen20)
 def p(g):
  d=[1,0,-1,0,1]
  for k in range(16):

@@ -1,5 +1,5 @@
-# best: 64(ox jam) / others: 65(4atj sisyphus luke Seek mukundan), 65(jailctf merger), 65(Yuchen20), 66(jacekw Potatoman nauti natte), 66(natte)
-# ============================= 64 =============================
+# best: 63(jacekw Potatoman nauti natte) / others: 64(ox jam), 65(4atj sisyphus luke Seek mukundan), 65(jailctf merger), 65(Yuchen20), 66(natte)
+# ============================= 63 ============================
 # 345678901234567890123456789012345678901234567890123456789012345
 # p=lambda g:(k:=                      )and[s[::-k]for s in g[::k]]
 # p=lambda g:(k:=1+g[0].index([s[0]for s in g if {*s}=={s[0]}][0]))and[s[::-k]for s in g[::k]]
