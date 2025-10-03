@@ -1,4 +1,4 @@
-# best: 65(jailctf merger) / others: 74(4atj sisyphus luke Seek mukundan), 75(ox jam), 77(biz), 77(intgrah jimboko awu macaque sammyuri), 100(jacekw Potatoman nauti natte)
+# best: 65(jailctf merger) / others: 74(4atj sisyphus luke Seek mukundan), 75(ox jam), 76(jacekw Potatoman nauti natte), 77(biz), 77(intgrah jimboko awu macaque sammyuri)
 # ============================== 65 =============================
 # p=lambda g:(u:=[*zip(*g)])and[*map(list,zip(*[u[i%(8-2*(u[3:6]in(u[:3],u[2::-1])))] for i in range(15)]))]
 # p=lambda g:(u:=[*zip(*g)])and[*map(list,zip(*(u[:8-2*(u[3:6]in(u[:3],u[2::-1]))]*3)[:15]))]

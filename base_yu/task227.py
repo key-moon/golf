@@ -1,4 +1,4 @@
-# best: 52(jailctf merger, ox jam) / others: 54(intgrah jimboko awu macaque sammyuri), 55(4atj sisyphus luke Seek mukundan), 57(HETHAT), 60(cubbus), 60(Afordancja)
+# best: 52(jailctf merger, ox jam) / others: 54(intgrah jimboko awu macaque sammyuri), 55(4atj sisyphus luke Seek mukundan), 57(HETHAT), 58(jacekw Potatoman nauti natte), 60(cubbus)
 # ======================= 52 =======================
 # p=lambda g:[[2-2*(x|y>0)for x,y in zip(*c)]for c in zip(g,g[4:])]
 # p=lambda g:[*eval("[2-2*(x|y>0)for x,y in zip(g.pop(0),g[3])],"*4)]
