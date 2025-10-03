@@ -688,23 +688,35 @@ def _jobs_from_candidates(
             snapshot_bytes: Optional[bytes] = None
             for stripper in entry.strippers:
                 for use_zopfli in (True, False):
-                    if skip_if_unchanged:
-                        matches, snapshot_bytes = _matches_original_snapshot(
-                            task_dir=task_dir,
-                            task_id=cand.task_id,
-                            stripper_name=stripper,
-                            use_zopfli=use_zopfli,
-                            source_path=base_path,
-                            snapshot_bytes=snapshot_bytes,
+                    matches, snapshot_bytes = _matches_original_snapshot(
+                        task_dir=task_dir,
+                        task_id=cand.task_id,
+                        stripper_name=stripper,
+                        use_zopfli=use_zopfli,
+                        source_path=base_path,
+                        snapshot_bytes=snapshot_bytes,
+                    )
+                    codec = "zopfli" if use_zopfli else "zlib"
+                    label = f"{task_dir}/task{cand.task_id:03d}:{stripper}:{codec}"
+                    if matches:
+                        print(
+                            f"[genetic_algo] {label} snapshot matches current source",
+                            file=sys.stderr,
                         )
-                        if matches:
-                            codec = "zopfli" if use_zopfli else "zlib"
-                            label = f"{task_dir}/task{cand.task_id:03d}:{stripper}:{codec}"
+                        if skip_if_unchanged:
                             print(
                                 f"[genetic_algo] skip {label}: source unchanged from snapshot",
                                 file=sys.stderr,
                             )
                             continue
+                    else:
+                        print(
+                            f"[genetic_algo] {label} snapshot differs; resetting GA inputs",
+                            file=sys.stderr,
+                        )
+                        _clear_ga_inputs(
+                            _work_dir_for(task_dir, cand.task_id, stripper, use_zopfli)
+                        )
                     jobs.append(
                         GAJob(
                             task_id=cand.task_id,
