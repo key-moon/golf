@@ -80,6 +80,54 @@ def _resolve_source(task_dir: str, task_id: int) -> Path:
     return Path(paths[0])
 
 
+def _work_dir_for(
+    task_dir: str,
+    task_id: int,
+    stripper_name: str,
+    use_zopfli: bool,
+) -> Path:
+    repo_root = Path(__file__).resolve().parent
+    cache_dir = repo_root / "optimizer_results" / "genetic_algo"
+    codec = "zopfli" if use_zopfli else "zlib"
+    return cache_dir / f"{task_dir}-{task_id}-{stripper_name}-{codec}"
+
+
+def _matches_original_snapshot(
+    *,
+    task_dir: str,
+    task_id: int,
+    stripper_name: str,
+    use_zopfli: bool,
+    source_path: Path,
+    snapshot_bytes: Optional[bytes] = None,
+) -> tuple[bool, bytes]:
+    source_path = Path(source_path)
+    if not source_path.is_absolute():
+        source_path = source_path.resolve()
+
+    if snapshot_bytes is None:
+        _, _, snapshot_bytes = _strip_source_for_snapshot(source_path)
+
+    work_dir = _work_dir_for(task_dir, task_id, stripper_name, use_zopfli)
+    original_snapshot_path = work_dir / f"task{task_id:03d}_original.py"
+
+    try:
+        if original_snapshot_path.exists() and original_snapshot_path.read_bytes() == snapshot_bytes:
+            return True, snapshot_bytes
+    except OSError:
+        pass
+
+    return False, snapshot_bytes
+
+
+def _clear_ga_inputs(work_dir: Path) -> None:
+    for name in ("input_deflate.txt", "input_variable.txt", "current_states.txt"):
+        try:
+            (work_dir / name).unlink()
+        except FileNotFoundError:
+            continue
+
+
 def _build_variable_dump(code: str) -> str:
     occ_text = list_var_occurrences(
         code,
@@ -503,7 +551,6 @@ def solve(
     use_zopfli: bool = True,
     timeout_sec: Optional[int] = None,
     source_override: Path | None = None,
-    skip_if_unchanged: bool = False,
 ) -> None:
     repo_root = Path(__file__).resolve().parent
     if source_override is not None:
@@ -552,27 +599,13 @@ def solve(
     if not ga_binary.exists():
         raise FileNotFoundError(f"geneticalgo binary not found at {ga_binary}")
 
-    cache_dir = repo_root / "optimizer_results" / "genetic_algo"
-    cache_dir.mkdir(parents=True, exist_ok=True)
-    work_dir = cache_dir / f"{task_dir}-{task_id}-{stripper_name}-{'zopfli' if use_zopfli else 'zlib'}"
+    work_dir = _work_dir_for(task_dir, task_id, stripper_name, use_zopfli)
+    work_dir.parent.mkdir(parents=True, exist_ok=True)
     output_path = work_dir / "result.deflate"
     py_output_path = work_dir / f"task{task_id:03d}.py"
 
     work_dir.mkdir(parents=True, exist_ok=True)
     original_snapshot_path = work_dir / f"task{task_id:03d}_original.py"
-    if skip_if_unchanged and original_snapshot_path.exists():
-        try:
-            if original_snapshot_path.read_bytes() == snapshot_bytes:
-                print(
-                    (
-                        f"[genetic_algo] skip task {task_id:03d} {stripper_name}: "
-                        "source unchanged from snapshot"
-                    ),
-                    file=sys.stderr,
-                )
-                return
-        except OSError:
-            pass
     try:
         _atomic_write_bytes(original_snapshot_path, snapshot_bytes)
     except OSError:
@@ -648,13 +681,30 @@ def _jobs_from_candidates(
     skip_if_unchanged: bool,
 ) -> list[GAJob]:
     jobs: list[GAJob] = []
-    _ = skip_if_unchanged  # unused: job submission handles skip at runtime
     for cand in candidates:
         for entry in cand.entries:
             base_path = entry.base_path
             task_dir = base_path.parent.name
+            snapshot_bytes: Optional[bytes] = None
             for stripper in entry.strippers:
                 for use_zopfli in (True, False):
+                    if skip_if_unchanged:
+                        matches, snapshot_bytes = _matches_original_snapshot(
+                            task_dir=task_dir,
+                            task_id=cand.task_id,
+                            stripper_name=stripper,
+                            use_zopfli=use_zopfli,
+                            source_path=base_path,
+                            snapshot_bytes=snapshot_bytes,
+                        )
+                        if matches:
+                            codec = "zopfli" if use_zopfli else "zlib"
+                            label = f"{task_dir}/task{cand.task_id:03d}:{stripper}:{codec}"
+                            print(
+                                f"[genetic_algo] skip {label}: source unchanged from snapshot",
+                                file=sys.stderr,
+                            )
+                            continue
                     jobs.append(
                         GAJob(
                             task_id=cand.task_id,
@@ -818,8 +868,6 @@ def _submit_job(
     executor: ThreadPoolExecutor,
     job_iter: Iterator[GAJob],
     timeout_sec: int,
-    *,
-    skip_if_unchanged: bool,
 ):
     job = next(job_iter)
     future = executor.submit(
@@ -830,7 +878,6 @@ def _submit_job(
         use_zopfli=job.use_zopfli,
         timeout_sec=timeout_sec,
         source_override=job.base_path,
-        skip_if_unchanged=skip_if_unchanged,
     )
     return future, job
 
@@ -884,7 +931,6 @@ def _run_candidate_autopilot(
                     executor,
                     job_iter,
                     timeout_sec,
-                    skip_if_unchanged=skip_if_unchanged,
                 )
                 pending[future] = job
 
@@ -905,7 +951,6 @@ def _run_candidate_autopilot(
                         executor,
                         job_iter,
                         timeout_sec,
-                        skip_if_unchanged=skip_if_unchanged,
                     )
                     pending[future_next] = job_next
         except KeyboardInterrupt:
@@ -1023,34 +1068,85 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if timeout_sec is not None and timeout_sec <= 0:
         timeout_sec = None
 
+    assert args.task_dir is not None
+    assert args.task_id is not None
+
+    source_path = _resolve_source(args.task_dir, args.task_id)
+    if not source_path.is_absolute():
+        source_path = source_path.resolve()
+
     common_kwargs = {
         "task_dir": args.task_dir,
         "task_id": args.task_id,
         "timeout_sec": timeout_sec,
+        "source_override": source_path,
     }
 
-    if args.stripper:
-        solve(
-            stripper_name=args.stripper,
-            use_zopfli=args.use_zopfli,
-            **common_kwargs,
-            skip_if_unchanged=args.skip_unchanged,
+    snapshot_bytes_cache: Optional[bytes] = None
+
+    def should_run(stripper_name: str, use_zopfli: bool) -> bool:
+        nonlocal snapshot_bytes_cache
+        matches, snapshot_bytes_cache = _matches_original_snapshot(
+            task_dir=args.task_dir,
+            task_id=args.task_id,
+            stripper_name=stripper_name,
+            use_zopfli=use_zopfli,
+            source_path=source_path,
+            snapshot_bytes=snapshot_bytes_cache,
         )
+        codec = "zopfli" if use_zopfli else "zlib"
+        label = f"{args.task_dir}/task{args.task_id:03d}:{stripper_name}:{codec}"
+        if matches:
+            print(
+                f"[genetic_algo] {label} snapshot matches current source",
+                file=sys.stderr,
+            )
+            if args.skip_unchanged:
+                print(
+                    f"[genetic_algo] skip {label}: source unchanged from snapshot",
+                    file=sys.stderr,
+                )
+                return False
+            return True
+
+        print(
+            f"[genetic_algo] {label} snapshot differs; resetting GA inputs",
+            file=sys.stderr,
+        )
+        _clear_ga_inputs(_work_dir_for(args.task_dir, args.task_id, stripper_name, use_zopfli))
+        return True
+
+    if args.stripper:
+        if should_run(args.stripper, args.use_zopfli):
+            solve(
+                stripper_name=args.stripper,
+                use_zopfli=args.use_zopfli,
+                **common_kwargs,
+            )
         return 0
 
     names = sorted(strippers.keys())
-    max_workers = len(names) * 2
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+    combos = [
+        (name, use_zopfli)
+        for name in names
+        for use_zopfli in (True, False)
+        if should_run(name, use_zopfli)
+    ]
+
+    if not combos:
+        return 0
+
+    max_workers = len(names) * 2 if names else 1
+    worker_count = max(1, min(max_workers, len(combos)))
+    with ThreadPoolExecutor(max_workers=worker_count) as executor:
         futures = {
             executor.submit(
                 solve,
                 stripper_name=name,
                 use_zopfli=use_zopfli,
                 **common_kwargs,
-                skip_if_unchanged=args.skip_unchanged,
             ): (name, use_zopfli)
-            for name in names
-            for use_zopfli in [True, False]
+            for name, use_zopfli in combos
         }
         for future in as_completed(futures):
             name, use_zopfli = futures[future]
