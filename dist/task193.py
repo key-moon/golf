@@ -1,1 +1,1 @@
-p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)
+p=lambda g,c=-1:c*g or[[v*any([0,*s][i:i+3:2])for i,v in enumerate(s)]for s in zip(*p(g,c+1))]
