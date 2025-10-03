@@ -31,8 +31,8 @@
 | [370](/vis/task370.png) | [base_yu](/base_yu/task370.py) | raw/genetic-algo(zopfli) | [253](/dist/task370.py) (-3) | 256 🟢 | [vis-many](/vis_many/task370.png) |  |
 | [201](/vis/task201.png) | [base_yu](/base_yu/task201.py) | forcomp-s/genetic-algo(zlib) | [252](/dist/task201.py) (+44) | 208 🔴 | [vis-many](/vis_many/task201.png) |  |
 | [308](/vis/task308.png) | [base_yu](/base_yu/task308.py) | forcomp-t/genetic-algo(zlib) | [245](/dist/task308.py) (+19) | 226 🔴 | [vis-many](/vis_many/task308.png) |  |
-| [191](/vis/task191.png) | [dist](/dist/task191.py) | previous | [244](/dist/task191.py) (+3) | 241 🔴 | [vis-many](/vis_many/task191.png) | ⚠️ regression? |
 | [089](/vis/task089.png) | [base_yu](/base_yu/task089.py) | forcomp-t/genetic-algo(zlib) | [243](/dist/task089.py) (+7) | 236 🔴 | [vis-many](/vis_many/task089.png) |  |
+| [191](/vis/task191.png) | [base_yu](/base_yu/task191.py) | forcomp-s/genetic-algo(zopfli) | [243](/dist/task191.py) (+2) | 241 🔴 | [vis-many](/vis_many/task191.png) |  |
 | [145](/vis/task145.png) | [base_yu](/base_yu/task145.py) | forplain/genetic-algo(zlib) | [241](/dist/task145.py) (+50) | 191 🔴 | [vis-many](/vis_many/task145.png) |  |
 | [284](/vis/task284.png) | [base_keymoon](/base_keymoon/task284.py) | forcomp-t/genetic-algo(zopfli) | [240](/dist/task284.py) (+20) | 220 🔴 | [vis-many](/vis_many/task284.png) |  |
 | [324](/vis/task324.png) | [base_yu](/base_yu/task324.py) | forcomp-t/genetic-algo(zopfli) | [240](/dist/task324.py) (-5) | 245 🟢 | [vis-many](/vis_many/task324.png) |  |
