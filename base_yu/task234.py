@@ -1,5 +1,5 @@
-# best: 118(jailctf merger) / others: 120(4atj sisyphus luke Seek mukundan), 120(ox jam), 121(intgrah jimboko awu macaque sammyuri), 125(jacekw Potatoman nauti natte), 129(cubbus)
-# ======================================================= 118 ========================================================
+# best: 116(blob2822, biz) / others: 118(jailctf merger), 120(4atj sisyphus luke Seek mukundan), 120(ox jam), 121(intgrah jimboko awu macaque sammyuri), 125(jacekw Potatoman nauti natte)
+# ====================================================== 116 =======================================================
 def p(g):
  for _ in 0,1:
   b=any(t>s and{*t}=={*s}>{0}for s,t in zip(g,g[1:]))
