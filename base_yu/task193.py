@@ -1,7 +1,8 @@
 # best: 81(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 86(intgrah jimboko awu macaque sammyuri), 97(ox jam), 103(jacekw Potatoman nauti natte), 107(jacekwl Potatoman nauti)
 # ====================================== 81 =====================================
 # p=lambda g,c=-1:c*g or p([[([0,*s,0][i:i+3:2]>[0,0])*s[i] for i in range(len(s))]for s in zip(*g)],c+1)
-p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)
+# p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)
+p=lambda g,c=-1:c*g or[[v*any([0,*s][i:i+3:2])for i,v in enumerate(s)]for s in zip(*p(g,c+1))]
 # p=lambda g,R=range:(n:=len(g))and[[sum(-1<(y:=i+abs(k-2)-1)<n>(x:=j+abs(k-1)-1)>-1and g[y][x]>0for k in R(4))>1and g[i][j]for j in R(n)]for i in R(n)]
 
 # import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub('(0, |\()[^0](, 0|\))',r'\1 0\2',str(p(g,c+1)))))]
