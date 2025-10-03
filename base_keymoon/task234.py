@@ -1,5 +1,5 @@
-# best: 116(blob2822, biz) / others: 118(jailctf merger), 120(4atj sisyphus luke Seek mukundan), 120(ox jam), 121(intgrah jimboko awu macaque sammyuri), 125(jacekw Potatoman nauti natte)
-# ====================================================== 116 =======================================================
+# best: 115(biz) / others: 116(blob2822), 118(jailctf merger), 120(4atj sisyphus luke Seek mukundan), 120(ox jam), 121(intgrah jimboko awu macaque sammyuri)
+# ====================================================== 115 ======================================================
 # TODO: gcdシフト再帰
 # lambda g,c=-43,s=[]:g*c or p([*zip(*([r for r in g if(max(r)not in s and(s:=[*s,*r])and r.count(max(r))==1)-1]+g[:1]*9)[:len(g)])][::-1],c+1)
 # 0<sum(r)==max(r)
