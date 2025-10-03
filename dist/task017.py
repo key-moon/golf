@@ -1,1 +1,1 @@
-p=lambda g,d=4,R=range(21):((u:=[[max(max(g[i%d::d])[j%d::d])for j in R]for i in R])[0]in g or u[1]in g)*u or p(g,d+1)
+p=lambda g:[[max((t[j]>0,sum(map(int.__eq__,s,t)),t[j])for t in[*zip(*g)]+g)[2]for j in range(21)]for s in g]
