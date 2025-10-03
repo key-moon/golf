@@ -1,0 +1,2 @@
+import re
+def p(g):A='0(?=(, %d|(, 0)?, %d, .), ., %d)';C,D,_=sorted({*sum(g,[])},key=sum(g,[]).count);g=eval(re.sub('(?=[1-9])','C^D^',str(g)));g=[*zip(*eval(re.sub(A%(C,C,C),str(D),str(g)))[::-1])];g=[*zip(*eval(re.sub(A%(C,C,C),str(D),str(g)))[::-1])];g=[*zip(*eval(re.sub(A%(C,C,C),str(D),str(g)))[::-1])];g=[*zip(*eval(re.sub(A%(C,C,C),str(D),str(g)))[::-1])];return g

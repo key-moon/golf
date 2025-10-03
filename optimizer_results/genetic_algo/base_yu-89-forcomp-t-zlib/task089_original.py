@@ -1,0 +1,2 @@
+A=range
+p=lambda g:[[g[y][x]or max(any(g[i][j]==d and(y+a-i,x+(b-j)*(g[a][b]*2-5))!=(a,b)and 13>y+a-i>-1<x+(b-j)*(g[a][b]*2-5)<13and g[y+a-i][x+(b-j)*(g[a][b]*2-5)]==g[a][b]for a in A(13)for b in A(13)if g[a][b]|1==3and(d:=max(k|l!=0and 13>a+k>-1<b+l<13and g[a+k][b+l]for k in A(-1,2)for l in A(-1,2))))and g[i][j]for i in A(13)for j in A(13))for x in A(13)]for y in A(13)]

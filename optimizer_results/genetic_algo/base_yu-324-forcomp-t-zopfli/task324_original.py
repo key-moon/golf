@@ -1,16 +1,7 @@
 B=len
 A=range
 def p(g):
- c=sorted({*sum(g,[])},key=sum(g,[]).count);m={};a=set();b=set();k=0
- for i in A(B(g)):
-  for j in A(B(g[0])):
-   if g[i][j]in(c[0],c[1]):
-    f,*r={g[k][j]for k in A(B(g))if k!=i}-{g[i][j]};C,*D={g[i][k]for k in A(B(g[0]))if k!=j}-{g[i][j]}
-    if r and D:k=g[i][j]
-    else:m[g[i][j]]=m[u:=[C,f][not r]]=g[i][j]
-    a|={i-j};b|={i+j}
- if k:m[k]=m[c[2]^c[3]^u]=k
- for i in A(B(g)):
-  for j in A(B(g[0])):
-   if i-j in a or i+j in b:g[i][j]=m[g[i][j]]
- return g
+ c=sorted({*sum(g,[])},key=sum(g,[]).count)
+ for s in[*g,*zip(*g)]:
+  if{*s}in({c[1],c[2]},{c[0],c[3]}):c[0],c[1]=c[1],c[0]
+ return[[c[c.index(g[i][j])%(4-2*(i-j in{i-j for i in A(B(g))for j in A(B(g[i]))if g[i][j]in c[:2]}or i+j in{i+j for i in A(B(g))for j in A(B(g[i]))if g[i][j]in c[:2]}))]for j in A(B(g[i]))]for i in A(B(g))]
