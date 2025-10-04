@@ -1,4 +1,4 @@
-# best: 80(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 83(ox jam), 93(2F), 93(biz), 98(jacekw Potatoman nauti natte), 104(intgrah jimboko awu macaque sammyuri)
+# best: 74(jailctf merger) / others: 80(4atj sisyphus luke Seek mukundan), 83(ox jam), 93(2F), 93(biz), 98(jacekw Potatoman nauti natte)
 # 「輪」のいちばん下のcomponent以外を動かす
 # 輪の下には0,0,0...があることを利用して下端を判別（下端のときは動かさず、さらに一個上のを動かす）
 # 最後が
@@ -31,7 +31,7 @@
 #   return g
 # def p(g):p=[0];return [[l.pop([-1,p.index(c:=max(p))][p.count(c)!=2]),p:=[0,*l]][1] for l in g[::-1]][::-1]
 # lambda g,p=[0]:[[l.pop([-1,p.index(c:=max(p))][p.count(c)!=2]),p:=[0,*l]][1]for l in g[::-1]][::-1]
-# ===================================== 80 =====================================
+# ================================== 74 ==================================
 # lambda g:[[s.pop([-1,t.index(c:=max(t))][t.count(c)!=2]),*s]for s,t in zip(g,(g*2)[1:])]
 p=lambda g:[[s.pop(t.index(c:=max(t))|-1*(0<2*c==sum(t)))]+s for s,t in zip(g,(g*2)[1:])]
 

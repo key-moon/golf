@@ -1,5 +1,5 @@
-# best: 116(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 119(ox jam), 128(jacekw Potatoman nauti natte), 128(jacekw Potatoman nauti), 137(Yuchen20), 142(jonas ryno kg583 kabutack)
-# ====================================================== 116 =======================================================
+# best: 112(jailctf merger) / others: 116(4atj sisyphus luke Seek mukundan), 119(ox jam), 128(jacekw Potatoman nauti natte), 128(jacekw Potatoman nauti), 137(Yuchen20)
+# ==================================================== 112 =====================================================
 # lambda g,c=-3,x=0:c*[[(d:=min(u:=sum(g,[]),key=u.count))*(y==d)for y in s]for s in g]or[[[(x>0)*2,x:=y][x>0]for y in s]for s in zip(*p(g,c+1)[::-1])]
 # p=lambda g,c=-3:c*[[(d:=min(u:=sum(g,[]),key=u.count))*(y==d)for y in s]for s in g]or[[[(c>0)*2,c:=y][y>0]for y in s]for s in zip(*p(g,c+1)[::-1])]
 # p=lambda g,c=-3,l=0:c*[[(d:=min(u:=sum(g,[]),key=u.count))*(y==d)for y in s]for s in g]or[[[(l>0)*2,l:=y][y>0]for y in s]for s in zip(*p(g,c+1)[::-1])]

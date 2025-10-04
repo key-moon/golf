@@ -1,5 +1,5 @@
-# best: 111(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(jacekw Potatoman nauti natte), 117(natte), 117(ox jam), 154(intgrah jimboko awu macaque sammyuri)
-# ==================================================== 111 ====================================================
+# best: 110(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(jacekw Potatoman nauti natte), 117(natte), 117(ox jam), 154(intgrah jimboko awu macaque sammyuri)
+# =================================================== 110 ====================================================
 # port re;p=lambda g:eval(r'(g:=[*zip(*eval(re.sub(r"(([1-9]), \2.{31}\2.{25}(\2.{28})*)0",r"\1\2",str(g)))[::-1])]),'*32)[-1]
 # port re;p=lambda g:eval(r'(g:=[*zip(*eval(re.sub(r"(([1-9]), \2.{31}\2.{25}(\2.{28})*)0",r"\1\2",str(g)))[::-1])]),'*32)[-1]
 # port re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{35})+, ([^0]).{28}(\2, ){2})",r"\2",str(p(g,c+1)))))][::-1]

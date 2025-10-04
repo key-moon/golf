@@ -1,5 +1,5 @@
-# best: 109(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 110(ox jam), 149(jacekw Potatoman nauti natte), 149(natte), 167(JRKXK), 167(kdmitrie)
-# =================================================== 109 ===================================================
+# best: 107(jailctf merger) / others: 109(4atj sisyphus luke Seek mukundan), 110(ox jam), 149(jacekw Potatoman nauti natte), 149(natte), 167(JRKXK)
+# ================================================== 107 ==================================================
 
 # def p(g,k=0,u=[[2]*99]):
 #  g=g*(k>0)or p(g,k:=sum(g,[]).count(2)//12)

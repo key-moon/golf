@@ -1,5 +1,5 @@
-# best: 166(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 170(ox jam), 183(jacekw Potatoman nauti natte), 202(natte), 254(MasukenSamba), 263(intgrah jimboko awu macaque sammyuri)
-# =============================================================================== 166 ================================================================================
+# best: 148(jailctf merger) / others: 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 183(jacekw Potatoman nauti natte), 202(natte), 254(MasukenSamba)
+# ====================================================================== 148 =======================================================================
 def p(g):
  c=max(sum(g,[]),key=sum(g,[]).count)
  _,l,r,u,d=max((sum((v==c)-.6 for s in g[u:d]for v in s[l:r]),l,r,u,d)for d in range(len(g))for r in range(len(g[0]))for l in range(r)for u in range(d))

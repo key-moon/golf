@@ -1,5 +1,5 @@
-# best: 163(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 166(2F), 166(biz), 169(jonas ryno kg583), 169(JRKXK), 169(intgrah jimboko awu macaque sammyuri)
-# ============================================================================== 163 ==============================================================================
+# best: 160(jailctf merger) / others: 163(4atj sisyphus luke Seek mukundan), 166(2F), 166(biz), 169(jonas ryno kg583), 169(JRKXK)
+# ============================================================================ 160 =============================================================================
 def p(g):
  R=range(n:=len(g))
 #  return[[(u:=sorted((X+Y,-~max(X,Y)%2*v)for y,x,Y,X in((0,0,i,j),(0,-1,i,n+~j),(-1,0,n+~i,j),(-1,-1,n+~i,n+~j))if(v:=g[y][x])))and(u[0][0]<u[1][0])*u[0][1]for j in R]for i in R]

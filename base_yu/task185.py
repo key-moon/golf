@@ -1,5 +1,5 @@
-# best: 143(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 156(jacekw Potatoman nauti natte), 157(natte), 162(ox jam), 167(JRKX), 167(JRKXK)
-# ==================================================================== 143 ====================================================================
+# best: 137(jailctf merger) / others: 143(4atj sisyphus luke Seek mukundan), 156(jacekw Potatoman nauti natte), 157(natte), 162(ox jam), 167(JRKX)
+# ================================================================= 137 =================================================================
 
 # def p(g):
 #  c=max(g)[0]

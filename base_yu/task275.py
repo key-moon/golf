@@ -1,4 +1,4 @@
-# best: 136(ox jam) / others: 145(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 169(intgrah jimboko awu macaque sammyuri), 171(jacekw Potatoman nauti natte), 171(jacekw Potatoman nauti)
+# best: 136(ox jam) / others: 138(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 169(intgrah jimboko awu macaque sammyuri), 171(jacekw Potatoman nauti natte), 171(jacekw Potatoman nauti)
 # ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])

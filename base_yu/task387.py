@@ -1,4 +1,4 @@
-# best: 218(jacekw Potatoman nauti natte, natte, 2F, biz) / others: 227(ox jam), 242(jailctf merger), 261(4atj sisyphus luke Seek mukundan), 266(intgrah jimboko awu macaque sammyuri), 283(Yuchen20)
+# best: 202(jailctf merger) / others: 218(jacekw Potatoman nauti natte), 218(natte), 218(2F), 218(biz), 227(ox jam)
 #上下の囲み+左右方向の破線を書く→90度回転
 
 def p(g):

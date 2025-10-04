@@ -1,4 +1,4 @@
-# best: 48(cubbus, jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 50(jonas ryno kg583 kabutack), 50(jacekwl Potatoman nauti), 50(JRK), 50(JRKX), 50(jonas ryno kg583)
+# best: 47(jailctf merger) / others: 48(cubbus), 48(jacekw Potatoman nauti natte), 48(4atj sisyphus luke Seek mukundan), 48(natte), 48(ox jam)
 # def p(g):
 #  *l,=zip(*g)
 #  return[*map(list,zip(*(l[:1]*5+[[(0<c)*5 for c in l[0]]]+l[-1:]*5)))]

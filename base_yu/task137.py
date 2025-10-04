@@ -1,5 +1,5 @@
-# best: 141(ox jam) / others: 143(jailctf merger), 144(jacekw Potatoman nauti natte), 144(natte), 147(jacekwl Potatoman nauti), 147(jacekw Potatoman nauti)
-# =================================================================== 141 ===================================================================
+# best: 137(jailctf merger) / others: 141(ox jam), 144(jacekw Potatoman nauti natte), 144(natte), 147(jacekwl Potatoman nauti), 147(jacekw Potatoman nauti)
+# ================================================================= 137 =================================================================
 # def p(g):
 #  R=range(len(g))
 #  x,y,_=[i for i in R if[*map(max,*g)][i]]

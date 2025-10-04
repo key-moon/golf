@@ -1,5 +1,5 @@
-# best: 83(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 85(cubbus), 95(ox jam), 105(jonas ryno kg583 kabutack), 105(JRKX), 105(jonas ryno kg583)
-# ======================================= 83 ======================================
+# best: 79(jailctf merger) / others: 83(4atj sisyphus luke Seek mukundan), 85(cubbus), 95(ox jam), 105(jonas ryno kg583 kabutack), 105(JRKX)
+# ===================================== 79 ====================================
 # p=lambda g,E=enumerate:[[s[j]or[0,2,0,4,6,3,0,1,0][(sum(s[:j])+sum(t[:i])*3)//8] for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[s[j]or[0,4,0,2,6,1,0,3,0][(sum(s[:j])*3+sum(t[:i]))//8]for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[s[j]or~-b""[(sum(s[:j])*3+sum(t[:i]))//8]for j,t in E(zip(*g))]for i,s in E(g)]

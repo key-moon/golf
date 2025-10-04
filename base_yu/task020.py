@@ -1,5 +1,5 @@
-# best: 146(jailctf merger) / others: 148(ox jam), 149(4atj sisyphus luke Seek mukundan), 157(jacekwl Potatoman nauti), 157(jacekw Potatoman nauti natte), 157(jacekw Potatoman nauti)
-# ===================================================================== 146 ======================================================================
+# best: 141(jailctf merger) / others: 148(ox jam), 149(4atj sisyphus luke Seek mukundan), 157(jacekwl Potatoman nauti), 157(jacekw Potatoman nauti natte), 157(jacekw Potatoman nauti)
+# =================================================================== 141 ===================================================================
 
 def p(g,x=0):
  y=g.index(max(g,key=any))

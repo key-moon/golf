@@ -1,5 +1,5 @@
-# best: 151(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 174(ox jam), 176(MasukenSamba), 182(intgrah jimboko awu macaque sammyuri), 189(Afordancja), 189(Yuchen20)
-# ======================================================================== 151 ========================================================================
+# best: 150(jailctf merger) / others: 151(4atj sisyphus luke Seek mukundan), 174(ox jam), 176(MasukenSamba), 182(intgrah jimboko awu macaque sammyuri), 189(Afordancja)
+# ======================================================================= 150 ========================================================================
 def p(g):
  G=sum(g,[])
  u=[c for c in enumerate(G)if c[1]%8]
