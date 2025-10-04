@@ -1,4 +1,4 @@
-# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 74(intgrah jimboko awu macaque sammyuri), 75(jacekw Potatoman nauti natte), 75(ox jam), 76(JRKX), 76(kabutack)
+# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 75(jacekw Potatoman nauti natte), 75(ox jam), 76(JRKX), 76(kabutack), 76(JRKXK)
 # p=lambda g:(t:=[g[i]+[*[*zip(*g[::-1])][i]]for i in range(len(g))])and t+[s[::-1]for s in t[::-1]]
 # p=lambda g:(t:=[g[i]+[s[i]for s in g[::-1]]for i in range(len(g))])and t+[s[::-1]for s in t[::-1]]
 
