@@ -1,4 +1,4 @@
-# best: 104(4atj sisyphus luke Seek mukundan) / others: 107(jailctf merger), 130(ox jam), 137(jacekw Potatoman nauti natte), 142(intgrah jimboko awu macaque sammyuri), 148(jacekwl Potatoman nauti)
+# best: 104(4atj sisyphus luke Seek mukundan) / others: 107(jailctf merger), 130(ox jam), 134(jacekw Potatoman nauti natte), 142(intgrah jimboko awu macaque sammyuri), 148(jacekwl Potatoman nauti)
 # ================================================ 104 =================================================
 R=range
 def p(g):
