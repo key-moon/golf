@@ -1,4 +1,4 @@
-# best: 56(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 57(HETHAT), 57(ox jam), 58(jacekwl Potatoman nauti), 58(jacekw Potatoman nauti natte), 58(jacekw Potatoman nauti)
+# best: 56(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 57(jacekw Potatoman nauti natte), 57(HETHAT), 57(ox jam), 58(jacekwl Potatoman nauti), 58(jacekw Potatoman nauti)
 # lambda g:[[[c*a*.08,5][b>4]for b,c in zip(_,g[0][:-1])]+[a]for*_,a in g]
 # lambda g:[b:=g[0]]+[[c*a*.08 for c in b[:-1]]+[a]for*_,a in g[1:]]
 # lambda g:g[:1]+[[c*a*.08for c in g[0][:9]]+[a]for*_,a in g[1:]]
