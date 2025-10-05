@@ -1,4 +1,4 @@
-# best: 274(jailctf merger) / others: 281(ox jam), 337(jacekw Potatoman nauti natte), 349(4atj sisyphus luke Seek mukundan), 354(natte), 361(JRKXK)
+# best: 274(jailctf merger) / others: 281(ox jam), 328(jacekw Potatoman nauti natte), 349(4atj sisyphus luke Seek mukundan), 354(natte), 361(JRKXK)
 def p(g):
  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==1]
  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in u for y in range(-1,2)for x in range(-1,2))]
