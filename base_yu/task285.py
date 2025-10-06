@@ -1,4 +1,4 @@
-# best: 286(jailctf merger) / others: 296(ox jam), 297(jacekw Potatoman nauti natte), 316(intgrah jimboko awu macaque sammyuri), 318(natte), 362(cg-klogw-sekken)
+# best: 286(jailctf merger) / others: 296(ox jam), 297(jacekw Potatoman nauti natte), 316(intgrah jimboko awu macaque sammyuri), 318(natte), 357(JRKKX)
 def p(g):
  for _ in range(8):
   for i in range(1,len(g)):
