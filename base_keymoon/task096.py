@@ -1,4 +1,4 @@
-# best: 325(jacekw Potatoman nauti natte, ox jam, intgrah jimboko awu macaque sammyuri) / others: 344(jailctf merger), 367(JRKKX), 369(natte), 373(cg-klogw-sekken), 373(cg-klogw)
+# best: 312(blob2822) / others: 325(jacekw Potatoman nauti natte), 325(ox jam), 325(intgrah jimboko awu macaque sammyuri), 344(jailctf merger), 362(JRKKX)
 # 罠: 中央のドットは背景と同じ色のことがある
 # 矩形の辺が交わってることがある 内包してることもある
 # ひどいケース(120):
@@ -55,7 +55,7 @@
 #   lengths.append(common.randint(min_length, max_length))
 # optimal: 353
 
-# best: 325(jacekw Potatoman nauti natte, ox jam, intgrah jimboko awu macaque sammyuri) / others: 344(jailctf merger), 367(JRKKX), 369(natte), 373(cg-klogw-sekken), 373(cg-klogw)
+# best: 312(blob2822) / others: 325(jacekw Potatoman nauti natte), 325(ox jam), 325(intgrah jimboko awu macaque sammyuri), 344(jailctf merger), 362(JRKKX)
 
 # width, height = common.randint(13, 19), common.randint(13, 19)
 # b = common.random_color()
