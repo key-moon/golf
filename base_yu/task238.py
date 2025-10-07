@@ -1,4 +1,4 @@
-# best: 222(jailctf merger) / others: 223(ox jam), 233(4atj sisyphus luke Seek mukundan), 245(jacekw Potatoman nauti natte), 258(cg-klogw-sekken), 260(natte)
+# best: 222(jailctf merger) / others: 223(ox jam), 233(4atj sisyphus luke Seek mukundan), 245(jacekw Potatoman nauti natte), 257(cg-klogw-sekken), 260(natte)
 def p(g):
  u=min(i for i in range(len(g)) for j in range(len(g[i]))if g[i][j]==8)
  v=min(j for i in range(len(g)) for j in range(len(g[i]))if g[i][j]==8)

@@ -1,4 +1,4 @@
-# best: 202(jailctf merger) / others: 218(jacekw Potatoman nauti natte), 218(natte), 218(2F), 218(biz), 227(ox jam)
+# best: 202(jailctf merger) / others: 215(jacekw Potatoman nauti natte), 218(natte), 218(2F), 218(biz), 227(ox jam)
 #上下の囲み+左右方向の破線を書く→90度回転
 
 def p(g):
