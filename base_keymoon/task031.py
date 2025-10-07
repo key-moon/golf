@@ -1,4 +1,4 @@
-# best: 45(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 47(2F), 47(biz), 48(JRKXK), 48(kdmitrie), 48(JRKKX)
+# best: 45(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 47(2F), 48(JRKXK), 48(kdmitrie), 48(JRKKX), 50(jonas ryno kg583 kabutack)
 # 類題: 57
 # 切り出し
 # filter max で 0 の行を消してる 転地して列も同様に 最後にもっかい転置
@@ -21,6 +21,6 @@
 # lambda g,E=lambda g:zip(*filter(max,g)):[*E(E(g))]
 # lambda g,c=-1:g*c or[*zip(*filter(max,p(g,c+1)))]
 # lambda g,F=filter:[*F(max,zip(*F(max,zip(*g))))]
-# best: 45(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 47(2F), 47(biz), 48(JRKXK), 48(kdmitrie), 48(JRKKX)
+# best: 45(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 47(2F), 48(JRKXK), 48(kdmitrie), 48(JRKKX), 50(jonas ryno kg583 kabutack)
 # ==================== 45 ===================
 p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
