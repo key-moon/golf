@@ -1,4 +1,4 @@
-# best: 115(jailctf merger, ox jam) / others: 117(4atj sisyphus luke Seek mukundan), 141(intgrah jimboko awu macaque sammyuri), 145(duckyluuk), 148(jacekw Potatoman nauti natte), 162(jacekw Potatoman nauti)
+# best: 115(jacekw Potatoman nauti natte, jailctf merger, ox jam) / others: 117(4atj sisyphus luke Seek mukundan), 141(intgrah jimboko awu macaque sammyuri), 145(duckyluuk), 162(jacekw Potatoman nauti), 165(jacekwl Potatoman nauti)
 # ====================================================== 115 ======================================================
 # p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(v>0)*(len({*s[i-3:i]})>2)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
 # p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(len({*s[i-3:i]})>2>0<v)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
