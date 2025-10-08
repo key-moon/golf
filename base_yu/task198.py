@@ -1,5 +1,5 @@
-# best: 122(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 124(JRKKX), 125(jacekw Potatoman nauti natte), 125(jacekw Potatoman nauti), 135(intgrah jimboko awu macaque sammyuri), 207(jacekwl Potatoman nauti)
-# ========================================================= 122 ==========================================================
+# best: 120(jacekw Potatoman nauti natte) / others: 122(4atj sisyphus luke Seek mukundan), 122(jailctf merger), 122(ox jam), 124(JRKKX), 125(jacekw Potatoman nauti)
+# ======================================================== 120 =========================================================
 def p(g):
  c=max(g)[0]
  k=g.index(max(g[3:6]))+1
