@@ -1,4 +1,4 @@
-# best: 52(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 54(ox jam), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(MasukenSamba), 71(JRKX)
+# best: 52(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 54(ox jam), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(MasukenSamba), 70(jacekw Potatoman nauti natte)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1
