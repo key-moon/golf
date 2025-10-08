@@ -1,5 +1,5 @@
-# best: 109(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 110(4atj sisyphus luke Seek mukundan), 112(ox jam), 115(jacekw Potatoman nauti natte), 124(biz), 141(jonas ryno kg583 kabutack)
-# =================================================== 109 ===================================================
+# best: 107(jacekw Potatoman nauti natte) / others: 109(jailctf merger), 109(intgrah jimboko awu macaque sammyuri), 110(4atj sisyphus luke Seek mukundan), 112(ox jam), 124(biz)
+# ================================================== 107 ==================================================
 
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=[i for i,s in enumerate(g)if 3in s][0])+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=g.index(max(g,key=max)))+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)
