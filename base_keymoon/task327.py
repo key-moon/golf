@@ -1,4 +1,4 @@
-# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 74(JRKX), 74(HETHAT), 74(kabutack), 74(JRKXK), 74(JRKKX)
+# best: 67(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 72(jacekw Potatoman nauti natte), 74(JRKX), 74(HETHAT), 74(kabutack), 74(JRKXK)
 # lambda g,a=[0]*3,S=[0]*6:[S:=[*map(max,s+a,[0]+S)]for s in g+[a]*3]
 # f p(g):S=(b:=[0])*6;return[S:=[*map(max,s+b*3,b+S)]for s in g+[b*3]*3]
 # lambda g,S=[0]*6:[S:=[*map(max,s+[0]*9,[0]+S)][:6]for s in g+[S]*3]

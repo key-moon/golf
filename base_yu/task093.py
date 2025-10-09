@@ -1,4 +1,4 @@
-# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 100(ox jam), 102(jacekw Potatoman nauti natte), 125(intgrah jimboko awu macaque sammyuri), 126(jacekwl Potatoman nauti)
+# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 100(ox jam), 101(jacekw Potatoman nauti natte), 125(intgrah jimboko awu macaque sammyuri), 126(jacekwl Potatoman nauti)
 # ============================================== 98 ==============================================
 # p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*map(list,zip(*p([*zip(*g)])))]
 # p=lambda g:(i:=[*g[0],5].index(5))<9and[([0]*s[:i].count(0)+[5]*(14-s.count(0))+[0]*9)[:14]for s in g]or[*zip(*p([*zip(*g)]))]
