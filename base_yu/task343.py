@@ -1,4 +1,4 @@
-# best: 65(jacekw Potatoman nauti natte, Ali, blob2822, rucin93, cg-klogw-sekken, jailctf merger, biz, JRKKX) / others: 74(4atj sisyphus luke Seek mukundan), 75(ox jam), 77(intgrah jimboko awu macaque sammyuri), 102(Yuchen20), 104(Ty Woods)
+# best: 65(jacekw Potatoman nauti natte, Ali, blob2822, rucin93, cg-klogw-sekken, Tony Li, jailctf merger, biz, JRKKX) / others: 74(4atj sisyphus luke Seek mukundan), 75(ox jam), 77(intgrah jimboko awu macaque sammyuri), 102(Yuchen20), 104(Ty Woods)
 # ============================== 65 =============================
 # p=lambda g:(u:=[*zip(*g)])and[*map(list,zip(*[u[i%(8-2*(u[3:6]in(u[:3],u[2::-1])))] for i in range(15)]))]
 # p=lambda g:(u:=[*zip(*g)])and[*map(list,zip(*(u[:8-2*(u[3:6]in(u[:3],u[2::-1]))]*3)[:15]))]
