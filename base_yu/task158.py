@@ -1,4 +1,4 @@
-# best: 269(jailctf merger, ox jam) / others: 281(intgrah jimboko awu macaque sammyuri), 322(4atj sisyphus luke Seek mukundan), 325(open source), 325(jacekwl Potatoman nauti), 325(jacekw Potatoman nauti natte)
+# best: 269(jailctf merger, ox jam) / others: 281(intgrah jimboko awu macaque sammyuri), 319(cg-klogw-sekken), 322(4atj sisyphus luke Seek mukundan), 325(open source), 325(jacekwl Potatoman nauti)
 def p(g):
  for i in range(len(g)-2):
   for j in range(len(g[0])-2):
