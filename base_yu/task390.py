@@ -1,4 +1,4 @@
-# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 104(intgrah jimboko awu macaque sammyuri), 108(jacekw Potatoman nauti natte), 108(JRKXK), 108(JRKKX)
+# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 104(intgrah jimboko awu macaque sammyuri), 107(jacekw Potatoman nauti natte), 108(JRKXK), 108(JRKKX)
 # ============================================== 98 ==============================================
 
 # def p(g):
