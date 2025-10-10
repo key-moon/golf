@@ -1,4 +1,4 @@
-# best: 116(jailctf merger) / others: 117(ox jam), 120(jacekw Potatoman nauti natte), 120(intgrah jimboko awu macaque sammyuri), 121(jacekw Potatoman nauti), 122(4atj sisyphus luke Seek mukundan)
+# best: 116(jailctf merger) / others: 117(ox jam), 119(jacekw Potatoman nauti natte), 120(intgrah jimboko awu macaque sammyuri), 121(jacekw Potatoman nauti), 122(4atj sisyphus luke Seek mukundan)
 # ====================================================== 116 =======================================================
 # import re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("%d, ((\d, )*)0, %d",r"0,\1 %d,%d",str(g)))),'*2%(3,2,3,2,7,1,7,1))[1][::-1])],c+1)
 # port re;p=lambda g,c=-7:c*g or p([*zip(*eval(r'(g:=eval(re.sub("(%d), ((\d, )*)0, (%d)",r"0,\2 \1,\4",str(g)))),'*2%(3,2,7,1))[1][::-1])],c+1)
