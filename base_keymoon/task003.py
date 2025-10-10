@@ -1,4 +1,4 @@
-# best: 58(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, jailctf merger, ox jam, kdmitrie, JRKKX) / others: 61(jonas ryno kg583 kabutack), 61(cubbus), 61(jacekwl Potatoman nauti), 61(Ali), 61(JRK)
+# best: 58(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, kdmitrie, JRKKX) / others: 61(jonas ryno kg583 kabutack), 61(cubbus), 61(jacekwl Potatoman nauti), 61(Ali), 61(JRK)
 # ========================== 58 ==========================
 # サイクルを発見する（3サイクルか4サイクルかの二択）
 # [c*2for c in r]

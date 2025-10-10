@@ -1,4 +1,4 @@
-# best: 40(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 42(jacekw Potatoman nauti natte), 42(natte), 43(cubbus), 44(HETHAT), 44(Yuchen20)
+# best: 40(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 42(jacekw Potatoman nauti natte), 42(natte), 42(import itertools), 43(cubbus), 44(HETHAT)
 # ================= 40 =================
 # 53
 # p=lambda g:[[hash((*((1>v)*2164 for v in g[0]),))%7]]

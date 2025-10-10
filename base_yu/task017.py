@@ -1,4 +1,4 @@
-# best: 99(jailctf merger) / others: 102(ox jam), 109(4atj sisyphus luke Seek mukundan), 114(jacekw Potatoman nauti natte), 117(jacekw Potatoman nauti), 147(intgrah jimboko awu macaque sammyuri)
+# best: 99(jailctf merger) / others: 102(ox jam), 109(4atj sisyphus luke Seek mukundan), 114(jacekw Potatoman nauti natte), 114(import itertools), 117(jacekw Potatoman nauti)
 # =============================================== 99 ==============================================
 # p=lambda g,R=range(21):[[[u[(i%d,j%d)]for j in R]for i in R]for d in range(4,10)if len(u:=dict(m:=[((i%21%d,i//21%d),v)for i,v in enumerate(sum(g,[]))if v]))==len({*m})][0]
 

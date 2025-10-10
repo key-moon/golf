@@ -1,4 +1,4 @@
-# best: 59(jacekw Potatoman nauti natte, jailctf merger) / others: 61(biz), 63(intgrah jimboko awu macaque sammyuri), 64(jacekwl Potatoman nauti), 64(4atj sisyphus luke Seek mukundan), 64(HETHAT)
+# best: 59(jacekw Potatoman nauti natte, import itertools, jailctf merger) / others: 61(biz), 63(intgrah jimboko awu macaque sammyuri), 64(jacekwl Potatoman nauti), 64(4atj sisyphus luke Seek mukundan), 64(HETHAT)
 # =========================== 59 ==========================
 # 34567890123456789012345678901234567890123456789012345678901234
 # p=lambda g:[*map(list,zip(*[s[(k:=s[::-1].index(0)):]+s[:k]for s in zip(*g)]))]

@@ -1,4 +1,4 @@
-# best: 128(jailctf merger) / others: 129(jacekw Potatoman nauti natte), 129(ox jam), 138(4atj sisyphus luke Seek mukundan), 147(intgrah jimboko awu macaque sammyuri), 227(MasukenSamba)
+# best: 128(jailctf merger) / others: 129(jacekw Potatoman nauti natte), 129(import itertools), 129(ox jam), 138(4atj sisyphus luke Seek mukundan), 147(intgrah jimboko awu macaque sammyuri)
 # ============================================================ 128 =============================================================
 # 05  -> 45
 #  50     50

@@ -1,4 +1,4 @@
-# best: 279(jailctf merger) / others: 283(ox jam), 309(jacekw Potatoman nauti natte), 318(4atj sisyphus luke Seek mukundan), 318(intgrah jimboko awu macaque sammyuri), 333(natte)
+# best: 279(jailctf merger) / others: 283(ox jam), 309(jacekw Potatoman nauti natte), 309(import itertools), 318(4atj sisyphus luke Seek mukundan), 318(intgrah jimboko awu macaque sammyuri)
 def p(g):
  for c in range(10):
   z=[(i,j)for i in range(30)for j in range(30)if g[i][j]==c]

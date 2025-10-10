@@ -1,4 +1,4 @@
-# best: 148(jailctf merger) / others: 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 183(jacekw Potatoman nauti natte), 202(natte)
+# best: 148(jailctf merger) / others: 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 183(jacekw Potatoman nauti natte), 183(import itertools)
 # ====================================================================== 148 =======================================================================
 # 最小縦横: 6
 # 背景色を含まない行を削りながらてんちさいき→しばらく削ったら種類数でも削る

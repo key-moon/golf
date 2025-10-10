@@ -1,4 +1,4 @@
-# best: 148(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 154(ox jam), 193(jacekw Potatoman nauti natte), 211(natte), 220(Yuchen20), 229(MasukenSamba)
+# best: 148(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 154(ox jam), 193(jacekw Potatoman nauti natte), 193(import itertools), 211(natte), 220(Yuchen20)
 # ====================================================================== 148 =======================================================================
 
 

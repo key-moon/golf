@@ -1,4 +1,4 @@
-# best: 145(jailctf merger) / others: 148(4atj sisyphus luke Seek mukundan), 153(ox jam), 182(intgrah jimboko awu macaque sammyuri), 190(jacekw Potatoman nauti natte), 210(jacekw Potatoman nauti)
+# best: 145(jailctf merger) / others: 148(4atj sisyphus luke Seek mukundan), 153(ox jam), 182(intgrah jimboko awu macaque sammyuri), 190(jacekw Potatoman nauti natte), 190(import itertools)
 # ===================================================================== 145 =====================================================================
 p=lambda g,c=-31:(c-2)*g or c>0 and p([*zip(*[[v or (s[1:-1].count(1)>1 or i%(len(g)-1)<1)*2 for v in s]for i,s in enumerate(g)])],c+1)or[*zip(*p([*zip(*g[any(g[-1])-2::-1])],c+1))][::-1]+g[-1:]
 

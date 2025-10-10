@@ -1,4 +1,4 @@
-# best: 105(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(jacekw Potatoman nauti natte), 117(ox jam), 124(intgrah jimboko awu macaque sammyuri), 126(2F)
+# best: 105(jailctf merger) / others: 112(4atj sisyphus luke Seek mukundan), 117(jacekw Potatoman nauti natte), 117(import itertools), 117(ox jam), 124(intgrah jimboko awu macaque sammyuri)
 # ================================================= 105 =================================================
 
 p=lambda g,c=-3:c*g or p([*zip(*[(t:=0)or[(t:=[max(t,v),t>0][v==1])%5|v for v in s][::-1]for s in zip(*g)])],c+1)

@@ -1,4 +1,4 @@
-# best: 53(jailctf merger, ox jam) / others: 57(intgrah jimboko awu macaque sammyuri), 59(jacekw Potatoman nauti natte), 59(4atj sisyphus luke Seek mukundan), 59(Yuchen20), 60(biz)
+# best: 53(jailctf merger, ox jam) / others: 57(intgrah jimboko awu macaque sammyuri), 59(jacekw Potatoman nauti natte), 59(4atj sisyphus luke Seek mukundan), 59(import itertools), 59(Yuchen20)
 # lambda g:[eval("(a.pop(0)+b.pop(0)<1)*3,"*4)for a,b in zip(g,g[5:])]
 # lambda g:eval("[3-any(a)*3for a in zip(g.pop(0),g[4])],"*4)
 # ======================== 53 =======================

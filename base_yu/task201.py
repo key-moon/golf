@@ -1,4 +1,4 @@
-# best: 199(jailctf merger) / others: 208(ox jam), 218(4atj sisyphus luke Seek mukundan), 235(intgrah jimboko awu macaque sammyuri), 237(jacekw Potatoman nauti natte), 253(natte)
+# best: 199(jailctf merger) / others: 208(ox jam), 218(4atj sisyphus luke Seek mukundan), 235(intgrah jimboko awu macaque sammyuri), 237(jacekw Potatoman nauti natte), 237(import itertools)
 def p(g):
  t=sum(g,[])
  u,l=divmod(t.index(4),13)

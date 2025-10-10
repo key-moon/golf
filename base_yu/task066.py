@@ -1,4 +1,4 @@
-# best: 267(jailctf merger) / others: 268(4atj sisyphus luke Seek mukundan), 275(ox jam), 291(jacekw Potatoman nauti natte), 299(natte), 303(duckyluuk)
+# best: 267(jailctf merger) / others: 268(4atj sisyphus luke Seek mukundan), 275(ox jam), 291(jacekw Potatoman nauti natte), 291(import itertools), 299(natte)
 def p(g):
  d=[1,0,-1,0,1]
  for k in range(16):

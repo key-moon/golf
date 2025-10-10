@@ -1,4 +1,4 @@
-# best: 148(jailctf merger) / others: 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 183(jacekw Potatoman nauti natte), 202(natte)
+# best: 148(jailctf merger) / others: 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 183(jacekw Potatoman nauti natte), 183(import itertools)
 # ====================================================================== 148 =======================================================================
 def p(g):
  c=max(sum(g,[]),key=sum(g,[]).count)

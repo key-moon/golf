@@ -1,4 +1,4 @@
-# best: 64(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, jailctf merger, Yuchen20, ox jam, intgrah jimboko awu macaque sammyuri) / others: 65(dbdr), 66(HETHAT), 67(jonas ryno kg583 kabutack), 67(JRK), 67(JRKX)
+# best: 64(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, Yuchen20, ox jam, intgrah jimboko awu macaque sammyuri) / others: 65(dbdr), 66(HETHAT), 67(jonas ryno kg583 kabutack), 67(JRK), 67(JRKX)
 # ============================= 64 =============================
 # 1の2x2の数を数えて配置しなおす x,yは[0,0,1,2,2],[0,2,1,0,2]
 # def p(g):

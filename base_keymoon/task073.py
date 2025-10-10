@@ -22,7 +22,7 @@
 # next(filter(None,z))
 # min([a for a in z if a])
 # p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[min(filter(int,z))for z in zip(*g)]]
-# best: 46(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, blob2822, 4atj sisyphus luke Seek mukundan, Afordancja, HETHAT, jacekw Potatoman nauti, natte, MasukenSamba, jailctf merger, Yuchen20, ox jam, duckyluuk, intgrah jimboko awu macaque sammyuri) / others: 47(jonas ryno kg583 kabutack), 47(JRKX), 47(JRKXK), 47(Tony Li), 47(JRKKX)
+# best: 46(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, blob2822, 4atj sisyphus luke Seek mukundan, Afordancja, HETHAT, jacekw Potatoman nauti, natte, import itertools, MasukenSamba, Tony Li, jailctf merger, Yuchen20, ox jam, duckyluuk, intgrah jimboko awu macaque sammyuri) / others: 47(jonas ryno kg583 kabutack), 47(JRKX), 47(JRKXK), 47(JRKKX), 48(kabutack)
 # ============================================
 # p=lambda g:[*[g[0]]*3,g[3],[min(filter(int,z))for z in zip(*g)]]
 # p=lambda g:[*[g[0]]*3,g[3],[[5,1][c]for c in g[2]]]

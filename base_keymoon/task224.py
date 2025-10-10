@@ -1,4 +1,4 @@
-# best: 171(ox jam) / others: 177(jailctf merger), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte), 204(intgrah jimboko awu macaque sammyuri), 210(JRKKX)
+# best: 171(ox jam) / others: 177(jailctf merger), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte), 193(import itertools), 204(intgrah jimboko awu macaque sammyuri)
 # ================================================================================== 171 ==================================================================================
 # tmp
 def	p(e):

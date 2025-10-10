@@ -1,4 +1,4 @@
-# best: 89(jailctf merger) / others: 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 92(ox jam), 93(Yuchen20), 94(cg-klogw-sekken)
+# best: 89(jailctf merger) / others: 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 90(import itertools), 92(ox jam), 93(Yuchen20)
 # ========================================== 89 =========================================
 # 109
 def p(g,a=3):

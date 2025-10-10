@@ -1,4 +1,4 @@
-# best: 48(cubbus, jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 49(jonas ryno kg583 kabutack), 49(jacekwl Potatoman nauti), 49(JRK), 49(JRKX), 49(jacekwl)
+# best: 48(cubbus, jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 49(jonas ryno kg583 kabutack), 49(jacekwl Potatoman nauti), 49(JRK), 49(JRKX), 49(jacekwl)
 # ===================== 48 =====================
 # p=lambda g:[g[i][::-1]+g[i]for i in(2,1,0,0,1,2,2,1,0)]
 # p=lambda g:[s[::-1]+s for s in g[::-1]+g+g[::-1]]

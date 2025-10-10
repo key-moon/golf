@@ -1,4 +1,4 @@
-# best: 56(jailctf merger, ox jam) / others: 58(2F), 58(biz), 60(4atj sisyphus luke Seek mukundan), 64(jacekw Potatoman nauti natte), 65(jacekwl Potatoman nauti)
+# best: 56(jailctf merger, ox jam) / others: 58(2F), 58(biz), 60(4atj sisyphus luke Seek mukundan), 64(jacekw Potatoman nauti natte), 64(import itertools)
 # ========================= 56 =========================
 # 34567890123456789012345678901234567890123456789012345678901234
 # ==============================================================56789012345678

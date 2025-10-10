@@ -1,4 +1,4 @@
-# best: 88(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 89(jacekw Potatoman nauti natte), 100(ox jam), 101(cg-klogw-sekken), 101(cg-klogw), 105(jonas ryno kg583 kabutack)
+# best: 88(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 89(jacekw Potatoman nauti natte), 89(import itertools), 100(ox jam), 101(cg-klogw-sekken), 101(cg-klogw)
 # ========================================= 88 =========================================
 # lambda g:any(map(all,g))and[*zip(*p([*zip(*g)]))]or(a:=[[x|y for x,y in zip(g[0],g[-1])if x|y]])*len(a[0])
 # p=lambda g:any(map(all,g))and[*zip(*p([*zip(*g)]))]or(a:=[[*filter(int,map(max,zip(g[0],g[-1])))]])*len(a[0])
