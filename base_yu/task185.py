@@ -1,5 +1,5 @@
-# best: 137(jailctf merger) / others: 138(ox jam), 143(4atj sisyphus luke Seek mukundan), 156(jacekw Potatoman nauti natte), 156(import itertools), 157(natte)
-# ================================================================= 137 =================================================================
+# best: 120(import itertools) / others: 137(jailctf merger), 138(ox jam), 143(4atj sisyphus luke Seek mukundan), 156(jacekw Potatoman nauti natte), 157(natte)
+# ======================================================== 120 =========================================================
 
 # def p(g):
 #  c=max(g)[0]
