@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 957131
+Score: 957134
 
 Best Score: 960433
 
@@ -360,7 +360,7 @@ Best Score: 960433
 | [378](/vis/task378.png) | [base_yu](/base_yu/task378.py) | raw/raw | [159](/dist/task378.py) (+16) | 143 🔴 | [vis-many](/vis_many/task378.png) | not worth compress |
 | [206](/vis/task206.png) | [base_yu](/base_yu/task206.py) | forplain/raw | [162](/dist/task206.py) (+18) | 144 🔴 | [vis-many](/vis_many/task206.png) | not worth compress |
 | [105](/vis/task105.png) | [base_yu](/base_yu/task105.py) | raw/raw | [185](/dist/task105.py) (+40) | 145 🔴 | [vis-many](/vis_many/task105.png) | not worth compress |
-| [156](/vis/task156.png) | [base_yu](/base_yu/task156.py) | raw/raw | [180](/dist/task156.py) (+34) | 146 🔴 | [vis-many](/vis_many/task156.png) | not worth compress |
+| [156](/vis/task156.png) | [base_yu](/base_yu/task156.py) | raw/raw | [177](/dist/task156.py) (+31) | 146 🔴 | [vis-many](/vis_many/task156.png) | not worth compress |
 | [117](/vis/task117.png) | [base_yu](/base_yu/task117.py) | forcomp-t/genetic-algo(zlib) | [195](/dist/task117.py) (+47) | 148 🔴 | [vis-many](/vis_many/task117.png) |  |
 | [205](/vis/task205.png) | [base_keymoon](/base_keymoon/task205.py) | raw/raw | [181](/dist/task205.py) (+33) | 148 🔴 | [vis-many](/vis_many/task205.png) | not worth compress |
 | [364](/vis/task364.png) | [base_yu](/base_yu/task364.py) | raw/raw | [156](/dist/task364.py) (+7) | 149 🔴 | [vis-many](/vis_many/task364.png) | not worth compress |
