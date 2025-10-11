@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 154(jacekw Potatoman nauti natte), 154(import itertools), 156(jacekwl Potatoman nauti), 156(jacekw Potatoman nauti), 160(Tony Li)
+# best: 105(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 144(biz), 154(jacekw Potatoman nauti natte), 154(import itertools), 156(jacekwl Potatoman nauti), 156(jacekw Potatoman nauti)
 # ================================================= 105 =================================================
 p=lambda g,c=-1,E=enumerate:c*g or p([[s[j]or(2in s)+(3in t)+(0<sum(s[:j]+[*t[:i]])<sum(s+[*t]))+6&8for j,t in E(zip(*g))]for i,s in E(g)],c+1)
 

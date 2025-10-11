@@ -1,4 +1,4 @@
-# best: 95(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 96(ox jam), 99(JRKX), 99(JRKXK), 99(JRKKX), 101(jonas ryno kg583 kabutack)
+# best: 95(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 96(ox jam), 96(biz), 99(JRKX), 99(JRKXK), 99(intgrah jimboko awu macaque sammyuri)
 # p=lambda g:(G:=sum(g,[]),u:=sorted((G.count(c),G.index(c)%10,c)for c in{*G}-{0}))and[[c for k,_,c in u if k==u[-1][0]]]*u[-1][0]
 # p=lambda g:(G:=sum(zip(*g),()),u:=[[c]*G.count(c)for c in G if c>0])and[*zip(*[s for s in u if len(s)==max(map(len,u))])]
 
