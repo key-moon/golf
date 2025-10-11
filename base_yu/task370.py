@@ -1,4 +1,4 @@
-# best: 256(JRKXK, kdmitrie, JRKKX) / others: 259(jailctf merger), 269(ox jam), 271(cg-klogw-sekken), 277(Yuchen20), 278(jacekw Potatoman nauti natte)
+# best: 256(JRKXK, kdmitrie, JRKKX) / others: 259(jailctf merger), 269(ox jam), 271(cg-klogw-sekken), 274(import itertools), 277(Yuchen20)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])
