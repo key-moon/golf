@@ -1,4 +1,4 @@
-# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(ox jam), 102(intgrah jimboko awu macaque sammyuri), 112(2F), 112(biz), 118(jacekwl Potatoman nauti)
+# best: 89(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(ox jam), 102(intgrah jimboko awu macaque sammyuri), 112(2F), 112(biz), 116(import itertools)
 # ========================================== 89 =========================================
 
 def p(g,E=enumerate):

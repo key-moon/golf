@@ -1,4 +1,4 @@
-# best: 95(jailctf merger) / others: 96(ox jam), 98(4atj sisyphus luke Seek mukundan), 105(jacekw Potatoman nauti natte), 105(import itertools), 106(intgrah jimboko awu macaque sammyuri)
+# best: 95(jailctf merger) / others: 96(ox jam), 98(4atj sisyphus luke Seek mukundan), 100(biz), 105(jacekw Potatoman nauti natte), 105(import itertools)
 # ============================================= 95 ============================================
 def p(g):
  m=max(g);s=sum(m)//2;n=g.index(m)+s;h=g[:]

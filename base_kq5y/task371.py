@@ -1,4 +1,4 @@
-# best: 109(ox jam) / others: 114(jailctf merger), 115(4atj sisyphus luke Seek mukundan), 126(Yuchen20), 127(jacekw Potatoman nauti natte), 127(jacekw Potatoman nauti)
+# best: 109(ox jam) / others: 114(jailctf merger), 115(4atj sisyphus luke Seek mukundan), 125(import itertools), 126(Yuchen20), 127(jacekw Potatoman nauti natte)
 # =================================================== 109 ===================================================
 
 # c,B=zip(*((i,j)for i,r in A(j)for j,B in A(r)if B));Y=sum(c)//2;X=sum(B)//2
