@@ -1,5 +1,5 @@
-# best: 89(jailctf merger) / others: 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 90(import itertools), 92(ox jam), 93(Yuchen20)
-# ========================================== 89 =========================================
+# best: 88(import itertools) / others: 89(jailctf merger), 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 92(ox jam), 93(Yuchen20)
+# ========================================= 88 =========================================
 # 109
 def p(g,a=3):
  l=len(g)//2

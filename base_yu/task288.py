@@ -1,5 +1,5 @@
-# best: 89(jailctf merger) / others: 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 90(import itertools), 92(ox jam), 93(Yuchen20)
-# ========================================== 89 =========================================
+# best: 88(import itertools) / others: 89(jailctf merger), 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 92(ox jam), 93(Yuchen20)
+# ========================================= 88 =========================================
 # p=lambda g:(R:=range(n:=len(g)))and[[g[i][j]or(abs(j-n//2)+i==n-2+(n-g[-2].count(0))//2)*g[-1][n//2]for j in R]for i in R]
 # p=lambda g:(n:=len(g))and[[g[-(abs(j-n//2)==n-i+(g[-2].count(0)<n-1))][n//2]for j in range(n)]for i in range(2,n)]+g[-2:]
 # p=lambda g:(n:=len(g))and[[g[-(abs(j-n//2)==i+2-(g[-2].count(0)>n-3))][n//2]for j in range(n)]for i in range(n-2)][::-1]+g[-2:]
