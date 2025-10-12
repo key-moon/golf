@@ -1,3 +1,3 @@
-# best: 64(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, cg-klogw-sekken, natte, import itertools, Tony Li, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 67(jonas ryno kg583 kabutack), 67(jacekwl Potatoman nauti), 67(JRKX), 67(dbdr), 67(jonas ryno kg583)
+# best: 64(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, rucin93, cg-klogw-sekken, Ravi Annaswamy, natte, import itertools, Tony Li, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 67(jonas ryno kg583 kabutack), 67(jacekwl Potatoman nauti), 67(JRKX), 67(dbdr), 67(jonas ryno kg583)
 # ============================= 64 =============================
 p=lambda g:[[max(U:=s+[*t],key=U.count)for t in zip(*g)]for s in g]
