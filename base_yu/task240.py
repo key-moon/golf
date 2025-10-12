@@ -1,4 +1,4 @@
-# best: 99(4atj sisyphus luke Seek mukundan) / others: 106(ox jam), 117(jailctf merger), 135(dbdr), 146(intgrah jimboko awu macaque sammyuri), 160(jacekw Potatoman nauti natte)
+# best: 99(4atj sisyphus luke Seek mukundan) / others: 106(ox jam), 117(jailctf merger), 135(dbdr), 146(intgrah jimboko awu macaque sammyuri), 150(JRKKX)
 # =============================================== 99 ==============================================
 # p=lambda g,R=range(19):[[(I:=min(i,18-i),J:=min(j,18-j))and(g[I:=min(I,J+1+I%2)][J:=min(J,I+1+J%2)]|g[18-J][I]|g[J][18-I]|g[18-I][18-J])for j in R]for i in R]
 
