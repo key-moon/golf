@@ -1,4 +1,4 @@
-# best: 150(jailctf merger) / others: 168(2F), 168(biz), 170(ox jam), 173(4atj sisyphus luke Seek mukundan), 178(jacekw Potatoman nauti natte)
+# best: 150(jailctf merger) / others: 168(2F), 168(biz), 170(ox jam), 173(4atj sisyphus luke Seek mukundan), 177(import itertools)
 # ======================================================================= 150 ========================================================================
 
 p=lambda g,R=range:[exec("for s in g[u:u+m]:s[l:l+m]=[2]*m")for m in R(1,8)for u in R(12-m)for l in R(12-m)if[k:=(5,)*(m+2),*[(5,*[0]*m,5)]*m,k]==[*zip(*g[u-1:u+m+1])][l-1:l+m+1]]*0+g

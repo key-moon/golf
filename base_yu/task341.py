@@ -1,5 +1,5 @@
-# best: 129(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 133(JRKKX), 134(4atj sisyphus luke Seek mukundan), 137(ox jam), 148(jacekw Potatoman nauti natte), 148(natte)
-# ============================================================= 129 =============================================================
+# best: 122(import itertools) / others: 129(jailctf merger), 129(intgrah jimboko awu macaque sammyuri), 133(JRKKX), 134(4atj sisyphus luke Seek mukundan), 137(ox jam)
+# ========================================================= 122 ==========================================================
 # p=lambda g,c=-1,z=[[0]*10]:c*g or p([*zip(*[[s[i]or(S==s==T and{*s[:i+1]}>{0}<{*s[i:]})*8for i in range(10)]for S,s,T in zip(z+g,g,g[1:]+z)])],c+1)
 # p=lambda g,c=-1,R=range(10):c*g or p([*zip(*[[g[k][i]or(g[k-1]==g[k]==(g+[[0]*10])[k+1]and{*g[k][:i+1]}>{0}<{*g[k][i:]})*8for i in R]for k in R])],c+1)
 # p=lambda g,c=-1,R=range(10):c*g or p([*zip(*[[g[k][i]or(g[k-1]==g[k]==g[(k+1)%10]and{*g[k][:i+1]}>{0}<{*g[k][i:]})*8for i in R]for k in R])],c+1)
