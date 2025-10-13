@@ -1,5 +1,5 @@
-# best: 115(biz) / others: 116(jacekw Potatoman nauti natte), 116(blob2822), 116(import itertools), 118(Tony Li), 118(jailctf merger)
-# ====================================================== 115 ======================================================
+# best: 114(import itertools) / others: 115(biz), 116(jacekw Potatoman nauti natte), 116(blob2822), 118(Tony Li), 118(jailctf merger)
+# ===================================================== 114 ======================================================
 def p(g):
  for _ in 0,1:
   b=any(t>s and{*t}=={*s}>{0}for s,t in zip(g,g[1:]))

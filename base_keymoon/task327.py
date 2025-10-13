@@ -1,4 +1,4 @@
-# best: 67(4atj sisyphus luke Seek mukundan, rucin93, import itertools, jailctf merger, ox jam, biz) / others: 68(Ty Woods), 69(Tony Li), 69(JRKKX), 72(jacekw Potatoman nauti natte), 72(cg-klogw-sekken)
+# best: 67(4atj sisyphus luke Seek mukundan, rucin93, today, import itertools, jailctf merger, ox jam, biz) / others: 68(Ty Woods), 69(Tony Li), 69(JRKKX), 72(jacekw Potatoman nauti natte), 72(cg-klogw-sekken)
 # lambda g,a=[0]*3,S=[0]*6:[S:=[*map(max,s+a,[0]+S)]for s in g+[a]*3]
 # f p(g):S=(b:=[0])*6;return[S:=[*map(max,s+b*3,b+S)]for s in g+[b*3]*3]
 # lambda g,S=[0]*6:[S:=[*map(max,s+[0]*9,[0]+S)][:6]for s in g+[S]*3]
