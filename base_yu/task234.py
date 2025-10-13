@@ -1,4 +1,4 @@
-# best: 114(import itertools) / others: 115(biz), 116(jacekw Potatoman nauti natte), 116(blob2822), 118(Tony Li), 118(jailctf merger)
+# best: 114(import itertools) / others: 115(biz), 116(jacekw Potatoman nauti natte), 116(blob2822), 118(kambarakun), 118(Tony Li)
 # ===================================================== 114 ======================================================
 def p(g):
  for _ in 0,1:

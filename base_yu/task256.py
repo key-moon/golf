@@ -1,4 +1,4 @@
-# best: 95(jailctf merger) / others: 96(ox jam), 98(4atj sisyphus luke Seek mukundan), 100(biz), 105(jacekw Potatoman nauti natte), 105(import itertools)
+# best: 95(jailctf merger) / others: 96(ox jam), 98(4atj sisyphus luke Seek mukundan), 100(biz), 104(adakoda), 105(jacekw Potatoman nauti natte)
 # ============================================= 95 ============================================
 # p=lambda g,E=enumerate:[[([2-(i<k)+(i>k)]*(i+s.count(2)-k)+[0]*99)[:len(t)]for k,t in E(g)]for i,s in E(g)if 2in s][0]
 # p=lambda g,E=enumerate:[[([2-(i<k)+(i>k)]*(i+sum(s)//2-k)+[0]*99)[:len(t)]for k,t in E(g)]for i,s in E(g)if 2in s][0]

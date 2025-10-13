@@ -1,4 +1,4 @@
-# best: 50(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 54(jacekw Potatoman nauti natte), 54(HETHAT), 54(natte), 54(import itertools), 54(Tony Li)
+# best: 50(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 54(jacekw Potatoman nauti natte), 54(HETHAT), 54(natte), 54(kambarakun), 54(import itertools)
 # p=lambda g:[[6*any(s)for s in zip(*zip(*[iter(r)]*3))]for r in g]
 # p=lambda g:[[6*(0<sum(s))for s in zip(r,r[3:])]for r in g]
 # p=lambda g:[[6*(0<a+b)for a,b in zip(r,r[3:])]for r in g]
