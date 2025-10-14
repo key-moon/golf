@@ -1,4 +1,4 @@
-# best: 75(import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 77(cg-klogw-sekken), 82(cg-klogw), 84(4atj sisyphus luke Seek mukundan), 87(jacekwl Potatoman nauti), 87(jacekw Potatoman nauti natte)
+# best: 75(import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 77(cg-klogw-sekken), 82(cg-klogw), 82(THUNDER THUNDER), 84(4atj sisyphus luke Seek mukundan), 87(jacekwl Potatoman nauti)
 # =================================== 75 ==================================
 p=lambda g,R=range(21):[[g[0][k:=max(i!=j,abs(j-i)//(min(i,j)+2)*2)]|g[k][0]for j in R]for i in R]
 

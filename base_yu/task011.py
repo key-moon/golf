@@ -1,4 +1,4 @@
-# best: 121(jailctf merger) / others: 124(4atj sisyphus luke Seek mukundan), 125(ox jam), 133(jonas ryno kg583 kabutack), 133(JRKX), 133(jonas ryno kg583)
+# best: 121(jailctf merger) / others: 124(4atj sisyphus luke Seek mukundan), 125(ox jam), 132(MasukenSamba), 133(jonas ryno kg583 kabutack), 133(JRKX)
 # ========================================================= 121 =========================================================
 # p=lambda g:min([[[g[[i//4+t%3*4,3][i%4>2]][[j//4+t//3*4,3][j%4>2]]for j in range(11)]for i in range(11)]for t in range(9)],key=lambda v:max(sum(v,[])))
 # p=lambda g:min([(max(sum(v:=[[g[[i//4+t%3*4,3][i%4>2]][[j//4+t//3*4,3][j%4>2]]for j in range(11)]for i in range(11)],[])),v)for t in range(9)])[1]

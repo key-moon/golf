@@ -1,4 +1,4 @@
-# best: 164(jailctf merger) / others: 189(intgrah jimboko awu macaque sammyuri), 194(4atj sisyphus luke Seek mukundan), 194(ox jam), 243(jacekw Potatoman nauti natte), 243(import itertools)
+# best: 164(jailctf merger) / others: 189(intgrah jimboko awu macaque sammyuri), 194(4atj sisyphus luke Seek mukundan), 194(ox jam), 241(THUNDER THUNDER), 243(jacekw Potatoman nauti natte)
 # ============================================================================== 164 ===============================================================================
 
 # def p(a):

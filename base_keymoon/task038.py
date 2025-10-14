@@ -1,4 +1,4 @@
-# best: 51(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 52(jonas ryno kg583 kabutack), 52(cubbus), 52(jacekwl Potatoman nauti), 52(JRK), 52(blob2822)
+# best: 51(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, MasukenSamba, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 52(jonas ryno kg583 kabutack), 52(cubbus), 52(jacekwl Potatoman nauti), 52(JRK), 52(blob2822)
 # 残念ながらsum(g,[])するとだめ
 # lambda g:[[*(str(g).count("1, 1")//2*"1").ljust(5,"0")]] <- アイデアレベル
 

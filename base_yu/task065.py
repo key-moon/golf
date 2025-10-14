@@ -1,4 +1,4 @@
-# best: 91(ox jam) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(cg-klogw-sekken), 107(cg-klogw), 107(Yuchen20)
+# best: 91(ox jam) / others: 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(cg-klogw-sekken), 107(MasukenSamba), 107(cg-klogw)
 # =========================================== 91 ==========================================
 # def p(g,c=-1):
 #  if c*g:

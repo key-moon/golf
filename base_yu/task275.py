@@ -1,4 +1,4 @@
-# best: 136(ox jam) / others: 138(jailctf merger), 156(4atj sisyphus luke Seek mukundan), 166(import itertools), 169(intgrah jimboko awu macaque sammyuri), 171(jacekw Potatoman nauti natte)
+# best: 136(ox jam) / others: 138(jailctf merger), 149(ShadowPrompt Labs), 156(4atj sisyphus luke Seek mukundan), 165(THUNDER THUNDER), 166(import itertools)
 # ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])

@@ -1,4 +1,4 @@
-# best: 138(ox jam) / others: 142(4atj sisyphus luke Seek mukundan), 142(jailctf merger), 165(Yuchen20), 173(jacekw Potatoman nauti natte), 173(import itertools)
+# best: 138(ox jam) / others: 142(4atj sisyphus luke Seek mukundan), 142(jailctf merger), 161(THUNDER THUNDER), 165(Yuchen20), 173(jacekw Potatoman nauti natte)
 # ================================================================= 138 ==================================================================
 
 def p(g):

@@ -1,4 +1,4 @@
-# best: 286(jailctf merger) / others: 296(ox jam), 297(jacekw Potatoman nauti natte), 297(import itertools), 316(intgrah jimboko awu macaque sammyuri), 318(natte)
+# best: 283(THUNDER THUNDER) / others: 286(jailctf merger), 296(ox jam), 297(jacekw Potatoman nauti natte), 297(import itertools), 309(ShadowPrompt Labs)
 def p(g):
  for _ in range(8):
   for i in range(1,len(g)):

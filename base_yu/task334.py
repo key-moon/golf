@@ -1,4 +1,4 @@
-# best: 66(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(ox jam), 76(jacekwl Potatoman nauti), 76(jacekw Potatoman nauti natte), 76(jacekw Potatoman nauti), 76(import itertools)
+# best: 66(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(ox jam), 73(THUNDER THUNDER), 75(ShadowPrompt Labs), 76(jacekwl Potatoman nauti), 76(jacekw Potatoman nauti natte)
 # ============================== 66 ==============================
 # p=lambda g:[[[0,5,0],[5,5,5],[0,5,0]],[[5,5,5],[0,5,0],[0,5,0]],[[0,0,5],[0,0,5],[5,5,5]]][max(sum(g,[]))-1]
 # p=lambda g:[[*b"050550055"[u:=max(sum(g,[]))::3]],[*b"500550505"[u::3]],[*b"005555005"[u::3]]]

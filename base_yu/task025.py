@@ -1,4 +1,4 @@
-# best: 131(4atj sisyphus luke Seek mukundan) / others: 144(jailctf merger), 151(ox jam), 177(2F), 177(biz), 187(jacekw Potatoman nauti natte)
+# best: 131(4atj sisyphus luke Seek mukundan) / others: 144(jailctf merger), 151(ox jam), 171(MasukenSamba), 177(2F), 177(biz)
 # ============================================================== 131 ==============================================================
 
 p=lambda g:(0in max(g,key=sum))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerate(s):\n if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v"))[0]for s in g]or[*zip(*p([*zip(*g)]))]

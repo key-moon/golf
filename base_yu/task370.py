@@ -1,4 +1,4 @@
-# best: 256(JRKXK, kdmitrie, JRKKX) / others: 259(jailctf merger), 269(ox jam), 271(cg-klogw-sekken), 274(import itertools), 277(Yuchen20)
+# best: 256(JRKXK, kdmitrie, JRKKX) / others: 259(jailctf merger), 266(THUNDER THUNDER), 269(ox jam), 270(ShadowPrompt Labs), 271(cg-klogw-sekken)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])

@@ -1,4 +1,4 @@
-# best: 121(jailctf merger) / others: 125(ox jam), 127(4atj sisyphus luke Seek mukundan), 133(2F), 133(biz), 142(import itertools)
+# best: 121(jailctf merger) / others: 125(ox jam), 127(4atj sisyphus luke Seek mukundan), 133(2F), 133(biz), 137(ShadowPrompt Labs)
 # ========================================================= 121 =========================================================
 # def p(g):
 #  for i in range(9)[::-1]:

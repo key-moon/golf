@@ -1,4 +1,4 @@
-# best: 191(4atj sisyphus luke Seek mukundan, ox jam, intgrah jimboko awu macaque sammyuri) / others: 195(jailctf merger), 240(jacekw Potatoman nauti natte), 240(import itertools), 245(natte), 252(jacekwl Potatoman nauti)
+# best: 191(4atj sisyphus luke Seek mukundan, ox jam, intgrah jimboko awu macaque sammyuri) / others: 195(jailctf merger), 215(THUNDER THUNDER), 231(MasukenSamba), 240(jacekw Potatoman nauti natte), 240(import itertools)
 # ============================================================================================ 191 ============================================================================================
 def p(g):
  h,w=len(g),len(g[0])
