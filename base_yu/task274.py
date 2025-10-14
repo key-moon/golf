@@ -1,4 +1,4 @@
-# best: 71(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, ox jam) / others: 72(jacekw Potatoman nauti), 74(JRKX), 74(JRKXK), 74(JRKKX), 75(HETHAT)
+# best: 71(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, ox jam, biz) / others: 72(jacekw Potatoman nauti), 74(JRKX), 74(JRKXK), 74(JRKKX), 75(HETHAT)
 # ================================= 71 ================================
 # p=lambda g:(a:=[*filter(int,map(sum,zip(*g)))],c:=[8]*(a[0]//5-(a[1]+3)//8)+[0]*9)and[c[:3],c[5:2:-1],c[6:9]]
 # p=lambda g:(a:=[*({s.count(0)for s in zip(*g)}-{len(g)})],c:=[8]*abs(a[0]-a[1])+[0]*9)and[c[:3],c[5:2:-1],c[6:9]]
