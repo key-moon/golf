@@ -1,5 +1,5 @@
-# best: 109(ShadowPrompt Labs) / others: 116(4atj sisyphus luke Seek mukundan), 116(jailctf merger), 116(ox jam), 119(import itertools), 132(jacekw Potatoman nauti natte)
-# =================================================== 109 ===================================================
+# best: 108(biz) / others: 109(ShadowPrompt Labs), 116(4atj sisyphus luke Seek mukundan), 116(jailctf merger), 116(ox jam), 119(import itertools)
+# ================================================== 108 ===================================================
 
 # p=lambda g,t=[0,0]:[
 #     # 未storeでnot any(c)ならcを返す
