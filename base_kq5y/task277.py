@@ -1,4 +1,4 @@
-# best: 164(jailctf merger) / others: 189(intgrah jimboko awu macaque sammyuri), 194(4atj sisyphus luke Seek mukundan), 194(ox jam), 241(THUNDER THUNDER), 243(jacekw Potatoman nauti natte)
+# best: 164(jailctf merger) / others: 189(intgrah jimboko awu macaque sammyuri), 194(4atj sisyphus luke Seek mukundan), 194(ox jam), 228(JRKKX), 241(THUNDER THUNDER)
 # ============================================================================== 164 ===============================================================================
 
 # def p(a):
