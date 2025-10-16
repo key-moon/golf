@@ -1,5 +1,5 @@
 # 最多色で切り取り
-# best: 87(4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 88(2F), 88(biz), 90(intgrah jimboko awu macaque sammyuri), 91(duckyluuk), 92(jacekw Potatoman nauti natte)
+# best: 87(jailctf merger, 4atj sisyphus luke Seek mukundan, ox jam) / others: 88(2F), 88(biz), 90(intgrah jimboko awu macaque sammyuri), 91(duckyluuk), 92(jacekw Potatoman nauti natte)
 # ========================================= 87 ========================================
 # p=lambda g:(c:=max({*(u:=sum(g,[]))}-{0},key=u.count))and[[v for v,t in zip(s,zip(*g))if c in t]for s in g if c in s]
 # p=lambda g:[[v for v,t in zip(s,zip(*g))if c in t]for s in g if(c:=max({*(u:=sum(g,[]))}-{0},key=u.count))in s]

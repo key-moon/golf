@@ -1,5 +1,5 @@
 # 類題:10
-# best: 84(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 95(ox jam), 101(intgrah jimboko awu macaque sammyuri), 102(jacekw Potatoman nauti natte), 102(import itertools)
+# best: 84(jailctf merger) / others: 91(4atj sisyphus luke Seek mukundan), 95(ox jam), 101(intgrah jimboko awu macaque sammyuri), 102(jacekw Potatoman nauti natte), 102(biz)
 # ======================================= 84 =======================================
 # p=lambda g:[u:=sorted({*zip(*g)}-{(0,)*9},key=sum)]and[*zip(*[[v and(s==u[0])*2+(s==u[-1])for v in s]for s in zip(*g)])]
 def p(g):

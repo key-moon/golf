@@ -1,4 +1,4 @@
-# best: 63(4atj sisyphus luke Seek mukundan, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 64(2F), 64(biz), 70(ox jam), 74(Yuchen20), 78(import itertools)
+# best: 63(jailctf merger, 4atj sisyphus luke Seek mukundan, intgrah jimboko awu macaque sammyuri) / others: 64(2F), 64(biz), 70(ox jam), 74(Yuchen20), 78(import itertools)
 # ============================= 63 ============================
 # p=lambda g:[[c:=max(g[2])]*10,[c,*[0]*8,c]]*2
 # p=lambda g:[[c:=max(g[(i>4)*5+2]),*[c*(645>>i&1)]*8,c]for i in range(10)]

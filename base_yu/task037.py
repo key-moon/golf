@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan, jailctf merger) / others: 109(ox jam), 117(intgrah jimboko awu macaque sammyuri), 121(import itertools), 123(adakoda), 125(jacekw Potatoman nauti natte)
+# best: 105(jailctf merger, 4atj sisyphus luke Seek mukundan) / others: 109(ox jam), 117(intgrah jimboko awu macaque sammyuri), 121(import itertools), 123(adakoda), 125(jacekw Potatoman nauti natte)
 # ================================================= 105 =================================================
 
 

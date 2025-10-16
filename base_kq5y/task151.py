@@ -1,4 +1,4 @@
-# best: 108(jailctf merger, ox jam) / others: 110(ShadowPrompt Labs), 111(MasukenSamba), 112(4atj sisyphus luke Seek mukundan), 113(jacekw Potatoman nauti natte), 113(import itertools)
+# best: 108(jailctf merger, ox jam) / others: 110(ShadowPrompt Labs), 111(MasukenSamba), 112(4atj sisyphus luke Seek mukundan), 113(jacekw Potatoman nauti natte), 113(intgrah jimboko awu macaque sammyuri)
 # ================================================== 108 ===================================================
 
 #def p(j):A=lambda c:list(map(all,c)).index(1);E,k=A(j),A(zip(*j));j[E-1][k-1:k+2]=j[E+1][k-1:k+2]=[4]*3;j[E][k-1]=j[E][k+1]=4;return j

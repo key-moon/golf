@@ -1,4 +1,4 @@
-# best: 105(4atj sisyphus luke Seek mukundan, ox jam, intgrah jimboko awu macaque sammyuri) / others: 106(jacekw Potatoman nauti natte), 106(import itertools), 106(Yuchen20), 107(natte), 108(jonas ryno kg583 kabutack)
+# best: 105(4atj sisyphus luke Seek mukundan, ox jam, intgrah jimboko awu macaque sammyuri) / others: 106(Yuchen20), 106(jacekw Potatoman nauti natte), 106(import itertools), 107(natte), 108(jonas ryno kg583)
 # ================================================= 105 =================================================
 # p=lambda g:(s:=[i for i,v in enumerate(sum(g,[]))if v],y:=min(i//(w:=len(g[0]))for i in s),x:=min(i%w for i in s))and[[g[y+i][x+j]&g[y+i%3*3][x+j%3*3]for j in range(9)]for i in range(9)]
 
