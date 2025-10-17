@@ -1,4 +1,4 @@
-# best: 199(jailctf merger) / others: 223(jacekw Potatoman nauti natte), 223(import itertools), 225(ox jam), 229(jonas ryno kg583 kabutack), 229(JRKX)
+# best: 199(jailctf merger) / others: 223(jacekw Potatoman nauti natte), 223(import itertools), 225(ox jam), 229(jonas ryno kg583), 229(JRKKX)
 
 # 上の方が圧縮され力が高い そもそもロジックが違う説
 
