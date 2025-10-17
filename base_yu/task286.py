@@ -1,4 +1,4 @@
-# best: 108(jailctf merger) / others: 111(4atj sisyphus luke Seek mukundan), 111(ox jam), 114(JRKKX), 114(intgrah jimboko awu macaque sammyuri), 115(JRKXK)
+# best: 108(jailctf merger) / others: 109(biz), 111(4atj sisyphus luke Seek mukundan), 111(ox jam), 114(JRKKX), 114(intgrah jimboko awu macaque sammyuri)
 # ================================================== 108 ===================================================
 
 # import re;p=lambda g,c=-359:c*g or[*zip(*eval(re.sub(r"0(?=, ([1-79])(.{%d})?, ([1-79]))"%(len(g)*3-1),r"\3",str(p(g,c+1))))[::1-c%3|1])]
