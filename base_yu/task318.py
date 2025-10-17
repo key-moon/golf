@@ -1,4 +1,4 @@
-# best: 54(jailctf merger, ox jam) / others: 58(4atj sisyphus luke Seek mukundan), 58(Yuchen20), 58(intgrah jimboko awu macaque sammyuri), 60(jacekw Potatoman nauti natte), 60(ShadowPrompt Labs)
+# best: 54(jailctf merger, ox jam) / others: 58(4atj sisyphus luke Seek mukundan), 58(Yuchen20), 58(intgrah jimboko awu macaque sammyuri), 60(ShadowPrompt Labs), 60(2F)
 # ======================== 54 ========================
 # p=lambda g:[[x|y and 3for x,y in zip(*c)]for c in zip(g,g[5:])]
 p=lambda g:[[(x!=y)*3for x,y in zip(*c)]for c in zip(g,g[5:])]

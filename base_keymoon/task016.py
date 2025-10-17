@@ -1,4 +1,4 @@
-# best: 43(cubbus, jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger) / others: 44(ox jam), 46(jonas ryno kg583 kabutack), 46(JRKX), 46(HETHAT), 46(JRKXK)
+# best: 43(jailctf merger, cubbus, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, import itertools) / others: 44(ox jam), 46(JRKKX), 46(JRKXK), 46(HETHAT), 46(JRKX)
 # =================== 43 ==================
 # これ43らしい あと15byte縮むらしい 意味わからない
 # 58

@@ -1,4 +1,4 @@
-# best: 89(jailctf merger) / others: 95(ox jam), 99(4atj sisyphus luke Seek mukundan), 99(biz), 100(intgrah jimboko awu macaque sammyuri), 108(jacekw Potatoman nauti natte)
+# best: 89(jailctf merger) / others: 95(ox jam), 99(4atj sisyphus luke Seek mukundan), 99(biz), 100(intgrah jimboko awu macaque sammyuri), 108(natte)
 # ========================================== 89 =========================================
 # p=lambda g,E=enumerate:[[(sum([0,*s,0][j:j+3]+[0,*t,0][i:i+3])==2*s[j]>0)or s[j]for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[sum([0,*s][j:j+3:2]+[0,*t][i:i+3:2])<s[j]or s[j]for j,t in E(zip(*g))]for i,s in E(g)]

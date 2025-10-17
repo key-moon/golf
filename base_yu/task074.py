@@ -1,4 +1,4 @@
-# best: 77(jailctf merger) / others: 79(4atj sisyphus luke Seek mukundan), 80(ox jam), 83(intgrah jimboko awu macaque sammyuri), 84(MasukenSamba), 94(JRKXK)
+# best: 77(jailctf merger) / others: 79(4atj sisyphus luke Seek mukundan), 80(ox jam), 83(intgrah jimboko awu macaque sammyuri), 84(MasukenSamba), 94(JRKKX)
 # ==================================== 77 ===================================
 # lambda g:[[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)]
 # lambda g,c=-3:c*g or p([[min(g[i][j],g[j][i],[*g[j],9,9][31-i])for j in range(30)]for i in range(30)],c+1)

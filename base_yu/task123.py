@@ -1,4 +1,4 @@
-# best: 72(ShadowPrompt Labs) / others: 75(jacekw Potatoman nauti natte), 75(4atj sisyphus luke Seek mukundan), 75(HETHAT), 75(jacekw Potatoman nauti), 75(cg-klogw-sekken)
+# best: 72(ShadowPrompt Labs) / others: 75(jailctf merger), 75(natte), 75(4atj sisyphus luke Seek mukundan), 75(Yuchen20), 75(jacekw Potatoman nauti natte)
 # ================================= 72 =================================
 # R=range(10)
 # p=lambda g:[[g[0][max(i,j)%(4+(g[0][4]>0))]for j in R]for i in R]

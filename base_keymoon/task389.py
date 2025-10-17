@@ -1,4 +1,4 @@
-# best: 57(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz) / others: 58(Yuchen20), 61(intgrah jimboko awu macaque sammyuri), 62(jacekw Potatoman nauti), 62(cg-klogw-sekken), 62(kambarakun)
+# best: 57(jailctf merger, natte, 2F, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, ox jam, biz, import itertools) / others: 58(Yuchen20), 61(intgrah jimboko awu macaque sammyuri), 62(kambarakun), 62(cg-klogw), 62(cg-klogw-sekken)
 
 # {*sum(g,[])}
 # {*g[0]+g[1]}
