@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, ox jam) / others: 96(4atj sisyphus luke Seek mukundan), 99(intgrah jimboko awu macaque sammyuri), 105(THUNDER THUNDER), 106(natte), 106(jacekw Potatoman nauti natte)
+# best: 95(jailctf merger, ox jam) / others: 96(4atj sisyphus luke Seek mukundan), 99(intgrah jimboko awu macaque sammyuri), 105(THUNDER THUNDER), 106(jacekwl Potatoman nauti), 106(jacekw Potatoman nauti natte)
 # 155
 # M=max
 # r=range(3)

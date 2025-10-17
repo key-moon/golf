@@ -1,4 +1,4 @@
-# best: 94(jailctf merger, 2F, 4atj sisyphus luke Seek mukundan, biz) / others: 97(ox jam), 120(duckyluuk), 121(THUNDER THUNDER), 123(import itertools), 124(MasukenSamba)
+# best: 94(4atj sisyphus luke Seek mukundan, jailctf merger, 2F, biz) / others: 97(ox jam), 120(duckyluuk), 121(THUNDER THUNDER), 123(import itertools), 124(MasukenSamba)
 # ============================================ 94 ============================================
 # p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range(5)])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
 # p=lambda g:[*zip(*[s[(d:=(a:={c:sum(g,[]).index(c)//10for c in(0,1,2,4)})[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]

@@ -1,4 +1,4 @@
-# best: 106(jacekw Potatoman nauti natte, intgrah jimboko awu macaque sammyuri, import itertools) / others: 109(jailctf merger), 110(4atj sisyphus luke Seek mukundan), 112(ox jam), 115(THUNDER THUNDER), 120(MasukenSamba)
+# best: 106(jacekw Potatoman nauti natte, import itertools, intgrah jimboko awu macaque sammyuri) / others: 109(jailctf merger), 110(4atj sisyphus luke Seek mukundan), 112(ox jam), 115(THUNDER THUNDER), 120(MasukenSamba)
 # ================================================= 106 ==================================================
 
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=[i for i,s in enumerate(g)if 3in s][0])+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)

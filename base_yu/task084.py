@@ -1,4 +1,4 @@
-# best: 62(jailctf merger, natte, 2F, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, ox jam, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 63(kabutack), 63(JRKKX), 63(JRKXK), 63(JRKX), 63(MasukenSamba)
+# best: 62(jacekw Potatoman nauti natte, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(JRKX), 63(jacekw Potatoman nauti), 63(kabutack)
 # ============================ 62 ============================
 # def p(g):
 #     for i in range(len(g)-1):

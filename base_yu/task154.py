@@ -1,4 +1,4 @@
-# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 104(intgrah jimboko awu macaque sammyuri), 107(jacekw Potatoman nauti natte), 107(import itertools), 108(JRKKX)
+# best: 98(jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 104(intgrah jimboko awu macaque sammyuri), 107(jacekw Potatoman nauti natte), 107(import itertools), 108(JRKXK)
 # ============================================== 98 ==============================================
 p=lambda g,c=-29,k=3:c*g or p(exec(g[i:=c%15].count(2)//5*2*"g[i-k],g[i+k]=g[i+k],g[i-k];k=2;")or[*zip(*g)],c+1)
 

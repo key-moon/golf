@@ -1,4 +1,4 @@
-# best: 65(ShadowPrompt Labs, Tony Li, JRKKX, blob2822, THUNDER THUNDER, jailctf merger, Ty Woods, jacekw Potatoman nauti natte, rucin93, Ali, kambarakun, biz, cg-klogw-sekken, adakoda, import itertools, Ravi Annaswamy, today) / others: 74(4atj sisyphus luke Seek mukundan), 75(ox jam), 77(intgrah jimboko awu macaque sammyuri), 102(Yuchen20), 106(MasukenSamba)
+# best: 65(jacekw Potatoman nauti natte, Ali, blob2822, ShadowPrompt Labs, rucin93, today, cg-klogw-sekken, Ravi Annaswamy, kambarakun, import itertools, Ty Woods, Tony Li, jailctf merger, adakoda, THUNDER THUNDER, biz, JRKKX) / others: 74(4atj sisyphus luke Seek mukundan), 75(ox jam), 77(intgrah jimboko awu macaque sammyuri), 102(Yuchen20), 106(MasukenSamba)
 # ============================== 65 =============================
 # p=lambda g:(u:=[*zip(*g)])and[*map(list,zip(*[u[i%(8-2*(u[3:6]in(u[:3],u[2::-1])))] for i in range(15)]))]
 # p=lambda g:(u:=[*zip(*g)])and[*map(list,zip(*(u[:8-2*(u[3:6]in(u[:3],u[2::-1]))]*3)[:15]))]

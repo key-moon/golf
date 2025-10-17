@@ -1,4 +1,4 @@
-# best: 49(kabutack, jonas ryno kg583, JRKKX, THUNDER THUNDER, jailctf merger, JRK, natte, dbdr, 2F, cubbus, JRKXK, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, HETHAT, JRKX, ox jam, MasukenSamba, jonas ryno kg583 kabutack, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 50(Tony Li), 50(Yuchen20), 50(adakoda), 50(Ravi Annaswamy), 63(sekken)
+# best: 49(jonas ryno kg583 kabutack, cubbus, jacekw Potatoman nauti natte, JRK, JRKX, 4atj sisyphus luke Seek mukundan, dbdr, jonas ryno kg583, HETHAT, natte, kabutack, JRKXK, import itertools, MasukenSamba, jailctf merger, ox jam, THUNDER THUNDER, 2F, biz, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 50(Ravi Annaswamy), 50(Tony Li), 50(adakoda), 50(Yuchen20), 63(jacekw Potatoman nauti)
 # lambda g,a=0:[[(a:=a^c)|c for c in r]for r in g]
 # ====================== 49 =====================
 p=lambda g,a=0:[[c|(a:=a^c)for c in r]for r in g]

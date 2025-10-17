@@ -1,4 +1,4 @@
-# best: 103(ox jam) / others: 107(jailctf merger), 114(4atj sisyphus luke Seek mukundan), 117(THUNDER THUNDER), 135(intgrah jimboko awu macaque sammyuri), 144(natte)
+# best: 103(ox jam) / others: 107(jailctf merger), 114(4atj sisyphus luke Seek mukundan), 117(THUNDER THUNDER), 135(intgrah jimboko awu macaque sammyuri), 144(jacekw Potatoman nauti natte)
 # ================================================ 103 ================================================
 
 # lambda g,c=-5:c*g or[*zip(*[[(s[i]in[0,*s,0][i:i+3:2] and (hash((*g[0],))>>53 not in (-33,617,325) or s[i]%7==2))*s[i] for i in range(16)]for s in p(g,c+1)])]

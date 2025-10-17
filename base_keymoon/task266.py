@@ -1,4 +1,4 @@
-# best: 102(THUNDER THUNDER, jailctf merger, ox jam, biz) / others: 117(intgrah jimboko awu macaque sammyuri), 119(4atj sisyphus luke Seek mukundan), 125(jacekw Potatoman nauti natte), 125(jacekw Potatoman nauti), 125(import itertools)
+# best: 102(jailctf merger, ox jam, THUNDER THUNDER, biz) / others: 117(intgrah jimboko awu macaque sammyuri), 119(4atj sisyphus luke Seek mukundan), 125(jacekw Potatoman nauti natte), 125(jacekw Potatoman nauti), 125(import itertools)
 # =============================================== 102 ================================================
 # port re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=.{%s}2)"%(19-c%2*6),"(-c^3)%10",str(p(g,c-1)))))][::-1] <- 2 のreplaceができてないやつ
 # lambda g,A=[0]*9+[3,0,6]+[0]*7+[8,0,7]+[0]*9:[A[15-sum(g,[]).index(2)+i:][:5]for i in(0,5,10)] <- wraparound忘れてた カス

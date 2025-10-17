@@ -1,4 +1,4 @@
-# best: 120(jacekw Potatoman nauti natte, import itertools) / others: 122(jailctf merger), 122(4atj sisyphus luke Seek mukundan), 122(ox jam), 124(JRKKX), 125(jacekw Potatoman nauti)
+# best: 120(jacekw Potatoman nauti natte, import itertools) / others: 122(4atj sisyphus luke Seek mukundan), 122(jailctf merger), 122(ox jam), 124(JRKKX), 125(jacekw Potatoman nauti)
 # ======================================================== 120 =========================================================
 def p(g):
  c=max(g)[0]

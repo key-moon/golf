@@ -1,4 +1,4 @@
-# best: 358(jailctf merger) / others: 365(ox jam), 371(4atj sisyphus luke Seek mukundan), 372(kambarakun), 374(Tony Li), 374(sekken)
+# best: 358(jailctf merger) / others: 365(ox jam), 371(4atj sisyphus luke Seek mukundan), 372(kambarakun), 374(open source), 374(jacekwl Potatoman nauti)
 # とりあえずあんまgolfのこと考えずに愚直に書く
 from re import *;s=sub
 def p(g):

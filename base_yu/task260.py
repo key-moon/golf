@@ -1,4 +1,4 @@
-# best: 135(jailctf merger) / others: 140(jacekw Potatoman nauti natte), 140(ox jam), 140(import itertools), 152(4atj sisyphus luke Seek mukundan), 154(natte)
+# best: 135(jailctf merger) / others: 140(jacekw Potatoman nauti natte), 140(import itertools), 140(ox jam), 152(4atj sisyphus luke Seek mukundan), 154(natte)
 # ================================================================ 135 ================================================================
 # def p(g,R=range):
 #  u=(G:=sum(g,[])).index(c:=sum({*G})-5)
