@@ -1,4 +1,4 @@
-# best: 96(natte, jacekw Potatoman nauti natte, intgrah jimboko awu macaque sammyuri, import itertools) / others: 97(ox jam), 98(jailctf merger), 101(2F), 101(4atj sisyphus luke Seek mukundan), 101(biz)
+# best: 96(jacekw Potatoman nauti natte, natte, import itertools, intgrah jimboko awu macaque sammyuri) / others: 97(ox jam), 98(jailctf merger), 101(4atj sisyphus luke Seek mukundan), 101(2F), 101(biz)
 # ============================================= 96 =============================================
 # p=lambda g,E=enumerate:[[max((min(j>2 and s[j-3],j<5 and s[j+3]),min(i>2 and t[i-3],i<5 and t[i+3]),s[j])) for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[max((min(s[j-3],j<5 and s[j+3]),min(t[i-3],i<5 and t[i+3]),s[j])) for j,t in E(zip(*g))]for i,s in E(g)]

@@ -1,4 +1,4 @@
-# best: 58(jonas ryno kg583, JRKKX, jailctf merger, natte, JRKXK, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, JRKX, ox jam, MasukenSamba, jonas ryno kg583 kabutack, intgrah jimboko awu macaque sammyuri, jacekw Potatoman nauti, import itertools) / others: 59(Yuchen20), 59(jacekwl Potatoman nauti), 60(kabutack), 61(HETHAT), 67(azakhtyamov)
+# best: 58(jonas ryno kg583 kabutack, jacekw Potatoman nauti natte, JRKX, 4atj sisyphus luke Seek mukundan, jonas ryno kg583, jacekw Potatoman nauti, natte, JRKXK, import itertools, MasukenSamba, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 59(jacekwl Potatoman nauti), 59(Yuchen20), 60(kabutack), 61(HETHAT), 67(azakhtyamov)
 # lambda g:[[*r]for r in zip(*g[:3])]!=g[:3]and g[:3]or p(g[3:])
 # lambda g:[*map(list,zip(*g[:3]))]!=g[:3]and g[:3]or p(g[3:])
 # lambda g:p(g[3:])if[*map(list,zip(*g[:3]))]==g[:3]else g[:3]

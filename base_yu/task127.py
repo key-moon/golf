@@ -1,4 +1,4 @@
-# best: 65(jailctf merger, ox jam) / others: 72(4atj sisyphus luke Seek mukundan), 80(jacekw Potatoman nauti natte), 80(intgrah jimboko awu macaque sammyuri), 80(import itertools), 82(Tony Li)
+# best: 65(jailctf merger, ox jam) / others: 72(4atj sisyphus luke Seek mukundan), 80(jacekw Potatoman nauti natte), 80(import itertools), 80(intgrah jimboko awu macaque sammyuri), 82(HETHAT)
 # ============================== 65 =============================
 # p=lambda g:sum([[[5]*11]+[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3for s in g[1::4]],[])[1:]
 # p=lambda g:sum([[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3+g[3:4]for s in g[1::4]],[])[:7]

@@ -1,4 +1,4 @@
-# best: 75(jailctf merger, 4atj sisyphus luke Seek mukundan, biz) / others: 84(2F), 90(ox jam), 96(jacekw Potatoman nauti natte), 96(jacekw Potatoman nauti), 96(import itertools)
+# best: 75(4atj sisyphus luke Seek mukundan, jailctf merger, biz) / others: 84(2F), 90(ox jam), 96(jacekw Potatoman nauti natte), 96(jacekw Potatoman nauti), 96(import itertools)
 # =================================== 75 ==================================
 # f=lambda g,d,c=-1:c*g or f([[*s]for s in zip(*g)if d in s],d,c+1)
 # f=lambda g,d:[[v for*t,v in zip(*g,s) if d in t]for s in g if d in s]

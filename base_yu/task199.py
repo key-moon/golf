@@ -1,4 +1,4 @@
-# best: 84(jailctf merger, 4atj sisyphus luke Seek mukundan, biz) / others: 87(ox jam), 90(THUNDER THUNDER), 102(jacekw Potatoman nauti natte), 102(jacekwl Potatoman nauti), 102(jacekw Potatoman nauti)
+# best: 84(4atj sisyphus luke Seek mukundan, jailctf merger, biz) / others: 87(ox jam), 90(THUNDER THUNDER), 102(jacekwl Potatoman nauti), 102(jacekw Potatoman nauti natte), 102(jacekw Potatoman nauti)
 # ======================================= 84 =======================================
 # p=lambda g:(l:=[*map(max,*g)])and[([4,0]*9)[l.index(max(l))%2:][:len(g)]]*-~(k:=g.index(l))+g[k:-1]
 # p=lambda g:[[t:=(l:=[*map(max,*g)]).index(max(l))%2*4]*0+[(t:=4-t)for _ in g]]*-~(k:=g.index(l))+g[k:-1]
