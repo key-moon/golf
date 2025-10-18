@@ -1,5 +1,5 @@
-# best: 189(import itertools) / others: 191(4atj sisyphus luke Seek mukundan), 191(ox jam), 191(intgrah jimboko awu macaque sammyuri), 195(jailctf merger), 215(THUNDER THUNDER)
-# =========================================================================================== 189 ===========================================================================================
+# best: 188(import itertools) / others: 191(4atj sisyphus luke Seek mukundan), 191(ox jam), 191(intgrah jimboko awu macaque sammyuri), 195(jailctf merger), 215(THUNDER THUNDER)
+# ========================================================================================== 188 ===========================================================================================
 def p(g):
  h,w=len(g),len(g[0])
 #  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if((j:=I//h)<1 or g[i][j-1])if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
