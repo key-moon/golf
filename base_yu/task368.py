@@ -1,4 +1,4 @@
-# best: 138(ox jam) / others: 142(jailctf merger), 142(4atj sisyphus luke Seek mukundan), 149(JRKKX), 161(THUNDER THUNDER), 165(Yuchen20)
+# best: 138(ox jam) / others: 142(jailctf merger), 142(4atj sisyphus luke Seek mukundan), 143(JRKKX), 161(THUNDER THUNDER), 165(Yuchen20)
 # ================================================================= 138 ==================================================================
 
 def p(g):
