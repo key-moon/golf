@@ -1,5 +1,5 @@
-# best: 71(jailctf merger) / others: 75(ox jam), 81(4atj sisyphus luke Seek mukundan), 83(2F), 83(biz), 84(THUNDER THUNDER)
-# ================================= 71 ================================
+# best: 64(import itertools) / others: 71(jailctf merger), 75(ox jam), 81(4atj sisyphus luke Seek mukundan), 83(2F), 83(biz)
+# ============================= 64 =============================
 # p=lambda g:[[max(max(s[j%10::10])for s in g[i%10::10])for j in range(len(g[i]))]for i in range(len(g))]
 # p=lambda g:[[max((s+[0]+t)[j%10::10])for j in range(len(s))]for s,t in zip(g,(g+g[9:10]+g)[10:])]
 # lambda g:[[max((s+[0]+t)[j%10::10])for j in range(len(s))]for s,t in zip(g,g[10:]+[[0]]+g)]
