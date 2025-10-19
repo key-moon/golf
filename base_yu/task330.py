@@ -1,4 +1,4 @@
-# best: 134(4atj sisyphus luke Seek mukundan) / others: 135(ox jam), 139(import itertools), 140(biz), 142(intgrah jimboko awu macaque sammyuri), 144(jailctf merger)
+# best: 134(4atj sisyphus luke Seek mukundan) / others: 135(ox jam), 137(import itertools), 140(JRKKX), 140(biz), 142(intgrah jimboko awu macaque sammyuri)
 # =============================================================== 134 ================================================================
 def p(g):
  for i in range(10):
