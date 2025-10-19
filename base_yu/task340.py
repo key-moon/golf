@@ -1,4 +1,4 @@
-# best: 119(4atj sisyphus luke Seek mukundan) / others: 122(ox jam), 129(jailctf merger), 134(import itertools), 144(cg-klogw-sekken), 155(JRKKX)
+# best: 119(4atj sisyphus luke Seek mukundan) / others: 122(ox jam), 129(jailctf merger), 132(biz), 134(import itertools), 144(cg-klogw-sekken)
 # ======================================================== 119 ========================================================
 
 # p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)

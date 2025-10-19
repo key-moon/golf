@@ -1,4 +1,4 @@
-# best: 72(jailctf merger) / others: 73(biz), 74(ox jam), 77(intgrah jimboko awu macaque sammyuri), 77(import itertools), 79(4atj sisyphus luke Seek mukundan)
+# best: 72(jailctf merger) / others: 73(biz), 74(ox jam), 76(kambarakun), 77(intgrah jimboko awu macaque sammyuri), 77(import itertools)
 # [1,-1][i in(0,len(r)-1)]
 # (1-(i in(0,len(r)-1))*2)
 # [1,-1][i%(len(r)-1)<1]
