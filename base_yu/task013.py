@@ -1,4 +1,4 @@
-# best: 140(jailctf merger, 4atj sisyphus luke Seek mukundan) / others: 145(intgrah jimboko awu macaque sammyuri), 146(ox jam), 161(2F), 161(biz), 169(duckyluuk)
+# best: 140(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International) / others: 145(intgrah jimboko awu macaque sammyuri), 146(ox jam), 161(2F), 161(biz), 169(duckyluuk)
 #  1 
 
 p=lambda g:(t:=[*map(max,*g)])[0]+t[-1]and[*zip(*p([*zip(*g)]))]or[(t[:(x:=(u:=[i for i,v in enumerate(t)if v])[0])]+t[x:2*u[1]-x]*9)[:len(t)]]*len(g)

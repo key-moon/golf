@@ -1,4 +1,4 @@
-# best: 94(ox jam) / others: 101(jailctf merger), 105(4atj sisyphus luke Seek mukundan), 105(import itertools), 108(natte), 108(jacekw Potatoman nauti natte)
+# best: 94(ox jam) / others: 101(jailctf merger), 105(4atj sisyphus luke Seek mukundan), 105(Code Golf International), 105(import itertools), 108(natte)
 # ============================================ 94 ============================================
 
 # p=lambda g,c=-19,E=enumerate:c*g or p([[v or i+1<len(g) and j>0 and g[i+1][~(j-1)] and 15-g[i+1][~(j-1)] for j,v in E(s[::-1])] for i,s in E(g)],c+1)

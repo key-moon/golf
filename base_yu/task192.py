@@ -1,4 +1,4 @@
-# best: 110(jailctf merger) / others: 115(ox jam), 115(biz), 116(import itertools), 117(4atj sisyphus luke Seek mukundan), 128(THUNDER THUNDER)
+# best: 110(jailctf merger) / others: 115(ox jam), 115(biz), 116(import itertools), 117(4atj sisyphus luke Seek mukundan), 117(Code Golf International)
 
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((x+(d==x>0<l==y)*(l-x))*(c<0 or x!=d),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)
 # p=lambda g,c=-7:c*g or (d:=min(u:=sum(g,g[0]),key=u.count))and p([*zip(*[(l:=0)or[((c<0 or x!=d)*(x+(d==x>0<l==y)*(l-x)),l:=x)[0]for x,y in zip(s,t)]for s,t in zip(g,g[:1]+g)][::-1])],c+1)

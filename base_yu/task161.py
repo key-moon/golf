@@ -1,4 +1,4 @@
-# best: 82(jailctf merger, 2F, 4atj sisyphus luke Seek mukundan, intgrah jimboko awu macaque sammyuri, biz) / others: 83(ox jam), 84(HashPanda), 84(Rafael Pooja), 84(HashPanda Pooja), 86(HETHAT)
+# best: 82(jailctf merger, 2F, 4atj sisyphus luke Seek mukundan, Code Golf International, intgrah jimboko awu macaque sammyuri, biz) / others: 83(ox jam), 84(HashPanda), 84(Rafael Pooja), 84(HashPanda Pooja), 86(HETHAT)
 # ====================================== 82 ======================================
 
 # p=lambda g:[[max((t[0]&t[-1]),(s[0]&s[-1])) for t in zip(*g)]for s in g]

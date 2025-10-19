@@ -1,4 +1,4 @@
-# best: 51(jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 53(4atj sisyphus luke Seek mukundan), 53(biz), 54(ShadowPrompt Labs), 54(import itertools), 55(kabutack)
+# best: 51(jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 53(4atj sisyphus luke Seek mukundan), 53(Code Golf International), 53(biz), 54(ShadowPrompt Labs), 54(import itertools)
 # ======================= 51 ======================
 p=lambda g:[*filter(len,[[*filter(int,s)][::-1]for s in g])]
 

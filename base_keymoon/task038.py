@@ -1,4 +1,4 @@
-# best: 51(jailctf merger, natte, 2F, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, ox jam, MasukenSamba, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 52(kabutack), 52(jonas ryno kg583), 52(JRKKX), 52(blob2822), 52(THUNDER THUNDER)
+# best: 51(jailctf merger, natte, 2F, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, Code Golf International, ox jam, MasukenSamba, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 52(kabutack), 52(jonas ryno kg583), 52(JRKKX), 52(blob2822), 52(THUNDER THUNDER)
 # 残念ながらsum(g,[])するとだめ
 # lambda g:[[*(str(g).count("1, 1")//2*"1").ljust(5,"0")]] <- アイデアレベル
 

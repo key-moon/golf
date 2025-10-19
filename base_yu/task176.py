@@ -1,4 +1,4 @@
-# best: 64(jailctf merger, 4atj sisyphus luke Seek mukundan) / others: 68(import itertools), 74(ox jam), 76(natte), 76(jacekw Potatoman nauti natte), 79(MasukenSamba)
+# best: 64(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International) / others: 68(import itertools), 74(ox jam), 76(natte), 76(jacekw Potatoman nauti natte), 79(MasukenSamba)
 # ============================= 64 =============================
 # p=lambda g:[[v or(abs(j%12-6)+i<2 or abs((j+6)%12-6)<i)*4 for j,v in enumerate(g[i])]for i in range(3)]
 

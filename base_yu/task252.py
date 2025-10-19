@@ -1,4 +1,4 @@
-# best: 57(jailctf merger, 4atj sisyphus luke Seek mukundan, ox jam) / others: 59(jacekw Potatoman nauti natte), 59(intgrah jimboko awu macaque sammyuri), 59(import itertools), 62(ShadowPrompt Labs), 62(jonas ryno kg583)
+# best: 57(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International, ox jam) / others: 59(jacekw Potatoman nauti natte), 59(intgrah jimboko awu macaque sammyuri), 59(import itertools), 62(ShadowPrompt Labs), 62(jonas ryno kg583)
 # ========================== 57 =========================
 # 345678901234567890123456789012345678901234567890123456
 

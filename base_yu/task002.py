@@ -1,4 +1,4 @@
-# best: 90(4atj sisyphus luke Seek mukundan) / others: 91(ox jam), 91(intgrah jimboko awu macaque sammyuri), 96(HETHAT), 97(2F), 97(cubbus)
+# best: 90(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 91(ox jam), 91(intgrah jimboko awu macaque sammyuri), 96(HETHAT), 97(2F), 97(cubbus)
 # ========================================== 90 ==========================================
 # def p(g):
 #  return g

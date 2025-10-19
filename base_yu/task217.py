@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, ox jam) / others: 96(4atj sisyphus luke Seek mukundan), 99(intgrah jimboko awu macaque sammyuri), 105(THUNDER THUNDER), 106(natte), 106(jacekw Potatoman nauti natte)
+# best: 95(jailctf merger, ox jam) / others: 96(4atj sisyphus luke Seek mukundan), 96(Code Golf International), 99(intgrah jimboko awu macaque sammyuri), 105(THUNDER THUNDER), 106(natte)
 # ============================================= 95 ============================================
 # E=lambda g:[*filter(max,zip(*g))]
 # def p(g):

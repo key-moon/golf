@@ -1,4 +1,4 @@
-# best: 195(4atj sisyphus luke Seek mukundan) / others: 199(jailctf merger), 204(cubbus), 206(ox jam), 225(import itertools), 228(jacekw Potatoman nauti natte)
+# best: 195(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 199(jailctf merger), 204(cubbus), 206(ox jam), 225(import itertools), 228(jacekw Potatoman nauti natte)
 # ============================================================================================== 195 ==============================================================================================
 import re
 def p(g):

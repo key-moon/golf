@@ -1,4 +1,4 @@
-# best: 120(import itertools) / others: 137(jailctf merger), 138(ox jam), 143(4atj sisyphus luke Seek mukundan), 156(jacekw Potatoman nauti natte), 157(natte)
+# best: 120(import itertools) / others: 137(jailctf merger), 138(ox jam), 143(4atj sisyphus luke Seek mukundan), 143(Code Golf International), 156(jacekw Potatoman nauti natte)
 # ======================================================== 120 =========================================================
 
 # def p(g):

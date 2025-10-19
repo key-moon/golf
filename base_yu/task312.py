@@ -1,4 +1,4 @@
-# best: 44(jailctf merger, cubbus, 4atj sisyphus luke Seek mukundan, intgrah jimboko awu macaque sammyuri, import itertools) / others: 45(ShadowPrompt Labs), 45(kabutack), 45(Tony Li), 45(jonas ryno kg583), 45(sekken)
+# best: 44(jailctf merger, cubbus, 4atj sisyphus luke Seek mukundan, Code Golf International, intgrah jimboko awu macaque sammyuri, import itertools) / others: 45(ShadowPrompt Labs), 45(kabutack), 45(Tony Li), 45(jonas ryno kg583), 45(sekken)
 # =================== 44 ===================
 # lambda g:[[(0<v)*s[0]for v in s]for s in g]
 # lambda g:[[v%~v%-~s[0]for v in s]for s in g]

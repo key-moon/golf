@@ -1,4 +1,4 @@
-# best: 62(4atj sisyphus luke Seek mukundan) / others: 63(jailctf merger), 63(intgrah jimboko awu macaque sammyuri), 64(ShadowPrompt Labs), 64(2F), 64(ox jam)
+# best: 62(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 63(jailctf merger), 63(intgrah jimboko awu macaque sammyuri), 64(ShadowPrompt Labs), 64(2F), 64(ox jam)
 # ============================ 62 ============================
 # ============================================================34567890
 # 34567890123456789012345678901234567890123456789012345678901234567890

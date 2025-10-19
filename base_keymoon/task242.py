@@ -1,4 +1,4 @@
-# best: 54(kabutack, JRKKX, THUNDER THUNDER, jailctf merger, natte, cubbus, JRKXK, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, JRKX, ox jam, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 55(adakoda), 56(Yuchen20), 56(jacekwl Potatoman nauti), 56(jacekw Potatoman nauti), 66(HETHAT)
+# best: 54(kabutack, JRKKX, THUNDER THUNDER, jailctf merger, natte, cubbus, JRKXK, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, Code Golf International, JRKX, ox jam, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 55(adakoda), 56(Yuchen20), 56(jacekwl Potatoman nauti), 56(jacekw Potatoman nauti), 66(HETHAT)
 # def p(g):B=next(i for(i,r)in enumerate(g)if 0 in r);C=g[B].index(0);D=len(g);return[[g[B+i][D-C-j-1]for j in A(3)]for i in A(3)]
 # p=lambda g:list(map(list,zip(*[iter([int(b) for a,b in zip(str(g).replace(" ",""),str(g).replace(" ","")[::-1]) if a=="0"])]*3)))
 

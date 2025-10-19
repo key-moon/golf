@@ -1,4 +1,4 @@
-# best: 217(jailctf merger) / others: 219(4atj sisyphus luke Seek mukundan), 220(kambarakun), 222(Tony Li), 222(sekken), 222(JRKKX)
+# best: 217(jailctf merger) / others: 219(4atj sisyphus luke Seek mukundan), 219(Code Golf International), 220(kambarakun), 222(Tony Li), 222(sekken)
 def p(g):
  for i in range(len(g)-2):
   for j in range(len(g[0])-2):

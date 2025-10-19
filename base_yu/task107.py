@@ -1,4 +1,4 @@
-# best: 161(Tony Li) / others: 162(biz), 168(import itertools), 170(jailctf merger), 170(4atj sisyphus luke Seek mukundan), 171(Yuchen20)
+# best: 161(Tony Li) / others: 162(biz), 168(import itertools), 170(jailctf merger), 170(4atj sisyphus luke Seek mukundan), 170(Code Golf International)
 # ============================================================================= 161 =============================================================================
 import re
 def p(g):

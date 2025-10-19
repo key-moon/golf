@@ -1,4 +1,4 @@
-# best: 179(4atj sisyphus luke Seek mukundan) / others: 182(ox jam), 182(biz), 185(jailctf merger), 207(intgrah jimboko awu macaque sammyuri), 208(import itertools)
+# best: 179(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 182(ox jam), 182(biz), 185(jailctf merger), 207(intgrah jimboko awu macaque sammyuri), 208(import itertools)
 # ====================================================================================== 179 ======================================================================================
 # p=lambda g,c=-3:c*g or p([*zip(*[g:=[[g[k],[g[k][j]]*j+[*g[k][j:]]][g[i][j-1]<all([*g[i][j:],0][:abs(i-k)+1])<g[i][j]<3]for k in range(len(g))]for i in range(len(g))for j in range(len(g))][-1][::-1])],c+1)
 p=lambda g,c=-3,E=enumerate:c*g or p([*zip(*[g:=[[t,[t[j]]*j+[*t[j:]]][s[j-1]<all([*s[j:],0][:abs(i-k)+1])<v<3]for k,t in E(g)]for i,s in E(g)for j,v in E(s)][-1][::-1])],c+1)

@@ -1,4 +1,4 @@
-# best: 212(jailctf merger) / others: 217(JRKKX), 217(4atj sisyphus luke Seek mukundan), 227(import itertools), 228(ox jam), 231(jacekw Potatoman nauti natte)
+# best: 212(jailctf merger) / others: 217(JRKKX), 217(4atj sisyphus luke Seek mukundan), 217(Code Golf International), 227(import itertools), 228(ox jam)
 # case=0,1が2ケースキモいので対策
 
 def p(g):

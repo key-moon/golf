@@ -1,4 +1,4 @@
-# best: 269(jailctf merger) / others: 277(4atj sisyphus luke Seek mukundan), 279(kambarakun), 280(sekken), 280(JRKKX), 280(blob2822)
+# best: 269(jailctf merger) / others: 277(4atj sisyphus luke Seek mukundan), 277(Code Golf International), 279(kambarakun), 280(sekken), 280(JRKKX)
 # == begin zlib golf ==
 def	p(l):
 	v={(i,j)for	i	in	range(len(l))for	j	in	range(len(l[0]))if	l[i][j]&2};y=3

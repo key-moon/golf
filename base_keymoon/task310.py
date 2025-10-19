@@ -1,4 +1,4 @@
-# best: 78(4atj sisyphus luke Seek mukundan) / others: 81(jailctf merger), 81(2F), 81(ox jam), 81(intgrah jimboko awu macaque sammyuri), 81(biz)
+# best: 78(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 81(jailctf merger), 81(2F), 81(ox jam), 81(intgrah jimboko awu macaque sammyuri), 81(biz)
 # 囲まれた部分の抽出
 #  for _ in 1,2:g=[*map(list,zip(*filter(lambda x:a in x,g)))]
 # 112
