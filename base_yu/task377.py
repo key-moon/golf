@@ -1,4 +1,4 @@
-# best: 55(jailctf merger, 4atj sisyphus luke Seek mukundan) / others: 57(ox jam), 57(intgrah jimboko awu macaque sammyuri), 65(cubbus), 68(Tony Li), 72(jacekw Potatoman nauti natte)
+# best: 55(jailctf merger, 4atj sisyphus luke Seek mukundan) / others: 57(ox jam), 57(intgrah jimboko awu macaque sammyuri), 63(import itertools), 65(cubbus), 68(Tony Li)
 # ========================= 55 ========================
 f=lambda x:[t for s,t in zip([0]+x,x)if s!=t]
 p=lambda g:f([*zip(*f(g))])
