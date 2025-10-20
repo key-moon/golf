@@ -1,4 +1,4 @@
-# best: 134(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 135(ox jam), 136(import itertools), 140(JRKKX), 140(Krige), 140(biz)
+# best: 134(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 135(ox jam), 136(Tony Li), 136(import itertools), 140(JRKKX), 140(Krige)
 # =============================================================== 134 ================================================================
 def p(g):
  for i in range(10):
