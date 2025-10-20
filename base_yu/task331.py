@@ -1,4 +1,4 @@
-# best: 83(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International) / others: 86(ox jam), 86(intgrah jimboko awu macaque sammyuri), 87(jacekw Potatoman nauti natte), 87(import itertools), 88(THUNDER THUNDER)
+# best: 83(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International, import itertools) / others: 86(ox jam), 86(intgrah jimboko awu macaque sammyuri), 87(jacekw Potatoman nauti natte), 88(THUNDER THUNDER), 89(cg-klogw-sekken)
 # ======================================= 83 ======================================
 # import re;p=lambda g,c=4:c and p([*zip(*eval(re.sub("1, 0",f"1,{"8726"[c-1]}",str(g)))[::-1])],c-1)or g
 # lambda g,c=4:c and p([[[y,6,8,7,2][(x==1)*c]for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
