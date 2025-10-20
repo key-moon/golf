@@ -1,4 +1,4 @@
-# best: 55(jacekw Potatoman nauti natte, intgrah jimboko awu macaque sammyuri, import itertools) / others: 58(jailctf merger), 68(4atj sisyphus luke Seek mukundan), 68(Code Golf International), 68(ox jam), 77(jacekwl Potatoman nauti)
+# best: 55(jacekw Potatoman nauti natte, import itertools, intgrah jimboko awu macaque sammyuri) / others: 58(jailctf merger), 68(Code Golf International), 68(4atj sisyphus luke Seek mukundan), 68(ox jam), 77(jacekwl Potatoman nauti)
 # ========================= 55 ========================
 # p=lambda g,E=enumerate:[[sum(s[j] for i,s in E(g)for j,t in E(zip(*g))if len({*(u:=[0,*s,0][j:j+3:2]+[0,*t,0][i:i+3:2])})==1and[s[j]]*4!=u>[1])]]
 # p=lambda g,E=enumerate:[[s[j]for i,s in E(g)for j,t in E(zip(*g))if(u:=[0,*s][j:j+3])==[0,*t][i:i+3]==u[::-1]>[1]and u[0]!=s[j]!=0]]

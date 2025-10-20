@@ -1,4 +1,4 @@
-# best: 136(ox jam) / others: 138(jailctf merger), 144(biz), 147(adakoda), 149(ShadowPrompt Labs), 156(4atj sisyphus luke Seek mukundan)
+# best: 136(ox jam) / others: 138(jailctf merger), 144(biz), 147(adakoda), 149(ShadowPrompt Labs), 156(Code Golf International)
 # ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])

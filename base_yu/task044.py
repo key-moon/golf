@@ -1,4 +1,4 @@
-# best: 195(jailctf merger) / others: 222(ox jam), 239(jacekw Potatoman nauti natte), 239(import itertools), 253(intgrah jimboko awu macaque sammyuri), 255(4atj sisyphus luke Seek mukundan)
+# best: 195(jailctf merger) / others: 222(ox jam), 239(jacekw Potatoman nauti natte), 239(import itertools), 253(intgrah jimboko awu macaque sammyuri), 255(Code Golf International)
 # R=range
 # def p(g):
 #  for c in R(10):

@@ -1,4 +1,4 @@
-# best: 148(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International) / others: 154(ox jam), 192(import itertools), 193(jacekw Potatoman nauti natte), 194(MasukenSamba), 203(THUNDER THUNDER)
+# best: 148(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 154(ox jam), 192(import itertools), 193(jacekw Potatoman nauti natte), 194(MasukenSamba), 203(THUNDER THUNDER)
 # ====================================================================== 148 =======================================================================
 
 

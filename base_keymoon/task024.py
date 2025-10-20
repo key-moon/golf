@@ -1,4 +1,4 @@
-# best: 62(jailctf merger, natte, 2F, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, Code Golf International, ox jam, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 63(Yuchen20), 65(THUNDER THUNDER), 66(MasukenSamba), 67(kabutack), 67(jonas ryno kg583)
+# best: 62(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(Yuchen20), 65(THUNDER THUNDER), 66(MasukenSamba), 67(jonas ryno kg583 kabutack), 67(JRKX)
 # ============================ 62 ============================
 p=lambda g:[[3%-~max(s)or(2in r)*2for r in zip(*g)]for s in g]
 

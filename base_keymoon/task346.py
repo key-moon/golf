@@ -1,4 +1,4 @@
-# best: 55(jacekw Potatoman nauti natte, intgrah jimboko awu macaque sammyuri, import itertools) / others: 58(jailctf merger), 68(4atj sisyphus luke Seek mukundan), 68(Code Golf International), 68(ox jam), 77(jacekwl Potatoman nauti)
+# best: 55(jacekw Potatoman nauti natte, import itertools, intgrah jimboko awu macaque sammyuri) / others: 58(jailctf merger), 68(Code Golf International), 68(4atj sisyphus luke Seek mukundan), 68(ox jam), 77(jacekwl Potatoman nauti)
 # import re;p=lambda g:[[*{*sum(g,[])}-{0,int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ",str(g))[1])}]]
 # import re;p=lambda g:[[int(({*(s:=str(g))}-{*" ,0[]",re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1",s)[1]}).pop())]]
 # import re;p=lambda g:[[int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ((?!\1).)",str(g))[2])]]

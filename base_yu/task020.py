@@ -1,4 +1,4 @@
-# best: 141(jailctf merger) / others: 148(ox jam), 149(4atj sisyphus luke Seek mukundan), 149(Code Golf International), 156(import itertools), 157(jacekw Potatoman nauti natte)
+# best: 141(jailctf merger) / others: 148(ox jam), 149(Code Golf International), 149(4atj sisyphus luke Seek mukundan), 156(import itertools), 157(jacekwl Potatoman nauti)
 # =================================================================== 141 ===================================================================
 
 def p(g,x=0):

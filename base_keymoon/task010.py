@@ -1,4 +1,4 @@
-# best: 68(jailctf merger, jacekw Potatoman nauti natte, import itertools) / others: 70(4atj sisyphus luke Seek mukundan), 70(Code Golf International), 72(cubbus), 72(ox jam), 77(HETHAT)
+# best: 68(jacekw Potatoman nauti natte, import itertools, jailctf merger) / others: 70(Code Golf International), 70(4atj sisyphus luke Seek mukundan), 72(cubbus), 72(ox jam), 77(HETHAT)
 # lambda g:[*zip(*[[(9-sorted(zip(*g)).index(r))*(0<c)for c in r]for r in zip(*g)])]
 # =============================== 68 ===============================
 # lambda g:[*zip(*[[(9-sorted(zip(*g)).index(r))*c/5for c in r]for r in zip(*g)])]

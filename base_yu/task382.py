@@ -1,4 +1,4 @@
-# best: 131(jailctf merger) / others: 134(4atj sisyphus luke Seek mukundan), 134(Code Golf International), 138(THUNDER THUNDER), 144(ox jam), 145(intgrah jimboko awu macaque sammyuri)
+# best: 131(jailctf merger) / others: 134(Code Golf International), 134(4atj sisyphus luke Seek mukundan), 138(THUNDER THUNDER), 144(ox jam), 145(intgrah jimboko awu macaque sammyuri)
 # ============================================================== 131 ==============================================================
 p=lambda g,c=-11,k=2:c*g or p(exec("d=0\nfor s in g:d+=s[0]>1;s[d:]=g[0]"*(f:=8in g[0]and max(g)[0]==k))or[*map(list,zip(*g[::1-c%3|1]))],c+1,k+f)
 

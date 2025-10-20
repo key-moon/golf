@@ -1,4 +1,4 @@
-# best: 67(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International, intgrah jimboko awu macaque sammyuri, import itertools) / others: 68(THUNDER THUNDER), 68(jacekw Potatoman nauti natte), 68(ox jam), 68(jacekwl Potatoman nauti), 68(jacekw Potatoman nauti)
+# best: 67(Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 68(jacekwl Potatoman nauti), 68(jacekw Potatoman nauti natte), 68(jacekw Potatoman nauti), 68(ox jam), 68(THUNDER THUNDER)
 # =============================== 67 ==============================
 # 400と同じ問題
 # p=lambda g,R=range(16):[*filter(len,[[g[15-i][15-j]for j in R if g[i][j]==3]for i in R])]

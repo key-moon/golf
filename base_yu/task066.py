@@ -1,4 +1,4 @@
-# best: 267(jailctf merger) / others: 268(4atj sisyphus luke Seek mukundan), 268(Code Golf International), 275(ox jam), 288(MasukenSamba), 290(THUNDER THUNDER)
+# best: 267(jailctf merger) / others: 268(Code Golf International), 268(4atj sisyphus luke Seek mukundan), 275(ox jam), 288(MasukenSamba), 290(THUNDER THUNDER)
 def p(g):
  d=[1,0,-1,0,1]
  for k in range(16):

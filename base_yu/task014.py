@@ -1,4 +1,4 @@
-# best: 67(jailctf merger) / others: 68(ox jam), 70(4atj sisyphus luke Seek mukundan), 70(Code Golf International), 74(MasukenSamba), 76(natte)
+# best: 67(jailctf merger) / others: 68(ox jam), 70(Code Golf International), 70(4atj sisyphus luke Seek mukundan), 74(MasukenSamba), 76(jacekwl Potatoman nauti)
 # =============================== 67 ==============================
 # 34567890123456789012345678901234567890123456789012345678901234567890
 # p=lambda g:[[v for v,t in zip(s,zip(*g))if len({*t})>2]for s in g if len({*s})>2]

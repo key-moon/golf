@@ -1,4 +1,4 @@
-# best: 56(jailctf merger) / others: 57(4atj sisyphus luke Seek mukundan), 57(Code Golf International), 58(ox jam), 58(intgrah jimboko awu macaque sammyuri), 64(ShadowPrompt Labs)
+# best: 56(jailctf merger) / others: 57(Code Golf International), 57(4atj sisyphus luke Seek mukundan), 58(ox jam), 58(intgrah jimboko awu macaque sammyuri), 64(jacekwl Potatoman nauti)
 # lambda g:[[g[i//2|1][j//2|1] for j in range(len(g[0])*2)] for i in range(len(g)*2)]
 # lambda g:sum([[[int,p][r*0!=0](r)]*4for r in g[1::2]],[])
 # ========================= 56 =========================

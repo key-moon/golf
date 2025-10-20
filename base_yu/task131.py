@@ -1,4 +1,4 @@
-# best: 125(ox jam) / others: 132(import itertools), 133(jacekw Potatoman nauti natte), 134(4atj sisyphus luke Seek mukundan), 134(Code Golf International), 139(cubbus)
+# best: 125(ox jam) / others: 132(import itertools), 133(jacekw Potatoman nauti natte), 134(Code Golf International), 134(4atj sisyphus luke Seek mukundan), 139(cubbus)
 # =========================================================== 125 ===========================================================
 
 # p=lambda g,c=-3:c*g or p([*zip(*(2in(f:=[*map(max,g)])and(k:=f.index(2))>f.index(3)and sorted([[8]*len(g[0])]+g[:k],key=any)[1:]+g[k:]or g)[::-1])],c+1)

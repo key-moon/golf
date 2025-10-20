@@ -1,4 +1,4 @@
-# best: 43(ShadowPrompt Labs, jailctf merger, natte, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, Code Golf International, kambarakun, intgrah jimboko awu macaque sammyuri, biz, adakoda, jacekw Potatoman nauti, import itertools) / others: 44(ox jam), 44(MasukenSamba), 44(Ravi Annaswamy), 47(kabutack), 47(Tony Li)
+# best: 43(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, jacekw Potatoman nauti, natte, kambarakun, import itertools, jailctf merger, adakoda, biz, intgrah jimboko awu macaque sammyuri) / others: 44(Ravi Annaswamy), 44(MasukenSamba), 44(ox jam), 47(jonas ryno kg583 kabutack), 47(cubbus)
 # lambda g:g[:2]+[*zip(*[2*(a:=g[0])]*len(a))]
 # lambda g:g[:2]+[*zip(*[g[0]*2]*len(g[0]))]
 # =================== 43 ==================

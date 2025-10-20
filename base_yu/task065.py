@@ -1,4 +1,4 @@
-# best: 91(ox jam) / others: 100(jailctf merger), 100(4atj sisyphus luke Seek mukundan), 100(Code Golf International), 107(Yuchen20), 107(MasukenSamba)
+# best: 91(ox jam) / others: 100(Code Golf International), 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 107(cg-klogw-sekken), 107(MasukenSamba)
 # =========================================== 91 ==========================================
 # def p(g,c=-1):
 #  if c*g:

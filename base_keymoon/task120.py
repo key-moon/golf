@@ -1,4 +1,4 @@
-# best: 97(jailctf merger) / others: 99(jacekw Potatoman nauti natte), 99(import itertools), 101(4atj sisyphus luke Seek mukundan), 101(Code Golf International), 102(ox jam)
+# best: 97(jailctf merger) / others: 99(jacekw Potatoman nauti natte), 99(import itertools), 101(Code Golf International), 101(4atj sisyphus luke Seek mukundan), 102(ox jam)
 # port re;p=lambda g:(s:="[^0]"+"."*(len(g[0])*3+1)+"[^0]")and eval(re.sub(rf"(?<={s}, )[^0](?=, {s})","8",str(g)))
 # mport re;p=lambda g:(s:=(t:="[^0]")+"."*(len(g[0])*3+1)+t)and eval(re.sub(rf"(?<={s}, ){t}(?=, {s})","8",str(g)))
 # port re;p=lambda g:eval(re.sub(rf"(?<={(s:=(t:='[^0]')+'.'*(len(g[0])*3+1)+t)}, ){t}(?=, {s})","8",str(g)))

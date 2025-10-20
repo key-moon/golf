@@ -1,4 +1,4 @@
-# best: 131(4atj sisyphus luke Seek mukundan, Code Golf International) / others: 144(jailctf merger), 151(ox jam), 171(MasukenSamba), 177(2F), 177(biz)
+# best: 131(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 144(jailctf merger), 151(ox jam), 171(MasukenSamba), 177(import itertools), 177(2F)
 # ============================================================== 131 ==============================================================
 
 p=lambda g:(0in max(g,key=sum))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerate(s):\n if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v"))[0]for s in g]or[*zip(*p([*zip(*g)]))]

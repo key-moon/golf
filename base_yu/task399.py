@@ -1,4 +1,4 @@
-# best: 64(ShadowPrompt Labs, jailctf merger, natte, 4atj sisyphus luke Seek mukundan, Yuchen20, jacekw Potatoman nauti natte, Code Golf International, ox jam, intgrah jimboko awu macaque sammyuri, adakoda, import itertools) / others: 65(dbdr), 66(HETHAT), 67(Tony Li), 67(jonas ryno kg583), 67(JRKKX)
+# best: 64(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, natte, import itertools, jailctf merger, adakoda, Yuchen20, ox jam, intgrah jimboko awu macaque sammyuri) / others: 65(dbdr), 66(HETHAT), 67(jonas ryno kg583 kabutack), 67(JRK), 67(JRKX)
 # ============================= 64 =============================
 # 1の2x2の数を数えて配置しなおす x,yは[0,0,1,2,2],[0,2,1,0,2]
 # def p(g):

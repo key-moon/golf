@@ -1,4 +1,4 @@
-# best: 81(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International, ox jam) / others: 83(intgrah jimboko awu macaque sammyuri), 84(kabutack), 84(JRKKX), 84(2F), 84(JRKXK)
+# best: 81(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 83(intgrah jimboko awu macaque sammyuri), 84(JRKX), 84(kabutack), 84(JRKXK), 84(2F)
 # ====================================== 81 =====================================
 # p=lambda g:[[sum(u:=[*s[j::3],*t[j::3]])%(max(*u,1)*3)for j in(0,1)]for s,t in zip(g,g[3:])]
 # p=lambda g:[[sum([*g[i][j::3],*g[i+3][j::3]])%(max(map(max,g))*3)for j in(0,1)]for i in(0,1)]

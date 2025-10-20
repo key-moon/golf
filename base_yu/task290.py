@@ -1,3 +1,3 @@
-# best: 67(jailctf merger, 4atj sisyphus luke Seek mukundan, Code Golf International) / others: 69(ox jam), 69(intgrah jimboko awu macaque sammyuri), 69(biz), 69(import itertools), 70(ShadowPrompt Labs)
+# best: 67(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(import itertools), 69(ox jam), 69(biz), 69(intgrah jimboko awu macaque sammyuri), 70(jonas ryno kg583 kabutack)
 # =============================== 67 ==============================
 p=lambda g:[[sum({*sum(g,s)})-v for v in s if v]for s in g if any(s)]

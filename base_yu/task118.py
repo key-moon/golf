@@ -1,4 +1,4 @@
-# best: 269(jailctf merger) / others: 277(4atj sisyphus luke Seek mukundan), 277(Code Golf International), 279(kambarakun), 280(sekken), 280(JRKKX)
+# best: 269(jailctf merger) / others: 277(Code Golf International), 277(4atj sisyphus luke Seek mukundan), 279(kambarakun), 280(open source), 280(jacekw Potatoman nauti natte)
 def p(g):
  B={(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]&2}
  S=3

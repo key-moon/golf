@@ -1,4 +1,4 @@
-# best: 73(jailctf merger, natte, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti natte, Code Golf International, ox jam, intgrah jimboko awu macaque sammyuri, biz, import itertools) / others: 74(kabutack), 74(jonas ryno kg583), 74(JRKKX), 74(jacekwl), 74(THUNDER THUNDER)
+# best: 73(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, biz, intgrah jimboko awu macaque sammyuri) / others: 74(jonas ryno kg583 kabutack), 74(jacekwl Potatoman nauti), 74(JRK), 74(JRKX), 74(jacekwl)
 # ================================== 73 =================================
 p=lambda g:[[[5,v][v==max(a:=sum(g,g),key=a.count)]for v in s]for s in g]
 

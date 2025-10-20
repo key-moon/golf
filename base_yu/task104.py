@@ -1,4 +1,4 @@
-# best: 84(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 85(Code Golf International), 92(ox jam), 93(intgrah jimboko awu macaque sammyuri), 94(jacekw Potatoman nauti natte)
+# best: 84(jailctf merger) / others: 85(Code Golf International), 85(4atj sisyphus luke Seek mukundan), 92(ox jam), 93(intgrah jimboko awu macaque sammyuri), 94(jacekw Potatoman nauti natte)
 # ======================================= 84 =======================================
 # p=lambda g:g[0][0]%2*([[3,3,3,3,0,0,0,0,0]]*4+[[0,0,0,0,3,3,3,3,0]]*4+[[0]*9])or[*zip(*p([*zip(*g[::-1])]))][::-1]
 # p=lambda g:g[0][0]%2*([a:=[3,3,3,3,0,0,0,0,0]]*4+[a[5:]+a[:5]]*4+[[0]*9])or[*zip(*p([*zip(*g[::-1])]))][::-1]

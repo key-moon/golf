@@ -1,4 +1,4 @@
-# best: 112(jailctf merger) / others: 115(4atj sisyphus luke Seek mukundan), 115(Code Golf International), 116(ox jam), 125(intgrah jimboko awu macaque sammyuri), 134(jacekw Potatoman nauti natte)
+# best: 112(jailctf merger) / others: 115(Code Golf International), 115(4atj sisyphus luke Seek mukundan), 116(ox jam), 125(intgrah jimboko awu macaque sammyuri), 134(jacekw Potatoman nauti natte)
 # ==================================================== 112 =====================================================
 # def p(g):
 #  w=1-any(g[1])

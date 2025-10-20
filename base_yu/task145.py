@@ -1,4 +1,4 @@
-# best: 188(import itertools) / others: 191(4atj sisyphus luke Seek mukundan), 191(Code Golf International), 191(ox jam), 191(intgrah jimboko awu macaque sammyuri), 195(jailctf merger)
+# best: 188(import itertools) / others: 191(Code Golf International), 191(4atj sisyphus luke Seek mukundan), 191(ox jam), 191(intgrah jimboko awu macaque sammyuri), 195(jailctf merger)
 # ========================================================================================== 188 ===========================================================================================
 def p(g):
  h,w=len(g),len(g[0])

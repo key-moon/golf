@@ -1,4 +1,4 @@
-# best: 54(THUNDER THUNDER, jailctf merger, natte, cubbus, 4atj sisyphus luke Seek mukundan, Yuchen20, jacekw Potatoman nauti natte, Code Golf International, ox jam, biz, jacekw Potatoman nauti, import itertools) / others: 56(HETHAT), 58(intgrah jimboko awu macaque sammyuri), 59(ShadowPrompt Labs), 68(jonas ryno kg583), 68(JRKKX)
+# best: 54(cubbus, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, natte, import itertools, jailctf merger, Yuchen20, ox jam, THUNDER THUNDER, biz) / others: 56(HETHAT), 58(intgrah jimboko awu macaque sammyuri), 59(ShadowPrompt Labs), 68(jonas ryno kg583 kabutack), 68(JRKX)
 # ======================== 54 ========================
 # 3456789012345678901234567890123456789012345678901234
 p=lambda g:[[3**(2 in s)*-~c%22-1for c in g[0]]for s in g]

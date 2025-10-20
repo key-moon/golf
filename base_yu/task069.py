@@ -1,4 +1,4 @@
-# best: 150(jailctf merger) / others: 151(4atj sisyphus luke Seek mukundan), 151(Code Golf International), 159(ox jam), 162(JRKKX), 165(MasukenSamba)
+# best: 150(jailctf merger) / others: 151(Code Golf International), 151(4atj sisyphus luke Seek mukundan), 159(ox jam), 162(JRKKX), 165(MasukenSamba)
 # ======================================================================= 150 ========================================================================
 def p(g):
  G=sum(g,[])

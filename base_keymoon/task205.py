@@ -1,4 +1,4 @@
-# best: 148(jailctf merger) / others: 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 166(Code Golf International), 170(ox jam), 180(import itertools)
+# best: 148(jailctf merger) / others: 161(intgrah jimboko awu macaque sammyuri), 166(Code Golf International), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 180(import itertools)
 # ====================================================================== 148 =======================================================================
 # 最小縦横: 6
 # 背景色を含まない行を削りながらてんちさいき→しばらく削ったら種類数でも削る

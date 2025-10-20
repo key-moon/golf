@@ -1,4 +1,4 @@
-# best: 81(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 85(Code Golf International), 86(intgrah jimboko awu macaque sammyuri), 87(biz), 91(import itertools)
+# best: 81(jailctf merger) / others: 85(Code Golf International), 85(4atj sisyphus luke Seek mukundan), 86(intgrah jimboko awu macaque sammyuri), 87(biz), 91(import itertools)
 # ====================================== 81 =====================================
 # p=lambda g,c=-1:c*g or p([[([0,*s,0][i:i+3:2]>[0,0])*s[i] for i in range(len(s))]for s in zip(*g)],c+1)
 # p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)

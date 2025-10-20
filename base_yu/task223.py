@@ -1,4 +1,4 @@
-# best: 51(jailctf merger, cubbus, 4atj sisyphus luke Seek mukundan, Code Golf International, biz) / others: 52(Tony Li), 52(ox jam), 52(intgrah jimboko awu macaque sammyuri), 52(adakoda), 52(import itertools)
+# best: 51(cubbus, Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz) / others: 52(import itertools), 52(Tony Li), 52(adakoda), 52(ox jam), 52(intgrah jimboko awu macaque sammyuri)
 # ======================= 51 ======================
 # p=lambda g:sum([[sum([[v]*3for v in s],[])]*3for s in g],[])
 # p=lambda g:sum([[(s[:1]+(s*3)[1:]*3)[::3]]*3for s in g],[])

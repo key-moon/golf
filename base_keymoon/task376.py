@@ -1,4 +1,4 @@
-# best: 30(ShadowPrompt Labs, jacekwl, THUNDER THUNDER, jailctf merger, natte, cubbus, 4atj sisyphus luke Seek mukundan, Yuchen20, Potatoman, jacekw Potatoman nauti natte, Code Golf International, ox jam, MasukenSamba, intgrah jimboko awu macaque sammyuri, Rafael Pooja, jacekwl Potatoman nauti, cg-klogw-sekken, adakoda, jacekw Potatoman nauti, import itertools, jacekw) / others: 32(kabutack), 32(JRKKX), 32(JRKXK), 32(JRKX), 33(MKRC)
+# best: 30(cubbus, jacekwl Potatoman nauti, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, jacekw, jacekwl, ShadowPrompt Labs, jacekw Potatoman nauti, cg-klogw-sekken, natte, Rafael Pooja, import itertools, MasukenSamba, Potatoman, jailctf merger, adakoda, Yuchen20, ox jam, THUNDER THUNDER, intgrah jimboko awu macaque sammyuri) / others: 32(JRKX), 32(kabutack), 32(JRKXK), 32(JRKKX), 33(jonas ryno kg583 kabutack)
 # 36
 # p=lambda g:g[:1]+(g[1:-1]+g[::-1])*2
 # 33

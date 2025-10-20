@@ -1,4 +1,4 @@
-# best: 137(jailctf merger) / others: 141(ox jam), 143(import itertools), 144(natte), 144(jacekw Potatoman nauti natte), 146(THUNDER THUNDER)
+# best: 137(jailctf merger) / others: 141(ox jam), 143(import itertools), 144(jacekw Potatoman nauti natte), 144(natte), 146(THUNDER THUNDER)
 # ================================================================= 137 =================================================================
 # def p(g):
 #  R=range(len(g))

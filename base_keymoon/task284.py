@@ -1,4 +1,4 @@
-# best: 201(jailctf merger) / others: 220(4atj sisyphus luke Seek mukundan), 220(Code Golf International), 227(jacekw Potatoman nauti natte), 227(import itertools), 228(ox jam)
+# best: 201(jailctf merger) / others: 220(Code Golf International), 220(4atj sisyphus luke Seek mukundan), 227(jacekw Potatoman nauti natte), 227(import itertools), 228(ox jam)
 def p(g):
  s,t=sorted(g)[-2:]
  S,T=sum(s),sum(t)

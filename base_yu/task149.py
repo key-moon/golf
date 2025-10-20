@@ -1,4 +1,4 @@
-# best: 75(jailctf merger) / others: 77(4atj sisyphus luke Seek mukundan), 77(Code Golf International), 79(ox jam), 80(JRKKX), 80(natte)
+# best: 75(jailctf merger) / others: 77(Code Golf International), 77(4atj sisyphus luke Seek mukundan), 79(ox jam), 80(jacekw Potatoman nauti natte), 80(jacekw Potatoman nauti)
 # =================================== 75 ==================================
 
 # p=lambda g,R=range(3):[[sum(sum(g[i*4+k][j*4:j*4+3])for k in R)//9for j in R]for i in R]

@@ -1,4 +1,4 @@
-# best: 84(jailctf merger) / others: 85(4atj sisyphus luke Seek mukundan), 85(Code Golf International), 85(ox jam), 85(intgrah jimboko awu macaque sammyuri), 85(biz)
+# best: 84(jailctf merger) / others: 85(Code Golf International), 85(4atj sisyphus luke Seek mukundan), 85(ox jam), 85(biz), 85(intgrah jimboko awu macaque sammyuri)
 # lambda g,c=2:c and p([*zip(*[g[i]for i in range(len(g))if~-max(max(g[:i+1]))*~-max(max(g[i:]))])],c-1)or[[v>1 and v for v in s]for s in g]
 # lambda g,c=4:c and p([*zip(*[[v>1 and v for v in g[i]]for i in range(len(g))if 1<max(max(g[i:]))][::-1])],c-1)or g
 # lambda g,c=4:(u:=[])or c and p([*zip(*[[v>1 and v for v in s]for s in g if 1<max(u:=u+[*s])][::-1])],c-1)or g
