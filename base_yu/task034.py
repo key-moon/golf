@@ -1,7 +1,7 @@
 # best: 125(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 128(jailctf merger), 129(ox jam), 161(import itertools), 187(2F), 187(biz)
 # =========================================================== 125 ===========================================================
 
-# import re
+# import ref
 # p=lambda g,c=-3:c*g or [*zip(*eval(re.sub("0(?=(.{29}, 0)*(, 0){0,2}.{25}0, 2|, 2.{28}[^0])|(?!=[^20], )2(?=, [^20].{25}[^0])",str(sum({*sum(g,[])})-2),str(p(g,c+1))))[::-1])]
 
 import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("(?=(.{29})?(...)?(.{32})*2.{28}[^0], [^0])\d","(a:=max(max(g)))-3%a%3",str(p(g,c+1))))[::-1])]
