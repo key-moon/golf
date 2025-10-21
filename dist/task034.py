@@ -1,1 +1,1 @@
-import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("(?=(.{29})?(...)?(.{32})*2.{28}[^0], [^0])\d","(a:=max(max(g)))-3%a%3",str(p(g,c+1))))[::-1])]
+import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub("(?=(.{29})?(...)?(.{32})*2.{28}[^0], [^0])\d","sum({*sum(g,[])})-2",str(p(g,c+1))))[::-1])]
