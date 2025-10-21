@@ -1,4 +1,4 @@
-# best: 118(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, intgrah jimboko awu macaque sammyuri) / others: 119(jailctf merger), 119(ox jam), 135(biz), 147(THUNDER THUNDER), 204(JRKKX)
+# best: 118(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, intgrah jimboko awu macaque sammyuri) / others: 119(jailctf merger), 119(ox jam), 135(biz), 147(THUNDER THUNDER), 179(Tony Li & Darren Amadeus Martin)
 # ======================================================= 118 ========================================================
 # port re;p=lambda g,c=-11:g*c or p(eval(re.sub(r"0(?=((...){0,2}.{%s}|, )2.{%s}2)"%(a:=len(g)*3-2,a+3),"3",str([*zip(*g)][::1-c%3|1]))),c+1)
 # port re;p=lambda g,c=-11:g*c or p(eval(re.sub(r"0(?=, (.{%s,%s})?2.{%s}2)"%(a:=len(g)*3-4,a+6,a+5),"3",str([*zip(*g)][::1-c%3|1]))),c+1)
