@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 957205
+Score: 957225
 
 Best Score: 960476
 
@@ -387,7 +387,7 @@ Best Score: 960476
 | [361](/vis/task361.png) | [dist](/dist/task361.py) | previous | [211](/dist/task361.py) (+18) | 193 🔴 | [vis-many](/vis_many/task361.png) | ⚠️ regression? |
 | [319](/vis/task319.png) | [base_yu](/base_yu/task319.py) | forcomp-s/genetic-algo(zopfli) | [263](/dist/task319.py) (+69) | 194 🔴 | [vis-many](/vis_many/task319.png) |  |
 | [349](/vis/task349.png) | [base_yu](/base_yu/task349.py) | forcomp-t/genetic-algo(zlib) | [205](/dist/task349.py) (+11) | 194 🔴 | [vis-many](/vis_many/task349.png) |  |
-| [023](/vis/task023.png) | [base_yu](/base_yu/task023.py) | forcomp-s/genetic-algo(zlib) | [270](/dist/task023.py) (+75) | 195 🔴 | [vis-many](/vis_many/task023.png) |  |
+| [023](/vis/task023.png) | [base_yu](/base_yu/task023.py) | forplain/zlib-zopfli-cpp-var-zopfli | [250](/dist/task023.py) (+55) | 195 🔴 | [vis-many](/vis_many/task023.png) |  |
 | [044](/vis/task044.png) | [base_yu](/base_yu/task044.py) | forcomp-t/genetic-algo(zopfli) | [223](/dist/task044.py) (+28) | 195 🔴 | [vis-many](/vis_many/task044.png) |  |
 | [170](/vis/task170.png) | [base_yu](/base_yu/task170.py) | forplain/raw | [215](/dist/task170.py) (+19) | 196 🔴 | [vis-many](/vis_many/task170.png) | not worth compress |
 | [201](/vis/task201.png) | [base_yu](/base_yu/task201.py) | forcomp-s/genetic-algo(zlib) | [252](/dist/task201.py) (+53) | 199 🔴 | [vis-many](/vis_many/task201.png) |  |
