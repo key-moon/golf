@@ -1,4 +1,4 @@
-# best: 144(jailctf merger) / others: 149(jacekw Potatoman nauti natte), 149(jacekw Potatoman nauti), 149(import itertools), 150(THUNDER THUNDER), 150(intgrah jimboko awu macaque sammyuri)
+# best: 144(jailctf merger) / others: 148(JRKKX), 149(jacekw Potatoman nauti natte), 149(jacekw Potatoman nauti), 149(import itertools), 150(THUNDER THUNDER)
 # ==================================================================== 144 =====================================================================
 
 def p(g):
