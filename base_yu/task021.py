@@ -1,4 +1,4 @@
-# best: 57(jailctf merger) / others: 58(import itertools), 59(jacekw Potatoman nauti natte), 59(natte), 60(intgrah jimboko awu macaque sammyuri), 62(cubbus)
+# best: 57(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 58(import itertools), 59(jacekw Potatoman nauti natte), 59(natte), 62(cubbus), 62(ox jam)
 # ========================== 57 =========================
 # ==================== best 64 by luke, att ====================
 # p=lambda g:[g[0][:1]*(len(g[0])-g[0].count(g[0][0])+1)]*(len(g)-g.count(g[0])+1)
