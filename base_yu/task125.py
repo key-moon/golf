@@ -1,5 +1,5 @@
-# best: 126(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 130(jacekw Potatoman nauti natte), 130(Code Golf International), 130(4atj sisyphus luke Seek mukundan), 130(import itertools), 130(THUNDER THUNDER)
-# =========================================================== 126 ============================================================
+# best: 119(import itertools) / others: 126(jailctf merger), 126(intgrah jimboko awu macaque sammyuri), 130(jacekw Potatoman nauti natte), 130(Code Golf International), 130(4atj sisyphus luke Seek mukundan)
+# ======================================================== 119 ========================================================
 # p=lambda g,c=-15,l=8:c*g or p([*zip(*[[x-(4*(l|y|2==6)+5*(c>-4<y%3<1))*((l:=x)>7)for x,y in zip(*t)]for t in zip(g,g[:1]+g)][::-1])],c+1)
 p=lambda g,c=-15,l=8:c*g or p([*zip(*[[l:=x-x//8*(4*(l|y|2==6)+5*(c>-4<y%3<1))for x,y in zip(*t)]for t in zip(g,g[:1]+g)][::-1])],c+1)
 
