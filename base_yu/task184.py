@@ -1,4 +1,4 @@
-# best: 91(jailctf merger) / others: 100(Code Golf International), 100(4atj sisyphus luke Seek mukundan), 100(biz), 101(ox jam), 108(THUNDER THUNDER)
+# best: 91(jailctf merger) / others: 93(biz), 100(Code Golf International), 100(4atj sisyphus luke Seek mukundan), 101(ox jam), 108(THUNDER THUNDER)
 # =========================================== 91 ==========================================
 # p=lambda g:[t for s in g if (t:=[*filter(int,s)])and(t:=[y for x,y in zip([0]+t,t)if x!=y])]
 # p=lambda g,c=-3:g*c or(l:=[0]*len(g[0]))and[l:=[map(max,l,r),r][sum(r)==0] for r in zip(*p(g,c+1))if({*l}!={*r})&any(r)]

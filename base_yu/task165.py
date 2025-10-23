@@ -1,4 +1,4 @@
-# best: 131(jailctf merger) / others: 135(biz), 136(ox jam), 139(Code Golf International), 139(4atj sisyphus luke Seek mukundan), 155(jacekw Potatoman nauti natte)
+# best: 131(jailctf merger, biz) / others: 136(ox jam), 139(Code Golf International), 139(4atj sisyphus luke Seek mukundan), 155(jacekw Potatoman nauti natte), 155(import itertools)
 # ============================================================== 131 ==============================================================
 # p=lambda g:[*zip(*[(f:=0,t:=[*s])and[(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*t}>{c})|t.pop(0)for _ in s]for s in zip(*g)])]
 # p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s[i:]}>{c})for i in range(20)]for s in zip(*g)])]
