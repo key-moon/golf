@@ -1,9 +1,11 @@
-C=enumerate
-A=range
+D=enumerate
+C=sum
+B=range
+A=len
 def p(g):
- h,w=len(g),len(g[0]);B=sum(g,[]);_,k,c=min((B.count(v),i,v)for(i,v)in C(B));_,l=max((abs(i-k)+abs(i%w-k%w)*2,i)for(i,v)in C(B)if v<1)
- for i in A(h):
-  for j in A(w):
-   for t in A(9*(g[i][j]<1)):
-    if-1<(y:=i-~t*(k//w-l//w))<h and-1<(x:=j-~t*(k%w-l%w))<w:g[y][x]=c
+ _,k,c=min((C(g,[]).count(v),i,v)for(i,v)in D(C(g,[])));_,l=max((abs(i-k)+abs(i%A(g[0])-k%A(g[0]))*2,i)for(i,v)in D(C(g,[]))if v<1)
+ for i in B(A(g)):
+  for j in B(A(g[0])):
+   for t in B(9):
+    if g[i][j]<1and i-~t*(k//A(g[0])-l//A(g[0]))in B(A(g))and j-~t*(k%A(g[0])-l%A(g[0]))in B(A(g[0])):g[i-~t*(k//A(g[0])-l//A(g[0]))][j-~t*(k%A(g[0])-l%A(g[0]))]=c
  return g
