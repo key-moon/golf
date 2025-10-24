@@ -1,8 +1,8 @@
-# best: 68(Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 70(JRKX), 70(ShadowPrompt Labs), 70(kabutack), 70(JRKXK), 70(JRKKX)
+# best: 66(intgrah jimboko awu macaque sammyuri) / others: 68(Code Golf International), 68(4atj sisyphus luke Seek mukundan), 68(import itertools), 68(jailctf merger), 70(JRKX)
 # 多分70までは縮むはず
 # lambda g:[*zip(*[[s,s[:-(s.count(2)//2)]+99*(8,)][any(s)]for s in zip(*g)])] <- zipのclipを利用しようとした残骸
 # lambda g:[*zip(*[s[:len(s)-(u:=s.count(2)//2)]+u*(8,)for s in zip(*g)])]
-# =============================== 68 ===============================
+# ============================== 66 ==============================
 # lambda g:[*zip(*[s[:-(u:=s.count(2)//2)or 99]+u*(8,)for s in zip(*g)])]
 # lambda g:[*zip(*[s[:-(u:=sum(s)//4)or 99]+u*(8,)for s in zip(*g)])]
 # p=lambda g:[*zip(*[s[:-(u:=sum(s)//4)|16]+u*(8,)for s in zip(*g)])]

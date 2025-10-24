@@ -1,5 +1,5 @@
-# best: 119(Code Golf International, 4atj sisyphus luke Seek mukundan, intgrah jimboko awu macaque sammyuri) / others: 122(jailctf merger), 124(jacekwl Potatoman nauti), 124(jacekw Potatoman nauti natte), 124(jacekw Potatoman nauti), 124(import itertools)
-# ======================================================== 119 ========================================================
+# best: 117(intgrah jimboko awu macaque sammyuri) / others: 119(Code Golf International), 119(4atj sisyphus luke Seek mukundan), 122(jailctf merger), 124(jacekwl Potatoman nauti), 124(jacekw Potatoman nauti natte)
+# ======================================================= 117 =======================================================
 
 # p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,[*filter(int,sum(g,[]))][0]})<2]for s in g])))>15][0]
 # p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,max(sum(g,[]),key=bool)})<2]for s in g])))>15][0]
