@@ -1,0 +1,10 @@
+def p(g):
+	C=sum(g,[]);J=max(C,key=C.count);A={}
+	for(E,S)in enumerate(g):
+		for(F,K)in enumerate(S):K-J and A.setdefault(K,set()).add((E,F))
+	B=lambda S:(lambda x,y:(min(x),min(y),max(x),max(y)))(*zip(*S));L=lambda S:{(A-B(S)[0],C-B(S)[1])for(A,C)in S};G=max(A,key=lambda k:len(A[k]));M=L(A[G]);H=G;N=();D=range;T,C,U,V=B(M)
+	for I in A:
+		if I-G:
+			O=A[I];P={(A*2+C,B*2+E)for(A,B)in L(O)for C in D(2)for E in D(2)};W,X,Y,Z=B(P);a=max(len({(C+A,D+B)for(C,D)in P}&M)for A in D(T-Y,U-W+1)for B in D(C-Z,V-X+1));Q=len(O);R=a-2*Q,Q
+			if R>N:N=R;H=I
+	E,F,b,c=B(A[H]);return[[(J,A)[A==H]for A in A[F:c+1]]for A in g[E:b+1]]

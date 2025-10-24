@@ -1,0 +1,1 @@
+def p(g):B=max((A[:1]+[A for(B,A)in zip(A,A[1:])if B^A]for A in g),key=len);A=len(B);C=range(A);return[[B[min(D,C,~D+A,~C+A)]for C in C]for D in C]

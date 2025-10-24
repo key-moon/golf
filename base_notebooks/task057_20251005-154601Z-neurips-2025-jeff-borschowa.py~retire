@@ -1,0 +1,1 @@
+p=lambda e:(S:={o for o in e for o,H in enumerate(o)if H>0},[o[min(S):max(S)+1]*2for o in e if max(o)>0])[1]

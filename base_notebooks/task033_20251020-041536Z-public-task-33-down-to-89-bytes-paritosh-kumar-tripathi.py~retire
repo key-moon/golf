@@ -1,0 +1,2 @@
+z=range(17)
+p=lambda g:[[g[y][x]if g[y][x]==g[y%6][x%6]else g[5][0]for x in z]for y in z]

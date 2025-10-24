@@ -1,0 +1,1 @@
+p=lambda m,n=15:-n*max(m,key=lambda u:str(u).count('2'))or p([[*zip(*u)]for g in[m,[m]][n>14]if[s:=next((g.index(i)for i in g if sum(i)<1),31)]for u in[g[:s],g[s+1:]]if u],n-1)

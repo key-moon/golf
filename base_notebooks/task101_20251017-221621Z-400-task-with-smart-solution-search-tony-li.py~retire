@@ -1,0 +1,16 @@
+def p(g):
+	H=len(g);A=len(g[0]);D=range;Q=sum(g,[]).index(1);M=[Q];E={Q};R=1,0,-1,0,1
+	while M:
+		C=M.pop();F=C//A;G=C%A
+		for S in D(4):
+			N=F+R[S];O=G+R[S+1];P=N*A+O
+			if-1<N<H and-1<O<A and g[N][O]and P not in E:E.add(P);M+=[P]
+	T,U=divmod(min(E),A);X=[(B//A-T,B%A-U)for B in E if g[B//A][B%A]<2];V=[(B//A-T,B%A-U)for B in E if g[B//A][B%A]>1];W=min(V);I={B for B in D(H*A)if g[B//A][B%A]>1}-E
+	for C in I:
+		F=C//A;G=C%A
+		if C-1 in I or C-A in I:continue
+		J=B=1
+		while G+J<A and g[F][G+J]>1:J+=1
+		while F+B<H and g[F+B][G]>1:B+=1
+		B=min(J,B);K=F-W[0]*B;L=G-W[1]*B;Y={F*A+G for(C,E)in V for F in D(K+C*B,K+C*B+B)for G in D(L+E*B,L+E*B+B)};Y<=I and[0<=K+C*B+F<H and 0<=L+E*B+G<A and g[K+C*B+F].__setitem__(L+E*B+G,1)for(C,E)in X for F in D(B)for G in D(B)]
+	return g

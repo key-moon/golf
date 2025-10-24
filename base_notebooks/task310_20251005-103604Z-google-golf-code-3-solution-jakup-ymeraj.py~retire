@@ -1,0 +1,15 @@
+from collections import Counter
+def p(r):
+ n=Counter(e for n in r for e in n if e).most_common()
+ if not n:return[]
+ l=n[-1][0];n=m=-1
+ for(e,o)in enumerate(r):
+  if l in o:
+   if n<0:n=e
+   m=e
+ o=t=-1
+ for e in range(len(r[0])):
+  if any(r[n][e]==l for n in range(n,m+1)):
+   if o<0:o=e
+   t=e
+ return[e[o:t+1]for e in r[n:m+1]]

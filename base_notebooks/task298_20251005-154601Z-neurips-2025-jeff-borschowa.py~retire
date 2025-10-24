@@ -1,0 +1,1 @@
+def p(r):i=[r[i][i]for i in range(len(r)//2)];H=dict(zip(i,i[-1:]+i));return[[H[i]for i in i]for i in r]

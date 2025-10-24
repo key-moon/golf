@@ -1,0 +1,67 @@
+def p(z):
+	B=tuple(tuple(A)for A in z);E,F=len(B),len(B[0]);T=[[False]*F for A in range(E)];I=[]
+	def W(i,e):
+		for(C,D)in((1,0),(-1,0),(0,1),(0,-1)):
+			A,B=i+C,e+D
+			if 0<=A<E and 0<=B<F:yield(A,B)
+	for J in range(E):
+		for D in range(F):
+			b=B[J][D];N=[(J,D)];c=set()
+			while N:
+				A,C=N.pop();c.add((A,C))
+				for(U,O)in W(A,C):
+					if not T[U][O]and B[U][O]==b:T[U][O]=True;N.append((U,O))
+			I.append((b,c))
+	d=[(B,A)for(B,A)in I if len(A)==1];V=[(B,A)for(B,A)in I if len(A)>1]
+	if not V:return[list(A)for A in B]
+	P={}
+	for(A,X)in V:P[A]=P.get(A,0)+len(X)
+	Q=sorted(P.items(),key=lambda x:(-x[1],x[0]))
+	if not Q:return[list(A)for A in B]
+	Y=Q[0][0];Z=Q[1][0]if len(Q)>1 else Q[0][0];f={(A,C)for A in range(E)for C in range(F)if B[A][C]==Y};N={(A,C)for A in range(E)for C in range(F)if B[A][C]==Z};I=[(1,1),(-1,-1),(1,-1),(-1,1)]
+	def P(i,e,di,g):
+		C=[];A,B=i,e
+		while 0<=A<E and 0<=B<F:C.append((A,B));A+=di;B+=g
+		return C
+	K=[(A,B)for(A,B)in d if A not in(Y,Z)]
+	if not K:K=d[:]
+	a=set()
+	for(T,X)in K:
+		A,g=next(iter(X))
+		for(D,W)in I:a.update(P(A,g,D,W))
+	V=a&f;h=a&N
+	if K:
+		C={}
+		for(A,T)in K:C[A]=C.get(A,0)+1
+		A=sorted(C.keys(),key=lambda r:(-C[r],r))
+		if len(A)==1:A=A+[A[0]]
+		G,H=A[0],A[1]
+		def e(mc):
+			C=D=0
+			for(A,L)in K:
+				if A!=mc:continue
+				M,N=next(iter(L))
+				for G in(-1,0,1):
+					for H in(-1,0,1):
+						if G==0 and H==0:continue
+						A,I=M+G,N+H
+						if 0<=A<E and 0<=I<F:
+							J=B[A][I]
+							if J==Y:C+=1
+							elif J==Z:D+=1
+			return C-D
+		R=e(G);S=e(H)
+		if R>0 and S<0:L,M=G,H
+		elif R<0 and S>0:L,M=H,G
+		elif R==0 and S!=0:
+			if S>0:L,M=H,G
+			else:L,M=G,H
+		elif S==0 and R!=0:
+			if R>0:
+				L,M=G,H
+				if I>O:L,M=G,H
+	else:return[list(A)for A in B]
+	C=[list(A)for A in B]
+	for(J,D)in V:C[J][D]=L
+	for(J,D)in h:C[J][D]=M
+	return C

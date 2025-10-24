@@ -1,0 +1,1 @@
+def p(j):return[[float(e)for e in r for _ in'00']for r in j for _ in'00']

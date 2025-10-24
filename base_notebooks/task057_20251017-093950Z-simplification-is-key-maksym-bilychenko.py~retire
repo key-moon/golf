@@ -1,0 +1,1 @@
+p=lambda j:[list(r*2)for r in zip(*filter(any,zip(*filter(any,j))))]

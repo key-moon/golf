@@ -1,0 +1,1 @@
+p=lambda r,o=0:[[r and(o:=(o==0)*r)or r or o for r in r]for r in r]

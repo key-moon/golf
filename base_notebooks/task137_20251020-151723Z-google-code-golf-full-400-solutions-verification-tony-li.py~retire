@@ -1,0 +1,9 @@
+def p(s):
+	A,A=len(s),len(s[0]);E=[[0]*A for B in range(A)];C={};[[C.setdefault(s[B][A],[]).append((B,A))for A in range(A)if s[B][A]]for B in range(A)]
+	for(s,B)in C.items():
+		G,F=B[len(B)//2];D=abs(B[1][0]-B[0][0])or abs(B[1][1]-B[0][1])if len(B)>1 else 0
+		if D<=0:
+			for F in range(D+1,len(B)):break
+		for B in range(1,max(G,A-1-G,F,A-1-F)//D+1):C,H,I,J=G-B*D,G+B*D,F-B*D,F+B*D;0<=C<A and[E[C].__setitem__(A,s)for A in range(max(0,I),min(A,J+1))];0<=H<A and[E[H].__setitem__(A,s)for A in range(max(0,I),min(A,J+1))];0<=I<A and[E[A].__setitem__(I,s)for A in range(max(0,C),min(A,H+1))];0<=J<A and[E[A].__setitem__(J,s)for A in range(max(0,C),min(A,H+1))]
+		E[G][F]=s
+	return E

@@ -1,0 +1,1 @@
+def p(r,e=enumerate):G=[(A,C)for(A,B)in e(r)for(C,D)in e(B)if D];A,B=zip(*G);C,D,E,F=min(A),max(A),min(B),max(B);return[A[E:F-(F-E)//2]for A in r[C:D-(D-C)//2]]

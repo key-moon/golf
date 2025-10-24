@@ -1,0 +1,1 @@
+p=lambda j:[[(r==[r[0]]*3)*5]*3for r in j]

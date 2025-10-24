@@ -1,0 +1,1 @@
+def p(s):I=enumerate;f=sum(s,[]);n=[c for c in{*f}if f.count(c)==4][0];y,x=zip(*[(r,c)for r,R in I(s)for c,C in I(R)if C==n]);return[[n*(C>0)for C in R[min(x)+1:max(x)]]for R in s[min(y)+1:max(y)]]

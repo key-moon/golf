@@ -1,0 +1,1 @@
+p=lambda g,s=0,i=0,h=0,N=0:(s:=sum(g,[]),N:=len(g),h:=N//2,i:=s.index(min(s,key=s.count)),[r[((i%N)>h)*(h+1):][:h]for r in g[((i//N)>h)*(h+1):][:h]])[-1]

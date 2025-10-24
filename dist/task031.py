@@ -1,1 +1,2 @@
-p=lambda g:g*any(g[0])or p([*zip(*filter(max,g))])
+A=filter
+p=lambda g:[*zip(*A(any,zip(*A(any,g))))]

@@ -1,0 +1,1 @@
+def p(g):c=str(g).count('5');m=max(g);r=range(10);return[[m[0]*(i==g.index(m)+c or j==g[0].index(m[0])-c)for j in r]for i in r]

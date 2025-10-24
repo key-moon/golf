@@ -1,0 +1,1 @@
+def p(j,R=range):return[[3if j[r][c]|j[r+5][c]else 0for c in R(4)]for r in R(4)]

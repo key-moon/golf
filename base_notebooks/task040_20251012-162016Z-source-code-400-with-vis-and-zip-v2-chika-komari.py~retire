@@ -1,0 +1,1 @@
+def p(g,e=enumerate):a=g[0][0];return[[(v,(a,g[9][9])[(j,i)[a==g[0][9]]>4])[v==3]for j,v in e(r)]for i,r in e(g)]

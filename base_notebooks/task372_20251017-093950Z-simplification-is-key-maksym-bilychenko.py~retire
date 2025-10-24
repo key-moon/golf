@@ -1,0 +1,1 @@
+p=lambda g:[[g[i][j]|g[i+6][j]for j in range(11)]for i in range(5)]

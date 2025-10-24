@@ -1,0 +1,1 @@
+def p(d,z=range):C,B=len(d),len(d[0]);A=[-1]+[A for A in z(B)if len({d[B][A]for B in z(C)})==1]+[B];A=[[d[B+1][A+1]for(A,C)in zip(A,A[1:])if A+1<C-1]for(B,C)in zip(A,A[1:])];return[A[::-1]for A in A]

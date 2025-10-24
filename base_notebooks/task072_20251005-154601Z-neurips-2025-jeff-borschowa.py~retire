@@ -1,0 +1,1 @@
+p=lambda g,r=range:[[3*(g[A][B]+g[A+7][B]==2)for B in r(5)]for A in r(6)]

@@ -1,0 +1,1 @@
+p=lambda g,r=range:[[3*(g[A][B]+g[A+5][B]==0)for B in r(4)]for A in r(4)]

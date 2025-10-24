@@ -1,0 +1,1 @@
+def p(g,R=range):return[[g[i][j]|g[i+2][j]|g[i][j+4]|g[i+2][j+4]for j in R(3)]for i in R(3)]

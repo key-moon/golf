@@ -1,0 +1,9 @@
+def p(e,t=range):
+ u={};e=eval(str(e))
+ for n,r in enumerate(e):
+  for p,i in enumerate(r):
+   if i:u.setdefault(i,[]).append((n,p))
+ for i in u:
+  (n,p),(r,d)=u[i];a,d=(r>n)-(r<n),(d>p)-(d<p)
+  for s in t(abs(r-n)+1):e[n+s*a][p+s*d]=i
+ return e

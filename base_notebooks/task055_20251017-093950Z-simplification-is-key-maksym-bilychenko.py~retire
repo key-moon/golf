@@ -1,0 +1,1 @@
+p=lambda r,z=zip:(R:=[i for i,w in enumerate(r)if{*w}=={8}],C:=[i for i,w in enumerate(z(*r))if{*w}=={8}],[[v or{(-1,0):2,(0,-1):4,(0,0):6,(0,1):3,(1,0):1}.get(((y>R[1])-(y<R[0]),(x>C[1])-(x<C[0])),0)for x,v in enumerate(w)]for y,w in enumerate(r)])[-1]

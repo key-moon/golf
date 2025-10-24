@@ -1,0 +1,1 @@
+p=lambda A:[[2*(A==6)or A for A in A]for A in A]

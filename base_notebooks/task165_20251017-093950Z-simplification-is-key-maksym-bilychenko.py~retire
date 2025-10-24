@@ -1,0 +1,6 @@
+def p(g):
+ a=sum(g,[]);s=next(x for x in a[::-1] if x);f=(set(a)-{0,s}).pop()
+ for j,c in enumerate(zip(*g)):
+  if f in c and s in c[(i:=19-c[::-1].index(f))+1:]:
+   for k in range(i,20): g[k][j]=g[k][j] or s
+ return g

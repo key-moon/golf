@@ -1,0 +1,1 @@
+p=lambda A:[A+A[::-1]for A in A+A[::-1]]

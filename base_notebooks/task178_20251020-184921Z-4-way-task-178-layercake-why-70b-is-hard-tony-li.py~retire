@@ -1,0 +1,1 @@
+p=lambda g,f=lambda d:(x:=0)or[*zip(*[(x:=b)for b in d if x!=b])]:f(f(g))
