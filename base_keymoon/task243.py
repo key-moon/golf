@@ -1,4 +1,4 @@
-# best: 79(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 80(jacekwl Potatoman nauti), 80(jacekw Potatoman nauti natte), 80(jacekw Potatoman nauti), 80(cg-klogw-sekken), 80(natte)
+# best: 79(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, biz, intgrah jimboko awu macaque sammyuri) / others: 80(jacekwl Potatoman nauti), 80(jacekw Potatoman nauti natte), 80(jacekw Potatoman nauti), 80(cg-klogw-sekken), 80(natte)
 # bestは正規表現じゃないんだろうが、一旦正規表現に甘えます
 import re;s=re.sub
 def p(g):

@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, ox jam) / others: 96(Code Golf International), 96(4atj sisyphus luke Seek mukundan), 99(intgrah jimboko awu macaque sammyuri), 105(THUNDER THUNDER), 106(jacekwl Potatoman nauti)
+# best: 95(jailctf merger, ox jam) / others: 96(Code Golf International), 96(4atj sisyphus luke Seek mukundan), 99(intgrah jimboko awu macaque sammyuri), 101(biz), 105(THUNDER THUNDER)
 # 155
 # M=max
 # r=range(3)
