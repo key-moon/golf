@@ -1,0 +1,5 @@
+def p(n):
+ l=range;r=[[0]*9for r in l(9)];h=[(r,h,n[r][h])for r in l(9)for h in l(9)if n[r][h]]
+ for(l,a,e)in h:
+  for n in range(9):r[l][n]=r[n][a]=e
+ r[h[0][0]][h[1][1]]=r[h[1][0]][h[0][1]]=2;return r

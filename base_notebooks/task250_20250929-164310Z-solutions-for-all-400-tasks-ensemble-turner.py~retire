@@ -1,0 +1,16 @@
+from itertools import*
+a=len
+o=range
+l=list(product([0,1,-1],repeat=2))
+def p(i):
+ D,D=a(i),a(i[0])
+ for r in o(D):
+  for c in o(D):
+   if i[r][c]==2:
+    for(e,O)in l:
+     if 0<=r+e<D and 0<=c+O<D:
+      for n in o(20):
+       if 0<=r+e*n<D and 0<=c+O*n<D:
+        W=i[r+e*n][c+O*n]
+        if W==5and i[r+e][c+O]==0:i[r+e][c+O]=5;i[r+e*n][c+O*n]=0
+ return i

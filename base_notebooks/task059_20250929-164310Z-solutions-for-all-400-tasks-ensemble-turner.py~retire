@@ -1,0 +1,10 @@
+def p(n,q=enumerate,o=range(11)):
+ c=0;r=[[0if(r+1)%4>0and(n+1)%4>0else 5for r in o]for n in o];o={n+r:0for n in'012'for r in'012'}
+ for e,n in q(n):
+  for t,n in q(n):
+   if n>0and n!=5:c=int(n);o[str(e//4)+str(t//4)]+=1
+ u=max(o.values())
+ for e,n in q(r):
+  for t,n in q(n):
+   if n==0and o[str(e//4)+str(t//4)]==u:r[e][t]=c
+ return r

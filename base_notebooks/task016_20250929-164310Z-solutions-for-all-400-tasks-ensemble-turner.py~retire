@@ -1,0 +1,1 @@
+p=lambda j:[[int('0564312798'[A])for A in A]for A in j]

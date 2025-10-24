@@ -1,0 +1,16 @@
+def p(I):
+ from collections import defaultdict as e
+ def R(S):
+  if not S:return False
+  S,a=zip(*S);return len(S)==(max(S)-min(S)+1)*(max(a)-min(a)+1)
+ d,i=len(I),len(I[0]);S=e(list)
+ for a in range(d):
+  for l in range(i):
+   if I[a][l]:S[I[a][l]].append((a,l))
+ if not S:return[[0]*i for S in range(d)]
+ t=max([S for(S,a)in S.items()if R(a)],key=lambda e:len(S[e]),default=None);F=max([a for a in S if a!=t and not R(S[a])]or[S for S in S if S!=t],key=lambda e:len(S[e]));G,K=S[F],set(S[F]);N=set(S[t])if t else set();N=max(range(2*i-1),key=lambda t:sum(1for(a,l)in G if 0<=(S:=t-l)<i and((a,S)in K or(a,S)in N)),default=min(S for(a,S)in G)+max(S for(a,S)in G));I=[[0]*i for S in range(d)]
+ for(a,l)in G:I[a][l]=F
+ if t:
+  for(a,l)in S[t]:
+   if 0<=(H:=N-l)<i and(a,H)in K:I[a][l]=F
+ return I

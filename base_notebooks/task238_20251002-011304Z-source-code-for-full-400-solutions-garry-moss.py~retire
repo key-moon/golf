@@ -1,0 +1,66 @@
+def p(g):
+ def h(r):
+  u=r
+  if not u or not u[0]:return 0
+  r={}
+  for a in u:
+   for d in a:r[d]=r.get(d,0)+1
+  return max(r,key=r.get)
+ def e(r,e,i,x):
+  D=e
+  if not r or not r[0]:return[]
+  g,e=len(r),len(r[0]);t=h(r)if x else None;p=[(-1,0),(1,0),(0,-1),(0,1)]
+  if i:p+=[(-1,-1),(-1,1),(1,-1),(1,1)]
+  a,l=set(),[]
+  for c in range(g):
+   for x in range(e):
+    if(c,x)in a:continue
+    d=r[c][x]
+    if d==t:continue
+    f,T=set(),[(c,x)]
+    while T:
+     u,d=T.pop()
+     if(u,d)in a:continue
+     I=r[u][d]
+     if D and I!=d or not D and I==t:continue
+     a.add((u,d));f.add((I,(u,d)))
+     for(j,N)in p:
+      n,k=u+j,d+N
+      if 0<=n<g and 0<=k<e and(n,k)not in a:T.append((n,k))
+    l.append(f)
+  return l
+ def a(r):
+  if not r:return set()
+  u=next(iter(r))
+  if isinstance(u,tuple)and len(u)==2and isinstance(u[1],tuple):return{(r,u)for(d,(r,u))in r}
+  return set(r)
+ def c(r):
+  r=a(r)
+  if not r:return(0,0),(0,0)
+  u=min(r for(r,u)in r);d=min(r for(u,r)in r);c=max(r for(r,u)in r);x=max(r for(u,r)in r);return(u,d),(c,x)
+ def I(r):
+  if not r:return r
+  (u,d),a=c(r);return{(r,(a-u,c-d))for(r,(a,c))in r}
+ def t(r,i):
+  d,a=i
+  if not r:return r
+  u=next(iter(r))
+  if isinstance(u,tuple)and len(u)==2and isinstance(u[1],tuple):return{(r,(u+d,c+a))for(r,(u,c))in r}
+ def p(e,d):
+  r,u=e;d,a=d;c,x=min(r,d),min(u,a);f,T=max(r,d),max(u,a)
+  if r==d:return{(r,u)for u in range(x,T+1)}
+  return{(r,u)for(r,u)in zip(range(c,f+1),range(T,x-1,-1))}
+ def l(r):
+  if not r:return set()
+  (u,d),(u,x)=c(r);f=d+x;return{(r,f-u)for(r,u)in r}
+ x=e(g,e=False,i=True,x=True)
+ if not x:return g
+ d={(8,(r,d))for(r,u)in enumerate(g)for(d,a)in enumerate(u)if a==8};j=lambda r:len(a(r));N=d or min(x,key=lambda r:len({r for(r,u)in r}));e=[r for r in x if{r for(r,u)in r}!={8}]or x;f=max(e,key=j,default=None)
+ if not f:return g
+ n={(r,u)for(r,u)in f if r!=8};(o,X),(T,Z)=c(n or f);e=[r[X:Z+1]for r in g[o:T+1]];T=a(t(I(N),(1,1)));k=list(I(n or f));r=[list(r)for r in e]
+ for(u,d)in T:r[u][d]=min(k,key=lambda x:abs(x[1][0]-u)+abs(x[1][1]-d))[0]if k else 0
+ D=c(T)
+ if D!=((0,0),(0,0))and T:
+  (d,e),(i,f)=D;g=p((d,e),(i,f));f=T&(g|l(g))
+  for(u,d)in f:r[u][d]=8
+ return r

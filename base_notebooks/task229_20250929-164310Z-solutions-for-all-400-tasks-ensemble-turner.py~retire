@@ -1,0 +1,1 @@
+def p(t):e=sum(t,[]);B=e.count;C=max(map(B,e));return[[e if B(e)==C else 5for e in e]for e in t]

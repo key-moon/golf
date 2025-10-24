@@ -1,0 +1,7 @@
+def p(r,b=range,q=enumerate):
+ g=len(r);o=len(r[0]);j=[[0]*o for r in b(g)];l={f for f in r for f in f if f}
+ for h in l:
+  i=[i for i,f in q(r)for f in f if f==h];g=[e for i,f in q(r)for e,f in q(f)if f==h];y,d=min(i),max(i)+1;c,m=min(g),max(g)+1
+  for i in b(y,d):
+   for e in b(c,m):j[i][e]=h
+ return j

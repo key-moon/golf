@@ -1,0 +1,5 @@
+def p(s,o=range(9),e=range(3)):
+ r,l=__import__('collections').Counter(s[0]+s[1]+s[2]).most_common(1)[0][0],[[0for o in o]for a in o]
+ for(t,r)in[(a,o)for o in e for a in e if s[a][o]==r]:
+  for a in o:l[3*t+a%3][3*r+a//3]=s[a%3][a//3]
+ return l

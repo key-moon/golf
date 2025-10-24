@@ -1,0 +1,9 @@
+def p(n,r=enumerate):
+ i=len(n);D=[[0]*i for A in'd'*i];l={}
+ for(B,a)in r(n):
+  for(d,A)in r(a):
+   if 0<A<3:l[A]=B,d;D[B][d]=A
+ for(B,a)in r(n):
+  for(d,A)in r(a):
+   if A in(3,7):F,t=l[2-(A>3)];D[F+(B>F)-(B<F)][t+(d>t)-(d<t)]=A
+ return D

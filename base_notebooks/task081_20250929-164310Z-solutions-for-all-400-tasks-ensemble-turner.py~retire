@@ -1,0 +1,11 @@
+from collections import*
+def p(h,A=range):
+ c=[[8if n==8else 0for n in e]for e in h]
+ for d in A(len(h)-1):
+  for k in A(len(h[0])-1):
+   e=[h[d][k:k+2],h[d+1][k:k+2]];l=[t for e in e for t in e];n=Counter(l).most_common(1)
+   if n[0][1]==3and n[0][0]!=0:
+    for i in A(d,d+2):
+     for e in A(k,k+2):
+      if c[i][e]==0:c[i][e]=1
+ return c

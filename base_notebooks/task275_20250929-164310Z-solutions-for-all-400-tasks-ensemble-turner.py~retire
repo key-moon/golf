@@ -1,0 +1,4 @@
+def p(i):
+ n=min(len(i),len(i[0]));t,a=[t[:n]for t in i[:n]],[t[-n:]for t in i[-n:]]
+ if any(max(n)==8for n in t):t,a=a,t
+ return[[t[H//n][r//n]*a[H%n][r%n]//8for r in range(n*n)]for H in range(n*n)]

@@ -1,0 +1,21 @@
+def p(d):
+ p,x=len(d),len(d[0]);d=[y[:]for y in d];r=[[False]*x for y in range(p)];g=[(1,0),(-1,0),(0,1),(0,-1)]
+ for t in range(p):
+  for e in range(x):
+   if r[t][e]:continue
+   l=d[t][e];f=[(t,e)];r[t][e]=True;n=[(t,e)];u=a=t;h=m=e
+   while f:
+    e,c=f.pop()
+    for(q,y)in g:
+     y,j=e+q,c+y
+     if 0<=y<p and 0<=j<x and not r[y][j]and d[y][j]==l:
+      r[y][j]=True;f.append((y,j));n.append((y,j))
+      if y<u:u=y
+      if y>a:a=y
+      if j<h:h=j
+      if j>m:m=j
+   u=a-u+1;l=m-h+1
+   if u==l and len(n)==u*l:
+    y=2if u%2==0else 7
+    for(e,c)in n:d[e][c]=y
+ return d

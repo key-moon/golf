@@ -79,7 +79,11 @@ class A:
     def __eq__(self, o):
         return True
 def p(g):
-    return A()""")
+    return A()"""),
+normalize(b"""# Placeholder: no auto-solution found; identity fallback
+def p(g):
+ return [row[:] for row in g]
+""")
 ]
 
 

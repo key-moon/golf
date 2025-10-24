@@ -1,0 +1,11 @@
+def p(a):
+ t,t=len(a),len(a[0]);d=-1
+ for A in range(t):
+  for B in range(t):
+   if a[A][B]and(A<1or a[A-1][B]<1)and(B<1or a[A][B-1]<1):
+    N=o=1
+    while B+N<t and a[A][B+N]:N+=1
+    while A+o<t and a[A+o][B]:o+=1
+    H=[A[B:B+N]for A in a[A:A+o]];N=sum(A.count(2)for A in H)
+    if N>d:d=N;n=H
+ return n

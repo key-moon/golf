@@ -1,0 +1,13 @@
+def p(g,l=len,n=range):
+ O,h=l(g),l(g[0]);D=[e for e in n(l(g))if 5in g[e]][0]
+ for e in n(O):
+  for B in n(h):
+   if g[e][B]==1and e<D:
+    for r in n(e,-1,-1):g[r][B]=1
+   elif g[e][B]==1and e>D:
+    for r in n(e,O):g[r][B]=1
+   if g[e][B]==2and e<D:
+    for r in n(e,D):g[r][B]=2
+   elif g[e][B]==2and e>D:
+    for r in n(D+1,e):g[r][B]=2
+ return g

@@ -1,0 +1,11 @@
+s=len
+r=range
+def p(n):
+ F,G=s(n),s(n[0]);L=sum(n,[]);L=sorted([[L.count(A),A]for A in set(L)])[:2];l={L[0][1]:L[1][1],L[1][1]:L[0][1]}
+ for J in range(50):
+  for A in r(F):
+   for a in r(G):
+    if n[A][a]in l:
+     for(D,i)in[[0,1],[0,-1],[1,0],[-1,0]]:
+      if 0<=A+D<F and 0<=a+i<G and n[A+D][a+i]==0:n[A+D][a+i]=l[n[A][a]]
+ return n

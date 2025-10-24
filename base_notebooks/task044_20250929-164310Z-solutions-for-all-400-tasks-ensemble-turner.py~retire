@@ -1,0 +1,28 @@
+def p(g):
+ h=set();L=[]
+ for N in range(100):
+  C,N=N//10,N%10
+  if(C,N)in h:continue
+  T=g[C][N];M=[(C,N)];o={(C,N)};h|={M[0]}
+  for(e,S)in M:
+   for N in[(e+h,S+N)for(h,N)in[(0,1),(0,-1),(1,0),(-1,0)]]:
+    if 0<=N[0]<10>N[1]>=0and N not in h and g[N[0]][N[1]]==T:h|={N};M+=[N];o|={N}
+  L+=[(T,o)]
+ T=[N for(h,N)in L if h==5];Q=[];J=[]
+ for(h,N)in L:
+  if h==0:
+   H=lambda s,n:[min,max][n>1](h[n%2]for h in s)
+   if any(all(H(N,h)>=H(C,h)if h<2 else H(N,h)<=H(C,h)for h in range(4))for C in T):Q+=[N]
+  elif h>0and h!=5:J+=[(h,N)]
+ R=lambda s:frozenset((N-(h:=min(s))[0],C-h[1])for(N,C)in s);N={};l={}
+ for e in Q:s=R(e);N[s]=N.get(s,[])+[e]
+ for(h,e)in J:s=R(e);l[s]=l.get(s,[])+[(h,e)]
+ o={h:sum(1for(N,C)in J if N==h)for(h,N)in J}
+ for(s,a)in N.items():
+  if s in l:
+   T=l[s]
+   if len(T)>1and o:T=[h for h in T if h[0]!=max(o,key=o.get)]or T
+   for(V,(h,H))in zip(a,T):
+    for(C,N)in H:g[C][N]=0
+    for(C,N)in V:g[C][N]=h
+ return g

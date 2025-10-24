@@ -1,0 +1,19 @@
+{
+  "id": "massimilianoghiotto/problem-154-what-i-learn-so-far",
+  "id_no": 94475918,
+  "title": "Problem 154 - What I learn so far",
+  "code_file": "problem-154-what-i-learn-so-far.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,39 @@
+def p(g):
+	a=False;M=True;from collections import Counter as T,deque;I,J=len(g),len(g[0]);N=[[a]*J for A in range(I)];n=[]
+	for A in range(I):
+		for B in range(J):
+			if g[A][B]==0 and not N[A][B]:
+				Q=deque([(A,B)]);N[A][B]=M;D=[];R=A==0 or B==0 or A==I-1 or B==J-1
+				while Q:
+					b,c=Q.popleft();D.append((b,c))
+					for(q,d)in((1,0),(-1,0),(0,1),(0,-1)):
+						E,F=b+q,c+d
+						if 0<=E<I and 0<=F<J and not N[E][F]and g[E][F]==0:N[E][F]=M;R=R or(E==0 or F==0 or E==I-1 or F==J-1);Q.append((E,F))
+				if not R:n.append(D)
+	if not n:return[A[:]for A in g]
+	D=max(n,key=len);s,t,i,v=min(A for(A,B)in D),min(A for(B,A)in D),max(A for(A,B)in D),max(A for(B,A)in D);w,L,e,z=max(0,s-1),max(0,t-1),min(I-1,i+1),min(J-1,v+1);G=[A[L:z+1]for A in g[w:e+1]];d,e=len(G),len(G[0]);f=T(B for A in G for B in A);A0=max(f,key=f.get);h,S,T,i=set(),None,-1,-1;A1={A for B in G for A in B if A!=A0}
+	for j in A1:
+		C=[(A,B)for A in range(d)for B in range(e)if G[A][B]==j]
+		if not C:continue
+		E={}
+		for(A,B)in C:
+			if B in E:U,V=E[B];E[B]=min(U,A),max(V,A)
+			else:E[B]=A,A
+		A2={(D,A)for(A,(B,C))in E.items()for D in range(B,C+1)};L={}
+		for(A,B)in C:
+			if A in L:U,V=L[A];L[A]=min(U,B),max(V,B)
+			else:L[A]=B,B
+		A3={(A,D)for(A,(B,C))in L.items()for D in range(B,C+1)};A4,A5=min(A for(A,B)in C),max(A for(A,B)in C);k,l={B for(A,B)in C if A==A4},{B for(A,B)in C if A==A5};A6=k if len(k)>=len(l)else l;W={(B,A)for(B,A)in A2 if A in A6};A7,A8=min(A for(B,A)in C),max(A for(B,A)in C);m,n={A for(A,B)in C if B==A7},{A for(A,B)in C if B==A8};A9=n if len(n)>=len(m)else m;O={(A,B)for(A,B)in A3 if A in A9};X=a
+		if len(W)>len(O):H=W
+		elif len(O)>len(W):H=O;X=M
+		else:H=O;X=M
+		if X:
+			s=set(C);Y={};AB={A for(A,B)in C}
+			for(A,_)in C:Y[A]=Y.get(A,0)+1
+			if len(AB)<=2:H={A for A in H if not(A not in s and Y.get(A[0],0)==2)}
+		Z,o=len(H)-len(C),len(H)
+		if Z>T or Z==T and o>i:T,i,S,h=Z,o,j,H
+	if S is not None:
+		for(A,B)in h:
+			if 0<=A<d and 0<=B<e:G[A][B]=S
+	return G

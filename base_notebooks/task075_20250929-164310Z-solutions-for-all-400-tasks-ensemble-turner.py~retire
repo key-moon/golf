@@ -1,0 +1,9 @@
+def p(i):
+ e=range;d=[e[:]for e in i];G=[[i[A][e]for e in e(3)]for A in e(3)]
+ for A in e(9):
+  for n in e(4,13):
+   if i[A][n]==1:
+    for D in e(-1,2):
+     for r in e(-1,2):
+      if 0<=A+D<9and 4<=n+r<13:d[A+D][n+r]=G[D+1][r+1]
+ return d

@@ -1,0 +1,9 @@
+def p(g,a=enumerate):
+ def t():
+  t=[0]*10
+  for(d,r)in a(g):
+   for(B,r)in a(r):
+    if r!=8and r:t[B]=r;g[d][B]=0
+    if r==8:t=[t for t in t if t];g[d][B],g[d][B+1]=t[0],t[1];return
+ for B in(0,1):t();g=g[::-1]
+ return g

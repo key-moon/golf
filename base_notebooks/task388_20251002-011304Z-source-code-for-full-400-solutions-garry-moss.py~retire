@@ -1,0 +1,1 @@
+def p(d):p=range;l=len(d);n={f for a in p(l)for f in p(l)if d[a][f]};d=[[8if d[a][f]==0and f in n else d[a][f]for f in p(l)]for a in p(l)];return[[d[a%l][f%l]for f in p(2*l)]for a in p(2*l)]

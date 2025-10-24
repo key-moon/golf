@@ -1,0 +1,1 @@
+def p(d):d=[d[-1]]+d[:len(d)-1];d=[[2if d==8else d for d in d]for d in d];return d

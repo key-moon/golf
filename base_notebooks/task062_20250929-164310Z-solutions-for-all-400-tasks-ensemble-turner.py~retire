@@ -1,0 +1,13 @@
+r=len
+o=range
+def p(g):
+ a=sum(g,[]).count(2)
+ for i in range(4):
+  T,i=r(g),r(g[0]);g=list(map(list,zip(*g[::-1])))
+  for i in o(T):
+   if g[i].count(2)==a and sum(g[i])==2*a:
+    for e in range(max(i,T-i)):
+     if 0<=i+e<T and sum(g[i+e])>0and 2not in g[i+e]:
+      if 0<=i-e+1<T and 0<=i+e<T:g[i-e+1]=g[i+e][:]
+     elif 0<=i-e-1<T and 0<=i+e<T:g[i+e]=g[i-e-1][:]
+ g=[[3if i==0else i for i in i]for i in g];return g

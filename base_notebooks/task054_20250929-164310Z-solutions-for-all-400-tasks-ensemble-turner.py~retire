@@ -1,0 +1,27 @@
+def p(g,r=range):
+ t=[A[:]for A in g];K=g[0][0];M,n=set(),[]
+ for A in r(30):
+  for D in r(30):
+   if g[A][D]!=K and(A,D)not in M:
+    N,P=[],[(A,D)];M.add((A,D))
+    while P:
+     E,L=P.pop(0);N.append((E,L))
+     for F in[-1,0,1]:
+      for G in[-1,0,1]:
+       if F or G:
+        A,B=E+F,L+G
+        if 0<=A<30 and 0<=B<30 and g[A][B]!=K and(A,B)not in M:M.add((A,B));P.append((A,B))
+    n.append(N)
+ O=min((A for A in n if len(A)>1),key=len);A,D=zip(*O);E,L=(min(A)+max(A))//2,(min(D)+max(D))//2;U=g[E][L];a={(A-E,B-L):g[A][B]for(A,B)in O};V=set(O);E=[(A,B)for A in r(30)for B in r(30)if g[A][B]==U and(A,B)not in V]
+ for(A,B)in E:
+  for((F,G),S)in a.items():
+   if(F==0 or G==0)and(F*2,G*2)in a:
+    for T in r(1,30):
+     H,N=A+F*T,B+G*T
+     if not(0<=H<30 and 0<=N<30 and t[H][N]!=K):break
+     t[H][N]=S
+   else:
+    H,N=A+F,B+G
+    if 0<=H<30 and 0<=N<30 and t[H][N]!=K:t[H][N]=S
+ for(E,N)in O:t[E][N]=K
+ return t

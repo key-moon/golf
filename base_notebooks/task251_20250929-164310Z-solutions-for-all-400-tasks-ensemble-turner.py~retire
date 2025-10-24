@@ -1,0 +1,12 @@
+def p(n,i=range):
+ y,r=len(n),len(n[0]);g=[[0]*r for y in i(y)];u=[]
+ for d in i(y):
+  for f in i(r):
+   if d*f==0 or d==y-1or f==r-1:
+    if n[d][f]==0:g[d][f]=1;u.append((d,f))
+ while u:
+  o,h=u.pop(0)
+  for(s,t)in[(-1,0),(1,0),(0,-1),(0,1)]:
+   d,f=o+s,h+t
+   if 0<=d<y and 0<=f<r and n[d][f]==0and not g[d][f]:g[d][f]=1;u.append((d,f))
+ i=[[n[y][r]if n[y][r]!=0 or g[y][r]else 1for r in i(r)]for y in i(y)];return i

@@ -1,0 +1,26 @@
+{
+  "id": "jakupymeraj/google-golf-code-4-solution",
+  "id_no": 94097520,
+  "title": "GOOGLE GOLF CODE #4 SOLUTION ",
+  "code_file": "google-golf-code-4-solution.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "cristianocalcagno/arc-code-golf-starter-solutions",
+    "tonylica/google-code-golf-2025-submit"
+  ],
+  "kernel_sources": [
+    "deleted/93296934",
+    "garrymoss/source-code-for-full-400-solutions",
+    "mcwema/neuroips-4-of-some-lessons-learned"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

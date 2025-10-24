@@ -1,0 +1,19 @@
+{
+  "id": "garrymoss/golfed-solutions-and-explanations-to-hard-problems",
+  "id_no": 91506692,
+  "title": "Golfed solutions and explanations to hard problems",
+  "code_file": "golfed-solutions-and-explanations-to-hard-problems.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

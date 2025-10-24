@@ -1,0 +1,21 @@
+def p(g,f=range):
+ G,t=len(g),len(g[0]);W=sum(g,[]);J={};[J.update({A:J.get(A,0)+1})for A in W];h=max(J,key=J.get);O=[[0]*t for A in f(G)];T=[]
+ for H in f(G):
+  for L in f(t):
+   if not O[H][L]and g[H][L]!=h:
+    P=[];Q=[(H,L)];A=g[H][L]
+    while Q:
+     D,E=Q.pop()
+     if D<0 or D>=G or E<0 or E>=t or O[D][E]or g[D][E]!=A:continue
+     O[D][E]=1;P.append((D,E));Q.extend([(D+A,E+B)for(A,B)in[(0,1),(0,-1),(1,0),(-1,0)]])
+    P and T.append(frozenset((A,B)for B in P))
+ U,V=[],[]
+ for C in T:
+  I=[A for(B,A)in C]
+  if I:O,l,S,Z=min(A[0]for A in I),max(A[0]for A in I),min(A[1]for A in I),max(A[1]for A in I);n,l=l-O+1,Z-S+1;a=[[g[O+A][S+B]if 0<=O+A<G and 0<=S+B<t else 0 for B in f(l)]for A in f(n)];b=[[a[A][B]for B in f(1,l-1)]for A in f(1,n-1)]if n>2 and l>2 else[];c=set(sum(b,[]));3 in c and U.append(C);len(C)==n+l-1 and V.append(C)
+ h=[[6 if A==3 else A for A in A]for A in g]
+ for C in U:
+  for(H,(B,A))in C:0<=B<G and 0<=A<t and h.__setitem__(B,h[B][:A]+[2]+h[B][A+1:])
+ for C in V:
+  for(H,(B,A))in C:0<=B<G and 0<=A<t and h.__setitem__(B,h[B][:A]+[1]+h[B][A+1:])
+ return h

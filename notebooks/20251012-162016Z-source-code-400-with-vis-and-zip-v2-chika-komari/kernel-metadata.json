@@ -1,0 +1,29 @@
+{
+  "id": "gothamjocker/source-code-400-with-vis-and-zip-v2",
+  "id_no": 94023832,
+  "title": "Source Code 400 with Vis and Zip v2",
+  "code_file": "source-code-400-with-vis-and-zip-v2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    ""
+  ],
+  "kernel_sources": [
+    "mbilichenko/golf-code-optimization-trials",
+    "kerta27/solutions-for-all-400-tasks-ensemble",
+    "jonathanchan/gcgc-playground",
+    "tonylica/community-baselines-my-arc-10-pack-2-10",
+    "tonylica/400-task-with-smart-solution-search",
+    "gothamjocker/gcgc-playground-v4",
+    "tonylica/4-way-task-178-layercake-why-70b-is-hard"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,28 @@
+{
+  "id": "snnguynvnk19hl/pipeline-update-task7-143-107",
+  "id_no": 95889903,
+  "title": "Pipeline update task7 (143\u2192107)",
+  "code_file": "pipeline-update-task7-143-107.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "tonylica/google-code-golf-2025-submit"
+  ],
+  "kernel_sources": [
+    "tonylica/community-baselines-8-10",
+    "snnguynvnk19hl/baselines",
+    "jazivxt/dead-code",
+    "mcwema/r30-neurips-golf-lessons-learned",
+    "snnguynvnk19hl/pipeline-update-task15-190-144",
+    "snnguynvnk19hl/pipeline-update-task7-143-107"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

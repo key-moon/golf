@@ -1,0 +1,27 @@
+def p(b,h=range):
+ c=[y[:]for y in b];f=b[0][0];t,n=set(),[]
+ for y in h(30):
+  for d in h(30):
+   if b[y][d]!=f and(y,d)not in t:
+    m,q=[],[(y,d)];t.add((y,d))
+    while q:
+     e,x=q.pop(0);m.append((e,x))
+     for l in[-1,0,1]:
+      for z in[-1,0,1]:
+       if l or z:
+        y,d=e+l,x+z
+        if 0<=y<30and 0<=d<30and b[y][d]!=f and(y,d)not in t:t.add((y,d));q.append((y,d))
+    n.append(m)
+ t=min((y for y in n if len(y)>1),key=len);y,d=zip(*t);e,x=(min(y)+max(y))//2,(min(d)+max(d))//2;U=b[e][x];s={(y-e,d-x):b[y][d]for(y,d)in t};g=set(t);e=[(y,d)for y in h(30)for d in h(30)if b[y][d]==U and(y,d)not in g]
+ for(y,d)in e:
+  for((l,z),o)in s.items():
+   if(l==0 or z==0)and(l*2,z*2)in s:
+    for m in h(1,30):
+     e,m=y+l*m,d+z*m
+     if not(0<=e<30and 0<=m<30and c[e][m]!=f):break
+     c[e][m]=o
+   else:
+    e,m=y+l,d+z
+    if 0<=e<30and 0<=m<30and c[e][m]!=f:c[e][m]=o
+ for(e,m)in t:c[e][m]=f
+ return c

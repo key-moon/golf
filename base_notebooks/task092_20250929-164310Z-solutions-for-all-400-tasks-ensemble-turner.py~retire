@@ -1,0 +1,17 @@
+def p(g,o=len,R=range):
+ t=None;H,t=o(g),o(g[0]);e=[s[:]for s in g]
+ for s in R(H):
+  S=D=t
+  for i in R(t):
+   if g[s][i]:
+    if S is not t and g[s][i]==D:
+     for o in R(S+1,i):e[s][o]=D
+    S=i;D=g[s][i]
+ for i in R(t):
+  S=D=t
+  for s in R(H):
+   if g[s][i]:
+    if S is not t and g[s][i]==D:
+     for o in R(S+1,s):e[o][i]=D
+    S=s;D=g[s][i]
+ return e

@@ -1,0 +1,1 @@
+def p(x):i=sum(x,[]);r=max([i.count(u)for u in set(i)if u>0]);u=sum(map(list,zip(*x[::-1])),[]);u=[i for(r,i)in enumerate(u)if u.index(i)==r];x=[[u for u in u if i.count(u)==r]]*r;return x

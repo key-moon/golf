@@ -1,0 +1,1 @@
+a=enumerate;p=lambda g:[l[t:E+1]for(e,t)in[next((e,a.index(5))for(e,a)in a(g)if 5in a)]for(s,E)in[next((~e+len(g),~a[::-1].index(5)+len(a))for(e,a)in a(g[::-1])if 5in a)]for l in g[max(0,e-1):s+2]]

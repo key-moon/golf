@@ -1,0 +1,11 @@
+def p(g,E=len,a=range):
+ e,n=E(g),E(g[0])
+ for l in a(4):
+  for o in a(4):
+   if g[l][o]==0:
+    if g[l][o+5]>0:g[l][o]=g[l][o+5]
+   if g[l][o]==0:
+    if g[l+5][o]>0:g[l][o]=g[l+5][o]
+   if g[l][o]==0:
+    if g[l+5][o+5]>0:g[l][o]=g[l+5][o+5]
+ return[l[:4]for l in g[:4]]

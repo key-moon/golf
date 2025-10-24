@@ -1,0 +1,9 @@
+def p(e):
+ l=len(e)-1;s=[0]*16
+ for C in range(l):
+  for D in range(l):
+   if(n:=e[C][D])and e[C+1][D]==n and e[C][D+1]==n:s[0]=s[4]=s[1]=n
+   if n and e[C+1][D]==n and e[C+1][D+1]==n:s[8]=s[12]=s[13]=n
+   if n and e[C][D+1]==n and e[C+1][D+1]==n:s[2]=s[3]=s[7]=n
+   if(n:=e[C+1][D+1])and e[C+1][D]==n and e[C][D+1]==n:s[11]=s[14]=s[15]=n
+ return[s[n:n+4]for n in(0,4,8,12)]

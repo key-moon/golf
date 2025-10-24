@@ -1,0 +1,8 @@
+def p(i):
+ o=range;n=[e[:]for e in i];e=[(e,n)for e in o(len(i))for n in o(len(i[0]))if i[e][n]==8]
+ if e:
+  s,G=min(e for(e,o)in e),max(e for(e,o)in e);I,e=min(e for(o,e)in e),max(e for(o,e)in e)
+  for s in o(s,G+1):
+   for e in o(I,e+1):
+    if i[s][e]==1:n[s][e]=3
+ return n

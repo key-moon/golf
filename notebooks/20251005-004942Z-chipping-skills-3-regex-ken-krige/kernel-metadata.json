@@ -1,0 +1,21 @@
+{
+  "id": "kenkrige/chipping-skills-3-regex",
+  "id_no": 93912591,
+  "title": "Chipping skills 3: Regex",
+  "code_file": "chipping-skills-3-regex.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    ""
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

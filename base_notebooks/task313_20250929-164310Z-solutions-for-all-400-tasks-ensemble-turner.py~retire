@@ -1,0 +1,5 @@
+def p(g,r=range,l=len):
+ a=l(g);C=l(set(g[0]))-1;e=l({h[0]for h in g})-1
+ for h in g:h[:]=(h[:C]*((l(h)-1)//C+1))[:l(h)]
+ for D in r(a):g[D]=[g[D%e][h]for h in r(a)]
+ return[[dict(zip(g[0],g[0][1:]))[h]for h in h]for h in g]

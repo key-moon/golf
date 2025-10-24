@@ -1,0 +1,16 @@
+def p(i):
+ A=range;o=len(i);H=[[0]*o for i in A(o)];l,i=0,0;a=[(0,1),(1,0),(0,-1),(-1,0)]
+ for h in A(o):
+  H[l][i]=3
+  if h<o-1:i+=1
+ o=o-1;D=1
+ while o>0:
+  for h in A(2):
+   if o>0:
+    l,i=l+a[D][0],i+a[D][1]
+    for h in A(o):
+     H[l][i]=3
+     if h<o-1:l,i=l+a[D][0],i+a[D][1]
+    D=(D+1)%4
+  o-=2
+ return H

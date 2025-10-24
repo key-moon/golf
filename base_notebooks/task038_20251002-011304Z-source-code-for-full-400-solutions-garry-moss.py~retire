@@ -1,0 +1,1 @@
+r=range(8);p=lambda g:[([1]*sum(g[i][j]*g[i+1][j]*g[i][j+1]*g[i+1][j+1]&1for j in r for i in r)+[0]*5)[:5]]

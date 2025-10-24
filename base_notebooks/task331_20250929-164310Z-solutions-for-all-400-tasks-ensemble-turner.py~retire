@@ -1,0 +1,12 @@
+def p(j,a=enumerate):
+ l=[]
+ for(e,s)in a(j):
+  for(T,r)in a(s):
+   if j[e][T]==1:l+=[[e,T]]
+ for a in l:
+  h,e=a
+  if h>0:j[h-1][e]=2
+  if h<9:j[h+1][e]=8
+  if e>0:j[h][e-1]=7
+  if e<9:j[h][e+1]=6
+ return j

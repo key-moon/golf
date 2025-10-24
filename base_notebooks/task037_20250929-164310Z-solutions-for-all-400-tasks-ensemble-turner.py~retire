@@ -1,0 +1,10 @@
+def p(e,A=range):
+ a,a=len(e),len(e[0]);C,e={},[A[:]for A in e]
+ for n in A(a):
+  for G in A(a):
+   B=e[n][G]
+   if B:C.setdefault(B,[]).append((n,G))
+ for B in C:
+  (D,t),(I,M)=C[B];a=1 if I>D else-1;O=1 if M>t else-1
+  for T in A(abs(I-D)+1):e[D+T*a][t+T*O]=B
+ return e

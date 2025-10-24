@@ -1,0 +1,22 @@
+def p(g,f=range):
+ H=None;I,J=len(g),len(g[0]);from collections import Counter as t,deque;M=t(B for A in g for B in A).most_common(1)[0][0];K=[[False]*J for A in f(I)];N=[]
+ for A in f(I):
+  for B in f(J):
+   if g[A][B]==M or K[A][B]:continue
+   L=deque([(A,B)]);K[A][B]=True;C=[]
+   while L:
+    O,P=L.popleft();C.append((O,P))
+    for(W,s)in((1,0),(-1,0),(0,1),(0,-1)):
+     E,F=O+W,P+s
+     if 0<=E<I and 0<=F<J and not K[E][F]and g[E][F]!=M:K[E][F]=True;L.append((E,F))
+   N.append(C)
+ D=H;G=H
+ for C in N:
+  if any(g[A][B]==5for(A,B)in C):D=C
+  else:G=C
+ if D is H or G is H:return[A[:]for A in g]
+ l=min(A for(A,B)in D);R=min(A for(B,A)in D);Y=max(A for(A,B)in D);R=max(A for(B,A)in D);a=l+(Y-l)//2;b=R+(R-R)//2;c=min(A for(A,B)in G);d=min(A for(B,A)in G);i=[A[:]for A in g]
+ for(A,B)in G:
+  T=A-c+a-1;o=B-d+b-1
+  if 0<=T<I and 0<=o<J:i[T][o]=g[A][B]
+ return i

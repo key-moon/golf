@@ -1,0 +1,64 @@
+def p(g):
+ if not g or not g[0]:return[A[:]for A in g]
+ l=[A[:]for A in g];I,J=len(l),len(l[0]);from collections import Counter as Y
+ def P(grid):A=Y(l for A in grid for l in A);return max(A,key=lambda r:A[r])
+ def Z(i,h):
+  for A in(-1,0,1):
+   for l in(-1,0,1):
+    if A==0and l==0:continue
+    C,D=i+A,h+l
+    if 0<=C<I and 0<=D<J:yield(C,D)
+ def C(grid):
+  A=grid;N=P(A);J,K=len(A),len(A[0]);D,L=set(),[]
+  for t in range(J):
+   for F in range(K):
+    if(t,F)in D:continue
+    e=A[t][F]
+    if e==N:continue
+    H,I=set(),{(t,F)}
+    while I:
+     M=set()
+     for(l,C)in I:
+      if(l,C)in D:continue
+      O=A[l][C]
+      if O==e:H.add((l,C));D.add((l,C));[M.add((A,l))for(A,l)in Z(l,C)if 0<=A<J and 0<=l<K]
+     I=M-D
+    if H:L.append((e,tuple(sorted(H))))
+  return L
+ def D(pts):return min(A for(A,l)in pts)
+ def K(pts):return min(A for(A,l)in pts),min(A for(l,A)in pts)
+ def q(cp):l,A=cp;C,D=K(A);return l,tuple(sorted((A-C,l-D)for(A,l)in A))
+ def Q(cp,h):A,l=cp;C,D=h;return A,tuple(sorted((A+C,l+D)for(A,l)in l))
+ R=P(l);a=C(l);S={}
+ for(L,A)in a:S[A]=L
+ T=[(l,A)for(A,l)in S.items()]
+ if not T:return[A[:]for A in l]
+ t=sorted(T,key=lambda cp:(D(cp[1]),K(cp[1])[1]));M=D(t[0][1]);F=M
+ for U in range(M+1,I):
+  if any(l[U][A]!=R for A in range(J)):F=U
+  elif F>=M:break
+ e,N=set(),t[0][0]
+ for(L,A)in t:
+  if D(A)<=F:e.update(A)
+  else:break
+ b=min(A for(A,l)in e);c=min(A for(l,A)in e);d=tuple(sorted((A-b,l-c)for(A,l)in e));e=N,d
+ def f(I):
+  l=None;e,A,C=[],l,-1
+  for(J,t)in I:
+   H=D(t)
+   if H<=F:continue
+   I=max(A for(A,l)in t)
+   if A is l or H>C+1:
+    if A is not l:e.append((N,tuple(sorted(A))))
+    A=set(t);C=I
+   else:A.update(t);C=max(C,I)
+  if A is not l:e.append((N,tuple(sorted(A))))
+  return e
+ t=f(t);i=[(0,2),(0,1),(0,0),(0,-1),(0,-2),(-1,0)];V=[]
+ for(L,A)in t:h=K(A);r=Q(e,h);a=[set(Q(r,A)[1])for A in i];W=set(A);m=[(A,len(A&W),min(A for(A,l)in A)if A else N('inf'))for A in a];D=max(m,key=lambda x:(x[1],-x[2]));n=max(A for(l,A)in A);V.append((D[0]if D[1]>0else W,n))
+ C=[A[:]for A in l]
+ for(d,p)in V:
+  for(O,H)in d:
+   if H<=p:continue
+   if 0<=O<I and 0<=H<J and C[O][H]==R:C[O][H]=1
+ return C

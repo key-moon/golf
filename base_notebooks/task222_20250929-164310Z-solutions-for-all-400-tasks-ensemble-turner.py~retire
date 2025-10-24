@@ -1,0 +1,2 @@
+s=enumerate
+def p(n):n=[[h if(o and n[o-1][I]==h)+(o+1<len(n)and n[o+1][I]==h)+(I and r[I-1]==h)+(I+1<len(n)and r[I+1]==h)>1else 0for I,h in s(r)]for o,r in s(n)];R=sum(n,[]);R=sorted([[R.count(r),r]for r in set(R)if r>0]);n=[[0if r!=R[-1][1]else r for r in r]for r in n];return n

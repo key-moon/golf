@@ -1,0 +1,11 @@
+r=range
+l=len
+def p(O):
+ C,D=l(O),l(O[0])
+ for B in r(C-2):
+  for H in r(D-2):
+   if O[B][H]==1and sum(O[B][H:H+3]+O[B+1][H:H+3]+O[B+2][H:H+3])==8:
+    for t in r(3):
+     for s in r(3):O[B+t][H+s]=2
+     O[B][H]=0;O[B][H+2]=0;O[B+2][H]=0;O[B+2][H+2]=0
+ return O

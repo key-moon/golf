@@ -1,0 +1,62 @@
+import copy
+E=enumerate
+A=range
+r=sorted
+f=None
+G,R,B=3,2,0
+d=copy.deepcopy
+def ib(x,r,c):return 0<=r<len(x)and 0<=c<len(x[0])
+def n(r,c):return[(r+1,c),(r-1,c),(r,c+1),(r,c-1)]
+def ad(a,b):return a[0]+b[0],a[1]+b[1]
+def sb(a,b):return a[0]-b[0],a[1]-b[1]
+def nm(d):return tuple(map(lambda x:(x>0)-(x<0),d))
+def rl(d):return-d[1],d[0]
+def rr(d):return d[1],-d[0]
+def m(a,b):return abs(a[0]-b[0])+abs(a[1]-b[1])
+def fp(x,v):return[(A,u)for(A,B)in E(x)for(u,D)in E(B)if D==v]
+def g(ps):
+ A,E=set(ps),[]
+ while A:
+  F=A.pop();D=[F];G=[F]
+  while D:
+   O,I=D.pop()
+   for(B,u)in n(O,I):
+    if(B,u)in A:A.remove((B,u));D.append((B,u));G.append((B,u))
+  E.append(G)
+ return E
+def s(t,l):return min(m(l,A)for A in t)if t else 1e9
+def l(v):return v in(B,G)
+def rs(x,i,f,rs):
+ j,r=len(x),len(x[0]);u=d(x);T=set();J=0;A=i;F=s(rs,A);b=F;p=0
+ while J<j*r*10:
+  J+=1;D=ad(A,f)
+  if ib(x,*D)and u[D[0]][D[1]]==R:break
+  if not ib(x,*D)or not l(u[D[0]][D[1]]):
+   p+=1;h,e=rl(f),rr(f);O=[]
+   for f in(h,e):
+    E=ad(A,f)
+    if ib(x,*E)and l(u[E[0]][E[1]]):O.append((s(rs,E),f,E))
+   if O:O.sort(key=lambda x:(x[0],0if x[1]==h else 1));o,f,A=O[0]
+   else:
+    i=-f[0],-f[1];I=ad(A,i)
+    if ib(x,*I)and l(u[I[0]][I[1]]):f,A=i,I
+  else:A=D
+  if u[A[0]][A[1]]==B:u[A[0]][A[1]]=G
+  V=A,f;T.add(V);n=s(rs,A);F=min(F,n);b=n
+ return u,J,F,b,p
+def ds(x):B,O=fp(x,R),fp(x,G);A=min(g(O),key=lambda x:(len(x),s(B,(round(sum(A for(A,B)in x)/len(x)),round(sum(A for(B,A)in x)/len(x))))));I=set(A);u=next((((A,B),(u,D))for(A,B)in A for(u,D)in n(A,B)if(u,D)in I),f);u=u or max(((B,u)for B in A for u in A),key=lambda x:m(*x));E,F=u;D=nm(sb(F,E));J=[rs(x,F,D,B),rs(x,E,(-D[0],-D[1]),B)];return r(J,key=lambda x:(x[3],x[4],x[2],x[1]))[0][0]
+def br(x):
+ j,T=fp(x,R),fp(x,G);o=lambda ps:r(ps)[0][1]==r(ps)[1][1]and abs(r(ps)[0][0]-r(ps)[1][0])==1;(I,F),(J,e)=r(T);(b,O),(p,e)=r(j)
+ if{I,J}!={b,p}:return
+ h,i=r([F,O]);E=f
+ for u in A(min(I,b)+1):
+  if all(x[u][A]in(B,G,R)for A in A(h,i+1)):E=u;break
+ if E in(f,0):return
+ D=d(x);V=max(J,p)
+ for u in A(E,V+1):
+  if D[u][F]==B:D[u][F]=G
+  if D[u][O]==B:D[u][O]=G
+ for n in A(h,i+1):
+  if D[E][n]==B:D[E][n]=G
+ return D
+def p(x):return br(x)or ds(x)

@@ -1,0 +1,12 @@
+def p(g,O=enumerate,R=range,L=len):
+ r,d=L(g),L(g[0]);t={A:{0:[],1:[]}for A in set(sum(g,[]))}
+ for(i,N)in O(g):
+  for(o,A)in O(N):t[A][0]+=[i];t[A][1]+=[o]
+ del t[0];A=sorted([[len(t[A][1])-max(t[A][0])/100,A]for A in t])[0][1];g=[[i if i==A else 0for i in i]for i in g]
+ for i in R(r):
+  if g[i][0]==A or g[i][-1]==A:
+   for o in R(d):g[i][o]=A
+ for o in R(d):
+  if g[0][o]==A or g[-1][o]==A:
+   for i in R(r):g[i][o]=A
+ return g

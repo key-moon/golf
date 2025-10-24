@@ -1,0 +1,9 @@
+def p(l,p=enumerate):
+ def f():
+  a=[d for d,t in p(l)if len({*t})>2]
+  for d in a[1:-1]:
+   i=set()
+   for u,t in p(l[d]):
+    if t:i.add(t)
+    if t<1&len(i)==1:l[d][u]=8
+ f();l=[*map(list,zip(*l[::-1]))];f();l=[*zip(*l)][::-1];return l

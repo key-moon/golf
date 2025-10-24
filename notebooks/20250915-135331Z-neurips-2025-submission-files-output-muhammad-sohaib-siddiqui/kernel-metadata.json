@@ -1,0 +1,21 @@
+{
+  "id": "msohaibsiddiqui/neurips-2025-submission-files-output",
+  "id_no": 92149666,
+  "title": "NeurIPS 2025 - Submission Files (Output)",
+  "code_file": "neurips-2025-submission-files-output.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    ""
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

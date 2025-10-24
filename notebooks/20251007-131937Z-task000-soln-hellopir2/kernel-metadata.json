@@ -1,0 +1,19 @@
+{
+  "id": "hellopir2/task000-soln",
+  "id_no": 94179962,
+  "title": "task000 soln",
+  "code_file": "task000-soln.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

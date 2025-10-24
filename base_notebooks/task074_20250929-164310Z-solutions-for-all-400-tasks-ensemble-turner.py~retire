@@ -1,0 +1,15 @@
+def p(g,e=enumerate,s=range):
+ i=min(len(g),len(g[0]))if g and g[0]else 0
+ def r(D):
+  if i<=2:return tuple(tuple(0 if i==9 else i for i in i)for i in D)
+  l=[[0 if i==9 else i for i in i]for i in D];h=list(map(list,zip(*l)));D=[[max(l[D][i],h[D][i])for i in s(i)]for D in s(i)];E=[l[2:i][::-1]for l in D[1:i]];r=[i[:]for i in D]
+  for(a,l)in e(E,1):
+   for(K,h)in e(l,2):
+    if h:r[a][K]=h
+  return tuple(map(tuple,r))
+ l=tuple(tuple(i)for i in g)
+ for h in s(256):
+  D=r(l)
+  if D==l:break
+  l=D
+ return[list(i)for i in l]

@@ -1,0 +1,11 @@
+E=enumerate
+R=range
+def p(a):
+ D=[n[:]for n in a];e=[[n for(n,e)in E(n)if e==4]for n in a]
+ for(F,G)in E(e):
+  for(I,n)in E(G):
+   for e in G[I+1:]:
+    for h in R(F+1,len(a)):
+     if a[h][n]==4and a[h][e]==4:
+      for o in R(F+1,h):D[o][n+1:e]=[2]*(e-n-1)
+ return D

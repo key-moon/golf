@@ -1,0 +1,22 @@
+def r(n):
+ l={}
+ for d in n:
+  for n in d:l[n]=l.get(n,0)+1
+ return max(l,key=l.get)
+def p(n):
+ t,j=len(n),len(n[0]);c=r(n);d={}
+ for a in range(t):
+  for s in range(j):
+   l=n[a][s]
+   if l==c:continue
+   d.setdefault(l,[]).append((a,s))
+ if not d:return n
+ t={}
+ for(l,n)in d.items():a=[l[0]for l in n];p=[l[1]for l in n];i=max(a)-min(a)+1;o=max(p)-min(p)+1;t[l]=i,o
+ j=max(l for(l,n)in t.values());f=max(l for(n,l)in t.values());u=[[c]*f for l in range(j)]
+ for(l,n)in d.items():
+  a=[l[0]for l in n];p=[l[1]for l in n];x,e=min(a),min(p);i,o=t[l];p=(j-i)//2;c=(f-o)//2
+  for(a,s)in n:
+   k=a-x+p;n=s-e+c
+   if 0<=k<j and 0<=n<f:u[k][n]=l
+ return u

@@ -1,0 +1,26 @@
+def p(g,f=range):
+ T=None;L=False;Q,o=len(g),len(g[0]);from collections import Counter as E;T=E(B for A in g for B in A);A=min(T,key=T.get);n=[(B,C)for B in f(Q)for C in f(o)if g[B][C]==A]
+ if not n:return[A[:]for A in g]
+ T=min(A for(A,B)in n);s=min(A for(B,A)in n);M=max(A for(A,B)in n);S=max(A for(B,A)in n);D=M-T+1;e=S-s+1;N=max(1,D-2);n=max(1,e-2)
+ def T(i,j):
+  for B in f(j,j+e):
+   if g[i][B]!=A or g[i+D-1][B]!=A:return L
+  for C in f(i,i+D):
+   if g[C][j]!=A or g[C][j+e-1]!=A:return L
+  return True
+ i=T
+ for B in f(Q-(N+2)+1):
+  for C in f(o-(n+2)+1):
+   d=True
+   for s in f(B+1,B+N+1):
+    M=g[s]
+    for S in f(C+1,C+n+1):
+     if M[S]!=0:d=L;break
+    if not d:break
+   if d:
+    if i is T or T(*i)and not T(B,C):i=B,C
+ if i is T:return[A[:]for A in g]
+ B,C=i;D=N+2;e=n+2;o=[A[:]for A in g]
+ for S in f(C,C+e):o[B][S]=A;o[B+D-1][S]=A
+ for s in f(B,B+D):o[s][C]=A;o[s][C+e-1]=A
+ return o

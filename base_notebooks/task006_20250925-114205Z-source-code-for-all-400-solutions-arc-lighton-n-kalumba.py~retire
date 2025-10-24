@@ -1,0 +1,1 @@
+p = lambda j: [[2*(x*y)for x,y in zip(r,r[4:])]for r in j[:3]]

@@ -1,0 +1,8 @@
+def p(N,t=range):
+ B=len(N);E=[[0for t in t(B)]for n in t(B)]
+ for n in t(B):
+  for i in t(B):
+   if N[n][i]==5:
+    for F in t(max(0,n-1),min(B,n+2)):
+     for e in t(max(0,i-1),min(B,i+2)):E[F][e]=1
+ return E

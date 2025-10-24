@@ -1,0 +1,8 @@
+def p(g,f=range):
+ if g[17][1]|g[17][17]:g.reverse()
+ if g[1][17]:[A.reverse()for A in g]
+ d=[[g[A][d]|g[~A][d]|g[A][~d]|g[~A][~d]for d in f(19)]for A in f(19)]
+ for A in(1,3,5):
+  if(D:=g[A][A+2]):
+   for C in f(A+2,18-A,2):d[C][A]=d[C][~A]=d[A][C]=d[~A][C]=D
+ return d

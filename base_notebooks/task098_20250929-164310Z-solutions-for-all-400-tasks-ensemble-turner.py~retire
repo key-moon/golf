@@ -1,0 +1,1 @@
+p=lambda e:[[a if any(e[r+a][n+D]==0for(a,D)in[(0,1),(1,0),(0,-1),(-1,0)]if 0<=r+a<len(e)and 0<=n+D<len(e[0]))and a!=0else 0for(n,a)in enumerate(n)]for(r,n)in enumerate(e)]

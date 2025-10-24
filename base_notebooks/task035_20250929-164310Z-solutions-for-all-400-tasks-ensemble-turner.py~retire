@@ -1,0 +1,15 @@
+L=len
+o=range
+r=[[0,1],[0,-1],[1,0],[-1,0]]
+def p(s):
+ t,h=L(s),L(s[0])
+ for A in o(t):
+  for I in o(h):
+   if s[A][I]==8:
+    for(d,E)in r:
+     if s[A+d][I+E]==0:
+      for C in o(20):
+       if 0<=A+d*C<t and 0<=I+E*C<h:
+        H=s[A+d*C][I+E*C]
+        if H>0:s[A][I]=H
+ return s

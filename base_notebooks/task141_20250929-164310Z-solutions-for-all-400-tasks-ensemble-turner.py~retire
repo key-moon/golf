@@ -1,0 +1,10 @@
+def p(h):
+ F=[A[:]for A in h];o,t=len(h),len(h[0])
+ for B in range(o):
+  for C in range(t):
+   if h[B][C]:
+    I=h[B][C]
+    for A in[(-1,-1),(-1,1),(1,1),(1,-1)]:
+     R,E=B+A[0],C+A[1]
+     while 0<=R<o and 0<=E<t:F[R][E]=I;R+=A[0];E+=A[1]
+ return F

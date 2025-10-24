@@ -1,0 +1,23 @@
+{
+  "id": "gothamjocker/from-short-to-long-using-ai-approach-better",
+  "id_no": 94857595,
+  "title": "From Short to Long: Using AI approach better",
+  "code_file": "from-short-to-long-using-ai-approach-better.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    ""
+  ],
+  "kernel_sources": [
+    "gothamjocker/gcgc-playground-v4"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

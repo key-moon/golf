@@ -1,0 +1,6 @@
+def p(e):
+ x=range;e=[t[:]for t in e];n=e[0][0]==e[0][9];r,q=(e[0][0],e[9][0])if n else(e[0][0],e[0][9]);p=next(t for f in e for t in f if t and t not in[r,q])
+ for t in x(10):
+  for f in x(10):
+   if e[t][f]==p:c=(t,9-t)if n else(f,9-f);e[t][f]=r if c[0]<c[1]else q
+ return e

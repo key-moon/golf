@@ -1,0 +1,7 @@
+h=range
+s=len
+def p(g):
+ n,l=s(g),s(g[0]);L=[[0]*3for L in h(3)];i=min([L for L in h(n)if g[L].count(5)>0]);e=min([L.index(5)for L in g if L.count(5)>0]);g=[L[e:e+9]for L in g[i:i+9]]
+ for e in h(0,9,3):
+  for d in h(0,9,3):L[e//3][d//3]=g[e][d]
+ g=[[L[i//3][e//3]and L[i%3][e%3]for e in h(9)]for i in h(9)];return g

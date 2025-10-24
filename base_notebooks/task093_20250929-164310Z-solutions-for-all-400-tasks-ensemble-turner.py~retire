@@ -1,0 +1,7 @@
+def p(n):
+ o=0
+ if n[0].count(5)==0:n=list(map(list,zip(*n[::-1])));o=3
+ C=n[0].count(5);r=[e[:]for e in n];n=[[5if e==5else 0for e in e]for e in n];B=n[0].index(5)
+ for e in range(len(n)):d=sum([1for e in r[e][:B]if e>0]);a=sum([1for e in r[e][B+C:]if e>0]);n[e]=n[e][:B-d]+[5]*(C+d+a)+n[e][B+C+a:]
+ for r in range(o):n=list(map(list,zip(*n[::-1])))
+ return n

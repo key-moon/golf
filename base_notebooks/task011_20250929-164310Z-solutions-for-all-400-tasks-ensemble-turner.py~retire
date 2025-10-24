@@ -1,0 +1,1 @@
+p=lambda a,d=range:(lambda c,e:[[5if x%4>2or y%4>2else a[c*4+x//4][e*4+y//4]for y in d(11)]for x in d(11)])(*next((c,e)for c in d(3)for e in d(3)if sum(a[c*4+w][e*4+h]<1for w in d(3)for h in d(3))==5))

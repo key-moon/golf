@@ -1,0 +1,21 @@
+{
+  "id": "tonylica/fun-shocking-1-code-2-tasks-3-top-score",
+  "id_no": 95665487,
+  "title": "Fun & Shocking: 1 Code \u2192 2 Tasks \u2192 3 Top score",
+  "code_file": "fun-shocking-1-code-2-tasks-3-top-score.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "tonylica/google-code-golf-2025-submit"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

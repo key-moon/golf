@@ -1,0 +1,16 @@
+def p(a):
+ d=None;F=range;t=lambda g:[list(A)for A in zip(*g)];B=a;L=0
+ if not any(all(A==8for A in A)for A in a):B,L=t(a),1
+ I,M=len(B),len(B[0]);e=[A[:]for A in B];N=[A for A in F(I)if all(A==8for A in B[A])]
+ for S in F(I):
+  for s in F(M):
+   if B[S][s]!=2:continue
+   for A in(max([A for A in N if A<S],default=d),min([A for A in N if A>S],default=d)):
+    if A is d:continue
+    for a in(A-1,A,A+1):
+     if 0<=a<I:
+      for l in(s-1,s,s+1):
+       if 0<=l<M:e[a][l]=2if a==A and l==s else 8
+    o=1-2*(A<S)
+    for a in F(S,A-o,o):e[a][s]=2
+ return t(e)if L else e

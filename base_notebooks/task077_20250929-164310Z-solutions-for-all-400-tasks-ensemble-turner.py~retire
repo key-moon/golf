@@ -1,0 +1,38 @@
+def p(g,f=range):
+ N=[A[:]for A in g];A,J=len(N),len(N[0]);B=[]
+ for W in N:
+  J=[]
+  for X in W:J+=[X]*2
+  B.extend([J[:],J[:]])
+ K,L=len(B),len(B[0]);N=[[False]*L for A in f(K)];D=[]
+ for C in f(K):
+  for A in f(L):
+   if B[C][A]!=2or N[C][A]:continue
+   O=[(C,A)];N[C][A]=True;H=[]
+   while O:
+    E,Q=O.pop();H.append((E,Q))
+    for R in(-1,0,1):
+     for S in(-1,0,1):
+      if R==S==0:continue
+      F,G=E+R,Q+S
+      if 0<=F<K and 0<=G<L and not N[F][G]and B[F][G]==2:N[F][G]=True;O.append((F,G))
+   D.append(H)
+ Y={(A,C)for A in f(K)for C in f(L)if B[A][C]==2}
+ def T(D,q,u,d):
+  for A in f(D,u+1):
+   for C in f(q,d+1):B[A][C]=4
+ for E in D:H=[A for(A,B)in E];I=[A for(B,A)in E];T(min(H),min(I),max(H),max(I))
+ def Z(A,B):
+  C=10**9
+  for(E,F)in A:
+   for(G,H)in B:
+    D=abs(E-G)+abs(F-H)
+    if D<C:C=D
+    if C==0:return 0
+  return C
+ e=len(D)
+ for C in f(e):
+  for A in f(e):
+   if Z(D[C],D[A])<5:V=D[C]+D[A];H=[A for(A,B)in V];I=[A for(B,A)in V];T(min(H),min(I),max(H),max(I))
+ for(C,A)in Y:B[C][A]=2
+ return[A[::2]for A in B[::2]]

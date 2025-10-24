@@ -1,0 +1,15 @@
+def p(x,e=range):
+ from collections import Counter as j,deque;o,h=len(x),len(x[0]);p=j(sum(x,[])).most_common()[0][0];n=[[0]*h for k in e(o)];i=[]
+ for k in e(o):
+  for l in e(h):
+   if n[k][l]or x[k][l]==p:continue
+   t=x[k][l];s=deque([(k,l)]);n[k][l]=1;r=[(k,l)]
+   while s:
+    y,m=s.popleft()
+    for(u,b)in[(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]:
+     if 0<=y+u<o and 0<=m+b<h and not n[y+u][m+b]and x[y+u][m+b]==t:n[y+u][m+b]=1;s.append((y+u,m+b));r.append((y+u,m+b))
+   c,c=[k for(k,l)in r],[k for(l,k)in r];i.append((t,r,(min(c),min(c),max(c),max(c))))
+ if not i:return x
+ i.sort(key=lambda n:len(n[1]),reverse=1);q=i[0];l=i[1:]
+ if not l:return x
+ r=j(k for(k,l,q)in l).most_common()[0][0];n={};[n.setdefault(k,[]).append(l)for(k,l)in q[1]];[k.sort()for k in n.values()];n={};[n.setdefault(m,[]).append(y)for(k,l,u)in l if k==r for(y,m)in l];[k.sort()for k in n.values()];u=[k for(k,l)in{k:[l for(l,y)in q[1]if y==k]for(l,k)in q[1]}.items()if k in n and n[k][-1]>=l[-1]and any(x[y][k]==p for y in e(l[0],o)if y not in l)];u and[x[l].__setitem__(k,r)for k in sorted(u)for l in e(min(l for(l,y)in q[1]if y==k),o)if l not in[l for(l,y)in q[1]if y==k]and x[l][k]==p];return x

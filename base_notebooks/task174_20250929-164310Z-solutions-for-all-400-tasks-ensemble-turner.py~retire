@@ -1,0 +1,9 @@
+def p(g):
+ r=len(g)
+ def e(i,H):
+  if r>i>=0<=H<r and g[i][H]==I and(i,H)not in L:L.add((i,H));[e(i+r,H+L)for r in(-1,0,1)for L in(-1,0,1)if r|L]
+ for i in range(r):
+  for a in range(r):
+   if(I:=g[i][a]):
+    L=set();e(i,a);L,H=zip(*L);J,l=min(L),max(L);L,M=min(H),max(H);C=[r[L:M+1]for r in g[J:l+1]]
+    if C==[r[::-1]for r in C]:return C

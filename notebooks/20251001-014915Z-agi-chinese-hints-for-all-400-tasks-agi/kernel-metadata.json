@@ -1,0 +1,19 @@
+{
+  "id": "boristown/agi-chinese-hints-for-all-400-tasks",
+  "id_no": 92510281,
+  "title": "\u3010\u6697\u9ed1AGI\u3011Chinese hints for all 400 tasks",
+  "code_file": "agi-chinese-hints-for-all-400-tasks.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

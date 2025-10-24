@@ -1,0 +1,10 @@
+d=lambda n:[[n[d][r]for d in range(len(n))]for r in range(len(n[0]))]
+def o(n,a,o):
+ if n[a][o]!=2or n[a][o+1]!=2:return
+ for r in range(max(0,a-1),min(len(n),a+2)):
+  for d in range(max(0,o-1),min(len(n[0]),o+3)):
+   if n[r][d]!=2:n[r][d]=3
+def f(n):
+ for r in range(len(n)):
+  for d in range(len(n[0])-1):o(n,r,d)
+def p(n):f(n);n=d(n);f(n);return d(n)

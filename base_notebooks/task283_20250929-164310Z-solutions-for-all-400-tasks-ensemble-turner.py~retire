@@ -1,0 +1,14 @@
+def a(j,D,n,e,r,k):
+ for B in range(n,r+1):
+  for C in range(D,e+1):j[B][C]=k
+def A(j,D,n,e,r):a(j,D,n,e,r,4);a(j,D+1,n+1,e-1,r-1,2);j[n][D]=j[n][e]=j[r][D]=j[r][e]=1
+def p(j):
+ l,C=len(j),len(j[0])
+ for O in range(l*C):
+  D,r=O%C,O//C
+  if j[r][D]==5:
+   n,B=D,r
+   while n<C-1and j[B][n+1]==5:n+=1
+   while B<l-1and j[B+1][n]==5:B+=1
+   A(j,D,r,n,B)
+ return j

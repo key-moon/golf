@@ -1,0 +1,8 @@
+def p(n):
+ a=[d[:]for d in n];D,E=len(n),len(n[0])
+ for d in range(D):
+  for i in range(E):
+   if n[d][i]==3:
+    for(r,G)in[(0,1),(1,0),(0,-1),(-1,0)]:
+     if 0<=d+r<D and 0<=i+G<E and n[d+r][i+G]==3:a[d][i]=8;break
+ return a

@@ -1,0 +1,22 @@
+def p(l):
+ q=len(l);j=[(d,m)for d in range(q)for m in range(q)if l[d][m]==0]
+ if not j:return[[]]
+ c,k=min(d for d,m in j),min(m for d,m in j);j,r=max(d for d,m in j)-c+1,max(m for d,m in j)-k+1
+ for o in range(2,5):
+  m,n=[],1
+  for d in range(o):
+   for i in range(o):
+    s=None
+    for d in range(d,q,o):
+     for i in range(i,q,o):
+      if l[d][i]!=0:
+       if s is None:s=l[d][i]
+       elif s!=l[d][i]:n=0;break
+     if not n:break
+    if not n or s is None:n=0;break
+    m.append(s)
+   if not n:break
+  if n and len(m)==o*o:
+   if all(l[d][i]==0 or l[d][i]==m[d%o*o+i%o]for d in range(q)for i in range(q)):
+    return[[m[(c+d)%o*o+(k+i)%o]for i in range(r)]for d in range(j)]
+ return[[]]

@@ -1,0 +1,16 @@
+L=len
+R=range
+B=[1,4,9,16,25,36,49,64,81]
+H=[-1,0,1]
+P=[[A,B]for A in H for B in H]
+o=[264,246,236,194,285,134,156,66,104]
+def p(g):
+ J,K=L(g),L(g[0]);A=[[0]*9for A in R(9)]
+ for C in R(1,J-1):
+  for D in R(1,K-1):
+   E=[g[C+A][D+B]for(A,B)in P];F=sum([B[A]for A in R(9)if E[A]==5])
+   if F in o and 0 not in E:
+    G=o.index(F)
+    for H in R(3):
+     for I in R(3):A[H+G//3*3][I+G%3*3]=g[C-1+H][D-1+I]
+ return A

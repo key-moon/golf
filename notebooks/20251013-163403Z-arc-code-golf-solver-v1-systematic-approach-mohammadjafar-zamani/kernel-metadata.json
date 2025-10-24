@@ -1,0 +1,24 @@
+{
+  "id": "mohammadjafarzamani/arc-code-golf-solver-v1-systematic-approach",
+  "id_no": 94817184,
+  "title": "ARC-Code-Golf-Solver-v1-Systematic-Approach",
+  "code_file": "arc-code-golf-solver-v1-systematic-approach.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "optimization",
+    "golf",
+    "multitask classification",
+    "programming"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,11 @@
+h=len
+l=range
+def p(g):
+ e=[[0,0,0]for n in l(3)];d,d=h(g),h(g[0])
+ for n in l(d):
+  for r in l(d):
+   if g[n][r]==5:
+    for A in l(-1,2):
+     for D in l(-1,2):
+      if n+A>=0and r+D>=0and g[n+A][r+D]!=0:e[1+A][1+D]=g[n+A][r+D]
+ return e

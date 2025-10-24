@@ -1,0 +1,12 @@
+def p(g,s=range):
+ if not g or not g[0]:return[list(A)for A in g]
+ A=tuple(tuple(A)for A in g);U,V=len(A),len(A[0]);F=lambda x:(min(A for(A,E)in x),min(A for(E,A)in x),max(A for(A,E)in x),max(A for(E,A)in x))if x else(0,0,0,0);J=lambda x:{(A-F(x)[0],E-F(x)[1])for(A,E)in x}if x else set();e=tuple(tuple(A[::-1])for A in A);from collections import Counter as A;K=max(A(sum(e,())).items(),key=lambda n:n[1])[0];A={};[A.setdefault(e[E][C],set()).add((E,C))for E in s(U)for C in s(V)if e[E][C]!=K]
+ if not A:return[list(A)for A in A]
+ C=max(A,key=lambda H:len(A[H]));H=J(A[C]);E=None
+ for(L,D)in A.items():
+  if L==C or len(D)==len(A[C]):continue
+  X=J(D);I={(2*A+C,2*E+D)for(A,E)in X for C in(0,1)for D in(0,1)}
+  if I and H:M,N,S,P=[A for(A,E)in I],[A for(E,A)in I],[A for(A,E)in H],[A for(E,A)in H];n=max(sum((C+A,D+E)in H for(C,D)in I)for A in s(min(S)-max(M),max(S)-min(M)+1)for E in s(min(P)-max(N),max(P)-min(N)+1))
+  else:n=0
+  O=n-2*len(D),len(D),F(D)[3],L;E=O if E is None or O>E else E
+ S=E[3]if E else(lambda A:max(A,key=lambda H:len(A[H]))if A else C)([A for A in A if A!=C]);Y,Z,A,b=F(A[S]);T=[list(e[A][Z:b+1])for A in s(Y,A+1)];[[A.__setitem__(E,K)for E in s(len(A))if A[E]!=S]for A in T];return[list(A[::-1])for A in T]

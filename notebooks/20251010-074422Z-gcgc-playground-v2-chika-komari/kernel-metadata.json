@@ -1,0 +1,25 @@
+{
+  "id": "gothamjocker/gcgc-playground-v2",
+  "id_no": 94367896,
+  "title": "GCGC playground v2",
+  "code_file": "gcgc-playground-v2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "jonathanchan/gcgc-playground",
+    "tonylica/4-way-task-178-layercake-why-70b-is-hard",
+    "tonylica/community-baselines-my-arc-10-pack-2-10",
+    "tonylica/400-task-with-smart-solution-search",
+    "tonylica/task-285-missinglegs-playground"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

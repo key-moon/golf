@@ -1,0 +1,13 @@
+def p(g):
+ a=range
+ for o in a(3):
+  for N in a(3):
+   n=[[g[4*o+i][4*N+a]for a in a(3)]for i in a(3)]
+   for E in a(3):
+    for F in a(3):
+     if n[E][F]==4:
+      i=[[0]*11for a in a(11)]
+      for r in a(3):
+       for H in a(3):i[4*E+r][4*F+H]=n[r][H]
+      for n in a(11):i[n][3]=i[n][7]=i[3][n]=i[7][n]=5
+      return i

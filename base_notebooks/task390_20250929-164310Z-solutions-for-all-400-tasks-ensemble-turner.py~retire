@@ -1,0 +1,30 @@
+def p(g,f=enumerate,a=range):
+ t=[t[:]for t in g];M=len(t);S=len(t[0]);s=[n for t in t for(n,C)in f(t)if C==2]
+ if not s:return t
+ O=min(s);F=max(s);s=[t for(t,n)in f(t)if 2in n];e=min(s);U=max(s);s=[t for(t,n)in f(t)if all(n[t]==2for t in a(O,F+1))];n=bool(s)
+ if n:
+  J=min(s);K=max(s)
+  for C in a(J+1,K):
+   s=[n for n in a(O+1,F)if t[C][n]==5]
+   if not s:continue
+   for n in s:t[C][n]=0
+   n=C-J;A=K-C
+   if n<=A:
+    G=J-n
+    if 0<=G<M:
+     for n in s:t[G][n]=5
+   else:
+    G=K+A
+    if 0<=G<M:
+     for n in s:t[G][n]=5
+ else:
+  for C in a(e,U+1):
+   s=[n for n in a(O+1,F)if t[C][n]==5]
+   if not s:continue
+   for n in s:
+    E=n-O;R=F-n
+    if E<=R:s=O-E
+    else:s=F+R
+    if 0<=s<S:t[C][s]=5
+    t[C][n]=0
+ return t

@@ -1,0 +1,21 @@
+{
+  "id": "jakupymeraj/gcgch-solution-6",
+  "id_no": 94683254,
+  "title": "GCGCh SOLUTION #6",
+  "code_file": "gcgch-solution-6.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "tonylica/google-code-golf-2025-submit"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

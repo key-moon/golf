@@ -1,0 +1,5 @@
+def p(d):
+ S=enumerate;E=next;T=lambda k,H:k<1or d[k-1][H]<1or k>2and d[k-1][H]==4and d[k-2][H]>0;(N,H),(I,t),(K,I),I=[divmod(S,13)for(S,N)in S(sum(d,[]))if N==4];i=E(N for S in zip(*d)if 4 not in S for N in S if N);L=E(N for(N,H)in S(d)if any(H==i and T(N,S)for(S,H)in S(H)));o=E(N for(N,H)in S(zip(*d))if any(H==i and T(S,N)for(S,H)in S(H)))
+ for S in range(K-N-1):
+  for e in range(t-H-1):d[N+S+1][[t-e-1,H+e+1][d[N+1][H]==i]],d[L+S][o+e]=d[L+S][o+e],0
+ return[S[H:t+1]for S in d[N:K+1]]

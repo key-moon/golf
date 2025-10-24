@@ -1,0 +1,24 @@
+def p(o,f=range):
+ E,C=len(o),len(o[0]);G=[H[:]for H in o];L=lambda l,L:l[::-1]if L>=2 else l;L=lambda l,L:[list(H)for H in zip(*L(l,L))]if L%2 else L(l,L);I=[(H,B)for H in f(E)for B in f(C)if o[H][B]==8]
+ if not I:return G
+ i,O=None,0
+ for K in[0,1,2,3]:
+  for d in[0,1]:
+   for L in f(1,min(E//2,C//2)):
+    for s in f(C):
+     H=[[0]*C for H in f(E)]
+     for D in f(L):
+      for B in f(C):H[D][B]=2
+     R=len(I)
+     for B in f(C):
+      D=L+abs(s-B)
+      if 0<=D<E:H[D][B]=8 if B<R else 3
+     if d:H=[H[::-1]for H in H]
+     H=H[::-1]if K>=2 else H;H=[list(H)for H in zip(*H)]if K%2 else H;M=sum(1for(B,C)in I if H[B][C]==8);N=[(H,B)for H in f(E)for B in f(C)if o[H][B]==2];S=sum(1for(B,C)in N if H[B][C]==2);M+=S/len(N)if N else 0
+     if M>O:O,i=M,(K,d,L,s,R,H)
+ if i:
+  R,R,R,R,R,H=i
+  for D in f(E):
+   for B in f(C):
+    if H[D][B]==3and o[D][B]==0:G[D][B]=3
+ return G

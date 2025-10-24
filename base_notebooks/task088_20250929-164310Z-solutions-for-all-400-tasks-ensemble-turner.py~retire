@@ -1,0 +1,13 @@
+from collections import*
+b=len
+i=range
+def p(d):
+ a=[i for i in d for i in i];k=Counter(a).most_common();k=[C for C in k if C[1]==4][0][0];r,p=b(d),b(d[0]);f=[]
+ for a in i(r):
+  for C in i(p):
+   if d[a][C]==k:f.append([a,C])
+ e=min([i[1]for i in f]);u=max([i[1]for i in f]);a=min([i[0]for i in f]);j=max([i[0]for i in f]);d=d[a+1:j];d=[i[e+1:u]for i in d];r,p=b(d),b(d[0])
+ for a in i(r):
+  for C in i(p):
+   if d[a][C]>0:d[a][C]=k
+ return d

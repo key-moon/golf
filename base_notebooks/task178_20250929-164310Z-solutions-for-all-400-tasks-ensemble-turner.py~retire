@@ -1,0 +1,9 @@
+def p(e):
+ C=range;E,d=len(e),len(e[0]);D=[]
+ for n in C(E):
+  if n==0 or e[n]!=e[n-1]:D.append([e[n][0]])
+ F=[];H=-1
+ for B in C(d):
+  if B==0 or any(e[n][B]!=e[n][B-1]for n in C(E)):F.append(e[0][B])
+ if len(D)>1:return D
+ else:return[F]

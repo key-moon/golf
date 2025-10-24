@@ -1,0 +1,9 @@
+def p(R):
+ n=next((e for e in R if 0 not in e),None)
+ if not n:return R
+ e=[];[e.append(H)for H in n if H not in e]
+ for(r,d)in enumerate(R):
+  if 0in d and any(d):
+   H=[];[H.append(e)for e in d if e not in H and e]
+   if len(e)==len(H):d=dict(zip(e,H));R[r]=[d[e]for e in n]
+ return R

@@ -1,0 +1,21 @@
+{
+  "id": "paritoshtripathi5/public-task-398-down-to-84-bytes",
+  "id_no": 96071131,
+  "title": "Public | Task \"398\" down to 84 bytes",
+  "code_file": "public-task-398-down-to-84-bytes.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "mcwema/r30-neurips-golf-lessons-learned"
+  ],
+  "competition_sources": [
+    "google-code-golf-2025"
+  ],
+  "model_sources": []
+}

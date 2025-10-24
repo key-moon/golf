@@ -1,0 +1,16 @@
+def p(g,o=len,s=range):
+ for A in s(o(g)):
+  for e in s(o(g[0])):
+   if g[A][e]==2:
+    if g[A+1].count(3)>1:
+     for o in s(3):
+      for D in s(3):
+       g[A+o][e+D+2]=g[A+o][e+D]
+       if g[A+o][e+D]==2and D<2:g[A+o][e+D]=0
+     return g
+    else:
+     for o in s(3):
+      for D in s(3):
+       g[A+o+2][e+D]=g[A+o][e+D]
+       if g[A+o][e+D]==2and o<2:g[A+o][e+D]=0
+     return g

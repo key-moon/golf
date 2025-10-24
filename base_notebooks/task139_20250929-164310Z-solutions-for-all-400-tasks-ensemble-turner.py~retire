@@ -1,0 +1,7 @@
+from itertools import product
+def p(n,a=range):
+ for(r,o)in product(a(len(n)-2),a(len(n[0])-2)):
+  e=a(r,r+3)
+  if not all(4in a for a in[n[r][o:o+3],n[r+2][o:o+3],[n[a][o]for a in e],[n[a][o+2]for a in e]]):continue
+  for(e,o)in product(e,a(o,o+3)):n[e][o]+=7*(n[e][o]==0)
+ return n

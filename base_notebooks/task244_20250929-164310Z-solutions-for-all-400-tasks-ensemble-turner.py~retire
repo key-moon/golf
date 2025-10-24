@@ -1,0 +1,1 @@
+def p(a,o=range):i,n=len(a),len(a[0]);r=[-1]+[r for r in o(i)if len({*a[r]})==1]+[i];r=[-1]+[r for r in o(n)if len({a[i][r]for i in o(i)})==1]+[n];r=[[a[i+1][r+1]for(r,n)in zip(r,r[1:])if r+1<n-1]for(i,n)in zip(r,r[1:])if i+1<n-1];return[r[::-1]for r in r]
