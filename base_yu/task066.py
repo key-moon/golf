@@ -1,4 +1,4 @@
-# best: 267(import itertools, jailctf merger) / others: 268(Code Golf International), 268(4atj sisyphus luke Seek mukundan), 275(ox jam), 288(MasukenSamba), 290(THUNDER THUNDER)
+# best: 266(import itertools) / others: 267(jailctf merger), 268(Code Golf International), 268(4atj sisyphus luke Seek mukundan), 275(ox jam), 284(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 def p(g):
  d=[1,0,-1,0,1]
  for k in range(16):

@@ -1,5 +1,5 @@
-# best: 161(Tony Li, Tony Li & Darren Amadeus Martin, biz) / others: 168(import itertools), 170(Code Golf International), 170(4atj sisyphus luke Seek mukundan), 170(jailctf merger), 171(Yuchen20)
-# ============================================================================= 161 =============================================================================
+# best: 143(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II) / others: 161(Tony Li), 161(Tony Li & Darren Amadeus Martin), 161(biz), 168(import itertools), 170(Code Golf International)
+# ==================================================================== 143 ====================================================================
 import re
 def p(g):
  c=len({*str(g)})-5

@@ -1,4 +1,4 @@
-# best: 50(jailctf merger) / others: 56(ox jam), 57(Code Golf International), 57(4atj sisyphus luke Seek mukundan), 59(MasukenSamba), 69(cubbus)
+# best: 50(jailctf merger) / others: 56(ox jam), 57(Code Golf International), 57(4atj sisyphus luke Seek mukundan), 59(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 59(MasukenSamba)
 # 94
 # lambda g,s=[]:[[1for r[~r.index(max(r))&1::2] in [len(r)//2*[0]]]for r in g if s==(s:=r)]and g
 # 92

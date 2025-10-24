@@ -1,4 +1,4 @@
-# best: 64(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 68(import itertools), 74(ox jam), 76(jacekw Potatoman nauti natte), 76(natte), 79(MasukenSamba)
+# best: 64(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 68(import itertools), 71(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 74(ox jam), 76(jacekw Potatoman nauti natte), 76(natte)
 # ============================= 64 =============================
 # lambda g:[[(a:=553**(99>v))%5]+[(a:=v*a%1662)%5for _ in g[0][1:]]for v in(35,1225,1260)] <= kasu
 p=lambda g:[(a:=v//237)and[6&(a:=v*a%1662)%5-7for _ in g[0]]for v in[8405,235057,254381]]

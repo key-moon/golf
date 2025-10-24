@@ -1,4 +1,4 @@
-# best: 240(jailctf merger) / others: 244(ox jam), 252(intgrah jimboko awu macaque sammyuri), 293(MasukenSamba), 304(Code Golf International), 304(4atj sisyphus luke Seek mukundan)
+# best: 240(jailctf merger) / others: 244(ox jam), 252(intgrah jimboko awu macaque sammyuri), 265(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 293(MasukenSamba), 304(Code Golf International)
 def p(g):
  c=max(sum(g,[]))
  for _ in range(4):

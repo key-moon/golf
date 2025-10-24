@@ -1,4 +1,4 @@
-# best: 42(jailctf merger) / others: 44(biz), 44(intgrah jimboko awu macaque sammyuri), 45(ox jam), 46(Code Golf International), 46(4atj sisyphus luke Seek mukundan)
+# best: 42(jailctf merger) / others: 44(biz), 44(intgrah jimboko awu macaque sammyuri), 45(ox jam), 46(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 46(Code Golf International)
 # ================== 42 ==================
 # p=lambda g:[[*map(max,zip(g[i%3+3],g[i%3+6]))]for i in range(len(g))]
 # p=lambda g:[[g[i%3+6],g[i%3+3]][any(g[i%3+3])]for i in range(len(g))]

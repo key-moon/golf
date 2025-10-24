@@ -1,4 +1,4 @@
-# best: 96(jailctf merger) / others: 97(Code Golf International), 97(4atj sisyphus luke Seek mukundan), 100(ox jam), 104(biz), 110(JRKX)
+# best: 96(jailctf merger) / others: 97(Code Golf International), 97(4atj sisyphus luke Seek mukundan), 100(ox jam), 104(biz), 109(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ============================================= 96 =============================================
 # def p(g):
 #  for w in range(6):

@@ -1,4 +1,4 @@
-# best: 62(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(JRKX), 63(jacekw Potatoman nauti), 63(kabutack)
+# best: 62(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 63(JRKX), 63(jacekw Potatoman nauti)
 # 79
 # p=lambda g,i=0:[[1for r[-i],g[-1][i]in[[2,4]]]for r in g[:-1]if(i:=i+1)]and g
 # 64

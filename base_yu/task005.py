@@ -1,4 +1,4 @@
-# best: 183(jailctf merger) / others: 206(Code Golf International), 206(4atj sisyphus luke Seek mukundan), 218(ox jam), 242(THUNDER THUNDER), 250(ShadowPrompt Labs)
+# best: 183(jailctf merger) / others: 206(Code Golf International), 206(4atj sisyphus luke Seek mukundan), 218(ox jam), 242(THUNDER THUNDER), 243(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 def p(g):
  c=max(u:=sum(g,[]),key=lambda c:(c>0,u.count(c),c%5))
  for _ in range(4):

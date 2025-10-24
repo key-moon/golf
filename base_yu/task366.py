@@ -1,4 +1,4 @@
-# best: 358(jailctf merger) / others: 365(ox jam), 371(Code Golf International), 371(4atj sisyphus luke Seek mukundan), 372(kambarakun), 374(open source)
+# best: 358(jailctf merger) / others: 365(ox jam), 371(Code Golf International), 371(4atj sisyphus luke Seek mukundan), 372(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 372(kambarakun)
 def p(g):
  *_,C,D,E=sorted({*sum(g,[])},key=sum(g,[]).count)
  for _ in range(4):

@@ -1,4 +1,4 @@
-# best: 50(jailctf merger) / others: 56(ox jam), 57(Code Golf International), 57(4atj sisyphus luke Seek mukundan), 59(MasukenSamba), 69(cubbus)
+# best: 50(jailctf merger) / others: 56(ox jam), 57(Code Golf International), 57(4atj sisyphus luke Seek mukundan), 59(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 59(MasukenSamba)
 # ====================== 50 ======================
 # 345678901234567890123456789012345678901234567890123456
 def p(g):

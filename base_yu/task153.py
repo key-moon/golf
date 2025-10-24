@@ -1,4 +1,4 @@
-# best: 133(jailctf merger) / others: 141(Code Golf International), 141(4atj sisyphus luke Seek mukundan), 153(ox jam), 162(import itertools), 165(MasukenSamba)
+# best: 133(jailctf merger) / others: 141(Code Golf International), 141(4atj sisyphus luke Seek mukundan), 153(ox jam), 162(import itertools), 165(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # =============================================================== 133 ===============================================================
 
 # p=lambda g,z=[0]*10:[u for I in range(6400)if all(sum(u:=[[[0,*[z,*g,z][I//640+u],0][I//64%10+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))][0]

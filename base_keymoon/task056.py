@@ -1,4 +1,4 @@
-# best: 40(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 41(MasukenSamba), 42(jacekw Potatoman nauti natte), 42(natte), 42(import itertools), 43(cubbus)
+# best: 40(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 41(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 41(MasukenSamba), 42(jacekw Potatoman nauti natte), 42(natte), 42(import itertools)
 # ================= 40 =================
 # 53
 # p=lambda g:[[hash((*((1>v)*2164 for v in g[0]),))%7]]

@@ -1,4 +1,4 @@
-# best: 104(intgrah jimboko awu macaque sammyuri) / others: 114(jailctf merger), 116(import itertools), 117(jacekw Potatoman nauti natte), 118(natte), 121(Code Golf International)
+# best: 104(intgrah jimboko awu macaque sammyuri) / others: 114(jailctf merger), 116(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 116(import itertools), 117(jacekw Potatoman nauti natte), 118(natte)
 # ================================================ 104 =================================================
 p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(max,*g[:i])]]+g[i:])[::-1])],c+1)
 
