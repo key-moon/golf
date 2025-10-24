@@ -1,4 +1,4 @@
-# best: 218(jailctf merger) / others: 239(ox jam), 241(import itertools), 250(Code Golf International), 250(4atj sisyphus luke Seek mukundan), 261(THUNDER THUNDER)
+# best: 218(jailctf merger) / others: 239(import itertools), 239(ox jam), 250(Code Golf International), 250(4atj sisyphus luke Seek mukundan), 261(THUNDER THUNDER)
 
 p=lambda g:(x:=g.index(max(g)))and any(m:=max(g[:x]))and[[g[i][j]+[[i for i in range(len(g))if m[i]][1]<j<[i for i in range(len(g))if m[i]][2] or i-g.index(m)+1==[i for i in range(len(g))if m[i]][2]-j or i-g.index(m)+1==j-[i for i in range(len(g))if m[i]][1],i<x and [i for i in range(len(g))if m[i]][1]<=j<=[i for i in range(len(g))if m[i]][2]][i>g.index(m)]*4 for j in range(len(g))]for i in range(len(g))]or[*zip(*p([*zip(*g[::-1])]))][::-1]
 
