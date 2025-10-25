@@ -1,4 +1,4 @@
-# best: 81(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 86(jonas ryno kg583 kabutack), 86(JRK), 86(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 86(JRKX), 86(jonas ryno kg583)
+# best: 81(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 86(jonas ryno kg583 kabutack), 86(JRK), 86(JRKX), 86(jonas ryno kg583), 86(kabutack)
 # p=lambda g:eval(min([str(a) for i in range(10) if 1==len(set(a:=[[c for c in r if c==i]for r in g if i in r]))],key=len))
 # p=lambda g:eval(min([str([[i]*r.count(i)for r in g if i in r])for i in range(1,10) if str(i)in str(g)],key=len))
 # p=lambda g:eval(min([str([[i]*r.count(i)for r in g if i in r]or"1,"*999)for i in range(1,10)],key=len))

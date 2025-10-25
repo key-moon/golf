@@ -1,4 +1,4 @@
-# best: 171(ox jam) / others: 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 190(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 193(jacekw Potatoman nauti natte)
+# best: 171(ox jam) / others: 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte), 193(import itertools)
 # ================================================================================== 171 ==================================================================================
 # lambda g,c=7:-c*g or c<4and p([*zip(*[[max(max(g))]*99]+g[1:])][::-1],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
 # lambda g,c=7:-c*g or c<4and p([*zip(*g[:0:-1],[max(max(g))]*99)],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]

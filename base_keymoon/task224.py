@@ -1,4 +1,4 @@
-# best: 171(ox jam) / others: 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 190(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 193(jacekw Potatoman nauti natte)
+# best: 171(ox jam) / others: 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte), 193(import itertools)
 # ================================================================================== 171 ==================================================================================
 # tmp
 def	p(e):

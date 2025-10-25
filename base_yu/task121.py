@@ -1,5 +1,5 @@
-# best: 86(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II) / others: 89(Code Golf International), 89(4atj sisyphus luke Seek mukundan), 89(jailctf merger), 90(JRKX), 90(JRKXK)
-# ======================================== 86 ========================================
+# best: 89(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 90(JRKX), 90(JRKXK), 90(import itertools), 90(2F), 90(biz)
+# ========================================== 89 =========================================
 def p(g):
  y,x=divmod(sum(g,[]).index(8)-14,13)
  u=[s[x:x+3]for s in g[y:y+3]]

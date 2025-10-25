@@ -1,4 +1,4 @@
-# best: 194(jailctf merger) / others: 214(Code Golf International), 214(4atj sisyphus luke Seek mukundan), 221(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 233(ox jam), 237(intgrah jimboko awu macaque sammyuri)
+# best: 194(jailctf merger) / others: 214(Code Golf International), 214(4atj sisyphus luke Seek mukundan), 233(ox jam), 237(intgrah jimboko awu macaque sammyuri), 252(jacekw Potatoman nauti natte)
 def p(g):
  for i in range(len(g)):
   for l in range(len(g)):

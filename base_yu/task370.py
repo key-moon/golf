@@ -1,4 +1,4 @@
-# best: 230(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II) / others: 256(JRKXK), 256(kdmitrie), 256(JRKKX), 259(jailctf merger), 265(ShadowPrompt Labs)
+# best: 256(JRKXK, kdmitrie, JRKKX) / others: 259(jailctf merger), 265(ShadowPrompt Labs), 266(THUNDER THUNDER), 269(ox jam), 271(cg-klogw-sekken)
 # def p(g):
 #  h,w=len(g),len(g[0])
 #  G=sum(g,[])

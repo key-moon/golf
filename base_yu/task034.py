@@ -1,4 +1,4 @@
-# best: 125(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 127(import itertools), 128(jailctf merger), 129(ox jam), 134(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 165(intgrah jimboko awu macaque sammyuri)
+# best: 125(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 127(import itertools), 128(jailctf merger), 129(ox jam), 165(intgrah jimboko awu macaque sammyuri), 187(2F)
 # =========================================================== 125 ===========================================================
 
 # import ref

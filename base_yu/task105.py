@@ -1,4 +1,4 @@
-# best: 145(jailctf merger) / others: 148(Code Golf International), 148(4atj sisyphus luke Seek mukundan), 153(ox jam), 172(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 181(MasukenSamba)
+# best: 145(jailctf merger) / others: 148(Code Golf International), 148(4atj sisyphus luke Seek mukundan), 153(ox jam), 181(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 181(MasukenSamba)
 # ===================================================================== 145 =====================================================================
 p=lambda g,c=-33:g*c or c>-2and p([*zip(*[[v or(s[1:-1].count(1)>1or i%~-len(g)<1)*2for v in s]for i,s in enumerate(g)])],c+1)or[*zip(*p([*zip(*g[any(g[-1])-2::-1])],c+1))][::-1]+g[-1:]
 

@@ -1,4 +1,4 @@
-# best: 199(jailctf merger) / others: 208(ox jam), 218(Code Golf International), 218(4atj sisyphus luke Seek mukundan), 235(intgrah jimboko awu macaque sammyuri), 236(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 199(jailctf merger) / others: 208(ox jam), 218(Code Golf International), 218(4atj sisyphus luke Seek mukundan), 235(intgrah jimboko awu macaque sammyuri), 237(jacekw Potatoman nauti natte)
 def p(g):
  t=sum(g,[])
  u,l=divmod(t.index(4),13)

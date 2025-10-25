@@ -1,4 +1,4 @@
-# best: 222(jailctf merger) / others: 223(ox jam), 233(Code Golf International), 233(4atj sisyphus luke Seek mukundan), 240(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 245(jacekw Potatoman nauti natte)
+# best: 222(jailctf merger) / others: 223(ox jam), 233(Code Golf International), 233(4atj sisyphus luke Seek mukundan), 245(jacekw Potatoman nauti natte), 245(import itertools)
 def p(g):
  u=min(i for i in range(len(g)) for j in range(len(g[i]))if g[i][j]==8)
  v=min(j for i in range(len(g)) for j in range(len(g[i]))if g[i][j]==8)

@@ -1,4 +1,4 @@
-# best: 72(jailctf merger) / others: 73(biz), 74(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 74(ox jam), 76(kambarakun), 77(import itertools)
+# best: 72(jailctf merger) / others: 73(biz), 74(ox jam), 76(kambarakun), 77(import itertools), 77(intgrah jimboko awu macaque sammyuri)
 # ================================= 72 =================================
 # p=lambda g:(u:=[[0]*i+[1]+[0]*(len(g[0])-i-1)for i in range(len(g[0]))])and((u+u[-2:0:-1])*9)[:len(g)][::-1]
 # p=lambda g:(((u:=[[0]*i+[1]+[0]*(len(g[0])-i-1)for i in range(len(g[0]))])+u[-2:0:-1])*9)[:len(g)][::-1]

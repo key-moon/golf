@@ -1,4 +1,4 @@
-# best: 89(jailctf merger) / others: 97(Code Golf International), 97(4atj sisyphus luke Seek mukundan), 97(ox jam), 105(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 105(import itertools)
+# best: 89(jailctf merger) / others: 97(Code Golf International), 97(4atj sisyphus luke Seek mukundan), 97(ox jam), 105(import itertools), 105(intgrah jimboko awu macaque sammyuri)
 # ========================================== 89 =========================================
 # p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],all(s==s[::-1] for s in m))[::-1]for c in sum(g,[]))[1]
 # p=lambda g:max((m:=[[v for*t,v in zip(*g,s)if c in t]for s in g if c in s],(w:=[*zip(*m)])==w[::-1])[::-1]for c in sum(g,[]))[1]

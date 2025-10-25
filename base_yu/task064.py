@@ -1,4 +1,4 @@
-# best: 152(jailctf merger, ox jam) / others: 155(Code Golf International), 155(4atj sisyphus luke Seek mukundan), 155(import itertools), 161(jacekw Potatoman nauti natte), 163(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 152(jailctf merger, ox jam) / others: 155(Code Golf International), 155(4atj sisyphus luke Seek mukundan), 155(import itertools), 161(jacekw Potatoman nauti natte), 163(duckyluuk)
 
 import re
 def p(g):

@@ -1,4 +1,4 @@
-# best: 85(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 88(jailctf merger), 88(ox jam), 92(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 96(jacekw Potatoman nauti natte), 96(import itertools)
+# best: 85(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 88(jailctf merger), 88(ox jam), 96(jacekw Potatoman nauti natte), 96(import itertools), 97(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ======================================== 85 =======================================
 # p=lambda g:[sorted(set(a:=sum(g,[])),key=a.count)[1:2]*2]*2
 # p=lambda g:[sorted(set(a:=sum(g,[])),key=lambda c:(x:=max(s.count(c)for s in g))*(a.count(c)-2*x+4))[1:2]*2]*2

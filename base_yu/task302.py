@@ -1,4 +1,4 @@
-# best: 89(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 93(ox jam), 102(intgrah jimboko awu macaque sammyuri), 109(import itertools), 109(Tony Li & Darren Amadeus Martin)
+# best: 89(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(ox jam), 93(intgrah jimboko awu macaque sammyuri), 109(import itertools), 109(Tony Li & Darren Amadeus Martin), 112(2F)
 # ========================================== 89 =========================================
 
 def p(g,E=enumerate):
