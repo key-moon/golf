@@ -1,4 +1,4 @@
-# best: 109(ox jam) / others: 114(jailctf merger), 115(Code Golf International), 115(4atj sisyphus luke Seek mukundan), 118(adakoda), 125(import itertools)
+# best: 109(ox jam) / others: 114(jailctf merger), 115(Code Golf International), 115(4atj sisyphus luke Seek mukundan), 118(adakoda), 123(biz)
 # =================================================== 109 ===================================================
 
 # c,B=zip(*((i,j)for i,r in A(j)for j,B in A(r)if B));Y=sum(c)//2;X=sum(B)//2
