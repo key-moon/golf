@@ -1,5 +1,5 @@
-# best: 171(ox jam) / others: 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte), 193(import itertools)
-# ================================================================================== 171 ==================================================================================
+# best: 138(import itertools) / others: 171(ox jam), 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte)
+# ================================================================= 138 ==================================================================
 # tmp
 def	p(e):
 	b,i=zip(*[(a,n)for(a,o)in	enumerate(e)for(n,j)in	enumerate(o)if	j==5]);g,={*sum(e,[])}-{0,5};f,m=min(b)+1,max(b)-1;r,d=min(i)+1,max(i)-1

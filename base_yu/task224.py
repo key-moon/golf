@@ -1,5 +1,5 @@
-# best: 171(ox jam) / others: 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte), 193(import itertools)
-# ================================================================================== 171 ==================================================================================
+# best: 138(import itertools) / others: 171(ox jam), 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 193(jacekw Potatoman nauti natte)
+# ================================================================= 138 ==================================================================
 # lambda g,c=7:-c*g or c<4and p([*zip(*[[max(max(g))]*99]+g[1:])][::-1],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
 # lambda g,c=7:-c*g or c<4and p([*zip(*g[:0:-1],[max(max(g))]*99)],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
 # lambda g,c=7:-c*g or c<4and[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)]or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
