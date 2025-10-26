@@ -1,4 +1,4 @@
-# best: 85(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 88(jailctf merger), 91(ox jam), 96(intgrah jimboko awu macaque sammyuri), 97(THUNDER THUNDER), 100(jacekw Potatoman nauti natte)
+# best: 85(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 88(jailctf merger), 91(ox jam), 94(biz), 96(intgrah jimboko awu macaque sammyuri), 97(THUNDER THUNDER)
 # ======================================== 85 =======================================
 # lambda g,c=-1:c*g or p([[s[i]or(12<sum(s[:i])+6<sum(s))*3for i in range(len(s))]for s in zip(*g)],c+1)
 # lambda g,c=-1:c*g or p([[s[i]or(8in s[:i])*(8in s[i:])*3for i in range(len(s))]for s in zip(*g)],c+1)
