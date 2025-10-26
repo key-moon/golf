@@ -1,4 +1,4 @@
-# best: 109(biz) / others: 114(Krige), 114(import itertools), 116(jacekw Potatoman nauti natte), 116(blob2822), 117(THUNDER THUNDER)
+# best: 109(biz) / others: 114(Krige), 114(import itertools), 116(jacekw Potatoman nauti natte), 116(blob2822), 117(open source)
 # =================================================== 109 ===================================================
 def p(g):
  for _ in 0,1:

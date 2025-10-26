@@ -1,4 +1,4 @@
-# best: 55(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz, intgrah jimboko awu macaque sammyuri) / others: 57(ox jam), 63(import itertools), 65(cubbus), 68(ShadowPrompt Labs), 68(cg-klogw-sekken)
+# best: 55(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz, intgrah jimboko awu macaque sammyuri) / others: 57(ox jam), 63(import itertools), 65(cubbus), 68(open source), 68(ShadowPrompt Labs)
 # ========================= 55 ========================
 f=lambda x:[t for s,t in zip([0]+x,x)if s!=t]
 p=lambda g:f([*zip(*f(g))])
