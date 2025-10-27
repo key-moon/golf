@@ -1,4 +1,4 @@
-# best: 130(jailctf merger) / others: 143(ox jam), 148(Code Golf International), 148(4atj sisyphus luke Seek mukundan), 151(duckyluuk), 164(cg-klogw-sekken)
+# best: 130(jailctf merger) / others: 143(ox jam), 148(Code Golf International), 148(4atj sisyphus luke Seek mukundan), 151(duckyluuk), 155(HIMAGINE THE FUTURE.)
 # ============================================================= 130 ==============================================================
 
 p=lambda g,c=-3:c*g or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]*9+g[:(i:=g.index(u)):-1]+g[i+1:])[-10:]).replace(*"03"))or g)[::-1])],c+1)

@@ -1,5 +1,5 @@
 # 類題:180
-# best: 74(jailctf merger) / others: 75(ox jam), 80(Code Golf International), 80(4atj sisyphus luke Seek mukundan), 82(jacekwl Potatoman nauti), 82(jacekw Potatoman nauti natte)
+# best: 74(jailctf merger) / others: 75(ox jam), 80(Code Golf International), 80(4atj sisyphus luke Seek mukundan), 81(HIMAGINE THE FUTURE.), 82(jacekwl Potatoman nauti)
 # ================================== 74 ==================================
 # lambda g:[[g[i][j]or g[i][j+5]or g[i+5][j]or g[i+5][j+5] for j in range(4)]for i in range(4)]
 # lambda g,R=range(4):[[g[i][j]or g[i][j+5]or g[i+5][j]or g[i+5][j+5] for j in R]for i in R]

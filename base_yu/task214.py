@@ -1,4 +1,4 @@
-# best: 62(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 65(intgrah jimboko awu macaque sammyuri), 70(2F), 70(biz), 73(jacekw Potatoman nauti natte), 73(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 62(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 65(intgrah jimboko awu macaque sammyuri), 66(HIMAGINE THE FUTURE.), 70(2F), 70(biz), 73(jacekw Potatoman nauti natte)
 # ============================ 62 ============================
 # p=lambda g:[g[i][:4]+[g[2][i],g[1][i],g[0][i]]+g[2-i][3::-1]for i in(0,1,2)]
 # p=lambda g:[s[:4]+[z,y,x]+t[3::-1]for s,(x,y,z),t in zip(g,[*zip(*g)][:3],g[::-1])]

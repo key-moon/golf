@@ -1,4 +1,4 @@
-# best: 133(JRKKX) / others: 137(jailctf merger), 143(import itertools), 143(biz), 146(intgrah jimboko awu macaque sammyuri), 147(THUNDER THUNDER)
+# best: 133(JRKKX) / others: 137(jailctf merger), 139(HIMAGINE THE FUTURE.), 143(import itertools), 143(biz), 146(intgrah jimboko awu macaque sammyuri)
 # =============================================================== 133 ===============================================================
 # p=lambda g,E=enumerate:[[s[j]or(x:=sum(s[:j]),y:=sum(t[:i]),a:=sum(s),b:=sum(t))and((x==y==0)+(x*2==a and y*2==b)*2+(x==a and y==b)*3)for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[s[j]or sum(-~k*(sum(s[:j])*2==k*sum(s)and sum(t[:i])*2==k*sum(t))for k in range(3))for j,t in E(zip(*g))]for i,s in E(g)]

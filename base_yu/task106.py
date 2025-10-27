@@ -1,4 +1,4 @@
-# best: 66(intgrah jimboko awu macaque sammyuri) / others: 67(Code Golf International), 67(4atj sisyphus luke Seek mukundan), 67(import itertools), 67(jailctf merger), 75(jacekw Potatoman nauti natte)
+# best: 66(intgrah jimboko awu macaque sammyuri) / others: 67(Code Golf International), 67(4atj sisyphus luke Seek mukundan), 67(import itertools), 67(jailctf merger), 67(HIMAGINE THE FUTURE.)
 # p=lambda g:(t:=[g[i]+[*[*zip(*g[::-1])][i]]for i in range(len(g))])and t+[s[::-1]for s in t[::-1]]
 # p=lambda g:(t:=[g[i]+[s[i]for s in g[::-1]]for i in range(len(g))])and t+[s[::-1]for s in t[::-1]]
 

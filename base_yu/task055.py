@@ -1,4 +1,4 @@
-# best: 79(jailctf merger) / others: 83(Code Golf International), 83(4atj sisyphus luke Seek mukundan), 85(cubbus), 85(import itertools), 95(ox jam)
+# best: 79(jailctf merger) / others: 83(Code Golf International), 83(4atj sisyphus luke Seek mukundan), 85(cubbus), 85(import itertools), 89(HIMAGINE THE FUTURE.)
 # ===================================== 79 ====================================
 # p=lambda g,E=enumerate:[[s[j]or[0,2,0,4,6,3,0,1,0][(sum(s[:j])+sum(t[:i])*3)//8] for j,t in E(zip(*g))]for i,s in E(g)]
 # p=lambda g,E=enumerate:[[s[j]or[0,4,0,2,6,1,0,3,0][(sum(s[:j])*3+sum(t[:i]))//8]for j,t in E(zip(*g))]for i,s in E(g)]

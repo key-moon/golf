@@ -1,4 +1,4 @@
-# best: 60(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 66(HETHAT), 66(ox jam), 66(biz), 67(jonas ryno kg583 kabutack), 67(JRK)
+# best: 60(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 61(HIMAGINE THE FUTURE.), 66(HETHAT), 66(ox jam), 66(biz), 67(jonas ryno kg583 kabutack)
 # =========================== 60 ===========================
 # lambda g:[[((c:=sum(sum(g,[])))>0)*2,(c>1)*2,(c>2)*2],[0,(c>3)*2,0],[0,0,0]]
 # lambda g:[([2]*(c:=sum(sum(g,[])))+[0]*2)[:3],[0,(c>3)*2,0],[0,0,0]]

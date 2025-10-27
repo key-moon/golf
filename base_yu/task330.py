@@ -1,5 +1,5 @@
-# best: 134(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 135(ox jam), 136(import itertools), 136(Tony Li), 136(Tony Li & Darren Amadeus Martin), 140(Krige)
-# =============================================================== 134 ================================================================
+# best: 132(HIMAGINE THE FUTURE.) / others: 134(Code Golf International), 134(4atj sisyphus luke Seek mukundan), 135(ox jam), 136(import itertools), 136(Tony Li)
+# ============================================================== 132 ===============================================================
 def p(g):
  for i in range(10):
   for j in range(10):

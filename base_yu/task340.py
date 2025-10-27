@@ -1,5 +1,5 @@
-# best: 119(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 122(ox jam), 129(jailctf merger), 132(import itertools), 132(biz), 144(cg-klogw-sekken)
-# ======================================================== 119 ========================================================
+# best: 114(HIMAGINE THE FUTURE.) / others: 119(Code Golf International), 119(4atj sisyphus luke Seek mukundan), 122(ox jam), 129(jailctf merger), 132(import itertools)
+# ===================================================== 114 ======================================================
 
 # p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)
 # p=lambda g,c=-3:c*g or p([*zip(*[[s[0],max({*s[:2]}&{*s[2:]}),*[(v in s[-2:]+g[0]+g[-1])*v for v in s[2:]]]for s in g][::-1])],c+1)

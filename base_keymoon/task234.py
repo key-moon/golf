@@ -1,4 +1,4 @@
-# best: 109(biz) / others: 114(Krige), 114(import itertools), 116(jacekw Potatoman nauti natte), 116(blob2822), 117(open source)
+# best: 109(biz) / others: 113(HIMAGINE THE FUTURE.), 114(Krige), 114(import itertools), 116(jacekw Potatoman nauti natte), 116(blob2822)
 # =================================================== 109 ===================================================
 # TODO: gcdシフト再帰
 # lambda g,c=-43,s=[]:g*c or p([*zip(*([r for r in g if(max(r)not in s and(s:=[*s,*r])and r.count(max(r))==1)-1]+g[:1]*9)[:len(g)])][::-1],c+1)

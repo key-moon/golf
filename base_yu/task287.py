@@ -1,4 +1,4 @@
-# best: 56(jailctf merger) / others: 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 60(biz), 63(ox jam), 69(intgrah jimboko awu macaque sammyuri)
+# best: 56(jailctf merger, HIMAGINE THE FUTURE.) / others: 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 60(biz), 63(ox jam), 69(intgrah jimboko awu macaque sammyuri)
 # ========================= 56 =========================
 # p=lambda g,R=range(16):[[[g[i][j],g[~i][~j]][g[i][j]==4]for j in R]for i in R]
 # p=lambda g,E=enumerate:[[[v,g[~i][~j]][v==4]for j,v in E(s)]for i,s in E(g)]

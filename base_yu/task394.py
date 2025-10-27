@@ -1,4 +1,4 @@
-# best: 91(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 92(ox jam), 92(biz), 95(jonas ryno kg583 kabutack), 95(JRKX), 95(jonas ryno kg583)
+# best: 91(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 92(ox jam), 92(biz), 94(HIMAGINE THE FUTURE.), 95(jonas ryno kg583 kabutack), 95(JRKX)
 # =========================================== 91 ==========================================
 # r=range
 # def p(g):

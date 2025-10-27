@@ -1,4 +1,4 @@
-# best: 63(jacekw Potatoman nauti natte, import itertools) / others: 64(ox jam), 65(Code Golf International), 65(4atj sisyphus luke Seek mukundan), 65(jailctf merger), 65(Yuchen20)
+# best: 63(jacekw Potatoman nauti natte, import itertools, HIMAGINE THE FUTURE.) / others: 64(ox jam), 65(Code Golf International), 65(4atj sisyphus luke Seek mukundan), 65(jailctf merger), 65(Yuchen20)
 # lambda g:(k:=                      )and[s[::-k]for s in g[::k]]
 # lambda g:(k:=1+g[0].index([s[0]for s in g if {*s}=={s[0]}][0]))and[s[::-k]for s in g[::k]]
 # lambda g:(k:=[i+1for i,v in enumerate(g[0])if v!=g[0][0]][0])and[s[::-k]for s in g[::k]]

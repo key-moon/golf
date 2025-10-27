@@ -1,5 +1,5 @@
-# best: 106(jacekw Potatoman nauti natte, import itertools, intgrah jimboko awu macaque sammyuri) / others: 109(jailctf merger), 110(Code Golf International), 110(4atj sisyphus luke Seek mukundan), 112(ox jam), 115(THUNDER THUNDER)
-# ================================================= 106 ==================================================
+# best: 103(HIMAGINE THE FUTURE.) / others: 106(jacekw Potatoman nauti natte), 106(import itertools), 106(intgrah jimboko awu macaque sammyuri), 109(jailctf merger), 110(Code Golf International)
+# ================================================ 103 ================================================
 
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=[i for i,s in enumerate(g)if 3in s][0])+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=g.index(max(g,key=max)))+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)

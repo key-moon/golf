@@ -1,4 +1,4 @@
-# best: 242(jacekw Potatoman nauti natte, import itertools) / others: 258(jailctf merger), 260(ox jam), 263(natte), 270(Tony Li & Darren Amadeus Martin), 272(ShadowPrompt Labs)
+# best: 240(HIMAGINE THE FUTURE.) / others: 242(jacekw Potatoman nauti natte), 242(import itertools), 258(jailctf merger), 260(ox jam), 263(natte)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
  for s in [*g,*zip(*g)]:

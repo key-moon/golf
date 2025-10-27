@@ -1,4 +1,4 @@
-# best: 67(open source, Krige, Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, rucin93, today, cg-klogw-sekken, kambarakun, import itertools, Tony Li, jailctf merger, Tony Li & Darren Amadeus Martin, adakoda, ox jam, THUNDER THUNDER, biz, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 68(Ty Woods), 72(jacekw Potatoman nauti natte), 72(Ravi Annaswamy), 74(JRKX), 74(HETHAT)
+# best: 67(open source, Krige, Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, rucin93, today, cg-klogw-sekken, kambarakun, import itertools, Tony Li, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., adakoda, ox jam, THUNDER THUNDER, biz, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 68(Ty Woods), 72(jacekw Potatoman nauti natte), 72(Ravi Annaswamy), 74(JRKX), 74(HETHAT)
 # =============================== 67 ==============================
 # p=lambda g,R=range:[[max([g[i-k][j-k]for k in R(max(0,min(i,j)-2+abs(i-j)),min(i,j)+1)]+[0])for j in R(6)]for i in R(6)]
 p=lambda g,R=range(6):[[max(3>i-k>-1<j-k<3and g[i-k][j-k]for k in R)for j in R]for i in R]

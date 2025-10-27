@@ -1,4 +1,4 @@
-# best: 96(Code Golf International, 4atj sisyphus luke Seek mukundan, ox jam) / others: 98(jailctf merger), 103(biz), 103(JRKKX), 106(jonas ryno kg583 kabutack), 106(JRKX)
+# best: 96(Code Golf International, 4atj sisyphus luke Seek mukundan, ox jam) / others: 98(jailctf merger), 101(HIMAGINE THE FUTURE.), 103(biz), 103(JRKKX), 106(jonas ryno kg583 kabutack)
 # ============================================= 96 =============================================
 
 # p=lambda g:(c:=[*filter(int,g[0])],l:=[0]*9,k:=-1)and g[:1]+[*zip(*[(d:=0)or(l:=[d:=s[i]and(l[i]or d or(d:=c[k:=k+1]))for i in range(9)])for s in zip(*g[1:])])]

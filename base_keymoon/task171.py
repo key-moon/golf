@@ -1,4 +1,4 @@
-# best: 51(jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, MasukenSamba, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 56(THUNDER THUNDER), 59(HETHAT), 61(cubbus), 61(JRKKX), 62(Yuchen20)
+# best: 51(jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, MasukenSamba, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 53(HIMAGINE THE FUTURE.), 56(THUNDER THUNDER), 59(HETHAT), 61(cubbus), 61(JRKKX)
 # lambda g:(a:=[[8]*len(g[0])])+[[8,*[0]*(len(g[0])-2),8]]*(len(g)-2)+a
 # lambda g,c=-1:g*c or p([*zip(*(a:=[[8]*len(g[0])])+g[1:-1]+a)],c+1)
 # lambda g:(a:=[[8]*len(g[0])])+[[8,*[0]*(len(a)-2),8]]*(len(g)-2)+a

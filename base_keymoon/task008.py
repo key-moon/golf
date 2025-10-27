@@ -1,4 +1,4 @@
-# best: 84(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 94(ox jam), 99(jacekw Potatoman nauti natte), 99(import itertools), 103(natte), 103(jailctf merger)
+# best: 84(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 94(ox jam), 99(jacekw Potatoman nauti natte), 99(import itertools), 99(HIMAGINE THE FUTURE.), 103(natte)
 # S=sorted;p=lambda g:(16<sum(b:=max(g,key=sum))or any(map(sum,g[2+(i:=g.index(b)):])))and[*map(list,zip(*p([*zip(*g[::-1])])))][::-1]or S(g[:i],key=max)+g[i:]
 # S=sorted;p=lambda g:sum(b:=max(g,key=sum))<17and S(g[:(i:=g.index(b))],key=max)+S(g[i:],key=max,reverse=True)or[*map(list,zip(*p([*zip(*g)])))]
 # S=sorted;p=lambda g:2in(b:=max(g,key=sum))and[*map(list,zip(*p([*zip(*g)])))]or S(g[:(i:=g.index(b))],key=max)+S(g[i:],key=max,reverse=True)

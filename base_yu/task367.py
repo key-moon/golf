@@ -1,4 +1,4 @@
-# best: 127(intgrah jimboko awu macaque sammyuri) / others: 128(jailctf merger), 129(jacekw Potatoman nauti natte), 129(import itertools), 129(ox jam), 138(Code Golf International)
+# best: 127(intgrah jimboko awu macaque sammyuri) / others: 128(jailctf merger), 129(jacekw Potatoman nauti natte), 129(import itertools), 129(HIMAGINE THE FUTURE.), 129(ox jam)
 # ============================================================ 127 ============================================================
 # 05  -> 45
 #  50     50

@@ -1,4 +1,4 @@
-# best: 138(ox jam) / others: 142(Code Golf International), 142(4atj sisyphus luke Seek mukundan), 142(jailctf merger), 143(JRKKX), 161(THUNDER THUNDER)
+# best: 138(ox jam) / others: 142(Code Golf International), 142(4atj sisyphus luke Seek mukundan), 142(jailctf merger), 143(JRKKX), 149(HIMAGINE THE FUTURE.)
 # ================================================================= 138 ==================================================================
 
 def p(g):

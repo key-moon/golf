@@ -1,3 +1,3 @@
-# best: 51(Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 53(jonas ryno kg583 kabutack), 53(cubbus), 53(jacekwl Potatoman nauti), 53(jacekw Potatoman nauti natte), 53(JRK)
-# ======================= 51 ======================
+# best: 49(HIMAGINE THE FUTURE.) / others: 51(Code Golf International), 51(4atj sisyphus luke Seek mukundan), 51(ShadowPrompt Labs), 51(import itertools), 51(jailctf merger)
+# ====================== 49 =====================
 p=lambda g:[eval("2*s.pop(0)*s[3],"*3)for s in g]

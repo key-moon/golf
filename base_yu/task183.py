@@ -1,4 +1,4 @@
-# best: 93(jailctf merger) / others: 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 94(MasukenSamba), 94(ox jam), 95(biz), 96(THUNDER THUNDER)
+# best: 93(jailctf merger) / others: 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 94(MasukenSamba), 94(HIMAGINE THE FUTURE.), 94(ox jam), 95(biz)
 # ============================================ 93 ===========================================
 # p=lambda g,E=enumerate:(n:=len(g))and[[v and g[[-1,0][i+2<n//2]][[-1,0][j+2<n//2]] for j,v in E(s[2:-2])]for i,s in E(g[2:-2])]
 # p=lambda g,E=enumerate:(n:=len(g)//2-2)and[[v and g[[-1,0][i<n]][[-1,0][j<n]]for j,v in E(s[2:-2])]for i,s in E(g[2:-2])]

@@ -1,4 +1,4 @@
-# best: 74(jailctf merger) / others: 80(Code Golf International), 80(4atj sisyphus luke Seek mukundan), 83(ox jam), 91(import itertools), 93(2F)
+# best: 74(jailctf merger) / others: 80(Code Golf International), 80(4atj sisyphus luke Seek mukundan), 83(ox jam), 84(HIMAGINE THE FUTURE.), 91(import itertools)
 # 「輪」のいちばん下のcomponent以外を動かす
 # 輪の下には0,0,0...があることを利用して下端を判別（下端のときは動かさず、さらに一個上のを動かす）
 # 最後が

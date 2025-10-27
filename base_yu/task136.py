@@ -1,4 +1,4 @@
-# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 107(jacekw Potatoman nauti natte), 107(import itertools), 107(ox jam), 113(THUNDER THUNDER), 115(biz)
+# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 107(jacekw Potatoman nauti natte), 107(import itertools), 107(ox jam), 110(HIMAGINE THE FUTURE.), 113(THUNDER THUNDER)
 # 131
 # def p(g,R=range):
 #  for _ in R(10):

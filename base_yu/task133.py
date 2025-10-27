@@ -1,4 +1,4 @@
-# best: 291(jailctf merger) / others: 298(ox jam), 320(kambarakun), 321(open source), 321(jacekw Potatoman nauti natte), 321(Ali)
+# best: 277(HIMAGINE THE FUTURE.) / others: 291(jailctf merger), 298(ox jam), 320(kambarakun), 321(open source), 321(jacekw Potatoman nauti natte)
 def p(g):
  for c in range(10):
   for d in range(10):

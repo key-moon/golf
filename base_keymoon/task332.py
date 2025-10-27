@@ -1,4 +1,4 @@
-# best: 58(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 61(ox jam), 61(biz), 64(jacekwl Potatoman nauti), 64(jacekw Potatoman nauti natte), 64(jacekw Potatoman nauti)
+# best: 58(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 59(HIMAGINE THE FUTURE.), 61(ox jam), 61(biz), 64(jacekwl Potatoman nauti), 64(jacekw Potatoman nauti natte)
 # lambda g:[(a:=[1,.6])and[c*(a:=a[::-1])[0]for c in r[::-1]][::-1]for r in g]
 # lambda g:[[c*[1,.6][i+len(r)&1]for i,c in enumerate(r)]for r in g]
 # lambda g:[(a:=5)and[(0<c)*(a:=a^6)for c in r[::-1]][::-1]for r in g]

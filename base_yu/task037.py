@@ -1,4 +1,4 @@
-# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 109(ox jam), 111(import itertools), 117(intgrah jimboko awu macaque sammyuri), 123(adakoda), 125(jacekw Potatoman nauti natte)
+# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 109(ox jam), 111(import itertools), 112(HIMAGINE THE FUTURE.), 117(intgrah jimboko awu macaque sammyuri), 123(adakoda)
 # ================================================= 105 =================================================
 
 

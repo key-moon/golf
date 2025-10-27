@@ -1,4 +1,4 @@
-# best: 39(cubbus, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 40(kambarakun), 40(adakoda), 40(biz), 41(ShadowPrompt Labs), 42(jonas ryno kg583 kabutack)
+# best: 39(cubbus, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, HIMAGINE THE FUTURE., ox jam, intgrah jimboko awu macaque sammyuri) / others: 40(kambarakun), 40(adakoda), 40(biz), 41(ShadowPrompt Labs), 42(jonas ryno kg583 kabutack)
 # lambda g:[[b"\2\4\3"[s.index(5)]]*3for s in g]
 # lambda g:[[-s.index(5)%3+2]*3for s in g]
 # lambda g:[[hash((*s,))%5+2]*3for s in g]

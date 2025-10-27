@@ -1,4 +1,4 @@
-# best: 107(jailctf merger) / others: 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 110(ox jam), 135(intgrah jimboko awu macaque sammyuri), 141(import itertools)
+# best: 107(jailctf merger, HIMAGINE THE FUTURE.) / others: 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 110(ox jam), 135(intgrah jimboko awu macaque sammyuri), 141(import itertools)
 # ================================================== 107 ==================================================
 
 # def p(g,k=0,u=[[2]*99]):

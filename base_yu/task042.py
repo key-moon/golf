@@ -1,4 +1,4 @@
-# best: 136(jailctf merger) / others: 139(jacekw Potatoman nauti natte), 139(natte), 139(import itertools), 139(intgrah jimboko awu macaque sammyuri), 143(Code Golf International)
+# best: 136(jailctf merger) / others: 138(HIMAGINE THE FUTURE.), 139(jacekw Potatoman nauti natte), 139(natte), 139(import itertools), 139(intgrah jimboko awu macaque sammyuri)
 # ================================================================ 136 =================================================================
 
 import re;p=lambda g,c=-3:g*c or[*zip(*eval(re.sub("0(?=.{%d}3.{%d}3)"%((k:=sum(sum(g,[]))//21+1)*38-1,k*29-1),"8",str(p(g,c+1)))))][::-1]

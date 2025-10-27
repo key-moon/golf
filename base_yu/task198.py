@@ -1,5 +1,5 @@
-# best: 120(jacekw Potatoman nauti natte, import itertools) / others: 122(Code Golf International), 122(4atj sisyphus luke Seek mukundan), 122(jailctf merger), 122(ox jam), 124(JRKKX)
-# ======================================================== 120 =========================================================
+# best: 119(HIMAGINE THE FUTURE.) / others: 120(jacekw Potatoman nauti natte), 120(import itertools), 122(Code Golf International), 122(4atj sisyphus luke Seek mukundan), 122(jailctf merger)
+# ======================================================== 119 ========================================================
 def p(g):
  c=max(g)[0]
  k=g.index(max(g[3:6]))+1
