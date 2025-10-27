@@ -1,4 +1,4 @@
-# best: 269(jailctf merger, ox jam) / others: 272(intgrah jimboko awu macaque sammyuri), 319(cg-klogw-sekken), 322(Code Golf International), 322(4atj sisyphus luke Seek mukundan), 323(kambarakun)
+# best: 267(intgrah jimboko awu macaque sammyuri) / others: 269(jailctf merger), 269(ox jam), 319(cg-klogw-sekken), 322(Code Golf International), 322(4atj sisyphus luke Seek mukundan)
 def p(g):
  for i in range(len(g)-2):
   for j in range(len(g[0])-2):
