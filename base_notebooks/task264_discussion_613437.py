@@ -1,0 +1,1 @@
+p=lambda g,a=[9*[5]for _ in[0]*9],z=3:-z*a or[exec("if s[0][%s]!=5%s=s[1][1]:\n for r,R in zip(s,a):R[%s:%s]=r\n"*2%(*"1!360=03",))for i in range(len(g)-2)for j in range(len(g[0])-2)if{"0"}-{*str(s:=[r[j:j+3]for r in g[i:i+3]])}if a]and p(*[[*map(list,zip(*i[::-1]))]for i in(g,a)],z-1)

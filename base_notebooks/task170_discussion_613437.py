@@ -1,0 +1,1 @@
+def p(g):f=sum(g,[]);k=max({*f}-{0},key=f.count);s=f"[i for i in zip(*%s)if i.count({k})>2]";n=len(c:=eval(s%s%"g"))//len(r:=[[*filter(int,r)][-4:]for r,s in zip(g,g[1:])if{*r,*s}-{k,0}][1:]);return[[r/k*c for r,c in zip(r,c[::n])]for r,c in zip(r,c[::n])]

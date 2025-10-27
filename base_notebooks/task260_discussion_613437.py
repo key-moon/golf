@@ -1,0 +1,2 @@
+R=range(10)
+p=lambda m,k=7:-k*m or p([*zip(*[[(a:=max({*sum(m,())}-{5})if(y<1,0,0,5)==m[y][x:x+2]+m[y-1][x:x+2]else(x*y and m[y-1][x-1])|(x<9>y and m[y+1][x+1])|m[y][x])*(a!=5-9*k)for x in R]for y in R])],k-1)

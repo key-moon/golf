@@ -1,0 +1,2 @@
+import re
+p=lambda g:exec(re.sub("@(.)",r"for \1 in range(",'b=()\n@in:=len(g)):m=len(g[0]);[b:=max(b,((I-i)*(J-j),i,j,I,J))@jm)@Ii+2,n+1)@Jj,m+1)if len({*f"{[g[Y][j:J]@Yi,I)]}0"})<6]\n@ib[1],b[3]):\n @jb[2],b[4]):g[i][j]=6'),{'g':g})or g

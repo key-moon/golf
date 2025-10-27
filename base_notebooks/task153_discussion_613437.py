@@ -1,0 +1,1 @@
+def p(g):R=range(10);e=[[0]*12];g=e+[[0,*r,0]for r in g]+e;return max([(sum(sum(m:=[[*map(max,g[i+y][j:j+3],g[I+y][J:])]for y in[0,1,2]],[]))*(max(i-I,j-J)>2),m)for i in R for j in R for I in R for J in R])[1]
