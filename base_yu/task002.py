@@ -1,4 +1,4 @@
-# best: 69(intgrah jimboko awu macaque sammyuri) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 91(ox jam), 94(biz), 96(HETHAT)
+# best: 69(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 91(ox jam), 94(biz), 96(HETHAT)
 # ================================ 69 ===============================
 # def p(g):
 #  return g

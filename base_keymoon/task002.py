@@ -1,4 +1,4 @@
-# best: 69(intgrah jimboko awu macaque sammyuri) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 91(ox jam), 94(biz), 96(HETHAT)
+# best: 69(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 91(ox jam), 94(biz), 96(HETHAT)
 # ================================ 69 ===============================
 # port re;S=re.sub;p=lambda g,c=-63:c*S(*"04",str(g))or eval(S(*"90",str(p(eval(S("0(?=, 9|\))","9",str([*zip(*g[::-1])]))),c+1))))
 # port re;S=re.sub;p=lambda g,c=-63:g*c or eval(S(*"0940"[c<0::2],str(p(eval(S("0(?=, 9|\))","9",str([*zip(*g[::-1])]))),c+1))))
