@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, ox jam) / others: 96(Code Golf International), 96(4atj sisyphus luke Seek mukundan), 99(HIMAGINE THE FUTURE.), 99(intgrah jimboko awu macaque sammyuri), 101(import itertools)
+# best: 95(jailctf merger, ox jam) / others: 96(Code Golf International), 96(4atj sisyphus luke Seek mukundan), 99(import itertools), 99(HIMAGINE THE FUTURE.), 99(intgrah jimboko awu macaque sammyuri)
 # 155
 # M=max
 # r=range(3)
