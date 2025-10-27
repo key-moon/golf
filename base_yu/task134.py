@@ -1,4 +1,4 @@
-# best: 152(jailctf merger, biz) / others: 174(ox jam), 176(HIMAGINE THE FUTURE.), 181(jacekwl Potatoman nauti), 181(jacekw Potatoman nauti natte), 181(jacekw Potatoman nauti)
+# best: 152(jailctf merger, biz) / others: 173(import itertools), 174(ox jam), 176(HIMAGINE THE FUTURE.), 181(jacekwl Potatoman nauti), 181(jacekw Potatoman nauti natte)
 # ======================================================================== 152 =========================================================================
 def p(g):
  _,n,m={*sum(g,[])}
