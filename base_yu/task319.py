@@ -41,8 +41,33 @@ def p(g):
    for x in range(-32,14):
     d=[g[i*2+y+k][j*2+x+l]for i in range(len(g))for j in range(len(g[i]))for k in range(2)for l in range(2)if g[i][j]==c if i*2+y+k in range(len(g))if j*2+x+l in range(len(g[i]))]
     if []<d==[d[0]]*sum(g,[]).count(d[0]):
-     return [[[b,v][v==c] for*t,v in zip(*g,s)if c in t]for s in g if c in s]
+     g=[[[b,v][v==c]for v in s] for s in zip(*g) if c in s]
+     return[[[b,v][v==c]for v in s] for s in zip(*g) if c in s]
 
+# def p(g):
+#  b=max(sum(g,[]),key=sum(g,[]).count)
+#  a=[v for v in sum(g,[])if f"{b}, {v}, {b}"not in str(g+[*zip(*g)])][0]
+#  for i in range(len(g)):
+#   for j in range(len(g[i])):
+#    c,*u={g[i+y//2-len(g)][j+x//2-len(g[i])] for y in range(0,len(g),2)for x in range(0,len(g[i]),2) if g[y][x]==a}
+#    v={g[i+y//2-len(g)][j+x//2-len(g[i])] for y in range(0,len(g),2)for x in range(0,len(g[i]),2) if g[y][x]!=a}
+#    if not u and c not in v:
+#     g=[[[b,v][v==c]for v in s] for s in zip(*g) if c in s]
+#     return[[[b,v][v==c]for v in s] for s in zip(*g) if c in s]
+
+# def p(g):
+#     b=max(sum(g,[]),key=sum(g,[]).count)
+#     a=[v for v in sum(g,[])if f"{b}, {v}, {b}"not in str(g+[*zip(*g)])][0]
+#     o=[[[b,a][v==a]for v in r[::2]]for r in g[::2]]
+#     m=[r*2for r in g*2]
+#     for i,r in enumerate(m):
+#         for j,v in enumerate(r):
+#             for k in{*sum(g,[])}:
+#                 if[[[b,a][v==k]for v in r[j:j+len(o[0])]]for r in m[i:i+len(o)]]==o:
+#                     s=g
+#                     s=[[[b,k][v==k]for v in i]for i in zip(*s)if k in i]
+#                     s=[[[b,k][v==k]for v in i]for i in zip(*s)if k in i]
+#                     return s
 # def p(g):
 #  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)
 #  for c in C:
