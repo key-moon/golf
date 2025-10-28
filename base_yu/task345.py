@@ -1,4 +1,4 @@
-# best: 90(jailctf merger) / others: 93(jacekw Potatoman nauti natte), 93(import itertools), 95(natte), 95(biz), 102(Code Golf International)
+# best: 90(jailctf merger) / others: 93(jacekw Potatoman nauti natte), 93(import itertools), 93(intgrah jimboko awu macaque sammyuri), 95(natte), 95(biz)
 # ========================================== 90 ==========================================
 # def p(g):
 #  u=[*zip(*g)]
