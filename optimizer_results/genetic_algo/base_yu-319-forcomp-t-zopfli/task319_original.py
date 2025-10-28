@@ -6,5 +6,5 @@ def p(g):
  for c in D:
   for y in A(-32,14):
    for x in A(-32,14):
-    d=[g[i*2+y+k][j*2+x+l]for i in A(B(g))for j in A(B(g[i]))for k in A(2)for l in A(2)if g[i][j]==c if B(g)>i*2+y+k>-1<j*2+x+l<B(g[i])]
+    d=[g[i*2+y+k][j*2+x+l]for i in A(B(g))for j in A(B(g[i]))for k in A(2)for l in A(2)if g[i][j]==c if i*2+y+k in A(B(g))if j*2+x+l in A(B(g[i]))]
     if[]<d==[d[0]]*C(g,[]).count(d[0]):return[[[b,v][v==c]for*t,v in zip(*g,s)if c in t]for s in g if c in s]
