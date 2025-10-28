@@ -1,16 +1,27 @@
 # best: 137(intgrah jimboko awu macaque sammyuri) / others: 141(ox jam), 154(jailctf merger), 155(biz), 158(Code Golf International), 158(4atj sisyphus luke Seek mukundan)
 # ================================================================= 137 =================================================================
-def p(g):
- for _ in[0]*4:
-  for i,s in enumerate(g):
-   for j,v in enumerate(s):
-    if 8in s[j:] and s[j:j+2]==[2,0]:
-     k=s.index(8,j)
-     s[j:k]=[2]*(k-j)
-     g[i+1][k-1:k+2]=g[i-1][k-1:k+2]=8,8,8
-     g[i][k-1:k+2]=8,2,8
-  *g,=map(list,zip(*g[::-1]))
- return g
+import re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("., 8, .(.{%d})2, 8, 0(.{%d})0, 8, 0"%(l:=len(g[0])*3-5,l),r"8,8,8\1 8,2,8\2 8,8,8",re.sub("(?<=2, )0(?=[, 0]*8)","2",str(g))))[::-1])],c+1)
+
+
+# import re
+# def p(g):
+#  for _ in range(40):
+#   g=eval(re.sub("(?<=2, )0((, 0)*, 8)",r"2\1",str(g)))
+#   g=eval(re.sub("., 8, .(.{%d})2, 8, 0(.{%d})0, 8, 0"%(len(g[0])*3-5,len(g[0])*3-5),r"8,8,8\1 8,2,8\2 8,8,8",str(g)))
+#   g=[*zip(*g[::-1])]
+#  return g
+
+# def p(g):
+#  for _ in[0]*4:
+#   for i,s in enumerate(g):
+#    for j,v in enumerate(s):
+#     if 8in s[j:] and s[j:j+2]==[2,0]:
+#      k=s.index(8,j)
+#      s[j:k]=[2]*(k-j)
+#      g[i+1][k-1:k+2]=g[i-1][k-1:k+2]=8,8,8
+#      g[i][k-1:k+2]=8,2,8
+#   *g,=map(list,zip(*g[::-1]))
+#  return g
 
 # def p(g):
 #  for _ in 0,1:
