@@ -1,4 +1,4 @@
-# best: 244(jacekw Potatoman nauti natte, import itertools) / others: 257(natte), 257(jailctf merger), 266(HIMAGINE THE FUTURE.), 277(ox jam), 284(Code Golf International)
+# best: 241(import itertools) / others: 244(jacekw Potatoman nauti natte), 257(natte), 257(jailctf merger), 266(HIMAGINE THE FUTURE.), 277(ox jam)
 def p(g):
  i=w=v=0
  while any(g[i])<1:i+=1
