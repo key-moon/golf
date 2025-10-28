@@ -1,4 +1,4 @@
-# best: 273(HIMAGINE THE FUTURE.) / others: 286(jailctf merger), 297(ox jam), 306(jacekw Potatoman nauti natte), 306(import itertools), 318(THUNDER THUNDER)
+# best: 273(HIMAGINE THE FUTURE.) / others: 286(jailctf merger), 297(ox jam), 301(import itertools), 306(jacekw Potatoman nauti natte), 318(THUNDER THUNDER)
 def p(g):
  u=[[*s]for s in g]
  for _ in range(80):
