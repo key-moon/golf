@@ -10,7 +10,7 @@ def p(g):
      u=[(a,b)for a in range(len(g))for b in range(len(g))if g[a][b]==g[i][j]>0 if any((y-a)**2+(x-b)**2<3 for y,x in u)]
      u=[(a,b)for a in range(len(g))for b in range(len(g))if g[a][b]==g[i][j]>0 if any((y-a)**2+(x-b)**2<3 for y,x in u)]
      g=[[g[a][b] or ((a,2*j+1-b) in u)*g[i][j+1] or ((2*i+1-a,b) in u)*g[i+1][j]for b in range(len(g))]for a in range(len(g))]
-  g[:]=zip(*g[::-1])
+  g[::-1]=zip(*g)
  return g
 
 # def p(g):
