@@ -1,18 +1,17 @@
 # best: 240(jailctf merger) / others: 244(ox jam), 252(intgrah jimboko awu macaque sammyuri), 281(import itertools), 287(HIMAGINE THE FUTURE.), 293(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 def p(g):
- c=max(sum(g,[]))
+ c=max(g[0])
  for _ in range(4):
+  g[::-1]=zip(*g)
   t=[30]+[[*s,c].index(c)for s in g]+[30]
   d=set()
-  while True:
+  while 1:
    S,W,l,r=max((min(t[l:r])*(r-l-1),min(t[l:r])-1,l,r)for r in range(len(t)+1)for l in range(r-2)if not{l,r-1}&d)
    if S<25 or W<5:break
    d|={*range(l,r)}
    W-=2*(r-l<5)
    for i in range(l,r-2):
-    g[i][:W]=[3]*W
-  g[:]=map(list,zip(*g[::-1]))
-  # *g,=map(list,zip(*g[::-1]))
+    g[i]=(3,)*W+g[i][W:]
  return g
 
 # def p(g,case):
