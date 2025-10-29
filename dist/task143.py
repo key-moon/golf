@@ -1,1 +1,1 @@
-p=lambda g:[[((f:=lambda c:[i-sum(g,[]).index(c)for i,v in enumerate(sum(g,[]))if v==c])(v)==f(c:=max(g[0][:3]+g[1][:3]))!=v!=c)*5or v for v in s]for s in g]
+p=lambda g:[[((f:=lambda c,t=0:[~i-(t:=t or~i)for i,v in enumerate(sum(g,[]))if v==c])(v)==f(c:=max(g[0][:3]+g[1][:3]))!=v!=c)*5or v for v in s]for s in g]
