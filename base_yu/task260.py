@@ -10,10 +10,11 @@
 #  x,*_,y=sorted(i-j for i in R for j in R if g[i][j])
 #  return[[c*(i-j in[t:=u//10-u%10]+[x-2]*(x<t)+[y+2]*(t<y))for j in R]for i in R]
 
-def p(g,R=range(10)):
- c=sum({*sum(g,[])})-5
- x,*y,z=sorted(i-j for i in R for j in R if g[i][j])
- return[[c*(5!=g[i][j]>0 or (i-j+2==x<y[0])or(i-j-2==z>y[-1]))for j in R]for i in R]
+# def p(g,R=range(10)):
+#  x,*y,z=sorted(i-j for i in R for j in R if g[i][j])
+#  return[[sum({*sum(g,[-5])})*(g[i][j]%5|(i-j+2==x<y[0])|(i-j-2==z>y[-1])>0)for j in R]for i in R]
+
+p=lambda g,R=range(10):[[sum({*sum(g,[-5])})*(g[i][j]%5|(i-j+2==(z:=sorted(i-j for i in R for j in R if g[i][j]))[0]<z[1])|(i-j-2==z[-1]>z[-2])>0)for j in R]for i in R]
 
 
 # def p(g,R=range(10)):
