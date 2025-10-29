@@ -1,5 +1,6 @@
+A=range
 def p(g):
- h,w=len(g),len(g[0]);u=sorted((x,i,j,r,d)for A in range(h*w)if[[1]*w,*g][i:=A%h][j:=A//h]if[1,*g[i]][j]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
+ u=sorted((r*d,i,j,r,d)for i in A(len(g))for j in A(len(g[0]))if(r:=[*g[i],2][j:].index(2))*(d:=[*[*zip(*g)][j],2][i:].index(2))if[1,*g[i]][j]if[1,*[*zip(*g)][j]][i])
  for(x,i,j,d,r)in u:
   for s in g[i:i+r]:s[j:j+d]=[(x==u[0][0])*8+(x==u[-1][0])]*d
  return g

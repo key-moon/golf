@@ -98,6 +98,9 @@ def update_task_scores_progressions():
         if name in merged_users:
           print(f"[!] skipping merged user: {name}")
           continue
+        if name == "HIMAGINE THE FUTURE.":
+          print(f"[!] skipping our: {name}")
+          continue
         if name not in task_scores:
           task_scores[name] = [[] for _ in range(400)]
           updated.add(name)

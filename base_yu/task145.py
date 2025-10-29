@@ -1,14 +1,34 @@
 # best: 187(import itertools) / others: 189(intgrah jimboko awu macaque sammyuri), 191(Code Golf International), 191(4atj sisyphus luke Seek mukundan), 191(ox jam), 195(jailctf merger)
 # ========================================================================================== 187 ==========================================================================================
 def p(g):
- h,w=len(g),len(g[0])
+#  h,w=len(g),len(g[0]);u=sorted((x,i,j,r,d)for I in range(h*w)if[[1]*w,*g][i:=I%h][j:=I//h]if[1,*g[i]][j]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
+#  u=sorted((x,i,j,r,d)for i in range(len(g))for j in range(len(g[0]))if[[1]*99,*g][i][j]if[1,*g[i]][j]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
+#  u=sorted((x,i,j,r,d)for i in range(len(g))for j in range(len(g[0]))if(x:=(r:=(u:=[1,*g[i],2])[j+1:].index(2))*(d:=(v:=[1,*[*zip(*g)][j],2])[i+1:].index(2)))if u[j]if v[i])
+#  u=sorted((x,i,j,r,d)for i in range(len(g))for j in range(len(g[0]))if(x:=(r:=[1,*g[i],2][j+1:].index(2))*(d:=[1,*[*zip(*g)][j],2][i+1:].index(2)))if [1,*g[i],2][j]if [1,*[*zip(*g)][j],2][i])
+ u=sorted((r*d,i,j,r,d)for i in range(len(g))for j in range(len(g[0]))if(r:=[*g[i],2][j:].index(2))*(d:=[*[*zip(*g)][j],2][i:].index(2))if[1,*g[i]][j]if[1,*[*zip(*g)][j]][i])
 #  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if((j:=I//h)<1 or g[i][j-1])if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
 #  u=sorted((x,i,j,r,d)for I in range(h*w)if((i:=I%h)<1 or g[i-1][j])if[1,*g[i]][j:=I//h]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
- u=sorted((x,i,j,r,d)for I in range(h*w)if[[1]*w,*g][i:=I%h][j:=I//h]if[1,*g[i]][j]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))
  for x,i,j,d,r in u:
   for s in g[i:i+r]:
    s[j:j+d]=[(x==u[0][0])*8+(x==u[-1][0])]*d
  return g
+
+
+# def p(g):
+#  a=[]
+#  a+=[(l:=0)or[l:=-~l*0**v for v in s]for s in g],
+#  g[:]=zip(*g[::-1])
+#  a+=[(l:=0)or[l:=-~l*0**v for v in s]for s in g],
+#  g[:]=zip(*g[::-1])
+#  a+=[(l:=0)or[l:=-~l*0**v for v in s]for s in g],
+#  g[:]=zip(*g[::-1])
+#  a+=[(l:=0)or[l:=-~l*0**v for v in s]for s in g],
+#  g[:]=zip(*g[::-1])
+#  b=sorted((a[0][i][j]+a[2][~i][~j]-1)*(a[1][j][~i]+a[3][~j][i]-1)for i in range(len(g))for j in range(len(g[i]))if g[i][j]<1)
+#  return[[g[i][j]or(b[0]==(a[0][i][j]+a[2][~i][~j]-1)*(a[1][j][~i]+a[3][~j][i]-1))*8+(b[-1]==(a[0][i][j]+a[2][~i][~j]-1)*(a[1][j][~i]+a[3][~j][i]-1))for j in range(len(g[i]))]for i in range(len(g))]
+
+
+#  return[[(a[0][i][j]+a[2][~i][~j])*(a[1][j][~i]+a[3][~j][i]) for j in range(len(g[i]))]for i in range(len(g))]
 
 # def p(g):
 #  h,w=len(g),len(g[0])
