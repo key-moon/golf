@@ -1,22 +1,39 @@
 # best: 274(jailctf merger) / others: 281(ox jam), 304(HIMAGINE THE FUTURE.), 326(jacekw Potatoman nauti natte), 326(import itertools), 337(THUNDER THUNDER)
+# def p(g):
+#  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==1]
+#  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in u for y in range(-1,2)for x in range(-1,2))]
+#  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in u for y in range(-1,2)for x in range(-1,2))]
+#  c=[]
+#  for i in range(len(g)):
+#   c+=[0]*len(g[0]),
+#   for j in range(len(g[0])):
+#    if g[i][j]==2 and (i,j) not in u:
+#     v=[(i,j)]
+#     v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
+#     v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
+#     v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
+#     v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
+#     v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
+#     c[i][j]=(len(v)^9)%3^3
+#  return[[g[y][x] or any(g[i][j]==1 and all(len(g)>y+(a-i)*s>-1<x+(b-j)*s<len(g[0])and c[y+(a-i)*s][x+(b-j)*s]==s for a,b in u)for i in range(len(g))for j in range(len(g[0]))for s in range(1,4))for x in range(len(g[0]))]for y in range(len(g))]
+
 def p(g):
  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==1]
- u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in u for y in range(-1,2)for x in range(-1,2))]
- u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in u for y in range(-1,2)for x in range(-1,2))]
+ u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in u)]
+ u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in u)]
  c=[]
  for i in range(len(g)):
   c+=[0]*len(g[0]),
   for j in range(len(g[0])):
    if g[i][j]==2 and (i,j) not in u:
     v=[(i,j)]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in v for y in range(-1,2)for x in range(-1,2))]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
     c[i][j]=(len(v)^9)%3^3
- return[[g[y][x] or any(g[i][j]==1 and all(len(g)>y+(a-i)*s>-1<x+(b-j)*s<len(g[0])and c[y+(a-i)*s][x+(b-j)*s]==s for a,b in u)for i in range(len(g))for j in range(len(g[0]))for s in range(1,4))for x in range(len(g[0]))]for y in range(len(g))]
-
+ return[[g[y][x] or any(g[i][j]==1 and all(y+(a-i)*s in range(len(g)) and x+(b-j)*s in range(len(g[0]))and c[y+(a-i)*s][x+(b-j)*s]==s for a,b in u)for i in range(len(g))for j in range(len(g[0]))for s in range(1,4))for x in range(len(g[0]))]for y in range(len(g))]
 
 
 # def p(g):
