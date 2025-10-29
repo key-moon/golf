@@ -1,1 +1,1 @@
-def p(g,R=range(10)):c=sum({*sum(g,[])})-5;x,*y,z=sorted(i-j for i in R for j in R if g[i][j]);return[[c*(5!=g[i][j]>0 or i-j+2==x<y[0]or i-j-2==z>y[-1])for j in R]for i in R]
+p=lambda g,R=range(10):[[sum({*sum(g,[-5])})*(g[i][j]%5|(i-j+2==(z:=sorted(i-j for i in R for j in R if g[i][j]))[0]<z[1])|(i-j-2==z[-1]>z[-2])>0)for j in R]for i in R]
