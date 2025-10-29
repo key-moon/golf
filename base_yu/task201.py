@@ -12,20 +12,15 @@
 #  return m[:1]+[[y[0],*x[::1|-f],y[-1]] for x,y in zip(w,m[1:])]+m[-1:]
 
 def p(g):
- g=[*map(list,zip(*g))]
-
+ *g,=map(list,zip(*g))
  k=sum(g,[]).index(4)
- c=g[k//13][k%13+1]
  l=g[k//13][k%13+1:].index(4)+2
  a=g[k//13][k%13:k%13+l]
  g[k//13][k%13:k%13+l]=[0]*l
-
  k=sum(g,[]).index(4)
  l=g[k//13][k%13+1:].index(4)+2
  b=g[k//13][k%13:k%13+l]
  g[k//13][k%13:k%13+l]=[0]*l
-
- g=[s for s in zip(*g) if any(s)]
- g=[s for s in zip(*g) if any(s)]
-
- return [*zip(a,*[[0,*s,0]for s in g][::1|-(max(g[0])!=c)],b)]
+ *g,=filter(any,zip(*g))
+ *g,=filter(any,zip(*g))
+ return [*zip(a,*[[0,*s,0]for s in g][::1|-(max(g[0])!=a[1])],b)]
