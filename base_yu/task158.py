@@ -1,4 +1,4 @@
-# best: 263(intgrah jimboko awu macaque sammyuri) / others: 269(jailctf merger), 269(ox jam), 284(HIMAGINE THE FUTURE.), 313(import itertools), 319(cg-klogw-sekken)
+# best: 263(intgrah jimboko awu macaque sammyuri) / others: 269(jailctf merger), 269(ox jam), 284(HIMAGINE THE FUTURE.), 310(import itertools), 319(cg-klogw-sekken)
 def p(g):
  for i in range(len(g)-2):
   for j in range(len(g[0])-2):

@@ -1,5 +1,5 @@
-# best: 103(intgrah jimboko awu macaque sammyuri) / others: 111(HIMAGINE THE FUTURE.), 114(jailctf merger), 116(import itertools), 117(jacekw Potatoman nauti natte), 118(natte)
-# ================================================ 103 ================================================
+# best: 102(intgrah jimboko awu macaque sammyuri) / others: 111(HIMAGINE THE FUTURE.), 114(jailctf merger), 116(import itertools), 117(jacekw Potatoman nauti natte), 118(natte)
+# =============================================== 102 ================================================
 p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(max,*g[:i])]]+g[i:])[::-1])],c+1)
 
 # def p(g):
