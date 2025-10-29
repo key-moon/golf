@@ -1,7 +1,3 @@
-def p(g):
- s,t=sorted(g)[-2:];A,B=sum(s),sum(t)
- if A<1:return[*map(list,zip(*p([*map(list,zip(*g))])))]
- t,z,s=s.index(A),g.index(s),g.index(t)
- if z>s:z,s=s,z;A,B=B,A
- while s>z+4:g[z][t]=A;g[s][t]=B;s-=1;z+=1
- g[z][t-2:t+3]=[A]*5;g[s][t-2:t+3]=[B]*5;g[z+1][t-2]=g[z+1][t+2]=A;g[s-1][t-2]=g[s-1][t+2]=B;return g
+B=range
+A=len
+p=lambda g:(A(u:=[i for i in B(A(g))if any(g[i])])>1)*[[max(g[u[-(i>u[0]+u[-1]>>1)]])*((u[0]+u[-1]>>1<=i<(u[0]+u[-1]>>1)+2)*2<=abs(j-g[u[0]].index(max(g[u[0]])))<=((u[0]+u[-1]>>1)-2<i<(u[0]+u[-1]>>1)+3)*2)*(u[0]<=i<=u[-1])for j in B(A(g[0]))]for i in B(A(g))]or[*zip(*p([*zip(*g)]))]
