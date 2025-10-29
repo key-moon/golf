@@ -1,4 +1,4 @@
-# best: 194(jailctf merger) / others: 205(HIMAGINE THE FUTURE.), 214(Code Golf International), 214(4atj sisyphus luke Seek mukundan), 233(ox jam), 237(intgrah jimboko awu macaque sammyuri)
+# best: 194(jailctf merger) / others: 205(HIMAGINE THE FUTURE.), 214(Code Golf International), 214(4atj sisyphus luke Seek mukundan), 233(ox jam), 235(import itertools)
 def p(g):
  for i in range(len(g)):
   for l in range(len(g)):

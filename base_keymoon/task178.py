@@ -1,4 +1,4 @@
-# best: 47(jailctf merger, HIMAGINE THE FUTURE., intgrah jimboko awu macaque sammyuri) / others: 49(ox jam), 55(Code Golf International), 55(4atj sisyphus luke Seek mukundan), 55(HETHAT), 56(cubbus)
+# best: 47(jailctf merger, HIMAGINE THE FUTURE., intgrah jimboko awu macaque sammyuri) / others: 49(ox jam), 52(import itertools), 55(Code Golf International), 55(4atj sisyphus luke Seek mukundan), 55(HETHAT)
 # 転地佐伯テクだけでこんだけ食うから転地佐伯ではない
 # lambda g:5>len(g)and[*map(list,zip(*g))]or []
 # lambda g,s=0:[(s:=r)*0!=r*0and p(r)or r for r in g if r!=s]

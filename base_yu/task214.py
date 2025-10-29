@@ -1,5 +1,5 @@
-# best: 62(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 65(intgrah jimboko awu macaque sammyuri), 66(HIMAGINE THE FUTURE.), 70(2F), 70(biz), 73(jacekw Potatoman nauti natte)
-# ============================ 62 ============================
+# best: 61(import itertools) / others: 62(Code Golf International), 62(4atj sisyphus luke Seek mukundan), 62(jailctf merger), 62(ox jam), 65(intgrah jimboko awu macaque sammyuri)
+# ============================ 61 ===========================
 # p=lambda g:[g[i][:4]+[g[2][i],g[1][i],g[0][i]]+g[2-i][3::-1]for i in(0,1,2)]
 # p=lambda g:[s[:4]+[z,y,x]+t[3::-1]for s,(x,y,z),t in zip(g,[*zip(*g)][:3],g[::-1])]
 # p=lambda g:[s[:4]+[z,y,x]+t[3::-1]for s,t,x,y,z,*_ in zip(g,g[::-1],*g)]
