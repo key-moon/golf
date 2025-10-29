@@ -10,7 +10,7 @@
 
 | Task | Base | Compressor | Length | Best | Goods | Message |
 |------|------|------------|--------|------|-------|---------|
-| [105](/vis/task105.png) | [base_yu](/base_yu/task105.py) | raw/raw | [185](/dist/task105.py) (+59) | 126 🔴 | [vis-many](/vis_many/task105.png) | not worth compress |
+| [105](/vis/task105.png) | [base_yu](/base_yu/task105.py) | raw/raw | [184](/dist/task105.py) (+58) | 126 🔴 | [vis-many](/vis_many/task105.png) | not worth compress |
 | [107](/vis/task107.png) | [base_yu](/base_yu/task107.py) | forplain/raw | [205](/dist/task107.py) (+62) | 143 🔴 | [vis-many](/vis_many/task107.png) | not worth compress |
 | [148](/vis/task148.png) | [base_yu](/base_yu/task148.py) | forcomp-t/genetic-algo(zopfli) | [200](/dist/task148.py) (+60) | 140 🔴 | [vis-many](/vis_many/task148.png) |  |
 | [379](/vis/task379.png) | [base_yu](/base_yu/task379.py) | raw/raw | [190](/dist/task379.py) (+53) | 137 🔴 | [vis-many](/vis_many/task379.png) | not worth compress |
