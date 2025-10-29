@@ -1,4 +1,4 @@
-# best: 55(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz, intgrah jimboko awu macaque sammyuri) / others: 57(ox jam), 59(HIMAGINE THE FUTURE.), 63(import itertools), 65(cubbus), 68(open source)
+# best: 55(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz, intgrah jimboko awu macaque sammyuri) / others: 57(ox jam), 59(import itertools), 59(HIMAGINE THE FUTURE.), 65(cubbus), 68(open source)
 # lambda g:[p,list][g==(a:=[*zip(*[g:=r for r in g if g!=r])])](a)
 # lambda g:[list,p][g*0==[]]((*zip(*[g:=r for r in g if g!=r]),))
 # lambda g,c=-2:g*c or p([*zip(*[g:=r for r in g if g!=r])],c+1)

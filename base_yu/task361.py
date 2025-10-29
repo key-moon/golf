@@ -1,4 +1,4 @@
-# best: 193(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 195(ox jam), 196(import itertools), 204(jacekw Potatoman nauti natte), 204(natte), 207(Code Golf International)
+# best: 193(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 194(import itertools), 195(ox jam), 204(jacekw Potatoman nauti natte), 204(natte), 207(Code Golf International)
 # ============================================================================================= 193 =============================================================================================
 
 def p(g):

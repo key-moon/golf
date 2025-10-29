@@ -1,4 +1,4 @@
-# best: 54(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, biz) / others: 60(HETHAT), 60(HIMAGINE THE FUTURE.), 62(intgrah jimboko awu macaque sammyuri), 63(jonas ryno kg583 kabutack), 63(cubbus)
+# best: 54(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam, biz) / others: 59(import itertools), 60(HETHAT), 60(HIMAGINE THE FUTURE.), 62(intgrah jimboko awu macaque sammyuri), 63(jonas ryno kg583 kabutack)
 # ======================== 54 ========================
 # lambda g:[(s:=g[0])[:]]+[s[:]for s[s.index(0)]in(len(s)//2-1)*s[:1]]
 # lambda g:(s:=g[0])and g+[s[:1]*i+s[:-i]for i in range(1,len(s)//2)]
