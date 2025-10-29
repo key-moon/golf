@@ -15,12 +15,12 @@
 | [148](/vis/task148.png) | [base_yu](/base_yu/task148.py) | forcomp-t/genetic-algo(zopfli) | [200](/dist/task148.py) (+60) | 140 🔴 | [vis-many](/vis_many/task148.png) |  |
 | [105](/vis/task105.png) | [base_yu](/base_yu/task105.py) | raw/raw | [184](/dist/task105.py) (+58) | 126 🔴 | [vis-many](/vis_many/task105.png) | not worth compress |
 | [023](/vis/task023.png) | [base_yu](/base_yu/task023.py) | forplain/zlib-zopfli-cpp-var-zopfli | [250](/dist/task023.py) (+55) | 195 🔴 | [vis-many](/vis_many/task023.png) |  |
-| [145](/vis/task145.png) | [base_yu](/base_yu/task145.py) | forplain/genetic-algo(zlib) | [241](/dist/task145.py) (+54) | 187 🔴 | [vis-many](/vis_many/task145.png) |  |
 | [379](/vis/task379.png) | [base_yu](/base_yu/task379.py) | raw/raw | [190](/dist/task379.py) (+53) | 137 🔴 | [vis-many](/vis_many/task379.png) | not worth compress |
 | [005](/vis/task005.png) | [base_yu](/base_yu/task005.py) | forcomp-s/genetic-algo(zopfli) | [234](/dist/task005.py) (+51) | 183 🔴 | [vis-many](/vis_many/task005.png) |  |
 | [117](/vis/task117.png) | [base_yu](/base_yu/task117.py) | forcomp-t/genetic-algo(zlib) | [195](/dist/task117.py) (+47) | 148 🔴 | [vis-many](/vis_many/task117.png) |  |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | forplain/genetic-algo(zopfli) | [330](/dist/task096.py) (+46) | 284 🔴 | [vis-many](/vis_many/task096.png) |  |
 | [253](/vis/task253.png) | [base_yu](/base_yu/task253.py) | raw/raw | [162](/dist/task253.py) (+41) | 121 🔴 | [vis-many](/vis_many/task253.png) | not worth compress |
+| [145](/vis/task145.png) | [base_yu](/base_yu/task145.py) | raw/genetic-algo(zopfli) | [227](/dist/task145.py) (+40) | 187 🔴 | [vis-many](/vis_many/task145.png) |  |
 | [260](/vis/task260.png) | [base_yu](/base_yu/task260.py) | forplain/raw | [175](/dist/task260.py) (+40) | 135 🔴 | [vis-many](/vis_many/task260.png) | not worth compress |
 | [086](/vis/task086.png) | [base_yu](/base_yu/task086.py) | forcomp-t/genetic-algo(zlib) | [211](/dist/task086.py) (+39) | 172 🔴 | [vis-many](/vis_many/task086.png) |  |
 | [255](/vis/task255.png) | [base_yu](/base_yu/task255.py) | forcomp-s/genetic-algo(zlib) | [278](/dist/task255.py) (+38) | 240 🔴 | [vis-many](/vis_many/task255.png) |  |
