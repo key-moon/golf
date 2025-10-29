@@ -1,7 +1,7 @@
 # Golf Stats
 
 Accepted: 400/400
-Score: 957434
+Score: 957437
 
 Best Score: 960850
 
@@ -414,7 +414,7 @@ Best Score: 960850
 | [209](/vis/task209.png) | [base_yu](/base_yu/task209.py) | forcomp-s/genetic-algo(zlib) | [278](/dist/task209.py) (+10) | 268 🔴 | [vis-many](/vis_many/task209.png) |  |
 | [076](/vis/task076.png) | [base_yu](/base_yu/task076.py) | forcomp-t/genetic-algo(zlib) | [286](/dist/task076.py) (+13) | 273 🔴 | [vis-many](/vis_many/task076.png) |  |
 | [233](/vis/task233.png) | [base_yu](/base_yu/task233.py) | raw/genetic-algo(zlib) | [273](/dist/task233.py) (0) | 273  | [vis-many](/vis_many/task233.png) |  |
-| [101](/vis/task101.png) | [base_yu](/base_yu/task101.py) | forcomp-t/genetic-algo(zopfli) | [304](/dist/task101.py) (+30) | 274 🔴 | [vis-many](/vis_many/task101.png) |  |
+| [101](/vis/task101.png) | [base_yu](/base_yu/task101.py) | raw/genetic-algo(zopfli) | [301](/dist/task101.py) (+27) | 274 🔴 | [vis-many](/vis_many/task101.png) |  |
 | [133](/vis/task133.png) | [base_yu](/base_yu/task133.py) | forcomp-t/genetic-algo(zopfli) | [277](/dist/task133.py) (0) | 277  | [vis-many](/vis_many/task133.png) |  |
 | [054](/vis/task054.png) | [base_yu](/base_yu/task054.py) | forcomp-s/genetic-algo(zopfli) | [298](/dist/task054.py) (+19) | 279 🔴 | [vis-many](/vis_many/task054.png) |  |
 | [096](/vis/task096.png) | [base_keymoon](/base_keymoon/task096.py) | forplain/genetic-algo(zopfli) | [330](/dist/task096.py) (+46) | 284 🔴 | [vis-many](/vis_many/task096.png) |  |
