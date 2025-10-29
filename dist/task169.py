@@ -1,1 +1,1 @@
-p=lambda g,c=11,d=8:-c*g or[(l:=0)or[l:=v and[7-v.bit_count(),v|l|(v<9)*(d:=d*2)][c<11]for v in s]for s in zip(*p(g,c-1))][::-1]
+p=lambda g,c=11,d=8:-c*g or[(l:=0)or[l:=v and[7-v.bit_count(),v|l|8//v*(d:=d*2)][c<11]for v in s]for s in zip(*p(g,c-1))][::-1]
