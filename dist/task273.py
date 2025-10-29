@@ -1,1 +1,1 @@
-p=lambda g,t=[],R=range(10):[sum(c)and[t:=[i for i in R if c[i]if[]==t],c][1]or[2*([]<t!=t[0]<i<t[1])for i in R]for c in g]
+p=lambda g,t={10}:[[2*[min(t)<i<max(t-{10}),s[i]and(t:=t^{i})and 2][any(s)]for i in range(10)]for s in g]
