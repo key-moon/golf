@@ -1,4 +1,4 @@
-# best: 143(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, biz) / others: 161(Tony Li), 161(Tony Li & Darren Amadeus Martin), 168(import itertools), 170(Code Golf International), 170(4atj sisyphus luke Seek mukundan)
+# best: 143(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, biz) / others: 144(import itertools), 161(Tony Li), 161(Tony Li & Darren Amadeus Martin), 170(Code Golf International), 170(4atj sisyphus luke Seek mukundan)
 # ==================================================================== 143 ====================================================================
 import re
 def p(g):

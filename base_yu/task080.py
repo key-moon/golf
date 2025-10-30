@@ -1,4 +1,4 @@
-# best: 253(ox jam) / others: 255(jailctf merger), 255(HIMAGINE THE FUTURE.), 255(THUNDER THUNDER), 270(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 276(jacekw Potatoman nauti natte)
+# best: 253(ox jam) / others: 255(jailctf merger), 255(HIMAGINE THE FUTURE.), 255(THUNDER THUNDER), 270(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 274(import itertools)
 def p(g):
  a,*_,b,c=sorted({*sum(g,[])},key=lambda c:(sum(g,[]).count(c),sum(g,[])[::-1].index(c)+sum(g,[]).index(c)))
  s=sum(g,[]).index(b^c)+1
