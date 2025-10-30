@@ -2,13 +2,26 @@
 # ====================================================================== 148 =======================================================================
 
 
+# def p(g):
+#  n=len(g)
+#  for i in range(n-2,0,-1):
+#   for j in range(n):
+#    if[1]<[g[i][j]]*4==g[i-1][j-1:j+2:2]+g[i+1][j-1:j+2:2]:
+#     for z in range(n*n*2):
+#      if(e:=g[y:=z//n%n][x:=z%n]):g[i*2-y][x]=g[y][j*2-x]=e
+#     return g
+
+
 def p(g):
- n=len(g)
- for i in range(n-2,0,-1):
-  for j in range(n):
+ for i in range(len(g)-2,0,-1):
+  for j in range(len(g)):
    if[1]<[g[i][j]]*4==g[i-1][j-1:j+2:2]+g[i+1][j-1:j+2:2]:
-    for z in range(n*n*2):
-     if(e:=g[y:=z//n%n][x:=z%n]):g[i*2-y][x]=g[y][j*2-x]=e
+    for x in range(len(g)):
+     for y in range(len(g)):
+      if g[y][x]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
+    for x in range(len(g)):
+     for y in range(len(g)):
+      if g[y][x]:g[i*2-y][x]=g[y][j*2-x]=g[y][x]
     return g
 
 
