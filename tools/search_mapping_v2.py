@@ -704,9 +704,6 @@ def search_mapping(mapping, max_bytes=10, value_cap=DEFAULT_VALUE_CAP, bit_cap=D
 
 # Example
 mapping = {
-    0:0,
-    1:0,
-    2:0,
-    3:1,
+    i:max(min(i,2),-2) for i in range(-10, 11)
 }
 search_mapping(mapping, max_bytes=9, var_name_lens=1)

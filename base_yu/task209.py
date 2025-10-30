@@ -8,12 +8,12 @@ def p(g):
  for s in range(2,6):
   for y in range(6,68):
    for x in range(-6,68):
-    if all(len(g)>(i+y)//s>-1<(j+x)//s<len(g[0])and g[(i+y)//s][(j+x)//s]==G[i][j]for i in range(len(G))for j in range(len(G[0]))if G[i][j]|4!=4):
+    if all(i+y in range(len(g)*s)and j+x in range(len(g[0])*s)and g[(i+y)//s][(j+x)//s]==G[i][j]for i in range(len(G))for j in range(len(G[0]))if G[i][j]|4!=4):
     # if all(len(g)>(i+y)//s>-1<(j+x)//s<len(g[0])and g[(i+y)//s][(j+x)//s]==G[i][j] for i,j in A):
      for i in range(len(G)):
       for j in range(len(G[0])):
-       if G[i][j]<1 and len(g)>(i+y)//s>-1<(j+x)//s<len(g[0]):
-        G[i][j]=g[(i+y)//s][(j+x)//s]
+       if i+y in range(len(g)*s)and j+x in range(len(g[0])*s):
+        G[i][j]|=g[(i+y)//s][(j+x)//s]
      return G
 
 # def p(g):

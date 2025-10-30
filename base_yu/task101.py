@@ -38,18 +38,18 @@
 
 def p(g):
  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==1]
- u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in u)]
- u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in u)]
+ u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in u)]
+ u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in u)]
  c=[[],[],[],[]]
  for i in range(len(g)):
   for j in range(len(g[0])):
    if g[i][j]==2 and (i,j) not in u:
     v=[(i,j)]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
-    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i-y)*(i-y)+(j-x)*(j-x)<3for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in v)]
+    v=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any(2>i-y>-2<j-x<2for y,x in v)]
     c[(len(v)^9)%3^3]+=(i,j),
  return[[g[y][x] or any(g[i][j]==1==all((y+(a-i)*s,x+(b-j)*s)in c[s]for a,b in u)for i in range(len(g))for j in range(len(g[0]))for s in range(1,4))for x in range(len(g[0]))]for y in range(len(g))]
 

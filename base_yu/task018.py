@@ -12,10 +12,11 @@ def p(g):
   for d in [-1,-1,-1,1,-1,-1,-1,1]:
    for y in range(-22,22):
     for x in range(-22,22):
-     if all(len(g)>i+y>-1<j+x<len(g[0]) and g[i+y][j+x]==c for i,j,c in v if c!=C):
+     if all(i+y in range(len(g)) and j+x in range(len(g[0])) and g[i+y][j+x]==c for i,j,c in v if c!=C):
       for i,j,c in v:
        g[i+y][j+x]=c
-   g=[*map(list,zip(*g[::d]))]
+  #  g[:]=map(list,zip(*g[::d]))
+   g=[[*s]for s in zip(*g[::d])]
   for i,j,c in v:
    g[i][j]=0
  return g
