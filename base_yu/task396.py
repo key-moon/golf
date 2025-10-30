@@ -22,7 +22,9 @@
 #  else:
 #   return max((len(u:=p([*zip(*g[l::-1])],c+1)),u)for l in range(3,len(g)))[1]
 
-p=lambda g,c=-3:[[v and sum({*sum(g,())})-s[0]for v in s]for s in g]*(g[0]==g[-1])*all(s[0]&s[-1]for s in g)if c>0 else max((len(u:=p([*zip(*g[l::-1])],c+1)),u)for l in range(3,len(g)))[1]
+# p=lambda g,c=-3:[[v and sum({*sum(g,())})-s[0]for v in s]for s in g]*(g[0]==g[-1])*all(s[0]&s[-1]for s in g)if c>0 else max((len(u:=p([*zip(*g[l::-1])],c+1)),u)for l in range(3,len(g)))[1]
+# p=lambda g,c=-3:[[v and sum({*sum(g,())})-s[0]for v in s]for s in g]*(g[0]==g[-1])*all(a&b for a,*_,b in g)if c>0 else max((len(u:=p([*zip(*g[l::-1])],c+1)),u)for l in range(3,len(g)))[1]
+p=lambda g,c=-3:[[v and sum({*sum(g,())})-s[0]for v in s]for s in g]*(g[0]==g[-1])*all(a&b for a,*_,b in g)if c>0 else max(p([*zip(*g[l::-1])],c+1)for l in range(3,len(g)))
 
 
 # def p(g):
