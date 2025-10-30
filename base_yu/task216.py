@@ -1,5 +1,5 @@
-# best: 114(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 121(HIMAGINE THE FUTURE.), 122(biz), 125(ox jam), 126(2F), 130(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ===================================================== 114 ======================================================
+# best: 113(ox jam) / others: 114(Code Golf International), 114(4atj sisyphus luke Seek mukundan), 114(jailctf merger), 121(HIMAGINE THE FUTURE.), 122(biz)
+# ===================================================== 113 =====================================================
 # p=lambda g:max([[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[g[k][l%20]for k in range(20)],0].index(0,l//20)]]for l in range(400)],key=lambda t:sum(t,[]).count(2))
 # p=lambda g:max([(sum(t:=[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[g[k][l%20]for k in range(20)],0].index(0,l//20)]],[]).count(2),~l,t)for l in range(400)])[2]
 # p=lambda g:max([(sum(t:=[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[*[*zip(*g)][l%20]],0].index(0,l//20)]],[]).count(2),~l,t)for l in range(400)])[2]

@@ -1,4 +1,4 @@
-# best: 56(jailctf merger, HIMAGINE THE FUTURE.) / others: 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 60(biz), 63(ox jam), 69(import itertools)
+# best: 55(ox jam) / others: 56(jailctf merger), 56(HIMAGINE THE FUTURE.), 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 60(biz)
 # lambda g:[[a[a[0]==4]for a in zip(a,b[::-1])]for a,b in zip(g,g[::-1])]
 # lambda g,R=range(16):[[[g[i][j],g[~i][~j]][g[i][j]==4]for j in R]for i in R]
 # lambda g,E=enumerate:[[[v,g[~i][~j]][v==4]for j,v in E(s)]for i,s in E(g)]
@@ -6,7 +6,7 @@
 # lambda g:[[c[c[0]==4]for c in zip(s,t[::-1])]for s,t in zip(g,g[::-1])]
 # lambda g:(a:=sum(g,[]))and[[[v,a.pop()][v==4]for v in s]for s in g]
 # f p(g):return(b:=[(a:=g.pop())+[[v,a.pop()][v==4]for v in s]for s in g])+b[::-1]
-# ========================= 56 =========================
+# ========================= 55 ========================
 # lambda g:[(t:=g.pop()*1)and[[a,t.pop()][a==4]for a in s]for s in g*1]
 # ↓左右反転だと1ケースだけ中心軸が残る 色は違うからズルできない
 # lambda g:[[[a,b][a==4]for a,b in zip(s,s[::-1])]for s in g]
