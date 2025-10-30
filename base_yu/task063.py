@@ -1,4 +1,4 @@
-# best: 74(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 75(ox jam), 77(jailctf merger), 78(import itertools), 79(jacekw Potatoman nauti natte), 79(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 74(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 75(ox jam), 76(jailctf merger), 78(import itertools), 79(jacekw Potatoman nauti natte), 79(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ================================== 74 ==================================
 # p=lambda g,c=2:c and p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c-1)or g
 # p=lambda g,c=-1:g*c or p([*zip(*[{*s[1:len(g)-1]}&{2,8}and s or[s[0],*([3]*(len(g)-2)),s[-1]]for s in g])],c+1)

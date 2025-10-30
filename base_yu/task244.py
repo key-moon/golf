@@ -1,4 +1,4 @@
-# best: 63(jacekw Potatoman nauti natte, import itertools, HIMAGINE THE FUTURE.) / others: 64(ox jam), 65(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 65(Code Golf International), 65(4atj sisyphus luke Seek mukundan), 65(jailctf merger)
+# best: 63(jacekw Potatoman nauti natte, import itertools, jailctf merger, HIMAGINE THE FUTURE.) / others: 64(ox jam), 65(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 65(Code Golf International), 65(4atj sisyphus luke Seek mukundan), 65(Yuchen20)
 # ============================= 63 ============================
 # 345678901234567890123456789012345678901234567890123456789012345
 # p=lambda g:(k:=                      )and[s[::-k]for s in g[::k]]

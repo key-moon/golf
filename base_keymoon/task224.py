@@ -1,4 +1,4 @@
-# best: 138(import itertools) / others: 145(HIMAGINE THE FUTURE.), 171(ox jam), 177(jailctf merger), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan)
+# best: 138(import itertools, jailctf merger) / others: 145(HIMAGINE THE FUTURE.), 171(ox jam), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 189(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ================================================================= 138 ==================================================================
 # tmp
 def	p(e):

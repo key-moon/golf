@@ -1,4 +1,4 @@
-# best: 328(HIMAGINE THE FUTURE.) / others: 358(jailctf merger), 365(ox jam), 371(Code Golf International), 371(4atj sisyphus luke Seek mukundan), 372(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 328(HIMAGINE THE FUTURE.) / others: 337(jailctf merger), 365(ox jam), 371(Code Golf International), 371(4atj sisyphus luke Seek mukundan), 372(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # とりあえずあんまgolfのこと考えずに愚直に書く
 from re import *;s=sub
 def p(g):

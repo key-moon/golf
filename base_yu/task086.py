@@ -1,4 +1,4 @@
-# best: 172(ox jam) / others: 176(jailctf merger), 179(Code Golf International), 179(4atj sisyphus luke Seek mukundan), 211(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 211(HIMAGINE THE FUTURE.)
+# best: 172(jailctf merger, ox jam) / others: 179(Code Golf International), 179(4atj sisyphus luke Seek mukundan), 211(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 211(HIMAGINE THE FUTURE.), 222(THUNDER THUNDER)
 # ================================================================================== 172 ===================================================================================
 
 # ↓このコードは [Yuくんのcommit](https://github.com/key-moon/golf/commit/11125032033087d2f61e09dcacaf810a6c1e4a0d) のもの

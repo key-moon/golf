@@ -1,4 +1,4 @@
-# best: 141(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II) / others: 143(jailctf merger), 144(ox jam), 145(jacekw Potatoman nauti natte), 145(Code Golf International), 145(4atj sisyphus luke Seek mukundan)
+# best: 141(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger) / others: 144(ox jam), 145(jacekw Potatoman nauti natte), 145(Code Golf International), 145(4atj sisyphus luke Seek mukundan), 145(natte)
 # =================================================================== 141 ===================================================================
 import re;p=lambda g,c=-3:c*g or[*zip(*eval(re.sub(r"0(?=(.{%d}.{4})*.{%d}0, ([1-9]), \2.{%d}.{%d}.0, ([1-9]))"%((len(g)*3+1,)*4),r"\3",str(p(g,c+1))))[::-1])]
 

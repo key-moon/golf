@@ -1,4 +1,4 @@
-# best: 88(ox jam) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 94(biz), 96(HETHAT), 97(cubbus)
+# best: 88(jailctf merger, ox jam) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 94(biz), 96(HETHAT), 97(cubbus)
 # ========================================= 88 =========================================
 # port re;S=re.sub;p=lambda g,c=-63:c*S(*"04",str(g))or eval(S(*"90",str(p(eval(S("0(?=, 9|\))","9",str([*zip(*g[::-1])]))),c+1))))
 # port re;S=re.sub;p=lambda g,c=-63:g*c or eval(S(*"0940"[c<0::2],str(p(eval(S("0(?=, 9|\))","9",str([*zip(*g[::-1])]))),c+1))))

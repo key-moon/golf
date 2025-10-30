@@ -1,4 +1,4 @@
-# best: 111(HIMAGINE THE FUTURE.) / others: 114(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 114(jailctf merger), 116(import itertools), 117(jacekw Potatoman nauti natte), 118(natte)
+# best: 111(jailctf merger, HIMAGINE THE FUTURE.) / others: 114(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 116(import itertools), 117(jacekw Potatoman nauti natte), 118(natte), 121(Code Golf International)
 # ==================================================== 111 ====================================================
 p=lambda g,c=-3:c*g or p([*zip(*([[0]*10]*~-(i:=str(g).index("2")//31)+[[*map(max,*g[:i])]]+g[i:])[::-1])],c+1)
 

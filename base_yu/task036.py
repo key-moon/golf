@@ -1,4 +1,4 @@
-# best: 75(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz) / others: 84(2F), 90(ox jam), 95(HIMAGINE THE FUTURE.), 96(jacekw Potatoman nauti natte), 96(jacekw Potatoman nauti)
+# best: 75(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, biz) / others: 84(2F), 90(ox jam), 95(import itertools), 95(HIMAGINE THE FUTURE.), 96(jacekw Potatoman nauti natte)
 # =================================== 75 ==================================
 # f=lambda g,d,c=-1:c*g or f([[*s]for s in zip(*g)if d in s],d,c+1)
 # f=lambda g,d:[[v for*t,v in zip(*g,s) if d in t]for s in g if d in s]

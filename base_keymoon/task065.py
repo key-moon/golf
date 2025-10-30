@@ -1,4 +1,4 @@
-# best: 91(ox jam) / others: 100(Code Golf International), 100(4atj sisyphus luke Seek mukundan), 100(jailctf merger), 106(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 107(cg-klogw-sekken)
+# best: 91(jailctf merger, ox jam) / others: 100(Code Golf International), 100(4atj sisyphus luke Seek mukundan), 106(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 107(cg-klogw-sekken), 107(MasukenSamba)
 # =========================================== 91 ==========================================
 # 転置再帰だと 3x3の判定ができない
 # lambda g:(R:=(0,(a:=len(g)//2)+1))and min(p:=[[r[j:j+a]for r in g[i:i+a]]for i in R for j in R],key=p.count)

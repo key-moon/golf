@@ -1,4 +1,4 @@
-# best: 136(ox jam) / others: 138(jailctf merger), 144(biz), 147(adakoda), 149(ShadowPrompt Labs), 150(HIMAGINE THE FUTURE.)
+# best: 136(jailctf merger, ox jam) / others: 144(biz), 146(import itertools), 147(adakoda), 149(ShadowPrompt Labs), 150(HIMAGINE THE FUTURE.)
 # ================================================================ 136 =================================================================
 def p(g):
  n=len(g[0])

@@ -1,4 +1,4 @@
-# best: 121(import itertools) / others: 129(jailctf merger), 129(HIMAGINE THE FUTURE.), 133(JRKKX), 134(Code Golf International), 134(4atj sisyphus luke Seek mukundan)
+# best: 121(import itertools, jailctf merger) / others: 129(HIMAGINE THE FUTURE.), 133(JRKKX), 134(Code Golf International), 134(4atj sisyphus luke Seek mukundan), 137(ox jam)
 # ========================================================= 121 =========================================================
 # p=lambda g,c=-1,z=[[0]*10]:c*g or p([*zip(*[[s[i]or(S==s==T and{*s[:i+1]}>{0}<{*s[i:]})*8for i in range(10)]for S,s,T in zip(z+g,g,g[1:]+z)])],c+1)
 # p=lambda g,c=-1,R=range(10):c*g or p([*zip(*[[g[k][i]or(g[k-1]==g[k]==(g+[[0]*10])[k+1]and{*g[k][:i+1]}>{0}<{*g[k][i:]})*8for i in R]for k in R])],c+1)

@@ -1,4 +1,4 @@
-# best: 208(HIMAGINE THE FUTURE.) / others: 217(jailctf merger), 219(Code Golf International), 219(4atj sisyphus luke Seek mukundan), 220(kambarakun), 222(open source)
+# best: 208(jailctf merger, HIMAGINE THE FUTURE.) / others: 219(Code Golf International), 219(4atj sisyphus luke Seek mukundan), 220(kambarakun), 222(open source), 222(jacekwl Potatoman nauti)
 def p(g):
  for i in range(len(g)-2):
   for j in range(len(g[0])-2):

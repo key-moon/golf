@@ -1,4 +1,4 @@
-# best: 284(ox jam) / others: 303(THUNDER THUNDER), 306(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 306(MasukenSamba), 309(jacekw Potatoman nauti natte), 309(import itertools)
+# best: 284(jailctf merger, ox jam) / others: 303(THUNDER THUNDER), 306(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 306(MasukenSamba), 309(jacekw Potatoman nauti natte), 309(import itertools)
 # 罠: 中央のドットは背景と同じ色のことがある
 # 矩形の辺が交わってることがある 内包してることもある
 # ひどいケース(120):
@@ -55,7 +55,7 @@
 #   lengths.append(common.randint(min_length, max_length))
 # optimal: 353
 
-# best: 284(ox jam) / others: 303(THUNDER THUNDER), 306(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 306(MasukenSamba), 309(jacekw Potatoman nauti natte), 309(import itertools)
+# best: 284(jailctf merger, ox jam) / others: 303(THUNDER THUNDER), 306(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 306(MasukenSamba), 309(jacekw Potatoman nauti natte), 309(import itertools)
 
 # width, height = common.randint(13, 19), common.randint(13, 19)
 # b = common.random_color()

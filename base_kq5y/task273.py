@@ -1,4 +1,4 @@
-# best: 88(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, biz) / others: 109(ShadowPrompt Labs), 116(Code Golf International), 116(4atj sisyphus luke Seek mukundan), 116(jailctf merger), 116(ox jam)
+# best: 88(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger, biz) / others: 100(import itertools), 109(ShadowPrompt Labs), 116(Code Golf International), 116(4atj sisyphus luke Seek mukundan), 116(ox jam)
 # ========================================= 88 =========================================
 
 # p=lambda g,t=[0,0]:[

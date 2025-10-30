@@ -1,4 +1,4 @@
-# best: 100(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II) / others: 101(jailctf merger), 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 106(HIMAGINE THE FUTURE.), 109(ox jam)
+# best: 100(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger) / others: 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 106(HIMAGINE THE FUTURE.), 109(ox jam), 110(jacekw Potatoman nauti natte)
 # ============================================== 100 ===============================================
 # p=lambda g:[[v for*t,v in zip(*g,s) if any(t)]for s in g if any(s)]
 # def p(g):

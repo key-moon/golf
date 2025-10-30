@@ -1,4 +1,4 @@
-# best: 187(import itertools) / others: 191(Code Golf International), 191(4atj sisyphus luke Seek mukundan), 191(ox jam), 195(jailctf merger), 214(biz)
+# best: 187(import itertools, jailctf merger) / others: 191(Code Golf International), 191(4atj sisyphus luke Seek mukundan), 191(ox jam), 214(biz), 215(THUNDER THUNDER)
 # ========================================================================================== 187 ==========================================================================================
 def p(g):
 #  h,w=len(g),len(g[0]);u=sorted((x,i,j,r,d)for I in range(h*w)if[[1]*w,*g][i:=I%h][j:=I//h]if[1,*g[i]][j]if(x:=(r:=[*g[i][j:],2].index(2))*(d:=[*[*zip(*g)][j][i:],2].index(2))))

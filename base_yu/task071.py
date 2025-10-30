@@ -1,4 +1,4 @@
-# best: 119(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 122(jailctf merger), 123(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 124(jacekwl Potatoman nauti), 124(jacekw Potatoman nauti natte), 124(jacekw Potatoman nauti)
+# best: 119(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 123(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 124(jacekwl Potatoman nauti), 124(jacekw Potatoman nauti natte), 124(jacekw Potatoman nauti), 124(import itertools)
 # ======================================================== 119 ========================================================
 
 # p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,[*filter(int,sum(g,[]))][0]})<2]for s in g])))>15][0]

@@ -1,4 +1,4 @@
-# best: 98(HIMAGINE THE FUTURE.) / others: 102(jailctf merger), 102(ox jam), 102(THUNDER THUNDER), 102(biz), 109(import itertools)
+# best: 98(jailctf merger, HIMAGINE THE FUTURE.) / others: 102(ox jam), 102(THUNDER THUNDER), 102(biz), 109(import itertools), 114(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ============================================== 98 ==============================================
 # port re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=.{%s}2)"%(19-c%2*6),"(-c^3)%10",str(p(g,c-1)))))][::-1] <- 2 のreplaceができてないやつ
 # lambda g,A=[0]*9+[3,0,6]+[0]*7+[8,0,7]+[0]*9:[A[15-sum(g,[]).index(2)+i:][:5]for i in(0,5,10)] <- wraparound忘れてた カス

@@ -1,4 +1,4 @@
-# best: 127(import itertools, HIMAGINE THE FUTURE.) / others: 131(jailctf merger), 131(biz), 136(ox jam), 139(Code Golf International), 139(4atj sisyphus luke Seek mukundan)
+# best: 127(import itertools, HIMAGINE THE FUTURE.) / others: 130(jailctf merger), 131(biz), 136(ox jam), 139(Code Golf International), 139(4atj sisyphus luke Seek mukundan)
 # ============================================================ 127 ============================================================
 # p=lambda g:[*zip(*[(f:=0,t:=[*s])and[(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*t}>{c})|t.pop(0)for _ in s]for s in zip(*g)])]
 # p=lambda g:[*zip(*[(f:=0)or[s[i]|(c:=max(max(g[::-1],key=any)))*(f:=f or{*s}>{*s[i:]}>{c})for i in range(20)]for s in zip(*g)])]

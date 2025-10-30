@@ -1,4 +1,4 @@
-# best: 240(HIMAGINE THE FUTURE.) / others: 242(jacekw Potatoman nauti natte), 242(import itertools), 258(jailctf merger), 260(ox jam), 263(natte)
+# best: 240(jailctf merger, HIMAGINE THE FUTURE.) / others: 242(jacekw Potatoman nauti natte), 242(import itertools), 260(ox jam), 263(natte), 266(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
  for s in [*g,*zip(*g)]:

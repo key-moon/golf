@@ -1,4 +1,4 @@
-# best: 88(ShadowPrompt Labs, import itertools, biz) / others: 89(jailctf merger), 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 92(ox jam), 93(Yuchen20)
+# best: 88(ShadowPrompt Labs, import itertools, jailctf merger, biz) / others: 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 92(ox jam), 93(Yuchen20), 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ========================================= 88 =========================================
 # 109
 def p(g,a=3):

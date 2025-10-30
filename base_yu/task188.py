@@ -1,4 +1,4 @@
-# best: 53(HIMAGINE THE FUTURE.) / others: 61(jailctf merger), 64(Code Golf International), 64(4atj sisyphus luke Seek mukundan), 67(biz), 68(ox jam)
+# best: 53(HIMAGINE THE FUTURE.) / others: 59(jailctf merger), 64(Code Golf International), 64(4atj sisyphus luke Seek mukundan), 67(biz), 68(ox jam)
 # ======================== 53 =======================
 # 3456789012345678901234567890123456789012345678901234567890123456789012
 # p=lambda g:[g[:(h:=len(g)//2)],[s[:(w:=len(s)//2)]for s in g]][g[0]!=g[h]or h<w]

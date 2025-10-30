@@ -1,4 +1,4 @@
-# best: 119(HIMAGINE THE FUTURE.) / others: 120(jacekw Potatoman nauti natte), 120(import itertools), 122(Code Golf International), 122(4atj sisyphus luke Seek mukundan), 122(jailctf merger)
+# best: 119(jailctf merger, HIMAGINE THE FUTURE.) / others: 120(jacekw Potatoman nauti natte), 120(import itertools), 122(Code Golf International), 122(4atj sisyphus luke Seek mukundan), 122(ox jam)
 # ======================================================== 119 ========================================================
 def p(g):
  c=max(g)[0]

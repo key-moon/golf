@@ -1,4 +1,4 @@
-# best: 128(HIMAGINE THE FUTURE.) / others: 129(Code Golf International), 129(4atj sisyphus luke Seek mukundan), 133(import itertools), 134(ox jam), 138(jailctf merger)
+# best: 128(jailctf merger, HIMAGINE THE FUTURE.) / others: 129(Code Golf International), 129(4atj sisyphus luke Seek mukundan), 133(import itertools), 134(ox jam), 143(jacekw Potatoman nauti natte)
 # ============================================================ 128 =============================================================
 # lambda g,c=2**26:-c*[[-v.bit_count()%7for v in s]for s in g]or p([(l:=0)or[l:=v and v|l|(v<9)*(c:=c//2)for v in s]for s in zip(*g)][::-1],min(c-1,6))
 # lambda g,c=7,d=8**40:-c*[[-v.bit_count()%7for v in s]for s in g]or p([(l:=0)or[l:=(v|l|(v<9)*(d:=d//2))&-(0<v)for v in s]for s in zip(*g)][::-1],c-1)
