@@ -2,7 +2,8 @@
 # ================================================================================ 168 =================================================================================
 # f p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S,*s,*t}-{5})][v==5]for v in([0,0,*s]*2)[o:o+3]]for s,S,t in zip(a,[[]]+a,a[1:]+[[5]])if any(s)or(o:=t.index(5)+o-[*S,5].index(5))*0])]
 # f p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,u][v==5]for v in[0,0,*s,0,0][o:o+3]]for s,S,t in zip(a,[()]+a,a[1:]+[(5,)])if any(s)and(u:=sum({*S+s+t}-{5}))or(o:=t.index(5)+o-[*S,5].index(5))*0])]
-def p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S+s,*t}-{5})][v==5]for v in[0,0,*s,0,0][o:o+3]]for s,S,t in zip(a,[()]+a,a[1:]+[[5]])if any(s)or(o:=t.index(5)+o-[*S,5].index(5))*0])]
+# Zdef p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S+s,*t}-{5})][v==5]for v in[0,0,*s,0,0][o:o+3]]for s,S,t in zip(a,[()]+a,a[1:]+[[5]])if any(s)or(o:=t.index(5)+o-[*S,5].index(5))*0])]
+def p(g):*a,=zip(*g);o=2;return[*zip(*[[[v,sum({*S+s,*t})-5][v==5]for v in[0,0,*s,0,0][o:o+3]]for s,S,t in zip(a,[()]+a,a[1:]+[[5]])if any(s)or(o:=t.index(5)+o-[*S,5].index(5))*0])]
 
 # 棒みたいなのないかと思ったがある 無念
 
