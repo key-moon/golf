@@ -1,4 +1,4 @@
-# best: 267(HIMAGINE THE FUTURE.) / others: 269(jailctf merger), 273(intgrah jimboko awu macaque sammyuri), 277(Code Golf International), 277(4atj sisyphus luke Seek mukundan), 279(kambarakun)
+# best: 267(HIMAGINE THE FUTURE.) / others: 269(jailctf merger), 277(Code Golf International), 277(4atj sisyphus luke Seek mukundan), 279(kambarakun), 280(open source)
 def p(g):
  B={(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]&2}
  S=3

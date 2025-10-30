@@ -1,4 +1,4 @@
-# best: 65(jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 72(Code Golf International), 72(4atj sisyphus luke Seek mukundan), 79(import itertools), 80(jacekw Potatoman nauti natte), 80(intgrah jimboko awu macaque sammyuri)
+# best: 65(jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 72(Code Golf International), 72(4atj sisyphus luke Seek mukundan), 79(import itertools), 80(jacekw Potatoman nauti natte), 82(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ============================== 65 =============================
 p=lambda g:g*-1and g%5+5or[p(g[i%2-3&i^1])for i in range(len(g))]
 

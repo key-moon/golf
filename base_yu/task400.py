@@ -1,4 +1,4 @@
-# best: 67(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 68(jacekwl Potatoman nauti), 68(jacekw Potatoman nauti natte), 68(jacekw Potatoman nauti), 68(natte), 68(ox jam)
+# best: 67(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, 2F, biz) / others: 68(jacekwl Potatoman nauti), 68(jacekw Potatoman nauti natte), 68(jacekw Potatoman nauti), 68(natte), 68(ox jam)
 # =============================== 67 ==============================
 # 351と同じ問題
 #flattenして点対称の位置を集める

@@ -1,4 +1,4 @@
-# best: 138(import itertools) / others: 140(Code Golf International), 140(4atj sisyphus luke Seek mukundan), 140(jailctf merger), 145(intgrah jimboko awu macaque sammyuri), 146(ox jam)
+# best: 138(import itertools) / others: 140(Code Golf International), 140(4atj sisyphus luke Seek mukundan), 140(jailctf merger), 146(ox jam), 150(HIMAGINE THE FUTURE.)
 #  1 
 
 p=lambda g:(t:=[*map(max,*g)])[0]+t[-1]and[*zip(*p([*zip(*g)]))]or[(t[:(x:=(u:=[i for i,v in enumerate(t)if v])[0])]+t[x:2*u[1]-x]*9)[:len(t)]]*len(g)

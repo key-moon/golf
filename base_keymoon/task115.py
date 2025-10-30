@@ -1,4 +1,4 @@
-# best: 52(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 54(ox jam), 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 52(jailctf merger) / others: 54(ox jam), 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1

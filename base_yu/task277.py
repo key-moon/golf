@@ -1,4 +1,4 @@
-# best: 164(jailctf merger) / others: 184(import itertools), 189(intgrah jimboko awu macaque sammyuri), 194(Code Golf International), 194(4atj sisyphus luke Seek mukundan), 194(ox jam)
+# best: 164(jailctf merger) / others: 184(import itertools), 194(Code Golf International), 194(4atj sisyphus luke Seek mukundan), 194(ox jam), 196(JRKKX)
 # ============================================================================== 164 ===============================================================================
 # def p(g):
 #  t=[]

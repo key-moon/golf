@@ -1,4 +1,4 @@
-# best: 267(HIMAGINE THE FUTURE.) / others: 269(jailctf merger), 273(intgrah jimboko awu macaque sammyuri), 277(Code Golf International), 277(4atj sisyphus luke Seek mukundan), 279(kambarakun)
+# best: 267(HIMAGINE THE FUTURE.) / others: 269(jailctf merger), 277(Code Golf International), 277(4atj sisyphus luke Seek mukundan), 279(kambarakun), 280(open source)
 # == begin zlib golf ==
 def	p(l):
 	v={(i,j)for	i	in	range(len(l))for	j	in	range(len(l[0]))if	l[i][j]&2};y=3

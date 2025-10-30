@@ -22,7 +22,7 @@
 # next(filter(None,z))
 # min([a for a in z if a])
 # p=lambda g:[*eval(f"{g[:-1]}".replace("1","0")),[min(filter(int,z))for z in zip(*g)]]
-# best: 46(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, blob2822, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, Afordancja, ShadowPrompt Labs, HETHAT, jacekw Potatoman nauti, natte, import itertools, MasukenSamba, Tony Li, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., adakoda, Yuchen20, ox jam, THUNDER THUNDER, duckyluuk, intgrah jimboko awu macaque sammyuri, JRKKX) / others: 47(jonas ryno kg583 kabutack), 47(JRKX), 47(kambarakun), 47(JRKXK), 47(biz)
+# best: 46(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, blob2822, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, Afordancja, ShadowPrompt Labs, HETHAT, jacekw Potatoman nauti, natte, import itertools, MasukenSamba, Tony Li, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., adakoda, Yuchen20, ox jam, THUNDER THUNDER, duckyluuk, JRKKX) / others: 47(jonas ryno kg583 kabutack), 47(JRKX), 47(kambarakun), 47(JRKXK), 47(biz)
 # ============================================
 # p=lambda g:[*[g[0]]*3,g[3],[min(filter(int,z))for z in zip(*g)]]
 # p=lambda g:[*[g[0]]*3,g[3],[[5,1][c]for c in g[2]]]

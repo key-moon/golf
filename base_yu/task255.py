@@ -1,4 +1,4 @@
-# best: 239(intgrah jimboko awu macaque sammyuri) / others: 240(jailctf merger), 244(ox jam), 265(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 281(import itertools), 287(HIMAGINE THE FUTURE.)
+# best: 240(jailctf merger) / others: 244(ox jam), 265(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 281(import itertools), 287(HIMAGINE THE FUTURE.), 293(MasukenSamba)
 def p(g):
  c=max(g[0])
  for _ in range(4):

@@ -1,4 +1,4 @@
-# best: 65(jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 72(Code Golf International), 72(4atj sisyphus luke Seek mukundan), 79(import itertools), 80(jacekw Potatoman nauti natte), 80(intgrah jimboko awu macaque sammyuri)
+# best: 65(jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 72(Code Golf International), 72(4atj sisyphus luke Seek mukundan), 79(import itertools), 80(jacekw Potatoman nauti natte), 82(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ============================== 65 =============================
 # p=lambda g:sum([[[5]*11]+[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3for s in g[1::4]],[])[1:]
 # p=lambda g:sum([[sum([[5]+[v+5]*3for v in s[1::4]],[])[1:]]*3+g[3:4]for s in g[1::4]],[])[:7]

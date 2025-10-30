@@ -1,4 +1,4 @@
-# best: 87(jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 89(biz), 91(Code Golf International), 91(4atj sisyphus luke Seek mukundan), 93(import itertools), 93(ox jam)
+# best: 87(jailctf merger) / others: 89(biz), 91(Code Golf International), 91(4atj sisyphus luke Seek mukundan), 93(import itertools), 93(ox jam)
 # ========================================= 87 ========================================
 p=lambda g,c=-3:c*g or p([[y or(-x%21-x|x)%9for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c+1)
 

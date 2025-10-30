@@ -1,4 +1,4 @@
-# best: 57(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 59(jacekw Potatoman nauti natte), 59(import itertools), 59(intgrah jimboko awu macaque sammyuri), 62(jonas ryno kg583 kabutack), 62(jacekwl Potatoman nauti)
+# best: 57(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 59(jacekw Potatoman nauti natte), 59(import itertools), 62(jonas ryno kg583 kabutack), 62(jacekwl Potatoman nauti), 62(JRK)
 # ========================== 57 =========================
 # 345678901234567890123456789012345678901234567890123456
 

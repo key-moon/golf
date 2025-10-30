@@ -1,3 +1,3 @@
-# best: 110(biz) / others: 111(jailctf merger), 112(Code Golf International), 112(4atj sisyphus luke Seek mukundan), 112(ox jam), 115(intgrah jimboko awu macaque sammyuri)
+# best: 110(biz) / others: 111(jailctf merger), 112(Code Golf International), 112(4atj sisyphus luke Seek mukundan), 112(ox jam), 123(import itertools)
 # =================================================== 110 ====================================================
 import re;p=lambda g,c=79:-c*g or[*zip(*eval(re.sub(*[" 0(?=, 0\.|\))","1(?=, 0,|, 3)","0.","3"][c>64::2],str(p(g,c-1)))))][::-1]

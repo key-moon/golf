@@ -1,4 +1,4 @@
-# best: 236(ox jam) / others: 242(jailctf merger), 243(HIMAGINE THE FUTURE.), 269(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 272(intgrah jimboko awu macaque sammyuri), 275(Code Golf International)
+# best: 236(ox jam) / others: 242(jailctf merger), 243(HIMAGINE THE FUTURE.), 269(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 275(Code Golf International), 275(4atj sisyphus luke Seek mukundan)
 p=lambda g:[[g[y][x] or max(any(
   g[i][j]==d and (y+a-i,x+(b-j)*(g[a][b]*2-5))!=(a,b) and 13>y+a-i>-1<x+(b-j)*(g[a][b]*2-5)<13 and g[y+a-i][x+(b-j)*(g[a][b]*2-5)]==g[a][b]
   for a in range(13)for b in range(13)if g[a][b]|1==3 and (d:=max(k|l!=0 and 13>a+k>-1<b+l<13 and g[a+k][b+l] for k in range(-1,2)for l in range(-1,2)))

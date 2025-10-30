@@ -1,4 +1,4 @@
-# best: 83(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 87(ox jam), 89(intgrah jimboko awu macaque sammyuri), 91(HIMAGINE THE FUTURE.), 92(jacekw Potatoman nauti natte), 92(import itertools)
+# best: 83(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 87(ox jam), 91(HIMAGINE THE FUTURE.), 92(jacekw Potatoman nauti natte), 92(import itertools), 93(natte)
 # ======================================= 83 ======================================
 # lambda g,c=-3:c*g or p([(l:=s[0],1)and[[v,l or v][v==8 and ((l:=0) or 1)]for v in s]for s in zip(*g[::-1])],c+1)
 # lambda g,c=-3:c*g or p([(l:=0)or[[v,(1-l)*s[0]or v][l:=l or v==8]for v in s]for s in zip(*g[::-1])],c+1)

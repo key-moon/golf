@@ -1,4 +1,4 @@
-# best: 86(import itertools, jailctf merger, Yuchen20) / others: 88(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 90(ox jam), 92(Code Golf International), 92(4atj sisyphus luke Seek mukundan), 93(intgrah jimboko awu macaque sammyuri)
+# best: 86(import itertools, jailctf merger, Yuchen20) / others: 88(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 90(ox jam), 92(Code Golf International), 92(4atj sisyphus luke Seek mukundan), 94(jonas ryno kg583 kabutack)
 # ======================================== 86 ========================================
 p=lambda g:(((v:=[u:=[1]+[8]*~-len(g[0])]+[u:=[8]+u[:-1]for _ in u[1:]])+v[-2:0:-1])*9)[9::-1]
 

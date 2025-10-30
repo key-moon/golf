@@ -1,4 +1,4 @@
-# best: 54(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, MasukenSamba, jailctf merger, ox jam) / others: 56(Code Golf International), 56(4atj sisyphus luke Seek mukundan), 56(HETHAT), 56(intgrah jimboko awu macaque sammyuri), 57(ShadowPrompt Labs)
+# best: 54(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, MasukenSamba, jailctf merger, ox jam) / others: 56(Code Golf International), 56(4atj sisyphus luke Seek mukundan), 56(HETHAT), 57(ShadowPrompt Labs), 57(Tony Li)
 # lambda g:g[:-1]+[[4-4*(sum(r)<1or sum(r)/max(r)>1) for r in zip(*g)]]
 # lambda g:g[:-1]+[[4*(len(r)-r.count(0)&1)for r in zip(*g)]]
 # lambda g:g[:-1]+[[len(r)-r.count(0)<<2&4for r in zip(*g)]]

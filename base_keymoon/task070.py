@@ -1,4 +1,4 @@
-# best: 78(jailctf merger) / others: 81(Code Golf International), 81(4atj sisyphus luke Seek mukundan), 82(ox jam), 87(import itertools), 90(intgrah jimboko awu macaque sammyuri)
+# best: 78(jailctf merger) / others: 81(Code Golf International), 81(4atj sisyphus luke Seek mukundan), 82(ox jam), 87(import itertools), 92(HIMAGINE THE FUTURE.)
 # ==================================== 78 ====================================
 # lambda g:[[v^(max(t)&max(s))-v&2for*t,v in zip(*g,s)]for s in g]
 # lambda g:[[v|min(max(t),max(s))-v&2for*t,v in zip(*g,s)]for s in g]

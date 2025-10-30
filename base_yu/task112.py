@@ -1,4 +1,4 @@
-# best: 103(HIMAGINE THE FUTURE.) / others: 106(jacekw Potatoman nauti natte), 106(import itertools), 106(intgrah jimboko awu macaque sammyuri), 109(jailctf merger), 110(Code Golf International)
+# best: 103(HIMAGINE THE FUTURE.) / others: 106(jacekw Potatoman nauti natte), 106(import itertools), 109(jailctf merger), 110(Code Golf International), 110(4atj sisyphus luke Seek mukundan)
 # ================================================ 103 ================================================
 
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=[i for i,s in enumerate(g)if 3in s][0])+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)
