@@ -1,4 +1,4 @@
-# best: 61(import itertools) / others: 62(Code Golf International), 62(4atj sisyphus luke Seek mukundan), 62(jailctf merger), 62(ox jam), 65(intgrah jimboko awu macaque sammyuri)
+# best: 61(import itertools) / others: 62(Code Golf International), 62(4atj sisyphus luke Seek mukundan), 62(jailctf merger), 62(ox jam), 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # ============================ 61 ===========================
 # p=lambda g:[g[i][:4]+[g[2][i],g[1][i],g[0][i]]+g[2-i][3::-1]for i in(0,1,2)]
 # p=lambda g:[s[:4]+[z,y,x]+t[3::-1]for s,(x,y,z),t in zip(g,[*zip(*g)][:3],g[::-1])]

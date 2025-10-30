@@ -1,4 +1,4 @@
-# best: 117(intgrah jimboko awu macaque sammyuri) / others: 119(Code Golf International), 119(4atj sisyphus luke Seek mukundan), 122(jailctf merger), 124(jacekwl Potatoman nauti), 124(jacekw Potatoman nauti natte)
+# best: 117(intgrah jimboko awu macaque sammyuri) / others: 119(Code Golf International), 119(4atj sisyphus luke Seek mukundan), 122(jailctf merger), 123(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 124(jacekwl Potatoman nauti)
 # ======================================================= 117 =======================================================
 
 # p=lambda g:[x for p in range(32)if min(map(len,(x:=[[sum(t)for j in range(16)if len(t:={s[j],(s+g[0])[p-j]}&{0,[*filter(int,sum(g,[]))][0]})<2]for s in g])))>15][0]

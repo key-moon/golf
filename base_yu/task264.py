@@ -1,4 +1,4 @@
-# best: 189(jailctf merger) / others: 200(HIMAGINE THE FUTURE.), 201(import itertools), 209(jacekw Potatoman nauti natte), 216(ox jam), 218(Yuchen20)
+# best: 189(jailctf merger) / others: 200(HIMAGINE THE FUTURE.), 201(import itertools), 209(jacekw Potatoman nauti natte), 213(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 216(ox jam)
 def p(g):
 #  *o,=eval("[5]*9,"*9)
  o=[[5]*9 for _ in range(9)]

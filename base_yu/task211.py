@@ -1,4 +1,4 @@
-# best: 48(cubbus, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, natte, import itertools, jailctf merger, HIMAGINE THE FUTURE., adakoda, ox jam, biz, intgrah jimboko awu macaque sammyuri) / others: 49(jonas ryno kg583 kabutack), 49(jacekwl Potatoman nauti), 49(JRK), 49(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 49(JRKX)
+# best: 48(cubbus, jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, ShadowPrompt Labs, natte, import itertools, jailctf merger, HIMAGINE THE FUTURE., adakoda, ox jam, biz, intgrah jimboko awu macaque sammyuri) / others: 49(jonas ryno kg583 kabutack), 49(jacekwl Potatoman nauti), 49(JRK), 49(JRKX), 49(jacekwl)
 # ===================== 48 =====================
 # p=lambda g:[g[i][::-1]+g[i]for i in(2,1,0,0,1,2,2,1,0)]
 # p=lambda g:[s[::-1]+s for s in g[::-1]+g+g[::-1]]

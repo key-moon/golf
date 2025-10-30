@@ -1,4 +1,4 @@
-# best: 104(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 107(jailctf merger), 130(ox jam), 134(jacekw Potatoman nauti natte), 134(import itertools), 137(HIMAGINE THE FUTURE.)
+# best: 104(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 107(jailctf merger), 116(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 130(ox jam), 134(jacekw Potatoman nauti natte), 134(import itertools)
 # ================================================ 104 =================================================
 R=range
 def p(g):

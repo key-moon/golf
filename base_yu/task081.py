@@ -1,4 +1,4 @@
-# best: 90(jailctf merger) / others: 92(Code Golf International), 92(4atj sisyphus luke Seek mukundan), 95(HIMAGINE THE FUTURE.), 95(ox jam), 95(intgrah jimboko awu macaque sammyuri)
+# best: 90(jailctf merger) / others: 92(Code Golf International), 92(4atj sisyphus luke Seek mukundan), 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 95(HIMAGINE THE FUTURE.), 95(ox jam)
 # 類題: 139
 # ========================================== 90 ==========================================
 # p=lambda g,c=-3:c*g or p([s for s in zip(*g[::-1])],c+1)

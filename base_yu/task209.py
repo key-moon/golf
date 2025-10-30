@@ -1,4 +1,4 @@
-# best: 268(jailctf merger) / others: 273(JRKX), 273(JRKXK), 273(JRKKX), 278(HIMAGINE THE FUTURE.), 290(jonas ryno kg583 kabutack)
+# best: 268(jailctf merger) / others: 273(JRKX), 273(JRKXK), 273(JRKKX), 278(HIMAGINE THE FUTURE.), 283(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 def p(g):
  (u,l),*_,(d,r)=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==4]
  G=[g[i][l:r+1]for i in range(u,d+1)]

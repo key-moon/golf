@@ -1,4 +1,4 @@
-# best: 89(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(ox jam), 93(intgrah jimboko awu macaque sammyuri), 101(HIMAGINE THE FUTURE.), 109(import itertools), 109(Tony Li & Darren Amadeus Martin)
+# best: 89(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 93(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 93(ox jam), 93(intgrah jimboko awu macaque sammyuri), 101(HIMAGINE THE FUTURE.), 109(import itertools)
 # import re;lambda g,i=-9:g*i or eval(re.sub(rf"(?<=[^0].{{{len(g[0])*3-2}}}5, )"+"0, "*(a:=4+i//3),f"9{a-4},"*a,str(p(g,i+1))))
 # min(g)
 # ========================================== 89 =========================================

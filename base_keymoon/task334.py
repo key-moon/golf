@@ -1,4 +1,4 @@
-# best: 66(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(ox jam), 73(HIMAGINE THE FUTURE.), 73(THUNDER THUNDER), 75(ShadowPrompt Labs), 75(biz)
+# best: 66(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(ox jam), 70(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 73(import itertools), 73(HIMAGINE THE FUTURE.), 73(THUNDER THUNDER)
 # lambda g,A=[0,0,5,0]:[a:=A[1:],b:=[5,5,5],A[:-1],b,a,A[:-1],a,a,b][max(max(g))-1::3]
 # lambda g:[a:=[0,5,0],b:=[5,5,5],c:=[0,0,5],b,a,c,a,a,b][max(max(g))-1::3]
 # ============================== 66 ==============================
