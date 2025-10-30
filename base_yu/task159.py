@@ -1,5 +1,5 @@
-# best: 107(jailctf merger, HIMAGINE THE FUTURE.) / others: 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 110(ox jam), 135(intgrah jimboko awu macaque sammyuri), 141(import itertools)
-# ================================================== 107 ==================================================
+# best: 106(intgrah jimboko awu macaque sammyuri) / others: 107(jailctf merger), 107(HIMAGINE THE FUTURE.), 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 110(ox jam)
+# ================================================= 106 ==================================================
 
 # def p(g,k=0,u=[[2]*99]):
 #  g=g*(k>0)or p(g,k:=sum(g,[]).count(2)//12)
