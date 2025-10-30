@@ -1,16 +1,16 @@
-B=range
-A=len
+B=len
+A=range
 def p(g):
  d=[1,0,-1,0,1]
- for k in B(16):
-  for i in B(A(g)):
-   for j in B(A(g)):
+ for k in A(16):
+  for i in A(B(g)):
+   for j in A(B(g)):
     y,x=i,j
     if g[y][x]==3:
-     a=3-k//4;c=0;o=0;t=[s*1for s in g]
+     a=3-k//4;c=o=0;t=[s*1for s in g]
      while 1:
       u,v=y+d[a],x+d[a+1]
-      if A(g)>u>-1<v<A(g):
+      if u in A(B(g))and v in A(B(g)):
        if t[u][v]==8:
         a=(a+(k>>c&1)*2-1)%4;c+=1
         if c>2:break

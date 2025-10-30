@@ -10,7 +10,7 @@ def p(g):
    for l in range(k>0,-s):
     if(i+~-abs(k-1)*l,j+~-abs(k-2)*l)in B:
      B-={(i+~-abs(k-1)*l,j+~-abs(k-2)*l)}
-    elif len(g)>i+~-abs(k-1)*l>-1<j+~-abs(k-2)*l<len(g[0]):
+    elif i+~-abs(k-1)*l in range(len(g)) and j+~-abs(k-2)*l in range(len(g[0])):
      g[i+~-abs(k-1)*l][j+~-abs(k-2)*l]=8
  
 

@@ -1,13 +1,13 @@
-C=range
-B=sum
-A=len
+C=sum
+B=len
+A=range
 def p(g):
- a,*_,b,c=sorted({*B(g,[])},key=lambda c:(B(g,[]).count(c),B(g,[])[::-1].index(c)+B(g,[]).index(c)));s=B(g,[]).index(b^c)+1
- for i in C(A(g)):
-  for j in C(A(g)):
-   for y in C(A(g)):
-    for x in C(A(g)):
+ a,*_,b,c=sorted({*C(g,[])},key=lambda c:(C(g,[]).count(c),C(g,[])[::-1].index(c)+C(g,[]).index(c)));s=C(g,[]).index(b^c)+1
+ for i in A(B(g)):
+  for j in A(B(g)):
+   for y in A(B(g)):
+    for x in A(B(g)):
      for k in-s,0,s:
       for l in-s,0,s:
-       if g[i][j]==g[y][x]==a and-1<i+k<A(g)>j+l>-1<y+k<A(g)>x+l>-1:g[y+k][x+l]|=g[i+k][j+l]
+       if g[i][j]==g[y][x]==a and i+k in A(B(g))and x+l in A(B(g))and y+k in A(B(g))and j+l in A(B(g)):g[y+k][x+l]|=g[i+k][j+l]
  return g
