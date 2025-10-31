@@ -1,4 +1,4 @@
-# best: 117(jailctf merger) / others: 125(ox jam), 126(Code Golf International), 127(HIMAGINE THE FUTURE.), 128(lv1.dev), 132(import itertools)
+# best: 117(jailctf merger) / others: 125(ox jam), 126(Code Golf International), 127(HIMAGINE THE FUTURE.), 128(lv1.dev), 130(Team JYCDT)
 # ======================================================= 117 =======================================================
 
 # p=lambda g,c=-3:c*g or p([*zip(*(2in(f:=[*map(max,g)])and(k:=f.index(2))>f.index(3)and sorted([[8]*len(g[0])]+g[:k],key=any)[1:]+g[k:]or g)[::-1])],c+1)

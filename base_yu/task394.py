@@ -1,4 +1,4 @@
-# best: 85(lv1.dev, jailctf merger, ox jam) / others: 90(FuunAgent), 91(Code Golf International), 91(4atj sisyphus luke Seek mukundan), 92(biz), 94(ALE-Agent)
+# best: 85(lv1.dev, jailctf merger, ox jam) / others: 90(FuunAgent), 91(Code Golf International), 91(4atj sisyphus luke Seek mukundan), 92(Team JYCDT), 92(biz)
 # ======================================== 85 =======================================
 # r=range
 # def p(g):

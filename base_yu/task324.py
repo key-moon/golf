@@ -1,4 +1,4 @@
-# best: 216(FuunAgent) / others: 220(LogicLynx), 222(jailctf merger), 225(Code Golf International), 227(ox jam), 235(lv1.dev)
+# best: 216(FuunAgent) / others: 220(LogicLynx), 222(jailctf merger), 225(Code Golf International), 226(Team JYCDT), 227(ox jam)
 def p(g):
  c=sorted({*sum(g,[])},key=sum(g,[]).count)
  for s in [*g,*zip(*g)]:

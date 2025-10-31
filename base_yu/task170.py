@@ -1,4 +1,4 @@
-# best: 163(jailctf merger) / others: 166(Code Golf International), 170(FuunAgent), 180(import itertools), 191(LogicLynx), 193(lv1.dev)
+# best: 163(jailctf merger) / others: 166(Code Golf International), 170(FuunAgent), 180(import itertools), 186(Team JYCDT), 191(LogicLynx)
 # ============================================================================== 163 ==============================================================================
 def p(g):
  y,x,c=zip(*[(i,j,v)for i,s in enumerate(g)for j,v in enumerate(s)if v])

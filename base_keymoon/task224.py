@@ -1,4 +1,4 @@
-# best: 114(jailctf merger) / others: 131(ox jam), 138(import itertools), 145(Code Golf International), 145(HIMAGINE THE FUTURE.), 178(4atj sisyphus luke Seek mukundan)
+# best: 114(jailctf merger) / others: 131(ox jam), 138(import itertools), 145(Code Golf International), 145(HIMAGINE THE FUTURE.), 177(Team JYCDT)
 # ===================================================== 114 ======================================================
 # tmp
 def	p(e):

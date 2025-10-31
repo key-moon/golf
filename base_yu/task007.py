@@ -1,4 +1,4 @@
-# best: 62(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 63(ox jam), 63(intgrah jimboko awu macaque sammyuri), 64(lv1.dev), 64(LogicLynx), 64(santa2024)
+# best: 62(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 63(ox jam), 63(intgrah jimboko awu macaque sammyuri), 64(Team JYCDT), 64(lv1.dev), 64(LogicLynx)
 # ============================ 62 ============================
 # lambda g:(G:=sum(g,[]))and[[max(G[(i+j)%3::3])for j in range(7)]for i in range(7)]
 # lambda g,R=range(7):[[max(sum(g,[])[(i+j)%3::3])for j in R]for i in R]

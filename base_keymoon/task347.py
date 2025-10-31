@@ -1,4 +1,4 @@
-# best: 50(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, ALE-Agent, santa2024, import itertools, jailctf merger, ox jam, biz, intgrah jimboko awu macaque sammyuri) / others: 53(HIMAGINE THE FUTURE.), 54(jacekw Potatoman nauti natte), 54(HETHAT), 54(FuunAgent), 54(natte)
+# best: 50(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, ALE-Agent, santa2024, import itertools, jailctf merger, ox jam, biz, intgrah jimboko awu macaque sammyuri) / others: 53(HIMAGINE THE FUTURE.), 54(jacekw Potatoman nauti natte), 54(Team JYCDT), 54(HETHAT), 54(FuunAgent)
 # p=lambda g:[[6*any(s)for s in zip(*zip(*[iter(r)]*3))]for r in g]
 # p=lambda g:[[6*(0<sum(s))for s in zip(r,r[3:])]for r in g]
 # p=lambda g:[[6*(0<a+b)for a,b in zip(r,r[3:])]for r in g]
