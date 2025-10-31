@@ -1,4 +1,4 @@
-# best: 51(Code Golf International, FuunAgent) / others: 52(jailctf merger), 52(ox jam), 52(intgrah jimboko awu macaque sammyuri), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT)
+# best: 51(Code Golf International, FuunAgent) / others: 52(jailctf merger), 52(ox jam), 52(intgrah jimboko awu macaque sammyuri), 54(Ravi Annaswamy), 59(4atj sisyphus luke Seek mukundan)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1
