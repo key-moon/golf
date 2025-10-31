@@ -1,4 +1,4 @@
-# best: 86(Code Golf International, LogicLynx, ALE-Agent, FuunAgent) / others: 87(jailctf merger), 88(lv1.dev), 88(import itertools), 88(biz), 90(jacekw Potatoman nauti natte)
+# best: 86(Code Golf International, LogicLynx, ALE-Agent, FuunAgent) / others: 87(santa2024), 87(jailctf merger), 88(lv1.dev), 88(import itertools), 88(biz)
 # ======================================== 86 ========================================
 # 109
 def p(g,a=3):

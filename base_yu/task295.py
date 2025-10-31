@@ -1,4 +1,4 @@
-# best: 54(Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, FuunAgent, jailctf merger, ox jam, biz) / others: 58(ALE-Agent), 59(import itertools), 60(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 60(HETHAT), 60(HIMAGINE THE FUTURE.)
+# best: 54(Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, santa2024, FuunAgent, jailctf merger, ox jam, biz) / others: 58(ALE-Agent), 59(import itertools), 60(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 60(HETHAT), 60(HIMAGINE THE FUTURE.)
 # ======================== 54 ========================
 # lambda g:[(s:=g[0])[:]]+[s[:]for s[s.index(0)]in(len(s)//2-1)*s[:1]]
 # lambda g:(s:=g[0])and g+[s[:1]*i+s[:-i]for i in range(1,len(s)//2)]

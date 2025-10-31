@@ -1,4 +1,4 @@
-# best: 85(LogicLynx) / others: 86(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 88(ALE-Agent), 88(ox jam), 89(Code Golf International), 89(4atj sisyphus luke Seek mukundan)
+# best: 85(LogicLynx, santa2024) / others: 86(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 88(ALE-Agent), 88(ox jam), 89(Code Golf International), 89(4atj sisyphus luke Seek mukundan)
 # ======================================== 85 =======================================
 def p(g):
  y,x=divmod(sum(g,[]).index(8)-14,13)

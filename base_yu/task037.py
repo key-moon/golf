@@ -1,4 +1,4 @@
-# best: 101(Code Golf International) / others: 104(ox jam), 105(4atj sisyphus luke Seek mukundan), 105(jailctf merger), 109(LogicLynx), 111(import itertools)
+# best: 101(Code Golf International) / others: 104(santa2024), 104(ox jam), 105(4atj sisyphus luke Seek mukundan), 105(jailctf merger), 109(LogicLynx)
 # =============================================== 101 ===============================================
 
 

@@ -1,4 +1,4 @@
-# best: 46(Code Golf International, ox jam) / others: 50(cubbus), 50(lv1.dev), 50(LogicLynx), 50(ALE-Agent), 50(FuunAgent)
+# best: 46(Code Golf International, ox jam) / others: 50(cubbus), 50(lv1.dev), 50(LogicLynx), 50(ALE-Agent), 50(santa2024)
 # ==================== 46 ====================
 # p=lambda g:sum([[sum([[v]*2for v in s],[])]*2for s in g],[])
 # p=lambda s,a=1:sum([[a and p(v,0)or v]*2for v in s],[])

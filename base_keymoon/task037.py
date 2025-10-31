@@ -1,4 +1,4 @@
-# best: 101(Code Golf International) / others: 104(ox jam), 105(4atj sisyphus luke Seek mukundan), 105(jailctf merger), 109(LogicLynx), 111(import itertools)
+# best: 101(Code Golf International) / others: 104(santa2024), 104(ox jam), 105(4atj sisyphus luke Seek mukundan), 105(jailctf merger), 109(LogicLynx)
 # =============================================== 101 ===============================================
 # port re;p=lambda g,c=-63:g*c or eval(re.sub("(?<=([^0]).{34})0(?=(.{35})*.{34}\\1)",r"\1",str(p(g,c+1))))[::-1]
 # port re;p=lambda g,c=-9:g*c or eval(re.sub(r"(?<=([^0]).{34})(?=0(.{35})*(?<=\1))",r"\1+",str(p(g,c+1))))[::-1]

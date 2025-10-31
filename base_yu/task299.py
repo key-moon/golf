@@ -1,4 +1,4 @@
-# best: 54(cubbus, jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, ALE-Agent, jacekw Potatoman nauti, FuunAgent, natte, import itertools, jailctf merger, Yuchen20, ox jam, THUNDER THUNDER, biz) / others: 56(HETHAT), 57(HIMAGINE THE FUTURE.), 58(intgrah jimboko awu macaque sammyuri), 68(jonas ryno kg583 kabutack), 68(JRKX)
+# best: 54(cubbus, jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, ALE-Agent, jacekw Potatoman nauti, FuunAgent, natte, import itertools, jailctf merger, Yuchen20, ox jam, THUNDER THUNDER, biz) / others: 56(HETHAT), 57(HIMAGINE THE FUTURE.), 58(intgrah jimboko awu macaque sammyuri), 60(santa2024), 68(jonas ryno kg583 kabutack)
 # ======================== 54 ========================
 # 3456789012345678901234567890123456789012345678901234
 p=lambda g:[[3**(2 in s)*-~c%22-1for c in g[0]]for s in g]

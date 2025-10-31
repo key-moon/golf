@@ -1,4 +1,4 @@
-# best: 81(LogicLynx) / others: 84(Code Golf International), 85(lv1.dev), 85(ALE-Agent), 85(FuunAgent), 86(import itertools)
+# best: 81(LogicLynx) / others: 84(Code Golf International), 85(lv1.dev), 85(ALE-Agent), 85(santa2024), 85(FuunAgent)
 # ====================================== 81 =====================================
 p=lambda g:(((v:=[u:=[1]+[8]*~-len(g[0])]+[u:=[8]+u[:-1]for _ in u[1:]])+v[-2:0:-1])*9)[9::-1]
 

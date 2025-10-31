@@ -1,4 +1,4 @@
-# best: 100(jailctf merger) / others: 104(ox jam), 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 112(LogicLynx), 119(import itertools)
+# best: 100(jailctf merger) / others: 104(ox jam), 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 112(LogicLynx), 114(santa2024)
 # ============================================== 100 ===============================================
 # def p(g,R=range(13)):
 #  y,x=divmod(sum(g,[]).index(8),13)

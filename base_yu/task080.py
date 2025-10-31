@@ -1,4 +1,4 @@
-# best: 231(ox jam) / others: 232(Code Golf International), 240(FuunAgent), 243(jailctf merger), 253(LogicLynx), 255(HIMAGINE THE FUTURE.)
+# best: 231(ox jam) / others: 232(Code Golf International), 239(santa2024), 240(FuunAgent), 243(jailctf merger), 253(LogicLynx)
 def p(g):
  a,*_,b,c=sorted({*sum(g,[])},key=lambda c:(sum(g,[]).count(c),sum(g,[])[::-1].index(c)+sum(g,[]).index(c)))
  s=sum(g,[]).index(b^c)+1

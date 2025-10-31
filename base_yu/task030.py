@@ -1,4 +1,4 @@
-# best: 93(Code Golf International, jailctf merger, HIMAGINE THE FUTURE.) / others: 94(4atj sisyphus luke Seek mukundan), 94(ALE-Agent), 94(import itertools), 94(ox jam), 94(2F)
+# best: 93(Code Golf International, jailctf merger, HIMAGINE THE FUTURE.) / others: 94(4atj sisyphus luke Seek mukundan), 94(ALE-Agent), 94(santa2024), 94(import itertools), 94(ox jam)
 # ============================================ 93 ===========================================
 # p=lambda g:[*zip(*[s[(d:=(a:=[min([*s,c].index(c)for s in zip(*g))for c in range(5)])[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]
 # p=lambda g:[*zip(*[s[(d:=(a:={c:sum(g,[]).index(c)//10for c in(0,1,2,4)})[max(s)]-a[1]):]+s[:d]for s in zip(*g)])]

@@ -1,4 +1,4 @@
-# best: 45(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, HETHAT, ALE-Agent, jacekw Potatoman nauti, FuunAgent, import itertools, MasukenSamba, jailctf merger, adakoda, Yuchen20, ox jam, intgrah jimboko awu macaque sammyuri) / others: 46(jacekwl), 46(natte), 46(HIMAGINE THE FUTURE.), 47(jonas ryno kg583 kabutack), 47(cubbus)
+# best: 45(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, HETHAT, ALE-Agent, jacekw Potatoman nauti, santa2024, FuunAgent, import itertools, MasukenSamba, jailctf merger, adakoda, Yuchen20, ox jam, intgrah jimboko awu macaque sammyuri) / others: 46(jacekwl), 46(natte), 46(HIMAGINE THE FUTURE.), 47(jonas ryno kg583 kabutack), 47(cubbus)
 # ==================== 45 ===================
 # def p(g):return[r[:1]*10 if r[0]==r[-1]>0 else r for r in g]
 # p=lambda g:[(s,s[:1]*10)[s[0]==s[9]]for s in g]

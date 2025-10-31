@@ -1,4 +1,4 @@
-# best: 102(Code Golf International, lv1.dev, jailctf merger, ox jam) / others: 107(4atj sisyphus luke Seek mukundan), 107(FuunAgent), 107(import itertools), 107(intgrah jimboko awu macaque sammyuri), 108(Tony Li & Darren Amadeus Martin)
+# best: 102(Code Golf International, lv1.dev, jailctf merger, ox jam) / others: 107(4atj sisyphus luke Seek mukundan), 107(santa2024), 107(FuunAgent), 107(import itertools), 107(intgrah jimboko awu macaque sammyuri)
 # =============================================== 102 ================================================
 
 # p=lambda g,R=range(12):((g[6][0]==2)and(a:=g[0].count(2))and[[g[i][j]or(abs(i-(1|(d:=-(8in g[-1])))*(g[d].index(8)-a)%11)+a==j)*3 for j in R]for i in R])or[*zip(*p([*zip(*g[::-1])]))][::-1]
