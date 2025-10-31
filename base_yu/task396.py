@@ -1,4 +1,4 @@
-# best: 139(ox jam) / others: 167(jailctf merger), 177(Code Golf International), 179(4atj sisyphus luke Seek mukundan), 187(HIMAGINE THE FUTURE.), 193(2F)
+# best: 139(ox jam) / others: 167(jailctf merger), 171(HIMAGINE THE FUTURE.), 177(Code Golf International), 179(4atj sisyphus luke Seek mukundan), 193(2F)
 # ================================================================== 139 ==================================================================
 # p=lambda g:(x:=max(((r-l)*(d-u),s)for d in range(len(g)+1)for u in range(d)for r in range(len(g[u])+1)for l in range(r)if (s:=[t[l:r]for t in g[u:d]])and min(s[-1]+s[0]+[min(t[0],t[-1])for t in s])>0)[1])and[[v and sum({*sum(x,[])})-t[0] for v in t]for t in x]
 # p=lambda g:[[v and sum({*sum(g,[])})-t[0] for v in t]for t in max((m,s)for(m,s)in(((r-l)*(d-u),[t[l:r]for t in g[u:d]])for d in range(len(g)+1)for u in range(d)for r in range(len(g[u])+1)for l in range(r))if 0<min(s[-1]+s[0]+[min(t[0],t[-1])for t in s]))[1]]

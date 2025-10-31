@@ -1,4 +1,4 @@
-# best: 155(ox jam) / others: 157(jailctf merger), 159(Code Golf International), 168(FuunAgent), 172(lv1.dev), 184(import itertools)
+# best: 155(ox jam) / others: 157(jailctf merger), 159(Code Golf International), 168(FuunAgent), 172(lv1.dev), 178(HIMAGINE THE FUTURE.)
 # ========================================================================== 155 ==========================================================================
 
 # def p(a):

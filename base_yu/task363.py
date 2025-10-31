@@ -1,4 +1,4 @@
-# best: 175(Code Golf International) / others: 203(jailctf merger), 204(ox jam), 210(FuunAgent), 214(LogicLynx), 216(lv1.dev)
+# best: 175(Code Golf International) / others: 203(jailctf merger), 204(ox jam), 205(HIMAGINE THE FUTURE.), 210(FuunAgent), 214(LogicLynx)
 # case=0,1が2ケースキモいので対策
 def p(g):
  m=[(i,j)for j in range(10)for i in range(10)if g[i][j]&2]

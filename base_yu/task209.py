@@ -1,4 +1,4 @@
-# best: 247(ox jam) / others: 250(FuunAgent), 268(jailctf merger), 273(JRKX), 273(JRKXK), 273(JRKKX)
+# best: 247(ox jam) / others: 250(FuunAgent), 268(jailctf merger), 273(JRKX), 273(JRKXK), 273(HIMAGINE THE FUTURE.)
 def p(g):
  (u,l),*_,(d,r)=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==4]
  G=[g[i][l:r+1]for i in range(u,d+1)]

@@ -1,4 +1,4 @@
-# best: 273(ox jam) / others: 276(jailctf merger), 277(HIMAGINE THE FUTURE.), 302(lv1.dev), 307(Code Golf International), 318(LogicLynx)
+# best: 273(ox jam) / others: 275(HIMAGINE THE FUTURE.), 276(jailctf merger), 302(lv1.dev), 307(Code Golf International), 318(LogicLynx)
 def p(g):
  for c in range(10):
   for d in range(10):
