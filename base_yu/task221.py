@@ -1,5 +1,5 @@
-# best: 87(jailctf merger, ox jam) / others: 89(Code Golf International), 89(4atj sisyphus luke Seek mukundan), 90(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 92(biz), 98(HIMAGINE THE FUTURE.)
-# ========================================= 87 ========================================
+# best: 86(Code Golf International, ox jam) / others: 87(LogicLynx), 87(jailctf merger), 87(intgrah jimboko awu macaque sammyuri), 89(4atj sisyphus luke Seek mukundan), 89(lv1.dev)
+# ======================================== 86 ========================================
 # p=lambda g:(c:=sum(g,[]).count(0))and[[((i//3)*c+(j//3)<9-c)*g[i%3][j%3]for j in range(3*c)]for i in range(3*c)]
 # p=lambda g:(R:=range(c:=sum(g,[]).count(0)))and[[(i*c+j<9-c)*v for j in R for v in s]for i in R for s in g]
 # p=lambda g:(c:=sum(g,[]).count(0),R:=range(3*c))and[[(i//3*c+j//3<9-c)*g[i%3][j%3]for j in R]for i in R]

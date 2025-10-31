@@ -1,5 +1,5 @@
-# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, HIMAGINE THE FUTURE., ox jam, biz) / others: 106(jacekw Potatoman nauti natte), 106(import itertools), 106(jailctf merger), 106(Yuchen20), 107(natte)
-# ================================================= 105 =================================================
+# best: 94(ox jam) / others: 102(lv1.dev), 103(Code Golf International), 105(4atj sisyphus luke Seek mukundan), 105(FuunAgent), 105(HIMAGINE THE FUTURE.)
+# ============================================ 94 ============================================
 # p=lambda g:(s:=[i for i,v in enumerate(sum(g,[]))if v],y:=min(i//(w:=len(g[0]))for i in s),x:=min(i%w for i in s))and[[g[y+i][x+j]&g[y+i%3*3][x+j%3*3]for j in range(9)]for i in range(9)]
 
 # def p(g):

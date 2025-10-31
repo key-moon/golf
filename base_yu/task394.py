@@ -1,5 +1,5 @@
-# best: 91(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 92(ox jam), 92(biz), 94(HIMAGINE THE FUTURE.), 95(jonas ryno kg583 kabutack), 95(JRKX)
-# =========================================== 91 ==========================================
+# best: 85(lv1.dev, jailctf merger, ox jam) / others: 90(FuunAgent), 91(Code Golf International), 91(4atj sisyphus luke Seek mukundan), 92(biz), 94(ALE-Agent)
+# ======================================== 85 =======================================
 # r=range
 # def p(g):
 #  h,w=len(g),len(g[0])

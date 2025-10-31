@@ -1,5 +1,5 @@
-# best: 114(jailctf merger, HIMAGINE THE FUTURE.) / others: 119(Code Golf International), 119(4atj sisyphus luke Seek mukundan), 122(ox jam), 132(import itertools), 132(biz)
-# ===================================================== 114 ======================================================
+# best: 111(jailctf merger) / others: 112(ox jam), 113(Code Golf International), 114(HIMAGINE THE FUTURE.), 119(4atj sisyphus luke Seek mukundan), 131(ALE-Agent)
+# ==================================================== 111 ====================================================
 
 # p=lambda g,c=-3:c*(g[:2]+[s[:2]+[0]*(len(s)-4)+s[-2:] for s in g[2:-2]]+g[-2:])or p([[s[0],max({*s[:2]}&{*s[2:]}),*s[2:]]for s in zip(*g[::-1])],c+1)
 # p=lambda g,c=-3:c*g or p([*zip(*[[s[0],max({*s[:2]}&{*s[2:]}),*[(v in s[-2:]+g[0]+g[-1])*v for v in s[2:]]]for s in g][::-1])],c+1)

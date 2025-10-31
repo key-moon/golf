@@ -1,5 +1,5 @@
-# best: 102(jailctf merger) / others: 105(Code Golf International), 105(4atj sisyphus luke Seek mukundan), 105(import itertools), 106(HIMAGINE THE FUTURE.), 106(ox jam)
-# =============================================== 102 ================================================
+# best: 98(jailctf merger) / others: 102(intgrah jimboko awu macaque sammyuri), 103(Code Golf International), 104(LogicLynx), 104(ox jam), 105(4atj sisyphus luke Seek mukundan)
+# ============================================== 98 ==============================================
 
 # p=lambda g,c=-3:c*g or p([*zip(*(g*(len({*max(g),0})<3)or[(l:=0)or[v*(l!=v)or(l:=max(w))*0for*w,v in zip(*g,s)]for s in g])[::-1])],c+1)
 # p=lambda g,c=-3:c*g or p([g:=[v*(v!=max(g)or len({*s,0})>2or w>0)for v,w in zip(s,g)]for s in zip(*g)][::-1],c+1)

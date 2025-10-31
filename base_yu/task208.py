@@ -1,4 +1,4 @@
-# best: 199(jailctf merger) / others: 219(import itertools), 222(HIMAGINE THE FUTURE.), 223(jacekw Potatoman nauti natte), 225(ox jam), 229(jonas ryno kg583 kabutack)
+# best: 163(Code Golf International) / others: 189(jailctf merger), 211(ox jam), 219(import itertools), 222(HIMAGINE THE FUTURE.), 223(jacekw Potatoman nauti natte)
 def p(g):
  for c in range(1,10):
   a=[(i,j)for i in range(21)for j in range(21)if g[i][j]==c]

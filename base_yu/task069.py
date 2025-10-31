@@ -1,5 +1,5 @@
-# best: 150(jailctf merger) / others: 151(Code Golf International), 151(4atj sisyphus luke Seek mukundan), 158(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 159(ox jam), 162(JRKKX)
-# ======================================================================= 150 ========================================================================
+# best: 143(jailctf merger) / others: 148(Code Golf International), 150(ox jam), 151(4atj sisyphus luke Seek mukundan), 155(LogicLynx), 157(ALE-Agent)
+# ==================================================================== 143 ====================================================================
 def p(g):
  G=sum(g,[])
  u=[c for c in enumerate(G)if c[1]%8]

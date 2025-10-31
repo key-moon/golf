@@ -1,6 +1,6 @@
 # 類題:10
-# best: 84(jailctf merger) / others: 91(Code Golf International), 91(4atj sisyphus luke Seek mukundan), 95(ox jam), 97(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 99(HIMAGINE THE FUTURE.)
-# ======================================= 84 =======================================
+# best: 81(Code Golf International) / others: 84(jailctf merger), 87(import itertools), 91(4atj sisyphus luke Seek mukundan), 91(ox jam), 93(FuunAgent)
+# ====================================== 81 =====================================
 # p=lambda g:[u:=sorted({*zip(*g)}-{(0,)*9},key=sum)]and[*zip(*[[v and(s==u[0])*2+(s==u[-1])for v in s]for s in zip(*g)])]
 def p(g):
  _,a,*_,b=sorted({*zip(*g)})

@@ -1,5 +1,5 @@
-# best: 119(jailctf merger, HIMAGINE THE FUTURE.) / others: 120(jacekw Potatoman nauti natte), 120(import itertools), 122(Code Golf International), 122(4atj sisyphus luke Seek mukundan), 122(ox jam)
-# ======================================================== 119 ========================================================
+# best: 107(Code Golf International) / others: 110(LogicLynx), 110(jailctf merger), 118(ox jam), 119(HIMAGINE THE FUTURE.), 120(jacekw Potatoman nauti natte)
+# ================================================== 107 ==================================================
 # port re;S=re.sub;p=lambda g,c=-63:eval(S(*"03",str(g)))*c or p(eval(S("0(?=([^(]+[^(04]{9}|, 4))","4",str([*zip(*g)][::-1]))),c+1)
 # port re;p=lambda g,c=-63:g*c or[*zip(*eval(re.sub(*["0","3(?=([^[(]+[^[(34]{9}|, 4))","3","4"][c%2::2],str(p(g,c+1)))))][::-1]
 # port re;p=lambda g,c=-63:g*c or[*zip(*eval(re.sub(*["0","3(?=([^[(]+[^[(34]{9}|, 4))","3","4"][c%2::2],str(p(g,c+1)))))][::-1]

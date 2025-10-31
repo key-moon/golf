@@ -1,5 +1,5 @@
-# best: 88(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger, biz) / others: 100(import itertools), 109(ShadowPrompt Labs), 116(Code Golf International), 116(4atj sisyphus luke Seek mukundan), 116(ox jam)
-# ========================================= 88 =========================================
+# best: 75(Code Golf International) / others: 81(ox jam), 85(biz), 88(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 88(jailctf merger), 99(lv1.dev)
+# =================================== 75 ==================================
 
 # p=lambda g,t=[0,0]:[
 #     # 未storeでnot any(c)ならcを返す

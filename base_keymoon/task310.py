@@ -1,4 +1,4 @@
-# best: 78(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 81(jailctf merger), 81(ox jam), 81(2F), 81(biz), 85(JRKX)
+# best: 70(ox jam) / others: 78(Code Golf International), 78(4atj sisyphus luke Seek mukundan), 81(jailctf merger), 81(2F), 81(biz)
 # 囲まれた部分の抽出
 #  for _ in 1,2:g=[*map(list,zip(*filter(lambda x:a in x,g)))]
 # 112
@@ -16,5 +16,5 @@
 # 95
 # lambda g:[r[r.index(a):][:k(a)//4+1]for r in g if(a:=min(s:=sum(g,[]),key=(k:=s.count)))in r]
 # lambda g:[r[r.index(a):][:k(a)//4+1]for r in g if(a:=min(s:=sum(g,[]),key=(k:=s.count)))in r]
-# ==================================== 78 ====================================
+# ================================ 70 ================================
 p=lambda g:[r[r.index(a):][:k(a)//4+1]for r in g if(a:=min(s:=sum(g,[]),key=(k:=s.count)))in r]

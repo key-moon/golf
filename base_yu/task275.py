@@ -1,5 +1,5 @@
-# best: 136(jailctf merger, ox jam) / others: 144(biz), 146(import itertools), 147(adakoda), 149(ShadowPrompt Labs), 150(HIMAGINE THE FUTURE.)
-# ================================================================ 136 =================================================================
+# best: 126(lv1.dev) / others: 130(ox jam), 131(ALE-Agent), 134(jailctf merger), 135(Code Golf International), 136(FuunAgent)
+# =========================================================== 126 ============================================================
 def p(g):
  n=len(g[0])
  R=range(n*n)

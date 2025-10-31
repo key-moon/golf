@@ -1,5 +1,5 @@
-# best: 125(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 126(jailctf merger), 127(import itertools), 129(ox jam), 134(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 143(HIMAGINE THE FUTURE.)
-# =========================================================== 125 ===========================================================
+# best: 116(Code Golf International) / others: 125(4atj sisyphus luke Seek mukundan), 125(ox jam), 126(jailctf merger), 127(import itertools), 128(LogicLynx)
+# ====================================================== 116 =======================================================
 
 # import ref
 # p=lambda g,c=-3:c*g or [*zip(*eval(re.sub("0(?=(.{29}, 0)*(, 0){0,2}.{25}0, 2|, 2.{28}[^0])|(?!=[^20], )2(?=, [^20].{25}[^0])",str(sum({*sum(g,[])})-2),str(p(g,c+1))))[::-1])]

@@ -1,4 +1,4 @@
-# best: 61(Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools) / others: 63(jailctf merger), 63(biz), 65(jacekw Potatoman nauti natte), 65(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 65(ShadowPrompt Labs)
+# best: 61(Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools) / others: 63(lv1.dev), 63(jailctf merger), 63(ox jam), 63(biz), 64(FuunAgent)
 # 70
 # p=lambda g:[[c or(any(s)+any(r))&2for c,s in zip(r,zip(*g))]for r in g]
 # 65

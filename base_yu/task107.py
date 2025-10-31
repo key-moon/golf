@@ -1,5 +1,5 @@
-# best: 143(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger, biz) / others: 144(import itertools), 161(Tony Li), 161(Tony Li & Darren Amadeus Martin), 170(Code Golf International), 170(4atj sisyphus luke Seek mukundan)
-# ==================================================================== 143 ====================================================================
+# best: 132(ox jam) / others: 137(lv1.dev), 137(LogicLynx), 142(jailctf merger), 143(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 143(ALE-Agent)
+# ============================================================== 132 ===============================================================
 import re
 def p(g):
  c=len({*str(g)})-5

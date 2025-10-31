@@ -1,5 +1,5 @@
-# best: 82(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, 2F, biz) / others: 83(ox jam), 84(HashPanda Pooja), 84(HashPanda), 84(Rafael Pooja), 86(HETHAT)
-# ====================================== 82 ======================================
+# best: 79(ox jam) / others: 80(lv1.dev), 82(Code Golf International), 82(4atj sisyphus luke Seek mukundan), 82(jailctf merger), 82(2F)
+# ===================================== 79 ====================================
 
 # p=lambda g:[[max((t[0]&t[-1]),(s[0]&s[-1])) for t in zip(*g)]for s in g]
 # p=lambda g:(c:=min((u:=sum(g,[])),key=u.count))and[[c*([t[0],s[0]].count(c)>0) for t in zip(*g)]for s in g]

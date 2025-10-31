@@ -1,5 +1,5 @@
-# best: 103(ox jam) / others: 107(jailctf merger), 109(HIMAGINE THE FUTURE.), 114(Code Golf International), 114(4atj sisyphus luke Seek mukundan), 117(THUNDER THUNDER)
-# ================================================ 103 ================================================
+# best: 93(ox jam) / others: 102(Code Golf International), 107(jailctf merger), 109(HIMAGINE THE FUTURE.), 114(4atj sisyphus luke Seek mukundan), 117(FuunAgent)
+# ============================================ 93 ===========================================
 
 # lambda g,c=-5:c*g or[*zip(*[[(s[i]in[0,*s,0][i:i+3:2] and (hash((*g[0],))>>53 not in (-33,617,325) or s[i]%7==2))*s[i] for i in range(16)]for s in p(g,c+1)])]
 # lambda g,c=-5:c*g or p([*zip(*[[(s[i]in[0,*s,0][i:i+3:2]and(c<0 or len({*g})==2 or s[i]in(2,9)))*s[i] for i in range(16)]for s in g])],c+1)

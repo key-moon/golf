@@ -1,5 +1,5 @@
-# best: 169(jailctf merger) / others: 175(Code Golf International), 175(4atj sisyphus luke Seek mukundan), 187(ox jam), 195(HIMAGINE THE FUTURE.), 203(jacekw Potatoman nauti natte)
-# ================================================================================= 169 =================================================================================
+# best: 160(Code Golf International) / others: 167(jailctf merger), 175(4atj sisyphus luke Seek mukundan), 182(FuunAgent), 186(ox jam), 195(HIMAGINE THE FUTURE.)
+# ============================================================================ 160 =============================================================================
 def p(g):
  for l in range(14):
   for u in range(14):

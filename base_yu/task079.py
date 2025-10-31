@@ -1,5 +1,5 @@
-# best: 122(jailctf merger) / others: 123(jacekwl Potatoman nauti), 123(jacekw Potatoman nauti natte), 123(Code Golf International), 123(4atj sisyphus luke Seek mukundan), 123(jacekw Potatoman nauti)
-# ========================================================= 122 ==========================================================
+# best: 105(ox jam) / others: 107(Code Golf International), 121(jailctf merger), 123(jacekwl Potatoman nauti), 123(jacekw Potatoman nauti natte), 123(4atj sisyphus luke Seek mukundan)
+# ================================================= 105 =================================================
 # p=lambda g,R=range(12):max(f:=[[s[j:j+3]for s in g[i:i+3]]for i in R for j in R],key=lambda x:(all(map(any,x)),f.count(x),sum(sum(x,[]))))
 # p=lambda g:max(f:=[[s[i//12:][:3]for s in g[i%12:][:3]]for i in range(144)],key=lambda x:(all(map(any,x)),f.count(x),sum(sum(x,[]))))
 # lambda g:max(f:=[[s[i//12:][:3]for s in g[i%12:][:3]]for i in range(144)],key=lambda x:(*map(any,x),f.count(x),sum(sum(x,[]))))

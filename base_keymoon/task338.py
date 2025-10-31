@@ -1,4 +1,4 @@
-# best: 64(jailctf merger) / others: 65(Code Golf International), 65(4atj sisyphus luke Seek mukundan), 66(import itertools), 71(ox jam), 75(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 62(jailctf merger) / others: 64(Code Golf International), 64(intgrah jimboko awu macaque sammyuri), 65(4atj sisyphus luke Seek mukundan), 65(LogicLynx), 65(ox jam)
 # lambda g,R=[0]*99,S=[0]*99:eval(str([S:=[(c<1)*(D&3)+7*(c>0==C==D)for c,C,D in zip(r,R,S)if(R:=r)]for r in g]).replace(*"70"))
 
 # C c D
@@ -36,7 +36,7 @@
 # [[3*(0<D),1-2*(0!=D)][1<c]
 # [[1,-1],[0,1,0]][1<c][D]
 # ?: 0.5
-# ============================= 64 =============================
+# ============================ 62 ============================
 p=lambda g:[(D:=0)or[int(D:=[3*(0<D),.5-(0!=D)][1<c])for c in r]for r in g]
 
 # 別案:

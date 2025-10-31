@@ -1,5 +1,5 @@
-# best: 159(jailctf merger, biz) / others: 161(Code Golf International), 161(4atj sisyphus luke Seek mukundan), 172(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 172(ox jam), 179(HIMAGINE THE FUTURE.)
-# ============================================================================ 159 ============================================================================
+# best: 140(ox jam) / others: 151(LogicLynx), 152(Code Golf International), 154(jailctf merger), 157(biz), 161(4atj sisyphus luke Seek mukundan)
+# ================================================================== 140 ===================================================================
 # port re;S=re.sub;l=lambda g,c:g*c or[*zip(*l(eval(S("1, 8", "1, 1",str(l(g,c+1)))),c+1))][::-1];p=lambda g,c=[]:0**("8"in str(g))*c or p(l(S(*'81',str(g),1),-23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
 # str.replace;l=lambda g,c=:g*c or[*zip(*l(eval(S(str(l(g,c+1)),"1, 8", "1, 1")),c+1))][::-1];p=lambda g,c=[]:0**("8"in str(g))*c or p(l(S(str(g),*'81',1),-23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])
 # lambda g,c:-c*g or[*zip(*eval(str(l(g,c-1)).replace("1, 8","1, 1")))][::-1];p=lambda g,c=[]:c*0**("8"in str(g))or p(l(str(g).replace(*'81',1),23),[[8-sum(v),*v]for v in[[0]*len(c)]+c])

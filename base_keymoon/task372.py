@@ -1,3 +1,3 @@
-# best: 48(jonas ryno kg583 kabutack, jacekwl Potatoman nauti, jacekw Potatoman nauti natte, JRK, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, JRKX, Code Golf International, 4atj sisyphus luke Seek mukundan, jonas ryno kg583, ShadowPrompt Labs, HETHAT, jacekw Potatoman nauti, Ravi Annaswamy, natte, kambarakun, JRKXK, import itertools, MasukenSamba, Potatoman, Tony Li, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., adakoda, Yuchen20, ox jam, biz, JRKKX) / others: 51(Ty Woods), 52(kabutack), 53(cubbus), 53(THUNDER THUNDER), 53(duckyluuk)
-# ===================== 48 =====================
+# best: 47(Code Golf International, jailctf merger, biz) / others: 48(jonas ryno kg583 kabutack), 48(jacekwl Potatoman nauti), 48(jacekw Potatoman nauti natte), 48(JRK), 48(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# ===================== 47 ====================
 p=lambda g:[[*map(max,*a)]for a in zip(g,g[6:])]

@@ -1,5 +1,5 @@
-# best: 63(jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, JRKX, Code Golf International, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, natte, JRKXK, import itertools, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., Yuchen20, ox jam, THUNDER THUNDER, JRKKX) / others: 64(MasukenSamba), 68(jacekwl Potatoman nauti), 68(jacekwl), 68(biz), 71(Tony Li)
-# ============================= 63 ============================
+# best: 55(Code Golf International) / others: 60(jailctf merger), 60(intgrah jimboko awu macaque sammyuri), 62(ALE-Agent), 62(FuunAgent), 62(ox jam)
+# ========================= 55 ========================
 # p=lambda g:[[*map(max,zip(s,s[-3:],t,t[-3:]))]for s,t in zip(g,g[-3:])]
 # p=lambda g:[[*map(max,s,s[-3:],t,t[-3:])]for s,t in zip(g,g[-3:])]
 p=lambda g:[[*map(max,s,s[4:],t,t[4:])]for s,t in zip(g,g[2:])]

@@ -1,5 +1,5 @@
-# best: 79(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, HIMAGINE THE FUTURE., ox jam, biz) / others: 80(jacekwl Potatoman nauti), 80(jacekw Potatoman nauti natte), 80(jacekw Potatoman nauti), 80(cg-klogw-sekken), 80(natte)
-# ===================================== 79 ====================================
+# best: 75(Code Golf International, lv1.dev, jailctf merger, ox jam) / others: 79(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 79(4atj sisyphus luke Seek mukundan), 79(HIMAGINE THE FUTURE.), 79(biz), 79(intgrah jimboko awu macaque sammyuri)
+# =================================== 75 ==================================
 # p=lambda g,c=80:c and p([*map(list,zip(*(g[:1]+[[y or(x==1)for x,y in zip(s,t)]for s,t in zip(g,g[1:])])[::-1]))],c-1)or g
 # p=lambda g,c=80:c and p([*map(list,zip(*[s[:1]+[y or(x==1)for x,y in zip(s,s[1:])]for s in g][::-1]))],c-1)or g
 # p=lambda g,c=80:c and p([[s[0]]+[y or(x==1)for x,y in zip(s,s[1:])]for s in zip(*g[::-1])],c-1)or g

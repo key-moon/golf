@@ -1,5 +1,5 @@
-# best: 148(jailctf merger) / others: 166(Code Golf International), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 179(import itertools), 181(HIMAGINE THE FUTURE.)
-# ====================================================================== 148 =======================================================================
+# best: 134(jailctf merger) / others: 136(ox jam), 144(Code Golf International), 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 179(import itertools)
+# =============================================================== 134 ================================================================
 # 最小縦横: 6
 # 背景色を含まない行を削りながらてんちさいき→しばらく削ったら種類数でも削る
 # 矩形のふちは必ず背景色

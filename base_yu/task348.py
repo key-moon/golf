@@ -1,5 +1,5 @@
-# best: 94(jailctf merger, ox jam) / others: 101(HIMAGINE THE FUTURE.), 105(Code Golf International), 105(4atj sisyphus luke Seek mukundan), 105(import itertools), 106(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ============================================ 94 ============================================
+# best: 88(Code Golf International) / others: 92(jailctf merger), 94(ox jam), 101(LogicLynx), 101(FuunAgent), 101(HIMAGINE THE FUTURE.)
+# ========================================= 88 =========================================
 
 # p=lambda g,c=-19,E=enumerate:c*g or p([[v or i+1<len(g) and j>0 and g[i+1][~(j-1)] and 15-g[i+1][~(j-1)] for j,v in E(s[::-1])] for i,s in E(g)],c+1)
 # p=lambda g,c=-19,E=enumerate:c*g or p([[v or j>0 and t[~(j-1)] and 15-t[~(j-1)] for j,v in E(s[::-1])] for s,t in zip(g,g[1:]+g[-1:])],c+1)

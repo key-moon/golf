@@ -1,5 +1,5 @@
-# best: 67(ox jam) / others: 68(Code Golf International), 68(4atj sisyphus luke Seek mukundan), 68(jailctf merger), 68(HIMAGINE THE FUTURE.), 69(biz)
-# =============================== 67 ==============================
+# best: 66(Code Golf International, LogicLynx, FuunAgent) / others: 67(ox jam), 68(4atj sisyphus luke Seek mukundan), 68(jailctf merger), 68(HIMAGINE THE FUTURE.), 68(intgrah jimboko awu macaque sammyuri)
+# ============================== 66 ==============================
 # p=lambda g,c=0:[[(c:=max(s)or c)*any(s[:i+1])for i in range(len(s)-1)]+[c]for s in g]
 # p=lambda g,c=0:[(u:=[])+[(c:=max(s)or c)*any(u:=u+[v])for v in s[:-1]]+[c]for s in g]
 # p=lambda g,c=0:[(d:=0)or[d:=d+v for v in s[:-1]]+[c:=d or c]for s in g]

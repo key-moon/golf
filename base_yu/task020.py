@@ -1,5 +1,5 @@
-# best: 141(jailctf merger) / others: 148(ox jam), 149(Code Golf International), 149(4atj sisyphus luke Seek mukundan), 152(HIMAGINE THE FUTURE.), 156(import itertools)
-# =================================================================== 141 ===================================================================
+# best: 126(LogicLynx) / others: 133(lv1.dev), 135(jailctf merger), 138(Code Golf International), 138(FuunAgent), 139(ox jam)
+# =========================================================== 126 ============================================================
 
 def p(g,x=0):
  y=g.index(max(g,key=any))

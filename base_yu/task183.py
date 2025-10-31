@@ -1,5 +1,5 @@
-# best: 93(jailctf merger) / others: 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 94(MasukenSamba), 94(HIMAGINE THE FUTURE.), 94(ox jam), 95(biz)
-# ============================================ 93 ===========================================
+# best: 79(Code Golf International) / others: 93(lv1.dev), 93(LogicLynx), 93(FuunAgent), 93(jailctf merger), 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# ===================================== 79 ====================================
 # p=lambda g,E=enumerate:(n:=len(g))and[[v and g[[-1,0][i+2<n//2]][[-1,0][j+2<n//2]] for j,v in E(s[2:-2])]for i,s in E(g[2:-2])]
 # p=lambda g,E=enumerate:(n:=len(g)//2-2)and[[v and g[[-1,0][i<n]][[-1,0][j<n]]for j,v in E(s[2:-2])]for i,s in E(g[2:-2])]
 # p=lambda g:(R:=range(n:=len(g)-4))and[[g[i+2][j+2]and g[[-1,0][i*2<n]][[-1,0][j*2<n]]for j in R]for i in R]

@@ -1,9 +1,9 @@
-# best: 95(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 96(ox jam), 96(biz), 98(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 99(JRKX), 99(JRKXK)
+# best: 92(ox jam) / others: 95(Code Golf International), 95(4atj sisyphus luke Seek mukundan), 95(LogicLynx), 95(jailctf merger), 96(FuunAgent)
 # p=lambda g:(G:=sum(g,[]),u:=sorted((G.count(c),G.index(c)%10,c)for c in{*G}-{0}))and[[c for k,_,c in u if k==u[-1][0]]]*u[-1][0]
 # p=lambda g:(G:=sum(zip(*g),()),u:=[[c]*G.count(c)for c in G if c>0])and[*zip(*[s for s in u if len(s)==max(map(len,u))])]
 
 # f p(g):G=sum(g,[]);u=sorted((G.count(c),G.index(c)%10,c)for c in{*G}-{0});return[[c for k,_,c in u if k==u[-1][0]]]*u[-1][0]
-# ============================================= 95 ============================================
+# =========================================== 92 ===========================================
 # lambda g,c=9:(a:=[*sum(zip(*g),())])and(X:=[*filter(int,eval("(a.count(Y:=a.pop(0))==c)*Y,"*100))])and-~c*[X]or p(g,c-1)
 # f p(g,c=9):a=[*sum(zip(*g),())];X=eval("(a.count(Y:=a.pop(0))==c)*Y,"*100);return-~c*any(X)*[*filter(int,X)]or p(g,c-1)
 # lambda g,c=9:(a:=[*sum(zip(*g),())])and-~c*[X:=[v for v in a*1if(a.count(a.pop(0))==c)*v]]*any(X)or p(g,c-1)

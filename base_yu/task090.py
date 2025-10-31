@@ -1,5 +1,5 @@
-# best: 159(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 160(ox jam), 182(HIMAGINE THE FUTURE.), 190(import itertools), 195(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 205(MasukenSamba)
-# ============================================================================ 159 ============================================================================
+# best: 147(Code Golf International) / others: 153(ox jam), 158(jailctf merger), 159(4atj sisyphus luke Seek mukundan), 175(lv1.dev), 182(HIMAGINE THE FUTURE.)
+# ====================================================================== 147 ======================================================================
 def p(g):
 #  _,l,r,t=max(((d-u)*(r-l)-9*sum(sum([*zip(*g[u:d])][l:r],())),l,r,g[u:d])for d in range(len(g)+1)for r in range(len(g[0])+1)for u in range(d-1)for l in range(r))
  _,l,r,t=max(((d-u)*(r-l)-9*sum(sum(s[l:r])for s in g[u:d]),l,r,g[u:d])for d in range(len(g)+1)for r in range(len(g[0])+1)for u in range(d-1)for l in range(r))

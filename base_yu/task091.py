@@ -1,5 +1,5 @@
-# best: 63(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 64(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 64(MasukenSamba), 92(THUNDER THUNDER), 107(jacekwl Potatoman nauti), 107(jacekw Potatoman nauti)
-# ============================= 63 ============================
+# best: 62(Code Golf International, jailctf merger, ox jam) / others: 63(jacekw Potatoman nauti natte), 63(4atj sisyphus luke Seek mukundan), 63(lv1.dev), 63(natte), 63(import itertools)
+# ============================ 62 ============================
 
 p=lambda g,c=-63:c*g or p([*zip(*g[1-(g[1].count(5)==2 and(8,5,5,8)!=g[1]or 5in g[0]):][::-1])],c+1)
 # p=lambda g,c=-63:c*g or p([*zip(*g[(g[1].count(5)!=2 or(8,5,5,8)==g[1])and 5not in g[0]:][::-1])],c+1)

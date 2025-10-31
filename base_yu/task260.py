@@ -1,5 +1,5 @@
-# best: 135(jailctf merger) / others: 140(jacekw Potatoman nauti natte), 140(import itertools), 140(ox jam), 152(Code Golf International), 152(4atj sisyphus luke Seek mukundan)
-# ================================================================ 135 ================================================================
+# best: 130(ox jam) / others: 132(Code Golf International), 134(jailctf merger), 140(jacekw Potatoman nauti natte), 140(import itertools), 142(FuunAgent)
+# ============================================================= 130 ==============================================================
 # def p(g,R=range):
 #  u=(G:=sum(g,[])).index(c:=sum({*G})-5)
 #  x,*_,y=sorted(i//10-i%10 for i in R(100)if g[i//10][i%10])

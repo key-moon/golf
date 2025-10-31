@@ -1,4 +1,4 @@
-# best: 240(jailctf merger) / others: 244(ox jam), 265(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 281(import itertools), 287(HIMAGINE THE FUTURE.), 293(MasukenSamba)
+# best: 212(ox jam) / others: 222(Code Golf International), 233(jailctf merger), 239(intgrah jimboko awu macaque sammyuri), 246(FuunAgent), 257(lv1.dev)
 def p(g):
  c=max(g[0])
  for _ in range(4):

@@ -1,5 +1,5 @@
-# best: 140(jailctf merger) / others: 148(ox jam), 153(jacekw Potatoman nauti natte), 153(import itertools), 154(Code Golf International), 154(4atj sisyphus luke Seek mukundan)
-# ================================================================== 140 ===================================================================
+# best: 118(Code Golf International) / others: 124(ox jam), 130(jailctf merger), 151(FuunAgent), 153(jacekw Potatoman nauti natte), 153(import itertools)
+# ======================================================= 118 ========================================================
 def p(g):
  u=[*filter(max,g)]
  r=u[0][0]<1

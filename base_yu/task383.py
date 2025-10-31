@@ -1,5 +1,5 @@
-# best: 121(jailctf merger, ox jam) / others: 123(Code Golf International), 123(4atj sisyphus luke Seek mukundan), 128(HIMAGINE THE FUTURE.), 133(import itertools), 136(jacekw Potatoman nauti natte)
-# ========================================================= 121 =========================================================
+# best: 120(jailctf merger) / others: 121(LogicLynx), 121(ox jam), 123(Code Golf International), 123(4atj sisyphus luke Seek mukundan), 124(lv1.dev)
+# ======================================================== 120 =========================================================
 p=lambda g,c=-3:c*g or p([1<len(a:=[*filter(int,s)])<len(s)and a[0]!=a[1]and[a[0**v]for v in s]or s for s in zip(*g[::-1])],c+1)
 
 # def p(g):

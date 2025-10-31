@@ -1,4 +1,4 @@
-# best: 237(import itertools, jailctf merger) / others: 243(HIMAGINE THE FUTURE.), 244(jacekw Potatoman nauti natte), 250(ox jam), 269(Code Golf International), 269(4atj sisyphus luke Seek mukundan)
+# best: 221(Code Golf International) / others: 227(ox jam), 228(jailctf merger), 237(import itertools), 239(intgrah jimboko awu macaque sammyuri), 240(FuunAgent)
 def p(g):
 #  u=[s[s.index(1):23-s[::-1].index(1)]for s in g if 1 in s]
  u=[[v for*t,v in zip(*g,s) if 1in t]for s in g if 1in s]

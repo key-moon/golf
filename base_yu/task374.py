@@ -1,5 +1,5 @@
-# best: 106(jailctf merger, HIMAGINE THE FUTURE.) / others: 112(ox jam), 116(jacekw Potatoman nauti natte), 116(import itertools), 119(Code Golf International), 119(4atj sisyphus luke Seek mukundan)
-# ================================================= 106 ==================================================
+# best: 103(Code Golf International) / others: 106(jailctf merger), 106(HIMAGINE THE FUTURE.), 107(ox jam), 108(intgrah jimboko awu macaque sammyuri), 111(lv1.dev)
+# ================================================ 103 ================================================
 # lambda g,c=23:-c*g or p([*zip(*eval(str(g).replace((c//2*", 5")[2:],(c//2*f",{len({*sum(g,g[0])})*3%5}")[1:])))],c-1)
 # lambda g,c=23:-c*g or p([*zip(*eval(str(g).replace("5"+c//2*", 5",(a:="len({*sum(g,g[0])})*3%5")+c//2*f",{a}")))],c-1)
 # lambda g,c=23:-c*g or p(eval(str([*zip(*g)]).replace((c//2*", 5")[2:],(c//2*",len({*sum(g,())})*3%5")[1:])),c-1)

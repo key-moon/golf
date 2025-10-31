@@ -1,7 +1,7 @@
 # 青の間を塗る
 # 上下の行から間の青抜けたような構造の場合塗らない
 
-# best: 79(jailctf merger) / others: 84(Code Golf International), 84(4atj sisyphus luke Seek mukundan), 86(jonas ryno kg583 kabutack), 86(JRKX), 86(jonas ryno kg583)
+# best: 79(Code Golf International, jailctf merger, ox jam) / others: 84(4atj sisyphus luke Seek mukundan), 86(jonas ryno kg583 kabutack), 86(JRKX), 86(jonas ryno kg583), 86(FuunAgent)
 # ===================================== 79 ====================================
 p=lambda g:g[:1]+[[s[i]or(0<sum(s[:i])<sum(s))*9for i in range(10)]for s in g[1:9]]+g[9:]
 

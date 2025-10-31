@@ -1,5 +1,5 @@
-# best: 109(jailctf merger, biz) / others: 111(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 113(blob2822), 113(HIMAGINE THE FUTURE.), 114(Krige), 114(import itertools)
-# =================================================== 109 ===================================================
+# best: 106(jailctf merger) / others: 107(Code Golf International), 107(FuunAgent), 107(ox jam), 108(LogicLynx), 109(ALE-Agent)
+# ================================================= 106 ==================================================
 def p(g):
  for _ in 0,1:
   b=any(t>s and{*t}=={*s}>{0}for s,t in zip(g,g[1:]))

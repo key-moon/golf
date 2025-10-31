@@ -1,5 +1,5 @@
-# best: 121(jailctf merger) / others: 129(Code Golf International), 129(4atj sisyphus luke Seek mukundan), 133(ox jam), 140(import itertools), 150(jacekw Potatoman nauti natte)
-# ========================================================= 121 =========================================================
+# best: 114(ox jam) / others: 120(Code Golf International), 121(jailctf merger), 129(4atj sisyphus luke Seek mukundan), 132(FuunAgent), 140(import itertools)
+# ===================================================== 114 ======================================================
 # port re;t=r"([^0]), \1.{%s}\1";u=r"([^0]).{%s}\1, \1";P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]
 # port re;Z="([1-9])";A=Z+r".{%s}\1";t=Z+".."+A;u=A+".."+Z;P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]
 # port re;Z="..([1-9])";A=Z+".{%s}\\1";t=Z+A;u=A+Z;P=[t%37,t%40,u%40,u%37]*2+["(0)"]*4;p=lambda g:[[int(re.search(P[i+j],str(g))[1])for j in(0,4,5,1)]for i in(0,4,6,2)]

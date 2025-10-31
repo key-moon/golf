@@ -1,6 +1,6 @@
-# best: 58(jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 60(JRKX), 60(JRKXK), 60(JRKKX), 61(jonas ryno kg583 kabutack), 61(JRK)
+# best: 57(ox jam) / others: 58(lv1.dev), 58(FuunAgent), 58(jailctf merger), 58(HIMAGINE THE FUTURE.), 59(Code Golf International)
 # lambda g:[(a:=[0,0])and eval("(a:=[r.pop()or -a[1]//~a[1]*-5,a[0]])[0],"*len(r))for r in g]
-# ========================== 58 ==========================
+# ========================== 57 =========================
 # lambda g:[([0]*[*s,1].index(v:=max(*s,1))+[v,5]*9)[:len(s)]for s in g]
 # lambda g:[([0]*r.index(m:=max(r))+[m,5-0**m*5]*9)[:len(r)]for r in g]
 # lambda g:[([0]*r.index(m:=max(r))+[m,m//~m*-5]*9)[:len(r)]for r in g]

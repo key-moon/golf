@@ -1,5 +1,5 @@
-# best: 132(jailctf merger, HIMAGINE THE FUTURE.) / others: 134(Code Golf International), 134(4atj sisyphus luke Seek mukundan), 135(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 135(ox jam), 136(import itertools)
-# ============================================================== 132 ===============================================================
+# best: 110(ox jam) / others: 114(jailctf merger), 116(Code Golf International), 132(HIMAGINE THE FUTURE.), 133(LogicLynx), 134(4atj sisyphus luke Seek mukundan)
+# =================================================== 110 ====================================================
 def p(g):
  for i in range(10):
   for j in range(10):

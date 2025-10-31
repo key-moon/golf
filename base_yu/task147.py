@@ -1,5 +1,5 @@
-# best: 83(jailctf merger, ox jam) / others: 84(Code Golf International), 84(4atj sisyphus luke Seek mukundan), 86(HIMAGINE THE FUTURE.), 87(jacekw Potatoman nauti natte), 87(import itertools)
-# ======================================= 83 ======================================
+# best: 72(ox jam) / others: 81(Code Golf International), 81(jailctf merger), 84(4atj sisyphus luke Seek mukundan), 84(intgrah jimboko awu macaque sammyuri), 86(HIMAGINE THE FUTURE.)
+# ================================= 72 =================================
 # lambda g,E=enumerate:[[(s[j]and any([0,*s][j:j+3:2]+[0,*t][i:i+3:2]))*8or s[j]for j,t in E(zip(*g))]for i,s in E(g)]
 # lambda g,E=enumerate:[[(sum([0,*s][j:j+3]+[0,*t][i:i+3])>2*s[j]>0)*8or s[j]for j,t in E(zip(*g))]for i,s in E(g)]
 # lambda g,E=enumerate:[[(sum([0,*s][j:j+3]+[0,*t][i:i+3])>2*s[j]>0)*5+s[j]for j,t in E(zip(*g))]for i,s in E(g)]

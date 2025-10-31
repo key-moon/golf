@@ -1,4 +1,4 @@
-# best: 226(jailctf merger) / others: 235(Code Golf International), 235(4atj sisyphus luke Seek mukundan), 242(ox jam), 244(HIMAGINE THE FUTURE.), 247(biz)
+# best: 192(lv1.dev) / others: 195(FuunAgent), 202(jailctf merger), 205(ox jam), 209(ALE-Agent), 215(LogicLynx)
 def p(g):
  *C,b=sorted({*sum(g,[])},key=sum(g,[]).count)
  u=0

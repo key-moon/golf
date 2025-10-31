@@ -1,5 +1,5 @@
-# best: 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger) / others: 64(jacekw Potatoman nauti natte), 64(Code Golf International), 64(4atj sisyphus luke Seek mukundan), 64(ShadowPrompt Labs), 64(natte)
-# ============================= 63 ============================
+# best: 62(jailctf merger) / others: 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 63(Code Golf International), 63(ox jam), 63(intgrah jimboko awu macaque sammyuri), 64(jacekw Potatoman nauti natte)
+# ============================ 62 ============================
 # 1の2x2の数を数えて配置しなおす x,yは[0,0,1,2,2],[0,2,1,0,2]
 # def p(g):
 #  *r,=eval("[0]*3,"*3)

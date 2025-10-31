@@ -1,4 +1,4 @@
-# best: 47(import itertools, jailctf merger) / others: 48(cubbus), 48(jacekw Potatoman nauti natte), 48(Code Golf International), 48(4atj sisyphus luke Seek mukundan), 48(natte)
+# best: 47(Code Golf International, LogicLynx, import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 48(cubbus), 48(jacekw Potatoman nauti natte), 48(4atj sisyphus luke Seek mukundan), 48(lv1.dev), 48(ALE-Agent)
 # def p(g):
 #  *l,=zip(*g)
 #  return[*map(list,zip(*(l[:1]*5+[[(0<c)*5 for c in l[0]]]+l[-1:]*5)))]

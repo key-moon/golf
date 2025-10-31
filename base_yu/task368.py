@@ -1,5 +1,5 @@
-# best: 138(jailctf merger, ox jam) / others: 142(Code Golf International), 142(4atj sisyphus luke Seek mukundan), 143(JRKKX), 149(HIMAGINE THE FUTURE.), 161(THUNDER THUNDER)
-# ================================================================= 138 ==================================================================
+# best: 129(ox jam) / others: 135(Code Golf International), 136(jailctf merger), 140(FuunAgent), 142(4atj sisyphus luke Seek mukundan), 142(LogicLynx)
+# ============================================================= 129 =============================================================
 
 def p(g):
  u=[t for s in g if(t:=[v for v in s if v%5])]

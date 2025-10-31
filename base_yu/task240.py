@@ -1,5 +1,5 @@
-# best: 99(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 102(jailctf merger), 106(ox jam), 113(HIMAGINE THE FUTURE.), 113(THUNDER THUNDER), 126(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# =============================================== 99 ==============================================
+# best: 89(LogicLynx) / others: 99(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 102(jailctf merger), 103(lv1.dev), 104(ox jam)
+# ========================================== 89 =========================================
 # p=lambda g,R=range(19):[[(I:=min(i,18-i),J:=min(j,18-j))and(g[I:=min(I,J+1+I%2)][J:=min(J,I+1+J%2)]|g[18-J][I]|g[J][18-I]|g[18-I][18-J])for j in R]for i in R]
 
 

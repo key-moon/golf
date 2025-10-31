@@ -1,5 +1,5 @@
-# best: 66(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 69(ox jam), 70(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 73(import itertools), 73(HIMAGINE THE FUTURE.), 73(THUNDER THUNDER)
-# ============================== 66 ==============================
+# best: 65(Code Golf International) / others: 66(4atj sisyphus luke Seek mukundan), 66(jailctf merger), 69(ox jam), 70(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 70(LogicLynx)
+# ============================== 65 =============================
 # p=lambda g:[[[0,5,0],[5,5,5],[0,5,0]],[[5,5,5],[0,5,0],[0,5,0]],[[0,0,5],[0,0,5],[5,5,5]]][max(sum(g,[]))-1]
 # p=lambda g:[[*b"050550055"[u:=max(sum(g,[]))::3]],[*b"500550505"[u::3]],[*b"005555005"[u::3]]]
 # p=lambda g:[(u:=[*b"_500505550005505055050555050"[max(sum(g,[]))::3]])[:3],u[3:6],u[6:]]

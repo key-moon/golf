@@ -1,5 +1,5 @@
-# best: 148(import itertools, jailctf merger) / others: 166(JRKKX), 168(2F), 168(biz), 170(ox jam), 173(Code Golf International)
-# ====================================================================== 148 =======================================================================
+# best: 124(jailctf merger) / others: 126(Code Golf International), 135(ox jam), 148(import itertools), 150(LogicLynx), 161(FuunAgent)
+# ========================================================== 124 ===========================================================
 
 p=lambda g,R=range:[exec("for s in g[u:u+m]:s[l:l+m]=[2]*m")for m in R(1,8)for u in R(12-m)for l in R(12-m)if[k:=(5,)*(m+2),*[(5,*[0]*m,5)]*m,k]==[*zip(*g[u-1:u+m+1])][l-1:l+m+1]]*0+g
 

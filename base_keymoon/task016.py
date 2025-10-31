@@ -1,4 +1,4 @@
-# best: 43(cubbus, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger) / others: 44(ox jam), 46(jonas ryno kg583 kabutack), 46(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 46(JRKX), 46(HETHAT)
+# best: 43(cubbus, jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, ox jam) / others: 44(ALE-Agent), 46(jonas ryno kg583 kabutack), 46(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 46(JRKX), 46(lv1.dev)
 # =================== 43 ==================
 # これ43らしい あと15byte縮むらしい 意味わからない
 # 58

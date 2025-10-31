@@ -1,5 +1,5 @@
-# best: 130(jailctf merger) / others: 143(ox jam), 148(Code Golf International), 148(4atj sisyphus luke Seek mukundan), 151(duckyluuk), 154(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ============================================================= 130 ==============================================================
+# best: 121(ox jam) / others: 123(Code Golf International), 127(jailctf merger), 140(lv1.dev), 148(4atj sisyphus luke Seek mukundan), 151(duckyluuk)
+# ========================================================= 121 =========================================================
 
 # lambda g,c=-3:c*g or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]*9+g[:(i:=g.index(u)):-1]+g[i+1:])[-10:]).replace(*"03"))or g)[::-1])],c+1)
 # lambda g,c=-3:c*eval(str(g).replace(*"03"))or p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*(g[:1]*9+g[:(i:=g.index(u)):-1]+g[i+1:])[-10:]or g)[::-1])],c+1)

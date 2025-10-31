@@ -1,4 +1,4 @@
-# best: 273(jailctf merger) / others: 286(HIMAGINE THE FUTURE.), 295(ox jam), 302(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 303(MasukenSamba), 320(Code Golf International)
+# best: 258(Code Golf International) / others: 264(jailctf merger), 269(ox jam), 270(lv1.dev), 279(FuunAgent), 282(ALE-Agent)
 def p(g):
  u=[]
  u=[(i,j,g[i][j])for i in range(len(g))for j in range(len(g[0]))if g[i][j]|2==3 or g[i][j]*any(abs(y-i)<2>abs(x-j) for y,x,_ in u)]

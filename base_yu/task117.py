@@ -1,5 +1,5 @@
-# best: 148(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 154(ox jam), 172(import itertools), 193(jacekw Potatoman nauti natte), 194(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 194(MasukenSamba)
-# ====================================================================== 148 =======================================================================
+# best: 115(Code Golf International) / others: 130(ox jam), 147(jailctf merger), 148(4atj sisyphus luke Seek mukundan), 172(import itertools), 175(LogicLynx)
+# ====================================================== 115 ======================================================
 
 
 # def p(g):

@@ -1,5 +1,5 @@
-# best: 152(jailctf merger, biz) / others: 172(import itertools), 174(ox jam), 176(HIMAGINE THE FUTURE.), 181(jacekwl Potatoman nauti), 181(jacekw Potatoman nauti natte)
-# ======================================================================== 152 =========================================================================
+# best: 123(ox jam) / others: 142(jailctf merger), 143(biz), 146(Code Golf International), 158(LogicLynx), 165(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# ========================================================== 123 ==========================================================
 def p(g):
  _,n,m={*sum(g,[])}
  if 5<str(g).count(f"{n}, "*2):n,m=m,n

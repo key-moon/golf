@@ -1,5 +1,5 @@
-# best: 103(jailctf merger, HIMAGINE THE FUTURE.) / others: 106(jacekw Potatoman nauti natte), 106(import itertools), 110(Code Golf International), 110(4atj sisyphus luke Seek mukundan), 112(ox jam)
-# ================================================ 103 ================================================
+# best: 91(Code Golf International, jailctf merger) / others: 101(FuunAgent), 103(HIMAGINE THE FUTURE.), 106(jacekw Potatoman nauti natte), 106(import itertools), 106(ox jam)
+# =========================================== 91 ==========================================
 
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=[i for i,s in enumerate(g)if 3in s][0])+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)
 # p=lambda g,c=-1:c*g or p([*zip(*(g[:(i:=g.index(max(g,key=max)))+1]+g[i::-1]+[g[-1]]*99)[:len(g)])],c+1)

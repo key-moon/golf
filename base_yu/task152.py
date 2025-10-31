@@ -1,3 +1,3 @@
-# best: 40(jonas ryno kg583 kabutack, cubbus, jacekwl Potatoman nauti, jacekw Potatoman nauti natte, JRK, blob2822, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, JRKX, Code Golf International, 4atj sisyphus luke Seek mukundan, jacekw, jacekwl, dbdr, jonas ryno kg583, ShadowPrompt Labs, HETHAT, jacekw Potatoman nauti, cg-klogw-sekken, HashPanda Pooja, Ravi Annaswamy, natte, cg, kambarakun, HashPanda, Rafael Pooja, kabutack, JRKXK, import itertools, MasukenSamba, Potatoman, cg-klogw, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., adakoda, Yuchen20, ox jam, THUNDER THUNDER, Bulmenisaurus, biz, duckyluuk, JRKKX, J&R) / others: 41(azakhtyamov), 45(open source), 45(Ali), 45(Krige), 45(rucin93)
-# ================= 40 =================
+# best: 39(jailctf merger) / others: 40(jonas ryno kg583 kabutack), 40(cubbus), 40(jacekwl Potatoman nauti), 40(jacekw Potatoman nauti natte), 40(JRK)
+# ================= 39 ================
 p=lambda g:[s+s[::-1]for s in g+g[::-1]]

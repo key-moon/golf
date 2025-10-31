@@ -1,5 +1,5 @@
-# best: 141(jailctf merger, ox jam) / others: 155(biz), 158(Code Golf International), 158(4atj sisyphus luke Seek mukundan), 170(import itertools), 171(jacekw Potatoman nauti natte)
-# =================================================================== 141 ===================================================================
+# best: 135(jailctf merger) / others: 137(Code Golf International), 137(intgrah jimboko awu macaque sammyuri), 141(ox jam), 147(lv1.dev), 155(biz)
+# ================================================================ 135 ================================================================
 # import re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("., 8, .(.{%d})2, 8, 0(.{%d})0, 8, 0"%(l:=len(g[0])*3-5,l),r"8,8,8\1 8,2,8\2 8,8,8",re.sub("2, 0(?=[, 0]*8)","2, 2",str(g))))[::-1])],c+1)
 import re;p=lambda g,c=-39:c*g or p(eval(re.sub("., 8, .(.{%d})2, 8, 0(.{%d})0, 8, 0"%(l:=len(g)*3-5,l),r"8,8,8\1 8,2,8\2 8,8,8",re.sub("2, 0(?=[, 0]*8)","2, 2",str([*zip(*g[::-1])])))),c+1)
 

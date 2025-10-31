@@ -1,4 +1,4 @@
-# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 107(jacekw Potatoman nauti natte), 107(import itertools), 107(ox jam), 110(HIMAGINE THE FUTURE.), 113(THUNDER THUNDER)
+# best: 94(Code Golf International) / others: 97(ox jam), 104(jailctf merger), 105(4atj sisyphus luke Seek mukundan), 107(jacekw Potatoman nauti natte), 107(import itertools)
 # 131
 # def p(g,R=range):
 #  for _ in R(10):
@@ -16,7 +16,7 @@
 #    a=b**b+~b
 #    g[i+a][j+a]|=b&g[i-a][j-a]
 #  return g
-# ================================================= 105 =================================================
+# ============================================ 94 ============================================
 # lambda g:exec("for x in range(64):\n i,j=x//8+1,x%8+1;a=-~g[i][j]%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a]\n"*9)or g
 # lambda g:exec("x=%d;i,j=x//8+1,-~x&7;a=-~g[i][j]%%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a];"*64%(*range(64),)*9)or g
 # lambda g,R=range(1,9):exec("for i in R:\n for j in R:a=-~g[i][j]%3-1;g[i-a][j-a]|=g[i][j]&g[i+a][j+a]\n"*9)or g

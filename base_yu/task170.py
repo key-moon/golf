@@ -1,5 +1,5 @@
-# best: 180(import itertools, jailctf merger) / others: 196(ox jam), 201(jacekw Potatoman nauti natte), 202(jacekwl Potatoman nauti), 202(jacekw Potatoman nauti), 211(Code Golf International)
-# ====================================================================================== 180 =======================================================================================
+# best: 163(jailctf merger) / others: 166(Code Golf International), 170(FuunAgent), 180(import itertools), 191(LogicLynx), 193(lv1.dev)
+# ============================================================================== 163 ==============================================================================
 def p(g):
  y,x,c=zip(*[(i,j,v)for i,s in enumerate(g)for j,v in enumerate(s)if v])
  d=3+1%len({*c[:-9]})

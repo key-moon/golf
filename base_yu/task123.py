@@ -1,5 +1,5 @@
-# best: 72(ShadowPrompt Labs) / others: 75(jacekw Potatoman nauti natte), 75(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 75(Code Golf International), 75(4atj sisyphus luke Seek mukundan), 75(HETHAT)
-# ================================= 72 =================================
+# best: 71(lv1.dev, LogicLynx, ALE-Agent) / others: 72(Code Golf International), 75(jacekw Potatoman nauti natte), 75(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 75(4atj sisyphus luke Seek mukundan), 75(HETHAT)
+# ================================= 71 ================================
 # R=range(10)
 # p=lambda g:[[g[0][max(i,j)%(4+(g[0][4]>0))]for j in R]for i in R]
 

@@ -1,3 +1,3 @@
-# best: 63(jacekwl Potatoman nauti, jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, jacekw Potatoman nauti, cg-klogw-sekken, natte, kambarakun, import itertools, MasukenSamba, cg-klogw, Tony Li, jailctf merger, Tony Li & Darren Amadeus Martin, HIMAGINE THE FUTURE., adakoda, Yuchen20, ox jam, THUNDER THUNDER, biz) / others: 64(ShadowPrompt Labs), 67(jonas ryno kg583 kabutack), 67(JRKX), 67(cg), 67(kabutack)
-# ============================= 63 ============================
+# best: 62(LogicLynx, FuunAgent, jailctf merger) / others: 63(jacekwl Potatoman nauti), 63(jacekw Potatoman nauti natte), 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 63(Code Golf International), 63(4atj sisyphus luke Seek mukundan)
+# ============================ 62 ============================
 p=lambda g,R=range(18):[[i*j%max(g[17])+1for j in R]for i in R]

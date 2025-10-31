@@ -1,5 +1,5 @@
-# best: 106(jailctf merger, ox jam) / others: 107(Code Golf International), 107(4atj sisyphus luke Seek mukundan), 107(import itertools), 108(Tony Li & Darren Amadeus Martin), 111(HIMAGINE THE FUTURE.)
-# ================================================= 106 ==================================================
+# best: 102(Code Golf International, lv1.dev, jailctf merger, ox jam) / others: 107(4atj sisyphus luke Seek mukundan), 107(FuunAgent), 107(import itertools), 107(intgrah jimboko awu macaque sammyuri), 108(Tony Li & Darren Amadeus Martin)
+# =============================================== 102 ================================================
 
 # p=lambda g,R=range(12):((g[6][0]==2)and(a:=g[0].count(2))and[[g[i][j]or(abs(i-(1|(d:=-(8in g[-1])))*(g[d].index(8)-a)%11)+a==j)*3 for j in R]for i in R])or[*zip(*p([*zip(*g[::-1])]))][::-1]
 
@@ -50,6 +50,6 @@
 #       s[w]=s[w:=j+v*~-(g[i][j-v]&2)] or 3
 #  return g
 
-# ================================================= 106 ==================================================
+# =============================================== 102 ================================================
 # import re;p=lambda g,c=-59:g*c or eval(re.sub("0(?=.{40}[38].{40}[238])","3",str([*zip(*p(g,c+1))][::1-c%3|1])))
 import re;p=lambda g,c=-59:g*c or[*zip(*eval(re.sub("0(?=.{40}[38].{40}[238])","3",str(p(g,c+1)))))][::1-c%3|1]

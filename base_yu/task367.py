@@ -1,5 +1,5 @@
-# best: 128(jailctf merger) / others: 129(jacekw Potatoman nauti natte), 129(import itertools), 129(HIMAGINE THE FUTURE.), 129(ox jam), 131(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ============================================================ 128 =============================================================
+# best: 126(LogicLynx, ox jam) / others: 127(intgrah jimboko awu macaque sammyuri), 128(jailctf merger), 129(jacekw Potatoman nauti natte), 129(import itertools), 129(HIMAGINE THE FUTURE.)
+# =========================================================== 126 ============================================================
 # 05  -> 45
 #  50     50
 #  0      0

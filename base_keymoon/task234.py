@@ -1,5 +1,5 @@
-# best: 109(jailctf merger, biz) / others: 111(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 113(blob2822), 113(HIMAGINE THE FUTURE.), 114(Krige), 114(import itertools)
-# =================================================== 109 ===================================================
+# best: 106(jailctf merger) / others: 107(Code Golf International), 107(FuunAgent), 107(ox jam), 108(LogicLynx), 109(ALE-Agent)
+# ================================================= 106 ==================================================
 # TODO: gcdシフト再帰
 # lambda g,c=-43,s=[]:g*c or p([*zip(*([r for r in g if(max(r)not in s and(s:=[*s,*r])and r.count(max(r))==1)-1]+g[:1]*9)[:len(g)])][::-1],c+1)
 # 0<sum(r)==max(r)

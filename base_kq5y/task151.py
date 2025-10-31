@@ -1,5 +1,5 @@
-# best: 108(jailctf merger, ox jam) / others: 110(ShadowPrompt Labs), 111(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 111(MasukenSamba), 112(Code Golf International), 112(4atj sisyphus luke Seek mukundan)
-# ================================================== 108 ===================================================
+# best: 100(LogicLynx) / others: 102(lv1.dev), 103(Code Golf International), 103(jailctf merger), 103(ox jam), 105(FuunAgent)
+# ============================================== 100 ===============================================
 
 #def p(j):A=lambda c:list(map(all,c)).index(1);E,k=A(j),A(zip(*j));j[E-1][k-1:k+2]=j[E+1][k-1:k+2]=[4]*3;j[E][k-1]=j[E][k+1]=4;return j
 

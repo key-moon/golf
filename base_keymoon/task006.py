@@ -1,4 +1,4 @@
-# best: 49(HIMAGINE THE FUTURE.) / others: 50(jailctf merger), 51(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 51(Code Golf International), 51(4atj sisyphus luke Seek mukundan), 51(ShadowPrompt Labs)
+# best: 49(Code Golf International, lv1.dev, jailctf merger, HIMAGINE THE FUTURE.) / others: 51(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 51(4atj sisyphus luke Seek mukundan), 51(LogicLynx), 51(ALE-Agent), 51(FuunAgent)
 #  b"012"
 # (0,1,2)
 # sum(r[i::4])

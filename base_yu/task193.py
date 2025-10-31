@@ -1,5 +1,5 @@
-# best: 81(jailctf merger) / others: 85(Code Golf International), 85(4atj sisyphus luke Seek mukundan), 87(biz), 91(import itertools), 92(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ====================================== 81 =====================================
+# best: 71(ox jam) / others: 77(Code Golf International), 81(jailctf merger), 84(LogicLynx), 85(4atj sisyphus luke Seek mukundan), 86(FuunAgent)
+# ================================= 71 ================================
 # p=lambda g,c=-1:c*g or p([[([0,*s,0][i:i+3:2]>[0,0])*s[i] for i in range(len(s))]for s in zip(*g)],c+1)
 # p=lambda g,c=-1:c*g or p([[any([0,*s][i:i+3:2])*s[i]for i in range(len(s))]for s in zip(*g)],c+1)
 p=lambda g,c=-1:c*g or[[v*any([0,*s][i:i+3:2])for i,v in enumerate(s)]for s in zip(*p(g,c+1))]

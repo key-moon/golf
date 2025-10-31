@@ -1,5 +1,5 @@
-# best: 113(jailctf merger, ox jam) / others: 114(Code Golf International), 114(4atj sisyphus luke Seek mukundan), 121(HIMAGINE THE FUTURE.), 122(biz), 126(2F)
-# ===================================================== 113 =====================================================
+# best: 111(jailctf merger) / others: 113(Code Golf International), 113(ox jam), 114(4atj sisyphus luke Seek mukundan), 121(HIMAGINE THE FUTURE.), 122(biz)
+# ==================================================== 111 ====================================================
 # p=lambda g:max([[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[g[k][l%20]for k in range(20)],0].index(0,l//20)]]for l in range(400)],key=lambda t:sum(t,[]).count(2))
 # p=lambda g:max([(sum(t:=[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[g[k][l%20]for k in range(20)],0].index(0,l//20)]],[]).count(2),~l,t)for l in range(400)])[2]
 # p=lambda g:max([(sum(t:=[s[l%20:[*g[l//20],0].index(0,l%20)]for s in g[l//20:[*[*[*zip(*g)][l%20]],0].index(0,l//20)]],[]).count(2),~l,t)for l in range(400)])[2]

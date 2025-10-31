@@ -1,5 +1,5 @@
-# best: 138(jacekw Potatoman nauti natte, import itertools, jailctf merger) / others: 145(ox jam), 149(Code Golf International), 149(4atj sisyphus luke Seek mukundan), 150(THUNDER THUNDER), 152(natte)
-# ================================================================= 138 ==================================================================
+# best: 103(ox jam) / others: 123(Code Golf International), 124(jailctf merger), 127(lv1.dev), 138(jacekw Potatoman nauti natte), 138(import itertools)
+# ================================================ 103 ================================================
 # p=lambda g,c=-3:c*g or p([*zip(*(g*({*g[x:=(t:=[i for i,s in enumerate(g)if any(s)])[0]]}!={0,8})or g[:x]+[g[y:=t[1]]]+[g[y+1]]*(y-x)+g[y+1:])[::-1])],c+1)
 
 

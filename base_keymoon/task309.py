@@ -1,4 +1,4 @@
-# best: 38(jonas ryno kg583 kabutack, cubbus, jacekwl Potatoman nauti, jacekw Potatoman nauti natte, JRK, blob2822, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, JRKX, Code Golf International, 4atj sisyphus luke Seek mukundan, jacekwl, jonas ryno kg583, ShadowPrompt Labs, HETHAT, jacekw Potatoman nauti, cg-klogw-sekken, HashPanda Pooja, natte, kambarakun, HashPanda, Rafael Pooja, kabutack, JRKXK, import itertools, MasukenSamba, jailctf merger, HIMAGINE THE FUTURE., adakoda, Yuchen20, ox jam, THUNDER THUNDER, Bulmenisaurus, 2F, biz, duckyluuk, JRKKX) / others: 39(jacekw), 40(Ravi Annaswamy), 40(Potatoman), 40(Tony Li & Darren Amadeus Martin), 44(rucin93)
+# best: 36(Code Golf International) / others: 38(jonas ryno kg583 kabutack), 38(cubbus), 38(jacekwl Potatoman nauti), 38(jacekw Potatoman nauti natte), 38(JRK)
 # {1: 1, 8: 8, 7: 5}
 # 40
 # p=lambda g:eval(str(g).replace("7","5"))

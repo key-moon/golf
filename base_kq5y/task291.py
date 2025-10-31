@@ -1,5 +1,5 @@
-# best: 61(jailctf merger) / others: 62(Code Golf International), 62(4atj sisyphus luke Seek mukundan), 62(HIMAGINE THE FUTURE.), 62(ox jam), 62(duckyluuk)
-# ============================ 61 ===========================
+# best: 59(ox jam) / others: 61(Code Golf International), 61(jailctf merger), 62(4atj sisyphus luke Seek mukundan), 62(LogicLynx), 62(FuunAgent)
+# =========================== 59 ==========================
 
 #p=lambda g:[[c for c in range(1,10)if len({s.count(c)for s in g})>2]]
 

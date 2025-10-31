@@ -1,5 +1,5 @@
-# best: 85(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 91(ox jam), 92(HIMAGINE THE FUTURE.), 94(biz), 97(THUNDER THUNDER), 100(jacekw Potatoman nauti natte)
-# ======================================== 85 =======================================
+# best: 83(jailctf merger) / others: 84(Code Golf International), 84(ox jam), 85(4atj sisyphus luke Seek mukundan), 90(LogicLynx), 90(FuunAgent)
+# ======================================= 83 ======================================
 # lambda g,c=-1:c*g or p([[s[i]or(12<sum(s[:i])+6<sum(s))*3for i in range(len(s))]for s in zip(*g)],c+1)
 # lambda g,c=-1:c*g or p([[s[i]or(8in s[:i])*(8in s[i:])*3for i in range(len(s))]for s in zip(*g)],c+1)
 # lambda g,c=-1:c*g or p([[v or(8in s[:i])*(8in s[i:])*3for i,v in enumerate(s)]for s in zip(*g)],c+1)

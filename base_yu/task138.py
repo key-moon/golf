@@ -1,5 +1,5 @@
-# best: 104(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 116(cubbus), 116(import itertools), 117(jacekw Potatoman nauti natte), 120(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 120(HIMAGINE THE FUTURE.)
-# ================================================ 104 =================================================
+# best: 103(Code Golf International, jailctf merger, intgrah jimboko awu macaque sammyuri) / others: 104(4atj sisyphus luke Seek mukundan), 104(ox jam), 116(cubbus), 116(import itertools), 117(jacekw Potatoman nauti natte)
+# ================================================ 103 ================================================
 
 # p=lambda g,c=-79:c*g or p([*zip(*g[1-all(g[0]):][::-1])],c+1)
 # p=lambda g,c=-79:c*g or p([[(s[0]in s[i:]and c>-4)*s[0]|v for i,v in enumerate(s)]for s in zip(*g[1-all(g[0]):][::-1])],c+1)

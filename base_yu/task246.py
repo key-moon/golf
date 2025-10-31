@@ -1,5 +1,5 @@
-# best: 105(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, ox jam) / others: 108(HIMAGINE THE FUTURE.), 114(import itertools), 127(THUNDER THUNDER), 144(biz), 152(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ================================================= 105 =================================================
+# best: 104(Code Golf International) / others: 105(4atj sisyphus luke Seek mukundan), 105(jailctf merger), 105(ox jam), 108(HIMAGINE THE FUTURE.), 114(import itertools)
+# ================================================ 104 =================================================
 p=lambda g,c=-1,E=enumerate:c*g or p([[s[j]or(2in s)+(3in t)+(0<sum(s[:j]+[*t[:i]])<sum(s+[*t]))+6&8for j,t in E(zip(*g))]for i,s in E(g)],c+1)
 
 # def p(g,E=enumerate):

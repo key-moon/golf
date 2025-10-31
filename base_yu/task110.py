@@ -1,5 +1,5 @@
-# best: 85(jailctf merger) / others: 89(ox jam), 99(HIMAGINE THE FUTURE.), 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 114(jacekw Potatoman nauti natte)
-# ======================================== 85 =======================================
+# best: 83(LogicLynx) / others: 84(Code Golf International), 84(ox jam), 85(FuunAgent), 85(jailctf merger), 93(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# ======================================= 83 ======================================
 
 # p=lambda g:max((u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)],sum(s==t for s,t in zip(sum(g,[]),sum(u,[]))))[::-1]for d in range(5,10))[1]
 # p=lambda g:[u for d in range(5,10)if (u:=[[g[4],w:=[*map(max,*g[i%d::d])]][all(w)]for i in range(29)])and sum(s==t for s,t in zip(sum(g,[]),sum(u,[])))>700][0]

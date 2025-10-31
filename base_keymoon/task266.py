@@ -1,5 +1,5 @@
-# best: 98(jailctf merger, HIMAGINE THE FUTURE.) / others: 102(ox jam), 102(THUNDER THUNDER), 102(biz), 109(import itertools), 114(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ============================================== 98 ==============================================
+# best: 88(Code Golf International) / others: 98(jailctf merger), 98(HIMAGINE THE FUTURE.), 99(LogicLynx), 99(ox jam), 100(biz)
+# ========================================= 88 =========================================
 # port re;p=lambda g,c=3:-c*g or[*zip(*eval(re.sub("0(?=.{%s}2)"%(19-c%2*6),"(-c^3)%10",str(p(g,c-1)))))][::-1] <- 2 のreplaceができてないやつ
 # lambda g,A=[0]*9+[3,0,6]+[0]*7+[8,0,7]+[0]*9:[A[15-sum(g,[]).index(2)+i:][:5]for i in(0,5,10)] <- wraparound忘れてた カス
 # lambda g,A=[b:=(a:=[0]*3)*3,a+[3,0,6]+a,b,a+[8,0,7]+a,b]:[r[4-max(g).index(2):][:5]for r in A[2-g.index(max(g)):]]

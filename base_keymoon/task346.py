@@ -1,4 +1,4 @@
-# best: 55(jacekw Potatoman nauti natte, import itertools) / others: 56(HIMAGINE THE FUTURE.), 58(jailctf merger), 68(Code Golf International), 68(4atj sisyphus luke Seek mukundan), 68(ox jam)
+# best: 52(ox jam) / others: 55(jacekw Potatoman nauti natte), 55(Code Golf International), 55(import itertools), 55(intgrah jimboko awu macaque sammyuri), 56(HIMAGINE THE FUTURE.)
 # import re;p=lambda g:[[*{*sum(g,[])}-{0,int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ",str(g))[1])}]]
 # import re;p=lambda g:[[int(({*(s:=str(g))}-{*" ,0[]",re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1",s)[1]}).pop())]]
 # import re;p=lambda g:[[int(re.search(rf"([^0]), \1, \1.{{{len(g[0])*3-5}}}\1, ((?!\1).)",str(g))[2])]]
@@ -7,7 +7,7 @@
 # import re;p=lambda g:[[int(re.search(rf"(, [^0])\1{{2}}.{{{len(g[0])*3-7}}}\1(?!\1), .",str(g))[0][-1])]]
 # import re;p=lambda g:[[int(re.search(r"(, [^0])\1{2}.{"+str(len(g[0])*3-7)+r"}\1(?!\1), (.)",str(g))[2])]]
 # import re;p=lambda g:[[int(re.search(r"(, [^0])\1\1.{%d}\1(?!\1), (.)"%(len(g[0])*3-7),str(g))[2])]]
-# ========================= 55 ========================
+# ======================= 52 =======================
 p=lambda g:[[min(a:=sum(g+g[1:-3:3],g[3]),key=a.count)]]
 
 # g[0:4]*1+g[1:-1]*2

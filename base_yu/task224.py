@@ -1,5 +1,5 @@
-# best: 138(import itertools, jailctf merger) / others: 145(HIMAGINE THE FUTURE.), 171(ox jam), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 189(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ================================================================= 138 ==================================================================
+# best: 114(jailctf merger) / others: 131(ox jam), 138(import itertools), 145(Code Golf International), 145(HIMAGINE THE FUTURE.), 178(4atj sisyphus luke Seek mukundan)
+# ===================================================== 114 ======================================================
 # lambda g,c=7:-c*g or c<4and p([*zip(*[[max(max(g))]*99]+g[1:])][::-1],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
 # lambda g,c=7:-c*g or c<4and p([*zip(*g[:0:-1],[max(max(g))]*99)],c-1)or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]
 # lambda g,c=7:-c*g or c<4and[*zip(*p(g,c-1)[:0:-1],[max(max(g))]*99)]or g[:(t:=g.index(max(g,key=any))+1)]+[*zip(*p([*zip(*g[t:][::-1])],c-1))][::-1]

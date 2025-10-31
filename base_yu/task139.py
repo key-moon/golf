@@ -1,5 +1,5 @@
-# best: 90(jailctf merger, biz) / others: 99(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 100(import itertools), 100(ox jam), 101(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ========================================== 90 ==========================================
+# best: 81(biz) / others: 88(ox jam), 89(jailctf merger), 92(Code Golf International), 95(intgrah jimboko awu macaque sammyuri), 97(FuunAgent)
+# ====================================== 81 =====================================
 # p=lambda g,c=-3,E=enumerate:c*g or p([[s[j]or(4in s[j:j+3]and 4in t[i:i+3])*7for j,t in E(g[::-1])]for i,s in E(zip(*g[::-1]))],c+1)
 # p=lambda g,c=-3,E=enumerate:c*g or p([[s[j]or(4in s[j:j+3]and 4in t[i:i+3])*7for j,t in E(g)]for i,s in E(zip(*g))][::-1],c+1)
 # p=lambda g,c=-3,E=enumerate:c*g or p([[s[j]or any(s[j:j+3])*any(t[i:i+3])*7for j,t in E(g)]for i,s in E(zip(*g))][::-1],c+1)

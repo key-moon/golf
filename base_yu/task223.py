@@ -1,5 +1,5 @@
-# best: 50(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II) / others: 51(cubbus), 51(Code Golf International), 51(4atj sisyphus luke Seek mukundan), 51(jailctf merger), 51(biz)
-# ====================== 50 ======================
+# best: 46(Code Golf International, FuunAgent, ox jam) / others: 50(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 50(lv1.dev), 50(LogicLynx), 50(ALE-Agent), 51(cubbus)
+# ==================== 46 ====================
 # p=lambda g:sum([[sum([[v]*3for v in s],[])]*3for s in g],[])
 # p=lambda g:sum([[(s[:1]+(s*3)[1:]*3)[::3]]*3for s in g],[])
 

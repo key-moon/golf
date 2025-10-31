@@ -1,4 +1,4 @@
-# best: 98(jailctf merger) / others: 99(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 107(jacekw Potatoman nauti natte), 107(import itertools), 108(JRKXK)
+# best: 98(Code Golf International, jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 100(ox jam), 101(intgrah jimboko awu macaque sammyuri), 103(LogicLynx), 107(jacekw Potatoman nauti natte)
 # ============================================== 98 ==============================================
 
 # def p(g):

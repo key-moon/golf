@@ -1,5 +1,5 @@
-# best: 138(import itertools, jailctf merger) / others: 145(HIMAGINE THE FUTURE.), 171(ox jam), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 189(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ================================================================= 138 ==================================================================
+# best: 114(jailctf merger) / others: 131(ox jam), 138(import itertools), 145(Code Golf International), 145(HIMAGINE THE FUTURE.), 178(4atj sisyphus luke Seek mukundan)
+# ===================================================== 114 ======================================================
 # tmp
 def	p(e):
 	b,i=zip(*[(a,n)for(a,o)in	enumerate(e)for(n,j)in	enumerate(o)if	j==5]);g,={*sum(e,[])}-{0,5};f,m=min(b)+1,max(b)-1;r,d=min(i)+1,max(i)-1

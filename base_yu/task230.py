@@ -1,5 +1,5 @@
-# best: 111(import itertools, jailctf merger) / others: 113(HIMAGINE THE FUTURE.), 114(Code Golf International), 114(4atj sisyphus luke Seek mukundan), 114(ox jam), 115(jacekw Potatoman nauti natte)
-# ==================================================== 111 ====================================================
+# best: 95(jailctf merger) / others: 102(Code Golf International), 110(ox jam), 111(import itertools), 113(lv1.dev), 113(HIMAGINE THE FUTURE.)
+# ============================================= 95 ============================================
 # p=lambda g,c=3:-c*g or p([*zip(*[[s[i] or ([t[i-1],t[i],s[i-1]]==[5,0,0] and (3<<c)%5) for i in range(len(s))]for t,s in zip(g[:1]+g,g)][::-1])],c-1)
 # p=lambda g,c=3:-c*g or p([*zip(*[[s[i]+(t[i]<t[i-1]-4-s[i-1])*(3<<c)%5for i in range(len(s))]for t,s in zip(g[:1]+g,g)][::-1])],c-1)
 

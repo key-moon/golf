@@ -1,5 +1,5 @@
-# best: 88(jailctf merger, ox jam) / others: 90(Code Golf International), 90(4atj sisyphus luke Seek mukundan), 94(biz), 96(HETHAT), 97(cubbus)
-# ========================================= 88 =========================================
+# best: 86(jailctf merger) / others: 88(Code Golf International), 88(ox jam), 90(4atj sisyphus luke Seek mukundan), 91(intgrah jimboko awu macaque sammyuri), 92(biz)
+# ======================================== 86 ========================================
 # def p(g):
 #  return g
 def p(g):

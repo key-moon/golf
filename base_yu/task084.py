@@ -1,4 +1,4 @@
-# best: 62(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, natte, import itertools, jailctf merger, ox jam, 2F, biz) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 63(JRKX), 63(jacekw Potatoman nauti)
+# best: 62(jacekw Potatoman nauti natte, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, FuunAgent, natte, import itertools, jailctf merger, ox jam, 2F, biz, intgrah jimboko awu macaque sammyuri) / others: 63(jonas ryno kg583 kabutack), 63(jacekwl Potatoman nauti), 63(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 63(JRKX), 63(ALE-Agent)
 # ============================ 62 ============================
 # def p(g):
 #     for i in range(len(g)-1):

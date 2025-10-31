@@ -1,4 +1,4 @@
-# best: 95(jailctf merger, ox jam) / others: 96(Code Golf International), 96(4atj sisyphus luke Seek mukundan), 99(import itertools), 99(HIMAGINE THE FUTURE.), 101(biz)
+# best: 95(Code Golf International, jailctf merger, ox jam) / others: 96(4atj sisyphus luke Seek mukundan), 97(lv1.dev), 97(LogicLynx), 99(import itertools), 99(HIMAGINE THE FUTURE.)
 # ============================================= 95 ============================================
 # E=lambda g:[*filter(max,zip(*g))]
 # def p(g):

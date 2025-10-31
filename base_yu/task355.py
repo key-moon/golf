@@ -1,5 +1,5 @@
-# best: 98(jailctf merger) / others: 99(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 101(ox jam), 103(HIMAGINE THE FUTURE.), 103(biz)
-# ============================================== 98 ==============================================
+# best: 95(jailctf merger) / others: 98(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 101(ox jam), 102(FuunAgent), 103(HIMAGINE THE FUTURE.)
+# ============================================= 95 ============================================
 # p=lambda g:[[max(t:=[c for s in g for t,v in zip(zip(*g),s)if(c:=max(range(10),key=lambda C:(s.count(C)-(v==C))*(t.count(C)-(v==C))))!=v],key=t.count)]]
 # p=lambda g:(c:=min(u:=sum(g,[]),key=u.count),print(CASE,c),T:=sum([s+[*t] for s in g for t,v in zip(zip(*g),s) if v==c],[]))and[[max(T,key=T.count)]]
 

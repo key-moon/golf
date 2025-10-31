@@ -1,4 +1,4 @@
-# best: 314(jailctf merger, HIMAGINE THE FUTURE.) / others: 323(ox jam), 338(jacekw Potatoman nauti natte), 338(import itertools), 339(cg-klogw-sekken), 342(THUNDER THUNDER)
+# best: 275(ox jam) / others: 286(jailctf merger), 299(FuunAgent), 301(Code Golf International), 314(HIMAGINE THE FUTURE.), 322(ALE-Agent)
 def p(g):
  C=max({*sum(g,[])}-{0},key=sum(g,[]).count)
  for y,x,c in [(y,x,g[y][x])for y in range(len(g))for x in range(len(g[0]))if g[y][x]==C]:

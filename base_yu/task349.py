@@ -1,4 +1,4 @@
-# best: 194(jailctf merger) / others: 205(HIMAGINE THE FUTURE.), 214(Code Golf International), 214(4atj sisyphus luke Seek mukundan), 221(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 233(ox jam)
+# best: 172(Code Golf International) / others: 192(lv1.dev), 192(jailctf merger), 203(ox jam), 205(HIMAGINE THE FUTURE.), 213(intgrah jimboko awu macaque sammyuri)
 def p(g):
  for i in range(len(g)):
   for l in range(len(g)):

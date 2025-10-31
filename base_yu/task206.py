@@ -1,5 +1,5 @@
-# best: 144(jailctf merger) / others: 148(JRKKX), 149(jacekw Potatoman nauti natte), 149(jacekw Potatoman nauti), 149(import itertools), 150(THUNDER THUNDER)
-# ==================================================================== 144 =====================================================================
+# best: 139(FuunAgent) / others: 140(Code Golf International), 140(jailctf merger), 140(ox jam), 146(ALE-Agent), 148(JRKKX)
+# ================================================================== 139 ==================================================================
 
 def p(g):
  y,x=divmod(sum(g,[]).index(5),len(g[0]))

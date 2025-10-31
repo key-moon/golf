@@ -1,5 +1,5 @@
-# best: 50(cubbus, jailctf merger) / others: 51(jonas ryno kg583 kabutack), 51(jacekwl Potatoman nauti), 51(jacekw Potatoman nauti natte), 51(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 51(JRKX)
-# ====================== 50 ======================
+# best: 46(Code Golf International, ox jam) / others: 50(cubbus), 50(lv1.dev), 50(LogicLynx), 50(ALE-Agent), 50(FuunAgent)
+# ==================== 46 ====================
 # p=lambda g:sum([[sum([[v]*2for v in s],[])]*2for s in g],[])
 # p=lambda s,a=1:sum([[a and p(v,0)or v]*2for v in s],[])
 p=lambda s:sum([[v*0!=0and p(v)or v]*2for v in s],[])

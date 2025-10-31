@@ -1,5 +1,5 @@
-# best: 75(import itertools, jailctf merger, ox jam) / others: 77(cg-klogw-sekken), 82(cg-klogw), 82(THUNDER THUNDER), 84(Code Golf International), 84(4atj sisyphus luke Seek mukundan)
-# =================================== 75 ==================================
+# best: 74(Code Golf International) / others: 75(lv1.dev), 75(LogicLynx), 75(FuunAgent), 75(import itertools), 75(jailctf merger)
+# ================================== 74 ==================================
 p=lambda g,R=range(21):[[g[0][k:=max(i!=j,abs(j-i)//(min(i,j)+2)*2)]|g[k][0]for j in R]for i in R]
 
 

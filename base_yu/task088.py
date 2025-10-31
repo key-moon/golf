@@ -1,5 +1,5 @@
-# best: 100(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, jailctf merger) / others: 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 106(HIMAGINE THE FUTURE.), 109(ox jam), 110(jacekw Potatoman nauti natte)
-# ============================================== 100 ===============================================
+# best: 95(jailctf merger) / others: 98(Code Golf International), 100(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 100(ox jam), 102(intgrah jimboko awu macaque sammyuri), 105(lv1.dev)
+# ============================================= 95 ============================================
 # p=lambda g:[[v for*t,v in zip(*g,s) if any(t)]for s in g if any(s)]
 # def p(g):
 #  for _ in range(100):

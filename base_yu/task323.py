@@ -1,5 +1,5 @@
-# best: 102(jailctf merger) / others: 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 119(import itertools), 124(HIMAGINE THE FUTURE.), 125(jacekw Potatoman nauti natte)
-# =============================================== 102 ================================================
+# best: 100(jailctf merger) / others: 104(ox jam), 106(Code Golf International), 106(4atj sisyphus luke Seek mukundan), 112(LogicLynx), 119(import itertools)
+# ============================================== 100 ===============================================
 # def p(g,R=range(13)):
 #  y,x=divmod(sum(g,[]).index(8),13)
 #  return[[g[i][j]or(abs(i+j-y-x-(1|-(i<y)))<2*(i!=y)-(i-y)%2)*5for j in R]for i in R]

@@ -1,5 +1,5 @@
-# best: 135(jailctf merger) / others: 137(ox jam), 140(biz), 157(HIMAGINE THE FUTURE.), 158(Code Golf International), 158(4atj sisyphus luke Seek mukundan)
-# ================================================================ 135 ================================================================
+# best: 127(Code Golf International) / others: 130(ox jam), 135(jailctf merger), 140(biz), 142(FuunAgent), 150(ALE-Agent)
+# ============================================================ 127 ============================================================
 
 # p=lambda g,R=range(10):[[((f:=[(t:=[i for i in range(100)if g[i//10][i%10]==c])and[v-min(t)for v in t]for c in R]).count(f[v:=g[i][j]])>1<4<i+j)*5or v for j in R]for i in R]
 

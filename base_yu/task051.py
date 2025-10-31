@@ -1,5 +1,5 @@
-# best: 115(jacekw Potatoman nauti natte, import itertools, jailctf merger, ox jam) / others: 117(Code Golf International), 117(4atj sisyphus luke Seek mukundan), 121(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 121(HIMAGINE THE FUTURE.), 121(biz)
-# ====================================================== 115 ======================================================
+# best: 111(ox jam) / others: 113(jailctf merger), 114(Code Golf International), 115(jacekw Potatoman nauti natte), 115(LogicLynx), 115(import itertools)
+# ==================================================== 111 ====================================================
 # p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(v>0)*(len({*s[i-3:i]})>2)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
 # p=lambda g,c=-3:c*g or p([*zip(*[(u:=0)or[[u:=u|(len({*s[i-3:i]})>2>0<v)*s[i-2],v][v>0]for i,v in enumerate(s)]for s in g[::-1]])],c+1)
 

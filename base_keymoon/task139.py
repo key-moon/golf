@@ -1,5 +1,5 @@
-# best: 90(jailctf merger, biz) / others: 99(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 100(import itertools), 100(ox jam), 101(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 81(biz) / others: 88(ox jam), 89(jailctf merger), 92(Code Golf International), 95(intgrah jimboko awu macaque sammyuri), 97(FuunAgent)
 # 類題: 081
 # port re;p=lambda g,c=-63:c*g or p(eval(re.sub("0(, [47].{25}[47])","7\\1",str([*zip(*g[::-1])]))),c+1)
-# ========================================== 90 ==========================================
+# ====================================== 81 =====================================
 import re;p=lambda g,c=-11:c*g or[*zip(*eval(re.sub("0(?=, [47].{25}[47])","7",str(p(g,c+1)))))][::-1]

@@ -1,5 +1,5 @@
-# best: 148(jailctf merger) / others: 166(Code Golf International), 166(4atj sisyphus luke Seek mukundan), 170(ox jam), 179(import itertools), 181(HIMAGINE THE FUTURE.)
-# ====================================================================== 148 =======================================================================
+# best: 134(jailctf merger) / others: 136(ox jam), 144(Code Golf International), 161(intgrah jimboko awu macaque sammyuri), 166(4atj sisyphus luke Seek mukundan), 179(import itertools)
+# =============================================================== 134 ================================================================
 def p(g):
  c=max(sum(g,[]),key=sum(g,[]).count)
  _,l,r,u,d=max((sum((v==c)-.6 for s in g[u:d]for v in s[l:r]),l,r,u,d)for d in range(len(g))for r in range(len(g[0]))for l in range(r)for u in range(d))

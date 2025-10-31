@@ -1,5 +1,5 @@
-# best: 52(jailctf merger, HIMAGINE THE FUTURE.) / others: 58(import itertools), 59(jacekw Potatoman nauti natte), 59(natte), 62(cubbus), 62(ox jam)
-# ======================= 52 =======================
+# best: 51(LogicLynx, ox jam) / others: 52(Code Golf International), 52(jailctf merger), 52(HIMAGINE THE FUTURE.), 54(lv1.dev), 54(FuunAgent)
+# ======================= 51 ======================
 # ==================== best 64 by luke, att ====================
 # p=lambda g:[g[0][:1]*(len(g[0])-g[0].count(g[0][0])+1)]*(len(g)-g.count(g[0])+1)
 p=lambda g:[(len(s:=g[0])-s.count(s[0])+1)*s[:1]]*(len(g)-g.count(s)+1)

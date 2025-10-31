@@ -1,5 +1,5 @@
-# best: 164(jailctf merger) / others: 184(import itertools), 194(Code Golf International), 194(4atj sisyphus luke Seek mukundan), 194(ox jam), 196(JRKKX)
-# ============================================================================== 164 ===============================================================================
+# best: 155(ox jam) / others: 157(jailctf merger), 159(Code Golf International), 168(FuunAgent), 172(lv1.dev), 184(import itertools)
+# ========================================================================== 155 ==========================================================================
 
 # def p(a):
 #  R=range(10)

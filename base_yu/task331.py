@@ -1,5 +1,5 @@
-# best: 83(Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger) / others: 85(HIMAGINE THE FUTURE.), 86(ox jam), 87(jacekw Potatoman nauti natte), 87(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 88(THUNDER THUNDER)
-# ======================================= 83 ======================================
+# best: 82(Code Golf International, LogicLynx) / others: 83(4atj sisyphus luke Seek mukundan), 83(lv1.dev), 83(FuunAgent), 83(import itertools), 83(jailctf merger)
+# ====================================== 82 ======================================
 # import re;p=lambda g,c=4:c and p([*zip(*eval(re.sub("1, 0",f"1,{"8726"[c-1]}",str(g)))[::-1])],c-1)or g
 # lambda g,c=4:c and p([[[y,6,8,7,2][(x==1)*c]for x,y in zip((0,)+s,s)]for s in zip(*g[::-1])],c-1)or g
 # lambda g,c=-3:c*g or[*zip(*eval(str(p(g,c+1)).replace("1,","1,%s+"%"6278"[c])))][::-1]

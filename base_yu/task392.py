@@ -1,5 +1,5 @@
-# best: 149(jailctf merger, 2F, biz) / others: 156(jacekw Potatoman nauti natte), 156(Code Golf International), 156(4atj sisyphus luke Seek mukundan), 156(import itertools), 157(ox jam)
-# ======================================================================= 149 =======================================================================
+# best: 135(Code Golf International) / others: 149(jailctf merger), 149(2F), 149(biz), 152(FuunAgent), 152(ox jam)
+# ================================================================ 135 ================================================================
 p=lambda g,R=range(10):[[(c:=max(max(g)),5,5)[min(max(abs(i-y),abs(j-x))for y in R for x in R if g[y][x])%(3-(f"{c}, 0, {c}"in str(g)))]for j in R]for i in R]
 
 # def p(g):

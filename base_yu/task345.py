@@ -1,4 +1,4 @@
-# best: 89(ox jam) / others: 90(jailctf merger), 93(jacekw Potatoman nauti natte), 93(import itertools), 95(natte), 95(biz)
+# best: 89(ox jam) / others: 90(Code Golf International), 90(jailctf merger), 93(jacekw Potatoman nauti natte), 93(import itertools), 93(intgrah jimboko awu macaque sammyuri)
 # ========================================== 89 =========================================
 # def p(g):
 #  u=[*zip(*g)]

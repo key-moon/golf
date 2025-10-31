@@ -1,5 +1,5 @@
-# best: 168(jailctf merger) / others: 170(ox jam), 178(Code Golf International), 178(4atj sisyphus luke Seek mukundan), 184(HIMAGINE THE FUTURE.), 192(import itertools)
-# ================================================================================ 168 =================================================================================
+# best: 166(Code Golf International) / others: 168(jailctf merger), 168(ox jam), 175(LogicLynx), 178(4atj sisyphus luke Seek mukundan), 184(HIMAGINE THE FUTURE.)
+# =============================================================================== 166 ================================================================================
 # f p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S,*s,*t}-{5})][v==5]for v in([0,0,*s]*2)[o:o+3]]for s,S,t in zip(a,[[]]+a,a[1:]+[[5]])if any(s)or(o:=t.index(5)+o-[*S,5].index(5))*0])]
 # f p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,u][v==5]for v in[0,0,*s,0,0][o:o+3]]for s,S,t in zip(a,[()]+a,a[1:]+[(5,)])if any(s)and(u:=sum({*S+s+t}-{5}))or(o:=t.index(5)+o-[*S,5].index(5))*0])]
 # Zdef p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*S+s,*t}-{5})][v==5]for v in[0,0,*s,0,0][o:o+3]]for s,S,t in zip(a,[()]+a,a[1:]+[[5]])if any(s)or(o:=t.index(5)+o-[*S,5].index(5))*0])]

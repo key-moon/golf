@@ -1,5 +1,5 @@
-# best: 133(jailctf merger) / others: 141(Code Golf International), 141(4atj sisyphus luke Seek mukundan), 150(HIMAGINE THE FUTURE.), 153(ox jam), 162(import itertools)
-# =============================================================== 133 ===============================================================
+# best: 118(Code Golf International) / others: 119(lv1.dev), 128(LogicLynx), 131(ox jam), 133(jailctf merger), 141(4atj sisyphus luke Seek mukundan)
+# ======================================================= 118 ========================================================
 
 # p=lambda g,z=[0]*10:[u for I in range(6400)if all(sum(u:=[[[0,*[z,*g,z][I//640+u],0][I//64%10+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))][0]
 p=lambda g,z=[0]*10:max(all(sum(u:=[[([z,*g,z][I//576+u]+z)[I//64%9+v]^g[I//8%8+u][I%8+v]for v in range(3)]for u in range(3)],[]))*u for I in range(5760))

@@ -1,5 +1,5 @@
-# best: 120(import itertools, jailctf merger) / others: 126(HIMAGINE THE FUTURE.), 138(ox jam), 143(Code Golf International), 143(4atj sisyphus luke Seek mukundan), 151(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ======================================================== 120 =========================================================
+# best: 107(Code Golf International) / others: 110(jailctf merger), 120(import itertools), 121(ox jam), 126(HIMAGINE THE FUTURE.), 143(4atj sisyphus luke Seek mukundan)
+# ================================================== 107 ==================================================
 
 # def p(g):
 #  c=max(g)[0]

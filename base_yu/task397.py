@@ -1,5 +1,5 @@
-# best: 121(jailctf merger) / others: 125(ox jam), 127(Code Golf International), 127(4atj sisyphus luke Seek mukundan), 132(import itertools), 133(2F)
-# ========================================================= 121 =========================================================
+# best: 110(jailctf merger) / others: 113(ox jam), 117(Code Golf International), 124(lv1.dev), 124(LogicLynx), 126(FuunAgent)
+# =================================================== 110 ====================================================
 # def p(g):
 #  for i in range(9)[::-1]:
 #   for j in range(9):

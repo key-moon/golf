@@ -1,4 +1,4 @@
-# best: 52(jailctf merger) / others: 54(ox jam), 59(Code Golf International), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT), 66(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 51(Code Golf International, FuunAgent) / others: 52(jailctf merger), 52(ox jam), 52(intgrah jimboko awu macaque sammyuri), 59(4atj sisyphus luke Seek mukundan), 61(HETHAT)
 # {*g[0]}-{g[0][0]}
 # {*g[0]}-{*g[5]}
 # len({*g[0]})-1
@@ -8,7 +8,7 @@
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if-~g.count(c))]
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if c not in g])]
 # lambda g:[R for r in g if(R:=[(g:=[c,*g])[0]for c in r if(c in g)<1])]
-# ======================= 52 =======================
+# ======================= 51 ======================
 p=lambda g:[R for r in g if(R:=[(g:=[c]+g)[0]for c in r if(c in g)-1])]
 
 #  a in g

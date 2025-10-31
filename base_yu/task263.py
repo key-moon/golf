@@ -1,5 +1,5 @@
-# best: 115(jailctf merger, HIMAGINE THE FUTURE.) / others: 122(ox jam), 122(biz), 130(Code Golf International), 130(4atj sisyphus luke Seek mukundan), 132(JRKKX)
-# ====================================================== 115 ======================================================
+# best: 106(Code Golf International) / others: 112(jailctf merger), 112(biz), 115(HIMAGINE THE FUTURE.), 117(ox jam), 119(lv1.dev)
+# ================================================= 106 ==================================================
 # lambda g:len(g)>3and(f:=sorted([(sum(t:=g[i:i+3],g[0]).count(0),t)for i in range(0,len(g),3)]))[-(f[0][0]==f[1][0])][1]or[*zip(*p([*zip(*g)]))]
 # lambda g:len(g)>3and(f:=sorted([(str(t:=g[i:i+3]).count("0"),t)for i in range(0,len(g),3)]))[-(f[0][0]==f[1][0])][1]or[*zip(*p([*zip(*g)]))]
 # lambda g:len(g)>3and(f:=sorted(zip(*[iter(g)]*3),key=(h:=lambda t:str(t).count("0"))))[-(h(f[0])==h(f[1]))][1]or[*zip(*p([*zip(*g)]))]

@@ -1,5 +1,5 @@
-# best: 99(jailctf merger) / others: 102(ox jam), 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 109(HIMAGINE THE FUTURE.), 114(jacekw Potatoman nauti natte)
-# =============================================== 99 ==============================================
+# best: 90(Code Golf International) / others: 99(jailctf merger), 102(ox jam), 107(LogicLynx), 109(4atj sisyphus luke Seek mukundan), 109(HIMAGINE THE FUTURE.)
+# ========================================== 90 ==========================================
 # p=lambda g,R=range(21):[[[u[(i%d,j%d)]for j in R]for i in R]for d in range(4,10)if len(u:=dict(m:=[((i%21%d,i//21%d),v)for i,v in enumerate(sum(g,[]))if v]))==len({*m})][0]
 
 

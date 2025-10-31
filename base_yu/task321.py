@@ -1,5 +1,5 @@
-# best: 55(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger) / others: 56(HIMAGINE THE FUTURE.), 57(import itertools), 57(ox jam), 61(HETHAT), 62(jacekw Potatoman nauti natte)
-# ========================= 55 ========================
+# best: 54(Code Golf International, lv1.dev, jailctf merger) / others: 55(4atj sisyphus luke Seek mukundan), 55(LogicLynx), 55(ALE-Agent), 55(FuunAgent), 55(ox jam)
+# ======================== 54 ========================
 # lambda g:[[[*filter(bool,c),0][0]for c in zip(s,s[5:],s[10:])]for s in g]
 # lambda g:[[next(filter(bool,s[i::5]+[0]))for i in(0,1,2,3)]for s in g]
 # lambda g:[[[*filter(bool,s[i::5]),0][0]for i in range(4)]for s in g]

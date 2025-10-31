@@ -1,5 +1,5 @@
-# best: 75(import itertools, jailctf merger, ox jam) / others: 77(cg-klogw-sekken), 82(cg-klogw), 82(THUNDER THUNDER), 84(Code Golf International), 84(4atj sisyphus luke Seek mukundan)
-# =================================== 75 ==================================
+# best: 74(Code Golf International) / others: 75(lv1.dev), 75(LogicLynx), 75(FuunAgent), 75(import itertools), 75(jailctf merger)
+# ================================== 74 ==================================
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%~-len({*sum(g,[])})for c in R] for r in R]
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%~-len({0,*g[0]})for c in R] for r in R] <- 隠れてる場合に死
 # lambda g,R=range(2,23):[[1+(r//c+c//r+g[0][0]-3)%(len({*str(g)})-5)for c in R] for r in R]

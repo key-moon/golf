@@ -1,4 +1,4 @@
-# best: 274(jailctf merger) / others: 281(ox jam), 304(HIMAGINE THE FUTURE.), 326(jacekw Potatoman nauti natte), 326(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 326(import itertools)
+# best: 258(ox jam) / others: 265(jailctf merger), 271(Code Golf International), 275(FuunAgent), 290(LogicLynx), 302(ALE-Agent)
 # def p(g):
 #  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==1]
 #  u=[(i,j)for i in range(len(g))for j in range(len(g[0]))if g[i][j]==2 if any((i+y,j+x)in u for y in range(-1,2)for x in range(-1,2))]

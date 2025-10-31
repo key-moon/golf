@@ -1,5 +1,5 @@
-# best: 67(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger, 2F, biz) / others: 68(jacekwl Potatoman nauti), 68(jacekw Potatoman nauti natte), 68(jacekw Potatoman nauti), 68(natte), 68(ox jam)
-# =============================== 67 ==============================
+# best: 66(ox jam) / others: 67(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 67(Code Golf International), 67(4atj sisyphus luke Seek mukundan), 67(lv1.dev), 67(LogicLynx)
+# ============================== 66 ==============================
 # 351と同じ問題
 #flattenして点対称の位置を集める
 # r=range(5)

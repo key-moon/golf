@@ -1,4 +1,4 @@
-# best: 202(jailctf merger) / others: 215(jacekw Potatoman nauti natte), 215(import itertools), 218(natte), 218(2F), 222(HIMAGINE THE FUTURE.)
+# best: 192(Code Golf International) / others: 201(jailctf merger), 205(ox jam), 215(jacekw Potatoman nauti natte), 215(import itertools), 218(natte)
 #上下の囲み+左右方向の破線を書く→90度回転
 
 # def p(g):

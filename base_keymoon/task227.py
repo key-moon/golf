@@ -1,4 +1,4 @@
-# best: 52(jailctf merger, ox jam) / others: 55(Code Golf International), 55(4atj sisyphus luke Seek mukundan), 55(HIMAGINE THE FUTURE.), 57(HETHAT), 58(jacekw Potatoman nauti natte)
+# best: 52(Code Golf International, lv1.dev, jailctf merger, ox jam) / others: 54(intgrah jimboko awu macaque sammyuri), 55(4atj sisyphus luke Seek mukundan), 55(LogicLynx), 55(HIMAGINE THE FUTURE.), 57(HETHAT)
 # lambda g:[*eval("[2*(x+y<1)for x,y in zip(g.pop(0),g[3])],"*4)]
 # lambda g:[*eval("[2-2*any(a)for a in zip(g.pop(0),g[3])],"*4)]
 # lambda g:[[2*~a&2for a in map(max,*c)]for c in zip(g,g[4:])]

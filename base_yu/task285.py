@@ -1,4 +1,4 @@
-# best: 262(jailctf merger, HIMAGINE THE FUTURE.) / others: 283(THUNDER THUNDER), 294(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 294(ShadowPrompt Labs), 296(import itertools), 296(ox jam)
+# best: 226(Code Golf International) / others: 234(FuunAgent), 248(jailctf merger), 262(HIMAGINE THE FUTURE.), 264(LogicLynx), 271(lv1.dev)
 def p(g):
  for _ in range(8):
   for i in range(len(g)-1):

@@ -1,5 +1,5 @@
-# best: 105(jailctf merger) / others: 109(Code Golf International), 109(4atj sisyphus luke Seek mukundan), 109(import itertools), 111(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 112(jacekw Potatoman nauti natte)
-# ================================================= 105 =================================================
+# best: 103(ox jam) / others: 104(jailctf merger), 105(Code Golf International), 106(lv1.dev), 108(LogicLynx), 109(4atj sisyphus luke Seek mukundan)
+# ================================================ 103 ================================================
 # port re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("0(?=(.{34}[1-9]){2,}, ([1-9]))","\\2",str(g)))[::-1])],c+1)
 import re;p=lambda g,c=-39:c*g or p([*zip(*eval(re.sub("0(?=(.{34}([^0])){2,}, \\2)","\\2",str(g)))[::-1])],c+1)
 

@@ -1,5 +1,5 @@
-# best: 109(jailctf merger, ox jam) / others: 115(Code Golf International), 115(4atj sisyphus luke Seek mukundan), 117(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 118(adakoda), 123(biz)
-# =================================================== 109 ===================================================
+# best: 102(Code Golf International) / others: 109(lv1.dev), 109(LogicLynx), 109(FuunAgent), 109(jailctf merger), 109(ox jam)
+# =============================================== 102 ================================================
 
 # c,B=zip(*((i,j)for i,r in A(j)for j,B in A(r)if B));Y=sum(c)//2;X=sum(B)//2
 

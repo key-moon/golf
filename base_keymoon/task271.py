@@ -1,4 +1,4 @@
-# best: 86(ox jam) / others: 90(jailctf merger), 93(biz), 94(jacekw Potatoman nauti natte), 94(import itertools), 96(Code Golf International)
+# best: 86(Code Golf International, ox jam) / others: 90(jailctf merger), 93(biz), 94(jacekw Potatoman nauti natte), 94(lv1.dev), 94(LogicLynx)
 # 9x9グリッド 背景: 0
 # 要素が{1,8}の 3x3のグリッドが4つ
 # 8が一番少ない or 1 が一番多いグリッドを抽出

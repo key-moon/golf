@@ -1,5 +1,5 @@
-# best: 193(jailctf merger) / others: 194(import itertools), 195(ox jam), 204(jacekw Potatoman nauti natte), 204(natte), 207(Code Golf International)
-# ============================================================================================= 193 =============================================================================================
+# best: 185(ox jam) / others: 186(jailctf merger), 193(intgrah jimboko awu macaque sammyuri), 194(import itertools), 196(ALE-Agent), 203(Code Golf International)
+# ========================================================================================= 185 =========================================================================================
 
 def p(g):
  u=v=w=0

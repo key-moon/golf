@@ -1,4 +1,4 @@
-# best: 44(cubbus, Code Golf International, 4atj sisyphus luke Seek mukundan, import itertools, jailctf merger) / others: 45(jonas ryno kg583 kabutack), 45(jacekwl Potatoman nauti), 45(jacekw Potatoman nauti natte), 45(JRK), 45(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
+# best: 44(cubbus, Code Golf International, 4atj sisyphus luke Seek mukundan, lv1.dev, LogicLynx, import itertools, jailctf merger, ox jam, intgrah jimboko awu macaque sammyuri) / others: 45(jonas ryno kg583 kabutack), 45(jacekwl Potatoman nauti), 45(jacekw Potatoman nauti natte), 45(JRK), 45(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
 # =================== 44 ===================
 # lambda g:[[(0<v)*s[0]for v in s]for s in g]
 # lambda g:[[v%~v%-~s[0]for v in s]for s in g]

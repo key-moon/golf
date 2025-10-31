@@ -1,5 +1,5 @@
-# best: 131(Code Golf International, 4atj sisyphus luke Seek mukundan) / others: 141(jailctf merger), 151(ox jam), 156(HIMAGINE THE FUTURE.), 166(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 171(MasukenSamba)
-# ============================================================== 131 ==============================================================
+# best: 127(Code Golf International) / others: 131(4atj sisyphus luke Seek mukundan), 134(ox jam), 138(LogicLynx), 138(ALE-Agent), 141(jailctf merger)
+# ============================================================ 127 ============================================================
 
 # p=lambda g:(0in max(g,key=sum))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerate(s):\n if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v"))[0]for s in g]or[*zip(*p([*zip(*g)]))]
 # p=lambda g:any(min(g))*[(u:=[*min(g,key=sum)],exec("for i,v in enumerate(s):\n if v in u:k=u.index(v);u[k-(i<k)+(i>k)]=v"))[0]for s in g]or[*zip(*p([*zip(*g)]))]

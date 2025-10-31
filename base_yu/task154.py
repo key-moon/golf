@@ -1,4 +1,4 @@
-# best: 98(jailctf merger) / others: 99(Code Golf International), 99(4atj sisyphus luke Seek mukundan), 107(jacekw Potatoman nauti natte), 107(import itertools), 108(JRKXK)
+# best: 98(Code Golf International, jailctf merger) / others: 99(4atj sisyphus luke Seek mukundan), 100(ALE-Agent), 100(ox jam), 101(intgrah jimboko awu macaque sammyuri), 103(LogicLynx)
 # ============================================== 98 ==============================================
 p=lambda g,c=-29,k=3:c*g or p(exec(g[i:=c%15].count(2)//5*2*"g[i-k],g[i+k]=g[i+k],g[i-k];k=2;")or[*zip(*g)],c+1)
 

@@ -1,5 +1,5 @@
-# best: 88(ShadowPrompt Labs, import itertools, jailctf merger, biz) / others: 90(jacekw Potatoman nauti natte), 90(jacekw Potatoman nauti), 92(ox jam), 93(Yuchen20), 94(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II)
-# ========================================= 88 =========================================
+# best: 86(Code Golf International, LogicLynx, ALE-Agent, FuunAgent) / others: 87(jailctf merger), 88(lv1.dev), 88(import itertools), 88(biz), 90(jacekw Potatoman nauti natte)
+# ======================================== 86 ========================================
 # 109
 def p(g,a=3):
  l=len(g)//2

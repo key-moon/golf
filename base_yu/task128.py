@@ -1,5 +1,5 @@
-# best: 59(jacekw Potatoman nauti natte, ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II, import itertools, jailctf merger) / others: 60(MasukenSamba), 60(JRKKX), 61(HIMAGINE THE FUTURE.), 61(biz), 64(jacekwl Potatoman nauti)
-# =========================== 59 ==========================
+# best: 57(Code Golf International) / others: 59(jacekw Potatoman nauti natte), 59(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 59(LogicLynx), 59(FuunAgent), 59(import itertools)
+# ========================== 57 =========================
 # 34567890123456789012345678901234567890123456789012345678901234
 # p=lambda g:[*map(list,zip(*[s[(k:=s[::-1].index(0)):]+s[:k]for s in zip(*g)]))]
 # p=lambda g:[*map(list,zip(*[(s[-s.count(0):]+s)[:15]for s in zip(*g)]))]

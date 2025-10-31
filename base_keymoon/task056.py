@@ -1,5 +1,5 @@
-# best: 40(Code Golf International, 4atj sisyphus luke Seek mukundan, jailctf merger, HIMAGINE THE FUTURE., ox jam) / others: 41(ï¾ï½²ï½½ï½¹ï¾ï½»ï¾ï¾ï¾II), 41(MasukenSamba), 42(jacekw Potatoman nauti natte), 42(natte), 42(import itertools)
-# ================= 40 =================
+# best: 39(LogicLynx) / others: 40(Code Golf International), 40(4atj sisyphus luke Seek mukundan), 40(lv1.dev), 40(jailctf merger), 40(HIMAGINE THE FUTURE.)
+# ================= 39 ================
 # 53
 # p=lambda g:[[hash((*((1>v)*2164 for v in g[0]),))%7]]
 # for mod in range(7, 30):
