@@ -1,1 +1,0 @@
-def p(g):n=len(g)//2;return[[x*(i==n)for i,x in enumerate(r)]for r in g]

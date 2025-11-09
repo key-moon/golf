@@ -1,1 +1,0 @@
-p=lambda	g:[[5]*len(r)if	len(set(r))==1else[0]*len(r)for	r	in	g]

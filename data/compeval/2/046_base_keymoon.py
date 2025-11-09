@@ -1,1 +1,0 @@
-def	p(g):a=[*zip(*g)];o=2;return[*zip(*[[[v,sum({*A+s,*t}-{5})][v==5]for	v	in[0,0,*s,0,0][o:o+3]]for(s,A,t)in	zip(a,[()]+a,a[1:]+[[5]])if	any(s)or(o:=t.index(5)+o-[*A,5].index(5))*0])]

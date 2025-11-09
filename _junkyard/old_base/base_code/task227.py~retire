@@ -1,1 +1,0 @@
-def p(g):m=len(g)//2;n=len(g[0]);return[[2*(not g[i][j]and not g[i+m][j])for j in range(n)]for i in range(m)]

@@ -1,6 +1,0 @@
-j=lambda A:[[A[C][B]for C in range(len(A))]for B in range(len(A[0]))]
-def J(A):B=[A for(A,B)in enumerate(A)if any(B)];return B[0],B[-1]
-def p(A):
-	B,C=J(A);D,E=J(j(A))
-	def F(l,J,a,C):A[l][J],A[a][C]=A[a][C],A[l][J]
-	F(B+1,D+1,C+1,E+1);F(B+1,E-1,C+1,D-1);F(C-1,D+1,B-1,E+1);F(C-1,E-1,B-1,D-1);return A

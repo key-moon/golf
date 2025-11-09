@@ -1,2 +1,0 @@
-def solve_6fa7a44f(I):A=I+I[::-1];return A
-def p(g):A=tuple(tuple(A)for A in g);B=solve_6fa7a44f(A);return[list(A)for A in B]

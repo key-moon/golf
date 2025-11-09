@@ -1,1 +1,0 @@
-def	p(g):f=[i	for	s	in	g	for	i	in	s];f=[c	for	c	in	set(f)if	c	not	in[0,5]][0];g=[[f	if	A==5else	0for	A	in	A]for	A	in	g];return	g

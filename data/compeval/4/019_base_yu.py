@@ -1,1 +1,0 @@
-p=lambda	g,c=-2,l=[]:c*g	or[l:=[v	or	any({*[0,*l][i:i+3:2]}-{8})*8for(i,v)in	enumerate(~c%3*s)]for	s	in	p(g,c+2)[::-1]]

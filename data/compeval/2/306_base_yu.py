@@ -1,1 +1,0 @@
-p=lambda	g:g*0!=0and[max(*map(p,g[i%10::10]*2))for	i	in	range(len(g))]or	g

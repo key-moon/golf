@@ -1,1 +1,0 @@
-def	p(g):return[[x	for	x	in	A	for	_	in	range(2)]for	A	in	g	for	_	in	range(2)]

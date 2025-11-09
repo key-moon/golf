@@ -1,1 +1,0 @@
-def p(g,E=enumerate):C={B for A in g for(B,C)in E(A)if C==2};return[[1 if 1 in A else 3 if 3 in A else 2 if B<1 and D in C else B for(D,B)in E(A)]for A in g]

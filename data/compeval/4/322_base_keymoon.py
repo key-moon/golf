@@ -1,1 +1,0 @@
-p=lambda	g:[[*map(max,*g[:i]*2)]for	i	in(1,2,3)]

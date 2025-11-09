@@ -1,1 +1,0 @@
-def p(g):val_b=[(i,j)for i,val_r in enumerate(g)for j,val_v in enumerate(val_r)if val_v==2];val_x,val_y=zip(*val_b);val_r0,val_r1,val_c0,val_c1=min(val_x),max(val_x),min(val_y),max(val_y);return[[(g[i][j]or 2)for j in range(val_c0,val_c1+1)]for i in range(val_r0,val_r1+1)]

@@ -1,1 +1,0 @@
-p=lambda	g:(t:=[*map(max,*g)])[0]+t[-1]and[*zip(*p([*zip(*g)]))]or[(t[:(x:=(u:=[i	for(i,v)in	enumerate(t)if	v])[0])]+t[x:2*u[1]-x]*9)[:len(t)]]*len(g)

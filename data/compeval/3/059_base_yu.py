@@ -1,1 +1,0 @@
-def	p(g):A=range(11);t=[sorted(sum([*zip(*g[i&12:][:3])][j&12:][:3],()))for	i	in	A	for	j	in	A];m=max(t);return[[(g[i][j]==5)*5or(t[i*11+j]==m)*m[8]for	j	in	A]for	i	in	A]

@@ -1,8 +1,0 @@
-def p(j):
-	C=len;A=range;B=[]
-	for E in A(C(j[0])):
-		if any(j[A][E]==5 for A in A(C(j))):B.append(E)
-	D=[]
-	for F in A(C(j)):
-		if j[F][B[0]]==5:D.append(F)
-	G,H=min(D)-1,max(D)+1;I,J=B[0],B[1];return[[j[B][A]for A in A(I,J+1)]for B in A(G,H+1)]

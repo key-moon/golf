@@ -1,1 +1,0 @@
-def p(g,A=enumerate):m=max(range(1,10),key=sum(g,[]).count);X,Y=zip(*((i,j)for i,R in A(g)for j,v in A(R)if v==m));return[R[min(Y):max(Y)+1]for R in g[min(X):max(X)+1]]

@@ -1,1 +1,0 @@
-p=lambda	g,F=lambda	c:[*filter(max,zip(*c))]:F(F(g)*2)

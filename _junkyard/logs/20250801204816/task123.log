@@ -1,5 +1,0 @@
-Here’s a fully “golfed” one‐liner in the requested style.  It reads the real 4×4 core of the 5×5 input (discarding the last row/col of zeros), tiles that core in 4×4 blocks up to a 10×10, draws the “bar” color on every 4th row/col, and fills the trailing 2×2 corner with the top‐left color:
-
-```
-def p(val_g):val_m=len(val_g)-1;return[[val_g[val_m-1][val_m-1]if i%val_m==val_m-1or j%val_m==val_m-1else val_g[i%val_m][j%val_m]if i<2*val_mand j<2*val_melse val_g[0][0]for j in range(len(val_g)*2)]for i in range(len(val_g)*2)]
-```

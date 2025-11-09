@@ -1,1 +1,0 @@
-def p(l,s=enumerate):r=max(range(1,10),key=sum(l,[]).count);h,t=zip(*((h,t)for(h,t)in s(l)for(t,o)in s(t)if o==r));return[s[min(t):max(t)+1]for s in l[min(h):max(h)+1]]

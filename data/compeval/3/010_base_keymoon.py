@@ -1,1 +1,0 @@
-p=lambda	g,R=[0]*9:[R:=[r.pop(0)and(A	or-~max(R))for	A	in	R]for	r	in	g]

@@ -1,1 +1,0 @@
-p=lambda	g,c=-3:c*g	or[[(c>0)|(c:=y)for	y	in	s]for	s	in	zip(*p(g,c+1)[::-1])]

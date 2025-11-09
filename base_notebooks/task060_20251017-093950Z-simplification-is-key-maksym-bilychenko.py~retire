@@ -1,1 +1,0 @@
-p=lambda j:[w[0]and w[:1]*5+[5]+w[-1:]*5 or w for w in j]

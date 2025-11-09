@@ -1,1 +1,0 @@
-def	p(g):u=sum(g,[]);A,B=divmod(u.index(max(u,key=bool)),9);return[[[0,sum({*sum(g,[])})-2][2>r-A>-1<c-B<2or	g[A+(r>A)][B+(c>B)]==2and[(r-c-A+B)**2<2,0<=r+c-A-B<3][(r>A)^(c>B)]]for(c,_)in	enumerate(C)]for(r,C)in	enumerate(g)]

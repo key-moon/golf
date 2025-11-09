@@ -1,1 +1,0 @@
-def	p(g):q=range;p=[(i,j)for	i	in	q(8)for	j	in	q(8)if	g[i][j]];A,C=min(i	for(i,j)in	p),max(i	for(i,j)in	p);B,D=min(j	for(i,j)in	p),max(j	for(i,j)in	p);b=[[g[A+i][B+j]if	A+i<=C	and	B+j<=D	else	0for	j	in	q(3)]for	i	in	q(3)];return[[b[i][j]if	j<3else	b[i][j-3]for	j	in	q(6)]for	i	in	q(3)]

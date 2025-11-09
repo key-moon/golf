@@ -1,1 +1,0 @@
-p=lambda	s,c=0:sum([[v*0!=0and	p(v,c:=len({*sum(s,v)})-1)or	v]*c	for	v	in	s],[])

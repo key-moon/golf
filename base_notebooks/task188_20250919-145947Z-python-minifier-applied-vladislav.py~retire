@@ -1,1 +1,0 @@
-p=lambda j,A=len:[B[:A(B)//2]for B in j]if A(j[0])%2<1 and all(B[:A(B)//2]==B[A(B)//2:]for B in j)else j[:A(j)//2]

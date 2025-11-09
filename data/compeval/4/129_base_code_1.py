@@ -1,1 +1,0 @@
-def	p(g):f=sum(g,[]);m=max(f,key=f.count);return[[m]*len(g[0])for	_	in	g]

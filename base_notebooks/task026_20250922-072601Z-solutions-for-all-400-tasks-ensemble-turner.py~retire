@@ -1,1 +1,0 @@
-p=lambda j:[[8*(a|b<1)for a,b in zip(a,a[4:])]for a in j]

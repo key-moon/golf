@@ -1,1 +1,0 @@
-def	p(g,q=range):n=len(g);m=len(g[0]);r=[i	for	i	in	q(n)if	len(set(g[i]))==1];c=[j	for	j	in	q(m)if	len(set(g[i][j]for	i	in	q(n)))==1];b=next(x	for	i	in	q(n)for(j,x)in	enumerate(g[i])if	i	not	in	r	and	j	not	in	c);return[[b]*(len(c)+1)for	_	in	q(len(r)+1)]

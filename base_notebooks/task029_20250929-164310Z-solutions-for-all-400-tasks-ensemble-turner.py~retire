@@ -1,5 +1,0 @@
-def p(g,a=len,e=enumerate):
- for i in set(sum(g,[])):
-  h=[[r,h]for(h,l)in e(g)for(r,n)in e(l)if n==i];l=sum(h,[]);r=l[::2];n=l[1::2];h=g[min(n):max(n)];h=[h[min(r)+1:max(r)][:]for h in h]
-  if h[0].count(i)==a(h[0]):return h[1:]
- return g

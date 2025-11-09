@@ -1,3 +1,0 @@
-def p(r,e=enumerate):
- c=[(y,x)for y,R in e(r)for x,v in e(R)if v];Y,X=zip(*c);l,E,m,P=min(Y),max(Y),min(X),max(X)
- return[R[m:P-(P-m)//2]for R in r[l:E-(E-l)//2]]

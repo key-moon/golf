@@ -1,6 +1,0 @@
-```python
-def p(g):
- for i,r in enumerate(g):
-  if 8 in r:j=r.index(8);break
- s=[r[j-1:j+2]for r in g[i-1:i+2]];l=[g[i-1][j],g[i+1][j],g[i][j-1],g[i][j+1]];s[1][1]=max(l,key=l.count);return s
-```

@@ -1,1 +1,0 @@
-p=lambda g,h=3,w=3:[[g[i][j%w]if j<w else g[i][w-1-j%w]for j in range(6)]for i in range(h)]

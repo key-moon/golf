@@ -1,6 +1,0 @@
-from collections import*
-def p(j,s=range):
- N=Counter([s for s in j for s in s]).most_common(9);n,r=N[0][1],len(N);j=[[0for _ in s(r)]for _ in s(n)]
- for n in s(r):
-  for t in s(N[n][1]):j[t][n]=N[n][0]
- return j

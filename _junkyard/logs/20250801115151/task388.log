@@ -1,5 +1,0 @@
-```python
-def p(g):
- n=len(g);m=len(g[0]);a=[any(r[c]for r in g)for c in range(m)]
- return[[g[i%n][j%m]or 8*a[j%m]for j in range(m*2)]for i in range(n*2)]
-```

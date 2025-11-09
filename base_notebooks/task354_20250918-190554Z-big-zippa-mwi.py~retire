@@ -1,5 +1,0 @@
-def p(j):
-	C=range;A=[A[:]for A in j]
-	def D(E,k,W):
-		if 0<=E<10 and 0<=k<10 and A[E][k]==5:A[E][k]=W;[D(E+A,k+B,W)for(A,B)in[(-1,0),(1,0),(0,-1),(0,1)]]
-	[[D(C,B,j[0][B])for C in C(1,10)if A[C][B]==5]for B in C(10)if j[0][B]];return A

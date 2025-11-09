@@ -1,2 +1,0 @@
-def solve_ed36ccf7(I):A=tuple(tuple(A)for A in zip(*I))[::-1];return A
-def p(g):A=tuple(tuple(A)for A in g);B=solve_ed36ccf7(A);return[list(A)for A in B]

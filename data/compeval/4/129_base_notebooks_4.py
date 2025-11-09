@@ -1,1 +1,0 @@
-def	p(g):c=max(set(x	for	r	in	g	for	x	in	r),key=lambda	x:sum(r.count(x)for	r	in	g));return[[c]*len(g[0])for	_	in	g]

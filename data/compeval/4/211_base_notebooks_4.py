@@ -1,1 +1,0 @@
-def	p(j):j=[A[::-1]+A	for	A	in	j];A=[j[2],j[1],j[0]];return	A+j+A

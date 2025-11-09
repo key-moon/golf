@@ -1,1 +1,0 @@
-def	p(g):B,C=len(g),len(g[0]);m=B//2;A=g[:m];return	A+A[::-1]

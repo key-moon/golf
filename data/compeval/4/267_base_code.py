@@ -1,1 +1,0 @@
-def	p(g):A=g[~-len(g)][0];return[[A*(D	and(B<~-len(g)or	C))for(C,D)in	enumerate(C)]for(B,C)in	enumerate(g)]

@@ -1,1 +1,0 @@
-p=lambda	g,c=-3:c*g	or	p([*zip(*(({*(u:=max(g,key=set))}=={0,2})*eval(str((g[:1]*9+g[:(i:=g.index(u)):-1]+g[i+1:])[-10:]).replace(*'03'))or	g)[::-1])],c+1)

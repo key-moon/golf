@@ -1,1 +1,0 @@
-p=lambda	g:[(A:=0)or[int(A:=r.pop(0)and(A<1)/2+1or	A>1and[7-r.index(1)%2*5,A][2<=A])for	_	in	g]for	r	in	g]

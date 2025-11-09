@@ -1,7 +1,0 @@
-def p(g):
-	D=0
-	if g[0].count(5)==0:g=list(map(list,zip(*g[::-1])));D=3
-	C=g[0].count(5);E=[A[:]for A in g];g=[[5 if A==5 else 0 for A in A]for A in g];B=g[0].index(5)
-	for A in range(len(g)):F=sum([1 for A in E[A][:B]if A>0]);G=sum([1 for A in E[A][B+C:]if A>0]);g[A]=g[A][:B-F]+[5]*(C+F+G)+g[A][B+C+G:]
-	for H in range(D):g=list(map(list,zip(*g[::-1])))
-	return g

@@ -1,1 +1,0 @@
-p=lambda g:[[g[A%5][B%6]for B in range(len(g[0])*2)]for A in range(len(g)*1)]

@@ -1,1 +1,0 @@
-p=lambda g:(s:=sum(g,[]),k:=s.index(5),t:=99-s[::-1].index(5),u:=k//10,v:=t//10,l:=k%10,d:=t%10,a:=l-~d>>1,b:=u-~v>>1,r:=range(10),[[g[i][j]|8*((u<i<v)*(l<j<d)|(j==a)*(g[(u,v)[i>u]][a]<1)|(i==b)*(g[b][(l,d)[j>l]]<1))for j in r]for i in r])[-1]

@@ -1,1 +1,0 @@
-p=lambda	g:[[v*.6**(len(s)-i&1)for(i,v)in	enumerate(s)]for	s	in	g]

@@ -1,1 +1,0 @@
-def	p(j):A=len(j)//2;c=[j[i][i]for	i	in	range(A)];B={c[i]:c[i-1]for	i	in	range(A)};return[[B[i]for	i	in	r]for	r	in	j]

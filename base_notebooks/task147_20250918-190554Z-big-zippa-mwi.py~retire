@@ -1,8 +1,0 @@
-def p(j):
-	C=[A[:]for A in j];D,E=len(j),len(j[0])
-	for A in range(D):
-		for B in range(E):
-			if j[A][B]==3:
-				for(F,G)in[(0,1),(1,0),(0,-1),(-1,0)]:
-					if 0<=A+F<D and 0<=B+G<E and j[A+F][B+G]==3:C[A][B]=8;break
-	return C

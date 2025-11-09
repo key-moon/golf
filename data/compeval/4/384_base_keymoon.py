@@ -1,1 +1,0 @@
-p=lambda	g,c=-1:c*g	or	p(sum([[s]*2for	s	in	zip(*g)if	4in	s],[]),c+1)

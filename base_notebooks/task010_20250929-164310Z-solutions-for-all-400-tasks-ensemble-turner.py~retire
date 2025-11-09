@@ -1,1 +1,0 @@
-p=lambda t:(a:={})or[[l if l-5 else a.setdefault(h,len(a)+1)for(h,l)in enumerate(l)]for l in t]

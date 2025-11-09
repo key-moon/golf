@@ -1,1 +1,0 @@
-p=lambda	g,k=1,E=enumerate,L=len:k	and	p([[c*((i>0and	g[i-1][j]==c)+(i+1<L(g)and	g[i+1][j]==c)+(j>0and	g[i][j-1]==c)+(j+1<L(g[0])and	g[i][j+1]==c)>1)for(j,c)in	E(r)]for(i,r)in	E(g)],k-1)or(v:=next((c	for(i,r)in	E(g)for(j,c)in	E(r)if	c	and(i>0and	g[i-1][j]==c)+(i+1<L(g)and	g[i+1][j]==c)+(j>0and	g[i][j-1]==c)+(j+1<L(g[0])and	g[i][j+1]==c)>2),0),[[c*(c==v)for	c	in	r]for	r	in	g])[-1]

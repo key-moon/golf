@@ -1,7 +1,0 @@
-def	p(s,F=range):
-	A=len(s);m=len(s[0]);B=[[0for	_	in	F(m)]for	_	in	F(A)]
-	for	r	in	F(A):
-		for	c	in	F(m):
-			if	r==0	or	r==A-1or	c==0	or	c==m-1:B[r][c]=8
-			else:B[r][c]=0
-	return	B

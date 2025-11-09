@@ -1,1 +1,0 @@
-p=lambda	X:[k*2for	k	in	X]

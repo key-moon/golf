@@ -1,1 +1,0 @@
-def p(e):(i:=len(e[0]));e[2:]=[[e[0][a]]*i for a in range(i)]*2;return e

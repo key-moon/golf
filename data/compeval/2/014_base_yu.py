@@ -1,1 +1,0 @@
-p=lambda	g:[A	for	s	in	g	if(A:=[t[0]for	t	in	zip(s,*g)if	len({*t}&{*s})>2])]

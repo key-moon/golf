@@ -1,1 +1,0 @@
-p=lambda	g:[[(v>>len({*str(g)})-4&1)*5for	v	in	b''[i-3:i]]for	i	in(3,6,9)]

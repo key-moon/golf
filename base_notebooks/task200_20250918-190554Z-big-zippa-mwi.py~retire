@@ -1,9 +1,0 @@
-def p(j):
-	A,D,B,E=10,enumerate,range,0
-	for(H,I)in D(j):
-		for(F,G)in D(I):
-			if G%5:
-				for C in B(F,A,2):
-					for J in B(H+1):j[J][C]=G
-				for C in B(F+1,A,2):j[E*(A-1)][C]=5;E^=1
-				return j

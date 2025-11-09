@@ -1,4 +1,0 @@
-def p(a):
- l=sum(a,[]);d=len(a[0]);n=[d for(d,n)in enumerate(l)if n];E,s=n[0]//d,n[-1]//d;i=min(n%d for n in n);L=max(n%d for n in n);n,I=sorted({*l}-{0,8},key=l.count);e=[I]+[n]*(L-i-1)+[I]
- for J in range(E,s+1):a[J][i:L+1]=(e,[I]*len(e))[J in(E,s)]
- return a

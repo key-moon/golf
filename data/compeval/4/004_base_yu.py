@@ -1,1 +1,0 @@
-p=lambda	g:[[s.pop(t.index(c:=max(t))|-(0<sum(t)<3*c))]+s	for(s,t)in	zip(g,g[1:]+g)]

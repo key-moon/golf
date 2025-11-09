@@ -1,1 +1,0 @@
-def p(n):i=lambda n:list(dict.fromkeys(n));n=[*map(i,n)];return[n[0]]if n.count(n[0])==len(n)else[[n]for n in i(sum(n,[]))]

@@ -1,1 +1,0 @@
-def	p(g):A=[x	for	r	in	g	for	x	in	r	if	x!=0];B=max(set(A),key=A.count);return[[B]*A.count(B)]

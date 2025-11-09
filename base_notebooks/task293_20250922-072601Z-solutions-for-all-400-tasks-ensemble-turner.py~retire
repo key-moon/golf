@@ -1,1 +1,0 @@
-def p(e):f=lambda a:a[0]and a[:1]*len(a)or a;k=[*map(f,e)];return[k,[*map(list,zip(*map(f,zip(*e))))]][k==e]

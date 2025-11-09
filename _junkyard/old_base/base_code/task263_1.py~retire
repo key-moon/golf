@@ -1,1 +1,0 @@
-def p(g):val_v=[(sum(g[i+a][j+b]==0 for a in(0,1,2)for b in(0,1,2)),i,j)for i in range(0,len(g),3)for j in range(0,len(g[0]),3)];val_w=next(x for x in val_v if sum(y[0]==x[0]for y in val_v)==1);return [g[val_w[1]+a][val_w[2]:val_w[2]+3]for a in(0,1,2)]

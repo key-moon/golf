@@ -1,1 +1,0 @@
-def	p(m):return[[3if	m[r][c]or	m[r+5][c]else	0for	c	in	range(4)]for	r	in	range(4)]

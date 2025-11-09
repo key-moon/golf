@@ -1,1 +1,0 @@
-p=lambda	g:[[v+l*s[9]*2%4for(l,v)in	zip(g[0],s)]for	s	in	g]

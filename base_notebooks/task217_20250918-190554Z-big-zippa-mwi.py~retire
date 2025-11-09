@@ -1,1 +1,0 @@
-def p(j,A=range(9)):B,C=next(A for(A,B)in enumerate(j)if sum(B))//3*3,next(B for B in A if sum(j[A][B]for A in A))//3*3;return[[j[B+D%3][C+A%3]*bool(j[B+D//3][C+A//3])for A in A]for D in A]

@@ -1,1 +1,0 @@
-p=lambda g:[[2if j>0and j<len(g[0])-1and g[i][j-1]==1and g[i][j+1]==1and g[i][j]==0else g[i][j]for j in range(len(g[0]))]for i in range(len(g))]

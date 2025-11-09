@@ -1,7 +1,0 @@
-def p(g):
- o=[*map(list,g)]
- for _ in 0,0:
-  for r,t in zip(o,g):
-   for v in{*t}-{0}:a=t.index(v);b=len(t)-t[::-1].index(v);r[a:b]=[v]*(b-a)
-  o=[*map(list,zip(*o))];g=[*zip(*g)]
- return o

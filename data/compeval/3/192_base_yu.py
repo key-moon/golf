@@ -1,1 +1,0 @@
-p=lambda	g,c=-7:c*g	or	p([*zip(*[[((s[i]>0<t[i-1]==t[i])*t[i]or	s[i])*(c<-1or	max([0,*s,0][i:i+3:2])>0)for	i	in	range(len(s))]for(s,t)in	zip(g,g[:1]+g)][::-1])],c+1)

@@ -1,1 +1,0 @@
-p=lambda g:[*zip(*filter(any,zip(*filter(any,g))))]

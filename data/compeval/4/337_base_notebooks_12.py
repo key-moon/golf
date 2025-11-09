@@ -1,1 +1,0 @@
-p=lambda	g:[[A^13*(A	in(5,8))for	A	in	A]for	A	in	g]

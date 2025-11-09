@@ -1,1 +1,0 @@
-def p(g):c=len(g)-1;e=enumerate;return[[v|3*(i*j*(c-i)*(c-j)and sum(r[1:-1])*sum(t[j]for t in g[1:-1])<1)for j,v in e(r)]for i,r in e(g)]

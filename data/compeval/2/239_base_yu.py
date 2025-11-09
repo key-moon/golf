@@ -1,1 +1,0 @@
-def	p(g):u=sum(g,[]);A=sorted([(-u.count(v),v)for	v	in{*u}]);return[*zip(*[[c]*-v+[0]*(v-min(A)[0])for(v,c)in	A])]

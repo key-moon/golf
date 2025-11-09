@@ -1,1 +1,0 @@
-def p(j):A=[B for A in j for B in A];A=[A for A in set(A)if A not in[0,5]][0];j=[[A if B==5 else 0 for B in B]for B in j];return j

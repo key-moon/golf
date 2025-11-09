@@ -1,9 +1,0 @@
-def p(j):
-	def B(A):
-		B=[]
-		for C in A:
-			if C not in B:B.append(C)
-		return B
-	A=[B(A)for A in j]
-	if all(A[0]==B for B in A):return[A[0]]
-	return[[A]for A in B([B for A in j for B in A])]

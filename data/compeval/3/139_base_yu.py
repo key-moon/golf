@@ -1,1 +1,0 @@
-p=lambda	g,E=enumerate:[[s[j]or	any([0,0,*s][j:j+5])*any([0,0,*t][i:i+5])*7for(j,t)in	E(zip(*g))]for(i,s)in	E(g)]

@@ -1,2 +1,0 @@
-def p(g):
- return[[g[i//3][j//3]for j in range(len(g[0])*3)]for i in range(len(g)*3)]

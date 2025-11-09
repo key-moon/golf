@@ -1,1 +1,0 @@
-p=lambda r,E=enumerate:(i:=sum(r,[]),e:=min({*i}-{0},key=i.count),t:=[*zip(*[(y,x)for y,R in E(r)for x,v in E(R)if v==e])],[R[min(t[1]):max(t[1])+1]for R in r[min(t[0]):max(t[0])+1]])[-1]

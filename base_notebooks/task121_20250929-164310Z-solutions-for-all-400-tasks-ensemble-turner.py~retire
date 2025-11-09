@@ -1,9 +1,0 @@
-def p(e):
- for A in range(1,len(e)-1):
-  for o in range(1,len(e[0])-1):
-   if e[A][o]==8:
-    s=[]
-    for l in[-1,0,1]:
-     for E in[-1,0,1]:
-      if(l or e)and e[A+l][o+E]:s.append(e[A+l][o+E])
-    G=max(set(s),key=s.count);r=[[e[A+s][o+l]for l in[-1,0,1]]for s in[-1,0,1]];r[1][1]=G;return r

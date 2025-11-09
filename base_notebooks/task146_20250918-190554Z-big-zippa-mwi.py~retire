@@ -1,1 +1,0 @@
-p=lambda g,R=range:[[[g[A+B][C]for C in R(3)]for B in R(3)]for A in R(0,9,3)if[[g[A+B][C]for C in R(3)]for B in R(3)]!=[[g[A+C][B]for C in R(3)]for B in R(3)]][0]

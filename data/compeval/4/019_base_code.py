@@ -1,1 +1,0 @@
-def	p(g):A,B=len(g),len(g[0]);C=[[g[i%A][j%B]for	j	in	range(2*B)]for	i	in	range(2*A)];return[[C[i][j]if	C[i][j]else	8*any(0<=i+D<2*A	and	0<=j+E<2*B	and	C[i+D][j+E]for(D,E)in[(-1,-1),(-1,1),(1,-1),(1,1)])for	j	in	range(2*B)]for	i	in	range(2*A)]

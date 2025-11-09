@@ -1,2 +1,0 @@
-R=range
-def	p(g):d=lambda	i,j:max(abs(j//10*2+1-i//21),abs(j%10*2+1-i%21));_,b,u=min((sum(v	for(_,v)in	m),i,m)for	i	in	R(441)if	len(m:={(d(i,j),g[j%10][j//10])for	j	in	R(100)})==len(dict(m)));x,y,*_=sorted(k	for(k,v)in	u	if	v);return[[dict(u)[d(b,j*10+i)%(y-x)]or	5for	j	in	R(10)]for	i	in	R(10)]

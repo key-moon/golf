@@ -1,1 +1,0 @@
-def	p(g):return[[8*(a==b==0)for(a,b)in	zip(r[:3],r[4:])]for	r	in	g]

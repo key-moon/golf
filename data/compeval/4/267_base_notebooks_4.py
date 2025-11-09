@@ -1,1 +1,0 @@
-def	p(g):t=g[6][0];a=[[r	and	t	for	r	in	A]for	A	in	g];a[6][0]=0;return	a

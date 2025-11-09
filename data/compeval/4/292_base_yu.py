@@ -1,1 +1,0 @@
-p=lambda	g:[[v*i/2for(v,i)in	zip(s,b''*9)]for	s	in	g]

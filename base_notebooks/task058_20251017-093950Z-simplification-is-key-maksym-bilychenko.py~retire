@@ -1,8 +1,0 @@
-def p(o):
- r=len(o);g=[[0]*r for _ in' '*r];c=-1;d=0;v=[1,1j,-1,-1j]
- for l in [r]+[k for k in range(r-1,0,-2)for _ in'  ']:
-  for _ in range(l):
-   c+=v[d%4]
-   g[int(c.imag)][int(c.real)]=3
-  d+=1
- return g

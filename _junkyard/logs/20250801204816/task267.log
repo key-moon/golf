@@ -1,1 +1,0 @@
-def p(val_g):val_c=val_g[-1][0];val_l=len(val_g)-1;return[[val_c if val_g[i][j] and(i!=val_l or j)else 0 for j in range(val_l+1)]for i in range(val_l+1)]

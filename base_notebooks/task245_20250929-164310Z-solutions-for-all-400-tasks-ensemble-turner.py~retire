@@ -1,9 +1,0 @@
-E=enumerate
-t=range
-s=len
-def p(g):
- n=[[H,l]for(l,B)in E(g)for(H,D)in E(B)if D==3];B=sum(n,[]);H=B[::2];D=B[1::2];l=[min(D)+1,max(D)-1,min(H)+1,max(H)-1];n=[[H,l]for(l,B)in E(g)for(H,D)in E(B)if D==2];B=sum(n,[]);H=B[::2];D=B[1::2];l[0]-=min(D);l[1]-=max(D);l[2]-=min(H);l[3]-=max(H);n=[l[:]for l in g];g=[[0 if l!=3 else 3for l in l]for l in g]
- for H in t(s(g)):
-  for r in t(s(g[0])):
-   if n[H][r]==2:g[H-min([l[0],0])+max([l[1],0])][r-min([l[2],0])+max([l[3],0])]=2
- return g

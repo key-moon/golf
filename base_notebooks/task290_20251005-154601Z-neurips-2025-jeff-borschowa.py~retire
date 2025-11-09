@@ -1,1 +1,0 @@
-def p(s):s=[[s for s in s if s]for s in s if sum(s)];a=[*{*sum(s,[])}];return[[a[s==a[0]]for s in s]for s in s]

@@ -1,1 +1,0 @@
-p=lambda	g,c=-5,R=range(19):c*g	or	p([[g[j][~i]|g[A:=min(i,18-i)][min(j,18-j,A+1+j%2)]for	j	in	R]for	i	in	R],c+1)

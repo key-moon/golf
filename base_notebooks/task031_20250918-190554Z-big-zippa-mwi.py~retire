@@ -1,1 +1,0 @@
-def p(j,A=enumerate):B,C=zip(*[(B,D)for(B,C)in A(j)for(D,E)in A(C)if E]);return[A[min(C):max(C)+1]for A in j[min(B):max(B)+1]]

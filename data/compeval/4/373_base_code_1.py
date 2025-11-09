@@ -1,1 +1,0 @@
-def	p(g):return[[g[i+j&1][j]for	j	in	range(len(g[0]))]for	i	in(0,1)]

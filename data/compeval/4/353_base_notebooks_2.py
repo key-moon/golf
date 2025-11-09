@@ -1,1 +1,0 @@
-def	p(j,A=divmod):c=len(j[0]);C=sum(j,[]).index;k,B=A(C(3),c);l,D=A(C(4),c);a=k+(k<l-1)-(k>l+1);E=B+(B<D-1)-(B>D+1);j[k][B]=0;j[a][E]=3;return	j

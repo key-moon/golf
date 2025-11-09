@@ -1,6 +1,0 @@
-def	p(g):
-	d='[{"Ip3bl,2q]e"Op3swwwxxxxamg]]},{"Izch,2bhd]e"OzggAAyyyy]]},{"Izdh,2bk]e"OzgiyyyAAmg]]},{"Izcj,2lba]e"Ozggktxxxwwwwa]]}]';m='vvAp0zmiyqtxlswugvhiuaitrgsdbrakqo[pn[o":nhgmajlhckf3jddif0hccge[f],ebbdaac,3b,0a';m=[[m[i:i+2],m[i+2]]for	i	in	range(0,len(m),3)]
-	for	r	in	m:d=d.replace(r[1],r[0])
-	d=eval(d)
-	for	k	in	d:
-		if	k['I']==g:g=k['O'];return	g

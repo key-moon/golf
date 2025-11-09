@@ -1,1 +1,0 @@
-def	p(g):n=len(g);m=n//2;A=sum(g,[]);k=A.index(min(A,key=A.count));return[s[(k%n>m)*-m:][:m]for	s	in	g[(k>n*m)*-m:][:m]]

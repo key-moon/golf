@@ -1,6 +1,0 @@
-def p(j):
-	A=[A[:]for A in j]
-	for B in range(5):
-		for C in range(5):
-			if j[C][B]==1:A[C][B]=0;A[4][B]=1
-	return A

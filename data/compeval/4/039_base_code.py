@@ -1,1 +1,0 @@
-def	p(g):r=[i	for(i,r)in	enumerate(g)if	any(r)];c=[j	for(j,c)in	enumerate(zip(*g))if	any(c)];return[[g[i][j]for	j	in	c[:3]]for	i	in	r[:3]]

@@ -1,1 +1,0 @@
-def p(val_g):val_k=max({val_x for val_r in val_g for val_x in val_r}-{0},key=lambda _:sum(val_r.count(_)for val_r in val_g));return[[val_x*(val_x==val_k)for val_x in val_r]for val_r in val_g]

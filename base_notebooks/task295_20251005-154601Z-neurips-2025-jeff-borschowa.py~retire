@@ -1,1 +1,0 @@
-def p(o):l=o[0];B=sum(map(bool,l));o+=(l[:B]+l[:1]*C+[0]*(len(l)-B-C)for C in range(1,len(l)//2));return o

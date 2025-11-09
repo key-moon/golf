@@ -1,7 +1,0 @@
-def	p(g):
-	a=g[0];b=[(v,i)for(i,v)in	enumerate(a)if	v];m=len(a)*len(b);g=[[0]*m	for	_	in	range(m)]
-	for	s	in	range(m):
-		for(v,i)in	b:
-			k=i+s
-			if	k<m:g[m-1-s][k]=v
-	return	g

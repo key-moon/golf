@@ -1,1 +1,0 @@
-def p(g):return[[6*(val_x==4or val_y==3)for val_x,val_y in zip(val_r[:3],val_r[3:])]for val_r in g]

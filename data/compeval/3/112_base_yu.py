@@ -1,1 +1,0 @@
-p=lambda	g,c=-1:c*g	or	p([*zip(*((a:=g[:g.index(max(g,key=max))+1])+a[::-1]+[g[-1]]*99)[:len(g)])],c+1)

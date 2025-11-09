@@ -1,7 +1,0 @@
-def p(j):
-	B=len(j[0]);C=int((B-1)/2);E=enumerate
-	for(A,F)in E(j):
-		if max(F)>0:
-			for D in range(C):j[A][D]=j[A][0];j[A][B-D-1]=j[A][B-1]
-			j[A][C]=5
-	return j

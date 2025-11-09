@@ -1,2 +1,0 @@
-r=range(8)
-p=lambda g:[([1]*sum(g[B][A]*g[B+1][A]*g[B][A+1]*g[B+1][A+1]==1for A in r for B in r)+[0]*5)[:5]]

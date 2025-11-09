@@ -1,1 +1,0 @@
-def	p(g):A=range(c:=sum(g,[]).count(0)*3);return[[(i//3*c+j<27-c)*g[i%3][j%3]for	j	in	A]for	i	in	A]

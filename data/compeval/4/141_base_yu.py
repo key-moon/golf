@@ -1,1 +1,0 @@
-def	p(g):A=range(len(g));return[[max((y-i	in(x-j,j-x))*g[y][x]for	y	in	A	for	x	in	A)for	j	in	A]for	i	in	A]

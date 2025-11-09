@@ -1,1 +1,0 @@
-p=lambda g:[[2*(g[A][B]==0==g[A+4][B])for B in range(4)]for A in range(4)]

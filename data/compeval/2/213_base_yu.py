@@ -1,1 +1,0 @@
-p=lambda	g:any(map(all,g))and[*zip(*p([*zip(*g)]))]or(a:=[[x|y	for(x,y)in	zip(g[0],g[-1])if	x|y]])*len(a[0])

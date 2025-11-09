@@ -1,1 +1,0 @@
-def	p(g):return[A[0:2]for	A	in	g[0:2]]

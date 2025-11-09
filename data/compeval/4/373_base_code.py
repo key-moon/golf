@@ -1,1 +1,0 @@
-def	p(g):g=[[g[i^j&1][j]for	j	in	range(len(g[0]))]for	i	in	range(2)];return	g

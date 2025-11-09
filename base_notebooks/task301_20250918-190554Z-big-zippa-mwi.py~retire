@@ -1,4 +1,0 @@
-def p(j):
-	from collections import Counter as D;E=[A for B in j for A in B if A];A=dict(D(E).most_common());F=len(j[0]);C=[[0]*F for A in range(len(j))]
-	for(G,B)in enumerate(sorted(A,key=A.get,reverse=True)):C[-1-G][-A[B]:]=[B]*A[B]
-	return C

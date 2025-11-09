@@ -1,9 +1,0 @@
-def p(j):
-	C=range;E,G=len(j),len(j[0]);D=[]
-	for A in C(E):
-		if A==0 or j[A]!=j[A-1]:D.append([j[A][0]])
-	F=[];H=-1
-	for B in C(G):
-		if B==0 or any(j[A][B]!=j[A][B-1]for A in C(E)):F.append(j[0][B])
-	if len(D)>1:return D
-	else:return[F]

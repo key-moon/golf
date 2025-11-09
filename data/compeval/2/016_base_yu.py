@@ -1,1 +1,0 @@
-p=lambda	g:[[*map(b'A	'.find,g[0])]]*3

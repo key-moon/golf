@@ -1,1 +1,0 @@
-p=lambda	g,c=-1:c*g	or[*zip(*p([*filter(any,zip(*g))],c+1))][:3]

@@ -1,6 +1,0 @@
-def p(j):
- C=[A[:]for A in j];D,E=len(j),len(j[0])
- for B in range(1,D):
-  for A in range(1,E-1):
-   if j[B][A]==0and j[B][A-1]and j[B][A+1]and j[B][A-1]==j[B][A+1]and j[B-1][A]==j[B][A-1]:C[D-1][A]=4
- return C

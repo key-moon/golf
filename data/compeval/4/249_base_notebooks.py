@@ -1,1 +1,0 @@
-p=lambda	v:[A*2for	A	in	v]

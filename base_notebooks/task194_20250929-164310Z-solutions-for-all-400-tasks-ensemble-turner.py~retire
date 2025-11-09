@@ -1,1 +1,0 @@
-def p(l):A=lambda x:[*map(list,zip(*x[::-1]))];B=A(l);s=A(B);return[*map(list.__add__,l,B),*map(list.__add__,A(s),s)]

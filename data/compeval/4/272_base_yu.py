@@ -1,1 +1,0 @@
-p=lambda	g,E=enumerate:[[sum([0,*s][j:j+3]+[0,*t][i:i+3])<3*s[j]or	s[j]for(j,t)in	E(zip(*g))]for(i,s)in	E(g)]

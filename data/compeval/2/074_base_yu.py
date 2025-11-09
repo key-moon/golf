@@ -1,1 +1,0 @@
-p=lambda	g,c=-9:c*g	or	p([[*map(min,r,[9]*2+r[::-1],A)]for*A,r in	zip(*g,g)],c+1)

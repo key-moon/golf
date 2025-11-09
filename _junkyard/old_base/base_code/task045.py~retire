@@ -1,1 +1,0 @@
-def p(g):return[r[:1]*10 if r[0]==r[-1]>0 else r for r in g]

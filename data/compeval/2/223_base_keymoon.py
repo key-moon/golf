@@ -1,1 +1,0 @@
-p=lambda	g:g*0!=0and	sum(zip(*[[*map(p,g)]]*3),())or	g

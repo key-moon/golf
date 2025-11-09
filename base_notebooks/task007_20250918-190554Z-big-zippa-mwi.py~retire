@@ -1,1 +1,0 @@
-def p(g):A=range;B=len;C={(C+D)%3:E for C in A(B(g))for D in A(B(g[0]))for E in[g[C][D]]if E};return[[C.get((D+A)%3,0)for A in A(B(g[0]))]for D in A(B(g))]

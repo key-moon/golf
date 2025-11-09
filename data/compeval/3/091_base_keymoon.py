@@ -1,1 +1,0 @@
-p=lambda	g,c=-47:c*g	or	p([*zip(*g[5	not	in	g[c&1]:][::-1])],c+1)

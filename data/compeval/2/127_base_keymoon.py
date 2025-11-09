@@ -1,1 +1,0 @@
-p=lambda	g:g*-1and	g%5+5or[p(g[i%2-3&i^1])for	i	in	range(len(g))]

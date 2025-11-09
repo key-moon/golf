@@ -1,2 +1,0 @@
-j=lambda A:[[*A]for A in zip(*A[::-1])]
-p=lambda c:[A+B for(A,B)in zip(c,j(c))]+[A+B for(A,B)in zip(j(j(j(c))),j(j(c)))]

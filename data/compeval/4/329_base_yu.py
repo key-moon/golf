@@ -1,1 +1,0 @@
-p=lambda	g:[[0]*(b:=len(s)//2)+[s[b]]+b*[0]for	s	in	g]

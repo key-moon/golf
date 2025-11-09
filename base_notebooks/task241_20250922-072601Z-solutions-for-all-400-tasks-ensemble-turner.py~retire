@@ -1,1 +1,0 @@
-p=lambda j:[*zip(*j)]

@@ -1,1 +1,0 @@
-p=lambda g:[*zip(*[b'\1'.join(bytes(sorted(s)[::-1])for s in bytes(c).split(b'\1'))for c in zip(*g)])]

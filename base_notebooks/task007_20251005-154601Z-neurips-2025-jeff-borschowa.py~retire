@@ -1,1 +1,0 @@
-def p(r):e,l=range(len(r)),range(len(r[0]));n={(e+n)%3:r[e][n]for e in e for n in l if r[e][n]};return[[n.get((e+l)%3,0)for l in l]for e in e]

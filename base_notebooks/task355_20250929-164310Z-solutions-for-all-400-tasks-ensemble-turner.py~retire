@@ -1,5 +1,0 @@
-r=len
-O=range
-E=enumerate
-def t(m,C,t):s=[[D,d]for(d,s)in E(m)for(D,s)in E(s)if s==C];s=sum(s,[]);D=s[::2];s=s[1::2];d=m[min(s):max(s)+1];d=[d[min(D):max(D)+1]for d in d];return sum(d,[]).count(t)
-def p(D):s=sum(D,[]);d=sorted([[s.count(d),d]for d in set(s)]);d=[d[1]for d in d];C=[t(D,d[s],d[0])for s in O(1,r(d))];return[[d[C.index(max(C))+1]]]

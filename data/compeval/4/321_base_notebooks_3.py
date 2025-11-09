@@ -1,1 +1,0 @@
-def	p(m):s=[0]+[c+1for	c	in	range(len(m[0]))if	any(r[c]==2for	r	in	m)];return[[next((m[r][j+o]for	o	in	s	if	m[r][j+o]),0)for	j	in	range(4)]for	r	in	range(4)]

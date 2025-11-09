@@ -1,1 +1,0 @@
-def p(f):u,e=len(f),len(f[0]);return[[1if f[n][d]and all(f[n+a][d+s]==0for a,s in[(-1,0),(1,0),(0,-1),(0,1)]if 0<=n+a<u and 0<=d+s<e)else f[n][d]for d in range(e)]for n in range(u)]

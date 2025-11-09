@@ -1,1 +1,0 @@
-p=lambda	g:[[v+(w>>i%12&1)*4for(i,v)in	enumerate(s)]for(s,w)in	zip(g,[224,65,2051])]

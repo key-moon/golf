@@ -1,9 +1,0 @@
-def	p(g):
-	A=range;F=[A[:]for	A	in	g];G=[[g[B][A]for	A	in	A(3)]for	B	in	A(3)]
-	for	B	in	A(9):
-		for	C	in	A(4,13):
-			if	g[B][C]==1:
-				for	D	in	A(-1,2):
-					for	E	in	A(-1,2):
-						if	0<=B+D<9and	4<=C+E<13:F[B+D][C+E]=G[D+1][E+1]
-	return	F

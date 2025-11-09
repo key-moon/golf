@@ -1,6 +1,0 @@
-def p(j):
-	A={}
-	for B in j:
-		for(C,D)in enumerate(B):
-			if D==5:B[C]=A.setdefault(C,len(A)+1)
-	return j

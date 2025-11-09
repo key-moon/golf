@@ -1,1 +1,0 @@
-def	p(g):return[r*2for	r	in	g]

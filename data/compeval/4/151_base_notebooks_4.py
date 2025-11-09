@@ -1,1 +1,0 @@
-def	p(g):f=lambda	a:list(map(all,a)).index(1);x,y=f(g),f(zip(*g));g[x-1][y-1:y+2]=g[x+1][y-1:y+2]=[4]*3;g[x][y-1]=g[x][y+1]=4;return	g

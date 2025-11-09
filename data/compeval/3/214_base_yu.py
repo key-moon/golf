@@ -1,1 +1,0 @@
-p=lambda	g:[s[:4]+u[2::-1]+t[3::-1]for*u,s,t in	zip(*g,g,g[::-1])]

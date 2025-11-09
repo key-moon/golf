@@ -1,8 +1,0 @@
-def p(j):
-	B=range;C=[A[:]for A in j];A=[(A,C)for A in B(len(j))for C in B(len(j[0]))if j[A][C]==8]
-	if A:
-		F,G=min(A for(A,B)in A),max(A for(A,B)in A);H,I=min(A for(B,A)in A),max(A for(B,A)in A)
-		for D in B(F,G+1):
-			for E in B(H,I+1):
-				if j[D][E]==1:C[D][E]=3
-	return C

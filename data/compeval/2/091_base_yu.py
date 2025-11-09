@@ -1,1 +1,0 @@
-p=lambda	g,c=-63:c*g	or	p([*zip(*g[1-(g[1].count(5)==2and(8,5,5,8)!=g[1]or	5in	g[0]):][::-1])],c+1)

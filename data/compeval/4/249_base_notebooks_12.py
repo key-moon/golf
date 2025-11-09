@@ -1,1 +1,0 @@
-p=lambda	j:[u*2for	u	in	j]

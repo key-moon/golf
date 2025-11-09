@@ -1,1 +1,0 @@
-p=lambda	R:[A*2for	A	in	R]

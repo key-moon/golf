@@ -1,1 +1,0 @@
-p=lambda	g:[[s[j]or	t[j-4]or	t[j]or	s[j-4]for	j	in	b'']for(s,t)in	zip(g,g[4:])]

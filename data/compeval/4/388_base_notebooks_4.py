@@ -1,1 +1,0 @@
-def	p(g):A=range;n=len(g);c={j	for	i	in	A(n)for	j	in	A(n)if	g[i][j]};m=[[8if	g[i][j]==0and	j	in	c	else	g[i][j]for	j	in	A(n)]for	i	in	A(n)];return[[m[i%n][j%n]for	j	in	A(2*n)]for	i	in	A(2*n)]

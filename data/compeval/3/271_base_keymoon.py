@@ -1,1 +1,0 @@
-p=lambda	g:g*(len(g)<4)or	min((sum(a:=sum(b:=p([*zip(*g[i:i+3])]),()))+(0in	a)*99,b)for	i	in	range(7))[1]

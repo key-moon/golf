@@ -1,1 +1,0 @@
-def p(g):return[val_+val_[::-1]for val_ in g]

@@ -1,1 +1,0 @@
-p=lambda	g:max((all(y:=sum(x:=[s[l:t%21]for	s	in	g[u:t//21]],[])),y.count(2),len(y),x)for	t	in	range(441)for	l	in	range(t%21)for	u	in	range(t//21))[3]

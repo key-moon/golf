@@ -1,1 +1,0 @@
-def	p(g):return[A[:int(len(g[0])/3)]for	A	in	g]

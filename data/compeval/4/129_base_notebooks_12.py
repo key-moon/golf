@@ -1,1 +1,0 @@
-def	p(g):from	collections	import	Counter	as	A;B=[x	for	r	in	g	for	x	in	r];C=A(B).most_common(1)[0][0];return[[C]*len(g[0])for	_	in	g]

@@ -1,1 +1,0 @@
-def	p(j,A=range(-2,3),c=enumerate,E=abs):k=[A[:]for	A	in	j];[k[H+D].__setitem__(C+F,G	if	E(D)==E(F)else	B[C-1])for(H,B)in	c(j)for(C,G)in	c(B)if	G	and	B[C-1]*B[C+1]for	D	in	A	for	F	in	A	if	E(D)==E(F)or	not	D*F];return	k

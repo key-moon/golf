@@ -1,2 +1,0 @@
-def G(A,a,b):return tuple(tuple(A if A!=a and A!=b else{a:b,b:a}[A]for A in A)for A in A)
-def p(I):I=tuple(map(tuple,I));A=G(I,3,4);B=G(A,8,9);C=G(B,2,6);D=G(C,1,5);return[*map(list,D)]

@@ -1,4 +1,0 @@
-def p(e,E=enumerate):
- H=len(e[0]);H=[-1]+[H for(H,N)in E(zip(*e))if not any(N)]+[H];N=[[n[H[N]+1:H[N+1]]for n in e]for N in range(len(H)-1)if H[N]+1<H[N+1]];n=N[:1]
- for d in N[1:]:H=n[-1];H=next((N for(N,H)in E(H)if H and H[-1]==5),0);e=next((N for(N,H)in E(d)if H and H[0]==5),0);e=H-e;L=[[0]*len(d[0])]*3;n+=[(L+d+L)[3-e:6-e]]
- L=[next((H for N in H for H in N if H>0and H!=5),0)for H in N];M=[[[N if H==5 else H for H in H]for H in H]for(H,N)in zip(n,L)];return[sum(H,[])for H in zip(*M)]

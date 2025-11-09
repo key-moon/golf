@@ -1,1 +1,0 @@
-def	p(input):return[A*2for	A	in	input]

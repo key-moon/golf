@@ -1,1 +1,0 @@
-p=lambda	g,c=-1,u=[[2]*99]:g*c	or[*zip(*sum([str(g).count('2')//12*[s]for	s	in	p(g,c+1)if{*s}-{0,2}],u)+u)]

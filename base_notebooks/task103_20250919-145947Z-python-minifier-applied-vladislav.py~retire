@@ -1,1 +1,0 @@
-p=lambda j:[[1 if[j[A][0]for A in range(3)]==[j[A][2]for A in range(3)]else 7]]

@@ -1,1 +1,0 @@
-p=lambda g,a=range(7):[[{(i+j)%3:g[i][j]for i in a for j in a if g[i][j]}[(i+j)%3]for j in a]for i in a]

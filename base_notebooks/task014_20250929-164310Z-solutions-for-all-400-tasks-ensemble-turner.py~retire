@@ -1,7 +1,0 @@
-from collections import*
-def p(e):
- A=[l for l in e for l in l];o=Counter(A).most_common(3);o=[o for o in o if o[0]>0][-1][0];e=[l for l in e if o in l];R=[]
- for l in e:
-  for t in range(len(l)):
-   if l[t]==o:R+=[t]
- return[l[min(R):max(R)+1]for l in e]

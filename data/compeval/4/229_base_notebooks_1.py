@@ -1,1 +1,0 @@
-def	p(g):A=__import__('collections').Counter([x	for	A	in	g	for	x	in	A]).most_common(1);c=A[0][0];return[[A	if	A==c	else	5for	A	in	A]for	A	in	g]

@@ -1,2 +1,0 @@
-s=enumerate
-def p(e):e=[[k if(d and e[d-1][r]==k)+(d+1<len(e)and e[d+1][r]==k)+(r and n[r-1]==k)+(r+1<len(e)and n[r+1]==k)>1else 0for r,k in s(n)]for d,n in s(e)];r=sum(e,[]);r=sorted([[r.count(n),n]for n in set(r)if n>0]);e=[[0if n!=r[-1][1]else n for n in n]for n in e];return e

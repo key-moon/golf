@@ -1,9 +1,0 @@
-def p(j):
-	B=range;A=(len(j)-1)//2
-	if A==1:
-		D=[j[0][0],j[0][2],j[2][0],j[2][2]]
-		for C in D:
-			if D.count(C)==1:return[[C]]
-	for(F,G)in[(0,0),(0,A+1),(A+1,0),(A+1,A+1)]:
-		E=[[j[F+C][G+A]for A in B(A)]for C in B(A)];C=[E[C][D]for C in B(A)for D in B(A)]
-		if len(set(C))>1:return E

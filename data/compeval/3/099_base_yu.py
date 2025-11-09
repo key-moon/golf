@@ -1,1 +1,0 @@
-def	p(g):w=1-any(g[1]);u=g[w:];return(len(g)<6)*(g[:w]+[[v	or	any(t)*max(sum(g,[]))for*t,v in	zip(*u,s)]for	s	in	u])or	p(g[:5])+p(g[5:])

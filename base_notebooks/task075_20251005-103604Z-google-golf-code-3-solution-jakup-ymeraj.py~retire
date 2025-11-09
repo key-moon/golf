@@ -1,9 +1,0 @@
-def p(p):
- l=range;a=[l[:]for l in p];t=[[p[i][l]for l in l(3)]for i in l(3)]
- for i in l(9):
-  for m in l(4,13):
-   if p[i][m]==1:
-    for q in l(-1,2):
-     for g in l(-1,2):
-      if 0<=i+q<9and 4<=m+g<13:a[i+q][m+g]=t[q+1][g+1]
- return a

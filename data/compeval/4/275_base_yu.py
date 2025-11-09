@@ -1,1 +1,0 @@
-def	p(g):n=len(g[0]);A=range(n*n);f=8in	max(g[:n]);return	n<6and[[g[i%n+n-f*n][j%n]and	g[i//n+f*n][j//n]for	j	in	A]for	i	in	A]or[*zip(*p([*zip(*g)]))]

@@ -1,1 +1,0 @@
-def p(g):C,D=len(g),len(g[0]);return[[1 if g[A][B]and all(g[A+E][B+F]==0 for(E,F)in[(-1,0),(1,0),(0,-1),(0,1)]if 0<=A+E<C and 0<=B+F<D)else g[A][B]for B in range(D)]for A in range(C)]

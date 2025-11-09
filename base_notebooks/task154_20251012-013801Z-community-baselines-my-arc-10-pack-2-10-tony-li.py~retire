@@ -1,1 +1,0 @@
-p=lambda g:[(g:=[[*map(int,__import__('re').sub(r'(.*5.*)(020)(.*)\2(.*)',lambda m:'0'*len(x:=m[1])+m[2]+x[::-1]+m[3][len(x):]+m[2]+m[4],str(r)[1::3]))]for r in zip(*g[::-1])])for _ in g*4][-1]

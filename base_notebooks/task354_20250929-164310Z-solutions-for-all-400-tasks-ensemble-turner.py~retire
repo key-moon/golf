@@ -1,5 +1,0 @@
-def p(E):
- a=range;n=[n[:]for n in E]
- def d(I,r,E):
-  if 0<=I<10and 0<=r<10and n[I][r]==5:n[I][r]=E;[d(I+n,r+o,E)for(n,o)in[(-1,0),(1,0),(0,-1),(0,1)]]
- [[d(a,o,E[0][o])for a in a(1,10)if n[a][o]==5]for o in a(10)if E[0][o]];return n

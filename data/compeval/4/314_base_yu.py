@@ -1,1 +1,0 @@
-p=lambda	g,R=range(8):[[max(min((g[i]*3)[j+5:j+12:6]),min(g[i-3][j],g[i+3&7][j]),g[i][j])for	j	in	R]for	i	in	R]

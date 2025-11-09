@@ -1,1 +1,0 @@
-def	p(g):A=sum(g,[]);u=sorted((A.count(c),A.index(c)%10,c)for	c	in{*A}-{0});return[[c	for(k,_,c)in	u	if	k==u[-1][0]]]*u[-1][0]

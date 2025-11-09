@@ -1,9 +1,0 @@
-from collections import*
-j=len
-s=range
-def p(c):
- i=[a for s in c for a in s];t=Counter(i).most_common();t=[C for C in t if C[0]!=0][-1][0];W,N=j(c),j(c[0]);J=[]
- for a in s(W):
-  for C in s(N):
-   if c[a][C]==t:J.append([a,C])
- e=min([s[1]for s in J]);h=max([s[1]for s in J]);O=min([s[0]for s in J]);L=max([s[0]for s in J]);c=c[O:L+1];c=[s[e:h+1]for s in c];return c

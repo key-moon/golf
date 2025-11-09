@@ -1,1 +1,0 @@
-p=lambda g:[[2 if(A:=[(A,C)for(A,B)in enumerate(g)for(C,D)in enumerate(B)if D==8])and min(A for(A,B)in A)<=B<=max(A for(A,B)in A)and min(A for(B,A)in A)<=C<=max(A for(B,A)in A)and g[B][C]==0 else g[B][C]for C in range(len(g[0]))]for B in range(len(g))]

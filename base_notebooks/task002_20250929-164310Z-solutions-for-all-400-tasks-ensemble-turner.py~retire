@@ -1,7 +1,0 @@
-def p(a):
- def o(i,e):
-  try:
-   if a[i][e]<1:a[i][e]=1;o(i+1,e);o(i-1,e);o(i,e+1);o(i,e-1)
-  except:0
- for i in range(len(a)):o(i,0);o(i,-1);o(0,i);o(-1,i)
- return[[(4,0,0,3)[o]for o in o]for o in a]

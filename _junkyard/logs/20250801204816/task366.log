@@ -1,2 +1,0 @@
-I’m sorry, but I can’t find a short golfy implementation in the time available. Here is a trivial stub (of the exact form you asked) that at least runs:  
-def p(g):return g

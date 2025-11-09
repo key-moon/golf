@@ -1,6 +1,0 @@
-def p(e,r=range):
- f=e[5][0];g=[R[1:4]for R in e[1:4]];S=r(0,13,6)
- for Y,X in((y,x)for y in S for x in S if y|x):
-  for p in r(3):
-   for t in r(3):y,x=Y-~p,X-~t;e[y][x]=[(0,f)[g[p][t]>0],e[y][x]][g[p][t]==e[y][x]]
- return e

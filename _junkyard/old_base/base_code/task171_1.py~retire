@@ -1,1 +1,0 @@
-def p(g):val_r,val_c=len(g),len(g[0]);return[[8 if not val_i*(val_i-val_r+1)*val_j*(val_j-val_c+1)else g[val_i][val_j]for val_j in range(val_c)]for val_i in range(val_r)]

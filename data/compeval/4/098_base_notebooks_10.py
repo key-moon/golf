@@ -1,1 +1,0 @@
-p=lambda	g:[[x	if	any(g[i+A][j+B]==0for(A,B)in[(0,1),(1,0),(0,-1),(-1,0)]if	0<=i+A<len(g)and	0<=j+B<len(g[0]))and	x!=0else	0for(j,x)in	enumerate(r)]for(i,r)in	enumerate(g)]

@@ -1,1 +1,0 @@
-p=lambda	g:[max([[s.count(v)*t.count(v),v]for	s	in	g	for*t,v in	zip(*g,s)if	v])[1:]*2]*2

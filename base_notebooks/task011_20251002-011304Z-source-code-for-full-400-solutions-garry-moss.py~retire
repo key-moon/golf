@@ -1,1 +1,0 @@
-p=lambda t,r=range:(lambda f,e:[[5if s%4>2or o%4>2else t[f*4+s//4][e*4+o//4]for o in r(11)]for s in r(11)])(*next((f,e)for f in r(3)for e in r(3)if sum(t[f*4+s][e*4+o]<1for s in r(3)for o in r(3))==5))

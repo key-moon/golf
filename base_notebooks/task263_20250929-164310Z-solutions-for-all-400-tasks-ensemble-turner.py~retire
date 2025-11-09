@@ -1,4 +1,0 @@
-def p(t):
- A=range;n=[[[t[l+n*3][A+a*3]for A in A(3)]for l in A(3)]for n in A(len(t)//3)for a in A(len(t[0])//3)]
- for a in n:
-  if[tuple(tuple(n[a][A]==0for A in A(3))for a in A(3))for n in n].count(tuple(tuple(a[n][A]==0for A in A(3))for n in A(3)))==1:return a

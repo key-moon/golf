@@ -1,6 +1,0 @@
-def p(j,A=range):
-	C,D=len(j),len(j[0]);E=[[0]*D for A in A(C)]
-	for B in A(D):
-		F=[j[A][B]for A in A(C)if j[A][B]!=0]
-		for(G,H)in enumerate(F):E[G][B]=H
-	return E

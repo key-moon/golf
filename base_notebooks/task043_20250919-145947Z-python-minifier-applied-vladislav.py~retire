@@ -1,7 +1,0 @@
-def p(j,A=enumerate):
-	D=len(j)-1;E=len(j[0])-1
-	for(B,F)in A(j):
-		for(C,G)in A(F):
-			if B>0 and C<D:
-				if j[B][E]==5 and j[0][C]==5:j[B][C]=2
-	return j

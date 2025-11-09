@@ -1,1 +1,0 @@
-def p(g):return[[2 if c==6 else c for c in r]for r in g]

@@ -1,9 +1,0 @@
-def p(d):
- S,D=len(d),len(d[0]);r=[o[:]for o in d]
- for B in range(S-1):
-  n=d[B];h=d[B+1]
-  for o in range(D-1):
-   if n[o]==n[o+1]==h[o]==h[o+1]==0:r[B][o]=r[B][o+1]=r[B+1][o]=r[B+1][o+1]=2
- B,o=8,12
- if 0<=B<S and 0<=o<D and r[B][o]==2and B-1>=0and B+1<S and o-1>=0and d[B-1][o-1]==0and d[B][o-1]==0and d[B+1][o]==0:r[B][o]=d[B][o];r[B+1][o]=d[B+1][o]
- return r

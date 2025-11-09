@@ -1,8 +1,0 @@
-Here’s a very short golfed solution. It always splits the 5×5 into four 2×2 quadrants at the all‐zero middle row/column and returns the one that occurs only once.
-
-```python
-def p(g):
-    val_q=[(g[i][j],g[i][j+1],g[i+1][j],g[i+1][j+1])for i in(0,3)for j in(0,3)]
-    val_t=next(val_x for val_x in val_q if val_q.count(val_x)<2)
-    return[list(val_t[:2]),list(val_t[2:])]
-```

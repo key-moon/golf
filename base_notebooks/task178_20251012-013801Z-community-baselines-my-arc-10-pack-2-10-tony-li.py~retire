@@ -1,1 +1,0 @@
-p=lambda g:[[b for a,b in zip([0]+a,a)if a^b]for a,b in zip(g,[[]]+g)if a!=b]

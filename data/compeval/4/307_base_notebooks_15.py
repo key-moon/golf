@@ -1,1 +1,0 @@
-def	p(g):A,B=2,2;C,D=len(g),len(g[0]);return[[g[i//A][j//B]for	j	in	range(D*B)]for	i	in	range(C*A)]

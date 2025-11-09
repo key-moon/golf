@@ -1,1 +1,0 @@
-p=lambda	g,E=enumerate:[[t[i]*sum([0,*t][i:i+3]+[0,*s][j:j+3])**4*3%7for(j,t)in	E(zip(*g))]for(i,s)in	E(g)]

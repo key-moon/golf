@@ -1,8 +1,0 @@
-def p(m):
- l=range((k:=len(m)));h=m[2][2];r=eval(str((n:=[[r*(r!=h)for r in r]for r in m])));E=lambda t:(t.index(d),k-t[::-1].index(d))
- for d in l:
-  for i in l:
-   if d in(t:=n[i]):a,b=E(t);r[i][a:b]=[d]*(b-a)
-   if d in(t:=[r[i]for r in n]):
-    for j in range(*E(t)):r[j][i]=d
- return[[(h,r[i][j])[m[i][j]!=h]for j in l]for i in l]

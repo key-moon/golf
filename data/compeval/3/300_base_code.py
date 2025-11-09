@@ -1,1 +1,0 @@
-def	p(g):c=max({v	for	r	in	g	for	v	in	r	if	v},key=lambda	v:sum(r.count(v)for	r	in	g));l=[(i,j)for(i,r)in	enumerate(g)for(j,v)in	enumerate(r)if	v==c];y,x=zip(*l);return[r[min(x):max(x)+1]for	r	in	g[min(y):max(y)+1]]

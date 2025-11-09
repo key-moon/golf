@@ -1,1 +1,0 @@
-def	p(g,e=enumerate):A=[[0]*6for	_	in[0]*6];[A[r+i].__setitem__(c+i,v)for(r,B)in	e(g)for(c,v)in	e(B)if	v	for	i	in	range(6-max(r,c))];return	A

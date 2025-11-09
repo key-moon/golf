@@ -1,6 +1,0 @@
-def p(r):
- A=range;e=[A[:]for A in r];I=r[5][0];a=[[r[B+1][A+1]for A in A(3)]for B in A(3)]
- for s in[(0,6),(0,12),(6,0),(6,6),(6,12),(12,0),(12,6),(12,12)]:
-  for B in A(3):
-   for C in A(3):D,E=s[0]+B+1,s[1]+C+1;e[D][E]=r[D][E]if a[B][C]==r[D][E]else I if a[B][C]else 0
- return e

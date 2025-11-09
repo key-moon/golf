@@ -1,1 +1,0 @@
-def	p(g):A=max(max(A)for	A	in	g);return[[B*C%A+1for(C,_)in	enumerate(C)]for(B,C)in	enumerate(g)]

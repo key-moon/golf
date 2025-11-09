@@ -1,1 +1,0 @@
-def p(n,e=range(9)):t,m=next(u for u,f in enumerate(n)if sum(f))//3*3,next(u for u in e if sum(n[d][u]for d in e))//3*3;return[[n[t+d%3][m+u%3]*bool(n[t+d//3][m+u//3])for u in e]for d in e]

@@ -1,1 +1,0 @@
-p=lambda	g:[*zip(*[sorted(r,key=b'\0'.find)for	r	in	zip(*g)])]

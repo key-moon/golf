@@ -1,8 +1,0 @@
-def p(j,A=len,c=range):
-	D='r';C='c';I,J,B=A(j),A(j[0]),{}
-	for F in c(I):
-		for G in c(J):
-			E=j[F][G]
-			if E in B:B[E][D]+=[F];B[E][C]+=[G]
-			else:B[E]={D:[F],C:[G]}
-	H=sorted([[A(B[E][D])*(max(B[E][C])-min(B[E][C])),E]for E in B if E>0])[0][1];j=[[H if A==H else 0 for A in A]for A in j];B=B[H];j=[A[min(B[C]):max(B[C])+1]for A in j];j=j[min(B[D]):max(B[D])+1];return j

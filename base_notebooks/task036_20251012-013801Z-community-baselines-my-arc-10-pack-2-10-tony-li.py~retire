@@ -1,1 +1,0 @@
-def p(g):A=sum(g,[]);C=A.index;D=A[::-1].index;B=max(A,key=lambda v:C(v)+D(v));G,H=C(B)//30,(899-D(B))//30;E=g[G:H+1];F=[A for(A,C)in enumerate(zip(*E))if B in C];return[A[F[0]:F[-1]+1]for A in E]

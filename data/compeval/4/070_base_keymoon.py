@@ -1,1 +1,0 @@
-p=lambda	g:[[v^(max(s)&max(t)+7*0**(hash((*t,))%5647))>>-~v	for*t,v in	zip(*g,s)]for	s	in	g]

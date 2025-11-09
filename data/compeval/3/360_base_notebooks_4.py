@@ -1,1 +1,0 @@
-def	p(g):w=len(g[0]);A=next(c	for	c	in	range(w)if	all(g[r][c]==g[0][c]for	r	in	range(len(g)))and	g[0][c]!=0);B=[B[:A]for	B	in	g];C=[B[A+1:][::-1]for	B	in	g];return[[l	if	l!=0else	r	for(l,r)in	zip(A,B)]for(A,B)in	zip(B,C)]

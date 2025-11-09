@@ -1,2 +1,0 @@
-def solve_a416b8f3(I):A=tuple(tuple(A+B)for(A,B)in zip(I,I));return A
-def p(g):A=tuple(tuple(A)for A in g);B=solve_a416b8f3(A);return[list(A)for A in B]

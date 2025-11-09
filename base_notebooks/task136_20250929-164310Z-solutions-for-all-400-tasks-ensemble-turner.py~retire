@@ -1,6 +1,0 @@
-def p(a):
- D,D=len(a),len(a[0]);d=lambda s:next((n,e)for n in range(D-1)for e in range(D-1)if a[n][e]==a[n+1][e+1]==s);n,e=d(1)
- while n>=1and e>=1:n,e=n-1,e-1;a[n][e]=1
- n,e=d(2)
- while n<D-1and e<D-1:n,e=n+1,e+1;a[n][e]=2
- return a

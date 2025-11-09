@@ -1,1 +1,0 @@
-p=lambda	g:[(A:=0)or[int(A:=r.pop(0)and(A<1)/2+5or	A>5and[6+r.index(5),A][6<A])for	_	in	g]for	r	in	g]

@@ -1,2 +1,0 @@
-def solve_68b16354(I):A=I[::-1];return A
-def p(g):A=tuple(tuple(A)for A in g);B=solve_68b16354(A);return[list(A)for A in B]

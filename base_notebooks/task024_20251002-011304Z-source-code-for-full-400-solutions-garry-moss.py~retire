@@ -1,1 +1,0 @@
-p=lambda g,E=enumerate:(Z:={i for R in g for i,x in E(R)if x==2})and 0 or[[1in R and 1or 3in R and 3or v or(i in Z)*2for i,v in E(R)]for R in g]

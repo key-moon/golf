@@ -1,7 +1,0 @@
-def solve_c9e6f938(I):return[list(A)+list(reversed(A))for A in I]
-def p(g):
-	try:
-		A=solve_c9e6f938(g)
-		if isinstance(A,tuple):return[list(A)for A in A]
-		return A
-	except Exception:return[list(A)for A in g]

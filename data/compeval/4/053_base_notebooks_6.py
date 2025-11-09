@@ -1,1 +1,0 @@
-p=lambda	g:[[g[i-1][j-0]if	0<=i-1<len(g)and	0<=j-0<len(g[0])else	0for	j	in	range(len(g[0]))]for	i	in	range(len(g))]

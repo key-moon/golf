@@ -1,1 +1,0 @@
-def	p(g):n=len(g);u=(n>11)*4+2;return[(s[:u]*9)[1:n+1]for	s	in(g[:u]*9)[:n]]

@@ -1,1 +1,0 @@
-p=lambda	g,c=-1:g*c	or[g:=r	for	r	in	zip(*p(g,c+1))if(g!=r)&any(r)]

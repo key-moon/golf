@@ -1,7 +1,0 @@
-def p(g,E=enumerate,M=max,N=min):
-	B={A:{0:[],1:[]}for A in set(sum(g,[]))}
-	for(G,H)in E(g):
-		for(I,A)in E(H):B[A][0]+=[G];B[A][1]+=[I]
-	D=[];del B[0]
-	for F in B:C=B[F];D+=[[(M(C[0])-N(C[0])+1)*(M(C[1])-N(C[1])+1),F,len(C[1])]]
-	A=sorted(D)[-1][1];return[[A,A],[A,A]]

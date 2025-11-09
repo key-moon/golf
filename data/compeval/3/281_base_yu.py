@@ -1,1 +1,0 @@
-def	p(g,c=-3):x,y,*_=[i	for(i,s)in	enumerate(g)if	any(s)];return	c*g	or	p([*zip(*(g*({*g[x]}!={0,8})or	g[:x]+[g[y]]+[g[y+1]]*(y-x)+g[y+1:])[::-1])],c+1)

@@ -1,3 +1,0 @@
-import re
-S=re.sub
-p=lambda g,c=-63:g*c or[*zip(*eval(S('2(?=, 3|\))','3',S(*'02',str(p(g,c+1))))))][::-1]

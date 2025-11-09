@@ -1,6 +1,0 @@
-def p(g):
- n=len(g);m=len(g[0]);r=[[0]*m*n for _ in range(n*n)]
- for i in range(n*n):
-  for j in range(m*n):
-   r[i][j]=g[i//n][j//m]if g[i%n][j%m]else 0
- return r

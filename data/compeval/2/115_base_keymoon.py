@@ -1,1 +1,0 @@
-p=lambda	g:[A	for	r	in	g	if(A:=[(g:=[c]+g)[0]for	c	in	r	if(c	in	g)-1])]

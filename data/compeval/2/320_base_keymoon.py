@@ -1,1 +1,0 @@
-p=lambda	g:[*zip(*[s[:-(u:=s.count(2)//2)or	99]+u*(8,)for	s	in	zip(*g)])]

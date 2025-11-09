@@ -1,3 +1,0 @@
-def p(g):
- t=g[0];k=t.index(0)
- return[[t[0]]*(k+i)+t[k+i:]for i in range(len(t)//2)]

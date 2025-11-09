@@ -1,7 +1,0 @@
-R=range
-L=len
-def p(g):
-	F,G=L(g),L(g[0]);A=[[0]*3 for A in R(3)];B=min([A for A in R(F)if g[A].count(5)>0]);C=min([A.index(5)for A in g if A.count(5)>0]);g=[A[C:C+9]for A in g[B:B+9]]
-	for D in R(0,9,3):
-		for E in R(0,9,3):A[D//3][E//3]=g[D][E]
-	g=[[A[B//3][C//3]and A[B%3][C%3]for C in R(9)]for B in R(9)];return g

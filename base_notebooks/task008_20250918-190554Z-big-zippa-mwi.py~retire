@@ -1,9 +1,0 @@
-def p(j,A=enumerate):
-	B,C=[(B,D)for(B,C)in A(j)for(D,E)in A(C)if E==2],[(B,D)for(B,C)in A(j)for(D,E)in A(C)if E==8]
-	if not B or not C:return j
-	F=lambda W:(min(A for(A,B)in W),max(A for(A,B)in W),min(A for(B,A)in W),max(A for(B,A)in W));G,H,I,J=F(B);K,L,M,N=F(C);D=E=0
-	if J<M:E=M-J-1
-	elif N<I:E=N-I+1
-	elif H<K:D=K-H-1
-	elif L<G:D=L-G+1
-	O,P={*B},{*C};return[[8 if(B,A)in P else 2 if(B-D,A-E)in O else 0 for(A,C)in A(j[0])]for(B,C)in A(j)]

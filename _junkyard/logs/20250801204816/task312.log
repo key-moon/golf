@@ -1,3 +1,0 @@
-Here’s a fully‐inline golfed solution. It replaces every 5 by the first element of its row (the “id”), and returns the new grid:
-
-def p(val_g):return[[val_r[0]if val_x==5else val_x for val_x in val_r]for val_r in val_g]

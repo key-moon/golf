@@ -1,8 +1,0 @@
-a=len
-g=range
-def p(r):
- i,f=a(r),a(r[0]);e=[]
- for d in g(i):
-  for i in g(f):
-   if r[d][i]>0:e.append([d,i])
- m=min([g[1]for g in e]);p=max([g[1]for g in e]);l=min([g[0]for g in e]);e=max([g[0]for g in e]);p=p-(p-m)//2;e=e-(e-l)//2;r=r[l:e];r=[g[m:p]for g in r];return r

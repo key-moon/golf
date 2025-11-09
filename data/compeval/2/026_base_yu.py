@@ -1,1 +1,0 @@
-p=lambda	g:[eval('8*(s.pop(0)|s[3]<1),'*3)for	s	in	g]

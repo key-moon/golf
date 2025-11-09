@@ -1,2 +1,0 @@
-import re
-p=lambda g,c=-7:c*g or[*zip(*eval(re.sub('3, [38]','8,8',str(p(g,c+1)))))][::-1]

@@ -1,1 +1,0 @@
-p=lambda	g,c=-1:c*g	or	p([[v	or(8in	s[:i])*(8in	s[i:])*3for(i,v)in	enumerate(s)]for	s	in	zip(*g)],c+1)

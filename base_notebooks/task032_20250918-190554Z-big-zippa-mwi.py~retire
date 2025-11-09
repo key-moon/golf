@@ -1,1 +1,0 @@
-p=lambda j:list(map(list,zip(*[[0]*A.count(0)+[A for A in A if A]for A in zip(*j)])))

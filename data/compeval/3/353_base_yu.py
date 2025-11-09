@@ -1,1 +1,0 @@
-p=lambda	g,c=-3:c*g	or	p([*zip(*[g.pop([*filter(int,t:=[*map(max,g)])]<[4]and-~t.index(3)),*g][::-1])],c+1)

@@ -1,1 +1,0 @@
-p=lambda	g,c=-3:c*g	or	p([[y	or	0<x<3for(x,y)in	zip((0,)+s,s)]for	s	in	zip(*g[::-1])],c+1)

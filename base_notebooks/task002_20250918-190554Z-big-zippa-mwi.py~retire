@@ -1,7 +1,0 @@
-def p(g):
-	def A(i,j):
-		try:
-			if g[i][j]<1:g[i][j]=1;A(i+1,j);A(i-1,j);A(i,j+1);A(i,j-1)
-		except:0
-	for B in range(len(g)):A(B,0);A(B,-1);A(0,B);A(-1,B)
-	return[[(4,0,0,3)[A]for A in A]for A in g]

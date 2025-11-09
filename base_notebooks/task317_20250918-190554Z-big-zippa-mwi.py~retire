@@ -1,8 +1,0 @@
-def p(j,A=range):
-	B=len(j);E=[[0 for A in A(B)]for C in A(B)]
-	for C in A(B):
-		for D in A(B):
-			if j[C][D]==5:
-				for F in A(max(0,C-1),min(B,C+2)):
-					for G in A(max(0,D-1),min(B,D+2)):E[F][G]=1
-	return E

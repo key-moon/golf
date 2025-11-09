@@ -1,1 +1,0 @@
-def	p(g):s=g[0];return[(k:=0)or(s:=[y+(k:=x	and	k+y)*3for(x,y)in	zip(s,t)])and[(v==6)*3for	v	in	s]for	t	in	g]

@@ -1,1 +1,0 @@
-def p(b,n=range(-2,3),t=enumerate,r=abs):l=[r[:]for r in b];[l[e+o].__setitem__(g+f,s if r(o)==r(f)else i[g-1])for(e,i)in t(b)for(g,s)in t(i)if s and i[g-1]*i[g+1]for o in n for f in n if r(o)==r(f)or not o*f];return l

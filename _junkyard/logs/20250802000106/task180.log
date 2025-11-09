@@ -1,1 +1,0 @@
-def p(val_g):val_n=len(val_g)>>1;return[[val_g[val_i][val_j+val_n]or val_g[val_i+val_n][val_j]or val_g[val_i][val_j]or val_g[val_i+val_n][val_j+val_n]for val_j in range(val_n)]for val_i in range(val_n)]

@@ -1,1 +1,0 @@
-p=lambda	g:[eval('6*(s.pop(0)+s[2]>0),'*3)for	s	in	g]

@@ -1,1 +1,0 @@
-def p(g):B=range;A=len(g);D={C for D in B(A)for C in B(A)if g[D][C]};C=[[8 if g[C][A]==0 and A in D else g[C][A]for A in B(A)]for C in B(A)];return[[C[D%A][B%A]for B in B(2*A)]for D in B(2*A)]

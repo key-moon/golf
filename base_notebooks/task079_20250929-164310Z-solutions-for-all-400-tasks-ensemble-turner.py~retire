@@ -1,9 +1,0 @@
-def p(n):
- l=[];t=len(n)-2
- for F in range(t):
-  for r in range(t):
-   I=tuple(tuple(n[F+l][r:r+3])for l in(0,1,2))
-   for G in{*sum(I,())}-{0}:
-    H=tuple(tuple(l*(l==G)for l in l)for l in I)
-    if min(map(sum,H))and min(map(sum,zip(*H))):l+=H,
- return[list(l)for l in max(l,key=l.count)]

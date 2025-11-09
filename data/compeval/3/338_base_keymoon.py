@@ -1,1 +1,0 @@
-p=lambda	g:[(A:=0)or[int(A:=[3*(0<A),.5-(0!=A)][1<c])for	c	in	r]for	r	in	g]

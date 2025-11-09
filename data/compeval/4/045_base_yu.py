@@ -1,1 +1,0 @@
-p=lambda	g:[(A,[s]*9)[s	in	A]+[s]for*A,s in	g]

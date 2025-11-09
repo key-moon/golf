@@ -1,1 +1,0 @@
-p=lambda	g,R=b'':[[sum(sum(s[j-3:j])for	s	in	g[i-3:i])//12for	j	in	R]for	i	in	R]

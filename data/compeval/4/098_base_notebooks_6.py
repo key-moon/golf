@@ -1,1 +1,0 @@
-def	p(g):h,w=len(g),len(g[0]);return[[g[i][j]if	g[i][j]!=0and	any(i+u<0	or	i+u>=h	or	j+b<0	or	j+b>=w	or	g[i+u][j+b]==0for(u,b)in[(0,1),(0,-1),(1,0),(-1,0)])else	0for	j	in	range(w)]for	i	in	range(h)]

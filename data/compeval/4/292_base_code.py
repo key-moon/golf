@@ -1,1 +1,0 @@
-def	p(g):return[[x+2*(not	j%3)*(x//4)for(j,x)in	enumerate(r)]for	r	in	g]

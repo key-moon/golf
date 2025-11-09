@@ -1,1 +1,0 @@
-p=lambda f,M=max:(z:=[*zip(*f)],[[2if M(f[R])*M(z[C])and f[R][C]<1else M(f[R])|M(z[C])for C in range(9)]for R in range(9)])[1]

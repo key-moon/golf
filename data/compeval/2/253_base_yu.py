@@ -1,7 +1,0 @@
-import	re
-Z='..([1-9])'
-A=Z+'.{%s}\\1'
-t=Z+A
-u=A+Z
-P=[t%37,t%40,u%40,u%37]*2+['(0)']*4
-p=lambda	g:[[int(re.search(P[i+j],str(g))[1])for	j	in(0,4,5,1)]for	i	in(0,4,6,2)]

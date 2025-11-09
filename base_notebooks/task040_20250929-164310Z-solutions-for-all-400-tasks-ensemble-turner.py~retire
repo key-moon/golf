@@ -1,6 +1,0 @@
-def p(i):
- r=range;i=[a[:]for a in i];E=i[0][0]==i[0][9];e,G=(i[0][0],i[9][0])if E else(i[0][0],i[0][9]);I=next(a for n in i for a in n if a and a not in[e,G])
- for a in r(10):
-  for n in r(10):
-   if i[a][n]==I:H=(a,9-a)if E else(n,9-n);i[a][n]=e if H[0]<H[1]else G
- return i
