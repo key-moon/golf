@@ -288,6 +288,23 @@ def create_app() -> Flask:
                 out[i] = last if isinstance(last, int) else 2500
         return jsonify({"name": name, "lengths": out})
 
+    # API: 指定チームをパスで取得するエンドポイント（互換性のため残す）
+    @app.get("/api/team_lengths/<name>")
+    def api_team_lengths_path(name: str):
+        # delegate to query-based implementation logic
+    # reuse existing function body by calling loads_task_scores_progressions directly
+        data = loads_task_scores_progressions()
+        if name not in data:
+            return jsonify({"name": name, "lengths": [None] * 400})
+        per_task = data[name]
+        out: list[Optional[int]] = [None] * 400
+        for i in range(min(len(per_task), 400)):
+            subs = per_task[i] or []
+            if subs:
+                last = subs[-1].get("score")
+                out[i] = last if isinstance(last, int) else 2500
+        return jsonify({"name": name, "lengths": out})
+
     # API: タスクJSONを返す（クライアント側でレンダリング）
     @app.get("/api/task/<int:task_id>/data")
     def api_task_data(task_id: int):
@@ -302,8 +319,12 @@ def create_app() -> Flask:
     # API: タスクの一括サムネイルデータ
     @app.get("/api/tasks/thumbs")
     def api_tasks_thumbs():
-        include_output = request.args.get("include_output", "0") in ("1", "true", "True")
-        return jsonify(_build_task_thumbs_cache(include_output))
+        return jsonify(_build_task_thumbs_cache(False))
+
+    @app.get("/api/tasks/thumbs_with_out")
+    def api_tasks_thumbs_with_out():
+        return jsonify(_build_task_thumbs_cache(True))
+
 
     # API: タスクごとのスコア推移（トップ10チーム）
     @app.get("/api/task/<int:task_id>/progress")
@@ -405,6 +426,78 @@ def create_app() -> Flask:
                 if sc is None:
                     continue
                 if name == "ours":
+                    our_score = sc
+                    continue
+                if best_val is None or sc < best_val:
+                    best_val = sc
+            bests[i] = best_val if best_val is not None else our_score
+
+        # team lengths（任意）
+        lengths: Optional[list[Optional[int]]] = None
+        used_team: Optional[str] = None
+        if team:
+            if team in prog:
+                arr: list[Optional[int]] = [None for _ in range(400)]
+                per_task = prog[team]
+                for i in range(min(400, len(per_task))):
+                    arr[i] = last_at_or_before(per_task[i])
+                lengths = arr
+                used_team = team
+            else:
+                lengths = [None for _ in range(400)]
+                used_team = team
+
+        return jsonify({
+            "t": t,
+            "team": used_team,
+            "has_ours": has_ours,
+            "bests": bests,
+            "lengths": lengths,
+        })
+
+    @app.get("/api/summary_at/<team>")
+    def api_summary_at_team(team: str):
+        """Path-based version of summary_at. Uses server current time (no t param expected).
+        Returns the same json shape as /api/summary_at.
+        """
+        try:
+            t = int(datetime.now().timestamp())
+        except Exception:
+            t = int(datetime.now().timestamp())
+
+        prog = loads_task_scores_progressions()
+        names = set(prog.keys())
+        has_ours = ("ours" in names)
+
+        def last_at_or_before(series) -> Optional[int]:
+            last_sc: Optional[int] = None
+            for entry in series or []:
+                dt = entry.get("date")
+                if isinstance(dt, datetime):
+                    tt = int(dt.timestamp())
+                elif isinstance(dt, (int, float)):
+                    tt = int(dt)
+                else:
+                    continue
+                if tt <= t:
+                    sc = entry.get("score")
+                    last_sc = sc
+                else:
+                    break
+            return last_sc
+
+        # bests_at の算出
+        bests: list[Optional[int]] = [None] * 400
+        for i in range(400):
+            best_val: Optional[int] = None
+            our_score = 0
+            for name_k, per_task in prog.items():
+                if i >= len(per_task):
+                    continue
+                sc = last_at_or_before(per_task[i])
+                if sc is None:
+                    continue
+                if name_k == "ours":
                     our_score = sc
                     continue
                 if best_val is None or sc < best_val:
@@ -601,6 +694,26 @@ def create_app() -> Flask:
                 if last_t is None or tt > last_t:
                     last_t = tt
                 break  # series は時系列順想定なので逆方向最初で最新
+        return jsonify({"name": name, "last_time": last_t})
+
+    @app.get("/api/team_last_time/<name>")
+    def api_team_last_time_path(name: str):
+        prog = loads_task_scores_progressions()
+        if name not in prog:
+            return jsonify({"name": name, "last_time": None})
+        last_t = None
+        for series in prog[name]:
+            for entry in reversed(series or []):
+                dt = entry.get("date")
+                if isinstance(dt, (int, float)):
+                    tt = int(dt)
+                elif isinstance(dt, datetime):
+                    tt = int(dt.timestamp())
+                else:
+                    continue
+                if last_t is None or tt > last_t:
+                    last_t = tt
+                break
         return jsonify({"name": name, "last_time": last_t})
 
     # タスク初期化/オープン（tools/init.py の動作を模倣）

@@ -55,8 +55,6 @@
     <button data-mode="blame" id="modeBlame" class="secondary">blame</button>
   </div>
   <span id="teamLastTime" class="muted" style="font-size:.75em; margin-top:2px; white-space:nowrap;"></span>
-  <input id="timeSlider" type="range" min="0" max="100" value="100" style="width:360px; margin-left:auto">
-  <span id="timeLabel" class="muted" style="font-size:.75em; min-width:150px; text-align:right"></span>
   <script>
   (async function(){
     try{
@@ -130,22 +128,23 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, 
   const sortBtns=document.getElementById('sortBtns'); applyActive(sortBtns, G.sort, 'sort'); sortBtns.onclick=async (e)=>{ const v=e.target.closest('button')?.dataset.sort; if(v){ G.sort=v; applyActive(sortBtns, v, 'sort'); await resortAndRedraw(); }};
   const widthBtns=document.getElementById('widthBtns'); applyActive(widthBtns, G.barW, 'w'); widthBtns.onclick=(e)=>{ const v=e.target.closest('button')?.dataset.w; if(v){ G.barW=Number(v); applyActive(widthBtns, G.barW, 'w'); draw(); }};
   const sel=document.getElementById('teamSelect');
-  sel.addEventListener('change', async ()=>{
+    sel.addEventListener('change', async ()=>{
     const name = sel.value;
-  updateTeamLastTime(name);
+    updateTeamLastTime(name);
     if(!name){
-      // ours 
+      // ours
       G.team = null;
-      const tNow = G.t; const ok = await prepareItems(tNow); if(ok && G.t===tNow) draw();
-      document.getElementById('teamTotal').textContent='';
+      const ok = await prepareItems(); if(ok) draw();
+      { const el = document.getElementById('teamTotal'); if(el) el.textContent = ''; }
       return;
     }
     try{
-      const r = await (await fetch(`/api/team_lengths?name=${encodeURIComponent(name)}`)).json();
+      // use path-based endpoint
+      const r = await (await fetch(`/api/team_lengths/${encodeURIComponent(name)}`)).json();
       G.team = { name: r.name, lengths: r.lengths||[] };
-      const tNow = G.t; const ok = await prepareItems(tNow); if(ok && G.t===tNow) draw();
-      const total = (G.team.lengths||[]).reduce((a,b)=> a + (b??0), 0);
-      document.getElementById('teamTotal').textContent = `${name} total: ${total}`;
+  const ok = await prepareItems(); if(ok) draw();
+  const total = (G.team.lengths||[]).reduce((a,b)=> a + (b??0), 0);
+  { const el = document.getElementById('teamTotal'); if(el) el.textContent = `${name} total: ${total}`; }
     }catch{}
   });
 })();
@@ -153,12 +152,10 @@ let G={ sort:'best', barW:4, data:null, items:[], W:0, H:360, padL:36, padB:24, 
   const s = await (await fetch('/api/summary')).json();
   G.data = s;
   updateTeamLastTime('');
-  try{
+    try{
+    // time range still available but frontend will not rely on t query params
     const tRange = await (await fetch('/api/time_range')).json();
     G.tr = tRange; G.t = tRange.max;
-    const slider = document.getElementById('timeSlider');
-    slider.min = String(tRange.min); slider.max = String(tRange.max); slider.value = String(tRange.max);
-    updateTimeLabel();
   }catch{}
   document.getElementById('ourTotal').textContent = s.our_lengths.reduce((a,b)=>a+(b??0),0);
   document.getElementById('bestTotal').textContent = (s.bests||[]).reduce((a,b)=>a+(b??0),0);
@@ -176,10 +173,12 @@ async function prepareItems(expectedT){
   let ourSeries = s.our_lengths;
   // ourSeries を時点指定に置換（ours チームが存在するならそれを優先）
   try{
-    const selTeam = document.getElementById('teamSelect')?.value || '';
-    const teamQ = selTeam || 'ours';
-    const tParam = expectedT ?? G.t ?? G.tr.max;
-    const r = await (await fetch(`/api/summary_at?t=${encodeURIComponent(tParam)}&team=${encodeURIComponent(teamQ)}`)).json();
+  // use path-based team endpoint and omit explicit time parameter
+  const selTeam = document.getElementById('teamSelect')?.value || '';
+  const teamQ = selTeam || 'ours';
+  // summary_at supports 'team' as query param; prefer path-based team_lengths for lengths
+  // Request path-based summary_at (server-time is used)
+  const r = await (await fetch(`/api/summary_at/${encodeURIComponent(teamQ)}`)).json();
     // 競合: 最新でなければ破棄
     if(seq !== G._reqSeq) return false;
     const bestsAt = Array.isArray(r.bests) ? r.bests : s.bests;
@@ -344,7 +343,7 @@ function draw(){
   const diff = (b!=null && it.our!=null) ? (it.our - b) : null;
   const bestDiff = (b!=null && diff!=null) ? `${b} (${diff>0?'+':''}${diff})` : (b??'-');
     tooltip.style.display='block'; tooltip.style.left = (ev.pageX+12)+'px'; tooltip.style.top = (ev.pageY+12)+'px';
-  if(!G._thumbs){ try{ G._thumbs = await (await fetch('/api/tasks/thumbs?include_output=1')).json(); }catch{ G._thumbs=[]; } }
+  if(!G._thumbs){ try{ G._thumbs = await (await fetch('/api/tasks/thumbs_with_out')).json(); }catch{ G._thumbs=[]; } }
     const th = Array.isArray(G._thumbs)? G._thumbs[it.idx]: null;
   let thumbHtml='';
   function gridHtml(mat){ if(!mat) return ''; return '<div class="mini-grid">'+mat.map(row=>'<div class="r">'+row.map(v=>`<span style="background:${palette[v%palette.length]};"></span>`).join('')+'</div>').join('')+'</div>'; }
@@ -356,13 +355,17 @@ function draw(){
 }
 
 // UI wiring for slider and mode
-document.getElementById('timeSlider').addEventListener('input', async (e)=>{ const tTarget = Number(e.target.value); G.t = tTarget; updateTimeLabel(); const ok = await prepareItems(tTarget); if(ok && G.t===tTarget) draw(); });
 document.getElementById('modeStack').addEventListener('click', ()=>{ G.mode='stack'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'stack', 'mode'); draw(); });
 document.getElementById('modeDiff').addEventListener('click', ()=>{ G.mode='diff'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'diff', 'mode'); draw(); });
 document.getElementById('modeBlame').addEventListener('click', ()=>{ G.mode='blame'; applyActive(document.querySelector('[data-mode="stack"]').parentElement, 'blame', 'mode'); draw(); });
 
 async function updateTeamLastTime(name){
-  try{ const r = await (await fetch(`/api/team_last_time?name=${encodeURIComponent(name||'ours')}`)).json(); const el=document.getElementById('teamLastTime'); if(!el) return; if(r.last_time){ const score=(typeof G._teamCurrentSum==='number')? G._teamCurrentSum : null; el.textContent = `${r.name|| (name||'ours')} last: ` + new Date(r.last_time*1000).toLocaleString() + (score!=null? ` | score: ${score}`:''); } else { el.textContent=''; } }catch{}
+  try{
+    const nm = name || 'ours';
+  // prefer path-based endpoint
+  const r = await (await fetch(`/api/team_last_time/${encodeURIComponent(nm)}`)).json();
+    const el=document.getElementById('teamLastTime'); if(!el) return; if(r.last_time){ const score=(typeof G._teamCurrentSum==='number')? G._teamCurrentSum : null; el.textContent = `${r.name|| (name||'ours')} last: ` + new Date(r.last_time*1000).toLocaleString() + (score!=null? ` | score: ${score}`:''); } else { el.textContent=''; }
+  }catch{}
 }
 
 // 初期モード（diff）ボタンの強調

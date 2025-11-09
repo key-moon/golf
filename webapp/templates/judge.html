@@ -300,15 +300,6 @@ async function render(){
   LAST_MTIME = data.mtime || 0;
 }
 
-async function poll(){
-  try{
-    const d = await fetch(`/api/judge/outputs?since=${encodeURIComponent(LAST_MTIME||0)}`).then(r=>r.json());
-    if(d && (d.mtime||0) !== LAST_MTIME){
-      await render();
-    }
-  }catch{}
-  setTimeout(poll, 1000);
-}
 
 (function init(){
   const params = new URLSearchParams(location.search);
@@ -343,7 +334,7 @@ async function poll(){
       render();
     }
   });
-  render(); poll();
+  render();
 })();
 </script>
 {% endblock %}

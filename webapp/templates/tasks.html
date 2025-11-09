@@ -164,7 +164,7 @@ function renderTagFilter(){
 })();
 
 async function getThumbs(includeOutput){
-  if(includeOutput){ if(!THUMBS_CACHE_WITH_OUT) THUMBS_CACHE_WITH_OUT = await (await fetch('/api/tasks/thumbs?include_output=1')).json(); return THUMBS_CACHE_WITH_OUT; }
+  if(includeOutput){ if(!THUMBS_CACHE_WITH_OUT) THUMBS_CACHE_WITH_OUT = await (await fetch('/api/tasks/thumbs_with_out')).json(); return THUMBS_CACHE_WITH_OUT; }
   else { if(!THUMBS_CACHE) THUMBS_CACHE = await (await fetch('/api/tasks/thumbs')).json(); return THUMBS_CACHE; }
 }
 
